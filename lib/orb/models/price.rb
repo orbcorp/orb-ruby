@@ -337,7 +337,7 @@ module Orb
           # @!attribute allows_rollover
           #
           #   @return [Boolean]
-          required :allows_rollover, Orb::Internal::Type::BooleanModel
+          required :allows_rollover, Orb::Internal::Type::Boolean
 
           # @!attribute currency
           #
@@ -771,7 +771,7 @@ module Orb
           # @!attribute allows_rollover
           #
           #   @return [Boolean]
-          required :allows_rollover, Orb::Internal::Type::BooleanModel
+          required :allows_rollover, Orb::Internal::Type::Boolean
 
           # @!attribute currency
           #
@@ -1213,7 +1213,7 @@ module Orb
           # @!attribute allows_rollover
           #
           #   @return [Boolean]
-          required :allows_rollover, Orb::Internal::Type::BooleanModel
+          required :allows_rollover, Orb::Internal::Type::Boolean
 
           # @!attribute currency
           #
@@ -1686,7 +1686,7 @@ module Orb
           # @!attribute allows_rollover
           #
           #   @return [Boolean]
-          required :allows_rollover, Orb::Internal::Type::BooleanModel
+          required :allows_rollover, Orb::Internal::Type::Boolean
 
           # @!attribute currency
           #
@@ -2150,7 +2150,7 @@ module Orb
           # @!attribute allows_rollover
           #
           #   @return [Boolean]
-          required :allows_rollover, Orb::Internal::Type::BooleanModel
+          required :allows_rollover, Orb::Internal::Type::Boolean
 
           # @!attribute currency
           #
@@ -2645,7 +2645,7 @@ module Orb
           # @!attribute allows_rollover
           #
           #   @return [Boolean]
-          required :allows_rollover, Orb::Internal::Type::BooleanModel
+          required :allows_rollover, Orb::Internal::Type::Boolean
 
           # @!attribute currency
           #
@@ -3110,7 +3110,7 @@ module Orb
           # @!attribute allows_rollover
           #
           #   @return [Boolean]
-          required :allows_rollover, Orb::Internal::Type::BooleanModel
+          required :allows_rollover, Orb::Internal::Type::Boolean
 
           # @!attribute currency
           #
@@ -3566,7 +3566,7 @@ module Orb
           # @!attribute allows_rollover
           #
           #   @return [Boolean]
-          required :allows_rollover, Orb::Internal::Type::BooleanModel
+          required :allows_rollover, Orb::Internal::Type::Boolean
 
           # @!attribute currency
           #
@@ -3989,7 +3989,7 @@ module Orb
           # @!attribute allows_rollover
           #
           #   @return [Boolean]
-          required :allows_rollover, Orb::Internal::Type::BooleanModel
+          required :allows_rollover, Orb::Internal::Type::Boolean
 
           # @!attribute currency
           #
@@ -4408,7 +4408,7 @@ module Orb
           # @!attribute allows_rollover
           #
           #   @return [Boolean]
-          required :allows_rollover, Orb::Internal::Type::BooleanModel
+          required :allows_rollover, Orb::Internal::Type::Boolean
 
           # @!attribute currency
           #
@@ -4827,7 +4827,7 @@ module Orb
           # @!attribute allows_rollover
           #
           #   @return [Boolean]
-          required :allows_rollover, Orb::Internal::Type::BooleanModel
+          required :allows_rollover, Orb::Internal::Type::Boolean
 
           # @!attribute currency
           #
@@ -5248,7 +5248,7 @@ module Orb
           # @!attribute allows_rollover
           #
           #   @return [Boolean]
-          required :allows_rollover, Orb::Internal::Type::BooleanModel
+          required :allows_rollover, Orb::Internal::Type::Boolean
 
           # @!attribute currency
           #
@@ -5672,7 +5672,7 @@ module Orb
           # @!attribute allows_rollover
           #
           #   @return [Boolean]
-          required :allows_rollover, Orb::Internal::Type::BooleanModel
+          required :allows_rollover, Orb::Internal::Type::Boolean
 
           # @!attribute currency
           #
@@ -6095,7 +6095,7 @@ module Orb
           # @!attribute allows_rollover
           #
           #   @return [Boolean]
-          required :allows_rollover, Orb::Internal::Type::BooleanModel
+          required :allows_rollover, Orb::Internal::Type::Boolean
 
           # @!attribute currency
           #
@@ -6514,7 +6514,7 @@ module Orb
           # @!attribute allows_rollover
           #
           #   @return [Boolean]
-          required :allows_rollover, Orb::Internal::Type::BooleanModel
+          required :allows_rollover, Orb::Internal::Type::Boolean
 
           # @!attribute currency
           #
@@ -6938,7 +6938,7 @@ module Orb
           # @!attribute allows_rollover
           #
           #   @return [Boolean]
-          required :allows_rollover, Orb::Internal::Type::BooleanModel
+          required :allows_rollover, Orb::Internal::Type::Boolean
 
           # @!attribute currency
           #
@@ -7421,7 +7421,7 @@ module Orb
           # @!attribute allows_rollover
           #
           #   @return [Boolean]
-          required :allows_rollover, Orb::Internal::Type::BooleanModel
+          required :allows_rollover, Orb::Internal::Type::Boolean
 
           # @!attribute currency
           #
@@ -7842,7 +7842,7 @@ module Orb
           # @!attribute allows_rollover
           #
           #   @return [Boolean]
-          required :allows_rollover, Orb::Internal::Type::BooleanModel
+          required :allows_rollover, Orb::Internal::Type::Boolean
 
           # @!attribute currency
           #
@@ -8263,7 +8263,7 @@ module Orb
           # @!attribute allows_rollover
           #
           #   @return [Boolean]
-          required :allows_rollover, Orb::Internal::Type::BooleanModel
+          required :allows_rollover, Orb::Internal::Type::Boolean
 
           # @!attribute currency
           #
@@ -8687,7 +8687,7 @@ module Orb
           # @!attribute allows_rollover
           #
           #   @return [Boolean]
-          required :allows_rollover, Orb::Internal::Type::BooleanModel
+          required :allows_rollover, Orb::Internal::Type::Boolean
 
           # @!attribute currency
           #
@@ -9111,7 +9111,7 @@ module Orb
           # @!attribute allows_rollover
           #
           #   @return [Boolean]
-          required :allows_rollover, Orb::Internal::Type::BooleanModel
+          required :allows_rollover, Orb::Internal::Type::Boolean
 
           # @!attribute currency
           #
@@ -9534,7 +9534,7 @@ module Orb
           # @!attribute allows_rollover
           #
           #   @return [Boolean]
-          required :allows_rollover, Orb::Internal::Type::BooleanModel
+          required :allows_rollover, Orb::Internal::Type::Boolean
 
           # @!attribute currency
           #
@@ -9955,7 +9955,7 @@ module Orb
           # @!attribute allows_rollover
           #
           #   @return [Boolean]
-          required :allows_rollover, Orb::Internal::Type::BooleanModel
+          required :allows_rollover, Orb::Internal::Type::Boolean
 
           # @!attribute currency
           #
@@ -10378,7 +10378,7 @@ module Orb
           # @!attribute allows_rollover
           #
           #   @return [Boolean]
-          required :allows_rollover, Orb::Internal::Type::BooleanModel
+          required :allows_rollover, Orb::Internal::Type::Boolean
 
           # @!attribute currency
           #
@@ -10801,7 +10801,7 @@ module Orb
           # @!attribute allows_rollover
           #
           #   @return [Boolean]
-          required :allows_rollover, Orb::Internal::Type::BooleanModel
+          required :allows_rollover, Orb::Internal::Type::Boolean
 
           # @!attribute currency
           #
@@ -11225,7 +11225,7 @@ module Orb
           # @!attribute allows_rollover
           #
           #   @return [Boolean]
-          required :allows_rollover, Orb::Internal::Type::BooleanModel
+          required :allows_rollover, Orb::Internal::Type::Boolean
 
           # @!attribute currency
           #
@@ -11649,7 +11649,7 @@ module Orb
           # @!attribute allows_rollover
           #
           #   @return [Boolean]
-          required :allows_rollover, Orb::Internal::Type::BooleanModel
+          required :allows_rollover, Orb::Internal::Type::Boolean
 
           # @!attribute currency
           #
@@ -12072,7 +12072,7 @@ module Orb
           # @!attribute allows_rollover
           #
           #   @return [Boolean]
-          required :allows_rollover, Orb::Internal::Type::BooleanModel
+          required :allows_rollover, Orb::Internal::Type::Boolean
 
           # @!attribute currency
           #

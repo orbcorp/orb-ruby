@@ -64,7 +64,7 @@ module Orb
             in Hash
               type_info(spec.slice(:const, :enum, :union).first&.last)
             in true | false
-              -> { Orb::Internal::Type::BooleanModel }
+              -> { Orb::Internal::Type::Boolean }
             in Orb::Internal::Type::Converter | Class | Symbol
               -> { spec }
             in NilClass | Integer | Float

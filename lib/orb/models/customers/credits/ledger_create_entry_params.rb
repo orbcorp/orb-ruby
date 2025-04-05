@@ -152,7 +152,7 @@ module Orb
             #     saved payment method.
             #
             #   @return [Boolean]
-            required :auto_collection, Orb::Internal::Type::BooleanModel
+            required :auto_collection, Orb::Internal::Type::Boolean
 
             # @!attribute net_terms
             #   The net terms determines the difference between the invoice date and the issue
@@ -173,7 +173,7 @@ module Orb
             #     paid before it can be drawn down from.
             #
             #   @return [Boolean, nil]
-            optional :require_successful_payment, Orb::Internal::Type::BooleanModel
+            optional :require_successful_payment, Orb::Internal::Type::Boolean
 
             # @!parse
             #   # @return [Boolean]

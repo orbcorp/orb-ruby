@@ -75,7 +75,7 @@ module Orb
       #     the resulting invoice will require manual review to issue. Defaulted to false.
       #
       #   @return [Boolean, nil]
-      optional :will_auto_issue, Orb::Internal::Type::BooleanModel
+      optional :will_auto_issue, Orb::Internal::Type::Boolean
 
       # @!parse
       #   # @return [Boolean]

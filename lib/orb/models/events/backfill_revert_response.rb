@@ -41,7 +41,7 @@ module Orb
         #     events will be added to the existing events.
         #
         #   @return [Boolean]
-        required :replace_existing_events, Orb::Internal::Type::BooleanModel
+        required :replace_existing_events, Orb::Internal::Type::Boolean
 
         # @!attribute reverted_at
         #   The time at which this backfill was reverted.
