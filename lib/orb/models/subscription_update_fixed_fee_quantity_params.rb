@@ -25,7 +25,7 @@ module Orb
       #     existing invoices to be changed.
       #
       #   @return [Boolean, nil]
-      optional :allow_invoice_credit_or_void, Orb::Internal::Type::BooleanModel, nil?: true
+      optional :allow_invoice_credit_or_void, Orb::Internal::Type::Boolean, nil?: true
 
       # @!attribute [r] change_option
       #   Determines when the change takes effect. Note that if `effective_date` is

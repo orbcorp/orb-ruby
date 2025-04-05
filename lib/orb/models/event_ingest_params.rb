@@ -24,7 +24,7 @@ module Orb
       #   Flag to enable additional debug information in the endpoint response
       #
       #   @return [Boolean, nil]
-      optional :debug, Orb::Internal::Type::BooleanModel
+      optional :debug, Orb::Internal::Type::Boolean
 
       # @!parse
       #   # @return [Boolean]

@@ -6,7 +6,7 @@ module Orb
       # @!attribute has_more
       #
       #   @return [Boolean]
-      required :has_more, Orb::Internal::Type::BooleanModel
+      required :has_more, Orb::Internal::Type::Boolean
 
       # @!attribute next_cursor
       #

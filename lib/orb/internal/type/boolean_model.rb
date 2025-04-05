@@ -8,7 +8,7 @@ module Orb
       # @abstract
       #
       # Ruby has no Boolean class; this is something for models to refer to.
-      class BooleanModel
+      class Boolean
         extend Orb::Internal::Type::Converter
 
         # @param other [Object]
@@ -19,7 +19,7 @@ module Orb
         # @param other [Object]
         #
         # @return [Boolean]
-        def self.==(other) = other.is_a?(Class) && other <= Orb::Internal::Type::BooleanModel
+        def self.==(other) = other.is_a?(Class) && other <= Orb::Internal::Type::Boolean
 
         class << self
           # @api private

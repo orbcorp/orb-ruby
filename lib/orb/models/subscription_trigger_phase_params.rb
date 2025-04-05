@@ -14,7 +14,7 @@ module Orb
       #     existing invoices to be changed.
       #
       #   @return [Boolean, nil]
-      optional :allow_invoice_credit_or_void, Orb::Internal::Type::BooleanModel, nil?: true
+      optional :allow_invoice_credit_or_void, Orb::Internal::Type::Boolean, nil?: true
 
       # @!attribute effective_date
       #   The date on which the phase change should take effect. If not provided, defaults

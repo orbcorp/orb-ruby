@@ -28,7 +28,7 @@ module Orb
       #     when a payment provider is provided on customer creation.
       #
       #   @return [Boolean, nil]
-      optional :auto_collection, Orb::Internal::Type::BooleanModel, nil?: true
+      optional :auto_collection, Orb::Internal::Type::Boolean, nil?: true
 
       # @!attribute billing_address
       #
@@ -51,7 +51,7 @@ module Orb
       # @!attribute email_delivery
       #
       #   @return [Boolean, nil]
-      optional :email_delivery, Orb::Internal::Type::BooleanModel, nil?: true
+      optional :email_delivery, Orb::Internal::Type::Boolean, nil?: true
 
       # @!attribute external_customer_id
       #   The external customer ID. This can only be set if empty and the customer has no
@@ -283,7 +283,7 @@ module Orb
         # @!attribute excluded
         #
         #   @return [Boolean, nil]
-        optional :excluded, Orb::Internal::Type::BooleanModel, nil?: true
+        optional :excluded, Orb::Internal::Type::Boolean, nil?: true
 
         # @!parse
         #   # @param accounting_providers [Array<Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration::AccountingProvider>, nil]
@@ -415,7 +415,7 @@ module Orb
         # @!attribute exempt
         #
         #   @return [Boolean]
-        required :exempt, Orb::Internal::Type::BooleanModel
+        required :exempt, Orb::Internal::Type::Boolean
 
         # @!parse
         #   # @param exempt [Boolean]
@@ -482,7 +482,7 @@ module Orb
           # @!attribute tax_exempt
           #
           #   @return [Boolean]
-          required :tax_exempt, Orb::Internal::Type::BooleanModel
+          required :tax_exempt, Orb::Internal::Type::Boolean
 
           # @!attribute tax_provider
           #
@@ -508,7 +508,7 @@ module Orb
           # @!attribute tax_exempt
           #
           #   @return [Boolean]
-          required :tax_exempt, Orb::Internal::Type::BooleanModel
+          required :tax_exempt, Orb::Internal::Type::Boolean
 
           # @!attribute tax_provider
           #

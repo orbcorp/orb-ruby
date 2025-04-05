@@ -16,7 +16,7 @@ module Orb
       #     present in the provider.
       #
       #   @return [Boolean, nil]
-      optional :synchronous, Orb::Internal::Type::BooleanModel
+      optional :synchronous, Orb::Internal::Type::Boolean
 
       # @!parse
       #   # @return [Boolean]

@@ -32,7 +32,7 @@ module Orb
       #   Whether the alert is enabled or disabled.
       #
       #   @return [Boolean]
-      required :enabled, Orb::Internal::Type::BooleanModel
+      required :enabled, Orb::Internal::Type::Boolean
 
       # @!attribute metric
       #   The metric the alert applies to.

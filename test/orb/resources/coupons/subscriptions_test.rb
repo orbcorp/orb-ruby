@@ -22,7 +22,7 @@ class Orb::Test::Resources::Coupons::SubscriptionsTest < Orb::Test::ResourceTest
         id: String,
         active_plan_phase_order: Integer | nil,
         adjustment_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Subscription::AdjustmentInterval]),
-        auto_collection: Orb::Internal::Type::BooleanModel | nil,
+        auto_collection: Orb::Internal::Type::Boolean | nil,
         billing_cycle_anchor_configuration: Orb::Models::Subscription::BillingCycleAnchorConfiguration,
         billing_cycle_day: Integer,
         created_at: Time,
