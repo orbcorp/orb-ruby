@@ -13,22 +13,22 @@ module Orb
           # @!attribute created_at_gt
           #
           #   @return [Time, nil]
-          optional :created_at_gt, Time, api_name: :"created_at[gt]", nil?: true
+          optional :created_at_gt, Time, nil?: true
 
           # @!attribute created_at_gte
           #
           #   @return [Time, nil]
-          optional :created_at_gte, Time, api_name: :"created_at[gte]", nil?: true
+          optional :created_at_gte, Time, nil?: true
 
           # @!attribute created_at_lt
           #
           #   @return [Time, nil]
-          optional :created_at_lt, Time, api_name: :"created_at[lt]", nil?: true
+          optional :created_at_lt, Time, nil?: true
 
           # @!attribute created_at_lte
           #
           #   @return [Time, nil]
-          optional :created_at_lte, Time, api_name: :"created_at[lte]", nil?: true
+          optional :created_at_lte, Time, nil?: true
 
           # @!attribute currency
           #   The ledger currency or custom pricing unit to use.

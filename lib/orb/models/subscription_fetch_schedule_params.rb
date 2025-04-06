@@ -28,22 +28,22 @@ module Orb
       # @!attribute start_date_gt
       #
       #   @return [Time, nil]
-      optional :start_date_gt, Time, api_name: :"start_date[gt]", nil?: true
+      optional :start_date_gt, Time, nil?: true
 
       # @!attribute start_date_gte
       #
       #   @return [Time, nil]
-      optional :start_date_gte, Time, api_name: :"start_date[gte]", nil?: true
+      optional :start_date_gte, Time, nil?: true
 
       # @!attribute start_date_lt
       #
       #   @return [Time, nil]
-      optional :start_date_lt, Time, api_name: :"start_date[lt]", nil?: true
+      optional :start_date_lt, Time, nil?: true
 
       # @!attribute start_date_lte
       #
       #   @return [Time, nil]
-      optional :start_date_lte, Time, api_name: :"start_date[lte]", nil?: true
+      optional :start_date_lte, Time, nil?: true
 
       # @!parse
       #   # @param cursor [String, nil]

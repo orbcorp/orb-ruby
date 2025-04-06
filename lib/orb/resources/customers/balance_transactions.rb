@@ -78,10 +78,10 @@ module Orb
             method: :get,
             path: ["customers/%1$s/balance_transactions", customer_id],
             query: parsed.transform_keys(
-              operation_time_gt: :"operation_time[gt]",
-              operation_time_gte: :"operation_time[gte]",
-              operation_time_lt: :"operation_time[lt]",
-              operation_time_lte: :"operation_time[lte]"
+              operation_time_gt: "operation_time[gt]",
+              operation_time_gte: "operation_time[gte]",
+              operation_time_lt: "operation_time[lt]",
+              operation_time_lte: "operation_time[lte]"
             ),
             page: Orb::Internal::Page,
             model: Orb::Models::Customers::BalanceTransactionListResponse,
