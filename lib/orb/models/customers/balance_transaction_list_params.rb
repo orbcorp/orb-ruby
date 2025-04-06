@@ -29,22 +29,22 @@ module Orb
         # @!attribute operation_time_gt
         #
         #   @return [Time, nil]
-        optional :operation_time_gt, Time, api_name: :"operation_time[gt]", nil?: true
+        optional :operation_time_gt, Time, nil?: true
 
         # @!attribute operation_time_gte
         #
         #   @return [Time, nil]
-        optional :operation_time_gte, Time, api_name: :"operation_time[gte]", nil?: true
+        optional :operation_time_gte, Time, nil?: true
 
         # @!attribute operation_time_lt
         #
         #   @return [Time, nil]
-        optional :operation_time_lt, Time, api_name: :"operation_time[lt]", nil?: true
+        optional :operation_time_lt, Time, nil?: true
 
         # @!attribute operation_time_lte
         #
         #   @return [Time, nil]
-        optional :operation_time_lte, Time, api_name: :"operation_time[lte]", nil?: true
+        optional :operation_time_lte, Time, nil?: true
 
         # @!parse
         #   # @param cursor [String, nil]
