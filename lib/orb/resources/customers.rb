@@ -129,10 +129,10 @@ module Orb
           method: :get,
           path: "customers",
           query: parsed.transform_keys(
-            created_at_gt: :"created_at[gt]",
-            created_at_gte: :"created_at[gte]",
-            created_at_lt: :"created_at[lt]",
-            created_at_lte: :"created_at[lte]"
+            created_at_gt: "created_at[gt]",
+            created_at_gte: "created_at[gte]",
+            created_at_lt: "created_at[lt]",
+            created_at_lte: "created_at[lte]"
           ),
           page: Orb::Internal::Page,
           model: Orb::Models::Customer,

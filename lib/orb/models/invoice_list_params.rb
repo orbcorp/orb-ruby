@@ -16,12 +16,12 @@ module Orb
       # @!attribute amount_gt
       #
       #   @return [String, nil]
-      optional :amount_gt, String, api_name: :"amount[gt]", nil?: true
+      optional :amount_gt, String, nil?: true
 
       # @!attribute amount_lt
       #
       #   @return [String, nil]
-      optional :amount_lt, String, api_name: :"amount[lt]", nil?: true
+      optional :amount_lt, String, nil?: true
 
       # @!attribute cursor
       #   Cursor for pagination. This can be populated by the `next_cursor` value returned
@@ -57,12 +57,12 @@ module Orb
       # @!attribute due_date_gt
       #
       #   @return [Date, nil]
-      optional :due_date_gt, Date, api_name: :"due_date[gt]", nil?: true
+      optional :due_date_gt, Date, nil?: true
 
       # @!attribute due_date_lt
       #
       #   @return [Date, nil]
-      optional :due_date_lt, Date, api_name: :"due_date[lt]", nil?: true
+      optional :due_date_lt, Date, nil?: true
 
       # @!attribute external_customer_id
       #
@@ -72,22 +72,22 @@ module Orb
       # @!attribute invoice_date_gt
       #
       #   @return [Time, nil]
-      optional :invoice_date_gt, Time, api_name: :"invoice_date[gt]", nil?: true
+      optional :invoice_date_gt, Time, nil?: true
 
       # @!attribute invoice_date_gte
       #
       #   @return [Time, nil]
-      optional :invoice_date_gte, Time, api_name: :"invoice_date[gte]", nil?: true
+      optional :invoice_date_gte, Time, nil?: true
 
       # @!attribute invoice_date_lt
       #
       #   @return [Time, nil]
-      optional :invoice_date_lt, Time, api_name: :"invoice_date[lt]", nil?: true
+      optional :invoice_date_lt, Time, nil?: true
 
       # @!attribute invoice_date_lte
       #
       #   @return [Time, nil]
-      optional :invoice_date_lte, Time, api_name: :"invoice_date[lte]", nil?: true
+      optional :invoice_date_lte, Time, nil?: true
 
       # @!attribute is_recurring
       #
