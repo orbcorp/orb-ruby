@@ -55,8 +55,9 @@ module Orb
         # by setting the value to `null`, and the entire metadata mapping can be cleared
         # by setting `metadata` to `null`.
         metadata: nil,
-        # When true, this invoice will automatically be issued upon creation. When false,
-        # the resulting invoice will require manual review to issue. Defaulted to false.
+        # When true, this invoice will be submitted for issuance upon creation. When
+        # false, the resulting invoice will require manual review to issue. Defaulted to
+        # false.
         will_auto_issue: nil,
         request_options: {}
       ); end

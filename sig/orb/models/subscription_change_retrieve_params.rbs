@@ -1,0 +1,15 @@
+module Orb
+  module Models
+    type subscription_change_retrieve_params =
+      {  } & Orb::Internal::Type::request_parameters
+
+    class SubscriptionChangeRetrieveParams < Orb::Internal::Type::BaseModel
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
+
+      def initialize: (?request_options: Orb::request_opts) -> void
+
+      def to_hash: -> Orb::Models::subscription_change_retrieve_params
+    end
+  end
+end

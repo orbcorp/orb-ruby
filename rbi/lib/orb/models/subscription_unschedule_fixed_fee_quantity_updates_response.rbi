@@ -141,6 +141,27 @@ module Orb
       sig { returns(Integer) }
       attr_accessor :net_terms
 
+      # A pending subscription change if one exists on this subscription.
+      sig do
+        returns(
+          T.nilable(Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::PendingSubscriptionChange)
+        )
+      end
+      attr_reader :pending_subscription_change
+
+      sig do
+        params(
+          pending_subscription_change: T.nilable(
+            T.any(
+              Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::PendingSubscriptionChange,
+              Orb::Internal::AnyHash
+            )
+          )
+        )
+          .void
+      end
+      attr_writer :pending_subscription_change
+
       # The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be
       # subscribed to by a customer. Plans define the billing behavior of the
       # subscription. You can see more about how to configure prices in the
@@ -191,6 +212,25 @@ module Orb
           .void
       end
       attr_writer :trial_info
+
+      # The resources that were changed as part of this operation. Only present when
+      # fetched through the subscription changes API or if the
+      # `include_changed_resources` parameter was passed in the request.
+      sig { returns(T.nilable(Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::ChangedResources)) }
+      attr_reader :changed_resources
+
+      sig do
+        params(
+          changed_resources: T.nilable(
+            T.any(
+              Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::ChangedResources,
+              Orb::Internal::AnyHash
+            )
+          )
+        )
+          .void
+      end
+      attr_writer :changed_resources
 
       sig do
         params(
@@ -243,6 +283,12 @@ module Orb
             )
           ],
           net_terms: Integer,
+          pending_subscription_change: T.nilable(
+            T.any(
+              Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::PendingSubscriptionChange,
+              Orb::Internal::AnyHash
+            )
+          ),
           plan: T.any(Orb::Models::Plan, Orb::Internal::AnyHash),
           price_intervals: T::Array[
             T.any(
@@ -261,6 +307,12 @@ module Orb
           trial_info: T.any(
             Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::TrialInfo,
             Orb::Internal::AnyHash
+          ),
+          changed_resources: T.nilable(
+            T.any(
+              Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::ChangedResources,
+              Orb::Internal::AnyHash
+            )
           )
         )
           .returns(T.attached_class)
@@ -285,12 +337,14 @@ module Orb
         metadata:,
         minimum_intervals:,
         net_terms:,
+        pending_subscription_change:,
         plan:,
         price_intervals:,
         redeemed_coupon:,
         start_date:,
         status:,
-        trial_info:
+        trial_info:,
+        changed_resources: nil
       ); end
       sig do
         override
@@ -321,12 +375,14 @@ module Orb
               metadata: T::Hash[Symbol, String],
               minimum_intervals: T::Array[Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::MinimumInterval],
               net_terms: Integer,
+              pending_subscription_change: T.nilable(Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::PendingSubscriptionChange),
               plan: Orb::Models::Plan,
               price_intervals: T::Array[Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::PriceInterval],
               redeemed_coupon: T.nilable(Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::RedeemedCoupon),
               start_date: Time,
               status: Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::Status::TaggedSymbol,
-              trial_info: Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::TrialInfo
+              trial_info: Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::TrialInfo,
+              changed_resources: T.nilable(Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::ChangedResources)
             }
           )
       end
@@ -1111,6 +1167,18 @@ module Orb
         def to_hash; end
       end
 
+      class PendingSubscriptionChange < Orb::Internal::Type::BaseModel
+        sig { returns(String) }
+        attr_accessor :id
+
+        # A pending subscription change if one exists on this subscription.
+        sig { params(id: String).returns(T.attached_class) }
+        def self.new(id:); end
+
+        sig { override.returns({id: String}) }
+        def to_hash; end
+      end
+
       class PriceInterval < Orb::Internal::Type::BaseModel
         sig { returns(String) }
         attr_accessor :id
@@ -1403,6 +1471,51 @@ module Orb
         def self.new(end_date:); end
 
         sig { override.returns({end_date: T.nilable(Time)}) }
+        def to_hash; end
+      end
+
+      class ChangedResources < Orb::Internal::Type::BaseModel
+        # The credit notes that were created as part of this operation.
+        sig { returns(T::Array[Orb::Models::CreditNote]) }
+        attr_accessor :created_credit_notes
+
+        # The invoices that were created as part of this operation.
+        sig { returns(T::Array[Orb::Models::Invoice]) }
+        attr_accessor :created_invoices
+
+        # The credit notes that were voided as part of this operation.
+        sig { returns(T::Array[Orb::Models::CreditNote]) }
+        attr_accessor :voided_credit_notes
+
+        # The invoices that were voided as part of this operation.
+        sig { returns(T::Array[Orb::Models::Invoice]) }
+        attr_accessor :voided_invoices
+
+        # The resources that were changed as part of this operation. Only present when
+        # fetched through the subscription changes API or if the
+        # `include_changed_resources` parameter was passed in the request.
+        sig do
+          params(
+            created_credit_notes: T::Array[T.any(Orb::Models::CreditNote, Orb::Internal::AnyHash)],
+            created_invoices: T::Array[T.any(Orb::Models::Invoice, Orb::Internal::AnyHash)],
+            voided_credit_notes: T::Array[T.any(Orb::Models::CreditNote, Orb::Internal::AnyHash)],
+            voided_invoices: T::Array[T.any(Orb::Models::Invoice, Orb::Internal::AnyHash)]
+          )
+            .returns(T.attached_class)
+        end
+        def self.new(created_credit_notes:, created_invoices:, voided_credit_notes:, voided_invoices:); end
+
+        sig do
+          override
+            .returns(
+              {
+                created_credit_notes: T::Array[Orb::Models::CreditNote],
+                created_invoices: T::Array[Orb::Models::Invoice],
+                voided_credit_notes: T::Array[Orb::Models::CreditNote],
+                voided_invoices: T::Array[Orb::Models::Invoice]
+              }
+            )
+        end
         def to_hash; end
       end
     end

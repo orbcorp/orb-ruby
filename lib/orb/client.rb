@@ -60,6 +60,9 @@ module Orb
     # @return [Orb::Resources::DimensionalPriceGroups]
     attr_reader :dimensional_price_groups
 
+    # @return [Orb::Resources::SubscriptionChanges]
+    attr_reader :subscription_changes
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -124,6 +127,7 @@ module Orb
       @subscriptions = Orb::Resources::Subscriptions.new(client: self)
       @alerts = Orb::Resources::Alerts.new(client: self)
       @dimensional_price_groups = Orb::Resources::DimensionalPriceGroups.new(client: self)
+      @subscription_changes = Orb::Resources::SubscriptionChanges.new(client: self)
     end
   end
 end

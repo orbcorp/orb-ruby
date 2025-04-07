@@ -1,0 +1,24 @@
+module Orb
+  module Resources
+    class SubscriptionChanges
+      def retrieve: (
+        String subscription_change_id,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::SubscriptionChangeRetrieveResponse
+
+      def apply: (
+        String subscription_change_id,
+        ?description: String?,
+        ?previously_collected_amount: String?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::SubscriptionChangeApplyResponse
+
+      def cancel: (
+        String subscription_change_id,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::SubscriptionChangeCancelResponse
+
+      def initialize: (client: Orb::Client) -> void
+    end
+  end
+end

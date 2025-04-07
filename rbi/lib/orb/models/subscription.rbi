@@ -130,6 +130,18 @@ module Orb
       sig { returns(Integer) }
       attr_accessor :net_terms
 
+      # A pending subscription change if one exists on this subscription.
+      sig { returns(T.nilable(Orb::Models::Subscription::PendingSubscriptionChange)) }
+      attr_reader :pending_subscription_change
+
+      sig do
+        params(
+          pending_subscription_change: T.nilable(T.any(Orb::Models::Subscription::PendingSubscriptionChange, Orb::Internal::AnyHash))
+        )
+          .void
+      end
+      attr_writer :pending_subscription_change
+
       # The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be
       # subscribed to by a customer. Plans define the billing behavior of the
       # subscription. You can see more about how to configure prices in the
@@ -215,6 +227,7 @@ module Orb
           metadata: T::Hash[Symbol, String],
           minimum_intervals: T::Array[T.any(Orb::Models::Subscription::MinimumInterval, Orb::Internal::AnyHash)],
           net_terms: Integer,
+          pending_subscription_change: T.nilable(T.any(Orb::Models::Subscription::PendingSubscriptionChange, Orb::Internal::AnyHash)),
           plan: T.any(Orb::Models::Plan, Orb::Internal::AnyHash),
           price_intervals: T::Array[T.any(Orb::Models::Subscription::PriceInterval, Orb::Internal::AnyHash)],
           redeemed_coupon: T.nilable(T.any(Orb::Models::Subscription::RedeemedCoupon, Orb::Internal::AnyHash)),
@@ -244,6 +257,7 @@ module Orb
         metadata:,
         minimum_intervals:,
         net_terms:,
+        pending_subscription_change:,
         plan:,
         price_intervals:,
         redeemed_coupon:,
@@ -280,6 +294,7 @@ module Orb
               metadata: T::Hash[Symbol, String],
               minimum_intervals: T::Array[Orb::Models::Subscription::MinimumInterval],
               net_terms: Integer,
+              pending_subscription_change: T.nilable(Orb::Models::Subscription::PendingSubscriptionChange),
               plan: Orb::Models::Plan,
               price_intervals: T::Array[Orb::Models::Subscription::PriceInterval],
               redeemed_coupon: T.nilable(Orb::Models::Subscription::RedeemedCoupon),
@@ -1067,6 +1082,18 @@ module Orb
               }
             )
         end
+        def to_hash; end
+      end
+
+      class PendingSubscriptionChange < Orb::Internal::Type::BaseModel
+        sig { returns(String) }
+        attr_accessor :id
+
+        # A pending subscription change if one exists on this subscription.
+        sig { params(id: String).returns(T.attached_class) }
+        def self.new(id:); end
+
+        sig { override.returns({id: String}) }
         def to_hash; end
       end
 

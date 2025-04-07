@@ -154,6 +154,14 @@ module Orb
       #   @return [Integer]
       required :net_terms, Integer
 
+      # @!attribute pending_subscription_change
+      #   A pending subscription change if one exists on this subscription.
+      #
+      #   @return [Orb::Models::Subscription::PendingSubscriptionChange, nil]
+      required :pending_subscription_change,
+               -> { Orb::Models::Subscription::PendingSubscriptionChange },
+               nil?: true
+
       # @!attribute plan
       #   The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be
       #   subscribed to by a customer. Plans define the billing behavior of the
@@ -230,6 +238,7 @@ module Orb
       #   # @param metadata [Hash{Symbol=>String}]
       #   # @param minimum_intervals [Array<Orb::Models::Subscription::MinimumInterval>]
       #   # @param net_terms [Integer]
+      #   # @param pending_subscription_change [Orb::Models::Subscription::PendingSubscriptionChange, nil]
       #   # @param plan [Orb::Models::Plan]
       #   # @param price_intervals [Array<Orb::Models::Subscription::PriceInterval>]
       #   # @param redeemed_coupon [Orb::Models::Subscription::RedeemedCoupon, nil]
@@ -257,6 +266,7 @@ module Orb
       #     metadata:,
       #     minimum_intervals:,
       #     net_terms:,
+      #     pending_subscription_change:,
       #     plan:,
       #     price_intervals:,
       #     redeemed_coupon:,
@@ -1032,6 +1042,23 @@ module Orb
         #   # @param start_date [Time]
         #   #
         #   def initialize(applies_to_price_ids:, applies_to_price_interval_ids:, end_date:, minimum_amount:, start_date:, **) = super
+
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      end
+
+      # @see Orb::Models::Subscription#pending_subscription_change
+      class PendingSubscriptionChange < Orb::Internal::Type::BaseModel
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
+        # @!parse
+        #   # A pending subscription change if one exists on this subscription.
+        #   #
+        #   # @param id [String]
+        #   #
+        #   def initialize(id:, **) = super
 
         # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
