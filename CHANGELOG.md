@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.1.0-alpha.39 (2025-04-07)
+
+Full Changelog: [v0.1.0-alpha.38...v0.1.0-alpha.39](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.38...v0.1.0-alpha.39)
+
+### Features
+
+* **api:** api update ([#237](https://github.com/orbcorp/orb-ruby/issues/237)) ([0bb6400](https://github.com/orbcorp/orb-ruby/commit/0bb6400deb4cb2ab6959e45ca9a53bc51e040d7a))
+
+
+### Chores
+
+* always fold up method bodies in sorbet type definitions ([#233](https://github.com/orbcorp/orb-ruby/issues/233)) ([af4a884](https://github.com/orbcorp/orb-ruby/commit/af4a884f3c7eab12b9688cfd3c6d412cbae5bd58))
+* **internal:** codegen related update ([#236](https://github.com/orbcorp/orb-ruby/issues/236)) ([8cf1bc4](https://github.com/orbcorp/orb-ruby/commit/8cf1bc47517a9262cbd58bf8c915b6a94b77cc96))
+* **internal:** more concise handling of parameter naming conflicts ([#235](https://github.com/orbcorp/orb-ruby/issues/235)) ([ad10a69](https://github.com/orbcorp/orb-ruby/commit/ad10a69558d15218af07ce8c34d234d2ff0946bc))
+* **internal:** rubocop rules ([#232](https://github.com/orbcorp/orb-ruby/issues/232)) ([6220144](https://github.com/orbcorp/orb-ruby/commit/62201445cab0f60cb1be36da6196da0fe7787d9b))
+* **internal:** version bump ([#230](https://github.com/orbcorp/orb-ruby/issues/230)) ([d5e0113](https://github.com/orbcorp/orb-ruby/commit/d5e01130d014493b793d03f8e19033aa906ab07b))
+* update yard comment formatting ([#234](https://github.com/orbcorp/orb-ruby/issues/234)) ([6211751](https://github.com/orbcorp/orb-ruby/commit/6211751f1f0c0aac4440d5d4faf76752a5e50acd))
+
 ## 0.1.0-alpha.38 (2025-04-05)
 
 Full Changelog: [v0.1.0-alpha.37...v0.1.0-alpha.38](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.37...v0.1.0-alpha.38)
