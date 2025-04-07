@@ -2020,7 +2020,7 @@ module Orb
           def to_hash; end
 
           class Tier < Orb::Internal::Type::BaseModel
-            # Inclusive tier starting value
+            # Exclusive tier starting value
             sig { returns(Float) }
             attr_accessor :first_unit
 
@@ -2028,7 +2028,7 @@ module Orb
             sig { returns(String) }
             attr_accessor :unit_amount
 
-            # Exclusive tier ending value. If null, this is treated as the last tier
+            # Inclusive tier ending value. If null, this is treated as the last tier
             sig { returns(T.nilable(Float)) }
             attr_accessor :last_unit
 
@@ -2565,11 +2565,11 @@ module Orb
             sig { returns(Float) }
             attr_accessor :bps
 
-            # Inclusive tier starting value
+            # Exclusive tier starting value
             sig { returns(String) }
             attr_accessor :minimum_amount
 
-            # Exclusive tier ending value
+            # Inclusive tier ending value
             sig { returns(T.nilable(String)) }
             attr_accessor :maximum_amount
 

@@ -38,6 +38,7 @@ class Orb::Test::Resources::Coupons::SubscriptionsTest < Orb::Test::ResourceTest
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         minimum_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Subscription::MinimumInterval]),
         net_terms: Integer,
+        pending_subscription_change: Orb::Models::Subscription::PendingSubscriptionChange | nil,
         plan: Orb::Models::Plan,
         price_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Subscription::PriceInterval]),
         redeemed_coupon: Orb::Models::Subscription::RedeemedCoupon | nil,

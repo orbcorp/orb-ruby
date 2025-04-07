@@ -55,6 +55,9 @@ module Orb
     sig { returns(Orb::Resources::DimensionalPriceGroups) }
     attr_reader :dimensional_price_groups
 
+    sig { returns(Orb::Resources::SubscriptionChanges) }
+    attr_reader :subscription_changes
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers; end
