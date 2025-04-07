@@ -482,12 +482,12 @@ module Orb
       # **Note**: This functionality is currently only available for Stripe.
       sig do
         params(
-          external_customer_id: String,
+          customer_id: String,
           request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .void
       end
-      def sync_payment_methods_from_gateway(external_customer_id, request_options: {}); end
+      def sync_payment_methods_from_gateway(customer_id, request_options: {}); end
 
       # Sync Orb's payment methods for the customer with their gateway.
       #
@@ -497,12 +497,16 @@ module Orb
       # **Note**: This functionality is currently only available for Stripe.
       sig do
         params(
-          customer_id: String,
+          external_customer_id: String,
           request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
         )
           .void
       end
-      def sync_payment_methods_from_gateway_by_external_customer_id(customer_id, request_options: {}); end
+      def sync_payment_methods_from_gateway_by_external_customer_id(
+        external_customer_id,
+        request_options: {}
+      )
+      end
 
       # This endpoint is used to update customer details given an `external_customer_id`
       # (see [Customer ID Aliases](/events-and-metrics/customer-aliases)). Note that the
