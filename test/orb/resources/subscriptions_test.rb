@@ -31,12 +31,14 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         minimum_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionCreateResponse::MinimumInterval]),
         net_terms: Integer,
+        pending_subscription_change: Orb::Models::SubscriptionCreateResponse::PendingSubscriptionChange | nil,
         plan: Orb::Models::Plan,
         price_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionCreateResponse::PriceInterval]),
         redeemed_coupon: Orb::Models::SubscriptionCreateResponse::RedeemedCoupon | nil,
         start_date: Time,
         status: Orb::Models::SubscriptionCreateResponse::Status,
-        trial_info: Orb::Models::SubscriptionCreateResponse::TrialInfo
+        trial_info: Orb::Models::SubscriptionCreateResponse::TrialInfo,
+        changed_resources: Orb::Models::SubscriptionCreateResponse::ChangedResources | nil
       }
     end
   end
@@ -69,6 +71,7 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         minimum_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Subscription::MinimumInterval]),
         net_terms: Integer,
+        pending_subscription_change: Orb::Models::Subscription::PendingSubscriptionChange | nil,
         plan: Orb::Models::Plan,
         price_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Subscription::PriceInterval]),
         redeemed_coupon: Orb::Models::Subscription::RedeemedCoupon | nil,
@@ -114,6 +117,7 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         minimum_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Subscription::MinimumInterval]),
         net_terms: Integer,
+        pending_subscription_change: Orb::Models::Subscription::PendingSubscriptionChange | nil,
         plan: Orb::Models::Plan,
         price_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Subscription::PriceInterval]),
         redeemed_coupon: Orb::Models::Subscription::RedeemedCoupon | nil,
@@ -152,12 +156,14 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         minimum_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionCancelResponse::MinimumInterval]),
         net_terms: Integer,
+        pending_subscription_change: Orb::Models::SubscriptionCancelResponse::PendingSubscriptionChange | nil,
         plan: Orb::Models::Plan,
         price_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionCancelResponse::PriceInterval]),
         redeemed_coupon: Orb::Models::SubscriptionCancelResponse::RedeemedCoupon | nil,
         start_date: Time,
         status: Orb::Models::SubscriptionCancelResponse::Status,
-        trial_info: Orb::Models::SubscriptionCancelResponse::TrialInfo
+        trial_info: Orb::Models::SubscriptionCancelResponse::TrialInfo,
+        changed_resources: Orb::Models::SubscriptionCancelResponse::ChangedResources | nil
       }
     end
   end
@@ -190,6 +196,7 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         minimum_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Subscription::MinimumInterval]),
         net_terms: Integer,
+        pending_subscription_change: Orb::Models::Subscription::PendingSubscriptionChange | nil,
         plan: Orb::Models::Plan,
         price_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Subscription::PriceInterval]),
         redeemed_coupon: Orb::Models::Subscription::RedeemedCoupon | nil,
@@ -285,12 +292,14 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         minimum_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionPriceIntervalsResponse::MinimumInterval]),
         net_terms: Integer,
+        pending_subscription_change: Orb::Models::SubscriptionPriceIntervalsResponse::PendingSubscriptionChange | nil,
         plan: Orb::Models::Plan,
         price_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionPriceIntervalsResponse::PriceInterval]),
         redeemed_coupon: Orb::Models::SubscriptionPriceIntervalsResponse::RedeemedCoupon | nil,
         start_date: Time,
         status: Orb::Models::SubscriptionPriceIntervalsResponse::Status,
-        trial_info: Orb::Models::SubscriptionPriceIntervalsResponse::TrialInfo
+        trial_info: Orb::Models::SubscriptionPriceIntervalsResponse::TrialInfo,
+        changed_resources: Orb::Models::SubscriptionPriceIntervalsResponse::ChangedResources | nil
       }
     end
   end
@@ -323,12 +332,14 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         minimum_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionSchedulePlanChangeResponse::MinimumInterval]),
         net_terms: Integer,
+        pending_subscription_change: Orb::Models::SubscriptionSchedulePlanChangeResponse::PendingSubscriptionChange | nil,
         plan: Orb::Models::Plan,
         price_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionSchedulePlanChangeResponse::PriceInterval]),
         redeemed_coupon: Orb::Models::SubscriptionSchedulePlanChangeResponse::RedeemedCoupon | nil,
         start_date: Time,
         status: Orb::Models::SubscriptionSchedulePlanChangeResponse::Status,
-        trial_info: Orb::Models::SubscriptionSchedulePlanChangeResponse::TrialInfo
+        trial_info: Orb::Models::SubscriptionSchedulePlanChangeResponse::TrialInfo,
+        changed_resources: Orb::Models::SubscriptionSchedulePlanChangeResponse::ChangedResources | nil
       }
     end
   end
@@ -361,12 +372,14 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         minimum_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionTriggerPhaseResponse::MinimumInterval]),
         net_terms: Integer,
+        pending_subscription_change: Orb::Models::SubscriptionTriggerPhaseResponse::PendingSubscriptionChange | nil,
         plan: Orb::Models::Plan,
         price_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionTriggerPhaseResponse::PriceInterval]),
         redeemed_coupon: Orb::Models::SubscriptionTriggerPhaseResponse::RedeemedCoupon | nil,
         start_date: Time,
         status: Orb::Models::SubscriptionTriggerPhaseResponse::Status,
-        trial_info: Orb::Models::SubscriptionTriggerPhaseResponse::TrialInfo
+        trial_info: Orb::Models::SubscriptionTriggerPhaseResponse::TrialInfo,
+        changed_resources: Orb::Models::SubscriptionTriggerPhaseResponse::ChangedResources | nil
       }
     end
   end
@@ -399,12 +412,14 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         minimum_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionUnscheduleCancellationResponse::MinimumInterval]),
         net_terms: Integer,
+        pending_subscription_change: Orb::Models::SubscriptionUnscheduleCancellationResponse::PendingSubscriptionChange | nil,
         plan: Orb::Models::Plan,
         price_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionUnscheduleCancellationResponse::PriceInterval]),
         redeemed_coupon: Orb::Models::SubscriptionUnscheduleCancellationResponse::RedeemedCoupon | nil,
         start_date: Time,
         status: Orb::Models::SubscriptionUnscheduleCancellationResponse::Status,
-        trial_info: Orb::Models::SubscriptionUnscheduleCancellationResponse::TrialInfo
+        trial_info: Orb::Models::SubscriptionUnscheduleCancellationResponse::TrialInfo,
+        changed_resources: Orb::Models::SubscriptionUnscheduleCancellationResponse::ChangedResources | nil
       }
     end
   end
@@ -438,12 +453,14 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         minimum_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::MinimumInterval]),
         net_terms: Integer,
+        pending_subscription_change: Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::PendingSubscriptionChange | nil,
         plan: Orb::Models::Plan,
         price_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::PriceInterval]),
         redeemed_coupon: Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::RedeemedCoupon | nil,
         start_date: Time,
         status: Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::Status,
-        trial_info: Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::TrialInfo
+        trial_info: Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::TrialInfo,
+        changed_resources: Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::ChangedResources | nil
       }
     end
   end
@@ -476,12 +493,14 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         minimum_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MinimumInterval]),
         net_terms: Integer,
+        pending_subscription_change: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PendingSubscriptionChange | nil,
         plan: Orb::Models::Plan,
         price_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PriceInterval]),
         redeemed_coupon: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::RedeemedCoupon | nil,
         start_date: Time,
         status: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::Status,
-        trial_info: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::TrialInfo
+        trial_info: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::TrialInfo,
+        changed_resources: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::ChangedResources | nil
       }
     end
   end
@@ -515,12 +534,14 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         minimum_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::MinimumInterval]),
         net_terms: Integer,
+        pending_subscription_change: Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::PendingSubscriptionChange | nil,
         plan: Orb::Models::Plan,
         price_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::PriceInterval]),
         redeemed_coupon: Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::RedeemedCoupon | nil,
         start_date: Time,
         status: Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::Status,
-        trial_info: Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::TrialInfo
+        trial_info: Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::TrialInfo,
+        changed_resources: Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::ChangedResources | nil
       }
     end
   end
@@ -553,12 +574,14 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         minimum_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionUpdateTrialResponse::MinimumInterval]),
         net_terms: Integer,
+        pending_subscription_change: Orb::Models::SubscriptionUpdateTrialResponse::PendingSubscriptionChange | nil,
         plan: Orb::Models::Plan,
         price_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionUpdateTrialResponse::PriceInterval]),
         redeemed_coupon: Orb::Models::SubscriptionUpdateTrialResponse::RedeemedCoupon | nil,
         start_date: Time,
         status: Orb::Models::SubscriptionUpdateTrialResponse::Status,
-        trial_info: Orb::Models::SubscriptionUpdateTrialResponse::TrialInfo
+        trial_info: Orb::Models::SubscriptionUpdateTrialResponse::TrialInfo,
+        changed_resources: Orb::Models::SubscriptionUpdateTrialResponse::ChangedResources | nil
       }
     end
   end

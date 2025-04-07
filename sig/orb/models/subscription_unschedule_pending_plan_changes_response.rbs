@@ -21,12 +21,14 @@ module Orb
         metadata: ::Hash[Symbol, String],
         minimum_intervals: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MinimumInterval],
         net_terms: Integer,
+        pending_subscription_change: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PendingSubscriptionChange?,
         plan: Orb::Models::Plan,
         price_intervals: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PriceInterval],
         redeemed_coupon: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::RedeemedCoupon?,
         start_date: Time,
         status: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::status,
-        trial_info: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::TrialInfo
+        trial_info: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::TrialInfo,
+        changed_resources: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::ChangedResources?
       }
 
     class SubscriptionUnschedulePendingPlanChangesResponse < Orb::Internal::Type::BaseModel
@@ -68,6 +70,8 @@ module Orb
 
       attr_accessor net_terms: Integer
 
+      attr_accessor pending_subscription_change: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PendingSubscriptionChange?
+
       attr_accessor plan: Orb::Models::Plan
 
       attr_accessor price_intervals: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PriceInterval]
@@ -79,6 +83,8 @@ module Orb
       attr_accessor status: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::status
 
       attr_accessor trial_info: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::TrialInfo
+
+      attr_accessor changed_resources: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::ChangedResources?
 
       def initialize: (
         id: String,
@@ -100,12 +106,14 @@ module Orb
         metadata: ::Hash[Symbol, String],
         minimum_intervals: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MinimumInterval],
         net_terms: Integer,
+        pending_subscription_change: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PendingSubscriptionChange?,
         plan: Orb::Models::Plan,
         price_intervals: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PriceInterval],
         redeemed_coupon: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::RedeemedCoupon?,
         start_date: Time,
         status: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::status,
-        trial_info: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::TrialInfo
+        trial_info: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::TrialInfo,
+        ?changed_resources: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::ChangedResources?
       ) -> void
 
       def to_hash: -> Orb::Models::subscription_unschedule_pending_plan_changes_response
@@ -572,6 +580,16 @@ module Orb
         def to_hash: -> Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::minimum_interval
       end
 
+      type pending_subscription_change = { id: String }
+
+      class PendingSubscriptionChange < Orb::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        def initialize: (id: String) -> void
+
+        def to_hash: -> Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::pending_subscription_change
+      end
+
       type price_interval =
         {
           id: String,
@@ -681,6 +699,33 @@ module Orb
         def initialize: (end_date: Time?) -> void
 
         def to_hash: -> Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::trial_info
+      end
+
+      type changed_resources =
+        {
+          created_credit_notes: ::Array[Orb::Models::CreditNote],
+          created_invoices: ::Array[Orb::Models::Invoice],
+          voided_credit_notes: ::Array[Orb::Models::CreditNote],
+          voided_invoices: ::Array[Orb::Models::Invoice]
+        }
+
+      class ChangedResources < Orb::Internal::Type::BaseModel
+        attr_accessor created_credit_notes: ::Array[Orb::Models::CreditNote]
+
+        attr_accessor created_invoices: ::Array[Orb::Models::Invoice]
+
+        attr_accessor voided_credit_notes: ::Array[Orb::Models::CreditNote]
+
+        attr_accessor voided_invoices: ::Array[Orb::Models::Invoice]
+
+        def initialize: (
+          created_credit_notes: ::Array[Orb::Models::CreditNote],
+          created_invoices: ::Array[Orb::Models::Invoice],
+          voided_credit_notes: ::Array[Orb::Models::CreditNote],
+          voided_invoices: ::Array[Orb::Models::Invoice]
+        ) -> void
+
+        def to_hash: -> Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::changed_resources
       end
     end
   end

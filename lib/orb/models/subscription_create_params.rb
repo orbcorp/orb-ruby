@@ -1943,7 +1943,7 @@ module Orb
 
               class Tier < Orb::Internal::Type::BaseModel
                 # @!attribute first_unit
-                #   Inclusive tier starting value
+                #   Exclusive tier starting value
                 #
                 #   @return [Float]
                 required :first_unit, Float
@@ -1955,7 +1955,7 @@ module Orb
                 required :unit_amount, String
 
                 # @!attribute last_unit
-                #   Exclusive tier ending value. If null, this is treated as the last tier
+                #   Inclusive tier ending value. If null, this is treated as the last tier
                 #
                 #   @return [Float, nil]
                 optional :last_unit, Float, nil?: true
@@ -2259,13 +2259,13 @@ module Orb
                 required :bps, Float
 
                 # @!attribute minimum_amount
-                #   Inclusive tier starting value
+                #   Exclusive tier starting value
                 #
                 #   @return [String]
                 required :minimum_amount, String
 
                 # @!attribute maximum_amount
-                #   Exclusive tier ending value
+                #   Inclusive tier ending value
                 #
                 #   @return [String, nil]
                 optional :maximum_amount, String, nil?: true
@@ -9357,7 +9357,7 @@ module Orb
 
               class Tier < Orb::Internal::Type::BaseModel
                 # @!attribute first_unit
-                #   Inclusive tier starting value
+                #   Exclusive tier starting value
                 #
                 #   @return [Float]
                 required :first_unit, Float
@@ -9369,7 +9369,7 @@ module Orb
                 required :unit_amount, String
 
                 # @!attribute last_unit
-                #   Exclusive tier ending value. If null, this is treated as the last tier
+                #   Inclusive tier ending value. If null, this is treated as the last tier
                 #
                 #   @return [Float, nil]
                 optional :last_unit, Float, nil?: true
@@ -9673,13 +9673,13 @@ module Orb
                 required :bps, Float
 
                 # @!attribute minimum_amount
-                #   Inclusive tier starting value
+                #   Exclusive tier starting value
                 #
                 #   @return [String]
                 required :minimum_amount, String
 
                 # @!attribute maximum_amount
-                #   Exclusive tier ending value
+                #   Inclusive tier ending value
                 #
                 #   @return [String, nil]
                 optional :maximum_amount, String, nil?: true

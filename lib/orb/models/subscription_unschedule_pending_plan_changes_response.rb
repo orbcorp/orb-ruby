@@ -154,6 +154,14 @@ module Orb
       #   @return [Integer]
       required :net_terms, Integer
 
+      # @!attribute pending_subscription_change
+      #   A pending subscription change if one exists on this subscription.
+      #
+      #   @return [Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PendingSubscriptionChange, nil]
+      required :pending_subscription_change,
+               -> { Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PendingSubscriptionChange },
+               nil?: true
+
       # @!attribute plan
       #   The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be
       #   subscribed to by a customer. Plans define the billing behavior of the
@@ -193,6 +201,16 @@ module Orb
       #   @return [Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::TrialInfo]
       required :trial_info, -> { Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::TrialInfo }
 
+      # @!attribute changed_resources
+      #   The resources that were changed as part of this operation. Only present when
+      #   fetched through the subscription changes API or if the
+      #   `include_changed_resources` parameter was passed in the request.
+      #
+      #   @return [Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::ChangedResources, nil]
+      optional :changed_resources,
+               -> { Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::ChangedResources },
+               nil?: true
+
       # @!parse
       #   # @param id [String]
       #   # @param active_plan_phase_order [Integer, nil]
@@ -213,12 +231,14 @@ module Orb
       #   # @param metadata [Hash{Symbol=>String}]
       #   # @param minimum_intervals [Array<Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MinimumInterval>]
       #   # @param net_terms [Integer]
+      #   # @param pending_subscription_change [Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PendingSubscriptionChange, nil]
       #   # @param plan [Orb::Models::Plan]
       #   # @param price_intervals [Array<Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PriceInterval>]
       #   # @param redeemed_coupon [Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::RedeemedCoupon, nil]
       #   # @param start_date [Time]
       #   # @param status [Symbol, Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::Status]
       #   # @param trial_info [Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::TrialInfo]
+      #   # @param changed_resources [Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::ChangedResources, nil]
       #   #
       #   def initialize(
       #     id:,
@@ -240,12 +260,14 @@ module Orb
       #     metadata:,
       #     minimum_intervals:,
       #     net_terms:,
+      #     pending_subscription_change:,
       #     plan:,
       #     price_intervals:,
       #     redeemed_coupon:,
       #     start_date:,
       #     status:,
       #     trial_info:,
+      #     changed_resources: nil,
       #     **
       #   )
       #     super
@@ -1023,6 +1045,23 @@ module Orb
         # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
 
+      # @see Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse#pending_subscription_change
+      class PendingSubscriptionChange < Orb::Internal::Type::BaseModel
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
+        # @!parse
+        #   # A pending subscription change if one exists on this subscription.
+        #   #
+        #   # @param id [String]
+        #   #
+        #   def initialize(id:, **) = super
+
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      end
+
       class PriceInterval < Orb::Internal::Type::BaseModel
         # @!attribute id
         #
@@ -1216,6 +1255,47 @@ module Orb
         #   # @param end_date [Time, nil]
         #   #
         #   def initialize(end_date:, **) = super
+
+        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      end
+
+      # @see Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse#changed_resources
+      class ChangedResources < Orb::Internal::Type::BaseModel
+        # @!attribute created_credit_notes
+        #   The credit notes that were created as part of this operation.
+        #
+        #   @return [Array<Orb::Models::CreditNote>]
+        required :created_credit_notes, -> { Orb::Internal::Type::ArrayOf[Orb::Models::CreditNote] }
+
+        # @!attribute created_invoices
+        #   The invoices that were created as part of this operation.
+        #
+        #   @return [Array<Orb::Models::Invoice>]
+        required :created_invoices, -> { Orb::Internal::Type::ArrayOf[Orb::Models::Invoice] }
+
+        # @!attribute voided_credit_notes
+        #   The credit notes that were voided as part of this operation.
+        #
+        #   @return [Array<Orb::Models::CreditNote>]
+        required :voided_credit_notes, -> { Orb::Internal::Type::ArrayOf[Orb::Models::CreditNote] }
+
+        # @!attribute voided_invoices
+        #   The invoices that were voided as part of this operation.
+        #
+        #   @return [Array<Orb::Models::Invoice>]
+        required :voided_invoices, -> { Orb::Internal::Type::ArrayOf[Orb::Models::Invoice] }
+
+        # @!parse
+        #   # The resources that were changed as part of this operation. Only present when
+        #   # fetched through the subscription changes API or if the
+        #   # `include_changed_resources` parameter was passed in the request.
+        #   #
+        #   # @param created_credit_notes [Array<Orb::Models::CreditNote>]
+        #   # @param created_invoices [Array<Orb::Models::Invoice>]
+        #   # @param voided_credit_notes [Array<Orb::Models::CreditNote>]
+        #   # @param voided_invoices [Array<Orb::Models::Invoice>]
+        #   #
+        #   def initialize(created_credit_notes:, created_invoices:, voided_credit_notes:, voided_invoices:, **) = super
 
         # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
       end
