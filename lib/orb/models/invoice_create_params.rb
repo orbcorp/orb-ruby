@@ -71,8 +71,9 @@ module Orb
       optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
       # @!attribute [r] will_auto_issue
-      #   When true, this invoice will automatically be issued upon creation. When false,
-      #   the resulting invoice will require manual review to issue. Defaulted to false.
+      #   When true, this invoice will be submitted for issuance upon creation. When
+      #   false, the resulting invoice will require manual review to issue. Defaulted to
+      #   false.
       #
       #   @return [Boolean, nil]
       optional :will_auto_issue, Orb::Internal::Type::Boolean

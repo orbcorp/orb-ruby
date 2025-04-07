@@ -61,8 +61,9 @@ module Orb
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
       attr_accessor :metadata
 
-      # When true, this invoice will automatically be issued upon creation. When false,
-      # the resulting invoice will require manual review to issue. Defaulted to false.
+      # When true, this invoice will be submitted for issuance upon creation. When
+      # false, the resulting invoice will require manual review to issue. Defaulted to
+      # false.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :will_auto_issue
 
