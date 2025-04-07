@@ -77,12 +77,12 @@ module Orb
       ) -> Orb::Models::Customer
 
       def sync_payment_methods_from_gateway: (
-        String external_customer_id,
+        String customer_id,
         ?request_options: Orb::request_opts
       ) -> nil
 
       def sync_payment_methods_from_gateway_by_external_customer_id: (
-        String customer_id,
+        String external_customer_id,
         ?request_options: Orb::request_opts
       ) -> nil
 
