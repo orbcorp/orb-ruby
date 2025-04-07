@@ -194,7 +194,7 @@ class Orb::Test::Resources::CustomersTest < Orb::Test::ResourceTest
   end
 
   def test_sync_payment_methods_from_gateway
-    response = @orb.customers.sync_payment_methods_from_gateway("external_customer_id")
+    response = @orb.customers.sync_payment_methods_from_gateway("customer_id")
 
     assert_pattern do
       response => nil
@@ -202,7 +202,8 @@ class Orb::Test::Resources::CustomersTest < Orb::Test::ResourceTest
   end
 
   def test_sync_payment_methods_from_gateway_by_external_customer_id
-    response = @orb.customers.sync_payment_methods_from_gateway_by_external_customer_id("customer_id")
+    response =
+      @orb.customers.sync_payment_methods_from_gateway_by_external_customer_id("external_customer_id")
 
     assert_pattern do
       response => nil

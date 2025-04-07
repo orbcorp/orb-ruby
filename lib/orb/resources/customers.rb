@@ -227,21 +227,18 @@ module Orb
       #
       # **Note**: This functionality is currently only available for Stripe.
       #
-      # @overload sync_payment_methods_from_gateway(external_customer_id, request_options: {})
+      # @overload sync_payment_methods_from_gateway(customer_id, request_options: {})
       #
-      # @param external_customer_id [String]
+      # @param customer_id [String]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [nil]
       #
       # @see Orb::Models::CustomerSyncPaymentMethodsFromGatewayParams
-      def sync_payment_methods_from_gateway(external_customer_id, params = {})
+      def sync_payment_methods_from_gateway(customer_id, params = {})
         @client.request(
           method: :post,
-          path: [
-            "customers/external_customer_id/%1$s/sync_payment_methods_from_gateway",
-            external_customer_id
-          ],
+          path: ["customers/%1$s/sync_payment_methods_from_gateway", customer_id],
           model: NilClass,
           options: params[:request_options]
         )
@@ -254,18 +251,21 @@ module Orb
       #
       # **Note**: This functionality is currently only available for Stripe.
       #
-      # @overload sync_payment_methods_from_gateway_by_external_customer_id(customer_id, request_options: {})
+      # @overload sync_payment_methods_from_gateway_by_external_customer_id(external_customer_id, request_options: {})
       #
-      # @param customer_id [String]
+      # @param external_customer_id [String]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [nil]
       #
       # @see Orb::Models::CustomerSyncPaymentMethodsFromGatewayByExternalCustomerIDParams
-      def sync_payment_methods_from_gateway_by_external_customer_id(customer_id, params = {})
+      def sync_payment_methods_from_gateway_by_external_customer_id(external_customer_id, params = {})
         @client.request(
           method: :post,
-          path: ["customers/%1$s/sync_payment_methods_from_gateway", customer_id],
+          path: [
+            "customers/external_customer_id/%1$s/sync_payment_methods_from_gateway",
+            external_customer_id
+          ],
           model: NilClass,
           options: params[:request_options]
         )
