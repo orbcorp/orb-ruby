@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.1.0 (2025-04-08)
+
+Full Changelog: [v0.1.0-alpha.39...v0.1.0](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.39...v0.1.0)
+
+### Bug Fixes
+
+* raise connection error for errors that result from HTTP transports ([#244](https://github.com/orbcorp/orb-ruby/issues/244)) ([1213d2d](https://github.com/orbcorp/orb-ruby/commit/1213d2de5c7b0a80f1c96b8fed31a048ad57e2eb))
+
+
+### Chores
+
+* add README docs for using solargraph when installing gem from git ([#242](https://github.com/orbcorp/orb-ruby/issues/242)) ([48b892e](https://github.com/orbcorp/orb-ruby/commit/48b892e3b45412875d25c5683f0b7e1fd23d20ee))
+* easier to read examples in README.md ([#240](https://github.com/orbcorp/orb-ruby/issues/240)) ([eb00ee4](https://github.com/orbcorp/orb-ruby/commit/eb00ee4e8564a44dad9320bf89f3a656764a38d9))
+* **internal:** codegen related update ([#238](https://github.com/orbcorp/orb-ruby/issues/238)) ([fd54e32](https://github.com/orbcorp/orb-ruby/commit/fd54e32135d6ffbfbd3956b5505773169f5fca9f))
+* **internal:** codegen related update ([#243](https://github.com/orbcorp/orb-ruby/issues/243)) ([edfc0bf](https://github.com/orbcorp/orb-ruby/commit/edfc0bfb29f6989cb5d249f9dcfd118c115a35a9))
+* make client tests look prettier ([#241](https://github.com/orbcorp/orb-ruby/issues/241)) ([060c286](https://github.com/orbcorp/orb-ruby/commit/060c2864f0458bfc26030e97effa3340a0060dd0))
+
 ## 0.1.0-alpha.39 (2025-04-07)
 
 Full Changelog: [v0.1.0-alpha.38...v0.1.0-alpha.39](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.38...v0.1.0-alpha.39)
