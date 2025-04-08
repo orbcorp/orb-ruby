@@ -32,10 +32,13 @@ module Orb
 
         def coerce: (
           top value,
-          state: Orb::Internal::Type::Converter::state
+          state: Orb::Internal::Type::Converter::coerce_state
         ) -> top
 
-        def dump: (top value) -> top
+        def dump: (
+          top value,
+          state: Orb::Internal::Type::Converter::dump_state
+        ) -> top
       end
     end
   end
