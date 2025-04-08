@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.1 (2025-04-08)
+
+Full Changelog: [v0.1.0...v0.1.1](https://github.com/orbcorp/orb-ruby/compare/v0.1.0...v0.1.1)
+
+### Chores
+
+* **internal:** version bump ([ef344e2](https://github.com/orbcorp/orb-ruby/commit/ef344e295d437e08f33fc7091a89be121ee6c5e9))
+* loosen const and integer coercion rules ([#246](https://github.com/orbcorp/orb-ruby/issues/246)) ([715a138](https://github.com/orbcorp/orb-ruby/commit/715a138f44ddf1eaf26c4ffec32178f8591eb8d0))
+
 ## 0.1.0 (2025-04-08)
 
 Full Changelog: [v0.1.0-alpha.39...v0.1.0](https://github.com/orbcorp/orb-ruby/compare/v0.1.0-alpha.39...v0.1.0)
