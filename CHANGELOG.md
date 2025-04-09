@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.2 (2025-04-09)
+
+Full Changelog: [v0.1.1...v0.1.2](https://github.com/orbcorp/orb-ruby/compare/v0.1.1...v0.1.2)
+
+### Bug Fixes
+
+* **internal:** update release-please to use ruby strategy for README.md ([#249](https://github.com/orbcorp/orb-ruby/issues/249)) ([f42f700](https://github.com/orbcorp/orb-ruby/commit/f42f700fecdad4e13ba63eea65f5373f70f633b9))
+
+
+### Chores
+
+* ensure readme.md is bumped when release please updates versions ([#248](https://github.com/orbcorp/orb-ruby/issues/248)) ([73a8093](https://github.com/orbcorp/orb-ruby/commit/73a8093faa0cb0f464b4dcdd3e4a90b0640225c6))
+* **internal:** expand CI branch coverage ([#250](https://github.com/orbcorp/orb-ruby/issues/250)) ([fa4df80](https://github.com/orbcorp/orb-ruby/commit/fa4df80350ff5e9ec5856f2c39f86b09f73ce219))
+* **internal:** reduce CI branch coverage ([8bed429](https://github.com/orbcorp/orb-ruby/commit/8bed429ae552ce4ca4fecf94ab537194513759f4))
+* **internal:** version bump ([7d6f55c](https://github.com/orbcorp/orb-ruby/commit/7d6f55ccc4e2e107104d4fd99691179d73f2a926))
+
 ## 0.1.1 (2025-04-08)
 
 Full Changelog: [v0.1.0...v0.1.1](https://github.com/orbcorp/orb-ruby/compare/v0.1.0...v0.1.1)
