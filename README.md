@@ -20,17 +20,11 @@ gem "orb-billing", "~> 0.1.2"
 
 <!-- x-release-please-end -->
 
-To fetch an initial copy of the gem:
-
-```sh
-bundle install
-```
-
 ## Usage
 
 ```ruby
 require "bundler/setup"
-require "orb-billing"
+require "orb"
 
 orb = Orb::Client.new(
   api_key: "My API Key" # defaults to ENV["ORB_API_KEY"]
@@ -62,7 +56,7 @@ end
 
 ### Errors
 
-When the library is unable to connect to the API, or if the API returns a non-success status code (i.e., 4xx or 5xx response), a subclass of `Orb::Error` will be thrown:
+When the library is unable to connect to the API, or if the API returns a non-success status code (i.e., 4xx or 5xx response), a subclass of `Orb::Errors::APIError` will be thrown:
 
 ```ruby
 begin
@@ -168,8 +162,7 @@ Due to limitations with the Sorbet type system, where a method otherwise can tak
 Please follow Sorbet's [setup guides](https://sorbet.org/docs/adopting) for best experience.
 
 ```ruby
-params =
-  Orb::Models::CustomerCreateParams.new(email: "example-customer@withorb.com", name: "My Customer")
+params = Orb::Models::CustomerCreateParams.new(email: "example-customer@withorb.com", name: "My Customer")
 
 orb.customers.create(**params)
 ```
@@ -197,8 +190,7 @@ If you want to explicitly send an extra param, you can do so with the `extra_que
 To make requests to undocumented endpoints, you can make requests using `client.request`. Options on the client will be respected (such as retries) when making this request.
 
 ```ruby
-response =
-  client.request(
+response = client.request(
     method: :post,
     path: '/undocumented/endpoint',
     query: {"dog": "woof"},
