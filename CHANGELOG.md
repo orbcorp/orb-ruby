@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.3 (2025-04-11)
+
+Full Changelog: [v0.1.2...v0.1.3](https://github.com/orbcorp/orb-ruby/compare/v0.1.2...v0.1.3)
+
+### Bug Fixes
+
+* inaccuracies in the README.md ([f07ef0e](https://github.com/orbcorp/orb-ruby/commit/f07ef0e9ecbecd44e66bfb8df9fe5e271f19c09a))
+
+
+### Chores
+
+* fix lsp configuration file for local development ([9574fe5](https://github.com/orbcorp/orb-ruby/commit/9574fe55bec14d4356758e27f61b3be97395023a))
+* **internal:** version bump ([a8232d6](https://github.com/orbcorp/orb-ruby/commit/a8232d644f3a97a6d8e339037faa5f4af7174c2a))
+
 ## 0.1.2 (2025-04-09)
 
 Full Changelog: [v0.1.1...v0.1.2](https://github.com/orbcorp/orb-ruby/compare/v0.1.1...v0.1.2)
