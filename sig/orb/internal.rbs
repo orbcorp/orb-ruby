@@ -1,5 +1,5 @@
 module Orb
   module Internal
-    OMIT: top
+    OMIT: Object
   end
 end
