@@ -21,6 +21,8 @@ module Orb
           Symbol | top value,
           state: Orb::Internal::Type::Converter::dump_state
         ) -> (Symbol | top)
+
+        def inspect: (?depth: Integer) -> String
       end
     end
   end

@@ -39,6 +39,8 @@ module Orb
           top value,
           state: Orb::Internal::Type::Converter::dump_state
         ) -> top
+
+        def inspect: (?depth: Integer) -> String
       end
     end
   end
