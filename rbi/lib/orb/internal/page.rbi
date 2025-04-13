@@ -13,6 +13,7 @@ module Orb
       sig { returns(PaginationMetadata) }
       attr_accessor :pagination_metadata
 
+      # @api private
       sig { returns(String) }
       def inspect; end
 
