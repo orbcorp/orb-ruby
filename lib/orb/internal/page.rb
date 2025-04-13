@@ -22,32 +22,6 @@ module Orb
       # @return [PaginationMetadata]
       attr_accessor :pagination_metadata
 
-      # @api private
-      #
-      # @param client [Orb::Internal::Transport::BaseClient]
-      # @param req [Hash{Symbol=>Object}]
-      # @param headers [Hash{String=>String}, Net::HTTPHeader]
-      # @param page_data [Hash{Symbol=>Object}]
-      def initialize(client:, req:, headers:, page_data:)
-        super
-
-        case page_data
-        in {data: Array | nil => data}
-          @data = data&.map { Orb::Internal::Type::Converter.coerce(@model, _1) }
-        else
-        end
-
-        case page_data
-        in {pagination_metadata: Hash | nil => pagination_metadata}
-          @pagination_metadata =
-            Orb::Internal::Type::Converter.coerce(
-              Orb::Internal::Page::PaginationMetadata,
-              pagination_metadata
-            )
-        else
-        end
-      end
-
       # @return [Boolean]
       def next_page?
         !pagination_metadata&.next_cursor.nil?
@@ -84,13 +58,36 @@ module Orb
 
       # @api private
       #
+      # @param client [Orb::Internal::Transport::BaseClient]
+      # @param req [Hash{Symbol=>Object}]
+      # @param headers [Hash{String=>String}, Net::HTTPHeader]
+      # @param page_data [Hash{Symbol=>Object}]
+      def initialize(client:, req:, headers:, page_data:)
+        super
+
+        case page_data
+        in {data: Array | nil => data}
+          @data = data&.map { Orb::Internal::Type::Converter.coerce(@model, _1) }
+        else
+        end
+        case page_data
+        in {pagination_metadata: Hash | nil => pagination_metadata}
+          @pagination_metadata =
+            Orb::Internal::Type::Converter.coerce(
+              Orb::Internal::Page::PaginationMetadata,
+              pagination_metadata
+            )
+        else
+        end
+      end
+
+      # @api private
+      #
       # @return [String]
       def inspect
-        # rubocop:disable Layout/LineLength
         model = Orb::Internal::Type::Converter.inspect(@model, depth: 1)
 
-        "#<#{self.class}[#{model}]:0x#{object_id.to_s(16)} pagination_metadata=#{pagination_metadata.inspect}>"
-        # rubocop:enable Layout/LineLength
+        "#<#{self.class}[#{model}]:0x#{object_id.to_s(16)}>"
       end
 
       class PaginationMetadata < Orb::Internal::Type::BaseModel
