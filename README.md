@@ -6,7 +6,7 @@ The Orb Ruby library provides convenient access to the Orb REST API from any Rub
 
 Documentation for releases of this gem can be found [on RubyDoc](https://gemdocs.org/gems/orb-billing).
 
-The underlying REST API documentation can be found on [docs.withorb.com](https://docs.withorb.com/reference/api-reference).
+The REST API documentation can be found on [docs.withorb.com](https://docs.withorb.com/reference/api-reference).
 
 ## Installation
 
