@@ -10,11 +10,10 @@ module Orb
         include Orb::Internal::Type::Converter
 
         abstract!
-        final!
 
         Elem = type_member(:out)
 
-        sig(:final) do
+        sig do
           params(
             type_info: T.any(
               Orb::Internal::AnyHash,
@@ -27,14 +26,14 @@ module Orb
         end
         def self.[](type_info, spec = {}); end
 
-        sig(:final) { params(other: T.anything).returns(T::Boolean) }
+        sig { params(other: T.anything).returns(T::Boolean) }
         def ===(other); end
 
-        sig(:final) { params(other: T.anything).returns(T::Boolean) }
+        sig { params(other: T.anything).returns(T::Boolean) }
         def ==(other); end
 
         # @api private
-        sig(:final) do
+        sig do
           override
             .params(value: T.any(
               T::Array[T.anything],
@@ -46,7 +45,7 @@ module Orb
         def coerce(value, state:); end
 
         # @api private
-        sig(:final) do
+        sig do
           override
             .params(value: T.any(
               T::Array[T.anything],
@@ -58,15 +57,15 @@ module Orb
         def dump(value, state:); end
 
         # @api private
-        sig(:final) { returns(Elem) }
+        sig { returns(Elem) }
         protected def item_type; end
 
         # @api private
-        sig(:final) { returns(T::Boolean) }
+        sig { returns(T::Boolean) }
         protected def nilable?; end
 
         # @api private
-        sig(:final) do
+        sig do
           params(
             type_info: T.any(
               Orb::Internal::AnyHash,
@@ -80,7 +79,7 @@ module Orb
         def initialize(type_info, spec = {}); end
 
         # @api private
-        sig(:final) { params(depth: Integer).returns(String) }
+        sig { params(depth: Integer).returns(String) }
         def inspect(depth: 0); end
       end
     end
