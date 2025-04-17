@@ -1,5 +1,36 @@
 # Changelog
 
+## 0.2.0 (2025-04-17)
+
+Full Changelog: [v0.1.3...v0.2.0](https://github.com/orbcorp/orb-ruby/compare/v0.1.3...v0.2.0)
+
+### Features
+
+* **client:** enable setting base URL from environment variable ([a472f4c](https://github.com/orbcorp/orb-ruby/commit/a472f4cdee0d969b7e240a9519acccd3877f3de6))
+
+
+### Bug Fixes
+
+* always send idempotency header when specified as a request option ([f570e93](https://github.com/orbcorp/orb-ruby/commit/f570e93e8fe1a2f6d6df495021ea1152aeaf1e58))
+
+
+### Chores
+
+* **internal:** always run post-processing when formatting when syntax_tree ([9df6d63](https://github.com/orbcorp/orb-ruby/commit/9df6d6382e67f6f28f1cedff4ee1c949ffd70237))
+* **internal:** codegen related update ([202fff4](https://github.com/orbcorp/orb-ruby/commit/202fff413ad9e9be16b67a07270dd4ac2c4f14e4))
+* **internal:** codegen related update ([2b99ae2](https://github.com/orbcorp/orb-ruby/commit/2b99ae2ea108ad4e6227bd5ab7e9a7dd064a8ded))
+* **internal:** contribute.md and contributor QoL improvements ([cb204de](https://github.com/orbcorp/orb-ruby/commit/cb204de43549ee6aa9ead2d1e071ec5df0c58cb2))
+* **internal:** loosen internal type restrictions ([9dc6b52](https://github.com/orbcorp/orb-ruby/commit/9dc6b52d1bfa57e3fab328bf8673872522ab7f25))
+* **internal:** minor touch ups on sdk internals ([9297be8](https://github.com/orbcorp/orb-ruby/commit/9297be8eaa459f14cb0b4118066ecd59877686ab))
+* **internal:** protect SSE parsing pipeline from broken UTF-8 characters ([bb2243a](https://github.com/orbcorp/orb-ruby/commit/bb2243a19fbd077687be4b2a4a001e4b7381c54d))
+* **internal:** version bump ([c664f2f](https://github.com/orbcorp/orb-ruby/commit/c664f2fb5019cabca07ce026410d6951f9412d69))
+* refine `#inspect` and `#to_s` for model classes ([86f8280](https://github.com/orbcorp/orb-ruby/commit/86f8280e1126e5bd4013f4c1e5ddd09190044fa3))
+
+
+### Documentation
+
+* update documentation links to be more uniform ([a0bfe42](https://github.com/orbcorp/orb-ruby/commit/a0bfe42c34e09819e4948069670cfdf895cb51af))
+
 ## 0.1.3 (2025-04-11)
 
 Full Changelog: [v0.1.2...v0.1.3](https://github.com/orbcorp/orb-ruby/compare/v0.1.2...v0.1.3)
