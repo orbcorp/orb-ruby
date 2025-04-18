@@ -49,7 +49,11 @@ module Orb
 
         def self.==: (top other) -> bool
 
+        def self.hash: -> Integer
+
         def ==: (top other) -> bool
+
+        def hash: -> Integer
 
         def self.coerce: (
           Orb::Internal::Type::BaseModel | ::Hash[top, top] | top value,
