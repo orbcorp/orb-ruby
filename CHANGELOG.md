@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.2.1 (2025-04-18)
+
+Full Changelog: [v0.2.0...v0.2.1](https://github.com/orbcorp/orb-ruby/compare/v0.2.0...v0.2.1)
+
+### Chores
+
+* documentation improvements ([6e04e50](https://github.com/orbcorp/orb-ruby/commit/6e04e5062b468fdf1f40fe3cd491b9fbb610bc5c))
+* **internal:** version bump ([6b83db6](https://github.com/orbcorp/orb-ruby/commit/6b83db65c3d405b7f7c5e20a93be6428dcf7fc08))
+* make sorbet enums easier to read ([3793346](https://github.com/orbcorp/orb-ruby/commit/3793346c4a6cd6ff18aad64e4c48933a5159ebe1))
+* simplify yard annotations by removing most `@!parse` directives ([a94843b](https://github.com/orbcorp/orb-ruby/commit/a94843be3f13ed22ae07ded47bff22e044525f0b))
+* use `@!method` instead of `@!parse` for virtual method type definitions ([21cfdfc](https://github.com/orbcorp/orb-ruby/commit/21cfdfcc91f9dbd04831e502b990f9118f4b5eb0))
+
 ## 0.2.0 (2025-04-17)
 
 Full Changelog: [v0.1.3...v0.2.0](https://github.com/orbcorp/orb-ruby/compare/v0.1.3...v0.2.0)
