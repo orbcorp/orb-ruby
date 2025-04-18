@@ -45,18 +45,14 @@ module Orb
       #   @return [Date]
       required :start_date, Date
 
-      # @!parse
-      #   # @param amount [String]
-      #   # @param end_date [Date]
-      #   # @param invoice_id [String]
-      #   # @param name [String]
-      #   # @param quantity [Float]
-      #   # @param start_date [Date]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(amount:, end_date:, invoice_id:, name:, quantity:, start_date:, request_options: {}, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(amount:, end_date:, invoice_id:, name:, quantity:, start_date:, request_options: {})
+      #   @param amount [String]
+      #   @param end_date [Date]
+      #   @param invoice_id [String]
+      #   @param name [String]
+      #   @param quantity [Float]
+      #   @param start_date [Date]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

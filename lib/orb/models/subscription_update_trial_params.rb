@@ -26,14 +26,10 @@ module Orb
       #   # @return [Boolean]
       #   attr_writer :shift
 
-      # @!parse
-      #   # @param trial_end_date [Time, Symbol, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate]
-      #   # @param shift [Boolean]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(trial_end_date:, shift: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(trial_end_date:, shift: nil, request_options: {})
+      #   @param trial_end_date [Time, Symbol, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate]
+      #   @param shift [Boolean]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
       # The new date that the trial should end, or the literal string `immediate` to end
       # the trial immediately.
@@ -44,9 +40,8 @@ module Orb
 
         variant const: -> { Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::IMMEDIATE }
 
-        # @!parse
-        #   # @return [Array(Time, Symbol)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(Time, Symbol)]
 
         # @!group
 

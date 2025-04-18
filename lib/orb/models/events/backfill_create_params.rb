@@ -66,31 +66,15 @@ module Orb
         #   # @return [Boolean]
         #   attr_writer :replace_existing_events
 
-        # @!parse
-        #   # @param timeframe_end [Time]
-        #   # @param timeframe_start [Time]
-        #   # @param close_time [Time, nil]
-        #   # @param customer_id [String, nil]
-        #   # @param deprecation_filter [String, nil]
-        #   # @param external_customer_id [String, nil]
-        #   # @param replace_existing_events [Boolean]
-        #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(
-        #     timeframe_end:,
-        #     timeframe_start:,
-        #     close_time: nil,
-        #     customer_id: nil,
-        #     deprecation_filter: nil,
-        #     external_customer_id: nil,
-        #     replace_existing_events: nil,
-        #     request_options: {},
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(timeframe_end:, timeframe_start:, close_time: nil, customer_id: nil, deprecation_filter: nil, external_customer_id: nil, replace_existing_events: nil, request_options: {})
+        #   @param timeframe_end [Time]
+        #   @param timeframe_start [Time]
+        #   @param close_time [Time, nil]
+        #   @param customer_id [String, nil]
+        #   @param deprecation_filter [String, nil]
+        #   @param external_customer_id [String, nil]
+        #   @param replace_existing_events [Boolean]
+        #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
       end
     end
   end

@@ -10,12 +10,8 @@ module Orb
       #   @return [String]
       required :amended, String
 
-      # @!parse
-      #   # @param amended [String]
-      #   #
-      #   def initialize(amended:, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(amended:)
+      #   @param amended [String]
     end
   end
 end

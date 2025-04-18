@@ -42,17 +42,13 @@ module Orb
       #   @return [String, nil]
       optional :external_customer_id, String, nil?: true
 
-      # @!parse
-      #   # @param event_name [String]
-      #   # @param properties [Object]
-      #   # @param timestamp [Time]
-      #   # @param customer_id [String, nil]
-      #   # @param external_customer_id [String, nil]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(event_name:, properties:, timestamp:, customer_id: nil, external_customer_id: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(event_name:, properties:, timestamp:, customer_id: nil, external_customer_id: nil, request_options: {})
+      #   @param event_name [String]
+      #   @param properties [Object]
+      #   @param timestamp [Time]
+      #   @param customer_id [String, nil]
+      #   @param external_customer_id [String, nil]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

@@ -46,29 +46,14 @@ module Orb
         #   @return [Time, nil]
         optional :operation_time_lte, Time, nil?: true
 
-        # @!parse
-        #   # @param cursor [String, nil]
-        #   # @param limit [Integer]
-        #   # @param operation_time_gt [Time, nil]
-        #   # @param operation_time_gte [Time, nil]
-        #   # @param operation_time_lt [Time, nil]
-        #   # @param operation_time_lte [Time, nil]
-        #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(
-        #     cursor: nil,
-        #     limit: nil,
-        #     operation_time_gt: nil,
-        #     operation_time_gte: nil,
-        #     operation_time_lt: nil,
-        #     operation_time_lte: nil,
-        #     request_options: {},
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(cursor: nil, limit: nil, operation_time_gt: nil, operation_time_gte: nil, operation_time_lt: nil, operation_time_lte: nil, request_options: {})
+        #   @param cursor [String, nil]
+        #   @param limit [Integer]
+        #   @param operation_time_gt [Time, nil]
+        #   @param operation_time_gte [Time, nil]
+        #   @param operation_time_lt [Time, nil]
+        #   @param operation_time_lte [Time, nil]
+        #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
       end
     end
   end

@@ -38,16 +38,12 @@ module Orb
       #   @return [Boolean, nil]
       optional :show_archived, Orb::Internal::Type::Boolean, nil?: true
 
-      # @!parse
-      #   # @param cursor [String, nil]
-      #   # @param limit [Integer]
-      #   # @param redemption_code [String, nil]
-      #   # @param show_archived [Boolean, nil]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(cursor: nil, limit: nil, redemption_code: nil, show_archived: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(cursor: nil, limit: nil, redemption_code: nil, show_archived: nil, request_options: {})
+      #   @param cursor [String, nil]
+      #   @param limit [Integer]
+      #   @param redemption_code [String, nil]
+      #   @param show_archived [Boolean, nil]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

@@ -26,15 +26,11 @@ module Orb
       #   @return [String, nil]
       optional :notes, String, nil?: true
 
-      # @!parse
-      #   # @param payment_received_date [Date]
-      #   # @param external_id [String, nil]
-      #   # @param notes [String, nil]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(payment_received_date:, external_id: nil, notes: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(payment_received_date:, external_id: nil, notes: nil, request_options: {})
+      #   @param payment_received_date [Date]
+      #   @param external_id [String, nil]
+      #   @param notes [String, nil]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

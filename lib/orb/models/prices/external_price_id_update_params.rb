@@ -17,13 +17,9 @@ module Orb
         #   @return [Hash{Symbol=>String, nil}, nil]
         optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-        # @!parse
-        #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-        #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(metadata: nil, request_options: {}, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(metadata: nil, request_options: {})
+        #   @param metadata [Hash{Symbol=>String, nil}, nil]
+        #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
       end
     end
   end

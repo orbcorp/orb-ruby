@@ -25,15 +25,11 @@ module Orb
         #   @return [String, nil]
         optional :description, String, nil?: true
 
-        # @!parse
-        #   # @param amount [String]
-        #   # @param type [Symbol, Orb::Models::Customers::BalanceTransactionCreateParams::Type]
-        #   # @param description [String, nil]
-        #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(amount:, type:, description: nil, request_options: {}, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(amount:, type:, description: nil, request_options: {})
+        #   @param amount [String]
+        #   @param type [Symbol, Orb::Models::Customers::BalanceTransactionCreateParams::Type]
+        #   @param description [String, nil]
+        #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
         module Type
           extend Orb::Internal::Type::Enum
@@ -41,11 +37,8 @@ module Orb
           INCREMENT = :increment
           DECREMENT = :decrement
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

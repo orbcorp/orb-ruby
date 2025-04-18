@@ -82,37 +82,18 @@ module Orb
       #   # @return [Boolean]
       #   attr_writer :will_auto_issue
 
-      # @!parse
-      #   # @param currency [String]
-      #   # @param invoice_date [Time]
-      #   # @param line_items [Array<Orb::Models::InvoiceCreateParams::LineItem>]
-      #   # @param net_terms [Integer]
-      #   # @param customer_id [String, nil]
-      #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-      #   # @param external_customer_id [String, nil]
-      #   # @param memo [String, nil]
-      #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-      #   # @param will_auto_issue [Boolean]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     currency:,
-      #     invoice_date:,
-      #     line_items:,
-      #     net_terms:,
-      #     customer_id: nil,
-      #     discount: nil,
-      #     external_customer_id: nil,
-      #     memo: nil,
-      #     metadata: nil,
-      #     will_auto_issue: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(currency:, invoice_date:, line_items:, net_terms:, customer_id: nil, discount: nil, external_customer_id: nil, memo: nil, metadata: nil, will_auto_issue: nil, request_options: {})
+      #   @param currency [String]
+      #   @param invoice_date [Time]
+      #   @param line_items [Array<Orb::Models::InvoiceCreateParams::LineItem>]
+      #   @param net_terms [Integer]
+      #   @param customer_id [String, nil]
+      #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+      #   @param external_customer_id [String, nil]
+      #   @param memo [String, nil]
+      #   @param metadata [Hash{Symbol=>String, nil}, nil]
+      #   @param will_auto_issue [Boolean]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
       class LineItem < Orb::Internal::Type::BaseModel
         # @!attribute end_date
@@ -154,18 +135,14 @@ module Orb
         #   @return [Orb::Models::InvoiceCreateParams::LineItem::UnitConfig]
         required :unit_config, -> { Orb::Models::InvoiceCreateParams::LineItem::UnitConfig }
 
-        # @!parse
-        #   # @param end_date [Date]
-        #   # @param item_id [String]
-        #   # @param model_type [Symbol, Orb::Models::InvoiceCreateParams::LineItem::ModelType]
-        #   # @param name [String]
-        #   # @param quantity [Float]
-        #   # @param start_date [Date]
-        #   # @param unit_config [Orb::Models::InvoiceCreateParams::LineItem::UnitConfig]
-        #   #
-        #   def initialize(end_date:, item_id:, model_type:, name:, quantity:, start_date:, unit_config:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(end_date:, item_id:, model_type:, name:, quantity:, start_date:, unit_config:)
+        #   @param end_date [Date]
+        #   @param item_id [String]
+        #   @param model_type [Symbol, Orb::Models::InvoiceCreateParams::LineItem::ModelType]
+        #   @param name [String]
+        #   @param quantity [Float]
+        #   @param start_date [Date]
+        #   @param unit_config [Orb::Models::InvoiceCreateParams::LineItem::UnitConfig]
 
         # @see Orb::Models::InvoiceCreateParams::LineItem#model_type
         module ModelType
@@ -173,11 +150,8 @@ module Orb
 
           UNIT = :unit
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::InvoiceCreateParams::LineItem#unit_config
@@ -188,12 +162,8 @@ module Orb
           #   @return [String]
           required :unit_amount, String
 
-          # @!parse
-          #   # @param unit_amount [String]
-          #   #
-          #   def initialize(unit_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(unit_amount:)
+          #   @param unit_amount [String]
         end
       end
     end

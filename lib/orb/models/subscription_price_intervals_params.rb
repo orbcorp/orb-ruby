@@ -58,27 +58,13 @@ module Orb
       #   # @return [Array<Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment>]
       #   attr_writer :edit_adjustments
 
-      # @!parse
-      #   # @param add [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add>]
-      #   # @param add_adjustments [Array<Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment>]
-      #   # @param allow_invoice_credit_or_void [Boolean, nil]
-      #   # @param edit [Array<Orb::Models::SubscriptionPriceIntervalsParams::Edit>]
-      #   # @param edit_adjustments [Array<Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment>]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     add: nil,
-      #     add_adjustments: nil,
-      #     allow_invoice_credit_or_void: nil,
-      #     edit: nil,
-      #     edit_adjustments: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(add: nil, add_adjustments: nil, allow_invoice_credit_or_void: nil, edit: nil, edit_adjustments: nil, request_options: {})
+      #   @param add [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add>]
+      #   @param add_adjustments [Array<Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment>]
+      #   @param allow_invoice_credit_or_void [Boolean, nil]
+      #   @param edit [Array<Orb::Models::SubscriptionPriceIntervalsParams::Edit>]
+      #   @param edit_adjustments [Array<Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment>]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
       class Add < Orb::Internal::Type::BaseModel
         # @!attribute start_date
@@ -171,39 +157,19 @@ module Orb
         #   @return [Array<String>, nil]
         optional :usage_customer_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
 
-        # @!parse
-        #   # @param start_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate]
-        #   # @param allocation_price [Orb::Models::SubscriptionPriceIntervalsParams::Add::AllocationPrice, nil]
-        #   # @param discounts [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::AmountDiscountCreationParams, Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::PercentageDiscountCreationParams, Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::UsageDiscountCreationParams>, nil]
-        #   # @param end_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param filter [String, nil]
-        #   # @param fixed_fee_quantity_transitions [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add::FixedFeeQuantityTransition>, nil]
-        #   # @param maximum_amount [Float, nil]
-        #   # @param minimum_amount [Float, nil]
-        #   # @param price [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice, nil]
-        #   # @param price_id [String, nil]
-        #   # @param usage_customer_ids [Array<String>, nil]
-        #   #
-        #   def initialize(
-        #     start_date:,
-        #     allocation_price: nil,
-        #     discounts: nil,
-        #     end_date: nil,
-        #     external_price_id: nil,
-        #     filter: nil,
-        #     fixed_fee_quantity_transitions: nil,
-        #     maximum_amount: nil,
-        #     minimum_amount: nil,
-        #     price: nil,
-        #     price_id: nil,
-        #     usage_customer_ids: nil,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(start_date:, allocation_price: nil, discounts: nil, end_date: nil, external_price_id: nil, filter: nil, fixed_fee_quantity_transitions: nil, maximum_amount: nil, minimum_amount: nil, price: nil, price_id: nil, usage_customer_ids: nil)
+        #   @param start_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate]
+        #   @param allocation_price [Orb::Models::SubscriptionPriceIntervalsParams::Add::AllocationPrice, nil]
+        #   @param discounts [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::AmountDiscountCreationParams, Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::PercentageDiscountCreationParams, Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::UsageDiscountCreationParams>, nil]
+        #   @param end_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate, nil]
+        #   @param external_price_id [String, nil]
+        #   @param filter [String, nil]
+        #   @param fixed_fee_quantity_transitions [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add::FixedFeeQuantityTransition>, nil]
+        #   @param maximum_amount [Float, nil]
+        #   @param minimum_amount [Float, nil]
+        #   @param price [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice, nil]
+        #   @param price_id [String, nil]
+        #   @param usage_customer_ids [Array<String>, nil]
 
         # The start date of the price interval. This is the date that the price will start
         # billing on the subscription.
@@ -216,9 +182,8 @@ module Orb
 
           variant enum: -> { Orb::Models::BillingCycleRelativeDate }
 
-          # @!parse
-          #   # @return [Array(Time, Symbol, Orb::Models::BillingCycleRelativeDate)]
-          #   def self.variants; end
+          # @!method self.variants
+          #   @return [Array(Time, Symbol, Orb::Models::BillingCycleRelativeDate)]
         end
 
         # @see Orb::Models::SubscriptionPriceIntervalsParams::Add#allocation_price
@@ -250,17 +215,13 @@ module Orb
           #   @return [Boolean]
           required :expires_at_end_of_cadence, Orb::Internal::Type::Boolean
 
-          # @!parse
-          #   # The definition of a new allocation price to create and add to the subscription.
-          #   #
-          #   # @param amount [String]
-          #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::AllocationPrice::Cadence]
-          #   # @param currency [String]
-          #   # @param expires_at_end_of_cadence [Boolean]
-          #   #
-          #   def initialize(amount:, cadence:, currency:, expires_at_end_of_cadence:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(amount:, cadence:, currency:, expires_at_end_of_cadence:)
+          #   The definition of a new allocation price to create and add to the subscription.
+          #
+          #   @param amount [String]
+          #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::AllocationPrice::Cadence]
+          #   @param currency [String]
+          #   @param expires_at_end_of_cadence [Boolean]
 
           # The cadence at which to allocate the amount to the customer.
           #
@@ -275,11 +236,8 @@ module Orb
             ANNUAL = :annual
             CUSTOM = :custom
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -309,13 +267,9 @@ module Orb
             #   @return [Symbol, :amount]
             required :discount_type, const: :amount
 
-            # @!parse
-            #   # @param amount_discount [Float]
-            #   # @param discount_type [Symbol, :amount]
-            #   #
-            #   def initialize(amount_discount:, discount_type: :amount, **) = super
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(amount_discount:, discount_type: :amount)
+            #   @param amount_discount [Float]
+            #   @param discount_type [Symbol, :amount]
           end
 
           class PercentageDiscountCreationParams < Orb::Internal::Type::BaseModel
@@ -331,13 +285,9 @@ module Orb
             #   @return [Float]
             required :percentage_discount, Float
 
-            # @!parse
-            #   # @param percentage_discount [Float]
-            #   # @param discount_type [Symbol, :percentage]
-            #   #
-            #   def initialize(percentage_discount:, discount_type: :percentage, **) = super
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(percentage_discount:, discount_type: :percentage)
+            #   @param percentage_discount [Float]
+            #   @param discount_type [Symbol, :percentage]
           end
 
           class UsageDiscountCreationParams < Orb::Internal::Type::BaseModel
@@ -353,18 +303,13 @@ module Orb
             #   @return [Float]
             required :usage_discount, Float
 
-            # @!parse
-            #   # @param usage_discount [Float]
-            #   # @param discount_type [Symbol, :usage]
-            #   #
-            #   def initialize(usage_discount:, discount_type: :usage, **) = super
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(usage_discount:, discount_type: :usage)
+            #   @param usage_discount [Float]
+            #   @param discount_type [Symbol, :usage]
           end
 
-          # @!parse
-          #   # @return [Array(Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::AmountDiscountCreationParams, Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::PercentageDiscountCreationParams, Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::UsageDiscountCreationParams)]
-          #   def self.variants; end
+          # @!method self.variants
+          #   @return [Array(Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::AmountDiscountCreationParams, Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::PercentageDiscountCreationParams, Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::UsageDiscountCreationParams)]
         end
 
         # The end date of the price interval. This is the date that the price will stop
@@ -378,9 +323,8 @@ module Orb
 
           variant enum: -> { Orb::Models::BillingCycleRelativeDate }
 
-          # @!parse
-          #   # @return [Array(Time, Symbol, Orb::Models::BillingCycleRelativeDate)]
-          #   def self.variants; end
+          # @!method self.variants
+          #   @return [Array(Time, Symbol, Orb::Models::BillingCycleRelativeDate)]
         end
 
         class FixedFeeQuantityTransition < Orb::Internal::Type::BaseModel
@@ -396,13 +340,9 @@ module Orb
           #   @return [Integer]
           required :quantity, Integer
 
-          # @!parse
-          #   # @param effective_date [Time]
-          #   # @param quantity [Integer]
-          #   #
-          #   def initialize(effective_date:, quantity:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(effective_date:, quantity:)
+          #   @param effective_date [Time]
+          #   @param quantity [Integer]
         end
 
         # The definition of a new price to create and add to the subscription.
@@ -594,45 +534,22 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!parse
-            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::Cadence]
-            #   # @param currency [String]
-            #   # @param item_id [String]
-            #   # @param name [String]
-            #   # @param unit_config [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::UnitConfig]
-            #   # @param billable_metric_id [String, nil]
-            #   # @param billed_in_advance [Boolean, nil]
-            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::BillingCycleConfiguration, nil]
-            #   # @param conversion_rate [Float, nil]
-            #   # @param external_price_id [String, nil]
-            #   # @param fixed_price_quantity [Float, nil]
-            #   # @param invoice_grouping_key [String, nil]
-            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::InvoicingCycleConfiguration, nil]
-            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   # @param model_type [Symbol, :unit]
-            #   #
-            #   def initialize(
-            #     cadence:,
-            #     currency:,
-            #     item_id:,
-            #     name:,
-            #     unit_config:,
-            #     billable_metric_id: nil,
-            #     billed_in_advance: nil,
-            #     billing_cycle_configuration: nil,
-            #     conversion_rate: nil,
-            #     external_price_id: nil,
-            #     fixed_price_quantity: nil,
-            #     invoice_grouping_key: nil,
-            #     invoicing_cycle_configuration: nil,
-            #     metadata: nil,
-            #     model_type: :unit,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(cadence:, currency:, item_id:, name:, unit_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :unit)
+            #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::Cadence]
+            #   @param currency [String]
+            #   @param item_id [String]
+            #   @param name [String]
+            #   @param unit_config [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::UnitConfig]
+            #   @param billable_metric_id [String, nil]
+            #   @param billed_in_advance [Boolean, nil]
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::BillingCycleConfiguration, nil]
+            #   @param conversion_rate [Float, nil]
+            #   @param external_price_id [String, nil]
+            #   @param fixed_price_quantity [Float, nil]
+            #   @param invoice_grouping_key [String, nil]
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::InvoicingCycleConfiguration, nil]
+            #   @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   @param model_type [Symbol, :unit]
 
             # The cadence to bill for this price on.
             #
@@ -647,11 +564,8 @@ module Orb
               ONE_TIME = :one_time
               CUSTOM = :custom
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice#unit_config
@@ -662,12 +576,8 @@ module Orb
               #   @return [String]
               required :unit_amount, String
 
-              # @!parse
-              #   # @param unit_amount [String]
-              #   #
-              #   def initialize(unit_amount:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(unit_amount:)
+              #   @param unit_amount [String]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice#billing_cycle_configuration
@@ -685,16 +595,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::BillingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # For custom cadence: specifies the duration of the billing period in days or
-              #   # months.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::BillingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   For custom cadence: specifies the duration of the billing period in days or
+              #   months.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::BillingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -705,11 +611,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -728,16 +631,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::InvoicingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   # If unspecified, a single invoice is produced per billing cycle.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::InvoicingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice::InvoicingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -748,11 +647,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
@@ -859,45 +755,22 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!parse
-            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::Cadence]
-            #   # @param currency [String]
-            #   # @param item_id [String]
-            #   # @param name [String]
-            #   # @param package_config [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::PackageConfig]
-            #   # @param billable_metric_id [String, nil]
-            #   # @param billed_in_advance [Boolean, nil]
-            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::BillingCycleConfiguration, nil]
-            #   # @param conversion_rate [Float, nil]
-            #   # @param external_price_id [String, nil]
-            #   # @param fixed_price_quantity [Float, nil]
-            #   # @param invoice_grouping_key [String, nil]
-            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::InvoicingCycleConfiguration, nil]
-            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   # @param model_type [Symbol, :package]
-            #   #
-            #   def initialize(
-            #     cadence:,
-            #     currency:,
-            #     item_id:,
-            #     name:,
-            #     package_config:,
-            #     billable_metric_id: nil,
-            #     billed_in_advance: nil,
-            #     billing_cycle_configuration: nil,
-            #     conversion_rate: nil,
-            #     external_price_id: nil,
-            #     fixed_price_quantity: nil,
-            #     invoice_grouping_key: nil,
-            #     invoicing_cycle_configuration: nil,
-            #     metadata: nil,
-            #     model_type: :package,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(cadence:, currency:, item_id:, name:, package_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :package)
+            #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::Cadence]
+            #   @param currency [String]
+            #   @param item_id [String]
+            #   @param name [String]
+            #   @param package_config [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::PackageConfig]
+            #   @param billable_metric_id [String, nil]
+            #   @param billed_in_advance [Boolean, nil]
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::BillingCycleConfiguration, nil]
+            #   @param conversion_rate [Float, nil]
+            #   @param external_price_id [String, nil]
+            #   @param fixed_price_quantity [Float, nil]
+            #   @param invoice_grouping_key [String, nil]
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::InvoicingCycleConfiguration, nil]
+            #   @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   @param model_type [Symbol, :package]
 
             # The cadence to bill for this price on.
             #
@@ -912,11 +785,8 @@ module Orb
               ONE_TIME = :one_time
               CUSTOM = :custom
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice#package_config
@@ -934,13 +804,9 @@ module Orb
               #   @return [Integer]
               required :package_size, Integer
 
-              # @!parse
-              #   # @param package_amount [String]
-              #   # @param package_size [Integer]
-              #   #
-              #   def initialize(package_amount:, package_size:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(package_amount:, package_size:)
+              #   @param package_amount [String]
+              #   @param package_size [Integer]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice#billing_cycle_configuration
@@ -958,16 +824,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::BillingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # For custom cadence: specifies the duration of the billing period in days or
-              #   # months.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::BillingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   For custom cadence: specifies the duration of the billing period in days or
+              #   months.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::BillingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -978,11 +840,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -1001,16 +860,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::InvoicingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   # If unspecified, a single invoice is produced per billing cycle.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::InvoicingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice::InvoicingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -1021,11 +876,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
@@ -1132,45 +984,22 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!parse
-            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::Cadence]
-            #   # @param currency [String]
-            #   # @param item_id [String]
-            #   # @param matrix_config [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig]
-            #   # @param name [String]
-            #   # @param billable_metric_id [String, nil]
-            #   # @param billed_in_advance [Boolean, nil]
-            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::BillingCycleConfiguration, nil]
-            #   # @param conversion_rate [Float, nil]
-            #   # @param external_price_id [String, nil]
-            #   # @param fixed_price_quantity [Float, nil]
-            #   # @param invoice_grouping_key [String, nil]
-            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::InvoicingCycleConfiguration, nil]
-            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   # @param model_type [Symbol, :matrix]
-            #   #
-            #   def initialize(
-            #     cadence:,
-            #     currency:,
-            #     item_id:,
-            #     matrix_config:,
-            #     name:,
-            #     billable_metric_id: nil,
-            #     billed_in_advance: nil,
-            #     billing_cycle_configuration: nil,
-            #     conversion_rate: nil,
-            #     external_price_id: nil,
-            #     fixed_price_quantity: nil,
-            #     invoice_grouping_key: nil,
-            #     invoicing_cycle_configuration: nil,
-            #     metadata: nil,
-            #     model_type: :matrix,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(cadence:, currency:, item_id:, matrix_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :matrix)
+            #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::Cadence]
+            #   @param currency [String]
+            #   @param item_id [String]
+            #   @param matrix_config [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig]
+            #   @param name [String]
+            #   @param billable_metric_id [String, nil]
+            #   @param billed_in_advance [Boolean, nil]
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::BillingCycleConfiguration, nil]
+            #   @param conversion_rate [Float, nil]
+            #   @param external_price_id [String, nil]
+            #   @param fixed_price_quantity [Float, nil]
+            #   @param invoice_grouping_key [String, nil]
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::InvoicingCycleConfiguration, nil]
+            #   @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   @param model_type [Symbol, :matrix]
 
             # The cadence to bill for this price on.
             #
@@ -1185,11 +1014,8 @@ module Orb
               ONE_TIME = :one_time
               CUSTOM = :custom
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice#matrix_config
@@ -1217,14 +1043,10 @@ module Orb
                          ]
                        end
 
-              # @!parse
-              #   # @param default_unit_amount [String]
-              #   # @param dimensions [Array<String, nil>]
-              #   # @param matrix_values [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig::MatrixValue>]
-              #   #
-              #   def initialize(default_unit_amount:, dimensions:, matrix_values:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(default_unit_amount:, dimensions:, matrix_values:)
+              #   @param default_unit_amount [String]
+              #   @param dimensions [Array<String, nil>]
+              #   @param matrix_values [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::MatrixConfig::MatrixValue>]
 
               class MatrixValue < Orb::Internal::Type::BaseModel
                 # @!attribute dimension_values
@@ -1241,13 +1063,9 @@ module Orb
                 #   @return [String]
                 required :unit_amount, String
 
-                # @!parse
-                #   # @param dimension_values [Array<String, nil>]
-                #   # @param unit_amount [String]
-                #   #
-                #   def initialize(dimension_values:, unit_amount:, **) = super
-
-                # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+                # @!method initialize(dimension_values:, unit_amount:)
+                #   @param dimension_values [Array<String, nil>]
+                #   @param unit_amount [String]
               end
             end
 
@@ -1266,16 +1084,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::BillingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # For custom cadence: specifies the duration of the billing period in days or
-              #   # months.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::BillingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   For custom cadence: specifies the duration of the billing period in days or
+              #   months.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::BillingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -1286,11 +1100,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -1309,16 +1120,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::InvoicingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   # If unspecified, a single invoice is produced per billing cycle.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::InvoicingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice::InvoicingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -1329,11 +1136,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
@@ -1440,45 +1244,22 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!parse
-            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::Cadence]
-            #   # @param currency [String]
-            #   # @param item_id [String]
-            #   # @param matrix_with_allocation_config [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig]
-            #   # @param name [String]
-            #   # @param billable_metric_id [String, nil]
-            #   # @param billed_in_advance [Boolean, nil]
-            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::BillingCycleConfiguration, nil]
-            #   # @param conversion_rate [Float, nil]
-            #   # @param external_price_id [String, nil]
-            #   # @param fixed_price_quantity [Float, nil]
-            #   # @param invoice_grouping_key [String, nil]
-            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::InvoicingCycleConfiguration, nil]
-            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   # @param model_type [Symbol, :matrix_with_allocation]
-            #   #
-            #   def initialize(
-            #     cadence:,
-            #     currency:,
-            #     item_id:,
-            #     matrix_with_allocation_config:,
-            #     name:,
-            #     billable_metric_id: nil,
-            #     billed_in_advance: nil,
-            #     billing_cycle_configuration: nil,
-            #     conversion_rate: nil,
-            #     external_price_id: nil,
-            #     fixed_price_quantity: nil,
-            #     invoice_grouping_key: nil,
-            #     invoicing_cycle_configuration: nil,
-            #     metadata: nil,
-            #     model_type: :matrix_with_allocation,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(cadence:, currency:, item_id:, matrix_with_allocation_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :matrix_with_allocation)
+            #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::Cadence]
+            #   @param currency [String]
+            #   @param item_id [String]
+            #   @param matrix_with_allocation_config [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig]
+            #   @param name [String]
+            #   @param billable_metric_id [String, nil]
+            #   @param billed_in_advance [Boolean, nil]
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::BillingCycleConfiguration, nil]
+            #   @param conversion_rate [Float, nil]
+            #   @param external_price_id [String, nil]
+            #   @param fixed_price_quantity [Float, nil]
+            #   @param invoice_grouping_key [String, nil]
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::InvoicingCycleConfiguration, nil]
+            #   @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   @param model_type [Symbol, :matrix_with_allocation]
 
             # The cadence to bill for this price on.
             #
@@ -1493,11 +1274,8 @@ module Orb
               ONE_TIME = :one_time
               CUSTOM = :custom
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice#matrix_with_allocation_config
@@ -1531,15 +1309,11 @@ module Orb
                          ]
                        end
 
-              # @!parse
-              #   # @param allocation [Float]
-              #   # @param default_unit_amount [String]
-              #   # @param dimensions [Array<String, nil>]
-              #   # @param matrix_values [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue>]
-              #   #
-              #   def initialize(allocation:, default_unit_amount:, dimensions:, matrix_values:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(allocation:, default_unit_amount:, dimensions:, matrix_values:)
+              #   @param allocation [Float]
+              #   @param default_unit_amount [String]
+              #   @param dimensions [Array<String, nil>]
+              #   @param matrix_values [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue>]
 
               class MatrixValue < Orb::Internal::Type::BaseModel
                 # @!attribute dimension_values
@@ -1556,13 +1330,9 @@ module Orb
                 #   @return [String]
                 required :unit_amount, String
 
-                # @!parse
-                #   # @param dimension_values [Array<String, nil>]
-                #   # @param unit_amount [String]
-                #   #
-                #   def initialize(dimension_values:, unit_amount:, **) = super
-
-                # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+                # @!method initialize(dimension_values:, unit_amount:)
+                #   @param dimension_values [Array<String, nil>]
+                #   @param unit_amount [String]
               end
             end
 
@@ -1581,16 +1351,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::BillingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # For custom cadence: specifies the duration of the billing period in days or
-              #   # months.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::BillingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   For custom cadence: specifies the duration of the billing period in days or
+              #   months.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::BillingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -1601,11 +1367,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -1624,16 +1387,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   # If unspecified, a single invoice is produced per billing cycle.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -1644,11 +1403,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
@@ -1755,45 +1511,22 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!parse
-            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::Cadence]
-            #   # @param currency [String]
-            #   # @param item_id [String]
-            #   # @param name [String]
-            #   # @param tiered_config [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig]
-            #   # @param billable_metric_id [String, nil]
-            #   # @param billed_in_advance [Boolean, nil]
-            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::BillingCycleConfiguration, nil]
-            #   # @param conversion_rate [Float, nil]
-            #   # @param external_price_id [String, nil]
-            #   # @param fixed_price_quantity [Float, nil]
-            #   # @param invoice_grouping_key [String, nil]
-            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::InvoicingCycleConfiguration, nil]
-            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   # @param model_type [Symbol, :tiered]
-            #   #
-            #   def initialize(
-            #     cadence:,
-            #     currency:,
-            #     item_id:,
-            #     name:,
-            #     tiered_config:,
-            #     billable_metric_id: nil,
-            #     billed_in_advance: nil,
-            #     billing_cycle_configuration: nil,
-            #     conversion_rate: nil,
-            #     external_price_id: nil,
-            #     fixed_price_quantity: nil,
-            #     invoice_grouping_key: nil,
-            #     invoicing_cycle_configuration: nil,
-            #     metadata: nil,
-            #     model_type: :tiered,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(cadence:, currency:, item_id:, name:, tiered_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :tiered)
+            #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::Cadence]
+            #   @param currency [String]
+            #   @param item_id [String]
+            #   @param name [String]
+            #   @param tiered_config [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig]
+            #   @param billable_metric_id [String, nil]
+            #   @param billed_in_advance [Boolean, nil]
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::BillingCycleConfiguration, nil]
+            #   @param conversion_rate [Float, nil]
+            #   @param external_price_id [String, nil]
+            #   @param fixed_price_quantity [Float, nil]
+            #   @param invoice_grouping_key [String, nil]
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::InvoicingCycleConfiguration, nil]
+            #   @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   @param model_type [Symbol, :tiered]
 
             # The cadence to bill for this price on.
             #
@@ -1808,11 +1541,8 @@ module Orb
               ONE_TIME = :one_time
               CUSTOM = :custom
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice#tiered_config
@@ -1824,12 +1554,8 @@ module Orb
               required :tiers,
                        -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig::Tier] }
 
-              # @!parse
-              #   # @param tiers [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig::Tier>]
-              #   #
-              #   def initialize(tiers:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(tiers:)
+              #   @param tiers [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::TieredConfig::Tier>]
 
               class Tier < Orb::Internal::Type::BaseModel
                 # @!attribute first_unit
@@ -1850,14 +1576,10 @@ module Orb
                 #   @return [Float, nil]
                 optional :last_unit, Float, nil?: true
 
-                # @!parse
-                #   # @param first_unit [Float]
-                #   # @param unit_amount [String]
-                #   # @param last_unit [Float, nil]
-                #   #
-                #   def initialize(first_unit:, unit_amount:, last_unit: nil, **) = super
-
-                # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+                # @!method initialize(first_unit:, unit_amount:, last_unit: nil)
+                #   @param first_unit [Float]
+                #   @param unit_amount [String]
+                #   @param last_unit [Float, nil]
               end
             end
 
@@ -1876,16 +1598,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::BillingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # For custom cadence: specifies the duration of the billing period in days or
-              #   # months.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::BillingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   For custom cadence: specifies the duration of the billing period in days or
+              #   months.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::BillingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -1896,11 +1614,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -1919,16 +1634,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::InvoicingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   # If unspecified, a single invoice is produced per billing cycle.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::InvoicingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice::InvoicingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -1939,11 +1650,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
@@ -2050,45 +1758,22 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!parse
-            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::Cadence]
-            #   # @param currency [String]
-            #   # @param item_id [String]
-            #   # @param name [String]
-            #   # @param tiered_bps_config [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig]
-            #   # @param billable_metric_id [String, nil]
-            #   # @param billed_in_advance [Boolean, nil]
-            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::BillingCycleConfiguration, nil]
-            #   # @param conversion_rate [Float, nil]
-            #   # @param external_price_id [String, nil]
-            #   # @param fixed_price_quantity [Float, nil]
-            #   # @param invoice_grouping_key [String, nil]
-            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::InvoicingCycleConfiguration, nil]
-            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   # @param model_type [Symbol, :tiered_bps]
-            #   #
-            #   def initialize(
-            #     cadence:,
-            #     currency:,
-            #     item_id:,
-            #     name:,
-            #     tiered_bps_config:,
-            #     billable_metric_id: nil,
-            #     billed_in_advance: nil,
-            #     billing_cycle_configuration: nil,
-            #     conversion_rate: nil,
-            #     external_price_id: nil,
-            #     fixed_price_quantity: nil,
-            #     invoice_grouping_key: nil,
-            #     invoicing_cycle_configuration: nil,
-            #     metadata: nil,
-            #     model_type: :tiered_bps,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(cadence:, currency:, item_id:, name:, tiered_bps_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :tiered_bps)
+            #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::Cadence]
+            #   @param currency [String]
+            #   @param item_id [String]
+            #   @param name [String]
+            #   @param tiered_bps_config [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig]
+            #   @param billable_metric_id [String, nil]
+            #   @param billed_in_advance [Boolean, nil]
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::BillingCycleConfiguration, nil]
+            #   @param conversion_rate [Float, nil]
+            #   @param external_price_id [String, nil]
+            #   @param fixed_price_quantity [Float, nil]
+            #   @param invoice_grouping_key [String, nil]
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::InvoicingCycleConfiguration, nil]
+            #   @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   @param model_type [Symbol, :tiered_bps]
 
             # The cadence to bill for this price on.
             #
@@ -2103,11 +1788,8 @@ module Orb
               ONE_TIME = :one_time
               CUSTOM = :custom
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice#tiered_bps_config
@@ -2124,12 +1806,8 @@ module Orb
                          ]
                        end
 
-              # @!parse
-              #   # @param tiers [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig::Tier>]
-              #   #
-              #   def initialize(tiers:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(tiers:)
+              #   @param tiers [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::TieredBpsConfig::Tier>]
 
               class Tier < Orb::Internal::Type::BaseModel
                 # @!attribute bps
@@ -2156,15 +1834,11 @@ module Orb
                 #   @return [String, nil]
                 optional :per_unit_maximum, String, nil?: true
 
-                # @!parse
-                #   # @param bps [Float]
-                #   # @param minimum_amount [String]
-                #   # @param maximum_amount [String, nil]
-                #   # @param per_unit_maximum [String, nil]
-                #   #
-                #   def initialize(bps:, minimum_amount:, maximum_amount: nil, per_unit_maximum: nil, **) = super
-
-                # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+                # @!method initialize(bps:, minimum_amount:, maximum_amount: nil, per_unit_maximum: nil)
+                #   @param bps [Float]
+                #   @param minimum_amount [String]
+                #   @param maximum_amount [String, nil]
+                #   @param per_unit_maximum [String, nil]
               end
             end
 
@@ -2183,16 +1857,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::BillingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # For custom cadence: specifies the duration of the billing period in days or
-              #   # months.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::BillingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   For custom cadence: specifies the duration of the billing period in days or
+              #   months.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::BillingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -2203,11 +1873,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -2226,16 +1893,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   # If unspecified, a single invoice is produced per billing cycle.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -2246,11 +1909,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
@@ -2357,45 +2017,22 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!parse
-            #   # @param bps_config [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BpsConfig]
-            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::Cadence]
-            #   # @param currency [String]
-            #   # @param item_id [String]
-            #   # @param name [String]
-            #   # @param billable_metric_id [String, nil]
-            #   # @param billed_in_advance [Boolean, nil]
-            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BillingCycleConfiguration, nil]
-            #   # @param conversion_rate [Float, nil]
-            #   # @param external_price_id [String, nil]
-            #   # @param fixed_price_quantity [Float, nil]
-            #   # @param invoice_grouping_key [String, nil]
-            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::InvoicingCycleConfiguration, nil]
-            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   # @param model_type [Symbol, :bps]
-            #   #
-            #   def initialize(
-            #     bps_config:,
-            #     cadence:,
-            #     currency:,
-            #     item_id:,
-            #     name:,
-            #     billable_metric_id: nil,
-            #     billed_in_advance: nil,
-            #     billing_cycle_configuration: nil,
-            #     conversion_rate: nil,
-            #     external_price_id: nil,
-            #     fixed_price_quantity: nil,
-            #     invoice_grouping_key: nil,
-            #     invoicing_cycle_configuration: nil,
-            #     metadata: nil,
-            #     model_type: :bps,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(bps_config:, cadence:, currency:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :bps)
+            #   @param bps_config [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BpsConfig]
+            #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::Cadence]
+            #   @param currency [String]
+            #   @param item_id [String]
+            #   @param name [String]
+            #   @param billable_metric_id [String, nil]
+            #   @param billed_in_advance [Boolean, nil]
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BillingCycleConfiguration, nil]
+            #   @param conversion_rate [Float, nil]
+            #   @param external_price_id [String, nil]
+            #   @param fixed_price_quantity [Float, nil]
+            #   @param invoice_grouping_key [String, nil]
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::InvoicingCycleConfiguration, nil]
+            #   @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   @param model_type [Symbol, :bps]
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice#bps_config
             class BpsConfig < Orb::Internal::Type::BaseModel
@@ -2411,13 +2048,9 @@ module Orb
               #   @return [String, nil]
               optional :per_unit_maximum, String, nil?: true
 
-              # @!parse
-              #   # @param bps [Float]
-              #   # @param per_unit_maximum [String, nil]
-              #   #
-              #   def initialize(bps:, per_unit_maximum: nil, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(bps:, per_unit_maximum: nil)
+              #   @param bps [Float]
+              #   @param per_unit_maximum [String, nil]
             end
 
             # The cadence to bill for this price on.
@@ -2433,11 +2066,8 @@ module Orb
               ONE_TIME = :one_time
               CUSTOM = :custom
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice#billing_cycle_configuration
@@ -2455,16 +2085,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BillingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # For custom cadence: specifies the duration of the billing period in days or
-              #   # months.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BillingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   For custom cadence: specifies the duration of the billing period in days or
+              #   months.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::BillingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -2475,11 +2101,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -2498,16 +2121,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::InvoicingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   # If unspecified, a single invoice is produced per billing cycle.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::InvoicingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice::InvoicingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -2518,11 +2137,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
@@ -2629,45 +2245,22 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!parse
-            #   # @param bulk_bps_config [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig]
-            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::Cadence]
-            #   # @param currency [String]
-            #   # @param item_id [String]
-            #   # @param name [String]
-            #   # @param billable_metric_id [String, nil]
-            #   # @param billed_in_advance [Boolean, nil]
-            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BillingCycleConfiguration, nil]
-            #   # @param conversion_rate [Float, nil]
-            #   # @param external_price_id [String, nil]
-            #   # @param fixed_price_quantity [Float, nil]
-            #   # @param invoice_grouping_key [String, nil]
-            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::InvoicingCycleConfiguration, nil]
-            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   # @param model_type [Symbol, :bulk_bps]
-            #   #
-            #   def initialize(
-            #     bulk_bps_config:,
-            #     cadence:,
-            #     currency:,
-            #     item_id:,
-            #     name:,
-            #     billable_metric_id: nil,
-            #     billed_in_advance: nil,
-            #     billing_cycle_configuration: nil,
-            #     conversion_rate: nil,
-            #     external_price_id: nil,
-            #     fixed_price_quantity: nil,
-            #     invoice_grouping_key: nil,
-            #     invoicing_cycle_configuration: nil,
-            #     metadata: nil,
-            #     model_type: :bulk_bps,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(bulk_bps_config:, cadence:, currency:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :bulk_bps)
+            #   @param bulk_bps_config [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig]
+            #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::Cadence]
+            #   @param currency [String]
+            #   @param item_id [String]
+            #   @param name [String]
+            #   @param billable_metric_id [String, nil]
+            #   @param billed_in_advance [Boolean, nil]
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BillingCycleConfiguration, nil]
+            #   @param conversion_rate [Float, nil]
+            #   @param external_price_id [String, nil]
+            #   @param fixed_price_quantity [Float, nil]
+            #   @param invoice_grouping_key [String, nil]
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::InvoicingCycleConfiguration, nil]
+            #   @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   @param model_type [Symbol, :bulk_bps]
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice#bulk_bps_config
             class BulkBpsConfig < Orb::Internal::Type::BaseModel
@@ -2679,12 +2272,8 @@ module Orb
               required :tiers,
                        -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig::Tier] }
 
-              # @!parse
-              #   # @param tiers [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig::Tier>]
-              #   #
-              #   def initialize(tiers:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(tiers:)
+              #   @param tiers [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BulkBpsConfig::Tier>]
 
               class Tier < Orb::Internal::Type::BaseModel
                 # @!attribute bps
@@ -2705,14 +2294,10 @@ module Orb
                 #   @return [String, nil]
                 optional :per_unit_maximum, String, nil?: true
 
-                # @!parse
-                #   # @param bps [Float]
-                #   # @param maximum_amount [String, nil]
-                #   # @param per_unit_maximum [String, nil]
-                #   #
-                #   def initialize(bps:, maximum_amount: nil, per_unit_maximum: nil, **) = super
-
-                # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+                # @!method initialize(bps:, maximum_amount: nil, per_unit_maximum: nil)
+                #   @param bps [Float]
+                #   @param maximum_amount [String, nil]
+                #   @param per_unit_maximum [String, nil]
               end
             end
 
@@ -2729,11 +2314,8 @@ module Orb
               ONE_TIME = :one_time
               CUSTOM = :custom
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice#billing_cycle_configuration
@@ -2751,16 +2333,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BillingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # For custom cadence: specifies the duration of the billing period in days or
-              #   # months.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BillingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   For custom cadence: specifies the duration of the billing period in days or
+              #   months.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::BillingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -2771,11 +2349,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -2794,16 +2369,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   # If unspecified, a single invoice is produced per billing cycle.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -2814,11 +2385,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
@@ -2925,45 +2493,22 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!parse
-            #   # @param bulk_config [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig]
-            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::Cadence]
-            #   # @param currency [String]
-            #   # @param item_id [String]
-            #   # @param name [String]
-            #   # @param billable_metric_id [String, nil]
-            #   # @param billed_in_advance [Boolean, nil]
-            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BillingCycleConfiguration, nil]
-            #   # @param conversion_rate [Float, nil]
-            #   # @param external_price_id [String, nil]
-            #   # @param fixed_price_quantity [Float, nil]
-            #   # @param invoice_grouping_key [String, nil]
-            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::InvoicingCycleConfiguration, nil]
-            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   # @param model_type [Symbol, :bulk]
-            #   #
-            #   def initialize(
-            #     bulk_config:,
-            #     cadence:,
-            #     currency:,
-            #     item_id:,
-            #     name:,
-            #     billable_metric_id: nil,
-            #     billed_in_advance: nil,
-            #     billing_cycle_configuration: nil,
-            #     conversion_rate: nil,
-            #     external_price_id: nil,
-            #     fixed_price_quantity: nil,
-            #     invoice_grouping_key: nil,
-            #     invoicing_cycle_configuration: nil,
-            #     metadata: nil,
-            #     model_type: :bulk,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(bulk_config:, cadence:, currency:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :bulk)
+            #   @param bulk_config [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig]
+            #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::Cadence]
+            #   @param currency [String]
+            #   @param item_id [String]
+            #   @param name [String]
+            #   @param billable_metric_id [String, nil]
+            #   @param billed_in_advance [Boolean, nil]
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BillingCycleConfiguration, nil]
+            #   @param conversion_rate [Float, nil]
+            #   @param external_price_id [String, nil]
+            #   @param fixed_price_quantity [Float, nil]
+            #   @param invoice_grouping_key [String, nil]
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::InvoicingCycleConfiguration, nil]
+            #   @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   @param model_type [Symbol, :bulk]
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice#bulk_config
             class BulkConfig < Orb::Internal::Type::BaseModel
@@ -2974,12 +2519,8 @@ module Orb
               required :tiers,
                        -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig::Tier] }
 
-              # @!parse
-              #   # @param tiers [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig::Tier>]
-              #   #
-              #   def initialize(tiers:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(tiers:)
+              #   @param tiers [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BulkConfig::Tier>]
 
               class Tier < Orb::Internal::Type::BaseModel
                 # @!attribute unit_amount
@@ -2994,13 +2535,9 @@ module Orb
                 #   @return [Float, nil]
                 optional :maximum_units, Float, nil?: true
 
-                # @!parse
-                #   # @param unit_amount [String]
-                #   # @param maximum_units [Float, nil]
-                #   #
-                #   def initialize(unit_amount:, maximum_units: nil, **) = super
-
-                # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+                # @!method initialize(unit_amount:, maximum_units: nil)
+                #   @param unit_amount [String]
+                #   @param maximum_units [Float, nil]
               end
             end
 
@@ -3017,11 +2554,8 @@ module Orb
               ONE_TIME = :one_time
               CUSTOM = :custom
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice#billing_cycle_configuration
@@ -3039,16 +2573,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BillingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # For custom cadence: specifies the duration of the billing period in days or
-              #   # months.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BillingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   For custom cadence: specifies the duration of the billing period in days or
+              #   months.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::BillingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -3059,11 +2589,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -3082,16 +2609,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::InvoicingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   # If unspecified, a single invoice is produced per billing cycle.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::InvoicingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice::InvoicingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -3102,11 +2625,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
@@ -3212,45 +2732,22 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!parse
-            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::Cadence]
-            #   # @param currency [String]
-            #   # @param item_id [String]
-            #   # @param name [String]
-            #   # @param threshold_total_amount_config [Hash{Symbol=>Object}]
-            #   # @param billable_metric_id [String, nil]
-            #   # @param billed_in_advance [Boolean, nil]
-            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::BillingCycleConfiguration, nil]
-            #   # @param conversion_rate [Float, nil]
-            #   # @param external_price_id [String, nil]
-            #   # @param fixed_price_quantity [Float, nil]
-            #   # @param invoice_grouping_key [String, nil]
-            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::InvoicingCycleConfiguration, nil]
-            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   # @param model_type [Symbol, :threshold_total_amount]
-            #   #
-            #   def initialize(
-            #     cadence:,
-            #     currency:,
-            #     item_id:,
-            #     name:,
-            #     threshold_total_amount_config:,
-            #     billable_metric_id: nil,
-            #     billed_in_advance: nil,
-            #     billing_cycle_configuration: nil,
-            #     conversion_rate: nil,
-            #     external_price_id: nil,
-            #     fixed_price_quantity: nil,
-            #     invoice_grouping_key: nil,
-            #     invoicing_cycle_configuration: nil,
-            #     metadata: nil,
-            #     model_type: :threshold_total_amount,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(cadence:, currency:, item_id:, name:, threshold_total_amount_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :threshold_total_amount)
+            #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::Cadence]
+            #   @param currency [String]
+            #   @param item_id [String]
+            #   @param name [String]
+            #   @param threshold_total_amount_config [Hash{Symbol=>Object}]
+            #   @param billable_metric_id [String, nil]
+            #   @param billed_in_advance [Boolean, nil]
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::BillingCycleConfiguration, nil]
+            #   @param conversion_rate [Float, nil]
+            #   @param external_price_id [String, nil]
+            #   @param fixed_price_quantity [Float, nil]
+            #   @param invoice_grouping_key [String, nil]
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::InvoicingCycleConfiguration, nil]
+            #   @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   @param model_type [Symbol, :threshold_total_amount]
 
             # The cadence to bill for this price on.
             #
@@ -3265,11 +2762,8 @@ module Orb
               ONE_TIME = :one_time
               CUSTOM = :custom
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice#billing_cycle_configuration
@@ -3287,16 +2781,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # For custom cadence: specifies the duration of the billing period in days or
-              #   # months.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   For custom cadence: specifies the duration of the billing period in days or
+              #   months.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -3307,11 +2797,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -3330,16 +2817,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   # If unspecified, a single invoice is produced per billing cycle.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -3350,11 +2833,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
@@ -3460,45 +2940,22 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!parse
-            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::Cadence]
-            #   # @param currency [String]
-            #   # @param item_id [String]
-            #   # @param name [String]
-            #   # @param tiered_package_config [Hash{Symbol=>Object}]
-            #   # @param billable_metric_id [String, nil]
-            #   # @param billed_in_advance [Boolean, nil]
-            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::BillingCycleConfiguration, nil]
-            #   # @param conversion_rate [Float, nil]
-            #   # @param external_price_id [String, nil]
-            #   # @param fixed_price_quantity [Float, nil]
-            #   # @param invoice_grouping_key [String, nil]
-            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::InvoicingCycleConfiguration, nil]
-            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   # @param model_type [Symbol, :tiered_package]
-            #   #
-            #   def initialize(
-            #     cadence:,
-            #     currency:,
-            #     item_id:,
-            #     name:,
-            #     tiered_package_config:,
-            #     billable_metric_id: nil,
-            #     billed_in_advance: nil,
-            #     billing_cycle_configuration: nil,
-            #     conversion_rate: nil,
-            #     external_price_id: nil,
-            #     fixed_price_quantity: nil,
-            #     invoice_grouping_key: nil,
-            #     invoicing_cycle_configuration: nil,
-            #     metadata: nil,
-            #     model_type: :tiered_package,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(cadence:, currency:, item_id:, name:, tiered_package_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :tiered_package)
+            #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::Cadence]
+            #   @param currency [String]
+            #   @param item_id [String]
+            #   @param name [String]
+            #   @param tiered_package_config [Hash{Symbol=>Object}]
+            #   @param billable_metric_id [String, nil]
+            #   @param billed_in_advance [Boolean, nil]
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::BillingCycleConfiguration, nil]
+            #   @param conversion_rate [Float, nil]
+            #   @param external_price_id [String, nil]
+            #   @param fixed_price_quantity [Float, nil]
+            #   @param invoice_grouping_key [String, nil]
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::InvoicingCycleConfiguration, nil]
+            #   @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   @param model_type [Symbol, :tiered_package]
 
             # The cadence to bill for this price on.
             #
@@ -3513,11 +2970,8 @@ module Orb
               ONE_TIME = :one_time
               CUSTOM = :custom
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice#billing_cycle_configuration
@@ -3535,16 +2989,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::BillingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # For custom cadence: specifies the duration of the billing period in days or
-              #   # months.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::BillingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   For custom cadence: specifies the duration of the billing period in days or
+              #   months.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::BillingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -3555,11 +3005,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -3578,16 +3025,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   # If unspecified, a single invoice is produced per billing cycle.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -3598,11 +3041,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
@@ -3708,45 +3148,22 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!parse
-            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::Cadence]
-            #   # @param currency [String]
-            #   # @param grouped_tiered_config [Hash{Symbol=>Object}]
-            #   # @param item_id [String]
-            #   # @param name [String]
-            #   # @param billable_metric_id [String, nil]
-            #   # @param billed_in_advance [Boolean, nil]
-            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::BillingCycleConfiguration, nil]
-            #   # @param conversion_rate [Float, nil]
-            #   # @param external_price_id [String, nil]
-            #   # @param fixed_price_quantity [Float, nil]
-            #   # @param invoice_grouping_key [String, nil]
-            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::InvoicingCycleConfiguration, nil]
-            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   # @param model_type [Symbol, :grouped_tiered]
-            #   #
-            #   def initialize(
-            #     cadence:,
-            #     currency:,
-            #     grouped_tiered_config:,
-            #     item_id:,
-            #     name:,
-            #     billable_metric_id: nil,
-            #     billed_in_advance: nil,
-            #     billing_cycle_configuration: nil,
-            #     conversion_rate: nil,
-            #     external_price_id: nil,
-            #     fixed_price_quantity: nil,
-            #     invoice_grouping_key: nil,
-            #     invoicing_cycle_configuration: nil,
-            #     metadata: nil,
-            #     model_type: :grouped_tiered,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(cadence:, currency:, grouped_tiered_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :grouped_tiered)
+            #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::Cadence]
+            #   @param currency [String]
+            #   @param grouped_tiered_config [Hash{Symbol=>Object}]
+            #   @param item_id [String]
+            #   @param name [String]
+            #   @param billable_metric_id [String, nil]
+            #   @param billed_in_advance [Boolean, nil]
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::BillingCycleConfiguration, nil]
+            #   @param conversion_rate [Float, nil]
+            #   @param external_price_id [String, nil]
+            #   @param fixed_price_quantity [Float, nil]
+            #   @param invoice_grouping_key [String, nil]
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::InvoicingCycleConfiguration, nil]
+            #   @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   @param model_type [Symbol, :grouped_tiered]
 
             # The cadence to bill for this price on.
             #
@@ -3761,11 +3178,8 @@ module Orb
               ONE_TIME = :one_time
               CUSTOM = :custom
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice#billing_cycle_configuration
@@ -3783,16 +3197,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::BillingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # For custom cadence: specifies the duration of the billing period in days or
-              #   # months.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::BillingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   For custom cadence: specifies the duration of the billing period in days or
+              #   months.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::BillingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -3803,11 +3213,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -3826,16 +3233,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::InvoicingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   # If unspecified, a single invoice is produced per billing cycle.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::InvoicingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice::InvoicingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -3846,11 +3249,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
@@ -3957,45 +3357,22 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!parse
-            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::Cadence]
-            #   # @param currency [String]
-            #   # @param item_id [String]
-            #   # @param max_group_tiered_package_config [Hash{Symbol=>Object}]
-            #   # @param name [String]
-            #   # @param billable_metric_id [String, nil]
-            #   # @param billed_in_advance [Boolean, nil]
-            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::BillingCycleConfiguration, nil]
-            #   # @param conversion_rate [Float, nil]
-            #   # @param external_price_id [String, nil]
-            #   # @param fixed_price_quantity [Float, nil]
-            #   # @param invoice_grouping_key [String, nil]
-            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::InvoicingCycleConfiguration, nil]
-            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   # @param model_type [Symbol, :max_group_tiered_package]
-            #   #
-            #   def initialize(
-            #     cadence:,
-            #     currency:,
-            #     item_id:,
-            #     max_group_tiered_package_config:,
-            #     name:,
-            #     billable_metric_id: nil,
-            #     billed_in_advance: nil,
-            #     billing_cycle_configuration: nil,
-            #     conversion_rate: nil,
-            #     external_price_id: nil,
-            #     fixed_price_quantity: nil,
-            #     invoice_grouping_key: nil,
-            #     invoicing_cycle_configuration: nil,
-            #     metadata: nil,
-            #     model_type: :max_group_tiered_package,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(cadence:, currency:, item_id:, max_group_tiered_package_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :max_group_tiered_package)
+            #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::Cadence]
+            #   @param currency [String]
+            #   @param item_id [String]
+            #   @param max_group_tiered_package_config [Hash{Symbol=>Object}]
+            #   @param name [String]
+            #   @param billable_metric_id [String, nil]
+            #   @param billed_in_advance [Boolean, nil]
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::BillingCycleConfiguration, nil]
+            #   @param conversion_rate [Float, nil]
+            #   @param external_price_id [String, nil]
+            #   @param fixed_price_quantity [Float, nil]
+            #   @param invoice_grouping_key [String, nil]
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::InvoicingCycleConfiguration, nil]
+            #   @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   @param model_type [Symbol, :max_group_tiered_package]
 
             # The cadence to bill for this price on.
             #
@@ -4010,11 +3387,8 @@ module Orb
               ONE_TIME = :one_time
               CUSTOM = :custom
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice#billing_cycle_configuration
@@ -4032,16 +3406,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # For custom cadence: specifies the duration of the billing period in days or
-              #   # months.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   For custom cadence: specifies the duration of the billing period in days or
+              #   months.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -4052,11 +3422,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -4075,16 +3442,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   # If unspecified, a single invoice is produced per billing cycle.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -4095,11 +3458,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
@@ -4205,45 +3565,22 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!parse
-            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::Cadence]
-            #   # @param currency [String]
-            #   # @param item_id [String]
-            #   # @param name [String]
-            #   # @param tiered_with_minimum_config [Hash{Symbol=>Object}]
-            #   # @param billable_metric_id [String, nil]
-            #   # @param billed_in_advance [Boolean, nil]
-            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::BillingCycleConfiguration, nil]
-            #   # @param conversion_rate [Float, nil]
-            #   # @param external_price_id [String, nil]
-            #   # @param fixed_price_quantity [Float, nil]
-            #   # @param invoice_grouping_key [String, nil]
-            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::InvoicingCycleConfiguration, nil]
-            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   # @param model_type [Symbol, :tiered_with_minimum]
-            #   #
-            #   def initialize(
-            #     cadence:,
-            #     currency:,
-            #     item_id:,
-            #     name:,
-            #     tiered_with_minimum_config:,
-            #     billable_metric_id: nil,
-            #     billed_in_advance: nil,
-            #     billing_cycle_configuration: nil,
-            #     conversion_rate: nil,
-            #     external_price_id: nil,
-            #     fixed_price_quantity: nil,
-            #     invoice_grouping_key: nil,
-            #     invoicing_cycle_configuration: nil,
-            #     metadata: nil,
-            #     model_type: :tiered_with_minimum,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(cadence:, currency:, item_id:, name:, tiered_with_minimum_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :tiered_with_minimum)
+            #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::Cadence]
+            #   @param currency [String]
+            #   @param item_id [String]
+            #   @param name [String]
+            #   @param tiered_with_minimum_config [Hash{Symbol=>Object}]
+            #   @param billable_metric_id [String, nil]
+            #   @param billed_in_advance [Boolean, nil]
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::BillingCycleConfiguration, nil]
+            #   @param conversion_rate [Float, nil]
+            #   @param external_price_id [String, nil]
+            #   @param fixed_price_quantity [Float, nil]
+            #   @param invoice_grouping_key [String, nil]
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::InvoicingCycleConfiguration, nil]
+            #   @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   @param model_type [Symbol, :tiered_with_minimum]
 
             # The cadence to bill for this price on.
             #
@@ -4258,11 +3595,8 @@ module Orb
               ONE_TIME = :one_time
               CUSTOM = :custom
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice#billing_cycle_configuration
@@ -4280,16 +3614,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # For custom cadence: specifies the duration of the billing period in days or
-              #   # months.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   For custom cadence: specifies the duration of the billing period in days or
+              #   months.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -4300,11 +3630,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -4323,16 +3650,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   # If unspecified, a single invoice is produced per billing cycle.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -4343,11 +3666,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
@@ -4454,45 +3774,22 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!parse
-            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::Cadence]
-            #   # @param currency [String]
-            #   # @param item_id [String]
-            #   # @param name [String]
-            #   # @param package_with_allocation_config [Hash{Symbol=>Object}]
-            #   # @param billable_metric_id [String, nil]
-            #   # @param billed_in_advance [Boolean, nil]
-            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::BillingCycleConfiguration, nil]
-            #   # @param conversion_rate [Float, nil]
-            #   # @param external_price_id [String, nil]
-            #   # @param fixed_price_quantity [Float, nil]
-            #   # @param invoice_grouping_key [String, nil]
-            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::InvoicingCycleConfiguration, nil]
-            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   # @param model_type [Symbol, :package_with_allocation]
-            #   #
-            #   def initialize(
-            #     cadence:,
-            #     currency:,
-            #     item_id:,
-            #     name:,
-            #     package_with_allocation_config:,
-            #     billable_metric_id: nil,
-            #     billed_in_advance: nil,
-            #     billing_cycle_configuration: nil,
-            #     conversion_rate: nil,
-            #     external_price_id: nil,
-            #     fixed_price_quantity: nil,
-            #     invoice_grouping_key: nil,
-            #     invoicing_cycle_configuration: nil,
-            #     metadata: nil,
-            #     model_type: :package_with_allocation,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(cadence:, currency:, item_id:, name:, package_with_allocation_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :package_with_allocation)
+            #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::Cadence]
+            #   @param currency [String]
+            #   @param item_id [String]
+            #   @param name [String]
+            #   @param package_with_allocation_config [Hash{Symbol=>Object}]
+            #   @param billable_metric_id [String, nil]
+            #   @param billed_in_advance [Boolean, nil]
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::BillingCycleConfiguration, nil]
+            #   @param conversion_rate [Float, nil]
+            #   @param external_price_id [String, nil]
+            #   @param fixed_price_quantity [Float, nil]
+            #   @param invoice_grouping_key [String, nil]
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::InvoicingCycleConfiguration, nil]
+            #   @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   @param model_type [Symbol, :package_with_allocation]
 
             # The cadence to bill for this price on.
             #
@@ -4507,11 +3804,8 @@ module Orb
               ONE_TIME = :one_time
               CUSTOM = :custom
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice#billing_cycle_configuration
@@ -4529,16 +3823,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # For custom cadence: specifies the duration of the billing period in days or
-              #   # months.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   For custom cadence: specifies the duration of the billing period in days or
+              #   months.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -4549,11 +3839,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -4572,16 +3859,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   # If unspecified, a single invoice is produced per billing cycle.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -4592,11 +3875,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
@@ -4703,45 +3983,22 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!parse
-            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::Cadence]
-            #   # @param currency [String]
-            #   # @param item_id [String]
-            #   # @param name [String]
-            #   # @param tiered_package_with_minimum_config [Hash{Symbol=>Object}]
-            #   # @param billable_metric_id [String, nil]
-            #   # @param billed_in_advance [Boolean, nil]
-            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::BillingCycleConfiguration, nil]
-            #   # @param conversion_rate [Float, nil]
-            #   # @param external_price_id [String, nil]
-            #   # @param fixed_price_quantity [Float, nil]
-            #   # @param invoice_grouping_key [String, nil]
-            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::InvoicingCycleConfiguration, nil]
-            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   # @param model_type [Symbol, :tiered_package_with_minimum]
-            #   #
-            #   def initialize(
-            #     cadence:,
-            #     currency:,
-            #     item_id:,
-            #     name:,
-            #     tiered_package_with_minimum_config:,
-            #     billable_metric_id: nil,
-            #     billed_in_advance: nil,
-            #     billing_cycle_configuration: nil,
-            #     conversion_rate: nil,
-            #     external_price_id: nil,
-            #     fixed_price_quantity: nil,
-            #     invoice_grouping_key: nil,
-            #     invoicing_cycle_configuration: nil,
-            #     metadata: nil,
-            #     model_type: :tiered_package_with_minimum,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(cadence:, currency:, item_id:, name:, tiered_package_with_minimum_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :tiered_package_with_minimum)
+            #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::Cadence]
+            #   @param currency [String]
+            #   @param item_id [String]
+            #   @param name [String]
+            #   @param tiered_package_with_minimum_config [Hash{Symbol=>Object}]
+            #   @param billable_metric_id [String, nil]
+            #   @param billed_in_advance [Boolean, nil]
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::BillingCycleConfiguration, nil]
+            #   @param conversion_rate [Float, nil]
+            #   @param external_price_id [String, nil]
+            #   @param fixed_price_quantity [Float, nil]
+            #   @param invoice_grouping_key [String, nil]
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::InvoicingCycleConfiguration, nil]
+            #   @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   @param model_type [Symbol, :tiered_package_with_minimum]
 
             # The cadence to bill for this price on.
             #
@@ -4756,11 +4013,8 @@ module Orb
               ONE_TIME = :one_time
               CUSTOM = :custom
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice#billing_cycle_configuration
@@ -4778,16 +4032,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::BillingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # For custom cadence: specifies the duration of the billing period in days or
-              #   # months.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::BillingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   For custom cadence: specifies the duration of the billing period in days or
+              #   months.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::BillingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -4798,11 +4048,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -4821,16 +4068,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   # If unspecified, a single invoice is produced per billing cycle.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -4841,11 +4084,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
@@ -4951,45 +4191,22 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!parse
-            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::Cadence]
-            #   # @param currency [String]
-            #   # @param item_id [String]
-            #   # @param name [String]
-            #   # @param unit_with_percent_config [Hash{Symbol=>Object}]
-            #   # @param billable_metric_id [String, nil]
-            #   # @param billed_in_advance [Boolean, nil]
-            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::BillingCycleConfiguration, nil]
-            #   # @param conversion_rate [Float, nil]
-            #   # @param external_price_id [String, nil]
-            #   # @param fixed_price_quantity [Float, nil]
-            #   # @param invoice_grouping_key [String, nil]
-            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::InvoicingCycleConfiguration, nil]
-            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   # @param model_type [Symbol, :unit_with_percent]
-            #   #
-            #   def initialize(
-            #     cadence:,
-            #     currency:,
-            #     item_id:,
-            #     name:,
-            #     unit_with_percent_config:,
-            #     billable_metric_id: nil,
-            #     billed_in_advance: nil,
-            #     billing_cycle_configuration: nil,
-            #     conversion_rate: nil,
-            #     external_price_id: nil,
-            #     fixed_price_quantity: nil,
-            #     invoice_grouping_key: nil,
-            #     invoicing_cycle_configuration: nil,
-            #     metadata: nil,
-            #     model_type: :unit_with_percent,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(cadence:, currency:, item_id:, name:, unit_with_percent_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :unit_with_percent)
+            #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::Cadence]
+            #   @param currency [String]
+            #   @param item_id [String]
+            #   @param name [String]
+            #   @param unit_with_percent_config [Hash{Symbol=>Object}]
+            #   @param billable_metric_id [String, nil]
+            #   @param billed_in_advance [Boolean, nil]
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::BillingCycleConfiguration, nil]
+            #   @param conversion_rate [Float, nil]
+            #   @param external_price_id [String, nil]
+            #   @param fixed_price_quantity [Float, nil]
+            #   @param invoice_grouping_key [String, nil]
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::InvoicingCycleConfiguration, nil]
+            #   @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   @param model_type [Symbol, :unit_with_percent]
 
             # The cadence to bill for this price on.
             #
@@ -5004,11 +4221,8 @@ module Orb
               ONE_TIME = :one_time
               CUSTOM = :custom
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice#billing_cycle_configuration
@@ -5026,16 +4240,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # For custom cadence: specifies the duration of the billing period in days or
-              #   # months.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   For custom cadence: specifies the duration of the billing period in days or
+              #   months.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -5046,11 +4256,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -5069,16 +4276,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   # If unspecified, a single invoice is produced per billing cycle.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -5089,11 +4292,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
@@ -5199,45 +4399,22 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!parse
-            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::Cadence]
-            #   # @param currency [String]
-            #   # @param item_id [String]
-            #   # @param name [String]
-            #   # @param tiered_with_proration_config [Hash{Symbol=>Object}]
-            #   # @param billable_metric_id [String, nil]
-            #   # @param billed_in_advance [Boolean, nil]
-            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::BillingCycleConfiguration, nil]
-            #   # @param conversion_rate [Float, nil]
-            #   # @param external_price_id [String, nil]
-            #   # @param fixed_price_quantity [Float, nil]
-            #   # @param invoice_grouping_key [String, nil]
-            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::InvoicingCycleConfiguration, nil]
-            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   # @param model_type [Symbol, :tiered_with_proration]
-            #   #
-            #   def initialize(
-            #     cadence:,
-            #     currency:,
-            #     item_id:,
-            #     name:,
-            #     tiered_with_proration_config:,
-            #     billable_metric_id: nil,
-            #     billed_in_advance: nil,
-            #     billing_cycle_configuration: nil,
-            #     conversion_rate: nil,
-            #     external_price_id: nil,
-            #     fixed_price_quantity: nil,
-            #     invoice_grouping_key: nil,
-            #     invoicing_cycle_configuration: nil,
-            #     metadata: nil,
-            #     model_type: :tiered_with_proration,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(cadence:, currency:, item_id:, name:, tiered_with_proration_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :tiered_with_proration)
+            #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::Cadence]
+            #   @param currency [String]
+            #   @param item_id [String]
+            #   @param name [String]
+            #   @param tiered_with_proration_config [Hash{Symbol=>Object}]
+            #   @param billable_metric_id [String, nil]
+            #   @param billed_in_advance [Boolean, nil]
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::BillingCycleConfiguration, nil]
+            #   @param conversion_rate [Float, nil]
+            #   @param external_price_id [String, nil]
+            #   @param fixed_price_quantity [Float, nil]
+            #   @param invoice_grouping_key [String, nil]
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::InvoicingCycleConfiguration, nil]
+            #   @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   @param model_type [Symbol, :tiered_with_proration]
 
             # The cadence to bill for this price on.
             #
@@ -5252,11 +4429,8 @@ module Orb
               ONE_TIME = :one_time
               CUSTOM = :custom
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice#billing_cycle_configuration
@@ -5274,16 +4448,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::BillingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # For custom cadence: specifies the duration of the billing period in days or
-              #   # months.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::BillingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   For custom cadence: specifies the duration of the billing period in days or
+              #   months.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::BillingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -5294,11 +4464,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -5317,16 +4484,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::InvoicingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   # If unspecified, a single invoice is produced per billing cycle.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::InvoicingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice::InvoicingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -5337,11 +4500,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
@@ -5447,45 +4607,22 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!parse
-            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::Cadence]
-            #   # @param currency [String]
-            #   # @param item_id [String]
-            #   # @param name [String]
-            #   # @param unit_with_proration_config [Hash{Symbol=>Object}]
-            #   # @param billable_metric_id [String, nil]
-            #   # @param billed_in_advance [Boolean, nil]
-            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::BillingCycleConfiguration, nil]
-            #   # @param conversion_rate [Float, nil]
-            #   # @param external_price_id [String, nil]
-            #   # @param fixed_price_quantity [Float, nil]
-            #   # @param invoice_grouping_key [String, nil]
-            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::InvoicingCycleConfiguration, nil]
-            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   # @param model_type [Symbol, :unit_with_proration]
-            #   #
-            #   def initialize(
-            #     cadence:,
-            #     currency:,
-            #     item_id:,
-            #     name:,
-            #     unit_with_proration_config:,
-            #     billable_metric_id: nil,
-            #     billed_in_advance: nil,
-            #     billing_cycle_configuration: nil,
-            #     conversion_rate: nil,
-            #     external_price_id: nil,
-            #     fixed_price_quantity: nil,
-            #     invoice_grouping_key: nil,
-            #     invoicing_cycle_configuration: nil,
-            #     metadata: nil,
-            #     model_type: :unit_with_proration,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(cadence:, currency:, item_id:, name:, unit_with_proration_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :unit_with_proration)
+            #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::Cadence]
+            #   @param currency [String]
+            #   @param item_id [String]
+            #   @param name [String]
+            #   @param unit_with_proration_config [Hash{Symbol=>Object}]
+            #   @param billable_metric_id [String, nil]
+            #   @param billed_in_advance [Boolean, nil]
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::BillingCycleConfiguration, nil]
+            #   @param conversion_rate [Float, nil]
+            #   @param external_price_id [String, nil]
+            #   @param fixed_price_quantity [Float, nil]
+            #   @param invoice_grouping_key [String, nil]
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::InvoicingCycleConfiguration, nil]
+            #   @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   @param model_type [Symbol, :unit_with_proration]
 
             # The cadence to bill for this price on.
             #
@@ -5500,11 +4637,8 @@ module Orb
               ONE_TIME = :one_time
               CUSTOM = :custom
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice#billing_cycle_configuration
@@ -5522,16 +4656,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # For custom cadence: specifies the duration of the billing period in days or
-              #   # months.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   For custom cadence: specifies the duration of the billing period in days or
+              #   months.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -5542,11 +4672,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -5565,16 +4692,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   # If unspecified, a single invoice is produced per billing cycle.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -5585,11 +4708,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
@@ -5695,45 +4815,22 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!parse
-            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::Cadence]
-            #   # @param currency [String]
-            #   # @param grouped_allocation_config [Hash{Symbol=>Object}]
-            #   # @param item_id [String]
-            #   # @param name [String]
-            #   # @param billable_metric_id [String, nil]
-            #   # @param billed_in_advance [Boolean, nil]
-            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::BillingCycleConfiguration, nil]
-            #   # @param conversion_rate [Float, nil]
-            #   # @param external_price_id [String, nil]
-            #   # @param fixed_price_quantity [Float, nil]
-            #   # @param invoice_grouping_key [String, nil]
-            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::InvoicingCycleConfiguration, nil]
-            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   # @param model_type [Symbol, :grouped_allocation]
-            #   #
-            #   def initialize(
-            #     cadence:,
-            #     currency:,
-            #     grouped_allocation_config:,
-            #     item_id:,
-            #     name:,
-            #     billable_metric_id: nil,
-            #     billed_in_advance: nil,
-            #     billing_cycle_configuration: nil,
-            #     conversion_rate: nil,
-            #     external_price_id: nil,
-            #     fixed_price_quantity: nil,
-            #     invoice_grouping_key: nil,
-            #     invoicing_cycle_configuration: nil,
-            #     metadata: nil,
-            #     model_type: :grouped_allocation,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(cadence:, currency:, grouped_allocation_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :grouped_allocation)
+            #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::Cadence]
+            #   @param currency [String]
+            #   @param grouped_allocation_config [Hash{Symbol=>Object}]
+            #   @param item_id [String]
+            #   @param name [String]
+            #   @param billable_metric_id [String, nil]
+            #   @param billed_in_advance [Boolean, nil]
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::BillingCycleConfiguration, nil]
+            #   @param conversion_rate [Float, nil]
+            #   @param external_price_id [String, nil]
+            #   @param fixed_price_quantity [Float, nil]
+            #   @param invoice_grouping_key [String, nil]
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::InvoicingCycleConfiguration, nil]
+            #   @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   @param model_type [Symbol, :grouped_allocation]
 
             # The cadence to bill for this price on.
             #
@@ -5748,11 +4845,8 @@ module Orb
               ONE_TIME = :one_time
               CUSTOM = :custom
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice#billing_cycle_configuration
@@ -5770,16 +4864,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # For custom cadence: specifies the duration of the billing period in days or
-              #   # months.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   For custom cadence: specifies the duration of the billing period in days or
+              #   months.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -5790,11 +4880,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -5813,16 +4900,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   # If unspecified, a single invoice is produced per billing cycle.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -5833,11 +4916,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
@@ -5944,45 +5024,22 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!parse
-            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::Cadence]
-            #   # @param currency [String]
-            #   # @param grouped_with_prorated_minimum_config [Hash{Symbol=>Object}]
-            #   # @param item_id [String]
-            #   # @param name [String]
-            #   # @param billable_metric_id [String, nil]
-            #   # @param billed_in_advance [Boolean, nil]
-            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::BillingCycleConfiguration, nil]
-            #   # @param conversion_rate [Float, nil]
-            #   # @param external_price_id [String, nil]
-            #   # @param fixed_price_quantity [Float, nil]
-            #   # @param invoice_grouping_key [String, nil]
-            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration, nil]
-            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   # @param model_type [Symbol, :grouped_with_prorated_minimum]
-            #   #
-            #   def initialize(
-            #     cadence:,
-            #     currency:,
-            #     grouped_with_prorated_minimum_config:,
-            #     item_id:,
-            #     name:,
-            #     billable_metric_id: nil,
-            #     billed_in_advance: nil,
-            #     billing_cycle_configuration: nil,
-            #     conversion_rate: nil,
-            #     external_price_id: nil,
-            #     fixed_price_quantity: nil,
-            #     invoice_grouping_key: nil,
-            #     invoicing_cycle_configuration: nil,
-            #     metadata: nil,
-            #     model_type: :grouped_with_prorated_minimum,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(cadence:, currency:, grouped_with_prorated_minimum_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :grouped_with_prorated_minimum)
+            #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::Cadence]
+            #   @param currency [String]
+            #   @param grouped_with_prorated_minimum_config [Hash{Symbol=>Object}]
+            #   @param item_id [String]
+            #   @param name [String]
+            #   @param billable_metric_id [String, nil]
+            #   @param billed_in_advance [Boolean, nil]
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::BillingCycleConfiguration, nil]
+            #   @param conversion_rate [Float, nil]
+            #   @param external_price_id [String, nil]
+            #   @param fixed_price_quantity [Float, nil]
+            #   @param invoice_grouping_key [String, nil]
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration, nil]
+            #   @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   @param model_type [Symbol, :grouped_with_prorated_minimum]
 
             # The cadence to bill for this price on.
             #
@@ -5997,11 +5054,8 @@ module Orb
               ONE_TIME = :one_time
               CUSTOM = :custom
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice#billing_cycle_configuration
@@ -6019,16 +5073,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # For custom cadence: specifies the duration of the billing period in days or
-              #   # months.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   For custom cadence: specifies the duration of the billing period in days or
+              #   months.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -6039,11 +5089,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -6062,16 +5109,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   # If unspecified, a single invoice is produced per billing cycle.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -6082,11 +5125,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
@@ -6193,45 +5233,22 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!parse
-            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::Cadence]
-            #   # @param currency [String]
-            #   # @param grouped_with_metered_minimum_config [Hash{Symbol=>Object}]
-            #   # @param item_id [String]
-            #   # @param name [String]
-            #   # @param billable_metric_id [String, nil]
-            #   # @param billed_in_advance [Boolean, nil]
-            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::BillingCycleConfiguration, nil]
-            #   # @param conversion_rate [Float, nil]
-            #   # @param external_price_id [String, nil]
-            #   # @param fixed_price_quantity [Float, nil]
-            #   # @param invoice_grouping_key [String, nil]
-            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration, nil]
-            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   # @param model_type [Symbol, :grouped_with_metered_minimum]
-            #   #
-            #   def initialize(
-            #     cadence:,
-            #     currency:,
-            #     grouped_with_metered_minimum_config:,
-            #     item_id:,
-            #     name:,
-            #     billable_metric_id: nil,
-            #     billed_in_advance: nil,
-            #     billing_cycle_configuration: nil,
-            #     conversion_rate: nil,
-            #     external_price_id: nil,
-            #     fixed_price_quantity: nil,
-            #     invoice_grouping_key: nil,
-            #     invoicing_cycle_configuration: nil,
-            #     metadata: nil,
-            #     model_type: :grouped_with_metered_minimum,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(cadence:, currency:, grouped_with_metered_minimum_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :grouped_with_metered_minimum)
+            #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::Cadence]
+            #   @param currency [String]
+            #   @param grouped_with_metered_minimum_config [Hash{Symbol=>Object}]
+            #   @param item_id [String]
+            #   @param name [String]
+            #   @param billable_metric_id [String, nil]
+            #   @param billed_in_advance [Boolean, nil]
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::BillingCycleConfiguration, nil]
+            #   @param conversion_rate [Float, nil]
+            #   @param external_price_id [String, nil]
+            #   @param fixed_price_quantity [Float, nil]
+            #   @param invoice_grouping_key [String, nil]
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration, nil]
+            #   @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   @param model_type [Symbol, :grouped_with_metered_minimum]
 
             # The cadence to bill for this price on.
             #
@@ -6246,11 +5263,8 @@ module Orb
               ONE_TIME = :one_time
               CUSTOM = :custom
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice#billing_cycle_configuration
@@ -6268,16 +5282,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # For custom cadence: specifies the duration of the billing period in days or
-              #   # months.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   For custom cadence: specifies the duration of the billing period in days or
+              #   months.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -6288,11 +5298,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -6311,16 +5318,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   # If unspecified, a single invoice is produced per billing cycle.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -6331,11 +5334,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
@@ -6442,45 +5442,22 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!parse
-            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::Cadence]
-            #   # @param currency [String]
-            #   # @param item_id [String]
-            #   # @param matrix_with_display_name_config [Hash{Symbol=>Object}]
-            #   # @param name [String]
-            #   # @param billable_metric_id [String, nil]
-            #   # @param billed_in_advance [Boolean, nil]
-            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::BillingCycleConfiguration, nil]
-            #   # @param conversion_rate [Float, nil]
-            #   # @param external_price_id [String, nil]
-            #   # @param fixed_price_quantity [Float, nil]
-            #   # @param invoice_grouping_key [String, nil]
-            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::InvoicingCycleConfiguration, nil]
-            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   # @param model_type [Symbol, :matrix_with_display_name]
-            #   #
-            #   def initialize(
-            #     cadence:,
-            #     currency:,
-            #     item_id:,
-            #     matrix_with_display_name_config:,
-            #     name:,
-            #     billable_metric_id: nil,
-            #     billed_in_advance: nil,
-            #     billing_cycle_configuration: nil,
-            #     conversion_rate: nil,
-            #     external_price_id: nil,
-            #     fixed_price_quantity: nil,
-            #     invoice_grouping_key: nil,
-            #     invoicing_cycle_configuration: nil,
-            #     metadata: nil,
-            #     model_type: :matrix_with_display_name,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(cadence:, currency:, item_id:, matrix_with_display_name_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :matrix_with_display_name)
+            #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::Cadence]
+            #   @param currency [String]
+            #   @param item_id [String]
+            #   @param matrix_with_display_name_config [Hash{Symbol=>Object}]
+            #   @param name [String]
+            #   @param billable_metric_id [String, nil]
+            #   @param billed_in_advance [Boolean, nil]
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::BillingCycleConfiguration, nil]
+            #   @param conversion_rate [Float, nil]
+            #   @param external_price_id [String, nil]
+            #   @param fixed_price_quantity [Float, nil]
+            #   @param invoice_grouping_key [String, nil]
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::InvoicingCycleConfiguration, nil]
+            #   @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   @param model_type [Symbol, :matrix_with_display_name]
 
             # The cadence to bill for this price on.
             #
@@ -6495,11 +5472,8 @@ module Orb
               ONE_TIME = :one_time
               CUSTOM = :custom
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice#billing_cycle_configuration
@@ -6517,16 +5491,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # For custom cadence: specifies the duration of the billing period in days or
-              #   # months.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   For custom cadence: specifies the duration of the billing period in days or
+              #   months.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -6537,11 +5507,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -6560,16 +5527,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   # If unspecified, a single invoice is produced per billing cycle.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -6580,11 +5543,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
@@ -6690,45 +5650,22 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!parse
-            #   # @param bulk_with_proration_config [Hash{Symbol=>Object}]
-            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::Cadence]
-            #   # @param currency [String]
-            #   # @param item_id [String]
-            #   # @param name [String]
-            #   # @param billable_metric_id [String, nil]
-            #   # @param billed_in_advance [Boolean, nil]
-            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::BillingCycleConfiguration, nil]
-            #   # @param conversion_rate [Float, nil]
-            #   # @param external_price_id [String, nil]
-            #   # @param fixed_price_quantity [Float, nil]
-            #   # @param invoice_grouping_key [String, nil]
-            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::InvoicingCycleConfiguration, nil]
-            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   # @param model_type [Symbol, :bulk_with_proration]
-            #   #
-            #   def initialize(
-            #     bulk_with_proration_config:,
-            #     cadence:,
-            #     currency:,
-            #     item_id:,
-            #     name:,
-            #     billable_metric_id: nil,
-            #     billed_in_advance: nil,
-            #     billing_cycle_configuration: nil,
-            #     conversion_rate: nil,
-            #     external_price_id: nil,
-            #     fixed_price_quantity: nil,
-            #     invoice_grouping_key: nil,
-            #     invoicing_cycle_configuration: nil,
-            #     metadata: nil,
-            #     model_type: :bulk_with_proration,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(bulk_with_proration_config:, cadence:, currency:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :bulk_with_proration)
+            #   @param bulk_with_proration_config [Hash{Symbol=>Object}]
+            #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::Cadence]
+            #   @param currency [String]
+            #   @param item_id [String]
+            #   @param name [String]
+            #   @param billable_metric_id [String, nil]
+            #   @param billed_in_advance [Boolean, nil]
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::BillingCycleConfiguration, nil]
+            #   @param conversion_rate [Float, nil]
+            #   @param external_price_id [String, nil]
+            #   @param fixed_price_quantity [Float, nil]
+            #   @param invoice_grouping_key [String, nil]
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::InvoicingCycleConfiguration, nil]
+            #   @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   @param model_type [Symbol, :bulk_with_proration]
 
             # The cadence to bill for this price on.
             #
@@ -6743,11 +5680,8 @@ module Orb
               ONE_TIME = :one_time
               CUSTOM = :custom
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice#billing_cycle_configuration
@@ -6765,16 +5699,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # For custom cadence: specifies the duration of the billing period in days or
-              #   # months.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   For custom cadence: specifies the duration of the billing period in days or
+              #   months.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -6785,11 +5715,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -6808,16 +5735,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   # If unspecified, a single invoice is produced per billing cycle.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -6828,11 +5751,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
@@ -6938,45 +5858,22 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!parse
-            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::Cadence]
-            #   # @param currency [String]
-            #   # @param grouped_tiered_package_config [Hash{Symbol=>Object}]
-            #   # @param item_id [String]
-            #   # @param name [String]
-            #   # @param billable_metric_id [String, nil]
-            #   # @param billed_in_advance [Boolean, nil]
-            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::BillingCycleConfiguration, nil]
-            #   # @param conversion_rate [Float, nil]
-            #   # @param external_price_id [String, nil]
-            #   # @param fixed_price_quantity [Float, nil]
-            #   # @param invoice_grouping_key [String, nil]
-            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::InvoicingCycleConfiguration, nil]
-            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   # @param model_type [Symbol, :grouped_tiered_package]
-            #   #
-            #   def initialize(
-            #     cadence:,
-            #     currency:,
-            #     grouped_tiered_package_config:,
-            #     item_id:,
-            #     name:,
-            #     billable_metric_id: nil,
-            #     billed_in_advance: nil,
-            #     billing_cycle_configuration: nil,
-            #     conversion_rate: nil,
-            #     external_price_id: nil,
-            #     fixed_price_quantity: nil,
-            #     invoice_grouping_key: nil,
-            #     invoicing_cycle_configuration: nil,
-            #     metadata: nil,
-            #     model_type: :grouped_tiered_package,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(cadence:, currency:, grouped_tiered_package_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :grouped_tiered_package)
+            #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::Cadence]
+            #   @param currency [String]
+            #   @param grouped_tiered_package_config [Hash{Symbol=>Object}]
+            #   @param item_id [String]
+            #   @param name [String]
+            #   @param billable_metric_id [String, nil]
+            #   @param billed_in_advance [Boolean, nil]
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::BillingCycleConfiguration, nil]
+            #   @param conversion_rate [Float, nil]
+            #   @param external_price_id [String, nil]
+            #   @param fixed_price_quantity [Float, nil]
+            #   @param invoice_grouping_key [String, nil]
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::InvoicingCycleConfiguration, nil]
+            #   @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   @param model_type [Symbol, :grouped_tiered_package]
 
             # The cadence to bill for this price on.
             #
@@ -6991,11 +5888,8 @@ module Orb
               ONE_TIME = :one_time
               CUSTOM = :custom
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice#billing_cycle_configuration
@@ -7013,16 +5907,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # For custom cadence: specifies the duration of the billing period in days or
-              #   # months.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   For custom cadence: specifies the duration of the billing period in days or
+              #   months.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -7033,11 +5923,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -7056,16 +5943,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   # If unspecified, a single invoice is produced per billing cycle.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -7076,11 +5959,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
@@ -7187,45 +6067,22 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!parse
-            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::Cadence]
-            #   # @param currency [String]
-            #   # @param item_id [String]
-            #   # @param name [String]
-            #   # @param scalable_matrix_with_unit_pricing_config [Hash{Symbol=>Object}]
-            #   # @param billable_metric_id [String, nil]
-            #   # @param billed_in_advance [Boolean, nil]
-            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration, nil]
-            #   # @param conversion_rate [Float, nil]
-            #   # @param external_price_id [String, nil]
-            #   # @param fixed_price_quantity [Float, nil]
-            #   # @param invoice_grouping_key [String, nil]
-            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration, nil]
-            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   # @param model_type [Symbol, :scalable_matrix_with_unit_pricing]
-            #   #
-            #   def initialize(
-            #     cadence:,
-            #     currency:,
-            #     item_id:,
-            #     name:,
-            #     scalable_matrix_with_unit_pricing_config:,
-            #     billable_metric_id: nil,
-            #     billed_in_advance: nil,
-            #     billing_cycle_configuration: nil,
-            #     conversion_rate: nil,
-            #     external_price_id: nil,
-            #     fixed_price_quantity: nil,
-            #     invoice_grouping_key: nil,
-            #     invoicing_cycle_configuration: nil,
-            #     metadata: nil,
-            #     model_type: :scalable_matrix_with_unit_pricing,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(cadence:, currency:, item_id:, name:, scalable_matrix_with_unit_pricing_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :scalable_matrix_with_unit_pricing)
+            #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::Cadence]
+            #   @param currency [String]
+            #   @param item_id [String]
+            #   @param name [String]
+            #   @param scalable_matrix_with_unit_pricing_config [Hash{Symbol=>Object}]
+            #   @param billable_metric_id [String, nil]
+            #   @param billed_in_advance [Boolean, nil]
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration, nil]
+            #   @param conversion_rate [Float, nil]
+            #   @param external_price_id [String, nil]
+            #   @param fixed_price_quantity [Float, nil]
+            #   @param invoice_grouping_key [String, nil]
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration, nil]
+            #   @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   @param model_type [Symbol, :scalable_matrix_with_unit_pricing]
 
             # The cadence to bill for this price on.
             #
@@ -7240,11 +6097,8 @@ module Orb
               ONE_TIME = :one_time
               CUSTOM = :custom
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice#billing_cycle_configuration
@@ -7262,16 +6116,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # For custom cadence: specifies the duration of the billing period in days or
-              #   # months.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   For custom cadence: specifies the duration of the billing period in days or
+              #   months.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -7282,11 +6132,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -7305,16 +6152,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   # If unspecified, a single invoice is produced per billing cycle.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -7325,11 +6168,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
@@ -7436,45 +6276,22 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!parse
-            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::Cadence]
-            #   # @param currency [String]
-            #   # @param item_id [String]
-            #   # @param name [String]
-            #   # @param scalable_matrix_with_tiered_pricing_config [Hash{Symbol=>Object}]
-            #   # @param billable_metric_id [String, nil]
-            #   # @param billed_in_advance [Boolean, nil]
-            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration, nil]
-            #   # @param conversion_rate [Float, nil]
-            #   # @param external_price_id [String, nil]
-            #   # @param fixed_price_quantity [Float, nil]
-            #   # @param invoice_grouping_key [String, nil]
-            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration, nil]
-            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   # @param model_type [Symbol, :scalable_matrix_with_tiered_pricing]
-            #   #
-            #   def initialize(
-            #     cadence:,
-            #     currency:,
-            #     item_id:,
-            #     name:,
-            #     scalable_matrix_with_tiered_pricing_config:,
-            #     billable_metric_id: nil,
-            #     billed_in_advance: nil,
-            #     billing_cycle_configuration: nil,
-            #     conversion_rate: nil,
-            #     external_price_id: nil,
-            #     fixed_price_quantity: nil,
-            #     invoice_grouping_key: nil,
-            #     invoicing_cycle_configuration: nil,
-            #     metadata: nil,
-            #     model_type: :scalable_matrix_with_tiered_pricing,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(cadence:, currency:, item_id:, name:, scalable_matrix_with_tiered_pricing_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :scalable_matrix_with_tiered_pricing)
+            #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::Cadence]
+            #   @param currency [String]
+            #   @param item_id [String]
+            #   @param name [String]
+            #   @param scalable_matrix_with_tiered_pricing_config [Hash{Symbol=>Object}]
+            #   @param billable_metric_id [String, nil]
+            #   @param billed_in_advance [Boolean, nil]
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration, nil]
+            #   @param conversion_rate [Float, nil]
+            #   @param external_price_id [String, nil]
+            #   @param fixed_price_quantity [Float, nil]
+            #   @param invoice_grouping_key [String, nil]
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration, nil]
+            #   @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   @param model_type [Symbol, :scalable_matrix_with_tiered_pricing]
 
             # The cadence to bill for this price on.
             #
@@ -7489,11 +6306,8 @@ module Orb
               ONE_TIME = :one_time
               CUSTOM = :custom
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice#billing_cycle_configuration
@@ -7511,16 +6325,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # For custom cadence: specifies the duration of the billing period in days or
-              #   # months.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   For custom cadence: specifies the duration of the billing period in days or
+              #   months.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -7531,11 +6341,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -7554,16 +6361,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   # If unspecified, a single invoice is produced per billing cycle.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -7574,11 +6377,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
@@ -7685,45 +6485,22 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!parse
-            #   # @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::Cadence]
-            #   # @param cumulative_grouped_bulk_config [Hash{Symbol=>Object}]
-            #   # @param currency [String]
-            #   # @param item_id [String]
-            #   # @param name [String]
-            #   # @param billable_metric_id [String, nil]
-            #   # @param billed_in_advance [Boolean, nil]
-            #   # @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration, nil]
-            #   # @param conversion_rate [Float, nil]
-            #   # @param external_price_id [String, nil]
-            #   # @param fixed_price_quantity [Float, nil]
-            #   # @param invoice_grouping_key [String, nil]
-            #   # @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration, nil]
-            #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   # @param model_type [Symbol, :cumulative_grouped_bulk]
-            #   #
-            #   def initialize(
-            #     cadence:,
-            #     cumulative_grouped_bulk_config:,
-            #     currency:,
-            #     item_id:,
-            #     name:,
-            #     billable_metric_id: nil,
-            #     billed_in_advance: nil,
-            #     billing_cycle_configuration: nil,
-            #     conversion_rate: nil,
-            #     external_price_id: nil,
-            #     fixed_price_quantity: nil,
-            #     invoice_grouping_key: nil,
-            #     invoicing_cycle_configuration: nil,
-            #     metadata: nil,
-            #     model_type: :cumulative_grouped_bulk,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(cadence:, cumulative_grouped_bulk_config:, currency:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :cumulative_grouped_bulk)
+            #   @param cadence [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::Cadence]
+            #   @param cumulative_grouped_bulk_config [Hash{Symbol=>Object}]
+            #   @param currency [String]
+            #   @param item_id [String]
+            #   @param name [String]
+            #   @param billable_metric_id [String, nil]
+            #   @param billed_in_advance [Boolean, nil]
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration, nil]
+            #   @param conversion_rate [Float, nil]
+            #   @param external_price_id [String, nil]
+            #   @param fixed_price_quantity [Float, nil]
+            #   @param invoice_grouping_key [String, nil]
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration, nil]
+            #   @param metadata [Hash{Symbol=>String, nil}, nil]
+            #   @param model_type [Symbol, :cumulative_grouped_bulk]
 
             # The cadence to bill for this price on.
             #
@@ -7738,11 +6515,8 @@ module Orb
               ONE_TIME = :one_time
               CUSTOM = :custom
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice#billing_cycle_configuration
@@ -7760,16 +6534,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # For custom cadence: specifies the duration of the billing period in days or
-              #   # months.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   For custom cadence: specifies the duration of the billing period in days or
+              #   months.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -7780,11 +6550,8 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -7803,16 +6570,12 @@ module Orb
               required :duration_unit,
                        enum: -> { Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit }
 
-              # @!parse
-              #   # Within each billing cycle, specifies the cadence at which invoices are produced.
-              #   # If unspecified, a single invoice is produced per billing cycle.
-              #   #
-              #   # @param duration [Integer]
-              #   # @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit]
-              #   #
-              #   def initialize(duration:, duration_unit:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(duration:, duration_unit:)
+              #   Within each billing cycle, specifies the cadence at which invoices are produced.
+              #   If unspecified, a single invoice is produced per billing cycle.
+              #
+              #   @param duration [Integer]
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit]
 
               # The unit of billing period duration.
               #
@@ -7823,18 +6586,14 @@ module Orb
                 DAY = :day
                 MONTH = :month
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
           end
 
-          # @!parse
-          #   # @return [Array(Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice)]
-          #   def self.variants; end
+          # @!method self.variants
+          #   @return [Array(Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkBpsPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingThresholdTotalAmountPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingPackageWithAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithPercentPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingTieredWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingUnitWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedAllocationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingBulkWithProrationPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingGroupedTieredPackagePrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::NewFloatingCumulativeGroupedBulkPrice)]
         end
       end
 
@@ -7867,14 +6626,10 @@ module Orb
                  union: -> { Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::EndDate },
                  nil?: true
 
-        # @!parse
-        #   # @param adjustment [Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewPercentageDiscount, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewUsageDiscount, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewAmountDiscount, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMinimum, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMaximum]
-        #   # @param start_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate]
-        #   # @param end_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate, nil]
-        #   #
-        #   def initialize(adjustment:, start_date:, end_date: nil, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(adjustment:, start_date:, end_date: nil)
+        #   @param adjustment [Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewPercentageDiscount, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewUsageDiscount, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewAmountDiscount, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMinimum, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMaximum]
+        #   @param start_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate]
+        #   @param end_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate, nil]
 
         # The definition of a new adjustment to create and add to the subscription.
         #
@@ -7927,23 +6682,11 @@ module Orb
             #   # @return [Boolean]
             #   attr_writer :is_invoice_level
 
-            # @!parse
-            #   # @param applies_to_price_ids [Array<String>]
-            #   # @param percentage_discount [Float]
-            #   # @param is_invoice_level [Boolean]
-            #   # @param adjustment_type [Symbol, :percentage_discount]
-            #   #
-            #   def initialize(
-            #     applies_to_price_ids:,
-            #     percentage_discount:,
-            #     is_invoice_level: nil,
-            #     adjustment_type: :percentage_discount,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(applies_to_price_ids:, percentage_discount:, is_invoice_level: nil, adjustment_type: :percentage_discount)
+            #   @param applies_to_price_ids [Array<String>]
+            #   @param percentage_discount [Float]
+            #   @param is_invoice_level [Boolean]
+            #   @param adjustment_type [Symbol, :percentage_discount]
           end
 
           class NewUsageDiscount < Orb::Internal::Type::BaseModel
@@ -7974,15 +6717,11 @@ module Orb
             #   # @return [Boolean]
             #   attr_writer :is_invoice_level
 
-            # @!parse
-            #   # @param applies_to_price_ids [Array<String>]
-            #   # @param usage_discount [Float]
-            #   # @param is_invoice_level [Boolean]
-            #   # @param adjustment_type [Symbol, :usage_discount]
-            #   #
-            #   def initialize(applies_to_price_ids:, usage_discount:, is_invoice_level: nil, adjustment_type: :usage_discount, **) = super
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(applies_to_price_ids:, usage_discount:, is_invoice_level: nil, adjustment_type: :usage_discount)
+            #   @param applies_to_price_ids [Array<String>]
+            #   @param usage_discount [Float]
+            #   @param is_invoice_level [Boolean]
+            #   @param adjustment_type [Symbol, :usage_discount]
           end
 
           class NewAmountDiscount < Orb::Internal::Type::BaseModel
@@ -8013,15 +6752,11 @@ module Orb
             #   # @return [Boolean]
             #   attr_writer :is_invoice_level
 
-            # @!parse
-            #   # @param amount_discount [String]
-            #   # @param applies_to_price_ids [Array<String>]
-            #   # @param is_invoice_level [Boolean]
-            #   # @param adjustment_type [Symbol, :amount_discount]
-            #   #
-            #   def initialize(amount_discount:, applies_to_price_ids:, is_invoice_level: nil, adjustment_type: :amount_discount, **) = super
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(amount_discount:, applies_to_price_ids:, is_invoice_level: nil, adjustment_type: :amount_discount)
+            #   @param amount_discount [String]
+            #   @param applies_to_price_ids [Array<String>]
+            #   @param is_invoice_level [Boolean]
+            #   @param adjustment_type [Symbol, :amount_discount]
           end
 
           class NewMinimum < Orb::Internal::Type::BaseModel
@@ -8058,16 +6793,12 @@ module Orb
             #   # @return [Boolean]
             #   attr_writer :is_invoice_level
 
-            # @!parse
-            #   # @param applies_to_price_ids [Array<String>]
-            #   # @param item_id [String]
-            #   # @param minimum_amount [String]
-            #   # @param is_invoice_level [Boolean]
-            #   # @param adjustment_type [Symbol, :minimum]
-            #   #
-            #   def initialize(applies_to_price_ids:, item_id:, minimum_amount:, is_invoice_level: nil, adjustment_type: :minimum, **) = super
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(applies_to_price_ids:, item_id:, minimum_amount:, is_invoice_level: nil, adjustment_type: :minimum)
+            #   @param applies_to_price_ids [Array<String>]
+            #   @param item_id [String]
+            #   @param minimum_amount [String]
+            #   @param is_invoice_level [Boolean]
+            #   @param adjustment_type [Symbol, :minimum]
           end
 
           class NewMaximum < Orb::Internal::Type::BaseModel
@@ -8098,20 +6829,15 @@ module Orb
             #   # @return [Boolean]
             #   attr_writer :is_invoice_level
 
-            # @!parse
-            #   # @param applies_to_price_ids [Array<String>]
-            #   # @param maximum_amount [String]
-            #   # @param is_invoice_level [Boolean]
-            #   # @param adjustment_type [Symbol, :maximum]
-            #   #
-            #   def initialize(applies_to_price_ids:, maximum_amount:, is_invoice_level: nil, adjustment_type: :maximum, **) = super
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(applies_to_price_ids:, maximum_amount:, is_invoice_level: nil, adjustment_type: :maximum)
+            #   @param applies_to_price_ids [Array<String>]
+            #   @param maximum_amount [String]
+            #   @param is_invoice_level [Boolean]
+            #   @param adjustment_type [Symbol, :maximum]
           end
 
-          # @!parse
-          #   # @return [Array(Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewPercentageDiscount, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewUsageDiscount, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewAmountDiscount, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMinimum, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMaximum)]
-          #   def self.variants; end
+          # @!method self.variants
+          #   @return [Array(Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewPercentageDiscount, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewUsageDiscount, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewAmountDiscount, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMinimum, Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::NewMaximum)]
         end
 
         # The start date of the adjustment interval. This is the date that the adjustment
@@ -8127,9 +6853,8 @@ module Orb
 
           variant enum: -> { Orb::Models::BillingCycleRelativeDate }
 
-          # @!parse
-          #   # @return [Array(Time, Symbol, Orb::Models::BillingCycleRelativeDate)]
-          #   def self.variants; end
+          # @!method self.variants
+          #   @return [Array(Time, Symbol, Orb::Models::BillingCycleRelativeDate)]
         end
 
         # The end date of the adjustment interval. This is the date that the adjustment
@@ -8145,9 +6870,8 @@ module Orb
 
           variant enum: -> { Orb::Models::BillingCycleRelativeDate }
 
-          # @!parse
-          #   # @return [Array(Time, Symbol, Orb::Models::BillingCycleRelativeDate)]
-          #   def self.variants; end
+          # @!method self.variants
+          #   @return [Array(Time, Symbol, Orb::Models::BillingCycleRelativeDate)]
         end
       end
 
@@ -8214,29 +6938,14 @@ module Orb
         #   @return [Array<String>, nil]
         optional :usage_customer_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
 
-        # @!parse
-        #   # @param price_interval_id [String]
-        #   # @param billing_cycle_day [Integer, nil]
-        #   # @param end_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate, nil]
-        #   # @param filter [String, nil]
-        #   # @param fixed_fee_quantity_transitions [Array<Orb::Models::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition>, nil]
-        #   # @param start_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate]
-        #   # @param usage_customer_ids [Array<String>, nil]
-        #   #
-        #   def initialize(
-        #     price_interval_id:,
-        #     billing_cycle_day: nil,
-        #     end_date: nil,
-        #     filter: nil,
-        #     fixed_fee_quantity_transitions: nil,
-        #     start_date: nil,
-        #     usage_customer_ids: nil,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(price_interval_id:, billing_cycle_day: nil, end_date: nil, filter: nil, fixed_fee_quantity_transitions: nil, start_date: nil, usage_customer_ids: nil)
+        #   @param price_interval_id [String]
+        #   @param billing_cycle_day [Integer, nil]
+        #   @param end_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate, nil]
+        #   @param filter [String, nil]
+        #   @param fixed_fee_quantity_transitions [Array<Orb::Models::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition>, nil]
+        #   @param start_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate]
+        #   @param usage_customer_ids [Array<String>, nil]
 
         # The updated end date of this price interval. If not specified, the start date
         # will not be updated.
@@ -8249,9 +6958,8 @@ module Orb
 
           variant enum: -> { Orb::Models::BillingCycleRelativeDate }
 
-          # @!parse
-          #   # @return [Array(Time, Symbol, Orb::Models::BillingCycleRelativeDate)]
-          #   def self.variants; end
+          # @!method self.variants
+          #   @return [Array(Time, Symbol, Orb::Models::BillingCycleRelativeDate)]
         end
 
         class FixedFeeQuantityTransition < Orb::Internal::Type::BaseModel
@@ -8267,13 +6975,9 @@ module Orb
           #   @return [Integer]
           required :quantity, Integer
 
-          # @!parse
-          #   # @param effective_date [Time]
-          #   # @param quantity [Integer]
-          #   #
-          #   def initialize(effective_date:, quantity:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(effective_date:, quantity:)
+          #   @param effective_date [Time]
+          #   @param quantity [Integer]
         end
 
         # The updated start date of this price interval. If not specified, the start date
@@ -8287,9 +6991,8 @@ module Orb
 
           variant enum: -> { Orb::Models::BillingCycleRelativeDate }
 
-          # @!parse
-          #   # @return [Array(Time, Symbol, Orb::Models::BillingCycleRelativeDate)]
-          #   def self.variants; end
+          # @!method self.variants
+          #   @return [Array(Time, Symbol, Orb::Models::BillingCycleRelativeDate)]
         end
       end
 
@@ -8321,14 +7024,10 @@ module Orb
         #   # @return [Time, Symbol, Orb::Models::BillingCycleRelativeDate]
         #   attr_writer :start_date
 
-        # @!parse
-        #   # @param adjustment_interval_id [String]
-        #   # @param end_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate, nil]
-        #   # @param start_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate]
-        #   #
-        #   def initialize(adjustment_interval_id:, end_date: nil, start_date: nil, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(adjustment_interval_id:, end_date: nil, start_date: nil)
+        #   @param adjustment_interval_id [String]
+        #   @param end_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate, nil]
+        #   @param start_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate]
 
         # The updated end date of this adjustment interval. If not specified, the start
         # date will not be updated.
@@ -8341,9 +7040,8 @@ module Orb
 
           variant enum: -> { Orb::Models::BillingCycleRelativeDate }
 
-          # @!parse
-          #   # @return [Array(Time, Symbol, Orb::Models::BillingCycleRelativeDate)]
-          #   def self.variants; end
+          # @!method self.variants
+          #   @return [Array(Time, Symbol, Orb::Models::BillingCycleRelativeDate)]
         end
 
         # The updated start date of this adjustment interval. If not specified, the start
@@ -8357,9 +7055,8 @@ module Orb
 
           variant enum: -> { Orb::Models::BillingCycleRelativeDate }
 
-          # @!parse
-          #   # @return [Array(Time, Symbol, Orb::Models::BillingCycleRelativeDate)]
-          #   def self.variants; end
+          # @!method self.variants
+          #   @return [Array(Time, Symbol, Orb::Models::BillingCycleRelativeDate)]
         end
       end
     end

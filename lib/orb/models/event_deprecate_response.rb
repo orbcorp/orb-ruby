@@ -10,12 +10,8 @@ module Orb
       #   @return [String]
       required :deprecated, String
 
-      # @!parse
-      #   # @param deprecated [String]
-      #   #
-      #   def initialize(deprecated:, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(deprecated:)
+      #   @param deprecated [String]
     end
   end
 end
