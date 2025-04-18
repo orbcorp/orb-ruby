@@ -74,8 +74,7 @@ module Orb
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::Item::ExternalConnection::ExternalConnectionName) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Orb::Models::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           STRIPE = T.let(:stripe, Orb::Models::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol)
           QUICKBOOKS =

@@ -1438,14 +1438,7 @@ module Orb
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::Status) }
-        OrSymbol =
-          T.type_alias do
-            T.any(
-              Symbol,
-              String,
-              Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::Status::TaggedSymbol
-            )
-          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ACTIVE =
           T.let(:active, Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse::Status::TaggedSymbol)

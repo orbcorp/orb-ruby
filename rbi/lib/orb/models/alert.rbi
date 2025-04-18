@@ -211,7 +211,7 @@ module Orb
         extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Alert::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::Alert::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         CREDIT_BALANCE_DEPLETED = T.let(:credit_balance_depleted, Orb::Models::Alert::Type::TaggedSymbol)
         CREDIT_BALANCE_DROPPED = T.let(:credit_balance_dropped, Orb::Models::Alert::Type::TaggedSymbol)

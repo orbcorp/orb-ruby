@@ -150,14 +150,7 @@ module Orb
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType) }
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  String,
-                  Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType::TaggedSymbol
-                )
-              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             AMENDMENT =
               T.let(
@@ -233,14 +226,7 @@ module Orb
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason) }
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  String,
-                  Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason::TaggedSymbol
-                )
-              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             REFUND =
               T.let(

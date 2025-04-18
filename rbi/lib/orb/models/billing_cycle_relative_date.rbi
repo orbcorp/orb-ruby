@@ -6,7 +6,7 @@ module Orb
       extend Orb::Internal::Type::Enum
 
       TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::BillingCycleRelativeDate) }
-      OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::BillingCycleRelativeDate::TaggedSymbol) }
+      OrSymbol = T.type_alias { T.any(Symbol, String) }
 
       START_OF_TERM = T.let(:start_of_term, Orb::Models::BillingCycleRelativeDate::TaggedSymbol)
       END_OF_TERM = T.let(:end_of_term, Orb::Models::BillingCycleRelativeDate::TaggedSymbol)
