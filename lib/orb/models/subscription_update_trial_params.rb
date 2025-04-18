@@ -4,8 +4,7 @@ module Orb
   module Models
     # @see Orb::Resources::Subscriptions#update_trial
     class SubscriptionUpdateTrialParams < Orb::Internal::Type::BaseModel
-      # @!parse
-      #   extend Orb::Internal::Type::RequestParameters::Converter
+      extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
       # @!attribute trial_end_date
@@ -15,16 +14,12 @@ module Orb
       #   @return [Time, Symbol, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate]
       required :trial_end_date, union: -> { Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate }
 
-      # @!attribute [r] shift
+      # @!attribute shift
       #   If true, shifts subsequent price and adjustment intervals (preserving their
       #   durations, but adjusting their absolute dates).
       #
       #   @return [Boolean, nil]
       optional :shift, Orb::Internal::Type::Boolean
-
-      # @!parse
-      #   # @return [Boolean]
-      #   attr_writer :shift
 
       # @!method initialize(trial_end_date:, shift: nil, request_options: {})
       #   @param trial_end_date [Time, Symbol, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate]

@@ -4,8 +4,7 @@ module Orb
   module Models
     # @see Orb::Resources::Subscriptions#update
     class SubscriptionUpdateParams < Orb::Internal::Type::BaseModel
-      # @!parse
-      #   extend Orb::Internal::Type::RequestParameters::Converter
+      extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
       # @!attribute auto_collection

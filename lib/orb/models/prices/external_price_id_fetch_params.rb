@@ -5,8 +5,7 @@ module Orb
     module Prices
       # @see Orb::Resources::Prices::ExternalPriceID#fetch
       class ExternalPriceIDFetchParams < Orb::Internal::Type::BaseModel
-        # @!parse
-        #   extend Orb::Internal::Type::RequestParameters::Converter
+        extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
         # @!method initialize(request_options: {})

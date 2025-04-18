@@ -4,8 +4,7 @@ module Orb
   module Models
     # @see Orb::Resources::Invoices#list
     class InvoiceListParams < Orb::Internal::Type::BaseModel
-      # @!parse
-      #   extend Orb::Internal::Type::RequestParameters::Converter
+      extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
       # @!attribute amount
@@ -94,15 +93,11 @@ module Orb
       #   @return [Boolean, nil]
       optional :is_recurring, Orb::Internal::Type::Boolean, nil?: true
 
-      # @!attribute [r] limit
+      # @!attribute limit
       #   The number of items to fetch. Defaults to 20.
       #
       #   @return [Integer, nil]
       optional :limit, Integer
-
-      # @!parse
-      #   # @return [Integer]
-      #   attr_writer :limit
 
       # @!attribute status
       #

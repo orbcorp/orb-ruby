@@ -4,8 +4,7 @@ module Orb
   module Models
     # @see Orb::Resources::Alerts#list
     class AlertListParams < Orb::Internal::Type::BaseModel
-      # @!parse
-      #   extend Orb::Internal::Type::RequestParameters::Converter
+      extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
       # @!attribute created_at_gt
@@ -47,15 +46,11 @@ module Orb
       #   @return [String, nil]
       optional :external_customer_id, String, nil?: true
 
-      # @!attribute [r] limit
+      # @!attribute limit
       #   The number of items to fetch. Defaults to 20.
       #
       #   @return [Integer, nil]
       optional :limit, Integer
-
-      # @!parse
-      #   # @return [Integer]
-      #   attr_writer :limit
 
       # @!attribute subscription_id
       #   Fetch alerts scoped to this subscription_id

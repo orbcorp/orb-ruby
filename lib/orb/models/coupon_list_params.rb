@@ -4,8 +4,7 @@ module Orb
   module Models
     # @see Orb::Resources::Coupons#list
     class CouponListParams < Orb::Internal::Type::BaseModel
-      # @!parse
-      #   extend Orb::Internal::Type::RequestParameters::Converter
+      extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
       # @!attribute cursor
@@ -15,15 +14,11 @@ module Orb
       #   @return [String, nil]
       optional :cursor, String, nil?: true
 
-      # @!attribute [r] limit
+      # @!attribute limit
       #   The number of items to fetch. Defaults to 20.
       #
       #   @return [Integer, nil]
       optional :limit, Integer
-
-      # @!parse
-      #   # @return [Integer]
-      #   attr_writer :limit
 
       # @!attribute redemption_code
       #   Filter to coupons matching this redemption code.

@@ -4,8 +4,7 @@ module Orb
   module Models
     # @see Orb::Resources::Prices#evaluate
     class PriceEvaluateParams < Orb::Internal::Type::BaseModel
-      # @!parse
-      #   extend Orb::Internal::Type::RequestParameters::Converter
+      extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
       # @!attribute timeframe_end
@@ -40,17 +39,13 @@ module Orb
       #   @return [String, nil]
       optional :filter, String, nil?: true
 
-      # @!attribute [r] grouping_keys
+      # @!attribute grouping_keys
       #   Properties (or
       #   [computed properties](/extensibility/advanced-metrics#computed-properties)) used
       #   to group the underlying billable metric
       #
       #   @return [Array<String>, nil]
       optional :grouping_keys, Orb::Internal::Type::ArrayOf[String]
-
-      # @!parse
-      #   # @return [Array<String>]
-      #   attr_writer :grouping_keys
 
       # @!method initialize(timeframe_end:, timeframe_start:, customer_id: nil, external_customer_id: nil, filter: nil, grouping_keys: nil, request_options: {})
       #   @param timeframe_end [Time]

@@ -5,8 +5,7 @@ module Orb
     module Events
       # @see Orb::Resources::Events::Backfills#close
       class BackfillCloseParams < Orb::Internal::Type::BaseModel
-        # @!parse
-        #   extend Orb::Internal::Type::RequestParameters::Converter
+        extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
         # @!method initialize(request_options: {})

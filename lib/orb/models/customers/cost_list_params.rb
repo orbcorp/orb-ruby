@@ -5,8 +5,7 @@ module Orb
     module Customers
       # @see Orb::Resources::Customers::Costs#list
       class CostListParams < Orb::Internal::Type::BaseModel
-        # @!parse
-        #   extend Orb::Internal::Type::RequestParameters::Converter
+        extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
         # @!attribute currency
