@@ -27,14 +27,10 @@ module Orb
           #   # @return [Integer]
           #   attr_writer :limit
 
-          # @!parse
-          #   # @param cursor [String, nil]
-          #   # @param limit [Integer]
-          #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-          #   #
-          #   def initialize(cursor: nil, limit: nil, request_options: {}, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(cursor: nil, limit: nil, request_options: {})
+          #   @param cursor [String, nil]
+          #   @param limit [Integer]
+          #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
         end
       end
     end

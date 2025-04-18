@@ -47,27 +47,13 @@ module Orb
       #   @return [Date, nil]
       optional :effective_date, Date, nil?: true
 
-      # @!parse
-      #   # @param price_id [String]
-      #   # @param quantity [Float]
-      #   # @param allow_invoice_credit_or_void [Boolean, nil]
-      #   # @param change_option [Symbol, Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption]
-      #   # @param effective_date [Date, nil]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     price_id:,
-      #     quantity:,
-      #     allow_invoice_credit_or_void: nil,
-      #     change_option: nil,
-      #     effective_date: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(price_id:, quantity:, allow_invoice_credit_or_void: nil, change_option: nil, effective_date: nil, request_options: {})
+      #   @param price_id [String]
+      #   @param quantity [Float]
+      #   @param allow_invoice_credit_or_void [Boolean, nil]
+      #   @param change_option [Symbol, Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption]
+      #   @param effective_date [Date, nil]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
       # Determines when the change takes effect. Note that if `effective_date` is
       # specified, this defaults to `effective_date`. Otherwise, this defaults to
@@ -79,11 +65,8 @@ module Orb
         UPCOMING_INVOICE = :upcoming_invoice
         EFFECTIVE_DATE = :effective_date
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

@@ -45,29 +45,14 @@ module Orb
       #   @return [Time, nil]
       optional :start_date_lte, Time, nil?: true
 
-      # @!parse
-      #   # @param cursor [String, nil]
-      #   # @param limit [Integer]
-      #   # @param start_date_gt [Time, nil]
-      #   # @param start_date_gte [Time, nil]
-      #   # @param start_date_lt [Time, nil]
-      #   # @param start_date_lte [Time, nil]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     cursor: nil,
-      #     limit: nil,
-      #     start_date_gt: nil,
-      #     start_date_gte: nil,
-      #     start_date_lt: nil,
-      #     start_date_lte: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(cursor: nil, limit: nil, start_date_gt: nil, start_date_gte: nil, start_date_lt: nil, start_date_lte: nil, request_options: {})
+      #   @param cursor [String, nil]
+      #   @param limit [Integer]
+      #   @param start_date_gt [Time, nil]
+      #   @param start_date_gte [Time, nil]
+      #   @param start_date_lt [Time, nil]
+      #   @param start_date_lte [Time, nil]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

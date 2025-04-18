@@ -15,13 +15,9 @@ module Orb
           #   @return [String]
           required :customer_id, String
 
-          # @!parse
-          #   # @param customer_id [String]
-          #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-          #   #
-          #   def initialize(customer_id:, request_options: {}, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(customer_id:, request_options: {})
+          #   @param customer_id [String]
+          #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
         end
       end
     end

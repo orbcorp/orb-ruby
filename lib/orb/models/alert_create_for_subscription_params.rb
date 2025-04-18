@@ -27,15 +27,11 @@ module Orb
       #   @return [String, nil]
       optional :metric_id, String, nil?: true
 
-      # @!parse
-      #   # @param thresholds [Array<Orb::Models::AlertCreateForSubscriptionParams::Threshold>]
-      #   # @param type [Symbol, Orb::Models::AlertCreateForSubscriptionParams::Type]
-      #   # @param metric_id [String, nil]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(thresholds:, type:, metric_id: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(thresholds:, type:, metric_id: nil, request_options: {})
+      #   @param thresholds [Array<Orb::Models::AlertCreateForSubscriptionParams::Threshold>]
+      #   @param type [Symbol, Orb::Models::AlertCreateForSubscriptionParams::Type]
+      #   @param metric_id [String, nil]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
       class Threshold < Orb::Internal::Type::BaseModel
         # @!attribute value
@@ -46,15 +42,11 @@ module Orb
         #   @return [Float]
         required :value, Float
 
-        # @!parse
-        #   # Thresholds are used to define the conditions under which an alert will be
-        #   # triggered.
-        #   #
-        #   # @param value [Float]
-        #   #
-        #   def initialize(value:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(value:)
+        #   Thresholds are used to define the conditions under which an alert will be
+        #   triggered.
+        #
+        #   @param value [Float]
       end
 
       # The type of alert to create. This must be a valid alert type.
@@ -64,11 +56,8 @@ module Orb
         USAGE_EXCEEDED = :usage_exceeded
         COST_EXCEEDED = :cost_exceeded
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

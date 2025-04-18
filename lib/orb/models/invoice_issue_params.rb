@@ -22,13 +22,9 @@ module Orb
       #   # @return [Boolean]
       #   attr_writer :synchronous
 
-      # @!parse
-      #   # @param synchronous [Boolean]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(synchronous: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(synchronous: nil, request_options: {})
+      #   @param synchronous [Boolean]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

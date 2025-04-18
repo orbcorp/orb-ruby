@@ -72,37 +72,18 @@ module Orb
           #   @return [String, nil]
           optional :minimum_amount, String, nil?: true
 
-          # @!parse
-          #   # @param created_at_gt [Time, nil]
-          #   # @param created_at_gte [Time, nil]
-          #   # @param created_at_lt [Time, nil]
-          #   # @param created_at_lte [Time, nil]
-          #   # @param currency [String, nil]
-          #   # @param cursor [String, nil]
-          #   # @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryStatus, nil]
-          #   # @param entry_type [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryType, nil]
-          #   # @param limit [Integer]
-          #   # @param minimum_amount [String, nil]
-          #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-          #   #
-          #   def initialize(
-          #     created_at_gt: nil,
-          #     created_at_gte: nil,
-          #     created_at_lt: nil,
-          #     created_at_lte: nil,
-          #     currency: nil,
-          #     cursor: nil,
-          #     entry_status: nil,
-          #     entry_type: nil,
-          #     limit: nil,
-          #     minimum_amount: nil,
-          #     request_options: {},
-          #     **
-          #   )
-          #     super
-          #   end
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, currency: nil, cursor: nil, entry_status: nil, entry_type: nil, limit: nil, minimum_amount: nil, request_options: {})
+          #   @param created_at_gt [Time, nil]
+          #   @param created_at_gte [Time, nil]
+          #   @param created_at_lt [Time, nil]
+          #   @param created_at_lte [Time, nil]
+          #   @param currency [String, nil]
+          #   @param cursor [String, nil]
+          #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryStatus, nil]
+          #   @param entry_type [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryType, nil]
+          #   @param limit [Integer]
+          #   @param minimum_amount [String, nil]
+          #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
           module EntryStatus
             extend Orb::Internal::Type::Enum
@@ -110,11 +91,8 @@ module Orb
             COMMITTED = :committed
             PENDING = :pending
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
 
           module EntryType
@@ -128,11 +106,8 @@ module Orb
             VOID_INITIATED = :void_initiated
             AMENDMENT = :amendment
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
       end

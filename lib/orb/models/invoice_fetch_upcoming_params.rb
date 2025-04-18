@@ -13,13 +13,9 @@ module Orb
       #   @return [String]
       required :subscription_id, String
 
-      # @!parse
-      #   # @param subscription_id [String]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(subscription_id:, request_options: {}, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(subscription_id:, request_options: {})
+      #   @param subscription_id [String]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

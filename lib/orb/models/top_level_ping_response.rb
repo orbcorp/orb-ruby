@@ -9,12 +9,8 @@ module Orb
       #   @return [String]
       required :response, String
 
-      # @!parse
-      #   # @param response [String]
-      #   #
-      #   def initialize(response:, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(response:)
+      #   @param response [String]
     end
   end
 end

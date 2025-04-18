@@ -9,12 +9,8 @@ module Orb
       #   @return [Array<Orb::Models::EventSearchResponse::Data>]
       required :data, -> { Orb::Internal::Type::ArrayOf[Orb::Models::EventSearchResponse::Data] }
 
-      # @!parse
-      #   # @param data [Array<Orb::Models::EventSearchResponse::Data>]
-      #   #
-      #   def initialize(data:, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(data:)
+      #   @param data [Array<Orb::Models::EventSearchResponse::Data>]
 
       class Data < Orb::Internal::Type::BaseModel
         # @!attribute id
@@ -65,22 +61,18 @@ module Orb
         #   @return [Time]
         required :timestamp, Time
 
-        # @!parse
-        #   # The [Event](/core-concepts#event) resource represents a usage event that has
-        #   # been created for a customer. Events are the core of Orb's usage-based billing
-        #   # model, and are used to calculate the usage charges for a given billing period.
-        #   #
-        #   # @param id [String]
-        #   # @param customer_id [String, nil]
-        #   # @param deprecated [Boolean]
-        #   # @param event_name [String]
-        #   # @param external_customer_id [String, nil]
-        #   # @param properties [Object]
-        #   # @param timestamp [Time]
-        #   #
-        #   def initialize(id:, customer_id:, deprecated:, event_name:, external_customer_id:, properties:, timestamp:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, customer_id:, deprecated:, event_name:, external_customer_id:, properties:, timestamp:)
+        #   The [Event](/core-concepts#event) resource represents a usage event that has
+        #   been created for a customer. Events are the core of Orb's usage-based billing
+        #   model, and are used to calculate the usage charges for a given billing period.
+        #
+        #   @param id [String]
+        #   @param customer_id [String, nil]
+        #   @param deprecated [Boolean]
+        #   @param event_name [String]
+        #   @param external_customer_id [String, nil]
+        #   @param properties [Object]
+        #   @param timestamp [Time]
       end
     end
   end

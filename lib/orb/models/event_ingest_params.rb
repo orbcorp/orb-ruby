@@ -30,15 +30,11 @@ module Orb
       #   # @return [Boolean]
       #   attr_writer :debug
 
-      # @!parse
-      #   # @param events [Array<Orb::Models::EventIngestParams::Event>]
-      #   # @param backfill_id [String, nil]
-      #   # @param debug [Boolean]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(events:, backfill_id: nil, debug: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(events:, backfill_id: nil, debug: nil, request_options: {})
+      #   @param events [Array<Orb::Models::EventIngestParams::Event>]
+      #   @param backfill_id [String, nil]
+      #   @param debug [Boolean]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
       class Event < Orb::Internal::Type::BaseModel
         # @!attribute event_name
@@ -83,17 +79,13 @@ module Orb
         #   @return [String, nil]
         optional :external_customer_id, String, nil?: true
 
-        # @!parse
-        #   # @param event_name [String]
-        #   # @param idempotency_key [String]
-        #   # @param properties [Object]
-        #   # @param timestamp [Time]
-        #   # @param customer_id [String, nil]
-        #   # @param external_customer_id [String, nil]
-        #   #
-        #   def initialize(event_name:, idempotency_key:, properties:, timestamp:, customer_id: nil, external_customer_id: nil, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(event_name:, idempotency_key:, properties:, timestamp:, customer_id: nil, external_customer_id: nil)
+        #   @param event_name [String]
+        #   @param idempotency_key [String]
+        #   @param properties [Object]
+        #   @param timestamp [Time]
+        #   @param customer_id [String, nil]
+        #   @param external_customer_id [String, nil]
       end
     end
   end

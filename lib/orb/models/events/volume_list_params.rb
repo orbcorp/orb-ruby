@@ -48,16 +48,12 @@ module Orb
         #   # @return [Time]
         #   attr_writer :timeframe_end
 
-        # @!parse
-        #   # @param timeframe_start [Time]
-        #   # @param cursor [String, nil]
-        #   # @param limit [Integer]
-        #   # @param timeframe_end [Time]
-        #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(timeframe_start:, cursor: nil, limit: nil, timeframe_end: nil, request_options: {}, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(timeframe_start:, cursor: nil, limit: nil, timeframe_end: nil, request_options: {})
+        #   @param timeframe_start [Time]
+        #   @param cursor [String, nil]
+        #   @param limit [Integer]
+        #   @param timeframe_end [Time]
+        #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
       end
     end
   end

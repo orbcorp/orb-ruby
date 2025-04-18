@@ -155,59 +155,29 @@ module Orb
       #   @return [Array<String>, nil]
       required :usage_customer_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
 
-      # @!parse
-      #   # @param id [String]
-      #   # @param adjusted_subtotal [String]
-      #   # @param adjustments [Array<Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMaximumAdjustment>]
-      #   # @param amount [String]
-      #   # @param credits_applied [String]
-      #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-      #   # @param end_date [Time]
-      #   # @param filter [String, nil]
-      #   # @param grouping [String, nil]
-      #   # @param maximum [Orb::Models::InvoiceLineItemCreateResponse::Maximum, nil]
-      #   # @param maximum_amount [String, nil]
-      #   # @param minimum [Orb::Models::InvoiceLineItemCreateResponse::Minimum, nil]
-      #   # @param minimum_amount [String, nil]
-      #   # @param name [String]
-      #   # @param partially_invoiced_amount [String]
-      #   # @param price [Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice, nil]
-      #   # @param quantity [Float]
-      #   # @param start_date [Time]
-      #   # @param sub_line_items [Array<Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem>]
-      #   # @param subtotal [String]
-      #   # @param tax_amounts [Array<Orb::Models::InvoiceLineItemCreateResponse::TaxAmount>]
-      #   # @param usage_customer_ids [Array<String>, nil]
-      #   #
-      #   def initialize(
-      #     id:,
-      #     adjusted_subtotal:,
-      #     adjustments:,
-      #     amount:,
-      #     credits_applied:,
-      #     discount:,
-      #     end_date:,
-      #     filter:,
-      #     grouping:,
-      #     maximum:,
-      #     maximum_amount:,
-      #     minimum:,
-      #     minimum_amount:,
-      #     name:,
-      #     partially_invoiced_amount:,
-      #     price:,
-      #     quantity:,
-      #     start_date:,
-      #     sub_line_items:,
-      #     subtotal:,
-      #     tax_amounts:,
-      #     usage_customer_ids:,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, adjusted_subtotal:, adjustments:, amount:, credits_applied:, discount:, end_date:, filter:, grouping:, maximum:, maximum_amount:, minimum:, minimum_amount:, name:, partially_invoiced_amount:, price:, quantity:, start_date:, sub_line_items:, subtotal:, tax_amounts:, usage_customer_ids:)
+      #   @param id [String]
+      #   @param adjusted_subtotal [String]
+      #   @param adjustments [Array<Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMaximumAdjustment>]
+      #   @param amount [String]
+      #   @param credits_applied [String]
+      #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+      #   @param end_date [Time]
+      #   @param filter [String, nil]
+      #   @param grouping [String, nil]
+      #   @param maximum [Orb::Models::InvoiceLineItemCreateResponse::Maximum, nil]
+      #   @param maximum_amount [String, nil]
+      #   @param minimum [Orb::Models::InvoiceLineItemCreateResponse::Minimum, nil]
+      #   @param minimum_amount [String, nil]
+      #   @param name [String]
+      #   @param partially_invoiced_amount [String]
+      #   @param price [Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice, nil]
+      #   @param quantity [Float]
+      #   @param start_date [Time]
+      #   @param sub_line_items [Array<Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem>]
+      #   @param subtotal [String]
+      #   @param tax_amounts [Array<Orb::Models::InvoiceLineItemCreateResponse::TaxAmount>]
+      #   @param usage_customer_ids [Array<String>, nil]
 
       module Adjustment
         extend Orb::Internal::Type::Union
@@ -270,29 +240,14 @@ module Orb
           #   @return [Float]
           required :usage_discount, Float
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param amount [String]
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param is_invoice_level [Boolean]
-          #   # @param reason [String, nil]
-          #   # @param usage_discount [Float]
-          #   # @param adjustment_type [Symbol, :usage_discount]
-          #   #
-          #   def initialize(
-          #     id:,
-          #     amount:,
-          #     applies_to_price_ids:,
-          #     is_invoice_level:,
-          #     reason:,
-          #     usage_discount:,
-          #     adjustment_type: :usage_discount,
-          #     **
-          #   )
-          #     super
-          #   end
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, amount:, applies_to_price_ids:, is_invoice_level:, reason:, usage_discount:, adjustment_type: :usage_discount)
+          #   @param id [String]
+          #   @param amount [String]
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param is_invoice_level [Boolean]
+          #   @param reason [String, nil]
+          #   @param usage_discount [Float]
+          #   @param adjustment_type [Symbol, :usage_discount]
         end
 
         class MonetaryAmountDiscountAdjustment < Orb::Internal::Type::BaseModel
@@ -338,29 +293,14 @@ module Orb
           #   @return [String, nil]
           required :reason, String, nil?: true
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param amount [String]
-          #   # @param amount_discount [String]
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param is_invoice_level [Boolean]
-          #   # @param reason [String, nil]
-          #   # @param adjustment_type [Symbol, :amount_discount]
-          #   #
-          #   def initialize(
-          #     id:,
-          #     amount:,
-          #     amount_discount:,
-          #     applies_to_price_ids:,
-          #     is_invoice_level:,
-          #     reason:,
-          #     adjustment_type: :amount_discount,
-          #     **
-          #   )
-          #     super
-          #   end
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, amount:, amount_discount:, applies_to_price_ids:, is_invoice_level:, reason:, adjustment_type: :amount_discount)
+          #   @param id [String]
+          #   @param amount [String]
+          #   @param amount_discount [String]
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param is_invoice_level [Boolean]
+          #   @param reason [String, nil]
+          #   @param adjustment_type [Symbol, :amount_discount]
         end
 
         class MonetaryPercentageDiscountAdjustment < Orb::Internal::Type::BaseModel
@@ -406,29 +346,14 @@ module Orb
           #   @return [String, nil]
           required :reason, String, nil?: true
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param amount [String]
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param is_invoice_level [Boolean]
-          #   # @param percentage_discount [Float]
-          #   # @param reason [String, nil]
-          #   # @param adjustment_type [Symbol, :percentage_discount]
-          #   #
-          #   def initialize(
-          #     id:,
-          #     amount:,
-          #     applies_to_price_ids:,
-          #     is_invoice_level:,
-          #     percentage_discount:,
-          #     reason:,
-          #     adjustment_type: :percentage_discount,
-          #     **
-          #   )
-          #     super
-          #   end
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, amount:, applies_to_price_ids:, is_invoice_level:, percentage_discount:, reason:, adjustment_type: :percentage_discount)
+          #   @param id [String]
+          #   @param amount [String]
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param is_invoice_level [Boolean]
+          #   @param percentage_discount [Float]
+          #   @param reason [String, nil]
+          #   @param adjustment_type [Symbol, :percentage_discount]
         end
 
         class MonetaryMinimumAdjustment < Orb::Internal::Type::BaseModel
@@ -480,31 +405,15 @@ module Orb
           #   @return [String, nil]
           required :reason, String, nil?: true
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param amount [String]
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param is_invoice_level [Boolean]
-          #   # @param item_id [String]
-          #   # @param minimum_amount [String]
-          #   # @param reason [String, nil]
-          #   # @param adjustment_type [Symbol, :minimum]
-          #   #
-          #   def initialize(
-          #     id:,
-          #     amount:,
-          #     applies_to_price_ids:,
-          #     is_invoice_level:,
-          #     item_id:,
-          #     minimum_amount:,
-          #     reason:,
-          #     adjustment_type: :minimum,
-          #     **
-          #   )
-          #     super
-          #   end
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, amount:, applies_to_price_ids:, is_invoice_level:, item_id:, minimum_amount:, reason:, adjustment_type: :minimum)
+          #   @param id [String]
+          #   @param amount [String]
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param is_invoice_level [Boolean]
+          #   @param item_id [String]
+          #   @param minimum_amount [String]
+          #   @param reason [String, nil]
+          #   @param adjustment_type [Symbol, :minimum]
         end
 
         class MonetaryMaximumAdjustment < Orb::Internal::Type::BaseModel
@@ -550,34 +459,18 @@ module Orb
           #   @return [String, nil]
           required :reason, String, nil?: true
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param amount [String]
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param is_invoice_level [Boolean]
-          #   # @param maximum_amount [String]
-          #   # @param reason [String, nil]
-          #   # @param adjustment_type [Symbol, :maximum]
-          #   #
-          #   def initialize(
-          #     id:,
-          #     amount:,
-          #     applies_to_price_ids:,
-          #     is_invoice_level:,
-          #     maximum_amount:,
-          #     reason:,
-          #     adjustment_type: :maximum,
-          #     **
-          #   )
-          #     super
-          #   end
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, amount:, applies_to_price_ids:, is_invoice_level:, maximum_amount:, reason:, adjustment_type: :maximum)
+          #   @param id [String]
+          #   @param amount [String]
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param is_invoice_level [Boolean]
+          #   @param maximum_amount [String]
+          #   @param reason [String, nil]
+          #   @param adjustment_type [Symbol, :maximum]
         end
 
-        # @!parse
-        #   # @return [Array(Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMaximumAdjustment)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMaximumAdjustment)]
       end
 
       # @deprecated
@@ -597,15 +490,11 @@ module Orb
         #   @return [String]
         required :maximum_amount, String
 
-        # @!parse
-        #   # This field is deprecated in favor of `adjustments`.
-        #   #
-        #   # @param applies_to_price_ids [Array<String>]
-        #   # @param maximum_amount [String]
-        #   #
-        #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(applies_to_price_ids:, maximum_amount:)
+        #   This field is deprecated in favor of `adjustments`.
+        #
+        #   @param applies_to_price_ids [Array<String>]
+        #   @param maximum_amount [String]
       end
 
       # @deprecated
@@ -625,15 +514,11 @@ module Orb
         #   @return [String]
         required :minimum_amount, String
 
-        # @!parse
-        #   # This field is deprecated in favor of `adjustments`.
-        #   #
-        #   # @param applies_to_price_ids [Array<String>]
-        #   # @param minimum_amount [String]
-        #   #
-        #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(applies_to_price_ids:, minimum_amount:)
+        #   This field is deprecated in favor of `adjustments`.
+        #
+        #   @param applies_to_price_ids [Array<String>]
+        #   @param minimum_amount [String]
       end
 
       module SubLineItem
@@ -682,17 +567,13 @@ module Orb
           #   @return [Symbol, :matrix]
           required :type, const: :matrix
 
-          # @!parse
-          #   # @param amount [String]
-          #   # @param grouping [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::Grouping, nil]
-          #   # @param matrix_config [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::MatrixConfig]
-          #   # @param name [String]
-          #   # @param quantity [Float]
-          #   # @param type [Symbol, :matrix]
-          #   #
-          #   def initialize(amount:, grouping:, matrix_config:, name:, quantity:, type: :matrix, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(amount:, grouping:, matrix_config:, name:, quantity:, type: :matrix)
+          #   @param amount [String]
+          #   @param grouping [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::Grouping, nil]
+          #   @param matrix_config [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::MatrixConfig]
+          #   @param name [String]
+          #   @param quantity [Float]
+          #   @param type [Symbol, :matrix]
 
           # @see Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem#grouping
           class Grouping < Orb::Internal::Type::BaseModel
@@ -707,13 +588,9 @@ module Orb
             #   @return [String, nil]
             required :value, String, nil?: true
 
-            # @!parse
-            #   # @param key [String]
-            #   # @param value [String, nil]
-            #   #
-            #   def initialize(key:, value:, **) = super
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(key:, value:)
+            #   @param key [String]
+            #   @param value [String, nil]
           end
 
           # @see Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem#matrix_config
@@ -724,12 +601,8 @@ module Orb
             #   @return [Array<String, nil>]
             required :dimension_values, Orb::Internal::Type::ArrayOf[String, nil?: true]
 
-            # @!parse
-            #   # @param dimension_values [Array<String, nil>]
-            #   #
-            #   def initialize(dimension_values:, **) = super
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(dimension_values:)
+            #   @param dimension_values [Array<String, nil>]
           end
         end
 
@@ -768,17 +641,13 @@ module Orb
           #   @return [Symbol, :tier]
           required :type, const: :tier
 
-          # @!parse
-          #   # @param amount [String]
-          #   # @param grouping [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem::Grouping, nil]
-          #   # @param name [String]
-          #   # @param quantity [Float]
-          #   # @param tier_config [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem::TierConfig]
-          #   # @param type [Symbol, :tier]
-          #   #
-          #   def initialize(amount:, grouping:, name:, quantity:, tier_config:, type: :tier, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(amount:, grouping:, name:, quantity:, tier_config:, type: :tier)
+          #   @param amount [String]
+          #   @param grouping [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem::Grouping, nil]
+          #   @param name [String]
+          #   @param quantity [Float]
+          #   @param tier_config [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem::TierConfig]
+          #   @param type [Symbol, :tier]
 
           # @see Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem#grouping
           class Grouping < Orb::Internal::Type::BaseModel
@@ -793,13 +662,9 @@ module Orb
             #   @return [String, nil]
             required :value, String, nil?: true
 
-            # @!parse
-            #   # @param key [String]
-            #   # @param value [String, nil]
-            #   #
-            #   def initialize(key:, value:, **) = super
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(key:, value:)
+            #   @param key [String]
+            #   @param value [String, nil]
           end
 
           # @see Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem#tier_config
@@ -819,14 +684,10 @@ module Orb
             #   @return [String]
             required :unit_amount, String
 
-            # @!parse
-            #   # @param first_unit [Float]
-            #   # @param last_unit [Float, nil]
-            #   # @param unit_amount [String]
-            #   #
-            #   def initialize(first_unit:, last_unit:, unit_amount:, **) = super
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(first_unit:, last_unit:, unit_amount:)
+            #   @param first_unit [Float]
+            #   @param last_unit [Float, nil]
+            #   @param unit_amount [String]
           end
         end
 
@@ -859,16 +720,12 @@ module Orb
           #   @return [Symbol, :"'null'"]
           required :type, const: :"'null'"
 
-          # @!parse
-          #   # @param amount [String]
-          #   # @param grouping [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem::Grouping, nil]
-          #   # @param name [String]
-          #   # @param quantity [Float]
-          #   # @param type [Symbol, :"'null'"]
-          #   #
-          #   def initialize(amount:, grouping:, name:, quantity:, type: :"'null'", **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(amount:, grouping:, name:, quantity:, type: :"'null'")
+          #   @param amount [String]
+          #   @param grouping [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem::Grouping, nil]
+          #   @param name [String]
+          #   @param quantity [Float]
+          #   @param type [Symbol, :"'null'"]
 
           # @see Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem#grouping
           class Grouping < Orb::Internal::Type::BaseModel
@@ -883,19 +740,14 @@ module Orb
             #   @return [String, nil]
             required :value, String, nil?: true
 
-            # @!parse
-            #   # @param key [String]
-            #   # @param value [String, nil]
-            #   #
-            #   def initialize(key:, value:, **) = super
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(key:, value:)
+            #   @param key [String]
+            #   @param value [String, nil]
           end
         end
 
-        # @!parse
-        #   # @return [Array(Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem)]
       end
 
       class TaxAmount < Orb::Internal::Type::BaseModel
@@ -917,14 +769,10 @@ module Orb
         #   @return [String, nil]
         required :tax_rate_percentage, String, nil?: true
 
-        # @!parse
-        #   # @param amount [String]
-        #   # @param tax_rate_description [String]
-        #   # @param tax_rate_percentage [String, nil]
-        #   #
-        #   def initialize(amount:, tax_rate_description:, tax_rate_percentage:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(amount:, tax_rate_description:, tax_rate_percentage:)
+        #   @param amount [String]
+        #   @param tax_rate_description [String]
+        #   @param tax_rate_percentage [String, nil]
       end
     end
   end

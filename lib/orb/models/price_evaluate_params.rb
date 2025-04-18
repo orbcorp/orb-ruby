@@ -52,29 +52,14 @@ module Orb
       #   # @return [Array<String>]
       #   attr_writer :grouping_keys
 
-      # @!parse
-      #   # @param timeframe_end [Time]
-      #   # @param timeframe_start [Time]
-      #   # @param customer_id [String, nil]
-      #   # @param external_customer_id [String, nil]
-      #   # @param filter [String, nil]
-      #   # @param grouping_keys [Array<String>]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     timeframe_end:,
-      #     timeframe_start:,
-      #     customer_id: nil,
-      #     external_customer_id: nil,
-      #     filter: nil,
-      #     grouping_keys: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(timeframe_end:, timeframe_start:, customer_id: nil, external_customer_id: nil, filter: nil, grouping_keys: nil, request_options: {})
+      #   @param timeframe_end [Time]
+      #   @param timeframe_start [Time]
+      #   @param customer_id [String, nil]
+      #   @param external_customer_id [String, nil]
+      #   @param filter [String, nil]
+      #   @param grouping_keys [Array<String>]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

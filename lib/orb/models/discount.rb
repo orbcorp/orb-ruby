@@ -15,9 +15,8 @@ module Orb
 
       variant :amount, -> { Orb::Models::AmountDiscount }
 
-      # @!parse
-      #   # @return [Array(Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount)]
-      #   def self.variants; end
+      # @!method self.variants
+      #   @return [Array(Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount)]
     end
   end
 end

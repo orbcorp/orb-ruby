@@ -27,15 +27,11 @@ module Orb
       #   @return [String, nil]
       optional :reason, String, nil?: true
 
-      # @!parse
-      #   # @param applies_to_price_ids [Array<String>]
-      #   # @param discount_type [Symbol, Orb::Models::PercentageDiscount::DiscountType]
-      #   # @param percentage_discount [Float]
-      #   # @param reason [String, nil]
-      #   #
-      #   def initialize(applies_to_price_ids:, discount_type:, percentage_discount:, reason: nil, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(applies_to_price_ids:, discount_type:, percentage_discount:, reason: nil)
+      #   @param applies_to_price_ids [Array<String>]
+      #   @param discount_type [Symbol, Orb::Models::PercentageDiscount::DiscountType]
+      #   @param percentage_discount [Float]
+      #   @param reason [String, nil]
 
       # @see Orb::Models::PercentageDiscount#discount_type
       module DiscountType
@@ -43,11 +39,8 @@ module Orb
 
         PERCENTAGE = :percentage
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

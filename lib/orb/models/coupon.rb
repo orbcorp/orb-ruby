@@ -48,24 +48,20 @@ module Orb
       #   @return [Integer]
       required :times_redeemed, Integer
 
-      # @!parse
-      #   # A coupon represents a reusable discount configuration that can be applied either
-      #   # as a fixed or percentage amount to an invoice or subscription. Coupons are
-      #   # activated using a redemption code, which applies the discount to a subscription
-      #   # or invoice. The duration of a coupon determines how long it remains available
-      #   # for use by end users.
-      #   #
-      #   # @param id [String]
-      #   # @param archived_at [Time, nil]
-      #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount]
-      #   # @param duration_in_months [Integer, nil]
-      #   # @param max_redemptions [Integer, nil]
-      #   # @param redemption_code [String]
-      #   # @param times_redeemed [Integer]
-      #   #
-      #   def initialize(id:, archived_at:, discount:, duration_in_months:, max_redemptions:, redemption_code:, times_redeemed:, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, archived_at:, discount:, duration_in_months:, max_redemptions:, redemption_code:, times_redeemed:)
+      #   A coupon represents a reusable discount configuration that can be applied either
+      #   as a fixed or percentage amount to an invoice or subscription. Coupons are
+      #   activated using a redemption code, which applies the discount to a subscription
+      #   or invoice. The duration of a coupon determines how long it remains available
+      #   for use by end users.
+      #
+      #   @param id [String]
+      #   @param archived_at [Time, nil]
+      #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount]
+      #   @param duration_in_months [Integer, nil]
+      #   @param max_redemptions [Integer, nil]
+      #   @param redemption_code [String]
+      #   @param times_redeemed [Integer]
 
       # @see Orb::Models::Coupon#discount
       module Discount
@@ -77,9 +73,8 @@ module Orb
 
         variant :amount, -> { Orb::Models::AmountDiscount }
 
-        # @!parse
-        #   # @return [Array(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount)]
       end
     end
   end

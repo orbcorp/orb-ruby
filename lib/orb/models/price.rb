@@ -205,63 +205,31 @@ module Orb
                  -> { Orb::Models::Price::UnitPrice::DimensionalPriceConfiguration },
                  nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param billable_metric [Orb::Models::Price::UnitPrice::BillableMetric, nil]
-        #   # @param billing_cycle_configuration [Orb::Models::Price::UnitPrice::BillingCycleConfiguration]
-        #   # @param cadence [Symbol, Orb::Models::Price::UnitPrice::Cadence]
-        #   # @param conversion_rate [Float, nil]
-        #   # @param created_at [Time]
-        #   # @param credit_allocation [Orb::Models::Price::UnitPrice::CreditAllocation, nil]
-        #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param fixed_price_quantity [Float, nil]
-        #   # @param invoicing_cycle_configuration [Orb::Models::Price::UnitPrice::InvoicingCycleConfiguration, nil]
-        #   # @param item [Orb::Models::Price::UnitPrice::Item]
-        #   # @param maximum [Orb::Models::Price::UnitPrice::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param metadata [Hash{Symbol=>String}]
-        #   # @param minimum [Orb::Models::Price::UnitPrice::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param plan_phase_order [Integer, nil]
-        #   # @param price_type [Symbol, Orb::Models::Price::UnitPrice::PriceType]
-        #   # @param unit_config [Orb::Models::Price::UnitPrice::UnitConfig]
-        #   # @param dimensional_price_configuration [Orb::Models::Price::UnitPrice::DimensionalPriceConfiguration, nil]
-        #   # @param model_type [Symbol, :unit]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billable_metric:,
-        #     billing_cycle_configuration:,
-        #     cadence:,
-        #     conversion_rate:,
-        #     created_at:,
-        #     credit_allocation:,
-        #     currency:,
-        #     discount:,
-        #     external_price_id:,
-        #     fixed_price_quantity:,
-        #     invoicing_cycle_configuration:,
-        #     item:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     metadata:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     plan_phase_order:,
-        #     price_type:,
-        #     unit_config:,
-        #     dimensional_price_configuration: nil,
-        #     model_type: :unit,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, unit_config:, dimensional_price_configuration: nil, model_type: :unit)
+        #   @param id [String]
+        #   @param billable_metric [Orb::Models::Price::UnitPrice::BillableMetric, nil]
+        #   @param billing_cycle_configuration [Orb::Models::Price::UnitPrice::BillingCycleConfiguration]
+        #   @param cadence [Symbol, Orb::Models::Price::UnitPrice::Cadence]
+        #   @param conversion_rate [Float, nil]
+        #   @param created_at [Time]
+        #   @param credit_allocation [Orb::Models::Price::UnitPrice::CreditAllocation, nil]
+        #   @param currency [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param external_price_id [String, nil]
+        #   @param fixed_price_quantity [Float, nil]
+        #   @param invoicing_cycle_configuration [Orb::Models::Price::UnitPrice::InvoicingCycleConfiguration, nil]
+        #   @param item [Orb::Models::Price::UnitPrice::Item]
+        #   @param maximum [Orb::Models::Price::UnitPrice::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param metadata [Hash{Symbol=>String}]
+        #   @param minimum [Orb::Models::Price::UnitPrice::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param plan_phase_order [Integer, nil]
+        #   @param price_type [Symbol, Orb::Models::Price::UnitPrice::PriceType]
+        #   @param unit_config [Orb::Models::Price::UnitPrice::UnitConfig]
+        #   @param dimensional_price_configuration [Orb::Models::Price::UnitPrice::DimensionalPriceConfiguration, nil]
+        #   @param model_type [Symbol, :unit]
 
         # @see Orb::Models::Price::UnitPrice#billable_metric
         class BillableMetric < Orb::Internal::Type::BaseModel
@@ -270,12 +238,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Price::UnitPrice#billing_cycle_configuration
@@ -291,13 +255,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::UnitPrice::BillingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::UnitPrice::BillingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::UnitPrice::BillingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::UnitPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
@@ -306,11 +266,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -325,11 +282,8 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::UnitPrice#credit_allocation
@@ -344,13 +298,9 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param allows_rollover [Boolean]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(allows_rollover:, currency:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allows_rollover:, currency:)
+          #   @param allows_rollover [Boolean]
+          #   @param currency [String]
         end
 
         # @see Orb::Models::Price::UnitPrice#invoicing_cycle_configuration
@@ -366,13 +316,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::UnitPrice::InvoicingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::UnitPrice::InvoicingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::UnitPrice::InvoicingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::UnitPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
@@ -381,11 +327,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -401,13 +344,9 @@ module Orb
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, name:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, name:)
+          #   @param id [String]
+          #   @param name [String]
         end
 
         # @see Orb::Models::Price::UnitPrice#maximum
@@ -425,13 +364,9 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @see Orb::Models::Price::UnitPrice#minimum
@@ -449,13 +384,9 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         # @see Orb::Models::Price::UnitPrice#price_type
@@ -465,11 +396,8 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::UnitPrice#unit_config
@@ -480,12 +408,8 @@ module Orb
           #   @return [String]
           required :unit_amount, String
 
-          # @!parse
-          #   # @param unit_amount [String]
-          #   #
-          #   def initialize(unit_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(unit_amount:)
+          #   @param unit_amount [String]
         end
 
         # @see Orb::Models::Price::UnitPrice#dimensional_price_configuration
@@ -500,13 +424,9 @@ module Orb
           #   @return [String]
           required :dimensional_price_group_id, String
 
-          # @!parse
-          #   # @param dimension_values [Array<String>]
-          #   # @param dimensional_price_group_id [String]
-          #   #
-          #   def initialize(dimension_values:, dimensional_price_group_id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(dimension_values:, dimensional_price_group_id:)
+          #   @param dimension_values [Array<String>]
+          #   @param dimensional_price_group_id [String]
         end
       end
 
@@ -639,63 +559,31 @@ module Orb
                  -> { Orb::Models::Price::PackagePrice::DimensionalPriceConfiguration },
                  nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param billable_metric [Orb::Models::Price::PackagePrice::BillableMetric, nil]
-        #   # @param billing_cycle_configuration [Orb::Models::Price::PackagePrice::BillingCycleConfiguration]
-        #   # @param cadence [Symbol, Orb::Models::Price::PackagePrice::Cadence]
-        #   # @param conversion_rate [Float, nil]
-        #   # @param created_at [Time]
-        #   # @param credit_allocation [Orb::Models::Price::PackagePrice::CreditAllocation, nil]
-        #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param fixed_price_quantity [Float, nil]
-        #   # @param invoicing_cycle_configuration [Orb::Models::Price::PackagePrice::InvoicingCycleConfiguration, nil]
-        #   # @param item [Orb::Models::Price::PackagePrice::Item]
-        #   # @param maximum [Orb::Models::Price::PackagePrice::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param metadata [Hash{Symbol=>String}]
-        #   # @param minimum [Orb::Models::Price::PackagePrice::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param package_config [Orb::Models::Price::PackagePrice::PackageConfig]
-        #   # @param plan_phase_order [Integer, nil]
-        #   # @param price_type [Symbol, Orb::Models::Price::PackagePrice::PriceType]
-        #   # @param dimensional_price_configuration [Orb::Models::Price::PackagePrice::DimensionalPriceConfiguration, nil]
-        #   # @param model_type [Symbol, :package]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billable_metric:,
-        #     billing_cycle_configuration:,
-        #     cadence:,
-        #     conversion_rate:,
-        #     created_at:,
-        #     credit_allocation:,
-        #     currency:,
-        #     discount:,
-        #     external_price_id:,
-        #     fixed_price_quantity:,
-        #     invoicing_cycle_configuration:,
-        #     item:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     metadata:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     package_config:,
-        #     plan_phase_order:,
-        #     price_type:,
-        #     dimensional_price_configuration: nil,
-        #     model_type: :package,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, package_config:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :package)
+        #   @param id [String]
+        #   @param billable_metric [Orb::Models::Price::PackagePrice::BillableMetric, nil]
+        #   @param billing_cycle_configuration [Orb::Models::Price::PackagePrice::BillingCycleConfiguration]
+        #   @param cadence [Symbol, Orb::Models::Price::PackagePrice::Cadence]
+        #   @param conversion_rate [Float, nil]
+        #   @param created_at [Time]
+        #   @param credit_allocation [Orb::Models::Price::PackagePrice::CreditAllocation, nil]
+        #   @param currency [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param external_price_id [String, nil]
+        #   @param fixed_price_quantity [Float, nil]
+        #   @param invoicing_cycle_configuration [Orb::Models::Price::PackagePrice::InvoicingCycleConfiguration, nil]
+        #   @param item [Orb::Models::Price::PackagePrice::Item]
+        #   @param maximum [Orb::Models::Price::PackagePrice::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param metadata [Hash{Symbol=>String}]
+        #   @param minimum [Orb::Models::Price::PackagePrice::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param package_config [Orb::Models::Price::PackagePrice::PackageConfig]
+        #   @param plan_phase_order [Integer, nil]
+        #   @param price_type [Symbol, Orb::Models::Price::PackagePrice::PriceType]
+        #   @param dimensional_price_configuration [Orb::Models::Price::PackagePrice::DimensionalPriceConfiguration, nil]
+        #   @param model_type [Symbol, :package]
 
         # @see Orb::Models::Price::PackagePrice#billable_metric
         class BillableMetric < Orb::Internal::Type::BaseModel
@@ -704,12 +592,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Price::PackagePrice#billing_cycle_configuration
@@ -725,13 +609,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::PackagePrice::BillingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::PackagePrice::BillingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::PackagePrice::BillingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::PackagePrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
@@ -740,11 +620,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -759,11 +636,8 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::PackagePrice#credit_allocation
@@ -778,13 +652,9 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param allows_rollover [Boolean]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(allows_rollover:, currency:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allows_rollover:, currency:)
+          #   @param allows_rollover [Boolean]
+          #   @param currency [String]
         end
 
         # @see Orb::Models::Price::PackagePrice#invoicing_cycle_configuration
@@ -800,13 +670,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::PackagePrice::InvoicingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::PackagePrice::InvoicingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::PackagePrice::InvoicingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::PackagePrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
@@ -815,11 +681,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -835,13 +698,9 @@ module Orb
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, name:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, name:)
+          #   @param id [String]
+          #   @param name [String]
         end
 
         # @see Orb::Models::Price::PackagePrice#maximum
@@ -859,13 +718,9 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @see Orb::Models::Price::PackagePrice#minimum
@@ -883,13 +738,9 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         # @see Orb::Models::Price::PackagePrice#package_config
@@ -907,13 +758,9 @@ module Orb
           #   @return [Integer]
           required :package_size, Integer
 
-          # @!parse
-          #   # @param package_amount [String]
-          #   # @param package_size [Integer]
-          #   #
-          #   def initialize(package_amount:, package_size:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(package_amount:, package_size:)
+          #   @param package_amount [String]
+          #   @param package_size [Integer]
         end
 
         # @see Orb::Models::Price::PackagePrice#price_type
@@ -923,11 +770,8 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::PackagePrice#dimensional_price_configuration
@@ -942,13 +786,9 @@ module Orb
           #   @return [String]
           required :dimensional_price_group_id, String
 
-          # @!parse
-          #   # @param dimension_values [Array<String>]
-          #   # @param dimensional_price_group_id [String]
-          #   #
-          #   def initialize(dimension_values:, dimensional_price_group_id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(dimension_values:, dimensional_price_group_id:)
+          #   @param dimension_values [Array<String>]
+          #   @param dimensional_price_group_id [String]
         end
       end
 
@@ -1081,63 +921,31 @@ module Orb
                  -> { Orb::Models::Price::MatrixPrice::DimensionalPriceConfiguration },
                  nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param billable_metric [Orb::Models::Price::MatrixPrice::BillableMetric, nil]
-        #   # @param billing_cycle_configuration [Orb::Models::Price::MatrixPrice::BillingCycleConfiguration]
-        #   # @param cadence [Symbol, Orb::Models::Price::MatrixPrice::Cadence]
-        #   # @param conversion_rate [Float, nil]
-        #   # @param created_at [Time]
-        #   # @param credit_allocation [Orb::Models::Price::MatrixPrice::CreditAllocation, nil]
-        #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param fixed_price_quantity [Float, nil]
-        #   # @param invoicing_cycle_configuration [Orb::Models::Price::MatrixPrice::InvoicingCycleConfiguration, nil]
-        #   # @param item [Orb::Models::Price::MatrixPrice::Item]
-        #   # @param matrix_config [Orb::Models::Price::MatrixPrice::MatrixConfig]
-        #   # @param maximum [Orb::Models::Price::MatrixPrice::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param metadata [Hash{Symbol=>String}]
-        #   # @param minimum [Orb::Models::Price::MatrixPrice::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param plan_phase_order [Integer, nil]
-        #   # @param price_type [Symbol, Orb::Models::Price::MatrixPrice::PriceType]
-        #   # @param dimensional_price_configuration [Orb::Models::Price::MatrixPrice::DimensionalPriceConfiguration, nil]
-        #   # @param model_type [Symbol, :matrix]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billable_metric:,
-        #     billing_cycle_configuration:,
-        #     cadence:,
-        #     conversion_rate:,
-        #     created_at:,
-        #     credit_allocation:,
-        #     currency:,
-        #     discount:,
-        #     external_price_id:,
-        #     fixed_price_quantity:,
-        #     invoicing_cycle_configuration:,
-        #     item:,
-        #     matrix_config:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     metadata:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     plan_phase_order:,
-        #     price_type:,
-        #     dimensional_price_configuration: nil,
-        #     model_type: :matrix,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :matrix)
+        #   @param id [String]
+        #   @param billable_metric [Orb::Models::Price::MatrixPrice::BillableMetric, nil]
+        #   @param billing_cycle_configuration [Orb::Models::Price::MatrixPrice::BillingCycleConfiguration]
+        #   @param cadence [Symbol, Orb::Models::Price::MatrixPrice::Cadence]
+        #   @param conversion_rate [Float, nil]
+        #   @param created_at [Time]
+        #   @param credit_allocation [Orb::Models::Price::MatrixPrice::CreditAllocation, nil]
+        #   @param currency [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param external_price_id [String, nil]
+        #   @param fixed_price_quantity [Float, nil]
+        #   @param invoicing_cycle_configuration [Orb::Models::Price::MatrixPrice::InvoicingCycleConfiguration, nil]
+        #   @param item [Orb::Models::Price::MatrixPrice::Item]
+        #   @param matrix_config [Orb::Models::Price::MatrixPrice::MatrixConfig]
+        #   @param maximum [Orb::Models::Price::MatrixPrice::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param metadata [Hash{Symbol=>String}]
+        #   @param minimum [Orb::Models::Price::MatrixPrice::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param plan_phase_order [Integer, nil]
+        #   @param price_type [Symbol, Orb::Models::Price::MatrixPrice::PriceType]
+        #   @param dimensional_price_configuration [Orb::Models::Price::MatrixPrice::DimensionalPriceConfiguration, nil]
+        #   @param model_type [Symbol, :matrix]
 
         # @see Orb::Models::Price::MatrixPrice#billable_metric
         class BillableMetric < Orb::Internal::Type::BaseModel
@@ -1146,12 +954,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Price::MatrixPrice#billing_cycle_configuration
@@ -1167,13 +971,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::MatrixPrice::BillingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::MatrixPrice::BillingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::MatrixPrice::BillingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::MatrixPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
@@ -1182,11 +982,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -1201,11 +998,8 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::MatrixPrice#credit_allocation
@@ -1220,13 +1014,9 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param allows_rollover [Boolean]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(allows_rollover:, currency:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allows_rollover:, currency:)
+          #   @param allows_rollover [Boolean]
+          #   @param currency [String]
         end
 
         # @see Orb::Models::Price::MatrixPrice#invoicing_cycle_configuration
@@ -1242,13 +1032,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::MatrixPrice::InvoicingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::MatrixPrice::InvoicingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::MatrixPrice::InvoicingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::MatrixPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
@@ -1257,11 +1043,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -1277,13 +1060,9 @@ module Orb
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, name:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, name:)
+          #   @param id [String]
+          #   @param name [String]
         end
 
         # @see Orb::Models::Price::MatrixPrice#matrix_config
@@ -1307,14 +1086,10 @@ module Orb
           required :matrix_values,
                    -> { Orb::Internal::Type::ArrayOf[Orb::Models::Price::MatrixPrice::MatrixConfig::MatrixValue] }
 
-          # @!parse
-          #   # @param default_unit_amount [String]
-          #   # @param dimensions [Array<String, nil>]
-          #   # @param matrix_values [Array<Orb::Models::Price::MatrixPrice::MatrixConfig::MatrixValue>]
-          #   #
-          #   def initialize(default_unit_amount:, dimensions:, matrix_values:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(default_unit_amount:, dimensions:, matrix_values:)
+          #   @param default_unit_amount [String]
+          #   @param dimensions [Array<String, nil>]
+          #   @param matrix_values [Array<Orb::Models::Price::MatrixPrice::MatrixConfig::MatrixValue>]
 
           class MatrixValue < Orb::Internal::Type::BaseModel
             # @!attribute dimension_values
@@ -1331,13 +1106,9 @@ module Orb
             #   @return [String]
             required :unit_amount, String
 
-            # @!parse
-            #   # @param dimension_values [Array<String, nil>]
-            #   # @param unit_amount [String]
-            #   #
-            #   def initialize(dimension_values:, unit_amount:, **) = super
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(dimension_values:, unit_amount:)
+            #   @param dimension_values [Array<String, nil>]
+            #   @param unit_amount [String]
           end
         end
 
@@ -1356,13 +1127,9 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @see Orb::Models::Price::MatrixPrice#minimum
@@ -1380,13 +1147,9 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         # @see Orb::Models::Price::MatrixPrice#price_type
@@ -1396,11 +1159,8 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::MatrixPrice#dimensional_price_configuration
@@ -1415,13 +1175,9 @@ module Orb
           #   @return [String]
           required :dimensional_price_group_id, String
 
-          # @!parse
-          #   # @param dimension_values [Array<String>]
-          #   # @param dimensional_price_group_id [String]
-          #   #
-          #   def initialize(dimension_values:, dimensional_price_group_id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(dimension_values:, dimensional_price_group_id:)
+          #   @param dimension_values [Array<String>]
+          #   @param dimensional_price_group_id [String]
         end
       end
 
@@ -1554,63 +1310,31 @@ module Orb
                  -> { Orb::Models::Price::TieredPrice::DimensionalPriceConfiguration },
                  nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param billable_metric [Orb::Models::Price::TieredPrice::BillableMetric, nil]
-        #   # @param billing_cycle_configuration [Orb::Models::Price::TieredPrice::BillingCycleConfiguration]
-        #   # @param cadence [Symbol, Orb::Models::Price::TieredPrice::Cadence]
-        #   # @param conversion_rate [Float, nil]
-        #   # @param created_at [Time]
-        #   # @param credit_allocation [Orb::Models::Price::TieredPrice::CreditAllocation, nil]
-        #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param fixed_price_quantity [Float, nil]
-        #   # @param invoicing_cycle_configuration [Orb::Models::Price::TieredPrice::InvoicingCycleConfiguration, nil]
-        #   # @param item [Orb::Models::Price::TieredPrice::Item]
-        #   # @param maximum [Orb::Models::Price::TieredPrice::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param metadata [Hash{Symbol=>String}]
-        #   # @param minimum [Orb::Models::Price::TieredPrice::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param plan_phase_order [Integer, nil]
-        #   # @param price_type [Symbol, Orb::Models::Price::TieredPrice::PriceType]
-        #   # @param tiered_config [Orb::Models::Price::TieredPrice::TieredConfig]
-        #   # @param dimensional_price_configuration [Orb::Models::Price::TieredPrice::DimensionalPriceConfiguration, nil]
-        #   # @param model_type [Symbol, :tiered]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billable_metric:,
-        #     billing_cycle_configuration:,
-        #     cadence:,
-        #     conversion_rate:,
-        #     created_at:,
-        #     credit_allocation:,
-        #     currency:,
-        #     discount:,
-        #     external_price_id:,
-        #     fixed_price_quantity:,
-        #     invoicing_cycle_configuration:,
-        #     item:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     metadata:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     plan_phase_order:,
-        #     price_type:,
-        #     tiered_config:,
-        #     dimensional_price_configuration: nil,
-        #     model_type: :tiered,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_config:, dimensional_price_configuration: nil, model_type: :tiered)
+        #   @param id [String]
+        #   @param billable_metric [Orb::Models::Price::TieredPrice::BillableMetric, nil]
+        #   @param billing_cycle_configuration [Orb::Models::Price::TieredPrice::BillingCycleConfiguration]
+        #   @param cadence [Symbol, Orb::Models::Price::TieredPrice::Cadence]
+        #   @param conversion_rate [Float, nil]
+        #   @param created_at [Time]
+        #   @param credit_allocation [Orb::Models::Price::TieredPrice::CreditAllocation, nil]
+        #   @param currency [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param external_price_id [String, nil]
+        #   @param fixed_price_quantity [Float, nil]
+        #   @param invoicing_cycle_configuration [Orb::Models::Price::TieredPrice::InvoicingCycleConfiguration, nil]
+        #   @param item [Orb::Models::Price::TieredPrice::Item]
+        #   @param maximum [Orb::Models::Price::TieredPrice::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param metadata [Hash{Symbol=>String}]
+        #   @param minimum [Orb::Models::Price::TieredPrice::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param plan_phase_order [Integer, nil]
+        #   @param price_type [Symbol, Orb::Models::Price::TieredPrice::PriceType]
+        #   @param tiered_config [Orb::Models::Price::TieredPrice::TieredConfig]
+        #   @param dimensional_price_configuration [Orb::Models::Price::TieredPrice::DimensionalPriceConfiguration, nil]
+        #   @param model_type [Symbol, :tiered]
 
         # @see Orb::Models::Price::TieredPrice#billable_metric
         class BillableMetric < Orb::Internal::Type::BaseModel
@@ -1619,12 +1343,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Price::TieredPrice#billing_cycle_configuration
@@ -1640,13 +1360,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::TieredPrice::BillingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::TieredPrice::BillingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::TieredPrice::BillingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::TieredPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
@@ -1655,11 +1371,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -1674,11 +1387,8 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::TieredPrice#credit_allocation
@@ -1693,13 +1403,9 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param allows_rollover [Boolean]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(allows_rollover:, currency:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allows_rollover:, currency:)
+          #   @param allows_rollover [Boolean]
+          #   @param currency [String]
         end
 
         # @see Orb::Models::Price::TieredPrice#invoicing_cycle_configuration
@@ -1715,13 +1421,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::TieredPrice::InvoicingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::TieredPrice::InvoicingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::TieredPrice::InvoicingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::TieredPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
@@ -1730,11 +1432,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -1750,13 +1449,9 @@ module Orb
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, name:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, name:)
+          #   @param id [String]
+          #   @param name [String]
         end
 
         # @see Orb::Models::Price::TieredPrice#maximum
@@ -1774,13 +1469,9 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @see Orb::Models::Price::TieredPrice#minimum
@@ -1798,13 +1489,9 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         # @see Orb::Models::Price::TieredPrice#price_type
@@ -1814,11 +1501,8 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::TieredPrice#tiered_config
@@ -1829,12 +1513,8 @@ module Orb
           #   @return [Array<Orb::Models::Price::TieredPrice::TieredConfig::Tier>]
           required :tiers, -> { Orb::Internal::Type::ArrayOf[Orb::Models::Price::TieredPrice::TieredConfig::Tier] }
 
-          # @!parse
-          #   # @param tiers [Array<Orb::Models::Price::TieredPrice::TieredConfig::Tier>]
-          #   #
-          #   def initialize(tiers:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(tiers:)
+          #   @param tiers [Array<Orb::Models::Price::TieredPrice::TieredConfig::Tier>]
 
           class Tier < Orb::Internal::Type::BaseModel
             # @!attribute first_unit
@@ -1855,14 +1535,10 @@ module Orb
             #   @return [Float, nil]
             optional :last_unit, Float, nil?: true
 
-            # @!parse
-            #   # @param first_unit [Float]
-            #   # @param unit_amount [String]
-            #   # @param last_unit [Float, nil]
-            #   #
-            #   def initialize(first_unit:, unit_amount:, last_unit: nil, **) = super
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(first_unit:, unit_amount:, last_unit: nil)
+            #   @param first_unit [Float]
+            #   @param unit_amount [String]
+            #   @param last_unit [Float, nil]
           end
         end
 
@@ -1878,13 +1554,9 @@ module Orb
           #   @return [String]
           required :dimensional_price_group_id, String
 
-          # @!parse
-          #   # @param dimension_values [Array<String>]
-          #   # @param dimensional_price_group_id [String]
-          #   #
-          #   def initialize(dimension_values:, dimensional_price_group_id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(dimension_values:, dimensional_price_group_id:)
+          #   @param dimension_values [Array<String>]
+          #   @param dimensional_price_group_id [String]
         end
       end
 
@@ -2018,63 +1690,31 @@ module Orb
                  -> { Orb::Models::Price::TieredBpsPrice::DimensionalPriceConfiguration },
                  nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param billable_metric [Orb::Models::Price::TieredBpsPrice::BillableMetric, nil]
-        #   # @param billing_cycle_configuration [Orb::Models::Price::TieredBpsPrice::BillingCycleConfiguration]
-        #   # @param cadence [Symbol, Orb::Models::Price::TieredBpsPrice::Cadence]
-        #   # @param conversion_rate [Float, nil]
-        #   # @param created_at [Time]
-        #   # @param credit_allocation [Orb::Models::Price::TieredBpsPrice::CreditAllocation, nil]
-        #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param fixed_price_quantity [Float, nil]
-        #   # @param invoicing_cycle_configuration [Orb::Models::Price::TieredBpsPrice::InvoicingCycleConfiguration, nil]
-        #   # @param item [Orb::Models::Price::TieredBpsPrice::Item]
-        #   # @param maximum [Orb::Models::Price::TieredBpsPrice::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param metadata [Hash{Symbol=>String}]
-        #   # @param minimum [Orb::Models::Price::TieredBpsPrice::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param plan_phase_order [Integer, nil]
-        #   # @param price_type [Symbol, Orb::Models::Price::TieredBpsPrice::PriceType]
-        #   # @param tiered_bps_config [Orb::Models::Price::TieredBpsPrice::TieredBpsConfig]
-        #   # @param dimensional_price_configuration [Orb::Models::Price::TieredBpsPrice::DimensionalPriceConfiguration, nil]
-        #   # @param model_type [Symbol, :tiered_bps]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billable_metric:,
-        #     billing_cycle_configuration:,
-        #     cadence:,
-        #     conversion_rate:,
-        #     created_at:,
-        #     credit_allocation:,
-        #     currency:,
-        #     discount:,
-        #     external_price_id:,
-        #     fixed_price_quantity:,
-        #     invoicing_cycle_configuration:,
-        #     item:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     metadata:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     plan_phase_order:,
-        #     price_type:,
-        #     tiered_bps_config:,
-        #     dimensional_price_configuration: nil,
-        #     model_type: :tiered_bps,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_bps_config:, dimensional_price_configuration: nil, model_type: :tiered_bps)
+        #   @param id [String]
+        #   @param billable_metric [Orb::Models::Price::TieredBpsPrice::BillableMetric, nil]
+        #   @param billing_cycle_configuration [Orb::Models::Price::TieredBpsPrice::BillingCycleConfiguration]
+        #   @param cadence [Symbol, Orb::Models::Price::TieredBpsPrice::Cadence]
+        #   @param conversion_rate [Float, nil]
+        #   @param created_at [Time]
+        #   @param credit_allocation [Orb::Models::Price::TieredBpsPrice::CreditAllocation, nil]
+        #   @param currency [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param external_price_id [String, nil]
+        #   @param fixed_price_quantity [Float, nil]
+        #   @param invoicing_cycle_configuration [Orb::Models::Price::TieredBpsPrice::InvoicingCycleConfiguration, nil]
+        #   @param item [Orb::Models::Price::TieredBpsPrice::Item]
+        #   @param maximum [Orb::Models::Price::TieredBpsPrice::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param metadata [Hash{Symbol=>String}]
+        #   @param minimum [Orb::Models::Price::TieredBpsPrice::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param plan_phase_order [Integer, nil]
+        #   @param price_type [Symbol, Orb::Models::Price::TieredBpsPrice::PriceType]
+        #   @param tiered_bps_config [Orb::Models::Price::TieredBpsPrice::TieredBpsConfig]
+        #   @param dimensional_price_configuration [Orb::Models::Price::TieredBpsPrice::DimensionalPriceConfiguration, nil]
+        #   @param model_type [Symbol, :tiered_bps]
 
         # @see Orb::Models::Price::TieredBpsPrice#billable_metric
         class BillableMetric < Orb::Internal::Type::BaseModel
@@ -2083,12 +1723,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Price::TieredBpsPrice#billing_cycle_configuration
@@ -2104,13 +1740,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::TieredBpsPrice::BillingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::TieredBpsPrice::BillingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::TieredBpsPrice::BillingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::TieredBpsPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
@@ -2119,11 +1751,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -2138,11 +1767,8 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::TieredBpsPrice#credit_allocation
@@ -2157,13 +1783,9 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param allows_rollover [Boolean]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(allows_rollover:, currency:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allows_rollover:, currency:)
+          #   @param allows_rollover [Boolean]
+          #   @param currency [String]
         end
 
         # @see Orb::Models::Price::TieredBpsPrice#invoicing_cycle_configuration
@@ -2179,13 +1801,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::TieredBpsPrice::InvoicingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::TieredBpsPrice::InvoicingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::TieredBpsPrice::InvoicingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::TieredBpsPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
@@ -2194,11 +1812,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -2214,13 +1829,9 @@ module Orb
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, name:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, name:)
+          #   @param id [String]
+          #   @param name [String]
         end
 
         # @see Orb::Models::Price::TieredBpsPrice#maximum
@@ -2238,13 +1849,9 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @see Orb::Models::Price::TieredBpsPrice#minimum
@@ -2262,13 +1869,9 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         # @see Orb::Models::Price::TieredBpsPrice#price_type
@@ -2278,11 +1881,8 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::TieredBpsPrice#tiered_bps_config
@@ -2295,12 +1895,8 @@ module Orb
           required :tiers,
                    -> { Orb::Internal::Type::ArrayOf[Orb::Models::Price::TieredBpsPrice::TieredBpsConfig::Tier] }
 
-          # @!parse
-          #   # @param tiers [Array<Orb::Models::Price::TieredBpsPrice::TieredBpsConfig::Tier>]
-          #   #
-          #   def initialize(tiers:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(tiers:)
+          #   @param tiers [Array<Orb::Models::Price::TieredBpsPrice::TieredBpsConfig::Tier>]
 
           class Tier < Orb::Internal::Type::BaseModel
             # @!attribute bps
@@ -2327,15 +1923,11 @@ module Orb
             #   @return [String, nil]
             optional :per_unit_maximum, String, nil?: true
 
-            # @!parse
-            #   # @param bps [Float]
-            #   # @param minimum_amount [String]
-            #   # @param maximum_amount [String, nil]
-            #   # @param per_unit_maximum [String, nil]
-            #   #
-            #   def initialize(bps:, minimum_amount:, maximum_amount: nil, per_unit_maximum: nil, **) = super
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(bps:, minimum_amount:, maximum_amount: nil, per_unit_maximum: nil)
+            #   @param bps [Float]
+            #   @param minimum_amount [String]
+            #   @param maximum_amount [String, nil]
+            #   @param per_unit_maximum [String, nil]
           end
         end
 
@@ -2351,13 +1943,9 @@ module Orb
           #   @return [String]
           required :dimensional_price_group_id, String
 
-          # @!parse
-          #   # @param dimension_values [Array<String>]
-          #   # @param dimensional_price_group_id [String]
-          #   #
-          #   def initialize(dimension_values:, dimensional_price_group_id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(dimension_values:, dimensional_price_group_id:)
+          #   @param dimension_values [Array<String>]
+          #   @param dimensional_price_group_id [String]
         end
       end
 
@@ -2490,63 +2078,31 @@ module Orb
                  -> { Orb::Models::Price::BpsPrice::DimensionalPriceConfiguration },
                  nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param billable_metric [Orb::Models::Price::BpsPrice::BillableMetric, nil]
-        #   # @param billing_cycle_configuration [Orb::Models::Price::BpsPrice::BillingCycleConfiguration]
-        #   # @param bps_config [Orb::Models::Price::BpsPrice::BpsConfig]
-        #   # @param cadence [Symbol, Orb::Models::Price::BpsPrice::Cadence]
-        #   # @param conversion_rate [Float, nil]
-        #   # @param created_at [Time]
-        #   # @param credit_allocation [Orb::Models::Price::BpsPrice::CreditAllocation, nil]
-        #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param fixed_price_quantity [Float, nil]
-        #   # @param invoicing_cycle_configuration [Orb::Models::Price::BpsPrice::InvoicingCycleConfiguration, nil]
-        #   # @param item [Orb::Models::Price::BpsPrice::Item]
-        #   # @param maximum [Orb::Models::Price::BpsPrice::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param metadata [Hash{Symbol=>String}]
-        #   # @param minimum [Orb::Models::Price::BpsPrice::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param plan_phase_order [Integer, nil]
-        #   # @param price_type [Symbol, Orb::Models::Price::BpsPrice::PriceType]
-        #   # @param dimensional_price_configuration [Orb::Models::Price::BpsPrice::DimensionalPriceConfiguration, nil]
-        #   # @param model_type [Symbol, :bps]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billable_metric:,
-        #     billing_cycle_configuration:,
-        #     bps_config:,
-        #     cadence:,
-        #     conversion_rate:,
-        #     created_at:,
-        #     credit_allocation:,
-        #     currency:,
-        #     discount:,
-        #     external_price_id:,
-        #     fixed_price_quantity:,
-        #     invoicing_cycle_configuration:,
-        #     item:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     metadata:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     plan_phase_order:,
-        #     price_type:,
-        #     dimensional_price_configuration: nil,
-        #     model_type: :bps,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bps_config:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :bps)
+        #   @param id [String]
+        #   @param billable_metric [Orb::Models::Price::BpsPrice::BillableMetric, nil]
+        #   @param billing_cycle_configuration [Orb::Models::Price::BpsPrice::BillingCycleConfiguration]
+        #   @param bps_config [Orb::Models::Price::BpsPrice::BpsConfig]
+        #   @param cadence [Symbol, Orb::Models::Price::BpsPrice::Cadence]
+        #   @param conversion_rate [Float, nil]
+        #   @param created_at [Time]
+        #   @param credit_allocation [Orb::Models::Price::BpsPrice::CreditAllocation, nil]
+        #   @param currency [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param external_price_id [String, nil]
+        #   @param fixed_price_quantity [Float, nil]
+        #   @param invoicing_cycle_configuration [Orb::Models::Price::BpsPrice::InvoicingCycleConfiguration, nil]
+        #   @param item [Orb::Models::Price::BpsPrice::Item]
+        #   @param maximum [Orb::Models::Price::BpsPrice::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param metadata [Hash{Symbol=>String}]
+        #   @param minimum [Orb::Models::Price::BpsPrice::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param plan_phase_order [Integer, nil]
+        #   @param price_type [Symbol, Orb::Models::Price::BpsPrice::PriceType]
+        #   @param dimensional_price_configuration [Orb::Models::Price::BpsPrice::DimensionalPriceConfiguration, nil]
+        #   @param model_type [Symbol, :bps]
 
         # @see Orb::Models::Price::BpsPrice#billable_metric
         class BillableMetric < Orb::Internal::Type::BaseModel
@@ -2555,12 +2111,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Price::BpsPrice#billing_cycle_configuration
@@ -2576,13 +2128,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::BpsPrice::BillingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::BpsPrice::BillingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::BpsPrice::BillingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::BpsPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
@@ -2591,11 +2139,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -2613,13 +2158,9 @@ module Orb
           #   @return [String, nil]
           optional :per_unit_maximum, String, nil?: true
 
-          # @!parse
-          #   # @param bps [Float]
-          #   # @param per_unit_maximum [String, nil]
-          #   #
-          #   def initialize(bps:, per_unit_maximum: nil, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(bps:, per_unit_maximum: nil)
+          #   @param bps [Float]
+          #   @param per_unit_maximum [String, nil]
         end
 
         # @see Orb::Models::Price::BpsPrice#cadence
@@ -2633,11 +2174,8 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::BpsPrice#credit_allocation
@@ -2652,13 +2190,9 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param allows_rollover [Boolean]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(allows_rollover:, currency:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allows_rollover:, currency:)
+          #   @param allows_rollover [Boolean]
+          #   @param currency [String]
         end
 
         # @see Orb::Models::Price::BpsPrice#invoicing_cycle_configuration
@@ -2674,13 +2208,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::BpsPrice::InvoicingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::BpsPrice::InvoicingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::BpsPrice::InvoicingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::BpsPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
@@ -2689,11 +2219,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -2709,13 +2236,9 @@ module Orb
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, name:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, name:)
+          #   @param id [String]
+          #   @param name [String]
         end
 
         # @see Orb::Models::Price::BpsPrice#maximum
@@ -2733,13 +2256,9 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @see Orb::Models::Price::BpsPrice#minimum
@@ -2757,13 +2276,9 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         # @see Orb::Models::Price::BpsPrice#price_type
@@ -2773,11 +2288,8 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::BpsPrice#dimensional_price_configuration
@@ -2792,13 +2304,9 @@ module Orb
           #   @return [String]
           required :dimensional_price_group_id, String
 
-          # @!parse
-          #   # @param dimension_values [Array<String>]
-          #   # @param dimensional_price_group_id [String]
-          #   #
-          #   def initialize(dimension_values:, dimensional_price_group_id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(dimension_values:, dimensional_price_group_id:)
+          #   @param dimension_values [Array<String>]
+          #   @param dimensional_price_group_id [String]
         end
       end
 
@@ -2931,63 +2439,31 @@ module Orb
                  -> { Orb::Models::Price::BulkBpsPrice::DimensionalPriceConfiguration },
                  nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param billable_metric [Orb::Models::Price::BulkBpsPrice::BillableMetric, nil]
-        #   # @param billing_cycle_configuration [Orb::Models::Price::BulkBpsPrice::BillingCycleConfiguration]
-        #   # @param bulk_bps_config [Orb::Models::Price::BulkBpsPrice::BulkBpsConfig]
-        #   # @param cadence [Symbol, Orb::Models::Price::BulkBpsPrice::Cadence]
-        #   # @param conversion_rate [Float, nil]
-        #   # @param created_at [Time]
-        #   # @param credit_allocation [Orb::Models::Price::BulkBpsPrice::CreditAllocation, nil]
-        #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param fixed_price_quantity [Float, nil]
-        #   # @param invoicing_cycle_configuration [Orb::Models::Price::BulkBpsPrice::InvoicingCycleConfiguration, nil]
-        #   # @param item [Orb::Models::Price::BulkBpsPrice::Item]
-        #   # @param maximum [Orb::Models::Price::BulkBpsPrice::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param metadata [Hash{Symbol=>String}]
-        #   # @param minimum [Orb::Models::Price::BulkBpsPrice::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param plan_phase_order [Integer, nil]
-        #   # @param price_type [Symbol, Orb::Models::Price::BulkBpsPrice::PriceType]
-        #   # @param dimensional_price_configuration [Orb::Models::Price::BulkBpsPrice::DimensionalPriceConfiguration, nil]
-        #   # @param model_type [Symbol, :bulk_bps]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billable_metric:,
-        #     billing_cycle_configuration:,
-        #     bulk_bps_config:,
-        #     cadence:,
-        #     conversion_rate:,
-        #     created_at:,
-        #     credit_allocation:,
-        #     currency:,
-        #     discount:,
-        #     external_price_id:,
-        #     fixed_price_quantity:,
-        #     invoicing_cycle_configuration:,
-        #     item:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     metadata:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     plan_phase_order:,
-        #     price_type:,
-        #     dimensional_price_configuration: nil,
-        #     model_type: :bulk_bps,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bulk_bps_config:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :bulk_bps)
+        #   @param id [String]
+        #   @param billable_metric [Orb::Models::Price::BulkBpsPrice::BillableMetric, nil]
+        #   @param billing_cycle_configuration [Orb::Models::Price::BulkBpsPrice::BillingCycleConfiguration]
+        #   @param bulk_bps_config [Orb::Models::Price::BulkBpsPrice::BulkBpsConfig]
+        #   @param cadence [Symbol, Orb::Models::Price::BulkBpsPrice::Cadence]
+        #   @param conversion_rate [Float, nil]
+        #   @param created_at [Time]
+        #   @param credit_allocation [Orb::Models::Price::BulkBpsPrice::CreditAllocation, nil]
+        #   @param currency [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param external_price_id [String, nil]
+        #   @param fixed_price_quantity [Float, nil]
+        #   @param invoicing_cycle_configuration [Orb::Models::Price::BulkBpsPrice::InvoicingCycleConfiguration, nil]
+        #   @param item [Orb::Models::Price::BulkBpsPrice::Item]
+        #   @param maximum [Orb::Models::Price::BulkBpsPrice::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param metadata [Hash{Symbol=>String}]
+        #   @param minimum [Orb::Models::Price::BulkBpsPrice::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param plan_phase_order [Integer, nil]
+        #   @param price_type [Symbol, Orb::Models::Price::BulkBpsPrice::PriceType]
+        #   @param dimensional_price_configuration [Orb::Models::Price::BulkBpsPrice::DimensionalPriceConfiguration, nil]
+        #   @param model_type [Symbol, :bulk_bps]
 
         # @see Orb::Models::Price::BulkBpsPrice#billable_metric
         class BillableMetric < Orb::Internal::Type::BaseModel
@@ -2996,12 +2472,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Price::BulkBpsPrice#billing_cycle_configuration
@@ -3017,13 +2489,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::BulkBpsPrice::BillingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::BulkBpsPrice::BillingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::BulkBpsPrice::BillingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::BulkBpsPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
@@ -3032,11 +2500,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -3050,12 +2515,8 @@ module Orb
           required :tiers,
                    -> { Orb::Internal::Type::ArrayOf[Orb::Models::Price::BulkBpsPrice::BulkBpsConfig::Tier] }
 
-          # @!parse
-          #   # @param tiers [Array<Orb::Models::Price::BulkBpsPrice::BulkBpsConfig::Tier>]
-          #   #
-          #   def initialize(tiers:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(tiers:)
+          #   @param tiers [Array<Orb::Models::Price::BulkBpsPrice::BulkBpsConfig::Tier>]
 
           class Tier < Orb::Internal::Type::BaseModel
             # @!attribute bps
@@ -3076,14 +2537,10 @@ module Orb
             #   @return [String, nil]
             optional :per_unit_maximum, String, nil?: true
 
-            # @!parse
-            #   # @param bps [Float]
-            #   # @param maximum_amount [String, nil]
-            #   # @param per_unit_maximum [String, nil]
-            #   #
-            #   def initialize(bps:, maximum_amount: nil, per_unit_maximum: nil, **) = super
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(bps:, maximum_amount: nil, per_unit_maximum: nil)
+            #   @param bps [Float]
+            #   @param maximum_amount [String, nil]
+            #   @param per_unit_maximum [String, nil]
           end
         end
 
@@ -3098,11 +2555,8 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::BulkBpsPrice#credit_allocation
@@ -3117,13 +2571,9 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param allows_rollover [Boolean]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(allows_rollover:, currency:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allows_rollover:, currency:)
+          #   @param allows_rollover [Boolean]
+          #   @param currency [String]
         end
 
         # @see Orb::Models::Price::BulkBpsPrice#invoicing_cycle_configuration
@@ -3139,13 +2589,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::BulkBpsPrice::InvoicingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::BulkBpsPrice::InvoicingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::BulkBpsPrice::InvoicingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::BulkBpsPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
@@ -3154,11 +2600,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -3174,13 +2617,9 @@ module Orb
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, name:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, name:)
+          #   @param id [String]
+          #   @param name [String]
         end
 
         # @see Orb::Models::Price::BulkBpsPrice#maximum
@@ -3198,13 +2637,9 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @see Orb::Models::Price::BulkBpsPrice#minimum
@@ -3222,13 +2657,9 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         # @see Orb::Models::Price::BulkBpsPrice#price_type
@@ -3238,11 +2669,8 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::BulkBpsPrice#dimensional_price_configuration
@@ -3257,13 +2685,9 @@ module Orb
           #   @return [String]
           required :dimensional_price_group_id, String
 
-          # @!parse
-          #   # @param dimension_values [Array<String>]
-          #   # @param dimensional_price_group_id [String]
-          #   #
-          #   def initialize(dimension_values:, dimensional_price_group_id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(dimension_values:, dimensional_price_group_id:)
+          #   @param dimension_values [Array<String>]
+          #   @param dimensional_price_group_id [String]
         end
       end
 
@@ -3396,63 +2820,31 @@ module Orb
                  -> { Orb::Models::Price::BulkPrice::DimensionalPriceConfiguration },
                  nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param billable_metric [Orb::Models::Price::BulkPrice::BillableMetric, nil]
-        #   # @param billing_cycle_configuration [Orb::Models::Price::BulkPrice::BillingCycleConfiguration]
-        #   # @param bulk_config [Orb::Models::Price::BulkPrice::BulkConfig]
-        #   # @param cadence [Symbol, Orb::Models::Price::BulkPrice::Cadence]
-        #   # @param conversion_rate [Float, nil]
-        #   # @param created_at [Time]
-        #   # @param credit_allocation [Orb::Models::Price::BulkPrice::CreditAllocation, nil]
-        #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param fixed_price_quantity [Float, nil]
-        #   # @param invoicing_cycle_configuration [Orb::Models::Price::BulkPrice::InvoicingCycleConfiguration, nil]
-        #   # @param item [Orb::Models::Price::BulkPrice::Item]
-        #   # @param maximum [Orb::Models::Price::BulkPrice::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param metadata [Hash{Symbol=>String}]
-        #   # @param minimum [Orb::Models::Price::BulkPrice::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param plan_phase_order [Integer, nil]
-        #   # @param price_type [Symbol, Orb::Models::Price::BulkPrice::PriceType]
-        #   # @param dimensional_price_configuration [Orb::Models::Price::BulkPrice::DimensionalPriceConfiguration, nil]
-        #   # @param model_type [Symbol, :bulk]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billable_metric:,
-        #     billing_cycle_configuration:,
-        #     bulk_config:,
-        #     cadence:,
-        #     conversion_rate:,
-        #     created_at:,
-        #     credit_allocation:,
-        #     currency:,
-        #     discount:,
-        #     external_price_id:,
-        #     fixed_price_quantity:,
-        #     invoicing_cycle_configuration:,
-        #     item:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     metadata:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     plan_phase_order:,
-        #     price_type:,
-        #     dimensional_price_configuration: nil,
-        #     model_type: :bulk,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bulk_config:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :bulk)
+        #   @param id [String]
+        #   @param billable_metric [Orb::Models::Price::BulkPrice::BillableMetric, nil]
+        #   @param billing_cycle_configuration [Orb::Models::Price::BulkPrice::BillingCycleConfiguration]
+        #   @param bulk_config [Orb::Models::Price::BulkPrice::BulkConfig]
+        #   @param cadence [Symbol, Orb::Models::Price::BulkPrice::Cadence]
+        #   @param conversion_rate [Float, nil]
+        #   @param created_at [Time]
+        #   @param credit_allocation [Orb::Models::Price::BulkPrice::CreditAllocation, nil]
+        #   @param currency [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param external_price_id [String, nil]
+        #   @param fixed_price_quantity [Float, nil]
+        #   @param invoicing_cycle_configuration [Orb::Models::Price::BulkPrice::InvoicingCycleConfiguration, nil]
+        #   @param item [Orb::Models::Price::BulkPrice::Item]
+        #   @param maximum [Orb::Models::Price::BulkPrice::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param metadata [Hash{Symbol=>String}]
+        #   @param minimum [Orb::Models::Price::BulkPrice::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param plan_phase_order [Integer, nil]
+        #   @param price_type [Symbol, Orb::Models::Price::BulkPrice::PriceType]
+        #   @param dimensional_price_configuration [Orb::Models::Price::BulkPrice::DimensionalPriceConfiguration, nil]
+        #   @param model_type [Symbol, :bulk]
 
         # @see Orb::Models::Price::BulkPrice#billable_metric
         class BillableMetric < Orb::Internal::Type::BaseModel
@@ -3461,12 +2853,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Price::BulkPrice#billing_cycle_configuration
@@ -3482,13 +2870,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::BulkPrice::BillingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::BulkPrice::BillingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::BulkPrice::BillingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::BulkPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
@@ -3497,11 +2881,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -3513,12 +2894,8 @@ module Orb
           #   @return [Array<Orb::Models::Price::BulkPrice::BulkConfig::Tier>]
           required :tiers, -> { Orb::Internal::Type::ArrayOf[Orb::Models::Price::BulkPrice::BulkConfig::Tier] }
 
-          # @!parse
-          #   # @param tiers [Array<Orb::Models::Price::BulkPrice::BulkConfig::Tier>]
-          #   #
-          #   def initialize(tiers:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(tiers:)
+          #   @param tiers [Array<Orb::Models::Price::BulkPrice::BulkConfig::Tier>]
 
           class Tier < Orb::Internal::Type::BaseModel
             # @!attribute unit_amount
@@ -3533,13 +2910,9 @@ module Orb
             #   @return [Float, nil]
             optional :maximum_units, Float, nil?: true
 
-            # @!parse
-            #   # @param unit_amount [String]
-            #   # @param maximum_units [Float, nil]
-            #   #
-            #   def initialize(unit_amount:, maximum_units: nil, **) = super
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(unit_amount:, maximum_units: nil)
+            #   @param unit_amount [String]
+            #   @param maximum_units [Float, nil]
           end
         end
 
@@ -3554,11 +2927,8 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::BulkPrice#credit_allocation
@@ -3573,13 +2943,9 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param allows_rollover [Boolean]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(allows_rollover:, currency:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allows_rollover:, currency:)
+          #   @param allows_rollover [Boolean]
+          #   @param currency [String]
         end
 
         # @see Orb::Models::Price::BulkPrice#invoicing_cycle_configuration
@@ -3595,13 +2961,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::BulkPrice::InvoicingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::BulkPrice::InvoicingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::BulkPrice::InvoicingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::BulkPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
@@ -3610,11 +2972,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -3630,13 +2989,9 @@ module Orb
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, name:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, name:)
+          #   @param id [String]
+          #   @param name [String]
         end
 
         # @see Orb::Models::Price::BulkPrice#maximum
@@ -3654,13 +3009,9 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @see Orb::Models::Price::BulkPrice#minimum
@@ -3678,13 +3029,9 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         # @see Orb::Models::Price::BulkPrice#price_type
@@ -3694,11 +3041,8 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::BulkPrice#dimensional_price_configuration
@@ -3713,13 +3057,9 @@ module Orb
           #   @return [String]
           required :dimensional_price_group_id, String
 
-          # @!parse
-          #   # @param dimension_values [Array<String>]
-          #   # @param dimensional_price_group_id [String]
-          #   #
-          #   def initialize(dimension_values:, dimensional_price_group_id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(dimension_values:, dimensional_price_group_id:)
+          #   @param dimension_values [Array<String>]
+          #   @param dimensional_price_group_id [String]
         end
       end
 
@@ -3857,63 +3197,31 @@ module Orb
                  -> { Orb::Models::Price::ThresholdTotalAmountPrice::DimensionalPriceConfiguration },
                  nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param billable_metric [Orb::Models::Price::ThresholdTotalAmountPrice::BillableMetric, nil]
-        #   # @param billing_cycle_configuration [Orb::Models::Price::ThresholdTotalAmountPrice::BillingCycleConfiguration]
-        #   # @param cadence [Symbol, Orb::Models::Price::ThresholdTotalAmountPrice::Cadence]
-        #   # @param conversion_rate [Float, nil]
-        #   # @param created_at [Time]
-        #   # @param credit_allocation [Orb::Models::Price::ThresholdTotalAmountPrice::CreditAllocation, nil]
-        #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param fixed_price_quantity [Float, nil]
-        #   # @param invoicing_cycle_configuration [Orb::Models::Price::ThresholdTotalAmountPrice::InvoicingCycleConfiguration, nil]
-        #   # @param item [Orb::Models::Price::ThresholdTotalAmountPrice::Item]
-        #   # @param maximum [Orb::Models::Price::ThresholdTotalAmountPrice::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param metadata [Hash{Symbol=>String}]
-        #   # @param minimum [Orb::Models::Price::ThresholdTotalAmountPrice::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param plan_phase_order [Integer, nil]
-        #   # @param price_type [Symbol, Orb::Models::Price::ThresholdTotalAmountPrice::PriceType]
-        #   # @param threshold_total_amount_config [Hash{Symbol=>Object}]
-        #   # @param dimensional_price_configuration [Orb::Models::Price::ThresholdTotalAmountPrice::DimensionalPriceConfiguration, nil]
-        #   # @param model_type [Symbol, :threshold_total_amount]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billable_metric:,
-        #     billing_cycle_configuration:,
-        #     cadence:,
-        #     conversion_rate:,
-        #     created_at:,
-        #     credit_allocation:,
-        #     currency:,
-        #     discount:,
-        #     external_price_id:,
-        #     fixed_price_quantity:,
-        #     invoicing_cycle_configuration:,
-        #     item:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     metadata:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     plan_phase_order:,
-        #     price_type:,
-        #     threshold_total_amount_config:,
-        #     dimensional_price_configuration: nil,
-        #     model_type: :threshold_total_amount,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, threshold_total_amount_config:, dimensional_price_configuration: nil, model_type: :threshold_total_amount)
+        #   @param id [String]
+        #   @param billable_metric [Orb::Models::Price::ThresholdTotalAmountPrice::BillableMetric, nil]
+        #   @param billing_cycle_configuration [Orb::Models::Price::ThresholdTotalAmountPrice::BillingCycleConfiguration]
+        #   @param cadence [Symbol, Orb::Models::Price::ThresholdTotalAmountPrice::Cadence]
+        #   @param conversion_rate [Float, nil]
+        #   @param created_at [Time]
+        #   @param credit_allocation [Orb::Models::Price::ThresholdTotalAmountPrice::CreditAllocation, nil]
+        #   @param currency [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param external_price_id [String, nil]
+        #   @param fixed_price_quantity [Float, nil]
+        #   @param invoicing_cycle_configuration [Orb::Models::Price::ThresholdTotalAmountPrice::InvoicingCycleConfiguration, nil]
+        #   @param item [Orb::Models::Price::ThresholdTotalAmountPrice::Item]
+        #   @param maximum [Orb::Models::Price::ThresholdTotalAmountPrice::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param metadata [Hash{Symbol=>String}]
+        #   @param minimum [Orb::Models::Price::ThresholdTotalAmountPrice::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param plan_phase_order [Integer, nil]
+        #   @param price_type [Symbol, Orb::Models::Price::ThresholdTotalAmountPrice::PriceType]
+        #   @param threshold_total_amount_config [Hash{Symbol=>Object}]
+        #   @param dimensional_price_configuration [Orb::Models::Price::ThresholdTotalAmountPrice::DimensionalPriceConfiguration, nil]
+        #   @param model_type [Symbol, :threshold_total_amount]
 
         # @see Orb::Models::Price::ThresholdTotalAmountPrice#billable_metric
         class BillableMetric < Orb::Internal::Type::BaseModel
@@ -3922,12 +3230,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Price::ThresholdTotalAmountPrice#billing_cycle_configuration
@@ -3943,13 +3247,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::ThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::ThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::ThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::ThresholdTotalAmountPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
@@ -3958,11 +3258,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -3977,11 +3274,8 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::ThresholdTotalAmountPrice#credit_allocation
@@ -3996,13 +3290,9 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param allows_rollover [Boolean]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(allows_rollover:, currency:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allows_rollover:, currency:)
+          #   @param allows_rollover [Boolean]
+          #   @param currency [String]
         end
 
         # @see Orb::Models::Price::ThresholdTotalAmountPrice#invoicing_cycle_configuration
@@ -4018,13 +3308,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::ThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::ThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::ThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::ThresholdTotalAmountPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
@@ -4033,11 +3319,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -4053,13 +3336,9 @@ module Orb
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, name:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, name:)
+          #   @param id [String]
+          #   @param name [String]
         end
 
         # @see Orb::Models::Price::ThresholdTotalAmountPrice#maximum
@@ -4077,13 +3356,9 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @see Orb::Models::Price::ThresholdTotalAmountPrice#minimum
@@ -4101,13 +3376,9 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         # @see Orb::Models::Price::ThresholdTotalAmountPrice#price_type
@@ -4117,11 +3388,8 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::ThresholdTotalAmountPrice#dimensional_price_configuration
@@ -4136,13 +3404,9 @@ module Orb
           #   @return [String]
           required :dimensional_price_group_id, String
 
-          # @!parse
-          #   # @param dimension_values [Array<String>]
-          #   # @param dimensional_price_group_id [String]
-          #   #
-          #   def initialize(dimension_values:, dimensional_price_group_id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(dimension_values:, dimensional_price_group_id:)
+          #   @param dimension_values [Array<String>]
+          #   @param dimensional_price_group_id [String]
         end
       end
 
@@ -4276,63 +3540,31 @@ module Orb
                  -> { Orb::Models::Price::TieredPackagePrice::DimensionalPriceConfiguration },
                  nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param billable_metric [Orb::Models::Price::TieredPackagePrice::BillableMetric, nil]
-        #   # @param billing_cycle_configuration [Orb::Models::Price::TieredPackagePrice::BillingCycleConfiguration]
-        #   # @param cadence [Symbol, Orb::Models::Price::TieredPackagePrice::Cadence]
-        #   # @param conversion_rate [Float, nil]
-        #   # @param created_at [Time]
-        #   # @param credit_allocation [Orb::Models::Price::TieredPackagePrice::CreditAllocation, nil]
-        #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param fixed_price_quantity [Float, nil]
-        #   # @param invoicing_cycle_configuration [Orb::Models::Price::TieredPackagePrice::InvoicingCycleConfiguration, nil]
-        #   # @param item [Orb::Models::Price::TieredPackagePrice::Item]
-        #   # @param maximum [Orb::Models::Price::TieredPackagePrice::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param metadata [Hash{Symbol=>String}]
-        #   # @param minimum [Orb::Models::Price::TieredPackagePrice::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param plan_phase_order [Integer, nil]
-        #   # @param price_type [Symbol, Orb::Models::Price::TieredPackagePrice::PriceType]
-        #   # @param tiered_package_config [Hash{Symbol=>Object}]
-        #   # @param dimensional_price_configuration [Orb::Models::Price::TieredPackagePrice::DimensionalPriceConfiguration, nil]
-        #   # @param model_type [Symbol, :tiered_package]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billable_metric:,
-        #     billing_cycle_configuration:,
-        #     cadence:,
-        #     conversion_rate:,
-        #     created_at:,
-        #     credit_allocation:,
-        #     currency:,
-        #     discount:,
-        #     external_price_id:,
-        #     fixed_price_quantity:,
-        #     invoicing_cycle_configuration:,
-        #     item:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     metadata:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     plan_phase_order:,
-        #     price_type:,
-        #     tiered_package_config:,
-        #     dimensional_price_configuration: nil,
-        #     model_type: :tiered_package,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_package_config:, dimensional_price_configuration: nil, model_type: :tiered_package)
+        #   @param id [String]
+        #   @param billable_metric [Orb::Models::Price::TieredPackagePrice::BillableMetric, nil]
+        #   @param billing_cycle_configuration [Orb::Models::Price::TieredPackagePrice::BillingCycleConfiguration]
+        #   @param cadence [Symbol, Orb::Models::Price::TieredPackagePrice::Cadence]
+        #   @param conversion_rate [Float, nil]
+        #   @param created_at [Time]
+        #   @param credit_allocation [Orb::Models::Price::TieredPackagePrice::CreditAllocation, nil]
+        #   @param currency [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param external_price_id [String, nil]
+        #   @param fixed_price_quantity [Float, nil]
+        #   @param invoicing_cycle_configuration [Orb::Models::Price::TieredPackagePrice::InvoicingCycleConfiguration, nil]
+        #   @param item [Orb::Models::Price::TieredPackagePrice::Item]
+        #   @param maximum [Orb::Models::Price::TieredPackagePrice::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param metadata [Hash{Symbol=>String}]
+        #   @param minimum [Orb::Models::Price::TieredPackagePrice::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param plan_phase_order [Integer, nil]
+        #   @param price_type [Symbol, Orb::Models::Price::TieredPackagePrice::PriceType]
+        #   @param tiered_package_config [Hash{Symbol=>Object}]
+        #   @param dimensional_price_configuration [Orb::Models::Price::TieredPackagePrice::DimensionalPriceConfiguration, nil]
+        #   @param model_type [Symbol, :tiered_package]
 
         # @see Orb::Models::Price::TieredPackagePrice#billable_metric
         class BillableMetric < Orb::Internal::Type::BaseModel
@@ -4341,12 +3573,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Price::TieredPackagePrice#billing_cycle_configuration
@@ -4362,13 +3590,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::TieredPackagePrice::BillingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::TieredPackagePrice::BillingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::TieredPackagePrice::BillingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::TieredPackagePrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
@@ -4377,11 +3601,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -4396,11 +3617,8 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::TieredPackagePrice#credit_allocation
@@ -4415,13 +3633,9 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param allows_rollover [Boolean]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(allows_rollover:, currency:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allows_rollover:, currency:)
+          #   @param allows_rollover [Boolean]
+          #   @param currency [String]
         end
 
         # @see Orb::Models::Price::TieredPackagePrice#invoicing_cycle_configuration
@@ -4437,13 +3651,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::TieredPackagePrice::InvoicingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::TieredPackagePrice::InvoicingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::TieredPackagePrice::InvoicingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::TieredPackagePrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
@@ -4452,11 +3662,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -4472,13 +3679,9 @@ module Orb
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, name:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, name:)
+          #   @param id [String]
+          #   @param name [String]
         end
 
         # @see Orb::Models::Price::TieredPackagePrice#maximum
@@ -4496,13 +3699,9 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @see Orb::Models::Price::TieredPackagePrice#minimum
@@ -4520,13 +3719,9 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         # @see Orb::Models::Price::TieredPackagePrice#price_type
@@ -4536,11 +3731,8 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::TieredPackagePrice#dimensional_price_configuration
@@ -4555,13 +3747,9 @@ module Orb
           #   @return [String]
           required :dimensional_price_group_id, String
 
-          # @!parse
-          #   # @param dimension_values [Array<String>]
-          #   # @param dimensional_price_group_id [String]
-          #   #
-          #   def initialize(dimension_values:, dimensional_price_group_id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(dimension_values:, dimensional_price_group_id:)
+          #   @param dimension_values [Array<String>]
+          #   @param dimensional_price_group_id [String]
         end
       end
 
@@ -4695,63 +3883,31 @@ module Orb
                  -> { Orb::Models::Price::GroupedTieredPrice::DimensionalPriceConfiguration },
                  nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param billable_metric [Orb::Models::Price::GroupedTieredPrice::BillableMetric, nil]
-        #   # @param billing_cycle_configuration [Orb::Models::Price::GroupedTieredPrice::BillingCycleConfiguration]
-        #   # @param cadence [Symbol, Orb::Models::Price::GroupedTieredPrice::Cadence]
-        #   # @param conversion_rate [Float, nil]
-        #   # @param created_at [Time]
-        #   # @param credit_allocation [Orb::Models::Price::GroupedTieredPrice::CreditAllocation, nil]
-        #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param fixed_price_quantity [Float, nil]
-        #   # @param grouped_tiered_config [Hash{Symbol=>Object}]
-        #   # @param invoicing_cycle_configuration [Orb::Models::Price::GroupedTieredPrice::InvoicingCycleConfiguration, nil]
-        #   # @param item [Orb::Models::Price::GroupedTieredPrice::Item]
-        #   # @param maximum [Orb::Models::Price::GroupedTieredPrice::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param metadata [Hash{Symbol=>String}]
-        #   # @param minimum [Orb::Models::Price::GroupedTieredPrice::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param plan_phase_order [Integer, nil]
-        #   # @param price_type [Symbol, Orb::Models::Price::GroupedTieredPrice::PriceType]
-        #   # @param dimensional_price_configuration [Orb::Models::Price::GroupedTieredPrice::DimensionalPriceConfiguration, nil]
-        #   # @param model_type [Symbol, :grouped_tiered]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billable_metric:,
-        #     billing_cycle_configuration:,
-        #     cadence:,
-        #     conversion_rate:,
-        #     created_at:,
-        #     credit_allocation:,
-        #     currency:,
-        #     discount:,
-        #     external_price_id:,
-        #     fixed_price_quantity:,
-        #     grouped_tiered_config:,
-        #     invoicing_cycle_configuration:,
-        #     item:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     metadata:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     plan_phase_order:,
-        #     price_type:,
-        #     dimensional_price_configuration: nil,
-        #     model_type: :grouped_tiered,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_tiered_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :grouped_tiered)
+        #   @param id [String]
+        #   @param billable_metric [Orb::Models::Price::GroupedTieredPrice::BillableMetric, nil]
+        #   @param billing_cycle_configuration [Orb::Models::Price::GroupedTieredPrice::BillingCycleConfiguration]
+        #   @param cadence [Symbol, Orb::Models::Price::GroupedTieredPrice::Cadence]
+        #   @param conversion_rate [Float, nil]
+        #   @param created_at [Time]
+        #   @param credit_allocation [Orb::Models::Price::GroupedTieredPrice::CreditAllocation, nil]
+        #   @param currency [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param external_price_id [String, nil]
+        #   @param fixed_price_quantity [Float, nil]
+        #   @param grouped_tiered_config [Hash{Symbol=>Object}]
+        #   @param invoicing_cycle_configuration [Orb::Models::Price::GroupedTieredPrice::InvoicingCycleConfiguration, nil]
+        #   @param item [Orb::Models::Price::GroupedTieredPrice::Item]
+        #   @param maximum [Orb::Models::Price::GroupedTieredPrice::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param metadata [Hash{Symbol=>String}]
+        #   @param minimum [Orb::Models::Price::GroupedTieredPrice::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param plan_phase_order [Integer, nil]
+        #   @param price_type [Symbol, Orb::Models::Price::GroupedTieredPrice::PriceType]
+        #   @param dimensional_price_configuration [Orb::Models::Price::GroupedTieredPrice::DimensionalPriceConfiguration, nil]
+        #   @param model_type [Symbol, :grouped_tiered]
 
         # @see Orb::Models::Price::GroupedTieredPrice#billable_metric
         class BillableMetric < Orb::Internal::Type::BaseModel
@@ -4760,12 +3916,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Price::GroupedTieredPrice#billing_cycle_configuration
@@ -4781,13 +3933,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::GroupedTieredPrice::BillingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::GroupedTieredPrice::BillingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::GroupedTieredPrice::BillingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::GroupedTieredPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
@@ -4796,11 +3944,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -4815,11 +3960,8 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::GroupedTieredPrice#credit_allocation
@@ -4834,13 +3976,9 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param allows_rollover [Boolean]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(allows_rollover:, currency:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allows_rollover:, currency:)
+          #   @param allows_rollover [Boolean]
+          #   @param currency [String]
         end
 
         # @see Orb::Models::Price::GroupedTieredPrice#invoicing_cycle_configuration
@@ -4856,13 +3994,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::GroupedTieredPrice::InvoicingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::GroupedTieredPrice::InvoicingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::GroupedTieredPrice::InvoicingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::GroupedTieredPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
@@ -4871,11 +4005,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -4891,13 +4022,9 @@ module Orb
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, name:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, name:)
+          #   @param id [String]
+          #   @param name [String]
         end
 
         # @see Orb::Models::Price::GroupedTieredPrice#maximum
@@ -4915,13 +4042,9 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @see Orb::Models::Price::GroupedTieredPrice#minimum
@@ -4939,13 +4062,9 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         # @see Orb::Models::Price::GroupedTieredPrice#price_type
@@ -4955,11 +4074,8 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::GroupedTieredPrice#dimensional_price_configuration
@@ -4974,13 +4090,9 @@ module Orb
           #   @return [String]
           required :dimensional_price_group_id, String
 
-          # @!parse
-          #   # @param dimension_values [Array<String>]
-          #   # @param dimensional_price_group_id [String]
-          #   #
-          #   def initialize(dimension_values:, dimensional_price_group_id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(dimension_values:, dimensional_price_group_id:)
+          #   @param dimension_values [Array<String>]
+          #   @param dimensional_price_group_id [String]
         end
       end
 
@@ -5116,63 +4228,31 @@ module Orb
                  -> { Orb::Models::Price::TieredWithMinimumPrice::DimensionalPriceConfiguration },
                  nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param billable_metric [Orb::Models::Price::TieredWithMinimumPrice::BillableMetric, nil]
-        #   # @param billing_cycle_configuration [Orb::Models::Price::TieredWithMinimumPrice::BillingCycleConfiguration]
-        #   # @param cadence [Symbol, Orb::Models::Price::TieredWithMinimumPrice::Cadence]
-        #   # @param conversion_rate [Float, nil]
-        #   # @param created_at [Time]
-        #   # @param credit_allocation [Orb::Models::Price::TieredWithMinimumPrice::CreditAllocation, nil]
-        #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param fixed_price_quantity [Float, nil]
-        #   # @param invoicing_cycle_configuration [Orb::Models::Price::TieredWithMinimumPrice::InvoicingCycleConfiguration, nil]
-        #   # @param item [Orb::Models::Price::TieredWithMinimumPrice::Item]
-        #   # @param maximum [Orb::Models::Price::TieredWithMinimumPrice::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param metadata [Hash{Symbol=>String}]
-        #   # @param minimum [Orb::Models::Price::TieredWithMinimumPrice::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param plan_phase_order [Integer, nil]
-        #   # @param price_type [Symbol, Orb::Models::Price::TieredWithMinimumPrice::PriceType]
-        #   # @param tiered_with_minimum_config [Hash{Symbol=>Object}]
-        #   # @param dimensional_price_configuration [Orb::Models::Price::TieredWithMinimumPrice::DimensionalPriceConfiguration, nil]
-        #   # @param model_type [Symbol, :tiered_with_minimum]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billable_metric:,
-        #     billing_cycle_configuration:,
-        #     cadence:,
-        #     conversion_rate:,
-        #     created_at:,
-        #     credit_allocation:,
-        #     currency:,
-        #     discount:,
-        #     external_price_id:,
-        #     fixed_price_quantity:,
-        #     invoicing_cycle_configuration:,
-        #     item:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     metadata:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     plan_phase_order:,
-        #     price_type:,
-        #     tiered_with_minimum_config:,
-        #     dimensional_price_configuration: nil,
-        #     model_type: :tiered_with_minimum,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_with_minimum_config:, dimensional_price_configuration: nil, model_type: :tiered_with_minimum)
+        #   @param id [String]
+        #   @param billable_metric [Orb::Models::Price::TieredWithMinimumPrice::BillableMetric, nil]
+        #   @param billing_cycle_configuration [Orb::Models::Price::TieredWithMinimumPrice::BillingCycleConfiguration]
+        #   @param cadence [Symbol, Orb::Models::Price::TieredWithMinimumPrice::Cadence]
+        #   @param conversion_rate [Float, nil]
+        #   @param created_at [Time]
+        #   @param credit_allocation [Orb::Models::Price::TieredWithMinimumPrice::CreditAllocation, nil]
+        #   @param currency [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param external_price_id [String, nil]
+        #   @param fixed_price_quantity [Float, nil]
+        #   @param invoicing_cycle_configuration [Orb::Models::Price::TieredWithMinimumPrice::InvoicingCycleConfiguration, nil]
+        #   @param item [Orb::Models::Price::TieredWithMinimumPrice::Item]
+        #   @param maximum [Orb::Models::Price::TieredWithMinimumPrice::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param metadata [Hash{Symbol=>String}]
+        #   @param minimum [Orb::Models::Price::TieredWithMinimumPrice::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param plan_phase_order [Integer, nil]
+        #   @param price_type [Symbol, Orb::Models::Price::TieredWithMinimumPrice::PriceType]
+        #   @param tiered_with_minimum_config [Hash{Symbol=>Object}]
+        #   @param dimensional_price_configuration [Orb::Models::Price::TieredWithMinimumPrice::DimensionalPriceConfiguration, nil]
+        #   @param model_type [Symbol, :tiered_with_minimum]
 
         # @see Orb::Models::Price::TieredWithMinimumPrice#billable_metric
         class BillableMetric < Orb::Internal::Type::BaseModel
@@ -5181,12 +4261,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Price::TieredWithMinimumPrice#billing_cycle_configuration
@@ -5202,13 +4278,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::TieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::TieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::TieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::TieredWithMinimumPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
@@ -5217,11 +4289,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -5236,11 +4305,8 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::TieredWithMinimumPrice#credit_allocation
@@ -5255,13 +4321,9 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param allows_rollover [Boolean]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(allows_rollover:, currency:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allows_rollover:, currency:)
+          #   @param allows_rollover [Boolean]
+          #   @param currency [String]
         end
 
         # @see Orb::Models::Price::TieredWithMinimumPrice#invoicing_cycle_configuration
@@ -5277,13 +4339,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::TieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::TieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::TieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::TieredWithMinimumPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
@@ -5292,11 +4350,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -5312,13 +4367,9 @@ module Orb
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, name:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, name:)
+          #   @param id [String]
+          #   @param name [String]
         end
 
         # @see Orb::Models::Price::TieredWithMinimumPrice#maximum
@@ -5336,13 +4387,9 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @see Orb::Models::Price::TieredWithMinimumPrice#minimum
@@ -5360,13 +4407,9 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         # @see Orb::Models::Price::TieredWithMinimumPrice#price_type
@@ -5376,11 +4419,8 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::TieredWithMinimumPrice#dimensional_price_configuration
@@ -5395,13 +4435,9 @@ module Orb
           #   @return [String]
           required :dimensional_price_group_id, String
 
-          # @!parse
-          #   # @param dimension_values [Array<String>]
-          #   # @param dimensional_price_group_id [String]
-          #   #
-          #   def initialize(dimension_values:, dimensional_price_group_id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(dimension_values:, dimensional_price_group_id:)
+          #   @param dimension_values [Array<String>]
+          #   @param dimensional_price_group_id [String]
         end
       end
 
@@ -5540,63 +4576,31 @@ module Orb
                  -> { Orb::Models::Price::TieredPackageWithMinimumPrice::DimensionalPriceConfiguration },
                  nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param billable_metric [Orb::Models::Price::TieredPackageWithMinimumPrice::BillableMetric, nil]
-        #   # @param billing_cycle_configuration [Orb::Models::Price::TieredPackageWithMinimumPrice::BillingCycleConfiguration]
-        #   # @param cadence [Symbol, Orb::Models::Price::TieredPackageWithMinimumPrice::Cadence]
-        #   # @param conversion_rate [Float, nil]
-        #   # @param created_at [Time]
-        #   # @param credit_allocation [Orb::Models::Price::TieredPackageWithMinimumPrice::CreditAllocation, nil]
-        #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param fixed_price_quantity [Float, nil]
-        #   # @param invoicing_cycle_configuration [Orb::Models::Price::TieredPackageWithMinimumPrice::InvoicingCycleConfiguration, nil]
-        #   # @param item [Orb::Models::Price::TieredPackageWithMinimumPrice::Item]
-        #   # @param maximum [Orb::Models::Price::TieredPackageWithMinimumPrice::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param metadata [Hash{Symbol=>String}]
-        #   # @param minimum [Orb::Models::Price::TieredPackageWithMinimumPrice::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param plan_phase_order [Integer, nil]
-        #   # @param price_type [Symbol, Orb::Models::Price::TieredPackageWithMinimumPrice::PriceType]
-        #   # @param tiered_package_with_minimum_config [Hash{Symbol=>Object}]
-        #   # @param dimensional_price_configuration [Orb::Models::Price::TieredPackageWithMinimumPrice::DimensionalPriceConfiguration, nil]
-        #   # @param model_type [Symbol, :tiered_package_with_minimum]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billable_metric:,
-        #     billing_cycle_configuration:,
-        #     cadence:,
-        #     conversion_rate:,
-        #     created_at:,
-        #     credit_allocation:,
-        #     currency:,
-        #     discount:,
-        #     external_price_id:,
-        #     fixed_price_quantity:,
-        #     invoicing_cycle_configuration:,
-        #     item:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     metadata:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     plan_phase_order:,
-        #     price_type:,
-        #     tiered_package_with_minimum_config:,
-        #     dimensional_price_configuration: nil,
-        #     model_type: :tiered_package_with_minimum,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_package_with_minimum_config:, dimensional_price_configuration: nil, model_type: :tiered_package_with_minimum)
+        #   @param id [String]
+        #   @param billable_metric [Orb::Models::Price::TieredPackageWithMinimumPrice::BillableMetric, nil]
+        #   @param billing_cycle_configuration [Orb::Models::Price::TieredPackageWithMinimumPrice::BillingCycleConfiguration]
+        #   @param cadence [Symbol, Orb::Models::Price::TieredPackageWithMinimumPrice::Cadence]
+        #   @param conversion_rate [Float, nil]
+        #   @param created_at [Time]
+        #   @param credit_allocation [Orb::Models::Price::TieredPackageWithMinimumPrice::CreditAllocation, nil]
+        #   @param currency [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param external_price_id [String, nil]
+        #   @param fixed_price_quantity [Float, nil]
+        #   @param invoicing_cycle_configuration [Orb::Models::Price::TieredPackageWithMinimumPrice::InvoicingCycleConfiguration, nil]
+        #   @param item [Orb::Models::Price::TieredPackageWithMinimumPrice::Item]
+        #   @param maximum [Orb::Models::Price::TieredPackageWithMinimumPrice::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param metadata [Hash{Symbol=>String}]
+        #   @param minimum [Orb::Models::Price::TieredPackageWithMinimumPrice::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param plan_phase_order [Integer, nil]
+        #   @param price_type [Symbol, Orb::Models::Price::TieredPackageWithMinimumPrice::PriceType]
+        #   @param tiered_package_with_minimum_config [Hash{Symbol=>Object}]
+        #   @param dimensional_price_configuration [Orb::Models::Price::TieredPackageWithMinimumPrice::DimensionalPriceConfiguration, nil]
+        #   @param model_type [Symbol, :tiered_package_with_minimum]
 
         # @see Orb::Models::Price::TieredPackageWithMinimumPrice#billable_metric
         class BillableMetric < Orb::Internal::Type::BaseModel
@@ -5605,12 +4609,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Price::TieredPackageWithMinimumPrice#billing_cycle_configuration
@@ -5626,13 +4626,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::TieredPackageWithMinimumPrice::BillingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::TieredPackageWithMinimumPrice::BillingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::TieredPackageWithMinimumPrice::BillingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::TieredPackageWithMinimumPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
@@ -5641,11 +4637,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -5660,11 +4653,8 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::TieredPackageWithMinimumPrice#credit_allocation
@@ -5679,13 +4669,9 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param allows_rollover [Boolean]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(allows_rollover:, currency:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allows_rollover:, currency:)
+          #   @param allows_rollover [Boolean]
+          #   @param currency [String]
         end
 
         # @see Orb::Models::Price::TieredPackageWithMinimumPrice#invoicing_cycle_configuration
@@ -5701,13 +4687,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::TieredPackageWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::TieredPackageWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::TieredPackageWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::TieredPackageWithMinimumPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
@@ -5716,11 +4698,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -5736,13 +4715,9 @@ module Orb
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, name:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, name:)
+          #   @param id [String]
+          #   @param name [String]
         end
 
         # @see Orb::Models::Price::TieredPackageWithMinimumPrice#maximum
@@ -5760,13 +4735,9 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @see Orb::Models::Price::TieredPackageWithMinimumPrice#minimum
@@ -5784,13 +4755,9 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         # @see Orb::Models::Price::TieredPackageWithMinimumPrice#price_type
@@ -5800,11 +4767,8 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::TieredPackageWithMinimumPrice#dimensional_price_configuration
@@ -5819,13 +4783,9 @@ module Orb
           #   @return [String]
           required :dimensional_price_group_id, String
 
-          # @!parse
-          #   # @param dimension_values [Array<String>]
-          #   # @param dimensional_price_group_id [String]
-          #   #
-          #   def initialize(dimension_values:, dimensional_price_group_id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(dimension_values:, dimensional_price_group_id:)
+          #   @param dimension_values [Array<String>]
+          #   @param dimensional_price_group_id [String]
         end
       end
 
@@ -5963,63 +4923,31 @@ module Orb
                  -> { Orb::Models::Price::PackageWithAllocationPrice::DimensionalPriceConfiguration },
                  nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param billable_metric [Orb::Models::Price::PackageWithAllocationPrice::BillableMetric, nil]
-        #   # @param billing_cycle_configuration [Orb::Models::Price::PackageWithAllocationPrice::BillingCycleConfiguration]
-        #   # @param cadence [Symbol, Orb::Models::Price::PackageWithAllocationPrice::Cadence]
-        #   # @param conversion_rate [Float, nil]
-        #   # @param created_at [Time]
-        #   # @param credit_allocation [Orb::Models::Price::PackageWithAllocationPrice::CreditAllocation, nil]
-        #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param fixed_price_quantity [Float, nil]
-        #   # @param invoicing_cycle_configuration [Orb::Models::Price::PackageWithAllocationPrice::InvoicingCycleConfiguration, nil]
-        #   # @param item [Orb::Models::Price::PackageWithAllocationPrice::Item]
-        #   # @param maximum [Orb::Models::Price::PackageWithAllocationPrice::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param metadata [Hash{Symbol=>String}]
-        #   # @param minimum [Orb::Models::Price::PackageWithAllocationPrice::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param package_with_allocation_config [Hash{Symbol=>Object}]
-        #   # @param plan_phase_order [Integer, nil]
-        #   # @param price_type [Symbol, Orb::Models::Price::PackageWithAllocationPrice::PriceType]
-        #   # @param dimensional_price_configuration [Orb::Models::Price::PackageWithAllocationPrice::DimensionalPriceConfiguration, nil]
-        #   # @param model_type [Symbol, :package_with_allocation]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billable_metric:,
-        #     billing_cycle_configuration:,
-        #     cadence:,
-        #     conversion_rate:,
-        #     created_at:,
-        #     credit_allocation:,
-        #     currency:,
-        #     discount:,
-        #     external_price_id:,
-        #     fixed_price_quantity:,
-        #     invoicing_cycle_configuration:,
-        #     item:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     metadata:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     package_with_allocation_config:,
-        #     plan_phase_order:,
-        #     price_type:,
-        #     dimensional_price_configuration: nil,
-        #     model_type: :package_with_allocation,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, package_with_allocation_config:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :package_with_allocation)
+        #   @param id [String]
+        #   @param billable_metric [Orb::Models::Price::PackageWithAllocationPrice::BillableMetric, nil]
+        #   @param billing_cycle_configuration [Orb::Models::Price::PackageWithAllocationPrice::BillingCycleConfiguration]
+        #   @param cadence [Symbol, Orb::Models::Price::PackageWithAllocationPrice::Cadence]
+        #   @param conversion_rate [Float, nil]
+        #   @param created_at [Time]
+        #   @param credit_allocation [Orb::Models::Price::PackageWithAllocationPrice::CreditAllocation, nil]
+        #   @param currency [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param external_price_id [String, nil]
+        #   @param fixed_price_quantity [Float, nil]
+        #   @param invoicing_cycle_configuration [Orb::Models::Price::PackageWithAllocationPrice::InvoicingCycleConfiguration, nil]
+        #   @param item [Orb::Models::Price::PackageWithAllocationPrice::Item]
+        #   @param maximum [Orb::Models::Price::PackageWithAllocationPrice::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param metadata [Hash{Symbol=>String}]
+        #   @param minimum [Orb::Models::Price::PackageWithAllocationPrice::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param package_with_allocation_config [Hash{Symbol=>Object}]
+        #   @param plan_phase_order [Integer, nil]
+        #   @param price_type [Symbol, Orb::Models::Price::PackageWithAllocationPrice::PriceType]
+        #   @param dimensional_price_configuration [Orb::Models::Price::PackageWithAllocationPrice::DimensionalPriceConfiguration, nil]
+        #   @param model_type [Symbol, :package_with_allocation]
 
         # @see Orb::Models::Price::PackageWithAllocationPrice#billable_metric
         class BillableMetric < Orb::Internal::Type::BaseModel
@@ -6028,12 +4956,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Price::PackageWithAllocationPrice#billing_cycle_configuration
@@ -6049,13 +4973,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::PackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::PackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::PackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::PackageWithAllocationPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
@@ -6064,11 +4984,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -6083,11 +5000,8 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::PackageWithAllocationPrice#credit_allocation
@@ -6102,13 +5016,9 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param allows_rollover [Boolean]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(allows_rollover:, currency:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allows_rollover:, currency:)
+          #   @param allows_rollover [Boolean]
+          #   @param currency [String]
         end
 
         # @see Orb::Models::Price::PackageWithAllocationPrice#invoicing_cycle_configuration
@@ -6124,13 +5034,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::PackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::PackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::PackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::PackageWithAllocationPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
@@ -6139,11 +5045,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -6159,13 +5062,9 @@ module Orb
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, name:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, name:)
+          #   @param id [String]
+          #   @param name [String]
         end
 
         # @see Orb::Models::Price::PackageWithAllocationPrice#maximum
@@ -6183,13 +5082,9 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @see Orb::Models::Price::PackageWithAllocationPrice#minimum
@@ -6207,13 +5102,9 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         # @see Orb::Models::Price::PackageWithAllocationPrice#price_type
@@ -6223,11 +5114,8 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::PackageWithAllocationPrice#dimensional_price_configuration
@@ -6242,13 +5130,9 @@ module Orb
           #   @return [String]
           required :dimensional_price_group_id, String
 
-          # @!parse
-          #   # @param dimension_values [Array<String>]
-          #   # @param dimensional_price_group_id [String]
-          #   #
-          #   def initialize(dimension_values:, dimensional_price_group_id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(dimension_values:, dimensional_price_group_id:)
+          #   @param dimension_values [Array<String>]
+          #   @param dimensional_price_group_id [String]
         end
       end
 
@@ -6382,63 +5266,31 @@ module Orb
                  -> { Orb::Models::Price::UnitWithPercentPrice::DimensionalPriceConfiguration },
                  nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param billable_metric [Orb::Models::Price::UnitWithPercentPrice::BillableMetric, nil]
-        #   # @param billing_cycle_configuration [Orb::Models::Price::UnitWithPercentPrice::BillingCycleConfiguration]
-        #   # @param cadence [Symbol, Orb::Models::Price::UnitWithPercentPrice::Cadence]
-        #   # @param conversion_rate [Float, nil]
-        #   # @param created_at [Time]
-        #   # @param credit_allocation [Orb::Models::Price::UnitWithPercentPrice::CreditAllocation, nil]
-        #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param fixed_price_quantity [Float, nil]
-        #   # @param invoicing_cycle_configuration [Orb::Models::Price::UnitWithPercentPrice::InvoicingCycleConfiguration, nil]
-        #   # @param item [Orb::Models::Price::UnitWithPercentPrice::Item]
-        #   # @param maximum [Orb::Models::Price::UnitWithPercentPrice::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param metadata [Hash{Symbol=>String}]
-        #   # @param minimum [Orb::Models::Price::UnitWithPercentPrice::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param plan_phase_order [Integer, nil]
-        #   # @param price_type [Symbol, Orb::Models::Price::UnitWithPercentPrice::PriceType]
-        #   # @param unit_with_percent_config [Hash{Symbol=>Object}]
-        #   # @param dimensional_price_configuration [Orb::Models::Price::UnitWithPercentPrice::DimensionalPriceConfiguration, nil]
-        #   # @param model_type [Symbol, :unit_with_percent]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billable_metric:,
-        #     billing_cycle_configuration:,
-        #     cadence:,
-        #     conversion_rate:,
-        #     created_at:,
-        #     credit_allocation:,
-        #     currency:,
-        #     discount:,
-        #     external_price_id:,
-        #     fixed_price_quantity:,
-        #     invoicing_cycle_configuration:,
-        #     item:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     metadata:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     plan_phase_order:,
-        #     price_type:,
-        #     unit_with_percent_config:,
-        #     dimensional_price_configuration: nil,
-        #     model_type: :unit_with_percent,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, unit_with_percent_config:, dimensional_price_configuration: nil, model_type: :unit_with_percent)
+        #   @param id [String]
+        #   @param billable_metric [Orb::Models::Price::UnitWithPercentPrice::BillableMetric, nil]
+        #   @param billing_cycle_configuration [Orb::Models::Price::UnitWithPercentPrice::BillingCycleConfiguration]
+        #   @param cadence [Symbol, Orb::Models::Price::UnitWithPercentPrice::Cadence]
+        #   @param conversion_rate [Float, nil]
+        #   @param created_at [Time]
+        #   @param credit_allocation [Orb::Models::Price::UnitWithPercentPrice::CreditAllocation, nil]
+        #   @param currency [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param external_price_id [String, nil]
+        #   @param fixed_price_quantity [Float, nil]
+        #   @param invoicing_cycle_configuration [Orb::Models::Price::UnitWithPercentPrice::InvoicingCycleConfiguration, nil]
+        #   @param item [Orb::Models::Price::UnitWithPercentPrice::Item]
+        #   @param maximum [Orb::Models::Price::UnitWithPercentPrice::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param metadata [Hash{Symbol=>String}]
+        #   @param minimum [Orb::Models::Price::UnitWithPercentPrice::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param plan_phase_order [Integer, nil]
+        #   @param price_type [Symbol, Orb::Models::Price::UnitWithPercentPrice::PriceType]
+        #   @param unit_with_percent_config [Hash{Symbol=>Object}]
+        #   @param dimensional_price_configuration [Orb::Models::Price::UnitWithPercentPrice::DimensionalPriceConfiguration, nil]
+        #   @param model_type [Symbol, :unit_with_percent]
 
         # @see Orb::Models::Price::UnitWithPercentPrice#billable_metric
         class BillableMetric < Orb::Internal::Type::BaseModel
@@ -6447,12 +5299,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Price::UnitWithPercentPrice#billing_cycle_configuration
@@ -6468,13 +5316,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::UnitWithPercentPrice::BillingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::UnitWithPercentPrice::BillingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::UnitWithPercentPrice::BillingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::UnitWithPercentPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
@@ -6483,11 +5327,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -6502,11 +5343,8 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::UnitWithPercentPrice#credit_allocation
@@ -6521,13 +5359,9 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param allows_rollover [Boolean]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(allows_rollover:, currency:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allows_rollover:, currency:)
+          #   @param allows_rollover [Boolean]
+          #   @param currency [String]
         end
 
         # @see Orb::Models::Price::UnitWithPercentPrice#invoicing_cycle_configuration
@@ -6543,13 +5377,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::UnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::UnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::UnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::UnitWithPercentPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
@@ -6558,11 +5388,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -6578,13 +5405,9 @@ module Orb
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, name:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, name:)
+          #   @param id [String]
+          #   @param name [String]
         end
 
         # @see Orb::Models::Price::UnitWithPercentPrice#maximum
@@ -6602,13 +5425,9 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @see Orb::Models::Price::UnitWithPercentPrice#minimum
@@ -6626,13 +5445,9 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         # @see Orb::Models::Price::UnitWithPercentPrice#price_type
@@ -6642,11 +5457,8 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::UnitWithPercentPrice#dimensional_price_configuration
@@ -6661,13 +5473,9 @@ module Orb
           #   @return [String]
           required :dimensional_price_group_id, String
 
-          # @!parse
-          #   # @param dimension_values [Array<String>]
-          #   # @param dimensional_price_group_id [String]
-          #   #
-          #   def initialize(dimension_values:, dimensional_price_group_id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(dimension_values:, dimensional_price_group_id:)
+          #   @param dimension_values [Array<String>]
+          #   @param dimensional_price_group_id [String]
         end
       end
 
@@ -6806,63 +5614,31 @@ module Orb
                  -> { Orb::Models::Price::MatrixWithAllocationPrice::DimensionalPriceConfiguration },
                  nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param billable_metric [Orb::Models::Price::MatrixWithAllocationPrice::BillableMetric, nil]
-        #   # @param billing_cycle_configuration [Orb::Models::Price::MatrixWithAllocationPrice::BillingCycleConfiguration]
-        #   # @param cadence [Symbol, Orb::Models::Price::MatrixWithAllocationPrice::Cadence]
-        #   # @param conversion_rate [Float, nil]
-        #   # @param created_at [Time]
-        #   # @param credit_allocation [Orb::Models::Price::MatrixWithAllocationPrice::CreditAllocation, nil]
-        #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param fixed_price_quantity [Float, nil]
-        #   # @param invoicing_cycle_configuration [Orb::Models::Price::MatrixWithAllocationPrice::InvoicingCycleConfiguration, nil]
-        #   # @param item [Orb::Models::Price::MatrixWithAllocationPrice::Item]
-        #   # @param matrix_with_allocation_config [Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig]
-        #   # @param maximum [Orb::Models::Price::MatrixWithAllocationPrice::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param metadata [Hash{Symbol=>String}]
-        #   # @param minimum [Orb::Models::Price::MatrixWithAllocationPrice::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param plan_phase_order [Integer, nil]
-        #   # @param price_type [Symbol, Orb::Models::Price::MatrixWithAllocationPrice::PriceType]
-        #   # @param dimensional_price_configuration [Orb::Models::Price::MatrixWithAllocationPrice::DimensionalPriceConfiguration, nil]
-        #   # @param model_type [Symbol, :matrix_with_allocation]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billable_metric:,
-        #     billing_cycle_configuration:,
-        #     cadence:,
-        #     conversion_rate:,
-        #     created_at:,
-        #     credit_allocation:,
-        #     currency:,
-        #     discount:,
-        #     external_price_id:,
-        #     fixed_price_quantity:,
-        #     invoicing_cycle_configuration:,
-        #     item:,
-        #     matrix_with_allocation_config:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     metadata:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     plan_phase_order:,
-        #     price_type:,
-        #     dimensional_price_configuration: nil,
-        #     model_type: :matrix_with_allocation,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_with_allocation_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :matrix_with_allocation)
+        #   @param id [String]
+        #   @param billable_metric [Orb::Models::Price::MatrixWithAllocationPrice::BillableMetric, nil]
+        #   @param billing_cycle_configuration [Orb::Models::Price::MatrixWithAllocationPrice::BillingCycleConfiguration]
+        #   @param cadence [Symbol, Orb::Models::Price::MatrixWithAllocationPrice::Cadence]
+        #   @param conversion_rate [Float, nil]
+        #   @param created_at [Time]
+        #   @param credit_allocation [Orb::Models::Price::MatrixWithAllocationPrice::CreditAllocation, nil]
+        #   @param currency [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param external_price_id [String, nil]
+        #   @param fixed_price_quantity [Float, nil]
+        #   @param invoicing_cycle_configuration [Orb::Models::Price::MatrixWithAllocationPrice::InvoicingCycleConfiguration, nil]
+        #   @param item [Orb::Models::Price::MatrixWithAllocationPrice::Item]
+        #   @param matrix_with_allocation_config [Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig]
+        #   @param maximum [Orb::Models::Price::MatrixWithAllocationPrice::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param metadata [Hash{Symbol=>String}]
+        #   @param minimum [Orb::Models::Price::MatrixWithAllocationPrice::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param plan_phase_order [Integer, nil]
+        #   @param price_type [Symbol, Orb::Models::Price::MatrixWithAllocationPrice::PriceType]
+        #   @param dimensional_price_configuration [Orb::Models::Price::MatrixWithAllocationPrice::DimensionalPriceConfiguration, nil]
+        #   @param model_type [Symbol, :matrix_with_allocation]
 
         # @see Orb::Models::Price::MatrixWithAllocationPrice#billable_metric
         class BillableMetric < Orb::Internal::Type::BaseModel
@@ -6871,12 +5647,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Price::MatrixWithAllocationPrice#billing_cycle_configuration
@@ -6892,13 +5664,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::MatrixWithAllocationPrice::BillingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::MatrixWithAllocationPrice::BillingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::MatrixWithAllocationPrice::BillingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::MatrixWithAllocationPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
@@ -6907,11 +5675,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -6926,11 +5691,8 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::MatrixWithAllocationPrice#credit_allocation
@@ -6945,13 +5707,9 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param allows_rollover [Boolean]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(allows_rollover:, currency:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allows_rollover:, currency:)
+          #   @param allows_rollover [Boolean]
+          #   @param currency [String]
         end
 
         # @see Orb::Models::Price::MatrixWithAllocationPrice#invoicing_cycle_configuration
@@ -6967,13 +5725,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::MatrixWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::MatrixWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::MatrixWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::MatrixWithAllocationPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
@@ -6982,11 +5736,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -7002,13 +5753,9 @@ module Orb
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, name:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, name:)
+          #   @param id [String]
+          #   @param name [String]
         end
 
         # @see Orb::Models::Price::MatrixWithAllocationPrice#matrix_with_allocation_config
@@ -7038,15 +5785,11 @@ module Orb
           required :matrix_values,
                    -> { Orb::Internal::Type::ArrayOf[Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue] }
 
-          # @!parse
-          #   # @param allocation [Float]
-          #   # @param default_unit_amount [String]
-          #   # @param dimensions [Array<String, nil>]
-          #   # @param matrix_values [Array<Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue>]
-          #   #
-          #   def initialize(allocation:, default_unit_amount:, dimensions:, matrix_values:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allocation:, default_unit_amount:, dimensions:, matrix_values:)
+          #   @param allocation [Float]
+          #   @param default_unit_amount [String]
+          #   @param dimensions [Array<String, nil>]
+          #   @param matrix_values [Array<Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue>]
 
           class MatrixValue < Orb::Internal::Type::BaseModel
             # @!attribute dimension_values
@@ -7063,13 +5806,9 @@ module Orb
             #   @return [String]
             required :unit_amount, String
 
-            # @!parse
-            #   # @param dimension_values [Array<String, nil>]
-            #   # @param unit_amount [String]
-            #   #
-            #   def initialize(dimension_values:, unit_amount:, **) = super
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(dimension_values:, unit_amount:)
+            #   @param dimension_values [Array<String, nil>]
+            #   @param unit_amount [String]
           end
         end
 
@@ -7088,13 +5827,9 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @see Orb::Models::Price::MatrixWithAllocationPrice#minimum
@@ -7112,13 +5847,9 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         # @see Orb::Models::Price::MatrixWithAllocationPrice#price_type
@@ -7128,11 +5859,8 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::MatrixWithAllocationPrice#dimensional_price_configuration
@@ -7147,13 +5875,9 @@ module Orb
           #   @return [String]
           required :dimensional_price_group_id, String
 
-          # @!parse
-          #   # @param dimension_values [Array<String>]
-          #   # @param dimensional_price_group_id [String]
-          #   #
-          #   def initialize(dimension_values:, dimensional_price_group_id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(dimension_values:, dimensional_price_group_id:)
+          #   @param dimension_values [Array<String>]
+          #   @param dimensional_price_group_id [String]
         end
       end
 
@@ -7289,63 +6013,31 @@ module Orb
                  -> { Orb::Models::Price::TieredWithProrationPrice::DimensionalPriceConfiguration },
                  nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param billable_metric [Orb::Models::Price::TieredWithProrationPrice::BillableMetric, nil]
-        #   # @param billing_cycle_configuration [Orb::Models::Price::TieredWithProrationPrice::BillingCycleConfiguration]
-        #   # @param cadence [Symbol, Orb::Models::Price::TieredWithProrationPrice::Cadence]
-        #   # @param conversion_rate [Float, nil]
-        #   # @param created_at [Time]
-        #   # @param credit_allocation [Orb::Models::Price::TieredWithProrationPrice::CreditAllocation, nil]
-        #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param fixed_price_quantity [Float, nil]
-        #   # @param invoicing_cycle_configuration [Orb::Models::Price::TieredWithProrationPrice::InvoicingCycleConfiguration, nil]
-        #   # @param item [Orb::Models::Price::TieredWithProrationPrice::Item]
-        #   # @param maximum [Orb::Models::Price::TieredWithProrationPrice::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param metadata [Hash{Symbol=>String}]
-        #   # @param minimum [Orb::Models::Price::TieredWithProrationPrice::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param plan_phase_order [Integer, nil]
-        #   # @param price_type [Symbol, Orb::Models::Price::TieredWithProrationPrice::PriceType]
-        #   # @param tiered_with_proration_config [Hash{Symbol=>Object}]
-        #   # @param dimensional_price_configuration [Orb::Models::Price::TieredWithProrationPrice::DimensionalPriceConfiguration, nil]
-        #   # @param model_type [Symbol, :tiered_with_proration]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billable_metric:,
-        #     billing_cycle_configuration:,
-        #     cadence:,
-        #     conversion_rate:,
-        #     created_at:,
-        #     credit_allocation:,
-        #     currency:,
-        #     discount:,
-        #     external_price_id:,
-        #     fixed_price_quantity:,
-        #     invoicing_cycle_configuration:,
-        #     item:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     metadata:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     plan_phase_order:,
-        #     price_type:,
-        #     tiered_with_proration_config:,
-        #     dimensional_price_configuration: nil,
-        #     model_type: :tiered_with_proration,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_with_proration_config:, dimensional_price_configuration: nil, model_type: :tiered_with_proration)
+        #   @param id [String]
+        #   @param billable_metric [Orb::Models::Price::TieredWithProrationPrice::BillableMetric, nil]
+        #   @param billing_cycle_configuration [Orb::Models::Price::TieredWithProrationPrice::BillingCycleConfiguration]
+        #   @param cadence [Symbol, Orb::Models::Price::TieredWithProrationPrice::Cadence]
+        #   @param conversion_rate [Float, nil]
+        #   @param created_at [Time]
+        #   @param credit_allocation [Orb::Models::Price::TieredWithProrationPrice::CreditAllocation, nil]
+        #   @param currency [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param external_price_id [String, nil]
+        #   @param fixed_price_quantity [Float, nil]
+        #   @param invoicing_cycle_configuration [Orb::Models::Price::TieredWithProrationPrice::InvoicingCycleConfiguration, nil]
+        #   @param item [Orb::Models::Price::TieredWithProrationPrice::Item]
+        #   @param maximum [Orb::Models::Price::TieredWithProrationPrice::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param metadata [Hash{Symbol=>String}]
+        #   @param minimum [Orb::Models::Price::TieredWithProrationPrice::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param plan_phase_order [Integer, nil]
+        #   @param price_type [Symbol, Orb::Models::Price::TieredWithProrationPrice::PriceType]
+        #   @param tiered_with_proration_config [Hash{Symbol=>Object}]
+        #   @param dimensional_price_configuration [Orb::Models::Price::TieredWithProrationPrice::DimensionalPriceConfiguration, nil]
+        #   @param model_type [Symbol, :tiered_with_proration]
 
         # @see Orb::Models::Price::TieredWithProrationPrice#billable_metric
         class BillableMetric < Orb::Internal::Type::BaseModel
@@ -7354,12 +6046,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Price::TieredWithProrationPrice#billing_cycle_configuration
@@ -7375,13 +6063,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::TieredWithProrationPrice::BillingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::TieredWithProrationPrice::BillingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::TieredWithProrationPrice::BillingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::TieredWithProrationPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
@@ -7390,11 +6074,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -7409,11 +6090,8 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::TieredWithProrationPrice#credit_allocation
@@ -7428,13 +6106,9 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param allows_rollover [Boolean]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(allows_rollover:, currency:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allows_rollover:, currency:)
+          #   @param allows_rollover [Boolean]
+          #   @param currency [String]
         end
 
         # @see Orb::Models::Price::TieredWithProrationPrice#invoicing_cycle_configuration
@@ -7450,13 +6124,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::TieredWithProrationPrice::InvoicingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::TieredWithProrationPrice::InvoicingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::TieredWithProrationPrice::InvoicingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::TieredWithProrationPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
@@ -7465,11 +6135,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -7485,13 +6152,9 @@ module Orb
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, name:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, name:)
+          #   @param id [String]
+          #   @param name [String]
         end
 
         # @see Orb::Models::Price::TieredWithProrationPrice#maximum
@@ -7509,13 +6172,9 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @see Orb::Models::Price::TieredWithProrationPrice#minimum
@@ -7533,13 +6192,9 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         # @see Orb::Models::Price::TieredWithProrationPrice#price_type
@@ -7549,11 +6204,8 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::TieredWithProrationPrice#dimensional_price_configuration
@@ -7568,13 +6220,9 @@ module Orb
           #   @return [String]
           required :dimensional_price_group_id, String
 
-          # @!parse
-          #   # @param dimension_values [Array<String>]
-          #   # @param dimensional_price_group_id [String]
-          #   #
-          #   def initialize(dimension_values:, dimensional_price_group_id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(dimension_values:, dimensional_price_group_id:)
+          #   @param dimension_values [Array<String>]
+          #   @param dimensional_price_group_id [String]
         end
       end
 
@@ -7710,63 +6358,31 @@ module Orb
                  -> { Orb::Models::Price::UnitWithProrationPrice::DimensionalPriceConfiguration },
                  nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param billable_metric [Orb::Models::Price::UnitWithProrationPrice::BillableMetric, nil]
-        #   # @param billing_cycle_configuration [Orb::Models::Price::UnitWithProrationPrice::BillingCycleConfiguration]
-        #   # @param cadence [Symbol, Orb::Models::Price::UnitWithProrationPrice::Cadence]
-        #   # @param conversion_rate [Float, nil]
-        #   # @param created_at [Time]
-        #   # @param credit_allocation [Orb::Models::Price::UnitWithProrationPrice::CreditAllocation, nil]
-        #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param fixed_price_quantity [Float, nil]
-        #   # @param invoicing_cycle_configuration [Orb::Models::Price::UnitWithProrationPrice::InvoicingCycleConfiguration, nil]
-        #   # @param item [Orb::Models::Price::UnitWithProrationPrice::Item]
-        #   # @param maximum [Orb::Models::Price::UnitWithProrationPrice::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param metadata [Hash{Symbol=>String}]
-        #   # @param minimum [Orb::Models::Price::UnitWithProrationPrice::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param plan_phase_order [Integer, nil]
-        #   # @param price_type [Symbol, Orb::Models::Price::UnitWithProrationPrice::PriceType]
-        #   # @param unit_with_proration_config [Hash{Symbol=>Object}]
-        #   # @param dimensional_price_configuration [Orb::Models::Price::UnitWithProrationPrice::DimensionalPriceConfiguration, nil]
-        #   # @param model_type [Symbol, :unit_with_proration]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billable_metric:,
-        #     billing_cycle_configuration:,
-        #     cadence:,
-        #     conversion_rate:,
-        #     created_at:,
-        #     credit_allocation:,
-        #     currency:,
-        #     discount:,
-        #     external_price_id:,
-        #     fixed_price_quantity:,
-        #     invoicing_cycle_configuration:,
-        #     item:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     metadata:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     plan_phase_order:,
-        #     price_type:,
-        #     unit_with_proration_config:,
-        #     dimensional_price_configuration: nil,
-        #     model_type: :unit_with_proration,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, unit_with_proration_config:, dimensional_price_configuration: nil, model_type: :unit_with_proration)
+        #   @param id [String]
+        #   @param billable_metric [Orb::Models::Price::UnitWithProrationPrice::BillableMetric, nil]
+        #   @param billing_cycle_configuration [Orb::Models::Price::UnitWithProrationPrice::BillingCycleConfiguration]
+        #   @param cadence [Symbol, Orb::Models::Price::UnitWithProrationPrice::Cadence]
+        #   @param conversion_rate [Float, nil]
+        #   @param created_at [Time]
+        #   @param credit_allocation [Orb::Models::Price::UnitWithProrationPrice::CreditAllocation, nil]
+        #   @param currency [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param external_price_id [String, nil]
+        #   @param fixed_price_quantity [Float, nil]
+        #   @param invoicing_cycle_configuration [Orb::Models::Price::UnitWithProrationPrice::InvoicingCycleConfiguration, nil]
+        #   @param item [Orb::Models::Price::UnitWithProrationPrice::Item]
+        #   @param maximum [Orb::Models::Price::UnitWithProrationPrice::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param metadata [Hash{Symbol=>String}]
+        #   @param minimum [Orb::Models::Price::UnitWithProrationPrice::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param plan_phase_order [Integer, nil]
+        #   @param price_type [Symbol, Orb::Models::Price::UnitWithProrationPrice::PriceType]
+        #   @param unit_with_proration_config [Hash{Symbol=>Object}]
+        #   @param dimensional_price_configuration [Orb::Models::Price::UnitWithProrationPrice::DimensionalPriceConfiguration, nil]
+        #   @param model_type [Symbol, :unit_with_proration]
 
         # @see Orb::Models::Price::UnitWithProrationPrice#billable_metric
         class BillableMetric < Orb::Internal::Type::BaseModel
@@ -7775,12 +6391,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Price::UnitWithProrationPrice#billing_cycle_configuration
@@ -7796,13 +6408,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::UnitWithProrationPrice::BillingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::UnitWithProrationPrice::BillingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::UnitWithProrationPrice::BillingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::UnitWithProrationPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
@@ -7811,11 +6419,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -7830,11 +6435,8 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::UnitWithProrationPrice#credit_allocation
@@ -7849,13 +6451,9 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param allows_rollover [Boolean]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(allows_rollover:, currency:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allows_rollover:, currency:)
+          #   @param allows_rollover [Boolean]
+          #   @param currency [String]
         end
 
         # @see Orb::Models::Price::UnitWithProrationPrice#invoicing_cycle_configuration
@@ -7871,13 +6469,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::UnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::UnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::UnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::UnitWithProrationPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
@@ -7886,11 +6480,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -7906,13 +6497,9 @@ module Orb
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, name:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, name:)
+          #   @param id [String]
+          #   @param name [String]
         end
 
         # @see Orb::Models::Price::UnitWithProrationPrice#maximum
@@ -7930,13 +6517,9 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @see Orb::Models::Price::UnitWithProrationPrice#minimum
@@ -7954,13 +6537,9 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         # @see Orb::Models::Price::UnitWithProrationPrice#price_type
@@ -7970,11 +6549,8 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::UnitWithProrationPrice#dimensional_price_configuration
@@ -7989,13 +6565,9 @@ module Orb
           #   @return [String]
           required :dimensional_price_group_id, String
 
-          # @!parse
-          #   # @param dimension_values [Array<String>]
-          #   # @param dimensional_price_group_id [String]
-          #   #
-          #   def initialize(dimension_values:, dimensional_price_group_id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(dimension_values:, dimensional_price_group_id:)
+          #   @param dimension_values [Array<String>]
+          #   @param dimensional_price_group_id [String]
         end
       end
 
@@ -8131,63 +6703,31 @@ module Orb
                  -> { Orb::Models::Price::GroupedAllocationPrice::DimensionalPriceConfiguration },
                  nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param billable_metric [Orb::Models::Price::GroupedAllocationPrice::BillableMetric, nil]
-        #   # @param billing_cycle_configuration [Orb::Models::Price::GroupedAllocationPrice::BillingCycleConfiguration]
-        #   # @param cadence [Symbol, Orb::Models::Price::GroupedAllocationPrice::Cadence]
-        #   # @param conversion_rate [Float, nil]
-        #   # @param created_at [Time]
-        #   # @param credit_allocation [Orb::Models::Price::GroupedAllocationPrice::CreditAllocation, nil]
-        #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param fixed_price_quantity [Float, nil]
-        #   # @param grouped_allocation_config [Hash{Symbol=>Object}]
-        #   # @param invoicing_cycle_configuration [Orb::Models::Price::GroupedAllocationPrice::InvoicingCycleConfiguration, nil]
-        #   # @param item [Orb::Models::Price::GroupedAllocationPrice::Item]
-        #   # @param maximum [Orb::Models::Price::GroupedAllocationPrice::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param metadata [Hash{Symbol=>String}]
-        #   # @param minimum [Orb::Models::Price::GroupedAllocationPrice::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param plan_phase_order [Integer, nil]
-        #   # @param price_type [Symbol, Orb::Models::Price::GroupedAllocationPrice::PriceType]
-        #   # @param dimensional_price_configuration [Orb::Models::Price::GroupedAllocationPrice::DimensionalPriceConfiguration, nil]
-        #   # @param model_type [Symbol, :grouped_allocation]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billable_metric:,
-        #     billing_cycle_configuration:,
-        #     cadence:,
-        #     conversion_rate:,
-        #     created_at:,
-        #     credit_allocation:,
-        #     currency:,
-        #     discount:,
-        #     external_price_id:,
-        #     fixed_price_quantity:,
-        #     grouped_allocation_config:,
-        #     invoicing_cycle_configuration:,
-        #     item:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     metadata:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     plan_phase_order:,
-        #     price_type:,
-        #     dimensional_price_configuration: nil,
-        #     model_type: :grouped_allocation,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_allocation_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :grouped_allocation)
+        #   @param id [String]
+        #   @param billable_metric [Orb::Models::Price::GroupedAllocationPrice::BillableMetric, nil]
+        #   @param billing_cycle_configuration [Orb::Models::Price::GroupedAllocationPrice::BillingCycleConfiguration]
+        #   @param cadence [Symbol, Orb::Models::Price::GroupedAllocationPrice::Cadence]
+        #   @param conversion_rate [Float, nil]
+        #   @param created_at [Time]
+        #   @param credit_allocation [Orb::Models::Price::GroupedAllocationPrice::CreditAllocation, nil]
+        #   @param currency [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param external_price_id [String, nil]
+        #   @param fixed_price_quantity [Float, nil]
+        #   @param grouped_allocation_config [Hash{Symbol=>Object}]
+        #   @param invoicing_cycle_configuration [Orb::Models::Price::GroupedAllocationPrice::InvoicingCycleConfiguration, nil]
+        #   @param item [Orb::Models::Price::GroupedAllocationPrice::Item]
+        #   @param maximum [Orb::Models::Price::GroupedAllocationPrice::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param metadata [Hash{Symbol=>String}]
+        #   @param minimum [Orb::Models::Price::GroupedAllocationPrice::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param plan_phase_order [Integer, nil]
+        #   @param price_type [Symbol, Orb::Models::Price::GroupedAllocationPrice::PriceType]
+        #   @param dimensional_price_configuration [Orb::Models::Price::GroupedAllocationPrice::DimensionalPriceConfiguration, nil]
+        #   @param model_type [Symbol, :grouped_allocation]
 
         # @see Orb::Models::Price::GroupedAllocationPrice#billable_metric
         class BillableMetric < Orb::Internal::Type::BaseModel
@@ -8196,12 +6736,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Price::GroupedAllocationPrice#billing_cycle_configuration
@@ -8217,13 +6753,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::GroupedAllocationPrice::BillingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::GroupedAllocationPrice::BillingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::GroupedAllocationPrice::BillingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::GroupedAllocationPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
@@ -8232,11 +6764,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -8251,11 +6780,8 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::GroupedAllocationPrice#credit_allocation
@@ -8270,13 +6796,9 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param allows_rollover [Boolean]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(allows_rollover:, currency:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allows_rollover:, currency:)
+          #   @param allows_rollover [Boolean]
+          #   @param currency [String]
         end
 
         # @see Orb::Models::Price::GroupedAllocationPrice#invoicing_cycle_configuration
@@ -8292,13 +6814,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::GroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::GroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::GroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::GroupedAllocationPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
@@ -8307,11 +6825,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -8327,13 +6842,9 @@ module Orb
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, name:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, name:)
+          #   @param id [String]
+          #   @param name [String]
         end
 
         # @see Orb::Models::Price::GroupedAllocationPrice#maximum
@@ -8351,13 +6862,9 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @see Orb::Models::Price::GroupedAllocationPrice#minimum
@@ -8375,13 +6882,9 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         # @see Orb::Models::Price::GroupedAllocationPrice#price_type
@@ -8391,11 +6894,8 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::GroupedAllocationPrice#dimensional_price_configuration
@@ -8410,13 +6910,9 @@ module Orb
           #   @return [String]
           required :dimensional_price_group_id, String
 
-          # @!parse
-          #   # @param dimension_values [Array<String>]
-          #   # @param dimensional_price_group_id [String]
-          #   #
-          #   def initialize(dimension_values:, dimensional_price_group_id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(dimension_values:, dimensional_price_group_id:)
+          #   @param dimension_values [Array<String>]
+          #   @param dimensional_price_group_id [String]
         end
       end
 
@@ -8555,63 +7051,31 @@ module Orb
                  -> { Orb::Models::Price::GroupedWithProratedMinimumPrice::DimensionalPriceConfiguration },
                  nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param billable_metric [Orb::Models::Price::GroupedWithProratedMinimumPrice::BillableMetric, nil]
-        #   # @param billing_cycle_configuration [Orb::Models::Price::GroupedWithProratedMinimumPrice::BillingCycleConfiguration]
-        #   # @param cadence [Symbol, Orb::Models::Price::GroupedWithProratedMinimumPrice::Cadence]
-        #   # @param conversion_rate [Float, nil]
-        #   # @param created_at [Time]
-        #   # @param credit_allocation [Orb::Models::Price::GroupedWithProratedMinimumPrice::CreditAllocation, nil]
-        #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param fixed_price_quantity [Float, nil]
-        #   # @param grouped_with_prorated_minimum_config [Hash{Symbol=>Object}]
-        #   # @param invoicing_cycle_configuration [Orb::Models::Price::GroupedWithProratedMinimumPrice::InvoicingCycleConfiguration, nil]
-        #   # @param item [Orb::Models::Price::GroupedWithProratedMinimumPrice::Item]
-        #   # @param maximum [Orb::Models::Price::GroupedWithProratedMinimumPrice::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param metadata [Hash{Symbol=>String}]
-        #   # @param minimum [Orb::Models::Price::GroupedWithProratedMinimumPrice::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param plan_phase_order [Integer, nil]
-        #   # @param price_type [Symbol, Orb::Models::Price::GroupedWithProratedMinimumPrice::PriceType]
-        #   # @param dimensional_price_configuration [Orb::Models::Price::GroupedWithProratedMinimumPrice::DimensionalPriceConfiguration, nil]
-        #   # @param model_type [Symbol, :grouped_with_prorated_minimum]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billable_metric:,
-        #     billing_cycle_configuration:,
-        #     cadence:,
-        #     conversion_rate:,
-        #     created_at:,
-        #     credit_allocation:,
-        #     currency:,
-        #     discount:,
-        #     external_price_id:,
-        #     fixed_price_quantity:,
-        #     grouped_with_prorated_minimum_config:,
-        #     invoicing_cycle_configuration:,
-        #     item:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     metadata:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     plan_phase_order:,
-        #     price_type:,
-        #     dimensional_price_configuration: nil,
-        #     model_type: :grouped_with_prorated_minimum,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_prorated_minimum_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :grouped_with_prorated_minimum)
+        #   @param id [String]
+        #   @param billable_metric [Orb::Models::Price::GroupedWithProratedMinimumPrice::BillableMetric, nil]
+        #   @param billing_cycle_configuration [Orb::Models::Price::GroupedWithProratedMinimumPrice::BillingCycleConfiguration]
+        #   @param cadence [Symbol, Orb::Models::Price::GroupedWithProratedMinimumPrice::Cadence]
+        #   @param conversion_rate [Float, nil]
+        #   @param created_at [Time]
+        #   @param credit_allocation [Orb::Models::Price::GroupedWithProratedMinimumPrice::CreditAllocation, nil]
+        #   @param currency [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param external_price_id [String, nil]
+        #   @param fixed_price_quantity [Float, nil]
+        #   @param grouped_with_prorated_minimum_config [Hash{Symbol=>Object}]
+        #   @param invoicing_cycle_configuration [Orb::Models::Price::GroupedWithProratedMinimumPrice::InvoicingCycleConfiguration, nil]
+        #   @param item [Orb::Models::Price::GroupedWithProratedMinimumPrice::Item]
+        #   @param maximum [Orb::Models::Price::GroupedWithProratedMinimumPrice::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param metadata [Hash{Symbol=>String}]
+        #   @param minimum [Orb::Models::Price::GroupedWithProratedMinimumPrice::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param plan_phase_order [Integer, nil]
+        #   @param price_type [Symbol, Orb::Models::Price::GroupedWithProratedMinimumPrice::PriceType]
+        #   @param dimensional_price_configuration [Orb::Models::Price::GroupedWithProratedMinimumPrice::DimensionalPriceConfiguration, nil]
+        #   @param model_type [Symbol, :grouped_with_prorated_minimum]
 
         # @see Orb::Models::Price::GroupedWithProratedMinimumPrice#billable_metric
         class BillableMetric < Orb::Internal::Type::BaseModel
@@ -8620,12 +7084,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Price::GroupedWithProratedMinimumPrice#billing_cycle_configuration
@@ -8641,13 +7101,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::GroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::GroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::GroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::GroupedWithProratedMinimumPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
@@ -8656,11 +7112,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -8675,11 +7128,8 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::GroupedWithProratedMinimumPrice#credit_allocation
@@ -8694,13 +7144,9 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param allows_rollover [Boolean]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(allows_rollover:, currency:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allows_rollover:, currency:)
+          #   @param allows_rollover [Boolean]
+          #   @param currency [String]
         end
 
         # @see Orb::Models::Price::GroupedWithProratedMinimumPrice#invoicing_cycle_configuration
@@ -8716,13 +7162,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::GroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::GroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::GroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::GroupedWithProratedMinimumPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
@@ -8731,11 +7173,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -8751,13 +7190,9 @@ module Orb
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, name:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, name:)
+          #   @param id [String]
+          #   @param name [String]
         end
 
         # @see Orb::Models::Price::GroupedWithProratedMinimumPrice#maximum
@@ -8775,13 +7210,9 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @see Orb::Models::Price::GroupedWithProratedMinimumPrice#minimum
@@ -8799,13 +7230,9 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         # @see Orb::Models::Price::GroupedWithProratedMinimumPrice#price_type
@@ -8815,11 +7242,8 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::GroupedWithProratedMinimumPrice#dimensional_price_configuration
@@ -8834,13 +7258,9 @@ module Orb
           #   @return [String]
           required :dimensional_price_group_id, String
 
-          # @!parse
-          #   # @param dimension_values [Array<String>]
-          #   # @param dimensional_price_group_id [String]
-          #   #
-          #   def initialize(dimension_values:, dimensional_price_group_id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(dimension_values:, dimensional_price_group_id:)
+          #   @param dimension_values [Array<String>]
+          #   @param dimensional_price_group_id [String]
         end
       end
 
@@ -8979,63 +7399,31 @@ module Orb
                  -> { Orb::Models::Price::GroupedWithMeteredMinimumPrice::DimensionalPriceConfiguration },
                  nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param billable_metric [Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillableMetric, nil]
-        #   # @param billing_cycle_configuration [Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillingCycleConfiguration]
-        #   # @param cadence [Symbol, Orb::Models::Price::GroupedWithMeteredMinimumPrice::Cadence]
-        #   # @param conversion_rate [Float, nil]
-        #   # @param created_at [Time]
-        #   # @param credit_allocation [Orb::Models::Price::GroupedWithMeteredMinimumPrice::CreditAllocation, nil]
-        #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param fixed_price_quantity [Float, nil]
-        #   # @param grouped_with_metered_minimum_config [Hash{Symbol=>Object}]
-        #   # @param invoicing_cycle_configuration [Orb::Models::Price::GroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration, nil]
-        #   # @param item [Orb::Models::Price::GroupedWithMeteredMinimumPrice::Item]
-        #   # @param maximum [Orb::Models::Price::GroupedWithMeteredMinimumPrice::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param metadata [Hash{Symbol=>String}]
-        #   # @param minimum [Orb::Models::Price::GroupedWithMeteredMinimumPrice::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param plan_phase_order [Integer, nil]
-        #   # @param price_type [Symbol, Orb::Models::Price::GroupedWithMeteredMinimumPrice::PriceType]
-        #   # @param dimensional_price_configuration [Orb::Models::Price::GroupedWithMeteredMinimumPrice::DimensionalPriceConfiguration, nil]
-        #   # @param model_type [Symbol, :grouped_with_metered_minimum]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billable_metric:,
-        #     billing_cycle_configuration:,
-        #     cadence:,
-        #     conversion_rate:,
-        #     created_at:,
-        #     credit_allocation:,
-        #     currency:,
-        #     discount:,
-        #     external_price_id:,
-        #     fixed_price_quantity:,
-        #     grouped_with_metered_minimum_config:,
-        #     invoicing_cycle_configuration:,
-        #     item:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     metadata:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     plan_phase_order:,
-        #     price_type:,
-        #     dimensional_price_configuration: nil,
-        #     model_type: :grouped_with_metered_minimum,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_metered_minimum_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :grouped_with_metered_minimum)
+        #   @param id [String]
+        #   @param billable_metric [Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillableMetric, nil]
+        #   @param billing_cycle_configuration [Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillingCycleConfiguration]
+        #   @param cadence [Symbol, Orb::Models::Price::GroupedWithMeteredMinimumPrice::Cadence]
+        #   @param conversion_rate [Float, nil]
+        #   @param created_at [Time]
+        #   @param credit_allocation [Orb::Models::Price::GroupedWithMeteredMinimumPrice::CreditAllocation, nil]
+        #   @param currency [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param external_price_id [String, nil]
+        #   @param fixed_price_quantity [Float, nil]
+        #   @param grouped_with_metered_minimum_config [Hash{Symbol=>Object}]
+        #   @param invoicing_cycle_configuration [Orb::Models::Price::GroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration, nil]
+        #   @param item [Orb::Models::Price::GroupedWithMeteredMinimumPrice::Item]
+        #   @param maximum [Orb::Models::Price::GroupedWithMeteredMinimumPrice::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param metadata [Hash{Symbol=>String}]
+        #   @param minimum [Orb::Models::Price::GroupedWithMeteredMinimumPrice::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param plan_phase_order [Integer, nil]
+        #   @param price_type [Symbol, Orb::Models::Price::GroupedWithMeteredMinimumPrice::PriceType]
+        #   @param dimensional_price_configuration [Orb::Models::Price::GroupedWithMeteredMinimumPrice::DimensionalPriceConfiguration, nil]
+        #   @param model_type [Symbol, :grouped_with_metered_minimum]
 
         # @see Orb::Models::Price::GroupedWithMeteredMinimumPrice#billable_metric
         class BillableMetric < Orb::Internal::Type::BaseModel
@@ -9044,12 +7432,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Price::GroupedWithMeteredMinimumPrice#billing_cycle_configuration
@@ -9065,13 +7449,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
@@ -9080,11 +7460,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -9099,11 +7476,8 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::GroupedWithMeteredMinimumPrice#credit_allocation
@@ -9118,13 +7492,9 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param allows_rollover [Boolean]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(allows_rollover:, currency:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allows_rollover:, currency:)
+          #   @param allows_rollover [Boolean]
+          #   @param currency [String]
         end
 
         # @see Orb::Models::Price::GroupedWithMeteredMinimumPrice#invoicing_cycle_configuration
@@ -9140,13 +7510,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::GroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::GroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::GroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::GroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
@@ -9155,11 +7521,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -9175,13 +7538,9 @@ module Orb
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, name:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, name:)
+          #   @param id [String]
+          #   @param name [String]
         end
 
         # @see Orb::Models::Price::GroupedWithMeteredMinimumPrice#maximum
@@ -9199,13 +7558,9 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @see Orb::Models::Price::GroupedWithMeteredMinimumPrice#minimum
@@ -9223,13 +7578,9 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         # @see Orb::Models::Price::GroupedWithMeteredMinimumPrice#price_type
@@ -9239,11 +7590,8 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::GroupedWithMeteredMinimumPrice#dimensional_price_configuration
@@ -9258,13 +7606,9 @@ module Orb
           #   @return [String]
           required :dimensional_price_group_id, String
 
-          # @!parse
-          #   # @param dimension_values [Array<String>]
-          #   # @param dimensional_price_group_id [String]
-          #   #
-          #   def initialize(dimension_values:, dimensional_price_group_id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(dimension_values:, dimensional_price_group_id:)
+          #   @param dimension_values [Array<String>]
+          #   @param dimensional_price_group_id [String]
         end
       end
 
@@ -9402,63 +7746,31 @@ module Orb
                  -> { Orb::Models::Price::MatrixWithDisplayNamePrice::DimensionalPriceConfiguration },
                  nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param billable_metric [Orb::Models::Price::MatrixWithDisplayNamePrice::BillableMetric, nil]
-        #   # @param billing_cycle_configuration [Orb::Models::Price::MatrixWithDisplayNamePrice::BillingCycleConfiguration]
-        #   # @param cadence [Symbol, Orb::Models::Price::MatrixWithDisplayNamePrice::Cadence]
-        #   # @param conversion_rate [Float, nil]
-        #   # @param created_at [Time]
-        #   # @param credit_allocation [Orb::Models::Price::MatrixWithDisplayNamePrice::CreditAllocation, nil]
-        #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param fixed_price_quantity [Float, nil]
-        #   # @param invoicing_cycle_configuration [Orb::Models::Price::MatrixWithDisplayNamePrice::InvoicingCycleConfiguration, nil]
-        #   # @param item [Orb::Models::Price::MatrixWithDisplayNamePrice::Item]
-        #   # @param matrix_with_display_name_config [Hash{Symbol=>Object}]
-        #   # @param maximum [Orb::Models::Price::MatrixWithDisplayNamePrice::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param metadata [Hash{Symbol=>String}]
-        #   # @param minimum [Orb::Models::Price::MatrixWithDisplayNamePrice::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param plan_phase_order [Integer, nil]
-        #   # @param price_type [Symbol, Orb::Models::Price::MatrixWithDisplayNamePrice::PriceType]
-        #   # @param dimensional_price_configuration [Orb::Models::Price::MatrixWithDisplayNamePrice::DimensionalPriceConfiguration, nil]
-        #   # @param model_type [Symbol, :matrix_with_display_name]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billable_metric:,
-        #     billing_cycle_configuration:,
-        #     cadence:,
-        #     conversion_rate:,
-        #     created_at:,
-        #     credit_allocation:,
-        #     currency:,
-        #     discount:,
-        #     external_price_id:,
-        #     fixed_price_quantity:,
-        #     invoicing_cycle_configuration:,
-        #     item:,
-        #     matrix_with_display_name_config:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     metadata:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     plan_phase_order:,
-        #     price_type:,
-        #     dimensional_price_configuration: nil,
-        #     model_type: :matrix_with_display_name,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_with_display_name_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :matrix_with_display_name)
+        #   @param id [String]
+        #   @param billable_metric [Orb::Models::Price::MatrixWithDisplayNamePrice::BillableMetric, nil]
+        #   @param billing_cycle_configuration [Orb::Models::Price::MatrixWithDisplayNamePrice::BillingCycleConfiguration]
+        #   @param cadence [Symbol, Orb::Models::Price::MatrixWithDisplayNamePrice::Cadence]
+        #   @param conversion_rate [Float, nil]
+        #   @param created_at [Time]
+        #   @param credit_allocation [Orb::Models::Price::MatrixWithDisplayNamePrice::CreditAllocation, nil]
+        #   @param currency [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param external_price_id [String, nil]
+        #   @param fixed_price_quantity [Float, nil]
+        #   @param invoicing_cycle_configuration [Orb::Models::Price::MatrixWithDisplayNamePrice::InvoicingCycleConfiguration, nil]
+        #   @param item [Orb::Models::Price::MatrixWithDisplayNamePrice::Item]
+        #   @param matrix_with_display_name_config [Hash{Symbol=>Object}]
+        #   @param maximum [Orb::Models::Price::MatrixWithDisplayNamePrice::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param metadata [Hash{Symbol=>String}]
+        #   @param minimum [Orb::Models::Price::MatrixWithDisplayNamePrice::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param plan_phase_order [Integer, nil]
+        #   @param price_type [Symbol, Orb::Models::Price::MatrixWithDisplayNamePrice::PriceType]
+        #   @param dimensional_price_configuration [Orb::Models::Price::MatrixWithDisplayNamePrice::DimensionalPriceConfiguration, nil]
+        #   @param model_type [Symbol, :matrix_with_display_name]
 
         # @see Orb::Models::Price::MatrixWithDisplayNamePrice#billable_metric
         class BillableMetric < Orb::Internal::Type::BaseModel
@@ -9467,12 +7779,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Price::MatrixWithDisplayNamePrice#billing_cycle_configuration
@@ -9488,13 +7796,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::MatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::MatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::MatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::MatrixWithDisplayNamePrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
@@ -9503,11 +7807,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -9522,11 +7823,8 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::MatrixWithDisplayNamePrice#credit_allocation
@@ -9541,13 +7839,9 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param allows_rollover [Boolean]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(allows_rollover:, currency:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allows_rollover:, currency:)
+          #   @param allows_rollover [Boolean]
+          #   @param currency [String]
         end
 
         # @see Orb::Models::Price::MatrixWithDisplayNamePrice#invoicing_cycle_configuration
@@ -9563,13 +7857,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::MatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::MatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::MatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::MatrixWithDisplayNamePrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
@@ -9578,11 +7868,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -9598,13 +7885,9 @@ module Orb
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, name:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, name:)
+          #   @param id [String]
+          #   @param name [String]
         end
 
         # @see Orb::Models::Price::MatrixWithDisplayNamePrice#maximum
@@ -9622,13 +7905,9 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @see Orb::Models::Price::MatrixWithDisplayNamePrice#minimum
@@ -9646,13 +7925,9 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         # @see Orb::Models::Price::MatrixWithDisplayNamePrice#price_type
@@ -9662,11 +7937,8 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::MatrixWithDisplayNamePrice#dimensional_price_configuration
@@ -9681,13 +7953,9 @@ module Orb
           #   @return [String]
           required :dimensional_price_group_id, String
 
-          # @!parse
-          #   # @param dimension_values [Array<String>]
-          #   # @param dimensional_price_group_id [String]
-          #   #
-          #   def initialize(dimension_values:, dimensional_price_group_id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(dimension_values:, dimensional_price_group_id:)
+          #   @param dimension_values [Array<String>]
+          #   @param dimensional_price_group_id [String]
         end
       end
 
@@ -9823,63 +8091,31 @@ module Orb
                  -> { Orb::Models::Price::BulkWithProrationPrice::DimensionalPriceConfiguration },
                  nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param billable_metric [Orb::Models::Price::BulkWithProrationPrice::BillableMetric, nil]
-        #   # @param billing_cycle_configuration [Orb::Models::Price::BulkWithProrationPrice::BillingCycleConfiguration]
-        #   # @param bulk_with_proration_config [Hash{Symbol=>Object}]
-        #   # @param cadence [Symbol, Orb::Models::Price::BulkWithProrationPrice::Cadence]
-        #   # @param conversion_rate [Float, nil]
-        #   # @param created_at [Time]
-        #   # @param credit_allocation [Orb::Models::Price::BulkWithProrationPrice::CreditAllocation, nil]
-        #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param fixed_price_quantity [Float, nil]
-        #   # @param invoicing_cycle_configuration [Orb::Models::Price::BulkWithProrationPrice::InvoicingCycleConfiguration, nil]
-        #   # @param item [Orb::Models::Price::BulkWithProrationPrice::Item]
-        #   # @param maximum [Orb::Models::Price::BulkWithProrationPrice::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param metadata [Hash{Symbol=>String}]
-        #   # @param minimum [Orb::Models::Price::BulkWithProrationPrice::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param plan_phase_order [Integer, nil]
-        #   # @param price_type [Symbol, Orb::Models::Price::BulkWithProrationPrice::PriceType]
-        #   # @param dimensional_price_configuration [Orb::Models::Price::BulkWithProrationPrice::DimensionalPriceConfiguration, nil]
-        #   # @param model_type [Symbol, :bulk_with_proration]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billable_metric:,
-        #     billing_cycle_configuration:,
-        #     bulk_with_proration_config:,
-        #     cadence:,
-        #     conversion_rate:,
-        #     created_at:,
-        #     credit_allocation:,
-        #     currency:,
-        #     discount:,
-        #     external_price_id:,
-        #     fixed_price_quantity:,
-        #     invoicing_cycle_configuration:,
-        #     item:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     metadata:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     plan_phase_order:,
-        #     price_type:,
-        #     dimensional_price_configuration: nil,
-        #     model_type: :bulk_with_proration,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bulk_with_proration_config:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :bulk_with_proration)
+        #   @param id [String]
+        #   @param billable_metric [Orb::Models::Price::BulkWithProrationPrice::BillableMetric, nil]
+        #   @param billing_cycle_configuration [Orb::Models::Price::BulkWithProrationPrice::BillingCycleConfiguration]
+        #   @param bulk_with_proration_config [Hash{Symbol=>Object}]
+        #   @param cadence [Symbol, Orb::Models::Price::BulkWithProrationPrice::Cadence]
+        #   @param conversion_rate [Float, nil]
+        #   @param created_at [Time]
+        #   @param credit_allocation [Orb::Models::Price::BulkWithProrationPrice::CreditAllocation, nil]
+        #   @param currency [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param external_price_id [String, nil]
+        #   @param fixed_price_quantity [Float, nil]
+        #   @param invoicing_cycle_configuration [Orb::Models::Price::BulkWithProrationPrice::InvoicingCycleConfiguration, nil]
+        #   @param item [Orb::Models::Price::BulkWithProrationPrice::Item]
+        #   @param maximum [Orb::Models::Price::BulkWithProrationPrice::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param metadata [Hash{Symbol=>String}]
+        #   @param minimum [Orb::Models::Price::BulkWithProrationPrice::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param plan_phase_order [Integer, nil]
+        #   @param price_type [Symbol, Orb::Models::Price::BulkWithProrationPrice::PriceType]
+        #   @param dimensional_price_configuration [Orb::Models::Price::BulkWithProrationPrice::DimensionalPriceConfiguration, nil]
+        #   @param model_type [Symbol, :bulk_with_proration]
 
         # @see Orb::Models::Price::BulkWithProrationPrice#billable_metric
         class BillableMetric < Orb::Internal::Type::BaseModel
@@ -9888,12 +8124,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Price::BulkWithProrationPrice#billing_cycle_configuration
@@ -9909,13 +8141,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::BulkWithProrationPrice::BillingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::BulkWithProrationPrice::BillingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::BulkWithProrationPrice::BillingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::BulkWithProrationPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
@@ -9924,11 +8152,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -9943,11 +8168,8 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::BulkWithProrationPrice#credit_allocation
@@ -9962,13 +8184,9 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param allows_rollover [Boolean]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(allows_rollover:, currency:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allows_rollover:, currency:)
+          #   @param allows_rollover [Boolean]
+          #   @param currency [String]
         end
 
         # @see Orb::Models::Price::BulkWithProrationPrice#invoicing_cycle_configuration
@@ -9984,13 +8202,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::BulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::BulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::BulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::BulkWithProrationPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
@@ -9999,11 +8213,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -10019,13 +8230,9 @@ module Orb
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, name:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, name:)
+          #   @param id [String]
+          #   @param name [String]
         end
 
         # @see Orb::Models::Price::BulkWithProrationPrice#maximum
@@ -10043,13 +8250,9 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @see Orb::Models::Price::BulkWithProrationPrice#minimum
@@ -10067,13 +8270,9 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         # @see Orb::Models::Price::BulkWithProrationPrice#price_type
@@ -10083,11 +8282,8 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::BulkWithProrationPrice#dimensional_price_configuration
@@ -10102,13 +8298,9 @@ module Orb
           #   @return [String]
           required :dimensional_price_group_id, String
 
-          # @!parse
-          #   # @param dimension_values [Array<String>]
-          #   # @param dimensional_price_group_id [String]
-          #   #
-          #   def initialize(dimension_values:, dimensional_price_group_id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(dimension_values:, dimensional_price_group_id:)
+          #   @param dimension_values [Array<String>]
+          #   @param dimensional_price_group_id [String]
         end
       end
 
@@ -10246,63 +8438,31 @@ module Orb
                  -> { Orb::Models::Price::GroupedTieredPackagePrice::DimensionalPriceConfiguration },
                  nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param billable_metric [Orb::Models::Price::GroupedTieredPackagePrice::BillableMetric, nil]
-        #   # @param billing_cycle_configuration [Orb::Models::Price::GroupedTieredPackagePrice::BillingCycleConfiguration]
-        #   # @param cadence [Symbol, Orb::Models::Price::GroupedTieredPackagePrice::Cadence]
-        #   # @param conversion_rate [Float, nil]
-        #   # @param created_at [Time]
-        #   # @param credit_allocation [Orb::Models::Price::GroupedTieredPackagePrice::CreditAllocation, nil]
-        #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param fixed_price_quantity [Float, nil]
-        #   # @param grouped_tiered_package_config [Hash{Symbol=>Object}]
-        #   # @param invoicing_cycle_configuration [Orb::Models::Price::GroupedTieredPackagePrice::InvoicingCycleConfiguration, nil]
-        #   # @param item [Orb::Models::Price::GroupedTieredPackagePrice::Item]
-        #   # @param maximum [Orb::Models::Price::GroupedTieredPackagePrice::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param metadata [Hash{Symbol=>String}]
-        #   # @param minimum [Orb::Models::Price::GroupedTieredPackagePrice::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param plan_phase_order [Integer, nil]
-        #   # @param price_type [Symbol, Orb::Models::Price::GroupedTieredPackagePrice::PriceType]
-        #   # @param dimensional_price_configuration [Orb::Models::Price::GroupedTieredPackagePrice::DimensionalPriceConfiguration, nil]
-        #   # @param model_type [Symbol, :grouped_tiered_package]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billable_metric:,
-        #     billing_cycle_configuration:,
-        #     cadence:,
-        #     conversion_rate:,
-        #     created_at:,
-        #     credit_allocation:,
-        #     currency:,
-        #     discount:,
-        #     external_price_id:,
-        #     fixed_price_quantity:,
-        #     grouped_tiered_package_config:,
-        #     invoicing_cycle_configuration:,
-        #     item:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     metadata:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     plan_phase_order:,
-        #     price_type:,
-        #     dimensional_price_configuration: nil,
-        #     model_type: :grouped_tiered_package,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_tiered_package_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :grouped_tiered_package)
+        #   @param id [String]
+        #   @param billable_metric [Orb::Models::Price::GroupedTieredPackagePrice::BillableMetric, nil]
+        #   @param billing_cycle_configuration [Orb::Models::Price::GroupedTieredPackagePrice::BillingCycleConfiguration]
+        #   @param cadence [Symbol, Orb::Models::Price::GroupedTieredPackagePrice::Cadence]
+        #   @param conversion_rate [Float, nil]
+        #   @param created_at [Time]
+        #   @param credit_allocation [Orb::Models::Price::GroupedTieredPackagePrice::CreditAllocation, nil]
+        #   @param currency [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param external_price_id [String, nil]
+        #   @param fixed_price_quantity [Float, nil]
+        #   @param grouped_tiered_package_config [Hash{Symbol=>Object}]
+        #   @param invoicing_cycle_configuration [Orb::Models::Price::GroupedTieredPackagePrice::InvoicingCycleConfiguration, nil]
+        #   @param item [Orb::Models::Price::GroupedTieredPackagePrice::Item]
+        #   @param maximum [Orb::Models::Price::GroupedTieredPackagePrice::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param metadata [Hash{Symbol=>String}]
+        #   @param minimum [Orb::Models::Price::GroupedTieredPackagePrice::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param plan_phase_order [Integer, nil]
+        #   @param price_type [Symbol, Orb::Models::Price::GroupedTieredPackagePrice::PriceType]
+        #   @param dimensional_price_configuration [Orb::Models::Price::GroupedTieredPackagePrice::DimensionalPriceConfiguration, nil]
+        #   @param model_type [Symbol, :grouped_tiered_package]
 
         # @see Orb::Models::Price::GroupedTieredPackagePrice#billable_metric
         class BillableMetric < Orb::Internal::Type::BaseModel
@@ -10311,12 +8471,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Price::GroupedTieredPackagePrice#billing_cycle_configuration
@@ -10332,13 +8488,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::GroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::GroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::GroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::GroupedTieredPackagePrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
@@ -10347,11 +8499,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -10366,11 +8515,8 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::GroupedTieredPackagePrice#credit_allocation
@@ -10385,13 +8531,9 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param allows_rollover [Boolean]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(allows_rollover:, currency:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allows_rollover:, currency:)
+          #   @param allows_rollover [Boolean]
+          #   @param currency [String]
         end
 
         # @see Orb::Models::Price::GroupedTieredPackagePrice#invoicing_cycle_configuration
@@ -10407,13 +8549,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::GroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::GroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::GroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::GroupedTieredPackagePrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
@@ -10422,11 +8560,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -10442,13 +8577,9 @@ module Orb
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, name:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, name:)
+          #   @param id [String]
+          #   @param name [String]
         end
 
         # @see Orb::Models::Price::GroupedTieredPackagePrice#maximum
@@ -10466,13 +8597,9 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @see Orb::Models::Price::GroupedTieredPackagePrice#minimum
@@ -10490,13 +8617,9 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         # @see Orb::Models::Price::GroupedTieredPackagePrice#price_type
@@ -10506,11 +8629,8 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::GroupedTieredPackagePrice#dimensional_price_configuration
@@ -10525,13 +8645,9 @@ module Orb
           #   @return [String]
           required :dimensional_price_group_id, String
 
-          # @!parse
-          #   # @param dimension_values [Array<String>]
-          #   # @param dimensional_price_group_id [String]
-          #   #
-          #   def initialize(dimension_values:, dimensional_price_group_id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(dimension_values:, dimensional_price_group_id:)
+          #   @param dimension_values [Array<String>]
+          #   @param dimensional_price_group_id [String]
         end
       end
 
@@ -10669,63 +8785,31 @@ module Orb
                  -> { Orb::Models::Price::MaxGroupTieredPackagePrice::DimensionalPriceConfiguration },
                  nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param billable_metric [Orb::Models::Price::MaxGroupTieredPackagePrice::BillableMetric, nil]
-        #   # @param billing_cycle_configuration [Orb::Models::Price::MaxGroupTieredPackagePrice::BillingCycleConfiguration]
-        #   # @param cadence [Symbol, Orb::Models::Price::MaxGroupTieredPackagePrice::Cadence]
-        #   # @param conversion_rate [Float, nil]
-        #   # @param created_at [Time]
-        #   # @param credit_allocation [Orb::Models::Price::MaxGroupTieredPackagePrice::CreditAllocation, nil]
-        #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param fixed_price_quantity [Float, nil]
-        #   # @param invoicing_cycle_configuration [Orb::Models::Price::MaxGroupTieredPackagePrice::InvoicingCycleConfiguration, nil]
-        #   # @param item [Orb::Models::Price::MaxGroupTieredPackagePrice::Item]
-        #   # @param max_group_tiered_package_config [Hash{Symbol=>Object}]
-        #   # @param maximum [Orb::Models::Price::MaxGroupTieredPackagePrice::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param metadata [Hash{Symbol=>String}]
-        #   # @param minimum [Orb::Models::Price::MaxGroupTieredPackagePrice::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param plan_phase_order [Integer, nil]
-        #   # @param price_type [Symbol, Orb::Models::Price::MaxGroupTieredPackagePrice::PriceType]
-        #   # @param dimensional_price_configuration [Orb::Models::Price::MaxGroupTieredPackagePrice::DimensionalPriceConfiguration, nil]
-        #   # @param model_type [Symbol, :max_group_tiered_package]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billable_metric:,
-        #     billing_cycle_configuration:,
-        #     cadence:,
-        #     conversion_rate:,
-        #     created_at:,
-        #     credit_allocation:,
-        #     currency:,
-        #     discount:,
-        #     external_price_id:,
-        #     fixed_price_quantity:,
-        #     invoicing_cycle_configuration:,
-        #     item:,
-        #     max_group_tiered_package_config:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     metadata:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     plan_phase_order:,
-        #     price_type:,
-        #     dimensional_price_configuration: nil,
-        #     model_type: :max_group_tiered_package,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, max_group_tiered_package_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :max_group_tiered_package)
+        #   @param id [String]
+        #   @param billable_metric [Orb::Models::Price::MaxGroupTieredPackagePrice::BillableMetric, nil]
+        #   @param billing_cycle_configuration [Orb::Models::Price::MaxGroupTieredPackagePrice::BillingCycleConfiguration]
+        #   @param cadence [Symbol, Orb::Models::Price::MaxGroupTieredPackagePrice::Cadence]
+        #   @param conversion_rate [Float, nil]
+        #   @param created_at [Time]
+        #   @param credit_allocation [Orb::Models::Price::MaxGroupTieredPackagePrice::CreditAllocation, nil]
+        #   @param currency [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param external_price_id [String, nil]
+        #   @param fixed_price_quantity [Float, nil]
+        #   @param invoicing_cycle_configuration [Orb::Models::Price::MaxGroupTieredPackagePrice::InvoicingCycleConfiguration, nil]
+        #   @param item [Orb::Models::Price::MaxGroupTieredPackagePrice::Item]
+        #   @param max_group_tiered_package_config [Hash{Symbol=>Object}]
+        #   @param maximum [Orb::Models::Price::MaxGroupTieredPackagePrice::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param metadata [Hash{Symbol=>String}]
+        #   @param minimum [Orb::Models::Price::MaxGroupTieredPackagePrice::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param plan_phase_order [Integer, nil]
+        #   @param price_type [Symbol, Orb::Models::Price::MaxGroupTieredPackagePrice::PriceType]
+        #   @param dimensional_price_configuration [Orb::Models::Price::MaxGroupTieredPackagePrice::DimensionalPriceConfiguration, nil]
+        #   @param model_type [Symbol, :max_group_tiered_package]
 
         # @see Orb::Models::Price::MaxGroupTieredPackagePrice#billable_metric
         class BillableMetric < Orb::Internal::Type::BaseModel
@@ -10734,12 +8818,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Price::MaxGroupTieredPackagePrice#billing_cycle_configuration
@@ -10755,13 +8835,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::MaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::MaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::MaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::MaxGroupTieredPackagePrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
@@ -10770,11 +8846,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -10789,11 +8862,8 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::MaxGroupTieredPackagePrice#credit_allocation
@@ -10808,13 +8878,9 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param allows_rollover [Boolean]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(allows_rollover:, currency:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allows_rollover:, currency:)
+          #   @param allows_rollover [Boolean]
+          #   @param currency [String]
         end
 
         # @see Orb::Models::Price::MaxGroupTieredPackagePrice#invoicing_cycle_configuration
@@ -10830,13 +8896,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::MaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::MaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::MaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::MaxGroupTieredPackagePrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
@@ -10845,11 +8907,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -10865,13 +8924,9 @@ module Orb
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, name:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, name:)
+          #   @param id [String]
+          #   @param name [String]
         end
 
         # @see Orb::Models::Price::MaxGroupTieredPackagePrice#maximum
@@ -10889,13 +8944,9 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @see Orb::Models::Price::MaxGroupTieredPackagePrice#minimum
@@ -10913,13 +8964,9 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         # @see Orb::Models::Price::MaxGroupTieredPackagePrice#price_type
@@ -10929,11 +8976,8 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::MaxGroupTieredPackagePrice#dimensional_price_configuration
@@ -10948,13 +8992,9 @@ module Orb
           #   @return [String]
           required :dimensional_price_group_id, String
 
-          # @!parse
-          #   # @param dimension_values [Array<String>]
-          #   # @param dimensional_price_group_id [String]
-          #   #
-          #   def initialize(dimension_values:, dimensional_price_group_id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(dimension_values:, dimensional_price_group_id:)
+          #   @param dimension_values [Array<String>]
+          #   @param dimensional_price_group_id [String]
         end
       end
 
@@ -11093,63 +9133,31 @@ module Orb
                  -> { Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::DimensionalPriceConfiguration },
                  nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param billable_metric [Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillableMetric, nil]
-        #   # @param billing_cycle_configuration [Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration]
-        #   # @param cadence [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Cadence]
-        #   # @param conversion_rate [Float, nil]
-        #   # @param created_at [Time]
-        #   # @param credit_allocation [Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::CreditAllocation, nil]
-        #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param fixed_price_quantity [Float, nil]
-        #   # @param invoicing_cycle_configuration [Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration, nil]
-        #   # @param item [Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Item]
-        #   # @param maximum [Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param metadata [Hash{Symbol=>String}]
-        #   # @param minimum [Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param plan_phase_order [Integer, nil]
-        #   # @param price_type [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::PriceType]
-        #   # @param scalable_matrix_with_unit_pricing_config [Hash{Symbol=>Object}]
-        #   # @param dimensional_price_configuration [Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::DimensionalPriceConfiguration, nil]
-        #   # @param model_type [Symbol, :scalable_matrix_with_unit_pricing]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billable_metric:,
-        #     billing_cycle_configuration:,
-        #     cadence:,
-        #     conversion_rate:,
-        #     created_at:,
-        #     credit_allocation:,
-        #     currency:,
-        #     discount:,
-        #     external_price_id:,
-        #     fixed_price_quantity:,
-        #     invoicing_cycle_configuration:,
-        #     item:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     metadata:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     plan_phase_order:,
-        #     price_type:,
-        #     scalable_matrix_with_unit_pricing_config:,
-        #     dimensional_price_configuration: nil,
-        #     model_type: :scalable_matrix_with_unit_pricing,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, scalable_matrix_with_unit_pricing_config:, dimensional_price_configuration: nil, model_type: :scalable_matrix_with_unit_pricing)
+        #   @param id [String]
+        #   @param billable_metric [Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillableMetric, nil]
+        #   @param billing_cycle_configuration [Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration]
+        #   @param cadence [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Cadence]
+        #   @param conversion_rate [Float, nil]
+        #   @param created_at [Time]
+        #   @param credit_allocation [Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::CreditAllocation, nil]
+        #   @param currency [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param external_price_id [String, nil]
+        #   @param fixed_price_quantity [Float, nil]
+        #   @param invoicing_cycle_configuration [Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration, nil]
+        #   @param item [Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Item]
+        #   @param maximum [Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param metadata [Hash{Symbol=>String}]
+        #   @param minimum [Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param plan_phase_order [Integer, nil]
+        #   @param price_type [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::PriceType]
+        #   @param scalable_matrix_with_unit_pricing_config [Hash{Symbol=>Object}]
+        #   @param dimensional_price_configuration [Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::DimensionalPriceConfiguration, nil]
+        #   @param model_type [Symbol, :scalable_matrix_with_unit_pricing]
 
         # @see Orb::Models::Price::ScalableMatrixWithUnitPricingPrice#billable_metric
         class BillableMetric < Orb::Internal::Type::BaseModel
@@ -11158,12 +9166,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Price::ScalableMatrixWithUnitPricingPrice#billing_cycle_configuration
@@ -11179,13 +9183,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
@@ -11194,11 +9194,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -11213,11 +9210,8 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::ScalableMatrixWithUnitPricingPrice#credit_allocation
@@ -11232,13 +9226,9 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param allows_rollover [Boolean]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(allows_rollover:, currency:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allows_rollover:, currency:)
+          #   @param allows_rollover [Boolean]
+          #   @param currency [String]
         end
 
         # @see Orb::Models::Price::ScalableMatrixWithUnitPricingPrice#invoicing_cycle_configuration
@@ -11254,13 +9244,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
@@ -11269,11 +9255,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -11289,13 +9272,9 @@ module Orb
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, name:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, name:)
+          #   @param id [String]
+          #   @param name [String]
         end
 
         # @see Orb::Models::Price::ScalableMatrixWithUnitPricingPrice#maximum
@@ -11313,13 +9292,9 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @see Orb::Models::Price::ScalableMatrixWithUnitPricingPrice#minimum
@@ -11337,13 +9312,9 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         # @see Orb::Models::Price::ScalableMatrixWithUnitPricingPrice#price_type
@@ -11353,11 +9324,8 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::ScalableMatrixWithUnitPricingPrice#dimensional_price_configuration
@@ -11372,13 +9340,9 @@ module Orb
           #   @return [String]
           required :dimensional_price_group_id, String
 
-          # @!parse
-          #   # @param dimension_values [Array<String>]
-          #   # @param dimensional_price_group_id [String]
-          #   #
-          #   def initialize(dimension_values:, dimensional_price_group_id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(dimension_values:, dimensional_price_group_id:)
+          #   @param dimension_values [Array<String>]
+          #   @param dimensional_price_group_id [String]
         end
       end
 
@@ -11517,63 +9481,31 @@ module Orb
                  -> { Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::DimensionalPriceConfiguration },
                  nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param billable_metric [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillableMetric, nil]
-        #   # @param billing_cycle_configuration [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration]
-        #   # @param cadence [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Cadence]
-        #   # @param conversion_rate [Float, nil]
-        #   # @param created_at [Time]
-        #   # @param credit_allocation [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::CreditAllocation, nil]
-        #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param fixed_price_quantity [Float, nil]
-        #   # @param invoicing_cycle_configuration [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration, nil]
-        #   # @param item [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Item]
-        #   # @param maximum [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param metadata [Hash{Symbol=>String}]
-        #   # @param minimum [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param plan_phase_order [Integer, nil]
-        #   # @param price_type [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::PriceType]
-        #   # @param scalable_matrix_with_tiered_pricing_config [Hash{Symbol=>Object}]
-        #   # @param dimensional_price_configuration [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::DimensionalPriceConfiguration, nil]
-        #   # @param model_type [Symbol, :scalable_matrix_with_tiered_pricing]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billable_metric:,
-        #     billing_cycle_configuration:,
-        #     cadence:,
-        #     conversion_rate:,
-        #     created_at:,
-        #     credit_allocation:,
-        #     currency:,
-        #     discount:,
-        #     external_price_id:,
-        #     fixed_price_quantity:,
-        #     invoicing_cycle_configuration:,
-        #     item:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     metadata:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     plan_phase_order:,
-        #     price_type:,
-        #     scalable_matrix_with_tiered_pricing_config:,
-        #     dimensional_price_configuration: nil,
-        #     model_type: :scalable_matrix_with_tiered_pricing,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, scalable_matrix_with_tiered_pricing_config:, dimensional_price_configuration: nil, model_type: :scalable_matrix_with_tiered_pricing)
+        #   @param id [String]
+        #   @param billable_metric [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillableMetric, nil]
+        #   @param billing_cycle_configuration [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration]
+        #   @param cadence [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Cadence]
+        #   @param conversion_rate [Float, nil]
+        #   @param created_at [Time]
+        #   @param credit_allocation [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::CreditAllocation, nil]
+        #   @param currency [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param external_price_id [String, nil]
+        #   @param fixed_price_quantity [Float, nil]
+        #   @param invoicing_cycle_configuration [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration, nil]
+        #   @param item [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Item]
+        #   @param maximum [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param metadata [Hash{Symbol=>String}]
+        #   @param minimum [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param plan_phase_order [Integer, nil]
+        #   @param price_type [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::PriceType]
+        #   @param scalable_matrix_with_tiered_pricing_config [Hash{Symbol=>Object}]
+        #   @param dimensional_price_configuration [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::DimensionalPriceConfiguration, nil]
+        #   @param model_type [Symbol, :scalable_matrix_with_tiered_pricing]
 
         # @see Orb::Models::Price::ScalableMatrixWithTieredPricingPrice#billable_metric
         class BillableMetric < Orb::Internal::Type::BaseModel
@@ -11582,12 +9514,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Price::ScalableMatrixWithTieredPricingPrice#billing_cycle_configuration
@@ -11603,13 +9531,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
@@ -11618,11 +9542,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -11637,11 +9558,8 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::ScalableMatrixWithTieredPricingPrice#credit_allocation
@@ -11656,13 +9574,9 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param allows_rollover [Boolean]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(allows_rollover:, currency:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allows_rollover:, currency:)
+          #   @param allows_rollover [Boolean]
+          #   @param currency [String]
         end
 
         # @see Orb::Models::Price::ScalableMatrixWithTieredPricingPrice#invoicing_cycle_configuration
@@ -11678,13 +9592,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
@@ -11693,11 +9603,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -11713,13 +9620,9 @@ module Orb
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, name:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, name:)
+          #   @param id [String]
+          #   @param name [String]
         end
 
         # @see Orb::Models::Price::ScalableMatrixWithTieredPricingPrice#maximum
@@ -11737,13 +9640,9 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @see Orb::Models::Price::ScalableMatrixWithTieredPricingPrice#minimum
@@ -11761,13 +9660,9 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         # @see Orb::Models::Price::ScalableMatrixWithTieredPricingPrice#price_type
@@ -11777,11 +9672,8 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::ScalableMatrixWithTieredPricingPrice#dimensional_price_configuration
@@ -11796,13 +9688,9 @@ module Orb
           #   @return [String]
           required :dimensional_price_group_id, String
 
-          # @!parse
-          #   # @param dimension_values [Array<String>]
-          #   # @param dimensional_price_group_id [String]
-          #   #
-          #   def initialize(dimension_values:, dimensional_price_group_id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(dimension_values:, dimensional_price_group_id:)
+          #   @param dimension_values [Array<String>]
+          #   @param dimensional_price_group_id [String]
         end
       end
 
@@ -11940,63 +9828,31 @@ module Orb
                  -> { Orb::Models::Price::CumulativeGroupedBulkPrice::DimensionalPriceConfiguration },
                  nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param billable_metric [Orb::Models::Price::CumulativeGroupedBulkPrice::BillableMetric, nil]
-        #   # @param billing_cycle_configuration [Orb::Models::Price::CumulativeGroupedBulkPrice::BillingCycleConfiguration]
-        #   # @param cadence [Symbol, Orb::Models::Price::CumulativeGroupedBulkPrice::Cadence]
-        #   # @param conversion_rate [Float, nil]
-        #   # @param created_at [Time]
-        #   # @param credit_allocation [Orb::Models::Price::CumulativeGroupedBulkPrice::CreditAllocation, nil]
-        #   # @param cumulative_grouped_bulk_config [Hash{Symbol=>Object}]
-        #   # @param currency [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param external_price_id [String, nil]
-        #   # @param fixed_price_quantity [Float, nil]
-        #   # @param invoicing_cycle_configuration [Orb::Models::Price::CumulativeGroupedBulkPrice::InvoicingCycleConfiguration, nil]
-        #   # @param item [Orb::Models::Price::CumulativeGroupedBulkPrice::Item]
-        #   # @param maximum [Orb::Models::Price::CumulativeGroupedBulkPrice::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param metadata [Hash{Symbol=>String}]
-        #   # @param minimum [Orb::Models::Price::CumulativeGroupedBulkPrice::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param plan_phase_order [Integer, nil]
-        #   # @param price_type [Symbol, Orb::Models::Price::CumulativeGroupedBulkPrice::PriceType]
-        #   # @param dimensional_price_configuration [Orb::Models::Price::CumulativeGroupedBulkPrice::DimensionalPriceConfiguration, nil]
-        #   # @param model_type [Symbol, :cumulative_grouped_bulk]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billable_metric:,
-        #     billing_cycle_configuration:,
-        #     cadence:,
-        #     conversion_rate:,
-        #     created_at:,
-        #     credit_allocation:,
-        #     cumulative_grouped_bulk_config:,
-        #     currency:,
-        #     discount:,
-        #     external_price_id:,
-        #     fixed_price_quantity:,
-        #     invoicing_cycle_configuration:,
-        #     item:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     metadata:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     plan_phase_order:,
-        #     price_type:,
-        #     dimensional_price_configuration: nil,
-        #     model_type: :cumulative_grouped_bulk,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, cumulative_grouped_bulk_config:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :cumulative_grouped_bulk)
+        #   @param id [String]
+        #   @param billable_metric [Orb::Models::Price::CumulativeGroupedBulkPrice::BillableMetric, nil]
+        #   @param billing_cycle_configuration [Orb::Models::Price::CumulativeGroupedBulkPrice::BillingCycleConfiguration]
+        #   @param cadence [Symbol, Orb::Models::Price::CumulativeGroupedBulkPrice::Cadence]
+        #   @param conversion_rate [Float, nil]
+        #   @param created_at [Time]
+        #   @param credit_allocation [Orb::Models::Price::CumulativeGroupedBulkPrice::CreditAllocation, nil]
+        #   @param cumulative_grouped_bulk_config [Hash{Symbol=>Object}]
+        #   @param currency [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param external_price_id [String, nil]
+        #   @param fixed_price_quantity [Float, nil]
+        #   @param invoicing_cycle_configuration [Orb::Models::Price::CumulativeGroupedBulkPrice::InvoicingCycleConfiguration, nil]
+        #   @param item [Orb::Models::Price::CumulativeGroupedBulkPrice::Item]
+        #   @param maximum [Orb::Models::Price::CumulativeGroupedBulkPrice::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param metadata [Hash{Symbol=>String}]
+        #   @param minimum [Orb::Models::Price::CumulativeGroupedBulkPrice::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param plan_phase_order [Integer, nil]
+        #   @param price_type [Symbol, Orb::Models::Price::CumulativeGroupedBulkPrice::PriceType]
+        #   @param dimensional_price_configuration [Orb::Models::Price::CumulativeGroupedBulkPrice::DimensionalPriceConfiguration, nil]
+        #   @param model_type [Symbol, :cumulative_grouped_bulk]
 
         # @see Orb::Models::Price::CumulativeGroupedBulkPrice#billable_metric
         class BillableMetric < Orb::Internal::Type::BaseModel
@@ -12005,12 +9861,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Price::CumulativeGroupedBulkPrice#billing_cycle_configuration
@@ -12026,13 +9878,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::CumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::CumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::CumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::CumulativeGroupedBulkPrice::BillingCycleConfiguration#duration_unit
           module DurationUnit
@@ -12041,11 +9889,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -12060,11 +9905,8 @@ module Orb
           ANNUAL = :annual
           CUSTOM = :custom
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::CumulativeGroupedBulkPrice#credit_allocation
@@ -12079,13 +9921,9 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!parse
-          #   # @param allows_rollover [Boolean]
-          #   # @param currency [String]
-          #   #
-          #   def initialize(allows_rollover:, currency:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(allows_rollover:, currency:)
+          #   @param allows_rollover [Boolean]
+          #   @param currency [String]
         end
 
         # @see Orb::Models::Price::CumulativeGroupedBulkPrice#invoicing_cycle_configuration
@@ -12101,13 +9939,9 @@ module Orb
           required :duration_unit,
                    enum: -> { Orb::Models::Price::CumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit }
 
-          # @!parse
-          #   # @param duration [Integer]
-          #   # @param duration_unit [Symbol, Orb::Models::Price::CumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit]
-          #   #
-          #   def initialize(duration:, duration_unit:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(duration:, duration_unit:)
+          #   @param duration [Integer]
+          #   @param duration_unit [Symbol, Orb::Models::Price::CumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit]
 
           # @see Orb::Models::Price::CumulativeGroupedBulkPrice::InvoicingCycleConfiguration#duration_unit
           module DurationUnit
@@ -12116,11 +9950,8 @@ module Orb
             DAY = :day
             MONTH = :month
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -12136,13 +9967,9 @@ module Orb
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(id:, name:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, name:)
+          #   @param id [String]
+          #   @param name [String]
         end
 
         # @see Orb::Models::Price::CumulativeGroupedBulkPrice#maximum
@@ -12160,13 +9987,9 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @see Orb::Models::Price::CumulativeGroupedBulkPrice#minimum
@@ -12184,13 +10007,9 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         # @see Orb::Models::Price::CumulativeGroupedBulkPrice#price_type
@@ -12200,11 +10019,8 @@ module Orb
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Price::CumulativeGroupedBulkPrice#dimensional_price_configuration
@@ -12219,19 +10035,14 @@ module Orb
           #   @return [String]
           required :dimensional_price_group_id, String
 
-          # @!parse
-          #   # @param dimension_values [Array<String>]
-          #   # @param dimensional_price_group_id [String]
-          #   #
-          #   def initialize(dimension_values:, dimensional_price_group_id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(dimension_values:, dimensional_price_group_id:)
+          #   @param dimension_values [Array<String>]
+          #   @param dimensional_price_group_id [String]
         end
       end
 
-      # @!parse
-      #   # @return [Array(Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice)]
-      #   def self.variants; end
+      # @!method self.variants
+      #   @return [Array(Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice)]
     end
   end
 end

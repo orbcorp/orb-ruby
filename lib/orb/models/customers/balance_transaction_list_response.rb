@@ -65,35 +65,17 @@ module Orb
         #   @return [Symbol, Orb::Models::Customers::BalanceTransactionListResponse::Type]
         required :type, enum: -> { Orb::Models::Customers::BalanceTransactionListResponse::Type }
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param action [Symbol, Orb::Models::Customers::BalanceTransactionListResponse::Action]
-        #   # @param amount [String]
-        #   # @param created_at [Time]
-        #   # @param credit_note [Orb::Models::Customers::BalanceTransactionListResponse::CreditNote, nil]
-        #   # @param description [String, nil]
-        #   # @param ending_balance [String]
-        #   # @param invoice [Orb::Models::Customers::BalanceTransactionListResponse::Invoice, nil]
-        #   # @param starting_balance [String]
-        #   # @param type [Symbol, Orb::Models::Customers::BalanceTransactionListResponse::Type]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     action:,
-        #     amount:,
-        #     created_at:,
-        #     credit_note:,
-        #     description:,
-        #     ending_balance:,
-        #     invoice:,
-        #     starting_balance:,
-        #     type:,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, action:, amount:, created_at:, credit_note:, description:, ending_balance:, invoice:, starting_balance:, type:)
+        #   @param id [String]
+        #   @param action [Symbol, Orb::Models::Customers::BalanceTransactionListResponse::Action]
+        #   @param amount [String]
+        #   @param created_at [Time]
+        #   @param credit_note [Orb::Models::Customers::BalanceTransactionListResponse::CreditNote, nil]
+        #   @param description [String, nil]
+        #   @param ending_balance [String]
+        #   @param invoice [Orb::Models::Customers::BalanceTransactionListResponse::Invoice, nil]
+        #   @param starting_balance [String]
+        #   @param type [Symbol, Orb::Models::Customers::BalanceTransactionListResponse::Type]
 
         # @see Orb::Models::Customers::BalanceTransactionListResponse#action
         module Action
@@ -109,11 +91,8 @@ module Orb
           OVERPAYMENT_REFUND = :overpayment_refund
           EXTERNAL_PAYMENT = :external_payment
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Customers::BalanceTransactionListResponse#credit_note
@@ -124,12 +103,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Customers::BalanceTransactionListResponse#invoice
@@ -140,12 +115,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Customers::BalanceTransactionListResponse#type
@@ -155,11 +126,8 @@ module Orb
           INCREMENT = :increment
           DECREMENT = :decrement
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end
