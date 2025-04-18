@@ -63,8 +63,7 @@ module Orb
         extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::AlertCreateForSubscriptionParams::Type) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Orb::Models::AlertCreateForSubscriptionParams::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         USAGE_EXCEEDED =
           T.let(:usage_exceeded, Orb::Models::AlertCreateForSubscriptionParams::Type::TaggedSymbol)

@@ -1384,8 +1384,7 @@ module Orb
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeResponse::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Orb::Models::SubscriptionSchedulePlanChangeResponse::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ACTIVE = T.let(:active, Orb::Models::SubscriptionSchedulePlanChangeResponse::Status::TaggedSymbol)
         ENDED = T.let(:ended, Orb::Models::SubscriptionSchedulePlanChangeResponse::Status::TaggedSymbol)

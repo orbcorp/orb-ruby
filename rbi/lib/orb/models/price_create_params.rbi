@@ -353,7 +353,7 @@ module Orb
         extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::PriceCreateParams::Cadence) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::PriceCreateParams::Cadence::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ANNUAL = T.let(:annual, Orb::Models::PriceCreateParams::Cadence::TaggedSymbol)
         SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::PriceCreateParams::Cadence::TaggedSymbol)
@@ -370,8 +370,7 @@ module Orb
         extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::PriceCreateParams::ModelType) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Orb::Models::PriceCreateParams::ModelType::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         CUMULATIVE_GROUPED_BULK =
           T.let(:cumulative_grouped_bulk, Orb::Models::PriceCreateParams::ModelType::TaggedSymbol)
@@ -429,14 +428,7 @@ module Orb
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::PriceCreateParams::BillingCycleConfiguration::DurationUnit) }
-          OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                String,
-                Orb::Models::PriceCreateParams::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-              )
-            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           DAY = T.let(:day, Orb::Models::PriceCreateParams::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
           MONTH =
@@ -487,14 +479,7 @@ module Orb
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::PriceCreateParams::InvoicingCycleConfiguration::DurationUnit) }
-          OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                String,
-                Orb::Models::PriceCreateParams::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-              )
-            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           DAY =
             T.let(:day, Orb::Models::PriceCreateParams::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)

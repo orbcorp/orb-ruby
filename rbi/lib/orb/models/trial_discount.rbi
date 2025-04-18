@@ -57,7 +57,7 @@ module Orb
         extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::TrialDiscount::DiscountType) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::TrialDiscount::DiscountType::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         TRIAL = T.let(:trial, Orb::Models::TrialDiscount::DiscountType::TaggedSymbol)
 

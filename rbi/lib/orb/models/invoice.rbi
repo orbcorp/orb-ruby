@@ -739,8 +739,7 @@ module Orb
           extend Orb::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Invoice::CustomerBalanceTransaction::Action) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Orb::Models::Invoice::CustomerBalanceTransaction::Action::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           APPLIED_TO_INVOICE =
             T.let(:applied_to_invoice, Orb::Models::Invoice::CustomerBalanceTransaction::Action::TaggedSymbol)
@@ -793,8 +792,7 @@ module Orb
           extend Orb::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Invoice::CustomerBalanceTransaction::Type) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Orb::Models::Invoice::CustomerBalanceTransaction::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           INCREMENT = T.let(:increment, Orb::Models::Invoice::CustomerBalanceTransaction::Type::TaggedSymbol)
           DECREMENT = T.let(:decrement, Orb::Models::Invoice::CustomerBalanceTransaction::Type::TaggedSymbol)
@@ -945,8 +943,7 @@ module Orb
           extend Orb::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Invoice::CustomerTaxID::Country) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Orb::Models::Invoice::CustomerTaxID::Country::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           AD = T.let(:AD, Orb::Models::Invoice::CustomerTaxID::Country::TaggedSymbol)
           AE = T.let(:AE, Orb::Models::Invoice::CustomerTaxID::Country::TaggedSymbol)
@@ -1035,8 +1032,7 @@ module Orb
           extend Orb::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Invoice::CustomerTaxID::Type) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Orb::Models::Invoice::CustomerTaxID::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           AD_NRT = T.let(:ad_nrt, Orb::Models::Invoice::CustomerTaxID::Type::TaggedSymbol)
           AE_TRN = T.let(:ae_trn, Orb::Models::Invoice::CustomerTaxID::Type::TaggedSymbol)
@@ -1119,7 +1115,7 @@ module Orb
         extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Invoice::InvoiceSource) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::Invoice::InvoiceSource::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         SUBSCRIPTION = T.let(:subscription, Orb::Models::Invoice::InvoiceSource::TaggedSymbol)
         PARTIAL = T.let(:partial, Orb::Models::Invoice::InvoiceSource::TaggedSymbol)
@@ -2312,8 +2308,7 @@ module Orb
           extend Orb::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Invoice::PaymentAttempt::PaymentProvider) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Orb::Models::Invoice::PaymentAttempt::PaymentProvider::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           STRIPE = T.let(:stripe, Orb::Models::Invoice::PaymentAttempt::PaymentProvider::TaggedSymbol)
 
@@ -2374,7 +2369,7 @@ module Orb
         extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Invoice::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::Invoice::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ISSUED = T.let(:issued, Orb::Models::Invoice::Status::TaggedSymbol)
         PAID = T.let(:paid, Orb::Models::Invoice::Status::TaggedSymbol)

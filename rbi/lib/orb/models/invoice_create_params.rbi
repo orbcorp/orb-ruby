@@ -200,8 +200,7 @@ module Orb
           extend Orb::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::InvoiceCreateParams::LineItem::ModelType) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Orb::Models::InvoiceCreateParams::LineItem::ModelType::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           UNIT = T.let(:unit, Orb::Models::InvoiceCreateParams::LineItem::ModelType::TaggedSymbol)
 
