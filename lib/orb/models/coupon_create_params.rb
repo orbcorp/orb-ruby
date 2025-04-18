@@ -33,16 +33,12 @@ module Orb
       #   @return [Integer, nil]
       optional :max_redemptions, Integer, nil?: true
 
-      # @!parse
-      #   # @param discount [Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount]
-      #   # @param redemption_code [String]
-      #   # @param duration_in_months [Integer, nil]
-      #   # @param max_redemptions [Integer, nil]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(discount:, redemption_code:, duration_in_months: nil, max_redemptions: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(discount:, redemption_code:, duration_in_months: nil, max_redemptions: nil, request_options: {})
+      #   @param discount [Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount]
+      #   @param redemption_code [String]
+      #   @param duration_in_months [Integer, nil]
+      #   @param max_redemptions [Integer, nil]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
       module Discount
         extend Orb::Internal::Type::Union
@@ -64,13 +60,9 @@ module Orb
           #   @return [Float]
           required :percentage_discount, Float
 
-          # @!parse
-          #   # @param percentage_discount [Float]
-          #   # @param discount_type [Symbol, :percentage]
-          #   #
-          #   def initialize(percentage_discount:, discount_type: :percentage, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(percentage_discount:, discount_type: :percentage)
+          #   @param percentage_discount [Float]
+          #   @param discount_type [Symbol, :percentage]
         end
 
         class NewCouponAmountDiscount < Orb::Internal::Type::BaseModel
@@ -84,18 +76,13 @@ module Orb
           #   @return [Symbol, :amount]
           required :discount_type, const: :amount
 
-          # @!parse
-          #   # @param amount_discount [String]
-          #   # @param discount_type [Symbol, :amount]
-          #   #
-          #   def initialize(amount_discount:, discount_type: :amount, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(amount_discount:, discount_type: :amount)
+          #   @param amount_discount [String]
+          #   @param discount_type [Symbol, :amount]
         end
 
-        # @!parse
-        #   # @return [Array(Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount)]
       end
     end
   end

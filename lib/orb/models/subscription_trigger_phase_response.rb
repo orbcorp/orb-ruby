@@ -211,69 +211,34 @@ module Orb
                -> { Orb::Models::SubscriptionTriggerPhaseResponse::ChangedResources },
                nil?: true
 
-      # @!parse
-      #   # @param id [String]
-      #   # @param active_plan_phase_order [Integer, nil]
-      #   # @param adjustment_intervals [Array<Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval>]
-      #   # @param auto_collection [Boolean, nil]
-      #   # @param billing_cycle_anchor_configuration [Orb::Models::SubscriptionTriggerPhaseResponse::BillingCycleAnchorConfiguration]
-      #   # @param billing_cycle_day [Integer]
-      #   # @param created_at [Time]
-      #   # @param current_billing_period_end_date [Time, nil]
-      #   # @param current_billing_period_start_date [Time, nil]
-      #   # @param customer [Orb::Models::Customer]
-      #   # @param default_invoice_memo [String, nil]
-      #   # @param discount_intervals [Array<Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::UsageDiscountInterval>]
-      #   # @param end_date [Time, nil]
-      #   # @param fixed_fee_quantity_schedule [Array<Orb::Models::SubscriptionTriggerPhaseResponse::FixedFeeQuantitySchedule>]
-      #   # @param invoicing_threshold [String, nil]
-      #   # @param maximum_intervals [Array<Orb::Models::SubscriptionTriggerPhaseResponse::MaximumInterval>]
-      #   # @param metadata [Hash{Symbol=>String}]
-      #   # @param minimum_intervals [Array<Orb::Models::SubscriptionTriggerPhaseResponse::MinimumInterval>]
-      #   # @param net_terms [Integer]
-      #   # @param pending_subscription_change [Orb::Models::SubscriptionTriggerPhaseResponse::PendingSubscriptionChange, nil]
-      #   # @param plan [Orb::Models::Plan]
-      #   # @param price_intervals [Array<Orb::Models::SubscriptionTriggerPhaseResponse::PriceInterval>]
-      #   # @param redeemed_coupon [Orb::Models::SubscriptionTriggerPhaseResponse::RedeemedCoupon, nil]
-      #   # @param start_date [Time]
-      #   # @param status [Symbol, Orb::Models::SubscriptionTriggerPhaseResponse::Status]
-      #   # @param trial_info [Orb::Models::SubscriptionTriggerPhaseResponse::TrialInfo]
-      #   # @param changed_resources [Orb::Models::SubscriptionTriggerPhaseResponse::ChangedResources, nil]
-      #   #
-      #   def initialize(
-      #     id:,
-      #     active_plan_phase_order:,
-      #     adjustment_intervals:,
-      #     auto_collection:,
-      #     billing_cycle_anchor_configuration:,
-      #     billing_cycle_day:,
-      #     created_at:,
-      #     current_billing_period_end_date:,
-      #     current_billing_period_start_date:,
-      #     customer:,
-      #     default_invoice_memo:,
-      #     discount_intervals:,
-      #     end_date:,
-      #     fixed_fee_quantity_schedule:,
-      #     invoicing_threshold:,
-      #     maximum_intervals:,
-      #     metadata:,
-      #     minimum_intervals:,
-      #     net_terms:,
-      #     pending_subscription_change:,
-      #     plan:,
-      #     price_intervals:,
-      #     redeemed_coupon:,
-      #     start_date:,
-      #     status:,
-      #     trial_info:,
-      #     changed_resources: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, active_plan_phase_order:, adjustment_intervals:, auto_collection:, billing_cycle_anchor_configuration:, billing_cycle_day:, created_at:, current_billing_period_end_date:, current_billing_period_start_date:, customer:, default_invoice_memo:, discount_intervals:, end_date:, fixed_fee_quantity_schedule:, invoicing_threshold:, maximum_intervals:, metadata:, minimum_intervals:, net_terms:, pending_subscription_change:, plan:, price_intervals:, redeemed_coupon:, start_date:, status:, trial_info:, changed_resources: nil)
+      #   @param id [String]
+      #   @param active_plan_phase_order [Integer, nil]
+      #   @param adjustment_intervals [Array<Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval>]
+      #   @param auto_collection [Boolean, nil]
+      #   @param billing_cycle_anchor_configuration [Orb::Models::SubscriptionTriggerPhaseResponse::BillingCycleAnchorConfiguration]
+      #   @param billing_cycle_day [Integer]
+      #   @param created_at [Time]
+      #   @param current_billing_period_end_date [Time, nil]
+      #   @param current_billing_period_start_date [Time, nil]
+      #   @param customer [Orb::Models::Customer]
+      #   @param default_invoice_memo [String, nil]
+      #   @param discount_intervals [Array<Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::UsageDiscountInterval>]
+      #   @param end_date [Time, nil]
+      #   @param fixed_fee_quantity_schedule [Array<Orb::Models::SubscriptionTriggerPhaseResponse::FixedFeeQuantitySchedule>]
+      #   @param invoicing_threshold [String, nil]
+      #   @param maximum_intervals [Array<Orb::Models::SubscriptionTriggerPhaseResponse::MaximumInterval>]
+      #   @param metadata [Hash{Symbol=>String}]
+      #   @param minimum_intervals [Array<Orb::Models::SubscriptionTriggerPhaseResponse::MinimumInterval>]
+      #   @param net_terms [Integer]
+      #   @param pending_subscription_change [Orb::Models::SubscriptionTriggerPhaseResponse::PendingSubscriptionChange, nil]
+      #   @param plan [Orb::Models::Plan]
+      #   @param price_intervals [Array<Orb::Models::SubscriptionTriggerPhaseResponse::PriceInterval>]
+      #   @param redeemed_coupon [Orb::Models::SubscriptionTriggerPhaseResponse::RedeemedCoupon, nil]
+      #   @param start_date [Time]
+      #   @param status [Symbol, Orb::Models::SubscriptionTriggerPhaseResponse::Status]
+      #   @param trial_info [Orb::Models::SubscriptionTriggerPhaseResponse::TrialInfo]
+      #   @param changed_resources [Orb::Models::SubscriptionTriggerPhaseResponse::ChangedResources, nil]
 
       class AdjustmentInterval < Orb::Internal::Type::BaseModel
         # @!attribute id
@@ -305,16 +270,12 @@ module Orb
         #   @return [Time]
         required :start_date, Time
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param adjustment [Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]
-        #   # @param applies_to_price_interval_ids [Array<String>]
-        #   # @param end_date [Time, nil]
-        #   # @param start_date [Time]
-        #   #
-        #   def initialize(id:, adjustment:, applies_to_price_interval_ids:, end_date:, start_date:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, adjustment:, applies_to_price_interval_ids:, end_date:, start_date:)
+        #   @param id [String]
+        #   @param adjustment [Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]
+        #   @param applies_to_price_interval_ids [Array<String>]
+        #   @param end_date [Time, nil]
+        #   @param start_date [Time]
 
         # @see Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval#adjustment
         module Adjustment
@@ -380,29 +341,14 @@ module Orb
             #   @return [Float]
             required :usage_discount, Float
 
-            # @!parse
-            #   # @param id [String]
-            #   # @param applies_to_price_ids [Array<String>]
-            #   # @param is_invoice_level [Boolean]
-            #   # @param plan_phase_order [Integer, nil]
-            #   # @param reason [String, nil]
-            #   # @param usage_discount [Float]
-            #   # @param adjustment_type [Symbol, :usage_discount]
-            #   #
-            #   def initialize(
-            #     id:,
-            #     applies_to_price_ids:,
-            #     is_invoice_level:,
-            #     plan_phase_order:,
-            #     reason:,
-            #     usage_discount:,
-            #     adjustment_type: :usage_discount,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(id:, applies_to_price_ids:, is_invoice_level:, plan_phase_order:, reason:, usage_discount:, adjustment_type: :usage_discount)
+            #   @param id [String]
+            #   @param applies_to_price_ids [Array<String>]
+            #   @param is_invoice_level [Boolean]
+            #   @param plan_phase_order [Integer, nil]
+            #   @param reason [String, nil]
+            #   @param usage_discount [Float]
+            #   @param adjustment_type [Symbol, :usage_discount]
           end
 
           class PlanPhaseAmountDiscountAdjustment < Orb::Internal::Type::BaseModel
@@ -448,29 +394,14 @@ module Orb
             #   @return [String, nil]
             required :reason, String, nil?: true
 
-            # @!parse
-            #   # @param id [String]
-            #   # @param amount_discount [String]
-            #   # @param applies_to_price_ids [Array<String>]
-            #   # @param is_invoice_level [Boolean]
-            #   # @param plan_phase_order [Integer, nil]
-            #   # @param reason [String, nil]
-            #   # @param adjustment_type [Symbol, :amount_discount]
-            #   #
-            #   def initialize(
-            #     id:,
-            #     amount_discount:,
-            #     applies_to_price_ids:,
-            #     is_invoice_level:,
-            #     plan_phase_order:,
-            #     reason:,
-            #     adjustment_type: :amount_discount,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(id:, amount_discount:, applies_to_price_ids:, is_invoice_level:, plan_phase_order:, reason:, adjustment_type: :amount_discount)
+            #   @param id [String]
+            #   @param amount_discount [String]
+            #   @param applies_to_price_ids [Array<String>]
+            #   @param is_invoice_level [Boolean]
+            #   @param plan_phase_order [Integer, nil]
+            #   @param reason [String, nil]
+            #   @param adjustment_type [Symbol, :amount_discount]
           end
 
           class PlanPhasePercentageDiscountAdjustment < Orb::Internal::Type::BaseModel
@@ -516,29 +447,14 @@ module Orb
             #   @return [String, nil]
             required :reason, String, nil?: true
 
-            # @!parse
-            #   # @param id [String]
-            #   # @param applies_to_price_ids [Array<String>]
-            #   # @param is_invoice_level [Boolean]
-            #   # @param percentage_discount [Float]
-            #   # @param plan_phase_order [Integer, nil]
-            #   # @param reason [String, nil]
-            #   # @param adjustment_type [Symbol, :percentage_discount]
-            #   #
-            #   def initialize(
-            #     id:,
-            #     applies_to_price_ids:,
-            #     is_invoice_level:,
-            #     percentage_discount:,
-            #     plan_phase_order:,
-            #     reason:,
-            #     adjustment_type: :percentage_discount,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(id:, applies_to_price_ids:, is_invoice_level:, percentage_discount:, plan_phase_order:, reason:, adjustment_type: :percentage_discount)
+            #   @param id [String]
+            #   @param applies_to_price_ids [Array<String>]
+            #   @param is_invoice_level [Boolean]
+            #   @param percentage_discount [Float]
+            #   @param plan_phase_order [Integer, nil]
+            #   @param reason [String, nil]
+            #   @param adjustment_type [Symbol, :percentage_discount]
           end
 
           class PlanPhaseMinimumAdjustment < Orb::Internal::Type::BaseModel
@@ -590,31 +506,15 @@ module Orb
             #   @return [String, nil]
             required :reason, String, nil?: true
 
-            # @!parse
-            #   # @param id [String]
-            #   # @param applies_to_price_ids [Array<String>]
-            #   # @param is_invoice_level [Boolean]
-            #   # @param item_id [String]
-            #   # @param minimum_amount [String]
-            #   # @param plan_phase_order [Integer, nil]
-            #   # @param reason [String, nil]
-            #   # @param adjustment_type [Symbol, :minimum]
-            #   #
-            #   def initialize(
-            #     id:,
-            #     applies_to_price_ids:,
-            #     is_invoice_level:,
-            #     item_id:,
-            #     minimum_amount:,
-            #     plan_phase_order:,
-            #     reason:,
-            #     adjustment_type: :minimum,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(id:, applies_to_price_ids:, is_invoice_level:, item_id:, minimum_amount:, plan_phase_order:, reason:, adjustment_type: :minimum)
+            #   @param id [String]
+            #   @param applies_to_price_ids [Array<String>]
+            #   @param is_invoice_level [Boolean]
+            #   @param item_id [String]
+            #   @param minimum_amount [String]
+            #   @param plan_phase_order [Integer, nil]
+            #   @param reason [String, nil]
+            #   @param adjustment_type [Symbol, :minimum]
           end
 
           class PlanPhaseMaximumAdjustment < Orb::Internal::Type::BaseModel
@@ -660,34 +560,18 @@ module Orb
             #   @return [String, nil]
             required :reason, String, nil?: true
 
-            # @!parse
-            #   # @param id [String]
-            #   # @param applies_to_price_ids [Array<String>]
-            #   # @param is_invoice_level [Boolean]
-            #   # @param maximum_amount [String]
-            #   # @param plan_phase_order [Integer, nil]
-            #   # @param reason [String, nil]
-            #   # @param adjustment_type [Symbol, :maximum]
-            #   #
-            #   def initialize(
-            #     id:,
-            #     applies_to_price_ids:,
-            #     is_invoice_level:,
-            #     maximum_amount:,
-            #     plan_phase_order:,
-            #     reason:,
-            #     adjustment_type: :maximum,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(id:, applies_to_price_ids:, is_invoice_level:, maximum_amount:, plan_phase_order:, reason:, adjustment_type: :maximum)
+            #   @param id [String]
+            #   @param applies_to_price_ids [Array<String>]
+            #   @param is_invoice_level [Boolean]
+            #   @param maximum_amount [String]
+            #   @param plan_phase_order [Integer, nil]
+            #   @param reason [String, nil]
+            #   @param adjustment_type [Symbol, :maximum]
           end
 
-          # @!parse
-          #   # @return [Array(Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment)]
-          #   def self.variants; end
+          # @!method self.variants
+          #   @return [Array(Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionTriggerPhaseResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment)]
         end
       end
 
@@ -717,14 +601,10 @@ module Orb
         #   @return [Integer, nil]
         optional :year, Integer, nil?: true
 
-        # @!parse
-        #   # @param day [Integer]
-        #   # @param month [Integer, nil]
-        #   # @param year [Integer, nil]
-        #   #
-        #   def initialize(day:, month: nil, year: nil, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(day:, month: nil, year: nil)
+        #   @param day [Integer]
+        #   @param month [Integer, nil]
+        #   @param year [Integer, nil]
       end
 
       module DiscountInterval
@@ -777,27 +657,13 @@ module Orb
           #   @return [Time]
           required :start_date, Time
 
-          # @!parse
-          #   # @param amount_discount [String]
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param applies_to_price_interval_ids [Array<String>]
-          #   # @param end_date [Time, nil]
-          #   # @param start_date [Time]
-          #   # @param discount_type [Symbol, :amount]
-          #   #
-          #   def initialize(
-          #     amount_discount:,
-          #     applies_to_price_ids:,
-          #     applies_to_price_interval_ids:,
-          #     end_date:,
-          #     start_date:,
-          #     discount_type: :amount,
-          #     **
-          #   )
-          #     super
-          #   end
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(amount_discount:, applies_to_price_ids:, applies_to_price_interval_ids:, end_date:, start_date:, discount_type: :amount)
+          #   @param amount_discount [String]
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param applies_to_price_interval_ids [Array<String>]
+          #   @param end_date [Time, nil]
+          #   @param start_date [Time]
+          #   @param discount_type [Symbol, :amount]
         end
 
         class PercentageDiscountInterval < Orb::Internal::Type::BaseModel
@@ -837,27 +703,13 @@ module Orb
           #   @return [Time]
           required :start_date, Time
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param applies_to_price_interval_ids [Array<String>]
-          #   # @param end_date [Time, nil]
-          #   # @param percentage_discount [Float]
-          #   # @param start_date [Time]
-          #   # @param discount_type [Symbol, :percentage]
-          #   #
-          #   def initialize(
-          #     applies_to_price_ids:,
-          #     applies_to_price_interval_ids:,
-          #     end_date:,
-          #     percentage_discount:,
-          #     start_date:,
-          #     discount_type: :percentage,
-          #     **
-          #   )
-          #     super
-          #   end
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, applies_to_price_interval_ids:, end_date:, percentage_discount:, start_date:, discount_type: :percentage)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param applies_to_price_interval_ids [Array<String>]
+          #   @param end_date [Time, nil]
+          #   @param percentage_discount [Float]
+          #   @param start_date [Time]
+          #   @param discount_type [Symbol, :percentage]
         end
 
         class UsageDiscountInterval < Orb::Internal::Type::BaseModel
@@ -897,32 +749,17 @@ module Orb
           #   @return [Float]
           required :usage_discount, Float
 
-          # @!parse
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param applies_to_price_interval_ids [Array<String>]
-          #   # @param end_date [Time, nil]
-          #   # @param start_date [Time]
-          #   # @param usage_discount [Float]
-          #   # @param discount_type [Symbol, :usage]
-          #   #
-          #   def initialize(
-          #     applies_to_price_ids:,
-          #     applies_to_price_interval_ids:,
-          #     end_date:,
-          #     start_date:,
-          #     usage_discount:,
-          #     discount_type: :usage,
-          #     **
-          #   )
-          #     super
-          #   end
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, applies_to_price_interval_ids:, end_date:, start_date:, usage_discount:, discount_type: :usage)
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param applies_to_price_interval_ids [Array<String>]
+          #   @param end_date [Time, nil]
+          #   @param start_date [Time]
+          #   @param usage_discount [Float]
+          #   @param discount_type [Symbol, :usage]
         end
 
-        # @!parse
-        #   # @return [Array(Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::UsageDiscountInterval)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionTriggerPhaseResponse::DiscountInterval::UsageDiscountInterval)]
       end
 
       class FixedFeeQuantitySchedule < Orb::Internal::Type::BaseModel
@@ -946,15 +783,11 @@ module Orb
         #   @return [Time]
         required :start_date, Time
 
-        # @!parse
-        #   # @param end_date [Time, nil]
-        #   # @param price_id [String]
-        #   # @param quantity [Float]
-        #   # @param start_date [Time]
-        #   #
-        #   def initialize(end_date:, price_id:, quantity:, start_date:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(end_date:, price_id:, quantity:, start_date:)
+        #   @param end_date [Time, nil]
+        #   @param price_id [String]
+        #   @param quantity [Float]
+        #   @param start_date [Time]
       end
 
       class MaximumInterval < Orb::Internal::Type::BaseModel
@@ -989,16 +822,12 @@ module Orb
         #   @return [Time]
         required :start_date, Time
 
-        # @!parse
-        #   # @param applies_to_price_ids [Array<String>]
-        #   # @param applies_to_price_interval_ids [Array<String>]
-        #   # @param end_date [Time, nil]
-        #   # @param maximum_amount [String]
-        #   # @param start_date [Time]
-        #   #
-        #   def initialize(applies_to_price_ids:, applies_to_price_interval_ids:, end_date:, maximum_amount:, start_date:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(applies_to_price_ids:, applies_to_price_interval_ids:, end_date:, maximum_amount:, start_date:)
+        #   @param applies_to_price_ids [Array<String>]
+        #   @param applies_to_price_interval_ids [Array<String>]
+        #   @param end_date [Time, nil]
+        #   @param maximum_amount [String]
+        #   @param start_date [Time]
       end
 
       class MinimumInterval < Orb::Internal::Type::BaseModel
@@ -1033,16 +862,12 @@ module Orb
         #   @return [Time]
         required :start_date, Time
 
-        # @!parse
-        #   # @param applies_to_price_ids [Array<String>]
-        #   # @param applies_to_price_interval_ids [Array<String>]
-        #   # @param end_date [Time, nil]
-        #   # @param minimum_amount [String]
-        #   # @param start_date [Time]
-        #   #
-        #   def initialize(applies_to_price_ids:, applies_to_price_interval_ids:, end_date:, minimum_amount:, start_date:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(applies_to_price_ids:, applies_to_price_interval_ids:, end_date:, minimum_amount:, start_date:)
+        #   @param applies_to_price_ids [Array<String>]
+        #   @param applies_to_price_interval_ids [Array<String>]
+        #   @param end_date [Time, nil]
+        #   @param minimum_amount [String]
+        #   @param start_date [Time]
       end
 
       # @see Orb::Models::SubscriptionTriggerPhaseResponse#pending_subscription_change
@@ -1052,14 +877,10 @@ module Orb
         #   @return [String]
         required :id, String
 
-        # @!parse
-        #   # A pending subscription change if one exists on this subscription.
-        #   #
-        #   # @param id [String]
-        #   #
-        #   def initialize(id:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:)
+        #   A pending subscription change if one exists on this subscription.
+        #
+        #   @param id [String]
       end
 
       class PriceInterval < Orb::Internal::Type::BaseModel
@@ -1141,39 +962,21 @@ module Orb
         #   @return [Array<String>, nil]
         required :usage_customer_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
 
-        # @!parse
-        #   # The Price Interval resource represents a period of time for which a price will
-        #   # bill on a subscription. A subscription’s price intervals define its billing
-        #   # behavior.
-        #   #
-        #   # @param id [String]
-        #   # @param billing_cycle_day [Integer]
-        #   # @param current_billing_period_end_date [Time, nil]
-        #   # @param current_billing_period_start_date [Time, nil]
-        #   # @param end_date [Time, nil]
-        #   # @param filter [String, nil]
-        #   # @param fixed_fee_quantity_transitions [Array<Orb::Models::SubscriptionTriggerPhaseResponse::PriceInterval::FixedFeeQuantityTransition>, nil]
-        #   # @param price [Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice]
-        #   # @param start_date [Time]
-        #   # @param usage_customer_ids [Array<String>, nil]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     billing_cycle_day:,
-        #     current_billing_period_end_date:,
-        #     current_billing_period_start_date:,
-        #     end_date:,
-        #     filter:,
-        #     fixed_fee_quantity_transitions:,
-        #     price:,
-        #     start_date:,
-        #     usage_customer_ids:,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, billing_cycle_day:, current_billing_period_end_date:, current_billing_period_start_date:, end_date:, filter:, fixed_fee_quantity_transitions:, price:, start_date:, usage_customer_ids:)
+        #   The Price Interval resource represents a period of time for which a price will
+        #   bill on a subscription. A subscription’s price intervals define its billing
+        #   behavior.
+        #
+        #   @param id [String]
+        #   @param billing_cycle_day [Integer]
+        #   @param current_billing_period_end_date [Time, nil]
+        #   @param current_billing_period_start_date [Time, nil]
+        #   @param end_date [Time, nil]
+        #   @param filter [String, nil]
+        #   @param fixed_fee_quantity_transitions [Array<Orb::Models::SubscriptionTriggerPhaseResponse::PriceInterval::FixedFeeQuantityTransition>, nil]
+        #   @param price [Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice]
+        #   @param start_date [Time]
+        #   @param usage_customer_ids [Array<String>, nil]
 
         class FixedFeeQuantityTransition < Orb::Internal::Type::BaseModel
           # @!attribute effective_date
@@ -1191,14 +994,10 @@ module Orb
           #   @return [Integer]
           required :quantity, Integer
 
-          # @!parse
-          #   # @param effective_date [Time]
-          #   # @param price_id [String]
-          #   # @param quantity [Integer]
-          #   #
-          #   def initialize(effective_date:, price_id:, quantity:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(effective_date:, price_id:, quantity:)
+          #   @param effective_date [Time]
+          #   @param price_id [String]
+          #   @param quantity [Integer]
         end
       end
 
@@ -1219,14 +1018,10 @@ module Orb
         #   @return [Time]
         required :start_date, Time
 
-        # @!parse
-        #   # @param coupon_id [String]
-        #   # @param end_date [Time, nil]
-        #   # @param start_date [Time]
-        #   #
-        #   def initialize(coupon_id:, end_date:, start_date:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(coupon_id:, end_date:, start_date:)
+        #   @param coupon_id [String]
+        #   @param end_date [Time, nil]
+        #   @param start_date [Time]
       end
 
       # @see Orb::Models::SubscriptionTriggerPhaseResponse#status
@@ -1237,11 +1032,8 @@ module Orb
         ENDED = :ended
         UPCOMING = :upcoming
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Orb::Models::SubscriptionTriggerPhaseResponse#trial_info
@@ -1251,12 +1043,8 @@ module Orb
         #   @return [Time, nil]
         required :end_date, Time, nil?: true
 
-        # @!parse
-        #   # @param end_date [Time, nil]
-        #   #
-        #   def initialize(end_date:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(end_date:)
+        #   @param end_date [Time, nil]
       end
 
       # @see Orb::Models::SubscriptionTriggerPhaseResponse#changed_resources
@@ -1285,19 +1073,15 @@ module Orb
         #   @return [Array<Orb::Models::Invoice>]
         required :voided_invoices, -> { Orb::Internal::Type::ArrayOf[Orb::Models::Invoice] }
 
-        # @!parse
-        #   # The resources that were changed as part of this operation. Only present when
-        #   # fetched through the subscription changes API or if the
-        #   # `include_changed_resources` parameter was passed in the request.
-        #   #
-        #   # @param created_credit_notes [Array<Orb::Models::CreditNote>]
-        #   # @param created_invoices [Array<Orb::Models::Invoice>]
-        #   # @param voided_credit_notes [Array<Orb::Models::CreditNote>]
-        #   # @param voided_invoices [Array<Orb::Models::Invoice>]
-        #   #
-        #   def initialize(created_credit_notes:, created_invoices:, voided_credit_notes:, voided_invoices:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(created_credit_notes:, created_invoices:, voided_credit_notes:, voided_invoices:)
+        #   The resources that were changed as part of this operation. Only present when
+        #   fetched through the subscription changes API or if the
+        #   `include_changed_resources` parameter was passed in the request.
+        #
+        #   @param created_credit_notes [Array<Orb::Models::CreditNote>]
+        #   @param created_invoices [Array<Orb::Models::Invoice>]
+        #   @param voided_credit_notes [Array<Orb::Models::CreditNote>]
+        #   @param voided_invoices [Array<Orb::Models::Invoice>]
       end
     end
   end

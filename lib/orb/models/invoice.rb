@@ -364,103 +364,54 @@ module Orb
       #   @return [Boolean]
       required :will_auto_issue, Orb::Internal::Type::Boolean
 
-      # @!parse
-      #   # An [`Invoice`](/core-concepts#invoice) is a fundamental billing entity,
-      #   # representing the request for payment for a single subscription. This includes a
-      #   # set of line items, which correspond to prices in the subscription's plan and can
-      #   # represent fixed recurring fees or usage-based fees. They are generated at the
-      #   # end of a billing period, or as the result of an action, such as a cancellation.
-      #   #
-      #   # @param id [String]
-      #   # @param amount_due [String]
-      #   # @param auto_collection [Orb::Models::Invoice::AutoCollection]
-      #   # @param billing_address [Orb::Models::Invoice::BillingAddress, nil]
-      #   # @param created_at [Time]
-      #   # @param credit_notes [Array<Orb::Models::Invoice::CreditNote>]
-      #   # @param currency [String]
-      #   # @param customer [Orb::Models::Invoice::Customer]
-      #   # @param customer_balance_transactions [Array<Orb::Models::Invoice::CustomerBalanceTransaction>]
-      #   # @param customer_tax_id [Orb::Models::Invoice::CustomerTaxID, nil]
-      #   # @param discount [Object]
-      #   # @param discounts [Array<Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount, Orb::Models::TrialDiscount>]
-      #   # @param due_date [Time, nil]
-      #   # @param eligible_to_issue_at [Time, nil]
-      #   # @param hosted_invoice_url [String, nil]
-      #   # @param invoice_date [Time]
-      #   # @param invoice_number [String]
-      #   # @param invoice_pdf [String, nil]
-      #   # @param invoice_source [Symbol, Orb::Models::Invoice::InvoiceSource]
-      #   # @param issue_failed_at [Time, nil]
-      #   # @param issued_at [Time, nil]
-      #   # @param line_items [Array<Orb::Models::Invoice::LineItem>]
-      #   # @param maximum [Orb::Models::Invoice::Maximum, nil]
-      #   # @param maximum_amount [String, nil]
-      #   # @param memo [String, nil]
-      #   # @param metadata [Hash{Symbol=>String}]
-      #   # @param minimum [Orb::Models::Invoice::Minimum, nil]
-      #   # @param minimum_amount [String, nil]
-      #   # @param paid_at [Time, nil]
-      #   # @param payment_attempts [Array<Orb::Models::Invoice::PaymentAttempt>]
-      #   # @param payment_failed_at [Time, nil]
-      #   # @param payment_started_at [Time, nil]
-      #   # @param scheduled_issue_at [Time, nil]
-      #   # @param shipping_address [Orb::Models::Invoice::ShippingAddress, nil]
-      #   # @param status [Symbol, Orb::Models::Invoice::Status]
-      #   # @param subscription [Orb::Models::Invoice::Subscription, nil]
-      #   # @param subtotal [String]
-      #   # @param sync_failed_at [Time, nil]
-      #   # @param total [String]
-      #   # @param voided_at [Time, nil]
-      #   # @param will_auto_issue [Boolean]
-      #   #
-      #   def initialize(
-      #     id:,
-      #     amount_due:,
-      #     auto_collection:,
-      #     billing_address:,
-      #     created_at:,
-      #     credit_notes:,
-      #     currency:,
-      #     customer:,
-      #     customer_balance_transactions:,
-      #     customer_tax_id:,
-      #     discount:,
-      #     discounts:,
-      #     due_date:,
-      #     eligible_to_issue_at:,
-      #     hosted_invoice_url:,
-      #     invoice_date:,
-      #     invoice_number:,
-      #     invoice_pdf:,
-      #     invoice_source:,
-      #     issue_failed_at:,
-      #     issued_at:,
-      #     line_items:,
-      #     maximum:,
-      #     maximum_amount:,
-      #     memo:,
-      #     metadata:,
-      #     minimum:,
-      #     minimum_amount:,
-      #     paid_at:,
-      #     payment_attempts:,
-      #     payment_failed_at:,
-      #     payment_started_at:,
-      #     scheduled_issue_at:,
-      #     shipping_address:,
-      #     status:,
-      #     subscription:,
-      #     subtotal:,
-      #     sync_failed_at:,
-      #     total:,
-      #     voided_at:,
-      #     will_auto_issue:,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, amount_due:, auto_collection:, billing_address:, created_at:, credit_notes:, currency:, customer:, customer_balance_transactions:, customer_tax_id:, discount:, discounts:, due_date:, eligible_to_issue_at:, hosted_invoice_url:, invoice_date:, invoice_number:, invoice_pdf:, invoice_source:, issue_failed_at:, issued_at:, line_items:, maximum:, maximum_amount:, memo:, metadata:, minimum:, minimum_amount:, paid_at:, payment_attempts:, payment_failed_at:, payment_started_at:, scheduled_issue_at:, shipping_address:, status:, subscription:, subtotal:, sync_failed_at:, total:, voided_at:, will_auto_issue:)
+      #   An [`Invoice`](/core-concepts#invoice) is a fundamental billing entity,
+      #   representing the request for payment for a single subscription. This includes a
+      #   set of line items, which correspond to prices in the subscription's plan and can
+      #   represent fixed recurring fees or usage-based fees. They are generated at the
+      #   end of a billing period, or as the result of an action, such as a cancellation.
+      #
+      #   @param id [String]
+      #   @param amount_due [String]
+      #   @param auto_collection [Orb::Models::Invoice::AutoCollection]
+      #   @param billing_address [Orb::Models::Invoice::BillingAddress, nil]
+      #   @param created_at [Time]
+      #   @param credit_notes [Array<Orb::Models::Invoice::CreditNote>]
+      #   @param currency [String]
+      #   @param customer [Orb::Models::Invoice::Customer]
+      #   @param customer_balance_transactions [Array<Orb::Models::Invoice::CustomerBalanceTransaction>]
+      #   @param customer_tax_id [Orb::Models::Invoice::CustomerTaxID, nil]
+      #   @param discount [Object]
+      #   @param discounts [Array<Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount, Orb::Models::TrialDiscount>]
+      #   @param due_date [Time, nil]
+      #   @param eligible_to_issue_at [Time, nil]
+      #   @param hosted_invoice_url [String, nil]
+      #   @param invoice_date [Time]
+      #   @param invoice_number [String]
+      #   @param invoice_pdf [String, nil]
+      #   @param invoice_source [Symbol, Orb::Models::Invoice::InvoiceSource]
+      #   @param issue_failed_at [Time, nil]
+      #   @param issued_at [Time, nil]
+      #   @param line_items [Array<Orb::Models::Invoice::LineItem>]
+      #   @param maximum [Orb::Models::Invoice::Maximum, nil]
+      #   @param maximum_amount [String, nil]
+      #   @param memo [String, nil]
+      #   @param metadata [Hash{Symbol=>String}]
+      #   @param minimum [Orb::Models::Invoice::Minimum, nil]
+      #   @param minimum_amount [String, nil]
+      #   @param paid_at [Time, nil]
+      #   @param payment_attempts [Array<Orb::Models::Invoice::PaymentAttempt>]
+      #   @param payment_failed_at [Time, nil]
+      #   @param payment_started_at [Time, nil]
+      #   @param scheduled_issue_at [Time, nil]
+      #   @param shipping_address [Orb::Models::Invoice::ShippingAddress, nil]
+      #   @param status [Symbol, Orb::Models::Invoice::Status]
+      #   @param subscription [Orb::Models::Invoice::Subscription, nil]
+      #   @param subtotal [String]
+      #   @param sync_failed_at [Time, nil]
+      #   @param total [String]
+      #   @param voided_at [Time, nil]
+      #   @param will_auto_issue [Boolean]
 
       # @see Orb::Models::Invoice#auto_collection
       class AutoCollection < Orb::Internal::Type::BaseModel
@@ -495,15 +446,11 @@ module Orb
         #   @return [Time, nil]
         required :previously_attempted_at, Time, nil?: true
 
-        # @!parse
-        #   # @param enabled [Boolean, nil]
-        #   # @param next_attempt_at [Time, nil]
-        #   # @param num_attempts [Integer, nil]
-        #   # @param previously_attempted_at [Time, nil]
-        #   #
-        #   def initialize(enabled:, next_attempt_at:, num_attempts:, previously_attempted_at:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(enabled:, next_attempt_at:, num_attempts:, previously_attempted_at:)
+        #   @param enabled [Boolean, nil]
+        #   @param next_attempt_at [Time, nil]
+        #   @param num_attempts [Integer, nil]
+        #   @param previously_attempted_at [Time, nil]
       end
 
       # @see Orb::Models::Invoice#billing_address
@@ -538,17 +485,13 @@ module Orb
         #   @return [String, nil]
         required :state, String, nil?: true
 
-        # @!parse
-        #   # @param city [String, nil]
-        #   # @param country [String, nil]
-        #   # @param line1 [String, nil]
-        #   # @param line2 [String, nil]
-        #   # @param postal_code [String, nil]
-        #   # @param state [String, nil]
-        #   #
-        #   def initialize(city:, country:, line1:, line2:, postal_code:, state:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(city:, country:, line1:, line2:, postal_code:, state:)
+        #   @param city [String, nil]
+        #   @param country [String, nil]
+        #   @param line1 [String, nil]
+        #   @param line2 [String, nil]
+        #   @param postal_code [String, nil]
+        #   @param state [String, nil]
       end
 
       class CreditNote < Orb::Internal::Type::BaseModel
@@ -590,18 +533,14 @@ module Orb
         #   @return [Time, nil]
         required :voided_at, Time, nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param credit_note_number [String]
-        #   # @param memo [String, nil]
-        #   # @param reason [String]
-        #   # @param total [String]
-        #   # @param type [String]
-        #   # @param voided_at [Time, nil]
-        #   #
-        #   def initialize(id:, credit_note_number:, memo:, reason:, total:, type:, voided_at:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, credit_note_number:, memo:, reason:, total:, type:, voided_at:)
+        #   @param id [String]
+        #   @param credit_note_number [String]
+        #   @param memo [String, nil]
+        #   @param reason [String]
+        #   @param total [String]
+        #   @param type [String]
+        #   @param voided_at [Time, nil]
       end
 
       # @see Orb::Models::Invoice#customer
@@ -616,13 +555,9 @@ module Orb
         #   @return [String, nil]
         required :external_customer_id, String, nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param external_customer_id [String, nil]
-        #   #
-        #   def initialize(id:, external_customer_id:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, external_customer_id:)
+        #   @param id [String]
+        #   @param external_customer_id [String, nil]
       end
 
       class CustomerBalanceTransaction < Orb::Internal::Type::BaseModel
@@ -684,35 +619,17 @@ module Orb
         #   @return [Symbol, Orb::Models::Invoice::CustomerBalanceTransaction::Type]
         required :type, enum: -> { Orb::Models::Invoice::CustomerBalanceTransaction::Type }
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param action [Symbol, Orb::Models::Invoice::CustomerBalanceTransaction::Action]
-        #   # @param amount [String]
-        #   # @param created_at [Time]
-        #   # @param credit_note [Orb::Models::Invoice::CustomerBalanceTransaction::CreditNote, nil]
-        #   # @param description [String, nil]
-        #   # @param ending_balance [String]
-        #   # @param invoice [Orb::Models::Invoice::CustomerBalanceTransaction::Invoice, nil]
-        #   # @param starting_balance [String]
-        #   # @param type [Symbol, Orb::Models::Invoice::CustomerBalanceTransaction::Type]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     action:,
-        #     amount:,
-        #     created_at:,
-        #     credit_note:,
-        #     description:,
-        #     ending_balance:,
-        #     invoice:,
-        #     starting_balance:,
-        #     type:,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, action:, amount:, created_at:, credit_note:, description:, ending_balance:, invoice:, starting_balance:, type:)
+        #   @param id [String]
+        #   @param action [Symbol, Orb::Models::Invoice::CustomerBalanceTransaction::Action]
+        #   @param amount [String]
+        #   @param created_at [Time]
+        #   @param credit_note [Orb::Models::Invoice::CustomerBalanceTransaction::CreditNote, nil]
+        #   @param description [String, nil]
+        #   @param ending_balance [String]
+        #   @param invoice [Orb::Models::Invoice::CustomerBalanceTransaction::Invoice, nil]
+        #   @param starting_balance [String]
+        #   @param type [Symbol, Orb::Models::Invoice::CustomerBalanceTransaction::Type]
 
         # @see Orb::Models::Invoice::CustomerBalanceTransaction#action
         module Action
@@ -728,11 +645,8 @@ module Orb
           OVERPAYMENT_REFUND = :overpayment_refund
           EXTERNAL_PAYMENT = :external_payment
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Invoice::CustomerBalanceTransaction#credit_note
@@ -743,12 +657,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Invoice::CustomerBalanceTransaction#invoice
@@ -759,12 +669,8 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!parse
-          #   # @param id [String]
-          #   #
-          #   def initialize(id:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:)
+          #   @param id [String]
         end
 
         # @see Orb::Models::Invoice::CustomerBalanceTransaction#type
@@ -774,11 +680,8 @@ module Orb
           INCREMENT = :increment
           DECREMENT = :decrement
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
 
@@ -799,120 +702,116 @@ module Orb
         #   @return [String]
         required :value, String
 
-        # @!parse
-        #   # Tax IDs are commonly required to be displayed on customer invoices, which are
-        #   # added to the headers of invoices.
-        #   #
-        #   # ### Supported Tax ID Countries and Types
-        #   #
-        #   # | Country              | Type         | Description                                                                                             |
-        #   # | -------------------- | ------------ | ------------------------------------------------------------------------------------------------------- |
-        #   # | Andorra              | `ad_nrt`     | Andorran NRT Number                                                                                     |
-        #   # | Argentina            | `ar_cuit`    | Argentinian Tax ID Number                                                                               |
-        #   # | Australia            | `au_abn`     | Australian Business Number (AU ABN)                                                                     |
-        #   # | Australia            | `au_arn`     | Australian Taxation Office Reference Number                                                             |
-        #   # | Austria              | `eu_vat`     | European VAT Number                                                                                     |
-        #   # | Bahrain              | `bh_vat`     | Bahraini VAT Number                                                                                     |
-        #   # | Belgium              | `eu_vat`     | European VAT Number                                                                                     |
-        #   # | Bolivia              | `bo_tin`     | Bolivian Tax ID                                                                                         |
-        #   # | Brazil               | `br_cnpj`    | Brazilian CNPJ Number                                                                                   |
-        #   # | Brazil               | `br_cpf`     | Brazilian CPF Number                                                                                    |
-        #   # | Bulgaria             | `bg_uic`     | Bulgaria Unified Identification Code                                                                    |
-        #   # | Bulgaria             | `eu_vat`     | European VAT Number                                                                                     |
-        #   # | Canada               | `ca_bn`      | Canadian BN                                                                                             |
-        #   # | Canada               | `ca_gst_hst` | Canadian GST/HST Number                                                                                 |
-        #   # | Canada               | `ca_pst_bc`  | Canadian PST Number (British Columbia)                                                                  |
-        #   # | Canada               | `ca_pst_mb`  | Canadian PST Number (Manitoba)                                                                          |
-        #   # | Canada               | `ca_pst_sk`  | Canadian PST Number (Saskatchewan)                                                                      |
-        #   # | Canada               | `ca_qst`     | Canadian QST Number (Québec)                                                                            |
-        #   # | Chile                | `cl_tin`     | Chilean TIN                                                                                             |
-        #   # | China                | `cn_tin`     | Chinese Tax ID                                                                                          |
-        #   # | Colombia             | `co_nit`     | Colombian NIT Number                                                                                    |
-        #   # | Costa Rica           | `cr_tin`     | Costa Rican Tax ID                                                                                      |
-        #   # | Croatia              | `eu_vat`     | European VAT Number                                                                                     |
-        #   # | Cyprus               | `eu_vat`     | European VAT Number                                                                                     |
-        #   # | Czech Republic       | `eu_vat`     | European VAT Number                                                                                     |
-        #   # | Denmark              | `eu_vat`     | European VAT Number                                                                                     |
-        #   # | Dominican Republic   | `do_rcn`     | Dominican RCN Number                                                                                    |
-        #   # | Ecuador              | `ec_ruc`     | Ecuadorian RUC Number                                                                                   |
-        #   # | Egypt                | `eg_tin`     | Egyptian Tax Identification Number                                                                      |
-        #   # | El Salvador          | `sv_nit`     | El Salvadorian NIT Number                                                                               |
-        #   # | Estonia              | `eu_vat`     | European VAT Number                                                                                     |
-        #   # | EU                   | `eu_oss_vat` | European One Stop Shop VAT Number for non-Union scheme                                                  |
-        #   # | Finland              | `eu_vat`     | European VAT Number                                                                                     |
-        #   # | France               | `eu_vat`     | European VAT Number                                                                                     |
-        #   # | Georgia              | `ge_vat`     | Georgian VAT                                                                                            |
-        #   # | Germany              | `eu_vat`     | European VAT Number                                                                                     |
-        #   # | Greece               | `eu_vat`     | European VAT Number                                                                                     |
-        #   # | Hong Kong            | `hk_br`      | Hong Kong BR Number                                                                                     |
-        #   # | Hungary              | `eu_vat`     | European VAT Number                                                                                     |
-        #   # | Hungary              | `hu_tin`     | Hungary Tax Number (adószám)                                                                            |
-        #   # | Iceland              | `is_vat`     | Icelandic VAT                                                                                           |
-        #   # | India                | `in_gst`     | Indian GST Number                                                                                       |
-        #   # | Indonesia            | `id_npwp`    | Indonesian NPWP Number                                                                                  |
-        #   # | Ireland              | `eu_vat`     | European VAT Number                                                                                     |
-        #   # | Israel               | `il_vat`     | Israel VAT                                                                                              |
-        #   # | Italy                | `eu_vat`     | European VAT Number                                                                                     |
-        #   # | Japan                | `jp_cn`      | Japanese Corporate Number (_Hōjin Bangō_)                                                               |
-        #   # | Japan                | `jp_rn`      | Japanese Registered Foreign Businesses' Registration Number (_Tōroku Kokugai Jigyōsha no Tōroku Bangō_) |
-        #   # | Japan                | `jp_trn`     | Japanese Tax Registration Number (_Tōroku Bangō_)                                                       |
-        #   # | Kazakhstan           | `kz_bin`     | Kazakhstani Business Identification Number                                                              |
-        #   # | Kenya                | `ke_pin`     | Kenya Revenue Authority Personal Identification Number                                                  |
-        #   # | Latvia               | `eu_vat`     | European VAT Number                                                                                     |
-        #   # | Liechtenstein        | `li_uid`     | Liechtensteinian UID Number                                                                             |
-        #   # | Lithuania            | `eu_vat`     | European VAT Number                                                                                     |
-        #   # | Luxembourg           | `eu_vat`     | European VAT Number                                                                                     |
-        #   # | Malaysia             | `my_frp`     | Malaysian FRP Number                                                                                    |
-        #   # | Malaysia             | `my_itn`     | Malaysian ITN                                                                                           |
-        #   # | Malaysia             | `my_sst`     | Malaysian SST Number                                                                                    |
-        #   # | Malta                | `eu_vat `    | European VAT Number                                                                                     |
-        #   # | Mexico               | `mx_rfc`     | Mexican RFC Number                                                                                      |
-        #   # | Netherlands          | `eu_vat`     | European VAT Number                                                                                     |
-        #   # | New Zealand          | `nz_gst`     | New Zealand GST Number                                                                                  |
-        #   # | Nigeria              | `ng_tin`     | Nigerian Tax Identification Number                                                                      |
-        #   # | Norway               | `no_vat`     | Norwegian VAT Number                                                                                    |
-        #   # | Norway               | `no_voec`    | Norwegian VAT on e-commerce Number                                                                      |
-        #   # | Oman                 | `om_vat`     | Omani VAT Number                                                                                        |
-        #   # | Peru                 | `pe_ruc`     | Peruvian RUC Number                                                                                     |
-        #   # | Philippines          | `ph_tin `    | Philippines Tax Identification Number                                                                   |
-        #   # | Poland               | `eu_vat`     | European VAT Number                                                                                     |
-        #   # | Portugal             | `eu_vat`     | European VAT Number                                                                                     |
-        #   # | Romania              | `eu_vat`     | European VAT Number                                                                                     |
-        #   # | Romania              | `ro_tin`     | Romanian Tax ID Number                                                                                  |
-        #   # | Russia               | `ru_inn`     | Russian INN                                                                                             |
-        #   # | Russia               | `ru_kpp`     | Russian KPP                                                                                             |
-        #   # | Saudi Arabia         | `sa_vat`     | Saudi Arabia VAT                                                                                        |
-        #   # | Serbia               | `rs_pib`     | Serbian PIB Number                                                                                      |
-        #   # | Singapore            | `sg_gst`     | Singaporean GST                                                                                         |
-        #   # | Singapore            | `sg_uen`     | Singaporean UEN                                                                                         |
-        #   # | Slovakia             | `eu_vat`     | European VAT Number                                                                                     |
-        #   # | Slovenia             | `eu_vat`     | European VAT Number                                                                                     |
-        #   # | Slovenia             | `si_tin`     | Slovenia Tax Number (davčna številka)                                                                   |
-        #   # | South Africa         | `za_vat`     | South African VAT Number                                                                                |
-        #   # | South Korea          | `kr_brn`     | Korean BRN                                                                                              |
-        #   # | Spain                | `es_cif`     | Spanish NIF Number (previously Spanish CIF Number)                                                      |
-        #   # | Spain                | `eu_vat`     | European VAT Number                                                                                     |
-        #   # | Sweden               | `eu_vat`     | European VAT Number                                                                                     |
-        #   # | Switzerland          | `ch_vat`     | Switzerland VAT Number                                                                                  |
-        #   # | Taiwan               | `tw_vat`     | Taiwanese VAT                                                                                           |
-        #   # | Thailand             | `th_vat`     | Thai VAT                                                                                                |
-        #   # | Turkey               | `tr_tin`     | Turkish Tax Identification Number                                                                       |
-        #   # | Ukraine              | `ua_vat`     | Ukrainian VAT                                                                                           |
-        #   # | United Arab Emirates | `ae_trn`     | United Arab Emirates TRN                                                                                |
-        #   # | United Kingdom       | `eu_vat`     | Northern Ireland VAT Number                                                                             |
-        #   # | United Kingdom       | `gb_vat`     | United Kingdom VAT Number                                                                               |
-        #   # | United States        | `us_ein`     | United States EIN                                                                                       |
-        #   # | Uruguay              | `uy_ruc`     | Uruguayan RUC Number                                                                                    |
-        #   # | Venezuela            | `ve_rif`     | Venezuelan RIF Number                                                                                   |
-        #   # | Vietnam              | `vn_tin`     | Vietnamese Tax ID Number                                                                                |
-        #   #
-        #   # @param country [Symbol, Orb::Models::Invoice::CustomerTaxID::Country]
-        #   # @param type [Symbol, Orb::Models::Invoice::CustomerTaxID::Type]
-        #   # @param value [String]
-        #   #
-        #   def initialize(country:, type:, value:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(country:, type:, value:)
+        #   Tax IDs are commonly required to be displayed on customer invoices, which are
+        #   added to the headers of invoices.
+        #
+        #   ### Supported Tax ID Countries and Types
+        #
+        #   | Country              | Type         | Description                                                                                             |
+        #   | -------------------- | ------------ | ------------------------------------------------------------------------------------------------------- |
+        #   | Andorra              | `ad_nrt`     | Andorran NRT Number                                                                                     |
+        #   | Argentina            | `ar_cuit`    | Argentinian Tax ID Number                                                                               |
+        #   | Australia            | `au_abn`     | Australian Business Number (AU ABN)                                                                     |
+        #   | Australia            | `au_arn`     | Australian Taxation Office Reference Number                                                             |
+        #   | Austria              | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Bahrain              | `bh_vat`     | Bahraini VAT Number                                                                                     |
+        #   | Belgium              | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Bolivia              | `bo_tin`     | Bolivian Tax ID                                                                                         |
+        #   | Brazil               | `br_cnpj`    | Brazilian CNPJ Number                                                                                   |
+        #   | Brazil               | `br_cpf`     | Brazilian CPF Number                                                                                    |
+        #   | Bulgaria             | `bg_uic`     | Bulgaria Unified Identification Code                                                                    |
+        #   | Bulgaria             | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Canada               | `ca_bn`      | Canadian BN                                                                                             |
+        #   | Canada               | `ca_gst_hst` | Canadian GST/HST Number                                                                                 |
+        #   | Canada               | `ca_pst_bc`  | Canadian PST Number (British Columbia)                                                                  |
+        #   | Canada               | `ca_pst_mb`  | Canadian PST Number (Manitoba)                                                                          |
+        #   | Canada               | `ca_pst_sk`  | Canadian PST Number (Saskatchewan)                                                                      |
+        #   | Canada               | `ca_qst`     | Canadian QST Number (Québec)                                                                            |
+        #   | Chile                | `cl_tin`     | Chilean TIN                                                                                             |
+        #   | China                | `cn_tin`     | Chinese Tax ID                                                                                          |
+        #   | Colombia             | `co_nit`     | Colombian NIT Number                                                                                    |
+        #   | Costa Rica           | `cr_tin`     | Costa Rican Tax ID                                                                                      |
+        #   | Croatia              | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Cyprus               | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Czech Republic       | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Denmark              | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Dominican Republic   | `do_rcn`     | Dominican RCN Number                                                                                    |
+        #   | Ecuador              | `ec_ruc`     | Ecuadorian RUC Number                                                                                   |
+        #   | Egypt                | `eg_tin`     | Egyptian Tax Identification Number                                                                      |
+        #   | El Salvador          | `sv_nit`     | El Salvadorian NIT Number                                                                               |
+        #   | Estonia              | `eu_vat`     | European VAT Number                                                                                     |
+        #   | EU                   | `eu_oss_vat` | European One Stop Shop VAT Number for non-Union scheme                                                  |
+        #   | Finland              | `eu_vat`     | European VAT Number                                                                                     |
+        #   | France               | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Georgia              | `ge_vat`     | Georgian VAT                                                                                            |
+        #   | Germany              | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Greece               | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Hong Kong            | `hk_br`      | Hong Kong BR Number                                                                                     |
+        #   | Hungary              | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Hungary              | `hu_tin`     | Hungary Tax Number (adószám)                                                                            |
+        #   | Iceland              | `is_vat`     | Icelandic VAT                                                                                           |
+        #   | India                | `in_gst`     | Indian GST Number                                                                                       |
+        #   | Indonesia            | `id_npwp`    | Indonesian NPWP Number                                                                                  |
+        #   | Ireland              | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Israel               | `il_vat`     | Israel VAT                                                                                              |
+        #   | Italy                | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Japan                | `jp_cn`      | Japanese Corporate Number (_Hōjin Bangō_)                                                               |
+        #   | Japan                | `jp_rn`      | Japanese Registered Foreign Businesses' Registration Number (_Tōroku Kokugai Jigyōsha no Tōroku Bangō_) |
+        #   | Japan                | `jp_trn`     | Japanese Tax Registration Number (_Tōroku Bangō_)                                                       |
+        #   | Kazakhstan           | `kz_bin`     | Kazakhstani Business Identification Number                                                              |
+        #   | Kenya                | `ke_pin`     | Kenya Revenue Authority Personal Identification Number                                                  |
+        #   | Latvia               | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Liechtenstein        | `li_uid`     | Liechtensteinian UID Number                                                                             |
+        #   | Lithuania            | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Luxembourg           | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Malaysia             | `my_frp`     | Malaysian FRP Number                                                                                    |
+        #   | Malaysia             | `my_itn`     | Malaysian ITN                                                                                           |
+        #   | Malaysia             | `my_sst`     | Malaysian SST Number                                                                                    |
+        #   | Malta                | `eu_vat `    | European VAT Number                                                                                     |
+        #   | Mexico               | `mx_rfc`     | Mexican RFC Number                                                                                      |
+        #   | Netherlands          | `eu_vat`     | European VAT Number                                                                                     |
+        #   | New Zealand          | `nz_gst`     | New Zealand GST Number                                                                                  |
+        #   | Nigeria              | `ng_tin`     | Nigerian Tax Identification Number                                                                      |
+        #   | Norway               | `no_vat`     | Norwegian VAT Number                                                                                    |
+        #   | Norway               | `no_voec`    | Norwegian VAT on e-commerce Number                                                                      |
+        #   | Oman                 | `om_vat`     | Omani VAT Number                                                                                        |
+        #   | Peru                 | `pe_ruc`     | Peruvian RUC Number                                                                                     |
+        #   | Philippines          | `ph_tin `    | Philippines Tax Identification Number                                                                   |
+        #   | Poland               | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Portugal             | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Romania              | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Romania              | `ro_tin`     | Romanian Tax ID Number                                                                                  |
+        #   | Russia               | `ru_inn`     | Russian INN                                                                                             |
+        #   | Russia               | `ru_kpp`     | Russian KPP                                                                                             |
+        #   | Saudi Arabia         | `sa_vat`     | Saudi Arabia VAT                                                                                        |
+        #   | Serbia               | `rs_pib`     | Serbian PIB Number                                                                                      |
+        #   | Singapore            | `sg_gst`     | Singaporean GST                                                                                         |
+        #   | Singapore            | `sg_uen`     | Singaporean UEN                                                                                         |
+        #   | Slovakia             | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Slovenia             | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Slovenia             | `si_tin`     | Slovenia Tax Number (davčna številka)                                                                   |
+        #   | South Africa         | `za_vat`     | South African VAT Number                                                                                |
+        #   | South Korea          | `kr_brn`     | Korean BRN                                                                                              |
+        #   | Spain                | `es_cif`     | Spanish NIF Number (previously Spanish CIF Number)                                                      |
+        #   | Spain                | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Sweden               | `eu_vat`     | European VAT Number                                                                                     |
+        #   | Switzerland          | `ch_vat`     | Switzerland VAT Number                                                                                  |
+        #   | Taiwan               | `tw_vat`     | Taiwanese VAT                                                                                           |
+        #   | Thailand             | `th_vat`     | Thai VAT                                                                                                |
+        #   | Turkey               | `tr_tin`     | Turkish Tax Identification Number                                                                       |
+        #   | Ukraine              | `ua_vat`     | Ukrainian VAT                                                                                           |
+        #   | United Arab Emirates | `ae_trn`     | United Arab Emirates TRN                                                                                |
+        #   | United Kingdom       | `eu_vat`     | Northern Ireland VAT Number                                                                             |
+        #   | United Kingdom       | `gb_vat`     | United Kingdom VAT Number                                                                               |
+        #   | United States        | `us_ein`     | United States EIN                                                                                       |
+        #   | Uruguay              | `uy_ruc`     | Uruguayan RUC Number                                                                                    |
+        #   | Venezuela            | `ve_rif`     | Venezuelan RIF Number                                                                                   |
+        #   | Vietnam              | `vn_tin`     | Vietnamese Tax ID Number                                                                                |
+        #
+        #   @param country [Symbol, Orb::Models::Invoice::CustomerTaxID::Country]
+        #   @param type [Symbol, Orb::Models::Invoice::CustomerTaxID::Type]
+        #   @param value [String]
 
         # @see Orb::Models::Invoice::CustomerTaxID#country
         module Country
@@ -997,11 +896,8 @@ module Orb
           VN = :VN
           ZA = :ZA
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Orb::Models::Invoice::CustomerTaxID#type
@@ -1080,11 +976,8 @@ module Orb
           VN_TIN = :vn_tin
           ZA_VAT = :za_vat
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
 
@@ -1096,11 +989,8 @@ module Orb
         PARTIAL = :partial
         ONE_OFF = :one_off
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       class LineItem < Orb::Internal::Type::BaseModel
@@ -1254,59 +1144,29 @@ module Orb
         #   @return [Array<String>, nil]
         required :usage_customer_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param adjusted_subtotal [String]
-        #   # @param adjustments [Array<Orb::Models::Invoice::LineItem::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryMinimumAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryMaximumAdjustment>]
-        #   # @param amount [String]
-        #   # @param credits_applied [String]
-        #   # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   # @param end_date [Time]
-        #   # @param filter [String, nil]
-        #   # @param grouping [String, nil]
-        #   # @param maximum [Orb::Models::Invoice::LineItem::Maximum, nil]
-        #   # @param maximum_amount [String, nil]
-        #   # @param minimum [Orb::Models::Invoice::LineItem::Minimum, nil]
-        #   # @param minimum_amount [String, nil]
-        #   # @param name [String]
-        #   # @param partially_invoiced_amount [String]
-        #   # @param price [Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice, nil]
-        #   # @param quantity [Float]
-        #   # @param start_date [Time]
-        #   # @param sub_line_items [Array<Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem, Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem, Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem>]
-        #   # @param subtotal [String]
-        #   # @param tax_amounts [Array<Orb::Models::Invoice::LineItem::TaxAmount>]
-        #   # @param usage_customer_ids [Array<String>, nil]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     adjusted_subtotal:,
-        #     adjustments:,
-        #     amount:,
-        #     credits_applied:,
-        #     discount:,
-        #     end_date:,
-        #     filter:,
-        #     grouping:,
-        #     maximum:,
-        #     maximum_amount:,
-        #     minimum:,
-        #     minimum_amount:,
-        #     name:,
-        #     partially_invoiced_amount:,
-        #     price:,
-        #     quantity:,
-        #     start_date:,
-        #     sub_line_items:,
-        #     subtotal:,
-        #     tax_amounts:,
-        #     usage_customer_ids:,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, adjusted_subtotal:, adjustments:, amount:, credits_applied:, discount:, end_date:, filter:, grouping:, maximum:, maximum_amount:, minimum:, minimum_amount:, name:, partially_invoiced_amount:, price:, quantity:, start_date:, sub_line_items:, subtotal:, tax_amounts:, usage_customer_ids:)
+        #   @param id [String]
+        #   @param adjusted_subtotal [String]
+        #   @param adjustments [Array<Orb::Models::Invoice::LineItem::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryMinimumAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryMaximumAdjustment>]
+        #   @param amount [String]
+        #   @param credits_applied [String]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param end_date [Time]
+        #   @param filter [String, nil]
+        #   @param grouping [String, nil]
+        #   @param maximum [Orb::Models::Invoice::LineItem::Maximum, nil]
+        #   @param maximum_amount [String, nil]
+        #   @param minimum [Orb::Models::Invoice::LineItem::Minimum, nil]
+        #   @param minimum_amount [String, nil]
+        #   @param name [String]
+        #   @param partially_invoiced_amount [String]
+        #   @param price [Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice, nil]
+        #   @param quantity [Float]
+        #   @param start_date [Time]
+        #   @param sub_line_items [Array<Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem, Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem, Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem>]
+        #   @param subtotal [String]
+        #   @param tax_amounts [Array<Orb::Models::Invoice::LineItem::TaxAmount>]
+        #   @param usage_customer_ids [Array<String>, nil]
 
         module Adjustment
           extend Orb::Internal::Type::Union
@@ -1369,29 +1229,14 @@ module Orb
             #   @return [Float]
             required :usage_discount, Float
 
-            # @!parse
-            #   # @param id [String]
-            #   # @param amount [String]
-            #   # @param applies_to_price_ids [Array<String>]
-            #   # @param is_invoice_level [Boolean]
-            #   # @param reason [String, nil]
-            #   # @param usage_discount [Float]
-            #   # @param adjustment_type [Symbol, :usage_discount]
-            #   #
-            #   def initialize(
-            #     id:,
-            #     amount:,
-            #     applies_to_price_ids:,
-            #     is_invoice_level:,
-            #     reason:,
-            #     usage_discount:,
-            #     adjustment_type: :usage_discount,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(id:, amount:, applies_to_price_ids:, is_invoice_level:, reason:, usage_discount:, adjustment_type: :usage_discount)
+            #   @param id [String]
+            #   @param amount [String]
+            #   @param applies_to_price_ids [Array<String>]
+            #   @param is_invoice_level [Boolean]
+            #   @param reason [String, nil]
+            #   @param usage_discount [Float]
+            #   @param adjustment_type [Symbol, :usage_discount]
           end
 
           class MonetaryAmountDiscountAdjustment < Orb::Internal::Type::BaseModel
@@ -1437,29 +1282,14 @@ module Orb
             #   @return [String, nil]
             required :reason, String, nil?: true
 
-            # @!parse
-            #   # @param id [String]
-            #   # @param amount [String]
-            #   # @param amount_discount [String]
-            #   # @param applies_to_price_ids [Array<String>]
-            #   # @param is_invoice_level [Boolean]
-            #   # @param reason [String, nil]
-            #   # @param adjustment_type [Symbol, :amount_discount]
-            #   #
-            #   def initialize(
-            #     id:,
-            #     amount:,
-            #     amount_discount:,
-            #     applies_to_price_ids:,
-            #     is_invoice_level:,
-            #     reason:,
-            #     adjustment_type: :amount_discount,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(id:, amount:, amount_discount:, applies_to_price_ids:, is_invoice_level:, reason:, adjustment_type: :amount_discount)
+            #   @param id [String]
+            #   @param amount [String]
+            #   @param amount_discount [String]
+            #   @param applies_to_price_ids [Array<String>]
+            #   @param is_invoice_level [Boolean]
+            #   @param reason [String, nil]
+            #   @param adjustment_type [Symbol, :amount_discount]
           end
 
           class MonetaryPercentageDiscountAdjustment < Orb::Internal::Type::BaseModel
@@ -1505,29 +1335,14 @@ module Orb
             #   @return [String, nil]
             required :reason, String, nil?: true
 
-            # @!parse
-            #   # @param id [String]
-            #   # @param amount [String]
-            #   # @param applies_to_price_ids [Array<String>]
-            #   # @param is_invoice_level [Boolean]
-            #   # @param percentage_discount [Float]
-            #   # @param reason [String, nil]
-            #   # @param adjustment_type [Symbol, :percentage_discount]
-            #   #
-            #   def initialize(
-            #     id:,
-            #     amount:,
-            #     applies_to_price_ids:,
-            #     is_invoice_level:,
-            #     percentage_discount:,
-            #     reason:,
-            #     adjustment_type: :percentage_discount,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(id:, amount:, applies_to_price_ids:, is_invoice_level:, percentage_discount:, reason:, adjustment_type: :percentage_discount)
+            #   @param id [String]
+            #   @param amount [String]
+            #   @param applies_to_price_ids [Array<String>]
+            #   @param is_invoice_level [Boolean]
+            #   @param percentage_discount [Float]
+            #   @param reason [String, nil]
+            #   @param adjustment_type [Symbol, :percentage_discount]
           end
 
           class MonetaryMinimumAdjustment < Orb::Internal::Type::BaseModel
@@ -1579,31 +1394,15 @@ module Orb
             #   @return [String, nil]
             required :reason, String, nil?: true
 
-            # @!parse
-            #   # @param id [String]
-            #   # @param amount [String]
-            #   # @param applies_to_price_ids [Array<String>]
-            #   # @param is_invoice_level [Boolean]
-            #   # @param item_id [String]
-            #   # @param minimum_amount [String]
-            #   # @param reason [String, nil]
-            #   # @param adjustment_type [Symbol, :minimum]
-            #   #
-            #   def initialize(
-            #     id:,
-            #     amount:,
-            #     applies_to_price_ids:,
-            #     is_invoice_level:,
-            #     item_id:,
-            #     minimum_amount:,
-            #     reason:,
-            #     adjustment_type: :minimum,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(id:, amount:, applies_to_price_ids:, is_invoice_level:, item_id:, minimum_amount:, reason:, adjustment_type: :minimum)
+            #   @param id [String]
+            #   @param amount [String]
+            #   @param applies_to_price_ids [Array<String>]
+            #   @param is_invoice_level [Boolean]
+            #   @param item_id [String]
+            #   @param minimum_amount [String]
+            #   @param reason [String, nil]
+            #   @param adjustment_type [Symbol, :minimum]
           end
 
           class MonetaryMaximumAdjustment < Orb::Internal::Type::BaseModel
@@ -1649,34 +1448,18 @@ module Orb
             #   @return [String, nil]
             required :reason, String, nil?: true
 
-            # @!parse
-            #   # @param id [String]
-            #   # @param amount [String]
-            #   # @param applies_to_price_ids [Array<String>]
-            #   # @param is_invoice_level [Boolean]
-            #   # @param maximum_amount [String]
-            #   # @param reason [String, nil]
-            #   # @param adjustment_type [Symbol, :maximum]
-            #   #
-            #   def initialize(
-            #     id:,
-            #     amount:,
-            #     applies_to_price_ids:,
-            #     is_invoice_level:,
-            #     maximum_amount:,
-            #     reason:,
-            #     adjustment_type: :maximum,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(id:, amount:, applies_to_price_ids:, is_invoice_level:, maximum_amount:, reason:, adjustment_type: :maximum)
+            #   @param id [String]
+            #   @param amount [String]
+            #   @param applies_to_price_ids [Array<String>]
+            #   @param is_invoice_level [Boolean]
+            #   @param maximum_amount [String]
+            #   @param reason [String, nil]
+            #   @param adjustment_type [Symbol, :maximum]
           end
 
-          # @!parse
-          #   # @return [Array(Orb::Models::Invoice::LineItem::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryMinimumAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryMaximumAdjustment)]
-          #   def self.variants; end
+          # @!method self.variants
+          #   @return [Array(Orb::Models::Invoice::LineItem::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryMinimumAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryMaximumAdjustment)]
         end
 
         # @deprecated
@@ -1696,15 +1479,11 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!parse
-          #   # This field is deprecated in favor of `adjustments`.
-          #   #
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param maximum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   This field is deprecated in favor of `adjustments`.
+          #
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param maximum_amount [String]
         end
 
         # @deprecated
@@ -1724,15 +1503,11 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!parse
-          #   # This field is deprecated in favor of `adjustments`.
-          #   #
-          #   # @param applies_to_price_ids [Array<String>]
-          #   # @param minimum_amount [String]
-          #   #
-          #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   This field is deprecated in favor of `adjustments`.
+          #
+          #   @param applies_to_price_ids [Array<String>]
+          #   @param minimum_amount [String]
         end
 
         module SubLineItem
@@ -1781,17 +1556,13 @@ module Orb
             #   @return [Symbol, :matrix]
             required :type, const: :matrix
 
-            # @!parse
-            #   # @param amount [String]
-            #   # @param grouping [Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem::Grouping, nil]
-            #   # @param matrix_config [Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem::MatrixConfig]
-            #   # @param name [String]
-            #   # @param quantity [Float]
-            #   # @param type [Symbol, :matrix]
-            #   #
-            #   def initialize(amount:, grouping:, matrix_config:, name:, quantity:, type: :matrix, **) = super
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(amount:, grouping:, matrix_config:, name:, quantity:, type: :matrix)
+            #   @param amount [String]
+            #   @param grouping [Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem::Grouping, nil]
+            #   @param matrix_config [Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem::MatrixConfig]
+            #   @param name [String]
+            #   @param quantity [Float]
+            #   @param type [Symbol, :matrix]
 
             # @see Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem#grouping
             class Grouping < Orb::Internal::Type::BaseModel
@@ -1806,13 +1577,9 @@ module Orb
               #   @return [String, nil]
               required :value, String, nil?: true
 
-              # @!parse
-              #   # @param key [String]
-              #   # @param value [String, nil]
-              #   #
-              #   def initialize(key:, value:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(key:, value:)
+              #   @param key [String]
+              #   @param value [String, nil]
             end
 
             # @see Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem#matrix_config
@@ -1823,12 +1590,8 @@ module Orb
               #   @return [Array<String, nil>]
               required :dimension_values, Orb::Internal::Type::ArrayOf[String, nil?: true]
 
-              # @!parse
-              #   # @param dimension_values [Array<String, nil>]
-              #   #
-              #   def initialize(dimension_values:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(dimension_values:)
+              #   @param dimension_values [Array<String, nil>]
             end
           end
 
@@ -1866,17 +1629,13 @@ module Orb
             #   @return [Symbol, :tier]
             required :type, const: :tier
 
-            # @!parse
-            #   # @param amount [String]
-            #   # @param grouping [Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem::Grouping, nil]
-            #   # @param name [String]
-            #   # @param quantity [Float]
-            #   # @param tier_config [Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem::TierConfig]
-            #   # @param type [Symbol, :tier]
-            #   #
-            #   def initialize(amount:, grouping:, name:, quantity:, tier_config:, type: :tier, **) = super
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(amount:, grouping:, name:, quantity:, tier_config:, type: :tier)
+            #   @param amount [String]
+            #   @param grouping [Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem::Grouping, nil]
+            #   @param name [String]
+            #   @param quantity [Float]
+            #   @param tier_config [Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem::TierConfig]
+            #   @param type [Symbol, :tier]
 
             # @see Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem#grouping
             class Grouping < Orb::Internal::Type::BaseModel
@@ -1891,13 +1650,9 @@ module Orb
               #   @return [String, nil]
               required :value, String, nil?: true
 
-              # @!parse
-              #   # @param key [String]
-              #   # @param value [String, nil]
-              #   #
-              #   def initialize(key:, value:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(key:, value:)
+              #   @param key [String]
+              #   @param value [String, nil]
             end
 
             # @see Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem#tier_config
@@ -1917,14 +1672,10 @@ module Orb
               #   @return [String]
               required :unit_amount, String
 
-              # @!parse
-              #   # @param first_unit [Float]
-              #   # @param last_unit [Float, nil]
-              #   # @param unit_amount [String]
-              #   #
-              #   def initialize(first_unit:, last_unit:, unit_amount:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(first_unit:, last_unit:, unit_amount:)
+              #   @param first_unit [Float]
+              #   @param last_unit [Float, nil]
+              #   @param unit_amount [String]
             end
           end
 
@@ -1957,16 +1708,12 @@ module Orb
             #   @return [Symbol, :"'null'"]
             required :type, const: :"'null'"
 
-            # @!parse
-            #   # @param amount [String]
-            #   # @param grouping [Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem::Grouping, nil]
-            #   # @param name [String]
-            #   # @param quantity [Float]
-            #   # @param type [Symbol, :"'null'"]
-            #   #
-            #   def initialize(amount:, grouping:, name:, quantity:, type: :"'null'", **) = super
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(amount:, grouping:, name:, quantity:, type: :"'null'")
+            #   @param amount [String]
+            #   @param grouping [Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem::Grouping, nil]
+            #   @param name [String]
+            #   @param quantity [Float]
+            #   @param type [Symbol, :"'null'"]
 
             # @see Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem#grouping
             class Grouping < Orb::Internal::Type::BaseModel
@@ -1981,19 +1728,14 @@ module Orb
               #   @return [String, nil]
               required :value, String, nil?: true
 
-              # @!parse
-              #   # @param key [String]
-              #   # @param value [String, nil]
-              #   #
-              #   def initialize(key:, value:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(key:, value:)
+              #   @param key [String]
+              #   @param value [String, nil]
             end
           end
 
-          # @!parse
-          #   # @return [Array(Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem, Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem, Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem)]
-          #   def self.variants; end
+          # @!method self.variants
+          #   @return [Array(Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem, Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem, Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem)]
         end
 
         class TaxAmount < Orb::Internal::Type::BaseModel
@@ -2015,14 +1757,10 @@ module Orb
           #   @return [String, nil]
           required :tax_rate_percentage, String, nil?: true
 
-          # @!parse
-          #   # @param amount [String]
-          #   # @param tax_rate_description [String]
-          #   # @param tax_rate_percentage [String, nil]
-          #   #
-          #   def initialize(amount:, tax_rate_description:, tax_rate_percentage:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(amount:, tax_rate_description:, tax_rate_percentage:)
+          #   @param amount [String]
+          #   @param tax_rate_description [String]
+          #   @param tax_rate_percentage [String, nil]
         end
       end
 
@@ -2041,13 +1779,9 @@ module Orb
         #   @return [String]
         required :maximum_amount, String
 
-        # @!parse
-        #   # @param applies_to_price_ids [Array<String>]
-        #   # @param maximum_amount [String]
-        #   #
-        #   def initialize(applies_to_price_ids:, maximum_amount:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(applies_to_price_ids:, maximum_amount:)
+        #   @param applies_to_price_ids [Array<String>]
+        #   @param maximum_amount [String]
       end
 
       # @see Orb::Models::Invoice#minimum
@@ -2065,13 +1799,9 @@ module Orb
         #   @return [String]
         required :minimum_amount, String
 
-        # @!parse
-        #   # @param applies_to_price_ids [Array<String>]
-        #   # @param minimum_amount [String]
-        #   #
-        #   def initialize(applies_to_price_ids:, minimum_amount:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(applies_to_price_ids:, minimum_amount:)
+        #   @param applies_to_price_ids [Array<String>]
+        #   @param minimum_amount [String]
       end
 
       class PaymentAttempt < Orb::Internal::Type::BaseModel
@@ -2111,17 +1841,13 @@ module Orb
         #   @return [Boolean]
         required :succeeded, Orb::Internal::Type::Boolean
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param amount [String]
-        #   # @param created_at [Time]
-        #   # @param payment_provider [Symbol, Orb::Models::Invoice::PaymentAttempt::PaymentProvider, nil]
-        #   # @param payment_provider_id [String, nil]
-        #   # @param succeeded [Boolean]
-        #   #
-        #   def initialize(id:, amount:, created_at:, payment_provider:, payment_provider_id:, succeeded:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, amount:, created_at:, payment_provider:, payment_provider_id:, succeeded:)
+        #   @param id [String]
+        #   @param amount [String]
+        #   @param created_at [Time]
+        #   @param payment_provider [Symbol, Orb::Models::Invoice::PaymentAttempt::PaymentProvider, nil]
+        #   @param payment_provider_id [String, nil]
+        #   @param succeeded [Boolean]
 
         # The payment provider that attempted to collect the payment.
         #
@@ -2131,11 +1857,8 @@ module Orb
 
           STRIPE = :stripe
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
 
@@ -2171,17 +1894,13 @@ module Orb
         #   @return [String, nil]
         required :state, String, nil?: true
 
-        # @!parse
-        #   # @param city [String, nil]
-        #   # @param country [String, nil]
-        #   # @param line1 [String, nil]
-        #   # @param line2 [String, nil]
-        #   # @param postal_code [String, nil]
-        #   # @param state [String, nil]
-        #   #
-        #   def initialize(city:, country:, line1:, line2:, postal_code:, state:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(city:, country:, line1:, line2:, postal_code:, state:)
+        #   @param city [String, nil]
+        #   @param country [String, nil]
+        #   @param line1 [String, nil]
+        #   @param line2 [String, nil]
+        #   @param postal_code [String, nil]
+        #   @param state [String, nil]
       end
 
       # @see Orb::Models::Invoice#status
@@ -2194,11 +1913,8 @@ module Orb
         VOID = :void
         DRAFT = :draft
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Orb::Models::Invoice#subscription
@@ -2208,12 +1924,8 @@ module Orb
         #   @return [String]
         required :id, String
 
-        # @!parse
-        #   # @param id [String]
-        #   #
-        #   def initialize(id:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:)
+        #   @param id [String]
       end
     end
   end

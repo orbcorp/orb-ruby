@@ -101,13 +101,9 @@ module Orb
         #   @return [String, nil]
         required :next_cursor, String, nil?: true
 
-        # @!parse
-        #   # @param has_more [Boolean]
-        #   # @param next_cursor [String, nil]
-        #   #
-        #   def initialize(has_more:, next_cursor:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(has_more:, next_cursor:)
+        #   @param has_more [Boolean]
+        #   @param next_cursor [String, nil]
       end
     end
   end

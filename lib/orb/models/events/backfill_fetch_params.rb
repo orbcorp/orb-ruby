@@ -9,12 +9,8 @@ module Orb
         #   extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
-        # @!parse
-        #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(request_options: {}, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(request_options: {})
+        #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
       end
     end
   end

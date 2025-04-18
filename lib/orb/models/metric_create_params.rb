@@ -40,17 +40,13 @@ module Orb
       #   @return [Hash{Symbol=>String, nil}, nil]
       optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-      # @!parse
-      #   # @param description [String, nil]
-      #   # @param item_id [String]
-      #   # @param name [String]
-      #   # @param sql [String]
-      #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(description:, item_id:, name:, sql:, metadata: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(description:, item_id:, name:, sql:, metadata: nil, request_options: {})
+      #   @param description [String, nil]
+      #   @param item_id [String]
+      #   @param name [String]
+      #   @param sql [String]
+      #   @param metadata [Hash{Symbol=>String, nil}, nil]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

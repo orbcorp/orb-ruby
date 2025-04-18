@@ -106,41 +106,20 @@ module Orb
             #   @return [Float]
             required :starting_balance, Float
 
-            # @!parse
-            #   # @param id [String]
-            #   # @param amount [Float]
-            #   # @param created_at [Time]
-            #   # @param credit_block [Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry::CreditBlock]
-            #   # @param currency [String]
-            #   # @param customer [Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry::Customer]
-            #   # @param description [String, nil]
-            #   # @param ending_balance [Float]
-            #   # @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry::EntryStatus]
-            #   # @param ledger_sequence_number [Integer]
-            #   # @param metadata [Hash{Symbol=>String}]
-            #   # @param starting_balance [Float]
-            #   # @param entry_type [Symbol, :increment]
-            #   #
-            #   def initialize(
-            #     id:,
-            #     amount:,
-            #     created_at:,
-            #     credit_block:,
-            #     currency:,
-            #     customer:,
-            #     description:,
-            #     ending_balance:,
-            #     entry_status:,
-            #     ledger_sequence_number:,
-            #     metadata:,
-            #     starting_balance:,
-            #     entry_type: :increment,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(id:, amount:, created_at:, credit_block:, currency:, customer:, description:, ending_balance:, entry_status:, ledger_sequence_number:, metadata:, starting_balance:, entry_type: :increment)
+            #   @param id [String]
+            #   @param amount [Float]
+            #   @param created_at [Time]
+            #   @param credit_block [Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry::CreditBlock]
+            #   @param currency [String]
+            #   @param customer [Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry::Customer]
+            #   @param description [String, nil]
+            #   @param ending_balance [Float]
+            #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry::EntryStatus]
+            #   @param ledger_sequence_number [Integer]
+            #   @param metadata [Hash{Symbol=>String}]
+            #   @param starting_balance [Float]
+            #   @param entry_type [Symbol, :increment]
 
             # @see Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry#credit_block
             class CreditBlock < Orb::Internal::Type::BaseModel
@@ -159,14 +138,10 @@ module Orb
               #   @return [String, nil]
               required :per_unit_cost_basis, String, nil?: true
 
-              # @!parse
-              #   # @param id [String]
-              #   # @param expiry_date [Time, nil]
-              #   # @param per_unit_cost_basis [String, nil]
-              #   #
-              #   def initialize(id:, expiry_date:, per_unit_cost_basis:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(id:, expiry_date:, per_unit_cost_basis:)
+              #   @param id [String]
+              #   @param expiry_date [Time, nil]
+              #   @param per_unit_cost_basis [String, nil]
             end
 
             # @see Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry#customer
@@ -181,13 +156,9 @@ module Orb
               #   @return [String, nil]
               required :external_customer_id, String, nil?: true
 
-              # @!parse
-              #   # @param id [String]
-              #   # @param external_customer_id [String, nil]
-              #   #
-              #   def initialize(id:, external_customer_id:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(id:, external_customer_id:)
+              #   @param id [String]
+              #   @param external_customer_id [String, nil]
             end
 
             # @see Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry#entry_status
@@ -197,11 +168,8 @@ module Orb
               COMMITTED = :committed
               PENDING = :pending
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
           end
 
@@ -293,47 +261,23 @@ module Orb
             #   @return [String, nil]
             optional :price_id, String, nil?: true
 
-            # @!parse
-            #   # @param id [String]
-            #   # @param amount [Float]
-            #   # @param created_at [Time]
-            #   # @param credit_block [Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry::CreditBlock]
-            #   # @param currency [String]
-            #   # @param customer [Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry::Customer]
-            #   # @param description [String, nil]
-            #   # @param ending_balance [Float]
-            #   # @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry::EntryStatus]
-            #   # @param ledger_sequence_number [Integer]
-            #   # @param metadata [Hash{Symbol=>String}]
-            #   # @param starting_balance [Float]
-            #   # @param event_id [String, nil]
-            #   # @param invoice_id [String, nil]
-            #   # @param price_id [String, nil]
-            #   # @param entry_type [Symbol, :decrement]
-            #   #
-            #   def initialize(
-            #     id:,
-            #     amount:,
-            #     created_at:,
-            #     credit_block:,
-            #     currency:,
-            #     customer:,
-            #     description:,
-            #     ending_balance:,
-            #     entry_status:,
-            #     ledger_sequence_number:,
-            #     metadata:,
-            #     starting_balance:,
-            #     event_id: nil,
-            #     invoice_id: nil,
-            #     price_id: nil,
-            #     entry_type: :decrement,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(id:, amount:, created_at:, credit_block:, currency:, customer:, description:, ending_balance:, entry_status:, ledger_sequence_number:, metadata:, starting_balance:, event_id: nil, invoice_id: nil, price_id: nil, entry_type: :decrement)
+            #   @param id [String]
+            #   @param amount [Float]
+            #   @param created_at [Time]
+            #   @param credit_block [Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry::CreditBlock]
+            #   @param currency [String]
+            #   @param customer [Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry::Customer]
+            #   @param description [String, nil]
+            #   @param ending_balance [Float]
+            #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry::EntryStatus]
+            #   @param ledger_sequence_number [Integer]
+            #   @param metadata [Hash{Symbol=>String}]
+            #   @param starting_balance [Float]
+            #   @param event_id [String, nil]
+            #   @param invoice_id [String, nil]
+            #   @param price_id [String, nil]
+            #   @param entry_type [Symbol, :decrement]
 
             # @see Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry#credit_block
             class CreditBlock < Orb::Internal::Type::BaseModel
@@ -352,14 +296,10 @@ module Orb
               #   @return [String, nil]
               required :per_unit_cost_basis, String, nil?: true
 
-              # @!parse
-              #   # @param id [String]
-              #   # @param expiry_date [Time, nil]
-              #   # @param per_unit_cost_basis [String, nil]
-              #   #
-              #   def initialize(id:, expiry_date:, per_unit_cost_basis:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(id:, expiry_date:, per_unit_cost_basis:)
+              #   @param id [String]
+              #   @param expiry_date [Time, nil]
+              #   @param per_unit_cost_basis [String, nil]
             end
 
             # @see Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry#customer
@@ -374,13 +314,9 @@ module Orb
               #   @return [String, nil]
               required :external_customer_id, String, nil?: true
 
-              # @!parse
-              #   # @param id [String]
-              #   # @param external_customer_id [String, nil]
-              #   #
-              #   def initialize(id:, external_customer_id:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(id:, external_customer_id:)
+              #   @param id [String]
+              #   @param external_customer_id [String, nil]
             end
 
             # @see Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry#entry_status
@@ -390,11 +326,8 @@ module Orb
               COMMITTED = :committed
               PENDING = :pending
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
           end
 
@@ -476,43 +409,21 @@ module Orb
             #   @return [Float]
             required :starting_balance, Float
 
-            # @!parse
-            #   # @param id [String]
-            #   # @param amount [Float]
-            #   # @param created_at [Time]
-            #   # @param credit_block [Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry::CreditBlock]
-            #   # @param currency [String]
-            #   # @param customer [Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry::Customer]
-            #   # @param description [String, nil]
-            #   # @param ending_balance [Float]
-            #   # @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry::EntryStatus]
-            #   # @param ledger_sequence_number [Integer]
-            #   # @param metadata [Hash{Symbol=>String}]
-            #   # @param new_block_expiry_date [Time, nil]
-            #   # @param starting_balance [Float]
-            #   # @param entry_type [Symbol, :expiration_change]
-            #   #
-            #   def initialize(
-            #     id:,
-            #     amount:,
-            #     created_at:,
-            #     credit_block:,
-            #     currency:,
-            #     customer:,
-            #     description:,
-            #     ending_balance:,
-            #     entry_status:,
-            #     ledger_sequence_number:,
-            #     metadata:,
-            #     new_block_expiry_date:,
-            #     starting_balance:,
-            #     entry_type: :expiration_change,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(id:, amount:, created_at:, credit_block:, currency:, customer:, description:, ending_balance:, entry_status:, ledger_sequence_number:, metadata:, new_block_expiry_date:, starting_balance:, entry_type: :expiration_change)
+            #   @param id [String]
+            #   @param amount [Float]
+            #   @param created_at [Time]
+            #   @param credit_block [Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry::CreditBlock]
+            #   @param currency [String]
+            #   @param customer [Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry::Customer]
+            #   @param description [String, nil]
+            #   @param ending_balance [Float]
+            #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry::EntryStatus]
+            #   @param ledger_sequence_number [Integer]
+            #   @param metadata [Hash{Symbol=>String}]
+            #   @param new_block_expiry_date [Time, nil]
+            #   @param starting_balance [Float]
+            #   @param entry_type [Symbol, :expiration_change]
 
             # @see Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry#credit_block
             class CreditBlock < Orb::Internal::Type::BaseModel
@@ -531,14 +442,10 @@ module Orb
               #   @return [String, nil]
               required :per_unit_cost_basis, String, nil?: true
 
-              # @!parse
-              #   # @param id [String]
-              #   # @param expiry_date [Time, nil]
-              #   # @param per_unit_cost_basis [String, nil]
-              #   #
-              #   def initialize(id:, expiry_date:, per_unit_cost_basis:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(id:, expiry_date:, per_unit_cost_basis:)
+              #   @param id [String]
+              #   @param expiry_date [Time, nil]
+              #   @param per_unit_cost_basis [String, nil]
             end
 
             # @see Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry#customer
@@ -553,13 +460,9 @@ module Orb
               #   @return [String, nil]
               required :external_customer_id, String, nil?: true
 
-              # @!parse
-              #   # @param id [String]
-              #   # @param external_customer_id [String, nil]
-              #   #
-              #   def initialize(id:, external_customer_id:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(id:, external_customer_id:)
+              #   @param id [String]
+              #   @param external_customer_id [String, nil]
             end
 
             # @see Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry#entry_status
@@ -569,11 +472,8 @@ module Orb
               COMMITTED = :committed
               PENDING = :pending
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
           end
 
@@ -650,41 +550,20 @@ module Orb
             #   @return [Float]
             required :starting_balance, Float
 
-            # @!parse
-            #   # @param id [String]
-            #   # @param amount [Float]
-            #   # @param created_at [Time]
-            #   # @param credit_block [Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry::CreditBlock]
-            #   # @param currency [String]
-            #   # @param customer [Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry::Customer]
-            #   # @param description [String, nil]
-            #   # @param ending_balance [Float]
-            #   # @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry::EntryStatus]
-            #   # @param ledger_sequence_number [Integer]
-            #   # @param metadata [Hash{Symbol=>String}]
-            #   # @param starting_balance [Float]
-            #   # @param entry_type [Symbol, :credit_block_expiry]
-            #   #
-            #   def initialize(
-            #     id:,
-            #     amount:,
-            #     created_at:,
-            #     credit_block:,
-            #     currency:,
-            #     customer:,
-            #     description:,
-            #     ending_balance:,
-            #     entry_status:,
-            #     ledger_sequence_number:,
-            #     metadata:,
-            #     starting_balance:,
-            #     entry_type: :credit_block_expiry,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(id:, amount:, created_at:, credit_block:, currency:, customer:, description:, ending_balance:, entry_status:, ledger_sequence_number:, metadata:, starting_balance:, entry_type: :credit_block_expiry)
+            #   @param id [String]
+            #   @param amount [Float]
+            #   @param created_at [Time]
+            #   @param credit_block [Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry::CreditBlock]
+            #   @param currency [String]
+            #   @param customer [Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry::Customer]
+            #   @param description [String, nil]
+            #   @param ending_balance [Float]
+            #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry::EntryStatus]
+            #   @param ledger_sequence_number [Integer]
+            #   @param metadata [Hash{Symbol=>String}]
+            #   @param starting_balance [Float]
+            #   @param entry_type [Symbol, :credit_block_expiry]
 
             # @see Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry#credit_block
             class CreditBlock < Orb::Internal::Type::BaseModel
@@ -703,14 +582,10 @@ module Orb
               #   @return [String, nil]
               required :per_unit_cost_basis, String, nil?: true
 
-              # @!parse
-              #   # @param id [String]
-              #   # @param expiry_date [Time, nil]
-              #   # @param per_unit_cost_basis [String, nil]
-              #   #
-              #   def initialize(id:, expiry_date:, per_unit_cost_basis:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(id:, expiry_date:, per_unit_cost_basis:)
+              #   @param id [String]
+              #   @param expiry_date [Time, nil]
+              #   @param per_unit_cost_basis [String, nil]
             end
 
             # @see Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry#customer
@@ -725,13 +600,9 @@ module Orb
               #   @return [String, nil]
               required :external_customer_id, String, nil?: true
 
-              # @!parse
-              #   # @param id [String]
-              #   # @param external_customer_id [String, nil]
-              #   #
-              #   def initialize(id:, external_customer_id:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(id:, external_customer_id:)
+              #   @param id [String]
+              #   @param external_customer_id [String, nil]
             end
 
             # @see Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry#entry_status
@@ -741,11 +612,8 @@ module Orb
               COMMITTED = :committed
               PENDING = :pending
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
           end
 
@@ -832,45 +700,22 @@ module Orb
             #   @return [String, nil]
             required :void_reason, String, nil?: true
 
-            # @!parse
-            #   # @param id [String]
-            #   # @param amount [Float]
-            #   # @param created_at [Time]
-            #   # @param credit_block [Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry::CreditBlock]
-            #   # @param currency [String]
-            #   # @param customer [Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry::Customer]
-            #   # @param description [String, nil]
-            #   # @param ending_balance [Float]
-            #   # @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry::EntryStatus]
-            #   # @param ledger_sequence_number [Integer]
-            #   # @param metadata [Hash{Symbol=>String}]
-            #   # @param starting_balance [Float]
-            #   # @param void_amount [Float]
-            #   # @param void_reason [String, nil]
-            #   # @param entry_type [Symbol, :void]
-            #   #
-            #   def initialize(
-            #     id:,
-            #     amount:,
-            #     created_at:,
-            #     credit_block:,
-            #     currency:,
-            #     customer:,
-            #     description:,
-            #     ending_balance:,
-            #     entry_status:,
-            #     ledger_sequence_number:,
-            #     metadata:,
-            #     starting_balance:,
-            #     void_amount:,
-            #     void_reason:,
-            #     entry_type: :void,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(id:, amount:, created_at:, credit_block:, currency:, customer:, description:, ending_balance:, entry_status:, ledger_sequence_number:, metadata:, starting_balance:, void_amount:, void_reason:, entry_type: :void)
+            #   @param id [String]
+            #   @param amount [Float]
+            #   @param created_at [Time]
+            #   @param credit_block [Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry::CreditBlock]
+            #   @param currency [String]
+            #   @param customer [Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry::Customer]
+            #   @param description [String, nil]
+            #   @param ending_balance [Float]
+            #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry::EntryStatus]
+            #   @param ledger_sequence_number [Integer]
+            #   @param metadata [Hash{Symbol=>String}]
+            #   @param starting_balance [Float]
+            #   @param void_amount [Float]
+            #   @param void_reason [String, nil]
+            #   @param entry_type [Symbol, :void]
 
             # @see Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry#credit_block
             class CreditBlock < Orb::Internal::Type::BaseModel
@@ -889,14 +734,10 @@ module Orb
               #   @return [String, nil]
               required :per_unit_cost_basis, String, nil?: true
 
-              # @!parse
-              #   # @param id [String]
-              #   # @param expiry_date [Time, nil]
-              #   # @param per_unit_cost_basis [String, nil]
-              #   #
-              #   def initialize(id:, expiry_date:, per_unit_cost_basis:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(id:, expiry_date:, per_unit_cost_basis:)
+              #   @param id [String]
+              #   @param expiry_date [Time, nil]
+              #   @param per_unit_cost_basis [String, nil]
             end
 
             # @see Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry#customer
@@ -911,13 +752,9 @@ module Orb
               #   @return [String, nil]
               required :external_customer_id, String, nil?: true
 
-              # @!parse
-              #   # @param id [String]
-              #   # @param external_customer_id [String, nil]
-              #   #
-              #   def initialize(id:, external_customer_id:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(id:, external_customer_id:)
+              #   @param id [String]
+              #   @param external_customer_id [String, nil]
             end
 
             # @see Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry#entry_status
@@ -927,11 +764,8 @@ module Orb
               COMMITTED = :committed
               PENDING = :pending
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
           end
 
@@ -1023,47 +857,23 @@ module Orb
             #   @return [String, nil]
             required :void_reason, String, nil?: true
 
-            # @!parse
-            #   # @param id [String]
-            #   # @param amount [Float]
-            #   # @param created_at [Time]
-            #   # @param credit_block [Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry::CreditBlock]
-            #   # @param currency [String]
-            #   # @param customer [Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry::Customer]
-            #   # @param description [String, nil]
-            #   # @param ending_balance [Float]
-            #   # @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry::EntryStatus]
-            #   # @param ledger_sequence_number [Integer]
-            #   # @param metadata [Hash{Symbol=>String}]
-            #   # @param new_block_expiry_date [Time]
-            #   # @param starting_balance [Float]
-            #   # @param void_amount [Float]
-            #   # @param void_reason [String, nil]
-            #   # @param entry_type [Symbol, :void_initiated]
-            #   #
-            #   def initialize(
-            #     id:,
-            #     amount:,
-            #     created_at:,
-            #     credit_block:,
-            #     currency:,
-            #     customer:,
-            #     description:,
-            #     ending_balance:,
-            #     entry_status:,
-            #     ledger_sequence_number:,
-            #     metadata:,
-            #     new_block_expiry_date:,
-            #     starting_balance:,
-            #     void_amount:,
-            #     void_reason:,
-            #     entry_type: :void_initiated,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(id:, amount:, created_at:, credit_block:, currency:, customer:, description:, ending_balance:, entry_status:, ledger_sequence_number:, metadata:, new_block_expiry_date:, starting_balance:, void_amount:, void_reason:, entry_type: :void_initiated)
+            #   @param id [String]
+            #   @param amount [Float]
+            #   @param created_at [Time]
+            #   @param credit_block [Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry::CreditBlock]
+            #   @param currency [String]
+            #   @param customer [Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry::Customer]
+            #   @param description [String, nil]
+            #   @param ending_balance [Float]
+            #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry::EntryStatus]
+            #   @param ledger_sequence_number [Integer]
+            #   @param metadata [Hash{Symbol=>String}]
+            #   @param new_block_expiry_date [Time]
+            #   @param starting_balance [Float]
+            #   @param void_amount [Float]
+            #   @param void_reason [String, nil]
+            #   @param entry_type [Symbol, :void_initiated]
 
             # @see Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry#credit_block
             class CreditBlock < Orb::Internal::Type::BaseModel
@@ -1082,14 +892,10 @@ module Orb
               #   @return [String, nil]
               required :per_unit_cost_basis, String, nil?: true
 
-              # @!parse
-              #   # @param id [String]
-              #   # @param expiry_date [Time, nil]
-              #   # @param per_unit_cost_basis [String, nil]
-              #   #
-              #   def initialize(id:, expiry_date:, per_unit_cost_basis:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(id:, expiry_date:, per_unit_cost_basis:)
+              #   @param id [String]
+              #   @param expiry_date [Time, nil]
+              #   @param per_unit_cost_basis [String, nil]
             end
 
             # @see Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry#customer
@@ -1104,13 +910,9 @@ module Orb
               #   @return [String, nil]
               required :external_customer_id, String, nil?: true
 
-              # @!parse
-              #   # @param id [String]
-              #   # @param external_customer_id [String, nil]
-              #   #
-              #   def initialize(id:, external_customer_id:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(id:, external_customer_id:)
+              #   @param id [String]
+              #   @param external_customer_id [String, nil]
             end
 
             # @see Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry#entry_status
@@ -1120,11 +922,8 @@ module Orb
               COMMITTED = :committed
               PENDING = :pending
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
           end
 
@@ -1201,41 +1000,20 @@ module Orb
             #   @return [Float]
             required :starting_balance, Float
 
-            # @!parse
-            #   # @param id [String]
-            #   # @param amount [Float]
-            #   # @param created_at [Time]
-            #   # @param credit_block [Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry::CreditBlock]
-            #   # @param currency [String]
-            #   # @param customer [Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry::Customer]
-            #   # @param description [String, nil]
-            #   # @param ending_balance [Float]
-            #   # @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry::EntryStatus]
-            #   # @param ledger_sequence_number [Integer]
-            #   # @param metadata [Hash{Symbol=>String}]
-            #   # @param starting_balance [Float]
-            #   # @param entry_type [Symbol, :amendment]
-            #   #
-            #   def initialize(
-            #     id:,
-            #     amount:,
-            #     created_at:,
-            #     credit_block:,
-            #     currency:,
-            #     customer:,
-            #     description:,
-            #     ending_balance:,
-            #     entry_status:,
-            #     ledger_sequence_number:,
-            #     metadata:,
-            #     starting_balance:,
-            #     entry_type: :amendment,
-            #     **
-            #   )
-            #     super
-            #   end
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(id:, amount:, created_at:, credit_block:, currency:, customer:, description:, ending_balance:, entry_status:, ledger_sequence_number:, metadata:, starting_balance:, entry_type: :amendment)
+            #   @param id [String]
+            #   @param amount [Float]
+            #   @param created_at [Time]
+            #   @param credit_block [Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry::CreditBlock]
+            #   @param currency [String]
+            #   @param customer [Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry::Customer]
+            #   @param description [String, nil]
+            #   @param ending_balance [Float]
+            #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry::EntryStatus]
+            #   @param ledger_sequence_number [Integer]
+            #   @param metadata [Hash{Symbol=>String}]
+            #   @param starting_balance [Float]
+            #   @param entry_type [Symbol, :amendment]
 
             # @see Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry#credit_block
             class CreditBlock < Orb::Internal::Type::BaseModel
@@ -1254,14 +1032,10 @@ module Orb
               #   @return [String, nil]
               required :per_unit_cost_basis, String, nil?: true
 
-              # @!parse
-              #   # @param id [String]
-              #   # @param expiry_date [Time, nil]
-              #   # @param per_unit_cost_basis [String, nil]
-              #   #
-              #   def initialize(id:, expiry_date:, per_unit_cost_basis:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(id:, expiry_date:, per_unit_cost_basis:)
+              #   @param id [String]
+              #   @param expiry_date [Time, nil]
+              #   @param per_unit_cost_basis [String, nil]
             end
 
             # @see Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry#customer
@@ -1276,13 +1050,9 @@ module Orb
               #   @return [String, nil]
               required :external_customer_id, String, nil?: true
 
-              # @!parse
-              #   # @param id [String]
-              #   # @param external_customer_id [String, nil]
-              #   #
-              #   def initialize(id:, external_customer_id:, **) = super
-
-              # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+              # @!method initialize(id:, external_customer_id:)
+              #   @param id [String]
+              #   @param external_customer_id [String, nil]
             end
 
             # @see Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry#entry_status
@@ -1292,17 +1062,13 @@ module Orb
               COMMITTED = :committed
               PENDING = :pending
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
           end
 
-          # @!parse
-          #   # @return [Array(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry)]
-          #   def self.variants; end
+          # @!method self.variants
+          #   @return [Array(Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::AmendmentLedgerEntry)]
         end
       end
     end

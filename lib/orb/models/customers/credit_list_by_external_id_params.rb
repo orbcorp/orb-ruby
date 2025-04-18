@@ -43,16 +43,12 @@ module Orb
         #   # @return [Integer]
         #   attr_writer :limit
 
-        # @!parse
-        #   # @param currency [String, nil]
-        #   # @param cursor [String, nil]
-        #   # @param include_all_blocks [Boolean]
-        #   # @param limit [Integer]
-        #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(currency: nil, cursor: nil, include_all_blocks: nil, limit: nil, request_options: {}, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(currency: nil, cursor: nil, include_all_blocks: nil, limit: nil, request_options: {})
+        #   @param currency [String, nil]
+        #   @param cursor [String, nil]
+        #   @param include_all_blocks [Boolean]
+        #   @param limit [Integer]
+        #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
       end
     end
   end

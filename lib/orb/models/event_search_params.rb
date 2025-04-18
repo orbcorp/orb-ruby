@@ -31,15 +31,11 @@ module Orb
       #   @return [Time, nil]
       optional :timeframe_start, Time, nil?: true
 
-      # @!parse
-      #   # @param event_ids [Array<String>]
-      #   # @param timeframe_end [Time, nil]
-      #   # @param timeframe_start [Time, nil]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(event_ids:, timeframe_end: nil, timeframe_start: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(event_ids:, timeframe_end: nil, timeframe_start: nil, request_options: {})
+      #   @param event_ids [Array<String>]
+      #   @param timeframe_end [Time, nil]
+      #   @param timeframe_start [Time, nil]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

@@ -69,37 +69,18 @@ module Orb
       #   @return [Symbol, Orb::Models::SubscriptionFetchUsageParams::ViewMode, nil]
       optional :view_mode, enum: -> { Orb::Models::SubscriptionFetchUsageParams::ViewMode }, nil?: true
 
-      # @!parse
-      #   # @param billable_metric_id [String, nil]
-      #   # @param first_dimension_key [String, nil]
-      #   # @param first_dimension_value [String, nil]
-      #   # @param granularity [Symbol, Orb::Models::SubscriptionFetchUsageParams::Granularity, nil]
-      #   # @param group_by [String, nil]
-      #   # @param second_dimension_key [String, nil]
-      #   # @param second_dimension_value [String, nil]
-      #   # @param timeframe_end [Time, nil]
-      #   # @param timeframe_start [Time, nil]
-      #   # @param view_mode [Symbol, Orb::Models::SubscriptionFetchUsageParams::ViewMode, nil]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     billable_metric_id: nil,
-      #     first_dimension_key: nil,
-      #     first_dimension_value: nil,
-      #     granularity: nil,
-      #     group_by: nil,
-      #     second_dimension_key: nil,
-      #     second_dimension_value: nil,
-      #     timeframe_end: nil,
-      #     timeframe_start: nil,
-      #     view_mode: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(billable_metric_id: nil, first_dimension_key: nil, first_dimension_value: nil, granularity: nil, group_by: nil, second_dimension_key: nil, second_dimension_value: nil, timeframe_end: nil, timeframe_start: nil, view_mode: nil, request_options: {})
+      #   @param billable_metric_id [String, nil]
+      #   @param first_dimension_key [String, nil]
+      #   @param first_dimension_value [String, nil]
+      #   @param granularity [Symbol, Orb::Models::SubscriptionFetchUsageParams::Granularity, nil]
+      #   @param group_by [String, nil]
+      #   @param second_dimension_key [String, nil]
+      #   @param second_dimension_value [String, nil]
+      #   @param timeframe_end [Time, nil]
+      #   @param timeframe_start [Time, nil]
+      #   @param view_mode [Symbol, Orb::Models::SubscriptionFetchUsageParams::ViewMode, nil]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
       # This determines the windowing of usage reporting.
       module Granularity
@@ -107,11 +88,8 @@ module Orb
 
         DAY = :day
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # Controls whether Orb returns cumulative usage since the start of the billing
@@ -124,11 +102,8 @@ module Orb
         PERIODIC = :periodic
         CUMULATIVE = :cumulative
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

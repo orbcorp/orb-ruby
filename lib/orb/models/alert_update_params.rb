@@ -14,13 +14,9 @@ module Orb
       #   @return [Array<Orb::Models::AlertUpdateParams::Threshold>]
       required :thresholds, -> { Orb::Internal::Type::ArrayOf[Orb::Models::AlertUpdateParams::Threshold] }
 
-      # @!parse
-      #   # @param thresholds [Array<Orb::Models::AlertUpdateParams::Threshold>]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(thresholds:, request_options: {}, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(thresholds:, request_options: {})
+      #   @param thresholds [Array<Orb::Models::AlertUpdateParams::Threshold>]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
       class Threshold < Orb::Internal::Type::BaseModel
         # @!attribute value
@@ -31,15 +27,11 @@ module Orb
         #   @return [Float]
         required :value, Float
 
-        # @!parse
-        #   # Thresholds are used to define the conditions under which an alert will be
-        #   # triggered.
-        #   #
-        #   # @param value [Float]
-        #   #
-        #   def initialize(value:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(value:)
+        #   Thresholds are used to define the conditions under which an alert will be
+        #   triggered.
+        #
+        #   @param value [Float]
       end
     end
   end

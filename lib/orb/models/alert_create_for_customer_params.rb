@@ -28,15 +28,11 @@ module Orb
                -> { Orb::Internal::Type::ArrayOf[Orb::Models::AlertCreateForCustomerParams::Threshold] },
                nil?: true
 
-      # @!parse
-      #   # @param currency [String]
-      #   # @param type [Symbol, Orb::Models::AlertCreateForCustomerParams::Type]
-      #   # @param thresholds [Array<Orb::Models::AlertCreateForCustomerParams::Threshold>, nil]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(currency:, type:, thresholds: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(currency:, type:, thresholds: nil, request_options: {})
+      #   @param currency [String]
+      #   @param type [Symbol, Orb::Models::AlertCreateForCustomerParams::Type]
+      #   @param thresholds [Array<Orb::Models::AlertCreateForCustomerParams::Threshold>, nil]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
       # The type of alert to create. This must be a valid alert type.
       module Type
@@ -46,11 +42,8 @@ module Orb
         CREDIT_BALANCE_DROPPED = :credit_balance_dropped
         CREDIT_BALANCE_RECOVERED = :credit_balance_recovered
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       class Threshold < Orb::Internal::Type::BaseModel
@@ -62,15 +55,11 @@ module Orb
         #   @return [Float]
         required :value, Float
 
-        # @!parse
-        #   # Thresholds are used to define the conditions under which an alert will be
-        #   # triggered.
-        #   #
-        #   # @param value [Float]
-        #   #
-        #   def initialize(value:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(value:)
+        #   Thresholds are used to define the conditions under which an alert will be
+        #   triggered.
+        #
+        #   @param value [Float]
       end
     end
   end

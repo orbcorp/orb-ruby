@@ -41,21 +41,17 @@ module Orb
       #   @return [Symbol, Orb::Models::BillableMetric::Status]
       required :status, enum: -> { Orb::Models::BillableMetric::Status }
 
-      # @!parse
-      #   # The Metric resource represents a calculation of a quantity based on events.
-      #   # Metrics are defined by the query that transforms raw usage events into
-      #   # meaningful values for your customers.
-      #   #
-      #   # @param id [String]
-      #   # @param description [String, nil]
-      #   # @param item [Orb::Models::Item]
-      #   # @param metadata [Hash{Symbol=>String}]
-      #   # @param name [String]
-      #   # @param status [Symbol, Orb::Models::BillableMetric::Status]
-      #   #
-      #   def initialize(id:, description:, item:, metadata:, name:, status:, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, description:, item:, metadata:, name:, status:)
+      #   The Metric resource represents a calculation of a quantity based on events.
+      #   Metrics are defined by the query that transforms raw usage events into
+      #   meaningful values for your customers.
+      #
+      #   @param id [String]
+      #   @param description [String, nil]
+      #   @param item [Orb::Models::Item]
+      #   @param metadata [Hash{Symbol=>String}]
+      #   @param name [String]
+      #   @param status [Symbol, Orb::Models::BillableMetric::Status]
 
       # @see Orb::Models::BillableMetric#status
       module Status
@@ -65,11 +61,8 @@ module Orb
         DRAFT = :draft
         ARCHIVED = :archived
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

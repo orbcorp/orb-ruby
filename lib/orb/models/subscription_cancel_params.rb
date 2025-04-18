@@ -29,15 +29,11 @@ module Orb
       #   @return [Time, nil]
       optional :cancellation_date, Time, nil?: true
 
-      # @!parse
-      #   # @param cancel_option [Symbol, Orb::Models::SubscriptionCancelParams::CancelOption]
-      #   # @param allow_invoice_credit_or_void [Boolean, nil]
-      #   # @param cancellation_date [Time, nil]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(cancel_option:, allow_invoice_credit_or_void: nil, cancellation_date: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(cancel_option:, allow_invoice_credit_or_void: nil, cancellation_date: nil, request_options: {})
+      #   @param cancel_option [Symbol, Orb::Models::SubscriptionCancelParams::CancelOption]
+      #   @param allow_invoice_credit_or_void [Boolean, nil]
+      #   @param cancellation_date [Time, nil]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
       # Determines the timing of subscription cancellation
       module CancelOption
@@ -47,11 +43,8 @@ module Orb
         IMMEDIATE = :immediate
         REQUESTED_DATE = :requested_date
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end
