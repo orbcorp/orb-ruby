@@ -4,8 +4,7 @@ module Orb
   module Models
     # @see Orb::Resources::Subscriptions#trigger_phase
     class SubscriptionTriggerPhaseParams < Orb::Internal::Type::BaseModel
-      # @!parse
-      #   extend Orb::Internal::Type::RequestParameters::Converter
+      extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
       # @!attribute allow_invoice_credit_or_void
@@ -23,14 +22,10 @@ module Orb
       #   @return [Date, nil]
       optional :effective_date, Date, nil?: true
 
-      # @!parse
-      #   # @param allow_invoice_credit_or_void [Boolean, nil]
-      #   # @param effective_date [Date, nil]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(allow_invoice_credit_or_void: nil, effective_date: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(allow_invoice_credit_or_void: nil, effective_date: nil, request_options: {})
+      #   @param allow_invoice_credit_or_void [Boolean, nil]
+      #   @param effective_date [Date, nil]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

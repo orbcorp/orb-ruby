@@ -101,8 +101,7 @@ module Orb
         extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::SubscriptionFetchUsageParams::Granularity) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Orb::Models::SubscriptionFetchUsageParams::Granularity::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         DAY = T.let(:day, Orb::Models::SubscriptionFetchUsageParams::Granularity::TaggedSymbol)
 
@@ -118,8 +117,7 @@ module Orb
         extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::SubscriptionFetchUsageParams::ViewMode) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Orb::Models::SubscriptionFetchUsageParams::ViewMode::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         PERIODIC = T.let(:periodic, Orb::Models::SubscriptionFetchUsageParams::ViewMode::TaggedSymbol)
         CUMULATIVE = T.let(:cumulative, Orb::Models::SubscriptionFetchUsageParams::ViewMode::TaggedSymbol)

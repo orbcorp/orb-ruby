@@ -117,8 +117,7 @@ module Orb
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::Customers::BalanceTransactionCreateResponse::Action) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Orb::Models::Customers::BalanceTransactionCreateResponse::Action::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           APPLIED_TO_INVOICE =
             T.let(:applied_to_invoice, Orb::Models::Customers::BalanceTransactionCreateResponse::Action::TaggedSymbol)
@@ -181,8 +180,7 @@ module Orb
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::Customers::BalanceTransactionCreateResponse::Type) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Orb::Models::Customers::BalanceTransactionCreateResponse::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           INCREMENT =
             T.let(:increment, Orb::Models::Customers::BalanceTransactionCreateResponse::Type::TaggedSymbol)

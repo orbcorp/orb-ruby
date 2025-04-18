@@ -12,9 +12,8 @@ module Orb
 
         # @param mod [Module]
         def self.included(mod)
-          return unless mod <= Orb::Internal::Type::BaseModel
+          raise ArgumentError.new(mod) unless mod <= Orb::Internal::Type::BaseModel
 
-          mod.extend(Orb::Internal::Type::RequestParameters::Converter)
           mod.optional(:request_options, Orb::RequestOptions)
         end
 

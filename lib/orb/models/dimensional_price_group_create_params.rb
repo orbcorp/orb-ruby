@@ -4,8 +4,7 @@ module Orb
   module Models
     # @see Orb::Resources::DimensionalPriceGroups#create
     class DimensionalPriceGroupCreateParams < Orb::Internal::Type::BaseModel
-      # @!parse
-      #   extend Orb::Internal::Type::RequestParameters::Converter
+      extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
       # @!attribute billable_metric_id
@@ -37,27 +36,13 @@ module Orb
       #   @return [Hash{Symbol=>String, nil}, nil]
       optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-      # @!parse
-      #   # @param billable_metric_id [String]
-      #   # @param dimensions [Array<String>]
-      #   # @param name [String]
-      #   # @param external_dimensional_price_group_id [String, nil]
-      #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     billable_metric_id:,
-      #     dimensions:,
-      #     name:,
-      #     external_dimensional_price_group_id: nil,
-      #     metadata: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(billable_metric_id:, dimensions:, name:, external_dimensional_price_group_id: nil, metadata: nil, request_options: {})
+      #   @param billable_metric_id [String]
+      #   @param dimensions [Array<String>]
+      #   @param name [String]
+      #   @param external_dimensional_price_group_id [String, nil]
+      #   @param metadata [Hash{Symbol=>String, nil}, nil]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

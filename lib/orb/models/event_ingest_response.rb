@@ -19,13 +19,9 @@ module Orb
       #   @return [Orb::Models::EventIngestResponse::Debug, nil]
       optional :debug, -> { Orb::Models::EventIngestResponse::Debug }, nil?: true
 
-      # @!parse
-      #   # @param validation_failed [Array<Orb::Models::EventIngestResponse::ValidationFailed>]
-      #   # @param debug [Orb::Models::EventIngestResponse::Debug, nil]
-      #   #
-      #   def initialize(validation_failed:, debug: nil, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(validation_failed:, debug: nil)
+      #   @param validation_failed [Array<Orb::Models::EventIngestResponse::ValidationFailed>]
+      #   @param debug [Orb::Models::EventIngestResponse::Debug, nil]
 
       class ValidationFailed < Orb::Internal::Type::BaseModel
         # @!attribute idempotency_key
@@ -41,13 +37,9 @@ module Orb
         #   @return [Array<String>]
         required :validation_errors, Orb::Internal::Type::ArrayOf[String]
 
-        # @!parse
-        #   # @param idempotency_key [String]
-        #   # @param validation_errors [Array<String>]
-        #   #
-        #   def initialize(idempotency_key:, validation_errors:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(idempotency_key:, validation_errors:)
+        #   @param idempotency_key [String]
+        #   @param validation_errors [Array<String>]
       end
 
       # @see Orb::Models::EventIngestResponse#debug
@@ -62,16 +54,12 @@ module Orb
         #   @return [Array<String>]
         required :ingested, Orb::Internal::Type::ArrayOf[String]
 
-        # @!parse
-        #   # Optional debug information (only present when debug=true is passed to the
-        #   # endpoint). Contains ingested and duplicate event idempotency keys.
-        #   #
-        #   # @param duplicate [Array<String>]
-        #   # @param ingested [Array<String>]
-        #   #
-        #   def initialize(duplicate:, ingested:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(duplicate:, ingested:)
+        #   Optional debug information (only present when debug=true is passed to the
+        #   endpoint). Contains ingested and duplicate event idempotency keys.
+        #
+        #   @param duplicate [Array<String>]
+        #   @param ingested [Array<String>]
       end
     end
   end

@@ -1368,8 +1368,7 @@ module Orb
         extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::SubscriptionPriceIntervalsResponse::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Orb::Models::SubscriptionPriceIntervalsResponse::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ACTIVE = T.let(:active, Orb::Models::SubscriptionPriceIntervalsResponse::Status::TaggedSymbol)
         ENDED = T.let(:ended, Orb::Models::SubscriptionPriceIntervalsResponse::Status::TaggedSymbol)

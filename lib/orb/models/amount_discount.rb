@@ -26,15 +26,11 @@ module Orb
       #   @return [String, nil]
       optional :reason, String, nil?: true
 
-      # @!parse
-      #   # @param amount_discount [String]
-      #   # @param applies_to_price_ids [Array<String>]
-      #   # @param discount_type [Symbol, Orb::Models::AmountDiscount::DiscountType]
-      #   # @param reason [String, nil]
-      #   #
-      #   def initialize(amount_discount:, applies_to_price_ids:, discount_type:, reason: nil, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(amount_discount:, applies_to_price_ids:, discount_type:, reason: nil)
+      #   @param amount_discount [String]
+      #   @param applies_to_price_ids [Array<String>]
+      #   @param discount_type [Symbol, Orb::Models::AmountDiscount::DiscountType]
+      #   @param reason [String, nil]
 
       # @see Orb::Models::AmountDiscount#discount_type
       module DiscountType
@@ -42,11 +38,8 @@ module Orb
 
         AMOUNT = :amount
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

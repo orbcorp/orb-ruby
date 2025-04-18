@@ -1420,8 +1420,7 @@ module Orb
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ACTIVE =
           T.let(:active, Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::Status::TaggedSymbol)

@@ -5,8 +5,7 @@ module Orb
     module Events
       # @see Orb::Resources::Events::Backfills#create
       class BackfillCreateParams < Orb::Internal::Type::BaseModel
-        # @!parse
-        #   extend Orb::Internal::Type::RequestParameters::Converter
+        extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
         # @!attribute timeframe_end
@@ -55,42 +54,22 @@ module Orb
         #   @return [String, nil]
         optional :external_customer_id, String, nil?: true
 
-        # @!attribute [r] replace_existing_events
+        # @!attribute replace_existing_events
         #   If true, replaces all existing events in the timeframe with the newly ingested
         #   events. If false, adds the newly ingested events to the existing events.
         #
         #   @return [Boolean, nil]
         optional :replace_existing_events, Orb::Internal::Type::Boolean
 
-        # @!parse
-        #   # @return [Boolean]
-        #   attr_writer :replace_existing_events
-
-        # @!parse
-        #   # @param timeframe_end [Time]
-        #   # @param timeframe_start [Time]
-        #   # @param close_time [Time, nil]
-        #   # @param customer_id [String, nil]
-        #   # @param deprecation_filter [String, nil]
-        #   # @param external_customer_id [String, nil]
-        #   # @param replace_existing_events [Boolean]
-        #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(
-        #     timeframe_end:,
-        #     timeframe_start:,
-        #     close_time: nil,
-        #     customer_id: nil,
-        #     deprecation_filter: nil,
-        #     external_customer_id: nil,
-        #     replace_existing_events: nil,
-        #     request_options: {},
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(timeframe_end:, timeframe_start:, close_time: nil, customer_id: nil, deprecation_filter: nil, external_customer_id: nil, replace_existing_events: nil, request_options: {})
+        #   @param timeframe_end [Time]
+        #   @param timeframe_start [Time]
+        #   @param close_time [Time, nil]
+        #   @param customer_id [String, nil]
+        #   @param deprecation_filter [String, nil]
+        #   @param external_customer_id [String, nil]
+        #   @param replace_existing_events [Boolean]
+        #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
       end
     end
   end

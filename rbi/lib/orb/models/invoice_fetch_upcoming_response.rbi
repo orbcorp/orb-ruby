@@ -782,14 +782,7 @@ module Orb
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Action) }
-          OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                String,
-                Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Action::TaggedSymbol
-              )
-            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           APPLIED_TO_INVOICE =
             T.let(
@@ -875,14 +868,7 @@ module Orb
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Type) }
-          OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                String,
-                Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Type::TaggedSymbol
-              )
-            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           INCREMENT =
             T.let(
@@ -1047,8 +1033,7 @@ module Orb
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::Country) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::Country::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           AD = T.let(:AD, Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::Country::TaggedSymbol)
           AE = T.let(:AE, Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::Country::TaggedSymbol)
@@ -1140,8 +1125,7 @@ module Orb
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::Type) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           AD_NRT = T.let(:ad_nrt, Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::Type::TaggedSymbol)
           AE_TRN = T.let(:ae_trn, Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::Type::TaggedSymbol)
@@ -1229,8 +1213,7 @@ module Orb
         extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::InvoiceFetchUpcomingResponse::InvoiceSource) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Orb::Models::InvoiceFetchUpcomingResponse::InvoiceSource::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         SUBSCRIPTION =
           T.let(:subscription, Orb::Models::InvoiceFetchUpcomingResponse::InvoiceSource::TaggedSymbol)
@@ -2475,14 +2458,7 @@ module Orb
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt::PaymentProvider) }
-          OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                String,
-                Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt::PaymentProvider::TaggedSymbol
-              )
-            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           STRIPE =
             T.let(:stripe, Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt::PaymentProvider::TaggedSymbol)
@@ -2549,8 +2525,7 @@ module Orb
         extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::InvoiceFetchUpcomingResponse::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Orb::Models::InvoiceFetchUpcomingResponse::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ISSUED = T.let(:issued, Orb::Models::InvoiceFetchUpcomingResponse::Status::TaggedSymbol)
         PAID = T.let(:paid, Orb::Models::InvoiceFetchUpcomingResponse::Status::TaggedSymbol)

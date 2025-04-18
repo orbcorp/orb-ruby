@@ -10,12 +10,8 @@ module Orb
         #   @return [Array<Orb::Models::Events::EventVolumes::Data>]
         required :data, -> { Orb::Internal::Type::ArrayOf[Orb::Models::Events::EventVolumes::Data] }
 
-        # @!parse
-        #   # @param data [Array<Orb::Models::Events::EventVolumes::Data>]
-        #   #
-        #   def initialize(data:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(data:)
+        #   @param data [Array<Orb::Models::Events::EventVolumes::Data>]
 
         class Data < Orb::Internal::Type::BaseModel
           # @!attribute count
@@ -34,17 +30,13 @@ module Orb
           #   @return [Time]
           required :timeframe_start, Time
 
-          # @!parse
-          #   # An EventVolume contains the event volume ingested in an hourly window. The
-          #   # timestamp used for the aggregation is the `timestamp` datetime field on events.
-          #   #
-          #   # @param count [Integer]
-          #   # @param timeframe_end [Time]
-          #   # @param timeframe_start [Time]
-          #   #
-          #   def initialize(count:, timeframe_end:, timeframe_start:, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(count:, timeframe_end:, timeframe_start:)
+          #   An EventVolume contains the event volume ingested in an hourly window. The
+          #   timestamp used for the aggregation is the `timestamp` datetime field on events.
+          #
+          #   @param count [Integer]
+          #   @param timeframe_end [Time]
+          #   @param timeframe_start [Time]
         end
       end
     end

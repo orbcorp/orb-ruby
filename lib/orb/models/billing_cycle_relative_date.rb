@@ -8,11 +8,8 @@ module Orb
       START_OF_TERM = :start_of_term
       END_OF_TERM = :end_of_term
 
-      finalize!
-
-      # @!parse
-      #   # @return [Array<Symbol>]
-      #   def self.values; end
+      # @!method self.values
+      #   @return [Array<Symbol>]
     end
   end
 end

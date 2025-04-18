@@ -339,6 +339,8 @@ module Orb
         end
 
         class << self
+          # @api private
+          #
           # @param model [Orb::Internal::Type::BaseModel]
           #
           # @return [Hash{Symbol=>Object}]

@@ -153,14 +153,7 @@ module Orb
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Customers::Credits::TopUpListByExternalIDResponse::ExpiresAfterUnit) }
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  String,
-                  Orb::Models::Customers::Credits::TopUpListByExternalIDResponse::ExpiresAfterUnit::TaggedSymbol
-                )
-              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(

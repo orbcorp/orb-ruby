@@ -6,8 +6,7 @@ module Orb
       module Credits
         # @see Orb::Resources::Customers::Credits::Ledger#create_entry
         class LedgerCreateEntryParams < Orb::Internal::Type::BaseModel
-          # @!parse
-          #   extend Orb::Internal::Type::RequestParameters::Converter
+          extend Orb::Internal::Type::RequestParameters::Converter
           include Orb::Internal::Type::RequestParameters
 
           # @!attribute amount
@@ -98,52 +97,28 @@ module Orb
                    enum: -> { Orb::Models::Customers::Credits::LedgerCreateEntryParams::VoidReason },
                    nil?: true
 
-          # @!parse
-          #   # @param amount [Float]
-          #   # @param entry_type [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::EntryType]
-          #   # @param expiry_date [Time, nil]
-          #   # @param target_expiry_date [Date]
-          #   # @param block_id [String]
-          #   # @param currency [String, nil]
-          #   # @param description [String, nil]
-          #   # @param effective_date [Time, nil]
-          #   # @param invoice_settings [Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings, nil]
-          #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-          #   # @param per_unit_cost_basis [String, nil]
-          #   # @param void_reason [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::VoidReason, nil]
-          #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-          #   #
-          #   def initialize(
-          #     amount:,
-          #     entry_type:,
-          #     expiry_date:,
-          #     target_expiry_date:,
-          #     block_id:,
-          #     currency: nil,
-          #     description: nil,
-          #     effective_date: nil,
-          #     invoice_settings: nil,
-          #     metadata: nil,
-          #     per_unit_cost_basis: nil,
-          #     void_reason: nil,
-          #     request_options: {},
-          #     **
-          #   )
-          #     super
-          #   end
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(amount:, entry_type:, expiry_date:, target_expiry_date:, block_id:, currency: nil, description: nil, effective_date: nil, invoice_settings: nil, metadata: nil, per_unit_cost_basis: nil, void_reason: nil, request_options: {})
+          #   @param amount [Float]
+          #   @param entry_type [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::EntryType]
+          #   @param expiry_date [Time, nil]
+          #   @param target_expiry_date [Date]
+          #   @param block_id [String]
+          #   @param currency [String, nil]
+          #   @param description [String, nil]
+          #   @param effective_date [Time, nil]
+          #   @param invoice_settings [Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings, nil]
+          #   @param metadata [Hash{Symbol=>String, nil}, nil]
+          #   @param per_unit_cost_basis [String, nil]
+          #   @param void_reason [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::VoidReason, nil]
+          #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
           module EntryType
             extend Orb::Internal::Type::Enum
 
             AMENDMENT = :amendment
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
 
           class InvoiceSettings < Orb::Internal::Type::BaseModel
@@ -168,31 +143,23 @@ module Orb
             #   @return [String, nil]
             optional :memo, String, nil?: true
 
-            # @!attribute [r] require_successful_payment
+            # @!attribute require_successful_payment
             #   If true, the new credit block will require that the corresponding invoice is
             #   paid before it can be drawn down from.
             #
             #   @return [Boolean, nil]
             optional :require_successful_payment, Orb::Internal::Type::Boolean
 
-            # @!parse
-            #   # @return [Boolean]
-            #   attr_writer :require_successful_payment
-
-            # @!parse
-            #   # Passing `invoice_settings` automatically generates an invoice for the newly
-            #   # added credits. If `invoice_settings` is passed, you must specify
-            #   # per_unit_cost_basis, as the calculation of the invoice total is done on that
-            #   # basis.
-            #   #
-            #   # @param auto_collection [Boolean]
-            #   # @param net_terms [Integer]
-            #   # @param memo [String, nil]
-            #   # @param require_successful_payment [Boolean]
-            #   #
-            #   def initialize(auto_collection:, net_terms:, memo: nil, require_successful_payment: nil, **) = super
-
-            # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+            # @!method initialize(auto_collection:, net_terms:, memo: nil, require_successful_payment: nil)
+            #   Passing `invoice_settings` automatically generates an invoice for the newly
+            #   added credits. If `invoice_settings` is passed, you must specify
+            #   per_unit_cost_basis, as the calculation of the invoice total is done on that
+            #   basis.
+            #
+            #   @param auto_collection [Boolean]
+            #   @param net_terms [Integer]
+            #   @param memo [String, nil]
+            #   @param require_successful_payment [Boolean]
           end
 
           # Can only be specified when `entry_type=void`. The reason for the void.
@@ -201,11 +168,8 @@ module Orb
 
             REFUND = :refund
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
       end

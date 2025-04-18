@@ -4,8 +4,7 @@ module Orb
   module Models
     # @see Orb::Resources::SubscriptionChanges#apply
     class SubscriptionChangeApplyParams < Orb::Internal::Type::BaseModel
-      # @!parse
-      #   extend Orb::Internal::Type::RequestParameters::Converter
+      extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
       # @!attribute description
@@ -20,14 +19,10 @@ module Orb
       #   @return [String, nil]
       optional :previously_collected_amount, String, nil?: true
 
-      # @!parse
-      #   # @param description [String, nil]
-      #   # @param previously_collected_amount [String, nil]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(description: nil, previously_collected_amount: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(description: nil, previously_collected_amount: nil, request_options: {})
+      #   @param description [String, nil]
+      #   @param previously_collected_amount [String, nil]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

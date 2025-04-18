@@ -24,15 +24,11 @@ module Orb
       #   @return [Time]
       required :start_date, Time
 
-      # @!parse
-      #   # @param created_at [Time]
-      #   # @param end_date [Time, nil]
-      #   # @param plan [Orb::Models::SubscriptionFetchScheduleResponse::Plan]
-      #   # @param start_date [Time]
-      #   #
-      #   def initialize(created_at:, end_date:, plan:, start_date:, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(created_at:, end_date:, plan:, start_date:)
+      #   @param created_at [Time]
+      #   @param end_date [Time, nil]
+      #   @param plan [Orb::Models::SubscriptionFetchScheduleResponse::Plan]
+      #   @param start_date [Time]
 
       # @see Orb::Models::SubscriptionFetchScheduleResponse#plan
       class Plan < Orb::Internal::Type::BaseModel
@@ -54,14 +50,10 @@ module Orb
         #   @return [String, nil]
         required :name, String, nil?: true
 
-        # @!parse
-        #   # @param id [String, nil]
-        #   # @param external_plan_id [String, nil]
-        #   # @param name [String, nil]
-        #   #
-        #   def initialize(id:, external_plan_id:, name:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, external_plan_id:, name:)
+        #   @param id [String, nil]
+        #   @param external_plan_id [String, nil]
+        #   @param name [String, nil]
       end
     end
   end

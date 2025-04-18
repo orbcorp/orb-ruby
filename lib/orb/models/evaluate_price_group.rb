@@ -22,14 +22,10 @@ module Orb
       #   @return [Float]
       required :quantity, Float
 
-      # @!parse
-      #   # @param amount [String]
-      #   # @param grouping_values [Array<String, Float, Boolean>]
-      #   # @param quantity [Float]
-      #   #
-      #   def initialize(amount:, grouping_values:, quantity:, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(amount:, grouping_values:, quantity:)
+      #   @param amount [String]
+      #   @param grouping_values [Array<String, Float, Boolean>]
+      #   @param quantity [Float]
 
       module GroupingValue
         extend Orb::Internal::Type::Union
@@ -40,9 +36,8 @@ module Orb
 
         variant Orb::Internal::Type::Boolean
 
-        # @!parse
-        #   # @return [Array(String, Float, Boolean)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(String, Float, Boolean)]
       end
     end
   end

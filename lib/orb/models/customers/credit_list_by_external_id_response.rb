@@ -40,18 +40,14 @@ module Orb
         #   @return [Symbol, Orb::Models::Customers::CreditListByExternalIDResponse::Status]
         required :status, enum: -> { Orb::Models::Customers::CreditListByExternalIDResponse::Status }
 
-        # @!parse
-        #   # @param id [String]
-        #   # @param balance [Float]
-        #   # @param effective_date [Time, nil]
-        #   # @param expiry_date [Time, nil]
-        #   # @param maximum_initial_balance [Float, nil]
-        #   # @param per_unit_cost_basis [String, nil]
-        #   # @param status [Symbol, Orb::Models::Customers::CreditListByExternalIDResponse::Status]
-        #   #
-        #   def initialize(id:, balance:, effective_date:, expiry_date:, maximum_initial_balance:, per_unit_cost_basis:, status:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, balance:, effective_date:, expiry_date:, maximum_initial_balance:, per_unit_cost_basis:, status:)
+        #   @param id [String]
+        #   @param balance [Float]
+        #   @param effective_date [Time, nil]
+        #   @param expiry_date [Time, nil]
+        #   @param maximum_initial_balance [Float, nil]
+        #   @param per_unit_cost_basis [String, nil]
+        #   @param status [Symbol, Orb::Models::Customers::CreditListByExternalIDResponse::Status]
 
         # @see Orb::Models::Customers::CreditListByExternalIDResponse#status
         module Status
@@ -60,11 +56,8 @@ module Orb
           ACTIVE = :active
           PENDING_PAYMENT = :pending_payment
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

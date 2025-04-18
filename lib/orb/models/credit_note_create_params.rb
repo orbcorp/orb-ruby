@@ -4,8 +4,7 @@ module Orb
   module Models
     # @see Orb::Resources::CreditNotes#create
     class CreditNoteCreateParams < Orb::Internal::Type::BaseModel
-      # @!parse
-      #   extend Orb::Internal::Type::RequestParameters::Converter
+      extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
       # @!attribute line_items
@@ -25,15 +24,11 @@ module Orb
       #   @return [Symbol, Orb::Models::CreditNoteCreateParams::Reason, nil]
       optional :reason, enum: -> { Orb::Models::CreditNoteCreateParams::Reason }, nil?: true
 
-      # @!parse
-      #   # @param line_items [Array<Orb::Models::CreditNoteCreateParams::LineItem>]
-      #   # @param memo [String, nil]
-      #   # @param reason [Symbol, Orb::Models::CreditNoteCreateParams::Reason, nil]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(line_items:, memo: nil, reason: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(line_items:, memo: nil, reason: nil, request_options: {})
+      #   @param line_items [Array<Orb::Models::CreditNoteCreateParams::LineItem>]
+      #   @param memo [String, nil]
+      #   @param reason [Symbol, Orb::Models::CreditNoteCreateParams::Reason, nil]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
       class LineItem < Orb::Internal::Type::BaseModel
         # @!attribute amount
@@ -48,13 +43,9 @@ module Orb
         #   @return [String]
         required :invoice_line_item_id, String
 
-        # @!parse
-        #   # @param amount [String]
-        #   # @param invoice_line_item_id [String]
-        #   #
-        #   def initialize(amount:, invoice_line_item_id:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(amount:, invoice_line_item_id:)
+        #   @param amount [String]
+        #   @param invoice_line_item_id [String]
       end
 
       # An optional reason for the credit note.
@@ -66,11 +57,8 @@ module Orb
         ORDER_CHANGE = :order_change
         PRODUCT_UNSATISFACTORY = :product_unsatisfactory
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

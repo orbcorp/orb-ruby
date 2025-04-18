@@ -4,8 +4,7 @@ module Orb
   module Models
     # @see Orb::Resources::Subscriptions#update
     class SubscriptionUpdateParams < Orb::Internal::Type::BaseModel
-      # @!parse
-      #   extend Orb::Internal::Type::RequestParameters::Converter
+      extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
       # @!attribute auto_collection
@@ -48,27 +47,13 @@ module Orb
       #   @return [Integer, nil]
       optional :net_terms, Integer, nil?: true
 
-      # @!parse
-      #   # @param auto_collection [Boolean, nil]
-      #   # @param default_invoice_memo [String, nil]
-      #   # @param invoicing_threshold [String, nil]
-      #   # @param metadata [Hash{Symbol=>String, nil}, nil]
-      #   # @param net_terms [Integer, nil]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     auto_collection: nil,
-      #     default_invoice_memo: nil,
-      #     invoicing_threshold: nil,
-      #     metadata: nil,
-      #     net_terms: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(auto_collection: nil, default_invoice_memo: nil, invoicing_threshold: nil, metadata: nil, net_terms: nil, request_options: {})
+      #   @param auto_collection [Boolean, nil]
+      #   @param default_invoice_memo [String, nil]
+      #   @param invoicing_threshold [String, nil]
+      #   @param metadata [Hash{Symbol=>String, nil}, nil]
+      #   @param net_terms [Integer, nil]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

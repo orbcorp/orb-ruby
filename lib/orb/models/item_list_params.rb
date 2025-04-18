@@ -4,8 +4,7 @@ module Orb
   module Models
     # @see Orb::Resources::Items#list
     class ItemListParams < Orb::Internal::Type::BaseModel
-      # @!parse
-      #   extend Orb::Internal::Type::RequestParameters::Converter
+      extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
       # @!attribute cursor
@@ -15,24 +14,16 @@ module Orb
       #   @return [String, nil]
       optional :cursor, String, nil?: true
 
-      # @!attribute [r] limit
+      # @!attribute limit
       #   The number of items to fetch. Defaults to 20.
       #
       #   @return [Integer, nil]
       optional :limit, Integer
 
-      # @!parse
-      #   # @return [Integer]
-      #   attr_writer :limit
-
-      # @!parse
-      #   # @param cursor [String, nil]
-      #   # @param limit [Integer]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(cursor: nil, limit: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(cursor: nil, limit: nil, request_options: {})
+      #   @param cursor [String, nil]
+      #   @param limit [Integer]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

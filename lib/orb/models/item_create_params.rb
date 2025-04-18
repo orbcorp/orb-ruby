@@ -4,8 +4,7 @@ module Orb
   module Models
     # @see Orb::Resources::Items#create
     class ItemCreateParams < Orb::Internal::Type::BaseModel
-      # @!parse
-      #   extend Orb::Internal::Type::RequestParameters::Converter
+      extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
       # @!attribute name
@@ -14,13 +13,9 @@ module Orb
       #   @return [String]
       required :name, String
 
-      # @!parse
-      #   # @param name [String]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(name:, request_options: {}, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(name:, request_options: {})
+      #   @param name [String]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

@@ -73,40 +73,21 @@ module Orb
         #   @return [String, nil]
         optional :deprecation_filter, String, nil?: true
 
-        # @!parse
-        #   # A backfill represents an update to historical usage data, adding or replacing
-        #   # events in a timeframe.
-        #   #
-        #   # @param id [String]
-        #   # @param close_time [Time, nil]
-        #   # @param created_at [Time]
-        #   # @param customer_id [String, nil]
-        #   # @param events_ingested [Integer]
-        #   # @param replace_existing_events [Boolean]
-        #   # @param reverted_at [Time, nil]
-        #   # @param status [Symbol, Orb::Models::Events::BackfillRevertResponse::Status]
-        #   # @param timeframe_end [Time]
-        #   # @param timeframe_start [Time]
-        #   # @param deprecation_filter [String, nil]
-        #   #
-        #   def initialize(
-        #     id:,
-        #     close_time:,
-        #     created_at:,
-        #     customer_id:,
-        #     events_ingested:,
-        #     replace_existing_events:,
-        #     reverted_at:,
-        #     status:,
-        #     timeframe_end:,
-        #     timeframe_start:,
-        #     deprecation_filter: nil,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, close_time:, created_at:, customer_id:, events_ingested:, replace_existing_events:, reverted_at:, status:, timeframe_end:, timeframe_start:, deprecation_filter: nil)
+        #   A backfill represents an update to historical usage data, adding or replacing
+        #   events in a timeframe.
+        #
+        #   @param id [String]
+        #   @param close_time [Time, nil]
+        #   @param created_at [Time]
+        #   @param customer_id [String, nil]
+        #   @param events_ingested [Integer]
+        #   @param replace_existing_events [Boolean]
+        #   @param reverted_at [Time, nil]
+        #   @param status [Symbol, Orb::Models::Events::BackfillRevertResponse::Status]
+        #   @param timeframe_end [Time]
+        #   @param timeframe_start [Time]
+        #   @param deprecation_filter [String, nil]
 
         # The status of the backfill.
         #
@@ -119,11 +100,8 @@ module Orb
           PENDING_REVERT = :pending_revert
           REVERTED = :reverted
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

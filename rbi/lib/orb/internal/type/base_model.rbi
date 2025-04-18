@@ -176,6 +176,7 @@ module Orb
         def deconstruct_keys(keys); end
 
         class << self
+          # @api private
           sig { params(model: Orb::Internal::Type::BaseModel).returns(Orb::Internal::AnyHash) }
           def walk(model); end
         end

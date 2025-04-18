@@ -65,27 +65,23 @@ module Orb
       #   @return [Symbol, Orb::Models::Alert::Type]
       required :type, enum: -> { Orb::Models::Alert::Type }
 
-      # @!parse
-      #   # [Alerts within Orb](/product-catalog/configuring-alerts) monitor spending,
-      #   # usage, or credit balance and trigger webhooks when a threshold is exceeded.
-      #   #
-      #   # Alerts created through the API can be scoped to either customers or
-      #   # subscriptions.
-      #   #
-      #   # @param id [String]
-      #   # @param created_at [Time]
-      #   # @param currency [String, nil]
-      #   # @param customer [Orb::Models::Alert::Customer, nil]
-      #   # @param enabled [Boolean]
-      #   # @param metric [Orb::Models::Alert::Metric, nil]
-      #   # @param plan [Orb::Models::Alert::Plan, nil]
-      #   # @param subscription [Orb::Models::Alert::Subscription, nil]
-      #   # @param thresholds [Array<Orb::Models::Alert::Threshold>, nil]
-      #   # @param type [Symbol, Orb::Models::Alert::Type]
-      #   #
-      #   def initialize(id:, created_at:, currency:, customer:, enabled:, metric:, plan:, subscription:, thresholds:, type:, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, created_at:, currency:, customer:, enabled:, metric:, plan:, subscription:, thresholds:, type:)
+      #   [Alerts within Orb](/product-catalog/configuring-alerts) monitor spending,
+      #   usage, or credit balance and trigger webhooks when a threshold is exceeded.
+      #
+      #   Alerts created through the API can be scoped to either customers or
+      #   subscriptions.
+      #
+      #   @param id [String]
+      #   @param created_at [Time]
+      #   @param currency [String, nil]
+      #   @param customer [Orb::Models::Alert::Customer, nil]
+      #   @param enabled [Boolean]
+      #   @param metric [Orb::Models::Alert::Metric, nil]
+      #   @param plan [Orb::Models::Alert::Plan, nil]
+      #   @param subscription [Orb::Models::Alert::Subscription, nil]
+      #   @param thresholds [Array<Orb::Models::Alert::Threshold>, nil]
+      #   @param type [Symbol, Orb::Models::Alert::Type]
 
       # @see Orb::Models::Alert#customer
       class Customer < Orb::Internal::Type::BaseModel
@@ -99,15 +95,11 @@ module Orb
         #   @return [String, nil]
         required :external_customer_id, String, nil?: true
 
-        # @!parse
-        #   # The customer the alert applies to.
-        #   #
-        #   # @param id [String]
-        #   # @param external_customer_id [String, nil]
-        #   #
-        #   def initialize(id:, external_customer_id:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, external_customer_id:)
+        #   The customer the alert applies to.
+        #
+        #   @param id [String]
+        #   @param external_customer_id [String, nil]
       end
 
       # @see Orb::Models::Alert#metric
@@ -117,14 +109,10 @@ module Orb
         #   @return [String]
         required :id, String
 
-        # @!parse
-        #   # The metric the alert applies to.
-        #   #
-        #   # @param id [String]
-        #   #
-        #   def initialize(id:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:)
+        #   The metric the alert applies to.
+        #
+        #   @param id [String]
       end
 
       # @see Orb::Models::Alert#plan
@@ -152,17 +140,13 @@ module Orb
         #   @return [String]
         required :plan_version, String
 
-        # @!parse
-        #   # The plan the alert applies to.
-        #   #
-        #   # @param id [String, nil]
-        #   # @param external_plan_id [String, nil]
-        #   # @param name [String, nil]
-        #   # @param plan_version [String]
-        #   #
-        #   def initialize(id:, external_plan_id:, name:, plan_version:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:, external_plan_id:, name:, plan_version:)
+        #   The plan the alert applies to.
+        #
+        #   @param id [String, nil]
+        #   @param external_plan_id [String, nil]
+        #   @param name [String, nil]
+        #   @param plan_version [String]
       end
 
       # @see Orb::Models::Alert#subscription
@@ -172,14 +156,10 @@ module Orb
         #   @return [String]
         required :id, String
 
-        # @!parse
-        #   # The subscription the alert applies to.
-        #   #
-        #   # @param id [String]
-        #   #
-        #   def initialize(id:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(id:)
+        #   The subscription the alert applies to.
+        #
+        #   @param id [String]
       end
 
       class Threshold < Orb::Internal::Type::BaseModel
@@ -191,15 +171,11 @@ module Orb
         #   @return [Float]
         required :value, Float
 
-        # @!parse
-        #   # Thresholds are used to define the conditions under which an alert will be
-        #   # triggered.
-        #   #
-        #   # @param value [Float]
-        #   #
-        #   def initialize(value:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(value:)
+        #   Thresholds are used to define the conditions under which an alert will be
+        #   triggered.
+        #
+        #   @param value [Float]
       end
 
       # The type of alert. This must be a valid alert type.
@@ -214,11 +190,8 @@ module Orb
         USAGE_EXCEEDED = :usage_exceeded
         COST_EXCEEDED = :cost_exceeded
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

@@ -68,8 +68,7 @@ module Orb
           extend Orb::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Customers::CreditListResponse::Status) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Orb::Models::Customers::CreditListResponse::Status::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           ACTIVE = T.let(:active, Orb::Models::Customers::CreditListResponse::Status::TaggedSymbol)
           PENDING_PAYMENT =

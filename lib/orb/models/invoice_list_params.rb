@@ -4,8 +4,7 @@ module Orb
   module Models
     # @see Orb::Resources::Invoices#list
     class InvoiceListParams < Orb::Internal::Type::BaseModel
-      # @!parse
-      #   extend Orb::Internal::Type::RequestParameters::Converter
+      extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
       # @!attribute amount
@@ -94,15 +93,11 @@ module Orb
       #   @return [Boolean, nil]
       optional :is_recurring, Orb::Internal::Type::Boolean, nil?: true
 
-      # @!attribute [r] limit
+      # @!attribute limit
       #   The number of items to fetch. Defaults to 20.
       #
       #   @return [Integer, nil]
       optional :limit, Integer
-
-      # @!parse
-      #   # @return [Integer]
-      #   attr_writer :limit
 
       # @!attribute status
       #
@@ -116,55 +111,27 @@ module Orb
       #   @return [String, nil]
       optional :subscription_id, String, nil?: true
 
-      # @!parse
-      #   # @param amount [String, nil]
-      #   # @param amount_gt [String, nil]
-      #   # @param amount_lt [String, nil]
-      #   # @param cursor [String, nil]
-      #   # @param customer_id [String, nil]
-      #   # @param date_type [Symbol, Orb::Models::InvoiceListParams::DateType, nil]
-      #   # @param due_date [Date, nil]
-      #   # @param due_date_window [String, nil]
-      #   # @param due_date_gt [Date, nil]
-      #   # @param due_date_lt [Date, nil]
-      #   # @param external_customer_id [String, nil]
-      #   # @param invoice_date_gt [Time, nil]
-      #   # @param invoice_date_gte [Time, nil]
-      #   # @param invoice_date_lt [Time, nil]
-      #   # @param invoice_date_lte [Time, nil]
-      #   # @param is_recurring [Boolean, nil]
-      #   # @param limit [Integer]
-      #   # @param status [Array<Symbol, Orb::Models::InvoiceListParams::Status>, nil]
-      #   # @param subscription_id [String, nil]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     amount: nil,
-      #     amount_gt: nil,
-      #     amount_lt: nil,
-      #     cursor: nil,
-      #     customer_id: nil,
-      #     date_type: nil,
-      #     due_date: nil,
-      #     due_date_window: nil,
-      #     due_date_gt: nil,
-      #     due_date_lt: nil,
-      #     external_customer_id: nil,
-      #     invoice_date_gt: nil,
-      #     invoice_date_gte: nil,
-      #     invoice_date_lt: nil,
-      #     invoice_date_lte: nil,
-      #     is_recurring: nil,
-      #     limit: nil,
-      #     status: nil,
-      #     subscription_id: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(amount: nil, amount_gt: nil, amount_lt: nil, cursor: nil, customer_id: nil, date_type: nil, due_date: nil, due_date_window: nil, due_date_gt: nil, due_date_lt: nil, external_customer_id: nil, invoice_date_gt: nil, invoice_date_gte: nil, invoice_date_lt: nil, invoice_date_lte: nil, is_recurring: nil, limit: nil, status: nil, subscription_id: nil, request_options: {})
+      #   @param amount [String, nil]
+      #   @param amount_gt [String, nil]
+      #   @param amount_lt [String, nil]
+      #   @param cursor [String, nil]
+      #   @param customer_id [String, nil]
+      #   @param date_type [Symbol, Orb::Models::InvoiceListParams::DateType, nil]
+      #   @param due_date [Date, nil]
+      #   @param due_date_window [String, nil]
+      #   @param due_date_gt [Date, nil]
+      #   @param due_date_lt [Date, nil]
+      #   @param external_customer_id [String, nil]
+      #   @param invoice_date_gt [Time, nil]
+      #   @param invoice_date_gte [Time, nil]
+      #   @param invoice_date_lt [Time, nil]
+      #   @param invoice_date_lte [Time, nil]
+      #   @param is_recurring [Boolean, nil]
+      #   @param limit [Integer]
+      #   @param status [Array<Symbol, Orb::Models::InvoiceListParams::Status>, nil]
+      #   @param subscription_id [String, nil]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
       module DateType
         extend Orb::Internal::Type::Enum
@@ -172,11 +139,8 @@ module Orb
         DUE_DATE = :due_date
         INVOICE_DATE = :invoice_date
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       module Status
@@ -188,11 +152,8 @@ module Orb
         SYNCED = :synced
         VOID = :void
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

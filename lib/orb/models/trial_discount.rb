@@ -32,25 +32,12 @@ module Orb
       #   @return [Float, nil]
       optional :trial_percentage_discount, Float, nil?: true
 
-      # @!parse
-      #   # @param applies_to_price_ids [Array<String>]
-      #   # @param discount_type [Symbol, Orb::Models::TrialDiscount::DiscountType]
-      #   # @param reason [String, nil]
-      #   # @param trial_amount_discount [String, nil]
-      #   # @param trial_percentage_discount [Float, nil]
-      #   #
-      #   def initialize(
-      #     applies_to_price_ids:,
-      #     discount_type:,
-      #     reason: nil,
-      #     trial_amount_discount: nil,
-      #     trial_percentage_discount: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(applies_to_price_ids:, discount_type:, reason: nil, trial_amount_discount: nil, trial_percentage_discount: nil)
+      #   @param applies_to_price_ids [Array<String>]
+      #   @param discount_type [Symbol, Orb::Models::TrialDiscount::DiscountType]
+      #   @param reason [String, nil]
+      #   @param trial_amount_discount [String, nil]
+      #   @param trial_percentage_discount [Float, nil]
 
       # @see Orb::Models::TrialDiscount#discount_type
       module DiscountType
@@ -58,11 +45,8 @@ module Orb
 
         TRIAL = :trial
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

@@ -4,8 +4,7 @@ module Orb
   module Models
     # @see Orb::Resources::Prices#evaluate
     class PriceEvaluateParams < Orb::Internal::Type::BaseModel
-      # @!parse
-      #   extend Orb::Internal::Type::RequestParameters::Converter
+      extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
       # @!attribute timeframe_end
@@ -40,7 +39,7 @@ module Orb
       #   @return [String, nil]
       optional :filter, String, nil?: true
 
-      # @!attribute [r] grouping_keys
+      # @!attribute grouping_keys
       #   Properties (or
       #   [computed properties](/extensibility/advanced-metrics#computed-properties)) used
       #   to group the underlying billable metric
@@ -48,33 +47,14 @@ module Orb
       #   @return [Array<String>, nil]
       optional :grouping_keys, Orb::Internal::Type::ArrayOf[String]
 
-      # @!parse
-      #   # @return [Array<String>]
-      #   attr_writer :grouping_keys
-
-      # @!parse
-      #   # @param timeframe_end [Time]
-      #   # @param timeframe_start [Time]
-      #   # @param customer_id [String, nil]
-      #   # @param external_customer_id [String, nil]
-      #   # @param filter [String, nil]
-      #   # @param grouping_keys [Array<String>]
-      #   # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     timeframe_end:,
-      #     timeframe_start:,
-      #     customer_id: nil,
-      #     external_customer_id: nil,
-      #     filter: nil,
-      #     grouping_keys: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(timeframe_end:, timeframe_start:, customer_id: nil, external_customer_id: nil, filter: nil, grouping_keys: nil, request_options: {})
+      #   @param timeframe_end [Time]
+      #   @param timeframe_start [Time]
+      #   @param customer_id [String, nil]
+      #   @param external_customer_id [String, nil]
+      #   @param filter [String, nil]
+      #   @param grouping_keys [Array<String>]
+      #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

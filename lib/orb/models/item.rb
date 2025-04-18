@@ -24,19 +24,15 @@ module Orb
       #   @return [String]
       required :name, String
 
-      # @!parse
-      #   # The Item resource represents a sellable product or good. Items are associated
-      #   # with all line items, billable metrics, and prices and are used for defining
-      #   # external sync behavior for invoices and tax calculation purposes.
-      #   #
-      #   # @param id [String]
-      #   # @param created_at [Time]
-      #   # @param external_connections [Array<Orb::Models::Item::ExternalConnection>]
-      #   # @param name [String]
-      #   #
-      #   def initialize(id:, created_at:, external_connections:, name:, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, created_at:, external_connections:, name:)
+      #   The Item resource represents a sellable product or good. Items are associated
+      #   with all line items, billable metrics, and prices and are used for defining
+      #   external sync behavior for invoices and tax calculation purposes.
+      #
+      #   @param id [String]
+      #   @param created_at [Time]
+      #   @param external_connections [Array<Orb::Models::Item::ExternalConnection>]
+      #   @param name [String]
 
       class ExternalConnection < Orb::Internal::Type::BaseModel
         # @!attribute external_connection_name
@@ -50,13 +46,9 @@ module Orb
         #   @return [String]
         required :external_entity_id, String
 
-        # @!parse
-        #   # @param external_connection_name [Symbol, Orb::Models::Item::ExternalConnection::ExternalConnectionName]
-        #   # @param external_entity_id [String]
-        #   #
-        #   def initialize(external_connection_name:, external_entity_id:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(external_connection_name:, external_entity_id:)
+        #   @param external_connection_name [Symbol, Orb::Models::Item::ExternalConnection::ExternalConnectionName]
+        #   @param external_entity_id [String]
 
         # @see Orb::Models::Item::ExternalConnection#external_connection_name
         module ExternalConnectionName
@@ -70,11 +62,8 @@ module Orb
           AVALARA = :avalara
           ANROK = :anrok
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

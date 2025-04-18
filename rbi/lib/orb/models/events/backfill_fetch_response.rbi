@@ -106,8 +106,7 @@ module Orb
           extend Orb::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Events::BackfillFetchResponse::Status) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Orb::Models::Events::BackfillFetchResponse::Status::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           PENDING = T.let(:pending, Orb::Models::Events::BackfillFetchResponse::Status::TaggedSymbol)
           REFLECTED = T.let(:reflected, Orb::Models::Events::BackfillFetchResponse::Status::TaggedSymbol)

@@ -44,21 +44,17 @@ module Orb
       #   @return [String]
       required :name, String
 
-      # @!parse
-      #   # A dimensional price group is used to partition the result of a billable metric
-      #   # by a set of dimensions. Prices in a price group must specify the parition used
-      #   # to derive their usage.
-      #   #
-      #   # @param id [String]
-      #   # @param billable_metric_id [String]
-      #   # @param dimensions [Array<String>]
-      #   # @param external_dimensional_price_group_id [String, nil]
-      #   # @param metadata [Hash{Symbol=>String}]
-      #   # @param name [String]
-      #   #
-      #   def initialize(id:, billable_metric_id:, dimensions:, external_dimensional_price_group_id:, metadata:, name:, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, billable_metric_id:, dimensions:, external_dimensional_price_group_id:, metadata:, name:)
+      #   A dimensional price group is used to partition the result of a billable metric
+      #   by a set of dimensions. Prices in a price group must specify the parition used
+      #   to derive their usage.
+      #
+      #   @param id [String]
+      #   @param billable_metric_id [String]
+      #   @param dimensions [Array<String>]
+      #   @param external_dimensional_price_group_id [String, nil]
+      #   @param metadata [Hash{Symbol=>String}]
+      #   @param name [String]
     end
   end
 end

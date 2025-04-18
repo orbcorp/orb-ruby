@@ -62,8 +62,7 @@ module Orb
         extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::CreditNoteCreateParams::Reason) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Orb::Models::CreditNoteCreateParams::Reason::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         DUPLICATE = T.let(:duplicate, Orb::Models::CreditNoteCreateParams::Reason::TaggedSymbol)
         FRAUDULENT = T.let(:fraudulent, Orb::Models::CreditNoteCreateParams::Reason::TaggedSymbol)

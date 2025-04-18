@@ -9,12 +9,8 @@ module Orb
       #   @return [Array<Orb::Models::SubscriptionFetchCostsResponse::Data>]
       required :data, -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionFetchCostsResponse::Data] }
 
-      # @!parse
-      #   # @param data [Array<Orb::Models::SubscriptionFetchCostsResponse::Data>]
-      #   #
-      #   def initialize(data:, **) = super
-
-      # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+      # @!method initialize(data:)
+      #   @param data [Array<Orb::Models::SubscriptionFetchCostsResponse::Data>]
 
       class Data < Orb::Internal::Type::BaseModel
         # @!attribute per_price_costs
@@ -45,16 +41,12 @@ module Orb
         #   @return [String]
         required :total, String
 
-        # @!parse
-        #   # @param per_price_costs [Array<Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost>]
-        #   # @param subtotal [String]
-        #   # @param timeframe_end [Time]
-        #   # @param timeframe_start [Time]
-        #   # @param total [String]
-        #   #
-        #   def initialize(per_price_costs:, subtotal:, timeframe_end:, timeframe_start:, total:, **) = super
-
-        # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+        # @!method initialize(per_price_costs:, subtotal:, timeframe_end:, timeframe_start:, total:)
+        #   @param per_price_costs [Array<Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost>]
+        #   @param subtotal [String]
+        #   @param timeframe_end [Time]
+        #   @param timeframe_start [Time]
+        #   @param total [String]
 
         class PerPriceCost < Orb::Internal::Type::BaseModel
           # @!attribute price
@@ -87,16 +79,12 @@ module Orb
           #   @return [Float, nil]
           optional :quantity, Float, nil?: true
 
-          # @!parse
-          #   # @param price [Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice]
-          #   # @param price_id [String]
-          #   # @param subtotal [String]
-          #   # @param total [String]
-          #   # @param quantity [Float, nil]
-          #   #
-          #   def initialize(price:, price_id:, subtotal:, total:, quantity: nil, **) = super
-
-          # def initialize: (Hash | Orb::Internal::Type::BaseModel) -> void
+          # @!method initialize(price:, price_id:, subtotal:, total:, quantity: nil)
+          #   @param price [Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice]
+          #   @param price_id [String]
+          #   @param subtotal [String]
+          #   @param total [String]
+          #   @param quantity [Float, nil]
         end
       end
     end
