@@ -46,8 +46,7 @@ module Orb
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::Customers::BalanceTransactionCreateParams::Type) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Orb::Models::Customers::BalanceTransactionCreateParams::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           INCREMENT = T.let(:increment, Orb::Models::Customers::BalanceTransactionCreateParams::Type::TaggedSymbol)
           DECREMENT = T.let(:decrement, Orb::Models::Customers::BalanceTransactionCreateParams::Type::TaggedSymbol)

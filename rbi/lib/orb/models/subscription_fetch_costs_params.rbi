@@ -66,8 +66,7 @@ module Orb
         extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::SubscriptionFetchCostsParams::ViewMode) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Orb::Models::SubscriptionFetchCostsParams::ViewMode::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         PERIODIC = T.let(:periodic, Orb::Models::SubscriptionFetchCostsParams::ViewMode::TaggedSymbol)
         CUMULATIVE = T.let(:cumulative, Orb::Models::SubscriptionFetchCostsParams::ViewMode::TaggedSymbol)

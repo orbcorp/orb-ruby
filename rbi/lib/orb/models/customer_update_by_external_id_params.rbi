@@ -476,8 +476,7 @@ module Orb
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Orb::Models::CustomerUpdateByExternalIDParams::PaymentProvider) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Orb::Models::CustomerUpdateByExternalIDParams::PaymentProvider::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         QUICKBOOKS =
           T.let(:quickbooks, Orb::Models::CustomerUpdateByExternalIDParams::PaymentProvider::TaggedSymbol)
@@ -748,8 +747,7 @@ module Orb
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::CustomerUpdateByExternalIDParams::TaxID::Country) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Orb::Models::CustomerUpdateByExternalIDParams::TaxID::Country::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           AD = T.let(:AD, Orb::Models::CustomerUpdateByExternalIDParams::TaxID::Country::TaggedSymbol)
           AE = T.let(:AE, Orb::Models::CustomerUpdateByExternalIDParams::TaxID::Country::TaggedSymbol)
@@ -838,8 +836,7 @@ module Orb
           extend Orb::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::CustomerUpdateByExternalIDParams::TaxID::Type) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Orb::Models::CustomerUpdateByExternalIDParams::TaxID::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           AD_NRT = T.let(:ad_nrt, Orb::Models::CustomerUpdateByExternalIDParams::TaxID::Type::TaggedSymbol)
           AE_TRN = T.let(:ae_trn, Orb::Models::CustomerUpdateByExternalIDParams::TaxID::Type::TaggedSymbol)

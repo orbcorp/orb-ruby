@@ -444,7 +444,7 @@ module Orb
         extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Customer::PaymentProvider) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::Customer::PaymentProvider::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         QUICKBOOKS = T.let(:quickbooks, Orb::Models::Customer::PaymentProvider::TaggedSymbol)
         BILL_COM = T.let(:"bill.com", Orb::Models::Customer::PaymentProvider::TaggedSymbol)
@@ -645,7 +645,7 @@ module Orb
           extend Orb::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Customer::TaxID::Country) }
-          OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::Customer::TaxID::Country::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           AD = T.let(:AD, Orb::Models::Customer::TaxID::Country::TaggedSymbol)
           AE = T.let(:AE, Orb::Models::Customer::TaxID::Country::TaggedSymbol)
@@ -734,7 +734,7 @@ module Orb
           extend Orb::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Customer::TaxID::Type) }
-          OrSymbol = T.type_alias { T.any(Symbol, String, Orb::Models::Customer::TaxID::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           AD_NRT = T.let(:ad_nrt, Orb::Models::Customer::TaxID::Type::TaggedSymbol)
           AE_TRN = T.let(:ae_trn, Orb::Models::Customer::TaxID::Type::TaggedSymbol)
@@ -876,14 +876,7 @@ module Orb
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::ProviderType) }
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  String,
-                  Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::ProviderType::TaggedSymbol
-                )
-              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             QUICKBOOKS =
               T.let(

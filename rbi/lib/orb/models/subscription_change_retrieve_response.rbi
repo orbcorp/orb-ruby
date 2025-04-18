@@ -68,8 +68,7 @@ module Orb
         extend Orb::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::SubscriptionChangeRetrieveResponse::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Orb::Models::SubscriptionChangeRetrieveResponse::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         PENDING = T.let(:pending, Orb::Models::SubscriptionChangeRetrieveResponse::Status::TaggedSymbol)
         APPLIED = T.let(:applied, Orb::Models::SubscriptionChangeRetrieveResponse::Status::TaggedSymbol)
@@ -1503,8 +1502,7 @@ module Orb
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Orb::Models::SubscriptionChangeRetrieveResponse::Subscription::Status) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Orb::Models::SubscriptionChangeRetrieveResponse::Subscription::Status::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           ACTIVE =
             T.let(:active, Orb::Models::SubscriptionChangeRetrieveResponse::Subscription::Status::TaggedSymbol)
