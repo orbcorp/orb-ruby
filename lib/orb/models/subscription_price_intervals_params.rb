@@ -4,30 +4,21 @@ module Orb
   module Models
     # @see Orb::Resources::Subscriptions#price_intervals
     class SubscriptionPriceIntervalsParams < Orb::Internal::Type::BaseModel
-      # @!parse
-      #   extend Orb::Internal::Type::RequestParameters::Converter
+      extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      # @!attribute [r] add
+      # @!attribute add
       #   A list of price intervals to add to the subscription.
       #
       #   @return [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add>, nil]
       optional :add, -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionPriceIntervalsParams::Add] }
 
-      # @!parse
-      #   # @return [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add>]
-      #   attr_writer :add
-
-      # @!attribute [r] add_adjustments
+      # @!attribute add_adjustments
       #   A list of adjustments to add to the subscription.
       #
       #   @return [Array<Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment>, nil]
       optional :add_adjustments,
                -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment] }
-
-      # @!parse
-      #   # @return [Array<Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment>]
-      #   attr_writer :add_adjustments
 
       # @!attribute allow_invoice_credit_or_void
       #   If false, this request will fail if it would void an issued invoice or create a
@@ -37,26 +28,18 @@ module Orb
       #   @return [Boolean, nil]
       optional :allow_invoice_credit_or_void, Orb::Internal::Type::Boolean, nil?: true
 
-      # @!attribute [r] edit
+      # @!attribute edit
       #   A list of price intervals to edit on the subscription.
       #
       #   @return [Array<Orb::Models::SubscriptionPriceIntervalsParams::Edit>, nil]
       optional :edit, -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionPriceIntervalsParams::Edit] }
 
-      # @!parse
-      #   # @return [Array<Orb::Models::SubscriptionPriceIntervalsParams::Edit>]
-      #   attr_writer :edit
-
-      # @!attribute [r] edit_adjustments
+      # @!attribute edit_adjustments
       #   A list of adjustments to edit on the subscription.
       #
       #   @return [Array<Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment>, nil]
       optional :edit_adjustments,
                -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment] }
-
-      # @!parse
-      #   # @return [Array<Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment>]
-      #   attr_writer :edit_adjustments
 
       # @!method initialize(add: nil, add_adjustments: nil, allow_invoice_credit_or_void: nil, edit: nil, edit_adjustments: nil, request_options: {})
       #   @param add [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add>]
@@ -6671,16 +6654,12 @@ module Orb
             #   @return [Float]
             required :percentage_discount, Float
 
-            # @!attribute [r] is_invoice_level
+            # @!attribute is_invoice_level
             #   When false, this adjustment will be applied to a single price. Otherwise, it
             #   will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
             optional :is_invoice_level, Orb::Internal::Type::Boolean
-
-            # @!parse
-            #   # @return [Boolean]
-            #   attr_writer :is_invoice_level
 
             # @!method initialize(applies_to_price_ids:, percentage_discount:, is_invoice_level: nil, adjustment_type: :percentage_discount)
             #   @param applies_to_price_ids [Array<String>]
@@ -6706,16 +6685,12 @@ module Orb
             #   @return [Float]
             required :usage_discount, Float
 
-            # @!attribute [r] is_invoice_level
+            # @!attribute is_invoice_level
             #   When false, this adjustment will be applied to a single price. Otherwise, it
             #   will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
             optional :is_invoice_level, Orb::Internal::Type::Boolean
-
-            # @!parse
-            #   # @return [Boolean]
-            #   attr_writer :is_invoice_level
 
             # @!method initialize(applies_to_price_ids:, usage_discount:, is_invoice_level: nil, adjustment_type: :usage_discount)
             #   @param applies_to_price_ids [Array<String>]
@@ -6741,16 +6716,12 @@ module Orb
             #   @return [Array<String>]
             required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
-            # @!attribute [r] is_invoice_level
+            # @!attribute is_invoice_level
             #   When false, this adjustment will be applied to a single price. Otherwise, it
             #   will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
             optional :is_invoice_level, Orb::Internal::Type::Boolean
-
-            # @!parse
-            #   # @return [Boolean]
-            #   attr_writer :is_invoice_level
 
             # @!method initialize(amount_discount:, applies_to_price_ids:, is_invoice_level: nil, adjustment_type: :amount_discount)
             #   @param amount_discount [String]
@@ -6782,16 +6753,12 @@ module Orb
             #   @return [String]
             required :minimum_amount, String
 
-            # @!attribute [r] is_invoice_level
+            # @!attribute is_invoice_level
             #   When false, this adjustment will be applied to a single price. Otherwise, it
             #   will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
             optional :is_invoice_level, Orb::Internal::Type::Boolean
-
-            # @!parse
-            #   # @return [Boolean]
-            #   attr_writer :is_invoice_level
 
             # @!method initialize(applies_to_price_ids:, item_id:, minimum_amount:, is_invoice_level: nil, adjustment_type: :minimum)
             #   @param applies_to_price_ids [Array<String>]
@@ -6818,16 +6785,12 @@ module Orb
             #   @return [String]
             required :maximum_amount, String
 
-            # @!attribute [r] is_invoice_level
+            # @!attribute is_invoice_level
             #   When false, this adjustment will be applied to a single price. Otherwise, it
             #   will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
             optional :is_invoice_level, Orb::Internal::Type::Boolean
-
-            # @!parse
-            #   # @return [Boolean]
-            #   attr_writer :is_invoice_level
 
             # @!method initialize(applies_to_price_ids:, maximum_amount:, is_invoice_level: nil, adjustment_type: :maximum)
             #   @param applies_to_price_ids [Array<String>]
@@ -6916,16 +6879,12 @@ module Orb
                  -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition] },
                  nil?: true
 
-        # @!attribute [r] start_date
+        # @!attribute start_date
         #   The updated start date of this price interval. If not specified, the start date
         #   will not be updated.
         #
         #   @return [Time, Symbol, Orb::Models::BillingCycleRelativeDate, nil]
         optional :start_date, union: -> { Orb::Models::SubscriptionPriceIntervalsParams::Edit::StartDate }
-
-        # @!parse
-        #   # @return [Time, Symbol, Orb::Models::BillingCycleRelativeDate]
-        #   attr_writer :start_date
 
         # @!attribute usage_customer_ids
         #   A list of customer IDs whose usage events will be aggregated and billed under
@@ -7012,17 +6971,13 @@ module Orb
                  union: -> { Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment::EndDate },
                  nil?: true
 
-        # @!attribute [r] start_date
+        # @!attribute start_date
         #   The updated start date of this adjustment interval. If not specified, the start
         #   date will not be updated.
         #
         #   @return [Time, Symbol, Orb::Models::BillingCycleRelativeDate, nil]
         optional :start_date,
                  union: -> { Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment::StartDate }
-
-        # @!parse
-        #   # @return [Time, Symbol, Orb::Models::BillingCycleRelativeDate]
-        #   attr_writer :start_date
 
         # @!method initialize(adjustment_interval_id:, end_date: nil, start_date: nil)
         #   @param adjustment_interval_id [String]

@@ -4,8 +4,7 @@ module Orb
   module Models
     # @see Orb::Resources::Plans#create
     class PlanCreateParams < Orb::Internal::Type::BaseModel
-      # @!parse
-      #   extend Orb::Internal::Type::RequestParameters::Converter
+      extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
       # @!attribute currency
@@ -54,16 +53,12 @@ module Orb
       #   @return [Integer, nil]
       optional :net_terms, Integer, nil?: true
 
-      # @!attribute [r] status
+      # @!attribute status
       #   The status of the plan to create (either active or draft). If not specified,
       #   this defaults to active.
       #
       #   @return [Symbol, Orb::Models::PlanCreateParams::Status, nil]
       optional :status, enum: -> { Orb::Models::PlanCreateParams::Status }
-
-      # @!parse
-      #   # @return [Symbol, Orb::Models::PlanCreateParams::Status]
-      #   attr_writer :status
 
       # @!method initialize(currency:, name:, prices:, default_invoice_memo: nil, external_plan_id: nil, metadata: nil, net_terms: nil, status: nil, request_options: {})
       #   @param currency [String]

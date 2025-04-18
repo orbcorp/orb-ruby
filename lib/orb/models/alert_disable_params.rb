@@ -4,8 +4,7 @@ module Orb
   module Models
     # @see Orb::Resources::Alerts#disable
     class AlertDisableParams < Orb::Internal::Type::BaseModel
-      # @!parse
-      #   extend Orb::Internal::Type::RequestParameters::Converter
+      extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
       # @!attribute subscription_id

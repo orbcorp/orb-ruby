@@ -91,15 +91,11 @@ module Orb
       #   @return [Time, nil]
       required :voided_at, Time, nil?: true
 
-      # @!attribute [r] discounts
+      # @!attribute discounts
       #   Any discounts applied on the original invoice.
       #
       #   @return [Array<Orb::Models::CreditNote::Discount>, nil]
       optional :discounts, -> { Orb::Internal::Type::ArrayOf[Orb::Models::CreditNote::Discount] }
-
-      # @!parse
-      #   # @return [Array<Orb::Models::CreditNote::Discount>]
-      #   attr_writer :discounts
 
       # @!method initialize(id:, created_at:, credit_note_number:, credit_note_pdf:, customer:, invoice_id:, line_items:, maximum_amount_adjustment:, memo:, minimum_amount_refunded:, reason:, subtotal:, total:, type:, voided_at:, discounts: nil)
       #   The [Credit Note](/invoicing/credit-notes) resource represents a credit that has
@@ -182,15 +178,11 @@ module Orb
         #   @return [Array<Orb::Models::CreditNote::LineItem::TaxAmount>]
         required :tax_amounts, -> { Orb::Internal::Type::ArrayOf[Orb::Models::CreditNote::LineItem::TaxAmount] }
 
-        # @!attribute [r] discounts
+        # @!attribute discounts
         #   Any line item discounts from the invoice's line item.
         #
         #   @return [Array<Orb::Models::CreditNote::LineItem::Discount>, nil]
         optional :discounts, -> { Orb::Internal::Type::ArrayOf[Orb::Models::CreditNote::LineItem::Discount] }
-
-        # @!parse
-        #   # @return [Array<Orb::Models::CreditNote::LineItem::Discount>]
-        #   attr_writer :discounts
 
         # @!method initialize(id:, amount:, item_id:, name:, quantity:, subtotal:, tax_amounts:, discounts: nil)
         #   @param id [String]

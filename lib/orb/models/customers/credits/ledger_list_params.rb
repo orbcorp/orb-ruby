@@ -6,8 +6,7 @@ module Orb
       module Credits
         # @see Orb::Resources::Customers::Credits::Ledger#list
         class LedgerListParams < Orb::Internal::Type::BaseModel
-          # @!parse
-          #   extend Orb::Internal::Type::RequestParameters::Converter
+          extend Orb::Internal::Type::RequestParameters::Converter
           include Orb::Internal::Type::RequestParameters
 
           # @!attribute created_at_gt
@@ -57,15 +56,11 @@ module Orb
                    enum: -> { Orb::Models::Customers::Credits::LedgerListParams::EntryType },
                    nil?: true
 
-          # @!attribute [r] limit
+          # @!attribute limit
           #   The number of items to fetch. Defaults to 20.
           #
           #   @return [Integer, nil]
           optional :limit, Integer
-
-          # @!parse
-          #   # @return [Integer]
-          #   attr_writer :limit
 
           # @!attribute minimum_amount
           #

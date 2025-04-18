@@ -4,8 +4,7 @@ module Orb
   module Models
     # @see Orb::Resources::Subscriptions#create
     class SubscriptionCreateParams < Orb::Internal::Type::BaseModel
-      # @!parse
-      #   extend Orb::Internal::Type::RequestParameters::Converter
+      extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
       # @!attribute add_adjustments
@@ -26,14 +25,10 @@ module Orb
                -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionCreateParams::AddPrice] },
                nil?: true
 
-      # @!attribute [r] align_billing_with_subscription_start_date
+      # @!attribute align_billing_with_subscription_start_date
       #
       #   @return [Boolean, nil]
       optional :align_billing_with_subscription_start_date, Orb::Internal::Type::Boolean
-
-      # @!parse
-      #   # @return [Boolean]
-      #   attr_writer :align_billing_with_subscription_start_date
 
       # @!attribute auto_collection
       #   Determines whether issued invoices for this subscription will automatically be
@@ -340,16 +335,12 @@ module Orb
             #   @return [Float]
             required :percentage_discount, Float
 
-            # @!attribute [r] is_invoice_level
+            # @!attribute is_invoice_level
             #   When false, this adjustment will be applied to a single price. Otherwise, it
             #   will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
             optional :is_invoice_level, Orb::Internal::Type::Boolean
-
-            # @!parse
-            #   # @return [Boolean]
-            #   attr_writer :is_invoice_level
 
             # @!method initialize(applies_to_price_ids:, percentage_discount:, is_invoice_level: nil, adjustment_type: :percentage_discount)
             #   @param applies_to_price_ids [Array<String>]
@@ -375,16 +366,12 @@ module Orb
             #   @return [Float]
             required :usage_discount, Float
 
-            # @!attribute [r] is_invoice_level
+            # @!attribute is_invoice_level
             #   When false, this adjustment will be applied to a single price. Otherwise, it
             #   will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
             optional :is_invoice_level, Orb::Internal::Type::Boolean
-
-            # @!parse
-            #   # @return [Boolean]
-            #   attr_writer :is_invoice_level
 
             # @!method initialize(applies_to_price_ids:, usage_discount:, is_invoice_level: nil, adjustment_type: :usage_discount)
             #   @param applies_to_price_ids [Array<String>]
@@ -410,16 +397,12 @@ module Orb
             #   @return [Array<String>]
             required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
-            # @!attribute [r] is_invoice_level
+            # @!attribute is_invoice_level
             #   When false, this adjustment will be applied to a single price. Otherwise, it
             #   will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
             optional :is_invoice_level, Orb::Internal::Type::Boolean
-
-            # @!parse
-            #   # @return [Boolean]
-            #   attr_writer :is_invoice_level
 
             # @!method initialize(amount_discount:, applies_to_price_ids:, is_invoice_level: nil, adjustment_type: :amount_discount)
             #   @param amount_discount [String]
@@ -451,16 +434,12 @@ module Orb
             #   @return [String]
             required :minimum_amount, String
 
-            # @!attribute [r] is_invoice_level
+            # @!attribute is_invoice_level
             #   When false, this adjustment will be applied to a single price. Otherwise, it
             #   will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
             optional :is_invoice_level, Orb::Internal::Type::Boolean
-
-            # @!parse
-            #   # @return [Boolean]
-            #   attr_writer :is_invoice_level
 
             # @!method initialize(applies_to_price_ids:, item_id:, minimum_amount:, is_invoice_level: nil, adjustment_type: :minimum)
             #   @param applies_to_price_ids [Array<String>]
@@ -487,16 +466,12 @@ module Orb
             #   @return [String]
             required :maximum_amount, String
 
-            # @!attribute [r] is_invoice_level
+            # @!attribute is_invoice_level
             #   When false, this adjustment will be applied to a single price. Otherwise, it
             #   will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
             optional :is_invoice_level, Orb::Internal::Type::Boolean
-
-            # @!parse
-            #   # @return [Boolean]
-            #   attr_writer :is_invoice_level
 
             # @!method initialize(applies_to_price_ids:, maximum_amount:, is_invoice_level: nil, adjustment_type: :maximum)
             #   @param applies_to_price_ids [Array<String>]
@@ -6605,16 +6580,12 @@ module Orb
             #   @return [Float]
             required :percentage_discount, Float
 
-            # @!attribute [r] is_invoice_level
+            # @!attribute is_invoice_level
             #   When false, this adjustment will be applied to a single price. Otherwise, it
             #   will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
             optional :is_invoice_level, Orb::Internal::Type::Boolean
-
-            # @!parse
-            #   # @return [Boolean]
-            #   attr_writer :is_invoice_level
 
             # @!method initialize(applies_to_price_ids:, percentage_discount:, is_invoice_level: nil, adjustment_type: :percentage_discount)
             #   @param applies_to_price_ids [Array<String>]
@@ -6640,16 +6611,12 @@ module Orb
             #   @return [Float]
             required :usage_discount, Float
 
-            # @!attribute [r] is_invoice_level
+            # @!attribute is_invoice_level
             #   When false, this adjustment will be applied to a single price. Otherwise, it
             #   will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
             optional :is_invoice_level, Orb::Internal::Type::Boolean
-
-            # @!parse
-            #   # @return [Boolean]
-            #   attr_writer :is_invoice_level
 
             # @!method initialize(applies_to_price_ids:, usage_discount:, is_invoice_level: nil, adjustment_type: :usage_discount)
             #   @param applies_to_price_ids [Array<String>]
@@ -6675,16 +6642,12 @@ module Orb
             #   @return [Array<String>]
             required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
 
-            # @!attribute [r] is_invoice_level
+            # @!attribute is_invoice_level
             #   When false, this adjustment will be applied to a single price. Otherwise, it
             #   will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
             optional :is_invoice_level, Orb::Internal::Type::Boolean
-
-            # @!parse
-            #   # @return [Boolean]
-            #   attr_writer :is_invoice_level
 
             # @!method initialize(amount_discount:, applies_to_price_ids:, is_invoice_level: nil, adjustment_type: :amount_discount)
             #   @param amount_discount [String]
@@ -6716,16 +6679,12 @@ module Orb
             #   @return [String]
             required :minimum_amount, String
 
-            # @!attribute [r] is_invoice_level
+            # @!attribute is_invoice_level
             #   When false, this adjustment will be applied to a single price. Otherwise, it
             #   will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
             optional :is_invoice_level, Orb::Internal::Type::Boolean
-
-            # @!parse
-            #   # @return [Boolean]
-            #   attr_writer :is_invoice_level
 
             # @!method initialize(applies_to_price_ids:, item_id:, minimum_amount:, is_invoice_level: nil, adjustment_type: :minimum)
             #   @param applies_to_price_ids [Array<String>]
@@ -6752,16 +6711,12 @@ module Orb
             #   @return [String]
             required :maximum_amount, String
 
-            # @!attribute [r] is_invoice_level
+            # @!attribute is_invoice_level
             #   When false, this adjustment will be applied to a single price. Otherwise, it
             #   will be applied at the invoice level, possibly to multiple prices.
             #
             #   @return [Boolean, nil]
             optional :is_invoice_level, Orb::Internal::Type::Boolean
-
-            # @!parse
-            #   # @return [Boolean]
-            #   attr_writer :is_invoice_level
 
             # @!method initialize(applies_to_price_ids:, maximum_amount:, is_invoice_level: nil, adjustment_type: :maximum)
             #   @param applies_to_price_ids [Array<String>]

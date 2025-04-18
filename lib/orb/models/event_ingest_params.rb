@@ -4,8 +4,7 @@ module Orb
   module Models
     # @see Orb::Resources::Events#ingest
     class EventIngestParams < Orb::Internal::Type::BaseModel
-      # @!parse
-      #   extend Orb::Internal::Type::RequestParameters::Converter
+      extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
       # @!attribute events
@@ -20,15 +19,11 @@ module Orb
       #   @return [String, nil]
       optional :backfill_id, String, nil?: true
 
-      # @!attribute [r] debug
+      # @!attribute debug
       #   Flag to enable additional debug information in the endpoint response
       #
       #   @return [Boolean, nil]
       optional :debug, Orb::Internal::Type::Boolean
-
-      # @!parse
-      #   # @return [Boolean]
-      #   attr_writer :debug
 
       # @!method initialize(events:, backfill_id: nil, debug: nil, request_options: {})
       #   @param events [Array<Orb::Models::EventIngestParams::Event>]

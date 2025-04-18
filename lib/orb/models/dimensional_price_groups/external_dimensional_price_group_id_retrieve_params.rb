@@ -5,8 +5,7 @@ module Orb
     module DimensionalPriceGroups
       # @see Orb::Resources::DimensionalPriceGroups::ExternalDimensionalPriceGroupID#retrieve
       class ExternalDimensionalPriceGroupIDRetrieveParams < Orb::Internal::Type::BaseModel
-        # @!parse
-        #   extend Orb::Internal::Type::RequestParameters::Converter
+        extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
         # @!method initialize(request_options: {})

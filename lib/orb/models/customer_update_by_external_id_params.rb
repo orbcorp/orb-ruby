@@ -4,8 +4,7 @@ module Orb
   module Models
     # @see Orb::Resources::Customers#update_by_external_id
     class CustomerUpdateByExternalIDParams < Orb::Internal::Type::BaseModel
-      # @!parse
-      #   extend Orb::Internal::Type::RequestParameters::Converter
+      extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
       # @!attribute accounting_sync_configuration
@@ -329,16 +328,12 @@ module Orb
       end
 
       class Hierarchy < Orb::Internal::Type::BaseModel
-        # @!attribute [r] child_customer_ids
+        # @!attribute child_customer_ids
         #   A list of child customer IDs to add to the hierarchy. The desired child
         #   customers must not already be part of another hierarchy.
         #
         #   @return [Array<String>, nil]
         optional :child_customer_ids, Orb::Internal::Type::ArrayOf[String]
-
-        # @!parse
-        #   # @return [Array<String>]
-        #   attr_writer :child_customer_ids
 
         # @!attribute parent_customer_id
         #   The ID of the parent customer in the hierarchy. The desired parent customer must

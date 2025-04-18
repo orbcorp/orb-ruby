@@ -5,8 +5,7 @@ module Orb
     module Plans
       # @see Orb::Resources::Plans::ExternalPlanID#update
       class ExternalPlanIDUpdateParams < Orb::Internal::Type::BaseModel
-        # @!parse
-        #   extend Orb::Internal::Type::RequestParameters::Converter
+        extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
         # @!attribute external_plan_id

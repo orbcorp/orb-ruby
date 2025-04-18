@@ -4,8 +4,7 @@ module Orb
   module Models
     # @see Orb::Resources::Invoices#create
     class InvoiceCreateParams < Orb::Internal::Type::BaseModel
-      # @!parse
-      #   extend Orb::Internal::Type::RequestParameters::Converter
+      extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
       # @!attribute currency
@@ -70,17 +69,13 @@ module Orb
       #   @return [Hash{Symbol=>String, nil}, nil]
       optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-      # @!attribute [r] will_auto_issue
+      # @!attribute will_auto_issue
       #   When true, this invoice will be submitted for issuance upon creation. When
       #   false, the resulting invoice will require manual review to issue. Defaulted to
       #   false.
       #
       #   @return [Boolean, nil]
       optional :will_auto_issue, Orb::Internal::Type::Boolean
-
-      # @!parse
-      #   # @return [Boolean]
-      #   attr_writer :will_auto_issue
 
       # @!method initialize(currency:, invoice_date:, line_items:, net_terms:, customer_id: nil, discount: nil, external_customer_id: nil, memo: nil, metadata: nil, will_auto_issue: nil, request_options: {})
       #   @param currency [String]

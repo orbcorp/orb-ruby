@@ -5,8 +5,7 @@ module Orb
     module Events
       # @see Orb::Resources::Events::Backfills#create
       class BackfillCreateParams < Orb::Internal::Type::BaseModel
-        # @!parse
-        #   extend Orb::Internal::Type::RequestParameters::Converter
+        extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
         # @!attribute timeframe_end
@@ -55,16 +54,12 @@ module Orb
         #   @return [String, nil]
         optional :external_customer_id, String, nil?: true
 
-        # @!attribute [r] replace_existing_events
+        # @!attribute replace_existing_events
         #   If true, replaces all existing events in the timeframe with the newly ingested
         #   events. If false, adds the newly ingested events to the existing events.
         #
         #   @return [Boolean, nil]
         optional :replace_existing_events, Orb::Internal::Type::Boolean
-
-        # @!parse
-        #   # @return [Boolean]
-        #   attr_writer :replace_existing_events
 
         # @!method initialize(timeframe_end:, timeframe_start:, close_time: nil, customer_id: nil, deprecation_filter: nil, external_customer_id: nil, replace_existing_events: nil, request_options: {})
         #   @param timeframe_end [Time]
