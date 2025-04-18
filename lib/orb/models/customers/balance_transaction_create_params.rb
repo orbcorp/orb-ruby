@@ -5,8 +5,7 @@ module Orb
     module Customers
       # @see Orb::Resources::Customers::BalanceTransactions#create
       class BalanceTransactionCreateParams < Orb::Internal::Type::BaseModel
-        # @!parse
-        #   extend Orb::Internal::Type::RequestParameters::Converter
+        extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
         # @!attribute amount

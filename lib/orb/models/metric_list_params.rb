@@ -4,8 +4,7 @@ module Orb
   module Models
     # @see Orb::Resources::Metrics#list
     class MetricListParams < Orb::Internal::Type::BaseModel
-      # @!parse
-      #   extend Orb::Internal::Type::RequestParameters::Converter
+      extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
       # @!attribute created_at_gt
@@ -35,15 +34,11 @@ module Orb
       #   @return [String, nil]
       optional :cursor, String, nil?: true
 
-      # @!attribute [r] limit
+      # @!attribute limit
       #   The number of items to fetch. Defaults to 20.
       #
       #   @return [Integer, nil]
       optional :limit, Integer
-
-      # @!parse
-      #   # @return [Integer]
-      #   attr_writer :limit
 
       # @!method initialize(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, limit: nil, request_options: {})
       #   @param created_at_gt [Time, nil]

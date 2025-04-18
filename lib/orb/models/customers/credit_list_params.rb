@@ -5,8 +5,7 @@ module Orb
     module Customers
       # @see Orb::Resources::Customers::Credits#list
       class CreditListParams < Orb::Internal::Type::BaseModel
-        # @!parse
-        #   extend Orb::Internal::Type::RequestParameters::Converter
+        extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
         # @!attribute currency
@@ -22,26 +21,18 @@ module Orb
         #   @return [String, nil]
         optional :cursor, String, nil?: true
 
-        # @!attribute [r] include_all_blocks
+        # @!attribute include_all_blocks
         #   If set to True, all expired and depleted blocks, as well as active block will be
         #   returned.
         #
         #   @return [Boolean, nil]
         optional :include_all_blocks, Orb::Internal::Type::Boolean
 
-        # @!parse
-        #   # @return [Boolean]
-        #   attr_writer :include_all_blocks
-
-        # @!attribute [r] limit
+        # @!attribute limit
         #   The number of items to fetch. Defaults to 20.
         #
         #   @return [Integer, nil]
         optional :limit, Integer
-
-        # @!parse
-        #   # @return [Integer]
-        #   attr_writer :limit
 
         # @!method initialize(currency: nil, cursor: nil, include_all_blocks: nil, limit: nil, request_options: {})
         #   @param currency [String, nil]

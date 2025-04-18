@@ -6,8 +6,7 @@ module Orb
       module Credits
         # @see Orb::Resources::Customers::Credits::TopUps#delete
         class TopUpDeleteParams < Orb::Internal::Type::BaseModel
-          # @!parse
-          #   extend Orb::Internal::Type::RequestParameters::Converter
+          extend Orb::Internal::Type::RequestParameters::Converter
           include Orb::Internal::Type::RequestParameters
 
           # @!attribute customer_id
