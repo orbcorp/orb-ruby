@@ -82,10 +82,10 @@ module Orb
       # `"https://api.example.com/v2/"`. Defaults to `ENV["ORB_BASE_URL"]`
       base_url: ENV["ORB_BASE_URL"],
       # Max number of retries to attempt after a failed retryable request.
-      max_retries: DEFAULT_MAX_RETRIES,
-      timeout: DEFAULT_TIMEOUT_IN_SECONDS,
-      initial_retry_delay: DEFAULT_INITIAL_RETRY_DELAY,
-      max_retry_delay: DEFAULT_MAX_RETRY_DELAY,
+      max_retries: Orb::Client::DEFAULT_MAX_RETRIES,
+      timeout: Orb::Client::DEFAULT_TIMEOUT_IN_SECONDS,
+      initial_retry_delay: Orb::Client::DEFAULT_INITIAL_RETRY_DELAY,
+      max_retry_delay: Orb::Client::DEFAULT_MAX_RETRY_DELAY,
       idempotency_header: "Idempotency-Key"
     ); end
   end

@@ -65,24 +65,32 @@ module Orb
       required :grouping, String, nil?: true
 
       # @!attribute maximum
+      #   @deprecated
+      #
       #   This field is deprecated in favor of `adjustments`.
       #
       #   @return [Orb::Models::InvoiceLineItemCreateResponse::Maximum, nil]
       required :maximum, -> { Orb::Models::InvoiceLineItemCreateResponse::Maximum }, nil?: true
 
       # @!attribute maximum_amount
+      #   @deprecated
+      #
       #   This field is deprecated in favor of `adjustments`.
       #
       #   @return [String, nil]
       required :maximum_amount, String, nil?: true
 
       # @!attribute minimum
+      #   @deprecated
+      #
       #   This field is deprecated in favor of `adjustments`.
       #
       #   @return [Orb::Models::InvoiceLineItemCreateResponse::Minimum, nil]
       required :minimum, -> { Orb::Models::InvoiceLineItemCreateResponse::Minimum }, nil?: true
 
       # @!attribute minimum_amount
+      #   @deprecated
+      #
       #   This field is deprecated in favor of `adjustments`.
       #
       #   @return [String, nil]
