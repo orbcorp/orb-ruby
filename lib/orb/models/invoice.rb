@@ -166,6 +166,8 @@ module Orb
       required :customer_tax_id, -> { Orb::Models::Invoice::CustomerTaxID }, nil?: true
 
       # @!attribute discount
+      #   @deprecated
+      #
       #   This field is deprecated in favor of `discounts`. If a `discounts` list is
       #   provided, the first discount in the list will be returned. If the list is empty,
       #   `None` will be returned.
@@ -1055,24 +1057,32 @@ module Orb
         required :grouping, String, nil?: true
 
         # @!attribute maximum
+        #   @deprecated
+        #
         #   This field is deprecated in favor of `adjustments`.
         #
         #   @return [Orb::Models::Invoice::LineItem::Maximum, nil]
         required :maximum, -> { Orb::Models::Invoice::LineItem::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
+        #
         #   This field is deprecated in favor of `adjustments`.
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
 
         # @!attribute minimum
+        #   @deprecated
+        #
         #   This field is deprecated in favor of `adjustments`.
         #
         #   @return [Orb::Models::Invoice::LineItem::Minimum, nil]
         required :minimum, -> { Orb::Models::Invoice::LineItem::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
+        #
         #   This field is deprecated in favor of `adjustments`.
         #
         #   @return [String, nil]

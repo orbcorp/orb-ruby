@@ -34,6 +34,8 @@ module Orb
       required :created_at, Time
 
       # @!attribute currency
+      #   @deprecated
+      #
       #   An ISO 4217 currency string or custom pricing unit (`credits`) for this plan's
       #   prices.
       #
