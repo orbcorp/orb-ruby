@@ -39,6 +39,7 @@ module Orb
       optional :auto_collection, Orb::Internal::Type::Boolean, nil?: true
 
       # @!attribute aws_region
+      #   @deprecated
       #
       #   @return [String, nil]
       optional :aws_region, String, nil?: true
@@ -59,6 +60,7 @@ module Orb
       optional :coupon_redemption_code, String, nil?: true
 
       # @!attribute credits_overage_rate
+      #   @deprecated
       #
       #   @return [Float, nil]
       optional :credits_overage_rate, Float, nil?: true
@@ -86,6 +88,7 @@ module Orb
       optional :external_customer_id, String, nil?: true
 
       # @!attribute external_marketplace
+      #   @deprecated
       #
       #   @return [Symbol, Orb::Models::SubscriptionCreateParams::ExternalMarketplace, nil]
       optional :external_marketplace,
@@ -93,6 +96,7 @@ module Orb
                nil?: true
 
       # @!attribute external_marketplace_reporting_id
+      #   @deprecated
       #
       #   @return [String, nil]
       optional :external_marketplace_reporting_id, String, nil?: true
@@ -144,6 +148,7 @@ module Orb
       optional :net_terms, Integer, nil?: true
 
       # @!attribute per_credit_overage_amount
+      #   @deprecated
       #
       #   @return [Float, nil]
       optional :per_credit_overage_amount, Float, nil?: true
@@ -163,6 +168,8 @@ module Orb
       optional :plan_version_number, Integer, nil?: true
 
       # @!attribute price_overrides
+      #   @deprecated
+      #
       #   Optionally provide a list of overrides for prices on the plan
       #
       #   @return [Array<Object>, nil]
@@ -495,6 +502,8 @@ module Orb
                  nil?: true
 
         # @!attribute discounts
+        #   @deprecated
+        #
         #   [DEPRECATED] Use add_adjustments instead. The subscription's discounts for this
         #   price.
         #
@@ -518,6 +527,8 @@ module Orb
         optional :external_price_id, String, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
+        #
         #   [DEPRECATED] Use add_adjustments instead. The subscription's maximum amount for
         #   this price.
         #
@@ -525,6 +536,8 @@ module Orb
         optional :maximum_amount, String, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
+        #
         #   [DEPRECATED] Use add_adjustments instead. The subscription's minimum amount for
         #   this price.
         #
@@ -6746,6 +6759,8 @@ module Orb
                  nil?: true
 
         # @!attribute discounts
+        #   @deprecated
+        #
         #   [DEPRECATED] Use add_adjustments instead. The subscription's discounts for the
         #   replacement price.
         #
@@ -6767,6 +6782,8 @@ module Orb
         optional :fixed_price_quantity, Float, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
+        #
         #   [DEPRECATED] Use add_adjustments instead. The subscription's maximum amount for
         #   the replacement price.
         #
@@ -6774,6 +6791,8 @@ module Orb
         optional :maximum_amount, String, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
+        #
         #   [DEPRECATED] Use add_adjustments instead. The subscription's minimum amount for
         #   the replacement price.
         #
