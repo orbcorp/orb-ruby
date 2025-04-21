@@ -28,7 +28,7 @@ module Orb
       end
 
       # @raise [Orb::HTTP::Error]
-      # @return [Orb::Internal::Page]
+      # @return [self]
       def next_page
         unless next_page?
           message = "No more pages available. Please check #next_page? before calling ##{__method__}"
