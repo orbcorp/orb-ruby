@@ -19,7 +19,7 @@ module Orb
         # @api public
         #
         # @raise [Orb::Errors::APIError]
-        # @return [Orb::Internal::Type::BasePage]
+        # @return [self]
         def next_page = (raise NotImplementedError)
 
         # @api public
