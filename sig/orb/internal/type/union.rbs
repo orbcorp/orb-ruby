@@ -30,6 +30,8 @@ module Orb
 
         def ==: (top other) -> bool
 
+        def hash: -> Integer
+
         def coerce: (
           top value,
           state: Orb::Internal::Type::Converter::coerce_state

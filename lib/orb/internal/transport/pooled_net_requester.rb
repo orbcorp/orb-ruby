@@ -61,7 +61,7 @@ module Orb
               method.to_s.upcase,
               !body.nil?,
               method != :head,
-              url.to_s
+              URI(url.to_s) # ensure we construct a URI class of the right scheme
             )
 
             headers.each { req[_1] = _2 }
