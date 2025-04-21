@@ -28,6 +28,8 @@ module Orb
         #   @option spec [Proc] :union
         #
         #   @option spec [Boolean] :"nil?"
+        #
+        # @return [Orb::Internal::Type::ArrayOf]
         def self.[](...) = new(...)
 
         # @api public

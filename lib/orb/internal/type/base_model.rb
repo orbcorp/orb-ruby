@@ -389,7 +389,7 @@ module Orb
 
         # Create a new instance of a model.
         #
-        # @param data [Hash{Symbol=>Object}, Orb::Internal::Type::BaseModel]
+        # @param data [Hash{Symbol=>Object}, self]
         def initialize(data = {})
           case Orb::Internal::Util.coerce_hash(data)
           in Hash => coerced
