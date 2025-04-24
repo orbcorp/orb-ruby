@@ -153,7 +153,7 @@ module Orb
 
         # @api private
         # @return [Orb::Internal::Transport::PooledNetRequester]
-        attr_accessor :requester
+        attr_reader :requester
 
         # @api private
         #

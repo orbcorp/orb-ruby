@@ -53,7 +53,7 @@ module Orb
         ) -> void
 
         # @api private
-        attr_accessor requester: Orb::Internal::Transport::PooledNetRequester
+        attr_reader requester: Orb::Internal::Transport::PooledNetRequester
 
         def initialize: (
           base_url: String,
