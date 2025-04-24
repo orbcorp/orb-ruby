@@ -68,16 +68,30 @@ module Orb
           optional :minimum_amount, String, nil?: true
 
           # @!method initialize(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, currency: nil, cursor: nil, entry_status: nil, entry_type: nil, limit: nil, minimum_amount: nil, request_options: {})
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Customers::Credits::LedgerListParams} for more details.
+          #
           #   @param created_at_gt [Time, nil]
+          #
           #   @param created_at_gte [Time, nil]
+          #
           #   @param created_at_lt [Time, nil]
+          #
           #   @param created_at_lte [Time, nil]
-          #   @param currency [String, nil]
-          #   @param cursor [String, nil]
+          #
+          #   @param currency [String, nil] The ledger currency or custom pricing unit to use.
+          #
+          #   @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
+          #   ...
+          #
           #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListParams::EntryStatus, nil]
+          #
           #   @param entry_type [Symbol, Orb::Models::Customers::Credits::LedgerListParams::EntryType, nil]
-          #   @param limit [Integer]
+          #
+          #   @param limit [Integer] The number of items to fetch. Defaults to 20.
+          #
           #   @param minimum_amount [String, nil]
+          #
           #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
           module EntryStatus

@@ -64,15 +64,26 @@ module Orb
           .returns(T.attached_class)
       end
       def self.new(
+        # When specified in conjunction with `group_by`, this parameter filters usage to a
+        # single billable metric. Note that both `group_by` and `billable_metric_id` must
+        # be specified together.
         billable_metric_id: nil,
         first_dimension_key: nil,
         first_dimension_value: nil,
+        # This determines the windowing of usage reporting.
         granularity: nil,
+        # Groups per-price usage by the key provided.
         group_by: nil,
         second_dimension_key: nil,
         second_dimension_value: nil,
+        # Usage returned is exclusive of `timeframe_end`.
         timeframe_end: nil,
+        # Usage returned is inclusive of `timeframe_start`.
         timeframe_start: nil,
+        # Controls whether Orb returns cumulative usage since the start of the billing
+        # period, or incremental day-by-day usage. If your customer has minimums or
+        # discounts, it's strongly recommended that you use the default cumulative
+        # behavior.
         view_mode: nil,
         request_options: {}
       ); end

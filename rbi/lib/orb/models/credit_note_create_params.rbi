@@ -26,8 +26,14 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(line_items:, memo: nil, reason: nil, request_options: {}); end
-
+      def self.new(
+        line_items:,
+        # An optional memo to attach to the credit note.
+        memo: nil,
+        # An optional reason for the credit note.
+        reason: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(
@@ -51,8 +57,12 @@ module Orb
         attr_accessor :invoice_line_item_id
 
         sig { params(amount: String, invoice_line_item_id: String).returns(T.attached_class) }
-        def self.new(amount:, invoice_line_item_id:); end
-
+        def self.new(
+          # The total amount in the invoice's currency to credit this line item.
+          amount:,
+          # The ID of the line item to credit.
+          invoice_line_item_id:
+        ); end
         sig { override.returns({amount: String, invoice_line_item_id: String}) }
         def to_hash; end
       end

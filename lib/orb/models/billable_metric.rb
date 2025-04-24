@@ -42,15 +42,25 @@ module Orb
       required :status, enum: -> { Orb::Models::BillableMetric::Status }
 
       # @!method initialize(id:, description:, item:, metadata:, name:, status:)
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::BillableMetric} for more details.
+      #
       #   The Metric resource represents a calculation of a quantity based on events.
       #   Metrics are defined by the query that transforms raw usage events into
       #   meaningful values for your customers.
       #
       #   @param id [String]
+      #
       #   @param description [String, nil]
-      #   @param item [Orb::Models::Item]
-      #   @param metadata [Hash{Symbol=>String}]
+      #
+      #   @param item [Orb::Models::Item] The Item resource represents a sellable product or good. Items are associated wi
+      #   ...
+      #
+      #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+      #   ...
+      #
       #   @param name [String]
+      #
       #   @param status [Symbol, Orb::Models::BillableMetric::Status]
 
       # @see Orb::Models::BillableMetric#status

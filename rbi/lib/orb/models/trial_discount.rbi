@@ -33,10 +33,14 @@ module Orb
           .returns(T.attached_class)
       end
       def self.new(
+        # List of price_ids that this discount applies to. For plan/plan phase discounts,
+        # this can be a subset of prices.
         applies_to_price_ids:,
         discount_type:,
         reason: nil,
+        # Only available if discount_type is `trial`
         trial_amount_discount: nil,
+        # Only available if discount_type is `trial`
         trial_percentage_discount: nil
       ); end
       sig do

@@ -101,22 +101,37 @@ module Orb
       #   The [Credit Note](/invoicing/credit-notes) resource represents a credit that has
       #   been applied to a particular invoice.
       #
-      #   @param id [String]
-      #   @param created_at [Time]
-      #   @param credit_note_number [String]
-      #   @param credit_note_pdf [String, nil]
+      #   @param id [String] The Orb id of this credit note.
+      #
+      #   @param created_at [Time] The creation time of the resource in Orb.
+      #
+      #   @param credit_note_number [String] The unique identifier for credit notes.
+      #
+      #   @param credit_note_pdf [String, nil] A URL to a PDF of the credit note.
+      #
       #   @param customer [Orb::Models::CreditNote::Customer]
-      #   @param invoice_id [String]
-      #   @param line_items [Array<Orb::Models::CreditNote::LineItem>]
-      #   @param maximum_amount_adjustment [Orb::Models::CreditNote::MaximumAmountAdjustment, nil]
-      #   @param memo [String, nil]
-      #   @param minimum_amount_refunded [String, nil]
+      #
+      #   @param invoice_id [String] The id of the invoice resource that this credit note is applied to.
+      #
+      #   @param line_items [Array<Orb::Models::CreditNote::LineItem>] All of the line items associated with this credit note.
+      #
+      #   @param maximum_amount_adjustment [Orb::Models::CreditNote::MaximumAmountAdjustment, nil] The maximum amount applied on the original invoice
+      #
+      #   @param memo [String, nil] An optional memo supplied on the credit note.
+      #
+      #   @param minimum_amount_refunded [String, nil] Any credited amount from the applied minimum on the invoice.
+      #
       #   @param reason [Symbol, Orb::Models::CreditNote::Reason, nil]
-      #   @param subtotal [String]
-      #   @param total [String]
+      #
+      #   @param subtotal [String] The total prior to any creditable invoice-level discounts or minimums.
+      #
+      #   @param total [String] The total including creditable invoice-level discounts or minimums, and tax.
+      #
       #   @param type [Symbol, Orb::Models::CreditNote::Type]
-      #   @param voided_at [Time, nil]
-      #   @param discounts [Array<Orb::Models::CreditNote::Discount>]
+      #
+      #   @param voided_at [Time, nil] The time at which the credit note was voided in Orb, if applicable.
+      #
+      #   @param discounts [Array<Orb::Models::CreditNote::Discount>] Any discounts applied on the original invoice.
 
       # @see Orb::Models::CreditNote#customer
       class Customer < Orb::Internal::Type::BaseModel
@@ -185,14 +200,21 @@ module Orb
         optional :discounts, -> { Orb::Internal::Type::ArrayOf[Orb::Models::CreditNote::LineItem::Discount] }
 
         # @!method initialize(id:, amount:, item_id:, name:, quantity:, subtotal:, tax_amounts:, discounts: nil)
-        #   @param id [String]
-        #   @param amount [String]
-        #   @param item_id [String]
-        #   @param name [String]
-        #   @param quantity [Float, nil]
-        #   @param subtotal [String]
-        #   @param tax_amounts [Array<Orb::Models::CreditNote::LineItem::TaxAmount>]
-        #   @param discounts [Array<Orb::Models::CreditNote::LineItem::Discount>]
+        #   @param id [String] The Orb id of this resource.
+        #
+        #   @param amount [String] The amount of the line item, including any line item minimums and discounts.
+        #
+        #   @param item_id [String] The id of the item associated with this line item.
+        #
+        #   @param name [String] The name of the corresponding invoice line item.
+        #
+        #   @param quantity [Float, nil] An optional quantity credited.
+        #
+        #   @param subtotal [String] The amount of the line item, excluding any line item minimums and discounts.
+        #
+        #   @param tax_amounts [Array<Orb::Models::CreditNote::LineItem::TaxAmount>] Any tax amounts applied onto the line item.
+        #
+        #   @param discounts [Array<Orb::Models::CreditNote::LineItem::Discount>] Any line item discounts from the invoice's line item.
 
         class TaxAmount < Orb::Internal::Type::BaseModel
           # @!attribute amount
@@ -214,9 +236,11 @@ module Orb
           required :tax_rate_percentage, String, nil?: true
 
           # @!method initialize(amount:, tax_rate_description:, tax_rate_percentage:)
-          #   @param amount [String]
-          #   @param tax_rate_description [String]
-          #   @param tax_rate_percentage [String, nil]
+          #   @param amount [String] The amount of additional tax incurred by this tax rate.
+          #
+          #   @param tax_rate_description [String] The human-readable description of the applied tax rate.
+          #
+          #   @param tax_rate_percentage [String, nil] The tax rate percentage, out of 100.
         end
 
         class Discount < Orb::Internal::Type::BaseModel

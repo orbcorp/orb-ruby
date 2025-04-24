@@ -20,8 +20,14 @@ module Orb
       optional :debug, -> { Orb::Models::EventIngestResponse::Debug }, nil?: true
 
       # @!method initialize(validation_failed:, debug: nil)
-      #   @param validation_failed [Array<Orb::Models::EventIngestResponse::ValidationFailed>]
-      #   @param debug [Orb::Models::EventIngestResponse::Debug, nil]
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::EventIngestResponse} for more details.
+      #
+      #   @param validation_failed [Array<Orb::Models::EventIngestResponse::ValidationFailed>] Contains all failing validation events. In the case of a 200, this array will al
+      #   ...
+      #
+      #   @param debug [Orb::Models::EventIngestResponse::Debug, nil] Optional debug information (only present when debug=true is passed to the endpoi
+      #   ...
 
       class ValidationFailed < Orb::Internal::Type::BaseModel
         # @!attribute idempotency_key
@@ -38,8 +44,13 @@ module Orb
         required :validation_errors, Orb::Internal::Type::ArrayOf[String]
 
         # @!method initialize(idempotency_key:, validation_errors:)
-        #   @param idempotency_key [String]
-        #   @param validation_errors [Array<String>]
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::EventIngestResponse::ValidationFailed} for more details.
+        #
+        #   @param idempotency_key [String] The passed idempotency_key corresponding to the validation_errors
+        #
+        #   @param validation_errors [Array<String>] An array of strings corresponding to validation failures for this idempotency_ke
+        #   ...
       end
 
       # @see Orb::Models::EventIngestResponse#debug

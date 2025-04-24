@@ -26,8 +26,13 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(amount:, type:, description: nil, request_options: {}); end
-
+        def self.new(
+          amount:,
+          type:,
+          # An optional description that can be specified around this entry.
+          description: nil,
+          request_options: {}
+        ); end
         sig do
           override
             .returns(

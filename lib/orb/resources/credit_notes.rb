@@ -9,8 +9,11 @@ module Orb
       # @overload create(line_items:, memo: nil, reason: nil, request_options: {})
       #
       # @param line_items [Array<Orb::Models::CreditNoteCreateParams::LineItem>]
-      # @param memo [String, nil]
-      # @param reason [Symbol, Orb::Models::CreditNoteCreateParams::Reason, nil]
+      #
+      # @param memo [String, nil] An optional memo to attach to the credit note.
+      #
+      # @param reason [Symbol, Orb::Models::CreditNoteCreateParams::Reason, nil] An optional reason for the credit note.
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::CreditNote]
@@ -27,6 +30,9 @@ module Orb
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::CreditNoteListParams} for more details.
+      #
       # Get a paginated list of CreditNotes. Users can also filter by customer_id,
       # subscription_id, or external_customer_id. The credit notes will be returned in
       # reverse chronological order by `creation_time`.
@@ -34,11 +40,18 @@ module Orb
       # @overload list(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, limit: nil, request_options: {})
       #
       # @param created_at_gt [Time, nil]
+      #
       # @param created_at_gte [Time, nil]
+      #
       # @param created_at_lt [Time, nil]
+      #
       # @param created_at_lte [Time, nil]
-      # @param cursor [String, nil]
-      # @param limit [Integer]
+      #
+      # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
+      # ...
+      #
+      # @param limit [Integer] The number of items to fetch. Defaults to 20.
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Internal::Page<Orb::Models::CreditNote>]

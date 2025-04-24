@@ -367,6 +367,9 @@ module Orb
       required :will_auto_issue, Orb::Internal::Type::Boolean
 
       # @!method initialize(id:, amount_due:, auto_collection:, billing_address:, created_at:, credit_notes:, currency:, customer:, customer_balance_transactions:, customer_tax_id:, discount:, discounts:, due_date:, eligible_to_issue_at:, hosted_invoice_url:, invoice_date:, invoice_number:, invoice_pdf:, invoice_source:, issue_failed_at:, issued_at:, line_items:, maximum:, maximum_amount:, memo:, metadata:, minimum:, minimum_amount:, paid_at:, payment_attempts:, payment_failed_at:, payment_started_at:, scheduled_issue_at:, shipping_address:, status:, subscription:, subtotal:, sync_failed_at:, total:, voided_at:, will_auto_issue:)
+      #   Some parameter documentations has been truncated, see {Orb::Models::Invoice} for
+      #   more details.
+      #
       #   An [`Invoice`](/core-concepts#invoice) is a fundamental billing entity,
       #   representing the request for payment for a single subscription. This includes a
       #   set of line items, which correspond to prices in the subscription's plan and can
@@ -374,46 +377,104 @@ module Orb
       #   end of a billing period, or as the result of an action, such as a cancellation.
       #
       #   @param id [String]
-      #   @param amount_due [String]
+      #
+      #   @param amount_due [String] This is the final amount required to be charged to the customer and reflects the
+      #   ...
+      #
       #   @param auto_collection [Orb::Models::Invoice::AutoCollection]
+      #
       #   @param billing_address [Orb::Models::Invoice::BillingAddress, nil]
-      #   @param created_at [Time]
-      #   @param credit_notes [Array<Orb::Models::Invoice::CreditNote>]
-      #   @param currency [String]
+      #
+      #   @param created_at [Time] The creation time of the resource in Orb.
+      #
+      #   @param credit_notes [Array<Orb::Models::Invoice::CreditNote>] A list of credit notes associated with the invoice
+      #
+      #   @param currency [String] An ISO 4217 currency string or `credits`
+      #
       #   @param customer [Orb::Models::Invoice::Customer]
+      #
       #   @param customer_balance_transactions [Array<Orb::Models::Invoice::CustomerBalanceTransaction>]
-      #   @param customer_tax_id [Orb::Models::Invoice::CustomerTaxID, nil]
-      #   @param discount [Object]
+      #
+      #   @param customer_tax_id [Orb::Models::Invoice::CustomerTaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
+      #   ...
+      #
+      #   @param discount [Object] This field is deprecated in favor of `discounts`. If a `discounts` list is provi
+      #   ...
+      #
       #   @param discounts [Array<Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount, Orb::Models::TrialDiscount>]
-      #   @param due_date [Time, nil]
-      #   @param eligible_to_issue_at [Time, nil]
-      #   @param hosted_invoice_url [String, nil]
-      #   @param invoice_date [Time]
-      #   @param invoice_number [String]
-      #   @param invoice_pdf [String, nil]
+      #
+      #   @param due_date [Time, nil] When the invoice payment is due. The due date is null if the invoice is not yet
+      #   ...
+      #
+      #   @param eligible_to_issue_at [Time, nil] If the invoice has a status of `draft`, this will be the time that the invoice w
+      #   ...
+      #
+      #   @param hosted_invoice_url [String, nil] A URL for the customer-facing invoice portal. This URL expires 30 days after the
+      #   ...
+      #
+      #   @param invoice_date [Time] The scheduled date of the invoice
+      #
+      #   @param invoice_number [String] Automatically generated invoice number to help track and reconcile invoices. Inv
+      #   ...
+      #
+      #   @param invoice_pdf [String, nil] The link to download the PDF representation of the `Invoice`.
+      #
       #   @param invoice_source [Symbol, Orb::Models::Invoice::InvoiceSource]
-      #   @param issue_failed_at [Time, nil]
-      #   @param issued_at [Time, nil]
-      #   @param line_items [Array<Orb::Models::Invoice::LineItem>]
+      #
+      #   @param issue_failed_at [Time, nil] If the invoice failed to issue, this will be the last time it failed to issue (e
+      #   ...
+      #
+      #   @param issued_at [Time, nil] If the invoice has been issued, this will be the time it transitioned to `issued
+      #   ...
+      #
+      #   @param line_items [Array<Orb::Models::Invoice::LineItem>] The breakdown of prices in this invoice.
+      #
       #   @param maximum [Orb::Models::Invoice::Maximum, nil]
+      #
       #   @param maximum_amount [String, nil]
-      #   @param memo [String, nil]
-      #   @param metadata [Hash{Symbol=>String}]
+      #
+      #   @param memo [String, nil] Free-form text which is available on the invoice PDF and the Orb invoice portal.
+      #   ...
+      #
+      #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+      #   ...
+      #
       #   @param minimum [Orb::Models::Invoice::Minimum, nil]
+      #
       #   @param minimum_amount [String, nil]
-      #   @param paid_at [Time, nil]
-      #   @param payment_attempts [Array<Orb::Models::Invoice::PaymentAttempt>]
-      #   @param payment_failed_at [Time, nil]
-      #   @param payment_started_at [Time, nil]
-      #   @param scheduled_issue_at [Time, nil]
+      #
+      #   @param paid_at [Time, nil] If the invoice has a status of `paid`, this gives a timestamp when the invoice w
+      #   ...
+      #
+      #   @param payment_attempts [Array<Orb::Models::Invoice::PaymentAttempt>] A list of payment attempts associated with the invoice
+      #
+      #   @param payment_failed_at [Time, nil] If payment was attempted on this invoice but failed, this will be the time of th
+      #   ...
+      #
+      #   @param payment_started_at [Time, nil] If payment was attempted on this invoice, this will be the start time of the mos
+      #   ...
+      #
+      #   @param scheduled_issue_at [Time, nil] If the invoice is in draft, this timestamp will reflect when the invoice is sche
+      #   ...
+      #
       #   @param shipping_address [Orb::Models::Invoice::ShippingAddress, nil]
+      #
       #   @param status [Symbol, Orb::Models::Invoice::Status]
+      #
       #   @param subscription [Orb::Models::Invoice::Subscription, nil]
-      #   @param subtotal [String]
-      #   @param sync_failed_at [Time, nil]
-      #   @param total [String]
-      #   @param voided_at [Time, nil]
-      #   @param will_auto_issue [Boolean]
+      #
+      #   @param subtotal [String] The total before any discounts and minimums are applied.
+      #
+      #   @param sync_failed_at [Time, nil] If the invoice failed to sync, this will be the last time an external invoicing
+      #   ...
+      #
+      #   @param total [String] The total after any minimums and discounts have been applied.
+      #
+      #   @param voided_at [Time, nil] If the invoice has a status of `void`, this gives a timestamp when the invoice w
+      #   ...
+      #
+      #   @param will_auto_issue [Boolean] This is true if the invoice will be automatically issued in the future, and fals
+      #   ...
 
       # @see Orb::Models::Invoice#auto_collection
       class AutoCollection < Orb::Internal::Type::BaseModel
@@ -449,10 +510,18 @@ module Orb
         required :previously_attempted_at, Time, nil?: true
 
         # @!method initialize(enabled:, next_attempt_at:, num_attempts:, previously_attempted_at:)
-        #   @param enabled [Boolean, nil]
-        #   @param next_attempt_at [Time, nil]
-        #   @param num_attempts [Integer, nil]
-        #   @param previously_attempted_at [Time, nil]
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Invoice::AutoCollection} for more details.
+        #
+        #   @param enabled [Boolean, nil] True only if auto-collection is enabled for this invoice.
+        #
+        #   @param next_attempt_at [Time, nil] If the invoice is scheduled for auto-collection, this field will reflect when th
+        #   ...
+        #
+        #   @param num_attempts [Integer, nil] Number of auto-collection payment attempts.
+        #
+        #   @param previously_attempted_at [Time, nil] If Orb has ever attempted payment auto-collection for this invoice, this field w
+        #   ...
       end
 
       # @see Orb::Models::Invoice#billing_address
@@ -536,13 +605,23 @@ module Orb
         required :voided_at, Time, nil?: true
 
         # @!method initialize(id:, credit_note_number:, memo:, reason:, total:, type:, voided_at:)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Invoice::CreditNote} for more details.
+        #
         #   @param id [String]
+        #
         #   @param credit_note_number [String]
-        #   @param memo [String, nil]
+        #
+        #   @param memo [String, nil] An optional memo supplied on the credit note.
+        #
         #   @param reason [String]
+        #
         #   @param total [String]
+        #
         #   @param type [String]
-        #   @param voided_at [Time, nil]
+        #
+        #   @param voided_at [Time, nil] If the credit note has a status of `void`, this gives a timestamp when the credi
+        #   ...
       end
 
       # @see Orb::Models::Invoice#customer
@@ -622,15 +701,29 @@ module Orb
         required :type, enum: -> { Orb::Models::Invoice::CustomerBalanceTransaction::Type }
 
         # @!method initialize(id:, action:, amount:, created_at:, credit_note:, description:, ending_balance:, invoice:, starting_balance:, type:)
-        #   @param id [String]
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Invoice::CustomerBalanceTransaction} for more details.
+        #
+        #   @param id [String] A unique id for this transaction.
+        #
         #   @param action [Symbol, Orb::Models::Invoice::CustomerBalanceTransaction::Action]
-        #   @param amount [String]
-        #   @param created_at [Time]
+        #
+        #   @param amount [String] The value of the amount changed in the transaction.
+        #
+        #   @param created_at [Time] The creation time of this transaction.
+        #
         #   @param credit_note [Orb::Models::Invoice::CustomerBalanceTransaction::CreditNote, nil]
-        #   @param description [String, nil]
-        #   @param ending_balance [String]
+        #
+        #   @param description [String, nil] An optional description provided for manual customer balance adjustments.
+        #
+        #   @param ending_balance [String] The new value of the customer's balance prior to the transaction, in the custome
+        #   ...
+        #
         #   @param invoice [Orb::Models::Invoice::CustomerBalanceTransaction::Invoice, nil]
-        #   @param starting_balance [String]
+        #
+        #   @param starting_balance [String] The original value of the customer's balance prior to the transaction, in the cu
+        #   ...
+        #
         #   @param type [Symbol, Orb::Models::Invoice::CustomerBalanceTransaction::Type]
 
         # @see Orb::Models::Invoice::CustomerBalanceTransaction#action
@@ -660,7 +753,7 @@ module Orb
           required :id, String
 
           # @!method initialize(id:)
-          #   @param id [String]
+          #   @param id [String] The id of the Credit note
         end
 
         # @see Orb::Models::Invoice::CustomerBalanceTransaction#invoice
@@ -672,7 +765,7 @@ module Orb
           required :id, String
 
           # @!method initialize(id:)
-          #   @param id [String]
+          #   @param id [String] The Invoice id
         end
 
         # @see Orb::Models::Invoice::CustomerBalanceTransaction#type
@@ -1155,28 +1248,60 @@ module Orb
         required :usage_customer_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
 
         # @!method initialize(id:, adjusted_subtotal:, adjustments:, amount:, credits_applied:, discount:, end_date:, filter:, grouping:, maximum:, maximum_amount:, minimum:, minimum_amount:, name:, partially_invoiced_amount:, price:, quantity:, start_date:, sub_line_items:, subtotal:, tax_amounts:, usage_customer_ids:)
-        #   @param id [String]
-        #   @param adjusted_subtotal [String]
-        #   @param adjustments [Array<Orb::Models::Invoice::LineItem::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryMinimumAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryMaximumAdjustment>]
-        #   @param amount [String]
-        #   @param credits_applied [String]
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Invoice::LineItem} for more details.
+        #
+        #   @param id [String] A unique ID for this line item.
+        #
+        #   @param adjusted_subtotal [String] The line amount after any adjustments and before overage conversion, credits and
+        #   ...
+        #
+        #   @param adjustments [Array<Orb::Models::Invoice::LineItem::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryMinimumAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryMaximumAdjustment>] All adjustments applied to the line item in the order they were applied based on
+        #   ...
+        #
+        #   @param amount [String] The final amount for a line item after all adjustments and pre paid credits have
+        #   ...
+        #
+        #   @param credits_applied [String] The number of prepaid credits applied.
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #   @param end_date [Time]
-        #   @param filter [String, nil]
-        #   @param grouping [String, nil]
-        #   @param maximum [Orb::Models::Invoice::LineItem::Maximum, nil]
-        #   @param maximum_amount [String, nil]
-        #   @param minimum [Orb::Models::Invoice::LineItem::Minimum, nil]
-        #   @param minimum_amount [String, nil]
-        #   @param name [String]
-        #   @param partially_invoiced_amount [String]
-        #   @param price [Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice, nil]
-        #   @param quantity [Float]
-        #   @param start_date [Time]
-        #   @param sub_line_items [Array<Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem, Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem, Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem>]
-        #   @param subtotal [String]
-        #   @param tax_amounts [Array<Orb::Models::Invoice::LineItem::TaxAmount>]
-        #   @param usage_customer_ids [Array<String>, nil]
+        #
+        #   @param end_date [Time] The end date of the range of time applied for this line item's price.
+        #
+        #   @param filter [String, nil] An additional filter that was used to calculate the usage for this line item.
+        #
+        #   @param grouping [String, nil] [DEPRECATED] For configured prices that are split by a grouping key, this will b
+        #   ...
+        #
+        #   @param maximum [Orb::Models::Invoice::LineItem::Maximum, nil] This field is deprecated in favor of `adjustments`.
+        #
+        #   @param maximum_amount [String, nil] This field is deprecated in favor of `adjustments`.
+        #
+        #   @param minimum [Orb::Models::Invoice::LineItem::Minimum, nil] This field is deprecated in favor of `adjustments`.
+        #
+        #   @param minimum_amount [String, nil] This field is deprecated in favor of `adjustments`.
+        #
+        #   @param name [String] The name of the price associated with this line item.
+        #
+        #   @param partially_invoiced_amount [String] Any amount applied from a partial invoice
+        #
+        #   @param price [Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice, nil] The Price resource represents a price that can be billed on a subscription, resu
+        #   ...
+        #
+        #   @param quantity [Float] Either the fixed fee quantity or the usage during the service period.
+        #
+        #   @param start_date [Time] The start date of the range of time applied for this line item's price.
+        #
+        #   @param sub_line_items [Array<Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem, Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem, Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem>] For complex pricing structures, the line item can be broken down further in `sub
+        #   ...
+        #
+        #   @param subtotal [String] The line amount before before any adjustments.
+        #
+        #   @param tax_amounts [Array<Orb::Models::Invoice::LineItem::TaxAmount>] An array of tax rates and their incurred tax amounts. Empty if no tax integratio
+        #   ...
+        #
+        #   @param usage_customer_ids [Array<String>, nil] A list of customer ids that were used to calculate the usage for this line item.
+        #   ...
 
         module Adjustment
           extend Orb::Internal::Type::Union
@@ -1240,12 +1365,24 @@ module Orb
             required :usage_discount, Float
 
             # @!method initialize(id:, amount:, applies_to_price_ids:, is_invoice_level:, reason:, usage_discount:, adjustment_type: :usage_discount)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::Invoice::LineItem::Adjustment::MonetaryUsageDiscountAdjustment}
+            #   for more details.
+            #
             #   @param id [String]
-            #   @param amount [String]
-            #   @param applies_to_price_ids [Array<String>]
-            #   @param is_invoice_level [Boolean]
-            #   @param reason [String, nil]
-            #   @param usage_discount [Float]
+            #
+            #   @param amount [String] The value applied by an adjustment.
+            #
+            #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
+            #
+            #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
+            #   ...
+            #
+            #   @param reason [String, nil] The reason for the adjustment.
+            #
+            #   @param usage_discount [Float] The number of usage units by which to discount the price this adjustment applies
+            #   ...
+            #
             #   @param adjustment_type [Symbol, :usage_discount]
           end
 
@@ -1293,12 +1430,24 @@ module Orb
             required :reason, String, nil?: true
 
             # @!method initialize(id:, amount:, amount_discount:, applies_to_price_ids:, is_invoice_level:, reason:, adjustment_type: :amount_discount)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::Invoice::LineItem::Adjustment::MonetaryAmountDiscountAdjustment}
+            #   for more details.
+            #
             #   @param id [String]
-            #   @param amount [String]
-            #   @param amount_discount [String]
-            #   @param applies_to_price_ids [Array<String>]
-            #   @param is_invoice_level [Boolean]
-            #   @param reason [String, nil]
+            #
+            #   @param amount [String] The value applied by an adjustment.
+            #
+            #   @param amount_discount [String] The amount by which to discount the prices this adjustment applies to in a given
+            #   ...
+            #
+            #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
+            #
+            #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
+            #   ...
+            #
+            #   @param reason [String, nil] The reason for the adjustment.
+            #
             #   @param adjustment_type [Symbol, :amount_discount]
           end
 
@@ -1346,12 +1495,24 @@ module Orb
             required :reason, String, nil?: true
 
             # @!method initialize(id:, amount:, applies_to_price_ids:, is_invoice_level:, percentage_discount:, reason:, adjustment_type: :percentage_discount)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::Invoice::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment}
+            #   for more details.
+            #
             #   @param id [String]
-            #   @param amount [String]
-            #   @param applies_to_price_ids [Array<String>]
-            #   @param is_invoice_level [Boolean]
-            #   @param percentage_discount [Float]
-            #   @param reason [String, nil]
+            #
+            #   @param amount [String] The value applied by an adjustment.
+            #
+            #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
+            #
+            #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
+            #   ...
+            #
+            #   @param percentage_discount [Float] The percentage (as a value between 0 and 1) by which to discount the price inter
+            #   ...
+            #
+            #   @param reason [String, nil] The reason for the adjustment.
+            #
             #   @param adjustment_type [Symbol, :percentage_discount]
           end
 
@@ -1405,13 +1566,26 @@ module Orb
             required :reason, String, nil?: true
 
             # @!method initialize(id:, amount:, applies_to_price_ids:, is_invoice_level:, item_id:, minimum_amount:, reason:, adjustment_type: :minimum)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::Invoice::LineItem::Adjustment::MonetaryMinimumAdjustment} for more
+            #   details.
+            #
             #   @param id [String]
-            #   @param amount [String]
-            #   @param applies_to_price_ids [Array<String>]
-            #   @param is_invoice_level [Boolean]
-            #   @param item_id [String]
-            #   @param minimum_amount [String]
-            #   @param reason [String, nil]
+            #
+            #   @param amount [String] The value applied by an adjustment.
+            #
+            #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
+            #
+            #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
+            #   ...
+            #
+            #   @param item_id [String] The item ID that revenue from this minimum will be attributed to.
+            #
+            #   @param minimum_amount [String] The minimum amount to charge in a given billing period for the prices this adjus
+            #   ...
+            #
+            #   @param reason [String, nil] The reason for the adjustment.
+            #
             #   @param adjustment_type [Symbol, :minimum]
           end
 
@@ -1459,12 +1633,24 @@ module Orb
             required :reason, String, nil?: true
 
             # @!method initialize(id:, amount:, applies_to_price_ids:, is_invoice_level:, maximum_amount:, reason:, adjustment_type: :maximum)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::Invoice::LineItem::Adjustment::MonetaryMaximumAdjustment} for more
+            #   details.
+            #
             #   @param id [String]
-            #   @param amount [String]
-            #   @param applies_to_price_ids [Array<String>]
-            #   @param is_invoice_level [Boolean]
-            #   @param maximum_amount [String]
-            #   @param reason [String, nil]
+            #
+            #   @param amount [String] The value applied by an adjustment.
+            #
+            #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
+            #
+            #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
+            #   ...
+            #
+            #   @param maximum_amount [String] The maximum amount to charge in a given billing period for the prices this adjus
+            #   ...
+            #
+            #   @param reason [String, nil] The reason for the adjustment.
+            #
             #   @param adjustment_type [Symbol, :maximum]
           end
 
@@ -1490,10 +1676,15 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Invoice::LineItem::Maximum} for more details.
+          #
           #   This field is deprecated in favor of `adjustments`.
           #
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @deprecated
@@ -1514,10 +1705,15 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Invoice::LineItem::Minimum} for more details.
+          #
           #   This field is deprecated in favor of `adjustments`.
           #
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         module SubLineItem
@@ -1567,11 +1763,16 @@ module Orb
             required :type, const: :matrix
 
             # @!method initialize(amount:, grouping:, matrix_config:, name:, quantity:, type: :matrix)
-            #   @param amount [String]
+            #   @param amount [String] The total amount for this sub line item.
+            #
             #   @param grouping [Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem::Grouping, nil]
+            #
             #   @param matrix_config [Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem::MatrixConfig]
+            #
             #   @param name [String]
+            #
             #   @param quantity [Float]
+            #
             #   @param type [Symbol, :matrix]
 
             # @see Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem#grouping
@@ -1589,7 +1790,8 @@ module Orb
 
               # @!method initialize(key:, value:)
               #   @param key [String]
-              #   @param value [String, nil]
+              #
+              #   @param value [String, nil] No value indicates the default group
             end
 
             # @see Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem#matrix_config
@@ -1601,7 +1803,7 @@ module Orb
               required :dimension_values, Orb::Internal::Type::ArrayOf[String, nil?: true]
 
               # @!method initialize(dimension_values:)
-              #   @param dimension_values [Array<String, nil>]
+              #   @param dimension_values [Array<String, nil>] The ordered dimension values for this line item.
             end
           end
 
@@ -1640,11 +1842,16 @@ module Orb
             required :type, const: :tier
 
             # @!method initialize(amount:, grouping:, name:, quantity:, tier_config:, type: :tier)
-            #   @param amount [String]
+            #   @param amount [String] The total amount for this sub line item.
+            #
             #   @param grouping [Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem::Grouping, nil]
+            #
             #   @param name [String]
+            #
             #   @param quantity [Float]
+            #
             #   @param tier_config [Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem::TierConfig]
+            #
             #   @param type [Symbol, :tier]
 
             # @see Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem#grouping
@@ -1662,7 +1869,8 @@ module Orb
 
               # @!method initialize(key:, value:)
               #   @param key [String]
-              #   @param value [String, nil]
+              #
+              #   @param value [String, nil] No value indicates the default group
             end
 
             # @see Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem#tier_config
@@ -1719,10 +1927,14 @@ module Orb
             required :type, const: :"'null'"
 
             # @!method initialize(amount:, grouping:, name:, quantity:, type: :"'null'")
-            #   @param amount [String]
+            #   @param amount [String] The total amount for this sub line item.
+            #
             #   @param grouping [Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem::Grouping, nil]
+            #
             #   @param name [String]
+            #
             #   @param quantity [Float]
+            #
             #   @param type [Symbol, :"'null'"]
 
             # @see Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem#grouping
@@ -1740,7 +1952,8 @@ module Orb
 
               # @!method initialize(key:, value:)
               #   @param key [String]
-              #   @param value [String, nil]
+              #
+              #   @param value [String, nil] No value indicates the default group
             end
           end
 
@@ -1768,9 +1981,11 @@ module Orb
           required :tax_rate_percentage, String, nil?: true
 
           # @!method initialize(amount:, tax_rate_description:, tax_rate_percentage:)
-          #   @param amount [String]
-          #   @param tax_rate_description [String]
-          #   @param tax_rate_percentage [String, nil]
+          #   @param amount [String] The amount of additional tax incurred by this tax rate.
+          #
+          #   @param tax_rate_description [String] The human-readable description of the applied tax rate.
+          #
+          #   @param tax_rate_percentage [String, nil] The tax rate percentage, out of 100.
         end
       end
 
@@ -1790,8 +2005,13 @@ module Orb
         required :maximum_amount, String
 
         # @!method initialize(applies_to_price_ids:, maximum_amount:)
-        #   @param applies_to_price_ids [Array<String>]
-        #   @param maximum_amount [String]
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Invoice::Maximum} for more details.
+        #
+        #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+        #   ...
+        #
+        #   @param maximum_amount [String] Maximum amount applied
       end
 
       # @see Orb::Models::Invoice#minimum
@@ -1810,8 +2030,13 @@ module Orb
         required :minimum_amount, String
 
         # @!method initialize(applies_to_price_ids:, minimum_amount:)
-        #   @param applies_to_price_ids [Array<String>]
-        #   @param minimum_amount [String]
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Invoice::Minimum} for more details.
+        #
+        #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+        #   ...
+        #
+        #   @param minimum_amount [String] Minimum amount applied
       end
 
       class PaymentAttempt < Orb::Internal::Type::BaseModel
@@ -1852,12 +2077,17 @@ module Orb
         required :succeeded, Orb::Internal::Type::Boolean
 
         # @!method initialize(id:, amount:, created_at:, payment_provider:, payment_provider_id:, succeeded:)
-        #   @param id [String]
-        #   @param amount [String]
-        #   @param created_at [Time]
-        #   @param payment_provider [Symbol, Orb::Models::Invoice::PaymentAttempt::PaymentProvider, nil]
-        #   @param payment_provider_id [String, nil]
-        #   @param succeeded [Boolean]
+        #   @param id [String] The ID of the payment attempt.
+        #
+        #   @param amount [String] The amount of the payment attempt.
+        #
+        #   @param created_at [Time] The time at which the payment attempt was created.
+        #
+        #   @param payment_provider [Symbol, Orb::Models::Invoice::PaymentAttempt::PaymentProvider, nil] The payment provider that attempted to collect the payment.
+        #
+        #   @param payment_provider_id [String, nil] The ID of the payment attempt in the payment provider.
+        #
+        #   @param succeeded [Boolean] Whether the payment attempt succeeded.
 
         # The payment provider that attempted to collect the payment.
         #

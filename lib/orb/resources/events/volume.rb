@@ -4,6 +4,9 @@ module Orb
   module Resources
     class Events
       class Volume
+        # Some parameter documentations has been truncated, see
+        # {Orb::Models::Events::VolumeListParams} for more details.
+        #
         # This endpoint returns the event volume for an account in a
         # [paginated list format](/api-reference/pagination).
         #
@@ -20,10 +23,17 @@ module Orb
         #
         # @overload list(timeframe_start:, cursor: nil, limit: nil, timeframe_end: nil, request_options: {})
         #
-        # @param timeframe_start [Time]
-        # @param cursor [String, nil]
-        # @param limit [Integer]
-        # @param timeframe_end [Time]
+        # @param timeframe_start [Time] The start of the timeframe, inclusive, in which to return event volume. All date
+        # ...
+        #
+        # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
+        # ...
+        #
+        # @param limit [Integer] The number of items to fetch. Defaults to 20.
+        #
+        # @param timeframe_end [Time] The end of the timeframe, exclusive, in which to return event volume. If not spe
+        # ...
+        #
         # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Orb::Models::Events::EventVolumes]

@@ -37,8 +37,11 @@ module Orb
       # @overload apply(subscription_change_id, description: nil, previously_collected_amount: nil, request_options: {})
       #
       # @param subscription_change_id [String]
-      # @param description [String, nil]
-      # @param previously_collected_amount [String, nil]
+      #
+      # @param description [String, nil] Description to apply to the balance transaction representing this credit.
+      #
+      # @param previously_collected_amount [String, nil] Amount already collected to apply to the customer's balance.
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::SubscriptionChangeApplyResponse]

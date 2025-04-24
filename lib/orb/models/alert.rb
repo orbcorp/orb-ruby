@@ -66,22 +66,35 @@ module Orb
       required :type, enum: -> { Orb::Models::Alert::Type }
 
       # @!method initialize(id:, created_at:, currency:, customer:, enabled:, metric:, plan:, subscription:, thresholds:, type:)
+      #   Some parameter documentations has been truncated, see {Orb::Models::Alert} for
+      #   more details.
+      #
       #   [Alerts within Orb](/product-catalog/configuring-alerts) monitor spending,
       #   usage, or credit balance and trigger webhooks when a threshold is exceeded.
       #
       #   Alerts created through the API can be scoped to either customers or
       #   subscriptions.
       #
-      #   @param id [String]
-      #   @param created_at [Time]
-      #   @param currency [String, nil]
-      #   @param customer [Orb::Models::Alert::Customer, nil]
-      #   @param enabled [Boolean]
-      #   @param metric [Orb::Models::Alert::Metric, nil]
-      #   @param plan [Orb::Models::Alert::Plan, nil]
-      #   @param subscription [Orb::Models::Alert::Subscription, nil]
-      #   @param thresholds [Array<Orb::Models::Alert::Threshold>, nil]
-      #   @param type [Symbol, Orb::Models::Alert::Type]
+      #   @param id [String] Also referred to as alert_id in this documentation.
+      #
+      #   @param created_at [Time] The creation time of the resource in Orb.
+      #
+      #   @param currency [String, nil] The name of the currency the credit balance or invoice cost is denominated in.
+      #
+      #   @param customer [Orb::Models::Alert::Customer, nil] The customer the alert applies to.
+      #
+      #   @param enabled [Boolean] Whether the alert is enabled or disabled.
+      #
+      #   @param metric [Orb::Models::Alert::Metric, nil] The metric the alert applies to.
+      #
+      #   @param plan [Orb::Models::Alert::Plan, nil] The plan the alert applies to.
+      #
+      #   @param subscription [Orb::Models::Alert::Subscription, nil] The subscription the alert applies to.
+      #
+      #   @param thresholds [Array<Orb::Models::Alert::Threshold>, nil] The thresholds that define the conditions under which the alert will be triggere
+      #   ...
+      #
+      #   @param type [Symbol, Orb::Models::Alert::Type] The type of alert. This must be a valid alert type.
 
       # @see Orb::Models::Alert#customer
       class Customer < Orb::Internal::Type::BaseModel
@@ -141,11 +154,18 @@ module Orb
         required :plan_version, String
 
         # @!method initialize(id:, external_plan_id:, name:, plan_version:)
+        #   Some parameter documentations has been truncated, see {Orb::Models::Alert::Plan}
+        #   for more details.
+        #
         #   The plan the alert applies to.
         #
         #   @param id [String, nil]
-        #   @param external_plan_id [String, nil]
+        #
+        #   @param external_plan_id [String, nil] An optional user-defined ID for this plan resource, used throughout the system a
+        #   ...
+        #
         #   @param name [String, nil]
+        #
         #   @param plan_version [String]
       end
 
@@ -172,10 +192,14 @@ module Orb
         required :value, Float
 
         # @!method initialize(value:)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Alert::Threshold} for more details.
+        #
         #   Thresholds are used to define the conditions under which an alert will be
         #   triggered.
         #
-        #   @param value [Float]
+        #   @param value [Float] The value at which an alert will fire. For credit balance alerts, the alert will
+        #   ...
       end
 
       # The type of alert. This must be a valid alert type.

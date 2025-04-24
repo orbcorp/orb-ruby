@@ -112,25 +112,49 @@ module Orb
       optional :subscription_id, String, nil?: true
 
       # @!method initialize(amount: nil, amount_gt: nil, amount_lt: nil, cursor: nil, customer_id: nil, date_type: nil, due_date: nil, due_date_window: nil, due_date_gt: nil, due_date_lt: nil, external_customer_id: nil, invoice_date_gt: nil, invoice_date_gte: nil, invoice_date_lt: nil, invoice_date_lte: nil, is_recurring: nil, limit: nil, status: nil, subscription_id: nil, request_options: {})
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::InvoiceListParams} for more details.
+      #
       #   @param amount [String, nil]
+      #
       #   @param amount_gt [String, nil]
+      #
       #   @param amount_lt [String, nil]
-      #   @param cursor [String, nil]
+      #
+      #   @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
+      #   ...
+      #
       #   @param customer_id [String, nil]
+      #
       #   @param date_type [Symbol, Orb::Models::InvoiceListParams::DateType, nil]
+      #
       #   @param due_date [Date, nil]
-      #   @param due_date_window [String, nil]
+      #
+      #   @param due_date_window [String, nil] Filters invoices by their due dates within a specific time range in the past. Sp
+      #   ...
+      #
       #   @param due_date_gt [Date, nil]
+      #
       #   @param due_date_lt [Date, nil]
+      #
       #   @param external_customer_id [String, nil]
+      #
       #   @param invoice_date_gt [Time, nil]
+      #
       #   @param invoice_date_gte [Time, nil]
+      #
       #   @param invoice_date_lt [Time, nil]
+      #
       #   @param invoice_date_lte [Time, nil]
+      #
       #   @param is_recurring [Boolean, nil]
-      #   @param limit [Integer]
+      #
+      #   @param limit [Integer] The number of items to fetch. Defaults to 20.
+      #
       #   @param status [Array<Symbol, Orb::Models::InvoiceListParams::Status>, nil]
+      #
       #   @param subscription_id [String, nil]
+      #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
       module DateType

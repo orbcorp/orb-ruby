@@ -43,11 +43,22 @@ module Orb
       optional :effective_date, Date, nil?: true
 
       # @!method initialize(price_id:, quantity:, allow_invoice_credit_or_void: nil, change_option: nil, effective_date: nil, request_options: {})
-      #   @param price_id [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::SubscriptionUpdateFixedFeeQuantityParams} for more details.
+      #
+      #   @param price_id [String] Price for which the quantity should be updated. Must be a fixed fee.
+      #
       #   @param quantity [Float]
-      #   @param allow_invoice_credit_or_void [Boolean, nil]
-      #   @param change_option [Symbol, Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption]
-      #   @param effective_date [Date, nil]
+      #
+      #   @param allow_invoice_credit_or_void [Boolean, nil] If false, this request will fail if it would void an issued invoice or create a
+      #   ...
+      #
+      #   @param change_option [Symbol, Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption] Determines when the change takes effect. Note that if `effective_date` is specif
+      #   ...
+      #
+      #   @param effective_date [Date, nil] The date that the quantity change should take effect, localized to the customer'
+      #   ...
+      #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
       # Determines when the change takes effect. Note that if `effective_date` is

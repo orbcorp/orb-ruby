@@ -23,9 +23,11 @@ module Orb
       required :quantity, Float
 
       # @!method initialize(amount:, grouping_values:, quantity:)
-      #   @param amount [String]
-      #   @param grouping_values [Array<String, Float, Boolean>]
-      #   @param quantity [Float]
+      #   @param amount [String] The price's output for the group
+      #
+      #   @param grouping_values [Array<String, Float, Boolean>] The values for the group in the order specified by `grouping_keys`
+      #
+      #   @param quantity [Float] The price's usage quantity for the group
 
       module GroupingValue
         extend Orb::Internal::Type::Union

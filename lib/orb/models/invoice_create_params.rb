@@ -78,16 +78,36 @@ module Orb
       optional :will_auto_issue, Orb::Internal::Type::Boolean
 
       # @!method initialize(currency:, invoice_date:, line_items:, net_terms:, customer_id: nil, discount: nil, external_customer_id: nil, memo: nil, metadata: nil, will_auto_issue: nil, request_options: {})
-      #   @param currency [String]
-      #   @param invoice_date [Time]
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::InvoiceCreateParams} for more details.
+      #
+      #   @param currency [String] An ISO 4217 currency string. Must be the same as the customer's currency if it i
+      #   ...
+      #
+      #   @param invoice_date [Time] Optional invoice date to set. Must be in the past, if not set, `invoice_date` is
+      #   ...
+      #
       #   @param line_items [Array<Orb::Models::InvoiceCreateParams::LineItem>]
-      #   @param net_terms [Integer]
-      #   @param customer_id [String, nil]
-      #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-      #   @param external_customer_id [String, nil]
-      #   @param memo [String, nil]
-      #   @param metadata [Hash{Symbol=>String, nil}, nil]
-      #   @param will_auto_issue [Boolean]
+      #
+      #   @param net_terms [Integer] Determines the difference between the invoice issue date for subscription invoic
+      #   ...
+      #
+      #   @param customer_id [String, nil] The id of the `Customer` to create this invoice for. One of `customer_id` and `e
+      #   ...
+      #
+      #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil] An optional discount to attach to the invoice.
+      #
+      #   @param external_customer_id [String, nil] The `external_customer_id` of the `Customer` to create this invoice for. One of
+      #   ...
+      #
+      #   @param memo [String, nil] An optional memo to attach to the invoice.
+      #
+      #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+      #   ...
+      #
+      #   @param will_auto_issue [Boolean] When true, this invoice will be submitted for issuance upon creation. When false
+      #   ...
+      #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
       class LineItem < Orb::Internal::Type::BaseModel
@@ -131,12 +151,18 @@ module Orb
         required :unit_config, -> { Orb::Models::InvoiceCreateParams::LineItem::UnitConfig }
 
         # @!method initialize(end_date:, item_id:, model_type:, name:, quantity:, start_date:, unit_config:)
-        #   @param end_date [Date]
+        #   @param end_date [Date] A date string to specify the line item's end date in the customer's timezone.
+        #
         #   @param item_id [String]
+        #
         #   @param model_type [Symbol, Orb::Models::InvoiceCreateParams::LineItem::ModelType]
-        #   @param name [String]
-        #   @param quantity [Float]
-        #   @param start_date [Date]
+        #
+        #   @param name [String] The name of the line item.
+        #
+        #   @param quantity [Float] The number of units on the line item
+        #
+        #   @param start_date [Date] A date string to specify the line item's start date in the customer's timezone.
+        #
         #   @param unit_config [Orb::Models::InvoiceCreateParams::LineItem::UnitConfig]
 
         # @see Orb::Models::InvoiceCreateParams::LineItem#model_type
@@ -158,7 +184,7 @@ module Orb
           required :unit_amount, String
 
           # @!method initialize(unit_amount:)
-          #   @param unit_amount [String]
+          #   @param unit_amount [String] Rate per unit of usage
         end
       end
     end

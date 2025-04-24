@@ -27,8 +27,15 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(payment_received_date:, external_id: nil, notes: nil, request_options: {}); end
-
+      def self.new(
+        # A date string to specify the date of the payment.
+        payment_received_date:,
+        # An optional external ID to associate with the payment.
+        external_id: nil,
+        # An optional note to associate with the payment.
+        notes: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

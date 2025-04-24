@@ -46,10 +46,20 @@ module Orb
           .returns(T.attached_class)
       end
       def self.new(
+        # Price for which the quantity should be updated. Must be a fixed fee.
         price_id:,
         quantity:,
+        # If false, this request will fail if it would void an issued invoice or create a
+        # credit note. Consider using this as a safety mechanism if you do not expect
+        # existing invoices to be changed.
         allow_invoice_credit_or_void: nil,
+        # Determines when the change takes effect. Note that if `effective_date` is
+        # specified, this defaults to `effective_date`. Otherwise, this defaults to
+        # `immediate` unless it's explicitly set to `upcoming_invoice`.
         change_option: nil,
+        # The date that the quantity change should take effect, localized to the
+        # customer's timezone. Ifthis parameter is not passed in, the quantity change is
+        # effective according to `change_option`.
         effective_date: nil,
         request_options: {}
       ); end

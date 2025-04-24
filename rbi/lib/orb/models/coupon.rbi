@@ -51,16 +51,23 @@ module Orb
           .returns(T.attached_class)
       end
       def self.new(
+        # Also referred to as coupon_id in this documentation.
         id:,
+        # An archived coupon can no longer be redeemed. Active coupons will have a value
+        # of null for `archived_at`; this field will be non-null for archived coupons.
         archived_at:,
         discount:,
+        # This allows for a coupon's discount to apply for a limited time (determined in
+        # months); a `null` value here means "unlimited time".
         duration_in_months:,
+        # The maximum number of redemptions allowed for this coupon before it is
+        # exhausted; `null` here means "unlimited".
         max_redemptions:,
+        # This string can be used to redeem this coupon for a given subscription.
         redemption_code:,
+        # The number of times this coupon has been redeemed.
         times_redeemed:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(

@@ -21,8 +21,15 @@ module Orb
         params(synchronous: T::Boolean, request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
           .returns(T.attached_class)
       end
-      def self.new(synchronous: nil, request_options: {}); end
-
+      def self.new(
+        # If true, the invoice will be issued synchronously. If false, the invoice will be
+        # issued asynchronously. The synchronous option is only available for invoices
+        # that have no usage fees. If the invoice is configured to sync to an external
+        # provider, a successful response from this endpoint guarantees the invoice is
+        # present in the provider.
+        synchronous: nil,
+        request_options: {}
+      ); end
       sig { override.returns({synchronous: T::Boolean, request_options: Orb::RequestOptions}) }
       def to_hash; end
     end

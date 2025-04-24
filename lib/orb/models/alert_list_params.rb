@@ -59,15 +59,28 @@ module Orb
       optional :subscription_id, String, nil?: true
 
       # @!method initialize(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, customer_id: nil, external_customer_id: nil, limit: nil, subscription_id: nil, request_options: {})
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::AlertListParams} for more details.
+      #
       #   @param created_at_gt [Time, nil]
+      #
       #   @param created_at_gte [Time, nil]
+      #
       #   @param created_at_lt [Time, nil]
+      #
       #   @param created_at_lte [Time, nil]
-      #   @param cursor [String, nil]
-      #   @param customer_id [String, nil]
-      #   @param external_customer_id [String, nil]
-      #   @param limit [Integer]
-      #   @param subscription_id [String, nil]
+      #
+      #   @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
+      #   ...
+      #
+      #   @param customer_id [String, nil] Fetch alerts scoped to this customer_id
+      #
+      #   @param external_customer_id [String, nil] Fetch alerts scoped to this external_customer_id
+      #
+      #   @param limit [Integer] The number of items to fetch. Defaults to 20.
+      #
+      #   @param subscription_id [String, nil] Fetch alerts scoped to this subscription_id
+      #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end

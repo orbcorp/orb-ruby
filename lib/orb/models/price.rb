@@ -206,29 +206,56 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, unit_config:, dimensional_price_configuration: nil, model_type: :unit)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::UnitPrice} for more details.
+        #
         #   @param id [String]
+        #
         #   @param billable_metric [Orb::Models::Price::UnitPrice::BillableMetric, nil]
+        #
         #   @param billing_cycle_configuration [Orb::Models::Price::UnitPrice::BillingCycleConfiguration]
+        #
         #   @param cadence [Symbol, Orb::Models::Price::UnitPrice::Cadence]
+        #
         #   @param conversion_rate [Float, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param credit_allocation [Orb::Models::Price::UnitPrice::CreditAllocation, nil]
+        #
         #   @param currency [String]
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
         #   @param external_price_id [String, nil]
+        #
         #   @param fixed_price_quantity [Float, nil]
+        #
         #   @param invoicing_cycle_configuration [Orb::Models::Price::UnitPrice::InvoicingCycleConfiguration, nil]
+        #
         #   @param item [Orb::Models::Price::UnitPrice::Item]
+        #
         #   @param maximum [Orb::Models::Price::UnitPrice::Maximum, nil]
+        #
         #   @param maximum_amount [String, nil]
-        #   @param metadata [Hash{Symbol=>String}]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
         #   @param minimum [Orb::Models::Price::UnitPrice::Minimum, nil]
+        #
         #   @param minimum_amount [String, nil]
+        #
         #   @param name [String]
+        #
         #   @param plan_phase_order [Integer, nil]
+        #
         #   @param price_type [Symbol, Orb::Models::Price::UnitPrice::PriceType]
+        #
         #   @param unit_config [Orb::Models::Price::UnitPrice::UnitConfig]
+        #
         #   @param dimensional_price_configuration [Orb::Models::Price::UnitPrice::DimensionalPriceConfiguration, nil]
+        #
         #   @param model_type [Symbol, :unit]
 
         # @see Orb::Models::Price::UnitPrice#billable_metric
@@ -365,8 +392,13 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::UnitPrice::Maximum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @see Orb::Models::Price::UnitPrice#minimum
@@ -385,8 +417,13 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::UnitPrice::Minimum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         # @see Orb::Models::Price::UnitPrice#price_type
@@ -409,7 +446,7 @@ module Orb
           required :unit_amount, String
 
           # @!method initialize(unit_amount:)
-          #   @param unit_amount [String]
+          #   @param unit_amount [String] Rate per unit of usage
         end
 
         # @see Orb::Models::Price::UnitPrice#dimensional_price_configuration
@@ -560,29 +597,56 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, package_config:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :package)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::PackagePrice} for more details.
+        #
         #   @param id [String]
+        #
         #   @param billable_metric [Orb::Models::Price::PackagePrice::BillableMetric, nil]
+        #
         #   @param billing_cycle_configuration [Orb::Models::Price::PackagePrice::BillingCycleConfiguration]
+        #
         #   @param cadence [Symbol, Orb::Models::Price::PackagePrice::Cadence]
+        #
         #   @param conversion_rate [Float, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param credit_allocation [Orb::Models::Price::PackagePrice::CreditAllocation, nil]
+        #
         #   @param currency [String]
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
         #   @param external_price_id [String, nil]
+        #
         #   @param fixed_price_quantity [Float, nil]
+        #
         #   @param invoicing_cycle_configuration [Orb::Models::Price::PackagePrice::InvoicingCycleConfiguration, nil]
+        #
         #   @param item [Orb::Models::Price::PackagePrice::Item]
+        #
         #   @param maximum [Orb::Models::Price::PackagePrice::Maximum, nil]
+        #
         #   @param maximum_amount [String, nil]
-        #   @param metadata [Hash{Symbol=>String}]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
         #   @param minimum [Orb::Models::Price::PackagePrice::Minimum, nil]
+        #
         #   @param minimum_amount [String, nil]
+        #
         #   @param name [String]
+        #
         #   @param package_config [Orb::Models::Price::PackagePrice::PackageConfig]
+        #
         #   @param plan_phase_order [Integer, nil]
+        #
         #   @param price_type [Symbol, Orb::Models::Price::PackagePrice::PriceType]
+        #
         #   @param dimensional_price_configuration [Orb::Models::Price::PackagePrice::DimensionalPriceConfiguration, nil]
+        #
         #   @param model_type [Symbol, :package]
 
         # @see Orb::Models::Price::PackagePrice#billable_metric
@@ -719,8 +783,13 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::PackagePrice::Maximum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @see Orb::Models::Price::PackagePrice#minimum
@@ -739,8 +808,13 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::PackagePrice::Minimum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         # @see Orb::Models::Price::PackagePrice#package_config
@@ -759,8 +833,13 @@ module Orb
           required :package_size, Integer
 
           # @!method initialize(package_amount:, package_size:)
-          #   @param package_amount [String]
-          #   @param package_size [Integer]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::PackagePrice::PackageConfig} for more details.
+          #
+          #   @param package_amount [String] A currency amount to rate usage by
+          #
+          #   @param package_size [Integer] An integer amount to represent package size. For example, 1000 here would divide
+          #   ...
         end
 
         # @see Orb::Models::Price::PackagePrice#price_type
@@ -922,29 +1001,56 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :matrix)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::MatrixPrice} for more details.
+        #
         #   @param id [String]
+        #
         #   @param billable_metric [Orb::Models::Price::MatrixPrice::BillableMetric, nil]
+        #
         #   @param billing_cycle_configuration [Orb::Models::Price::MatrixPrice::BillingCycleConfiguration]
+        #
         #   @param cadence [Symbol, Orb::Models::Price::MatrixPrice::Cadence]
+        #
         #   @param conversion_rate [Float, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param credit_allocation [Orb::Models::Price::MatrixPrice::CreditAllocation, nil]
+        #
         #   @param currency [String]
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
         #   @param external_price_id [String, nil]
+        #
         #   @param fixed_price_quantity [Float, nil]
+        #
         #   @param invoicing_cycle_configuration [Orb::Models::Price::MatrixPrice::InvoicingCycleConfiguration, nil]
+        #
         #   @param item [Orb::Models::Price::MatrixPrice::Item]
+        #
         #   @param matrix_config [Orb::Models::Price::MatrixPrice::MatrixConfig]
+        #
         #   @param maximum [Orb::Models::Price::MatrixPrice::Maximum, nil]
+        #
         #   @param maximum_amount [String, nil]
-        #   @param metadata [Hash{Symbol=>String}]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
         #   @param minimum [Orb::Models::Price::MatrixPrice::Minimum, nil]
+        #
         #   @param minimum_amount [String, nil]
+        #
         #   @param name [String]
+        #
         #   @param plan_phase_order [Integer, nil]
+        #
         #   @param price_type [Symbol, Orb::Models::Price::MatrixPrice::PriceType]
+        #
         #   @param dimensional_price_configuration [Orb::Models::Price::MatrixPrice::DimensionalPriceConfiguration, nil]
+        #
         #   @param model_type [Symbol, :matrix]
 
         # @see Orb::Models::Price::MatrixPrice#billable_metric
@@ -1087,9 +1193,11 @@ module Orb
                    -> { Orb::Internal::Type::ArrayOf[Orb::Models::Price::MatrixPrice::MatrixConfig::MatrixValue] }
 
           # @!method initialize(default_unit_amount:, dimensions:, matrix_values:)
-          #   @param default_unit_amount [String]
-          #   @param dimensions [Array<String, nil>]
-          #   @param matrix_values [Array<Orb::Models::Price::MatrixPrice::MatrixConfig::MatrixValue>]
+          #   @param default_unit_amount [String] Default per unit rate for any usage not bucketed into a specified matrix_value
+          #
+          #   @param dimensions [Array<String, nil>] One or two event property values to evaluate matrix groups by
+          #
+          #   @param matrix_values [Array<Orb::Models::Price::MatrixPrice::MatrixConfig::MatrixValue>] Matrix values for specified matrix grouping keys
 
           class MatrixValue < Orb::Internal::Type::BaseModel
             # @!attribute dimension_values
@@ -1107,8 +1215,13 @@ module Orb
             required :unit_amount, String
 
             # @!method initialize(dimension_values:, unit_amount:)
-            #   @param dimension_values [Array<String, nil>]
-            #   @param unit_amount [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::Price::MatrixPrice::MatrixConfig::MatrixValue} for more details.
+            #
+            #   @param dimension_values [Array<String, nil>] One or two matrix keys to filter usage to this Matrix value by. For example, ["r
+            #   ...
+            #
+            #   @param unit_amount [String] Unit price for the specified dimension_values
           end
         end
 
@@ -1128,8 +1241,13 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::MatrixPrice::Maximum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @see Orb::Models::Price::MatrixPrice#minimum
@@ -1148,8 +1266,13 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::MatrixPrice::Minimum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         # @see Orb::Models::Price::MatrixPrice#price_type
@@ -1311,29 +1434,56 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_config:, dimensional_price_configuration: nil, model_type: :tiered)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::TieredPrice} for more details.
+        #
         #   @param id [String]
+        #
         #   @param billable_metric [Orb::Models::Price::TieredPrice::BillableMetric, nil]
+        #
         #   @param billing_cycle_configuration [Orb::Models::Price::TieredPrice::BillingCycleConfiguration]
+        #
         #   @param cadence [Symbol, Orb::Models::Price::TieredPrice::Cadence]
+        #
         #   @param conversion_rate [Float, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param credit_allocation [Orb::Models::Price::TieredPrice::CreditAllocation, nil]
+        #
         #   @param currency [String]
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
         #   @param external_price_id [String, nil]
+        #
         #   @param fixed_price_quantity [Float, nil]
+        #
         #   @param invoicing_cycle_configuration [Orb::Models::Price::TieredPrice::InvoicingCycleConfiguration, nil]
+        #
         #   @param item [Orb::Models::Price::TieredPrice::Item]
+        #
         #   @param maximum [Orb::Models::Price::TieredPrice::Maximum, nil]
+        #
         #   @param maximum_amount [String, nil]
-        #   @param metadata [Hash{Symbol=>String}]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
         #   @param minimum [Orb::Models::Price::TieredPrice::Minimum, nil]
+        #
         #   @param minimum_amount [String, nil]
+        #
         #   @param name [String]
+        #
         #   @param plan_phase_order [Integer, nil]
+        #
         #   @param price_type [Symbol, Orb::Models::Price::TieredPrice::PriceType]
+        #
         #   @param tiered_config [Orb::Models::Price::TieredPrice::TieredConfig]
+        #
         #   @param dimensional_price_configuration [Orb::Models::Price::TieredPrice::DimensionalPriceConfiguration, nil]
+        #
         #   @param model_type [Symbol, :tiered]
 
         # @see Orb::Models::Price::TieredPrice#billable_metric
@@ -1470,8 +1620,13 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::TieredPrice::Maximum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @see Orb::Models::Price::TieredPrice#minimum
@@ -1490,8 +1645,13 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::TieredPrice::Minimum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         # @see Orb::Models::Price::TieredPrice#price_type
@@ -1514,7 +1674,7 @@ module Orb
           required :tiers, -> { Orb::Internal::Type::ArrayOf[Orb::Models::Price::TieredPrice::TieredConfig::Tier] }
 
           # @!method initialize(tiers:)
-          #   @param tiers [Array<Orb::Models::Price::TieredPrice::TieredConfig::Tier>]
+          #   @param tiers [Array<Orb::Models::Price::TieredPrice::TieredConfig::Tier>] Tiers for rating based on total usage quantities into the specified tier
 
           class Tier < Orb::Internal::Type::BaseModel
             # @!attribute first_unit
@@ -1536,9 +1696,11 @@ module Orb
             optional :last_unit, Float, nil?: true
 
             # @!method initialize(first_unit:, unit_amount:, last_unit: nil)
-            #   @param first_unit [Float]
-            #   @param unit_amount [String]
-            #   @param last_unit [Float, nil]
+            #   @param first_unit [Float] Exclusive tier starting value
+            #
+            #   @param unit_amount [String] Amount per unit
+            #
+            #   @param last_unit [Float, nil] Inclusive tier ending value. If null, this is treated as the last tier
           end
         end
 
@@ -1691,29 +1853,56 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_bps_config:, dimensional_price_configuration: nil, model_type: :tiered_bps)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::TieredBpsPrice} for more details.
+        #
         #   @param id [String]
+        #
         #   @param billable_metric [Orb::Models::Price::TieredBpsPrice::BillableMetric, nil]
+        #
         #   @param billing_cycle_configuration [Orb::Models::Price::TieredBpsPrice::BillingCycleConfiguration]
+        #
         #   @param cadence [Symbol, Orb::Models::Price::TieredBpsPrice::Cadence]
+        #
         #   @param conversion_rate [Float, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param credit_allocation [Orb::Models::Price::TieredBpsPrice::CreditAllocation, nil]
+        #
         #   @param currency [String]
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
         #   @param external_price_id [String, nil]
+        #
         #   @param fixed_price_quantity [Float, nil]
+        #
         #   @param invoicing_cycle_configuration [Orb::Models::Price::TieredBpsPrice::InvoicingCycleConfiguration, nil]
+        #
         #   @param item [Orb::Models::Price::TieredBpsPrice::Item]
+        #
         #   @param maximum [Orb::Models::Price::TieredBpsPrice::Maximum, nil]
+        #
         #   @param maximum_amount [String, nil]
-        #   @param metadata [Hash{Symbol=>String}]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
         #   @param minimum [Orb::Models::Price::TieredBpsPrice::Minimum, nil]
+        #
         #   @param minimum_amount [String, nil]
+        #
         #   @param name [String]
+        #
         #   @param plan_phase_order [Integer, nil]
+        #
         #   @param price_type [Symbol, Orb::Models::Price::TieredBpsPrice::PriceType]
+        #
         #   @param tiered_bps_config [Orb::Models::Price::TieredBpsPrice::TieredBpsConfig]
+        #
         #   @param dimensional_price_configuration [Orb::Models::Price::TieredBpsPrice::DimensionalPriceConfiguration, nil]
+        #
         #   @param model_type [Symbol, :tiered_bps]
 
         # @see Orb::Models::Price::TieredBpsPrice#billable_metric
@@ -1850,8 +2039,13 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::TieredBpsPrice::Maximum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @see Orb::Models::Price::TieredBpsPrice#minimum
@@ -1870,8 +2064,13 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::TieredBpsPrice::Minimum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         # @see Orb::Models::Price::TieredBpsPrice#price_type
@@ -1896,7 +2095,11 @@ module Orb
                    -> { Orb::Internal::Type::ArrayOf[Orb::Models::Price::TieredBpsPrice::TieredBpsConfig::Tier] }
 
           # @!method initialize(tiers:)
-          #   @param tiers [Array<Orb::Models::Price::TieredBpsPrice::TieredBpsConfig::Tier>]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::TieredBpsPrice::TieredBpsConfig} for more details.
+          #
+          #   @param tiers [Array<Orb::Models::Price::TieredBpsPrice::TieredBpsConfig::Tier>] Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
+          #   ...
 
           class Tier < Orb::Internal::Type::BaseModel
             # @!attribute bps
@@ -1924,10 +2127,13 @@ module Orb
             optional :per_unit_maximum, String, nil?: true
 
             # @!method initialize(bps:, minimum_amount:, maximum_amount: nil, per_unit_maximum: nil)
-            #   @param bps [Float]
-            #   @param minimum_amount [String]
-            #   @param maximum_amount [String, nil]
-            #   @param per_unit_maximum [String, nil]
+            #   @param bps [Float] Per-event basis point rate
+            #
+            #   @param minimum_amount [String] Exclusive tier starting value
+            #
+            #   @param maximum_amount [String, nil] Inclusive tier ending value
+            #
+            #   @param per_unit_maximum [String, nil] Per unit maximum to charge
           end
         end
 
@@ -2079,29 +2285,56 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bps_config:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :bps)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::BpsPrice} for more details.
+        #
         #   @param id [String]
+        #
         #   @param billable_metric [Orb::Models::Price::BpsPrice::BillableMetric, nil]
+        #
         #   @param billing_cycle_configuration [Orb::Models::Price::BpsPrice::BillingCycleConfiguration]
+        #
         #   @param bps_config [Orb::Models::Price::BpsPrice::BpsConfig]
+        #
         #   @param cadence [Symbol, Orb::Models::Price::BpsPrice::Cadence]
+        #
         #   @param conversion_rate [Float, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param credit_allocation [Orb::Models::Price::BpsPrice::CreditAllocation, nil]
+        #
         #   @param currency [String]
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
         #   @param external_price_id [String, nil]
+        #
         #   @param fixed_price_quantity [Float, nil]
+        #
         #   @param invoicing_cycle_configuration [Orb::Models::Price::BpsPrice::InvoicingCycleConfiguration, nil]
+        #
         #   @param item [Orb::Models::Price::BpsPrice::Item]
+        #
         #   @param maximum [Orb::Models::Price::BpsPrice::Maximum, nil]
+        #
         #   @param maximum_amount [String, nil]
-        #   @param metadata [Hash{Symbol=>String}]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
         #   @param minimum [Orb::Models::Price::BpsPrice::Minimum, nil]
+        #
         #   @param minimum_amount [String, nil]
+        #
         #   @param name [String]
+        #
         #   @param plan_phase_order [Integer, nil]
+        #
         #   @param price_type [Symbol, Orb::Models::Price::BpsPrice::PriceType]
+        #
         #   @param dimensional_price_configuration [Orb::Models::Price::BpsPrice::DimensionalPriceConfiguration, nil]
+        #
         #   @param model_type [Symbol, :bps]
 
         # @see Orb::Models::Price::BpsPrice#billable_metric
@@ -2159,8 +2392,9 @@ module Orb
           optional :per_unit_maximum, String, nil?: true
 
           # @!method initialize(bps:, per_unit_maximum: nil)
-          #   @param bps [Float]
-          #   @param per_unit_maximum [String, nil]
+          #   @param bps [Float] Basis point take rate per event
+          #
+          #   @param per_unit_maximum [String, nil] Optional currency amount maximum to cap spend per event
         end
 
         # @see Orb::Models::Price::BpsPrice#cadence
@@ -2257,8 +2491,13 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::BpsPrice::Maximum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @see Orb::Models::Price::BpsPrice#minimum
@@ -2277,8 +2516,13 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::BpsPrice::Minimum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         # @see Orb::Models::Price::BpsPrice#price_type
@@ -2440,29 +2684,56 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bulk_bps_config:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :bulk_bps)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::BulkBpsPrice} for more details.
+        #
         #   @param id [String]
+        #
         #   @param billable_metric [Orb::Models::Price::BulkBpsPrice::BillableMetric, nil]
+        #
         #   @param billing_cycle_configuration [Orb::Models::Price::BulkBpsPrice::BillingCycleConfiguration]
+        #
         #   @param bulk_bps_config [Orb::Models::Price::BulkBpsPrice::BulkBpsConfig]
+        #
         #   @param cadence [Symbol, Orb::Models::Price::BulkBpsPrice::Cadence]
+        #
         #   @param conversion_rate [Float, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param credit_allocation [Orb::Models::Price::BulkBpsPrice::CreditAllocation, nil]
+        #
         #   @param currency [String]
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
         #   @param external_price_id [String, nil]
+        #
         #   @param fixed_price_quantity [Float, nil]
+        #
         #   @param invoicing_cycle_configuration [Orb::Models::Price::BulkBpsPrice::InvoicingCycleConfiguration, nil]
+        #
         #   @param item [Orb::Models::Price::BulkBpsPrice::Item]
+        #
         #   @param maximum [Orb::Models::Price::BulkBpsPrice::Maximum, nil]
+        #
         #   @param maximum_amount [String, nil]
-        #   @param metadata [Hash{Symbol=>String}]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
         #   @param minimum [Orb::Models::Price::BulkBpsPrice::Minimum, nil]
+        #
         #   @param minimum_amount [String, nil]
+        #
         #   @param name [String]
+        #
         #   @param plan_phase_order [Integer, nil]
+        #
         #   @param price_type [Symbol, Orb::Models::Price::BulkBpsPrice::PriceType]
+        #
         #   @param dimensional_price_configuration [Orb::Models::Price::BulkBpsPrice::DimensionalPriceConfiguration, nil]
+        #
         #   @param model_type [Symbol, :bulk_bps]
 
         # @see Orb::Models::Price::BulkBpsPrice#billable_metric
@@ -2516,7 +2787,11 @@ module Orb
                    -> { Orb::Internal::Type::ArrayOf[Orb::Models::Price::BulkBpsPrice::BulkBpsConfig::Tier] }
 
           # @!method initialize(tiers:)
-          #   @param tiers [Array<Orb::Models::Price::BulkBpsPrice::BulkBpsConfig::Tier>]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::BulkBpsPrice::BulkBpsConfig} for more details.
+          #
+          #   @param tiers [Array<Orb::Models::Price::BulkBpsPrice::BulkBpsConfig::Tier>] Tiers for a bulk BPS pricing model where all usage is aggregated to a single tie
+          #   ...
 
           class Tier < Orb::Internal::Type::BaseModel
             # @!attribute bps
@@ -2538,9 +2813,11 @@ module Orb
             optional :per_unit_maximum, String, nil?: true
 
             # @!method initialize(bps:, maximum_amount: nil, per_unit_maximum: nil)
-            #   @param bps [Float]
-            #   @param maximum_amount [String, nil]
-            #   @param per_unit_maximum [String, nil]
+            #   @param bps [Float] Basis points to rate on
+            #
+            #   @param maximum_amount [String, nil] Upper bound for tier
+            #
+            #   @param per_unit_maximum [String, nil] The maximum amount to charge for any one event
           end
         end
 
@@ -2638,8 +2915,13 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::BulkBpsPrice::Maximum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @see Orb::Models::Price::BulkBpsPrice#minimum
@@ -2658,8 +2940,13 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::BulkBpsPrice::Minimum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         # @see Orb::Models::Price::BulkBpsPrice#price_type
@@ -2821,29 +3108,56 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bulk_config:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :bulk)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::BulkPrice} for more details.
+        #
         #   @param id [String]
+        #
         #   @param billable_metric [Orb::Models::Price::BulkPrice::BillableMetric, nil]
+        #
         #   @param billing_cycle_configuration [Orb::Models::Price::BulkPrice::BillingCycleConfiguration]
+        #
         #   @param bulk_config [Orb::Models::Price::BulkPrice::BulkConfig]
+        #
         #   @param cadence [Symbol, Orb::Models::Price::BulkPrice::Cadence]
+        #
         #   @param conversion_rate [Float, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param credit_allocation [Orb::Models::Price::BulkPrice::CreditAllocation, nil]
+        #
         #   @param currency [String]
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
         #   @param external_price_id [String, nil]
+        #
         #   @param fixed_price_quantity [Float, nil]
+        #
         #   @param invoicing_cycle_configuration [Orb::Models::Price::BulkPrice::InvoicingCycleConfiguration, nil]
+        #
         #   @param item [Orb::Models::Price::BulkPrice::Item]
+        #
         #   @param maximum [Orb::Models::Price::BulkPrice::Maximum, nil]
+        #
         #   @param maximum_amount [String, nil]
-        #   @param metadata [Hash{Symbol=>String}]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
         #   @param minimum [Orb::Models::Price::BulkPrice::Minimum, nil]
+        #
         #   @param minimum_amount [String, nil]
+        #
         #   @param name [String]
+        #
         #   @param plan_phase_order [Integer, nil]
+        #
         #   @param price_type [Symbol, Orb::Models::Price::BulkPrice::PriceType]
+        #
         #   @param dimensional_price_configuration [Orb::Models::Price::BulkPrice::DimensionalPriceConfiguration, nil]
+        #
         #   @param model_type [Symbol, :bulk]
 
         # @see Orb::Models::Price::BulkPrice#billable_metric
@@ -2895,7 +3209,7 @@ module Orb
           required :tiers, -> { Orb::Internal::Type::ArrayOf[Orb::Models::Price::BulkPrice::BulkConfig::Tier] }
 
           # @!method initialize(tiers:)
-          #   @param tiers [Array<Orb::Models::Price::BulkPrice::BulkConfig::Tier>]
+          #   @param tiers [Array<Orb::Models::Price::BulkPrice::BulkConfig::Tier>] Bulk tiers for rating based on total usage volume
 
           class Tier < Orb::Internal::Type::BaseModel
             # @!attribute unit_amount
@@ -2911,8 +3225,9 @@ module Orb
             optional :maximum_units, Float, nil?: true
 
             # @!method initialize(unit_amount:, maximum_units: nil)
-            #   @param unit_amount [String]
-            #   @param maximum_units [Float, nil]
+            #   @param unit_amount [String] Amount per unit
+            #
+            #   @param maximum_units [Float, nil] Upper bound for this tier
           end
         end
 
@@ -3010,8 +3325,13 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::BulkPrice::Maximum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @see Orb::Models::Price::BulkPrice#minimum
@@ -3030,8 +3350,13 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::BulkPrice::Minimum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         # @see Orb::Models::Price::BulkPrice#price_type
@@ -3198,29 +3523,56 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, threshold_total_amount_config:, dimensional_price_configuration: nil, model_type: :threshold_total_amount)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::ThresholdTotalAmountPrice} for more details.
+        #
         #   @param id [String]
+        #
         #   @param billable_metric [Orb::Models::Price::ThresholdTotalAmountPrice::BillableMetric, nil]
+        #
         #   @param billing_cycle_configuration [Orb::Models::Price::ThresholdTotalAmountPrice::BillingCycleConfiguration]
+        #
         #   @param cadence [Symbol, Orb::Models::Price::ThresholdTotalAmountPrice::Cadence]
+        #
         #   @param conversion_rate [Float, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param credit_allocation [Orb::Models::Price::ThresholdTotalAmountPrice::CreditAllocation, nil]
+        #
         #   @param currency [String]
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
         #   @param external_price_id [String, nil]
+        #
         #   @param fixed_price_quantity [Float, nil]
+        #
         #   @param invoicing_cycle_configuration [Orb::Models::Price::ThresholdTotalAmountPrice::InvoicingCycleConfiguration, nil]
+        #
         #   @param item [Orb::Models::Price::ThresholdTotalAmountPrice::Item]
+        #
         #   @param maximum [Orb::Models::Price::ThresholdTotalAmountPrice::Maximum, nil]
+        #
         #   @param maximum_amount [String, nil]
-        #   @param metadata [Hash{Symbol=>String}]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
         #   @param minimum [Orb::Models::Price::ThresholdTotalAmountPrice::Minimum, nil]
+        #
         #   @param minimum_amount [String, nil]
+        #
         #   @param name [String]
+        #
         #   @param plan_phase_order [Integer, nil]
+        #
         #   @param price_type [Symbol, Orb::Models::Price::ThresholdTotalAmountPrice::PriceType]
+        #
         #   @param threshold_total_amount_config [Hash{Symbol=>Object}]
+        #
         #   @param dimensional_price_configuration [Orb::Models::Price::ThresholdTotalAmountPrice::DimensionalPriceConfiguration, nil]
+        #
         #   @param model_type [Symbol, :threshold_total_amount]
 
         # @see Orb::Models::Price::ThresholdTotalAmountPrice#billable_metric
@@ -3357,8 +3709,13 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::ThresholdTotalAmountPrice::Maximum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @see Orb::Models::Price::ThresholdTotalAmountPrice#minimum
@@ -3377,8 +3734,13 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::ThresholdTotalAmountPrice::Minimum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         # @see Orb::Models::Price::ThresholdTotalAmountPrice#price_type
@@ -3541,29 +3903,56 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_package_config:, dimensional_price_configuration: nil, model_type: :tiered_package)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::TieredPackagePrice} for more details.
+        #
         #   @param id [String]
+        #
         #   @param billable_metric [Orb::Models::Price::TieredPackagePrice::BillableMetric, nil]
+        #
         #   @param billing_cycle_configuration [Orb::Models::Price::TieredPackagePrice::BillingCycleConfiguration]
+        #
         #   @param cadence [Symbol, Orb::Models::Price::TieredPackagePrice::Cadence]
+        #
         #   @param conversion_rate [Float, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param credit_allocation [Orb::Models::Price::TieredPackagePrice::CreditAllocation, nil]
+        #
         #   @param currency [String]
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
         #   @param external_price_id [String, nil]
+        #
         #   @param fixed_price_quantity [Float, nil]
+        #
         #   @param invoicing_cycle_configuration [Orb::Models::Price::TieredPackagePrice::InvoicingCycleConfiguration, nil]
+        #
         #   @param item [Orb::Models::Price::TieredPackagePrice::Item]
+        #
         #   @param maximum [Orb::Models::Price::TieredPackagePrice::Maximum, nil]
+        #
         #   @param maximum_amount [String, nil]
-        #   @param metadata [Hash{Symbol=>String}]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
         #   @param minimum [Orb::Models::Price::TieredPackagePrice::Minimum, nil]
+        #
         #   @param minimum_amount [String, nil]
+        #
         #   @param name [String]
+        #
         #   @param plan_phase_order [Integer, nil]
+        #
         #   @param price_type [Symbol, Orb::Models::Price::TieredPackagePrice::PriceType]
+        #
         #   @param tiered_package_config [Hash{Symbol=>Object}]
+        #
         #   @param dimensional_price_configuration [Orb::Models::Price::TieredPackagePrice::DimensionalPriceConfiguration, nil]
+        #
         #   @param model_type [Symbol, :tiered_package]
 
         # @see Orb::Models::Price::TieredPackagePrice#billable_metric
@@ -3700,8 +4089,13 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::TieredPackagePrice::Maximum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @see Orb::Models::Price::TieredPackagePrice#minimum
@@ -3720,8 +4114,13 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::TieredPackagePrice::Minimum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         # @see Orb::Models::Price::TieredPackagePrice#price_type
@@ -3884,29 +4283,56 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_tiered_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :grouped_tiered)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::GroupedTieredPrice} for more details.
+        #
         #   @param id [String]
+        #
         #   @param billable_metric [Orb::Models::Price::GroupedTieredPrice::BillableMetric, nil]
+        #
         #   @param billing_cycle_configuration [Orb::Models::Price::GroupedTieredPrice::BillingCycleConfiguration]
+        #
         #   @param cadence [Symbol, Orb::Models::Price::GroupedTieredPrice::Cadence]
+        #
         #   @param conversion_rate [Float, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param credit_allocation [Orb::Models::Price::GroupedTieredPrice::CreditAllocation, nil]
+        #
         #   @param currency [String]
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
         #   @param external_price_id [String, nil]
+        #
         #   @param fixed_price_quantity [Float, nil]
+        #
         #   @param grouped_tiered_config [Hash{Symbol=>Object}]
+        #
         #   @param invoicing_cycle_configuration [Orb::Models::Price::GroupedTieredPrice::InvoicingCycleConfiguration, nil]
+        #
         #   @param item [Orb::Models::Price::GroupedTieredPrice::Item]
+        #
         #   @param maximum [Orb::Models::Price::GroupedTieredPrice::Maximum, nil]
+        #
         #   @param maximum_amount [String, nil]
-        #   @param metadata [Hash{Symbol=>String}]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
         #   @param minimum [Orb::Models::Price::GroupedTieredPrice::Minimum, nil]
+        #
         #   @param minimum_amount [String, nil]
+        #
         #   @param name [String]
+        #
         #   @param plan_phase_order [Integer, nil]
+        #
         #   @param price_type [Symbol, Orb::Models::Price::GroupedTieredPrice::PriceType]
+        #
         #   @param dimensional_price_configuration [Orb::Models::Price::GroupedTieredPrice::DimensionalPriceConfiguration, nil]
+        #
         #   @param model_type [Symbol, :grouped_tiered]
 
         # @see Orb::Models::Price::GroupedTieredPrice#billable_metric
@@ -4043,8 +4469,13 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::GroupedTieredPrice::Maximum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @see Orb::Models::Price::GroupedTieredPrice#minimum
@@ -4063,8 +4494,13 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::GroupedTieredPrice::Minimum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         # @see Orb::Models::Price::GroupedTieredPrice#price_type
@@ -4229,29 +4665,56 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_with_minimum_config:, dimensional_price_configuration: nil, model_type: :tiered_with_minimum)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::TieredWithMinimumPrice} for more details.
+        #
         #   @param id [String]
+        #
         #   @param billable_metric [Orb::Models::Price::TieredWithMinimumPrice::BillableMetric, nil]
+        #
         #   @param billing_cycle_configuration [Orb::Models::Price::TieredWithMinimumPrice::BillingCycleConfiguration]
+        #
         #   @param cadence [Symbol, Orb::Models::Price::TieredWithMinimumPrice::Cadence]
+        #
         #   @param conversion_rate [Float, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param credit_allocation [Orb::Models::Price::TieredWithMinimumPrice::CreditAllocation, nil]
+        #
         #   @param currency [String]
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
         #   @param external_price_id [String, nil]
+        #
         #   @param fixed_price_quantity [Float, nil]
+        #
         #   @param invoicing_cycle_configuration [Orb::Models::Price::TieredWithMinimumPrice::InvoicingCycleConfiguration, nil]
+        #
         #   @param item [Orb::Models::Price::TieredWithMinimumPrice::Item]
+        #
         #   @param maximum [Orb::Models::Price::TieredWithMinimumPrice::Maximum, nil]
+        #
         #   @param maximum_amount [String, nil]
-        #   @param metadata [Hash{Symbol=>String}]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
         #   @param minimum [Orb::Models::Price::TieredWithMinimumPrice::Minimum, nil]
+        #
         #   @param minimum_amount [String, nil]
+        #
         #   @param name [String]
+        #
         #   @param plan_phase_order [Integer, nil]
+        #
         #   @param price_type [Symbol, Orb::Models::Price::TieredWithMinimumPrice::PriceType]
+        #
         #   @param tiered_with_minimum_config [Hash{Symbol=>Object}]
+        #
         #   @param dimensional_price_configuration [Orb::Models::Price::TieredWithMinimumPrice::DimensionalPriceConfiguration, nil]
+        #
         #   @param model_type [Symbol, :tiered_with_minimum]
 
         # @see Orb::Models::Price::TieredWithMinimumPrice#billable_metric
@@ -4388,8 +4851,13 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::TieredWithMinimumPrice::Maximum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @see Orb::Models::Price::TieredWithMinimumPrice#minimum
@@ -4408,8 +4876,13 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::TieredWithMinimumPrice::Minimum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         # @see Orb::Models::Price::TieredWithMinimumPrice#price_type
@@ -4577,29 +5050,56 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_package_with_minimum_config:, dimensional_price_configuration: nil, model_type: :tiered_package_with_minimum)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::TieredPackageWithMinimumPrice} for more details.
+        #
         #   @param id [String]
+        #
         #   @param billable_metric [Orb::Models::Price::TieredPackageWithMinimumPrice::BillableMetric, nil]
+        #
         #   @param billing_cycle_configuration [Orb::Models::Price::TieredPackageWithMinimumPrice::BillingCycleConfiguration]
+        #
         #   @param cadence [Symbol, Orb::Models::Price::TieredPackageWithMinimumPrice::Cadence]
+        #
         #   @param conversion_rate [Float, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param credit_allocation [Orb::Models::Price::TieredPackageWithMinimumPrice::CreditAllocation, nil]
+        #
         #   @param currency [String]
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
         #   @param external_price_id [String, nil]
+        #
         #   @param fixed_price_quantity [Float, nil]
+        #
         #   @param invoicing_cycle_configuration [Orb::Models::Price::TieredPackageWithMinimumPrice::InvoicingCycleConfiguration, nil]
+        #
         #   @param item [Orb::Models::Price::TieredPackageWithMinimumPrice::Item]
+        #
         #   @param maximum [Orb::Models::Price::TieredPackageWithMinimumPrice::Maximum, nil]
+        #
         #   @param maximum_amount [String, nil]
-        #   @param metadata [Hash{Symbol=>String}]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
         #   @param minimum [Orb::Models::Price::TieredPackageWithMinimumPrice::Minimum, nil]
+        #
         #   @param minimum_amount [String, nil]
+        #
         #   @param name [String]
+        #
         #   @param plan_phase_order [Integer, nil]
+        #
         #   @param price_type [Symbol, Orb::Models::Price::TieredPackageWithMinimumPrice::PriceType]
+        #
         #   @param tiered_package_with_minimum_config [Hash{Symbol=>Object}]
+        #
         #   @param dimensional_price_configuration [Orb::Models::Price::TieredPackageWithMinimumPrice::DimensionalPriceConfiguration, nil]
+        #
         #   @param model_type [Symbol, :tiered_package_with_minimum]
 
         # @see Orb::Models::Price::TieredPackageWithMinimumPrice#billable_metric
@@ -4736,8 +5236,13 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::TieredPackageWithMinimumPrice::Maximum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @see Orb::Models::Price::TieredPackageWithMinimumPrice#minimum
@@ -4756,8 +5261,13 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::TieredPackageWithMinimumPrice::Minimum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         # @see Orb::Models::Price::TieredPackageWithMinimumPrice#price_type
@@ -4924,29 +5434,56 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, package_with_allocation_config:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :package_with_allocation)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::PackageWithAllocationPrice} for more details.
+        #
         #   @param id [String]
+        #
         #   @param billable_metric [Orb::Models::Price::PackageWithAllocationPrice::BillableMetric, nil]
+        #
         #   @param billing_cycle_configuration [Orb::Models::Price::PackageWithAllocationPrice::BillingCycleConfiguration]
+        #
         #   @param cadence [Symbol, Orb::Models::Price::PackageWithAllocationPrice::Cadence]
+        #
         #   @param conversion_rate [Float, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param credit_allocation [Orb::Models::Price::PackageWithAllocationPrice::CreditAllocation, nil]
+        #
         #   @param currency [String]
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
         #   @param external_price_id [String, nil]
+        #
         #   @param fixed_price_quantity [Float, nil]
+        #
         #   @param invoicing_cycle_configuration [Orb::Models::Price::PackageWithAllocationPrice::InvoicingCycleConfiguration, nil]
+        #
         #   @param item [Orb::Models::Price::PackageWithAllocationPrice::Item]
+        #
         #   @param maximum [Orb::Models::Price::PackageWithAllocationPrice::Maximum, nil]
+        #
         #   @param maximum_amount [String, nil]
-        #   @param metadata [Hash{Symbol=>String}]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
         #   @param minimum [Orb::Models::Price::PackageWithAllocationPrice::Minimum, nil]
+        #
         #   @param minimum_amount [String, nil]
+        #
         #   @param name [String]
+        #
         #   @param package_with_allocation_config [Hash{Symbol=>Object}]
+        #
         #   @param plan_phase_order [Integer, nil]
+        #
         #   @param price_type [Symbol, Orb::Models::Price::PackageWithAllocationPrice::PriceType]
+        #
         #   @param dimensional_price_configuration [Orb::Models::Price::PackageWithAllocationPrice::DimensionalPriceConfiguration, nil]
+        #
         #   @param model_type [Symbol, :package_with_allocation]
 
         # @see Orb::Models::Price::PackageWithAllocationPrice#billable_metric
@@ -5083,8 +5620,13 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::PackageWithAllocationPrice::Maximum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @see Orb::Models::Price::PackageWithAllocationPrice#minimum
@@ -5103,8 +5645,13 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::PackageWithAllocationPrice::Minimum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         # @see Orb::Models::Price::PackageWithAllocationPrice#price_type
@@ -5267,29 +5814,56 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, unit_with_percent_config:, dimensional_price_configuration: nil, model_type: :unit_with_percent)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::UnitWithPercentPrice} for more details.
+        #
         #   @param id [String]
+        #
         #   @param billable_metric [Orb::Models::Price::UnitWithPercentPrice::BillableMetric, nil]
+        #
         #   @param billing_cycle_configuration [Orb::Models::Price::UnitWithPercentPrice::BillingCycleConfiguration]
+        #
         #   @param cadence [Symbol, Orb::Models::Price::UnitWithPercentPrice::Cadence]
+        #
         #   @param conversion_rate [Float, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param credit_allocation [Orb::Models::Price::UnitWithPercentPrice::CreditAllocation, nil]
+        #
         #   @param currency [String]
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
         #   @param external_price_id [String, nil]
+        #
         #   @param fixed_price_quantity [Float, nil]
+        #
         #   @param invoicing_cycle_configuration [Orb::Models::Price::UnitWithPercentPrice::InvoicingCycleConfiguration, nil]
+        #
         #   @param item [Orb::Models::Price::UnitWithPercentPrice::Item]
+        #
         #   @param maximum [Orb::Models::Price::UnitWithPercentPrice::Maximum, nil]
+        #
         #   @param maximum_amount [String, nil]
-        #   @param metadata [Hash{Symbol=>String}]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
         #   @param minimum [Orb::Models::Price::UnitWithPercentPrice::Minimum, nil]
+        #
         #   @param minimum_amount [String, nil]
+        #
         #   @param name [String]
+        #
         #   @param plan_phase_order [Integer, nil]
+        #
         #   @param price_type [Symbol, Orb::Models::Price::UnitWithPercentPrice::PriceType]
+        #
         #   @param unit_with_percent_config [Hash{Symbol=>Object}]
+        #
         #   @param dimensional_price_configuration [Orb::Models::Price::UnitWithPercentPrice::DimensionalPriceConfiguration, nil]
+        #
         #   @param model_type [Symbol, :unit_with_percent]
 
         # @see Orb::Models::Price::UnitWithPercentPrice#billable_metric
@@ -5426,8 +6000,13 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::UnitWithPercentPrice::Maximum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @see Orb::Models::Price::UnitWithPercentPrice#minimum
@@ -5446,8 +6025,13 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::UnitWithPercentPrice::Minimum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         # @see Orb::Models::Price::UnitWithPercentPrice#price_type
@@ -5615,29 +6199,56 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_with_allocation_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :matrix_with_allocation)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::MatrixWithAllocationPrice} for more details.
+        #
         #   @param id [String]
+        #
         #   @param billable_metric [Orb::Models::Price::MatrixWithAllocationPrice::BillableMetric, nil]
+        #
         #   @param billing_cycle_configuration [Orb::Models::Price::MatrixWithAllocationPrice::BillingCycleConfiguration]
+        #
         #   @param cadence [Symbol, Orb::Models::Price::MatrixWithAllocationPrice::Cadence]
+        #
         #   @param conversion_rate [Float, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param credit_allocation [Orb::Models::Price::MatrixWithAllocationPrice::CreditAllocation, nil]
+        #
         #   @param currency [String]
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
         #   @param external_price_id [String, nil]
+        #
         #   @param fixed_price_quantity [Float, nil]
+        #
         #   @param invoicing_cycle_configuration [Orb::Models::Price::MatrixWithAllocationPrice::InvoicingCycleConfiguration, nil]
+        #
         #   @param item [Orb::Models::Price::MatrixWithAllocationPrice::Item]
+        #
         #   @param matrix_with_allocation_config [Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig]
+        #
         #   @param maximum [Orb::Models::Price::MatrixWithAllocationPrice::Maximum, nil]
+        #
         #   @param maximum_amount [String, nil]
-        #   @param metadata [Hash{Symbol=>String}]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
         #   @param minimum [Orb::Models::Price::MatrixWithAllocationPrice::Minimum, nil]
+        #
         #   @param minimum_amount [String, nil]
+        #
         #   @param name [String]
+        #
         #   @param plan_phase_order [Integer, nil]
+        #
         #   @param price_type [Symbol, Orb::Models::Price::MatrixWithAllocationPrice::PriceType]
+        #
         #   @param dimensional_price_configuration [Orb::Models::Price::MatrixWithAllocationPrice::DimensionalPriceConfiguration, nil]
+        #
         #   @param model_type [Symbol, :matrix_with_allocation]
 
         # @see Orb::Models::Price::MatrixWithAllocationPrice#billable_metric
@@ -5786,10 +6397,13 @@ module Orb
                    -> { Orb::Internal::Type::ArrayOf[Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue] }
 
           # @!method initialize(allocation:, default_unit_amount:, dimensions:, matrix_values:)
-          #   @param allocation [Float]
-          #   @param default_unit_amount [String]
-          #   @param dimensions [Array<String, nil>]
-          #   @param matrix_values [Array<Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue>]
+          #   @param allocation [Float] Allocation to be used to calculate the price
+          #
+          #   @param default_unit_amount [String] Default per unit rate for any usage not bucketed into a specified matrix_value
+          #
+          #   @param dimensions [Array<String, nil>] One or two event property values to evaluate matrix groups by
+          #
+          #   @param matrix_values [Array<Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue>] Matrix values for specified matrix grouping keys
 
           class MatrixValue < Orb::Internal::Type::BaseModel
             # @!attribute dimension_values
@@ -5807,8 +6421,14 @@ module Orb
             required :unit_amount, String
 
             # @!method initialize(dimension_values:, unit_amount:)
-            #   @param dimension_values [Array<String, nil>]
-            #   @param unit_amount [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::Price::MatrixWithAllocationPrice::MatrixWithAllocationConfig::MatrixValue}
+            #   for more details.
+            #
+            #   @param dimension_values [Array<String, nil>] One or two matrix keys to filter usage to this Matrix value by. For example, ["r
+            #   ...
+            #
+            #   @param unit_amount [String] Unit price for the specified dimension_values
           end
         end
 
@@ -5828,8 +6448,13 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::MatrixWithAllocationPrice::Maximum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @see Orb::Models::Price::MatrixWithAllocationPrice#minimum
@@ -5848,8 +6473,13 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::MatrixWithAllocationPrice::Minimum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         # @see Orb::Models::Price::MatrixWithAllocationPrice#price_type
@@ -6014,29 +6644,56 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_with_proration_config:, dimensional_price_configuration: nil, model_type: :tiered_with_proration)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::TieredWithProrationPrice} for more details.
+        #
         #   @param id [String]
+        #
         #   @param billable_metric [Orb::Models::Price::TieredWithProrationPrice::BillableMetric, nil]
+        #
         #   @param billing_cycle_configuration [Orb::Models::Price::TieredWithProrationPrice::BillingCycleConfiguration]
+        #
         #   @param cadence [Symbol, Orb::Models::Price::TieredWithProrationPrice::Cadence]
+        #
         #   @param conversion_rate [Float, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param credit_allocation [Orb::Models::Price::TieredWithProrationPrice::CreditAllocation, nil]
+        #
         #   @param currency [String]
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
         #   @param external_price_id [String, nil]
+        #
         #   @param fixed_price_quantity [Float, nil]
+        #
         #   @param invoicing_cycle_configuration [Orb::Models::Price::TieredWithProrationPrice::InvoicingCycleConfiguration, nil]
+        #
         #   @param item [Orb::Models::Price::TieredWithProrationPrice::Item]
+        #
         #   @param maximum [Orb::Models::Price::TieredWithProrationPrice::Maximum, nil]
+        #
         #   @param maximum_amount [String, nil]
-        #   @param metadata [Hash{Symbol=>String}]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
         #   @param minimum [Orb::Models::Price::TieredWithProrationPrice::Minimum, nil]
+        #
         #   @param minimum_amount [String, nil]
+        #
         #   @param name [String]
+        #
         #   @param plan_phase_order [Integer, nil]
+        #
         #   @param price_type [Symbol, Orb::Models::Price::TieredWithProrationPrice::PriceType]
+        #
         #   @param tiered_with_proration_config [Hash{Symbol=>Object}]
+        #
         #   @param dimensional_price_configuration [Orb::Models::Price::TieredWithProrationPrice::DimensionalPriceConfiguration, nil]
+        #
         #   @param model_type [Symbol, :tiered_with_proration]
 
         # @see Orb::Models::Price::TieredWithProrationPrice#billable_metric
@@ -6173,8 +6830,13 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::TieredWithProrationPrice::Maximum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @see Orb::Models::Price::TieredWithProrationPrice#minimum
@@ -6193,8 +6855,13 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::TieredWithProrationPrice::Minimum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         # @see Orb::Models::Price::TieredWithProrationPrice#price_type
@@ -6359,29 +7026,56 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, unit_with_proration_config:, dimensional_price_configuration: nil, model_type: :unit_with_proration)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::UnitWithProrationPrice} for more details.
+        #
         #   @param id [String]
+        #
         #   @param billable_metric [Orb::Models::Price::UnitWithProrationPrice::BillableMetric, nil]
+        #
         #   @param billing_cycle_configuration [Orb::Models::Price::UnitWithProrationPrice::BillingCycleConfiguration]
+        #
         #   @param cadence [Symbol, Orb::Models::Price::UnitWithProrationPrice::Cadence]
+        #
         #   @param conversion_rate [Float, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param credit_allocation [Orb::Models::Price::UnitWithProrationPrice::CreditAllocation, nil]
+        #
         #   @param currency [String]
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
         #   @param external_price_id [String, nil]
+        #
         #   @param fixed_price_quantity [Float, nil]
+        #
         #   @param invoicing_cycle_configuration [Orb::Models::Price::UnitWithProrationPrice::InvoicingCycleConfiguration, nil]
+        #
         #   @param item [Orb::Models::Price::UnitWithProrationPrice::Item]
+        #
         #   @param maximum [Orb::Models::Price::UnitWithProrationPrice::Maximum, nil]
+        #
         #   @param maximum_amount [String, nil]
-        #   @param metadata [Hash{Symbol=>String}]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
         #   @param minimum [Orb::Models::Price::UnitWithProrationPrice::Minimum, nil]
+        #
         #   @param minimum_amount [String, nil]
+        #
         #   @param name [String]
+        #
         #   @param plan_phase_order [Integer, nil]
+        #
         #   @param price_type [Symbol, Orb::Models::Price::UnitWithProrationPrice::PriceType]
+        #
         #   @param unit_with_proration_config [Hash{Symbol=>Object}]
+        #
         #   @param dimensional_price_configuration [Orb::Models::Price::UnitWithProrationPrice::DimensionalPriceConfiguration, nil]
+        #
         #   @param model_type [Symbol, :unit_with_proration]
 
         # @see Orb::Models::Price::UnitWithProrationPrice#billable_metric
@@ -6518,8 +7212,13 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::UnitWithProrationPrice::Maximum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @see Orb::Models::Price::UnitWithProrationPrice#minimum
@@ -6538,8 +7237,13 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::UnitWithProrationPrice::Minimum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         # @see Orb::Models::Price::UnitWithProrationPrice#price_type
@@ -6704,29 +7408,56 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_allocation_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :grouped_allocation)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::GroupedAllocationPrice} for more details.
+        #
         #   @param id [String]
+        #
         #   @param billable_metric [Orb::Models::Price::GroupedAllocationPrice::BillableMetric, nil]
+        #
         #   @param billing_cycle_configuration [Orb::Models::Price::GroupedAllocationPrice::BillingCycleConfiguration]
+        #
         #   @param cadence [Symbol, Orb::Models::Price::GroupedAllocationPrice::Cadence]
+        #
         #   @param conversion_rate [Float, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param credit_allocation [Orb::Models::Price::GroupedAllocationPrice::CreditAllocation, nil]
+        #
         #   @param currency [String]
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
         #   @param external_price_id [String, nil]
+        #
         #   @param fixed_price_quantity [Float, nil]
+        #
         #   @param grouped_allocation_config [Hash{Symbol=>Object}]
+        #
         #   @param invoicing_cycle_configuration [Orb::Models::Price::GroupedAllocationPrice::InvoicingCycleConfiguration, nil]
+        #
         #   @param item [Orb::Models::Price::GroupedAllocationPrice::Item]
+        #
         #   @param maximum [Orb::Models::Price::GroupedAllocationPrice::Maximum, nil]
+        #
         #   @param maximum_amount [String, nil]
-        #   @param metadata [Hash{Symbol=>String}]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
         #   @param minimum [Orb::Models::Price::GroupedAllocationPrice::Minimum, nil]
+        #
         #   @param minimum_amount [String, nil]
+        #
         #   @param name [String]
+        #
         #   @param plan_phase_order [Integer, nil]
+        #
         #   @param price_type [Symbol, Orb::Models::Price::GroupedAllocationPrice::PriceType]
+        #
         #   @param dimensional_price_configuration [Orb::Models::Price::GroupedAllocationPrice::DimensionalPriceConfiguration, nil]
+        #
         #   @param model_type [Symbol, :grouped_allocation]
 
         # @see Orb::Models::Price::GroupedAllocationPrice#billable_metric
@@ -6863,8 +7594,13 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::GroupedAllocationPrice::Maximum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @see Orb::Models::Price::GroupedAllocationPrice#minimum
@@ -6883,8 +7619,13 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::GroupedAllocationPrice::Minimum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         # @see Orb::Models::Price::GroupedAllocationPrice#price_type
@@ -7052,29 +7793,56 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_prorated_minimum_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :grouped_with_prorated_minimum)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::GroupedWithProratedMinimumPrice} for more details.
+        #
         #   @param id [String]
+        #
         #   @param billable_metric [Orb::Models::Price::GroupedWithProratedMinimumPrice::BillableMetric, nil]
+        #
         #   @param billing_cycle_configuration [Orb::Models::Price::GroupedWithProratedMinimumPrice::BillingCycleConfiguration]
+        #
         #   @param cadence [Symbol, Orb::Models::Price::GroupedWithProratedMinimumPrice::Cadence]
+        #
         #   @param conversion_rate [Float, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param credit_allocation [Orb::Models::Price::GroupedWithProratedMinimumPrice::CreditAllocation, nil]
+        #
         #   @param currency [String]
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
         #   @param external_price_id [String, nil]
+        #
         #   @param fixed_price_quantity [Float, nil]
+        #
         #   @param grouped_with_prorated_minimum_config [Hash{Symbol=>Object}]
+        #
         #   @param invoicing_cycle_configuration [Orb::Models::Price::GroupedWithProratedMinimumPrice::InvoicingCycleConfiguration, nil]
+        #
         #   @param item [Orb::Models::Price::GroupedWithProratedMinimumPrice::Item]
+        #
         #   @param maximum [Orb::Models::Price::GroupedWithProratedMinimumPrice::Maximum, nil]
+        #
         #   @param maximum_amount [String, nil]
-        #   @param metadata [Hash{Symbol=>String}]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
         #   @param minimum [Orb::Models::Price::GroupedWithProratedMinimumPrice::Minimum, nil]
+        #
         #   @param minimum_amount [String, nil]
+        #
         #   @param name [String]
+        #
         #   @param plan_phase_order [Integer, nil]
+        #
         #   @param price_type [Symbol, Orb::Models::Price::GroupedWithProratedMinimumPrice::PriceType]
+        #
         #   @param dimensional_price_configuration [Orb::Models::Price::GroupedWithProratedMinimumPrice::DimensionalPriceConfiguration, nil]
+        #
         #   @param model_type [Symbol, :grouped_with_prorated_minimum]
 
         # @see Orb::Models::Price::GroupedWithProratedMinimumPrice#billable_metric
@@ -7211,8 +7979,13 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::GroupedWithProratedMinimumPrice::Maximum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @see Orb::Models::Price::GroupedWithProratedMinimumPrice#minimum
@@ -7231,8 +8004,13 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::GroupedWithProratedMinimumPrice::Minimum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         # @see Orb::Models::Price::GroupedWithProratedMinimumPrice#price_type
@@ -7400,29 +8178,56 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_metered_minimum_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :grouped_with_metered_minimum)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::GroupedWithMeteredMinimumPrice} for more details.
+        #
         #   @param id [String]
+        #
         #   @param billable_metric [Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillableMetric, nil]
+        #
         #   @param billing_cycle_configuration [Orb::Models::Price::GroupedWithMeteredMinimumPrice::BillingCycleConfiguration]
+        #
         #   @param cadence [Symbol, Orb::Models::Price::GroupedWithMeteredMinimumPrice::Cadence]
+        #
         #   @param conversion_rate [Float, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param credit_allocation [Orb::Models::Price::GroupedWithMeteredMinimumPrice::CreditAllocation, nil]
+        #
         #   @param currency [String]
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
         #   @param external_price_id [String, nil]
+        #
         #   @param fixed_price_quantity [Float, nil]
+        #
         #   @param grouped_with_metered_minimum_config [Hash{Symbol=>Object}]
+        #
         #   @param invoicing_cycle_configuration [Orb::Models::Price::GroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration, nil]
+        #
         #   @param item [Orb::Models::Price::GroupedWithMeteredMinimumPrice::Item]
+        #
         #   @param maximum [Orb::Models::Price::GroupedWithMeteredMinimumPrice::Maximum, nil]
+        #
         #   @param maximum_amount [String, nil]
-        #   @param metadata [Hash{Symbol=>String}]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
         #   @param minimum [Orb::Models::Price::GroupedWithMeteredMinimumPrice::Minimum, nil]
+        #
         #   @param minimum_amount [String, nil]
+        #
         #   @param name [String]
+        #
         #   @param plan_phase_order [Integer, nil]
+        #
         #   @param price_type [Symbol, Orb::Models::Price::GroupedWithMeteredMinimumPrice::PriceType]
+        #
         #   @param dimensional_price_configuration [Orb::Models::Price::GroupedWithMeteredMinimumPrice::DimensionalPriceConfiguration, nil]
+        #
         #   @param model_type [Symbol, :grouped_with_metered_minimum]
 
         # @see Orb::Models::Price::GroupedWithMeteredMinimumPrice#billable_metric
@@ -7559,8 +8364,13 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::GroupedWithMeteredMinimumPrice::Maximum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @see Orb::Models::Price::GroupedWithMeteredMinimumPrice#minimum
@@ -7579,8 +8389,13 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::GroupedWithMeteredMinimumPrice::Minimum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         # @see Orb::Models::Price::GroupedWithMeteredMinimumPrice#price_type
@@ -7747,29 +8562,56 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_with_display_name_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :matrix_with_display_name)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::MatrixWithDisplayNamePrice} for more details.
+        #
         #   @param id [String]
+        #
         #   @param billable_metric [Orb::Models::Price::MatrixWithDisplayNamePrice::BillableMetric, nil]
+        #
         #   @param billing_cycle_configuration [Orb::Models::Price::MatrixWithDisplayNamePrice::BillingCycleConfiguration]
+        #
         #   @param cadence [Symbol, Orb::Models::Price::MatrixWithDisplayNamePrice::Cadence]
+        #
         #   @param conversion_rate [Float, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param credit_allocation [Orb::Models::Price::MatrixWithDisplayNamePrice::CreditAllocation, nil]
+        #
         #   @param currency [String]
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
         #   @param external_price_id [String, nil]
+        #
         #   @param fixed_price_quantity [Float, nil]
+        #
         #   @param invoicing_cycle_configuration [Orb::Models::Price::MatrixWithDisplayNamePrice::InvoicingCycleConfiguration, nil]
+        #
         #   @param item [Orb::Models::Price::MatrixWithDisplayNamePrice::Item]
+        #
         #   @param matrix_with_display_name_config [Hash{Symbol=>Object}]
+        #
         #   @param maximum [Orb::Models::Price::MatrixWithDisplayNamePrice::Maximum, nil]
+        #
         #   @param maximum_amount [String, nil]
-        #   @param metadata [Hash{Symbol=>String}]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
         #   @param minimum [Orb::Models::Price::MatrixWithDisplayNamePrice::Minimum, nil]
+        #
         #   @param minimum_amount [String, nil]
+        #
         #   @param name [String]
+        #
         #   @param plan_phase_order [Integer, nil]
+        #
         #   @param price_type [Symbol, Orb::Models::Price::MatrixWithDisplayNamePrice::PriceType]
+        #
         #   @param dimensional_price_configuration [Orb::Models::Price::MatrixWithDisplayNamePrice::DimensionalPriceConfiguration, nil]
+        #
         #   @param model_type [Symbol, :matrix_with_display_name]
 
         # @see Orb::Models::Price::MatrixWithDisplayNamePrice#billable_metric
@@ -7906,8 +8748,13 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::MatrixWithDisplayNamePrice::Maximum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @see Orb::Models::Price::MatrixWithDisplayNamePrice#minimum
@@ -7926,8 +8773,13 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::MatrixWithDisplayNamePrice::Minimum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         # @see Orb::Models::Price::MatrixWithDisplayNamePrice#price_type
@@ -8092,29 +8944,56 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bulk_with_proration_config:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :bulk_with_proration)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::BulkWithProrationPrice} for more details.
+        #
         #   @param id [String]
+        #
         #   @param billable_metric [Orb::Models::Price::BulkWithProrationPrice::BillableMetric, nil]
+        #
         #   @param billing_cycle_configuration [Orb::Models::Price::BulkWithProrationPrice::BillingCycleConfiguration]
+        #
         #   @param bulk_with_proration_config [Hash{Symbol=>Object}]
+        #
         #   @param cadence [Symbol, Orb::Models::Price::BulkWithProrationPrice::Cadence]
+        #
         #   @param conversion_rate [Float, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param credit_allocation [Orb::Models::Price::BulkWithProrationPrice::CreditAllocation, nil]
+        #
         #   @param currency [String]
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
         #   @param external_price_id [String, nil]
+        #
         #   @param fixed_price_quantity [Float, nil]
+        #
         #   @param invoicing_cycle_configuration [Orb::Models::Price::BulkWithProrationPrice::InvoicingCycleConfiguration, nil]
+        #
         #   @param item [Orb::Models::Price::BulkWithProrationPrice::Item]
+        #
         #   @param maximum [Orb::Models::Price::BulkWithProrationPrice::Maximum, nil]
+        #
         #   @param maximum_amount [String, nil]
-        #   @param metadata [Hash{Symbol=>String}]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
         #   @param minimum [Orb::Models::Price::BulkWithProrationPrice::Minimum, nil]
+        #
         #   @param minimum_amount [String, nil]
+        #
         #   @param name [String]
+        #
         #   @param plan_phase_order [Integer, nil]
+        #
         #   @param price_type [Symbol, Orb::Models::Price::BulkWithProrationPrice::PriceType]
+        #
         #   @param dimensional_price_configuration [Orb::Models::Price::BulkWithProrationPrice::DimensionalPriceConfiguration, nil]
+        #
         #   @param model_type [Symbol, :bulk_with_proration]
 
         # @see Orb::Models::Price::BulkWithProrationPrice#billable_metric
@@ -8251,8 +9130,13 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::BulkWithProrationPrice::Maximum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @see Orb::Models::Price::BulkWithProrationPrice#minimum
@@ -8271,8 +9155,13 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::BulkWithProrationPrice::Minimum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         # @see Orb::Models::Price::BulkWithProrationPrice#price_type
@@ -8439,29 +9328,56 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_tiered_package_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :grouped_tiered_package)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::GroupedTieredPackagePrice} for more details.
+        #
         #   @param id [String]
+        #
         #   @param billable_metric [Orb::Models::Price::GroupedTieredPackagePrice::BillableMetric, nil]
+        #
         #   @param billing_cycle_configuration [Orb::Models::Price::GroupedTieredPackagePrice::BillingCycleConfiguration]
+        #
         #   @param cadence [Symbol, Orb::Models::Price::GroupedTieredPackagePrice::Cadence]
+        #
         #   @param conversion_rate [Float, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param credit_allocation [Orb::Models::Price::GroupedTieredPackagePrice::CreditAllocation, nil]
+        #
         #   @param currency [String]
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
         #   @param external_price_id [String, nil]
+        #
         #   @param fixed_price_quantity [Float, nil]
+        #
         #   @param grouped_tiered_package_config [Hash{Symbol=>Object}]
+        #
         #   @param invoicing_cycle_configuration [Orb::Models::Price::GroupedTieredPackagePrice::InvoicingCycleConfiguration, nil]
+        #
         #   @param item [Orb::Models::Price::GroupedTieredPackagePrice::Item]
+        #
         #   @param maximum [Orb::Models::Price::GroupedTieredPackagePrice::Maximum, nil]
+        #
         #   @param maximum_amount [String, nil]
-        #   @param metadata [Hash{Symbol=>String}]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
         #   @param minimum [Orb::Models::Price::GroupedTieredPackagePrice::Minimum, nil]
+        #
         #   @param minimum_amount [String, nil]
+        #
         #   @param name [String]
+        #
         #   @param plan_phase_order [Integer, nil]
+        #
         #   @param price_type [Symbol, Orb::Models::Price::GroupedTieredPackagePrice::PriceType]
+        #
         #   @param dimensional_price_configuration [Orb::Models::Price::GroupedTieredPackagePrice::DimensionalPriceConfiguration, nil]
+        #
         #   @param model_type [Symbol, :grouped_tiered_package]
 
         # @see Orb::Models::Price::GroupedTieredPackagePrice#billable_metric
@@ -8598,8 +9514,13 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::GroupedTieredPackagePrice::Maximum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @see Orb::Models::Price::GroupedTieredPackagePrice#minimum
@@ -8618,8 +9539,13 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::GroupedTieredPackagePrice::Minimum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         # @see Orb::Models::Price::GroupedTieredPackagePrice#price_type
@@ -8786,29 +9712,56 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, max_group_tiered_package_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :max_group_tiered_package)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::MaxGroupTieredPackagePrice} for more details.
+        #
         #   @param id [String]
+        #
         #   @param billable_metric [Orb::Models::Price::MaxGroupTieredPackagePrice::BillableMetric, nil]
+        #
         #   @param billing_cycle_configuration [Orb::Models::Price::MaxGroupTieredPackagePrice::BillingCycleConfiguration]
+        #
         #   @param cadence [Symbol, Orb::Models::Price::MaxGroupTieredPackagePrice::Cadence]
+        #
         #   @param conversion_rate [Float, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param credit_allocation [Orb::Models::Price::MaxGroupTieredPackagePrice::CreditAllocation, nil]
+        #
         #   @param currency [String]
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
         #   @param external_price_id [String, nil]
+        #
         #   @param fixed_price_quantity [Float, nil]
+        #
         #   @param invoicing_cycle_configuration [Orb::Models::Price::MaxGroupTieredPackagePrice::InvoicingCycleConfiguration, nil]
+        #
         #   @param item [Orb::Models::Price::MaxGroupTieredPackagePrice::Item]
+        #
         #   @param max_group_tiered_package_config [Hash{Symbol=>Object}]
+        #
         #   @param maximum [Orb::Models::Price::MaxGroupTieredPackagePrice::Maximum, nil]
+        #
         #   @param maximum_amount [String, nil]
-        #   @param metadata [Hash{Symbol=>String}]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
         #   @param minimum [Orb::Models::Price::MaxGroupTieredPackagePrice::Minimum, nil]
+        #
         #   @param minimum_amount [String, nil]
+        #
         #   @param name [String]
+        #
         #   @param plan_phase_order [Integer, nil]
+        #
         #   @param price_type [Symbol, Orb::Models::Price::MaxGroupTieredPackagePrice::PriceType]
+        #
         #   @param dimensional_price_configuration [Orb::Models::Price::MaxGroupTieredPackagePrice::DimensionalPriceConfiguration, nil]
+        #
         #   @param model_type [Symbol, :max_group_tiered_package]
 
         # @see Orb::Models::Price::MaxGroupTieredPackagePrice#billable_metric
@@ -8945,8 +9898,13 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::MaxGroupTieredPackagePrice::Maximum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @see Orb::Models::Price::MaxGroupTieredPackagePrice#minimum
@@ -8965,8 +9923,13 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::MaxGroupTieredPackagePrice::Minimum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         # @see Orb::Models::Price::MaxGroupTieredPackagePrice#price_type
@@ -9134,29 +10097,56 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, scalable_matrix_with_unit_pricing_config:, dimensional_price_configuration: nil, model_type: :scalable_matrix_with_unit_pricing)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::ScalableMatrixWithUnitPricingPrice} for more details.
+        #
         #   @param id [String]
+        #
         #   @param billable_metric [Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillableMetric, nil]
+        #
         #   @param billing_cycle_configuration [Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration]
+        #
         #   @param cadence [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Cadence]
+        #
         #   @param conversion_rate [Float, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param credit_allocation [Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::CreditAllocation, nil]
+        #
         #   @param currency [String]
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
         #   @param external_price_id [String, nil]
+        #
         #   @param fixed_price_quantity [Float, nil]
+        #
         #   @param invoicing_cycle_configuration [Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration, nil]
+        #
         #   @param item [Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Item]
+        #
         #   @param maximum [Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Maximum, nil]
+        #
         #   @param maximum_amount [String, nil]
-        #   @param metadata [Hash{Symbol=>String}]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
         #   @param minimum [Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Minimum, nil]
+        #
         #   @param minimum_amount [String, nil]
+        #
         #   @param name [String]
+        #
         #   @param plan_phase_order [Integer, nil]
+        #
         #   @param price_type [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::PriceType]
+        #
         #   @param scalable_matrix_with_unit_pricing_config [Hash{Symbol=>Object}]
+        #
         #   @param dimensional_price_configuration [Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::DimensionalPriceConfiguration, nil]
+        #
         #   @param model_type [Symbol, :scalable_matrix_with_unit_pricing]
 
         # @see Orb::Models::Price::ScalableMatrixWithUnitPricingPrice#billable_metric
@@ -9293,8 +10283,14 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Maximum} for more
+          #   details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @see Orb::Models::Price::ScalableMatrixWithUnitPricingPrice#minimum
@@ -9313,8 +10309,14 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::ScalableMatrixWithUnitPricingPrice::Minimum} for more
+          #   details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         # @see Orb::Models::Price::ScalableMatrixWithUnitPricingPrice#price_type
@@ -9482,29 +10484,56 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, scalable_matrix_with_tiered_pricing_config:, dimensional_price_configuration: nil, model_type: :scalable_matrix_with_tiered_pricing)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::ScalableMatrixWithTieredPricingPrice} for more details.
+        #
         #   @param id [String]
+        #
         #   @param billable_metric [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillableMetric, nil]
+        #
         #   @param billing_cycle_configuration [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration]
+        #
         #   @param cadence [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Cadence]
+        #
         #   @param conversion_rate [Float, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param credit_allocation [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::CreditAllocation, nil]
+        #
         #   @param currency [String]
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
         #   @param external_price_id [String, nil]
+        #
         #   @param fixed_price_quantity [Float, nil]
+        #
         #   @param invoicing_cycle_configuration [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration, nil]
+        #
         #   @param item [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Item]
+        #
         #   @param maximum [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Maximum, nil]
+        #
         #   @param maximum_amount [String, nil]
-        #   @param metadata [Hash{Symbol=>String}]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
         #   @param minimum [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Minimum, nil]
+        #
         #   @param minimum_amount [String, nil]
+        #
         #   @param name [String]
+        #
         #   @param plan_phase_order [Integer, nil]
+        #
         #   @param price_type [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::PriceType]
+        #
         #   @param scalable_matrix_with_tiered_pricing_config [Hash{Symbol=>Object}]
+        #
         #   @param dimensional_price_configuration [Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::DimensionalPriceConfiguration, nil]
+        #
         #   @param model_type [Symbol, :scalable_matrix_with_tiered_pricing]
 
         # @see Orb::Models::Price::ScalableMatrixWithTieredPricingPrice#billable_metric
@@ -9641,8 +10670,14 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Maximum} for more
+          #   details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @see Orb::Models::Price::ScalableMatrixWithTieredPricingPrice#minimum
@@ -9661,8 +10696,14 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::ScalableMatrixWithTieredPricingPrice::Minimum} for more
+          #   details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         # @see Orb::Models::Price::ScalableMatrixWithTieredPricingPrice#price_type
@@ -9829,29 +10870,56 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, cumulative_grouped_bulk_config:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :cumulative_grouped_bulk)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::CumulativeGroupedBulkPrice} for more details.
+        #
         #   @param id [String]
+        #
         #   @param billable_metric [Orb::Models::Price::CumulativeGroupedBulkPrice::BillableMetric, nil]
+        #
         #   @param billing_cycle_configuration [Orb::Models::Price::CumulativeGroupedBulkPrice::BillingCycleConfiguration]
+        #
         #   @param cadence [Symbol, Orb::Models::Price::CumulativeGroupedBulkPrice::Cadence]
+        #
         #   @param conversion_rate [Float, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param credit_allocation [Orb::Models::Price::CumulativeGroupedBulkPrice::CreditAllocation, nil]
+        #
         #   @param cumulative_grouped_bulk_config [Hash{Symbol=>Object}]
+        #
         #   @param currency [String]
+        #
         #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
         #   @param external_price_id [String, nil]
+        #
         #   @param fixed_price_quantity [Float, nil]
+        #
         #   @param invoicing_cycle_configuration [Orb::Models::Price::CumulativeGroupedBulkPrice::InvoicingCycleConfiguration, nil]
+        #
         #   @param item [Orb::Models::Price::CumulativeGroupedBulkPrice::Item]
+        #
         #   @param maximum [Orb::Models::Price::CumulativeGroupedBulkPrice::Maximum, nil]
+        #
         #   @param maximum_amount [String, nil]
-        #   @param metadata [Hash{Symbol=>String}]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
         #   @param minimum [Orb::Models::Price::CumulativeGroupedBulkPrice::Minimum, nil]
+        #
         #   @param minimum_amount [String, nil]
+        #
         #   @param name [String]
+        #
         #   @param plan_phase_order [Integer, nil]
+        #
         #   @param price_type [Symbol, Orb::Models::Price::CumulativeGroupedBulkPrice::PriceType]
+        #
         #   @param dimensional_price_configuration [Orb::Models::Price::CumulativeGroupedBulkPrice::DimensionalPriceConfiguration, nil]
+        #
         #   @param model_type [Symbol, :cumulative_grouped_bulk]
 
         # @see Orb::Models::Price::CumulativeGroupedBulkPrice#billable_metric
@@ -9988,8 +11056,13 @@ module Orb
           required :maximum_amount, String
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param maximum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::CumulativeGroupedBulkPrice::Maximum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
+          #   ...
+          #
+          #   @param maximum_amount [String] Maximum amount applied
         end
 
         # @see Orb::Models::Price::CumulativeGroupedBulkPrice#minimum
@@ -10008,8 +11081,13 @@ module Orb
           required :minimum_amount, String
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param minimum_amount [String]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::CumulativeGroupedBulkPrice::Minimum} for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
+          #   ...
+          #
+          #   @param minimum_amount [String] Minimum amount applied
         end
 
         # @see Orb::Models::Price::CumulativeGroupedBulkPrice#price_type

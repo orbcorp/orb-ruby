@@ -18,7 +18,12 @@ module Orb
       optional :synchronous, Orb::Internal::Type::Boolean
 
       # @!method initialize(synchronous: nil, request_options: {})
-      #   @param synchronous [Boolean]
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::InvoiceIssueParams} for more details.
+      #
+      #   @param synchronous [Boolean] If true, the invoice will be issued synchronously. If false, the invoice will be
+      #   ...
+      #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end

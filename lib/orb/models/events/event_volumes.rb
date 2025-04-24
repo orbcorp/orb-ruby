@@ -34,8 +34,10 @@ module Orb
           #   An EventVolume contains the event volume ingested in an hourly window. The
           #   timestamp used for the aggregation is the `timestamp` datetime field on events.
           #
-          #   @param count [Integer]
+          #   @param count [Integer] The number of events ingested with a timestamp between the timeframe
+          #
           #   @param timeframe_end [Time]
+          #
           #   @param timeframe_start [Time]
         end
       end

@@ -74,20 +74,37 @@ module Orb
         optional :deprecation_filter, String, nil?: true
 
         # @!method initialize(id:, close_time:, created_at:, customer_id:, events_ingested:, replace_existing_events:, reverted_at:, status:, timeframe_end:, timeframe_start:, deprecation_filter: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Events::BackfillCreateResponse} for more details.
+        #
         #   A backfill represents an update to historical usage data, adding or replacing
         #   events in a timeframe.
         #
         #   @param id [String]
-        #   @param close_time [Time, nil]
+        #
+        #   @param close_time [Time, nil] If in the future, the time at which the backfill will automatically close. If in
+        #   ...
+        #
         #   @param created_at [Time]
-        #   @param customer_id [String, nil]
-        #   @param events_ingested [Integer]
-        #   @param replace_existing_events [Boolean]
-        #   @param reverted_at [Time, nil]
-        #   @param status [Symbol, Orb::Models::Events::BackfillCreateResponse::Status]
+        #
+        #   @param customer_id [String, nil] The Orb-generated ID of the customer to which this backfill is scoped. If `null`
+        #   ...
+        #
+        #   @param events_ingested [Integer] The number of events ingested in this backfill.
+        #
+        #   @param replace_existing_events [Boolean] If `true`, existing events in the backfill's timeframe will be replaced with the
+        #   ...
+        #
+        #   @param reverted_at [Time, nil] The time at which this backfill was reverted.
+        #
+        #   @param status [Symbol, Orb::Models::Events::BackfillCreateResponse::Status] The status of the backfill.
+        #
         #   @param timeframe_end [Time]
+        #
         #   @param timeframe_start [Time]
-        #   @param deprecation_filter [String, nil]
+        #
+        #   @param deprecation_filter [String, nil] A boolean [computed property](/extensibility/advanced-metrics#computed-propertie
+        #   ...
 
         # The status of the backfill.
         #

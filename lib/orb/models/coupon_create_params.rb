@@ -33,10 +33,19 @@ module Orb
       optional :max_redemptions, Integer, nil?: true
 
       # @!method initialize(discount:, redemption_code:, duration_in_months: nil, max_redemptions: nil, request_options: {})
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::CouponCreateParams} for more details.
+      #
       #   @param discount [Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount]
-      #   @param redemption_code [String]
-      #   @param duration_in_months [Integer, nil]
-      #   @param max_redemptions [Integer, nil]
+      #
+      #   @param redemption_code [String] This string can be used to redeem this coupon for a given subscription.
+      #
+      #   @param duration_in_months [Integer, nil] This allows for a coupon's discount to apply for a limited time (determined in m
+      #   ...
+      #
+      #   @param max_redemptions [Integer, nil] The maximum number of redemptions allowed for this coupon before it is exhausted
+      #   ...
+      #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
       module Discount

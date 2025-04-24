@@ -95,15 +95,35 @@ module Orb
           .returns(T.attached_class)
       end
       def self.new(
+        # An ISO 4217 currency string. Must be the same as the customer's currency if it
+        # is set.
         currency:,
+        # Optional invoice date to set. Must be in the past, if not set, `invoice_date` is
+        # set to the current time in the customer's timezone.
         invoice_date:,
         line_items:,
+        # Determines the difference between the invoice issue date for subscription
+        # invoices as the date that they are due. A value of '0' here represents that the
+        # invoice is due on issue, whereas a value of 30 represents that the customer has
+        # 30 days to pay the invoice.
         net_terms:,
+        # The id of the `Customer` to create this invoice for. One of `customer_id` and
+        # `external_customer_id` are required.
         customer_id: nil,
+        # An optional discount to attach to the invoice.
         discount: nil,
+        # The `external_customer_id` of the `Customer` to create this invoice for. One of
+        # `customer_id` and `external_customer_id` are required.
         external_customer_id: nil,
+        # An optional memo to attach to the invoice.
         memo: nil,
+        # User-specified key/value pairs for the resource. Individual keys can be removed
+        # by setting the value to `null`, and the entire metadata mapping can be cleared
+        # by setting `metadata` to `null`.
         metadata: nil,
+        # When true, this invoice will be submitted for issuance upon creation. When
+        # false, the resulting invoice will require manual review to issue. Defaulted to
+        # false.
         will_auto_issue: nil,
         request_options: {}
       ); end
@@ -178,8 +198,19 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(end_date:, item_id:, model_type:, name:, quantity:, start_date:, unit_config:); end
-
+        def self.new(
+          # A date string to specify the line item's end date in the customer's timezone.
+          end_date:,
+          item_id:,
+          model_type:,
+          # The name of the line item.
+          name:,
+          # The number of units on the line item
+          quantity:,
+          # A date string to specify the line item's start date in the customer's timezone.
+          start_date:,
+          unit_config:
+        ); end
         sig do
           override
             .returns(
@@ -214,8 +245,10 @@ module Orb
           attr_accessor :unit_amount
 
           sig { params(unit_amount: String).returns(T.attached_class) }
-          def self.new(unit_amount:); end
-
+          def self.new(
+            # Rate per unit of usage
+            unit_amount:
+          ); end
           sig { override.returns({unit_amount: String}) }
           def to_hash; end
         end

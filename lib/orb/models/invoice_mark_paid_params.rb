@@ -26,9 +26,12 @@ module Orb
       optional :notes, String, nil?: true
 
       # @!method initialize(payment_received_date:, external_id: nil, notes: nil, request_options: {})
-      #   @param payment_received_date [Date]
-      #   @param external_id [String, nil]
-      #   @param notes [String, nil]
+      #   @param payment_received_date [Date] A date string to specify the date of the payment.
+      #
+      #   @param external_id [String, nil] An optional external ID to associate with the payment.
+      #
+      #   @param notes [String, nil] An optional note to associate with the payment.
+      #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end

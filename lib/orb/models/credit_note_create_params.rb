@@ -26,8 +26,11 @@ module Orb
 
       # @!method initialize(line_items:, memo: nil, reason: nil, request_options: {})
       #   @param line_items [Array<Orb::Models::CreditNoteCreateParams::LineItem>]
-      #   @param memo [String, nil]
-      #   @param reason [Symbol, Orb::Models::CreditNoteCreateParams::Reason, nil]
+      #
+      #   @param memo [String, nil] An optional memo to attach to the credit note.
+      #
+      #   @param reason [Symbol, Orb::Models::CreditNoteCreateParams::Reason, nil] An optional reason for the credit note.
+      #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
       class LineItem < Orb::Internal::Type::BaseModel
@@ -44,8 +47,9 @@ module Orb
         required :invoice_line_item_id, String
 
         # @!method initialize(amount:, invoice_line_item_id:)
-        #   @param amount [String]
-        #   @param invoice_line_item_id [String]
+        #   @param amount [String] The total amount in the invoice's currency to credit this line item.
+        #
+        #   @param invoice_line_item_id [String] The ID of the line item to credit.
       end
 
       # An optional reason for the credit note.

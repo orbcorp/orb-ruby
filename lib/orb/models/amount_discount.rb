@@ -27,9 +27,16 @@ module Orb
       optional :reason, String, nil?: true
 
       # @!method initialize(amount_discount:, applies_to_price_ids:, discount_type:, reason: nil)
-      #   @param amount_discount [String]
-      #   @param applies_to_price_ids [Array<String>]
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::AmountDiscount} for more details.
+      #
+      #   @param amount_discount [String] Only available if discount_type is `amount`.
+      #
+      #   @param applies_to_price_ids [Array<String>] List of price_ids that this discount applies to. For plan/plan phase discounts,
+      #   ...
+      #
       #   @param discount_type [Symbol, Orb::Models::AmountDiscount::DiscountType]
+      #
       #   @param reason [String, nil]
 
       # @see Orb::Models::AmountDiscount#discount_type

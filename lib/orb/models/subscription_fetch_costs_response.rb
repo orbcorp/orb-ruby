@@ -43,10 +43,14 @@ module Orb
 
         # @!method initialize(per_price_costs:, subtotal:, timeframe_end:, timeframe_start:, total:)
         #   @param per_price_costs [Array<Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost>]
-        #   @param subtotal [String]
+        #
+        #   @param subtotal [String] Total costs for the timeframe, excluding any minimums and discounts.
+        #
         #   @param timeframe_end [Time]
+        #
         #   @param timeframe_start [Time]
-        #   @param total [String]
+        #
+        #   @param total [String] Total costs for the timeframe, including any minimums and discounts.
 
         class PerPriceCost < Orb::Internal::Type::BaseModel
           # @!attribute price
@@ -80,11 +84,15 @@ module Orb
           optional :quantity, Float, nil?: true
 
           # @!method initialize(price:, price_id:, subtotal:, total:, quantity: nil)
-          #   @param price [Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice]
-          #   @param price_id [String]
-          #   @param subtotal [String]
-          #   @param total [String]
-          #   @param quantity [Float, nil]
+          #   @param price [Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice] The price object
+          #
+          #   @param price_id [String] The price the cost is associated with
+          #
+          #   @param subtotal [String] Price's contributions for the timeframe, excluding any minimums and discounts.
+          #
+          #   @param total [String] Price's contributions for the timeframe, including minimums and discounts.
+          #
+          #   @param quantity [Float, nil] The price's quantity for the timeframe
         end
       end
     end

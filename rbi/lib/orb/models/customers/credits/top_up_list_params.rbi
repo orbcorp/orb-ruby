@@ -28,8 +28,14 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(cursor: nil, limit: nil, request_options: {}); end
-
+          def self.new(
+            # Cursor for pagination. This can be populated by the `next_cursor` value returned
+            # from the initial request.
+            cursor: nil,
+            # The number of items to fetch. Defaults to 20.
+            limit: nil,
+            request_options: {}
+          ); end
           sig do
             override.returns(
               {

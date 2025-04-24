@@ -69,16 +69,31 @@ module Orb
       optional :view_mode, enum: -> { Orb::Models::SubscriptionFetchUsageParams::ViewMode }, nil?: true
 
       # @!method initialize(billable_metric_id: nil, first_dimension_key: nil, first_dimension_value: nil, granularity: nil, group_by: nil, second_dimension_key: nil, second_dimension_value: nil, timeframe_end: nil, timeframe_start: nil, view_mode: nil, request_options: {})
-      #   @param billable_metric_id [String, nil]
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::SubscriptionFetchUsageParams} for more details.
+      #
+      #   @param billable_metric_id [String, nil] When specified in conjunction with `group_by`, this parameter filters usage to a
+      #   ...
+      #
       #   @param first_dimension_key [String, nil]
+      #
       #   @param first_dimension_value [String, nil]
-      #   @param granularity [Symbol, Orb::Models::SubscriptionFetchUsageParams::Granularity, nil]
-      #   @param group_by [String, nil]
+      #
+      #   @param granularity [Symbol, Orb::Models::SubscriptionFetchUsageParams::Granularity, nil] This determines the windowing of usage reporting.
+      #
+      #   @param group_by [String, nil] Groups per-price usage by the key provided.
+      #
       #   @param second_dimension_key [String, nil]
+      #
       #   @param second_dimension_value [String, nil]
-      #   @param timeframe_end [Time, nil]
-      #   @param timeframe_start [Time, nil]
-      #   @param view_mode [Symbol, Orb::Models::SubscriptionFetchUsageParams::ViewMode, nil]
+      #
+      #   @param timeframe_end [Time, nil] Usage returned is exclusive of `timeframe_end`.
+      #
+      #   @param timeframe_start [Time, nil] Usage returned is inclusive of `timeframe_start`.
+      #
+      #   @param view_mode [Symbol, Orb::Models::SubscriptionFetchUsageParams::ViewMode, nil] Controls whether Orb returns cumulative usage since the start of the billing per
+      #   ...
+      #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
       # This determines the windowing of usage reporting.

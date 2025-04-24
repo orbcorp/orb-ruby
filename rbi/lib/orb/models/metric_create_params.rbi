@@ -39,8 +39,21 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(description:, item_id:, name:, sql:, metadata: nil, request_options: {}); end
-
+      def self.new(
+        # A description of the metric.
+        description:,
+        # The id of the item
+        item_id:,
+        # The name of the metric.
+        name:,
+        # A sql string defining the metric.
+        sql:,
+        # User-specified key/value pairs for the resource. Individual keys can be removed
+        # by setting the value to `null`, and the entire metadata mapping can be cleared
+        # by setting `metadata` to `null`.
+        metadata: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(
