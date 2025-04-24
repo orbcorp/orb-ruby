@@ -7,8 +7,11 @@ module Orb
       #
       # @abstract
       #
-      # Either `Pathname` or `StringIO`.
-      class IOLike
+      # Either `Pathname` or `StringIO`, or `IO`, or `Orb::Internal::Type::FileInput`.
+      #
+      # Note: when `IO` is used, all retries are disabled, since many IO` streams are
+      # not rewindable.
+      class FileInput
         extend Orb::Internal::Type::Converter
 
         private_class_method :new
@@ -20,7 +23,7 @@ module Orb
         # @return [Boolean]
         def self.===(other)
           case other
-          in StringIO | Pathname | IO
+          in Pathname | StringIO | IO | String | Orb::FilePart
             true
           else
             false
@@ -32,7 +35,7 @@ module Orb
         # @param other [Object]
         #
         # @return [Boolean]
-        def self.==(other) = other.is_a?(Class) && other <= Orb::Internal::Type::IOLike
+        def self.==(other) = other.is_a?(Class) && other <= Orb::Internal::Type::FileInput
 
         class << self
           # @api private
