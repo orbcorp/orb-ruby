@@ -38,9 +38,13 @@ module Orb
       end
       def self.new(
         billable_metric_id:,
+        # The set of keys (in order) used to disambiguate prices in the group.
         dimensions:,
         name:,
         external_dimensional_price_group_id: nil,
+        # User-specified key/value pairs for the resource. Individual keys can be removed
+        # by setting the value to `null`, and the entire metadata mapping can be cleared
+        # by setting `metadata` to `null`.
         metadata: nil,
         request_options: {}
       ); end

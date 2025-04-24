@@ -68,10 +68,17 @@ module Orb
           .returns(T.attached_class)
       end
       def self.new(
+        # A list of price intervals to add to the subscription.
         add: nil,
+        # A list of adjustments to add to the subscription.
         add_adjustments: nil,
+        # If false, this request will fail if it would void an issued invoice or create a
+        # credit note. Consider using this as a safety mechanism if you do not expect
+        # existing invoices to be changed.
         allow_invoice_credit_or_void: nil,
+        # A list of price intervals to edit on the subscription.
         edit: nil,
+        # A list of adjustments to edit on the subscription.
         edit_adjustments: nil,
         request_options: {}
       ); end
@@ -280,17 +287,41 @@ module Orb
             .returns(T.attached_class)
         end
         def self.new(
+          # The start date of the price interval. This is the date that the price will start
+          # billing on the subscription.
           start_date:,
+          # The definition of a new allocation price to create and add to the subscription.
           allocation_price: nil,
+          # A list of discounts to initialize on the price interval.
           discounts: nil,
+          # The end date of the price interval. This is the date that the price will stop
+          # billing on the subscription.
           end_date: nil,
+          # The external price id of the price to add to the subscription.
           external_price_id: nil,
+          # An additional filter to apply to usage queries. This filter must be expressed as
+          # a boolean
+          # [computed property](/extensibility/advanced-metrics#computed-properties). If
+          # null, usage queries will not include any additional filter.
           filter: nil,
+          # A list of fixed fee quantity transitions to initialize on the price interval.
           fixed_fee_quantity_transitions: nil,
+          # The maximum amount that will be billed for this price interval for a given
+          # billing period.
           maximum_amount: nil,
+          # The minimum amount that will be billed for this price interval for a given
+          # billing period.
           minimum_amount: nil,
+          # The definition of a new price to create and add to the subscription.
           price: nil,
+          # The id of the price to add to the subscription.
           price_id: nil,
+          # A list of customer IDs whose usage events will be aggregated and billed under
+          # this subscription. By default, a subscription only considers usage events
+          # associated with its attached customer's customer_id. When usage_customer_ids is
+          # provided, the subscription includes usage events from the specified customers
+          # only. Provided usage_customer_ids must be either the customer for this
+          # subscription itself, or any of that customer's children.
           usage_customer_ids: nil
         ); end
         sig do
@@ -391,8 +422,18 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(amount:, cadence:, currency:, expires_at_end_of_cadence:); end
-
+          def self.new(
+            # An amount of the currency to allocate to the customer at the specified cadence.
+            amount:,
+            # The cadence at which to allocate the amount to the customer.
+            cadence:,
+            # An ISO 4217 currency string or a custom pricing unit identifier in which to bill
+            # this price.
+            currency:,
+            # Whether the allocated amount should expire at the end of the cadence or roll
+            # over to the next period.
+            expires_at_end_of_cadence:
+          ); end
           sig do
             override
               .returns(
@@ -461,8 +502,11 @@ module Orb
             attr_accessor :discount_type
 
             sig { params(amount_discount: Float, discount_type: Symbol).returns(T.attached_class) }
-            def self.new(amount_discount:, discount_type: :amount); end
-
+            def self.new(
+              # Only available if discount_type is `amount`.
+              amount_discount:,
+              discount_type: :amount
+            ); end
             sig { override.returns({amount_discount: Float, discount_type: Symbol}) }
             def to_hash; end
           end
@@ -477,8 +521,12 @@ module Orb
             attr_accessor :percentage_discount
 
             sig { params(percentage_discount: Float, discount_type: Symbol).returns(T.attached_class) }
-            def self.new(percentage_discount:, discount_type: :percentage); end
-
+            def self.new(
+              # Only available if discount_type is `percentage`. This is a number between 0
+              # and 1.
+              percentage_discount:,
+              discount_type: :percentage
+            ); end
             sig { override.returns({discount_type: Symbol, percentage_discount: Float}) }
             def to_hash; end
           end
@@ -493,8 +541,12 @@ module Orb
             attr_accessor :usage_discount
 
             sig { params(usage_discount: Float, discount_type: Symbol).returns(T.attached_class) }
-            def self.new(usage_discount:, discount_type: :usage); end
-
+            def self.new(
+              # Only available if discount_type is `usage`. Number of usage units that this
+              # discount is for.
+              usage_discount:,
+              discount_type: :usage
+            ); end
             sig { override.returns({discount_type: Symbol, usage_discount: Float}) }
             def to_hash; end
           end
@@ -527,8 +579,12 @@ module Orb
           attr_accessor :quantity
 
           sig { params(effective_date: Time, quantity: Integer).returns(T.attached_class) }
-          def self.new(effective_date:, quantity:); end
-
+          def self.new(
+            # The date that the fixed fee quantity transition should take effect.
+            effective_date:,
+            # The quantity of the fixed fee quantity transition.
+            quantity:
+          ); end
           sig { override.returns({effective_date: Time, quantity: Integer}) }
           def to_hash; end
         end
@@ -690,19 +746,39 @@ module Orb
                 .returns(T.attached_class)
             end
             def self.new(
+              # The cadence to bill for this price on.
               cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
               currency:,
+              # The id of the item the price will be associated with.
               item_id:,
+              # The name of the price.
               name:,
               unit_config:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
               billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
               billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
               billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
               conversion_rate: nil,
+              # An alias for the price.
               external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
               fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
               invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
               metadata: nil,
               model_type: :unit
             ); end
@@ -788,8 +864,10 @@ module Orb
               attr_accessor :unit_amount
 
               sig { params(unit_amount: String).returns(T.attached_class) }
-              def self.new(unit_amount:); end
-
+              def self.new(
+                # Rate per unit of usage
+                unit_amount:
+              ); end
               sig { override.returns({unit_amount: String}) }
               def to_hash; end
             end
@@ -816,8 +894,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -884,8 +966,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -1084,19 +1170,39 @@ module Orb
                 .returns(T.attached_class)
             end
             def self.new(
+              # The cadence to bill for this price on.
               cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
               currency:,
+              # The id of the item the price will be associated with.
               item_id:,
+              # The name of the price.
               name:,
               package_config:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
               billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
               billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
               billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
               conversion_rate: nil,
+              # An alias for the price.
               external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
               fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
               invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
               metadata: nil,
               model_type: :package
             ); end
@@ -1187,8 +1293,13 @@ module Orb
               attr_accessor :package_size
 
               sig { params(package_amount: String, package_size: Integer).returns(T.attached_class) }
-              def self.new(package_amount:, package_size:); end
-
+              def self.new(
+                # A currency amount to rate usage by
+                package_amount:,
+                # An integer amount to represent package size. For example, 1000 here would divide
+                # usage by 1000 before multiplying by package_amount in rating
+                package_size:
+              ); end
               sig { override.returns({package_amount: String, package_size: Integer}) }
               def to_hash; end
             end
@@ -1215,8 +1326,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -1283,8 +1398,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -1483,19 +1602,39 @@ module Orb
                 .returns(T.attached_class)
             end
             def self.new(
+              # The cadence to bill for this price on.
               cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
               currency:,
+              # The id of the item the price will be associated with.
               item_id:,
               matrix_config:,
+              # The name of the price.
               name:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
               billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
               billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
               billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
               conversion_rate: nil,
+              # An alias for the price.
               external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
               fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
               invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
               metadata: nil,
               model_type: :matrix
             ); end
@@ -1607,8 +1746,14 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(default_unit_amount:, dimensions:, matrix_values:); end
-
+              def self.new(
+                # Default per unit rate for any usage not bucketed into a specified matrix_value
+                default_unit_amount:,
+                # One or two event property values to evaluate matrix groups by
+                dimensions:,
+                # Matrix values for specified matrix grouping keys
+                matrix_values:
+              ); end
               sig do
                 override
                   .returns(
@@ -1640,8 +1785,14 @@ module Orb
                     unit_amount: String
                   ).returns(T.attached_class)
                 end
-                def self.new(dimension_values:, unit_amount:); end
-
+                def self.new(
+                  # One or two matrix keys to filter usage to this Matrix value by. For example,
+                  # ["region", "tier"] could be used to filter cloud usage by a cloud region and an
+                  # instance tier.
+                  dimension_values:,
+                  # Unit price for the specified dimension_values
+                  unit_amount:
+                ); end
                 sig { override.returns({dimension_values: T::Array[T.nilable(String)], unit_amount: String}) }
                 def to_hash; end
               end
@@ -1669,8 +1820,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -1737,8 +1892,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -1941,19 +2100,39 @@ module Orb
                 .returns(T.attached_class)
             end
             def self.new(
+              # The cadence to bill for this price on.
               cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
               currency:,
+              # The id of the item the price will be associated with.
               item_id:,
               matrix_with_allocation_config:,
+              # The name of the price.
               name:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
               billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
               billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
               billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
               conversion_rate: nil,
+              # An alias for the price.
               external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
               fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
               invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
               metadata: nil,
               model_type: :matrix_with_allocation
             ); end
@@ -2074,8 +2253,16 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(allocation:, default_unit_amount:, dimensions:, matrix_values:); end
-
+              def self.new(
+                # Allocation to be used to calculate the price
+                allocation:,
+                # Default per unit rate for any usage not bucketed into a specified matrix_value
+                default_unit_amount:,
+                # One or two event property values to evaluate matrix groups by
+                dimensions:,
+                # Matrix values for specified matrix grouping keys
+                matrix_values:
+              ); end
               sig do
                 override
                   .returns(
@@ -2108,8 +2295,14 @@ module Orb
                     unit_amount: String
                   ).returns(T.attached_class)
                 end
-                def self.new(dimension_values:, unit_amount:); end
-
+                def self.new(
+                  # One or two matrix keys to filter usage to this Matrix value by. For example,
+                  # ["region", "tier"] could be used to filter cloud usage by a cloud region and an
+                  # instance tier.
+                  dimension_values:,
+                  # Unit price for the specified dimension_values
+                  unit_amount:
+                ); end
                 sig { override.returns({dimension_values: T::Array[T.nilable(String)], unit_amount: String}) }
                 def to_hash; end
               end
@@ -2137,8 +2330,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -2205,8 +2402,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -2405,19 +2606,39 @@ module Orb
                 .returns(T.attached_class)
             end
             def self.new(
+              # The cadence to bill for this price on.
               cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
               currency:,
+              # The id of the item the price will be associated with.
               item_id:,
+              # The name of the price.
               name:,
               tiered_config:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
               billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
               billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
               billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
               conversion_rate: nil,
+              # An alias for the price.
               external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
               fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
               invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
               metadata: nil,
               model_type: :tiered
             ); end
@@ -2517,8 +2738,10 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(tiers:); end
-
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              ); end
               sig do
                 override
                   .returns(
@@ -2549,8 +2772,14 @@ module Orb
                     last_unit: T.nilable(Float)
                   ).returns(T.attached_class)
                 end
-                def self.new(first_unit:, unit_amount:, last_unit: nil); end
-
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                ); end
                 sig do
                   override.returns({first_unit: Float, unit_amount: String, last_unit: T.nilable(Float)})
                 end
@@ -2580,8 +2809,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -2648,8 +2881,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -2852,19 +3089,39 @@ module Orb
                 .returns(T.attached_class)
             end
             def self.new(
+              # The cadence to bill for this price on.
               cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
               currency:,
+              # The id of the item the price will be associated with.
               item_id:,
+              # The name of the price.
               name:,
               tiered_bps_config:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
               billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
               billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
               billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
               conversion_rate: nil,
+              # An alias for the price.
               external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
               fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
               invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
               metadata: nil,
               model_type: :tiered_bps
             ); end
@@ -2971,8 +3228,11 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(tiers:); end
-
+              def self.new(
+                # Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
+                # tiers
+                tiers:
+              ); end
               sig do
                 override
                   .returns(
@@ -3011,8 +3271,16 @@ module Orb
                   )
                     .returns(T.attached_class)
                 end
-                def self.new(bps:, minimum_amount:, maximum_amount: nil, per_unit_maximum: nil); end
-
+                def self.new(
+                  # Per-event basis point rate
+                  bps:,
+                  # Exclusive tier starting value
+                  minimum_amount:,
+                  # Inclusive tier ending value
+                  maximum_amount: nil,
+                  # Per unit maximum to charge
+                  per_unit_maximum: nil
+                ); end
                 sig do
                   override
                     .returns(
@@ -3050,8 +3318,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -3118,8 +3390,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -3315,18 +3591,38 @@ module Orb
             end
             def self.new(
               bps_config:,
+              # The cadence to bill for this price on.
               cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
               currency:,
+              # The id of the item the price will be associated with.
               item_id:,
+              # The name of the price.
               name:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
               billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
               billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
               billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
               conversion_rate: nil,
+              # An alias for the price.
               external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
               fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
               invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
               metadata: nil,
               model_type: :bps
             ); end
@@ -3368,8 +3664,12 @@ module Orb
               attr_accessor :per_unit_maximum
 
               sig { params(bps: Float, per_unit_maximum: T.nilable(String)).returns(T.attached_class) }
-              def self.new(bps:, per_unit_maximum: nil); end
-
+              def self.new(
+                # Basis point take rate per event
+                bps:,
+                # Optional currency amount maximum to cap spend per event
+                per_unit_maximum: nil
+              ); end
               sig { override.returns({bps: Float, per_unit_maximum: T.nilable(String)}) }
               def to_hash; end
             end
@@ -3444,8 +3744,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -3512,8 +3816,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -3713,18 +4021,38 @@ module Orb
             end
             def self.new(
               bulk_bps_config:,
+              # The cadence to bill for this price on.
               cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
               currency:,
+              # The id of the item the price will be associated with.
               item_id:,
+              # The name of the price.
               name:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
               billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
               billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
               billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
               conversion_rate: nil,
+              # An alias for the price.
               external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
               fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
               invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
               metadata: nil,
               model_type: :bulk_bps
             ); end
@@ -3777,8 +4105,11 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(tiers:); end
-
+              def self.new(
+                # Tiers for a bulk BPS pricing model where all usage is aggregated to a single
+                # tier based on total volume
+                tiers:
+              ); end
               sig do
                 override
                   .returns(
@@ -3806,8 +4137,14 @@ module Orb
                   params(bps: Float, maximum_amount: T.nilable(String), per_unit_maximum: T.nilable(String))
                     .returns(T.attached_class)
                 end
-                def self.new(bps:, maximum_amount: nil, per_unit_maximum: nil); end
-
+                def self.new(
+                  # Basis points to rate on
+                  bps:,
+                  # Upper bound for tier
+                  maximum_amount: nil,
+                  # The maximum amount to charge for any one event
+                  per_unit_maximum: nil
+                ); end
                 sig do
                   override.returns(
                     {
@@ -3891,8 +4228,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -3959,8 +4300,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -4160,18 +4505,38 @@ module Orb
             end
             def self.new(
               bulk_config:,
+              # The cadence to bill for this price on.
               cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
               currency:,
+              # The id of the item the price will be associated with.
               item_id:,
+              # The name of the price.
               name:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
               billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
               billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
               billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
               conversion_rate: nil,
+              # An alias for the price.
               external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
               fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
               invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
               metadata: nil,
               model_type: :bulk
             ); end
@@ -4223,8 +4588,10 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(tiers:); end
-
+              def self.new(
+                # Bulk tiers for rating based on total usage volume
+                tiers:
+              ); end
               sig do
                 override
                   .returns(
@@ -4245,8 +4612,12 @@ module Orb
                 attr_accessor :maximum_units
 
                 sig { params(unit_amount: String, maximum_units: T.nilable(Float)).returns(T.attached_class) }
-                def self.new(unit_amount:, maximum_units: nil); end
-
+                def self.new(
+                  # Amount per unit
+                  unit_amount:,
+                  # Upper bound for this tier
+                  maximum_units: nil
+                ); end
                 sig { override.returns({unit_amount: String, maximum_units: T.nilable(Float)}) }
                 def to_hash; end
               end
@@ -4322,8 +4693,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -4390,8 +4765,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -4576,19 +4955,39 @@ module Orb
                 .returns(T.attached_class)
             end
             def self.new(
+              # The cadence to bill for this price on.
               cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
               currency:,
+              # The id of the item the price will be associated with.
               item_id:,
+              # The name of the price.
               name:,
               threshold_total_amount_config:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
               billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
               billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
               billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
               conversion_rate: nil,
+              # An alias for the price.
               external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
               fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
               invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
               metadata: nil,
               model_type: :threshold_total_amount
             ); end
@@ -4694,8 +5093,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -4762,8 +5165,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -4948,19 +5355,39 @@ module Orb
                 .returns(T.attached_class)
             end
             def self.new(
+              # The cadence to bill for this price on.
               cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
               currency:,
+              # The id of the item the price will be associated with.
               item_id:,
+              # The name of the price.
               name:,
               tiered_package_config:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
               billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
               billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
               billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
               conversion_rate: nil,
+              # An alias for the price.
               external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
               fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
               invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
               metadata: nil,
               model_type: :tiered_package
             ); end
@@ -5066,8 +5493,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -5134,8 +5565,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -5320,19 +5755,39 @@ module Orb
                 .returns(T.attached_class)
             end
             def self.new(
+              # The cadence to bill for this price on.
               cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
               currency:,
               grouped_tiered_config:,
+              # The id of the item the price will be associated with.
               item_id:,
+              # The name of the price.
               name:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
               billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
               billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
               billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
               conversion_rate: nil,
+              # An alias for the price.
               external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
               fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
               invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
               metadata: nil,
               model_type: :grouped_tiered
             ); end
@@ -5438,8 +5893,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -5506,8 +5965,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -5692,19 +6155,39 @@ module Orb
                 .returns(T.attached_class)
             end
             def self.new(
+              # The cadence to bill for this price on.
               cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
               currency:,
+              # The id of the item the price will be associated with.
               item_id:,
               max_group_tiered_package_config:,
+              # The name of the price.
               name:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
               billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
               billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
               billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
               conversion_rate: nil,
+              # An alias for the price.
               external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
               fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
               invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
               metadata: nil,
               model_type: :max_group_tiered_package
             ); end
@@ -5810,8 +6293,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -5878,8 +6365,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -6064,19 +6555,39 @@ module Orb
                 .returns(T.attached_class)
             end
             def self.new(
+              # The cadence to bill for this price on.
               cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
               currency:,
+              # The id of the item the price will be associated with.
               item_id:,
+              # The name of the price.
               name:,
               tiered_with_minimum_config:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
               billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
               billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
               billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
               conversion_rate: nil,
+              # An alias for the price.
               external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
               fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
               invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
               metadata: nil,
               model_type: :tiered_with_minimum
             ); end
@@ -6182,8 +6693,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -6250,8 +6765,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -6436,19 +6955,39 @@ module Orb
                 .returns(T.attached_class)
             end
             def self.new(
+              # The cadence to bill for this price on.
               cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
               currency:,
+              # The id of the item the price will be associated with.
               item_id:,
+              # The name of the price.
               name:,
               package_with_allocation_config:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
               billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
               billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
               billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
               conversion_rate: nil,
+              # An alias for the price.
               external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
               fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
               invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
               metadata: nil,
               model_type: :package_with_allocation
             ); end
@@ -6554,8 +7093,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -6622,8 +7165,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -6808,19 +7355,39 @@ module Orb
                 .returns(T.attached_class)
             end
             def self.new(
+              # The cadence to bill for this price on.
               cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
               currency:,
+              # The id of the item the price will be associated with.
               item_id:,
+              # The name of the price.
               name:,
               tiered_package_with_minimum_config:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
               billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
               billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
               billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
               conversion_rate: nil,
+              # An alias for the price.
               external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
               fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
               invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
               metadata: nil,
               model_type: :tiered_package_with_minimum
             ); end
@@ -6926,8 +7493,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -6994,8 +7565,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -7180,19 +7755,39 @@ module Orb
                 .returns(T.attached_class)
             end
             def self.new(
+              # The cadence to bill for this price on.
               cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
               currency:,
+              # The id of the item the price will be associated with.
               item_id:,
+              # The name of the price.
               name:,
               unit_with_percent_config:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
               billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
               billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
               billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
               conversion_rate: nil,
+              # An alias for the price.
               external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
               fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
               invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
               metadata: nil,
               model_type: :unit_with_percent
             ); end
@@ -7298,8 +7893,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -7366,8 +7965,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -7552,19 +8155,39 @@ module Orb
                 .returns(T.attached_class)
             end
             def self.new(
+              # The cadence to bill for this price on.
               cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
               currency:,
+              # The id of the item the price will be associated with.
               item_id:,
+              # The name of the price.
               name:,
               tiered_with_proration_config:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
               billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
               billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
               billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
               conversion_rate: nil,
+              # An alias for the price.
               external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
               fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
               invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
               metadata: nil,
               model_type: :tiered_with_proration
             ); end
@@ -7670,8 +8293,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -7738,8 +8365,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -7924,19 +8555,39 @@ module Orb
                 .returns(T.attached_class)
             end
             def self.new(
+              # The cadence to bill for this price on.
               cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
               currency:,
+              # The id of the item the price will be associated with.
               item_id:,
+              # The name of the price.
               name:,
               unit_with_proration_config:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
               billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
               billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
               billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
               conversion_rate: nil,
+              # An alias for the price.
               external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
               fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
               invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
               metadata: nil,
               model_type: :unit_with_proration
             ); end
@@ -8042,8 +8693,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -8110,8 +8765,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -8296,19 +8955,39 @@ module Orb
                 .returns(T.attached_class)
             end
             def self.new(
+              # The cadence to bill for this price on.
               cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
               currency:,
               grouped_allocation_config:,
+              # The id of the item the price will be associated with.
               item_id:,
+              # The name of the price.
               name:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
               billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
               billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
               billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
               conversion_rate: nil,
+              # An alias for the price.
               external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
               fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
               invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
               metadata: nil,
               model_type: :grouped_allocation
             ); end
@@ -8414,8 +9093,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -8482,8 +9165,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -8668,19 +9355,39 @@ module Orb
                 .returns(T.attached_class)
             end
             def self.new(
+              # The cadence to bill for this price on.
               cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
               currency:,
               grouped_with_prorated_minimum_config:,
+              # The id of the item the price will be associated with.
               item_id:,
+              # The name of the price.
               name:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
               billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
               billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
               billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
               conversion_rate: nil,
+              # An alias for the price.
               external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
               fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
               invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
               metadata: nil,
               model_type: :grouped_with_prorated_minimum
             ); end
@@ -8786,8 +9493,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -8854,8 +9565,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -9040,19 +9755,39 @@ module Orb
                 .returns(T.attached_class)
             end
             def self.new(
+              # The cadence to bill for this price on.
               cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
               currency:,
               grouped_with_metered_minimum_config:,
+              # The id of the item the price will be associated with.
               item_id:,
+              # The name of the price.
               name:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
               billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
               billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
               billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
               conversion_rate: nil,
+              # An alias for the price.
               external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
               fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
               invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
               metadata: nil,
               model_type: :grouped_with_metered_minimum
             ); end
@@ -9158,8 +9893,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -9226,8 +9965,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -9412,19 +10155,39 @@ module Orb
                 .returns(T.attached_class)
             end
             def self.new(
+              # The cadence to bill for this price on.
               cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
               currency:,
+              # The id of the item the price will be associated with.
               item_id:,
               matrix_with_display_name_config:,
+              # The name of the price.
               name:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
               billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
               billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
               billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
               conversion_rate: nil,
+              # An alias for the price.
               external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
               fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
               invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
               metadata: nil,
               model_type: :matrix_with_display_name
             ); end
@@ -9530,8 +10293,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -9598,8 +10365,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -9785,18 +10556,38 @@ module Orb
             end
             def self.new(
               bulk_with_proration_config:,
+              # The cadence to bill for this price on.
               cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
               currency:,
+              # The id of the item the price will be associated with.
               item_id:,
+              # The name of the price.
               name:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
               billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
               billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
               billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
               conversion_rate: nil,
+              # An alias for the price.
               external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
               fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
               invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
               metadata: nil,
               model_type: :bulk_with_proration
             ); end
@@ -9902,8 +10693,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -9970,8 +10765,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -10156,19 +10955,39 @@ module Orb
                 .returns(T.attached_class)
             end
             def self.new(
+              # The cadence to bill for this price on.
               cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
               currency:,
               grouped_tiered_package_config:,
+              # The id of the item the price will be associated with.
               item_id:,
+              # The name of the price.
               name:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
               billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
               billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
               billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
               conversion_rate: nil,
+              # An alias for the price.
               external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
               fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
               invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
               metadata: nil,
               model_type: :grouped_tiered_package
             ); end
@@ -10274,8 +11093,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -10342,8 +11165,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -10528,19 +11355,39 @@ module Orb
                 .returns(T.attached_class)
             end
             def self.new(
+              # The cadence to bill for this price on.
               cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
               currency:,
+              # The id of the item the price will be associated with.
               item_id:,
+              # The name of the price.
               name:,
               scalable_matrix_with_unit_pricing_config:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
               billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
               billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
               billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
               conversion_rate: nil,
+              # An alias for the price.
               external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
               fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
               invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
               metadata: nil,
               model_type: :scalable_matrix_with_unit_pricing
             ); end
@@ -10646,8 +11493,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -10714,8 +11565,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -10900,19 +11755,39 @@ module Orb
                 .returns(T.attached_class)
             end
             def self.new(
+              # The cadence to bill for this price on.
               cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
               currency:,
+              # The id of the item the price will be associated with.
               item_id:,
+              # The name of the price.
               name:,
               scalable_matrix_with_tiered_pricing_config:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
               billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
               billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
               billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
               conversion_rate: nil,
+              # An alias for the price.
               external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
               fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
               invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
               metadata: nil,
               model_type: :scalable_matrix_with_tiered_pricing
             ); end
@@ -11018,8 +11893,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -11086,8 +11965,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -11272,19 +12155,39 @@ module Orb
                 .returns(T.attached_class)
             end
             def self.new(
+              # The cadence to bill for this price on.
               cadence:,
               cumulative_grouped_bulk_config:,
+              # An ISO 4217 currency string for which this price is billed in.
               currency:,
+              # The id of the item the price will be associated with.
               item_id:,
+              # The name of the price.
               name:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
               billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
               billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
               billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
               conversion_rate: nil,
+              # An alias for the price.
               external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
               fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
               invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
               metadata: nil,
               model_type: :cumulative_grouped_bulk
             ); end
@@ -11390,8 +12293,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -11458,8 +12365,12 @@ module Orb
                 )
                   .returns(T.attached_class)
               end
-              def self.new(duration:, duration_unit:); end
-
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              ); end
               sig do
                 override
                   .returns(
@@ -11559,8 +12470,20 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(adjustment:, start_date:, end_date: nil); end
-
+        def self.new(
+          # The definition of a new adjustment to create and add to the subscription.
+          adjustment:,
+          # The start date of the adjustment interval. This is the date that the adjustment
+          # will start affecting prices on the subscription. The adjustment will apply to
+          # invoice dates that overlap with this `start_date`. This `start_date` is treated
+          # as inclusive for in-advance prices, and exclusive for in-arrears prices.
+          start_date:,
+          # The end date of the adjustment interval. This is the date that the adjustment
+          # will stop affecting prices on the subscription. The adjustment will apply to
+          # invoice dates that overlap with this `end_date`.This `end_date` is treated as
+          # exclusive for in-advance prices, and inclusive for in-arrears prices.
+          end_date: nil
+        ); end
         sig do
           override
             .returns(
@@ -11612,13 +12535,14 @@ module Orb
                 .returns(T.attached_class)
             end
             def self.new(
+              # The set of price IDs to which this adjustment applies.
               applies_to_price_ids:,
               percentage_discount:,
+              # When false, this adjustment will be applied to a single price. Otherwise, it
+              # will be applied at the invoice level, possibly to multiple prices.
               is_invoice_level: nil,
               adjustment_type: :percentage_discount
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -11662,13 +12586,14 @@ module Orb
                 .returns(T.attached_class)
             end
             def self.new(
+              # The set of price IDs to which this adjustment applies.
               applies_to_price_ids:,
               usage_discount:,
+              # When false, this adjustment will be applied to a single price. Otherwise, it
+              # will be applied at the invoice level, possibly to multiple prices.
               is_invoice_level: nil,
               adjustment_type: :usage_discount
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -11713,12 +12638,13 @@ module Orb
             end
             def self.new(
               amount_discount:,
+              # The set of price IDs to which this adjustment applies.
               applies_to_price_ids:,
+              # When false, this adjustment will be applied to a single price. Otherwise, it
+              # will be applied at the invoice level, possibly to multiple prices.
               is_invoice_level: nil,
               adjustment_type: :amount_discount
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -11767,14 +12693,16 @@ module Orb
                 .returns(T.attached_class)
             end
             def self.new(
+              # The set of price IDs to which this adjustment applies.
               applies_to_price_ids:,
+              # The item ID that revenue from this minimum will be attributed to.
               item_id:,
               minimum_amount:,
+              # When false, this adjustment will be applied to a single price. Otherwise, it
+              # will be applied at the invoice level, possibly to multiple prices.
               is_invoice_level: nil,
               adjustment_type: :minimum
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -11819,13 +12747,14 @@ module Orb
                 .returns(T.attached_class)
             end
             def self.new(
+              # The set of price IDs to which this adjustment applies.
               applies_to_price_ids:,
               maximum_amount:,
+              # When false, this adjustment will be applied to a single price. Otherwise, it
+              # will be applied at the invoice level, possibly to multiple prices.
               is_invoice_level: nil,
               adjustment_type: :maximum
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -11942,12 +12871,33 @@ module Orb
             .returns(T.attached_class)
         end
         def self.new(
+          # The id of the price interval to edit.
           price_interval_id:,
+          # The updated billing cycle day for this price interval. If not specified, the
+          # billing cycle day will not be updated. Note that overlapping price intervals
+          # must have the same billing cycle day.
           billing_cycle_day: nil,
+          # The updated end date of this price interval. If not specified, the start date
+          # will not be updated.
           end_date: nil,
+          # An additional filter to apply to usage queries. This filter must be expressed as
+          # a boolean
+          # [computed property](/extensibility/advanced-metrics#computed-properties). If
+          # null, usage queries will not include any additional filter.
           filter: nil,
+          # A list of fixed fee quantity transitions to use for this price interval. Note
+          # that this list will overwrite all existing fixed fee quantity transitions on the
+          # price interval.
           fixed_fee_quantity_transitions: nil,
+          # The updated start date of this price interval. If not specified, the start date
+          # will not be updated.
           start_date: nil,
+          # A list of customer IDs whose usage events will be aggregated and billed under
+          # this subscription. By default, a subscription only considers usage events
+          # associated with its attached customer's customer_id. When usage_customer_ids is
+          # provided, the subscription includes usage events from the specified customers
+          # only. Provided usage_customer_ids must be either the customer for this
+          # subscription itself, or any of that customer's children.
           usage_customer_ids: nil
         ); end
         sig do
@@ -11985,8 +12935,12 @@ module Orb
           attr_accessor :quantity
 
           sig { params(effective_date: Time, quantity: Integer).returns(T.attached_class) }
-          def self.new(effective_date:, quantity:); end
-
+          def self.new(
+            # The date that the fixed fee quantity transition should take effect.
+            effective_date:,
+            # The quantity of the fixed fee quantity transition.
+            quantity:
+          ); end
           sig { override.returns({effective_date: Time, quantity: Integer}) }
           def to_hash; end
         end
@@ -12027,8 +12981,16 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(adjustment_interval_id:, end_date: nil, start_date: nil); end
-
+        def self.new(
+          # The id of the adjustment interval to edit.
+          adjustment_interval_id:,
+          # The updated end date of this adjustment interval. If not specified, the start
+          # date will not be updated.
+          end_date: nil,
+          # The updated start date of this adjustment interval. If not specified, the start
+          # date will not be updated.
+          start_date: nil
+        ); end
         sig do
           override
             .returns(

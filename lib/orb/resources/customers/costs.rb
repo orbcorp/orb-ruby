@@ -4,6 +4,9 @@ module Orb
   module Resources
     class Customers
       class Costs
+        # Some parameter documentations has been truncated, see
+        # {Orb::Models::Customers::CostListParams} for more details.
+        #
         # This endpoint is used to fetch a day-by-day snapshot of a customer's costs in
         # Orb, calculated by applying pricing information to the underlying usage (see the
         # [subscription usage endpoint](/api-reference/subscription/fetch-subscription-usage)
@@ -125,10 +128,16 @@ module Orb
         # @overload list(customer_id, currency: nil, timeframe_end: nil, timeframe_start: nil, view_mode: nil, request_options: {})
         #
         # @param customer_id [String]
-        # @param currency [String, nil]
-        # @param timeframe_end [Time, nil]
-        # @param timeframe_start [Time, nil]
-        # @param view_mode [Symbol, Orb::Models::Customers::CostListParams::ViewMode, nil]
+        #
+        # @param currency [String, nil] The currency or custom pricing unit to use.
+        #
+        # @param timeframe_end [Time, nil] Costs returned are exclusive of `timeframe_end`.
+        #
+        # @param timeframe_start [Time, nil] Costs returned are inclusive of `timeframe_start`.
+        #
+        # @param view_mode [Symbol, Orb::Models::Customers::CostListParams::ViewMode, nil] Controls whether Orb returns cumulative costs since the start of the billing per
+        # ...
+        #
         # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Orb::Models::Customers::CostListResponse]
@@ -145,6 +154,9 @@ module Orb
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Orb::Models::Customers::CostListByExternalIDParams} for more details.
+        #
         # This endpoint is used to fetch a day-by-day snapshot of a customer's costs in
         # Orb, calculated by applying pricing information to the underlying usage (see the
         # [subscription usage endpoint](/api-reference/subscription/fetch-subscription-usage)
@@ -266,10 +278,16 @@ module Orb
         # @overload list_by_external_id(external_customer_id, currency: nil, timeframe_end: nil, timeframe_start: nil, view_mode: nil, request_options: {})
         #
         # @param external_customer_id [String]
-        # @param currency [String, nil]
-        # @param timeframe_end [Time, nil]
-        # @param timeframe_start [Time, nil]
-        # @param view_mode [Symbol, Orb::Models::Customers::CostListByExternalIDParams::ViewMode, nil]
+        #
+        # @param currency [String, nil] The currency or custom pricing unit to use.
+        #
+        # @param timeframe_end [Time, nil] Costs returned are exclusive of `timeframe_end`.
+        #
+        # @param timeframe_start [Time, nil] Costs returned are inclusive of `timeframe_start`.
+        #
+        # @param view_mode [Symbol, Orb::Models::Customers::CostListByExternalIDParams::ViewMode, nil] Controls whether Orb returns cumulative costs since the start of the billing per
+        # ...
+        #
         # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Orb::Models::Customers::CostListByExternalIDResponse]

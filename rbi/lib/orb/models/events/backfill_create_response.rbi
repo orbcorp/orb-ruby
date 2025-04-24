@@ -70,15 +70,28 @@ module Orb
         end
         def self.new(
           id:,
+          # If in the future, the time at which the backfill will automatically close. If in
+          # the past, the time at which the backfill was closed.
           close_time:,
           created_at:,
+          # The Orb-generated ID of the customer to which this backfill is scoped. If
+          # `null`, this backfill is scoped to all customers.
           customer_id:,
+          # The number of events ingested in this backfill.
           events_ingested:,
+          # If `true`, existing events in the backfill's timeframe will be replaced with the
+          # newly ingested events associated with the backfill. If `false`, newly ingested
+          # events will be added to the existing events.
           replace_existing_events:,
+          # The time at which this backfill was reverted.
           reverted_at:,
+          # The status of the backfill.
           status:,
           timeframe_end:,
           timeframe_start:,
+          # A boolean
+          # [computed property](/extensibility/advanced-metrics#computed-properties) used to
+          # filter the set of events to deprecate
           deprecation_filter: nil
         ); end
         sig do

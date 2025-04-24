@@ -11,7 +11,7 @@ module Orb
       required :deprecated, String
 
       # @!method initialize(deprecated:)
-      #   @param deprecated [String]
+      #   @param deprecated [String] event_id of the deprecated event, if successfully updated
     end
   end
 end

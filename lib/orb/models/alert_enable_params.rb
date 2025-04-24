@@ -14,7 +14,8 @@ module Orb
       optional :subscription_id, String, nil?: true
 
       # @!method initialize(subscription_id: nil, request_options: {})
-      #   @param subscription_id [String, nil]
+      #   @param subscription_id [String, nil] Used to update the status of a plan alert scoped to this subscription_id
+      #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end

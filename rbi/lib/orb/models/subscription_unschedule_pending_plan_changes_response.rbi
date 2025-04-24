@@ -305,31 +305,90 @@ module Orb
       end
       def self.new(
         id:,
+        # The current plan phase that is active, only if the subscription's plan has
+        # phases.
         active_plan_phase_order:,
+        # The adjustment intervals for this subscription sorted by the start_date of the
+        # adjustment interval.
         adjustment_intervals:,
+        # Determines whether issued invoices for this subscription will automatically be
+        # charged with the saved payment method on the due date. This property defaults to
+        # the plan's behavior. If null, defaults to the customer's setting.
         auto_collection:,
         billing_cycle_anchor_configuration:,
+        # The day of the month on which the billing cycle is anchored. If the maximum
+        # number of days in a month is greater than this value, the last day of the month
+        # is the billing cycle day (e.g. billing_cycle_day=31 for April means the billing
+        # period begins on the 30th.
         billing_cycle_day:,
         created_at:,
+        # The end of the current billing period. This is an exclusive timestamp, such that
+        # the instant returned is not part of the billing period. Set to null for
+        # subscriptions that are not currently active.
         current_billing_period_end_date:,
+        # The start date of the current billing period. This is an inclusive timestamp;
+        # the instant returned is exactly the beginning of the billing period. Set to null
+        # if the subscription is not currently active.
         current_billing_period_start_date:,
+        # A customer is a buyer of your products, and the other party to the billing
+        # relationship.
+        #
+        # In Orb, customers are assigned system generated identifiers automatically, but
+        # it's often desirable to have these match existing identifiers in your system. To
+        # avoid having to denormalize Orb ID information, you can pass in an
+        # `external_customer_id` with your own identifier. See
+        # [Customer ID Aliases](/events-and-metrics/customer-aliases) for further
+        # information about how these aliases work in Orb.
+        #
+        # In addition to having an identifier in your system, a customer may exist in a
+        # payment provider solution like Stripe. Use the `payment_provider_id` and the
+        # `payment_provider` enum field to express this mapping.
+        #
+        # A customer also has a timezone (from the standard
+        # [IANA timezone database](https://www.iana.org/time-zones)), which defaults to
+        # your account's timezone. See [Timezone localization](/essentials/timezones) for
+        # information on what this timezone parameter influences within Orb.
         customer:,
+        # Determines the default memo on this subscriptions' invoices. Note that if this
+        # is not provided, it is determined by the plan configuration.
         default_invoice_memo:,
+        # The discount intervals for this subscription sorted by the start_date.
         discount_intervals:,
+        # The date Orb stops billing for this subscription.
         end_date:,
         fixed_fee_quantity_schedule:,
         invoicing_threshold:,
+        # The maximum intervals for this subscription sorted by the start_date.
         maximum_intervals:,
+        # User specified key-value pairs for the resource. If not present, this defaults
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         metadata:,
+        # The minimum intervals for this subscription sorted by the start_date.
         minimum_intervals:,
+        # Determines the difference between the invoice issue date for subscription
+        # invoices as the date that they are due. A value of `0` here represents that the
+        # invoice is due on issue, whereas a value of `30` represents that the customer
+        # has a month to pay the invoice.
         net_terms:,
+        # A pending subscription change if one exists on this subscription.
         pending_subscription_change:,
+        # The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be
+        # subscribed to by a customer. Plans define the billing behavior of the
+        # subscription. You can see more about how to configure prices in the
+        # [Price resource](/reference/price).
         plan:,
+        # The price intervals for this subscription.
         price_intervals:,
         redeemed_coupon:,
+        # The date Orb starts billing for this subscription.
         start_date:,
         status:,
         trial_info:,
+        # The resources that were changed as part of this operation. Only present when
+        # fetched through the subscription changes API or if the
+        # `include_changed_resources` parameter was passed in the request.
         changed_resources: nil
       ); end
       sig do
@@ -420,8 +479,16 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(id:, adjustment:, applies_to_price_interval_ids:, end_date:, start_date:); end
-
+        def self.new(
+          id:,
+          adjustment:,
+          # The price interval IDs that this adjustment applies to.
+          applies_to_price_interval_ids:,
+          # The end date of the adjustment interval.
+          end_date:,
+          # The start date of the adjustment interval.
+          start_date:
+        ); end
         sig do
           override
             .returns(
@@ -488,10 +555,17 @@ module Orb
             end
             def self.new(
               id:,
+              # The price IDs that this adjustment applies to.
               applies_to_price_ids:,
+              # True for adjustments that apply to an entire invocice, false for adjustments
+              # that apply to only one price.
               is_invoice_level:,
+              # The plan phase in which this adjustment is active.
               plan_phase_order:,
+              # The reason for the adjustment.
               reason:,
+              # The number of usage units by which to discount the price this adjustment applies
+              # to in a given billing period.
               usage_discount:,
               adjustment_type: :usage_discount
             ); end
@@ -555,10 +629,17 @@ module Orb
             end
             def self.new(
               id:,
+              # The amount by which to discount the prices this adjustment applies to in a given
+              # billing period.
               amount_discount:,
+              # The price IDs that this adjustment applies to.
               applies_to_price_ids:,
+              # True for adjustments that apply to an entire invocice, false for adjustments
+              # that apply to only one price.
               is_invoice_level:,
+              # The plan phase in which this adjustment is active.
               plan_phase_order:,
+              # The reason for the adjustment.
               reason:,
               adjustment_type: :amount_discount
             ); end
@@ -622,10 +703,17 @@ module Orb
             end
             def self.new(
               id:,
+              # The price IDs that this adjustment applies to.
               applies_to_price_ids:,
+              # True for adjustments that apply to an entire invocice, false for adjustments
+              # that apply to only one price.
               is_invoice_level:,
+              # The percentage (as a value between 0 and 1) by which to discount the price
+              # intervals this adjustment applies to in a given billing period.
               percentage_discount:,
+              # The plan phase in which this adjustment is active.
               plan_phase_order:,
+              # The reason for the adjustment.
               reason:,
               adjustment_type: :percentage_discount
             ); end
@@ -694,11 +782,19 @@ module Orb
             end
             def self.new(
               id:,
+              # The price IDs that this adjustment applies to.
               applies_to_price_ids:,
+              # True for adjustments that apply to an entire invocice, false for adjustments
+              # that apply to only one price.
               is_invoice_level:,
+              # The item ID that revenue from this minimum will be attributed to.
               item_id:,
+              # The minimum amount to charge in a given billing period for the prices this
+              # adjustment applies to.
               minimum_amount:,
+              # The plan phase in which this adjustment is active.
               plan_phase_order:,
+              # The reason for the adjustment.
               reason:,
               adjustment_type: :minimum
             ); end
@@ -763,10 +859,17 @@ module Orb
             end
             def self.new(
               id:,
+              # The price IDs that this adjustment applies to.
               applies_to_price_ids:,
+              # True for adjustments that apply to an entire invocice, false for adjustments
+              # that apply to only one price.
               is_invoice_level:,
+              # The maximum amount to charge in a given billing period for the prices this
+              # adjustment applies to.
               maximum_amount:,
+              # The plan phase in which this adjustment is active.
               plan_phase_order:,
+              # The reason for the adjustment.
               reason:,
               adjustment_type: :maximum
             ); end
@@ -819,8 +922,20 @@ module Orb
         sig do
           params(day: Integer, month: T.nilable(Integer), year: T.nilable(Integer)).returns(T.attached_class)
         end
-        def self.new(day:, month: nil, year: nil); end
-
+        def self.new(
+          # The day of the month on which the billing cycle is anchored. If the maximum
+          # number of days in a month is greater than this value, the last day of the month
+          # is the billing cycle day (e.g. billing_cycle_day=31 for April means the billing
+          # period begins on the 30th.
+          day:,
+          # The month on which the billing cycle is anchored (e.g. a quarterly price
+          # anchored in February would have cycles starting February, May, August, and
+          # November).
+          month: nil,
+          # The year on which the billing cycle is anchored (e.g. a 2 year billing cycle
+          # anchored on 2021 would have cycles starting on 2021, 2023, 2025, etc.).
+          year: nil
+        ); end
         sig { override.returns({day: Integer, month: T.nilable(Integer), year: T.nilable(Integer)}) }
         def to_hash; end
       end
@@ -864,10 +979,15 @@ module Orb
               .returns(T.attached_class)
           end
           def self.new(
+            # Only available if discount_type is `amount`.
             amount_discount:,
+            # The price ids that this discount interval applies to.
             applies_to_price_ids:,
+            # The price interval ids that this discount interval applies to.
             applies_to_price_interval_ids:,
+            # The end date of the discount interval.
             end_date:,
+            # The start date of the discount interval.
             start_date:,
             discount_type: :amount
           ); end
@@ -924,10 +1044,16 @@ module Orb
               .returns(T.attached_class)
           end
           def self.new(
+            # The price ids that this discount interval applies to.
             applies_to_price_ids:,
+            # The price interval ids that this discount interval applies to.
             applies_to_price_interval_ids:,
+            # The end date of the discount interval.
             end_date:,
+            # Only available if discount_type is `percentage`.This is a number between 0
+            # and 1.
             percentage_discount:,
+            # The start date of the discount interval.
             start_date:,
             discount_type: :percentage
           ); end
@@ -984,10 +1110,16 @@ module Orb
               .returns(T.attached_class)
           end
           def self.new(
+            # The price ids that this discount interval applies to.
             applies_to_price_ids:,
+            # The price interval ids that this discount interval applies to.
             applies_to_price_interval_ids:,
+            # The end date of the discount interval.
             end_date:,
+            # The start date of the discount interval.
             start_date:,
+            # Only available if discount_type is `usage`. Number of usage units that this
+            # discount is for
             usage_discount:,
             discount_type: :usage
           ); end
@@ -1074,14 +1206,18 @@ module Orb
             .returns(T.attached_class)
         end
         def self.new(
+          # The price ids that this maximum interval applies to.
           applies_to_price_ids:,
+          # The price interval ids that this maximum interval applies to.
           applies_to_price_interval_ids:,
+          # The end date of the maximum interval.
           end_date:,
+          # The maximum amount to charge in a given billing period for the price intervals
+          # this transform applies to.
           maximum_amount:,
+          # The start date of the maximum interval.
           start_date:
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -1130,14 +1266,18 @@ module Orb
             .returns(T.attached_class)
         end
         def self.new(
+          # The price ids that this minimum interval applies to.
           applies_to_price_ids:,
+          # The price interval ids that this minimum interval applies to.
           applies_to_price_interval_ids:,
+          # The end date of the minimum interval.
           end_date:,
+          # The minimum amount to charge in a given billing period for the price intervals
+          # this minimum applies to.
           minimum_amount:,
+          # The start date of the minimum interval.
           start_date:
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -1318,14 +1458,40 @@ module Orb
         end
         def self.new(
           id:,
+          # The day of the month that Orb bills for this price
           billing_cycle_day:,
+          # The end of the current billing period. This is an exclusive timestamp, such that
+          # the instant returned is exactly the end of the billing period. Set to null if
+          # this price interval is not currently active.
           current_billing_period_end_date:,
+          # The start date of the current billing period. This is an inclusive timestamp;
+          # the instant returned is exactly the beginning of the billing period. Set to null
+          # if this price interval is not currently active.
           current_billing_period_start_date:,
+          # The end date of the price interval. This is the date that Orb stops billing for
+          # this price.
           end_date:,
+          # An additional filter to apply to usage queries.
           filter:,
+          # The fixed fee quantity transitions for this price interval. This is only
+          # relevant for fixed fees.
           fixed_fee_quantity_transitions:,
+          # The Price resource represents a price that can be billed on a subscription,
+          # resulting in a charge on an invoice in the form of an invoice line item. Prices
+          # take a quantity and determine an amount to bill.
+          #
+          # Orb supports a few different pricing models out of the box. Each of these models
+          # is serialized differently in a given Price object. The model_type field
+          # determines the key for the configuration object that is present.
+          #
+          # For more on the types of prices, see
+          # [the core concepts documentation](/core-concepts#plan-and-price)
           price:,
+          # The start date of the price interval. This is the date that Orb starts billing
+          # for this price.
           start_date:,
+          # A list of customer IDs whose usage events will be aggregated and billed under
+          # this price interval.
           usage_customer_ids:
         ); end
         sig do
@@ -1476,8 +1642,16 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(created_credit_notes:, created_invoices:, voided_credit_notes:, voided_invoices:); end
-
+        def self.new(
+          # The credit notes that were created as part of this operation.
+          created_credit_notes:,
+          # The invoices that were created as part of this operation.
+          created_invoices:,
+          # The credit notes that were voided as part of this operation.
+          voided_credit_notes:,
+          # The invoices that were voided as part of this operation.
+          voided_invoices:
+        ); end
         sig do
           override
             .returns(

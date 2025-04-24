@@ -47,14 +47,22 @@ module Orb
       end
       def self.new(
         id:,
+        # The billable metric associated with this dimensional price group. All prices
+        # associated with this dimensional price group will be computed using this
+        # billable metric.
         billable_metric_id:,
+        # The dimensions that this dimensional price group is defined over
         dimensions:,
+        # An alias for the dimensional price group
         external_dimensional_price_group_id:,
+        # User specified key-value pairs for the resource. If not present, this defaults
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
         metadata:,
+        # The name of the dimensional price group
         name:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(

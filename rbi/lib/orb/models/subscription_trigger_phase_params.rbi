@@ -25,8 +25,16 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(allow_invoice_credit_or_void: nil, effective_date: nil, request_options: {}); end
-
+      def self.new(
+        # If false, this request will fail if it would void an issued invoice or create a
+        # credit note. Consider using this as a safety mechanism if you do not expect
+        # existing invoices to be changed.
+        allow_invoice_credit_or_void: nil,
+        # The date on which the phase change should take effect. If not provided, defaults
+        # to today in the customer's timezone.
+        effective_date: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

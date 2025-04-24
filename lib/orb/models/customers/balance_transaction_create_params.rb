@@ -26,8 +26,11 @@ module Orb
 
         # @!method initialize(amount:, type:, description: nil, request_options: {})
         #   @param amount [String]
+        #
         #   @param type [Symbol, Orb::Models::Customers::BalanceTransactionCreateParams::Type]
-        #   @param description [String, nil]
+        #
+        #   @param description [String, nil] An optional description that can be specified around this entry.
+        #
         #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
         module Type

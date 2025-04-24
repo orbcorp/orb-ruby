@@ -11,7 +11,7 @@ module Orb
       required :amended, String
 
       # @!method initialize(amended:)
-      #   @param amended [String]
+      #   @param amended [String] event_id of the amended event, if successfully ingested
     end
   end
 end

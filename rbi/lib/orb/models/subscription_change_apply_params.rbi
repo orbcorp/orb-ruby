@@ -22,8 +22,13 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(description: nil, previously_collected_amount: nil, request_options: {}); end
-
+      def self.new(
+        # Description to apply to the balance transaction representing this credit.
+        description: nil,
+        # Amount already collected to apply to the customer's balance.
+        previously_collected_amount: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

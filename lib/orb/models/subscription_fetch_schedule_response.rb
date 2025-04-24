@@ -51,8 +51,14 @@ module Orb
         required :name, String, nil?: true
 
         # @!method initialize(id:, external_plan_id:, name:)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::SubscriptionFetchScheduleResponse::Plan} for more details.
+        #
         #   @param id [String, nil]
-        #   @param external_plan_id [String, nil]
+        #
+        #   @param external_plan_id [String, nil] An optional user-defined ID for this plan resource, used throughout the system a
+        #   ...
+        #
         #   @param name [String, nil]
       end
     end

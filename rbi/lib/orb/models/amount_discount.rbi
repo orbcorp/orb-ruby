@@ -27,8 +27,15 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(amount_discount:, applies_to_price_ids:, discount_type:, reason: nil); end
-
+      def self.new(
+        # Only available if discount_type is `amount`.
+        amount_discount:,
+        # List of price_ids that this discount applies to. For plan/plan phase discounts,
+        # this can be a subset of prices.
+        applies_to_price_ids:,
+        discount_type:,
+        reason: nil
+      ); end
       sig do
         override
           .returns(

@@ -4,6 +4,9 @@ module Orb
   module Resources
     class Coupons
       class Subscriptions
+        # Some parameter documentations has been truncated, see
+        # {Orb::Models::Coupons::SubscriptionListParams} for more details.
+        #
         # This endpoint returns a list of all subscriptions that have redeemed a given
         # coupon as a [paginated](/api-reference/pagination) list, ordered starting from
         # the most recently created subscription. For a full discussion of the
@@ -12,8 +15,12 @@ module Orb
         # @overload list(coupon_id, cursor: nil, limit: nil, request_options: {})
         #
         # @param coupon_id [String]
-        # @param cursor [String, nil]
-        # @param limit [Integer]
+        #
+        # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
+        # ...
+        #
+        # @param limit [Integer] The number of items to fetch. Defaults to 20.
+        #
         # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Orb::Internal::Page<Orb::Models::Subscription>]

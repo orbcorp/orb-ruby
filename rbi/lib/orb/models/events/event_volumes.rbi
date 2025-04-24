@@ -30,8 +30,12 @@ module Orb
           # An EventVolume contains the event volume ingested in an hourly window. The
           # timestamp used for the aggregation is the `timestamp` datetime field on events.
           sig { params(count: Integer, timeframe_end: Time, timeframe_start: Time).returns(T.attached_class) }
-          def self.new(count:, timeframe_end:, timeframe_start:); end
-
+          def self.new(
+            # The number of events ingested with a timestamp between the timeframe
+            count:,
+            timeframe_end:,
+            timeframe_start:
+          ); end
           sig { override.returns({count: Integer, timeframe_end: Time, timeframe_start: Time}) }
           def to_hash; end
         end

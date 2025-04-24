@@ -109,17 +109,41 @@ module Orb
               .returns(T.attached_class)
           end
           def self.new(
+            # The number of credits to effect. Note that this is required for increment,
+            # decrement or void operations.
             amount:,
             entry_type:,
+            # An ISO 8601 format date that identifies the origination credit block to expire
             expiry_date:,
+            # A future date (specified in YYYY-MM-DD format) used for expiration change,
+            # denoting when credits transferred (as part of a partial block expiration) should
+            # expire.
             target_expiry_date:,
+            # The ID of the block to reverse a decrement from.
             block_id:,
+            # The currency or custom pricing unit to use for this ledger entry. If this is a
+            # real-world currency, it must match the customer's invoicing currency.
             currency: nil,
+            # Optional metadata that can be specified when adding ledger results via the API.
+            # For example, this can be used to note an increment refers to trial credits, or
+            # for noting corrections as a result of an incident, etc.
             description: nil,
+            # An ISO 8601 format date that denotes when this credit balance should become
+            # available for use.
             effective_date: nil,
+            # Passing `invoice_settings` automatically generates an invoice for the newly
+            # added credits. If `invoice_settings` is passed, you must specify
+            # per_unit_cost_basis, as the calculation of the invoice total is done on that
+            # basis.
             invoice_settings: nil,
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
             metadata: nil,
+            # Can only be specified when entry_type=increment. How much, in the customer's
+            # currency, a customer paid for a single credit in this block
             per_unit_cost_basis: nil,
+            # Can only be specified when `entry_type=void`. The reason for the void.
             void_reason: nil,
             request_options: {}
           ); end
@@ -204,8 +228,20 @@ module Orb
               )
                 .returns(T.attached_class)
             end
-            def self.new(auto_collection:, net_terms:, memo: nil, require_successful_payment: nil); end
-
+            def self.new(
+              # Whether the credits purchase invoice should auto collect with the customer's
+              # saved payment method.
+              auto_collection:,
+              # The net terms determines the difference between the invoice date and the issue
+              # date for the invoice. If you intend the invoice to be due on issue, set this
+              # to 0.
+              net_terms:,
+              # An optional memo to display on the invoice.
+              memo: nil,
+              # If true, the new credit block will require that the corresponding invoice is
+              # paid before it can be drawn down from.
+              require_successful_payment: nil
+            ); end
             sig do
               override
                 .returns(

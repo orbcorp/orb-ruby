@@ -35,10 +35,19 @@ module Orb
         optional :limit, Integer
 
         # @!method initialize(currency: nil, cursor: nil, include_all_blocks: nil, limit: nil, request_options: {})
-        #   @param currency [String, nil]
-        #   @param cursor [String, nil]
-        #   @param include_all_blocks [Boolean]
-        #   @param limit [Integer]
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Customers::CreditListParams} for more details.
+        #
+        #   @param currency [String, nil] The ledger currency or custom pricing unit to use.
+        #
+        #   @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
+        #   ...
+        #
+        #   @param include_all_blocks [Boolean] If set to True, all expired and depleted blocks, as well as active block will be
+        #   ...
+        #
+        #   @param limit [Integer] The number of items to fetch. Defaults to 20.
+        #
         #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
       end
     end

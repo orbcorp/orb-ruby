@@ -23,8 +23,15 @@ module Orb
       optional :effective_date, Date, nil?: true
 
       # @!method initialize(allow_invoice_credit_or_void: nil, effective_date: nil, request_options: {})
-      #   @param allow_invoice_credit_or_void [Boolean, nil]
-      #   @param effective_date [Date, nil]
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::SubscriptionTriggerPhaseParams} for more details.
+      #
+      #   @param allow_invoice_credit_or_void [Boolean, nil] If false, this request will fail if it would void an issued invoice or create a
+      #   ...
+      #
+      #   @param effective_date [Date, nil] The date on which the phase change should take effect. If not provided, defaults
+      #   ...
+      #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end

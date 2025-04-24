@@ -275,27 +275,65 @@ module Orb
           .returns(T.attached_class)
       end
       def self.new(
+        # A unique ID for this line item.
         id:,
+        # The line amount after any adjustments and before overage conversion, credits and
+        # partial invoicing.
         adjusted_subtotal:,
+        # All adjustments applied to the line item in the order they were applied based on
+        # invoice calculations (ie. usage discounts -> amount discounts -> percentage
+        # discounts -> minimums -> maximums).
         adjustments:,
+        # The final amount for a line item after all adjustments and pre paid credits have
+        # been applied.
         amount:,
+        # The number of prepaid credits applied.
         credits_applied:,
         discount:,
+        # The end date of the range of time applied for this line item's price.
         end_date:,
+        # An additional filter that was used to calculate the usage for this line item.
         filter:,
+        # [DEPRECATED] For configured prices that are split by a grouping key, this will
+        # be populated with the key and a value. The `amount` and `subtotal` will be the
+        # values for this particular grouping.
         grouping:,
+        # This field is deprecated in favor of `adjustments`.
         maximum:,
+        # This field is deprecated in favor of `adjustments`.
         maximum_amount:,
+        # This field is deprecated in favor of `adjustments`.
         minimum:,
+        # This field is deprecated in favor of `adjustments`.
         minimum_amount:,
+        # The name of the price associated with this line item.
         name:,
+        # Any amount applied from a partial invoice
         partially_invoiced_amount:,
+        # The Price resource represents a price that can be billed on a subscription,
+        # resulting in a charge on an invoice in the form of an invoice line item. Prices
+        # take a quantity and determine an amount to bill.
+        #
+        # Orb supports a few different pricing models out of the box. Each of these models
+        # is serialized differently in a given Price object. The model_type field
+        # determines the key for the configuration object that is present.
+        #
+        # For more on the types of prices, see
+        # [the core concepts documentation](/core-concepts#plan-and-price)
         price:,
+        # Either the fixed fee quantity or the usage during the service period.
         quantity:,
+        # The start date of the range of time applied for this line item's price.
         start_date:,
+        # For complex pricing structures, the line item can be broken down further in
+        # `sub_line_items`.
         sub_line_items:,
+        # The line amount before before any adjustments.
         subtotal:,
+        # An array of tax rates and their incurred tax amounts. Empty if no tax
+        # integration is configured.
         tax_amounts:,
+        # A list of customer ids that were used to calculate the usage for this line item.
         usage_customer_ids:
       ); end
       sig do
@@ -427,10 +465,17 @@ module Orb
           end
           def self.new(
             id:,
+            # The value applied by an adjustment.
             amount:,
+            # The price IDs that this adjustment applies to.
             applies_to_price_ids:,
+            # True for adjustments that apply to an entire invocice, false for adjustments
+            # that apply to only one price.
             is_invoice_level:,
+            # The reason for the adjustment.
             reason:,
+            # The number of usage units by which to discount the price this adjustment applies
+            # to in a given billing period.
             usage_discount:,
             adjustment_type: :usage_discount
           ); end
@@ -494,10 +539,17 @@ module Orb
           end
           def self.new(
             id:,
+            # The value applied by an adjustment.
             amount:,
+            # The amount by which to discount the prices this adjustment applies to in a given
+            # billing period.
             amount_discount:,
+            # The price IDs that this adjustment applies to.
             applies_to_price_ids:,
+            # True for adjustments that apply to an entire invocice, false for adjustments
+            # that apply to only one price.
             is_invoice_level:,
+            # The reason for the adjustment.
             reason:,
             adjustment_type: :amount_discount
           ); end
@@ -561,10 +613,17 @@ module Orb
           end
           def self.new(
             id:,
+            # The value applied by an adjustment.
             amount:,
+            # The price IDs that this adjustment applies to.
             applies_to_price_ids:,
+            # True for adjustments that apply to an entire invocice, false for adjustments
+            # that apply to only one price.
             is_invoice_level:,
+            # The percentage (as a value between 0 and 1) by which to discount the price
+            # intervals this adjustment applies to in a given billing period.
             percentage_discount:,
+            # The reason for the adjustment.
             reason:,
             adjustment_type: :percentage_discount
           ); end
@@ -633,11 +692,19 @@ module Orb
           end
           def self.new(
             id:,
+            # The value applied by an adjustment.
             amount:,
+            # The price IDs that this adjustment applies to.
             applies_to_price_ids:,
+            # True for adjustments that apply to an entire invocice, false for adjustments
+            # that apply to only one price.
             is_invoice_level:,
+            # The item ID that revenue from this minimum will be attributed to.
             item_id:,
+            # The minimum amount to charge in a given billing period for the prices this
+            # adjustment applies to.
             minimum_amount:,
+            # The reason for the adjustment.
             reason:,
             adjustment_type: :minimum
           ); end
@@ -702,10 +769,17 @@ module Orb
           end
           def self.new(
             id:,
+            # The value applied by an adjustment.
             amount:,
+            # The price IDs that this adjustment applies to.
             applies_to_price_ids:,
+            # True for adjustments that apply to an entire invocice, false for adjustments
+            # that apply to only one price.
             is_invoice_level:,
+            # The maximum amount to charge in a given billing period for the prices this
+            # adjustment applies to.
             maximum_amount:,
+            # The reason for the adjustment.
             reason:,
             adjustment_type: :maximum
           ); end
@@ -749,8 +823,13 @@ module Orb
         sig do
           params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
         end
-        def self.new(applies_to_price_ids:, maximum_amount:); end
-
+        def self.new(
+          # List of price_ids that this maximum amount applies to. For plan/plan phase
+          # maximums, this can be a subset of prices.
+          applies_to_price_ids:,
+          # Maximum amount applied
+          maximum_amount:
+        ); end
         sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
         def to_hash; end
       end
@@ -769,8 +848,13 @@ module Orb
         sig do
           params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
         end
-        def self.new(applies_to_price_ids:, minimum_amount:); end
-
+        def self.new(
+          # List of price_ids that this minimum amount applies to. For plan/plan phase
+          # minimums, this can be a subset of prices.
+          applies_to_price_ids:,
+          # Minimum amount applied
+          minimum_amount:
+        ); end
         sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
         def to_hash; end
       end
@@ -841,8 +925,15 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(amount:, grouping:, matrix_config:, name:, quantity:, type: :matrix); end
-
+          def self.new(
+            # The total amount for this sub line item.
+            amount:,
+            grouping:,
+            matrix_config:,
+            name:,
+            quantity:,
+            type: :matrix
+          ); end
           sig do
             override
               .returns(
@@ -867,8 +958,11 @@ module Orb
             attr_accessor :value
 
             sig { params(key: String, value: T.nilable(String)).returns(T.attached_class) }
-            def self.new(key:, value:); end
-
+            def self.new(
+              key:,
+              # No value indicates the default group
+              value:
+            ); end
             sig { override.returns({key: String, value: T.nilable(String)}) }
             def to_hash; end
           end
@@ -879,8 +973,10 @@ module Orb
             attr_accessor :dimension_values
 
             sig { params(dimension_values: T::Array[T.nilable(String)]).returns(T.attached_class) }
-            def self.new(dimension_values:); end
-
+            def self.new(
+              # The ordered dimension values for this line item.
+              dimension_values:
+            ); end
             sig { override.returns({dimension_values: T::Array[T.nilable(String)]}) }
             def to_hash; end
           end
@@ -949,8 +1045,15 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(amount:, grouping:, name:, quantity:, tier_config:, type: :tier); end
-
+          def self.new(
+            # The total amount for this sub line item.
+            amount:,
+            grouping:,
+            name:,
+            quantity:,
+            tier_config:,
+            type: :tier
+          ); end
           sig do
             override
               .returns(
@@ -975,8 +1078,11 @@ module Orb
             attr_accessor :value
 
             sig { params(key: String, value: T.nilable(String)).returns(T.attached_class) }
-            def self.new(key:, value:); end
-
+            def self.new(
+              key:,
+              # No value indicates the default group
+              value:
+            ); end
             sig { override.returns({key: String, value: T.nilable(String)}) }
             def to_hash; end
           end
@@ -1050,8 +1156,14 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(amount:, grouping:, name:, quantity:, type: :"'null'"); end
-
+          def self.new(
+            # The total amount for this sub line item.
+            amount:,
+            grouping:,
+            name:,
+            quantity:,
+            type: :"'null'"
+          ); end
           sig do
             override
               .returns(
@@ -1075,8 +1187,11 @@ module Orb
             attr_accessor :value
 
             sig { params(key: String, value: T.nilable(String)).returns(T.attached_class) }
-            def self.new(key:, value:); end
-
+            def self.new(
+              key:,
+              # No value indicates the default group
+              value:
+            ); end
             sig { override.returns({key: String, value: T.nilable(String)}) }
             def to_hash; end
           end
@@ -1108,8 +1223,14 @@ module Orb
           params(amount: String, tax_rate_description: String, tax_rate_percentage: T.nilable(String))
             .returns(T.attached_class)
         end
-        def self.new(amount:, tax_rate_description:, tax_rate_percentage:); end
-
+        def self.new(
+          # The amount of additional tax incurred by this tax rate.
+          amount:,
+          # The human-readable description of the applied tax rate.
+          tax_rate_description:,
+          # The tax rate percentage, out of 100.
+          tax_rate_percentage:
+        ); end
         sig do
           override.returns(
             {

@@ -50,11 +50,21 @@ module Orb
           .returns(T.attached_class)
       end
       def self.new(
+        # The exclusive upper bound for event timestamps
         timeframe_end:,
+        # The inclusive lower bound for event timestamps
         timeframe_start:,
+        # The ID of the customer to which this evaluation is scoped.
         customer_id: nil,
+        # The external customer ID of the customer to which this evaluation is scoped.
         external_customer_id: nil,
+        # A boolean
+        # [computed property](/extensibility/advanced-metrics#computed-properties) used to
+        # filter the underlying billable metric
         filter: nil,
+        # Properties (or
+        # [computed properties](/extensibility/advanced-metrics#computed-properties)) used
+        # to group the underlying billable metric
         grouping_keys: nil,
         request_options: {}
       ); end

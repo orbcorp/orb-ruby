@@ -46,8 +46,15 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(per_price_costs:, subtotal:, timeframe_end:, timeframe_start:, total:); end
-
+          def self.new(
+            per_price_costs:,
+            # Total costs for the timeframe, excluding any minimums and discounts.
+            subtotal:,
+            timeframe_end:,
+            timeframe_start:,
+            # Total costs for the timeframe, including any minimums and discounts.
+            total:
+          ); end
           sig do
             override
               .returns(
@@ -156,8 +163,18 @@ module Orb
               )
                 .returns(T.attached_class)
             end
-            def self.new(price:, price_id:, subtotal:, total:, quantity: nil); end
-
+            def self.new(
+              # The price object
+              price:,
+              # The price the cost is associated with
+              price_id:,
+              # Price's contributions for the timeframe, excluding any minimums and discounts.
+              subtotal:,
+              # Price's contributions for the timeframe, including minimums and discounts.
+              total:,
+              # The price's quantity for the timeframe
+              quantity: nil
+            ); end
             sig do
               override
                 .returns(

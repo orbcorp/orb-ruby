@@ -59,9 +59,12 @@ module Orb
         created_at_gte: nil,
         created_at_lt: nil,
         created_at_lte: nil,
+        # Cursor for pagination. This can be populated by the `next_cursor` value returned
+        # from the initial request.
         cursor: nil,
         customer_id: nil,
         external_customer_id: nil,
+        # The number of items to fetch. Defaults to 20.
         limit: nil,
         status: nil,
         request_options: {}

@@ -43,7 +43,10 @@ module Orb
           .returns(T.attached_class)
       end
       def self.new(
+        # Cursor for pagination. This can be populated by the `next_cursor` value returned
+        # from the initial request.
         cursor: nil,
+        # The number of items to fetch. Defaults to 20.
         limit: nil,
         start_date_gt: nil,
         start_date_gte: nil,

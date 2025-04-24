@@ -77,19 +77,28 @@ module Orb
           .returns(T.attached_class)
       end
       def self.new(
+        # Also referred to as alert_id in this documentation.
         id:,
+        # The creation time of the resource in Orb.
         created_at:,
+        # The name of the currency the credit balance or invoice cost is denominated in.
         currency:,
+        # The customer the alert applies to.
         customer:,
+        # Whether the alert is enabled or disabled.
         enabled:,
+        # The metric the alert applies to.
         metric:,
+        # The plan the alert applies to.
         plan:,
+        # The subscription the alert applies to.
         subscription:,
+        # The thresholds that define the conditions under which the alert will be
+        # triggered.
         thresholds:,
+        # The type of alert. This must be a valid alert type.
         type:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -162,8 +171,15 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(id:, external_plan_id:, name:, plan_version:); end
-
+        def self.new(
+          id:,
+          # An optional user-defined ID for this plan resource, used throughout the system
+          # as an alias for this Plan. Use this field to identify a plan by an existing
+          # identifier in your system.
+          external_plan_id:,
+          name:,
+          plan_version:
+        ); end
         sig do
           override
             .returns(
@@ -200,8 +216,12 @@ module Orb
         # Thresholds are used to define the conditions under which an alert will be
         # triggered.
         sig { params(value: Float).returns(T.attached_class) }
-        def self.new(value:); end
-
+        def self.new(
+          # The value at which an alert will fire. For credit balance alerts, the alert will
+          # fire at or below this value. For usage and cost alerts, the alert will fire at
+          # or above this value.
+          value:
+        ); end
         sig { override.returns({value: Float}) }
         def to_hash; end
       end

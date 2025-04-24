@@ -37,11 +37,20 @@ module Orb
       optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
       # @!method initialize(billable_metric_id:, dimensions:, name:, external_dimensional_price_group_id: nil, metadata: nil, request_options: {})
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::DimensionalPriceGroupCreateParams} for more details.
+      #
       #   @param billable_metric_id [String]
-      #   @param dimensions [Array<String>]
+      #
+      #   @param dimensions [Array<String>] The set of keys (in order) used to disambiguate prices in the group.
+      #
       #   @param name [String]
+      #
       #   @param external_dimensional_price_group_id [String, nil]
-      #   @param metadata [Hash{Symbol=>String, nil}, nil]
+      #
+      #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+      #   ...
+      #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end

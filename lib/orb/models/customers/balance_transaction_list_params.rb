@@ -42,12 +42,22 @@ module Orb
         optional :operation_time_lte, Time, nil?: true
 
         # @!method initialize(cursor: nil, limit: nil, operation_time_gt: nil, operation_time_gte: nil, operation_time_lt: nil, operation_time_lte: nil, request_options: {})
-        #   @param cursor [String, nil]
-        #   @param limit [Integer]
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Customers::BalanceTransactionListParams} for more details.
+        #
+        #   @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
+        #   ...
+        #
+        #   @param limit [Integer] The number of items to fetch. Defaults to 20.
+        #
         #   @param operation_time_gt [Time, nil]
+        #
         #   @param operation_time_gte [Time, nil]
+        #
         #   @param operation_time_lt [Time, nil]
+        #
         #   @param operation_time_lte [Time, nil]
+        #
         #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
       end
     end

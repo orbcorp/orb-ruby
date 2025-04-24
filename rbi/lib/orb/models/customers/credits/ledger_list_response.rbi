@@ -114,6 +114,10 @@ module Orb
               ending_balance:,
               entry_status:,
               ledger_sequence_number:,
+              # User specified key-value pairs for the resource. If not present, this defaults
+              # to an empty dictionary. Individual keys can be removed by setting the value to
+              # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+              # `null`.
               metadata:,
               starting_balance:,
               entry_type: :increment
@@ -327,6 +331,10 @@ module Orb
               ending_balance:,
               entry_status:,
               ledger_sequence_number:,
+              # User specified key-value pairs for the resource. If not present, this defaults
+              # to an empty dictionary. Individual keys can be removed by setting the value to
+              # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+              # `null`.
               metadata:,
               starting_balance:,
               event_id: nil,
@@ -538,6 +546,10 @@ module Orb
               ending_balance:,
               entry_status:,
               ledger_sequence_number:,
+              # User specified key-value pairs for the resource. If not present, this defaults
+              # to an empty dictionary. Individual keys can be removed by setting the value to
+              # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+              # `null`.
               metadata:,
               new_block_expiry_date:,
               starting_balance:,
@@ -745,6 +757,10 @@ module Orb
               ending_balance:,
               entry_status:,
               ledger_sequence_number:,
+              # User specified key-value pairs for the resource. If not present, this defaults
+              # to an empty dictionary. Individual keys can be removed by setting the value to
+              # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+              # `null`.
               metadata:,
               starting_balance:,
               entry_type: :credit_block_expiry
@@ -954,6 +970,10 @@ module Orb
               ending_balance:,
               entry_status:,
               ledger_sequence_number:,
+              # User specified key-value pairs for the resource. If not present, this defaults
+              # to an empty dictionary. Individual keys can be removed by setting the value to
+              # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+              # `null`.
               metadata:,
               starting_balance:,
               void_amount:,
@@ -1171,6 +1191,10 @@ module Orb
               ending_balance:,
               entry_status:,
               ledger_sequence_number:,
+              # User specified key-value pairs for the resource. If not present, this defaults
+              # to an empty dictionary. Individual keys can be removed by setting the value to
+              # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+              # `null`.
               metadata:,
               new_block_expiry_date:,
               starting_balance:,
@@ -1378,6 +1402,10 @@ module Orb
               ending_balance:,
               entry_status:,
               ledger_sequence_number:,
+              # User specified key-value pairs for the resource. If not present, this defaults
+              # to an empty dictionary. Individual keys can be removed by setting the value to
+              # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+              # `null`.
               metadata:,
               starting_balance:,
               entry_type: :amendment

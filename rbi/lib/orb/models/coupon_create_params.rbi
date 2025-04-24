@@ -46,13 +46,16 @@ module Orb
       end
       def self.new(
         discount:,
+        # This string can be used to redeem this coupon for a given subscription.
         redemption_code:,
+        # This allows for a coupon's discount to apply for a limited time (determined in
+        # months); a `null` value here means "unlimited time".
         duration_in_months: nil,
+        # The maximum number of redemptions allowed for this coupon before it is
+        # exhausted;`null` here means "unlimited".
         max_redemptions: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(

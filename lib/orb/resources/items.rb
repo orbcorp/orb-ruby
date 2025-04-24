@@ -7,7 +7,8 @@ module Orb
       #
       # @overload create(name:, request_options: {})
       #
-      # @param name [String]
+      # @param name [String] The name of the item.
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::Item]
@@ -41,13 +42,19 @@ module Orb
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::ItemListParams} for more details.
+      #
       # This endpoint returns a list of all Items, ordered in descending order by
       # creation time.
       #
       # @overload list(cursor: nil, limit: nil, request_options: {})
       #
-      # @param cursor [String, nil]
-      # @param limit [Integer]
+      # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
+      # ...
+      #
+      # @param limit [Integer] The number of items to fetch. Defaults to 20.
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Internal::Page<Orb::Models::Item>]

@@ -36,14 +36,19 @@ module Orb
           .returns(T.attached_class)
       end
       def self.new(
+        # The currency or custom pricing unit to use.
         currency: nil,
+        # Costs returned are exclusive of `timeframe_end`.
         timeframe_end: nil,
+        # Costs returned are inclusive of `timeframe_start`.
         timeframe_start: nil,
+        # Controls whether Orb returns cumulative costs since the start of the billing
+        # period, or incremental day-by-day costs. If your customer has minimums or
+        # discounts, it's strongly recommended that you use the default cumulative
+        # behavior.
         view_mode: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
