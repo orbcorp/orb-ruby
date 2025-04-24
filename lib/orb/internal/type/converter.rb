@@ -43,7 +43,7 @@ module Orb
             value.string
           in Pathname | IO
             state[:can_retry] = false if value.is_a?(IO)
-            Orb::Internal::Util::SerializationAdapter.new(value)
+            Orb::FilePart.new(value)
           else
             value
           end
