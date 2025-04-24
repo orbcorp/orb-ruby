@@ -14,7 +14,8 @@ module Orb
       required :name, String
 
       # @!method initialize(name:, request_options: {})
-      #   @param name [String]
+      #   @param name [String] The name of the item.
+      #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end

@@ -78,14 +78,22 @@ module Orb
             .returns(T.attached_class)
         end
         def self.new(
+          # A unique id for this transaction.
           id:,
           action:,
+          # The value of the amount changed in the transaction.
           amount:,
+          # The creation time of this transaction.
           created_at:,
           credit_note:,
+          # An optional description provided for manual customer balance adjustments.
           description:,
+          # The new value of the customer's balance prior to the transaction, in the
+          # customer's currency.
           ending_balance:,
           invoice:,
+          # The original value of the customer's balance prior to the transaction, in the
+          # customer's currency.
           starting_balance:,
           type:
         ); end
@@ -147,8 +155,10 @@ module Orb
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
-
+          def self.new(
+            # The id of the Credit note
+            id:
+          ); end
           sig { override.returns({id: String}) }
           def to_hash; end
         end
@@ -159,8 +169,10 @@ module Orb
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
-
+          def self.new(
+            # The Invoice id
+            id:
+          ); end
           sig { override.returns({id: String}) }
           def to_hash; end
         end

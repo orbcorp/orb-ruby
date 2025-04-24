@@ -48,12 +48,23 @@ module Orb
       optional :grouping_keys, Orb::Internal::Type::ArrayOf[String]
 
       # @!method initialize(timeframe_end:, timeframe_start:, customer_id: nil, external_customer_id: nil, filter: nil, grouping_keys: nil, request_options: {})
-      #   @param timeframe_end [Time]
-      #   @param timeframe_start [Time]
-      #   @param customer_id [String, nil]
-      #   @param external_customer_id [String, nil]
-      #   @param filter [String, nil]
-      #   @param grouping_keys [Array<String>]
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::PriceEvaluateParams} for more details.
+      #
+      #   @param timeframe_end [Time] The exclusive upper bound for event timestamps
+      #
+      #   @param timeframe_start [Time] The inclusive lower bound for event timestamps
+      #
+      #   @param customer_id [String, nil] The ID of the customer to which this evaluation is scoped.
+      #
+      #   @param external_customer_id [String, nil] The external customer ID of the customer to which this evaluation is scoped.
+      #
+      #   @param filter [String, nil] A boolean [computed property](/extensibility/advanced-metrics#computed-propertie
+      #   ...
+      #
+      #   @param grouping_keys [Array<String>] Properties (or [computed properties](/extensibility/advanced-metrics#computed-pr
+      #   ...
+      #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end

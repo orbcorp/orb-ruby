@@ -32,8 +32,20 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(event_ids:, timeframe_end: nil, timeframe_start: nil, request_options: {}); end
-
+      def self.new(
+        # This is an explicit array of IDs to filter by. Note that an event's ID is the
+        # idempotency_key that was originally used for ingestion, and this only supports
+        # events that have not been amended. Values in this array will be treated case
+        # sensitively.
+        event_ids:,
+        # The end of the timeframe, exclusive, in which to search events. If not
+        # specified, the current time is used.
+        timeframe_end: nil,
+        # The start of the timeframe, inclusive, in which to search events. If not
+        # specified, the one week ago is used.
+        timeframe_start: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

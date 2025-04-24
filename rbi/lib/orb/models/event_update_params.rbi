@@ -42,15 +42,22 @@ module Orb
           .returns(T.attached_class)
       end
       def self.new(
+        # A name to meaningfully identify the action or event type.
         event_name:,
+        # A dictionary of custom properties. Values in this dictionary must be numeric,
+        # boolean, or strings. Nested dictionaries are disallowed.
         properties:,
+        # An ISO 8601 format date with no timezone offset (i.e. UTC). This should
+        # represent the time that usage was recorded, and is particularly important to
+        # attribute usage to a given billing period.
         timestamp:,
+        # The Orb Customer identifier
         customer_id: nil,
+        # An alias for the Orb customer, whose mapping is specified when creating the
+        # customer
         external_customer_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(

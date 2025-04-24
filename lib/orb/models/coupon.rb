@@ -49,19 +49,31 @@ module Orb
       required :times_redeemed, Integer
 
       # @!method initialize(id:, archived_at:, discount:, duration_in_months:, max_redemptions:, redemption_code:, times_redeemed:)
+      #   Some parameter documentations has been truncated, see {Orb::Models::Coupon} for
+      #   more details.
+      #
       #   A coupon represents a reusable discount configuration that can be applied either
       #   as a fixed or percentage amount to an invoice or subscription. Coupons are
       #   activated using a redemption code, which applies the discount to a subscription
       #   or invoice. The duration of a coupon determines how long it remains available
       #   for use by end users.
       #
-      #   @param id [String]
-      #   @param archived_at [Time, nil]
+      #   @param id [String] Also referred to as coupon_id in this documentation.
+      #
+      #   @param archived_at [Time, nil] An archived coupon can no longer be redeemed. Active coupons will have a value o
+      #   ...
+      #
       #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount]
-      #   @param duration_in_months [Integer, nil]
-      #   @param max_redemptions [Integer, nil]
-      #   @param redemption_code [String]
-      #   @param times_redeemed [Integer]
+      #
+      #   @param duration_in_months [Integer, nil] This allows for a coupon's discount to apply for a limited time (determined in m
+      #   ...
+      #
+      #   @param max_redemptions [Integer, nil] The maximum number of redemptions allowed for this coupon before it is exhausted
+      #   ...
+      #
+      #   @param redemption_code [String] This string can be used to redeem this coupon for a given subscription.
+      #
+      #   @param times_redeemed [Integer] The number of times this coupon has been redeemed.
 
       # @see Orb::Models::Coupon#discount
       module Discount

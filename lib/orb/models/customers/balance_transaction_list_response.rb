@@ -66,15 +66,29 @@ module Orb
         required :type, enum: -> { Orb::Models::Customers::BalanceTransactionListResponse::Type }
 
         # @!method initialize(id:, action:, amount:, created_at:, credit_note:, description:, ending_balance:, invoice:, starting_balance:, type:)
-        #   @param id [String]
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Customers::BalanceTransactionListResponse} for more details.
+        #
+        #   @param id [String] A unique id for this transaction.
+        #
         #   @param action [Symbol, Orb::Models::Customers::BalanceTransactionListResponse::Action]
-        #   @param amount [String]
-        #   @param created_at [Time]
+        #
+        #   @param amount [String] The value of the amount changed in the transaction.
+        #
+        #   @param created_at [Time] The creation time of this transaction.
+        #
         #   @param credit_note [Orb::Models::Customers::BalanceTransactionListResponse::CreditNote, nil]
-        #   @param description [String, nil]
-        #   @param ending_balance [String]
+        #
+        #   @param description [String, nil] An optional description provided for manual customer balance adjustments.
+        #
+        #   @param ending_balance [String] The new value of the customer's balance prior to the transaction, in the custome
+        #   ...
+        #
         #   @param invoice [Orb::Models::Customers::BalanceTransactionListResponse::Invoice, nil]
-        #   @param starting_balance [String]
+        #
+        #   @param starting_balance [String] The original value of the customer's balance prior to the transaction, in the cu
+        #   ...
+        #
         #   @param type [Symbol, Orb::Models::Customers::BalanceTransactionListResponse::Type]
 
         # @see Orb::Models::Customers::BalanceTransactionListResponse#action
@@ -104,7 +118,7 @@ module Orb
           required :id, String
 
           # @!method initialize(id:)
-          #   @param id [String]
+          #   @param id [String] The id of the Credit note
         end
 
         # @see Orb::Models::Customers::BalanceTransactionListResponse#invoice
@@ -116,7 +130,7 @@ module Orb
           required :id, String
 
           # @!method initialize(id:)
-          #   @param id [String]
+          #   @param id [String] The Invoice id
         end
 
         # @see Orb::Models::Customers::BalanceTransactionListResponse#type

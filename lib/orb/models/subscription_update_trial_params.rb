@@ -22,8 +22,15 @@ module Orb
       optional :shift, Orb::Internal::Type::Boolean
 
       # @!method initialize(trial_end_date:, shift: nil, request_options: {})
-      #   @param trial_end_date [Time, Symbol, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate]
-      #   @param shift [Boolean]
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::SubscriptionUpdateTrialParams} for more details.
+      #
+      #   @param trial_end_date [Time, Symbol, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate] The new date that the trial should end, or the literal string `immediate` to end
+      #   ...
+      #
+      #   @param shift [Boolean] If true, shifts subsequent price and adjustment intervals (preserving their dura
+      #   ...
+      #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
       # The new date that the trial should end, or the literal string `immediate` to end

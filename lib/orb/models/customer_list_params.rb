@@ -41,12 +41,22 @@ module Orb
       optional :limit, Integer
 
       # @!method initialize(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, limit: nil, request_options: {})
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::CustomerListParams} for more details.
+      #
       #   @param created_at_gt [Time, nil]
+      #
       #   @param created_at_gte [Time, nil]
+      #
       #   @param created_at_lt [Time, nil]
+      #
       #   @param created_at_lte [Time, nil]
-      #   @param cursor [String, nil]
-      #   @param limit [Integer]
+      #
+      #   @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
+      #   ...
+      #
+      #   @param limit [Integer] The number of items to fetch. Defaults to 20.
+      #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end

@@ -22,8 +22,14 @@ module Orb
         optional :limit, Integer
 
         # @!method initialize(cursor: nil, limit: nil, request_options: {})
-        #   @param cursor [String, nil]
-        #   @param limit [Integer]
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Coupons::SubscriptionListParams} for more details.
+        #
+        #   @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
+        #   ...
+        #
+        #   @param limit [Integer] The number of items to fetch. Defaults to 20.
+        #
         #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
       end
     end

@@ -14,8 +14,11 @@ module Orb
         params(name: String, request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
           .returns(T.attached_class)
       end
-      def self.new(name:, request_options: {}); end
-
+      def self.new(
+        # The name of the item.
+        name:,
+        request_options: {}
+      ); end
       sig { override.returns({name: String, request_options: Orb::RequestOptions}) }
       def to_hash; end
     end

@@ -59,8 +59,14 @@ module Orb
           params(id: T.nilable(String), external_plan_id: T.nilable(String), name: T.nilable(String))
             .returns(T.attached_class)
         end
-        def self.new(id:, external_plan_id:, name:); end
-
+        def self.new(
+          id:,
+          # An optional user-defined ID for this plan resource, used throughout the system
+          # as an alias for this Plan. Use this field to identify a plan by an existing
+          # identifier in your system.
+          external_plan_id:,
+          name:
+        ); end
         sig do
           override.returns(
             {

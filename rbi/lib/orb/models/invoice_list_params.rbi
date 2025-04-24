@@ -102,10 +102,16 @@ module Orb
         amount: nil,
         amount_gt: nil,
         amount_lt: nil,
+        # Cursor for pagination. This can be populated by the `next_cursor` value returned
+        # from the initial request.
         cursor: nil,
         customer_id: nil,
         date_type: nil,
         due_date: nil,
+        # Filters invoices by their due dates within a specific time range in the past.
+        # Specify the range as a number followed by 'd' (days) or 'm' (months). For
+        # example, '7d' filters invoices due in the last 7 days, and '2m' filters those
+        # due in the last 2 months.
         due_date_window: nil,
         due_date_gt: nil,
         due_date_lt: nil,
@@ -115,6 +121,7 @@ module Orb
         invoice_date_lt: nil,
         invoice_date_lte: nil,
         is_recurring: nil,
+        # The number of items to fetch. Defaults to 20.
         limit: nil,
         status: nil,
         subscription_id: nil,

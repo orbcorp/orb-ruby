@@ -27,7 +27,9 @@ module Orb
       # @overload update(alert_configuration_id, thresholds:, request_options: {})
       #
       # @param alert_configuration_id [String]
-      # @param thresholds [Array<Orb::Models::AlertUpdateParams::Threshold>]
+      #
+      # @param thresholds [Array<Orb::Models::AlertUpdateParams::Threshold>] The thresholds that define the values at which the alert will be triggered.
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::Alert]
@@ -44,6 +46,9 @@ module Orb
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::AlertListParams} for more details.
+      #
       # This endpoint returns a list of alerts within Orb.
       #
       # The request must specify one of `customer_id`, `external_customer_id`, or
@@ -59,14 +64,24 @@ module Orb
       # @overload list(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, customer_id: nil, external_customer_id: nil, limit: nil, subscription_id: nil, request_options: {})
       #
       # @param created_at_gt [Time, nil]
+      #
       # @param created_at_gte [Time, nil]
+      #
       # @param created_at_lt [Time, nil]
+      #
       # @param created_at_lte [Time, nil]
-      # @param cursor [String, nil]
-      # @param customer_id [String, nil]
-      # @param external_customer_id [String, nil]
-      # @param limit [Integer]
-      # @param subscription_id [String, nil]
+      #
+      # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
+      # ...
+      #
+      # @param customer_id [String, nil] Fetch alerts scoped to this customer_id
+      #
+      # @param external_customer_id [String, nil] Fetch alerts scoped to this external_customer_id
+      #
+      # @param limit [Integer] The number of items to fetch. Defaults to 20.
+      #
+      # @param subscription_id [String, nil] Fetch alerts scoped to this subscription_id
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Internal::Page<Orb::Models::Alert>]
@@ -101,9 +116,13 @@ module Orb
       # @overload create_for_customer(customer_id, currency:, type:, thresholds: nil, request_options: {})
       #
       # @param customer_id [String]
-      # @param currency [String]
-      # @param type [Symbol, Orb::Models::AlertCreateForCustomerParams::Type]
-      # @param thresholds [Array<Orb::Models::AlertCreateForCustomerParams::Threshold>, nil]
+      #
+      # @param currency [String] The case sensitive currency or custom pricing unit to use for this alert.
+      #
+      # @param type [Symbol, Orb::Models::AlertCreateForCustomerParams::Type] The type of alert to create. This must be a valid alert type.
+      #
+      # @param thresholds [Array<Orb::Models::AlertCreateForCustomerParams::Threshold>, nil] The thresholds that define the values at which the alert will be triggered.
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::Alert]
@@ -132,9 +151,13 @@ module Orb
       # @overload create_for_external_customer(external_customer_id, currency:, type:, thresholds: nil, request_options: {})
       #
       # @param external_customer_id [String]
-      # @param currency [String]
-      # @param type [Symbol, Orb::Models::AlertCreateForExternalCustomerParams::Type]
-      # @param thresholds [Array<Orb::Models::AlertCreateForExternalCustomerParams::Threshold>, nil]
+      #
+      # @param currency [String] The case sensitive currency or custom pricing unit to use for this alert.
+      #
+      # @param type [Symbol, Orb::Models::AlertCreateForExternalCustomerParams::Type] The type of alert to create. This must be a valid alert type.
+      #
+      # @param thresholds [Array<Orb::Models::AlertCreateForExternalCustomerParams::Threshold>, nil] The thresholds that define the values at which the alert will be triggered.
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::Alert]
@@ -166,9 +189,13 @@ module Orb
       # @overload create_for_subscription(subscription_id, thresholds:, type:, metric_id: nil, request_options: {})
       #
       # @param subscription_id [String]
-      # @param thresholds [Array<Orb::Models::AlertCreateForSubscriptionParams::Threshold>]
-      # @param type [Symbol, Orb::Models::AlertCreateForSubscriptionParams::Type]
-      # @param metric_id [String, nil]
+      #
+      # @param thresholds [Array<Orb::Models::AlertCreateForSubscriptionParams::Threshold>] The thresholds that define the values at which the alert will be triggered.
+      #
+      # @param type [Symbol, Orb::Models::AlertCreateForSubscriptionParams::Type] The type of alert to create. This must be a valid alert type.
+      #
+      # @param metric_id [String, nil] The metric to track usage for.
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::Alert]
@@ -192,7 +219,9 @@ module Orb
       # @overload disable(alert_configuration_id, subscription_id: nil, request_options: {})
       #
       # @param alert_configuration_id [String]
-      # @param subscription_id [String, nil]
+      #
+      # @param subscription_id [String, nil] Used to update the status of a plan alert scoped to this subscription_id
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::Alert]
@@ -216,7 +245,9 @@ module Orb
       # @overload enable(alert_configuration_id, subscription_id: nil, request_options: {})
       #
       # @param alert_configuration_id [String]
-      # @param subscription_id [String, nil]
+      #
+      # @param subscription_id [String, nil] Used to update the status of a plan alert scoped to this subscription_id
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::Alert]

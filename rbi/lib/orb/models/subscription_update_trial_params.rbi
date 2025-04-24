@@ -27,8 +27,15 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(trial_end_date:, shift: nil, request_options: {}); end
-
+      def self.new(
+        # The new date that the trial should end, or the literal string `immediate` to end
+        # the trial immediately.
+        trial_end_date:,
+        # If true, shifts subsequent price and adjustment intervals (preserving their
+        # durations, but adjusting their absolute dates).
+        shift: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

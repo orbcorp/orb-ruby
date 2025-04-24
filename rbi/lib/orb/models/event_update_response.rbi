@@ -8,8 +8,10 @@ module Orb
       attr_accessor :amended
 
       sig { params(amended: String).returns(T.attached_class) }
-      def self.new(amended:); end
-
+      def self.new(
+        # event_id of the amended event, if successfully ingested
+        amended:
+      ); end
       sig { override.returns({amended: String}) }
       def to_hash; end
     end

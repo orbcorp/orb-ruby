@@ -104,18 +104,35 @@ module Orb
             required :starting_balance, Float
 
             # @!method initialize(id:, amount:, created_at:, credit_block:, currency:, customer:, description:, ending_balance:, entry_status:, ledger_sequence_number:, metadata:, starting_balance:, entry_type: :increment)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry} for
+            #   more details.
+            #
             #   @param id [String]
+            #
             #   @param amount [Float]
+            #
             #   @param created_at [Time]
+            #
             #   @param credit_block [Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry::CreditBlock]
+            #
             #   @param currency [String]
+            #
             #   @param customer [Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry::Customer]
+            #
             #   @param description [String, nil]
+            #
             #   @param ending_balance [Float]
+            #
             #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry::EntryStatus]
+            #
             #   @param ledger_sequence_number [Integer]
-            #   @param metadata [Hash{Symbol=>String}]
+            #
+            #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+            #   ...
+            #
             #   @param starting_balance [Float]
+            #
             #   @param entry_type [Symbol, :increment]
 
             # @see Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry#credit_block
@@ -259,21 +276,41 @@ module Orb
             optional :price_id, String, nil?: true
 
             # @!method initialize(id:, amount:, created_at:, credit_block:, currency:, customer:, description:, ending_balance:, entry_status:, ledger_sequence_number:, metadata:, starting_balance:, event_id: nil, invoice_id: nil, price_id: nil, entry_type: :decrement)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry} for
+            #   more details.
+            #
             #   @param id [String]
+            #
             #   @param amount [Float]
+            #
             #   @param created_at [Time]
+            #
             #   @param credit_block [Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry::CreditBlock]
+            #
             #   @param currency [String]
+            #
             #   @param customer [Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry::Customer]
+            #
             #   @param description [String, nil]
+            #
             #   @param ending_balance [Float]
+            #
             #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry::EntryStatus]
+            #
             #   @param ledger_sequence_number [Integer]
-            #   @param metadata [Hash{Symbol=>String}]
+            #
+            #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+            #   ...
+            #
             #   @param starting_balance [Float]
+            #
             #   @param event_id [String, nil]
+            #
             #   @param invoice_id [String, nil]
+            #
             #   @param price_id [String, nil]
+            #
             #   @param entry_type [Symbol, :decrement]
 
             # @see Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry#credit_block
@@ -407,19 +444,37 @@ module Orb
             required :starting_balance, Float
 
             # @!method initialize(id:, amount:, created_at:, credit_block:, currency:, customer:, description:, ending_balance:, entry_status:, ledger_sequence_number:, metadata:, new_block_expiry_date:, starting_balance:, entry_type: :expiration_change)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry}
+            #   for more details.
+            #
             #   @param id [String]
+            #
             #   @param amount [Float]
+            #
             #   @param created_at [Time]
+            #
             #   @param credit_block [Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry::CreditBlock]
+            #
             #   @param currency [String]
+            #
             #   @param customer [Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry::Customer]
+            #
             #   @param description [String, nil]
+            #
             #   @param ending_balance [Float]
+            #
             #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry::EntryStatus]
+            #
             #   @param ledger_sequence_number [Integer]
-            #   @param metadata [Hash{Symbol=>String}]
+            #
+            #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+            #   ...
+            #
             #   @param new_block_expiry_date [Time, nil]
+            #
             #   @param starting_balance [Float]
+            #
             #   @param entry_type [Symbol, :expiration_change]
 
             # @see Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry#credit_block
@@ -548,18 +603,35 @@ module Orb
             required :starting_balance, Float
 
             # @!method initialize(id:, amount:, created_at:, credit_block:, currency:, customer:, description:, ending_balance:, entry_status:, ledger_sequence_number:, metadata:, starting_balance:, entry_type: :credit_block_expiry)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry}
+            #   for more details.
+            #
             #   @param id [String]
+            #
             #   @param amount [Float]
+            #
             #   @param created_at [Time]
+            #
             #   @param credit_block [Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry::CreditBlock]
+            #
             #   @param currency [String]
+            #
             #   @param customer [Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry::Customer]
+            #
             #   @param description [String, nil]
+            #
             #   @param ending_balance [Float]
+            #
             #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry::EntryStatus]
+            #
             #   @param ledger_sequence_number [Integer]
-            #   @param metadata [Hash{Symbol=>String}]
+            #
+            #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+            #   ...
+            #
             #   @param starting_balance [Float]
+            #
             #   @param entry_type [Symbol, :credit_block_expiry]
 
             # @see Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry#credit_block
@@ -697,20 +769,39 @@ module Orb
             required :void_reason, String, nil?: true
 
             # @!method initialize(id:, amount:, created_at:, credit_block:, currency:, customer:, description:, ending_balance:, entry_status:, ledger_sequence_number:, metadata:, starting_balance:, void_amount:, void_reason:, entry_type: :void)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry} for more
+            #   details.
+            #
             #   @param id [String]
+            #
             #   @param amount [Float]
+            #
             #   @param created_at [Time]
+            #
             #   @param credit_block [Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry::CreditBlock]
+            #
             #   @param currency [String]
+            #
             #   @param customer [Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry::Customer]
+            #
             #   @param description [String, nil]
+            #
             #   @param ending_balance [Float]
+            #
             #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry::EntryStatus]
+            #
             #   @param ledger_sequence_number [Integer]
-            #   @param metadata [Hash{Symbol=>String}]
+            #
+            #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+            #   ...
+            #
             #   @param starting_balance [Float]
+            #
             #   @param void_amount [Float]
+            #
             #   @param void_reason [String, nil]
+            #
             #   @param entry_type [Symbol, :void]
 
             # @see Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry#credit_block
@@ -854,21 +945,41 @@ module Orb
             required :void_reason, String, nil?: true
 
             # @!method initialize(id:, amount:, created_at:, credit_block:, currency:, customer:, description:, ending_balance:, entry_status:, ledger_sequence_number:, metadata:, new_block_expiry_date:, starting_balance:, void_amount:, void_reason:, entry_type: :void_initiated)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry}
+            #   for more details.
+            #
             #   @param id [String]
+            #
             #   @param amount [Float]
+            #
             #   @param created_at [Time]
+            #
             #   @param credit_block [Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry::CreditBlock]
+            #
             #   @param currency [String]
+            #
             #   @param customer [Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry::Customer]
+            #
             #   @param description [String, nil]
+            #
             #   @param ending_balance [Float]
+            #
             #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry::EntryStatus]
+            #
             #   @param ledger_sequence_number [Integer]
-            #   @param metadata [Hash{Symbol=>String}]
+            #
+            #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+            #   ...
+            #
             #   @param new_block_expiry_date [Time]
+            #
             #   @param starting_balance [Float]
+            #
             #   @param void_amount [Float]
+            #
             #   @param void_reason [String, nil]
+            #
             #   @param entry_type [Symbol, :void_initiated]
 
             # @see Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry#credit_block
@@ -997,18 +1108,35 @@ module Orb
             required :starting_balance, Float
 
             # @!method initialize(id:, amount:, created_at:, credit_block:, currency:, customer:, description:, ending_balance:, entry_status:, ledger_sequence_number:, metadata:, starting_balance:, entry_type: :amendment)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry} for
+            #   more details.
+            #
             #   @param id [String]
+            #
             #   @param amount [Float]
+            #
             #   @param created_at [Time]
+            #
             #   @param credit_block [Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry::CreditBlock]
+            #
             #   @param currency [String]
+            #
             #   @param customer [Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry::Customer]
+            #
             #   @param description [String, nil]
+            #
             #   @param ending_balance [Float]
+            #
             #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry::EntryStatus]
+            #
             #   @param ledger_sequence_number [Integer]
-            #   @param metadata [Hash{Symbol=>String}]
+            #
+            #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+            #   ...
+            #
             #   @param starting_balance [Float]
+            #
             #   @param entry_type [Symbol, :amendment]
 
             # @see Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry#credit_block

@@ -10,6 +10,9 @@ module Orb
         # @return [Orb::Resources::Customers::Credits::TopUps]
         attr_reader :top_ups
 
+        # Some parameter documentations has been truncated, see
+        # {Orb::Models::Customers::CreditListParams} for more details.
+        #
         # Returns a paginated list of unexpired, non-zero credit blocks for a customer.
         #
         # If `include_all_blocks` is set to `true`, all credit blocks (including expired
@@ -21,10 +24,17 @@ module Orb
         # @overload list(customer_id, currency: nil, cursor: nil, include_all_blocks: nil, limit: nil, request_options: {})
         #
         # @param customer_id [String]
-        # @param currency [String, nil]
-        # @param cursor [String, nil]
-        # @param include_all_blocks [Boolean]
-        # @param limit [Integer]
+        #
+        # @param currency [String, nil] The ledger currency or custom pricing unit to use.
+        #
+        # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
+        # ...
+        #
+        # @param include_all_blocks [Boolean] If set to True, all expired and depleted blocks, as well as active block will be
+        # ...
+        #
+        # @param limit [Integer] The number of items to fetch. Defaults to 20.
+        #
         # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Orb::Internal::Page<Orb::Models::Customers::CreditListResponse>]
@@ -42,6 +52,9 @@ module Orb
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Orb::Models::Customers::CreditListByExternalIDParams} for more details.
+        #
         # Returns a paginated list of unexpired, non-zero credit blocks for a customer.
         #
         # If `include_all_blocks` is set to `true`, all credit blocks (including expired
@@ -53,10 +66,17 @@ module Orb
         # @overload list_by_external_id(external_customer_id, currency: nil, cursor: nil, include_all_blocks: nil, limit: nil, request_options: {})
         #
         # @param external_customer_id [String]
-        # @param currency [String, nil]
-        # @param cursor [String, nil]
-        # @param include_all_blocks [Boolean]
-        # @param limit [Integer]
+        #
+        # @param currency [String, nil] The ledger currency or custom pricing unit to use.
+        #
+        # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
+        # ...
+        #
+        # @param include_all_blocks [Boolean] If set to True, all expired and depleted blocks, as well as active block will be
+        # ...
+        #
+        # @param limit [Integer] The number of items to fetch. Defaults to 20.
+        #
         # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Orb::Internal::Page<Orb::Models::Customers::CreditListByExternalIDResponse>]

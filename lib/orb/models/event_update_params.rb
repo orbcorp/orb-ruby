@@ -42,11 +42,22 @@ module Orb
       optional :external_customer_id, String, nil?: true
 
       # @!method initialize(event_name:, properties:, timestamp:, customer_id: nil, external_customer_id: nil, request_options: {})
-      #   @param event_name [String]
-      #   @param properties [Object]
-      #   @param timestamp [Time]
-      #   @param customer_id [String, nil]
-      #   @param external_customer_id [String, nil]
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::EventUpdateParams} for more details.
+      #
+      #   @param event_name [String] A name to meaningfully identify the action or event type.
+      #
+      #   @param properties [Object] A dictionary of custom properties. Values in this dictionary must be numeric, bo
+      #   ...
+      #
+      #   @param timestamp [Time] An ISO 8601 format date with no timezone offset (i.e. UTC). This should represen
+      #   ...
+      #
+      #   @param customer_id [String, nil] The Orb Customer identifier
+      #
+      #   @param external_customer_id [String, nil] An alias for the Orb customer, whose mapping is specified when creating the cust
+      #   ...
+      #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end

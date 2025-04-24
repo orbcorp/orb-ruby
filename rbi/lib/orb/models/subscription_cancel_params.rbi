@@ -31,13 +31,17 @@ module Orb
           .returns(T.attached_class)
       end
       def self.new(
+        # Determines the timing of subscription cancellation
         cancel_option:,
+        # If false, this request will fail if it would void an issued invoice or create a
+        # credit note. Consider using this as a safety mechanism if you do not expect
+        # existing invoices to be changed.
         allow_invoice_credit_or_void: nil,
+        # The date that the cancellation should take effect. This parameter can only be
+        # passed if the `cancel_option` is `requested_date`.
         cancellation_date: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(

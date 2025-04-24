@@ -214,32 +214,81 @@ module Orb
       optional :usage_customer_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
 
       # @!method initialize(change_option:, add_adjustments: nil, add_prices: nil, align_billing_with_plan_change_date: nil, auto_collection: nil, billing_cycle_alignment: nil, billing_cycle_anchor_configuration: nil, change_date: nil, coupon_redemption_code: nil, credits_overage_rate: nil, default_invoice_memo: nil, external_plan_id: nil, filter: nil, initial_phase_order: nil, invoicing_threshold: nil, net_terms: nil, per_credit_overage_amount: nil, plan_id: nil, plan_version_number: nil, price_overrides: nil, remove_adjustments: nil, remove_prices: nil, replace_adjustments: nil, replace_prices: nil, trial_duration_days: nil, usage_customer_ids: nil, request_options: {})
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::SubscriptionSchedulePlanChangeParams} for more details.
+      #
       #   @param change_option [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ChangeOption]
-      #   @param add_adjustments [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment>, nil]
-      #   @param add_prices [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice>, nil]
-      #   @param align_billing_with_plan_change_date [Boolean, nil]
-      #   @param auto_collection [Boolean, nil]
-      #   @param billing_cycle_alignment [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAlignment, nil]
+      #
+      #   @param add_adjustments [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment>, nil] Additional adjustments to be added to the subscription. (Only available for acco
+      #   ...
+      #
+      #   @param add_prices [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice>, nil] Additional prices to be added to the subscription. (Only available for accounts
+      #   ...
+      #
+      #   @param align_billing_with_plan_change_date [Boolean, nil] [DEPRECATED] Use billing_cycle_alignment instead. Reset billing periods to be al
+      #   ...
+      #
+      #   @param auto_collection [Boolean, nil] Determines whether issued invoices for this subscription will automatically be c
+      #   ...
+      #
+      #   @param billing_cycle_alignment [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAlignment, nil] Reset billing periods to be aligned with the plan change's effective date or sta
+      #   ...
+      #
       #   @param billing_cycle_anchor_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAnchorConfiguration, nil]
-      #   @param change_date [Time, nil]
-      #   @param coupon_redemption_code [String, nil]
+      #
+      #   @param change_date [Time, nil] The date that the plan change should take effect. This parameter can only be pas
+      #   ...
+      #
+      #   @param coupon_redemption_code [String, nil] Redemption code to be used for this subscription. If the coupon cannot be found
+      #   ...
+      #
       #   @param credits_overage_rate [Float, nil]
-      #   @param default_invoice_memo [String, nil]
-      #   @param external_plan_id [String, nil]
-      #   @param filter [String, nil]
-      #   @param initial_phase_order [Integer, nil]
-      #   @param invoicing_threshold [String, nil]
-      #   @param net_terms [Integer, nil]
+      #
+      #   @param default_invoice_memo [String, nil] Determines the default memo on this subscription's invoices. Note that if this i
+      #   ...
+      #
+      #   @param external_plan_id [String, nil] The external_plan_id of the plan that the given subscription should be switched
+      #   ...
+      #
+      #   @param filter [String, nil] An additional filter to apply to usage queries. This filter must be expressed as
+      #   ...
+      #
+      #   @param initial_phase_order [Integer, nil] The phase of the plan to start with
+      #
+      #   @param invoicing_threshold [String, nil] When this subscription's accrued usage reaches this threshold, an invoice will b
+      #   ...
+      #
+      #   @param net_terms [Integer, nil] The net terms determines the difference between the invoice date and the issue d
+      #   ...
+      #
       #   @param per_credit_overage_amount [Float, nil]
-      #   @param plan_id [String, nil]
-      #   @param plan_version_number [Integer, nil]
-      #   @param price_overrides [Array<Object>, nil]
-      #   @param remove_adjustments [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::RemoveAdjustment>, nil]
-      #   @param remove_prices [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::RemovePrice>, nil]
-      #   @param replace_adjustments [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment>, nil]
-      #   @param replace_prices [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice>, nil]
-      #   @param trial_duration_days [Integer, nil]
-      #   @param usage_customer_ids [Array<String>, nil]
+      #
+      #   @param plan_id [String, nil] The plan that the given subscription should be switched to. Note that either thi
+      #   ...
+      #
+      #   @param plan_version_number [Integer, nil] Specifies which version of the plan to change to. If null, the default version w
+      #   ...
+      #
+      #   @param price_overrides [Array<Object>, nil] Optionally provide a list of overrides for prices on the plan
+      #
+      #   @param remove_adjustments [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::RemoveAdjustment>, nil] Plan adjustments to be removed from the subscription. (Only available for accoun
+      #   ...
+      #
+      #   @param remove_prices [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::RemovePrice>, nil] Plan prices to be removed from the subscription. (Only available for accounts th
+      #   ...
+      #
+      #   @param replace_adjustments [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment>, nil] Plan adjustments to be replaced with additional adjustments on the subscription.
+      #   ...
+      #
+      #   @param replace_prices [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice>, nil] Plan prices to be replaced with additional prices on the subscription. (Only ava
+      #   ...
+      #
+      #   @param trial_duration_days [Integer, nil] The duration of the trial period in days. If not provided, this defaults to the
+      #   ...
+      #
+      #   @param usage_customer_ids [Array<String>, nil] A list of customer IDs whose usage events will be aggregated and billed under th
+      #   ...
+      #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
       module ChangeOption
@@ -283,10 +332,19 @@ module Orb
         optional :start_date, Time, nil?: true
 
         # @!method initialize(adjustment:, end_date: nil, plan_phase_order: nil, start_date: nil)
-        #   @param adjustment [Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewPercentageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewUsageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewAmountDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMinimum, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMaximum]
-        #   @param end_date [Time, nil]
-        #   @param plan_phase_order [Integer, nil]
-        #   @param start_date [Time, nil]
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment} for more
+        #   details.
+        #
+        #   @param adjustment [Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewPercentageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewUsageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewAmountDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMinimum, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMaximum] The definition of a new adjustment to create and add to the subscription.
+        #
+        #   @param end_date [Time, nil] The end date of the adjustment interval. This is the date that the adjustment wi
+        #   ...
+        #
+        #   @param plan_phase_order [Integer, nil] The phase to add this adjustment to.
+        #
+        #   @param start_date [Time, nil] The start date of the adjustment interval. This is the date that the adjustment
+        #   ...
 
         # The definition of a new adjustment to create and add to the subscription.
         #
@@ -336,9 +394,17 @@ module Orb
             optional :is_invoice_level, Orb::Internal::Type::Boolean
 
             # @!method initialize(applies_to_price_ids:, percentage_discount:, is_invoice_level: nil, adjustment_type: :percentage_discount)
-            #   @param applies_to_price_ids [Array<String>]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewPercentageDiscount}
+            #   for more details.
+            #
+            #   @param applies_to_price_ids [Array<String>] The set of price IDs to which this adjustment applies.
+            #
             #   @param percentage_discount [Float]
-            #   @param is_invoice_level [Boolean]
+            #
+            #   @param is_invoice_level [Boolean] When false, this adjustment will be applied to a single price. Otherwise, it wil
+            #   ...
+            #
             #   @param adjustment_type [Symbol, :percentage_discount]
           end
 
@@ -367,9 +433,17 @@ module Orb
             optional :is_invoice_level, Orb::Internal::Type::Boolean
 
             # @!method initialize(applies_to_price_ids:, usage_discount:, is_invoice_level: nil, adjustment_type: :usage_discount)
-            #   @param applies_to_price_ids [Array<String>]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewUsageDiscount}
+            #   for more details.
+            #
+            #   @param applies_to_price_ids [Array<String>] The set of price IDs to which this adjustment applies.
+            #
             #   @param usage_discount [Float]
-            #   @param is_invoice_level [Boolean]
+            #
+            #   @param is_invoice_level [Boolean] When false, this adjustment will be applied to a single price. Otherwise, it wil
+            #   ...
+            #
             #   @param adjustment_type [Symbol, :usage_discount]
           end
 
@@ -398,9 +472,17 @@ module Orb
             optional :is_invoice_level, Orb::Internal::Type::Boolean
 
             # @!method initialize(amount_discount:, applies_to_price_ids:, is_invoice_level: nil, adjustment_type: :amount_discount)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewAmountDiscount}
+            #   for more details.
+            #
             #   @param amount_discount [String]
-            #   @param applies_to_price_ids [Array<String>]
-            #   @param is_invoice_level [Boolean]
+            #
+            #   @param applies_to_price_ids [Array<String>] The set of price IDs to which this adjustment applies.
+            #
+            #   @param is_invoice_level [Boolean] When false, this adjustment will be applied to a single price. Otherwise, it wil
+            #   ...
+            #
             #   @param adjustment_type [Symbol, :amount_discount]
           end
 
@@ -435,10 +517,19 @@ module Orb
             optional :is_invoice_level, Orb::Internal::Type::Boolean
 
             # @!method initialize(applies_to_price_ids:, item_id:, minimum_amount:, is_invoice_level: nil, adjustment_type: :minimum)
-            #   @param applies_to_price_ids [Array<String>]
-            #   @param item_id [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMinimum}
+            #   for more details.
+            #
+            #   @param applies_to_price_ids [Array<String>] The set of price IDs to which this adjustment applies.
+            #
+            #   @param item_id [String] The item ID that revenue from this minimum will be attributed to.
+            #
             #   @param minimum_amount [String]
-            #   @param is_invoice_level [Boolean]
+            #
+            #   @param is_invoice_level [Boolean] When false, this adjustment will be applied to a single price. Otherwise, it wil
+            #   ...
+            #
             #   @param adjustment_type [Symbol, :minimum]
           end
 
@@ -467,9 +558,17 @@ module Orb
             optional :is_invoice_level, Orb::Internal::Type::Boolean
 
             # @!method initialize(applies_to_price_ids:, maximum_amount:, is_invoice_level: nil, adjustment_type: :maximum)
-            #   @param applies_to_price_ids [Array<String>]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMaximum}
+            #   for more details.
+            #
+            #   @param applies_to_price_ids [Array<String>] The set of price IDs to which this adjustment applies.
+            #
             #   @param maximum_amount [String]
-            #   @param is_invoice_level [Boolean]
+            #
+            #   @param is_invoice_level [Boolean] When false, this adjustment will be applied to a single price. Otherwise, it wil
+            #   ...
+            #
             #   @param adjustment_type [Symbol, :maximum]
           end
 
@@ -559,16 +658,33 @@ module Orb
         optional :start_date, Time, nil?: true
 
         # @!method initialize(allocation_price: nil, discounts: nil, end_date: nil, external_price_id: nil, maximum_amount: nil, minimum_amount: nil, plan_phase_order: nil, price: nil, price_id: nil, start_date: nil)
-        #   @param allocation_price [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice, nil]
-        #   @param discounts [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Discount>, nil]
-        #   @param end_date [Time, nil]
-        #   @param external_price_id [String, nil]
-        #   @param maximum_amount [String, nil]
-        #   @param minimum_amount [String, nil]
-        #   @param plan_phase_order [Integer, nil]
-        #   @param price [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice, nil]
-        #   @param price_id [String, nil]
-        #   @param start_date [Time, nil]
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice} for more details.
+        #
+        #   @param allocation_price [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice, nil] The definition of a new allocation price to create and add to the subscription.
+        #
+        #   @param discounts [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Discount>, nil] [DEPRECATED] Use add_adjustments instead. The subscription's discounts for this
+        #   ...
+        #
+        #   @param end_date [Time, nil] The end date of the price interval. This is the date that the price will stop bi
+        #   ...
+        #
+        #   @param external_price_id [String, nil] The external price id of the price to add to the subscription.
+        #
+        #   @param maximum_amount [String, nil] [DEPRECATED] Use add_adjustments instead. The subscription's maximum amount for
+        #   ...
+        #
+        #   @param minimum_amount [String, nil] [DEPRECATED] Use add_adjustments instead. The subscription's minimum amount for
+        #   ...
+        #
+        #   @param plan_phase_order [Integer, nil] The phase to add this price to.
+        #
+        #   @param price [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice, nil] The definition of a new price to create and add to the subscription.
+        #
+        #   @param price_id [String, nil] The id of the price to add to the subscription.
+        #
+        #   @param start_date [Time, nil] The start date of the price interval. This is the date that the price will start
+        #   ...
 
         # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice#allocation_price
         class AllocationPrice < Orb::Internal::Type::BaseModel
@@ -600,12 +716,21 @@ module Orb
           required :expires_at_end_of_cadence, Orb::Internal::Type::Boolean
 
           # @!method initialize(amount:, cadence:, currency:, expires_at_end_of_cadence:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice}
+          #   for more details.
+          #
           #   The definition of a new allocation price to create and add to the subscription.
           #
-          #   @param amount [String]
-          #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice::Cadence]
-          #   @param currency [String]
-          #   @param expires_at_end_of_cadence [Boolean]
+          #   @param amount [String] An amount of the currency to allocate to the customer at the specified cadence.
+          #
+          #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::AllocationPrice::Cadence] The cadence at which to allocate the amount to the customer.
+          #
+          #   @param currency [String] An ISO 4217 currency string or a custom pricing unit identifier in which to bill
+          #   ...
+          #
+          #   @param expires_at_end_of_cadence [Boolean] Whether the allocated amount should expire at the end of the cadence or roll ove
+          #   ...
 
           # The cadence at which to allocate the amount to the customer.
           #
@@ -653,10 +778,19 @@ module Orb
           optional :usage_discount, Float, nil?: true
 
           # @!method initialize(discount_type:, amount_discount: nil, percentage_discount: nil, usage_discount: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Discount} for more
+          #   details.
+          #
           #   @param discount_type [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Discount::DiscountType]
-          #   @param amount_discount [String, nil]
-          #   @param percentage_discount [Float, nil]
-          #   @param usage_discount [Float, nil]
+          #
+          #   @param amount_discount [String, nil] Only available if discount_type is `amount`.
+          #
+          #   @param percentage_discount [Float, nil] Only available if discount_type is `percentage`. This is a number between 0 and
+          #   ...
+          #
+          #   @param usage_discount [Float, nil] Only available if discount_type is `usage`. Number of usage units that this disc
+          #   ...
 
           # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Discount#discount_type
           module DiscountType
@@ -865,21 +999,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, name:, unit_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :unit)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
             #   @param unit_config [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::UnitConfig]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :unit]
 
             # The cadence to bill for this price on.
@@ -908,7 +1069,7 @@ module Orb
               required :unit_amount, String
 
               # @!method initialize(unit_amount:)
-              #   @param unit_amount [String]
+              #   @param unit_amount [String] Rate per unit of usage
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice#billing_cycle_configuration
@@ -930,8 +1091,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -966,8 +1128,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -1095,21 +1258,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, name:, package_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :package)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
             #   @param package_config [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::PackageConfig]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :package]
 
             # The cadence to bill for this price on.
@@ -1145,8 +1335,14 @@ module Orb
               required :package_size, Integer
 
               # @!method initialize(package_amount:, package_size:)
-              #   @param package_amount [String]
-              #   @param package_size [Integer]
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::PackageConfig}
+              #   for more details.
+              #
+              #   @param package_amount [String] A currency amount to rate usage by
+              #
+              #   @param package_size [Integer] An integer amount to represent package size. For example, 1000 here would divide
+              #   ...
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice#billing_cycle_configuration
@@ -1168,8 +1364,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -1204,8 +1401,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -1333,21 +1531,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, matrix_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :matrix)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::Cadence]
-            #   @param item_id [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
             #   @param matrix_config [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig]
-            #   @param name [String]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :matrix]
 
             # The cadence to bill for this price on.
@@ -1393,9 +1618,11 @@ module Orb
                        end
 
               # @!method initialize(default_unit_amount:, dimensions:, matrix_values:)
-              #   @param default_unit_amount [String]
-              #   @param dimensions [Array<String, nil>]
-              #   @param matrix_values [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue>]
+              #   @param default_unit_amount [String] Default per unit rate for any usage not bucketed into a specified matrix_value
+              #
+              #   @param dimensions [Array<String, nil>] One or two event property values to evaluate matrix groups by
+              #
+              #   @param matrix_values [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue>] Matrix values for specified matrix grouping keys
 
               class MatrixValue < Orb::Internal::Type::BaseModel
                 # @!attribute dimension_values
@@ -1413,8 +1640,14 @@ module Orb
                 required :unit_amount, String
 
                 # @!method initialize(dimension_values:, unit_amount:)
-                #   @param dimension_values [Array<String, nil>]
-                #   @param unit_amount [String]
+                #   Some parameter documentations has been truncated, see
+                #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue}
+                #   for more details.
+                #
+                #   @param dimension_values [Array<String, nil>] One or two matrix keys to filter usage to this Matrix value by. For example, ["r
+                #   ...
+                #
+                #   @param unit_amount [String] Unit price for the specified dimension_values
               end
             end
 
@@ -1437,8 +1670,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -1473,8 +1707,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -1602,21 +1837,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, name:, tiered_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :tiered)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
             #   @param tiered_config [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :tiered]
 
             # The cadence to bill for this price on.
@@ -1650,7 +1912,7 @@ module Orb
                        end
 
               # @!method initialize(tiers:)
-              #   @param tiers [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier>]
+              #   @param tiers [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier>] Tiers for rating based on total usage quantities into the specified tier
 
               class Tier < Orb::Internal::Type::BaseModel
                 # @!attribute first_unit
@@ -1672,9 +1934,11 @@ module Orb
                 optional :last_unit, Float, nil?: true
 
                 # @!method initialize(first_unit:, unit_amount:, last_unit: nil)
-                #   @param first_unit [Float]
-                #   @param unit_amount [String]
-                #   @param last_unit [Float, nil]
+                #   @param first_unit [Float] Exclusive tier starting value
+                #
+                #   @param unit_amount [String] Amount per unit
+                #
+                #   @param last_unit [Float, nil] Inclusive tier ending value. If null, this is treated as the last tier
               end
             end
 
@@ -1697,8 +1961,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -1733,8 +1998,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -1862,21 +2128,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, name:, tiered_bps_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :tiered_bps)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
             #   @param tiered_bps_config [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :tiered_bps]
 
             # The cadence to bill for this price on.
@@ -1911,7 +2204,12 @@ module Orb
                        end
 
               # @!method initialize(tiers:)
-              #   @param tiers [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier>]
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig}
+              #   for more details.
+              #
+              #   @param tiers [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier>] Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
+              #   ...
 
               class Tier < Orb::Internal::Type::BaseModel
                 # @!attribute bps
@@ -1939,10 +2237,13 @@ module Orb
                 optional :per_unit_maximum, String, nil?: true
 
                 # @!method initialize(bps:, minimum_amount:, maximum_amount: nil, per_unit_maximum: nil)
-                #   @param bps [Float]
-                #   @param minimum_amount [String]
-                #   @param maximum_amount [String, nil]
-                #   @param per_unit_maximum [String, nil]
+                #   @param bps [Float] Per-event basis point rate
+                #
+                #   @param minimum_amount [String] Exclusive tier starting value
+                #
+                #   @param maximum_amount [String, nil] Inclusive tier ending value
+                #
+                #   @param per_unit_maximum [String, nil] Per unit maximum to charge
               end
             end
 
@@ -1965,8 +2266,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -2001,8 +2303,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -2130,21 +2433,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(bps_config:, cadence:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :bps)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice}
+            #   for more details.
+            #
             #   @param bps_config [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BpsConfig]
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :bps]
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice#bps_config
@@ -2162,8 +2492,9 @@ module Orb
               optional :per_unit_maximum, String, nil?: true
 
               # @!method initialize(bps:, per_unit_maximum: nil)
-              #   @param bps [Float]
-              #   @param per_unit_maximum [String, nil]
+              #   @param bps [Float] Basis point take rate per event
+              #
+              #   @param per_unit_maximum [String, nil] Optional currency amount maximum to cap spend per event
             end
 
             # The cadence to bill for this price on.
@@ -2202,8 +2533,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -2238,8 +2570,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -2367,21 +2700,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(bulk_bps_config:, cadence:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :bulk_bps)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice}
+            #   for more details.
+            #
             #   @param bulk_bps_config [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig]
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :bulk_bps]
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice#bulk_bps_config
@@ -2399,7 +2759,12 @@ module Orb
                        end
 
               # @!method initialize(tiers:)
-              #   @param tiers [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier>]
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig}
+              #   for more details.
+              #
+              #   @param tiers [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier>] Tiers for a bulk BPS pricing model where all usage is aggregated to a single tie
+              #   ...
 
               class Tier < Orb::Internal::Type::BaseModel
                 # @!attribute bps
@@ -2421,9 +2786,11 @@ module Orb
                 optional :per_unit_maximum, String, nil?: true
 
                 # @!method initialize(bps:, maximum_amount: nil, per_unit_maximum: nil)
-                #   @param bps [Float]
-                #   @param maximum_amount [String, nil]
-                #   @param per_unit_maximum [String, nil]
+                #   @param bps [Float] Basis points to rate on
+                #
+                #   @param maximum_amount [String, nil] Upper bound for tier
+                #
+                #   @param per_unit_maximum [String, nil] The maximum amount to charge for any one event
               end
             end
 
@@ -2463,8 +2830,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -2499,8 +2867,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -2628,21 +2997,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(bulk_config:, cadence:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :bulk)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice}
+            #   for more details.
+            #
             #   @param bulk_config [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig]
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :bulk]
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice#bulk_config
@@ -2659,7 +3055,7 @@ module Orb
                        end
 
               # @!method initialize(tiers:)
-              #   @param tiers [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier>]
+              #   @param tiers [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier>] Bulk tiers for rating based on total usage volume
 
               class Tier < Orb::Internal::Type::BaseModel
                 # @!attribute unit_amount
@@ -2675,8 +3071,9 @@ module Orb
                 optional :maximum_units, Float, nil?: true
 
                 # @!method initialize(unit_amount:, maximum_units: nil)
-                #   @param unit_amount [String]
-                #   @param maximum_units [Float, nil]
+                #   @param unit_amount [String] Amount per unit
+                #
+                #   @param maximum_units [Float, nil] Upper bound for this tier
               end
             end
 
@@ -2716,8 +3113,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -2752,8 +3150,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -2880,21 +3279,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, name:, threshold_total_amount_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :threshold_total_amount)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
             #   @param threshold_total_amount_config [Hash{Symbol=>Object}]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :threshold_total_amount]
 
             # The cadence to bill for this price on.
@@ -2933,8 +3359,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -2969,8 +3396,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -3097,21 +3525,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, name:, tiered_package_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :tiered_package)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
             #   @param tiered_package_config [Hash{Symbol=>Object}]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :tiered_package]
 
             # The cadence to bill for this price on.
@@ -3150,8 +3605,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -3186,8 +3642,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -3314,21 +3771,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, name:, tiered_with_minimum_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :tiered_with_minimum)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
             #   @param tiered_with_minimum_config [Hash{Symbol=>Object}]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :tiered_with_minimum]
 
             # The cadence to bill for this price on.
@@ -3367,8 +3851,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -3403,8 +3888,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -3531,21 +4017,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, name:, unit_with_percent_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :unit_with_percent)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
             #   @param unit_with_percent_config [Hash{Symbol=>Object}]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :unit_with_percent]
 
             # The cadence to bill for this price on.
@@ -3584,8 +4097,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -3620,8 +4134,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -3749,21 +4264,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, name:, package_with_allocation_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :package_with_allocation)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
             #   @param package_with_allocation_config [Hash{Symbol=>Object}]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :package_with_allocation]
 
             # The cadence to bill for this price on.
@@ -3802,8 +4344,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -3838,8 +4381,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -3966,21 +4510,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, name:, tiered_with_proration_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :tiered_with_proration)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
             #   @param tiered_with_proration_config [Hash{Symbol=>Object}]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :tiered_with_proration]
 
             # The cadence to bill for this price on.
@@ -4019,8 +4590,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -4055,8 +4627,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -4183,21 +4756,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, name:, unit_with_proration_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :unit_with_proration)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
             #   @param unit_with_proration_config [Hash{Symbol=>Object}]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :unit_with_proration]
 
             # The cadence to bill for this price on.
@@ -4236,8 +4836,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -4272,8 +4873,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -4400,21 +5002,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, grouped_allocation_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :grouped_allocation)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence] The cadence to bill for this price on.
+            #
             #   @param grouped_allocation_config [Hash{Symbol=>Object}]
-            #   @param item_id [String]
-            #   @param name [String]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :grouped_allocation]
 
             # The cadence to bill for this price on.
@@ -4453,8 +5082,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -4489,8 +5119,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -4618,21 +5249,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, grouped_with_prorated_minimum_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :grouped_with_prorated_minimum)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence] The cadence to bill for this price on.
+            #
             #   @param grouped_with_prorated_minimum_config [Hash{Symbol=>Object}]
-            #   @param item_id [String]
-            #   @param name [String]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :grouped_with_prorated_minimum]
 
             # The cadence to bill for this price on.
@@ -4671,8 +5329,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -4707,8 +5366,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -4835,21 +5495,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(bulk_with_proration_config:, cadence:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :bulk_with_proration)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice}
+            #   for more details.
+            #
             #   @param bulk_with_proration_config [Hash{Symbol=>Object}]
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :bulk_with_proration]
 
             # The cadence to bill for this price on.
@@ -4888,8 +5575,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -4924,8 +5612,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -5053,21 +5742,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, name:, scalable_matrix_with_unit_pricing_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :scalable_matrix_with_unit_pricing)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
             #   @param scalable_matrix_with_unit_pricing_config [Hash{Symbol=>Object}]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :scalable_matrix_with_unit_pricing]
 
             # The cadence to bill for this price on.
@@ -5106,8 +5822,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -5142,8 +5859,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -5271,21 +5989,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, name:, scalable_matrix_with_tiered_pricing_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :scalable_matrix_with_tiered_pricing)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
             #   @param scalable_matrix_with_tiered_pricing_config [Hash{Symbol=>Object}]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :scalable_matrix_with_tiered_pricing]
 
             # The cadence to bill for this price on.
@@ -5324,8 +6069,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -5360,8 +6106,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -5489,21 +6236,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, cumulative_grouped_bulk_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :cumulative_grouped_bulk)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence] The cadence to bill for this price on.
+            #
             #   @param cumulative_grouped_bulk_config [Hash{Symbol=>Object}]
-            #   @param item_id [String]
-            #   @param name [String]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :cumulative_grouped_bulk]
 
             # The cadence to bill for this price on.
@@ -5542,8 +6316,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -5578,8 +6353,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -5707,21 +6483,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, max_group_tiered_package_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :max_group_tiered_package)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence]
-            #   @param item_id [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
             #   @param max_group_tiered_package_config [Hash{Symbol=>Object}]
-            #   @param name [String]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :max_group_tiered_package]
 
             # The cadence to bill for this price on.
@@ -5760,8 +6563,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -5796,8 +6600,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -5925,21 +6730,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, grouped_with_metered_minimum_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :grouped_with_metered_minimum)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence] The cadence to bill for this price on.
+            #
             #   @param grouped_with_metered_minimum_config [Hash{Symbol=>Object}]
-            #   @param item_id [String]
-            #   @param name [String]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :grouped_with_metered_minimum]
 
             # The cadence to bill for this price on.
@@ -5978,8 +6810,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -6014,8 +6847,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -6143,21 +6977,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, matrix_with_display_name_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :matrix_with_display_name)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence]
-            #   @param item_id [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
             #   @param matrix_with_display_name_config [Hash{Symbol=>Object}]
-            #   @param name [String]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :matrix_with_display_name]
 
             # The cadence to bill for this price on.
@@ -6196,8 +7057,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -6232,8 +7094,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -6360,21 +7223,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, grouped_tiered_package_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :grouped_tiered_package)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence] The cadence to bill for this price on.
+            #
             #   @param grouped_tiered_package_config [Hash{Symbol=>Object}]
-            #   @param item_id [String]
-            #   @param name [String]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :grouped_tiered_package]
 
             # The cadence to bill for this price on.
@@ -6413,8 +7303,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -6449,8 +7340,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -6512,9 +7404,18 @@ module Orb
         optional :year, Integer, nil?: true
 
         # @!method initialize(day:, month: nil, year: nil)
-        #   @param day [Integer]
-        #   @param month [Integer, nil]
-        #   @param year [Integer, nil]
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAnchorConfiguration}
+        #   for more details.
+        #
+        #   @param day [Integer] The day of the month on which the billing cycle is anchored. If the maximum numb
+        #   ...
+        #
+        #   @param month [Integer, nil] The month on which the billing cycle is anchored (e.g. a quarterly price anchore
+        #   ...
+        #
+        #   @param year [Integer, nil] The year on which the billing cycle is anchored (e.g. a 2 year billing cycle anc
+        #   ...
       end
 
       class RemoveAdjustment < Orb::Internal::Type::BaseModel
@@ -6525,7 +7426,7 @@ module Orb
         required :adjustment_id, String
 
         # @!method initialize(adjustment_id:)
-        #   @param adjustment_id [String]
+        #   @param adjustment_id [String] The id of the adjustment to remove on the subscription.
       end
 
       class RemovePrice < Orb::Internal::Type::BaseModel
@@ -6542,8 +7443,9 @@ module Orb
         optional :price_id, String, nil?: true
 
         # @!method initialize(external_price_id: nil, price_id: nil)
-        #   @param external_price_id [String, nil]
-        #   @param price_id [String, nil]
+        #   @param external_price_id [String, nil] The external price id of the price to remove on the subscription.
+        #
+        #   @param price_id [String, nil] The id of the price to remove on the subscription.
       end
 
       class ReplaceAdjustment < Orb::Internal::Type::BaseModel
@@ -6561,8 +7463,9 @@ module Orb
         required :replaces_adjustment_id, String
 
         # @!method initialize(adjustment:, replaces_adjustment_id:)
-        #   @param adjustment [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewPercentageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewUsageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewAmountDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMinimum, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMaximum]
-        #   @param replaces_adjustment_id [String]
+        #   @param adjustment [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewPercentageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewUsageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewAmountDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMinimum, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMaximum] The definition of a new adjustment to create and add to the subscription.
+        #
+        #   @param replaces_adjustment_id [String] The id of the adjustment on the plan to replace in the subscription.
 
         # The definition of a new adjustment to create and add to the subscription.
         #
@@ -6612,9 +7515,17 @@ module Orb
             optional :is_invoice_level, Orb::Internal::Type::Boolean
 
             # @!method initialize(applies_to_price_ids:, percentage_discount:, is_invoice_level: nil, adjustment_type: :percentage_discount)
-            #   @param applies_to_price_ids [Array<String>]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewPercentageDiscount}
+            #   for more details.
+            #
+            #   @param applies_to_price_ids [Array<String>] The set of price IDs to which this adjustment applies.
+            #
             #   @param percentage_discount [Float]
-            #   @param is_invoice_level [Boolean]
+            #
+            #   @param is_invoice_level [Boolean] When false, this adjustment will be applied to a single price. Otherwise, it wil
+            #   ...
+            #
             #   @param adjustment_type [Symbol, :percentage_discount]
           end
 
@@ -6643,9 +7554,17 @@ module Orb
             optional :is_invoice_level, Orb::Internal::Type::Boolean
 
             # @!method initialize(applies_to_price_ids:, usage_discount:, is_invoice_level: nil, adjustment_type: :usage_discount)
-            #   @param applies_to_price_ids [Array<String>]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewUsageDiscount}
+            #   for more details.
+            #
+            #   @param applies_to_price_ids [Array<String>] The set of price IDs to which this adjustment applies.
+            #
             #   @param usage_discount [Float]
-            #   @param is_invoice_level [Boolean]
+            #
+            #   @param is_invoice_level [Boolean] When false, this adjustment will be applied to a single price. Otherwise, it wil
+            #   ...
+            #
             #   @param adjustment_type [Symbol, :usage_discount]
           end
 
@@ -6674,9 +7593,17 @@ module Orb
             optional :is_invoice_level, Orb::Internal::Type::Boolean
 
             # @!method initialize(amount_discount:, applies_to_price_ids:, is_invoice_level: nil, adjustment_type: :amount_discount)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewAmountDiscount}
+            #   for more details.
+            #
             #   @param amount_discount [String]
-            #   @param applies_to_price_ids [Array<String>]
-            #   @param is_invoice_level [Boolean]
+            #
+            #   @param applies_to_price_ids [Array<String>] The set of price IDs to which this adjustment applies.
+            #
+            #   @param is_invoice_level [Boolean] When false, this adjustment will be applied to a single price. Otherwise, it wil
+            #   ...
+            #
             #   @param adjustment_type [Symbol, :amount_discount]
           end
 
@@ -6711,10 +7638,19 @@ module Orb
             optional :is_invoice_level, Orb::Internal::Type::Boolean
 
             # @!method initialize(applies_to_price_ids:, item_id:, minimum_amount:, is_invoice_level: nil, adjustment_type: :minimum)
-            #   @param applies_to_price_ids [Array<String>]
-            #   @param item_id [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMinimum}
+            #   for more details.
+            #
+            #   @param applies_to_price_ids [Array<String>] The set of price IDs to which this adjustment applies.
+            #
+            #   @param item_id [String] The item ID that revenue from this minimum will be attributed to.
+            #
             #   @param minimum_amount [String]
-            #   @param is_invoice_level [Boolean]
+            #
+            #   @param is_invoice_level [Boolean] When false, this adjustment will be applied to a single price. Otherwise, it wil
+            #   ...
+            #
             #   @param adjustment_type [Symbol, :minimum]
           end
 
@@ -6743,9 +7679,17 @@ module Orb
             optional :is_invoice_level, Orb::Internal::Type::Boolean
 
             # @!method initialize(applies_to_price_ids:, maximum_amount:, is_invoice_level: nil, adjustment_type: :maximum)
-            #   @param applies_to_price_ids [Array<String>]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMaximum}
+            #   for more details.
+            #
+            #   @param applies_to_price_ids [Array<String>] The set of price IDs to which this adjustment applies.
+            #
             #   @param maximum_amount [String]
-            #   @param is_invoice_level [Boolean]
+            #
+            #   @param is_invoice_level [Boolean] When false, this adjustment will be applied to a single price. Otherwise, it wil
+            #   ...
+            #
             #   @param adjustment_type [Symbol, :maximum]
           end
 
@@ -6825,15 +7769,30 @@ module Orb
         optional :price_id, String, nil?: true
 
         # @!method initialize(replaces_price_id:, allocation_price: nil, discounts: nil, external_price_id: nil, fixed_price_quantity: nil, maximum_amount: nil, minimum_amount: nil, price: nil, price_id: nil)
-        #   @param replaces_price_id [String]
-        #   @param allocation_price [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice, nil]
-        #   @param discounts [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Discount>, nil]
-        #   @param external_price_id [String, nil]
-        #   @param fixed_price_quantity [Float, nil]
-        #   @param maximum_amount [String, nil]
-        #   @param minimum_amount [String, nil]
-        #   @param price [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice, nil]
-        #   @param price_id [String, nil]
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice} for more
+        #   details.
+        #
+        #   @param replaces_price_id [String] The id of the price on the plan to replace in the subscription.
+        #
+        #   @param allocation_price [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice, nil] The definition of a new allocation price to create and add to the subscription.
+        #
+        #   @param discounts [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Discount>, nil] [DEPRECATED] Use add_adjustments instead. The subscription's discounts for the r
+        #   ...
+        #
+        #   @param external_price_id [String, nil] The external price id of the price to add to the subscription.
+        #
+        #   @param fixed_price_quantity [Float, nil] The new quantity of the price, if the price is a fixed price.
+        #
+        #   @param maximum_amount [String, nil] [DEPRECATED] Use add_adjustments instead. The subscription's maximum amount for
+        #   ...
+        #
+        #   @param minimum_amount [String, nil] [DEPRECATED] Use add_adjustments instead. The subscription's minimum amount for
+        #   ...
+        #
+        #   @param price [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice, nil] The definition of a new price to create and add to the subscription.
+        #
+        #   @param price_id [String, nil] The id of the price to add to the subscription.
 
         # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice#allocation_price
         class AllocationPrice < Orb::Internal::Type::BaseModel
@@ -6865,12 +7824,21 @@ module Orb
           required :expires_at_end_of_cadence, Orb::Internal::Type::Boolean
 
           # @!method initialize(amount:, cadence:, currency:, expires_at_end_of_cadence:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice}
+          #   for more details.
+          #
           #   The definition of a new allocation price to create and add to the subscription.
           #
-          #   @param amount [String]
-          #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice::Cadence]
-          #   @param currency [String]
-          #   @param expires_at_end_of_cadence [Boolean]
+          #   @param amount [String] An amount of the currency to allocate to the customer at the specified cadence.
+          #
+          #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::AllocationPrice::Cadence] The cadence at which to allocate the amount to the customer.
+          #
+          #   @param currency [String] An ISO 4217 currency string or a custom pricing unit identifier in which to bill
+          #   ...
+          #
+          #   @param expires_at_end_of_cadence [Boolean] Whether the allocated amount should expire at the end of the cadence or roll ove
+          #   ...
 
           # The cadence at which to allocate the amount to the customer.
           #
@@ -6918,10 +7886,19 @@ module Orb
           optional :usage_discount, Float, nil?: true
 
           # @!method initialize(discount_type:, amount_discount: nil, percentage_discount: nil, usage_discount: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Discount} for
+          #   more details.
+          #
           #   @param discount_type [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Discount::DiscountType]
-          #   @param amount_discount [String, nil]
-          #   @param percentage_discount [Float, nil]
-          #   @param usage_discount [Float, nil]
+          #
+          #   @param amount_discount [String, nil] Only available if discount_type is `amount`.
+          #
+          #   @param percentage_discount [Float, nil] Only available if discount_type is `percentage`. This is a number between 0 and
+          #   ...
+          #
+          #   @param usage_discount [Float, nil] Only available if discount_type is `usage`. Number of usage units that this disc
+          #   ...
 
           # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Discount#discount_type
           module DiscountType
@@ -7130,21 +8107,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, name:, unit_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :unit)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
             #   @param unit_config [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::UnitConfig]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :unit]
 
             # The cadence to bill for this price on.
@@ -7173,7 +8177,7 @@ module Orb
               required :unit_amount, String
 
               # @!method initialize(unit_amount:)
-              #   @param unit_amount [String]
+              #   @param unit_amount [String] Rate per unit of usage
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice#billing_cycle_configuration
@@ -7195,8 +8199,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -7231,8 +8236,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -7360,21 +8366,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, name:, package_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :package)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
             #   @param package_config [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::PackageConfig]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :package]
 
             # The cadence to bill for this price on.
@@ -7410,8 +8443,14 @@ module Orb
               required :package_size, Integer
 
               # @!method initialize(package_amount:, package_size:)
-              #   @param package_amount [String]
-              #   @param package_size [Integer]
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::PackageConfig}
+              #   for more details.
+              #
+              #   @param package_amount [String] A currency amount to rate usage by
+              #
+              #   @param package_size [Integer] An integer amount to represent package size. For example, 1000 here would divide
+              #   ...
             end
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice#billing_cycle_configuration
@@ -7433,8 +8472,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -7469,8 +8509,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -7598,21 +8639,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, matrix_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :matrix)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::Cadence]
-            #   @param item_id [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
             #   @param matrix_config [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig]
-            #   @param name [String]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :matrix]
 
             # The cadence to bill for this price on.
@@ -7658,9 +8726,11 @@ module Orb
                        end
 
               # @!method initialize(default_unit_amount:, dimensions:, matrix_values:)
-              #   @param default_unit_amount [String]
-              #   @param dimensions [Array<String, nil>]
-              #   @param matrix_values [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue>]
+              #   @param default_unit_amount [String] Default per unit rate for any usage not bucketed into a specified matrix_value
+              #
+              #   @param dimensions [Array<String, nil>] One or two event property values to evaluate matrix groups by
+              #
+              #   @param matrix_values [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue>] Matrix values for specified matrix grouping keys
 
               class MatrixValue < Orb::Internal::Type::BaseModel
                 # @!attribute dimension_values
@@ -7678,8 +8748,14 @@ module Orb
                 required :unit_amount, String
 
                 # @!method initialize(dimension_values:, unit_amount:)
-                #   @param dimension_values [Array<String, nil>]
-                #   @param unit_amount [String]
+                #   Some parameter documentations has been truncated, see
+                #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue}
+                #   for more details.
+                #
+                #   @param dimension_values [Array<String, nil>] One or two matrix keys to filter usage to this Matrix value by. For example, ["r
+                #   ...
+                #
+                #   @param unit_amount [String] Unit price for the specified dimension_values
               end
             end
 
@@ -7702,8 +8778,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -7738,8 +8815,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -7867,21 +8945,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, name:, tiered_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :tiered)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
             #   @param tiered_config [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :tiered]
 
             # The cadence to bill for this price on.
@@ -7915,7 +9020,7 @@ module Orb
                        end
 
               # @!method initialize(tiers:)
-              #   @param tiers [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier>]
+              #   @param tiers [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier>] Tiers for rating based on total usage quantities into the specified tier
 
               class Tier < Orb::Internal::Type::BaseModel
                 # @!attribute first_unit
@@ -7937,9 +9042,11 @@ module Orb
                 optional :last_unit, Float, nil?: true
 
                 # @!method initialize(first_unit:, unit_amount:, last_unit: nil)
-                #   @param first_unit [Float]
-                #   @param unit_amount [String]
-                #   @param last_unit [Float, nil]
+                #   @param first_unit [Float] Exclusive tier starting value
+                #
+                #   @param unit_amount [String] Amount per unit
+                #
+                #   @param last_unit [Float, nil] Inclusive tier ending value. If null, this is treated as the last tier
               end
             end
 
@@ -7962,8 +9069,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -7998,8 +9106,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -8127,21 +9236,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, name:, tiered_bps_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :tiered_bps)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
             #   @param tiered_bps_config [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :tiered_bps]
 
             # The cadence to bill for this price on.
@@ -8176,7 +9312,12 @@ module Orb
                        end
 
               # @!method initialize(tiers:)
-              #   @param tiers [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier>]
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig}
+              #   for more details.
+              #
+              #   @param tiers [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier>] Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
+              #   ...
 
               class Tier < Orb::Internal::Type::BaseModel
                 # @!attribute bps
@@ -8204,10 +9345,13 @@ module Orb
                 optional :per_unit_maximum, String, nil?: true
 
                 # @!method initialize(bps:, minimum_amount:, maximum_amount: nil, per_unit_maximum: nil)
-                #   @param bps [Float]
-                #   @param minimum_amount [String]
-                #   @param maximum_amount [String, nil]
-                #   @param per_unit_maximum [String, nil]
+                #   @param bps [Float] Per-event basis point rate
+                #
+                #   @param minimum_amount [String] Exclusive tier starting value
+                #
+                #   @param maximum_amount [String, nil] Inclusive tier ending value
+                #
+                #   @param per_unit_maximum [String, nil] Per unit maximum to charge
               end
             end
 
@@ -8230,8 +9374,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -8266,8 +9411,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -8395,21 +9541,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(bps_config:, cadence:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :bps)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice}
+            #   for more details.
+            #
             #   @param bps_config [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BpsConfig]
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :bps]
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice#bps_config
@@ -8427,8 +9600,9 @@ module Orb
               optional :per_unit_maximum, String, nil?: true
 
               # @!method initialize(bps:, per_unit_maximum: nil)
-              #   @param bps [Float]
-              #   @param per_unit_maximum [String, nil]
+              #   @param bps [Float] Basis point take rate per event
+              #
+              #   @param per_unit_maximum [String, nil] Optional currency amount maximum to cap spend per event
             end
 
             # The cadence to bill for this price on.
@@ -8467,8 +9641,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -8503,8 +9678,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -8632,21 +9808,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(bulk_bps_config:, cadence:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :bulk_bps)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice}
+            #   for more details.
+            #
             #   @param bulk_bps_config [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig]
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :bulk_bps]
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice#bulk_bps_config
@@ -8664,7 +9867,12 @@ module Orb
                        end
 
               # @!method initialize(tiers:)
-              #   @param tiers [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier>]
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig}
+              #   for more details.
+              #
+              #   @param tiers [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier>] Tiers for a bulk BPS pricing model where all usage is aggregated to a single tie
+              #   ...
 
               class Tier < Orb::Internal::Type::BaseModel
                 # @!attribute bps
@@ -8686,9 +9894,11 @@ module Orb
                 optional :per_unit_maximum, String, nil?: true
 
                 # @!method initialize(bps:, maximum_amount: nil, per_unit_maximum: nil)
-                #   @param bps [Float]
-                #   @param maximum_amount [String, nil]
-                #   @param per_unit_maximum [String, nil]
+                #   @param bps [Float] Basis points to rate on
+                #
+                #   @param maximum_amount [String, nil] Upper bound for tier
+                #
+                #   @param per_unit_maximum [String, nil] The maximum amount to charge for any one event
               end
             end
 
@@ -8728,8 +9938,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -8764,8 +9975,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -8893,21 +10105,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(bulk_config:, cadence:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :bulk)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice}
+            #   for more details.
+            #
             #   @param bulk_config [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig]
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :bulk]
 
             # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice#bulk_config
@@ -8924,7 +10163,7 @@ module Orb
                        end
 
               # @!method initialize(tiers:)
-              #   @param tiers [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier>]
+              #   @param tiers [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier>] Bulk tiers for rating based on total usage volume
 
               class Tier < Orb::Internal::Type::BaseModel
                 # @!attribute unit_amount
@@ -8940,8 +10179,9 @@ module Orb
                 optional :maximum_units, Float, nil?: true
 
                 # @!method initialize(unit_amount:, maximum_units: nil)
-                #   @param unit_amount [String]
-                #   @param maximum_units [Float, nil]
+                #   @param unit_amount [String] Amount per unit
+                #
+                #   @param maximum_units [Float, nil] Upper bound for this tier
               end
             end
 
@@ -8981,8 +10221,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -9017,8 +10258,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -9145,21 +10387,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, name:, threshold_total_amount_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :threshold_total_amount)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
             #   @param threshold_total_amount_config [Hash{Symbol=>Object}]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :threshold_total_amount]
 
             # The cadence to bill for this price on.
@@ -9198,8 +10467,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -9234,8 +10504,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -9362,21 +10633,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, name:, tiered_package_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :tiered_package)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
             #   @param tiered_package_config [Hash{Symbol=>Object}]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :tiered_package]
 
             # The cadence to bill for this price on.
@@ -9415,8 +10713,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -9451,8 +10750,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -9579,21 +10879,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, name:, tiered_with_minimum_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :tiered_with_minimum)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
             #   @param tiered_with_minimum_config [Hash{Symbol=>Object}]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :tiered_with_minimum]
 
             # The cadence to bill for this price on.
@@ -9632,8 +10959,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -9668,8 +10996,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -9796,21 +11125,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, name:, unit_with_percent_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :unit_with_percent)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
             #   @param unit_with_percent_config [Hash{Symbol=>Object}]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :unit_with_percent]
 
             # The cadence to bill for this price on.
@@ -9849,8 +11205,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -9885,8 +11242,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -10014,21 +11372,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, name:, package_with_allocation_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :package_with_allocation)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
             #   @param package_with_allocation_config [Hash{Symbol=>Object}]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :package_with_allocation]
 
             # The cadence to bill for this price on.
@@ -10067,8 +11452,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -10103,8 +11489,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -10231,21 +11618,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, name:, tiered_with_proration_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :tiered_with_proration)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
             #   @param tiered_with_proration_config [Hash{Symbol=>Object}]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :tiered_with_proration]
 
             # The cadence to bill for this price on.
@@ -10284,8 +11698,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -10320,8 +11735,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -10448,21 +11864,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, name:, unit_with_proration_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :unit_with_proration)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
             #   @param unit_with_proration_config [Hash{Symbol=>Object}]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :unit_with_proration]
 
             # The cadence to bill for this price on.
@@ -10501,8 +11944,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -10537,8 +11981,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -10665,21 +12110,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, grouped_allocation_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :grouped_allocation)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence] The cadence to bill for this price on.
+            #
             #   @param grouped_allocation_config [Hash{Symbol=>Object}]
-            #   @param item_id [String]
-            #   @param name [String]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :grouped_allocation]
 
             # The cadence to bill for this price on.
@@ -10718,8 +12190,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -10754,8 +12227,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -10883,21 +12357,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, grouped_with_prorated_minimum_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :grouped_with_prorated_minimum)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence] The cadence to bill for this price on.
+            #
             #   @param grouped_with_prorated_minimum_config [Hash{Symbol=>Object}]
-            #   @param item_id [String]
-            #   @param name [String]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :grouped_with_prorated_minimum]
 
             # The cadence to bill for this price on.
@@ -10936,8 +12437,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -10972,8 +12474,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -11100,21 +12603,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(bulk_with_proration_config:, cadence:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :bulk_with_proration)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice}
+            #   for more details.
+            #
             #   @param bulk_with_proration_config [Hash{Symbol=>Object}]
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :bulk_with_proration]
 
             # The cadence to bill for this price on.
@@ -11153,8 +12683,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -11189,8 +12720,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -11318,21 +12850,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, name:, scalable_matrix_with_unit_pricing_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :scalable_matrix_with_unit_pricing)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
             #   @param scalable_matrix_with_unit_pricing_config [Hash{Symbol=>Object}]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :scalable_matrix_with_unit_pricing]
 
             # The cadence to bill for this price on.
@@ -11371,8 +12930,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -11407,8 +12967,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -11536,21 +13097,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, name:, scalable_matrix_with_tiered_pricing_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :scalable_matrix_with_tiered_pricing)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence]
-            #   @param item_id [String]
-            #   @param name [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
             #   @param scalable_matrix_with_tiered_pricing_config [Hash{Symbol=>Object}]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :scalable_matrix_with_tiered_pricing]
 
             # The cadence to bill for this price on.
@@ -11589,8 +13177,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -11625,8 +13214,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -11754,21 +13344,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, cumulative_grouped_bulk_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :cumulative_grouped_bulk)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence] The cadence to bill for this price on.
+            #
             #   @param cumulative_grouped_bulk_config [Hash{Symbol=>Object}]
-            #   @param item_id [String]
-            #   @param name [String]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :cumulative_grouped_bulk]
 
             # The cadence to bill for this price on.
@@ -11807,8 +13424,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -11843,8 +13461,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -11972,21 +13591,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, max_group_tiered_package_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :max_group_tiered_package)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence]
-            #   @param item_id [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
             #   @param max_group_tiered_package_config [Hash{Symbol=>Object}]
-            #   @param name [String]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :max_group_tiered_package]
 
             # The cadence to bill for this price on.
@@ -12025,8 +13671,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -12061,8 +13708,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -12190,21 +13838,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, grouped_with_metered_minimum_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :grouped_with_metered_minimum)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence] The cadence to bill for this price on.
+            #
             #   @param grouped_with_metered_minimum_config [Hash{Symbol=>Object}]
-            #   @param item_id [String]
-            #   @param name [String]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :grouped_with_metered_minimum]
 
             # The cadence to bill for this price on.
@@ -12243,8 +13918,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -12279,8 +13955,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -12408,21 +14085,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, item_id:, matrix_with_display_name_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :matrix_with_display_name)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence]
-            #   @param item_id [String]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
             #   @param matrix_with_display_name_config [Hash{Symbol=>Object}]
-            #   @param name [String]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :matrix_with_display_name]
 
             # The cadence to bill for this price on.
@@ -12461,8 +14165,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -12497,8 +14202,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -12625,21 +14331,48 @@ module Orb
             optional :reference_id, String, nil?: true
 
             # @!method initialize(cadence:, grouped_tiered_package_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :grouped_tiered_package)
-            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence] The cadence to bill for this price on.
+            #
             #   @param grouped_tiered_package_config [Hash{Symbol=>Object}]
-            #   @param item_id [String]
-            #   @param name [String]
-            #   @param billable_metric_id [String, nil]
-            #   @param billed_in_advance [Boolean, nil]
-            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration, nil]
-            #   @param conversion_rate [Float, nil]
-            #   @param currency [String, nil]
-            #   @param external_price_id [String, nil]
-            #   @param fixed_price_quantity [Float, nil]
-            #   @param invoice_grouping_key [String, nil]
-            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration, nil]
-            #   @param metadata [Hash{Symbol=>String, nil}, nil]
-            #   @param reference_id [String, nil]
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #   ...
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #   ...
+            #
+            #   @param billing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #   ...
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #   ...
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #   ...
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   ...
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #   ...
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #   ...
+            #
             #   @param model_type [Symbol, :grouped_tiered_package]
 
             # The cadence to bill for this price on.
@@ -12678,8 +14411,9 @@ module Orb
               #   For custom cadence: specifies the duration of the billing period in days or
               #   months.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #
@@ -12714,8 +14448,9 @@ module Orb
               #   Within each billing cycle, specifies the cadence at which invoices are produced.
               #   If unspecified, a single invoice is produced per billing cycle.
               #
-              #   @param duration [Integer]
-              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit]
+              #   @param duration [Integer] The duration of the billing period.
+              #
+              #   @param duration_unit [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
               # The unit of billing period duration.
               #

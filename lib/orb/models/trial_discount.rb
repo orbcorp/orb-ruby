@@ -33,11 +33,19 @@ module Orb
       optional :trial_percentage_discount, Float, nil?: true
 
       # @!method initialize(applies_to_price_ids:, discount_type:, reason: nil, trial_amount_discount: nil, trial_percentage_discount: nil)
-      #   @param applies_to_price_ids [Array<String>]
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::TrialDiscount} for more details.
+      #
+      #   @param applies_to_price_ids [Array<String>] List of price_ids that this discount applies to. For plan/plan phase discounts,
+      #   ...
+      #
       #   @param discount_type [Symbol, Orb::Models::TrialDiscount::DiscountType]
+      #
       #   @param reason [String, nil]
-      #   @param trial_amount_discount [String, nil]
-      #   @param trial_percentage_discount [Float, nil]
+      #
+      #   @param trial_amount_discount [String, nil] Only available if discount_type is `trial`
+      #
+      #   @param trial_percentage_discount [Float, nil] Only available if discount_type is `trial`
 
       # @see Orb::Models::TrialDiscount#discount_type
       module DiscountType

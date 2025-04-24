@@ -226,23 +226,51 @@ module Orb
       optional :tax_id, -> { Orb::Models::CustomerUpdateParams::TaxID }, nil?: true
 
       # @!method initialize(accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, billing_address: nil, currency: nil, email: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, name: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, request_options: {})
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::CustomerUpdateParams} for more details.
+      #
       #   @param accounting_sync_configuration [Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration, nil]
-      #   @param additional_emails [Array<String>, nil]
-      #   @param auto_collection [Boolean, nil]
+      #
+      #   @param additional_emails [Array<String>, nil] Additional email addresses for this customer. If populated, these email addresse
+      #   ...
+      #
+      #   @param auto_collection [Boolean, nil] Used to determine if invoices for this customer will automatically attempt to ch
+      #   ...
+      #
       #   @param billing_address [Orb::Models::CustomerUpdateParams::BillingAddress, nil]
-      #   @param currency [String, nil]
-      #   @param email [String, nil]
+      #
+      #   @param currency [String, nil] An ISO 4217 currency string used for the customer's invoices and balance. If not
+      #   ...
+      #
+      #   @param email [String, nil] A valid customer email, to be used for invoicing and notifications.
+      #
       #   @param email_delivery [Boolean, nil]
-      #   @param external_customer_id [String, nil]
-      #   @param hierarchy [Orb::Models::CustomerUpdateParams::Hierarchy, nil]
-      #   @param metadata [Hash{Symbol=>String, nil}, nil]
-      #   @param name [String, nil]
-      #   @param payment_provider [Symbol, Orb::Models::CustomerUpdateParams::PaymentProvider, nil]
-      #   @param payment_provider_id [String, nil]
+      #
+      #   @param external_customer_id [String, nil] The external customer ID. This can only be set if empty and the customer has no
+      #   ...
+      #
+      #   @param hierarchy [Orb::Models::CustomerUpdateParams::Hierarchy, nil] The hierarchical relationships for this customer.
+      #
+      #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+      #   ...
+      #
+      #   @param name [String, nil] The full name of the customer
+      #
+      #   @param payment_provider [Symbol, Orb::Models::CustomerUpdateParams::PaymentProvider, nil] This is used for creating charges or invoices in an external system via Orb. Whe
+      #   ...
+      #
+      #   @param payment_provider_id [String, nil] The ID of this customer in an external payments solution, such as Stripe. This i
+      #   ...
+      #
       #   @param reporting_configuration [Orb::Models::CustomerUpdateParams::ReportingConfiguration, nil]
+      #
       #   @param shipping_address [Orb::Models::CustomerUpdateParams::ShippingAddress, nil]
+      #
       #   @param tax_configuration [Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration, Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration, nil]
-      #   @param tax_id [Orb::Models::CustomerUpdateParams::TaxID, nil]
+      #
+      #   @param tax_id [Orb::Models::CustomerUpdateParams::TaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
+      #   ...
+      #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
       class AccountingSyncConfiguration < Orb::Internal::Type::BaseModel
@@ -335,10 +363,16 @@ module Orb
         optional :parent_customer_id, String, nil?: true
 
         # @!method initialize(child_customer_ids: nil, parent_customer_id: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::CustomerUpdateParams::Hierarchy} for more details.
+        #
         #   The hierarchical relationships for this customer.
         #
-        #   @param child_customer_ids [Array<String>]
-        #   @param parent_customer_id [String, nil]
+        #   @param child_customer_ids [Array<String>] A list of child customer IDs to add to the hierarchy. The desired child customer
+        #   ...
+        #
+        #   @param parent_customer_id [String, nil] The ID of the parent customer in the hierarchy. The desired parent customer must
+        #   ...
       end
 
       # This is used for creating charges or invoices in an external system via Orb.

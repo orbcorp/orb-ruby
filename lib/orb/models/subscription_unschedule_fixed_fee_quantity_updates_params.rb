@@ -14,7 +14,8 @@ module Orb
       required :price_id, String
 
       # @!method initialize(price_id:, request_options: {})
-      #   @param price_id [String]
+      #   @param price_id [String] Price for which the updates should be cleared. Must be a fixed fee.
+      #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end

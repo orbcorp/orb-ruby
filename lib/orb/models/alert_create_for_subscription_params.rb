@@ -27,9 +27,12 @@ module Orb
       optional :metric_id, String, nil?: true
 
       # @!method initialize(thresholds:, type:, metric_id: nil, request_options: {})
-      #   @param thresholds [Array<Orb::Models::AlertCreateForSubscriptionParams::Threshold>]
-      #   @param type [Symbol, Orb::Models::AlertCreateForSubscriptionParams::Type]
-      #   @param metric_id [String, nil]
+      #   @param thresholds [Array<Orb::Models::AlertCreateForSubscriptionParams::Threshold>] The thresholds that define the values at which the alert will be triggered.
+      #
+      #   @param type [Symbol, Orb::Models::AlertCreateForSubscriptionParams::Type] The type of alert to create. This must be a valid alert type.
+      #
+      #   @param metric_id [String, nil] The metric to track usage for.
+      #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
       class Threshold < Orb::Internal::Type::BaseModel
@@ -42,10 +45,14 @@ module Orb
         required :value, Float
 
         # @!method initialize(value:)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::AlertCreateForSubscriptionParams::Threshold} for more details.
+        #
         #   Thresholds are used to define the conditions under which an alert will be
         #   triggered.
         #
-        #   @param value [Float]
+        #   @param value [Float] The value at which an alert will fire. For credit balance alerts, the alert will
+        #   ...
       end
 
       # The type of alert to create. This must be a valid alert type.

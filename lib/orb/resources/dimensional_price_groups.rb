@@ -6,6 +6,9 @@ module Orb
       # @return [Orb::Resources::DimensionalPriceGroups::ExternalDimensionalPriceGroupID]
       attr_reader :external_dimensional_price_group_id
 
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::DimensionalPriceGroupCreateParams} for more details.
+      #
       # A dimensional price group is used to partition the result of a billable metric
       # by a set of dimensions. Prices in a price group must specify the parition used
       # to derive their usage.
@@ -18,10 +21,16 @@ module Orb
       # @overload create(billable_metric_id:, dimensions:, name:, external_dimensional_price_group_id: nil, metadata: nil, request_options: {})
       #
       # @param billable_metric_id [String]
-      # @param dimensions [Array<String>]
+      #
+      # @param dimensions [Array<String>] The set of keys (in order) used to disambiguate prices in the group.
+      #
       # @param name [String]
+      #
       # @param external_dimensional_price_group_id [String, nil]
-      # @param metadata [Hash{Symbol=>String, nil}, nil]
+      #
+      # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+      # ...
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::DimensionalPriceGroup]
@@ -57,12 +66,18 @@ module Orb
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::DimensionalPriceGroupListParams} for more details.
+      #
       # List dimensional price groups
       #
       # @overload list(cursor: nil, limit: nil, request_options: {})
       #
-      # @param cursor [String, nil]
-      # @param limit [Integer]
+      # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
+      # ...
+      #
+      # @param limit [Integer] The number of items to fetch. Defaults to 20.
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Internal::Page<Orb::Models::DimensionalPriceGroup>]

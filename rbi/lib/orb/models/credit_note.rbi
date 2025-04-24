@@ -102,21 +102,34 @@ module Orb
           .returns(T.attached_class)
       end
       def self.new(
+        # The Orb id of this credit note.
         id:,
+        # The creation time of the resource in Orb.
         created_at:,
+        # The unique identifier for credit notes.
         credit_note_number:,
+        # A URL to a PDF of the credit note.
         credit_note_pdf:,
         customer:,
+        # The id of the invoice resource that this credit note is applied to.
         invoice_id:,
+        # All of the line items associated with this credit note.
         line_items:,
+        # The maximum amount applied on the original invoice
         maximum_amount_adjustment:,
+        # An optional memo supplied on the credit note.
         memo:,
+        # Any credited amount from the applied minimum on the invoice.
         minimum_amount_refunded:,
         reason:,
+        # The total prior to any creditable invoice-level discounts or minimums.
         subtotal:,
+        # The total including creditable invoice-level discounts or minimums, and tax.
         total:,
         type:,
+        # The time at which the credit note was voided in Orb, if applicable.
         voided_at:,
+        # Any discounts applied on the original invoice.
         discounts: nil
       ); end
       sig do
@@ -210,8 +223,24 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(id:, amount:, item_id:, name:, quantity:, subtotal:, tax_amounts:, discounts: nil); end
-
+        def self.new(
+          # The Orb id of this resource.
+          id:,
+          # The amount of the line item, including any line item minimums and discounts.
+          amount:,
+          # The id of the item associated with this line item.
+          item_id:,
+          # The name of the corresponding invoice line item.
+          name:,
+          # An optional quantity credited.
+          quantity:,
+          # The amount of the line item, excluding any line item minimums and discounts.
+          subtotal:,
+          # Any tax amounts applied onto the line item.
+          tax_amounts:,
+          # Any line item discounts from the invoice's line item.
+          discounts: nil
+        ); end
         sig do
           override
             .returns(
@@ -246,8 +275,14 @@ module Orb
             params(amount: String, tax_rate_description: String, tax_rate_percentage: T.nilable(String))
               .returns(T.attached_class)
           end
-          def self.new(amount:, tax_rate_description:, tax_rate_percentage:); end
-
+          def self.new(
+            # The amount of additional tax incurred by this tax rate.
+            amount:,
+            # The human-readable description of the applied tax rate.
+            tax_rate_description:,
+            # The tax rate percentage, out of 100.
+            tax_rate_percentage:
+          ); end
           sig do
             override.returns(
               {

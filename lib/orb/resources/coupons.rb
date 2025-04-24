@@ -6,15 +6,24 @@ module Orb
       # @return [Orb::Resources::Coupons::Subscriptions]
       attr_reader :subscriptions
 
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::CouponCreateParams} for more details.
+      #
       # This endpoint allows the creation of coupons, which can then be redeemed at
       # subscription creation or plan change.
       #
       # @overload create(discount:, redemption_code:, duration_in_months: nil, max_redemptions: nil, request_options: {})
       #
       # @param discount [Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount]
-      # @param redemption_code [String]
-      # @param duration_in_months [Integer, nil]
-      # @param max_redemptions [Integer, nil]
+      #
+      # @param redemption_code [String] This string can be used to redeem this coupon for a given subscription.
+      #
+      # @param duration_in_months [Integer, nil] This allows for a coupon's discount to apply for a limited time (determined in m
+      # ...
+      #
+      # @param max_redemptions [Integer, nil] The maximum number of redemptions allowed for this coupon before it is exhausted
+      # ...
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::Coupon]
@@ -31,6 +40,9 @@ module Orb
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::CouponListParams} for more details.
+      #
       # This endpoint returns a list of all coupons for an account in a list format.
       #
       # The list of coupons is ordered starting from the most recently created coupon.
@@ -40,10 +52,16 @@ module Orb
       #
       # @overload list(cursor: nil, limit: nil, redemption_code: nil, show_archived: nil, request_options: {})
       #
-      # @param cursor [String, nil]
-      # @param limit [Integer]
-      # @param redemption_code [String, nil]
-      # @param show_archived [Boolean, nil]
+      # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
+      # ...
+      #
+      # @param limit [Integer] The number of items to fetch. Defaults to 20.
+      #
+      # @param redemption_code [String, nil] Filter to coupons matching this redemption code.
+      #
+      # @param show_archived [Boolean, nil] Show archived coupons as well (by default, this endpoint only returns active cou
+      # ...
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Internal::Page<Orb::Models::Coupon>]

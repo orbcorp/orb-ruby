@@ -252,10 +252,14 @@ module Orb
           .returns(T.attached_class)
       end
       def self.new(
+        # The cadence to bill for this price on.
         cadence:,
+        # An ISO 4217 currency string for which this price is billed in.
         currency:,
+        # The id of the item the price will be associated with.
         item_id:,
         model_type:,
+        # The name of the price.
         name:,
         unit_config:,
         package_config:,
@@ -285,14 +289,30 @@ module Orb
         scalable_matrix_with_unit_pricing_config:,
         scalable_matrix_with_tiered_pricing_config:,
         cumulative_grouped_bulk_config:,
+        # The id of the billable metric for the price. Only needed if the price is
+        # usage-based.
         billable_metric_id: nil,
+        # If the Price represents a fixed cost, the price will be billed in-advance if
+        # this is true, and in-arrears if this is false.
         billed_in_advance: nil,
+        # For custom cadence: specifies the duration of the billing period in days or
+        # months.
         billing_cycle_configuration: nil,
+        # The per unit conversion rate of the price currency to the invoicing currency.
         conversion_rate: nil,
+        # An alias for the price.
         external_price_id: nil,
+        # If the Price represents a fixed cost, this represents the quantity of units
+        # applied.
         fixed_price_quantity: nil,
+        # The property used to group this price on an invoice
         invoice_grouping_key: nil,
+        # Within each billing cycle, specifies the cadence at which invoices are produced.
+        # If unspecified, a single invoice is produced per billing cycle.
         invoicing_cycle_configuration: nil,
+        # User-specified key/value pairs for the resource. Individual keys can be removed
+        # by setting the value to `null`, and the entire metadata mapping can be cleared
+        # by setting `metadata` to `null`.
         metadata: nil,
         request_options: {}
       ); end
@@ -385,8 +405,10 @@ module Orb
         attr_accessor :unit_amount
 
         sig { params(unit_amount: String).returns(T.attached_class) }
-        def self.new(unit_amount:); end
-
+        def self.new(
+          # Rate per unit of usage
+          unit_amount:
+        ); end
         sig { override.returns({unit_amount: String}) }
         def to_hash; end
       end
@@ -409,8 +431,12 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(duration:, duration_unit:); end
-
+        def self.new(
+          # The duration of the billing period.
+          duration:,
+          # The unit of billing period duration.
+          duration_unit:
+        ); end
         sig do
           override
             .returns(
@@ -460,8 +486,12 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(duration:, duration_unit:); end
-
+        def self.new(
+          # The duration of the billing period.
+          duration:,
+          # The unit of billing period duration.
+          duration_unit:
+        ); end
         sig do
           override
             .returns(
@@ -505,8 +535,13 @@ module Orb
         attr_accessor :package_size
 
         sig { params(package_amount: String, package_size: Integer).returns(T.attached_class) }
-        def self.new(package_amount:, package_size:); end
-
+        def self.new(
+          # A currency amount to rate usage by
+          package_amount:,
+          # An integer amount to represent package size. For example, 1000 here would divide
+          # usage by 1000 before multiplying by package_amount in rating
+          package_size:
+        ); end
         sig { override.returns({package_amount: String, package_size: Integer}) }
         def to_hash; end
       end
@@ -532,8 +567,14 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(default_unit_amount:, dimensions:, matrix_values:); end
-
+        def self.new(
+          # Default per unit rate for any usage not bucketed into a specified matrix_value
+          default_unit_amount:,
+          # One or two event property values to evaluate matrix groups by
+          dimensions:,
+          # Matrix values for specified matrix grouping keys
+          matrix_values:
+        ); end
         sig do
           override
             .returns(
@@ -563,8 +604,14 @@ module Orb
               unit_amount: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, unit_amount:); end
-
+          def self.new(
+            # One or two matrix keys to filter usage to this Matrix value by. For example,
+            # ["region", "tier"] could be used to filter cloud usage by a cloud region and an
+            # instance tier.
+            dimension_values:,
+            # Unit price for the specified dimension_values
+            unit_amount:
+          ); end
           sig { override.returns({dimension_values: T::Array[T.nilable(String)], unit_amount: String}) }
           def to_hash; end
         end
@@ -596,8 +643,16 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(allocation:, default_unit_amount:, dimensions:, matrix_values:); end
-
+        def self.new(
+          # Allocation to be used to calculate the price
+          allocation:,
+          # Default per unit rate for any usage not bucketed into a specified matrix_value
+          default_unit_amount:,
+          # One or two event property values to evaluate matrix groups by
+          dimensions:,
+          # Matrix values for specified matrix grouping keys
+          matrix_values:
+        ); end
         sig do
           override
             .returns(
@@ -628,8 +683,14 @@ module Orb
               unit_amount: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, unit_amount:); end
-
+          def self.new(
+            # One or two matrix keys to filter usage to this Matrix value by. For example,
+            # ["region", "tier"] could be used to filter cloud usage by a cloud region and an
+            # instance tier.
+            dimension_values:,
+            # Unit price for the specified dimension_values
+            unit_amount:
+          ); end
           sig { override.returns({dimension_values: T::Array[T.nilable(String)], unit_amount: String}) }
           def to_hash; end
         end
@@ -644,8 +705,10 @@ module Orb
           params(tiers: T::Array[T.any(Orb::Models::PriceCreateParams::TieredConfig::Tier, Orb::Internal::AnyHash)])
             .returns(T.attached_class)
         end
-        def self.new(tiers:); end
-
+        def self.new(
+          # Tiers for rating based on total usage quantities into the specified tier
+          tiers:
+        ); end
         sig { override.returns({tiers: T::Array[Orb::Models::PriceCreateParams::TieredConfig::Tier]}) }
         def to_hash; end
 
@@ -669,8 +732,14 @@ module Orb
               last_unit: T.nilable(Float)
             ).returns(T.attached_class)
           end
-          def self.new(first_unit:, unit_amount:, last_unit: nil); end
-
+          def self.new(
+            # Exclusive tier starting value
+            first_unit:,
+            # Amount per unit
+            unit_amount:,
+            # Inclusive tier ending value. If null, this is treated as the last tier
+            last_unit: nil
+          ); end
           sig { override.returns({first_unit: Float, unit_amount: String, last_unit: T.nilable(Float)}) }
           def to_hash; end
         end
@@ -688,8 +757,11 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(tiers:); end
-
+        def self.new(
+          # Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
+          # tiers
+          tiers:
+        ); end
         sig { override.returns({tiers: T::Array[Orb::Models::PriceCreateParams::TieredBpsConfig::Tier]}) }
         def to_hash; end
 
@@ -719,8 +791,16 @@ module Orb
             )
               .returns(T.attached_class)
           end
-          def self.new(bps:, minimum_amount:, maximum_amount: nil, per_unit_maximum: nil); end
-
+          def self.new(
+            # Per-event basis point rate
+            bps:,
+            # Exclusive tier starting value
+            minimum_amount:,
+            # Inclusive tier ending value
+            maximum_amount: nil,
+            # Per unit maximum to charge
+            per_unit_maximum: nil
+          ); end
           sig do
             override
               .returns(
@@ -746,8 +826,12 @@ module Orb
         attr_accessor :per_unit_maximum
 
         sig { params(bps: Float, per_unit_maximum: T.nilable(String)).returns(T.attached_class) }
-        def self.new(bps:, per_unit_maximum: nil); end
-
+        def self.new(
+          # Basis point take rate per event
+          bps:,
+          # Optional currency amount maximum to cap spend per event
+          per_unit_maximum: nil
+        ); end
         sig { override.returns({bps: Float, per_unit_maximum: T.nilable(String)}) }
         def to_hash; end
       end
@@ -764,8 +848,11 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(tiers:); end
-
+        def self.new(
+          # Tiers for a bulk BPS pricing model where all usage is aggregated to a single
+          # tier based on total volume
+          tiers:
+        ); end
         sig { override.returns({tiers: T::Array[Orb::Models::PriceCreateParams::BulkBpsConfig::Tier]}) }
         def to_hash; end
 
@@ -786,8 +873,14 @@ module Orb
             params(bps: Float, maximum_amount: T.nilable(String), per_unit_maximum: T.nilable(String))
               .returns(T.attached_class)
           end
-          def self.new(bps:, maximum_amount: nil, per_unit_maximum: nil); end
-
+          def self.new(
+            # Basis points to rate on
+            bps:,
+            # Upper bound for tier
+            maximum_amount: nil,
+            # The maximum amount to charge for any one event
+            per_unit_maximum: nil
+          ); end
           sig do
             override.returns(
               {
@@ -810,8 +903,10 @@ module Orb
           params(tiers: T::Array[T.any(Orb::Models::PriceCreateParams::BulkConfig::Tier, Orb::Internal::AnyHash)])
             .returns(T.attached_class)
         end
-        def self.new(tiers:); end
-
+        def self.new(
+          # Bulk tiers for rating based on total usage volume
+          tiers:
+        ); end
         sig { override.returns({tiers: T::Array[Orb::Models::PriceCreateParams::BulkConfig::Tier]}) }
         def to_hash; end
 
@@ -825,8 +920,12 @@ module Orb
           attr_accessor :maximum_units
 
           sig { params(unit_amount: String, maximum_units: T.nilable(Float)).returns(T.attached_class) }
-          def self.new(unit_amount:, maximum_units: nil); end
-
+          def self.new(
+            # Amount per unit
+            unit_amount:,
+            # Upper bound for this tier
+            maximum_units: nil
+          ); end
           sig { override.returns({unit_amount: String, maximum_units: T.nilable(Float)}) }
           def to_hash; end
         end

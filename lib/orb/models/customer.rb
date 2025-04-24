@@ -243,6 +243,9 @@ module Orb
       optional :reporting_configuration, -> { Orb::Models::Customer::ReportingConfiguration }, nil?: true
 
       # @!method initialize(id:, additional_emails:, auto_collection:, balance:, billing_address:, created_at:, currency:, email:, email_delivery:, exempt_from_automated_tax:, external_customer_id:, hierarchy:, metadata:, name:, payment_provider:, payment_provider_id:, portal_url:, shipping_address:, tax_id:, timezone:, accounting_sync_configuration: nil, reporting_configuration: nil)
+      #   Some parameter documentations has been truncated, see {Orb::Models::Customer}
+      #   for more details.
+      #
       #   A customer is a buyer of your products, and the other party to the billing
       #   relationship.
       #
@@ -263,26 +266,54 @@ module Orb
       #   information on what this timezone parameter influences within Orb.
       #
       #   @param id [String]
+      #
       #   @param additional_emails [Array<String>]
+      #
       #   @param auto_collection [Boolean]
-      #   @param balance [String]
+      #
+      #   @param balance [String] The customer's current balance in their currency.
+      #
       #   @param billing_address [Orb::Models::Customer::BillingAddress, nil]
+      #
       #   @param created_at [Time]
+      #
       #   @param currency [String, nil]
-      #   @param email [String]
+      #
+      #   @param email [String] A valid customer email, to be used for notifications. When Orb triggers payment
+      #   ...
+      #
       #   @param email_delivery [Boolean]
+      #
       #   @param exempt_from_automated_tax [Boolean, nil]
-      #   @param external_customer_id [String, nil]
-      #   @param hierarchy [Orb::Models::Customer::Hierarchy]
-      #   @param metadata [Hash{Symbol=>String}]
-      #   @param name [String]
-      #   @param payment_provider [Symbol, Orb::Models::Customer::PaymentProvider, nil]
-      #   @param payment_provider_id [String, nil]
+      #
+      #   @param external_customer_id [String, nil] An optional user-defined ID for this customer resource, used throughout the syst
+      #   ...
+      #
+      #   @param hierarchy [Orb::Models::Customer::Hierarchy] The hierarchical relationships for this customer.
+      #
+      #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+      #   ...
+      #
+      #   @param name [String] The full name of the customer
+      #
+      #   @param payment_provider [Symbol, Orb::Models::Customer::PaymentProvider, nil] This is used for creating charges or invoices in an external system via Orb. Whe
+      #   ...
+      #
+      #   @param payment_provider_id [String, nil] The ID of this customer in an external payments solution, such as Stripe. This i
+      #   ...
+      #
       #   @param portal_url [String, nil]
+      #
       #   @param shipping_address [Orb::Models::Customer::ShippingAddress, nil]
-      #   @param tax_id [Orb::Models::Customer::TaxID, nil]
-      #   @param timezone [String]
+      #
+      #   @param tax_id [Orb::Models::Customer::TaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
+      #   ...
+      #
+      #   @param timezone [String] A timezone identifier from the IANA timezone database, such as "America/Los_Ange
+      #   ...
+      #
       #   @param accounting_sync_configuration [Orb::Models::Customer::AccountingSyncConfiguration, nil]
+      #
       #   @param reporting_configuration [Orb::Models::Customer::ReportingConfiguration, nil]
 
       # @see Orb::Models::Customer#billing_address

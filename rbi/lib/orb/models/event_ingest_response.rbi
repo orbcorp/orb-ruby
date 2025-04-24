@@ -23,8 +23,14 @@ module Orb
         )
           .returns(T.attached_class)
       end
-      def self.new(validation_failed:, debug: nil); end
-
+      def self.new(
+        # Contains all failing validation events. In the case of a 200, this array will
+        # always be empty. This field will always be present.
+        validation_failed:,
+        # Optional debug information (only present when debug=true is passed to the
+        # endpoint). Contains ingested and duplicate event idempotency keys.
+        debug: nil
+      ); end
       sig do
         override
           .returns(
@@ -47,8 +53,13 @@ module Orb
         attr_accessor :validation_errors
 
         sig { params(idempotency_key: String, validation_errors: T::Array[String]).returns(T.attached_class) }
-        def self.new(idempotency_key:, validation_errors:); end
-
+        def self.new(
+          # The passed idempotency_key corresponding to the validation_errors
+          idempotency_key:,
+          # An array of strings corresponding to validation failures for this
+          # idempotency_key.
+          validation_errors:
+        ); end
         sig { override.returns({idempotency_key: String, validation_errors: T::Array[String]}) }
         def to_hash; end
       end

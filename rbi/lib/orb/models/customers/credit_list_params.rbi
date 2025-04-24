@@ -41,9 +41,19 @@ module Orb
           )
             .returns(T.attached_class)
         end
-        def self.new(currency: nil, cursor: nil, include_all_blocks: nil, limit: nil, request_options: {})
-        end
-
+        def self.new(
+          # The ledger currency or custom pricing unit to use.
+          currency: nil,
+          # Cursor for pagination. This can be populated by the `next_cursor` value returned
+          # from the initial request.
+          cursor: nil,
+          # If set to True, all expired and depleted blocks, as well as active block will be
+          # returned.
+          include_all_blocks: nil,
+          # The number of items to fetch. Defaults to 20.
+          limit: nil,
+          request_options: {}
+        ); end
         sig do
           override
             .returns(

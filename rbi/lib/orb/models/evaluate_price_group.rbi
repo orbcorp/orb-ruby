@@ -19,8 +19,14 @@ module Orb
         params(amount: String, grouping_values: T::Array[T.any(String, Float, T::Boolean)], quantity: Float)
           .returns(T.attached_class)
       end
-      def self.new(amount:, grouping_values:, quantity:); end
-
+      def self.new(
+        # The price's output for the group
+        amount:,
+        # The values for the group in the order specified by `grouping_keys`
+        grouping_values:,
+        # The price's usage quantity for the group
+        quantity:
+      ); end
       sig do
         override
           .returns({

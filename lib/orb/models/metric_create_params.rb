@@ -40,11 +40,20 @@ module Orb
       optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
       # @!method initialize(description:, item_id:, name:, sql:, metadata: nil, request_options: {})
-      #   @param description [String, nil]
-      #   @param item_id [String]
-      #   @param name [String]
-      #   @param sql [String]
-      #   @param metadata [Hash{Symbol=>String, nil}, nil]
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::MetricCreateParams} for more details.
+      #
+      #   @param description [String, nil] A description of the metric.
+      #
+      #   @param item_id [String] The id of the item
+      #
+      #   @param name [String] The name of the metric.
+      #
+      #   @param sql [String] A sql string defining the metric.
+      #
+      #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+      #   ...
+      #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end

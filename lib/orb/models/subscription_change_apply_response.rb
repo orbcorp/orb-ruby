@@ -38,17 +38,26 @@ module Orb
       optional :cancelled_at, Time, nil?: true
 
       # @!method initialize(id:, expiration_time:, status:, subscription:, applied_at: nil, cancelled_at: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::SubscriptionChangeApplyResponse} for more details.
+      #
       #   A subscription change represents a desired new subscription / pending change to
       #   an existing subscription. It is a way to first preview the effects on the
       #   subscription as well as any changes/creation of invoices (see
       #   `subscription.changed_resources`).
       #
       #   @param id [String]
-      #   @param expiration_time [Time]
+      #
+      #   @param expiration_time [Time] Subscription change will be cancelled at this time and can no longer be applied.
+      #   ...
+      #
       #   @param status [Symbol, Orb::Models::SubscriptionChangeApplyResponse::Status]
+      #
       #   @param subscription [Orb::Models::SubscriptionChangeApplyResponse::Subscription, nil]
-      #   @param applied_at [Time, nil]
-      #   @param cancelled_at [Time, nil]
+      #
+      #   @param applied_at [Time, nil] When this change was applied.
+      #
+      #   @param cancelled_at [Time, nil] When this change was cancelled.
 
       # @see Orb::Models::SubscriptionChangeApplyResponse#status
       module Status
@@ -272,33 +281,74 @@ module Orb
                  nil?: true
 
         # @!method initialize(id:, active_plan_phase_order:, adjustment_intervals:, auto_collection:, billing_cycle_anchor_configuration:, billing_cycle_day:, created_at:, current_billing_period_end_date:, current_billing_period_start_date:, customer:, default_invoice_memo:, discount_intervals:, end_date:, fixed_fee_quantity_schedule:, invoicing_threshold:, maximum_intervals:, metadata:, minimum_intervals:, net_terms:, pending_subscription_change:, plan:, price_intervals:, redeemed_coupon:, start_date:, status:, trial_info:, changed_resources: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::SubscriptionChangeApplyResponse::Subscription} for more details.
+        #
         #   @param id [String]
-        #   @param active_plan_phase_order [Integer, nil]
-        #   @param adjustment_intervals [Array<Orb::Models::SubscriptionChangeApplyResponse::Subscription::AdjustmentInterval>]
-        #   @param auto_collection [Boolean, nil]
+        #
+        #   @param active_plan_phase_order [Integer, nil] The current plan phase that is active, only if the subscription's plan has phase
+        #   ...
+        #
+        #   @param adjustment_intervals [Array<Orb::Models::SubscriptionChangeApplyResponse::Subscription::AdjustmentInterval>] The adjustment intervals for this subscription sorted by the start_date of the a
+        #   ...
+        #
+        #   @param auto_collection [Boolean, nil] Determines whether issued invoices for this subscription will automatically be c
+        #   ...
+        #
         #   @param billing_cycle_anchor_configuration [Orb::Models::SubscriptionChangeApplyResponse::Subscription::BillingCycleAnchorConfiguration]
-        #   @param billing_cycle_day [Integer]
+        #
+        #   @param billing_cycle_day [Integer] The day of the month on which the billing cycle is anchored. If the maximum numb
+        #   ...
+        #
         #   @param created_at [Time]
-        #   @param current_billing_period_end_date [Time, nil]
-        #   @param current_billing_period_start_date [Time, nil]
-        #   @param customer [Orb::Models::Customer]
-        #   @param default_invoice_memo [String, nil]
-        #   @param discount_intervals [Array<Orb::Models::SubscriptionChangeApplyResponse::Subscription::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionChangeApplyResponse::Subscription::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionChangeApplyResponse::Subscription::DiscountInterval::UsageDiscountInterval>]
-        #   @param end_date [Time, nil]
+        #
+        #   @param current_billing_period_end_date [Time, nil] The end of the current billing period. This is an exclusive timestamp, such that
+        #   ...
+        #
+        #   @param current_billing_period_start_date [Time, nil] The start date of the current billing period. This is an inclusive timestamp; th
+        #   ...
+        #
+        #   @param customer [Orb::Models::Customer] A customer is a buyer of your products, and the other party to the billing relat
+        #   ...
+        #
+        #   @param default_invoice_memo [String, nil] Determines the default memo on this subscriptions' invoices. Note that if this i
+        #   ...
+        #
+        #   @param discount_intervals [Array<Orb::Models::SubscriptionChangeApplyResponse::Subscription::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionChangeApplyResponse::Subscription::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionChangeApplyResponse::Subscription::DiscountInterval::UsageDiscountInterval>] The discount intervals for this subscription sorted by the start_date.
+        #
+        #   @param end_date [Time, nil] The date Orb stops billing for this subscription.
+        #
         #   @param fixed_fee_quantity_schedule [Array<Orb::Models::SubscriptionChangeApplyResponse::Subscription::FixedFeeQuantitySchedule>]
+        #
         #   @param invoicing_threshold [String, nil]
-        #   @param maximum_intervals [Array<Orb::Models::SubscriptionChangeApplyResponse::Subscription::MaximumInterval>]
-        #   @param metadata [Hash{Symbol=>String}]
-        #   @param minimum_intervals [Array<Orb::Models::SubscriptionChangeApplyResponse::Subscription::MinimumInterval>]
-        #   @param net_terms [Integer]
-        #   @param pending_subscription_change [Orb::Models::SubscriptionChangeApplyResponse::Subscription::PendingSubscriptionChange, nil]
-        #   @param plan [Orb::Models::Plan]
-        #   @param price_intervals [Array<Orb::Models::SubscriptionChangeApplyResponse::Subscription::PriceInterval>]
+        #
+        #   @param maximum_intervals [Array<Orb::Models::SubscriptionChangeApplyResponse::Subscription::MaximumInterval>] The maximum intervals for this subscription sorted by the start_date.
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #   ...
+        #
+        #   @param minimum_intervals [Array<Orb::Models::SubscriptionChangeApplyResponse::Subscription::MinimumInterval>] The minimum intervals for this subscription sorted by the start_date.
+        #
+        #   @param net_terms [Integer] Determines the difference between the invoice issue date for subscription invoic
+        #   ...
+        #
+        #   @param pending_subscription_change [Orb::Models::SubscriptionChangeApplyResponse::Subscription::PendingSubscriptionChange, nil] A pending subscription change if one exists on this subscription.
+        #
+        #   @param plan [Orb::Models::Plan] The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be
+        #   ...
+        #
+        #   @param price_intervals [Array<Orb::Models::SubscriptionChangeApplyResponse::Subscription::PriceInterval>] The price intervals for this subscription.
+        #
         #   @param redeemed_coupon [Orb::Models::SubscriptionChangeApplyResponse::Subscription::RedeemedCoupon, nil]
-        #   @param start_date [Time]
+        #
+        #   @param start_date [Time] The date Orb starts billing for this subscription.
+        #
         #   @param status [Symbol, Orb::Models::SubscriptionChangeApplyResponse::Subscription::Status]
+        #
         #   @param trial_info [Orb::Models::SubscriptionChangeApplyResponse::Subscription::TrialInfo]
-        #   @param changed_resources [Orb::Models::SubscriptionChangeApplyResponse::Subscription::ChangedResources, nil]
+        #
+        #   @param changed_resources [Orb::Models::SubscriptionChangeApplyResponse::Subscription::ChangedResources, nil] The resources that were changed as part of this operation. Only present when fet
+        #   ...
 
         class AdjustmentInterval < Orb::Internal::Type::BaseModel
           # @!attribute id
@@ -332,10 +382,14 @@ module Orb
 
           # @!method initialize(id:, adjustment:, applies_to_price_interval_ids:, end_date:, start_date:)
           #   @param id [String]
+          #
           #   @param adjustment [Orb::Models::SubscriptionChangeApplyResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionChangeApplyResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionChangeApplyResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionChangeApplyResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionChangeApplyResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]
-          #   @param applies_to_price_interval_ids [Array<String>]
-          #   @param end_date [Time, nil]
-          #   @param start_date [Time]
+          #
+          #   @param applies_to_price_interval_ids [Array<String>] The price interval IDs that this adjustment applies to.
+          #
+          #   @param end_date [Time, nil] The end date of the adjustment interval.
+          #
+          #   @param start_date [Time] The start date of the adjustment interval.
 
           # @see Orb::Models::SubscriptionChangeApplyResponse::Subscription::AdjustmentInterval#adjustment
           module Adjustment
@@ -402,12 +456,24 @@ module Orb
               required :usage_discount, Float
 
               # @!method initialize(id:, applies_to_price_ids:, is_invoice_level:, plan_phase_order:, reason:, usage_discount:, adjustment_type: :usage_discount)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionChangeApplyResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment}
+              #   for more details.
+              #
               #   @param id [String]
-              #   @param applies_to_price_ids [Array<String>]
-              #   @param is_invoice_level [Boolean]
-              #   @param plan_phase_order [Integer, nil]
-              #   @param reason [String, nil]
-              #   @param usage_discount [Float]
+              #
+              #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
+              #
+              #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
+              #   ...
+              #
+              #   @param plan_phase_order [Integer, nil] The plan phase in which this adjustment is active.
+              #
+              #   @param reason [String, nil] The reason for the adjustment.
+              #
+              #   @param usage_discount [Float] The number of usage units by which to discount the price this adjustment applies
+              #   ...
+              #
               #   @param adjustment_type [Symbol, :usage_discount]
             end
 
@@ -455,12 +521,24 @@ module Orb
               required :reason, String, nil?: true
 
               # @!method initialize(id:, amount_discount:, applies_to_price_ids:, is_invoice_level:, plan_phase_order:, reason:, adjustment_type: :amount_discount)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionChangeApplyResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment}
+              #   for more details.
+              #
               #   @param id [String]
-              #   @param amount_discount [String]
-              #   @param applies_to_price_ids [Array<String>]
-              #   @param is_invoice_level [Boolean]
-              #   @param plan_phase_order [Integer, nil]
-              #   @param reason [String, nil]
+              #
+              #   @param amount_discount [String] The amount by which to discount the prices this adjustment applies to in a given
+              #   ...
+              #
+              #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
+              #
+              #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
+              #   ...
+              #
+              #   @param plan_phase_order [Integer, nil] The plan phase in which this adjustment is active.
+              #
+              #   @param reason [String, nil] The reason for the adjustment.
+              #
               #   @param adjustment_type [Symbol, :amount_discount]
             end
 
@@ -508,12 +586,24 @@ module Orb
               required :reason, String, nil?: true
 
               # @!method initialize(id:, applies_to_price_ids:, is_invoice_level:, percentage_discount:, plan_phase_order:, reason:, adjustment_type: :percentage_discount)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionChangeApplyResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment}
+              #   for more details.
+              #
               #   @param id [String]
-              #   @param applies_to_price_ids [Array<String>]
-              #   @param is_invoice_level [Boolean]
-              #   @param percentage_discount [Float]
-              #   @param plan_phase_order [Integer, nil]
-              #   @param reason [String, nil]
+              #
+              #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
+              #
+              #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
+              #   ...
+              #
+              #   @param percentage_discount [Float] The percentage (as a value between 0 and 1) by which to discount the price inter
+              #   ...
+              #
+              #   @param plan_phase_order [Integer, nil] The plan phase in which this adjustment is active.
+              #
+              #   @param reason [String, nil] The reason for the adjustment.
+              #
               #   @param adjustment_type [Symbol, :percentage_discount]
             end
 
@@ -567,13 +657,26 @@ module Orb
               required :reason, String, nil?: true
 
               # @!method initialize(id:, applies_to_price_ids:, is_invoice_level:, item_id:, minimum_amount:, plan_phase_order:, reason:, adjustment_type: :minimum)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionChangeApplyResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment}
+              #   for more details.
+              #
               #   @param id [String]
-              #   @param applies_to_price_ids [Array<String>]
-              #   @param is_invoice_level [Boolean]
-              #   @param item_id [String]
-              #   @param minimum_amount [String]
-              #   @param plan_phase_order [Integer, nil]
-              #   @param reason [String, nil]
+              #
+              #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
+              #
+              #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
+              #   ...
+              #
+              #   @param item_id [String] The item ID that revenue from this minimum will be attributed to.
+              #
+              #   @param minimum_amount [String] The minimum amount to charge in a given billing period for the prices this adjus
+              #   ...
+              #
+              #   @param plan_phase_order [Integer, nil] The plan phase in which this adjustment is active.
+              #
+              #   @param reason [String, nil] The reason for the adjustment.
+              #
               #   @param adjustment_type [Symbol, :minimum]
             end
 
@@ -621,12 +724,24 @@ module Orb
               required :reason, String, nil?: true
 
               # @!method initialize(id:, applies_to_price_ids:, is_invoice_level:, maximum_amount:, plan_phase_order:, reason:, adjustment_type: :maximum)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionChangeApplyResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment}
+              #   for more details.
+              #
               #   @param id [String]
-              #   @param applies_to_price_ids [Array<String>]
-              #   @param is_invoice_level [Boolean]
-              #   @param maximum_amount [String]
-              #   @param plan_phase_order [Integer, nil]
-              #   @param reason [String, nil]
+              #
+              #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
+              #
+              #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
+              #   ...
+              #
+              #   @param maximum_amount [String] The maximum amount to charge in a given billing period for the prices this adjus
+              #   ...
+              #
+              #   @param plan_phase_order [Integer, nil] The plan phase in which this adjustment is active.
+              #
+              #   @param reason [String, nil] The reason for the adjustment.
+              #
               #   @param adjustment_type [Symbol, :maximum]
             end
 
@@ -662,9 +777,18 @@ module Orb
           optional :year, Integer, nil?: true
 
           # @!method initialize(day:, month: nil, year: nil)
-          #   @param day [Integer]
-          #   @param month [Integer, nil]
-          #   @param year [Integer, nil]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::SubscriptionChangeApplyResponse::Subscription::BillingCycleAnchorConfiguration}
+          #   for more details.
+          #
+          #   @param day [Integer] The day of the month on which the billing cycle is anchored. If the maximum numb
+          #   ...
+          #
+          #   @param month [Integer, nil] The month on which the billing cycle is anchored (e.g. a quarterly price anchore
+          #   ...
+          #
+          #   @param year [Integer, nil] The year on which the billing cycle is anchored (e.g. a 2 year billing cycle anc
+          #   ...
         end
 
         module DiscountInterval
@@ -718,11 +842,16 @@ module Orb
             required :start_date, Time
 
             # @!method initialize(amount_discount:, applies_to_price_ids:, applies_to_price_interval_ids:, end_date:, start_date:, discount_type: :amount)
-            #   @param amount_discount [String]
-            #   @param applies_to_price_ids [Array<String>]
-            #   @param applies_to_price_interval_ids [Array<String>]
-            #   @param end_date [Time, nil]
-            #   @param start_date [Time]
+            #   @param amount_discount [String] Only available if discount_type is `amount`.
+            #
+            #   @param applies_to_price_ids [Array<String>] The price ids that this discount interval applies to.
+            #
+            #   @param applies_to_price_interval_ids [Array<String>] The price interval ids that this discount interval applies to.
+            #
+            #   @param end_date [Time, nil] The end date of the discount interval.
+            #
+            #   @param start_date [Time] The start date of the discount interval.
+            #
             #   @param discount_type [Symbol, :amount]
           end
 
@@ -764,11 +893,21 @@ module Orb
             required :start_date, Time
 
             # @!method initialize(applies_to_price_ids:, applies_to_price_interval_ids:, end_date:, percentage_discount:, start_date:, discount_type: :percentage)
-            #   @param applies_to_price_ids [Array<String>]
-            #   @param applies_to_price_interval_ids [Array<String>]
-            #   @param end_date [Time, nil]
-            #   @param percentage_discount [Float]
-            #   @param start_date [Time]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionChangeApplyResponse::Subscription::DiscountInterval::PercentageDiscountInterval}
+            #   for more details.
+            #
+            #   @param applies_to_price_ids [Array<String>] The price ids that this discount interval applies to.
+            #
+            #   @param applies_to_price_interval_ids [Array<String>] The price interval ids that this discount interval applies to.
+            #
+            #   @param end_date [Time, nil] The end date of the discount interval.
+            #
+            #   @param percentage_discount [Float] Only available if discount_type is `percentage`.This is a number between 0 and 1
+            #   ...
+            #
+            #   @param start_date [Time] The start date of the discount interval.
+            #
             #   @param discount_type [Symbol, :percentage]
           end
 
@@ -810,11 +949,21 @@ module Orb
             required :usage_discount, Float
 
             # @!method initialize(applies_to_price_ids:, applies_to_price_interval_ids:, end_date:, start_date:, usage_discount:, discount_type: :usage)
-            #   @param applies_to_price_ids [Array<String>]
-            #   @param applies_to_price_interval_ids [Array<String>]
-            #   @param end_date [Time, nil]
-            #   @param start_date [Time]
-            #   @param usage_discount [Float]
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionChangeApplyResponse::Subscription::DiscountInterval::UsageDiscountInterval}
+            #   for more details.
+            #
+            #   @param applies_to_price_ids [Array<String>] The price ids that this discount interval applies to.
+            #
+            #   @param applies_to_price_interval_ids [Array<String>] The price interval ids that this discount interval applies to.
+            #
+            #   @param end_date [Time, nil] The end date of the discount interval.
+            #
+            #   @param start_date [Time] The start date of the discount interval.
+            #
+            #   @param usage_discount [Float] Only available if discount_type is `usage`. Number of usage units that this disc
+            #   ...
+            #
             #   @param discount_type [Symbol, :usage]
           end
 
@@ -883,11 +1032,20 @@ module Orb
           required :start_date, Time
 
           # @!method initialize(applies_to_price_ids:, applies_to_price_interval_ids:, end_date:, maximum_amount:, start_date:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param applies_to_price_interval_ids [Array<String>]
-          #   @param end_date [Time, nil]
-          #   @param maximum_amount [String]
-          #   @param start_date [Time]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::SubscriptionChangeApplyResponse::Subscription::MaximumInterval}
+          #   for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] The price ids that this maximum interval applies to.
+          #
+          #   @param applies_to_price_interval_ids [Array<String>] The price interval ids that this maximum interval applies to.
+          #
+          #   @param end_date [Time, nil] The end date of the maximum interval.
+          #
+          #   @param maximum_amount [String] The maximum amount to charge in a given billing period for the price intervals t
+          #   ...
+          #
+          #   @param start_date [Time] The start date of the maximum interval.
         end
 
         class MinimumInterval < Orb::Internal::Type::BaseModel
@@ -923,11 +1081,20 @@ module Orb
           required :start_date, Time
 
           # @!method initialize(applies_to_price_ids:, applies_to_price_interval_ids:, end_date:, minimum_amount:, start_date:)
-          #   @param applies_to_price_ids [Array<String>]
-          #   @param applies_to_price_interval_ids [Array<String>]
-          #   @param end_date [Time, nil]
-          #   @param minimum_amount [String]
-          #   @param start_date [Time]
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::SubscriptionChangeApplyResponse::Subscription::MinimumInterval}
+          #   for more details.
+          #
+          #   @param applies_to_price_ids [Array<String>] The price ids that this minimum interval applies to.
+          #
+          #   @param applies_to_price_interval_ids [Array<String>] The price interval ids that this minimum interval applies to.
+          #
+          #   @param end_date [Time, nil] The end date of the minimum interval.
+          #
+          #   @param minimum_amount [String] The minimum amount to charge in a given billing period for the price intervals t
+          #   ...
+          #
+          #   @param start_date [Time] The start date of the minimum interval.
         end
 
         # @see Orb::Models::SubscriptionChangeApplyResponse::Subscription#pending_subscription_change
@@ -1023,20 +1190,40 @@ module Orb
           required :usage_customer_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
 
           # @!method initialize(id:, billing_cycle_day:, current_billing_period_end_date:, current_billing_period_start_date:, end_date:, filter:, fixed_fee_quantity_transitions:, price:, start_date:, usage_customer_ids:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::SubscriptionChangeApplyResponse::Subscription::PriceInterval} for
+          #   more details.
+          #
           #   The Price Interval resource represents a period of time for which a price will
           #   bill on a subscription. A subscription’s price intervals define its billing
           #   behavior.
           #
           #   @param id [String]
-          #   @param billing_cycle_day [Integer]
-          #   @param current_billing_period_end_date [Time, nil]
-          #   @param current_billing_period_start_date [Time, nil]
-          #   @param end_date [Time, nil]
-          #   @param filter [String, nil]
-          #   @param fixed_fee_quantity_transitions [Array<Orb::Models::SubscriptionChangeApplyResponse::Subscription::PriceInterval::FixedFeeQuantityTransition>, nil]
-          #   @param price [Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice]
-          #   @param start_date [Time]
-          #   @param usage_customer_ids [Array<String>, nil]
+          #
+          #   @param billing_cycle_day [Integer] The day of the month that Orb bills for this price
+          #
+          #   @param current_billing_period_end_date [Time, nil] The end of the current billing period. This is an exclusive timestamp, such that
+          #   ...
+          #
+          #   @param current_billing_period_start_date [Time, nil] The start date of the current billing period. This is an inclusive timestamp; th
+          #   ...
+          #
+          #   @param end_date [Time, nil] The end date of the price interval. This is the date that Orb stops billing for
+          #   ...
+          #
+          #   @param filter [String, nil] An additional filter to apply to usage queries.
+          #
+          #   @param fixed_fee_quantity_transitions [Array<Orb::Models::SubscriptionChangeApplyResponse::Subscription::PriceInterval::FixedFeeQuantityTransition>, nil] The fixed fee quantity transitions for this price interval. This is only relevan
+          #   ...
+          #
+          #   @param price [Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice] The Price resource represents a price that can be billed on a subscription, resu
+          #   ...
+          #
+          #   @param start_date [Time] The start date of the price interval. This is the date that Orb starts billing f
+          #   ...
+          #
+          #   @param usage_customer_ids [Array<String>, nil] A list of customer IDs whose usage events will be aggregated and billed under th
+          #   ...
 
           class FixedFeeQuantityTransition < Orb::Internal::Type::BaseModel
             # @!attribute effective_date
@@ -1138,10 +1325,13 @@ module Orb
           #   fetched through the subscription changes API or if the
           #   `include_changed_resources` parameter was passed in the request.
           #
-          #   @param created_credit_notes [Array<Orb::Models::CreditNote>]
-          #   @param created_invoices [Array<Orb::Models::Invoice>]
-          #   @param voided_credit_notes [Array<Orb::Models::CreditNote>]
-          #   @param voided_invoices [Array<Orb::Models::Invoice>]
+          #   @param created_credit_notes [Array<Orb::Models::CreditNote>] The credit notes that were created as part of this operation.
+          #
+          #   @param created_invoices [Array<Orb::Models::Invoice>] The invoices that were created as part of this operation.
+          #
+          #   @param voided_credit_notes [Array<Orb::Models::CreditNote>] The credit notes that were voided as part of this operation.
+          #
+          #   @param voided_invoices [Array<Orb::Models::Invoice>] The invoices that were voided as part of this operation.
         end
       end
     end

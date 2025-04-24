@@ -3,6 +3,9 @@
 module Orb
   module Resources
     class Subscriptions
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::SubscriptionCreateParams} for more details.
+      #
       # A subscription represents the purchase of a plan by a customer. The customer is
       # identified by either the `customer_id` or the `external_customer_id`, and
       # exactly one of these fields must be provided.
@@ -262,37 +265,86 @@ module Orb
       #
       # @overload create(add_adjustments: nil, add_prices: nil, align_billing_with_subscription_start_date: nil, auto_collection: nil, aws_region: nil, billing_cycle_anchor_configuration: nil, coupon_redemption_code: nil, credits_overage_rate: nil, customer_id: nil, default_invoice_memo: nil, end_date: nil, external_customer_id: nil, external_marketplace: nil, external_marketplace_reporting_id: nil, external_plan_id: nil, filter: nil, initial_phase_order: nil, invoicing_threshold: nil, metadata: nil, net_terms: nil, per_credit_overage_amount: nil, plan_id: nil, plan_version_number: nil, price_overrides: nil, remove_adjustments: nil, remove_prices: nil, replace_adjustments: nil, replace_prices: nil, start_date: nil, trial_duration_days: nil, usage_customer_ids: nil, request_options: {})
       #
-      # @param add_adjustments [Array<Orb::Models::SubscriptionCreateParams::AddAdjustment>, nil]
-      # @param add_prices [Array<Orb::Models::SubscriptionCreateParams::AddPrice>, nil]
+      # @param add_adjustments [Array<Orb::Models::SubscriptionCreateParams::AddAdjustment>, nil] Additional adjustments to be added to the subscription. (Only available for acco
+      # ...
+      #
+      # @param add_prices [Array<Orb::Models::SubscriptionCreateParams::AddPrice>, nil] Additional prices to be added to the subscription. (Only available for accounts
+      # ...
+      #
       # @param align_billing_with_subscription_start_date [Boolean]
-      # @param auto_collection [Boolean, nil]
+      #
+      # @param auto_collection [Boolean, nil] Determines whether issued invoices for this subscription will automatically be c
+      # ...
+      #
       # @param aws_region [String, nil]
+      #
       # @param billing_cycle_anchor_configuration [Orb::Models::SubscriptionCreateParams::BillingCycleAnchorConfiguration, nil]
-      # @param coupon_redemption_code [String, nil]
+      #
+      # @param coupon_redemption_code [String, nil] Redemption code to be used for this subscription. If the coupon cannot be found
+      # ...
+      #
       # @param credits_overage_rate [Float, nil]
+      #
       # @param customer_id [String, nil]
-      # @param default_invoice_memo [String, nil]
+      #
+      # @param default_invoice_memo [String, nil] Determines the default memo on this subscription's invoices. Note that if this i
+      # ...
+      #
       # @param end_date [Time, nil]
+      #
       # @param external_customer_id [String, nil]
+      #
       # @param external_marketplace [Symbol, Orb::Models::SubscriptionCreateParams::ExternalMarketplace, nil]
+      #
       # @param external_marketplace_reporting_id [String, nil]
-      # @param external_plan_id [String, nil]
-      # @param filter [String, nil]
-      # @param initial_phase_order [Integer, nil]
-      # @param invoicing_threshold [String, nil]
-      # @param metadata [Hash{Symbol=>String, nil}, nil]
-      # @param net_terms [Integer, nil]
+      #
+      # @param external_plan_id [String, nil] The external_plan_id of the plan that the given subscription should be switched
+      # ...
+      #
+      # @param filter [String, nil] An additional filter to apply to usage queries. This filter must be expressed as
+      # ...
+      #
+      # @param initial_phase_order [Integer, nil] The phase of the plan to start with
+      #
+      # @param invoicing_threshold [String, nil] When this subscription's accrued usage reaches this threshold, an invoice will b
+      # ...
+      #
+      # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+      # ...
+      #
+      # @param net_terms [Integer, nil] The net terms determines the difference between the invoice date and the issue d
+      # ...
+      #
       # @param per_credit_overage_amount [Float, nil]
-      # @param plan_id [String, nil]
-      # @param plan_version_number [Integer, nil]
-      # @param price_overrides [Array<Object>, nil]
-      # @param remove_adjustments [Array<Orb::Models::SubscriptionCreateParams::RemoveAdjustment>, nil]
-      # @param remove_prices [Array<Orb::Models::SubscriptionCreateParams::RemovePrice>, nil]
-      # @param replace_adjustments [Array<Orb::Models::SubscriptionCreateParams::ReplaceAdjustment>, nil]
-      # @param replace_prices [Array<Orb::Models::SubscriptionCreateParams::ReplacePrice>, nil]
+      #
+      # @param plan_id [String, nil] The plan that the given subscription should be switched to. Note that either thi
+      # ...
+      #
+      # @param plan_version_number [Integer, nil] Specifies which version of the plan to subscribe to. If null, the default versio
+      # ...
+      #
+      # @param price_overrides [Array<Object>, nil] Optionally provide a list of overrides for prices on the plan
+      #
+      # @param remove_adjustments [Array<Orb::Models::SubscriptionCreateParams::RemoveAdjustment>, nil] Plan adjustments to be removed from the subscription. (Only available for accoun
+      # ...
+      #
+      # @param remove_prices [Array<Orb::Models::SubscriptionCreateParams::RemovePrice>, nil] Plan prices to be removed from the subscription. (Only available for accounts th
+      # ...
+      #
+      # @param replace_adjustments [Array<Orb::Models::SubscriptionCreateParams::ReplaceAdjustment>, nil] Plan adjustments to be replaced with additional adjustments on the subscription.
+      # ...
+      #
+      # @param replace_prices [Array<Orb::Models::SubscriptionCreateParams::ReplacePrice>, nil] Plan prices to be replaced with additional prices on the subscription. (Only ava
+      # ...
+      #
       # @param start_date [Time, nil]
-      # @param trial_duration_days [Integer, nil]
-      # @param usage_customer_ids [Array<String>, nil]
+      #
+      # @param trial_duration_days [Integer, nil] The duration of the trial period in days. If not provided, this defaults to the
+      # ...
+      #
+      # @param usage_customer_ids [Array<String>, nil] A list of customer IDs whose usage events will be aggregated and billed under th
+      # ...
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::SubscriptionCreateResponse]
@@ -309,6 +361,9 @@ module Orb
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::SubscriptionUpdateParams} for more details.
+      #
       # This endpoint can be used to update the `metadata`, `net terms`,
       # `auto_collection`, `invoicing_threshold`, and `default_invoice_memo` properties
       # on a subscription.
@@ -316,11 +371,22 @@ module Orb
       # @overload update(subscription_id, auto_collection: nil, default_invoice_memo: nil, invoicing_threshold: nil, metadata: nil, net_terms: nil, request_options: {})
       #
       # @param subscription_id [String]
-      # @param auto_collection [Boolean, nil]
-      # @param default_invoice_memo [String, nil]
-      # @param invoicing_threshold [String, nil]
-      # @param metadata [Hash{Symbol=>String, nil}, nil]
-      # @param net_terms [Integer, nil]
+      #
+      # @param auto_collection [Boolean, nil] Determines whether issued invoices for this subscription will automatically be c
+      # ...
+      #
+      # @param default_invoice_memo [String, nil] Determines the default memo on this subscription's invoices. Note that if this i
+      # ...
+      #
+      # @param invoicing_threshold [String, nil] When this subscription's accrued usage reaches this threshold, an invoice will b
+      # ...
+      #
+      # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+      # ...
+      #
+      # @param net_terms [Integer, nil] Determines the difference between the invoice issue date for subscription invoic
+      # ...
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::Subscription]
@@ -337,6 +403,9 @@ module Orb
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::SubscriptionListParams} for more details.
+      #
       # This endpoint returns a list of all subscriptions for an account as a
       # [paginated](/api-reference/pagination) list, ordered starting from the most
       # recently created subscription. For a full discussion of the subscription
@@ -350,14 +419,24 @@ module Orb
       # @overload list(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, customer_id: nil, external_customer_id: nil, limit: nil, status: nil, request_options: {})
       #
       # @param created_at_gt [Time, nil]
+      #
       # @param created_at_gte [Time, nil]
+      #
       # @param created_at_lt [Time, nil]
+      #
       # @param created_at_lte [Time, nil]
-      # @param cursor [String, nil]
+      #
+      # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
+      # ...
+      #
       # @param customer_id [Array<String>, nil]
+      #
       # @param external_customer_id [Array<String>, nil]
-      # @param limit [Integer]
+      #
+      # @param limit [Integer] The number of items to fetch. Defaults to 20.
+      #
       # @param status [Symbol, Orb::Models::SubscriptionListParams::Status, nil]
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Internal::Page<Orb::Models::Subscription>]
@@ -380,6 +459,9 @@ module Orb
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::SubscriptionCancelParams} for more details.
+      #
       # This endpoint can be used to cancel an existing subscription. It returns the
       # serialized subscription object with an `end_date` parameter that signifies when
       # the subscription will transition to an ended state.
@@ -445,9 +527,15 @@ module Orb
       # @overload cancel(subscription_id, cancel_option:, allow_invoice_credit_or_void: nil, cancellation_date: nil, request_options: {})
       #
       # @param subscription_id [String]
-      # @param cancel_option [Symbol, Orb::Models::SubscriptionCancelParams::CancelOption]
-      # @param allow_invoice_credit_or_void [Boolean, nil]
-      # @param cancellation_date [Time, nil]
+      #
+      # @param cancel_option [Symbol, Orb::Models::SubscriptionCancelParams::CancelOption] Determines the timing of subscription cancellation
+      #
+      # @param allow_invoice_credit_or_void [Boolean, nil] If false, this request will fail if it would void an issued invoice or create a
+      # ...
+      #
+      # @param cancellation_date [Time, nil] The date that the cancellation should take effect. This parameter can only be pa
+      # ...
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::SubscriptionCancelResponse]
@@ -484,6 +572,9 @@ module Orb
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::SubscriptionFetchCostsParams} for more details.
+      #
       # This endpoint is used to fetch a day-by-day snapshot of a subscription's costs
       # in Orb, calculated by applying pricing information to the underlying usage (see
       # the [subscription usage endpoint](fetch-subscription-usage) to fetch usage per
@@ -498,10 +589,16 @@ module Orb
       # @overload fetch_costs(subscription_id, currency: nil, timeframe_end: nil, timeframe_start: nil, view_mode: nil, request_options: {})
       #
       # @param subscription_id [String]
-      # @param currency [String, nil]
-      # @param timeframe_end [Time, nil]
-      # @param timeframe_start [Time, nil]
-      # @param view_mode [Symbol, Orb::Models::SubscriptionFetchCostsParams::ViewMode, nil]
+      #
+      # @param currency [String, nil] The currency or custom pricing unit to use.
+      #
+      # @param timeframe_end [Time, nil] Costs returned are exclusive of `timeframe_end`.
+      #
+      # @param timeframe_start [Time, nil] Costs returned are inclusive of `timeframe_start`.
+      #
+      # @param view_mode [Symbol, Orb::Models::SubscriptionFetchCostsParams::ViewMode, nil] Controls whether Orb returns cumulative costs since the start of the billing per
+      # ...
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::SubscriptionFetchCostsResponse]
@@ -518,6 +615,9 @@ module Orb
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::SubscriptionFetchScheduleParams} for more details.
+      #
       # This endpoint returns a [paginated](/api-reference/pagination) list of all plans
       # associated with a subscription along with their start and end dates. This list
       # contains the subscription's initial plan along with past and future plan
@@ -526,12 +626,20 @@ module Orb
       # @overload fetch_schedule(subscription_id, cursor: nil, limit: nil, start_date_gt: nil, start_date_gte: nil, start_date_lt: nil, start_date_lte: nil, request_options: {})
       #
       # @param subscription_id [String]
-      # @param cursor [String, nil]
-      # @param limit [Integer]
+      #
+      # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
+      # ...
+      #
+      # @param limit [Integer] The number of items to fetch. Defaults to 20.
+      #
       # @param start_date_gt [Time, nil]
+      #
       # @param start_date_gte [Time, nil]
+      #
       # @param start_date_lt [Time, nil]
+      #
       # @param start_date_lte [Time, nil]
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Internal::Page<Orb::Models::SubscriptionFetchScheduleResponse>]
@@ -554,6 +662,9 @@ module Orb
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::SubscriptionFetchUsageParams} for more details.
+      #
       # This endpoint is used to fetch a subscription's usage in Orb. Especially when
       # combined with optional query parameters, this endpoint is a powerful way to
       # build visualizations on top of Orb's event data and metrics.
@@ -752,16 +863,29 @@ module Orb
       # @overload fetch_usage(subscription_id, billable_metric_id: nil, first_dimension_key: nil, first_dimension_value: nil, granularity: nil, group_by: nil, second_dimension_key: nil, second_dimension_value: nil, timeframe_end: nil, timeframe_start: nil, view_mode: nil, request_options: {})
       #
       # @param subscription_id [String]
-      # @param billable_metric_id [String, nil]
+      #
+      # @param billable_metric_id [String, nil] When specified in conjunction with `group_by`, this parameter filters usage to a
+      # ...
+      #
       # @param first_dimension_key [String, nil]
+      #
       # @param first_dimension_value [String, nil]
-      # @param granularity [Symbol, Orb::Models::SubscriptionFetchUsageParams::Granularity, nil]
-      # @param group_by [String, nil]
+      #
+      # @param granularity [Symbol, Orb::Models::SubscriptionFetchUsageParams::Granularity, nil] This determines the windowing of usage reporting.
+      #
+      # @param group_by [String, nil] Groups per-price usage by the key provided.
+      #
       # @param second_dimension_key [String, nil]
+      #
       # @param second_dimension_value [String, nil]
-      # @param timeframe_end [Time, nil]
-      # @param timeframe_start [Time, nil]
-      # @param view_mode [Symbol, Orb::Models::SubscriptionFetchUsageParams::ViewMode, nil]
+      #
+      # @param timeframe_end [Time, nil] Usage returned is exclusive of `timeframe_end`.
+      #
+      # @param timeframe_start [Time, nil] Usage returned is inclusive of `timeframe_start`.
+      #
+      # @param view_mode [Symbol, Orb::Models::SubscriptionFetchUsageParams::ViewMode, nil] Controls whether Orb returns cumulative usage since the start of the billing per
+      # ...
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage]
@@ -778,6 +902,9 @@ module Orb
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::SubscriptionPriceIntervalsParams} for more details.
+      #
       # This endpoint is used to add and edit subscription
       # [price intervals](/api-reference/price-interval/add-or-edit-price-intervals). By
       # making modifications to a subscription’s price intervals, you can
@@ -854,11 +981,18 @@ module Orb
       # @overload price_intervals(subscription_id, add: nil, add_adjustments: nil, allow_invoice_credit_or_void: nil, edit: nil, edit_adjustments: nil, request_options: {})
       #
       # @param subscription_id [String]
-      # @param add [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add>]
-      # @param add_adjustments [Array<Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment>]
-      # @param allow_invoice_credit_or_void [Boolean, nil]
-      # @param edit [Array<Orb::Models::SubscriptionPriceIntervalsParams::Edit>]
-      # @param edit_adjustments [Array<Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment>]
+      #
+      # @param add [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add>] A list of price intervals to add to the subscription.
+      #
+      # @param add_adjustments [Array<Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment>] A list of adjustments to add to the subscription.
+      #
+      # @param allow_invoice_credit_or_void [Boolean, nil] If false, this request will fail if it would void an issued invoice or create a
+      # ...
+      #
+      # @param edit [Array<Orb::Models::SubscriptionPriceIntervalsParams::Edit>] A list of price intervals to edit on the subscription.
+      #
+      # @param edit_adjustments [Array<Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment>] A list of adjustments to edit on the subscription.
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::SubscriptionPriceIntervalsResponse]
@@ -875,6 +1009,9 @@ module Orb
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::SubscriptionSchedulePlanChangeParams} for more details.
+      #
       # This endpoint can be used to change an existing subscription's plan. It returns
       # the serialized updated subscription object.
       #
@@ -1062,32 +1199,79 @@ module Orb
       # @overload schedule_plan_change(subscription_id, change_option:, add_adjustments: nil, add_prices: nil, align_billing_with_plan_change_date: nil, auto_collection: nil, billing_cycle_alignment: nil, billing_cycle_anchor_configuration: nil, change_date: nil, coupon_redemption_code: nil, credits_overage_rate: nil, default_invoice_memo: nil, external_plan_id: nil, filter: nil, initial_phase_order: nil, invoicing_threshold: nil, net_terms: nil, per_credit_overage_amount: nil, plan_id: nil, plan_version_number: nil, price_overrides: nil, remove_adjustments: nil, remove_prices: nil, replace_adjustments: nil, replace_prices: nil, trial_duration_days: nil, usage_customer_ids: nil, request_options: {})
       #
       # @param subscription_id [String]
+      #
       # @param change_option [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ChangeOption]
-      # @param add_adjustments [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment>, nil]
-      # @param add_prices [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice>, nil]
-      # @param align_billing_with_plan_change_date [Boolean, nil]
-      # @param auto_collection [Boolean, nil]
-      # @param billing_cycle_alignment [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAlignment, nil]
+      #
+      # @param add_adjustments [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment>, nil] Additional adjustments to be added to the subscription. (Only available for acco
+      # ...
+      #
+      # @param add_prices [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice>, nil] Additional prices to be added to the subscription. (Only available for accounts
+      # ...
+      #
+      # @param align_billing_with_plan_change_date [Boolean, nil] [DEPRECATED] Use billing_cycle_alignment instead. Reset billing periods to be al
+      # ...
+      #
+      # @param auto_collection [Boolean, nil] Determines whether issued invoices for this subscription will automatically be c
+      # ...
+      #
+      # @param billing_cycle_alignment [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAlignment, nil] Reset billing periods to be aligned with the plan change's effective date or sta
+      # ...
+      #
       # @param billing_cycle_anchor_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAnchorConfiguration, nil]
-      # @param change_date [Time, nil]
-      # @param coupon_redemption_code [String, nil]
+      #
+      # @param change_date [Time, nil] The date that the plan change should take effect. This parameter can only be pas
+      # ...
+      #
+      # @param coupon_redemption_code [String, nil] Redemption code to be used for this subscription. If the coupon cannot be found
+      # ...
+      #
       # @param credits_overage_rate [Float, nil]
-      # @param default_invoice_memo [String, nil]
-      # @param external_plan_id [String, nil]
-      # @param filter [String, nil]
-      # @param initial_phase_order [Integer, nil]
-      # @param invoicing_threshold [String, nil]
-      # @param net_terms [Integer, nil]
+      #
+      # @param default_invoice_memo [String, nil] Determines the default memo on this subscription's invoices. Note that if this i
+      # ...
+      #
+      # @param external_plan_id [String, nil] The external_plan_id of the plan that the given subscription should be switched
+      # ...
+      #
+      # @param filter [String, nil] An additional filter to apply to usage queries. This filter must be expressed as
+      # ...
+      #
+      # @param initial_phase_order [Integer, nil] The phase of the plan to start with
+      #
+      # @param invoicing_threshold [String, nil] When this subscription's accrued usage reaches this threshold, an invoice will b
+      # ...
+      #
+      # @param net_terms [Integer, nil] The net terms determines the difference between the invoice date and the issue d
+      # ...
+      #
       # @param per_credit_overage_amount [Float, nil]
-      # @param plan_id [String, nil]
-      # @param plan_version_number [Integer, nil]
-      # @param price_overrides [Array<Object>, nil]
-      # @param remove_adjustments [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::RemoveAdjustment>, nil]
-      # @param remove_prices [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::RemovePrice>, nil]
-      # @param replace_adjustments [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment>, nil]
-      # @param replace_prices [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice>, nil]
-      # @param trial_duration_days [Integer, nil]
-      # @param usage_customer_ids [Array<String>, nil]
+      #
+      # @param plan_id [String, nil] The plan that the given subscription should be switched to. Note that either thi
+      # ...
+      #
+      # @param plan_version_number [Integer, nil] Specifies which version of the plan to change to. If null, the default version w
+      # ...
+      #
+      # @param price_overrides [Array<Object>, nil] Optionally provide a list of overrides for prices on the plan
+      #
+      # @param remove_adjustments [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::RemoveAdjustment>, nil] Plan adjustments to be removed from the subscription. (Only available for accoun
+      # ...
+      #
+      # @param remove_prices [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::RemovePrice>, nil] Plan prices to be removed from the subscription. (Only available for accounts th
+      # ...
+      #
+      # @param replace_adjustments [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment>, nil] Plan adjustments to be replaced with additional adjustments on the subscription.
+      # ...
+      #
+      # @param replace_prices [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice>, nil] Plan prices to be replaced with additional prices on the subscription. (Only ava
+      # ...
+      #
+      # @param trial_duration_days [Integer, nil] The duration of the trial period in days. If not provided, this defaults to the
+      # ...
+      #
+      # @param usage_customer_ids [Array<String>, nil] A list of customer IDs whose usage events will be aggregated and billed under th
+      # ...
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::SubscriptionSchedulePlanChangeResponse]
@@ -1104,14 +1288,22 @@ module Orb
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::SubscriptionTriggerPhaseParams} for more details.
+      #
       # Manually trigger a phase, effective the given date (or the current time, if not
       # specified).
       #
       # @overload trigger_phase(subscription_id, allow_invoice_credit_or_void: nil, effective_date: nil, request_options: {})
       #
       # @param subscription_id [String]
-      # @param allow_invoice_credit_or_void [Boolean, nil]
-      # @param effective_date [Date, nil]
+      #
+      # @param allow_invoice_credit_or_void [Boolean, nil] If false, this request will fail if it would void an issued invoice or create a
+      # ...
+      #
+      # @param effective_date [Date, nil] The date on which the phase change should take effect. If not provided, defaults
+      # ...
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::SubscriptionTriggerPhaseResponse]
@@ -1161,7 +1353,9 @@ module Orb
       # @overload unschedule_fixed_fee_quantity_updates(subscription_id, price_id:, request_options: {})
       #
       # @param subscription_id [String]
-      # @param price_id [String]
+      #
+      # @param price_id [String] Price for which the updates should be cleared. Must be a fixed fee.
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse]
@@ -1198,6 +1392,9 @@ module Orb
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::SubscriptionUpdateFixedFeeQuantityParams} for more details.
+      #
       # This endpoint can be used to update the quantity for a fixed fee.
       #
       # To be eligible, the subscription must currently be active and the price
@@ -1216,11 +1413,20 @@ module Orb
       # @overload update_fixed_fee_quantity(subscription_id, price_id:, quantity:, allow_invoice_credit_or_void: nil, change_option: nil, effective_date: nil, request_options: {})
       #
       # @param subscription_id [String]
-      # @param price_id [String]
+      #
+      # @param price_id [String] Price for which the quantity should be updated. Must be a fixed fee.
+      #
       # @param quantity [Float]
-      # @param allow_invoice_credit_or_void [Boolean, nil]
-      # @param change_option [Symbol, Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption]
-      # @param effective_date [Date, nil]
+      #
+      # @param allow_invoice_credit_or_void [Boolean, nil] If false, this request will fail if it would void an issued invoice or create a
+      # ...
+      #
+      # @param change_option [Symbol, Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption] Determines when the change takes effect. Note that if `effective_date` is specif
+      # ...
+      #
+      # @param effective_date [Date, nil] The date that the quantity change should take effect, localized to the customer'
+      # ...
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse]
@@ -1237,6 +1443,9 @@ module Orb
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::SubscriptionUpdateTrialParams} for more details.
+      #
       # This endpoint is used to update the trial end date for a subscription. The new
       # trial end date must be within the time range of the current plan (i.e. the new
       # trial end date must be on or after the subscription's start date on the current
@@ -1259,8 +1468,13 @@ module Orb
       # @overload update_trial(subscription_id, trial_end_date:, shift: nil, request_options: {})
       #
       # @param subscription_id [String]
-      # @param trial_end_date [Time, Symbol, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate]
-      # @param shift [Boolean]
+      #
+      # @param trial_end_date [Time, Symbol, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate] The new date that the trial should end, or the literal string `immediate` to end
+      # ...
+      #
+      # @param shift [Boolean] If true, shifts subsequent price and adjustment intervals (preserving their dura
+      # ...
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::SubscriptionUpdateTrialResponse]
