@@ -200,8 +200,12 @@ class Orb::Test::UtilFormDataEncodingTest < Minitest::Test
     file = Pathname(__FILE__)
     headers = {"content-type" => "multipart/form-data"}
     cases = {
+      "abc" => "abc",
       StringIO.new("abc") => "abc",
-      file => /^class Orb/
+      Orb::FilePart.new("abc") => "abc",
+      Orb::FilePart.new(StringIO.new("abc")) => "abc",
+      file => /^class Orb/,
+      Orb::FilePart.new(file) => /^class Orb/
     }
     cases.each do |body, val|
       encoded = Orb::Internal::Util.encode_content(headers, body)
@@ -219,7 +223,9 @@ class Orb::Test::UtilFormDataEncodingTest < Minitest::Test
       {a: 2, b: nil} => {"a" => "2", "b" => "null"},
       {a: 2, b: [1, 2, 3]} => {"a" => "2", "b" => "1"},
       {strio: StringIO.new("a")} => {"strio" => "a"},
-      {pathname: Pathname(__FILE__)} => {"pathname" => -> { _1.read in /^class Orb/ }}
+      {strio: Orb::FilePart.new("a")} => {"strio" => "a"},
+      {pathname: Pathname(__FILE__)} => {"pathname" => -> { _1.read in /^class Orb/ }},
+      {pathname: Orb::FilePart.new(Pathname(__FILE__))} => {"pathname" => -> { _1.read in /^class Orb/ }}
     }
     cases.each do |body, testcase|
       encoded = Orb::Internal::Util.encode_content(headers, body)
