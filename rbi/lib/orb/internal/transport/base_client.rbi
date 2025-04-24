@@ -90,7 +90,7 @@ module Orb
 
         # @api private
         sig { returns(Orb::Internal::Transport::PooledNetRequester) }
-        attr_accessor :requester
+        attr_reader :requester
 
         # @api private
         sig do
