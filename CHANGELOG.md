@@ -1,5 +1,39 @@
 # Changelog
 
+## 0.3.0 (2025-04-25)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/orbcorp/orb-ruby/compare/v0.2.0...v0.3.0)
+
+### Features
+
+* implement `#hash` for data containers ([ba49d29](https://github.com/orbcorp/orb-ruby/commit/ba49d294bfa09eca64b9a137c730c452318a56d4))
+* support specifying content-type with FilePart class ([200103f](https://github.com/orbcorp/orb-ruby/commit/200103fddf8b1d524caa1cb3a126d72b476315f4))
+* support webmock for testing ([ca1c497](https://github.com/orbcorp/orb-ruby/commit/ca1c497d57309c0bd2518070a0f8af3e0c639be4))
+
+
+### Bug Fixes
+
+* ensure gem release is unaffected by renaming ([3e0fd9e](https://github.com/orbcorp/orb-ruby/commit/3e0fd9e21bb02529c0513b7a1e2fbdfa7d80b049))
+* make a typo for `FilePart.content` ([f62d185](https://github.com/orbcorp/orb-ruby/commit/f62d18544ccd90a55bdfc520cbea03c1ea7583d1))
+
+
+### Chores
+
+* broadly detect json family of content-type headers ([d4e5904](https://github.com/orbcorp/orb-ruby/commit/d4e5904287b32db4efe997b617310670961be6b1))
+* **ci:** add timeout thresholds for CI jobs ([450f552](https://github.com/orbcorp/orb-ruby/commit/450f552e892e75242d3ec3e3e0c98605e1ac0b61))
+* **ci:** only use depot for staging repos ([fd387ce](https://github.com/orbcorp/orb-ruby/commit/fd387ce6f9dff526039887480712e8b0c35595b5))
+* **ci:** run on more branches and use depot runners ([7f5a6c3](https://github.com/orbcorp/orb-ruby/commit/7f5a6c320853a23d5ac339ea368d7cad7bbc35c5))
+* documentation improvements ([6e04e50](https://github.com/orbcorp/orb-ruby/commit/6e04e5062b468fdf1f40fe3cd491b9fbb610bc5c))
+* explicitly mark apis public under `Internal` module ([d19524a](https://github.com/orbcorp/orb-ruby/commit/d19524a2a412b98ac4529b46c02e249e8a587c34))
+* **internal:** improve response envelope unwrap functionality ([b3f0632](https://github.com/orbcorp/orb-ruby/commit/b3f0632eae23d838395933fe4a334fd23dff46fd))
+* **internal:** minor type annotation improvements ([cf871bc](https://github.com/orbcorp/orb-ruby/commit/cf871bca5feacf6e95351418a3553c774889ccee))
+* **internal:** version bump ([6b83db6](https://github.com/orbcorp/orb-ruby/commit/6b83db65c3d405b7f7c5e20a93be6428dcf7fc08))
+* make sorbet enums easier to read ([3793346](https://github.com/orbcorp/orb-ruby/commit/3793346c4a6cd6ff18aad64e4c48933a5159ebe1))
+* show truncated parameter docs in yard ([0fb86bd](https://github.com/orbcorp/orb-ruby/commit/0fb86bd1313bb300e565f873e5a181f652ce88fa))
+* simplify yard annotations by removing most `@!parse` directives ([a94843b](https://github.com/orbcorp/orb-ruby/commit/a94843be3f13ed22ae07ded47bff22e044525f0b))
+* update README with recommended editor plugins ([50771fd](https://github.com/orbcorp/orb-ruby/commit/50771fdf28dcee2856522c5c29a491873ec14a4a))
+* use `@!method` instead of `@!parse` for virtual method type definitions ([21cfdfc](https://github.com/orbcorp/orb-ruby/commit/21cfdfcc91f9dbd04831e502b990f9118f4b5eb0))
+
 ## 0.2.0 (2025-04-17)
 
 Full Changelog: [v0.1.3...v0.2.0](https://github.com/orbcorp/orb-ruby/compare/v0.1.3...v0.2.0)
