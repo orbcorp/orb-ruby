@@ -35,7 +35,7 @@ module Orb
               page: T.nilable(T::Class[Orb::Internal::Type::BasePage[Orb::Internal::Type::BaseModel]]),
               stream: T.nilable(T::Class[T.anything]),
               model: T.nilable(Orb::Internal::Type::Converter::Input),
-              options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+              options: T.nilable(Orb::RequestOpts)
             }
           end
 
@@ -185,7 +185,7 @@ module Orb
             page: T.nilable(T::Class[Orb::Internal::Type::BasePage[Orb::Internal::Type::BaseModel]]),
             stream: T.nilable(T::Class[T.anything]),
             model: T.nilable(Orb::Internal::Type::Converter::Input),
-            options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+            options: T.nilable(Orb::RequestOpts)
           )
             .returns(T.anything)
         end

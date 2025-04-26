@@ -23,7 +23,7 @@ module Orb
               active_from: T.nilable(Time),
               expires_after: T.nilable(Integer),
               expires_after_unit: T.nilable(Orb::Models::Customers::Credits::TopUpCreateParams::ExpiresAfterUnit::OrSymbol),
-              request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+              request_options: Orb::RequestOpts
             )
               .returns(Orb::Models::Customers::Credits::TopUpCreateResponse)
           end
@@ -57,7 +57,7 @@ module Orb
               customer_id: String,
               cursor: T.nilable(String),
               limit: Integer,
-              request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+              request_options: Orb::RequestOpts
             )
               .returns(Orb::Internal::Page[Orb::Models::Customers::Credits::TopUpListResponse])
           end
@@ -72,14 +72,7 @@ module Orb
           ); end
           # This deactivates the top-up and voids any invoices associated with pending
           # credit blocks purchased through the top-up.
-          sig do
-            params(
-              top_up_id: String,
-              customer_id: String,
-              request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-            )
-              .void
-          end
+          sig { params(top_up_id: String, customer_id: String, request_options: Orb::RequestOpts).void }
           def delete(top_up_id, customer_id:, request_options: {}); end
 
           # This endpoint allows you to create a new top-up for a specified customer's
@@ -103,7 +96,7 @@ module Orb
               active_from: T.nilable(Time),
               expires_after: T.nilable(Integer),
               expires_after_unit: T.nilable(Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams::ExpiresAfterUnit::OrSymbol),
-              request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+              request_options: Orb::RequestOpts
             )
               .returns(Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse)
           end
@@ -134,12 +127,7 @@ module Orb
           # This deactivates the top-up and voids any invoices associated with pending
           # credit blocks purchased through the top-up.
           sig do
-            params(
-              top_up_id: String,
-              external_customer_id: String,
-              request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-            )
-              .void
+            params(top_up_id: String, external_customer_id: String, request_options: Orb::RequestOpts).void
           end
           def delete_by_external_id(top_up_id, external_customer_id:, request_options: {}); end
 
@@ -149,7 +137,7 @@ module Orb
               external_customer_id: String,
               cursor: T.nilable(String),
               limit: Integer,
-              request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+              request_options: Orb::RequestOpts
             )
               .returns(Orb::Internal::Page[Orb::Models::Customers::Credits::TopUpListByExternalIDResponse])
           end

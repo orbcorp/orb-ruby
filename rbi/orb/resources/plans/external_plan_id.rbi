@@ -13,7 +13,7 @@ module Orb
             other_external_plan_id: String,
             external_plan_id: T.nilable(String),
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+            request_options: Orb::RequestOpts
           )
             .returns(Orb::Models::Plan)
         end
@@ -45,13 +45,7 @@ module Orb
         # object. The `model_type` field determines the key for the configuration object
         # that is present. A detailed explanation of price types can be found in the
         # [Price schema](/core-concepts#plan-and-price). "
-        sig do
-          params(
-            external_plan_id: String,
-            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-          )
-            .returns(Orb::Models::Plan)
-        end
+        sig { params(external_plan_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::Plan) }
         def fetch(external_plan_id, request_options: {}); end
 
         # @api private

@@ -11,7 +11,7 @@ module Orb
           params(
             external_price_id: String,
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+            request_options: Orb::RequestOpts
           )
             .returns(
               T.any(
@@ -58,10 +58,7 @@ module Orb
         # [price creation API](/api-reference/price/create-price) for more information
         # about external price aliases.
         sig do
-          params(
-            external_price_id: String,
-            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-          )
+          params(external_price_id: String, request_options: Orb::RequestOpts)
             .returns(
               T.any(
                 Orb::Models::Price::UnitPrice,

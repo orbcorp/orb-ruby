@@ -6,7 +6,7 @@ module Orb
       # @api private
       module RequestParameters
         # Options to specify HTTP behaviour for this request.
-        sig { returns(T.any(Orb::RequestOptions, Orb::Internal::AnyHash)) }
+        sig { returns(Orb::RequestOpts) }
         attr_accessor :request_options
 
         # @api private

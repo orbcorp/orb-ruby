@@ -13,7 +13,7 @@ module Orb
           name: String,
           sql: String,
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+          request_options: Orb::RequestOpts
         )
           .returns(Orb::Models::BillableMetric)
       end
@@ -39,7 +39,7 @@ module Orb
         params(
           metric_id: String,
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+          request_options: Orb::RequestOpts
         )
           .returns(Orb::Models::BillableMetric)
       end
@@ -62,7 +62,7 @@ module Orb
           created_at_lte: T.nilable(Time),
           cursor: T.nilable(String),
           limit: Integer,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+          request_options: Orb::RequestOpts
         )
           .returns(Orb::Internal::Page[Orb::Models::BillableMetric])
       end
@@ -80,13 +80,7 @@ module Orb
       ); end
       # This endpoint is used to list [metrics](/core-concepts#metric). It returns
       # information about the metrics including its name, description, and item.
-      sig do
-        params(
-          metric_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-        )
-          .returns(Orb::Models::BillableMetric)
-      end
+      sig { params(metric_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::BillableMetric) }
       def fetch(metric_id, request_options: {}); end
 
       # @api private
