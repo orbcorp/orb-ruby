@@ -10,7 +10,7 @@ module Orb
           line_items: T::Array[T.any(Orb::Models::CreditNoteCreateParams::LineItem, Orb::Internal::AnyHash)],
           memo: T.nilable(String),
           reason: T.nilable(Orb::Models::CreditNoteCreateParams::Reason::OrSymbol),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+          request_options: Orb::RequestOpts
         )
           .returns(Orb::Models::CreditNote)
       end
@@ -33,7 +33,7 @@ module Orb
           created_at_lte: T.nilable(Time),
           cursor: T.nilable(String),
           limit: Integer,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+          request_options: Orb::RequestOpts
         )
           .returns(Orb::Internal::Page[Orb::Models::CreditNote])
       end
@@ -51,13 +51,7 @@ module Orb
       ); end
       # This endpoint is used to fetch a single [`Credit Note`](/invoicing/credit-notes)
       # given an identifier.
-      sig do
-        params(
-          credit_note_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-        )
-          .returns(Orb::Models::CreditNote)
-      end
+      sig { params(credit_note_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::CreditNote) }
       def fetch(credit_note_id, request_options: {}); end
 
       # @api private

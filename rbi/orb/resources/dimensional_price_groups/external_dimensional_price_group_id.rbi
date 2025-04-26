@@ -6,10 +6,7 @@ module Orb
       class ExternalDimensionalPriceGroupID
         # Fetch dimensional price group by external ID
         sig do
-          params(
-            external_dimensional_price_group_id: String,
-            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-          )
+          params(external_dimensional_price_group_id: String, request_options: Orb::RequestOpts)
             .returns(Orb::Models::DimensionalPriceGroup)
         end
         def retrieve(external_dimensional_price_group_id, request_options: {}); end

@@ -60,7 +60,7 @@ module Orb
           invoice_grouping_key: T.nilable(String),
           invoicing_cycle_configuration: T.nilable(T.any(Orb::Models::PriceCreateParams::InvoicingCycleConfiguration, Orb::Internal::AnyHash)),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+          request_options: Orb::RequestOpts
         )
           .returns(
             T.any(
@@ -167,7 +167,7 @@ module Orb
         params(
           price_id: String,
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+          request_options: Orb::RequestOpts
         )
           .returns(
             T.any(
@@ -213,11 +213,7 @@ module Orb
       # This endpoint is used to list all add-on prices created using the
       # [price creation endpoint](/api-reference/price/create-price).
       sig do
-        params(
-          cursor: T.nilable(String),
-          limit: Integer,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-        )
+        params(cursor: T.nilable(String), limit: Integer, request_options: Orb::RequestOpts)
           .returns(
             Orb::Internal::Page[
               T.any(
@@ -291,7 +287,7 @@ module Orb
           external_customer_id: T.nilable(String),
           filter: T.nilable(String),
           grouping_keys: T::Array[String],
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+          request_options: Orb::RequestOpts
         )
           .returns(Orb::Models::PriceEvaluateResponse)
       end
@@ -317,10 +313,7 @@ module Orb
       ); end
       # This endpoint returns a price given an identifier.
       sig do
-        params(
-          price_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-        )
+        params(price_id: String, request_options: Orb::RequestOpts)
           .returns(
             T.any(
               Orb::Models::Price::UnitPrice,

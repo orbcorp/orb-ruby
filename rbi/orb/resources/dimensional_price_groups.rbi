@@ -21,7 +21,7 @@ module Orb
           name: String,
           external_dimensional_price_group_id: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+          request_options: Orb::RequestOpts
         )
           .returns(Orb::Models::DimensionalPriceGroup)
       end
@@ -39,21 +39,14 @@ module Orb
       ); end
       # Fetch dimensional price group
       sig do
-        params(
-          dimensional_price_group_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-        )
+        params(dimensional_price_group_id: String, request_options: Orb::RequestOpts)
           .returns(Orb::Models::DimensionalPriceGroup)
       end
       def retrieve(dimensional_price_group_id, request_options: {}); end
 
       # List dimensional price groups
       sig do
-        params(
-          cursor: T.nilable(String),
-          limit: Integer,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-        )
+        params(cursor: T.nilable(String), limit: Integer, request_options: Orb::RequestOpts)
           .returns(Orb::Internal::Page[Orb::Models::DimensionalPriceGroup])
       end
       def list(
