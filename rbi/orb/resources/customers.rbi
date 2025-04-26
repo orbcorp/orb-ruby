@@ -50,7 +50,7 @@ module Orb
           ),
           tax_id: T.nilable(T.any(Orb::Models::CustomerCreateParams::TaxID, Orb::Internal::AnyHash)),
           timezone: T.nilable(String),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+          request_options: Orb::RequestOpts
         )
           .returns(Orb::Models::Customer)
       end
@@ -237,7 +237,7 @@ module Orb
             )
           ),
           tax_id: T.nilable(T.any(Orb::Models::CustomerUpdateParams::TaxID, Orb::Internal::AnyHash)),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+          request_options: Orb::RequestOpts
         )
           .returns(Orb::Models::Customer)
       end
@@ -405,7 +405,7 @@ module Orb
           created_at_lte: T.nilable(Time),
           cursor: T.nilable(String),
           limit: Integer,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+          request_options: Orb::RequestOpts
         )
           .returns(Orb::Internal::Page[Orb::Models::Customer])
       end
@@ -436,13 +436,7 @@ module Orb
       # been fully processed, the customer will not be returned in the API.
       #
       # On successful processing, this returns an empty dictionary (`{}`) in the API.
-      sig do
-        params(
-          customer_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-        )
-          .void
-      end
+      sig { params(customer_id: String, request_options: Orb::RequestOpts).void }
       def delete(customer_id, request_options: {}); end
 
       # This endpoint is used to fetch customer details given an identifier. If the
@@ -451,13 +445,7 @@ module Orb
       #
       # See the [Customer resource](/core-concepts#customer) for a full discussion of
       # the Customer model.
-      sig do
-        params(
-          customer_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-        )
-          .returns(Orb::Models::Customer)
-      end
+      sig { params(customer_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::Customer) }
       def fetch(customer_id, request_options: {}); end
 
       # This endpoint is used to fetch customer details given an `external_customer_id`
@@ -465,13 +453,7 @@ module Orb
       #
       # Note that the resource and semantics of this endpoint exactly mirror
       # [Get Customer](fetch-customer).
-      sig do
-        params(
-          external_customer_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-        )
-          .returns(Orb::Models::Customer)
-      end
+      sig { params(external_customer_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::Customer) }
       def fetch_by_external_id(external_customer_id, request_options: {}); end
 
       # Sync Orb's payment methods for the customer with their gateway.
@@ -480,13 +462,7 @@ module Orb
       # be charged, ensuring that the most up-to-date payment method is charged.
       #
       # **Note**: This functionality is currently only available for Stripe.
-      sig do
-        params(
-          customer_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-        )
-          .void
-      end
+      sig { params(customer_id: String, request_options: Orb::RequestOpts).void }
       def sync_payment_methods_from_gateway(customer_id, request_options: {}); end
 
       # Sync Orb's payment methods for the customer with their gateway.
@@ -495,13 +471,7 @@ module Orb
       # be charged, ensuring that the most up-to-date payment method is charged.
       #
       # **Note**: This functionality is currently only available for Stripe.
-      sig do
-        params(
-          external_customer_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-        )
-          .void
-      end
+      sig { params(external_customer_id: String, request_options: Orb::RequestOpts).void }
       def sync_payment_methods_from_gateway_by_external_customer_id(
         external_customer_id,
         request_options: {}
@@ -542,7 +512,7 @@ module Orb
             )
           ),
           tax_id: T.nilable(T.any(Orb::Models::CustomerUpdateByExternalIDParams::TaxID, Orb::Internal::AnyHash)),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+          request_options: Orb::RequestOpts
         )
           .returns(Orb::Models::Customer)
       end

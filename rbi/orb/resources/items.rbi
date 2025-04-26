@@ -4,10 +4,7 @@ module Orb
   module Resources
     class Items
       # This endpoint is used to create an [Item](/core-concepts#item).
-      sig do
-        params(name: String, request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash)))
-          .returns(Orb::Models::Item)
-      end
+      sig { params(name: String, request_options: Orb::RequestOpts).returns(Orb::Models::Item) }
       def create(
         # The name of the item.
         name:,
@@ -19,7 +16,7 @@ module Orb
           item_id: String,
           external_connections: T.nilable(T::Array[T.any(Orb::Models::ItemUpdateParams::ExternalConnection, Orb::Internal::AnyHash)]),
           name: T.nilable(String),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+          request_options: Orb::RequestOpts
         )
           .returns(Orb::Models::Item)
       end
@@ -28,11 +25,7 @@ module Orb
       # This endpoint returns a list of all Items, ordered in descending order by
       # creation time.
       sig do
-        params(
-          cursor: T.nilable(String),
-          limit: Integer,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-        )
+        params(cursor: T.nilable(String), limit: Integer, request_options: Orb::RequestOpts)
           .returns(Orb::Internal::Page[Orb::Models::Item])
       end
       def list(
@@ -44,13 +37,7 @@ module Orb
         request_options: {}
       ); end
       # This endpoint returns an item identified by its item_id.
-      sig do
-        params(
-          item_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-        )
-          .returns(Orb::Models::Item)
-      end
+      sig { params(item_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::Item) }
       def fetch(item_id, request_options: {}); end
 
       # @api private

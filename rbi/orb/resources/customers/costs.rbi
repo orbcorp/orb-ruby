@@ -128,7 +128,7 @@ module Orb
             timeframe_end: T.nilable(Time),
             timeframe_start: T.nilable(Time),
             view_mode: T.nilable(Orb::Models::Customers::CostListParams::ViewMode::OrSymbol),
-            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+            request_options: Orb::RequestOpts
           )
             .returns(Orb::Models::Customers::CostListResponse)
         end
@@ -271,7 +271,7 @@ module Orb
             timeframe_end: T.nilable(Time),
             timeframe_start: T.nilable(Time),
             view_mode: T.nilable(Orb::Models::Customers::CostListByExternalIDParams::ViewMode::OrSymbol),
-            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+            request_options: Orb::RequestOpts
           )
             .returns(Orb::Models::Customers::CostListByExternalIDResponse)
         end

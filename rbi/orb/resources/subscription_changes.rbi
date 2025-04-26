@@ -13,10 +13,7 @@ module Orb
       # ...). The subscription change will be referenced by the
       # `pending_subscription_change` field in the response.
       sig do
-        params(
-          subscription_change_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-        )
+        params(subscription_change_id: String, request_options: Orb::RequestOpts)
           .returns(Orb::Models::SubscriptionChangeRetrieveResponse)
       end
       def retrieve(subscription_change_id, request_options: {}); end
@@ -29,7 +26,7 @@ module Orb
           subscription_change_id: String,
           description: T.nilable(String),
           previously_collected_amount: T.nilable(String),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+          request_options: Orb::RequestOpts
         )
           .returns(Orb::Models::SubscriptionChangeApplyResponse)
       end
@@ -45,10 +42,7 @@ module Orb
       # subscription can only have one "pending" change at a time - use this endpoint to
       # cancel an existing change before creating a new one.
       sig do
-        params(
-          subscription_change_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-        )
+        params(subscription_change_id: String, request_options: Orb::RequestOpts)
           .returns(Orb::Models::SubscriptionChangeCancelResponse)
       end
       def cancel(subscription_change_id, request_options: {}); end

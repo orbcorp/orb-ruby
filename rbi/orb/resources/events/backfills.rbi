@@ -50,7 +50,7 @@ module Orb
             deprecation_filter: T.nilable(String),
             external_customer_id: T.nilable(String),
             replace_existing_events: T::Boolean,
-            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+            request_options: Orb::RequestOpts
           )
             .returns(Orb::Models::Events::BackfillCreateResponse)
         end
@@ -90,11 +90,7 @@ module Orb
         # retrieve the next page of results if they exist. More information about
         # pagination can be found in the [Pagination-metadata schema](pagination).
         sig do
-          params(
-            cursor: T.nilable(String),
-            limit: Integer,
-            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-          )
+          params(cursor: T.nilable(String), limit: Integer, request_options: Orb::RequestOpts)
             .returns(Orb::Internal::Page[Orb::Models::Events::BackfillListResponse])
         end
         def list(
@@ -110,20 +106,14 @@ module Orb
         # and usage graphs. Once all of the updates are complete, the backfill's status
         # will transition to `reflected`.
         sig do
-          params(
-            backfill_id: String,
-            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-          )
+          params(backfill_id: String, request_options: Orb::RequestOpts)
             .returns(Orb::Models::Events::BackfillCloseResponse)
         end
         def close(backfill_id, request_options: {}); end
 
         # This endpoint is used to fetch a backfill given an identifier.
         sig do
-          params(
-            backfill_id: String,
-            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-          )
+          params(backfill_id: String, request_options: Orb::RequestOpts)
             .returns(Orb::Models::Events::BackfillFetchResponse)
         end
         def fetch(backfill_id, request_options: {}); end
@@ -136,10 +126,7 @@ module Orb
         # If a backfill is reverted before its closed, no usage will be updated as a
         # result of the backfill and it will immediately transition to `reverted`.
         sig do
-          params(
-            backfill_id: String,
-            request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-          )
+          params(backfill_id: String, request_options: Orb::RequestOpts)
             .returns(Orb::Models::Events::BackfillRevertResponse)
         end
         def revert(backfill_id, request_options: {}); end

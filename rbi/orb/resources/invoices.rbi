@@ -24,7 +24,7 @@ module Orb
           memo: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           will_auto_issue: T::Boolean,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+          request_options: Orb::RequestOpts
         )
           .returns(Orb::Models::Invoice)
       end
@@ -70,7 +70,7 @@ module Orb
         params(
           invoice_id: String,
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+          request_options: Orb::RequestOpts
         )
           .returns(Orb::Models::Invoice)
       end
@@ -116,7 +116,7 @@ module Orb
           limit: Integer,
           status: T.nilable(T::Array[Orb::Models::InvoiceListParams::Status::OrSymbol]),
           subscription_id: T.nilable(String),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+          request_options: Orb::RequestOpts
         )
           .returns(Orb::Internal::Page[Orb::Models::Invoice])
       end
@@ -151,23 +151,14 @@ module Orb
       ); end
       # This endpoint is used to fetch an [`Invoice`](/core-concepts#invoice) given an
       # identifier.
-      sig do
-        params(
-          invoice_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-        )
-          .returns(Orb::Models::Invoice)
-      end
+      sig { params(invoice_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::Invoice) }
       def fetch(invoice_id, request_options: {}); end
 
       # This endpoint can be used to fetch the upcoming
       # [invoice](/core-concepts#invoice) for the current billing period given a
       # subscription.
       sig do
-        params(
-          subscription_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-        )
+        params(subscription_id: String, request_options: Orb::RequestOpts)
           .returns(Orb::Models::InvoiceFetchUpcomingResponse)
       end
       def fetch_upcoming(subscription_id:, request_options: {}); end
@@ -179,11 +170,7 @@ module Orb
       # sending emails, auto-collecting payment, syncing the invoice to external
       # providers, etc).
       sig do
-        params(
-          invoice_id: String,
-          synchronous: T::Boolean,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-        )
+        params(invoice_id: String, synchronous: T::Boolean, request_options: Orb::RequestOpts)
           .returns(Orb::Models::Invoice)
       end
       def issue(
@@ -204,7 +191,7 @@ module Orb
           payment_received_date: Date,
           external_id: T.nilable(String),
           notes: T.nilable(String),
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
+          request_options: Orb::RequestOpts
         )
           .returns(Orb::Models::Invoice)
       end
@@ -220,13 +207,7 @@ module Orb
       ); end
       # This endpoint collects payment for an invoice using the customer's default
       # payment method. This action can only be taken on invoices with status "issued".
-      sig do
-        params(
-          invoice_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-        )
-          .returns(Orb::Models::Invoice)
-      end
+      sig { params(invoice_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::Invoice) }
       def pay(invoice_id, request_options: {}); end
 
       # This endpoint allows an invoice's status to be set the `void` status. This can
@@ -240,13 +221,7 @@ module Orb
       # If the invoice was used to purchase a credit block, but the invoice is not yet
       # paid, the credit block will be voided. If the invoice was created due to a
       # top-up, the top-up will be disabled.
-      sig do
-        params(
-          invoice_id: String,
-          request_options: T.nilable(T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-        )
-          .returns(Orb::Models::Invoice)
-      end
+      sig { params(invoice_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::Invoice) }
       def void(invoice_id, request_options: {}); end
 
       # @api private
