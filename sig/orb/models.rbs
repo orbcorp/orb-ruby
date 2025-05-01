@@ -1,0 +1,215 @@
+module Orb
+  class Alert = Orb::Models::Alert
+
+  class AlertCreateForCustomerParams = Orb::Models::AlertCreateForCustomerParams
+
+  class AlertCreateForExternalCustomerParams = Orb::Models::AlertCreateForExternalCustomerParams
+
+  class AlertCreateForSubscriptionParams = Orb::Models::AlertCreateForSubscriptionParams
+
+  class AlertDisableParams = Orb::Models::AlertDisableParams
+
+  class AlertEnableParams = Orb::Models::AlertEnableParams
+
+  class AlertListParams = Orb::Models::AlertListParams
+
+  class AlertRetrieveParams = Orb::Models::AlertRetrieveParams
+
+  class AlertUpdateParams = Orb::Models::AlertUpdateParams
+
+  class AmountDiscount = Orb::Models::AmountDiscount
+
+  class BillableMetric = Orb::Models::BillableMetric
+
+  module BillingCycleRelativeDate = Orb::Models::BillingCycleRelativeDate
+
+  class Coupon = Orb::Models::Coupon
+
+  class CouponArchiveParams = Orb::Models::CouponArchiveParams
+
+  class CouponCreateParams = Orb::Models::CouponCreateParams
+
+  class CouponFetchParams = Orb::Models::CouponFetchParams
+
+  class CouponListParams = Orb::Models::CouponListParams
+
+  module Coupons = Orb::Models::Coupons
+
+  class CreditNote = Orb::Models::CreditNote
+
+  class CreditNoteCreateParams = Orb::Models::CreditNoteCreateParams
+
+  class CreditNoteFetchParams = Orb::Models::CreditNoteFetchParams
+
+  class CreditNoteListParams = Orb::Models::CreditNoteListParams
+
+  class Customer = Orb::Models::Customer
+
+  class CustomerCreateParams = Orb::Models::CustomerCreateParams
+
+  class CustomerDeleteParams = Orb::Models::CustomerDeleteParams
+
+  class CustomerFetchByExternalIDParams = Orb::Models::CustomerFetchByExternalIDParams
+
+  class CustomerFetchParams = Orb::Models::CustomerFetchParams
+
+  class CustomerListParams = Orb::Models::CustomerListParams
+
+  module Customers = Orb::Models::Customers
+
+  class CustomerSyncPaymentMethodsFromGatewayByExternalCustomerIDParams = Orb::Models::CustomerSyncPaymentMethodsFromGatewayByExternalCustomerIDParams
+
+  class CustomerSyncPaymentMethodsFromGatewayParams = Orb::Models::CustomerSyncPaymentMethodsFromGatewayParams
+
+  class CustomerUpdateByExternalIDParams = Orb::Models::CustomerUpdateByExternalIDParams
+
+  class CustomerUpdateParams = Orb::Models::CustomerUpdateParams
+
+  class DimensionalPriceGroup = Orb::Models::DimensionalPriceGroup
+
+  class DimensionalPriceGroupCreateParams = Orb::Models::DimensionalPriceGroupCreateParams
+
+  class DimensionalPriceGroupListParams = Orb::Models::DimensionalPriceGroupListParams
+
+  class DimensionalPriceGroupRetrieveParams = Orb::Models::DimensionalPriceGroupRetrieveParams
+
+  module DimensionalPriceGroups = Orb::Models::DimensionalPriceGroups
+
+  class DimensionalPriceGroupsAPI = Orb::Models::DimensionalPriceGroupsAPI
+
+  module Discount = Orb::Models::Discount
+
+  class EvaluatePriceGroup = Orb::Models::EvaluatePriceGroup
+
+  class EventDeprecateParams = Orb::Models::EventDeprecateParams
+
+  class EventIngestParams = Orb::Models::EventIngestParams
+
+  module Events = Orb::Models::Events
+
+  class EventSearchParams = Orb::Models::EventSearchParams
+
+  class EventUpdateParams = Orb::Models::EventUpdateParams
+
+  class Invoice = Orb::Models::Invoice
+
+  class InvoiceCreateParams = Orb::Models::InvoiceCreateParams
+
+  class InvoiceFetchParams = Orb::Models::InvoiceFetchParams
+
+  class InvoiceFetchUpcomingParams = Orb::Models::InvoiceFetchUpcomingParams
+
+  class InvoiceIssueParams = Orb::Models::InvoiceIssueParams
+
+  module InvoiceLevelDiscount = Orb::Models::InvoiceLevelDiscount
+
+  class InvoiceLineItemCreateParams = Orb::Models::InvoiceLineItemCreateParams
+
+  class InvoiceListParams = Orb::Models::InvoiceListParams
+
+  class InvoiceMarkPaidParams = Orb::Models::InvoiceMarkPaidParams
+
+  class InvoicePayParams = Orb::Models::InvoicePayParams
+
+  class InvoiceUpdateParams = Orb::Models::InvoiceUpdateParams
+
+  class InvoiceVoidParams = Orb::Models::InvoiceVoidParams
+
+  class Item = Orb::Models::Item
+
+  class ItemCreateParams = Orb::Models::ItemCreateParams
+
+  class ItemFetchParams = Orb::Models::ItemFetchParams
+
+  class ItemListParams = Orb::Models::ItemListParams
+
+  class ItemUpdateParams = Orb::Models::ItemUpdateParams
+
+  class MetricCreateParams = Orb::Models::MetricCreateParams
+
+  class MetricFetchParams = Orb::Models::MetricFetchParams
+
+  class MetricListParams = Orb::Models::MetricListParams
+
+  class MetricUpdateParams = Orb::Models::MetricUpdateParams
+
+  class PaginationMetadata = Orb::Models::PaginationMetadata
+
+  class PercentageDiscount = Orb::Models::PercentageDiscount
+
+  class Plan = Orb::Models::Plan
+
+  class PlanCreateParams = Orb::Models::PlanCreateParams
+
+  class PlanFetchParams = Orb::Models::PlanFetchParams
+
+  class PlanListParams = Orb::Models::PlanListParams
+
+  module Plans = Orb::Models::Plans
+
+  class PlanUpdateParams = Orb::Models::PlanUpdateParams
+
+  module Price = Orb::Models::Price
+
+  class PriceCreateParams = Orb::Models::PriceCreateParams
+
+  class PriceEvaluateParams = Orb::Models::PriceEvaluateParams
+
+  class PriceFetchParams = Orb::Models::PriceFetchParams
+
+  class PriceListParams = Orb::Models::PriceListParams
+
+  module Prices = Orb::Models::Prices
+
+  class PriceUpdateParams = Orb::Models::PriceUpdateParams
+
+  class Subscription = Orb::Models::Subscription
+
+  class SubscriptionCancelParams = Orb::Models::SubscriptionCancelParams
+
+  class SubscriptionChangeApplyParams = Orb::Models::SubscriptionChangeApplyParams
+
+  class SubscriptionChangeCancelParams = Orb::Models::SubscriptionChangeCancelParams
+
+  class SubscriptionChangeRetrieveParams = Orb::Models::SubscriptionChangeRetrieveParams
+
+  class SubscriptionCreateParams = Orb::Models::SubscriptionCreateParams
+
+  class SubscriptionFetchCostsParams = Orb::Models::SubscriptionFetchCostsParams
+
+  class SubscriptionFetchParams = Orb::Models::SubscriptionFetchParams
+
+  class SubscriptionFetchScheduleParams = Orb::Models::SubscriptionFetchScheduleParams
+
+  class SubscriptionFetchUsageParams = Orb::Models::SubscriptionFetchUsageParams
+
+  class SubscriptionListParams = Orb::Models::SubscriptionListParams
+
+  class SubscriptionPriceIntervalsParams = Orb::Models::SubscriptionPriceIntervalsParams
+
+  class SubscriptionsAPI = Orb::Models::SubscriptionsAPI
+
+  class SubscriptionSchedulePlanChangeParams = Orb::Models::SubscriptionSchedulePlanChangeParams
+
+  class SubscriptionTriggerPhaseParams = Orb::Models::SubscriptionTriggerPhaseParams
+
+  class SubscriptionUnscheduleCancellationParams = Orb::Models::SubscriptionUnscheduleCancellationParams
+
+  class SubscriptionUnscheduleFixedFeeQuantityUpdatesParams = Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesParams
+
+  class SubscriptionUnschedulePendingPlanChangesParams = Orb::Models::SubscriptionUnschedulePendingPlanChangesParams
+
+  class SubscriptionUpdateFixedFeeQuantityParams = Orb::Models::SubscriptionUpdateFixedFeeQuantityParams
+
+  class SubscriptionUpdateParams = Orb::Models::SubscriptionUpdateParams
+
+  class SubscriptionUpdateTrialParams = Orb::Models::SubscriptionUpdateTrialParams
+
+  module SubscriptionUsage = Orb::Models::SubscriptionUsage
+
+  class TopLevelPingParams = Orb::Models::TopLevelPingParams
+
+  class TrialDiscount = Orb::Models::TrialDiscount
+
+  class UsageDiscount = Orb::Models::UsageDiscount
+end
