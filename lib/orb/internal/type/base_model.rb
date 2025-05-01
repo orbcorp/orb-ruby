@@ -390,15 +390,7 @@ module Orb
         # Create a new instance of a model.
         #
         # @param data [Hash{Symbol=>Object}, self]
-        def initialize(data = {})
-          case Orb::Internal::Util.coerce_hash(data)
-          in Hash => coerced
-            @data = coerced
-          else
-            message = "Expected a #{Hash} or #{Orb::Internal::Type::BaseModel}, got #{data.inspect}"
-            raise ArgumentError.new(message)
-          end
-        end
+        def initialize(data = {}) = (@data = Orb::Internal::Util.coerce_hash!(data).to_h)
 
         class << self
           # @api private
