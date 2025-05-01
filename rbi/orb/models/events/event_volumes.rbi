@@ -2,6 +2,8 @@
 
 module Orb
   module Models
+    EventVolumes = Events::EventVolumes
+
     module Events
       class EventVolumes < Orb::Internal::Type::BaseModel
         sig { returns(T::Array[Orb::Models::Events::EventVolumes::Data]) }
@@ -41,7 +43,5 @@ module Orb
         end
       end
     end
-
-    EventVolumes = Events::EventVolumes
   end
 end
