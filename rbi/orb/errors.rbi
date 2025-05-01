@@ -137,7 +137,7 @@ module Orb
     end
 
     class InternalServerError < Orb::Errors::APIStatusError
-      HTTP_STATUS = T.let((500..), T::Range[Integer])
+      HTTP_STATUS = T.let(500.., T::Range[Integer])
     end
 
     class ConstraintViolation < Orb::Errors::BadRequestError
