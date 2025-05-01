@@ -24,7 +24,7 @@ module Orb
 
       # @return [Boolean]
       def next_page?
-        !pagination_metadata&.next_cursor.nil?
+        !data.to_a.empty? && !pagination_metadata&.next_cursor.to_s.empty?
       end
 
       # @raise [Orb::HTTP::Error]
@@ -66,8 +66,8 @@ module Orb
         super
 
         case page_data
-        in {data: Array | nil => data}
-          @data = data&.map { Orb::Internal::Type::Converter.coerce(@model, _1) }
+        in {data: Array => data}
+          @data = data.map { Orb::Internal::Type::Converter.coerce(@model, _1) }
         else
         end
         case page_data
