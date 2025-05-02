@@ -349,11 +349,11 @@ module Orb
         sig do
           returns(
             T.any(
-              Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewPercentageDiscount,
-              Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewUsageDiscount,
-              Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewAmountDiscount,
-              Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMinimum,
-              Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMaximum
+              Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::PercentageDiscount,
+              Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::UsageDiscount,
+              Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::AmountDiscount,
+              Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::Minimum,
+              Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::Maximum
             )
           )
         end
@@ -377,12 +377,12 @@ module Orb
         sig do
           params(
             adjustment: T.any(
-              Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewPercentageDiscount,
+              Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::PercentageDiscount,
               Orb::Internal::AnyHash,
-              Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewUsageDiscount,
-              Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewAmountDiscount,
-              Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMinimum,
-              Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMaximum
+              Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::UsageDiscount,
+              Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::AmountDiscount,
+              Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::Minimum,
+              Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::Maximum
             ),
             end_date: T.nilable(Time),
             plan_phase_order: T.nilable(Integer),
@@ -408,11 +408,11 @@ module Orb
             .returns(
               {
                 adjustment: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewPercentageDiscount,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewUsageDiscount,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewAmountDiscount,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMinimum,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMaximum
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::PercentageDiscount,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::UsageDiscount,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::AmountDiscount,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::Minimum,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::Maximum
                 ),
                 end_date: T.nilable(Time),
                 plan_phase_order: T.nilable(Integer),
@@ -426,7 +426,7 @@ module Orb
         module Adjustment
           extend Orb::Internal::Type::Union
 
-          class NewPercentageDiscount < Orb::Internal::Type::BaseModel
+          class PercentageDiscount < Orb::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
 
@@ -477,7 +477,7 @@ module Orb
             def to_hash; end
           end
 
-          class NewUsageDiscount < Orb::Internal::Type::BaseModel
+          class UsageDiscount < Orb::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
 
@@ -528,7 +528,7 @@ module Orb
             def to_hash; end
           end
 
-          class NewAmountDiscount < Orb::Internal::Type::BaseModel
+          class AmountDiscount < Orb::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
 
@@ -579,7 +579,7 @@ module Orb
             def to_hash; end
           end
 
-          class NewMinimum < Orb::Internal::Type::BaseModel
+          class Minimum < Orb::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
 
@@ -638,7 +638,7 @@ module Orb
             def to_hash; end
           end
 
-          class NewMaximum < Orb::Internal::Type::BaseModel
+          class Maximum < Orb::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
 
@@ -692,7 +692,7 @@ module Orb
           sig do
             override
               .returns(
-                [Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewPercentageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewUsageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewAmountDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMinimum, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::NewMaximum]
+                [Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::PercentageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::UsageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::AmountDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::Minimum, Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::Maximum]
               )
           end
           def self.variants; end
@@ -751,31 +751,31 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage
               )
             )
           )
@@ -810,32 +810,32 @@ module Orb
             plan_phase_order: T.nilable(Integer),
             price: T.nilable(
               T.any(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit,
                 Orb::Internal::AnyHash,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage
               )
             ),
             price_id: T.nilable(String),
@@ -885,31 +885,31 @@ module Orb
                 plan_phase_order: T.nilable(Integer),
                 price: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage
                   )
                 ),
                 price_id: T.nilable(String),
@@ -1110,13 +1110,9 @@ module Orb
         module Price
           extend Orb::Internal::Type::Union
 
-          class NewSubscriptionUnitPrice < Orb::Internal::Type::BaseModel
+          class Unit < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
-            sig do
-              returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::Cadence::OrSymbol
-              )
-            end
+            sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::Cadence::OrSymbol) }
             attr_accessor :cadence
 
             # The id of the item the price will be associated with.
@@ -1130,17 +1126,13 @@ module Orb
             sig { returns(String) }
             attr_accessor :name
 
-            sig do
-              returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::UnitConfig
-              )
-            end
+            sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::UnitConfig) }
             attr_reader :unit_config
 
             sig do
               params(
                 unit_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::UnitConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::UnitConfig,
                   Orb::Internal::AnyHash
                 )
               )
@@ -1163,7 +1155,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::BillingCycleConfiguration
                 )
               )
             end
@@ -1173,7 +1165,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -1209,7 +1201,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::InvoicingCycleConfiguration
                 )
               )
             end
@@ -1219,7 +1211,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -1241,18 +1233,18 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 unit_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::UnitConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::UnitConfig,
                   Orb::Internal::AnyHash
                 ),
                 billable_metric_id: T.nilable(String),
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -1263,7 +1255,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -1318,15 +1310,15 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
-                    unit_config: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::UnitConfig,
+                    unit_config: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::UnitConfig,
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -1334,7 +1326,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -1348,48 +1340,44 @@ module Orb
               extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::Cadence)
-                end
+                T.type_alias { T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::Cadence) }
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
-                    T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::Cadence::TaggedSymbol
-                    ]
+                    T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::Cadence::TaggedSymbol]
                   )
               end
               def self.values; end
@@ -1417,7 +1405,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -1427,7 +1415,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -1442,7 +1430,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -1454,26 +1442,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -1489,7 +1477,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -1499,7 +1487,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -1514,7 +1502,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -1526,26 +1514,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -1554,13 +1542,9 @@ module Orb
             end
           end
 
-          class NewSubscriptionPackagePrice < Orb::Internal::Type::BaseModel
+          class Package < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
-            sig do
-              returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::Cadence::OrSymbol
-              )
-            end
+            sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::Cadence::OrSymbol) }
             attr_accessor :cadence
 
             # The id of the item the price will be associated with.
@@ -1574,17 +1558,13 @@ module Orb
             sig { returns(String) }
             attr_accessor :name
 
-            sig do
-              returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::PackageConfig
-              )
-            end
+            sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::PackageConfig) }
             attr_reader :package_config
 
             sig do
               params(
                 package_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::PackageConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::PackageConfig,
                   Orb::Internal::AnyHash
                 )
               )
@@ -1607,7 +1587,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::BillingCycleConfiguration
                 )
               )
             end
@@ -1617,7 +1597,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -1653,7 +1633,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::InvoicingCycleConfiguration
                 )
               )
             end
@@ -1663,7 +1643,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -1685,18 +1665,18 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 package_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::PackageConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::PackageConfig,
                   Orb::Internal::AnyHash
                 ),
                 billable_metric_id: T.nilable(String),
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -1707,7 +1687,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -1762,15 +1742,15 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
-                    package_config: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::PackageConfig,
+                    package_config: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::PackageConfig,
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -1778,7 +1758,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -1792,48 +1772,44 @@ module Orb
               extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::Cadence)
-                end
+                T.type_alias { T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::Cadence) }
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
-                    T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::Cadence::TaggedSymbol
-                    ]
+                    T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::Cadence::TaggedSymbol]
                   )
               end
               def self.values; end
@@ -1869,7 +1845,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -1879,7 +1855,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -1894,7 +1870,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -1906,26 +1882,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -1941,7 +1917,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -1951,7 +1927,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -1966,7 +1942,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -1978,26 +1954,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -2006,30 +1982,22 @@ module Orb
             end
           end
 
-          class NewSubscriptionMatrixPrice < Orb::Internal::Type::BaseModel
+          class Matrix < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
-            sig do
-              returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::Cadence::OrSymbol
-              )
-            end
+            sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::Cadence::OrSymbol) }
             attr_accessor :cadence
 
             # The id of the item the price will be associated with.
             sig { returns(String) }
             attr_accessor :item_id
 
-            sig do
-              returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig
-              )
-            end
+            sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::MatrixConfig) }
             attr_reader :matrix_config
 
             sig do
               params(
                 matrix_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::MatrixConfig,
                   Orb::Internal::AnyHash
                 )
               )
@@ -2059,7 +2027,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::BillingCycleConfiguration
                 )
               )
             end
@@ -2069,7 +2037,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -2105,7 +2073,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::InvoicingCycleConfiguration
                 )
               )
             end
@@ -2115,7 +2083,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -2137,10 +2105,10 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::Cadence::OrSymbol,
                 item_id: String,
                 matrix_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::MatrixConfig,
                   Orb::Internal::AnyHash
                 ),
                 name: String,
@@ -2148,7 +2116,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -2159,7 +2127,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -2214,15 +2182,15 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::Cadence::OrSymbol,
                     item_id: String,
-                    matrix_config: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig,
+                    matrix_config: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::MatrixConfig,
                     model_type: Symbol,
                     name: String,
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -2230,7 +2198,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -2244,48 +2212,44 @@ module Orb
               extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::Cadence)
-                end
+                T.type_alias { T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::Cadence) }
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
-                    T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::Cadence::TaggedSymbol
-                    ]
+                    T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::Cadence::TaggedSymbol]
                   )
               end
               def self.values; end
@@ -2303,9 +2267,7 @@ module Orb
               # Matrix values for specified matrix grouping keys
               sig do
                 returns(
-                  T::Array[
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue
-                  ]
+                  T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::MatrixConfig::MatrixValue]
                 )
               end
               attr_accessor :matrix_values
@@ -2316,7 +2278,7 @@ module Orb
                   dimensions: T::Array[T.nilable(String)],
                   matrix_values: T::Array[
                     T.any(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue,
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::MatrixConfig::MatrixValue,
                       Orb::Internal::AnyHash
                     )
                   ]
@@ -2337,9 +2299,7 @@ module Orb
                     {
                       default_unit_amount: String,
                       dimensions: T::Array[T.nilable(String)],
-                      matrix_values: T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue
-                      ]
+                      matrix_values: T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::MatrixConfig::MatrixValue]
                     }
                   )
               end
@@ -2383,7 +2343,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -2393,7 +2353,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -2408,7 +2368,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -2420,26 +2380,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -2455,7 +2415,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -2465,7 +2425,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -2480,7 +2440,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -2492,26 +2452,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -2520,13 +2480,9 @@ module Orb
             end
           end
 
-          class NewSubscriptionTieredPrice < Orb::Internal::Type::BaseModel
+          class Tiered < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
-            sig do
-              returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::Cadence::OrSymbol
-              )
-            end
+            sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::Cadence::OrSymbol) }
             attr_accessor :cadence
 
             # The id of the item the price will be associated with.
@@ -2540,17 +2496,13 @@ module Orb
             sig { returns(String) }
             attr_accessor :name
 
-            sig do
-              returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig
-              )
-            end
+            sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::TieredConfig) }
             attr_reader :tiered_config
 
             sig do
               params(
                 tiered_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::TieredConfig,
                   Orb::Internal::AnyHash
                 )
               )
@@ -2573,7 +2525,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::BillingCycleConfiguration
                 )
               )
             end
@@ -2583,7 +2535,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -2619,7 +2571,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::InvoicingCycleConfiguration
                 )
               )
             end
@@ -2629,7 +2581,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -2651,18 +2603,18 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 tiered_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::TieredConfig,
                   Orb::Internal::AnyHash
                 ),
                 billable_metric_id: T.nilable(String),
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -2673,7 +2625,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -2728,15 +2680,15 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
-                    tiered_config: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig,
+                    tiered_config: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::TieredConfig,
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -2744,7 +2696,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -2758,48 +2710,44 @@ module Orb
               extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::Cadence)
-                end
+                T.type_alias { T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::Cadence) }
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
-                    T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::Cadence::TaggedSymbol
-                    ]
+                    T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::Cadence::TaggedSymbol]
                   )
               end
               def self.values; end
@@ -2809,9 +2757,7 @@ module Orb
               # Tiers for rating based on total usage quantities into the specified tier
               sig do
                 returns(
-                  T::Array[
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier
-                  ]
+                  T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::TieredConfig::Tier]
                 )
               end
               attr_accessor :tiers
@@ -2820,7 +2766,7 @@ module Orb
                 params(
                   tiers: T::Array[
                     T.any(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier,
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::TieredConfig::Tier,
                       Orb::Internal::AnyHash
                     )
                   ]
@@ -2835,9 +2781,7 @@ module Orb
                 override
                   .returns(
                     {
-                      tiers: T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier
-                      ]
+                      tiers: T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::TieredConfig::Tier]
                     }
                   )
               end
@@ -2886,7 +2830,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -2896,7 +2840,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -2911,7 +2855,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -2923,26 +2867,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -2958,7 +2902,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -2968,7 +2912,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -2983,7 +2927,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -2995,26 +2939,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -3023,13 +2967,9 @@ module Orb
             end
           end
 
-          class NewSubscriptionTieredBpsPrice < Orb::Internal::Type::BaseModel
+          class TieredBps < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
-            sig do
-              returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::Cadence::OrSymbol
-              )
-            end
+            sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::Cadence::OrSymbol) }
             attr_accessor :cadence
 
             # The id of the item the price will be associated with.
@@ -3043,17 +2983,13 @@ module Orb
             sig { returns(String) }
             attr_accessor :name
 
-            sig do
-              returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig
-              )
-            end
+            sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::TieredBpsConfig) }
             attr_reader :tiered_bps_config
 
             sig do
               params(
                 tiered_bps_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::TieredBpsConfig,
                   Orb::Internal::AnyHash
                 )
               )
@@ -3076,7 +3012,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::BillingCycleConfiguration
                 )
               )
             end
@@ -3086,7 +3022,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -3122,7 +3058,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::InvoicingCycleConfiguration
                 )
               )
             end
@@ -3132,7 +3068,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -3154,18 +3090,18 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 tiered_bps_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::TieredBpsConfig,
                   Orb::Internal::AnyHash
                 ),
                 billable_metric_id: T.nilable(String),
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -3176,7 +3112,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -3231,15 +3167,15 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
-                    tiered_bps_config: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig,
+                    tiered_bps_config: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::TieredBpsConfig,
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -3247,7 +3183,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -3261,48 +3197,44 @@ module Orb
               extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::Cadence)
-                end
+                T.type_alias { T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::Cadence) }
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
-                    T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::Cadence::TaggedSymbol
-                    ]
+                    T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::Cadence::TaggedSymbol]
                   )
               end
               def self.values; end
@@ -3313,9 +3245,7 @@ module Orb
               # tiers
               sig do
                 returns(
-                  T::Array[
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier
-                  ]
+                  T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::TieredBpsConfig::Tier]
                 )
               end
               attr_accessor :tiers
@@ -3324,7 +3254,7 @@ module Orb
                 params(
                   tiers: T::Array[
                     T.any(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier,
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::TieredBpsConfig::Tier,
                       Orb::Internal::AnyHash
                     )
                   ]
@@ -3340,9 +3270,7 @@ module Orb
                 override
                   .returns(
                     {
-                      tiers: T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier
-                      ]
+                      tiers: T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::TieredBpsConfig::Tier]
                     }
                   )
               end
@@ -3407,7 +3335,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -3417,7 +3345,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -3432,7 +3360,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -3444,26 +3372,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -3479,7 +3407,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -3489,7 +3417,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -3504,7 +3432,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -3516,26 +3444,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -3544,18 +3472,14 @@ module Orb
             end
           end
 
-          class NewSubscriptionBpsPrice < Orb::Internal::Type::BaseModel
-            sig do
-              returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BpsConfig
-              )
-            end
+          class Bps < Orb::Internal::Type::BaseModel
+            sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::BpsConfig) }
             attr_reader :bps_config
 
             sig do
               params(
                 bps_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BpsConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::BpsConfig,
                   Orb::Internal::AnyHash
                 )
               )
@@ -3564,11 +3488,7 @@ module Orb
             attr_writer :bps_config
 
             # The cadence to bill for this price on.
-            sig do
-              returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::Cadence::OrSymbol
-              )
-            end
+            sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::Cadence::OrSymbol) }
             attr_accessor :cadence
 
             # The id of the item the price will be associated with.
@@ -3597,7 +3517,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::BillingCycleConfiguration
                 )
               )
             end
@@ -3607,7 +3527,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -3643,7 +3563,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::InvoicingCycleConfiguration
                 )
               )
             end
@@ -3653,7 +3573,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -3676,17 +3596,17 @@ module Orb
             sig do
               params(
                 bps_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BpsConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::BpsConfig,
                   Orb::Internal::AnyHash
                 ),
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 billable_metric_id: T.nilable(String),
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -3697,7 +3617,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -3752,15 +3672,15 @@ module Orb
               override
                 .returns(
                   {
-                    bps_config: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BpsConfig,
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::Cadence::OrSymbol,
+                    bps_config: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::BpsConfig,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -3768,7 +3688,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -3802,48 +3722,44 @@ module Orb
               extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::Cadence)
-                end
+                T.type_alias { T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::Cadence) }
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
-                    T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::Cadence::TaggedSymbol
-                    ]
+                    T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::Cadence::TaggedSymbol]
                   )
               end
               def self.values; end
@@ -3857,7 +3773,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -3867,7 +3783,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -3882,7 +3798,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -3894,26 +3810,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -3929,7 +3845,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -3939,7 +3855,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -3954,7 +3870,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -3966,26 +3882,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -3994,18 +3910,14 @@ module Orb
             end
           end
 
-          class NewSubscriptionBulkBpsPrice < Orb::Internal::Type::BaseModel
-            sig do
-              returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig
-              )
-            end
+          class BulkBps < Orb::Internal::Type::BaseModel
+            sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::BulkBpsConfig) }
             attr_reader :bulk_bps_config
 
             sig do
               params(
                 bulk_bps_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::BulkBpsConfig,
                   Orb::Internal::AnyHash
                 )
               )
@@ -4014,11 +3926,7 @@ module Orb
             attr_writer :bulk_bps_config
 
             # The cadence to bill for this price on.
-            sig do
-              returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::Cadence::OrSymbol
-              )
-            end
+            sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::Cadence::OrSymbol) }
             attr_accessor :cadence
 
             # The id of the item the price will be associated with.
@@ -4047,7 +3955,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::BillingCycleConfiguration
                 )
               )
             end
@@ -4057,7 +3965,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -4093,7 +4001,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::InvoicingCycleConfiguration
                 )
               )
             end
@@ -4103,7 +4011,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -4126,17 +4034,17 @@ module Orb
             sig do
               params(
                 bulk_bps_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::BulkBpsConfig,
                   Orb::Internal::AnyHash
                 ),
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 billable_metric_id: T.nilable(String),
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -4147,7 +4055,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -4202,15 +4110,15 @@ module Orb
               override
                 .returns(
                   {
-                    bulk_bps_config: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig,
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::Cadence::OrSymbol,
+                    bulk_bps_config: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::BulkBpsConfig,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -4218,7 +4126,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -4232,9 +4140,7 @@ module Orb
               # tier based on total volume
               sig do
                 returns(
-                  T::Array[
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier
-                  ]
+                  T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::BulkBpsConfig::Tier]
                 )
               end
               attr_accessor :tiers
@@ -4243,7 +4149,7 @@ module Orb
                 params(
                   tiers: T::Array[
                     T.any(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier,
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::BulkBpsConfig::Tier,
                       Orb::Internal::AnyHash
                     )
                   ]
@@ -4259,9 +4165,7 @@ module Orb
                 override
                   .returns(
                     {
-                      tiers: T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier
-                      ]
+                      tiers: T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::BulkBpsConfig::Tier]
                     }
                   )
               end
@@ -4310,48 +4214,44 @@ module Orb
               extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::Cadence)
-                end
+                T.type_alias { T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::Cadence) }
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
-                    T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::Cadence::TaggedSymbol
-                    ]
+                    T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::Cadence::TaggedSymbol]
                   )
               end
               def self.values; end
@@ -4365,7 +4265,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -4375,7 +4275,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -4390,7 +4290,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -4402,26 +4302,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -4437,7 +4337,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -4447,7 +4347,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -4462,7 +4362,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -4474,26 +4374,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -4502,18 +4402,14 @@ module Orb
             end
           end
 
-          class NewSubscriptionBulkPrice < Orb::Internal::Type::BaseModel
-            sig do
-              returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig
-              )
-            end
+          class Bulk < Orb::Internal::Type::BaseModel
+            sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::BulkConfig) }
             attr_reader :bulk_config
 
             sig do
               params(
                 bulk_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::BulkConfig,
                   Orb::Internal::AnyHash
                 )
               )
@@ -4522,11 +4418,7 @@ module Orb
             attr_writer :bulk_config
 
             # The cadence to bill for this price on.
-            sig do
-              returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::Cadence::OrSymbol
-              )
-            end
+            sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::Cadence::OrSymbol) }
             attr_accessor :cadence
 
             # The id of the item the price will be associated with.
@@ -4555,7 +4447,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::BillingCycleConfiguration
                 )
               )
             end
@@ -4565,7 +4457,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -4601,7 +4493,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::InvoicingCycleConfiguration
                 )
               )
             end
@@ -4611,7 +4503,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -4634,17 +4526,17 @@ module Orb
             sig do
               params(
                 bulk_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::BulkConfig,
                   Orb::Internal::AnyHash
                 ),
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 billable_metric_id: T.nilable(String),
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -4655,7 +4547,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -4710,15 +4602,15 @@ module Orb
               override
                 .returns(
                   {
-                    bulk_config: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig,
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::Cadence::OrSymbol,
+                    bulk_config: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::BulkConfig,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -4726,7 +4618,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -4739,9 +4631,7 @@ module Orb
               # Bulk tiers for rating based on total usage volume
               sig do
                 returns(
-                  T::Array[
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier
-                  ]
+                  T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::BulkConfig::Tier]
                 )
               end
               attr_accessor :tiers
@@ -4750,7 +4640,7 @@ module Orb
                 params(
                   tiers: T::Array[
                     T.any(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier,
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::BulkConfig::Tier,
                       Orb::Internal::AnyHash
                     )
                   ]
@@ -4765,9 +4655,7 @@ module Orb
                 override
                   .returns(
                     {
-                      tiers: T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier
-                      ]
+                      tiers: T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::BulkConfig::Tier]
                     }
                   )
               end
@@ -4799,48 +4687,44 @@ module Orb
               extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::Cadence)
-                end
+                T.type_alias { T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::Cadence) }
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
-                    T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::Cadence::TaggedSymbol
-                    ]
+                    T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::Cadence::TaggedSymbol]
                   )
               end
               def self.values; end
@@ -4854,7 +4738,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -4864,7 +4748,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -4879,7 +4763,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -4891,26 +4775,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -4926,7 +4810,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -4936,7 +4820,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -4951,7 +4835,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -4963,26 +4847,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -4991,11 +4875,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionThresholdTotalAmountPrice < Orb::Internal::Type::BaseModel
+          class ThresholdTotalAmount < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -5029,7 +4913,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::BillingCycleConfiguration
                 )
               )
             end
@@ -5039,7 +4923,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -5075,7 +4959,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::InvoicingCycleConfiguration
                 )
               )
             end
@@ -5085,7 +4969,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -5107,7 +4991,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 threshold_total_amount_config: T::Hash[Symbol, T.anything],
@@ -5115,7 +4999,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -5126,7 +5010,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -5181,7 +5065,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -5189,7 +5073,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -5197,7 +5081,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -5212,46 +5096,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -5266,7 +5150,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -5276,7 +5160,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -5291,7 +5175,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -5303,26 +5187,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -5338,7 +5222,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -5348,7 +5232,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -5363,7 +5247,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -5375,26 +5259,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -5403,11 +5287,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionTieredPackagePrice < Orb::Internal::Type::BaseModel
+          class TieredPackage < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -5441,7 +5325,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::BillingCycleConfiguration
                 )
               )
             end
@@ -5451,7 +5335,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -5487,7 +5371,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::InvoicingCycleConfiguration
                 )
               )
             end
@@ -5497,7 +5381,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -5519,7 +5403,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 tiered_package_config: T::Hash[Symbol, T.anything],
@@ -5527,7 +5411,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -5538,7 +5422,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -5593,7 +5477,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -5601,7 +5485,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -5609,7 +5493,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -5623,48 +5507,44 @@ module Orb
               extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::Cadence)
-                end
+                T.type_alias { T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::Cadence) }
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
-                    T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::Cadence::TaggedSymbol
-                    ]
+                    T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::Cadence::TaggedSymbol]
                   )
               end
               def self.values; end
@@ -5678,7 +5558,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -5688,7 +5568,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -5703,7 +5583,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -5715,26 +5595,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -5750,7 +5630,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -5760,7 +5640,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -5775,7 +5655,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -5787,26 +5667,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -5815,11 +5695,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionTieredWithMinimumPrice < Orb::Internal::Type::BaseModel
+          class TieredWithMinimum < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -5853,7 +5733,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::BillingCycleConfiguration
                 )
               )
             end
@@ -5863,7 +5743,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -5899,7 +5779,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::InvoicingCycleConfiguration
                 )
               )
             end
@@ -5909,7 +5789,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -5931,7 +5811,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 tiered_with_minimum_config: T::Hash[Symbol, T.anything],
@@ -5939,7 +5819,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -5950,7 +5830,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -6005,7 +5885,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -6013,7 +5893,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -6021,7 +5901,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -6036,46 +5916,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -6090,7 +5970,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -6100,7 +5980,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -6115,7 +5995,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -6127,26 +6007,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -6162,7 +6042,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -6172,7 +6052,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -6187,7 +6067,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -6199,26 +6079,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -6227,11 +6107,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionUnitWithPercentPrice < Orb::Internal::Type::BaseModel
+          class UnitWithPercent < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -6265,7 +6145,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::BillingCycleConfiguration
                 )
               )
             end
@@ -6275,7 +6155,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -6311,7 +6191,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::InvoicingCycleConfiguration
                 )
               )
             end
@@ -6321,7 +6201,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -6343,7 +6223,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 unit_with_percent_config: T::Hash[Symbol, T.anything],
@@ -6351,7 +6231,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -6362,7 +6242,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -6417,7 +6297,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -6425,7 +6305,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -6433,7 +6313,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -6448,47 +6328,45 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
-                    T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::TaggedSymbol
-                    ]
+                    T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::Cadence::TaggedSymbol]
                   )
               end
               def self.values; end
@@ -6502,7 +6380,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -6512,7 +6390,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -6527,7 +6405,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -6539,26 +6417,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -6574,7 +6452,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -6584,7 +6462,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -6599,7 +6477,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -6611,26 +6489,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -6639,11 +6517,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionPackageWithAllocationPrice < Orb::Internal::Type::BaseModel
+          class PackageWithAllocation < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -6677,7 +6555,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::BillingCycleConfiguration
                 )
               )
             end
@@ -6687,7 +6565,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -6723,7 +6601,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::InvoicingCycleConfiguration
                 )
               )
             end
@@ -6733,7 +6611,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -6755,7 +6633,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 package_with_allocation_config: T::Hash[Symbol, T.anything],
@@ -6763,7 +6641,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -6774,7 +6652,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -6829,7 +6707,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -6837,7 +6715,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -6845,7 +6723,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -6860,46 +6738,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -6914,7 +6792,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -6924,7 +6802,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -6939,7 +6817,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -6951,26 +6829,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -6986,7 +6864,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -6996,7 +6874,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -7011,7 +6889,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -7023,26 +6901,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -7051,11 +6929,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionTierWithProrationPrice < Orb::Internal::Type::BaseModel
+          class TieredWithProration < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -7089,7 +6967,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::BillingCycleConfiguration
                 )
               )
             end
@@ -7099,7 +6977,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -7135,7 +7013,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::InvoicingCycleConfiguration
                 )
               )
             end
@@ -7145,7 +7023,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -7167,7 +7045,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 tiered_with_proration_config: T::Hash[Symbol, T.anything],
@@ -7175,7 +7053,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -7186,7 +7064,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -7241,7 +7119,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -7249,7 +7127,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -7257,7 +7135,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -7272,46 +7150,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -7326,7 +7204,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -7336,7 +7214,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -7351,7 +7229,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -7363,26 +7241,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -7398,7 +7276,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -7408,7 +7286,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -7423,7 +7301,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -7435,26 +7313,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -7463,11 +7341,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionUnitWithProrationPrice < Orb::Internal::Type::BaseModel
+          class UnitWithProration < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -7501,7 +7379,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::BillingCycleConfiguration
                 )
               )
             end
@@ -7511,7 +7389,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -7547,7 +7425,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::InvoicingCycleConfiguration
                 )
               )
             end
@@ -7557,7 +7435,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -7579,7 +7457,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 unit_with_proration_config: T::Hash[Symbol, T.anything],
@@ -7587,7 +7465,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -7598,7 +7476,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -7653,7 +7531,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -7661,7 +7539,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -7669,7 +7547,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -7684,46 +7562,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -7738,7 +7616,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -7748,7 +7626,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -7763,7 +7641,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -7775,26 +7653,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -7810,7 +7688,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -7820,7 +7698,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -7835,7 +7713,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -7847,26 +7725,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -7875,11 +7753,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionGroupedAllocationPrice < Orb::Internal::Type::BaseModel
+          class GroupedAllocation < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -7913,7 +7791,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::BillingCycleConfiguration
                 )
               )
             end
@@ -7923,7 +7801,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -7959,7 +7837,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::InvoicingCycleConfiguration
                 )
               )
             end
@@ -7969,7 +7847,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -7991,7 +7869,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::Cadence::OrSymbol,
                 grouped_allocation_config: T::Hash[Symbol, T.anything],
                 item_id: String,
                 name: String,
@@ -7999,7 +7877,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -8010,7 +7888,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -8065,7 +7943,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::Cadence::OrSymbol,
                     grouped_allocation_config: T::Hash[Symbol, T.anything],
                     item_id: String,
                     model_type: Symbol,
@@ -8073,7 +7951,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -8081,7 +7959,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -8096,46 +7974,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -8150,7 +8028,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -8160,7 +8038,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -8175,7 +8053,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -8187,26 +8065,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -8222,7 +8100,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -8232,7 +8110,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -8247,7 +8125,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -8259,26 +8137,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -8287,11 +8165,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionGroupedWithProratedMinimumPrice < Orb::Internal::Type::BaseModel
+          class GroupedWithProratedMinimum < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -8325,7 +8203,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::BillingCycleConfiguration
                 )
               )
             end
@@ -8335,7 +8213,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -8371,7 +8249,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration
                 )
               )
             end
@@ -8381,7 +8259,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -8403,7 +8281,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::Cadence::OrSymbol,
                 grouped_with_prorated_minimum_config: T::Hash[Symbol, T.anything],
                 item_id: String,
                 name: String,
@@ -8411,7 +8289,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -8422,7 +8300,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -8477,7 +8355,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::Cadence::OrSymbol,
                     grouped_with_prorated_minimum_config: T::Hash[Symbol, T.anything],
                     item_id: String,
                     model_type: Symbol,
@@ -8485,7 +8363,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -8493,7 +8371,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -8508,46 +8386,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -8562,7 +8440,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -8572,7 +8450,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -8587,7 +8465,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -8599,26 +8477,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -8634,7 +8512,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -8644,7 +8522,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -8659,7 +8537,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -8671,26 +8549,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -8699,14 +8577,14 @@ module Orb
             end
           end
 
-          class NewSubscriptionBulkWithProrationPrice < Orb::Internal::Type::BaseModel
+          class BulkWithProration < Orb::Internal::Type::BaseModel
             sig { returns(T::Hash[Symbol, T.anything]) }
             attr_accessor :bulk_with_proration_config
 
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -8737,7 +8615,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::BillingCycleConfiguration
                 )
               )
             end
@@ -8747,7 +8625,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -8783,7 +8661,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::InvoicingCycleConfiguration
                 )
               )
             end
@@ -8793,7 +8671,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -8816,14 +8694,14 @@ module Orb
             sig do
               params(
                 bulk_with_proration_config: T::Hash[Symbol, T.anything],
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 billable_metric_id: T.nilable(String),
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -8834,7 +8712,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -8890,14 +8768,14 @@ module Orb
                 .returns(
                   {
                     bulk_with_proration_config: T::Hash[Symbol, T.anything],
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -8905,7 +8783,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -8920,46 +8798,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -8974,7 +8852,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -8984,7 +8862,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -8999,7 +8877,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -9011,26 +8889,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -9046,7 +8924,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -9056,7 +8934,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -9071,7 +8949,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -9083,26 +8961,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -9111,11 +8989,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionScalableMatrixWithUnitPricingPrice < Orb::Internal::Type::BaseModel
+          class ScalableMatrixWithUnitPricing < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -9149,7 +9027,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration
                 )
               )
             end
@@ -9159,7 +9037,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -9195,7 +9073,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration
                 )
               )
             end
@@ -9205,7 +9083,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -9227,7 +9105,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 scalable_matrix_with_unit_pricing_config: T::Hash[Symbol, T.anything],
@@ -9235,7 +9113,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -9246,7 +9124,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -9301,7 +9179,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -9309,7 +9187,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -9317,7 +9195,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -9332,46 +9210,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -9386,7 +9264,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -9396,7 +9274,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -9411,7 +9289,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -9423,26 +9301,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -9458,7 +9336,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -9468,7 +9346,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -9483,7 +9361,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -9495,26 +9373,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -9523,11 +9401,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionScalableMatrixWithTieredPricingPrice < Orb::Internal::Type::BaseModel
+          class ScalableMatrixWithTieredPricing < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -9561,7 +9439,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration
                 )
               )
             end
@@ -9571,7 +9449,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -9607,7 +9485,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration
                 )
               )
             end
@@ -9617,7 +9495,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -9639,7 +9517,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 scalable_matrix_with_tiered_pricing_config: T::Hash[Symbol, T.anything],
@@ -9647,7 +9525,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -9658,7 +9536,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -9713,7 +9591,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -9721,7 +9599,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -9729,7 +9607,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -9744,46 +9622,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -9798,7 +9676,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -9808,7 +9686,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -9823,7 +9701,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -9835,26 +9713,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -9870,7 +9748,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -9880,7 +9758,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -9895,7 +9773,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -9907,26 +9785,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -9935,11 +9813,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionCumulativeGroupedBulkPrice < Orb::Internal::Type::BaseModel
+          class CumulativeGroupedBulk < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -9973,7 +9851,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::BillingCycleConfiguration
                 )
               )
             end
@@ -9983,7 +9861,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -10019,7 +9897,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration
                 )
               )
             end
@@ -10029,7 +9907,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -10051,7 +9929,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::Cadence::OrSymbol,
                 cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
                 item_id: String,
                 name: String,
@@ -10059,7 +9937,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -10070,7 +9948,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -10125,7 +10003,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::Cadence::OrSymbol,
                     cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
                     item_id: String,
                     model_type: Symbol,
@@ -10133,7 +10011,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -10141,7 +10019,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -10156,46 +10034,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -10210,7 +10088,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -10220,7 +10098,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -10235,7 +10113,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -10247,26 +10125,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -10282,7 +10160,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -10292,7 +10170,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -10307,7 +10185,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -10319,26 +10197,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -10347,11 +10225,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionMaxGroupTieredPackagePrice < Orb::Internal::Type::BaseModel
+          class MaxGroupTieredPackage < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -10385,7 +10263,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::BillingCycleConfiguration
                 )
               )
             end
@@ -10395,7 +10273,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -10431,7 +10309,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration
                 )
               )
             end
@@ -10441,7 +10319,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -10463,7 +10341,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::Cadence::OrSymbol,
                 item_id: String,
                 max_group_tiered_package_config: T::Hash[Symbol, T.anything],
                 name: String,
@@ -10471,7 +10349,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -10482,7 +10360,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -10537,7 +10415,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::Cadence::OrSymbol,
                     item_id: String,
                     max_group_tiered_package_config: T::Hash[Symbol, T.anything],
                     model_type: Symbol,
@@ -10545,7 +10423,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -10553,7 +10431,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -10568,46 +10446,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -10622,7 +10500,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -10632,7 +10510,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -10647,7 +10525,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -10659,26 +10537,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -10694,7 +10572,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -10704,7 +10582,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -10719,7 +10597,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -10731,26 +10609,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -10759,11 +10637,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionGroupedWithMeteredMinimumPrice < Orb::Internal::Type::BaseModel
+          class GroupedWithMeteredMinimum < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -10797,7 +10675,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration
                 )
               )
             end
@@ -10807,7 +10685,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -10843,7 +10721,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration
                 )
               )
             end
@@ -10853,7 +10731,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -10875,7 +10753,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::Cadence::OrSymbol,
                 grouped_with_metered_minimum_config: T::Hash[Symbol, T.anything],
                 item_id: String,
                 name: String,
@@ -10883,7 +10761,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -10894,7 +10772,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -10949,7 +10827,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::Cadence::OrSymbol,
                     grouped_with_metered_minimum_config: T::Hash[Symbol, T.anything],
                     item_id: String,
                     model_type: Symbol,
@@ -10957,7 +10835,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -10965,7 +10843,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -10980,46 +10858,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -11034,7 +10912,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -11044,7 +10922,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -11059,7 +10937,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -11071,26 +10949,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -11106,7 +10984,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -11116,7 +10994,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -11131,7 +11009,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -11143,26 +11021,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -11171,11 +11049,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionMatrixWithDisplayNamePrice < Orb::Internal::Type::BaseModel
+          class MatrixWithDisplayName < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -11209,7 +11087,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::BillingCycleConfiguration
                 )
               )
             end
@@ -11219,7 +11097,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -11255,7 +11133,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::InvoicingCycleConfiguration
                 )
               )
             end
@@ -11265,7 +11143,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -11287,7 +11165,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::Cadence::OrSymbol,
                 item_id: String,
                 matrix_with_display_name_config: T::Hash[Symbol, T.anything],
                 name: String,
@@ -11295,7 +11173,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -11306,7 +11184,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -11361,7 +11239,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::Cadence::OrSymbol,
                     item_id: String,
                     matrix_with_display_name_config: T::Hash[Symbol, T.anything],
                     model_type: Symbol,
@@ -11369,7 +11247,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -11377,7 +11255,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -11392,46 +11270,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -11446,7 +11324,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -11456,7 +11334,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -11471,7 +11349,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -11483,26 +11361,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -11518,7 +11396,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -11528,7 +11406,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -11543,7 +11421,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -11555,26 +11433,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -11583,11 +11461,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionGroupedTieredPackagePrice < Orb::Internal::Type::BaseModel
+          class GroupedTieredPackage < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -11621,7 +11499,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::BillingCycleConfiguration
                 )
               )
             end
@@ -11631,7 +11509,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -11667,7 +11545,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::InvoicingCycleConfiguration
                 )
               )
             end
@@ -11677,7 +11555,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -11699,7 +11577,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::Cadence::OrSymbol,
                 grouped_tiered_package_config: T::Hash[Symbol, T.anything],
                 item_id: String,
                 name: String,
@@ -11707,7 +11585,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -11718,7 +11596,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -11773,7 +11651,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::Cadence::OrSymbol,
                     grouped_tiered_package_config: T::Hash[Symbol, T.anything],
                     item_id: String,
                     model_type: Symbol,
@@ -11781,7 +11659,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -11789,7 +11667,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -11804,46 +11682,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -11858,7 +11736,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -11868,7 +11746,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -11883,7 +11761,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -11895,26 +11773,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -11930,7 +11808,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -11940,7 +11818,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -11955,7 +11833,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -11967,26 +11845,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -11998,7 +11876,7 @@ module Orb
           sig do
             override
               .returns(
-                [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTieredWithMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithPercentPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionPackageWithAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionTierWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionUnitWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionBulkWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::NewSubscriptionGroupedTieredPackagePrice]
+                [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage]
               )
           end
           def self.variants; end
@@ -12116,11 +11994,11 @@ module Orb
         sig do
           returns(
             T.any(
-              Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewPercentageDiscount,
-              Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewUsageDiscount,
-              Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewAmountDiscount,
-              Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMinimum,
-              Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMaximum
+              Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::PercentageDiscount,
+              Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::UsageDiscount,
+              Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::AmountDiscount,
+              Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::Minimum,
+              Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::Maximum
             )
           )
         end
@@ -12133,12 +12011,12 @@ module Orb
         sig do
           params(
             adjustment: T.any(
-              Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewPercentageDiscount,
+              Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::PercentageDiscount,
               Orb::Internal::AnyHash,
-              Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewUsageDiscount,
-              Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewAmountDiscount,
-              Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMinimum,
-              Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMaximum
+              Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::UsageDiscount,
+              Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::AmountDiscount,
+              Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::Minimum,
+              Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::Maximum
             ),
             replaces_adjustment_id: String
           )
@@ -12155,11 +12033,11 @@ module Orb
             .returns(
               {
                 adjustment: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewPercentageDiscount,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewUsageDiscount,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewAmountDiscount,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMinimum,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMaximum
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::PercentageDiscount,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::UsageDiscount,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::AmountDiscount,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::Minimum,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::Maximum
                 ),
                 replaces_adjustment_id: String
               }
@@ -12171,7 +12049,7 @@ module Orb
         module Adjustment
           extend Orb::Internal::Type::Union
 
-          class NewPercentageDiscount < Orb::Internal::Type::BaseModel
+          class PercentageDiscount < Orb::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
 
@@ -12222,7 +12100,7 @@ module Orb
             def to_hash; end
           end
 
-          class NewUsageDiscount < Orb::Internal::Type::BaseModel
+          class UsageDiscount < Orb::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
 
@@ -12273,7 +12151,7 @@ module Orb
             def to_hash; end
           end
 
-          class NewAmountDiscount < Orb::Internal::Type::BaseModel
+          class AmountDiscount < Orb::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
 
@@ -12324,7 +12202,7 @@ module Orb
             def to_hash; end
           end
 
-          class NewMinimum < Orb::Internal::Type::BaseModel
+          class Minimum < Orb::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
 
@@ -12383,7 +12261,7 @@ module Orb
             def to_hash; end
           end
 
-          class NewMaximum < Orb::Internal::Type::BaseModel
+          class Maximum < Orb::Internal::Type::BaseModel
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
 
@@ -12437,7 +12315,7 @@ module Orb
           sig do
             override
               .returns(
-                [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewPercentageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewUsageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewAmountDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMinimum, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::NewMaximum]
+                [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::PercentageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::UsageDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::AmountDiscount, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::Minimum, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::Maximum]
               )
           end
           def self.variants; end
@@ -12494,31 +12372,31 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage
               )
             )
           )
@@ -12547,32 +12425,32 @@ module Orb
             minimum_amount: T.nilable(String),
             price: T.nilable(
               T.any(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit,
                 Orb::Internal::AnyHash,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice,
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName,
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage
               )
             ),
             price_id: T.nilable(String)
@@ -12615,31 +12493,31 @@ module Orb
                 minimum_amount: T.nilable(String),
                 price: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage
                   )
                 ),
                 price_id: T.nilable(String)
@@ -12843,13 +12721,9 @@ module Orb
         module Price
           extend Orb::Internal::Type::Union
 
-          class NewSubscriptionUnitPrice < Orb::Internal::Type::BaseModel
+          class Unit < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
-            sig do
-              returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::Cadence::OrSymbol
-              )
-            end
+            sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::Cadence::OrSymbol) }
             attr_accessor :cadence
 
             # The id of the item the price will be associated with.
@@ -12863,17 +12737,13 @@ module Orb
             sig { returns(String) }
             attr_accessor :name
 
-            sig do
-              returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::UnitConfig
-              )
-            end
+            sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::UnitConfig) }
             attr_reader :unit_config
 
             sig do
               params(
                 unit_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::UnitConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::UnitConfig,
                   Orb::Internal::AnyHash
                 )
               )
@@ -12896,7 +12766,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::BillingCycleConfiguration
                 )
               )
             end
@@ -12906,7 +12776,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -12942,7 +12812,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::InvoicingCycleConfiguration
                 )
               )
             end
@@ -12952,7 +12822,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -12974,18 +12844,18 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 unit_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::UnitConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::UnitConfig,
                   Orb::Internal::AnyHash
                 ),
                 billable_metric_id: T.nilable(String),
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -12996,7 +12866,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -13051,15 +12921,15 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
-                    unit_config: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::UnitConfig,
+                    unit_config: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::UnitConfig,
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -13067,7 +12937,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -13081,48 +12951,44 @@ module Orb
               extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::Cadence)
-                end
+                T.type_alias { T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::Cadence) }
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
-                    T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::Cadence::TaggedSymbol
-                    ]
+                    T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::Cadence::TaggedSymbol]
                   )
               end
               def self.values; end
@@ -13150,7 +13016,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -13160,7 +13026,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -13175,7 +13041,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -13187,26 +13053,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -13222,7 +13088,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -13232,7 +13098,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -13247,7 +13113,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -13259,26 +13125,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -13287,11 +13153,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionPackagePrice < Orb::Internal::Type::BaseModel
+          class Package < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -13307,17 +13173,13 @@ module Orb
             sig { returns(String) }
             attr_accessor :name
 
-            sig do
-              returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::PackageConfig
-              )
-            end
+            sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::PackageConfig) }
             attr_reader :package_config
 
             sig do
               params(
                 package_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::PackageConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::PackageConfig,
                   Orb::Internal::AnyHash
                 )
               )
@@ -13340,7 +13202,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::BillingCycleConfiguration
                 )
               )
             end
@@ -13350,7 +13212,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -13386,7 +13248,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::InvoicingCycleConfiguration
                 )
               )
             end
@@ -13396,7 +13258,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -13418,18 +13280,18 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 package_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::PackageConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::PackageConfig,
                   Orb::Internal::AnyHash
                 ),
                 billable_metric_id: T.nilable(String),
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -13440,7 +13302,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -13495,15 +13357,15 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
-                    package_config: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::PackageConfig,
+                    package_config: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::PackageConfig,
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -13511,7 +13373,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -13525,48 +13387,44 @@ module Orb
               extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::Cadence)
-                end
+                T.type_alias { T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::Cadence) }
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
-                    T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::Cadence::TaggedSymbol
-                    ]
+                    T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::Cadence::TaggedSymbol]
                   )
               end
               def self.values; end
@@ -13602,7 +13460,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -13612,7 +13470,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -13627,7 +13485,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -13639,26 +13497,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -13674,7 +13532,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -13684,7 +13542,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -13699,7 +13557,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -13711,26 +13569,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -13739,30 +13597,22 @@ module Orb
             end
           end
 
-          class NewSubscriptionMatrixPrice < Orb::Internal::Type::BaseModel
+          class Matrix < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
-            sig do
-              returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::Cadence::OrSymbol
-              )
-            end
+            sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::Cadence::OrSymbol) }
             attr_accessor :cadence
 
             # The id of the item the price will be associated with.
             sig { returns(String) }
             attr_accessor :item_id
 
-            sig do
-              returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig
-              )
-            end
+            sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::MatrixConfig) }
             attr_reader :matrix_config
 
             sig do
               params(
                 matrix_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::MatrixConfig,
                   Orb::Internal::AnyHash
                 )
               )
@@ -13792,7 +13642,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::BillingCycleConfiguration
                 )
               )
             end
@@ -13802,7 +13652,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -13838,7 +13688,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::InvoicingCycleConfiguration
                 )
               )
             end
@@ -13848,7 +13698,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -13870,10 +13720,10 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::Cadence::OrSymbol,
                 item_id: String,
                 matrix_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::MatrixConfig,
                   Orb::Internal::AnyHash
                 ),
                 name: String,
@@ -13881,7 +13731,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -13892,7 +13742,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -13947,15 +13797,15 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::Cadence::OrSymbol,
                     item_id: String,
-                    matrix_config: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig,
+                    matrix_config: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::MatrixConfig,
                     model_type: Symbol,
                     name: String,
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -13963,7 +13813,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -13977,48 +13827,44 @@ module Orb
               extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::Cadence)
-                end
+                T.type_alias { T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::Cadence) }
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
-                    T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::Cadence::TaggedSymbol
-                    ]
+                    T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::Cadence::TaggedSymbol]
                   )
               end
               def self.values; end
@@ -14036,9 +13882,7 @@ module Orb
               # Matrix values for specified matrix grouping keys
               sig do
                 returns(
-                  T::Array[
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue
-                  ]
+                  T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::MatrixConfig::MatrixValue]
                 )
               end
               attr_accessor :matrix_values
@@ -14049,7 +13893,7 @@ module Orb
                   dimensions: T::Array[T.nilable(String)],
                   matrix_values: T::Array[
                     T.any(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue,
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::MatrixConfig::MatrixValue,
                       Orb::Internal::AnyHash
                     )
                   ]
@@ -14070,9 +13914,7 @@ module Orb
                     {
                       default_unit_amount: String,
                       dimensions: T::Array[T.nilable(String)],
-                      matrix_values: T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::MatrixConfig::MatrixValue
-                      ]
+                      matrix_values: T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::MatrixConfig::MatrixValue]
                     }
                   )
               end
@@ -14116,7 +13958,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -14126,7 +13968,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -14141,7 +13983,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -14153,26 +13995,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -14188,7 +14030,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -14198,7 +14040,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -14213,7 +14055,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -14225,26 +14067,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -14253,13 +14095,9 @@ module Orb
             end
           end
 
-          class NewSubscriptionTieredPrice < Orb::Internal::Type::BaseModel
+          class Tiered < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
-            sig do
-              returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::Cadence::OrSymbol
-              )
-            end
+            sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::Cadence::OrSymbol) }
             attr_accessor :cadence
 
             # The id of the item the price will be associated with.
@@ -14273,17 +14111,13 @@ module Orb
             sig { returns(String) }
             attr_accessor :name
 
-            sig do
-              returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig
-              )
-            end
+            sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::TieredConfig) }
             attr_reader :tiered_config
 
             sig do
               params(
                 tiered_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::TieredConfig,
                   Orb::Internal::AnyHash
                 )
               )
@@ -14306,7 +14140,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::BillingCycleConfiguration
                 )
               )
             end
@@ -14316,7 +14150,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -14352,7 +14186,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::InvoicingCycleConfiguration
                 )
               )
             end
@@ -14362,7 +14196,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -14384,18 +14218,18 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 tiered_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::TieredConfig,
                   Orb::Internal::AnyHash
                 ),
                 billable_metric_id: T.nilable(String),
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -14406,7 +14240,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -14461,15 +14295,15 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
-                    tiered_config: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig,
+                    tiered_config: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::TieredConfig,
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -14477,7 +14311,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -14491,48 +14325,44 @@ module Orb
               extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::Cadence)
-                end
+                T.type_alias { T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::Cadence) }
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
-                    T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::Cadence::TaggedSymbol
-                    ]
+                    T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::Cadence::TaggedSymbol]
                   )
               end
               def self.values; end
@@ -14542,9 +14372,7 @@ module Orb
               # Tiers for rating based on total usage quantities into the specified tier
               sig do
                 returns(
-                  T::Array[
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier
-                  ]
+                  T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::TieredConfig::Tier]
                 )
               end
               attr_accessor :tiers
@@ -14553,7 +14381,7 @@ module Orb
                 params(
                   tiers: T::Array[
                     T.any(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier,
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::TieredConfig::Tier,
                       Orb::Internal::AnyHash
                     )
                   ]
@@ -14568,9 +14396,7 @@ module Orb
                 override
                   .returns(
                     {
-                      tiers: T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::TieredConfig::Tier
-                      ]
+                      tiers: T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::TieredConfig::Tier]
                     }
                   )
               end
@@ -14619,7 +14445,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -14629,7 +14455,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -14644,7 +14470,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -14656,26 +14482,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -14691,7 +14517,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -14701,7 +14527,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -14716,7 +14542,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -14728,26 +14554,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -14756,11 +14582,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionTieredBpsPrice < Orb::Internal::Type::BaseModel
+          class TieredBps < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -14778,7 +14604,7 @@ module Orb
 
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::TieredBpsConfig
               )
             end
             attr_reader :tiered_bps_config
@@ -14786,7 +14612,7 @@ module Orb
             sig do
               params(
                 tiered_bps_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::TieredBpsConfig,
                   Orb::Internal::AnyHash
                 )
               )
@@ -14809,7 +14635,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::BillingCycleConfiguration
                 )
               )
             end
@@ -14819,7 +14645,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -14855,7 +14681,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::InvoicingCycleConfiguration
                 )
               )
             end
@@ -14865,7 +14691,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -14887,18 +14713,18 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 tiered_bps_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::TieredBpsConfig,
                   Orb::Internal::AnyHash
                 ),
                 billable_metric_id: T.nilable(String),
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -14909,7 +14735,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -14964,15 +14790,15 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
-                    tiered_bps_config: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig,
+                    tiered_bps_config: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::TieredBpsConfig,
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -14980,7 +14806,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -14994,48 +14820,44 @@ module Orb
               extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::Cadence)
-                end
+                T.type_alias { T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::Cadence) }
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
-                    T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::Cadence::TaggedSymbol
-                    ]
+                    T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::Cadence::TaggedSymbol]
                   )
               end
               def self.values; end
@@ -15046,9 +14868,7 @@ module Orb
               # tiers
               sig do
                 returns(
-                  T::Array[
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier
-                  ]
+                  T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::TieredBpsConfig::Tier]
                 )
               end
               attr_accessor :tiers
@@ -15057,7 +14877,7 @@ module Orb
                 params(
                   tiers: T::Array[
                     T.any(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier,
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::TieredBpsConfig::Tier,
                       Orb::Internal::AnyHash
                     )
                   ]
@@ -15073,9 +14893,7 @@ module Orb
                 override
                   .returns(
                     {
-                      tiers: T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::TieredBpsConfig::Tier
-                      ]
+                      tiers: T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::TieredBpsConfig::Tier]
                     }
                   )
               end
@@ -15140,7 +14958,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -15150,7 +14968,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -15165,7 +14983,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -15177,26 +14995,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -15212,7 +15030,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -15222,7 +15040,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -15237,7 +15055,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -15249,26 +15067,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -15277,18 +15095,14 @@ module Orb
             end
           end
 
-          class NewSubscriptionBpsPrice < Orb::Internal::Type::BaseModel
-            sig do
-              returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BpsConfig
-              )
-            end
+          class Bps < Orb::Internal::Type::BaseModel
+            sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::BpsConfig) }
             attr_reader :bps_config
 
             sig do
               params(
                 bps_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BpsConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::BpsConfig,
                   Orb::Internal::AnyHash
                 )
               )
@@ -15297,11 +15111,7 @@ module Orb
             attr_writer :bps_config
 
             # The cadence to bill for this price on.
-            sig do
-              returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::Cadence::OrSymbol
-              )
-            end
+            sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::Cadence::OrSymbol) }
             attr_accessor :cadence
 
             # The id of the item the price will be associated with.
@@ -15330,7 +15140,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::BillingCycleConfiguration
                 )
               )
             end
@@ -15340,7 +15150,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -15376,7 +15186,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::InvoicingCycleConfiguration
                 )
               )
             end
@@ -15386,7 +15196,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -15409,17 +15219,17 @@ module Orb
             sig do
               params(
                 bps_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BpsConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::BpsConfig,
                   Orb::Internal::AnyHash
                 ),
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 billable_metric_id: T.nilable(String),
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -15430,7 +15240,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -15485,15 +15295,15 @@ module Orb
               override
                 .returns(
                   {
-                    bps_config: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BpsConfig,
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::Cadence::OrSymbol,
+                    bps_config: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::BpsConfig,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -15501,7 +15311,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -15535,48 +15345,44 @@ module Orb
               extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::Cadence)
-                end
+                T.type_alias { T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::Cadence) }
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
-                    T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::Cadence::TaggedSymbol
-                    ]
+                    T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::Cadence::TaggedSymbol]
                   )
               end
               def self.values; end
@@ -15590,7 +15396,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -15600,7 +15406,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -15615,7 +15421,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -15627,26 +15433,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -15662,7 +15468,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -15672,7 +15478,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -15687,7 +15493,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -15699,26 +15505,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -15727,18 +15533,14 @@ module Orb
             end
           end
 
-          class NewSubscriptionBulkBpsPrice < Orb::Internal::Type::BaseModel
-            sig do
-              returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig
-              )
-            end
+          class BulkBps < Orb::Internal::Type::BaseModel
+            sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::BulkBpsConfig) }
             attr_reader :bulk_bps_config
 
             sig do
               params(
                 bulk_bps_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::BulkBpsConfig,
                   Orb::Internal::AnyHash
                 )
               )
@@ -15749,7 +15551,7 @@ module Orb
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -15780,7 +15582,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::BillingCycleConfiguration
                 )
               )
             end
@@ -15790,7 +15592,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -15826,7 +15628,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::InvoicingCycleConfiguration
                 )
               )
             end
@@ -15836,7 +15638,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -15859,17 +15661,17 @@ module Orb
             sig do
               params(
                 bulk_bps_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::BulkBpsConfig,
                   Orb::Internal::AnyHash
                 ),
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 billable_metric_id: T.nilable(String),
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -15880,7 +15682,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -15935,15 +15737,15 @@ module Orb
               override
                 .returns(
                   {
-                    bulk_bps_config: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig,
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::Cadence::OrSymbol,
+                    bulk_bps_config: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::BulkBpsConfig,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -15951,7 +15753,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -15965,9 +15767,7 @@ module Orb
               # tier based on total volume
               sig do
                 returns(
-                  T::Array[
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier
-                  ]
+                  T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::BulkBpsConfig::Tier]
                 )
               end
               attr_accessor :tiers
@@ -15976,7 +15776,7 @@ module Orb
                 params(
                   tiers: T::Array[
                     T.any(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier,
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::BulkBpsConfig::Tier,
                       Orb::Internal::AnyHash
                     )
                   ]
@@ -15992,9 +15792,7 @@ module Orb
                 override
                   .returns(
                     {
-                      tiers: T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BulkBpsConfig::Tier
-                      ]
+                      tiers: T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::BulkBpsConfig::Tier]
                     }
                   )
               end
@@ -16043,48 +15841,44 @@ module Orb
               extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::Cadence)
-                end
+                T.type_alias { T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::Cadence) }
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
-                    T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::Cadence::TaggedSymbol
-                    ]
+                    T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::Cadence::TaggedSymbol]
                   )
               end
               def self.values; end
@@ -16098,7 +15892,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -16108,7 +15902,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -16123,7 +15917,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -16135,26 +15929,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -16170,7 +15964,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -16180,7 +15974,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -16195,7 +15989,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -16207,26 +16001,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -16235,18 +16029,14 @@ module Orb
             end
           end
 
-          class NewSubscriptionBulkPrice < Orb::Internal::Type::BaseModel
-            sig do
-              returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig
-              )
-            end
+          class Bulk < Orb::Internal::Type::BaseModel
+            sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::BulkConfig) }
             attr_reader :bulk_config
 
             sig do
               params(
                 bulk_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::BulkConfig,
                   Orb::Internal::AnyHash
                 )
               )
@@ -16255,11 +16045,7 @@ module Orb
             attr_writer :bulk_config
 
             # The cadence to bill for this price on.
-            sig do
-              returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::Cadence::OrSymbol
-              )
-            end
+            sig { returns(Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::Cadence::OrSymbol) }
             attr_accessor :cadence
 
             # The id of the item the price will be associated with.
@@ -16288,7 +16074,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::BillingCycleConfiguration
                 )
               )
             end
@@ -16298,7 +16084,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -16334,7 +16120,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::InvoicingCycleConfiguration
                 )
               )
             end
@@ -16344,7 +16130,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -16367,17 +16153,17 @@ module Orb
             sig do
               params(
                 bulk_config: T.any(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig,
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::BulkConfig,
                   Orb::Internal::AnyHash
                 ),
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 billable_metric_id: T.nilable(String),
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -16388,7 +16174,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -16443,15 +16229,15 @@ module Orb
               override
                 .returns(
                   {
-                    bulk_config: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig,
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::Cadence::OrSymbol,
+                    bulk_config: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::BulkConfig,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -16459,7 +16245,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -16472,9 +16258,7 @@ module Orb
               # Bulk tiers for rating based on total usage volume
               sig do
                 returns(
-                  T::Array[
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier
-                  ]
+                  T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::BulkConfig::Tier]
                 )
               end
               attr_accessor :tiers
@@ -16483,7 +16267,7 @@ module Orb
                 params(
                   tiers: T::Array[
                     T.any(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier,
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::BulkConfig::Tier,
                       Orb::Internal::AnyHash
                     )
                   ]
@@ -16498,9 +16282,7 @@ module Orb
                 override
                   .returns(
                     {
-                      tiers: T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BulkConfig::Tier
-                      ]
+                      tiers: T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::BulkConfig::Tier]
                     }
                   )
               end
@@ -16532,48 +16314,44 @@ module Orb
               extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::Cadence)
-                end
+                T.type_alias { T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::Cadence) }
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
-                    T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::Cadence::TaggedSymbol
-                    ]
+                    T::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::Cadence::TaggedSymbol]
                   )
               end
               def self.values; end
@@ -16587,7 +16365,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -16597,7 +16375,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -16612,7 +16390,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -16624,26 +16402,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -16659,7 +16437,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -16669,7 +16447,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -16684,7 +16462,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -16696,26 +16474,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -16724,11 +16502,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionThresholdTotalAmountPrice < Orb::Internal::Type::BaseModel
+          class ThresholdTotalAmount < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -16762,7 +16540,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::BillingCycleConfiguration
                 )
               )
             end
@@ -16772,7 +16550,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -16808,7 +16586,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::InvoicingCycleConfiguration
                 )
               )
             end
@@ -16818,7 +16596,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -16840,7 +16618,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 threshold_total_amount_config: T::Hash[Symbol, T.anything],
@@ -16848,7 +16626,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -16859,7 +16637,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -16914,7 +16692,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -16922,7 +16700,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -16930,7 +16708,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -16945,46 +16723,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -16999,7 +16777,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -17009,7 +16787,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -17024,7 +16802,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -17036,26 +16814,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -17071,7 +16849,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -17081,7 +16859,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -17096,7 +16874,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -17108,26 +16886,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -17136,11 +16914,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionTieredPackagePrice < Orb::Internal::Type::BaseModel
+          class TieredPackage < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -17174,7 +16952,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::BillingCycleConfiguration
                 )
               )
             end
@@ -17184,7 +16962,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -17220,7 +16998,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::InvoicingCycleConfiguration
                 )
               )
             end
@@ -17230,7 +17008,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -17252,7 +17030,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 tiered_package_config: T::Hash[Symbol, T.anything],
@@ -17260,7 +17038,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -17271,7 +17049,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -17326,7 +17104,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -17334,7 +17112,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -17342,7 +17120,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -17357,46 +17135,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -17411,7 +17189,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -17421,7 +17199,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -17436,7 +17214,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -17448,26 +17226,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -17483,7 +17261,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -17493,7 +17271,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -17508,7 +17286,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -17520,26 +17298,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -17548,11 +17326,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionTieredWithMinimumPrice < Orb::Internal::Type::BaseModel
+          class TieredWithMinimum < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -17586,7 +17364,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::BillingCycleConfiguration
                 )
               )
             end
@@ -17596,7 +17374,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -17632,7 +17410,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::InvoicingCycleConfiguration
                 )
               )
             end
@@ -17642,7 +17420,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -17664,7 +17442,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 tiered_with_minimum_config: T::Hash[Symbol, T.anything],
@@ -17672,7 +17450,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -17683,7 +17461,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -17738,7 +17516,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -17746,7 +17524,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -17754,7 +17532,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -17769,46 +17547,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -17823,7 +17601,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -17833,7 +17611,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -17848,7 +17626,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -17860,26 +17638,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -17895,7 +17673,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -17905,7 +17683,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -17920,7 +17698,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -17932,26 +17710,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -17960,11 +17738,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionUnitWithPercentPrice < Orb::Internal::Type::BaseModel
+          class UnitWithPercent < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -17998,7 +17776,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::BillingCycleConfiguration
                 )
               )
             end
@@ -18008,7 +17786,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -18044,7 +17822,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::InvoicingCycleConfiguration
                 )
               )
             end
@@ -18054,7 +17832,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -18076,7 +17854,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 unit_with_percent_config: T::Hash[Symbol, T.anything],
@@ -18084,7 +17862,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -18095,7 +17873,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -18150,7 +17928,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -18158,7 +17936,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -18166,7 +17944,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -18181,46 +17959,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -18235,7 +18013,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -18245,7 +18023,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -18260,7 +18038,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -18272,26 +18050,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -18307,7 +18085,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -18317,7 +18095,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -18332,7 +18110,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -18344,26 +18122,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -18372,11 +18150,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionPackageWithAllocationPrice < Orb::Internal::Type::BaseModel
+          class PackageWithAllocation < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -18410,7 +18188,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::BillingCycleConfiguration
                 )
               )
             end
@@ -18420,7 +18198,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -18456,7 +18234,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::InvoicingCycleConfiguration
                 )
               )
             end
@@ -18466,7 +18244,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -18488,7 +18266,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 package_with_allocation_config: T::Hash[Symbol, T.anything],
@@ -18496,7 +18274,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -18507,7 +18285,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -18562,7 +18340,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -18570,7 +18348,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -18578,7 +18356,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -18593,46 +18371,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -18647,7 +18425,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -18657,7 +18435,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -18672,7 +18450,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -18684,26 +18462,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -18719,7 +18497,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -18729,7 +18507,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -18744,7 +18522,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -18756,26 +18534,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -18784,11 +18562,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionTierWithProrationPrice < Orb::Internal::Type::BaseModel
+          class TieredWithProration < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -18822,7 +18600,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::BillingCycleConfiguration
                 )
               )
             end
@@ -18832,7 +18610,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -18868,7 +18646,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::InvoicingCycleConfiguration
                 )
               )
             end
@@ -18878,7 +18656,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -18900,7 +18678,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 tiered_with_proration_config: T::Hash[Symbol, T.anything],
@@ -18908,7 +18686,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -18919,7 +18697,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -18974,7 +18752,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -18982,7 +18760,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -18990,7 +18768,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -19005,46 +18783,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -19059,7 +18837,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -19069,7 +18847,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -19084,7 +18862,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -19096,26 +18874,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -19131,7 +18909,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -19141,7 +18919,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -19156,7 +18934,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -19168,26 +18946,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -19196,11 +18974,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionUnitWithProrationPrice < Orb::Internal::Type::BaseModel
+          class UnitWithProration < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -19234,7 +19012,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::BillingCycleConfiguration
                 )
               )
             end
@@ -19244,7 +19022,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -19280,7 +19058,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::InvoicingCycleConfiguration
                 )
               )
             end
@@ -19290,7 +19068,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -19312,7 +19090,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 unit_with_proration_config: T::Hash[Symbol, T.anything],
@@ -19320,7 +19098,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -19331,7 +19109,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -19386,7 +19164,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -19394,7 +19172,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -19402,7 +19180,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -19417,46 +19195,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -19471,7 +19249,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -19481,7 +19259,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -19496,7 +19274,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -19508,26 +19286,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -19543,7 +19321,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -19553,7 +19331,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -19568,7 +19346,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -19580,26 +19358,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -19608,11 +19386,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionGroupedAllocationPrice < Orb::Internal::Type::BaseModel
+          class GroupedAllocation < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -19646,7 +19424,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::BillingCycleConfiguration
                 )
               )
             end
@@ -19656,7 +19434,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -19692,7 +19470,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::InvoicingCycleConfiguration
                 )
               )
             end
@@ -19702,7 +19480,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -19724,7 +19502,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::Cadence::OrSymbol,
                 grouped_allocation_config: T::Hash[Symbol, T.anything],
                 item_id: String,
                 name: String,
@@ -19732,7 +19510,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -19743,7 +19521,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -19798,7 +19576,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::Cadence::OrSymbol,
                     grouped_allocation_config: T::Hash[Symbol, T.anything],
                     item_id: String,
                     model_type: Symbol,
@@ -19806,7 +19584,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -19814,7 +19592,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -19829,46 +19607,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -19883,7 +19661,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -19893,7 +19671,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -19908,7 +19686,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -19920,26 +19698,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -19955,7 +19733,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -19965,7 +19743,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -19980,7 +19758,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -19992,26 +19770,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -20020,11 +19798,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionGroupedWithProratedMinimumPrice < Orb::Internal::Type::BaseModel
+          class GroupedWithProratedMinimum < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -20058,7 +19836,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::BillingCycleConfiguration
                 )
               )
             end
@@ -20068,7 +19846,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -20104,7 +19882,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration
                 )
               )
             end
@@ -20114,7 +19892,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -20136,7 +19914,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::Cadence::OrSymbol,
                 grouped_with_prorated_minimum_config: T::Hash[Symbol, T.anything],
                 item_id: String,
                 name: String,
@@ -20144,7 +19922,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -20155,7 +19933,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -20210,7 +19988,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::Cadence::OrSymbol,
                     grouped_with_prorated_minimum_config: T::Hash[Symbol, T.anything],
                     item_id: String,
                     model_type: Symbol,
@@ -20218,7 +19996,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -20226,7 +20004,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -20241,46 +20019,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -20295,7 +20073,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -20305,7 +20083,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -20320,7 +20098,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -20332,26 +20110,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -20367,7 +20145,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -20377,7 +20155,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -20392,7 +20170,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -20404,26 +20182,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -20432,14 +20210,14 @@ module Orb
             end
           end
 
-          class NewSubscriptionBulkWithProrationPrice < Orb::Internal::Type::BaseModel
+          class BulkWithProration < Orb::Internal::Type::BaseModel
             sig { returns(T::Hash[Symbol, T.anything]) }
             attr_accessor :bulk_with_proration_config
 
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -20470,7 +20248,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::BillingCycleConfiguration
                 )
               )
             end
@@ -20480,7 +20258,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -20516,7 +20294,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::InvoicingCycleConfiguration
                 )
               )
             end
@@ -20526,7 +20304,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -20549,14 +20327,14 @@ module Orb
             sig do
               params(
                 bulk_with_proration_config: T::Hash[Symbol, T.anything],
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 billable_metric_id: T.nilable(String),
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -20567,7 +20345,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -20623,14 +20401,14 @@ module Orb
                 .returns(
                   {
                     bulk_with_proration_config: T::Hash[Symbol, T.anything],
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -20638,7 +20416,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -20653,46 +20431,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -20707,7 +20485,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -20717,7 +20495,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -20732,7 +20510,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -20744,26 +20522,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -20779,7 +20557,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -20789,7 +20567,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -20804,7 +20582,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -20816,26 +20594,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -20844,11 +20622,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionScalableMatrixWithUnitPricingPrice < Orb::Internal::Type::BaseModel
+          class ScalableMatrixWithUnitPricing < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -20882,7 +20660,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration
                 )
               )
             end
@@ -20892,7 +20670,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -20928,7 +20706,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration
                 )
               )
             end
@@ -20938,7 +20716,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -20960,7 +20738,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 scalable_matrix_with_unit_pricing_config: T::Hash[Symbol, T.anything],
@@ -20968,7 +20746,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -20979,7 +20757,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -21034,7 +20812,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -21042,7 +20820,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -21050,7 +20828,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -21065,46 +20843,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -21119,7 +20897,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -21129,7 +20907,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -21144,7 +20922,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -21156,26 +20934,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -21191,7 +20969,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -21201,7 +20979,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -21216,7 +20994,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -21228,26 +21006,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -21256,11 +21034,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionScalableMatrixWithTieredPricingPrice < Orb::Internal::Type::BaseModel
+          class ScalableMatrixWithTieredPricing < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -21294,7 +21072,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration
                 )
               )
             end
@@ -21304,7 +21082,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -21340,7 +21118,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration
                 )
               )
             end
@@ -21350,7 +21128,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -21372,7 +21150,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::Cadence::OrSymbol,
                 item_id: String,
                 name: String,
                 scalable_matrix_with_tiered_pricing_config: T::Hash[Symbol, T.anything],
@@ -21380,7 +21158,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -21391,7 +21169,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -21446,7 +21224,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -21454,7 +21232,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -21462,7 +21240,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -21477,46 +21255,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -21531,7 +21309,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -21541,7 +21319,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -21556,7 +21334,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -21568,26 +21346,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -21603,7 +21381,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -21613,7 +21391,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -21628,7 +21406,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -21640,26 +21418,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -21668,11 +21446,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionCumulativeGroupedBulkPrice < Orb::Internal::Type::BaseModel
+          class CumulativeGroupedBulk < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -21706,7 +21484,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::BillingCycleConfiguration
                 )
               )
             end
@@ -21716,7 +21494,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -21752,7 +21530,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration
                 )
               )
             end
@@ -21762,7 +21540,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -21784,7 +21562,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::Cadence::OrSymbol,
                 cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
                 item_id: String,
                 name: String,
@@ -21792,7 +21570,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -21803,7 +21581,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -21858,7 +21636,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::Cadence::OrSymbol,
                     cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
                     item_id: String,
                     model_type: Symbol,
@@ -21866,7 +21644,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -21874,7 +21652,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -21889,46 +21667,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -21943,7 +21721,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -21953,7 +21731,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -21968,7 +21746,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -21980,26 +21758,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -22015,7 +21793,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -22025,7 +21803,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -22040,7 +21818,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -22052,26 +21830,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -22080,11 +21858,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionMaxGroupTieredPackagePrice < Orb::Internal::Type::BaseModel
+          class MaxGroupTieredPackage < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -22118,7 +21896,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::BillingCycleConfiguration
                 )
               )
             end
@@ -22128,7 +21906,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -22164,7 +21942,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration
                 )
               )
             end
@@ -22174,7 +21952,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -22196,7 +21974,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::Cadence::OrSymbol,
                 item_id: String,
                 max_group_tiered_package_config: T::Hash[Symbol, T.anything],
                 name: String,
@@ -22204,7 +21982,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -22215,7 +21993,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -22270,7 +22048,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::Cadence::OrSymbol,
                     item_id: String,
                     max_group_tiered_package_config: T::Hash[Symbol, T.anything],
                     model_type: Symbol,
@@ -22278,7 +22056,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -22286,7 +22064,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -22301,46 +22079,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -22355,7 +22133,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -22365,7 +22143,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -22380,7 +22158,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -22392,26 +22170,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -22427,7 +22205,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -22437,7 +22215,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -22452,7 +22230,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -22464,26 +22242,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -22492,11 +22270,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionGroupedWithMeteredMinimumPrice < Orb::Internal::Type::BaseModel
+          class GroupedWithMeteredMinimum < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -22530,7 +22308,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration
                 )
               )
             end
@@ -22540,7 +22318,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -22576,7 +22354,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration
                 )
               )
             end
@@ -22586,7 +22364,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -22608,7 +22386,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::Cadence::OrSymbol,
                 grouped_with_metered_minimum_config: T::Hash[Symbol, T.anything],
                 item_id: String,
                 name: String,
@@ -22616,7 +22394,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -22627,7 +22405,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -22682,7 +22460,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::Cadence::OrSymbol,
                     grouped_with_metered_minimum_config: T::Hash[Symbol, T.anything],
                     item_id: String,
                     model_type: Symbol,
@@ -22690,7 +22468,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -22698,7 +22476,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -22713,46 +22491,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -22767,7 +22545,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -22777,7 +22555,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -22792,7 +22570,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -22804,26 +22582,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -22839,7 +22617,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -22849,7 +22627,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -22864,7 +22642,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -22876,26 +22654,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -22904,11 +22682,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionMatrixWithDisplayNamePrice < Orb::Internal::Type::BaseModel
+          class MatrixWithDisplayName < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -22942,7 +22720,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::BillingCycleConfiguration
                 )
               )
             end
@@ -22952,7 +22730,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -22988,7 +22766,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::InvoicingCycleConfiguration
                 )
               )
             end
@@ -22998,7 +22776,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -23020,7 +22798,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::Cadence::OrSymbol,
                 item_id: String,
                 matrix_with_display_name_config: T::Hash[Symbol, T.anything],
                 name: String,
@@ -23028,7 +22806,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -23039,7 +22817,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -23094,7 +22872,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::Cadence::OrSymbol,
                     item_id: String,
                     matrix_with_display_name_config: T::Hash[Symbol, T.anything],
                     model_type: Symbol,
@@ -23102,7 +22880,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -23110,7 +22888,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -23125,46 +22903,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -23179,7 +22957,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -23189,7 +22967,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -23204,7 +22982,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -23216,26 +22994,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -23251,7 +23029,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -23261,7 +23039,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -23276,7 +23054,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -23288,26 +23066,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -23316,11 +23094,11 @@ module Orb
             end
           end
 
-          class NewSubscriptionGroupedTieredPackagePrice < Orb::Internal::Type::BaseModel
+          class GroupedTieredPackage < Orb::Internal::Type::BaseModel
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::OrSymbol
+                Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -23354,7 +23132,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::BillingCycleConfiguration
                 )
               )
             end
@@ -23364,7 +23142,7 @@ module Orb
               params(
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -23400,7 +23178,7 @@ module Orb
             sig do
               returns(
                 T.nilable(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::InvoicingCycleConfiguration
                 )
               )
             end
@@ -23410,7 +23188,7 @@ module Orb
               params(
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 )
@@ -23432,7 +23210,7 @@ module Orb
 
             sig do
               params(
-                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::OrSymbol,
+                cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::Cadence::OrSymbol,
                 grouped_tiered_package_config: T::Hash[Symbol, T.anything],
                 item_id: String,
                 name: String,
@@ -23440,7 +23218,7 @@ module Orb
                 billed_in_advance: T.nilable(T::Boolean),
                 billing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::BillingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -23451,7 +23229,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration: T.nilable(
                   T.any(
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration,
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::InvoicingCycleConfiguration,
                     Orb::Internal::AnyHash
                   )
                 ),
@@ -23506,7 +23284,7 @@ module Orb
               override
                 .returns(
                   {
-                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::OrSymbol,
+                    cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::Cadence::OrSymbol,
                     grouped_tiered_package_config: T::Hash[Symbol, T.anything],
                     item_id: String,
                     model_type: Symbol,
@@ -23514,7 +23292,7 @@ module Orb
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::BillingCycleConfiguration
                     ),
                     conversion_rate: T.nilable(Float),
                     currency: T.nilable(String),
@@ -23522,7 +23300,7 @@ module Orb
                     fixed_price_quantity: T.nilable(Float),
                     invoice_grouping_key: T.nilable(String),
                     invoicing_cycle_configuration: T.nilable(
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::InvoicingCycleConfiguration
                     ),
                     metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                     reference_id: T.nilable(String)
@@ -23537,46 +23315,46 @@ module Orb
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence)
+                  T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::Cadence)
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::Cadence::TaggedSymbol
                 )
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::TaggedSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::Cadence::TaggedSymbol
                 )
 
               sig do
                 override
                   .returns(
                     T::Array[
-                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::Cadence::TaggedSymbol
+                      Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::Cadence::TaggedSymbol
                     ]
                   )
               end
@@ -23591,7 +23369,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -23601,7 +23379,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::BillingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -23616,7 +23394,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::BillingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -23628,26 +23406,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::BillingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -23663,7 +23441,7 @@ module Orb
               # The unit of billing period duration.
               sig do
                 returns(
-                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
               end
               attr_accessor :duration_unit
@@ -23673,7 +23451,7 @@ module Orb
               sig do
                 params(
                   duration: Integer,
-                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -23688,7 +23466,7 @@ module Orb
                   .returns(
                     {
                       duration: Integer,
-                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                      duration_unit: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit::OrSymbol
                     }
                   )
               end
@@ -23700,26 +23478,26 @@ module Orb
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit)
+                    T.all(Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 DAY =
                   T.let(
                     :day,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                   )
 
                 sig do
                   override
                     .returns(
                       T::Array[
-                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                        Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                       ]
                     )
                 end
@@ -23731,7 +23509,7 @@ module Orb
           sig do
             override
               .returns(
-                [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkBpsPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTieredWithMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithPercentPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionPackageWithAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionTierWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionUnitWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionBulkWithProrationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::NewSubscriptionGroupedTieredPackagePrice]
+                [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage]
               )
           end
           def self.variants; end

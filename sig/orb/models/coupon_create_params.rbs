@@ -32,16 +32,16 @@ module Orb
       def to_hash: -> Orb::Models::coupon_create_params
 
       type discount =
-        Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount
-        | Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
+        Orb::Models::CouponCreateParams::Discount::Percentage
+        | Orb::Models::CouponCreateParams::Discount::Amount
 
       module Discount
         extend Orb::Internal::Type::Union
 
-        type new_coupon_percentage_discount =
+        type percentage =
           { discount_type: :percentage, percentage_discount: Float }
 
-        class NewCouponPercentageDiscount < Orb::Internal::Type::BaseModel
+        class Percentage < Orb::Internal::Type::BaseModel
           attr_accessor discount_type: :percentage
 
           attr_accessor percentage_discount: Float
@@ -51,13 +51,12 @@ module Orb
             ?discount_type: :percentage
           ) -> void
 
-          def to_hash: -> Orb::Models::CouponCreateParams::Discount::new_coupon_percentage_discount
+          def to_hash: -> Orb::Models::CouponCreateParams::Discount::percentage
         end
 
-        type new_coupon_amount_discount =
-          { amount_discount: String, discount_type: :amount }
+        type amount = { amount_discount: String, discount_type: :amount }
 
-        class NewCouponAmountDiscount < Orb::Internal::Type::BaseModel
+        class Amount < Orb::Internal::Type::BaseModel
           attr_accessor amount_discount: String
 
           attr_accessor discount_type: :amount
@@ -67,10 +66,10 @@ module Orb
             ?discount_type: :amount
           ) -> void
 
-          def to_hash: -> Orb::Models::CouponCreateParams::Discount::new_coupon_amount_discount
+          def to_hash: -> Orb::Models::CouponCreateParams::Discount::amount
         end
 
-        def self?.variants: -> [Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount]
+        def self?.variants: -> [Orb::Models::CouponCreateParams::Discount::Percentage, Orb::Models::CouponCreateParams::Discount::Amount]
       end
     end
   end

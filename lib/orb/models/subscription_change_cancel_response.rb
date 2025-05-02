@@ -170,7 +170,7 @@ module Orb
         # @!attribute discount_intervals
         #   The discount intervals for this subscription sorted by the start_date.
         #
-        #   @return [Array<Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::UsageDiscountInterval>]
+        #   @return [Array<Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::Amount, Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::Percentage, Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::Usage>]
         required :discount_intervals,
                  -> { Orb::Internal::Type::ArrayOf[union: Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval] }
 
@@ -314,7 +314,7 @@ module Orb
         #   @param default_invoice_memo [String, nil] Determines the default memo on this subscriptions' invoices. Note that if this i
         #   ...
         #
-        #   @param discount_intervals [Array<Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::UsageDiscountInterval>] The discount intervals for this subscription sorted by the start_date.
+        #   @param discount_intervals [Array<Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::Amount, Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::Percentage, Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::Usage>] The discount intervals for this subscription sorted by the start_date.
         #
         #   @param end_date [Time, nil] The date Orb stops billing for this subscription.
         #
@@ -358,7 +358,7 @@ module Orb
 
           # @!attribute adjustment
           #
-          #   @return [Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]
+          #   @return [Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::UsageDiscount, Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::AmountDiscount, Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PercentageDiscount, Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::Minimum, Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::Maximum]
           required :adjustment,
                    union: -> { Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment }
 
@@ -383,7 +383,7 @@ module Orb
           # @!method initialize(id:, adjustment:, applies_to_price_interval_ids:, end_date:, start_date:)
           #   @param id [String]
           #
-          #   @param adjustment [Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]
+          #   @param adjustment [Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::UsageDiscount, Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::AmountDiscount, Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PercentageDiscount, Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::Minimum, Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::Maximum]
           #
           #   @param applies_to_price_interval_ids [Array<String>] The price interval IDs that this adjustment applies to.
           #
@@ -398,21 +398,21 @@ module Orb
             discriminator :adjustment_type
 
             variant :usage_discount,
-                    -> { Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment }
+                    -> { Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::UsageDiscount }
 
             variant :amount_discount,
-                    -> { Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment }
+                    -> { Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::AmountDiscount }
 
             variant :percentage_discount,
-                    -> { Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment }
+                    -> { Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PercentageDiscount }
 
             variant :minimum,
-                    -> { Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment }
+                    -> { Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::Minimum }
 
             variant :maximum,
-                    -> { Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment }
+                    -> { Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::Maximum }
 
-            class PlanPhaseUsageDiscountAdjustment < Orb::Internal::Type::BaseModel
+            class UsageDiscount < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
               #   @return [String]
@@ -457,7 +457,7 @@ module Orb
 
               # @!method initialize(id:, applies_to_price_ids:, is_invoice_level:, plan_phase_order:, reason:, usage_discount:, adjustment_type: :usage_discount)
               #   Some parameter documentations has been truncated, see
-              #   {Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment}
+              #   {Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::UsageDiscount}
               #   for more details.
               #
               #   @param id [String]
@@ -477,7 +477,7 @@ module Orb
               #   @param adjustment_type [Symbol, :usage_discount]
             end
 
-            class PlanPhaseAmountDiscountAdjustment < Orb::Internal::Type::BaseModel
+            class AmountDiscount < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
               #   @return [String]
@@ -522,7 +522,7 @@ module Orb
 
               # @!method initialize(id:, amount_discount:, applies_to_price_ids:, is_invoice_level:, plan_phase_order:, reason:, adjustment_type: :amount_discount)
               #   Some parameter documentations has been truncated, see
-              #   {Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment}
+              #   {Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::AmountDiscount}
               #   for more details.
               #
               #   @param id [String]
@@ -542,7 +542,7 @@ module Orb
               #   @param adjustment_type [Symbol, :amount_discount]
             end
 
-            class PlanPhasePercentageDiscountAdjustment < Orb::Internal::Type::BaseModel
+            class PercentageDiscount < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
               #   @return [String]
@@ -587,7 +587,7 @@ module Orb
 
               # @!method initialize(id:, applies_to_price_ids:, is_invoice_level:, percentage_discount:, plan_phase_order:, reason:, adjustment_type: :percentage_discount)
               #   Some parameter documentations has been truncated, see
-              #   {Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment}
+              #   {Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PercentageDiscount}
               #   for more details.
               #
               #   @param id [String]
@@ -607,7 +607,7 @@ module Orb
               #   @param adjustment_type [Symbol, :percentage_discount]
             end
 
-            class PlanPhaseMinimumAdjustment < Orb::Internal::Type::BaseModel
+            class Minimum < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
               #   @return [String]
@@ -658,7 +658,7 @@ module Orb
 
               # @!method initialize(id:, applies_to_price_ids:, is_invoice_level:, item_id:, minimum_amount:, plan_phase_order:, reason:, adjustment_type: :minimum)
               #   Some parameter documentations has been truncated, see
-              #   {Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment}
+              #   {Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::Minimum}
               #   for more details.
               #
               #   @param id [String]
@@ -680,7 +680,7 @@ module Orb
               #   @param adjustment_type [Symbol, :minimum]
             end
 
-            class PlanPhaseMaximumAdjustment < Orb::Internal::Type::BaseModel
+            class Maximum < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
               #   @return [String]
@@ -725,7 +725,7 @@ module Orb
 
               # @!method initialize(id:, applies_to_price_ids:, is_invoice_level:, maximum_amount:, plan_phase_order:, reason:, adjustment_type: :maximum)
               #   Some parameter documentations has been truncated, see
-              #   {Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment}
+              #   {Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::Maximum}
               #   for more details.
               #
               #   @param id [String]
@@ -746,7 +746,7 @@ module Orb
             end
 
             # @!method self.variants
-            #   @return [Array(Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment)]
+            #   @return [Array(Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::UsageDiscount, Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::AmountDiscount, Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PercentageDiscount, Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::Minimum, Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::Maximum)]
           end
         end
 
@@ -797,15 +797,15 @@ module Orb
           discriminator :discount_type
 
           variant :amount,
-                  -> { Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::AmountDiscountInterval }
+                  -> { Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::Amount }
 
           variant :percentage,
-                  -> { Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::PercentageDiscountInterval }
+                  -> { Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::Percentage }
 
           variant :usage,
-                  -> { Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::UsageDiscountInterval }
+                  -> { Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::Usage }
 
-          class AmountDiscountInterval < Orb::Internal::Type::BaseModel
+          class Amount < Orb::Internal::Type::BaseModel
             # @!attribute amount_discount
             #   Only available if discount_type is `amount`.
             #
@@ -855,7 +855,7 @@ module Orb
             #   @param discount_type [Symbol, :amount]
           end
 
-          class PercentageDiscountInterval < Orb::Internal::Type::BaseModel
+          class Percentage < Orb::Internal::Type::BaseModel
             # @!attribute applies_to_price_ids
             #   The price ids that this discount interval applies to.
             #
@@ -894,7 +894,7 @@ module Orb
 
             # @!method initialize(applies_to_price_ids:, applies_to_price_interval_ids:, end_date:, percentage_discount:, start_date:, discount_type: :percentage)
             #   Some parameter documentations has been truncated, see
-            #   {Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::PercentageDiscountInterval}
+            #   {Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::Percentage}
             #   for more details.
             #
             #   @param applies_to_price_ids [Array<String>] The price ids that this discount interval applies to.
@@ -911,7 +911,7 @@ module Orb
             #   @param discount_type [Symbol, :percentage]
           end
 
-          class UsageDiscountInterval < Orb::Internal::Type::BaseModel
+          class Usage < Orb::Internal::Type::BaseModel
             # @!attribute applies_to_price_ids
             #   The price ids that this discount interval applies to.
             #
@@ -950,7 +950,7 @@ module Orb
 
             # @!method initialize(applies_to_price_ids:, applies_to_price_interval_ids:, end_date:, start_date:, usage_discount:, discount_type: :usage)
             #   Some parameter documentations has been truncated, see
-            #   {Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::UsageDiscountInterval}
+            #   {Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::Usage}
             #   for more details.
             #
             #   @param applies_to_price_ids [Array<String>] The price ids that this discount interval applies to.
@@ -968,7 +968,7 @@ module Orb
           end
 
           # @!method self.variants
-          #   @return [Array(Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::UsageDiscountInterval)]
+          #   @return [Array(Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::Amount, Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::Percentage, Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::Usage)]
         end
 
         class FixedFeeQuantitySchedule < Orb::Internal::Type::BaseModel
@@ -1172,7 +1172,7 @@ module Orb
           #   For more on the types of prices, see
           #   [the core concepts documentation](/core-concepts#plan-and-price)
           #
-          #   @return [Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice]
+          #   @return [Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBps, Orb::Models::Price::Bps, Orb::Models::Price::BulkBps, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk]
           required :price, union: -> { Orb::Models::Price }
 
           # @!attribute start_date
@@ -1216,7 +1216,7 @@ module Orb
           #   @param fixed_fee_quantity_transitions [Array<Orb::Models::SubscriptionChangeCancelResponse::Subscription::PriceInterval::FixedFeeQuantityTransition>, nil] The fixed fee quantity transitions for this price interval. This is only relevan
           #   ...
           #
-          #   @param price [Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice] The Price resource represents a price that can be billed on a subscription, resu
+          #   @param price [Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBps, Orb::Models::Price::Bps, Orb::Models::Price::BulkBps, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk] The Price resource represents a price that can be billed on a subscription, resu
           #   ...
           #
           #   @param start_date [Time] The start date of the price interval. This is the date that Orb starts billing f

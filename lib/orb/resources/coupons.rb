@@ -14,7 +14,7 @@ module Orb
       #
       # @overload create(discount:, redemption_code:, duration_in_months: nil, max_redemptions: nil, request_options: {})
       #
-      # @param discount [Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount]
+      # @param discount [Orb::Models::CouponCreateParams::Discount::Percentage, Orb::Models::CouponCreateParams::Discount::Amount]
       #
       # @param redemption_code [String] This string can be used to redeem this coupon for a given subscription.
       #

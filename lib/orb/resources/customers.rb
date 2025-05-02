@@ -68,7 +68,7 @@ module Orb
       #
       # @param shipping_address [Orb::Models::CustomerCreateParams::ShippingAddress, nil]
       #
-      # @param tax_configuration [Orb::Models::CustomerCreateParams::TaxConfiguration::NewAvalaraTaxConfiguration, Orb::Models::CustomerCreateParams::TaxConfiguration::NewTaxJarConfiguration, nil]
+      # @param tax_configuration [Orb::Models::CustomerCreateParams::TaxConfiguration::Avalara, Orb::Models::CustomerCreateParams::TaxConfiguration::Taxjar, nil]
       #
       # @param tax_id [Orb::Models::CustomerCreateParams::TaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
       # ...
@@ -142,7 +142,7 @@ module Orb
       #
       # @param shipping_address [Orb::Models::CustomerUpdateParams::ShippingAddress, nil]
       #
-      # @param tax_configuration [Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration, Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration, nil]
+      # @param tax_configuration [Orb::Models::CustomerUpdateParams::TaxConfiguration::Avalara, Orb::Models::CustomerUpdateParams::TaxConfiguration::Taxjar, nil]
       #
       # @param tax_id [Orb::Models::CustomerUpdateParams::TaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
       # ...
@@ -390,7 +390,7 @@ module Orb
       #
       # @param shipping_address [Orb::Models::CustomerUpdateByExternalIDParams::ShippingAddress, nil]
       #
-      # @param tax_configuration [Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewAvalaraTaxConfiguration, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewTaxJarConfiguration, nil]
+      # @param tax_configuration [Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Avalara, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Taxjar, nil]
       #
       # @param tax_id [Orb::Models::CustomerUpdateByExternalIDParams::TaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
       # ...

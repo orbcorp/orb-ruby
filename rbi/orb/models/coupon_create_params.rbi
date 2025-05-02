@@ -9,8 +9,8 @@ module Orb
       sig do
         returns(
           T.any(
-            Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount,
-            Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
+            Orb::Models::CouponCreateParams::Discount::Percentage,
+            Orb::Models::CouponCreateParams::Discount::Amount
           )
         )
       end
@@ -33,9 +33,9 @@ module Orb
       sig do
         params(
           discount: T.any(
-            Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount,
+            Orb::Models::CouponCreateParams::Discount::Percentage,
             Orb::Internal::AnyHash,
-            Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
+            Orb::Models::CouponCreateParams::Discount::Amount
           ),
           redemption_code: String,
           duration_in_months: T.nilable(Integer),
@@ -61,8 +61,8 @@ module Orb
           .returns(
             {
               discount: T.any(
-                Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount,
-                Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
+                Orb::Models::CouponCreateParams::Discount::Percentage,
+                Orb::Models::CouponCreateParams::Discount::Amount
               ),
               redemption_code: String,
               duration_in_months: T.nilable(Integer),
@@ -76,7 +76,7 @@ module Orb
       module Discount
         extend Orb::Internal::Type::Union
 
-        class NewCouponPercentageDiscount < Orb::Internal::Type::BaseModel
+        class Percentage < Orb::Internal::Type::BaseModel
           sig { returns(Symbol) }
           attr_accessor :discount_type
 
@@ -90,7 +90,7 @@ module Orb
           def to_hash; end
         end
 
-        class NewCouponAmountDiscount < Orb::Internal::Type::BaseModel
+        class Amount < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :amount_discount
 
@@ -107,7 +107,7 @@ module Orb
         sig do
           override
             .returns(
-              [Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount, Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount]
+              [Orb::Models::CouponCreateParams::Discount::Percentage, Orb::Models::CouponCreateParams::Discount::Amount]
             )
         end
         def self.variants; end
