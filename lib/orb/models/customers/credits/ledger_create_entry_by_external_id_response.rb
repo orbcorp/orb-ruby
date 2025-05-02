@@ -14,27 +14,26 @@ module Orb
           discriminator :entry_type
 
           variant :increment,
-                  -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry }
+                  -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment }
 
           variant :decrement,
-                  -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry }
+                  -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Decrement }
 
           variant :expiration_change,
-                  -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry }
+                  -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChange }
 
           variant :credit_block_expiry,
-                  -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry }
+                  -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiry }
 
-          variant :void,
-                  -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry }
+          variant :void, -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Void }
 
           variant :void_initiated,
-                  -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry }
+                  -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiated }
 
           variant :amendment,
-                  -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry }
+                  -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Amendment }
 
-          class IncrementLedgerEntry < Orb::Internal::Type::BaseModel
+          class Increment < Orb::Internal::Type::BaseModel
             # @!attribute id
             #
             #   @return [String]
@@ -52,9 +51,9 @@ module Orb
 
             # @!attribute credit_block
             #
-            #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry::CreditBlock]
+            #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment::CreditBlock]
             required :credit_block,
-                     -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry::CreditBlock }
+                     -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment::CreditBlock }
 
             # @!attribute currency
             #
@@ -63,9 +62,9 @@ module Orb
 
             # @!attribute customer
             #
-            #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry::Customer]
+            #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment::Customer]
             required :customer,
-                     -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry::Customer }
+                     -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment::Customer }
 
             # @!attribute description
             #
@@ -79,9 +78,9 @@ module Orb
 
             # @!attribute entry_status
             #
-            #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry::EntryStatus]
+            #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment::EntryStatus]
             required :entry_status,
-                     enum: -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry::EntryStatus }
+                     enum: -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment::EntryStatus }
 
             # @!attribute entry_type
             #
@@ -109,7 +108,7 @@ module Orb
 
             # @!method initialize(id:, amount:, created_at:, credit_block:, currency:, customer:, description:, ending_balance:, entry_status:, ledger_sequence_number:, metadata:, starting_balance:, entry_type: :increment)
             #   Some parameter documentations has been truncated, see
-            #   {Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry}
+            #   {Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment}
             #   for more details.
             #
             #   @param id [String]
@@ -118,17 +117,17 @@ module Orb
             #
             #   @param created_at [Time]
             #
-            #   @param credit_block [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry::CreditBlock]
+            #   @param credit_block [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment::CreditBlock]
             #
             #   @param currency [String]
             #
-            #   @param customer [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry::Customer]
+            #   @param customer [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment::Customer]
             #
             #   @param description [String, nil]
             #
             #   @param ending_balance [Float]
             #
-            #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry::EntryStatus]
+            #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment::EntryStatus]
             #
             #   @param ledger_sequence_number [Integer]
             #
@@ -139,7 +138,7 @@ module Orb
             #
             #   @param entry_type [Symbol, :increment]
 
-            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry#credit_block
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment#credit_block
             class CreditBlock < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
@@ -162,7 +161,7 @@ module Orb
               #   @param per_unit_cost_basis [String, nil]
             end
 
-            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry#customer
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment#customer
             class Customer < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
@@ -179,7 +178,7 @@ module Orb
               #   @param external_customer_id [String, nil]
             end
 
-            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry#entry_status
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment#entry_status
             module EntryStatus
               extend Orb::Internal::Type::Enum
 
@@ -191,7 +190,7 @@ module Orb
             end
           end
 
-          class DecrementLedgerEntry < Orb::Internal::Type::BaseModel
+          class Decrement < Orb::Internal::Type::BaseModel
             # @!attribute id
             #
             #   @return [String]
@@ -209,9 +208,9 @@ module Orb
 
             # @!attribute credit_block
             #
-            #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry::CreditBlock]
+            #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Decrement::CreditBlock]
             required :credit_block,
-                     -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry::CreditBlock }
+                     -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Decrement::CreditBlock }
 
             # @!attribute currency
             #
@@ -220,9 +219,9 @@ module Orb
 
             # @!attribute customer
             #
-            #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry::Customer]
+            #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Decrement::Customer]
             required :customer,
-                     -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry::Customer }
+                     -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Decrement::Customer }
 
             # @!attribute description
             #
@@ -236,9 +235,9 @@ module Orb
 
             # @!attribute entry_status
             #
-            #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry::EntryStatus]
+            #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Decrement::EntryStatus]
             required :entry_status,
-                     enum: -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry::EntryStatus }
+                     enum: -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Decrement::EntryStatus }
 
             # @!attribute entry_type
             #
@@ -281,7 +280,7 @@ module Orb
 
             # @!method initialize(id:, amount:, created_at:, credit_block:, currency:, customer:, description:, ending_balance:, entry_status:, ledger_sequence_number:, metadata:, starting_balance:, event_id: nil, invoice_id: nil, price_id: nil, entry_type: :decrement)
             #   Some parameter documentations has been truncated, see
-            #   {Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry}
+            #   {Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Decrement}
             #   for more details.
             #
             #   @param id [String]
@@ -290,17 +289,17 @@ module Orb
             #
             #   @param created_at [Time]
             #
-            #   @param credit_block [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry::CreditBlock]
+            #   @param credit_block [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Decrement::CreditBlock]
             #
             #   @param currency [String]
             #
-            #   @param customer [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry::Customer]
+            #   @param customer [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Decrement::Customer]
             #
             #   @param description [String, nil]
             #
             #   @param ending_balance [Float]
             #
-            #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry::EntryStatus]
+            #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Decrement::EntryStatus]
             #
             #   @param ledger_sequence_number [Integer]
             #
@@ -317,7 +316,7 @@ module Orb
             #
             #   @param entry_type [Symbol, :decrement]
 
-            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry#credit_block
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Decrement#credit_block
             class CreditBlock < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
@@ -340,7 +339,7 @@ module Orb
               #   @param per_unit_cost_basis [String, nil]
             end
 
-            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry#customer
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Decrement#customer
             class Customer < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
@@ -357,7 +356,7 @@ module Orb
               #   @param external_customer_id [String, nil]
             end
 
-            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry#entry_status
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Decrement#entry_status
             module EntryStatus
               extend Orb::Internal::Type::Enum
 
@@ -369,7 +368,7 @@ module Orb
             end
           end
 
-          class ExpirationChangeLedgerEntry < Orb::Internal::Type::BaseModel
+          class ExpirationChange < Orb::Internal::Type::BaseModel
             # @!attribute id
             #
             #   @return [String]
@@ -387,9 +386,9 @@ module Orb
 
             # @!attribute credit_block
             #
-            #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry::CreditBlock]
+            #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChange::CreditBlock]
             required :credit_block,
-                     -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry::CreditBlock }
+                     -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChange::CreditBlock }
 
             # @!attribute currency
             #
@@ -398,9 +397,9 @@ module Orb
 
             # @!attribute customer
             #
-            #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry::Customer]
+            #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChange::Customer]
             required :customer,
-                     -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry::Customer }
+                     -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChange::Customer }
 
             # @!attribute description
             #
@@ -414,9 +413,9 @@ module Orb
 
             # @!attribute entry_status
             #
-            #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry::EntryStatus]
+            #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChange::EntryStatus]
             required :entry_status,
-                     enum: -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry::EntryStatus }
+                     enum: -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChange::EntryStatus }
 
             # @!attribute entry_type
             #
@@ -449,7 +448,7 @@ module Orb
 
             # @!method initialize(id:, amount:, created_at:, credit_block:, currency:, customer:, description:, ending_balance:, entry_status:, ledger_sequence_number:, metadata:, new_block_expiry_date:, starting_balance:, entry_type: :expiration_change)
             #   Some parameter documentations has been truncated, see
-            #   {Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry}
+            #   {Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChange}
             #   for more details.
             #
             #   @param id [String]
@@ -458,17 +457,17 @@ module Orb
             #
             #   @param created_at [Time]
             #
-            #   @param credit_block [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry::CreditBlock]
+            #   @param credit_block [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChange::CreditBlock]
             #
             #   @param currency [String]
             #
-            #   @param customer [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry::Customer]
+            #   @param customer [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChange::Customer]
             #
             #   @param description [String, nil]
             #
             #   @param ending_balance [Float]
             #
-            #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry::EntryStatus]
+            #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChange::EntryStatus]
             #
             #   @param ledger_sequence_number [Integer]
             #
@@ -481,7 +480,7 @@ module Orb
             #
             #   @param entry_type [Symbol, :expiration_change]
 
-            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry#credit_block
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChange#credit_block
             class CreditBlock < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
@@ -504,7 +503,7 @@ module Orb
               #   @param per_unit_cost_basis [String, nil]
             end
 
-            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry#customer
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChange#customer
             class Customer < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
@@ -521,7 +520,7 @@ module Orb
               #   @param external_customer_id [String, nil]
             end
 
-            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry#entry_status
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChange#entry_status
             module EntryStatus
               extend Orb::Internal::Type::Enum
 
@@ -533,7 +532,7 @@ module Orb
             end
           end
 
-          class CreditBlockExpiryLedgerEntry < Orb::Internal::Type::BaseModel
+          class CreditBlockExpiry < Orb::Internal::Type::BaseModel
             # @!attribute id
             #
             #   @return [String]
@@ -551,9 +550,9 @@ module Orb
 
             # @!attribute credit_block
             #
-            #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry::CreditBlock]
+            #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiry::CreditBlock]
             required :credit_block,
-                     -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry::CreditBlock }
+                     -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiry::CreditBlock }
 
             # @!attribute currency
             #
@@ -562,9 +561,9 @@ module Orb
 
             # @!attribute customer
             #
-            #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry::Customer]
+            #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiry::Customer]
             required :customer,
-                     -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry::Customer }
+                     -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiry::Customer }
 
             # @!attribute description
             #
@@ -578,9 +577,9 @@ module Orb
 
             # @!attribute entry_status
             #
-            #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry::EntryStatus]
+            #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiry::EntryStatus]
             required :entry_status,
-                     enum: -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry::EntryStatus }
+                     enum: -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiry::EntryStatus }
 
             # @!attribute entry_type
             #
@@ -608,7 +607,7 @@ module Orb
 
             # @!method initialize(id:, amount:, created_at:, credit_block:, currency:, customer:, description:, ending_balance:, entry_status:, ledger_sequence_number:, metadata:, starting_balance:, entry_type: :credit_block_expiry)
             #   Some parameter documentations has been truncated, see
-            #   {Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry}
+            #   {Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiry}
             #   for more details.
             #
             #   @param id [String]
@@ -617,17 +616,17 @@ module Orb
             #
             #   @param created_at [Time]
             #
-            #   @param credit_block [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry::CreditBlock]
+            #   @param credit_block [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiry::CreditBlock]
             #
             #   @param currency [String]
             #
-            #   @param customer [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry::Customer]
+            #   @param customer [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiry::Customer]
             #
             #   @param description [String, nil]
             #
             #   @param ending_balance [Float]
             #
-            #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry::EntryStatus]
+            #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiry::EntryStatus]
             #
             #   @param ledger_sequence_number [Integer]
             #
@@ -638,7 +637,7 @@ module Orb
             #
             #   @param entry_type [Symbol, :credit_block_expiry]
 
-            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry#credit_block
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiry#credit_block
             class CreditBlock < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
@@ -661,7 +660,7 @@ module Orb
               #   @param per_unit_cost_basis [String, nil]
             end
 
-            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry#customer
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiry#customer
             class Customer < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
@@ -678,7 +677,7 @@ module Orb
               #   @param external_customer_id [String, nil]
             end
 
-            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry#entry_status
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiry#entry_status
             module EntryStatus
               extend Orb::Internal::Type::Enum
 
@@ -690,7 +689,7 @@ module Orb
             end
           end
 
-          class VoidLedgerEntry < Orb::Internal::Type::BaseModel
+          class Void < Orb::Internal::Type::BaseModel
             # @!attribute id
             #
             #   @return [String]
@@ -708,9 +707,9 @@ module Orb
 
             # @!attribute credit_block
             #
-            #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry::CreditBlock]
+            #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Void::CreditBlock]
             required :credit_block,
-                     -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry::CreditBlock }
+                     -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Void::CreditBlock }
 
             # @!attribute currency
             #
@@ -719,9 +718,9 @@ module Orb
 
             # @!attribute customer
             #
-            #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry::Customer]
+            #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Void::Customer]
             required :customer,
-                     -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry::Customer }
+                     -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Void::Customer }
 
             # @!attribute description
             #
@@ -735,9 +734,9 @@ module Orb
 
             # @!attribute entry_status
             #
-            #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry::EntryStatus]
+            #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Void::EntryStatus]
             required :entry_status,
-                     enum: -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry::EntryStatus }
+                     enum: -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Void::EntryStatus }
 
             # @!attribute entry_type
             #
@@ -775,7 +774,7 @@ module Orb
 
             # @!method initialize(id:, amount:, created_at:, credit_block:, currency:, customer:, description:, ending_balance:, entry_status:, ledger_sequence_number:, metadata:, starting_balance:, void_amount:, void_reason:, entry_type: :void)
             #   Some parameter documentations has been truncated, see
-            #   {Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry}
+            #   {Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Void}
             #   for more details.
             #
             #   @param id [String]
@@ -784,17 +783,17 @@ module Orb
             #
             #   @param created_at [Time]
             #
-            #   @param credit_block [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry::CreditBlock]
+            #   @param credit_block [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Void::CreditBlock]
             #
             #   @param currency [String]
             #
-            #   @param customer [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry::Customer]
+            #   @param customer [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Void::Customer]
             #
             #   @param description [String, nil]
             #
             #   @param ending_balance [Float]
             #
-            #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry::EntryStatus]
+            #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Void::EntryStatus]
             #
             #   @param ledger_sequence_number [Integer]
             #
@@ -809,7 +808,7 @@ module Orb
             #
             #   @param entry_type [Symbol, :void]
 
-            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry#credit_block
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Void#credit_block
             class CreditBlock < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
@@ -832,7 +831,7 @@ module Orb
               #   @param per_unit_cost_basis [String, nil]
             end
 
-            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry#customer
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Void#customer
             class Customer < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
@@ -849,7 +848,7 @@ module Orb
               #   @param external_customer_id [String, nil]
             end
 
-            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry#entry_status
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Void#entry_status
             module EntryStatus
               extend Orb::Internal::Type::Enum
 
@@ -861,7 +860,7 @@ module Orb
             end
           end
 
-          class VoidInitiatedLedgerEntry < Orb::Internal::Type::BaseModel
+          class VoidInitiated < Orb::Internal::Type::BaseModel
             # @!attribute id
             #
             #   @return [String]
@@ -879,9 +878,9 @@ module Orb
 
             # @!attribute credit_block
             #
-            #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry::CreditBlock]
+            #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiated::CreditBlock]
             required :credit_block,
-                     -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry::CreditBlock }
+                     -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiated::CreditBlock }
 
             # @!attribute currency
             #
@@ -890,9 +889,9 @@ module Orb
 
             # @!attribute customer
             #
-            #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry::Customer]
+            #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiated::Customer]
             required :customer,
-                     -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry::Customer }
+                     -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiated::Customer }
 
             # @!attribute description
             #
@@ -906,9 +905,9 @@ module Orb
 
             # @!attribute entry_status
             #
-            #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry::EntryStatus]
+            #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiated::EntryStatus]
             required :entry_status,
-                     enum: -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry::EntryStatus }
+                     enum: -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiated::EntryStatus }
 
             # @!attribute entry_type
             #
@@ -951,7 +950,7 @@ module Orb
 
             # @!method initialize(id:, amount:, created_at:, credit_block:, currency:, customer:, description:, ending_balance:, entry_status:, ledger_sequence_number:, metadata:, new_block_expiry_date:, starting_balance:, void_amount:, void_reason:, entry_type: :void_initiated)
             #   Some parameter documentations has been truncated, see
-            #   {Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry}
+            #   {Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiated}
             #   for more details.
             #
             #   @param id [String]
@@ -960,17 +959,17 @@ module Orb
             #
             #   @param created_at [Time]
             #
-            #   @param credit_block [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry::CreditBlock]
+            #   @param credit_block [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiated::CreditBlock]
             #
             #   @param currency [String]
             #
-            #   @param customer [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry::Customer]
+            #   @param customer [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiated::Customer]
             #
             #   @param description [String, nil]
             #
             #   @param ending_balance [Float]
             #
-            #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry::EntryStatus]
+            #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiated::EntryStatus]
             #
             #   @param ledger_sequence_number [Integer]
             #
@@ -987,7 +986,7 @@ module Orb
             #
             #   @param entry_type [Symbol, :void_initiated]
 
-            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry#credit_block
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiated#credit_block
             class CreditBlock < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
@@ -1010,7 +1009,7 @@ module Orb
               #   @param per_unit_cost_basis [String, nil]
             end
 
-            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry#customer
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiated#customer
             class Customer < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
@@ -1027,7 +1026,7 @@ module Orb
               #   @param external_customer_id [String, nil]
             end
 
-            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry#entry_status
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiated#entry_status
             module EntryStatus
               extend Orb::Internal::Type::Enum
 
@@ -1039,7 +1038,7 @@ module Orb
             end
           end
 
-          class AmendmentLedgerEntry < Orb::Internal::Type::BaseModel
+          class Amendment < Orb::Internal::Type::BaseModel
             # @!attribute id
             #
             #   @return [String]
@@ -1057,9 +1056,9 @@ module Orb
 
             # @!attribute credit_block
             #
-            #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry::CreditBlock]
+            #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Amendment::CreditBlock]
             required :credit_block,
-                     -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry::CreditBlock }
+                     -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Amendment::CreditBlock }
 
             # @!attribute currency
             #
@@ -1068,9 +1067,9 @@ module Orb
 
             # @!attribute customer
             #
-            #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry::Customer]
+            #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Amendment::Customer]
             required :customer,
-                     -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry::Customer }
+                     -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Amendment::Customer }
 
             # @!attribute description
             #
@@ -1084,9 +1083,9 @@ module Orb
 
             # @!attribute entry_status
             #
-            #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry::EntryStatus]
+            #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Amendment::EntryStatus]
             required :entry_status,
-                     enum: -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry::EntryStatus }
+                     enum: -> { Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Amendment::EntryStatus }
 
             # @!attribute entry_type
             #
@@ -1114,7 +1113,7 @@ module Orb
 
             # @!method initialize(id:, amount:, created_at:, credit_block:, currency:, customer:, description:, ending_balance:, entry_status:, ledger_sequence_number:, metadata:, starting_balance:, entry_type: :amendment)
             #   Some parameter documentations has been truncated, see
-            #   {Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry}
+            #   {Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Amendment}
             #   for more details.
             #
             #   @param id [String]
@@ -1123,17 +1122,17 @@ module Orb
             #
             #   @param created_at [Time]
             #
-            #   @param credit_block [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry::CreditBlock]
+            #   @param credit_block [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Amendment::CreditBlock]
             #
             #   @param currency [String]
             #
-            #   @param customer [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry::Customer]
+            #   @param customer [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Amendment::Customer]
             #
             #   @param description [String, nil]
             #
             #   @param ending_balance [Float]
             #
-            #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry::EntryStatus]
+            #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Amendment::EntryStatus]
             #
             #   @param ledger_sequence_number [Integer]
             #
@@ -1144,7 +1143,7 @@ module Orb
             #
             #   @param entry_type [Symbol, :amendment]
 
-            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry#credit_block
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Amendment#credit_block
             class CreditBlock < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
@@ -1167,7 +1166,7 @@ module Orb
               #   @param per_unit_cost_basis [String, nil]
             end
 
-            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry#customer
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Amendment#customer
             class Customer < Orb::Internal::Type::BaseModel
               # @!attribute id
               #
@@ -1184,7 +1183,7 @@ module Orb
               #   @param external_customer_id [String, nil]
             end
 
-            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry#entry_status
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Amendment#entry_status
             module EntryStatus
               extend Orb::Internal::Type::Enum
 
@@ -1197,7 +1196,7 @@ module Orb
           end
 
           # @!method self.variants
-          #   @return [Array(Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::AmendmentLedgerEntry)]
+          #   @return [Array(Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Decrement, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChange, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Void, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiated, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Amendment)]
         end
       end
     end

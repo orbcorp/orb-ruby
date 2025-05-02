@@ -43,9 +43,9 @@ module Orb
           shipping_address: T.nilable(T.any(Orb::Models::CustomerCreateParams::ShippingAddress, Orb::Internal::AnyHash)),
           tax_configuration: T.nilable(
             T.any(
-              Orb::Models::CustomerCreateParams::TaxConfiguration::NewAvalaraTaxConfiguration,
+              Orb::Models::CustomerCreateParams::TaxConfiguration::Avalara,
               Orb::Internal::AnyHash,
-              Orb::Models::CustomerCreateParams::TaxConfiguration::NewTaxJarConfiguration
+              Orb::Models::CustomerCreateParams::TaxConfiguration::Taxjar
             )
           ),
           tax_id: T.nilable(T.any(Orb::Models::CustomerCreateParams::TaxID, Orb::Internal::AnyHash)),
@@ -231,9 +231,9 @@ module Orb
           shipping_address: T.nilable(T.any(Orb::Models::CustomerUpdateParams::ShippingAddress, Orb::Internal::AnyHash)),
           tax_configuration: T.nilable(
             T.any(
-              Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration,
+              Orb::Models::CustomerUpdateParams::TaxConfiguration::Avalara,
               Orb::Internal::AnyHash,
-              Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration
+              Orb::Models::CustomerUpdateParams::TaxConfiguration::Taxjar
             )
           ),
           tax_id: T.nilable(T.any(Orb::Models::CustomerUpdateParams::TaxID, Orb::Internal::AnyHash)),
@@ -506,9 +506,9 @@ module Orb
           shipping_address: T.nilable(T.any(Orb::Models::CustomerUpdateByExternalIDParams::ShippingAddress, Orb::Internal::AnyHash)),
           tax_configuration: T.nilable(
             T.any(
-              Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewAvalaraTaxConfiguration,
+              Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Avalara,
               Orb::Internal::AnyHash,
-              Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::NewTaxJarConfiguration
+              Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Taxjar
             )
           ),
           tax_id: T.nilable(T.any(Orb::Models::CustomerUpdateByExternalIDParams::TaxID, Orb::Internal::AnyHash)),

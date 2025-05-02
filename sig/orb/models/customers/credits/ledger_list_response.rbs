@@ -3,52 +3,52 @@ module Orb
     module Customers
       module Credits
         type ledger_list_response =
-          Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry
-          | Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry
-          | Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry
-          | Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry
-          | Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry
-          | Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry
-          | Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry
+          Orb::Models::Customers::Credits::LedgerListResponse::Increment
+          | Orb::Models::Customers::Credits::LedgerListResponse::Decrement
+          | Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChange
+          | Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiry
+          | Orb::Models::Customers::Credits::LedgerListResponse::Void
+          | Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiated
+          | Orb::Models::Customers::Credits::LedgerListResponse::Amendment
 
         module LedgerListResponse
           extend Orb::Internal::Type::Union
 
-          type increment_ledger_entry =
+          type increment =
             {
               id: String,
               amount: Float,
               created_at: Time,
-              credit_block: Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry::CreditBlock,
+              credit_block: Orb::Models::Customers::Credits::LedgerListResponse::Increment::CreditBlock,
               currency: String,
-              customer: Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry::Customer,
+              customer: Orb::Models::Customers::Credits::LedgerListResponse::Increment::Customer,
               description: String?,
               ending_balance: Float,
-              entry_status: Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry::entry_status,
+              entry_status: Orb::Models::Customers::Credits::LedgerListResponse::Increment::entry_status,
               entry_type: :increment,
               ledger_sequence_number: Integer,
               metadata: ::Hash[Symbol, String],
               starting_balance: Float
             }
 
-          class IncrementLedgerEntry < Orb::Internal::Type::BaseModel
+          class Increment < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor amount: Float
 
             attr_accessor created_at: Time
 
-            attr_accessor credit_block: Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry::CreditBlock
+            attr_accessor credit_block: Orb::Models::Customers::Credits::LedgerListResponse::Increment::CreditBlock
 
             attr_accessor currency: String
 
-            attr_accessor customer: Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry::Customer
+            attr_accessor customer: Orb::Models::Customers::Credits::LedgerListResponse::Increment::Customer
 
             attr_accessor description: String?
 
             attr_accessor ending_balance: Float
 
-            attr_accessor entry_status: Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry::entry_status
+            attr_accessor entry_status: Orb::Models::Customers::Credits::LedgerListResponse::Increment::entry_status
 
             attr_accessor entry_type: :increment
 
@@ -62,19 +62,19 @@ module Orb
               id: String,
               amount: Float,
               created_at: Time,
-              credit_block: Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry::CreditBlock,
+              credit_block: Orb::Models::Customers::Credits::LedgerListResponse::Increment::CreditBlock,
               currency: String,
-              customer: Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry::Customer,
+              customer: Orb::Models::Customers::Credits::LedgerListResponse::Increment::Customer,
               description: String?,
               ending_balance: Float,
-              entry_status: Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry::entry_status,
+              entry_status: Orb::Models::Customers::Credits::LedgerListResponse::Increment::entry_status,
               ledger_sequence_number: Integer,
               metadata: ::Hash[Symbol, String],
               starting_balance: Float,
               ?entry_type: :increment
             ) -> void
 
-            def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::increment_ledger_entry
+            def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::increment
 
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
@@ -92,7 +92,7 @@ module Orb
                 per_unit_cost_basis: String?
               ) -> void
 
-              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry::credit_block
+              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::Increment::credit_block
             end
 
             type customer = { id: String, external_customer_id: String? }
@@ -107,7 +107,7 @@ module Orb
                 external_customer_id: String?
               ) -> void
 
-              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry::customer
+              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::Increment::customer
             end
 
             type entry_status = :committed | :pending
@@ -118,21 +118,21 @@ module Orb
               COMMITTED: :committed
               PENDING: :pending
 
-              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry::entry_status]
+              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerListResponse::Increment::entry_status]
             end
           end
 
-          type decrement_ledger_entry =
+          type decrement =
             {
               id: String,
               amount: Float,
               created_at: Time,
-              credit_block: Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry::CreditBlock,
+              credit_block: Orb::Models::Customers::Credits::LedgerListResponse::Decrement::CreditBlock,
               currency: String,
-              customer: Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry::Customer,
+              customer: Orb::Models::Customers::Credits::LedgerListResponse::Decrement::Customer,
               description: String?,
               ending_balance: Float,
-              entry_status: Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry::entry_status,
+              entry_status: Orb::Models::Customers::Credits::LedgerListResponse::Decrement::entry_status,
               entry_type: :decrement,
               ledger_sequence_number: Integer,
               metadata: ::Hash[Symbol, String],
@@ -142,24 +142,24 @@ module Orb
               price_id: String?
             }
 
-          class DecrementLedgerEntry < Orb::Internal::Type::BaseModel
+          class Decrement < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor amount: Float
 
             attr_accessor created_at: Time
 
-            attr_accessor credit_block: Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry::CreditBlock
+            attr_accessor credit_block: Orb::Models::Customers::Credits::LedgerListResponse::Decrement::CreditBlock
 
             attr_accessor currency: String
 
-            attr_accessor customer: Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry::Customer
+            attr_accessor customer: Orb::Models::Customers::Credits::LedgerListResponse::Decrement::Customer
 
             attr_accessor description: String?
 
             attr_accessor ending_balance: Float
 
-            attr_accessor entry_status: Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry::entry_status
+            attr_accessor entry_status: Orb::Models::Customers::Credits::LedgerListResponse::Decrement::entry_status
 
             attr_accessor entry_type: :decrement
 
@@ -179,12 +179,12 @@ module Orb
               id: String,
               amount: Float,
               created_at: Time,
-              credit_block: Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry::CreditBlock,
+              credit_block: Orb::Models::Customers::Credits::LedgerListResponse::Decrement::CreditBlock,
               currency: String,
-              customer: Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry::Customer,
+              customer: Orb::Models::Customers::Credits::LedgerListResponse::Decrement::Customer,
               description: String?,
               ending_balance: Float,
-              entry_status: Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry::entry_status,
+              entry_status: Orb::Models::Customers::Credits::LedgerListResponse::Decrement::entry_status,
               ledger_sequence_number: Integer,
               metadata: ::Hash[Symbol, String],
               starting_balance: Float,
@@ -194,7 +194,7 @@ module Orb
               ?entry_type: :decrement
             ) -> void
 
-            def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::decrement_ledger_entry
+            def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::decrement
 
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
@@ -212,7 +212,7 @@ module Orb
                 per_unit_cost_basis: String?
               ) -> void
 
-              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry::credit_block
+              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::Decrement::credit_block
             end
 
             type customer = { id: String, external_customer_id: String? }
@@ -227,7 +227,7 @@ module Orb
                 external_customer_id: String?
               ) -> void
 
-              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry::customer
+              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::Decrement::customer
             end
 
             type entry_status = :committed | :pending
@@ -238,21 +238,21 @@ module Orb
               COMMITTED: :committed
               PENDING: :pending
 
-              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry::entry_status]
+              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerListResponse::Decrement::entry_status]
             end
           end
 
-          type expiration_change_ledger_entry =
+          type expiration_change =
             {
               id: String,
               amount: Float,
               created_at: Time,
-              credit_block: Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry::CreditBlock,
+              credit_block: Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChange::CreditBlock,
               currency: String,
-              customer: Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry::Customer,
+              customer: Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChange::Customer,
               description: String?,
               ending_balance: Float,
-              entry_status: Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry::entry_status,
+              entry_status: Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChange::entry_status,
               entry_type: :expiration_change,
               ledger_sequence_number: Integer,
               metadata: ::Hash[Symbol, String],
@@ -260,24 +260,24 @@ module Orb
               starting_balance: Float
             }
 
-          class ExpirationChangeLedgerEntry < Orb::Internal::Type::BaseModel
+          class ExpirationChange < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor amount: Float
 
             attr_accessor created_at: Time
 
-            attr_accessor credit_block: Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry::CreditBlock
+            attr_accessor credit_block: Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChange::CreditBlock
 
             attr_accessor currency: String
 
-            attr_accessor customer: Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry::Customer
+            attr_accessor customer: Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChange::Customer
 
             attr_accessor description: String?
 
             attr_accessor ending_balance: Float
 
-            attr_accessor entry_status: Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry::entry_status
+            attr_accessor entry_status: Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChange::entry_status
 
             attr_accessor entry_type: :expiration_change
 
@@ -293,12 +293,12 @@ module Orb
               id: String,
               amount: Float,
               created_at: Time,
-              credit_block: Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry::CreditBlock,
+              credit_block: Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChange::CreditBlock,
               currency: String,
-              customer: Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry::Customer,
+              customer: Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChange::Customer,
               description: String?,
               ending_balance: Float,
-              entry_status: Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry::entry_status,
+              entry_status: Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChange::entry_status,
               ledger_sequence_number: Integer,
               metadata: ::Hash[Symbol, String],
               new_block_expiry_date: Time?,
@@ -306,7 +306,7 @@ module Orb
               ?entry_type: :expiration_change
             ) -> void
 
-            def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::expiration_change_ledger_entry
+            def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::expiration_change
 
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
@@ -324,7 +324,7 @@ module Orb
                 per_unit_cost_basis: String?
               ) -> void
 
-              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry::credit_block
+              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChange::credit_block
             end
 
             type customer = { id: String, external_customer_id: String? }
@@ -339,7 +339,7 @@ module Orb
                 external_customer_id: String?
               ) -> void
 
-              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry::customer
+              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChange::customer
             end
 
             type entry_status = :committed | :pending
@@ -350,45 +350,45 @@ module Orb
               COMMITTED: :committed
               PENDING: :pending
 
-              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry::entry_status]
+              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChange::entry_status]
             end
           end
 
-          type credit_block_expiry_ledger_entry =
+          type credit_block_expiry =
             {
               id: String,
               amount: Float,
               created_at: Time,
-              credit_block: Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry::CreditBlock,
+              credit_block: Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiry::CreditBlock,
               currency: String,
-              customer: Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry::Customer,
+              customer: Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiry::Customer,
               description: String?,
               ending_balance: Float,
-              entry_status: Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry::entry_status,
+              entry_status: Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiry::entry_status,
               entry_type: :credit_block_expiry,
               ledger_sequence_number: Integer,
               metadata: ::Hash[Symbol, String],
               starting_balance: Float
             }
 
-          class CreditBlockExpiryLedgerEntry < Orb::Internal::Type::BaseModel
+          class CreditBlockExpiry < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor amount: Float
 
             attr_accessor created_at: Time
 
-            attr_accessor credit_block: Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry::CreditBlock
+            attr_accessor credit_block: Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiry::CreditBlock
 
             attr_accessor currency: String
 
-            attr_accessor customer: Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry::Customer
+            attr_accessor customer: Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiry::Customer
 
             attr_accessor description: String?
 
             attr_accessor ending_balance: Float
 
-            attr_accessor entry_status: Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry::entry_status
+            attr_accessor entry_status: Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiry::entry_status
 
             attr_accessor entry_type: :credit_block_expiry
 
@@ -402,19 +402,19 @@ module Orb
               id: String,
               amount: Float,
               created_at: Time,
-              credit_block: Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry::CreditBlock,
+              credit_block: Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiry::CreditBlock,
               currency: String,
-              customer: Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry::Customer,
+              customer: Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiry::Customer,
               description: String?,
               ending_balance: Float,
-              entry_status: Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry::entry_status,
+              entry_status: Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiry::entry_status,
               ledger_sequence_number: Integer,
               metadata: ::Hash[Symbol, String],
               starting_balance: Float,
               ?entry_type: :credit_block_expiry
             ) -> void
 
-            def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::credit_block_expiry_ledger_entry
+            def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::credit_block_expiry
 
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
@@ -432,7 +432,7 @@ module Orb
                 per_unit_cost_basis: String?
               ) -> void
 
-              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry::credit_block
+              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiry::credit_block
             end
 
             type customer = { id: String, external_customer_id: String? }
@@ -447,7 +447,7 @@ module Orb
                 external_customer_id: String?
               ) -> void
 
-              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry::customer
+              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiry::customer
             end
 
             type entry_status = :committed | :pending
@@ -458,21 +458,21 @@ module Orb
               COMMITTED: :committed
               PENDING: :pending
 
-              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry::entry_status]
+              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiry::entry_status]
             end
           end
 
-          type void_ledger_entry =
+          type void_ =
             {
               id: String,
               amount: Float,
               created_at: Time,
-              credit_block: Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry::CreditBlock,
+              credit_block: Orb::Models::Customers::Credits::LedgerListResponse::Void::CreditBlock,
               currency: String,
-              customer: Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry::Customer,
+              customer: Orb::Models::Customers::Credits::LedgerListResponse::Void::Customer,
               description: String?,
               ending_balance: Float,
-              entry_status: Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry::entry_status,
+              entry_status: Orb::Models::Customers::Credits::LedgerListResponse::Void::entry_status,
               entry_type: :void,
               ledger_sequence_number: Integer,
               metadata: ::Hash[Symbol, String],
@@ -481,24 +481,24 @@ module Orb
               void_reason: String?
             }
 
-          class VoidLedgerEntry < Orb::Internal::Type::BaseModel
+          class Void < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor amount: Float
 
             attr_accessor created_at: Time
 
-            attr_accessor credit_block: Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry::CreditBlock
+            attr_accessor credit_block: Orb::Models::Customers::Credits::LedgerListResponse::Void::CreditBlock
 
             attr_accessor currency: String
 
-            attr_accessor customer: Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry::Customer
+            attr_accessor customer: Orb::Models::Customers::Credits::LedgerListResponse::Void::Customer
 
             attr_accessor description: String?
 
             attr_accessor ending_balance: Float
 
-            attr_accessor entry_status: Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry::entry_status
+            attr_accessor entry_status: Orb::Models::Customers::Credits::LedgerListResponse::Void::entry_status
 
             attr_accessor entry_type: :void
 
@@ -516,12 +516,12 @@ module Orb
               id: String,
               amount: Float,
               created_at: Time,
-              credit_block: Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry::CreditBlock,
+              credit_block: Orb::Models::Customers::Credits::LedgerListResponse::Void::CreditBlock,
               currency: String,
-              customer: Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry::Customer,
+              customer: Orb::Models::Customers::Credits::LedgerListResponse::Void::Customer,
               description: String?,
               ending_balance: Float,
-              entry_status: Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry::entry_status,
+              entry_status: Orb::Models::Customers::Credits::LedgerListResponse::Void::entry_status,
               ledger_sequence_number: Integer,
               metadata: ::Hash[Symbol, String],
               starting_balance: Float,
@@ -530,7 +530,7 @@ module Orb
               ?entry_type: :void
             ) -> void
 
-            def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::void_ledger_entry
+            def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::void_
 
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
@@ -548,7 +548,7 @@ module Orb
                 per_unit_cost_basis: String?
               ) -> void
 
-              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry::credit_block
+              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::Void::credit_block
             end
 
             type customer = { id: String, external_customer_id: String? }
@@ -563,7 +563,7 @@ module Orb
                 external_customer_id: String?
               ) -> void
 
-              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry::customer
+              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::Void::customer
             end
 
             type entry_status = :committed | :pending
@@ -574,21 +574,21 @@ module Orb
               COMMITTED: :committed
               PENDING: :pending
 
-              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry::entry_status]
+              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerListResponse::Void::entry_status]
             end
           end
 
-          type void_initiated_ledger_entry =
+          type void_initiated =
             {
               id: String,
               amount: Float,
               created_at: Time,
-              credit_block: Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry::CreditBlock,
+              credit_block: Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiated::CreditBlock,
               currency: String,
-              customer: Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry::Customer,
+              customer: Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiated::Customer,
               description: String?,
               ending_balance: Float,
-              entry_status: Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry::entry_status,
+              entry_status: Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiated::entry_status,
               entry_type: :void_initiated,
               ledger_sequence_number: Integer,
               metadata: ::Hash[Symbol, String],
@@ -598,24 +598,24 @@ module Orb
               void_reason: String?
             }
 
-          class VoidInitiatedLedgerEntry < Orb::Internal::Type::BaseModel
+          class VoidInitiated < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor amount: Float
 
             attr_accessor created_at: Time
 
-            attr_accessor credit_block: Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry::CreditBlock
+            attr_accessor credit_block: Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiated::CreditBlock
 
             attr_accessor currency: String
 
-            attr_accessor customer: Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry::Customer
+            attr_accessor customer: Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiated::Customer
 
             attr_accessor description: String?
 
             attr_accessor ending_balance: Float
 
-            attr_accessor entry_status: Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry::entry_status
+            attr_accessor entry_status: Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiated::entry_status
 
             attr_accessor entry_type: :void_initiated
 
@@ -635,12 +635,12 @@ module Orb
               id: String,
               amount: Float,
               created_at: Time,
-              credit_block: Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry::CreditBlock,
+              credit_block: Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiated::CreditBlock,
               currency: String,
-              customer: Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry::Customer,
+              customer: Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiated::Customer,
               description: String?,
               ending_balance: Float,
-              entry_status: Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry::entry_status,
+              entry_status: Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiated::entry_status,
               ledger_sequence_number: Integer,
               metadata: ::Hash[Symbol, String],
               new_block_expiry_date: Time,
@@ -650,7 +650,7 @@ module Orb
               ?entry_type: :void_initiated
             ) -> void
 
-            def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::void_initiated_ledger_entry
+            def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::void_initiated
 
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
@@ -668,7 +668,7 @@ module Orb
                 per_unit_cost_basis: String?
               ) -> void
 
-              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry::credit_block
+              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiated::credit_block
             end
 
             type customer = { id: String, external_customer_id: String? }
@@ -683,7 +683,7 @@ module Orb
                 external_customer_id: String?
               ) -> void
 
-              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry::customer
+              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiated::customer
             end
 
             type entry_status = :committed | :pending
@@ -694,45 +694,45 @@ module Orb
               COMMITTED: :committed
               PENDING: :pending
 
-              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry::entry_status]
+              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiated::entry_status]
             end
           end
 
-          type amendment_ledger_entry =
+          type amendment =
             {
               id: String,
               amount: Float,
               created_at: Time,
-              credit_block: Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry::CreditBlock,
+              credit_block: Orb::Models::Customers::Credits::LedgerListResponse::Amendment::CreditBlock,
               currency: String,
-              customer: Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry::Customer,
+              customer: Orb::Models::Customers::Credits::LedgerListResponse::Amendment::Customer,
               description: String?,
               ending_balance: Float,
-              entry_status: Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry::entry_status,
+              entry_status: Orb::Models::Customers::Credits::LedgerListResponse::Amendment::entry_status,
               entry_type: :amendment,
               ledger_sequence_number: Integer,
               metadata: ::Hash[Symbol, String],
               starting_balance: Float
             }
 
-          class AmendmentLedgerEntry < Orb::Internal::Type::BaseModel
+          class Amendment < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor amount: Float
 
             attr_accessor created_at: Time
 
-            attr_accessor credit_block: Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry::CreditBlock
+            attr_accessor credit_block: Orb::Models::Customers::Credits::LedgerListResponse::Amendment::CreditBlock
 
             attr_accessor currency: String
 
-            attr_accessor customer: Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry::Customer
+            attr_accessor customer: Orb::Models::Customers::Credits::LedgerListResponse::Amendment::Customer
 
             attr_accessor description: String?
 
             attr_accessor ending_balance: Float
 
-            attr_accessor entry_status: Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry::entry_status
+            attr_accessor entry_status: Orb::Models::Customers::Credits::LedgerListResponse::Amendment::entry_status
 
             attr_accessor entry_type: :amendment
 
@@ -746,19 +746,19 @@ module Orb
               id: String,
               amount: Float,
               created_at: Time,
-              credit_block: Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry::CreditBlock,
+              credit_block: Orb::Models::Customers::Credits::LedgerListResponse::Amendment::CreditBlock,
               currency: String,
-              customer: Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry::Customer,
+              customer: Orb::Models::Customers::Credits::LedgerListResponse::Amendment::Customer,
               description: String?,
               ending_balance: Float,
-              entry_status: Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry::entry_status,
+              entry_status: Orb::Models::Customers::Credits::LedgerListResponse::Amendment::entry_status,
               ledger_sequence_number: Integer,
               metadata: ::Hash[Symbol, String],
               starting_balance: Float,
               ?entry_type: :amendment
             ) -> void
 
-            def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::amendment_ledger_entry
+            def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::amendment
 
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
@@ -776,7 +776,7 @@ module Orb
                 per_unit_cost_basis: String?
               ) -> void
 
-              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry::credit_block
+              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::Amendment::credit_block
             end
 
             type customer = { id: String, external_customer_id: String? }
@@ -791,7 +791,7 @@ module Orb
                 external_customer_id: String?
               ) -> void
 
-              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry::customer
+              def to_hash: -> Orb::Models::Customers::Credits::LedgerListResponse::Amendment::customer
             end
 
             type entry_status = :committed | :pending
@@ -802,11 +802,11 @@ module Orb
               COMMITTED: :committed
               PENDING: :pending
 
-              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry::entry_status]
+              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerListResponse::Amendment::entry_status]
             end
           end
 
-          def self?.variants: -> [Orb::Models::Customers::Credits::LedgerListResponse::IncrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::DecrementLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::VoidLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::LedgerListResponse::AmendmentLedgerEntry]
+          def self?.variants: -> [Orb::Models::Customers::Credits::LedgerListResponse::Increment, Orb::Models::Customers::Credits::LedgerListResponse::Decrement, Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChange, Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiry, Orb::Models::Customers::Credits::LedgerListResponse::Void, Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiated, Orb::Models::Customers::Credits::LedgerListResponse::Amendment]
         end
       end
     end

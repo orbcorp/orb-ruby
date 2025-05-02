@@ -846,16 +846,16 @@ module Orb
         def to_hash: -> Orb::Models::Invoice::line_item
 
         type adjustment =
-          Orb::Models::Invoice::LineItem::Adjustment::MonetaryUsageDiscountAdjustment
-          | Orb::Models::Invoice::LineItem::Adjustment::MonetaryAmountDiscountAdjustment
-          | Orb::Models::Invoice::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment
-          | Orb::Models::Invoice::LineItem::Adjustment::MonetaryMinimumAdjustment
-          | Orb::Models::Invoice::LineItem::Adjustment::MonetaryMaximumAdjustment
+          Orb::Models::Invoice::LineItem::Adjustment::UsageDiscount
+          | Orb::Models::Invoice::LineItem::Adjustment::AmountDiscount
+          | Orb::Models::Invoice::LineItem::Adjustment::PercentageDiscount
+          | Orb::Models::Invoice::LineItem::Adjustment::Minimum
+          | Orb::Models::Invoice::LineItem::Adjustment::Maximum
 
         module Adjustment
           extend Orb::Internal::Type::Union
 
-          type monetary_usage_discount_adjustment =
+          type usage_discount =
             {
               id: String,
               adjustment_type: :usage_discount,
@@ -866,7 +866,7 @@ module Orb
               usage_discount: Float
             }
 
-          class MonetaryUsageDiscountAdjustment < Orb::Internal::Type::BaseModel
+          class UsageDiscount < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor adjustment_type: :usage_discount
@@ -891,10 +891,10 @@ module Orb
               ?adjustment_type: :usage_discount
             ) -> void
 
-            def to_hash: -> Orb::Models::Invoice::LineItem::Adjustment::monetary_usage_discount_adjustment
+            def to_hash: -> Orb::Models::Invoice::LineItem::Adjustment::usage_discount
           end
 
-          type monetary_amount_discount_adjustment =
+          type amount_discount =
             {
               id: String,
               adjustment_type: :amount_discount,
@@ -905,7 +905,7 @@ module Orb
               reason: String?
             }
 
-          class MonetaryAmountDiscountAdjustment < Orb::Internal::Type::BaseModel
+          class AmountDiscount < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor adjustment_type: :amount_discount
@@ -930,10 +930,10 @@ module Orb
               ?adjustment_type: :amount_discount
             ) -> void
 
-            def to_hash: -> Orb::Models::Invoice::LineItem::Adjustment::monetary_amount_discount_adjustment
+            def to_hash: -> Orb::Models::Invoice::LineItem::Adjustment::amount_discount
           end
 
-          type monetary_percentage_discount_adjustment =
+          type percentage_discount =
             {
               id: String,
               adjustment_type: :percentage_discount,
@@ -944,7 +944,7 @@ module Orb
               reason: String?
             }
 
-          class MonetaryPercentageDiscountAdjustment < Orb::Internal::Type::BaseModel
+          class PercentageDiscount < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor adjustment_type: :percentage_discount
@@ -969,10 +969,10 @@ module Orb
               ?adjustment_type: :percentage_discount
             ) -> void
 
-            def to_hash: -> Orb::Models::Invoice::LineItem::Adjustment::monetary_percentage_discount_adjustment
+            def to_hash: -> Orb::Models::Invoice::LineItem::Adjustment::percentage_discount
           end
 
-          type monetary_minimum_adjustment =
+          type minimum =
             {
               id: String,
               adjustment_type: :minimum,
@@ -984,7 +984,7 @@ module Orb
               reason: String?
             }
 
-          class MonetaryMinimumAdjustment < Orb::Internal::Type::BaseModel
+          class Minimum < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor adjustment_type: :minimum
@@ -1012,10 +1012,10 @@ module Orb
               ?adjustment_type: :minimum
             ) -> void
 
-            def to_hash: -> Orb::Models::Invoice::LineItem::Adjustment::monetary_minimum_adjustment
+            def to_hash: -> Orb::Models::Invoice::LineItem::Adjustment::minimum
           end
 
-          type monetary_maximum_adjustment =
+          type maximum =
             {
               id: String,
               adjustment_type: :maximum,
@@ -1026,7 +1026,7 @@ module Orb
               reason: String?
             }
 
-          class MonetaryMaximumAdjustment < Orb::Internal::Type::BaseModel
+          class Maximum < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor adjustment_type: :maximum
@@ -1051,10 +1051,10 @@ module Orb
               ?adjustment_type: :maximum
             ) -> void
 
-            def to_hash: -> Orb::Models::Invoice::LineItem::Adjustment::monetary_maximum_adjustment
+            def to_hash: -> Orb::Models::Invoice::LineItem::Adjustment::maximum
           end
 
-          def self?.variants: -> [Orb::Models::Invoice::LineItem::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryMinimumAdjustment, Orb::Models::Invoice::LineItem::Adjustment::MonetaryMaximumAdjustment]
+          def self?.variants: -> [Orb::Models::Invoice::LineItem::Adjustment::UsageDiscount, Orb::Models::Invoice::LineItem::Adjustment::AmountDiscount, Orb::Models::Invoice::LineItem::Adjustment::PercentageDiscount, Orb::Models::Invoice::LineItem::Adjustment::Minimum, Orb::Models::Invoice::LineItem::Adjustment::Maximum]
         end
 
         type maximum =
@@ -1090,29 +1090,29 @@ module Orb
         end
 
         type sub_line_item =
-          Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem
-          | Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem
-          | Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem
+          Orb::Models::Invoice::LineItem::SubLineItem::Matrix
+          | Orb::Models::Invoice::LineItem::SubLineItem::Tier
+          | Orb::Models::Invoice::LineItem::SubLineItem::Null
 
         module SubLineItem
           extend Orb::Internal::Type::Union
 
-          type matrix_sub_line_item =
+          type matrix =
             {
               amount: String,
-              grouping: Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem::Grouping?,
-              matrix_config: Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem::MatrixConfig,
+              grouping: Orb::Models::Invoice::LineItem::SubLineItem::Matrix::Grouping?,
+              matrix_config: Orb::Models::Invoice::LineItem::SubLineItem::Matrix::MatrixConfig,
               name: String,
               quantity: Float,
               type: :matrix
             }
 
-          class MatrixSubLineItem < Orb::Internal::Type::BaseModel
+          class Matrix < Orb::Internal::Type::BaseModel
             attr_accessor amount: String
 
-            attr_accessor grouping: Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem::Grouping?
+            attr_accessor grouping: Orb::Models::Invoice::LineItem::SubLineItem::Matrix::Grouping?
 
-            attr_accessor matrix_config: Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem::MatrixConfig
+            attr_accessor matrix_config: Orb::Models::Invoice::LineItem::SubLineItem::Matrix::MatrixConfig
 
             attr_accessor name: String
 
@@ -1122,14 +1122,14 @@ module Orb
 
             def initialize: (
               amount: String,
-              grouping: Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem::Grouping?,
-              matrix_config: Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem::MatrixConfig,
+              grouping: Orb::Models::Invoice::LineItem::SubLineItem::Matrix::Grouping?,
+              matrix_config: Orb::Models::Invoice::LineItem::SubLineItem::Matrix::MatrixConfig,
               name: String,
               quantity: Float,
               ?type: :matrix
             ) -> void
 
-            def to_hash: -> Orb::Models::Invoice::LineItem::SubLineItem::matrix_sub_line_item
+            def to_hash: -> Orb::Models::Invoice::LineItem::SubLineItem::matrix
 
             type grouping = { key: String, value: String? }
 
@@ -1140,7 +1140,7 @@ module Orb
 
               def initialize: (key: String, value: String?) -> void
 
-              def to_hash: -> Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem::grouping
+              def to_hash: -> Orb::Models::Invoice::LineItem::SubLineItem::Matrix::grouping
             end
 
             type matrix_config = { dimension_values: ::Array[String?] }
@@ -1150,43 +1150,43 @@ module Orb
 
               def initialize: (dimension_values: ::Array[String?]) -> void
 
-              def to_hash: -> Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem::matrix_config
+              def to_hash: -> Orb::Models::Invoice::LineItem::SubLineItem::Matrix::matrix_config
             end
           end
 
-          type tier_sub_line_item =
+          type tier =
             {
               amount: String,
-              grouping: Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem::Grouping?,
+              grouping: Orb::Models::Invoice::LineItem::SubLineItem::Tier::Grouping?,
               name: String,
               quantity: Float,
-              tier_config: Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem::TierConfig,
+              tier_config: Orb::Models::Invoice::LineItem::SubLineItem::Tier::TierConfig,
               type: :tier
             }
 
-          class TierSubLineItem < Orb::Internal::Type::BaseModel
+          class Tier < Orb::Internal::Type::BaseModel
             attr_accessor amount: String
 
-            attr_accessor grouping: Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem::Grouping?
+            attr_accessor grouping: Orb::Models::Invoice::LineItem::SubLineItem::Tier::Grouping?
 
             attr_accessor name: String
 
             attr_accessor quantity: Float
 
-            attr_accessor tier_config: Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem::TierConfig
+            attr_accessor tier_config: Orb::Models::Invoice::LineItem::SubLineItem::Tier::TierConfig
 
             attr_accessor type: :tier
 
             def initialize: (
               amount: String,
-              grouping: Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem::Grouping?,
+              grouping: Orb::Models::Invoice::LineItem::SubLineItem::Tier::Grouping?,
               name: String,
               quantity: Float,
-              tier_config: Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem::TierConfig,
+              tier_config: Orb::Models::Invoice::LineItem::SubLineItem::Tier::TierConfig,
               ?type: :tier
             ) -> void
 
-            def to_hash: -> Orb::Models::Invoice::LineItem::SubLineItem::tier_sub_line_item
+            def to_hash: -> Orb::Models::Invoice::LineItem::SubLineItem::tier
 
             type grouping = { key: String, value: String? }
 
@@ -1197,7 +1197,7 @@ module Orb
 
               def initialize: (key: String, value: String?) -> void
 
-              def to_hash: -> Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem::grouping
+              def to_hash: -> Orb::Models::Invoice::LineItem::SubLineItem::Tier::grouping
             end
 
             type tier_config =
@@ -1216,23 +1216,23 @@ module Orb
                 unit_amount: String
               ) -> void
 
-              def to_hash: -> Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem::tier_config
+              def to_hash: -> Orb::Models::Invoice::LineItem::SubLineItem::Tier::tier_config
             end
           end
 
-          type other_sub_line_item =
+          type null =
             {
               amount: String,
-              grouping: Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem::Grouping?,
+              grouping: Orb::Models::Invoice::LineItem::SubLineItem::Null::Grouping?,
               name: String,
               quantity: Float,
               type: :"'null'"
             }
 
-          class OtherSubLineItem < Orb::Internal::Type::BaseModel
+          class Null < Orb::Internal::Type::BaseModel
             attr_accessor amount: String
 
-            attr_accessor grouping: Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem::Grouping?
+            attr_accessor grouping: Orb::Models::Invoice::LineItem::SubLineItem::Null::Grouping?
 
             attr_accessor name: String
 
@@ -1242,13 +1242,13 @@ module Orb
 
             def initialize: (
               amount: String,
-              grouping: Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem::Grouping?,
+              grouping: Orb::Models::Invoice::LineItem::SubLineItem::Null::Grouping?,
               name: String,
               quantity: Float,
               ?type: :"'null'"
             ) -> void
 
-            def to_hash: -> Orb::Models::Invoice::LineItem::SubLineItem::other_sub_line_item
+            def to_hash: -> Orb::Models::Invoice::LineItem::SubLineItem::null
 
             type grouping = { key: String, value: String? }
 
@@ -1259,11 +1259,11 @@ module Orb
 
               def initialize: (key: String, value: String?) -> void
 
-              def to_hash: -> Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem::grouping
+              def to_hash: -> Orb::Models::Invoice::LineItem::SubLineItem::Null::grouping
             end
           end
 
-          def self?.variants: -> [Orb::Models::Invoice::LineItem::SubLineItem::MatrixSubLineItem, Orb::Models::Invoice::LineItem::SubLineItem::TierSubLineItem, Orb::Models::Invoice::LineItem::SubLineItem::OtherSubLineItem]
+          def self?.variants: -> [Orb::Models::Invoice::LineItem::SubLineItem::Matrix, Orb::Models::Invoice::LineItem::SubLineItem::Tier, Orb::Models::Invoice::LineItem::SubLineItem::Null]
         end
 
         type tax_amount =

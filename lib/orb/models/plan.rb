@@ -13,7 +13,7 @@ module Orb
       #   Adjustments for this plan. If the plan has phases, this includes adjustments
       #   across all phases of the plan.
       #
-      #   @return [Array<Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment>]
+      #   @return [Array<Orb::Models::Plan::Adjustment::UsageDiscount, Orb::Models::Plan::Adjustment::AmountDiscount, Orb::Models::Plan::Adjustment::PercentageDiscount, Orb::Models::Plan::Adjustment::Minimum, Orb::Models::Plan::Adjustment::Maximum>]
       required :adjustments, -> { Orb::Internal::Type::ArrayOf[union: Orb::Models::Plan::Adjustment] }
 
       # @!attribute base_plan
@@ -127,7 +127,7 @@ module Orb
       #   Prices for this plan. If the plan has phases, this includes prices across all
       #   phases of the plan.
       #
-      #   @return [Array<Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice>]
+      #   @return [Array<Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBps, Orb::Models::Price::Bps, Orb::Models::Price::BulkBps, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk>]
       required :prices, -> { Orb::Internal::Type::ArrayOf[union: Orb::Models::Price] }
 
       # @!attribute product
@@ -161,7 +161,7 @@ module Orb
       #
       #   @param id [String]
       #
-      #   @param adjustments [Array<Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment>] Adjustments for this plan. If the plan has phases, this includes adjustments acr
+      #   @param adjustments [Array<Orb::Models::Plan::Adjustment::UsageDiscount, Orb::Models::Plan::Adjustment::AmountDiscount, Orb::Models::Plan::Adjustment::PercentageDiscount, Orb::Models::Plan::Adjustment::Minimum, Orb::Models::Plan::Adjustment::Maximum>] Adjustments for this plan. If the plan has phases, this includes adjustments acr
       #   ...
       #
       #   @param base_plan [Orb::Models::Plan::BasePlan, nil]
@@ -205,7 +205,7 @@ module Orb
       #
       #   @param plan_phases [Array<Orb::Models::Plan::PlanPhase>, nil]
       #
-      #   @param prices [Array<Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice>] Prices for this plan. If the plan has phases, this includes prices across all ph
+      #   @param prices [Array<Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBps, Orb::Models::Price::Bps, Orb::Models::Price::BulkBps, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk>] Prices for this plan. If the plan has phases, this includes prices across all ph
       #   ...
       #
       #   @param product [Orb::Models::Plan::Product]
@@ -221,17 +221,17 @@ module Orb
 
         discriminator :adjustment_type
 
-        variant :usage_discount, -> { Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment }
+        variant :usage_discount, -> { Orb::Models::Plan::Adjustment::UsageDiscount }
 
-        variant :amount_discount, -> { Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment }
+        variant :amount_discount, -> { Orb::Models::Plan::Adjustment::AmountDiscount }
 
-        variant :percentage_discount, -> { Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment }
+        variant :percentage_discount, -> { Orb::Models::Plan::Adjustment::PercentageDiscount }
 
-        variant :minimum, -> { Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment }
+        variant :minimum, -> { Orb::Models::Plan::Adjustment::Minimum }
 
-        variant :maximum, -> { Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment }
+        variant :maximum, -> { Orb::Models::Plan::Adjustment::Maximum }
 
-        class PlanPhaseUsageDiscountAdjustment < Orb::Internal::Type::BaseModel
+        class UsageDiscount < Orb::Internal::Type::BaseModel
           # @!attribute id
           #
           #   @return [String]
@@ -276,8 +276,7 @@ module Orb
 
           # @!method initialize(id:, applies_to_price_ids:, is_invoice_level:, plan_phase_order:, reason:, usage_discount:, adjustment_type: :usage_discount)
           #   Some parameter documentations has been truncated, see
-          #   {Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment} for more
-          #   details.
+          #   {Orb::Models::Plan::Adjustment::UsageDiscount} for more details.
           #
           #   @param id [String]
           #
@@ -296,7 +295,7 @@ module Orb
           #   @param adjustment_type [Symbol, :usage_discount]
         end
 
-        class PlanPhaseAmountDiscountAdjustment < Orb::Internal::Type::BaseModel
+        class AmountDiscount < Orb::Internal::Type::BaseModel
           # @!attribute id
           #
           #   @return [String]
@@ -341,8 +340,7 @@ module Orb
 
           # @!method initialize(id:, amount_discount:, applies_to_price_ids:, is_invoice_level:, plan_phase_order:, reason:, adjustment_type: :amount_discount)
           #   Some parameter documentations has been truncated, see
-          #   {Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment} for more
-          #   details.
+          #   {Orb::Models::Plan::Adjustment::AmountDiscount} for more details.
           #
           #   @param id [String]
           #
@@ -361,7 +359,7 @@ module Orb
           #   @param adjustment_type [Symbol, :amount_discount]
         end
 
-        class PlanPhasePercentageDiscountAdjustment < Orb::Internal::Type::BaseModel
+        class PercentageDiscount < Orb::Internal::Type::BaseModel
           # @!attribute id
           #
           #   @return [String]
@@ -406,8 +404,7 @@ module Orb
 
           # @!method initialize(id:, applies_to_price_ids:, is_invoice_level:, percentage_discount:, plan_phase_order:, reason:, adjustment_type: :percentage_discount)
           #   Some parameter documentations has been truncated, see
-          #   {Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment} for more
-          #   details.
+          #   {Orb::Models::Plan::Adjustment::PercentageDiscount} for more details.
           #
           #   @param id [String]
           #
@@ -426,7 +423,7 @@ module Orb
           #   @param adjustment_type [Symbol, :percentage_discount]
         end
 
-        class PlanPhaseMinimumAdjustment < Orb::Internal::Type::BaseModel
+        class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute id
           #
           #   @return [String]
@@ -477,7 +474,7 @@ module Orb
 
           # @!method initialize(id:, applies_to_price_ids:, is_invoice_level:, item_id:, minimum_amount:, plan_phase_order:, reason:, adjustment_type: :minimum)
           #   Some parameter documentations has been truncated, see
-          #   {Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment} for more details.
+          #   {Orb::Models::Plan::Adjustment::Minimum} for more details.
           #
           #   @param id [String]
           #
@@ -498,7 +495,7 @@ module Orb
           #   @param adjustment_type [Symbol, :minimum]
         end
 
-        class PlanPhaseMaximumAdjustment < Orb::Internal::Type::BaseModel
+        class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute id
           #
           #   @return [String]
@@ -543,7 +540,7 @@ module Orb
 
           # @!method initialize(id:, applies_to_price_ids:, is_invoice_level:, maximum_amount:, plan_phase_order:, reason:, adjustment_type: :maximum)
           #   Some parameter documentations has been truncated, see
-          #   {Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment} for more details.
+          #   {Orb::Models::Plan::Adjustment::Maximum} for more details.
           #
           #   @param id [String]
           #
@@ -563,7 +560,7 @@ module Orb
         end
 
         # @!method self.variants
-        #   @return [Array(Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment)]
+        #   @return [Array(Orb::Models::Plan::Adjustment::UsageDiscount, Orb::Models::Plan::Adjustment::AmountDiscount, Orb::Models::Plan::Adjustment::PercentageDiscount, Orb::Models::Plan::Adjustment::Minimum, Orb::Models::Plan::Adjustment::Maximum)]
       end
 
       # @see Orb::Models::Plan#base_plan
