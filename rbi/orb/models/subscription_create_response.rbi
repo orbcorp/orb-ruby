@@ -89,9 +89,9 @@ module Orb
         returns(
           T::Array[
             T.any(
-              Orb::Models::SubscriptionCreateResponse::DiscountInterval::AmountDiscountInterval,
-              Orb::Models::SubscriptionCreateResponse::DiscountInterval::PercentageDiscountInterval,
-              Orb::Models::SubscriptionCreateResponse::DiscountInterval::UsageDiscountInterval
+              Orb::Models::SubscriptionCreateResponse::DiscountInterval::Amount,
+              Orb::Models::SubscriptionCreateResponse::DiscountInterval::Percentage,
+              Orb::Models::SubscriptionCreateResponse::DiscountInterval::Usage
             )
           ]
         )
@@ -211,10 +211,10 @@ module Orb
           default_invoice_memo: T.nilable(String),
           discount_intervals: T::Array[
             T.any(
-              Orb::Models::SubscriptionCreateResponse::DiscountInterval::AmountDiscountInterval,
+              Orb::Models::SubscriptionCreateResponse::DiscountInterval::Amount,
               Orb::Internal::AnyHash,
-              Orb::Models::SubscriptionCreateResponse::DiscountInterval::PercentageDiscountInterval,
-              Orb::Models::SubscriptionCreateResponse::DiscountInterval::UsageDiscountInterval
+              Orb::Models::SubscriptionCreateResponse::DiscountInterval::Percentage,
+              Orb::Models::SubscriptionCreateResponse::DiscountInterval::Usage
             )
           ],
           end_date: T.nilable(Time),
@@ -342,9 +342,9 @@ module Orb
               default_invoice_memo: T.nilable(String),
               discount_intervals: T::Array[
                 T.any(
-                  Orb::Models::SubscriptionCreateResponse::DiscountInterval::AmountDiscountInterval,
-                  Orb::Models::SubscriptionCreateResponse::DiscountInterval::PercentageDiscountInterval,
-                  Orb::Models::SubscriptionCreateResponse::DiscountInterval::UsageDiscountInterval
+                  Orb::Models::SubscriptionCreateResponse::DiscountInterval::Amount,
+                  Orb::Models::SubscriptionCreateResponse::DiscountInterval::Percentage,
+                  Orb::Models::SubscriptionCreateResponse::DiscountInterval::Usage
                 )
               ],
               end_date: T.nilable(Time),
@@ -374,11 +374,11 @@ module Orb
         sig do
           returns(
             T.any(
-              Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment,
-              Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment,
-              Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment,
-              Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment,
-              Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
+              Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::UsageDiscount,
+              Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::AmountDiscount,
+              Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PercentageDiscount,
+              Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::Minimum,
+              Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::Maximum
             )
           )
         end
@@ -400,12 +400,12 @@ module Orb
           params(
             id: String,
             adjustment: T.any(
-              Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment,
+              Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::UsageDiscount,
               Orb::Internal::AnyHash,
-              Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment,
-              Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment,
-              Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment,
-              Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
+              Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::AmountDiscount,
+              Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PercentageDiscount,
+              Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::Minimum,
+              Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::Maximum
             ),
             applies_to_price_interval_ids: T::Array[String],
             end_date: T.nilable(Time),
@@ -429,11 +429,11 @@ module Orb
               {
                 id: String,
                 adjustment: T.any(
-                  Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment,
-                  Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment,
-                  Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment,
-                  Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment,
-                  Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
+                  Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::UsageDiscount,
+                  Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::AmountDiscount,
+                  Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PercentageDiscount,
+                  Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::Minimum,
+                  Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::Maximum
                 ),
                 applies_to_price_interval_ids: T::Array[String],
                 end_date: T.nilable(Time),
@@ -446,7 +446,7 @@ module Orb
         module Adjustment
           extend Orb::Internal::Type::Union
 
-          class PlanPhaseUsageDiscountAdjustment < Orb::Internal::Type::BaseModel
+          class UsageDiscount < Orb::Internal::Type::BaseModel
             sig { returns(String) }
             attr_accessor :id
 
@@ -520,7 +520,7 @@ module Orb
             def to_hash; end
           end
 
-          class PlanPhaseAmountDiscountAdjustment < Orb::Internal::Type::BaseModel
+          class AmountDiscount < Orb::Internal::Type::BaseModel
             sig { returns(String) }
             attr_accessor :id
 
@@ -594,7 +594,7 @@ module Orb
             def to_hash; end
           end
 
-          class PlanPhasePercentageDiscountAdjustment < Orb::Internal::Type::BaseModel
+          class PercentageDiscount < Orb::Internal::Type::BaseModel
             sig { returns(String) }
             attr_accessor :id
 
@@ -668,7 +668,7 @@ module Orb
             def to_hash; end
           end
 
-          class PlanPhaseMinimumAdjustment < Orb::Internal::Type::BaseModel
+          class Minimum < Orb::Internal::Type::BaseModel
             sig { returns(String) }
             attr_accessor :id
 
@@ -750,7 +750,7 @@ module Orb
             def to_hash; end
           end
 
-          class PlanPhaseMaximumAdjustment < Orb::Internal::Type::BaseModel
+          class Maximum < Orb::Internal::Type::BaseModel
             sig { returns(String) }
             attr_accessor :id
 
@@ -827,7 +827,7 @@ module Orb
           sig do
             override
               .returns(
-                [Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]
+                [Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::UsageDiscount, Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::AmountDiscount, Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PercentageDiscount, Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::Minimum, Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::Maximum]
               )
           end
           def self.variants; end
@@ -877,7 +877,7 @@ module Orb
       module DiscountInterval
         extend Orb::Internal::Type::Union
 
-        class AmountDiscountInterval < Orb::Internal::Type::BaseModel
+        class Amount < Orb::Internal::Type::BaseModel
           # Only available if discount_type is `amount`.
           sig { returns(String) }
           attr_accessor :amount_discount
@@ -941,7 +941,7 @@ module Orb
           def to_hash; end
         end
 
-        class PercentageDiscountInterval < Orb::Internal::Type::BaseModel
+        class Percentage < Orb::Internal::Type::BaseModel
           # The price ids that this discount interval applies to.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
@@ -1007,7 +1007,7 @@ module Orb
           def to_hash; end
         end
 
-        class UsageDiscountInterval < Orb::Internal::Type::BaseModel
+        class Usage < Orb::Internal::Type::BaseModel
           # The price ids that this discount interval applies to.
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
@@ -1076,7 +1076,7 @@ module Orb
         sig do
           override
             .returns(
-              [Orb::Models::SubscriptionCreateResponse::DiscountInterval::AmountDiscountInterval, Orb::Models::SubscriptionCreateResponse::DiscountInterval::PercentageDiscountInterval, Orb::Models::SubscriptionCreateResponse::DiscountInterval::UsageDiscountInterval]
+              [Orb::Models::SubscriptionCreateResponse::DiscountInterval::Amount, Orb::Models::SubscriptionCreateResponse::DiscountInterval::Percentage, Orb::Models::SubscriptionCreateResponse::DiscountInterval::Usage]
             )
         end
         def self.variants; end
@@ -1290,34 +1290,34 @@ module Orb
         sig do
           returns(
             T.any(
-              Orb::Models::Price::UnitPrice,
-              Orb::Models::Price::PackagePrice,
-              Orb::Models::Price::MatrixPrice,
-              Orb::Models::Price::TieredPrice,
-              Orb::Models::Price::TieredBpsPrice,
-              Orb::Models::Price::BpsPrice,
-              Orb::Models::Price::BulkBpsPrice,
-              Orb::Models::Price::BulkPrice,
-              Orb::Models::Price::ThresholdTotalAmountPrice,
-              Orb::Models::Price::TieredPackagePrice,
-              Orb::Models::Price::GroupedTieredPrice,
-              Orb::Models::Price::TieredWithMinimumPrice,
-              Orb::Models::Price::TieredPackageWithMinimumPrice,
-              Orb::Models::Price::PackageWithAllocationPrice,
-              Orb::Models::Price::UnitWithPercentPrice,
-              Orb::Models::Price::MatrixWithAllocationPrice,
-              Orb::Models::Price::TieredWithProrationPrice,
-              Orb::Models::Price::UnitWithProrationPrice,
-              Orb::Models::Price::GroupedAllocationPrice,
-              Orb::Models::Price::GroupedWithProratedMinimumPrice,
-              Orb::Models::Price::GroupedWithMeteredMinimumPrice,
-              Orb::Models::Price::MatrixWithDisplayNamePrice,
-              Orb::Models::Price::BulkWithProrationPrice,
-              Orb::Models::Price::GroupedTieredPackagePrice,
-              Orb::Models::Price::MaxGroupTieredPackagePrice,
-              Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-              Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
-              Orb::Models::Price::CumulativeGroupedBulkPrice
+              Orb::Models::Price::Unit,
+              Orb::Models::Price::Package,
+              Orb::Models::Price::Matrix,
+              Orb::Models::Price::Tiered,
+              Orb::Models::Price::TieredBps,
+              Orb::Models::Price::Bps,
+              Orb::Models::Price::BulkBps,
+              Orb::Models::Price::Bulk,
+              Orb::Models::Price::ThresholdTotalAmount,
+              Orb::Models::Price::TieredPackage,
+              Orb::Models::Price::GroupedTiered,
+              Orb::Models::Price::TieredWithMinimum,
+              Orb::Models::Price::TieredPackageWithMinimum,
+              Orb::Models::Price::PackageWithAllocation,
+              Orb::Models::Price::UnitWithPercent,
+              Orb::Models::Price::MatrixWithAllocation,
+              Orb::Models::Price::TieredWithProration,
+              Orb::Models::Price::UnitWithProration,
+              Orb::Models::Price::GroupedAllocation,
+              Orb::Models::Price::GroupedWithProratedMinimum,
+              Orb::Models::Price::GroupedWithMeteredMinimum,
+              Orb::Models::Price::MatrixWithDisplayName,
+              Orb::Models::Price::BulkWithProration,
+              Orb::Models::Price::GroupedTieredPackage,
+              Orb::Models::Price::MaxGroupTieredPackage,
+              Orb::Models::Price::ScalableMatrixWithUnitPricing,
+              Orb::Models::Price::ScalableMatrixWithTieredPricing,
+              Orb::Models::Price::CumulativeGroupedBulk
             )
           )
         end
@@ -1353,35 +1353,35 @@ module Orb
               ]
             ),
             price: T.any(
-              Orb::Models::Price::UnitPrice,
+              Orb::Models::Price::Unit,
               Orb::Internal::AnyHash,
-              Orb::Models::Price::PackagePrice,
-              Orb::Models::Price::MatrixPrice,
-              Orb::Models::Price::TieredPrice,
-              Orb::Models::Price::TieredBpsPrice,
-              Orb::Models::Price::BpsPrice,
-              Orb::Models::Price::BulkBpsPrice,
-              Orb::Models::Price::BulkPrice,
-              Orb::Models::Price::ThresholdTotalAmountPrice,
-              Orb::Models::Price::TieredPackagePrice,
-              Orb::Models::Price::GroupedTieredPrice,
-              Orb::Models::Price::TieredWithMinimumPrice,
-              Orb::Models::Price::TieredPackageWithMinimumPrice,
-              Orb::Models::Price::PackageWithAllocationPrice,
-              Orb::Models::Price::UnitWithPercentPrice,
-              Orb::Models::Price::MatrixWithAllocationPrice,
-              Orb::Models::Price::TieredWithProrationPrice,
-              Orb::Models::Price::UnitWithProrationPrice,
-              Orb::Models::Price::GroupedAllocationPrice,
-              Orb::Models::Price::GroupedWithProratedMinimumPrice,
-              Orb::Models::Price::GroupedWithMeteredMinimumPrice,
-              Orb::Models::Price::MatrixWithDisplayNamePrice,
-              Orb::Models::Price::BulkWithProrationPrice,
-              Orb::Models::Price::GroupedTieredPackagePrice,
-              Orb::Models::Price::MaxGroupTieredPackagePrice,
-              Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-              Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
-              Orb::Models::Price::CumulativeGroupedBulkPrice
+              Orb::Models::Price::Package,
+              Orb::Models::Price::Matrix,
+              Orb::Models::Price::Tiered,
+              Orb::Models::Price::TieredBps,
+              Orb::Models::Price::Bps,
+              Orb::Models::Price::BulkBps,
+              Orb::Models::Price::Bulk,
+              Orb::Models::Price::ThresholdTotalAmount,
+              Orb::Models::Price::TieredPackage,
+              Orb::Models::Price::GroupedTiered,
+              Orb::Models::Price::TieredWithMinimum,
+              Orb::Models::Price::TieredPackageWithMinimum,
+              Orb::Models::Price::PackageWithAllocation,
+              Orb::Models::Price::UnitWithPercent,
+              Orb::Models::Price::MatrixWithAllocation,
+              Orb::Models::Price::TieredWithProration,
+              Orb::Models::Price::UnitWithProration,
+              Orb::Models::Price::GroupedAllocation,
+              Orb::Models::Price::GroupedWithProratedMinimum,
+              Orb::Models::Price::GroupedWithMeteredMinimum,
+              Orb::Models::Price::MatrixWithDisplayName,
+              Orb::Models::Price::BulkWithProration,
+              Orb::Models::Price::GroupedTieredPackage,
+              Orb::Models::Price::MaxGroupTieredPackage,
+              Orb::Models::Price::ScalableMatrixWithUnitPricing,
+              Orb::Models::Price::ScalableMatrixWithTieredPricing,
+              Orb::Models::Price::CumulativeGroupedBulk
             ),
             start_date: Time,
             usage_customer_ids: T.nilable(T::Array[String])
@@ -1438,34 +1438,34 @@ module Orb
                 filter: T.nilable(String),
                 fixed_fee_quantity_transitions: T.nilable(T::Array[Orb::Models::SubscriptionCreateResponse::PriceInterval::FixedFeeQuantityTransition]),
                 price: T.any(
-                  Orb::Models::Price::UnitPrice,
-                  Orb::Models::Price::PackagePrice,
-                  Orb::Models::Price::MatrixPrice,
-                  Orb::Models::Price::TieredPrice,
-                  Orb::Models::Price::TieredBpsPrice,
-                  Orb::Models::Price::BpsPrice,
-                  Orb::Models::Price::BulkBpsPrice,
-                  Orb::Models::Price::BulkPrice,
-                  Orb::Models::Price::ThresholdTotalAmountPrice,
-                  Orb::Models::Price::TieredPackagePrice,
-                  Orb::Models::Price::GroupedTieredPrice,
-                  Orb::Models::Price::TieredWithMinimumPrice,
-                  Orb::Models::Price::TieredPackageWithMinimumPrice,
-                  Orb::Models::Price::PackageWithAllocationPrice,
-                  Orb::Models::Price::UnitWithPercentPrice,
-                  Orb::Models::Price::MatrixWithAllocationPrice,
-                  Orb::Models::Price::TieredWithProrationPrice,
-                  Orb::Models::Price::UnitWithProrationPrice,
-                  Orb::Models::Price::GroupedAllocationPrice,
-                  Orb::Models::Price::GroupedWithProratedMinimumPrice,
-                  Orb::Models::Price::GroupedWithMeteredMinimumPrice,
-                  Orb::Models::Price::MatrixWithDisplayNamePrice,
-                  Orb::Models::Price::BulkWithProrationPrice,
-                  Orb::Models::Price::GroupedTieredPackagePrice,
-                  Orb::Models::Price::MaxGroupTieredPackagePrice,
-                  Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-                  Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
-                  Orb::Models::Price::CumulativeGroupedBulkPrice
+                  Orb::Models::Price::Unit,
+                  Orb::Models::Price::Package,
+                  Orb::Models::Price::Matrix,
+                  Orb::Models::Price::Tiered,
+                  Orb::Models::Price::TieredBps,
+                  Orb::Models::Price::Bps,
+                  Orb::Models::Price::BulkBps,
+                  Orb::Models::Price::Bulk,
+                  Orb::Models::Price::ThresholdTotalAmount,
+                  Orb::Models::Price::TieredPackage,
+                  Orb::Models::Price::GroupedTiered,
+                  Orb::Models::Price::TieredWithMinimum,
+                  Orb::Models::Price::TieredPackageWithMinimum,
+                  Orb::Models::Price::PackageWithAllocation,
+                  Orb::Models::Price::UnitWithPercent,
+                  Orb::Models::Price::MatrixWithAllocation,
+                  Orb::Models::Price::TieredWithProration,
+                  Orb::Models::Price::UnitWithProration,
+                  Orb::Models::Price::GroupedAllocation,
+                  Orb::Models::Price::GroupedWithProratedMinimum,
+                  Orb::Models::Price::GroupedWithMeteredMinimum,
+                  Orb::Models::Price::MatrixWithDisplayName,
+                  Orb::Models::Price::BulkWithProration,
+                  Orb::Models::Price::GroupedTieredPackage,
+                  Orb::Models::Price::MaxGroupTieredPackage,
+                  Orb::Models::Price::ScalableMatrixWithUnitPricing,
+                  Orb::Models::Price::ScalableMatrixWithTieredPricing,
+                  Orb::Models::Price::CumulativeGroupedBulk
                 ),
                 start_date: Time,
                 usage_customer_ids: T.nilable(T::Array[String])

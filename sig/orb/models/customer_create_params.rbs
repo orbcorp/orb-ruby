@@ -236,20 +236,20 @@ module Orb
       end
 
       type tax_configuration =
-        Orb::Models::CustomerCreateParams::TaxConfiguration::NewAvalaraTaxConfiguration
-        | Orb::Models::CustomerCreateParams::TaxConfiguration::NewTaxJarConfiguration
+        Orb::Models::CustomerCreateParams::TaxConfiguration::Avalara
+        | Orb::Models::CustomerCreateParams::TaxConfiguration::Taxjar
 
       module TaxConfiguration
         extend Orb::Internal::Type::Union
 
-        type new_avalara_tax_configuration =
+        type avalara =
           {
             tax_exempt: bool,
             tax_provider: :avalara,
             tax_exemption_code: String?
           }
 
-        class NewAvalaraTaxConfiguration < Orb::Internal::Type::BaseModel
+        class Avalara < Orb::Internal::Type::BaseModel
           attr_accessor tax_exempt: bool
 
           attr_accessor tax_provider: :avalara
@@ -262,23 +262,22 @@ module Orb
             ?tax_provider: :avalara
           ) -> void
 
-          def to_hash: -> Orb::Models::CustomerCreateParams::TaxConfiguration::new_avalara_tax_configuration
+          def to_hash: -> Orb::Models::CustomerCreateParams::TaxConfiguration::avalara
         end
 
-        type new_tax_jar_configuration =
-          { tax_exempt: bool, tax_provider: :taxjar }
+        type taxjar = { tax_exempt: bool, tax_provider: :taxjar }
 
-        class NewTaxJarConfiguration < Orb::Internal::Type::BaseModel
+        class Taxjar < Orb::Internal::Type::BaseModel
           attr_accessor tax_exempt: bool
 
           attr_accessor tax_provider: :taxjar
 
           def initialize: (tax_exempt: bool, ?tax_provider: :taxjar) -> void
 
-          def to_hash: -> Orb::Models::CustomerCreateParams::TaxConfiguration::new_tax_jar_configuration
+          def to_hash: -> Orb::Models::CustomerCreateParams::TaxConfiguration::taxjar
         end
 
-        def self?.variants: -> [Orb::Models::CustomerCreateParams::TaxConfiguration::NewAvalaraTaxConfiguration, Orb::Models::CustomerCreateParams::TaxConfiguration::NewTaxJarConfiguration]
+        def self?.variants: -> [Orb::Models::CustomerCreateParams::TaxConfiguration::Avalara, Orb::Models::CustomerCreateParams::TaxConfiguration::Taxjar]
       end
 
       type tax_id =

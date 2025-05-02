@@ -112,7 +112,7 @@ module Orb
 
       # @!attribute tax_configuration
       #
-      #   @return [Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration, Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration, nil]
+      #   @return [Orb::Models::CustomerUpdateParams::TaxConfiguration::Avalara, Orb::Models::CustomerUpdateParams::TaxConfiguration::Taxjar, nil]
       optional :tax_configuration, union: -> { Orb::Models::CustomerUpdateParams::TaxConfiguration }, nil?: true
 
       # @!attribute tax_id
@@ -266,7 +266,7 @@ module Orb
       #
       #   @param shipping_address [Orb::Models::CustomerUpdateParams::ShippingAddress, nil]
       #
-      #   @param tax_configuration [Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration, Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration, nil]
+      #   @param tax_configuration [Orb::Models::CustomerUpdateParams::TaxConfiguration::Avalara, Orb::Models::CustomerUpdateParams::TaxConfiguration::Taxjar, nil]
       #
       #   @param tax_id [Orb::Models::CustomerUpdateParams::TaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
       #   ...
@@ -450,11 +450,11 @@ module Orb
 
         discriminator :tax_provider
 
-        variant :avalara, -> { Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration }
+        variant :avalara, -> { Orb::Models::CustomerUpdateParams::TaxConfiguration::Avalara }
 
-        variant :taxjar, -> { Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration }
+        variant :taxjar, -> { Orb::Models::CustomerUpdateParams::TaxConfiguration::Taxjar }
 
-        class NewAvalaraTaxConfiguration < Orb::Internal::Type::BaseModel
+        class Avalara < Orb::Internal::Type::BaseModel
           # @!attribute tax_exempt
           #
           #   @return [Boolean]
@@ -476,7 +476,7 @@ module Orb
           #   @param tax_provider [Symbol, :avalara]
         end
 
-        class NewTaxJarConfiguration < Orb::Internal::Type::BaseModel
+        class Taxjar < Orb::Internal::Type::BaseModel
           # @!attribute tax_exempt
           #
           #   @return [Boolean]
@@ -493,7 +493,7 @@ module Orb
         end
 
         # @!method self.variants
-        #   @return [Array(Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration, Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration)]
+        #   @return [Array(Orb::Models::CustomerUpdateParams::TaxConfiguration::Avalara, Orb::Models::CustomerUpdateParams::TaxConfiguration::Taxjar)]
       end
 
       class TaxID < Orb::Internal::Type::BaseModel

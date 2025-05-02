@@ -12,11 +12,11 @@ module Orb
         returns(
           T::Array[
             T.any(
-              Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment,
-              Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment,
-              Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment,
-              Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment,
-              Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment
+              Orb::Models::Plan::Adjustment::UsageDiscount,
+              Orb::Models::Plan::Adjustment::AmountDiscount,
+              Orb::Models::Plan::Adjustment::PercentageDiscount,
+              Orb::Models::Plan::Adjustment::Minimum,
+              Orb::Models::Plan::Adjustment::Maximum
             )
           ]
         )
@@ -120,34 +120,34 @@ module Orb
         returns(
           T::Array[
             T.any(
-              Orb::Models::Price::UnitPrice,
-              Orb::Models::Price::PackagePrice,
-              Orb::Models::Price::MatrixPrice,
-              Orb::Models::Price::TieredPrice,
-              Orb::Models::Price::TieredBpsPrice,
-              Orb::Models::Price::BpsPrice,
-              Orb::Models::Price::BulkBpsPrice,
-              Orb::Models::Price::BulkPrice,
-              Orb::Models::Price::ThresholdTotalAmountPrice,
-              Orb::Models::Price::TieredPackagePrice,
-              Orb::Models::Price::GroupedTieredPrice,
-              Orb::Models::Price::TieredWithMinimumPrice,
-              Orb::Models::Price::TieredPackageWithMinimumPrice,
-              Orb::Models::Price::PackageWithAllocationPrice,
-              Orb::Models::Price::UnitWithPercentPrice,
-              Orb::Models::Price::MatrixWithAllocationPrice,
-              Orb::Models::Price::TieredWithProrationPrice,
-              Orb::Models::Price::UnitWithProrationPrice,
-              Orb::Models::Price::GroupedAllocationPrice,
-              Orb::Models::Price::GroupedWithProratedMinimumPrice,
-              Orb::Models::Price::GroupedWithMeteredMinimumPrice,
-              Orb::Models::Price::MatrixWithDisplayNamePrice,
-              Orb::Models::Price::BulkWithProrationPrice,
-              Orb::Models::Price::GroupedTieredPackagePrice,
-              Orb::Models::Price::MaxGroupTieredPackagePrice,
-              Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-              Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
-              Orb::Models::Price::CumulativeGroupedBulkPrice
+              Orb::Models::Price::Unit,
+              Orb::Models::Price::Package,
+              Orb::Models::Price::Matrix,
+              Orb::Models::Price::Tiered,
+              Orb::Models::Price::TieredBps,
+              Orb::Models::Price::Bps,
+              Orb::Models::Price::BulkBps,
+              Orb::Models::Price::Bulk,
+              Orb::Models::Price::ThresholdTotalAmount,
+              Orb::Models::Price::TieredPackage,
+              Orb::Models::Price::GroupedTiered,
+              Orb::Models::Price::TieredWithMinimum,
+              Orb::Models::Price::TieredPackageWithMinimum,
+              Orb::Models::Price::PackageWithAllocation,
+              Orb::Models::Price::UnitWithPercent,
+              Orb::Models::Price::MatrixWithAllocation,
+              Orb::Models::Price::TieredWithProration,
+              Orb::Models::Price::UnitWithProration,
+              Orb::Models::Price::GroupedAllocation,
+              Orb::Models::Price::GroupedWithProratedMinimum,
+              Orb::Models::Price::GroupedWithMeteredMinimum,
+              Orb::Models::Price::MatrixWithDisplayName,
+              Orb::Models::Price::BulkWithProration,
+              Orb::Models::Price::GroupedTieredPackage,
+              Orb::Models::Price::MaxGroupTieredPackage,
+              Orb::Models::Price::ScalableMatrixWithUnitPricing,
+              Orb::Models::Price::ScalableMatrixWithTieredPricing,
+              Orb::Models::Price::CumulativeGroupedBulk
             )
           ]
         )
@@ -181,12 +181,12 @@ module Orb
           id: String,
           adjustments: T::Array[
             T.any(
-              Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment,
+              Orb::Models::Plan::Adjustment::UsageDiscount,
               Orb::Internal::AnyHash,
-              Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment,
-              Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment,
-              Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment,
-              Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment
+              Orb::Models::Plan::Adjustment::AmountDiscount,
+              Orb::Models::Plan::Adjustment::PercentageDiscount,
+              Orb::Models::Plan::Adjustment::Minimum,
+              Orb::Models::Plan::Adjustment::Maximum
             )
           ],
           base_plan: T.nilable(T.any(Orb::Models::Plan::BasePlan, Orb::Internal::AnyHash)),
@@ -216,35 +216,35 @@ module Orb
           plan_phases: T.nilable(T::Array[T.any(Orb::Models::Plan::PlanPhase, Orb::Internal::AnyHash)]),
           prices: T::Array[
             T.any(
-              Orb::Models::Price::UnitPrice,
+              Orb::Models::Price::Unit,
               Orb::Internal::AnyHash,
-              Orb::Models::Price::PackagePrice,
-              Orb::Models::Price::MatrixPrice,
-              Orb::Models::Price::TieredPrice,
-              Orb::Models::Price::TieredBpsPrice,
-              Orb::Models::Price::BpsPrice,
-              Orb::Models::Price::BulkBpsPrice,
-              Orb::Models::Price::BulkPrice,
-              Orb::Models::Price::ThresholdTotalAmountPrice,
-              Orb::Models::Price::TieredPackagePrice,
-              Orb::Models::Price::GroupedTieredPrice,
-              Orb::Models::Price::TieredWithMinimumPrice,
-              Orb::Models::Price::TieredPackageWithMinimumPrice,
-              Orb::Models::Price::PackageWithAllocationPrice,
-              Orb::Models::Price::UnitWithPercentPrice,
-              Orb::Models::Price::MatrixWithAllocationPrice,
-              Orb::Models::Price::TieredWithProrationPrice,
-              Orb::Models::Price::UnitWithProrationPrice,
-              Orb::Models::Price::GroupedAllocationPrice,
-              Orb::Models::Price::GroupedWithProratedMinimumPrice,
-              Orb::Models::Price::GroupedWithMeteredMinimumPrice,
-              Orb::Models::Price::MatrixWithDisplayNamePrice,
-              Orb::Models::Price::BulkWithProrationPrice,
-              Orb::Models::Price::GroupedTieredPackagePrice,
-              Orb::Models::Price::MaxGroupTieredPackagePrice,
-              Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-              Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
-              Orb::Models::Price::CumulativeGroupedBulkPrice
+              Orb::Models::Price::Package,
+              Orb::Models::Price::Matrix,
+              Orb::Models::Price::Tiered,
+              Orb::Models::Price::TieredBps,
+              Orb::Models::Price::Bps,
+              Orb::Models::Price::BulkBps,
+              Orb::Models::Price::Bulk,
+              Orb::Models::Price::ThresholdTotalAmount,
+              Orb::Models::Price::TieredPackage,
+              Orb::Models::Price::GroupedTiered,
+              Orb::Models::Price::TieredWithMinimum,
+              Orb::Models::Price::TieredPackageWithMinimum,
+              Orb::Models::Price::PackageWithAllocation,
+              Orb::Models::Price::UnitWithPercent,
+              Orb::Models::Price::MatrixWithAllocation,
+              Orb::Models::Price::TieredWithProration,
+              Orb::Models::Price::UnitWithProration,
+              Orb::Models::Price::GroupedAllocation,
+              Orb::Models::Price::GroupedWithProratedMinimum,
+              Orb::Models::Price::GroupedWithMeteredMinimum,
+              Orb::Models::Price::MatrixWithDisplayName,
+              Orb::Models::Price::BulkWithProration,
+              Orb::Models::Price::GroupedTieredPackage,
+              Orb::Models::Price::MaxGroupTieredPackage,
+              Orb::Models::Price::ScalableMatrixWithUnitPricing,
+              Orb::Models::Price::ScalableMatrixWithTieredPricing,
+              Orb::Models::Price::CumulativeGroupedBulk
             )
           ],
           product: T.any(Orb::Models::Plan::Product, Orb::Internal::AnyHash),
@@ -311,11 +311,11 @@ module Orb
               id: String,
               adjustments: T::Array[
                 T.any(
-                  Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment,
-                  Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment,
-                  Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment,
-                  Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment,
-                  Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment
+                  Orb::Models::Plan::Adjustment::UsageDiscount,
+                  Orb::Models::Plan::Adjustment::AmountDiscount,
+                  Orb::Models::Plan::Adjustment::PercentageDiscount,
+                  Orb::Models::Plan::Adjustment::Minimum,
+                  Orb::Models::Plan::Adjustment::Maximum
                 )
               ],
               base_plan: T.nilable(Orb::Models::Plan::BasePlan),
@@ -344,34 +344,34 @@ module Orb
               plan_phases: T.nilable(T::Array[Orb::Models::Plan::PlanPhase]),
               prices: T::Array[
                 T.any(
-                  Orb::Models::Price::UnitPrice,
-                  Orb::Models::Price::PackagePrice,
-                  Orb::Models::Price::MatrixPrice,
-                  Orb::Models::Price::TieredPrice,
-                  Orb::Models::Price::TieredBpsPrice,
-                  Orb::Models::Price::BpsPrice,
-                  Orb::Models::Price::BulkBpsPrice,
-                  Orb::Models::Price::BulkPrice,
-                  Orb::Models::Price::ThresholdTotalAmountPrice,
-                  Orb::Models::Price::TieredPackagePrice,
-                  Orb::Models::Price::GroupedTieredPrice,
-                  Orb::Models::Price::TieredWithMinimumPrice,
-                  Orb::Models::Price::TieredPackageWithMinimumPrice,
-                  Orb::Models::Price::PackageWithAllocationPrice,
-                  Orb::Models::Price::UnitWithPercentPrice,
-                  Orb::Models::Price::MatrixWithAllocationPrice,
-                  Orb::Models::Price::TieredWithProrationPrice,
-                  Orb::Models::Price::UnitWithProrationPrice,
-                  Orb::Models::Price::GroupedAllocationPrice,
-                  Orb::Models::Price::GroupedWithProratedMinimumPrice,
-                  Orb::Models::Price::GroupedWithMeteredMinimumPrice,
-                  Orb::Models::Price::MatrixWithDisplayNamePrice,
-                  Orb::Models::Price::BulkWithProrationPrice,
-                  Orb::Models::Price::GroupedTieredPackagePrice,
-                  Orb::Models::Price::MaxGroupTieredPackagePrice,
-                  Orb::Models::Price::ScalableMatrixWithUnitPricingPrice,
-                  Orb::Models::Price::ScalableMatrixWithTieredPricingPrice,
-                  Orb::Models::Price::CumulativeGroupedBulkPrice
+                  Orb::Models::Price::Unit,
+                  Orb::Models::Price::Package,
+                  Orb::Models::Price::Matrix,
+                  Orb::Models::Price::Tiered,
+                  Orb::Models::Price::TieredBps,
+                  Orb::Models::Price::Bps,
+                  Orb::Models::Price::BulkBps,
+                  Orb::Models::Price::Bulk,
+                  Orb::Models::Price::ThresholdTotalAmount,
+                  Orb::Models::Price::TieredPackage,
+                  Orb::Models::Price::GroupedTiered,
+                  Orb::Models::Price::TieredWithMinimum,
+                  Orb::Models::Price::TieredPackageWithMinimum,
+                  Orb::Models::Price::PackageWithAllocation,
+                  Orb::Models::Price::UnitWithPercent,
+                  Orb::Models::Price::MatrixWithAllocation,
+                  Orb::Models::Price::TieredWithProration,
+                  Orb::Models::Price::UnitWithProration,
+                  Orb::Models::Price::GroupedAllocation,
+                  Orb::Models::Price::GroupedWithProratedMinimum,
+                  Orb::Models::Price::GroupedWithMeteredMinimum,
+                  Orb::Models::Price::MatrixWithDisplayName,
+                  Orb::Models::Price::BulkWithProration,
+                  Orb::Models::Price::GroupedTieredPackage,
+                  Orb::Models::Price::MaxGroupTieredPackage,
+                  Orb::Models::Price::ScalableMatrixWithUnitPricing,
+                  Orb::Models::Price::ScalableMatrixWithTieredPricing,
+                  Orb::Models::Price::CumulativeGroupedBulk
                 )
               ],
               product: Orb::Models::Plan::Product,
@@ -386,7 +386,7 @@ module Orb
       module Adjustment
         extend Orb::Internal::Type::Union
 
-        class PlanPhaseUsageDiscountAdjustment < Orb::Internal::Type::BaseModel
+        class UsageDiscount < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
@@ -460,7 +460,7 @@ module Orb
           def to_hash; end
         end
 
-        class PlanPhaseAmountDiscountAdjustment < Orb::Internal::Type::BaseModel
+        class AmountDiscount < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
@@ -534,7 +534,7 @@ module Orb
           def to_hash; end
         end
 
-        class PlanPhasePercentageDiscountAdjustment < Orb::Internal::Type::BaseModel
+        class PercentageDiscount < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
@@ -608,7 +608,7 @@ module Orb
           def to_hash; end
         end
 
-        class PlanPhaseMinimumAdjustment < Orb::Internal::Type::BaseModel
+        class Minimum < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
@@ -690,7 +690,7 @@ module Orb
           def to_hash; end
         end
 
-        class PlanPhaseMaximumAdjustment < Orb::Internal::Type::BaseModel
+        class Maximum < Orb::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
@@ -767,7 +767,7 @@ module Orb
         sig do
           override
             .returns(
-              [Orb::Models::Plan::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::Plan::Adjustment::PlanPhaseMaximumAdjustment]
+              [Orb::Models::Plan::Adjustment::UsageDiscount, Orb::Models::Plan::Adjustment::AmountDiscount, Orb::Models::Plan::Adjustment::PercentageDiscount, Orb::Models::Plan::Adjustment::Minimum, Orb::Models::Plan::Adjustment::Maximum]
             )
         end
         def self.variants; end

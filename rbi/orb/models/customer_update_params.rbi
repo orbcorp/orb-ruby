@@ -117,8 +117,8 @@ module Orb
         returns(
           T.nilable(
             T.any(
-              Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration,
-              Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration
+              Orb::Models::CustomerUpdateParams::TaxConfiguration::Avalara,
+              Orb::Models::CustomerUpdateParams::TaxConfiguration::Taxjar
             )
           )
         )
@@ -255,9 +255,9 @@ module Orb
           shipping_address: T.nilable(T.any(Orb::Models::CustomerUpdateParams::ShippingAddress, Orb::Internal::AnyHash)),
           tax_configuration: T.nilable(
             T.any(
-              Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration,
+              Orb::Models::CustomerUpdateParams::TaxConfiguration::Avalara,
               Orb::Internal::AnyHash,
-              Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration
+              Orb::Models::CustomerUpdateParams::TaxConfiguration::Taxjar
             )
           ),
           tax_id: T.nilable(T.any(Orb::Models::CustomerUpdateParams::TaxID, Orb::Internal::AnyHash)),
@@ -435,8 +435,8 @@ module Orb
               shipping_address: T.nilable(Orb::Models::CustomerUpdateParams::ShippingAddress),
               tax_configuration: T.nilable(
                 T.any(
-                  Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration,
-                  Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration
+                  Orb::Models::CustomerUpdateParams::TaxConfiguration::Avalara,
+                  Orb::Models::CustomerUpdateParams::TaxConfiguration::Taxjar
                 )
               ),
               tax_id: T.nilable(Orb::Models::CustomerUpdateParams::TaxID),
@@ -665,7 +665,7 @@ module Orb
       module TaxConfiguration
         extend Orb::Internal::Type::Union
 
-        class NewAvalaraTaxConfiguration < Orb::Internal::Type::BaseModel
+        class Avalara < Orb::Internal::Type::BaseModel
           sig { returns(T::Boolean) }
           attr_accessor :tax_exempt
 
@@ -693,7 +693,7 @@ module Orb
           def to_hash; end
         end
 
-        class NewTaxJarConfiguration < Orb::Internal::Type::BaseModel
+        class Taxjar < Orb::Internal::Type::BaseModel
           sig { returns(T::Boolean) }
           attr_accessor :tax_exempt
 
@@ -710,7 +710,7 @@ module Orb
         sig do
           override
             .returns(
-              [Orb::Models::CustomerUpdateParams::TaxConfiguration::NewAvalaraTaxConfiguration, Orb::Models::CustomerUpdateParams::TaxConfiguration::NewTaxJarConfiguration]
+              [Orb::Models::CustomerUpdateParams::TaxConfiguration::Avalara, Orb::Models::CustomerUpdateParams::TaxConfiguration::Taxjar]
             )
         end
         def self.variants; end

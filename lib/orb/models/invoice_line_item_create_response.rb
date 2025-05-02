@@ -22,7 +22,7 @@ module Orb
       #   invoice calculations (ie. usage discounts -> amount discounts -> percentage
       #   discounts -> minimums -> maximums).
       #
-      #   @return [Array<Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMaximumAdjustment>]
+      #   @return [Array<Orb::Models::InvoiceLineItemCreateResponse::Adjustment::UsageDiscount, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscount, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::PercentageDiscount, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Minimum, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Maximum>]
       required :adjustments,
                -> { Orb::Internal::Type::ArrayOf[union: Orb::Models::InvoiceLineItemCreateResponse::Adjustment] }
 
@@ -120,7 +120,7 @@ module Orb
       #   For more on the types of prices, see
       #   [the core concepts documentation](/core-concepts#plan-and-price)
       #
-      #   @return [Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice, nil]
+      #   @return [Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBps, Orb::Models::Price::Bps, Orb::Models::Price::BulkBps, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk, nil]
       required :price, union: -> { Orb::Models::Price }, nil?: true
 
       # @!attribute quantity
@@ -139,7 +139,7 @@ module Orb
       #   For complex pricing structures, the line item can be broken down further in
       #   `sub_line_items`.
       #
-      #   @return [Array<Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem>]
+      #   @return [Array<Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Null>]
       required :sub_line_items,
                -> { Orb::Internal::Type::ArrayOf[union: Orb::Models::InvoiceLineItemCreateResponse::SubLineItem] }
 
@@ -172,7 +172,7 @@ module Orb
       #   @param adjusted_subtotal [String] The line amount after any adjustments and before overage conversion, credits and
       #   ...
       #
-      #   @param adjustments [Array<Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMaximumAdjustment>] All adjustments applied to the line item in the order they were applied based on
+      #   @param adjustments [Array<Orb::Models::InvoiceLineItemCreateResponse::Adjustment::UsageDiscount, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscount, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::PercentageDiscount, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Minimum, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Maximum>] All adjustments applied to the line item in the order they were applied based on
       #   ...
       #
       #   @param amount [String] The final amount for a line item after all adjustments and pre paid credits have
@@ -201,14 +201,14 @@ module Orb
       #
       #   @param partially_invoiced_amount [String] Any amount applied from a partial invoice
       #
-      #   @param price [Orb::Models::Price::UnitPrice, Orb::Models::Price::PackagePrice, Orb::Models::Price::MatrixPrice, Orb::Models::Price::TieredPrice, Orb::Models::Price::TieredBpsPrice, Orb::Models::Price::BpsPrice, Orb::Models::Price::BulkBpsPrice, Orb::Models::Price::BulkPrice, Orb::Models::Price::ThresholdTotalAmountPrice, Orb::Models::Price::TieredPackagePrice, Orb::Models::Price::GroupedTieredPrice, Orb::Models::Price::TieredWithMinimumPrice, Orb::Models::Price::TieredPackageWithMinimumPrice, Orb::Models::Price::PackageWithAllocationPrice, Orb::Models::Price::UnitWithPercentPrice, Orb::Models::Price::MatrixWithAllocationPrice, Orb::Models::Price::TieredWithProrationPrice, Orb::Models::Price::UnitWithProrationPrice, Orb::Models::Price::GroupedAllocationPrice, Orb::Models::Price::GroupedWithProratedMinimumPrice, Orb::Models::Price::GroupedWithMeteredMinimumPrice, Orb::Models::Price::MatrixWithDisplayNamePrice, Orb::Models::Price::BulkWithProrationPrice, Orb::Models::Price::GroupedTieredPackagePrice, Orb::Models::Price::MaxGroupTieredPackagePrice, Orb::Models::Price::ScalableMatrixWithUnitPricingPrice, Orb::Models::Price::ScalableMatrixWithTieredPricingPrice, Orb::Models::Price::CumulativeGroupedBulkPrice, nil] The Price resource represents a price that can be billed on a subscription, resu
+      #   @param price [Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBps, Orb::Models::Price::Bps, Orb::Models::Price::BulkBps, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk, nil] The Price resource represents a price that can be billed on a subscription, resu
       #   ...
       #
       #   @param quantity [Float] Either the fixed fee quantity or the usage during the service period.
       #
       #   @param start_date [Time] The start date of the range of time applied for this line item's price.
       #
-      #   @param sub_line_items [Array<Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem>] For complex pricing structures, the line item can be broken down further in `sub
+      #   @param sub_line_items [Array<Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Null>] For complex pricing structures, the line item can be broken down further in `sub
       #   ...
       #
       #   @param subtotal [String] The line amount before before any adjustments.
@@ -224,20 +224,18 @@ module Orb
 
         discriminator :adjustment_type
 
-        variant :usage_discount,
-                -> { Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryUsageDiscountAdjustment }
+        variant :usage_discount, -> { Orb::Models::InvoiceLineItemCreateResponse::Adjustment::UsageDiscount }
 
-        variant :amount_discount,
-                -> { Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryAmountDiscountAdjustment }
+        variant :amount_discount, -> { Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscount }
 
         variant :percentage_discount,
-                -> { Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment }
+                -> { Orb::Models::InvoiceLineItemCreateResponse::Adjustment::PercentageDiscount }
 
-        variant :minimum, -> { Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment }
+        variant :minimum, -> { Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Minimum }
 
-        variant :maximum, -> { Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMaximumAdjustment }
+        variant :maximum, -> { Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Maximum }
 
-        class MonetaryUsageDiscountAdjustment < Orb::Internal::Type::BaseModel
+        class UsageDiscount < Orb::Internal::Type::BaseModel
           # @!attribute id
           #
           #   @return [String]
@@ -282,8 +280,8 @@ module Orb
 
           # @!method initialize(id:, amount:, applies_to_price_ids:, is_invoice_level:, reason:, usage_discount:, adjustment_type: :usage_discount)
           #   Some parameter documentations has been truncated, see
-          #   {Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryUsageDiscountAdjustment}
-          #   for more details.
+          #   {Orb::Models::InvoiceLineItemCreateResponse::Adjustment::UsageDiscount} for more
+          #   details.
           #
           #   @param id [String]
           #
@@ -302,7 +300,7 @@ module Orb
           #   @param adjustment_type [Symbol, :usage_discount]
         end
 
-        class MonetaryAmountDiscountAdjustment < Orb::Internal::Type::BaseModel
+        class AmountDiscount < Orb::Internal::Type::BaseModel
           # @!attribute id
           #
           #   @return [String]
@@ -347,8 +345,8 @@ module Orb
 
           # @!method initialize(id:, amount:, amount_discount:, applies_to_price_ids:, is_invoice_level:, reason:, adjustment_type: :amount_discount)
           #   Some parameter documentations has been truncated, see
-          #   {Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryAmountDiscountAdjustment}
-          #   for more details.
+          #   {Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscount} for
+          #   more details.
           #
           #   @param id [String]
           #
@@ -367,7 +365,7 @@ module Orb
           #   @param adjustment_type [Symbol, :amount_discount]
         end
 
-        class MonetaryPercentageDiscountAdjustment < Orb::Internal::Type::BaseModel
+        class PercentageDiscount < Orb::Internal::Type::BaseModel
           # @!attribute id
           #
           #   @return [String]
@@ -412,8 +410,8 @@ module Orb
 
           # @!method initialize(id:, amount:, applies_to_price_ids:, is_invoice_level:, percentage_discount:, reason:, adjustment_type: :percentage_discount)
           #   Some parameter documentations has been truncated, see
-          #   {Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment}
-          #   for more details.
+          #   {Orb::Models::InvoiceLineItemCreateResponse::Adjustment::PercentageDiscount} for
+          #   more details.
           #
           #   @param id [String]
           #
@@ -432,7 +430,7 @@ module Orb
           #   @param adjustment_type [Symbol, :percentage_discount]
         end
 
-        class MonetaryMinimumAdjustment < Orb::Internal::Type::BaseModel
+        class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute id
           #
           #   @return [String]
@@ -483,8 +481,8 @@ module Orb
 
           # @!method initialize(id:, amount:, applies_to_price_ids:, is_invoice_level:, item_id:, minimum_amount:, reason:, adjustment_type: :minimum)
           #   Some parameter documentations has been truncated, see
-          #   {Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment}
-          #   for more details.
+          #   {Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Minimum} for more
+          #   details.
           #
           #   @param id [String]
           #
@@ -505,7 +503,7 @@ module Orb
           #   @param adjustment_type [Symbol, :minimum]
         end
 
-        class MonetaryMaximumAdjustment < Orb::Internal::Type::BaseModel
+        class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute id
           #
           #   @return [String]
@@ -550,8 +548,8 @@ module Orb
 
           # @!method initialize(id:, amount:, applies_to_price_ids:, is_invoice_level:, maximum_amount:, reason:, adjustment_type: :maximum)
           #   Some parameter documentations has been truncated, see
-          #   {Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMaximumAdjustment}
-          #   for more details.
+          #   {Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Maximum} for more
+          #   details.
           #
           #   @param id [String]
           #
@@ -571,7 +569,7 @@ module Orb
         end
 
         # @!method self.variants
-        #   @return [Array(Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryUsageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryAmountDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryPercentageDiscountAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMinimumAdjustment, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::MonetaryMaximumAdjustment)]
+        #   @return [Array(Orb::Models::InvoiceLineItemCreateResponse::Adjustment::UsageDiscount, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscount, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::PercentageDiscount, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Minimum, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Maximum)]
       end
 
       # @deprecated
@@ -637,13 +635,13 @@ module Orb
 
         discriminator :type
 
-        variant :matrix, -> { Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem }
+        variant :matrix, -> { Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix }
 
-        variant :tier, -> { Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem }
+        variant :tier, -> { Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier }
 
-        variant :"'null'", -> { Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem }
+        variant :"'null'", -> { Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Null }
 
-        class MatrixSubLineItem < Orb::Internal::Type::BaseModel
+        class Matrix < Orb::Internal::Type::BaseModel
           # @!attribute amount
           #   The total amount for this sub line item.
           #
@@ -652,16 +650,16 @@ module Orb
 
           # @!attribute grouping
           #
-          #   @return [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::Grouping, nil]
+          #   @return [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix::Grouping, nil]
           required :grouping,
-                   -> { Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::Grouping },
+                   -> { Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix::Grouping },
                    nil?: true
 
           # @!attribute matrix_config
           #
-          #   @return [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::MatrixConfig]
+          #   @return [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix::MatrixConfig]
           required :matrix_config,
-                   -> { Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::MatrixConfig }
+                   -> { Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix::MatrixConfig }
 
           # @!attribute name
           #
@@ -681,9 +679,9 @@ module Orb
           # @!method initialize(amount:, grouping:, matrix_config:, name:, quantity:, type: :matrix)
           #   @param amount [String] The total amount for this sub line item.
           #
-          #   @param grouping [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::Grouping, nil]
+          #   @param grouping [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix::Grouping, nil]
           #
-          #   @param matrix_config [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem::MatrixConfig]
+          #   @param matrix_config [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix::MatrixConfig]
           #
           #   @param name [String]
           #
@@ -691,7 +689,7 @@ module Orb
           #
           #   @param type [Symbol, :matrix]
 
-          # @see Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem#grouping
+          # @see Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix#grouping
           class Grouping < Orb::Internal::Type::BaseModel
             # @!attribute key
             #
@@ -710,7 +708,7 @@ module Orb
             #   @param value [String, nil] No value indicates the default group
           end
 
-          # @see Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem#matrix_config
+          # @see Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix#matrix_config
           class MatrixConfig < Orb::Internal::Type::BaseModel
             # @!attribute dimension_values
             #   The ordered dimension values for this line item.
@@ -723,7 +721,7 @@ module Orb
           end
         end
 
-        class TierSubLineItem < Orb::Internal::Type::BaseModel
+        class Tier < Orb::Internal::Type::BaseModel
           # @!attribute amount
           #   The total amount for this sub line item.
           #
@@ -732,9 +730,9 @@ module Orb
 
           # @!attribute grouping
           #
-          #   @return [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem::Grouping, nil]
+          #   @return [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier::Grouping, nil]
           required :grouping,
-                   -> { Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem::Grouping },
+                   -> { Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier::Grouping },
                    nil?: true
 
           # @!attribute name
@@ -749,9 +747,8 @@ module Orb
 
           # @!attribute tier_config
           #
-          #   @return [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem::TierConfig]
-          required :tier_config,
-                   -> { Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem::TierConfig }
+          #   @return [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier::TierConfig]
+          required :tier_config, -> { Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier::TierConfig }
 
           # @!attribute type
           #
@@ -761,17 +758,17 @@ module Orb
           # @!method initialize(amount:, grouping:, name:, quantity:, tier_config:, type: :tier)
           #   @param amount [String] The total amount for this sub line item.
           #
-          #   @param grouping [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem::Grouping, nil]
+          #   @param grouping [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier::Grouping, nil]
           #
           #   @param name [String]
           #
           #   @param quantity [Float]
           #
-          #   @param tier_config [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem::TierConfig]
+          #   @param tier_config [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier::TierConfig]
           #
           #   @param type [Symbol, :tier]
 
-          # @see Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem#grouping
+          # @see Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier#grouping
           class Grouping < Orb::Internal::Type::BaseModel
             # @!attribute key
             #
@@ -790,7 +787,7 @@ module Orb
             #   @param value [String, nil] No value indicates the default group
           end
 
-          # @see Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem#tier_config
+          # @see Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier#tier_config
           class TierConfig < Orb::Internal::Type::BaseModel
             # @!attribute first_unit
             #
@@ -814,7 +811,7 @@ module Orb
           end
         end
 
-        class OtherSubLineItem < Orb::Internal::Type::BaseModel
+        class Null < Orb::Internal::Type::BaseModel
           # @!attribute amount
           #   The total amount for this sub line item.
           #
@@ -823,9 +820,9 @@ module Orb
 
           # @!attribute grouping
           #
-          #   @return [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem::Grouping, nil]
+          #   @return [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Null::Grouping, nil]
           required :grouping,
-                   -> { Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem::Grouping },
+                   -> { Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Null::Grouping },
                    nil?: true
 
           # @!attribute name
@@ -846,7 +843,7 @@ module Orb
           # @!method initialize(amount:, grouping:, name:, quantity:, type: :"'null'")
           #   @param amount [String] The total amount for this sub line item.
           #
-          #   @param grouping [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem::Grouping, nil]
+          #   @param grouping [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Null::Grouping, nil]
           #
           #   @param name [String]
           #
@@ -854,7 +851,7 @@ module Orb
           #
           #   @param type [Symbol, :"'null'"]
 
-          # @see Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem#grouping
+          # @see Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Null#grouping
           class Grouping < Orb::Internal::Type::BaseModel
             # @!attribute key
             #
@@ -875,7 +872,7 @@ module Orb
         end
 
         # @!method self.variants
-        #   @return [Array(Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::MatrixSubLineItem, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::TierSubLineItem, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::OtherSubLineItem)]
+        #   @return [Array(Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Null)]
       end
 
       class TaxAmount < Orb::Internal::Type::BaseModel

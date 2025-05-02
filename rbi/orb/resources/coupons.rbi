@@ -11,9 +11,9 @@ module Orb
       sig do
         params(
           discount: T.any(
-            Orb::Models::CouponCreateParams::Discount::NewCouponPercentageDiscount,
+            Orb::Models::CouponCreateParams::Discount::Percentage,
             Orb::Internal::AnyHash,
-            Orb::Models::CouponCreateParams::Discount::NewCouponAmountDiscount
+            Orb::Models::CouponCreateParams::Discount::Amount
           ),
           redemption_code: String,
           duration_in_months: T.nilable(Integer),

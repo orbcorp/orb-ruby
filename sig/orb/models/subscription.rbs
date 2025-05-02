@@ -145,16 +145,16 @@ module Orb
         def to_hash: -> Orb::Models::Subscription::adjustment_interval
 
         type adjustment =
-          Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment
-          | Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment
-          | Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment
-          | Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment
-          | Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment
+          Orb::Models::Subscription::AdjustmentInterval::Adjustment::UsageDiscount
+          | Orb::Models::Subscription::AdjustmentInterval::Adjustment::AmountDiscount
+          | Orb::Models::Subscription::AdjustmentInterval::Adjustment::PercentageDiscount
+          | Orb::Models::Subscription::AdjustmentInterval::Adjustment::Minimum
+          | Orb::Models::Subscription::AdjustmentInterval::Adjustment::Maximum
 
         module Adjustment
           extend Orb::Internal::Type::Union
 
-          type plan_phase_usage_discount_adjustment =
+          type usage_discount =
             {
               id: String,
               adjustment_type: :usage_discount,
@@ -165,7 +165,7 @@ module Orb
               usage_discount: Float
             }
 
-          class PlanPhaseUsageDiscountAdjustment < Orb::Internal::Type::BaseModel
+          class UsageDiscount < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor adjustment_type: :usage_discount
@@ -190,10 +190,10 @@ module Orb
               ?adjustment_type: :usage_discount
             ) -> void
 
-            def to_hash: -> Orb::Models::Subscription::AdjustmentInterval::Adjustment::plan_phase_usage_discount_adjustment
+            def to_hash: -> Orb::Models::Subscription::AdjustmentInterval::Adjustment::usage_discount
           end
 
-          type plan_phase_amount_discount_adjustment =
+          type amount_discount =
             {
               id: String,
               adjustment_type: :amount_discount,
@@ -204,7 +204,7 @@ module Orb
               reason: String?
             }
 
-          class PlanPhaseAmountDiscountAdjustment < Orb::Internal::Type::BaseModel
+          class AmountDiscount < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor adjustment_type: :amount_discount
@@ -229,10 +229,10 @@ module Orb
               ?adjustment_type: :amount_discount
             ) -> void
 
-            def to_hash: -> Orb::Models::Subscription::AdjustmentInterval::Adjustment::plan_phase_amount_discount_adjustment
+            def to_hash: -> Orb::Models::Subscription::AdjustmentInterval::Adjustment::amount_discount
           end
 
-          type plan_phase_percentage_discount_adjustment =
+          type percentage_discount =
             {
               id: String,
               adjustment_type: :percentage_discount,
@@ -243,7 +243,7 @@ module Orb
               reason: String?
             }
 
-          class PlanPhasePercentageDiscountAdjustment < Orb::Internal::Type::BaseModel
+          class PercentageDiscount < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor adjustment_type: :percentage_discount
@@ -268,10 +268,10 @@ module Orb
               ?adjustment_type: :percentage_discount
             ) -> void
 
-            def to_hash: -> Orb::Models::Subscription::AdjustmentInterval::Adjustment::plan_phase_percentage_discount_adjustment
+            def to_hash: -> Orb::Models::Subscription::AdjustmentInterval::Adjustment::percentage_discount
           end
 
-          type plan_phase_minimum_adjustment =
+          type minimum =
             {
               id: String,
               adjustment_type: :minimum,
@@ -283,7 +283,7 @@ module Orb
               reason: String?
             }
 
-          class PlanPhaseMinimumAdjustment < Orb::Internal::Type::BaseModel
+          class Minimum < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor adjustment_type: :minimum
@@ -311,10 +311,10 @@ module Orb
               ?adjustment_type: :minimum
             ) -> void
 
-            def to_hash: -> Orb::Models::Subscription::AdjustmentInterval::Adjustment::plan_phase_minimum_adjustment
+            def to_hash: -> Orb::Models::Subscription::AdjustmentInterval::Adjustment::minimum
           end
 
-          type plan_phase_maximum_adjustment =
+          type maximum =
             {
               id: String,
               adjustment_type: :maximum,
@@ -325,7 +325,7 @@ module Orb
               reason: String?
             }
 
-          class PlanPhaseMaximumAdjustment < Orb::Internal::Type::BaseModel
+          class Maximum < Orb::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor adjustment_type: :maximum
@@ -350,10 +350,10 @@ module Orb
               ?adjustment_type: :maximum
             ) -> void
 
-            def to_hash: -> Orb::Models::Subscription::AdjustmentInterval::Adjustment::plan_phase_maximum_adjustment
+            def to_hash: -> Orb::Models::Subscription::AdjustmentInterval::Adjustment::maximum
           end
 
-          def self?.variants: -> [Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseUsageDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseAmountDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhasePercentageDiscountAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMinimumAdjustment, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PlanPhaseMaximumAdjustment]
+          def self?.variants: -> [Orb::Models::Subscription::AdjustmentInterval::Adjustment::UsageDiscount, Orb::Models::Subscription::AdjustmentInterval::Adjustment::AmountDiscount, Orb::Models::Subscription::AdjustmentInterval::Adjustment::PercentageDiscount, Orb::Models::Subscription::AdjustmentInterval::Adjustment::Minimum, Orb::Models::Subscription::AdjustmentInterval::Adjustment::Maximum]
         end
       end
 
@@ -377,14 +377,14 @@ module Orb
       end
 
       type discount_interval =
-        Orb::Models::Subscription::DiscountInterval::AmountDiscountInterval
-        | Orb::Models::Subscription::DiscountInterval::PercentageDiscountInterval
-        | Orb::Models::Subscription::DiscountInterval::UsageDiscountInterval
+        Orb::Models::Subscription::DiscountInterval::Amount
+        | Orb::Models::Subscription::DiscountInterval::Percentage
+        | Orb::Models::Subscription::DiscountInterval::Usage
 
       module DiscountInterval
         extend Orb::Internal::Type::Union
 
-        type amount_discount_interval =
+        type amount =
           {
             amount_discount: String,
             applies_to_price_ids: ::Array[String],
@@ -394,7 +394,7 @@ module Orb
             start_date: Time
           }
 
-        class AmountDiscountInterval < Orb::Internal::Type::BaseModel
+        class Amount < Orb::Internal::Type::BaseModel
           attr_accessor amount_discount: String
 
           attr_accessor applies_to_price_ids: ::Array[String]
@@ -416,10 +416,10 @@ module Orb
             ?discount_type: :amount
           ) -> void
 
-          def to_hash: -> Orb::Models::Subscription::DiscountInterval::amount_discount_interval
+          def to_hash: -> Orb::Models::Subscription::DiscountInterval::amount
         end
 
-        type percentage_discount_interval =
+        type percentage =
           {
             applies_to_price_ids: ::Array[String],
             applies_to_price_interval_ids: ::Array[String],
@@ -429,7 +429,7 @@ module Orb
             start_date: Time
           }
 
-        class PercentageDiscountInterval < Orb::Internal::Type::BaseModel
+        class Percentage < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor applies_to_price_interval_ids: ::Array[String]
@@ -451,10 +451,10 @@ module Orb
             ?discount_type: :percentage
           ) -> void
 
-          def to_hash: -> Orb::Models::Subscription::DiscountInterval::percentage_discount_interval
+          def to_hash: -> Orb::Models::Subscription::DiscountInterval::percentage
         end
 
-        type usage_discount_interval =
+        type usage =
           {
             applies_to_price_ids: ::Array[String],
             applies_to_price_interval_ids: ::Array[String],
@@ -464,7 +464,7 @@ module Orb
             usage_discount: Float
           }
 
-        class UsageDiscountInterval < Orb::Internal::Type::BaseModel
+        class Usage < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor applies_to_price_interval_ids: ::Array[String]
@@ -486,10 +486,10 @@ module Orb
             ?discount_type: :usage
           ) -> void
 
-          def to_hash: -> Orb::Models::Subscription::DiscountInterval::usage_discount_interval
+          def to_hash: -> Orb::Models::Subscription::DiscountInterval::usage
         end
 
-        def self?.variants: -> [Orb::Models::Subscription::DiscountInterval::AmountDiscountInterval, Orb::Models::Subscription::DiscountInterval::PercentageDiscountInterval, Orb::Models::Subscription::DiscountInterval::UsageDiscountInterval]
+        def self?.variants: -> [Orb::Models::Subscription::DiscountInterval::Amount, Orb::Models::Subscription::DiscountInterval::Percentage, Orb::Models::Subscription::DiscountInterval::Usage]
       end
 
       type fixed_fee_quantity_schedule =
