@@ -27,7 +27,7 @@ require "bundler/setup"
 require "orb"
 
 orb = Orb::Client.new(
-  api_key: "My API Key" # defaults to ENV["ORB_API_KEY"]
+  api_key: ENV["ORB_API_KEY"] # This is the default and can be omitted
 )
 
 customer = orb.customers.create(email: "example-customer@withorb.com", name: "My Customer")
