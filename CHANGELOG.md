@@ -1,5 +1,38 @@
 # Changelog
 
+## 0.3.1 (2025-05-06)
+
+Full Changelog: [v0.3.0...v0.3.1](https://github.com/orbcorp/orb-ruby/compare/v0.3.0...v0.3.1)
+
+### Bug Fixes
+
+* **internal:** fix formatting script for macos ([3d4e166](https://github.com/orbcorp/orb-ruby/commit/3d4e166f77e3e15037d1bd000f249fcb73cd216e))
+
+
+### Chores
+
+* add generator safe directory ([dc351bd](https://github.com/orbcorp/orb-ruby/commit/dc351bdabe5a44981c8461a5cf8249df075c513f))
+* always check if current page is empty in `next_page?` ([eca7722](https://github.com/orbcorp/orb-ruby/commit/eca772296d3bae2ca18fb60afdb7e3b66a8ae6a8))
+* **internal:** annotate request options with type aliases in sorbet ([85ddf12](https://github.com/orbcorp/orb-ruby/commit/85ddf1253cab3253c621fe5da2715c4332c88f22))
+* **internal:** codegen related update ([43622bc](https://github.com/orbcorp/orb-ruby/commit/43622bc6158b0409520ddafb16b3348b04f133e4))
+* **internal:** codegen related update ([4b21f9a](https://github.com/orbcorp/orb-ruby/commit/4b21f9ae7e8b1d36342b6f4e9e01901b6ea662d5))
+* **internal:** codegen related update ([143f9a8](https://github.com/orbcorp/orb-ruby/commit/143f9a890045832dc6a4690b098a6f54c3d61cb1))
+* **internal:** codegen related update ([25413e1](https://github.com/orbcorp/orb-ruby/commit/25413e1323f09ed82730671f199b7c4b81277230))
+* **internal:** codegen related update ([6d43598](https://github.com/orbcorp/orb-ruby/commit/6d43598c8ffca3220257f5cd6c5e0cbaf78a8322))
+* loosen rubocop rules that don't always make sense ([5a71c5b](https://github.com/orbcorp/orb-ruby/commit/5a71c5b9dce0d43b9ba5016cdcd0a1fe00c62ee6))
+* migrate away from deprecated `JSON#fast_generate` ([6207686](https://github.com/orbcorp/orb-ruby/commit/6207686bfea6cd2504a4a2cc74ca766bc916cb95))
+* more accurate type annotations and aliases ([5528e59](https://github.com/orbcorp/orb-ruby/commit/5528e59e7f77d948dcc3942efd7f0dbc1a167215))
+* re-export top level models under library namespace ([95cbfd9](https://github.com/orbcorp/orb-ruby/commit/95cbfd9241828bee0e537b69d3a014a5394f8ba3))
+* remove Gemfile.lock during bootstrap ([a369d56](https://github.com/orbcorp/orb-ruby/commit/a369d5679a808b24fa88d986898ad0168af90202))
+* reorganize type aliases ([22b91f9](https://github.com/orbcorp/orb-ruby/commit/22b91f9837bb3fd5677cb1325f3c221ae80c8663))
+* validate request option coercion correctness ([2ba6032](https://github.com/orbcorp/orb-ruby/commit/2ba6032243950cdef75e63ea75dd3865d79bca02))
+
+
+### Documentation
+
+* illustrate environmental defaults for auth variables ([34613d7](https://github.com/orbcorp/orb-ruby/commit/34613d75cd3baab105f5dc5f0d4f4c7bb1fe1e3e))
+* **readme:** fix typo ([9229774](https://github.com/orbcorp/orb-ruby/commit/9229774479cb18ea70941da9652094d4f4b7bfe6))
+
 ## 0.3.0 (2025-04-25)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/orbcorp/orb-ruby/compare/v0.2.0...v0.3.0)
