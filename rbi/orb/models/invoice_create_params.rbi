@@ -6,6 +6,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
       # An ISO 4217 currency string. Must be the same as the customer's currency if it
       # is set.
       sig { returns(String) }
@@ -16,7 +18,7 @@ module Orb
       sig { returns(Time) }
       attr_accessor :invoice_date
 
-      sig { returns(T::Array[Orb::Models::InvoiceCreateParams::LineItem]) }
+      sig { returns(T::Array[Orb::InvoiceCreateParams::LineItem]) }
       attr_accessor :line_items
 
       # Determines the difference between the invoice issue date for subscription
@@ -36,10 +38,10 @@ module Orb
         returns(
           T.nilable(
             T.any(
-              Orb::Models::PercentageDiscount,
-              Orb::Models::TrialDiscount,
-              Orb::Models::UsageDiscount,
-              Orb::Models::AmountDiscount
+              Orb::PercentageDiscount,
+              Orb::TrialDiscount,
+              Orb::UsageDiscount,
+              Orb::AmountDiscount
             )
           )
         )
@@ -74,25 +76,24 @@ module Orb
         params(
           currency: String,
           invoice_date: Time,
-          line_items: T::Array[T.any(Orb::Models::InvoiceCreateParams::LineItem, Orb::Internal::AnyHash)],
+          line_items: T::Array[Orb::InvoiceCreateParams::LineItem::OrHash],
           net_terms: Integer,
           customer_id: T.nilable(String),
-          discount: T.nilable(
-            T.any(
-              Orb::Models::PercentageDiscount,
-              Orb::Internal::AnyHash,
-              Orb::Models::TrialDiscount,
-              Orb::Models::UsageDiscount,
-              Orb::Models::AmountDiscount
-            )
-          ),
+          discount:
+            T.nilable(
+              T.any(
+                Orb::PercentageDiscount::OrHash,
+                Orb::TrialDiscount::OrHash,
+                Orb::UsageDiscount::OrHash,
+                Orb::AmountDiscount::OrHash
+              )
+            ),
           external_customer_id: T.nilable(String),
           memo: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           will_auto_issue: T::Boolean,
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # An ISO 4217 currency string. Must be the same as the customer's currency if it
@@ -126,35 +127,40 @@ module Orb
         # false.
         will_auto_issue: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       sig do
-        override
-          .returns(
-            {
-              currency: String,
-              invoice_date: Time,
-              line_items: T::Array[Orb::Models::InvoiceCreateParams::LineItem],
-              net_terms: Integer,
-              customer_id: T.nilable(String),
-              discount: T.nilable(
+        override.returns(
+          {
+            currency: String,
+            invoice_date: Time,
+            line_items: T::Array[Orb::InvoiceCreateParams::LineItem],
+            net_terms: Integer,
+            customer_id: T.nilable(String),
+            discount:
+              T.nilable(
                 T.any(
-                  Orb::Models::PercentageDiscount,
-                  Orb::Models::TrialDiscount,
-                  Orb::Models::UsageDiscount,
-                  Orb::Models::AmountDiscount
+                  Orb::PercentageDiscount,
+                  Orb::TrialDiscount,
+                  Orb::UsageDiscount,
+                  Orb::AmountDiscount
                 )
               ),
-              external_customer_id: T.nilable(String),
-              memo: T.nilable(String),
-              metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-              will_auto_issue: T::Boolean,
-              request_options: Orb::RequestOptions
-            }
-          )
+            external_customer_id: T.nilable(String),
+            memo: T.nilable(String),
+            metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+            will_auto_issue: T::Boolean,
+            request_options: Orb::RequestOptions
+          }
+        )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class LineItem < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         # A date string to specify the line item's end date in the customer's timezone.
         sig { returns(Date) }
         attr_accessor :end_date
@@ -162,7 +168,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :item_id
 
-        sig { returns(Orb::Models::InvoiceCreateParams::LineItem::ModelType::OrSymbol) }
+        sig { returns(Orb::InvoiceCreateParams::LineItem::ModelType::OrSymbol) }
         attr_accessor :model_type
 
         # The name of the line item.
@@ -177,12 +183,13 @@ module Orb
         sig { returns(Date) }
         attr_accessor :start_date
 
-        sig { returns(Orb::Models::InvoiceCreateParams::LineItem::UnitConfig) }
+        sig { returns(Orb::InvoiceCreateParams::LineItem::UnitConfig) }
         attr_reader :unit_config
 
         sig do
-          params(unit_config: T.any(Orb::Models::InvoiceCreateParams::LineItem::UnitConfig, Orb::Internal::AnyHash))
-            .void
+          params(
+            unit_config: Orb::InvoiceCreateParams::LineItem::UnitConfig::OrHash
+          ).void
         end
         attr_writer :unit_config
 
@@ -190,13 +197,12 @@ module Orb
           params(
             end_date: Date,
             item_id: String,
-            model_type: Orb::Models::InvoiceCreateParams::LineItem::ModelType::OrSymbol,
+            model_type: Orb::InvoiceCreateParams::LineItem::ModelType::OrSymbol,
             name: String,
             quantity: Float,
             start_date: Date,
-            unit_config: T.any(Orb::Models::InvoiceCreateParams::LineItem::UnitConfig, Orb::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            unit_config: Orb::InvoiceCreateParams::LineItem::UnitConfig::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # A date string to specify the line item's end date in the customer's timezone.
@@ -210,36 +216,55 @@ module Orb
           # A date string to specify the line item's start date in the customer's timezone.
           start_date:,
           unit_config:
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                end_date: Date,
-                item_id: String,
-                model_type: Orb::Models::InvoiceCreateParams::LineItem::ModelType::OrSymbol,
-                name: String,
-                quantity: Float,
-                start_date: Date,
-                unit_config: Orb::Models::InvoiceCreateParams::LineItem::UnitConfig
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              end_date: Date,
+              item_id: String,
+              model_type:
+                Orb::InvoiceCreateParams::LineItem::ModelType::OrSymbol,
+              name: String,
+              quantity: Float,
+              start_date: Date,
+              unit_config: Orb::InvoiceCreateParams::LineItem::UnitConfig
+            }
+          )
+        end
+        def to_hash
+        end
 
         module ModelType
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::InvoiceCreateParams::LineItem::ModelType) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::InvoiceCreateParams::LineItem::ModelType)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          UNIT = T.let(:unit, Orb::Models::InvoiceCreateParams::LineItem::ModelType::TaggedSymbol)
+          UNIT =
+            T.let(
+              :unit,
+              Orb::InvoiceCreateParams::LineItem::ModelType::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::InvoiceCreateParams::LineItem::ModelType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Orb::InvoiceCreateParams::LineItem::ModelType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class UnitConfig < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # Rate per unit of usage
           sig { returns(String) }
           attr_accessor :unit_amount
@@ -248,9 +273,12 @@ module Orb
           def self.new(
             # Rate per unit of usage
             unit_amount:
-          ); end
-          sig { override.returns({unit_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig { override.returns({ unit_amount: String }) }
+          def to_hash
+          end
         end
       end
     end

@@ -3,6 +3,8 @@
 module Orb
   module Models
     class Plan < Orb::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
       sig { returns(String) }
       attr_accessor :id
 
@@ -12,21 +14,21 @@ module Orb
         returns(
           T::Array[
             T.any(
-              Orb::Models::Plan::Adjustment::UsageDiscount,
-              Orb::Models::Plan::Adjustment::AmountDiscount,
-              Orb::Models::Plan::Adjustment::PercentageDiscount,
-              Orb::Models::Plan::Adjustment::Minimum,
-              Orb::Models::Plan::Adjustment::Maximum
+              Orb::Plan::Adjustment::UsageDiscount,
+              Orb::Plan::Adjustment::AmountDiscount,
+              Orb::Plan::Adjustment::PercentageDiscount,
+              Orb::Plan::Adjustment::Minimum,
+              Orb::Plan::Adjustment::Maximum
             )
           ]
         )
       end
       attr_accessor :adjustments
 
-      sig { returns(T.nilable(Orb::Models::Plan::BasePlan)) }
+      sig { returns(T.nilable(Orb::Plan::BasePlan)) }
       attr_reader :base_plan
 
-      sig { params(base_plan: T.nilable(T.any(Orb::Models::Plan::BasePlan, Orb::Internal::AnyHash))).void }
+      sig { params(base_plan: T.nilable(Orb::Plan::BasePlan::OrHash)).void }
       attr_writer :base_plan
 
       # The parent plan id if the given plan was created by overriding one or more of
@@ -54,10 +56,10 @@ module Orb
         returns(
           T.nilable(
             T.any(
-              Orb::Models::PercentageDiscount,
-              Orb::Models::TrialDiscount,
-              Orb::Models::UsageDiscount,
-              Orb::Models::AmountDiscount
+              Orb::PercentageDiscount,
+              Orb::TrialDiscount,
+              Orb::UsageDiscount,
+              Orb::AmountDiscount
             )
           )
         )
@@ -75,10 +77,10 @@ module Orb
       sig { returns(String) }
       attr_accessor :invoicing_currency
 
-      sig { returns(T.nilable(Orb::Models::Plan::Maximum)) }
+      sig { returns(T.nilable(Orb::Plan::Maximum)) }
       attr_reader :maximum
 
-      sig { params(maximum: T.nilable(T.any(Orb::Models::Plan::Maximum, Orb::Internal::AnyHash))).void }
+      sig { params(maximum: T.nilable(Orb::Plan::Maximum::OrHash)).void }
       attr_writer :maximum
 
       sig { returns(T.nilable(String)) }
@@ -91,10 +93,10 @@ module Orb
       sig { returns(T::Hash[Symbol, String]) }
       attr_accessor :metadata
 
-      sig { returns(T.nilable(Orb::Models::Plan::Minimum)) }
+      sig { returns(T.nilable(Orb::Plan::Minimum)) }
       attr_reader :minimum
 
-      sig { params(minimum: T.nilable(T.any(Orb::Models::Plan::Minimum, Orb::Internal::AnyHash))).void }
+      sig { params(minimum: T.nilable(Orb::Plan::Minimum::OrHash)).void }
       attr_writer :minimum
 
       sig { returns(T.nilable(String)) }
@@ -111,7 +113,7 @@ module Orb
       sig { returns(T.nilable(Integer)) }
       attr_accessor :net_terms
 
-      sig { returns(T.nilable(T::Array[Orb::Models::Plan::PlanPhase])) }
+      sig { returns(T.nilable(T::Array[Orb::Plan::PlanPhase])) }
       attr_accessor :plan_phases
 
       # Prices for this plan. If the plan has phases, this includes prices across all
@@ -120,53 +122,53 @@ module Orb
         returns(
           T::Array[
             T.any(
-              Orb::Models::Price::Unit,
-              Orb::Models::Price::Package,
-              Orb::Models::Price::Matrix,
-              Orb::Models::Price::Tiered,
-              Orb::Models::Price::TieredBps,
-              Orb::Models::Price::Bps,
-              Orb::Models::Price::BulkBps,
-              Orb::Models::Price::Bulk,
-              Orb::Models::Price::ThresholdTotalAmount,
-              Orb::Models::Price::TieredPackage,
-              Orb::Models::Price::GroupedTiered,
-              Orb::Models::Price::TieredWithMinimum,
-              Orb::Models::Price::TieredPackageWithMinimum,
-              Orb::Models::Price::PackageWithAllocation,
-              Orb::Models::Price::UnitWithPercent,
-              Orb::Models::Price::MatrixWithAllocation,
-              Orb::Models::Price::TieredWithProration,
-              Orb::Models::Price::UnitWithProration,
-              Orb::Models::Price::GroupedAllocation,
-              Orb::Models::Price::GroupedWithProratedMinimum,
-              Orb::Models::Price::GroupedWithMeteredMinimum,
-              Orb::Models::Price::MatrixWithDisplayName,
-              Orb::Models::Price::BulkWithProration,
-              Orb::Models::Price::GroupedTieredPackage,
-              Orb::Models::Price::MaxGroupTieredPackage,
-              Orb::Models::Price::ScalableMatrixWithUnitPricing,
-              Orb::Models::Price::ScalableMatrixWithTieredPricing,
-              Orb::Models::Price::CumulativeGroupedBulk
+              Orb::Price::Unit,
+              Orb::Price::Package,
+              Orb::Price::Matrix,
+              Orb::Price::Tiered,
+              Orb::Price::TieredBps,
+              Orb::Price::Bps,
+              Orb::Price::BulkBps,
+              Orb::Price::Bulk,
+              Orb::Price::ThresholdTotalAmount,
+              Orb::Price::TieredPackage,
+              Orb::Price::GroupedTiered,
+              Orb::Price::TieredWithMinimum,
+              Orb::Price::TieredPackageWithMinimum,
+              Orb::Price::PackageWithAllocation,
+              Orb::Price::UnitWithPercent,
+              Orb::Price::MatrixWithAllocation,
+              Orb::Price::TieredWithProration,
+              Orb::Price::UnitWithProration,
+              Orb::Price::GroupedAllocation,
+              Orb::Price::GroupedWithProratedMinimum,
+              Orb::Price::GroupedWithMeteredMinimum,
+              Orb::Price::MatrixWithDisplayName,
+              Orb::Price::BulkWithProration,
+              Orb::Price::GroupedTieredPackage,
+              Orb::Price::MaxGroupTieredPackage,
+              Orb::Price::ScalableMatrixWithUnitPricing,
+              Orb::Price::ScalableMatrixWithTieredPricing,
+              Orb::Price::CumulativeGroupedBulk
             )
           ]
         )
       end
       attr_accessor :prices
 
-      sig { returns(Orb::Models::Plan::Product) }
+      sig { returns(Orb::Plan::Product) }
       attr_reader :product
 
-      sig { params(product: T.any(Orb::Models::Plan::Product, Orb::Internal::AnyHash)).void }
+      sig { params(product: Orb::Plan::Product::OrHash).void }
       attr_writer :product
 
-      sig { returns(Orb::Models::Plan::Status::TaggedSymbol) }
+      sig { returns(Orb::Plan::Status::TaggedSymbol) }
       attr_accessor :status
 
-      sig { returns(Orb::Models::Plan::TrialConfig) }
+      sig { returns(Orb::Plan::TrialConfig) }
       attr_reader :trial_config
 
-      sig { params(trial_config: T.any(Orb::Models::Plan::TrialConfig, Orb::Internal::AnyHash)).void }
+      sig { params(trial_config: Orb::Plan::TrialConfig::OrHash).void }
       attr_writer :trial_config
 
       sig { returns(Integer) }
@@ -179,80 +181,79 @@ module Orb
       sig do
         params(
           id: String,
-          adjustments: T::Array[
-            T.any(
-              Orb::Models::Plan::Adjustment::UsageDiscount,
-              Orb::Internal::AnyHash,
-              Orb::Models::Plan::Adjustment::AmountDiscount,
-              Orb::Models::Plan::Adjustment::PercentageDiscount,
-              Orb::Models::Plan::Adjustment::Minimum,
-              Orb::Models::Plan::Adjustment::Maximum
-            )
-          ],
-          base_plan: T.nilable(T.any(Orb::Models::Plan::BasePlan, Orb::Internal::AnyHash)),
+          adjustments:
+            T::Array[
+              T.any(
+                Orb::Plan::Adjustment::UsageDiscount::OrHash,
+                Orb::Plan::Adjustment::AmountDiscount::OrHash,
+                Orb::Plan::Adjustment::PercentageDiscount::OrHash,
+                Orb::Plan::Adjustment::Minimum::OrHash,
+                Orb::Plan::Adjustment::Maximum::OrHash
+              )
+            ],
+          base_plan: T.nilable(Orb::Plan::BasePlan::OrHash),
           base_plan_id: T.nilable(String),
           created_at: Time,
           currency: String,
           default_invoice_memo: T.nilable(String),
           description: String,
-          discount: T.nilable(
-            T.any(
-              Orb::Models::PercentageDiscount,
-              Orb::Internal::AnyHash,
-              Orb::Models::TrialDiscount,
-              Orb::Models::UsageDiscount,
-              Orb::Models::AmountDiscount
-            )
-          ),
+          discount:
+            T.nilable(
+              T.any(
+                Orb::PercentageDiscount::OrHash,
+                Orb::TrialDiscount::OrHash,
+                Orb::UsageDiscount::OrHash,
+                Orb::AmountDiscount::OrHash
+              )
+            ),
           external_plan_id: T.nilable(String),
           invoicing_currency: String,
-          maximum: T.nilable(T.any(Orb::Models::Plan::Maximum, Orb::Internal::AnyHash)),
+          maximum: T.nilable(Orb::Plan::Maximum::OrHash),
           maximum_amount: T.nilable(String),
           metadata: T::Hash[Symbol, String],
-          minimum: T.nilable(T.any(Orb::Models::Plan::Minimum, Orb::Internal::AnyHash)),
+          minimum: T.nilable(Orb::Plan::Minimum::OrHash),
           minimum_amount: T.nilable(String),
           name: String,
           net_terms: T.nilable(Integer),
-          plan_phases: T.nilable(T::Array[T.any(Orb::Models::Plan::PlanPhase, Orb::Internal::AnyHash)]),
-          prices: T::Array[
-            T.any(
-              Orb::Models::Price::Unit,
-              Orb::Internal::AnyHash,
-              Orb::Models::Price::Package,
-              Orb::Models::Price::Matrix,
-              Orb::Models::Price::Tiered,
-              Orb::Models::Price::TieredBps,
-              Orb::Models::Price::Bps,
-              Orb::Models::Price::BulkBps,
-              Orb::Models::Price::Bulk,
-              Orb::Models::Price::ThresholdTotalAmount,
-              Orb::Models::Price::TieredPackage,
-              Orb::Models::Price::GroupedTiered,
-              Orb::Models::Price::TieredWithMinimum,
-              Orb::Models::Price::TieredPackageWithMinimum,
-              Orb::Models::Price::PackageWithAllocation,
-              Orb::Models::Price::UnitWithPercent,
-              Orb::Models::Price::MatrixWithAllocation,
-              Orb::Models::Price::TieredWithProration,
-              Orb::Models::Price::UnitWithProration,
-              Orb::Models::Price::GroupedAllocation,
-              Orb::Models::Price::GroupedWithProratedMinimum,
-              Orb::Models::Price::GroupedWithMeteredMinimum,
-              Orb::Models::Price::MatrixWithDisplayName,
-              Orb::Models::Price::BulkWithProration,
-              Orb::Models::Price::GroupedTieredPackage,
-              Orb::Models::Price::MaxGroupTieredPackage,
-              Orb::Models::Price::ScalableMatrixWithUnitPricing,
-              Orb::Models::Price::ScalableMatrixWithTieredPricing,
-              Orb::Models::Price::CumulativeGroupedBulk
-            )
-          ],
-          product: T.any(Orb::Models::Plan::Product, Orb::Internal::AnyHash),
-          status: Orb::Models::Plan::Status::OrSymbol,
-          trial_config: T.any(Orb::Models::Plan::TrialConfig, Orb::Internal::AnyHash),
+          plan_phases: T.nilable(T::Array[Orb::Plan::PlanPhase::OrHash]),
+          prices:
+            T::Array[
+              T.any(
+                Orb::Price::Unit::OrHash,
+                Orb::Price::Package::OrHash,
+                Orb::Price::Matrix::OrHash,
+                Orb::Price::Tiered::OrHash,
+                Orb::Price::TieredBps::OrHash,
+                Orb::Price::Bps::OrHash,
+                Orb::Price::BulkBps::OrHash,
+                Orb::Price::Bulk::OrHash,
+                Orb::Price::ThresholdTotalAmount::OrHash,
+                Orb::Price::TieredPackage::OrHash,
+                Orb::Price::GroupedTiered::OrHash,
+                Orb::Price::TieredWithMinimum::OrHash,
+                Orb::Price::TieredPackageWithMinimum::OrHash,
+                Orb::Price::PackageWithAllocation::OrHash,
+                Orb::Price::UnitWithPercent::OrHash,
+                Orb::Price::MatrixWithAllocation::OrHash,
+                Orb::Price::TieredWithProration::OrHash,
+                Orb::Price::UnitWithProration::OrHash,
+                Orb::Price::GroupedAllocation::OrHash,
+                Orb::Price::GroupedWithProratedMinimum::OrHash,
+                Orb::Price::GroupedWithMeteredMinimum::OrHash,
+                Orb::Price::MatrixWithDisplayName::OrHash,
+                Orb::Price::BulkWithProration::OrHash,
+                Orb::Price::GroupedTieredPackage::OrHash,
+                Orb::Price::MaxGroupTieredPackage::OrHash,
+                Orb::Price::ScalableMatrixWithUnitPricing::OrHash,
+                Orb::Price::ScalableMatrixWithTieredPricing::OrHash,
+                Orb::Price::CumulativeGroupedBulk::OrHash
+              )
+            ],
+          product: Orb::Plan::Product::OrHash,
+          status: Orb::Plan::Status::OrSymbol,
+          trial_config: Orb::Plan::TrialConfig::OrHash,
           version: Integer
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         id:,
@@ -303,90 +304,108 @@ module Orb
         status:,
         trial_config:,
         version:
-      ); end
+      )
+      end
+
       sig do
-        override
-          .returns(
-            {
-              id: String,
-              adjustments: T::Array[
+        override.returns(
+          {
+            id: String,
+            adjustments:
+              T::Array[
                 T.any(
-                  Orb::Models::Plan::Adjustment::UsageDiscount,
-                  Orb::Models::Plan::Adjustment::AmountDiscount,
-                  Orb::Models::Plan::Adjustment::PercentageDiscount,
-                  Orb::Models::Plan::Adjustment::Minimum,
-                  Orb::Models::Plan::Adjustment::Maximum
+                  Orb::Plan::Adjustment::UsageDiscount,
+                  Orb::Plan::Adjustment::AmountDiscount,
+                  Orb::Plan::Adjustment::PercentageDiscount,
+                  Orb::Plan::Adjustment::Minimum,
+                  Orb::Plan::Adjustment::Maximum
                 )
               ],
-              base_plan: T.nilable(Orb::Models::Plan::BasePlan),
-              base_plan_id: T.nilable(String),
-              created_at: Time,
-              currency: String,
-              default_invoice_memo: T.nilable(String),
-              description: String,
-              discount: T.nilable(
+            base_plan: T.nilable(Orb::Plan::BasePlan),
+            base_plan_id: T.nilable(String),
+            created_at: Time,
+            currency: String,
+            default_invoice_memo: T.nilable(String),
+            description: String,
+            discount:
+              T.nilable(
                 T.any(
-                  Orb::Models::PercentageDiscount,
-                  Orb::Models::TrialDiscount,
-                  Orb::Models::UsageDiscount,
-                  Orb::Models::AmountDiscount
+                  Orb::PercentageDiscount,
+                  Orb::TrialDiscount,
+                  Orb::UsageDiscount,
+                  Orb::AmountDiscount
                 )
               ),
-              external_plan_id: T.nilable(String),
-              invoicing_currency: String,
-              maximum: T.nilable(Orb::Models::Plan::Maximum),
-              maximum_amount: T.nilable(String),
-              metadata: T::Hash[Symbol, String],
-              minimum: T.nilable(Orb::Models::Plan::Minimum),
-              minimum_amount: T.nilable(String),
-              name: String,
-              net_terms: T.nilable(Integer),
-              plan_phases: T.nilable(T::Array[Orb::Models::Plan::PlanPhase]),
-              prices: T::Array[
+            external_plan_id: T.nilable(String),
+            invoicing_currency: String,
+            maximum: T.nilable(Orb::Plan::Maximum),
+            maximum_amount: T.nilable(String),
+            metadata: T::Hash[Symbol, String],
+            minimum: T.nilable(Orb::Plan::Minimum),
+            minimum_amount: T.nilable(String),
+            name: String,
+            net_terms: T.nilable(Integer),
+            plan_phases: T.nilable(T::Array[Orb::Plan::PlanPhase]),
+            prices:
+              T::Array[
                 T.any(
-                  Orb::Models::Price::Unit,
-                  Orb::Models::Price::Package,
-                  Orb::Models::Price::Matrix,
-                  Orb::Models::Price::Tiered,
-                  Orb::Models::Price::TieredBps,
-                  Orb::Models::Price::Bps,
-                  Orb::Models::Price::BulkBps,
-                  Orb::Models::Price::Bulk,
-                  Orb::Models::Price::ThresholdTotalAmount,
-                  Orb::Models::Price::TieredPackage,
-                  Orb::Models::Price::GroupedTiered,
-                  Orb::Models::Price::TieredWithMinimum,
-                  Orb::Models::Price::TieredPackageWithMinimum,
-                  Orb::Models::Price::PackageWithAllocation,
-                  Orb::Models::Price::UnitWithPercent,
-                  Orb::Models::Price::MatrixWithAllocation,
-                  Orb::Models::Price::TieredWithProration,
-                  Orb::Models::Price::UnitWithProration,
-                  Orb::Models::Price::GroupedAllocation,
-                  Orb::Models::Price::GroupedWithProratedMinimum,
-                  Orb::Models::Price::GroupedWithMeteredMinimum,
-                  Orb::Models::Price::MatrixWithDisplayName,
-                  Orb::Models::Price::BulkWithProration,
-                  Orb::Models::Price::GroupedTieredPackage,
-                  Orb::Models::Price::MaxGroupTieredPackage,
-                  Orb::Models::Price::ScalableMatrixWithUnitPricing,
-                  Orb::Models::Price::ScalableMatrixWithTieredPricing,
-                  Orb::Models::Price::CumulativeGroupedBulk
+                  Orb::Price::Unit,
+                  Orb::Price::Package,
+                  Orb::Price::Matrix,
+                  Orb::Price::Tiered,
+                  Orb::Price::TieredBps,
+                  Orb::Price::Bps,
+                  Orb::Price::BulkBps,
+                  Orb::Price::Bulk,
+                  Orb::Price::ThresholdTotalAmount,
+                  Orb::Price::TieredPackage,
+                  Orb::Price::GroupedTiered,
+                  Orb::Price::TieredWithMinimum,
+                  Orb::Price::TieredPackageWithMinimum,
+                  Orb::Price::PackageWithAllocation,
+                  Orb::Price::UnitWithPercent,
+                  Orb::Price::MatrixWithAllocation,
+                  Orb::Price::TieredWithProration,
+                  Orb::Price::UnitWithProration,
+                  Orb::Price::GroupedAllocation,
+                  Orb::Price::GroupedWithProratedMinimum,
+                  Orb::Price::GroupedWithMeteredMinimum,
+                  Orb::Price::MatrixWithDisplayName,
+                  Orb::Price::BulkWithProration,
+                  Orb::Price::GroupedTieredPackage,
+                  Orb::Price::MaxGroupTieredPackage,
+                  Orb::Price::ScalableMatrixWithUnitPricing,
+                  Orb::Price::ScalableMatrixWithTieredPricing,
+                  Orb::Price::CumulativeGroupedBulk
                 )
               ],
-              product: Orb::Models::Plan::Product,
-              status: Orb::Models::Plan::Status::TaggedSymbol,
-              trial_config: Orb::Models::Plan::TrialConfig,
-              version: Integer
-            }
-          )
+            product: Orb::Plan::Product,
+            status: Orb::Plan::Status::TaggedSymbol,
+            trial_config: Orb::Plan::TrialConfig,
+            version: Integer
+          }
+        )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       module Adjustment
         extend Orb::Internal::Type::Union
 
+        Variants =
+          T.type_alias do
+            T.any(
+              Orb::Plan::Adjustment::UsageDiscount,
+              Orb::Plan::Adjustment::AmountDiscount,
+              Orb::Plan::Adjustment::PercentageDiscount,
+              Orb::Plan::Adjustment::Minimum,
+              Orb::Plan::Adjustment::Maximum
+            )
+          end
+
         class UsageDiscount < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -424,8 +443,7 @@ module Orb
               reason: T.nilable(String),
               usage_discount: Float,
               adjustment_type: Symbol
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             id:,
@@ -442,25 +460,29 @@ module Orb
             # to in a given billing period.
             usage_discount:,
             adjustment_type: :usage_discount
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  id: String,
-                  adjustment_type: Symbol,
-                  applies_to_price_ids: T::Array[String],
-                  is_invoice_level: T::Boolean,
-                  plan_phase_order: T.nilable(Integer),
-                  reason: T.nilable(String),
-                  usage_discount: Float
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                id: String,
+                adjustment_type: Symbol,
+                applies_to_price_ids: T::Array[String],
+                is_invoice_level: T::Boolean,
+                plan_phase_order: T.nilable(Integer),
+                reason: T.nilable(String),
+                usage_discount: Float
+              }
+            )
+          end
+          def to_hash
+          end
         end
 
         class AmountDiscount < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -498,8 +520,7 @@ module Orb
               plan_phase_order: T.nilable(Integer),
               reason: T.nilable(String),
               adjustment_type: Symbol
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             id:,
@@ -516,25 +537,29 @@ module Orb
             # The reason for the adjustment.
             reason:,
             adjustment_type: :amount_discount
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  id: String,
-                  adjustment_type: Symbol,
-                  amount_discount: String,
-                  applies_to_price_ids: T::Array[String],
-                  is_invoice_level: T::Boolean,
-                  plan_phase_order: T.nilable(Integer),
-                  reason: T.nilable(String)
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                id: String,
+                adjustment_type: Symbol,
+                amount_discount: String,
+                applies_to_price_ids: T::Array[String],
+                is_invoice_level: T::Boolean,
+                plan_phase_order: T.nilable(Integer),
+                reason: T.nilable(String)
+              }
+            )
+          end
+          def to_hash
+          end
         end
 
         class PercentageDiscount < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -572,8 +597,7 @@ module Orb
               plan_phase_order: T.nilable(Integer),
               reason: T.nilable(String),
               adjustment_type: Symbol
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             id:,
@@ -590,25 +614,29 @@ module Orb
             # The reason for the adjustment.
             reason:,
             adjustment_type: :percentage_discount
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  id: String,
-                  adjustment_type: Symbol,
-                  applies_to_price_ids: T::Array[String],
-                  is_invoice_level: T::Boolean,
-                  percentage_discount: Float,
-                  plan_phase_order: T.nilable(Integer),
-                  reason: T.nilable(String)
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                id: String,
+                adjustment_type: Symbol,
+                applies_to_price_ids: T::Array[String],
+                is_invoice_level: T::Boolean,
+                percentage_discount: Float,
+                plan_phase_order: T.nilable(Integer),
+                reason: T.nilable(String)
+              }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -651,8 +679,7 @@ module Orb
               plan_phase_order: T.nilable(Integer),
               reason: T.nilable(String),
               adjustment_type: Symbol
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             id:,
@@ -671,26 +698,30 @@ module Orb
             # The reason for the adjustment.
             reason:,
             adjustment_type: :minimum
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  id: String,
-                  adjustment_type: Symbol,
-                  applies_to_price_ids: T::Array[String],
-                  is_invoice_level: T::Boolean,
-                  item_id: String,
-                  minimum_amount: String,
-                  plan_phase_order: T.nilable(Integer),
-                  reason: T.nilable(String)
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                id: String,
+                adjustment_type: Symbol,
+                applies_to_price_ids: T::Array[String],
+                is_invoice_level: T::Boolean,
+                item_id: String,
+                minimum_amount: String,
+                plan_phase_order: T.nilable(Integer),
+                reason: T.nilable(String)
+              }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -728,8 +759,7 @@ module Orb
               plan_phase_order: T.nilable(Integer),
               reason: T.nilable(String),
               adjustment_type: Symbol
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             id:,
@@ -746,34 +776,34 @@ module Orb
             # The reason for the adjustment.
             reason:,
             adjustment_type: :maximum
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  id: String,
-                  adjustment_type: Symbol,
-                  applies_to_price_ids: T::Array[String],
-                  is_invoice_level: T::Boolean,
-                  maximum_amount: String,
-                  plan_phase_order: T.nilable(Integer),
-                  reason: T.nilable(String)
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                id: String,
+                adjustment_type: Symbol,
+                applies_to_price_ids: T::Array[String],
+                is_invoice_level: T::Boolean,
+                maximum_amount: String,
+                plan_phase_order: T.nilable(Integer),
+                reason: T.nilable(String)
+              }
+            )
+          end
+          def to_hash
+          end
         end
 
-        sig do
-          override
-            .returns(
-              [Orb::Models::Plan::Adjustment::UsageDiscount, Orb::Models::Plan::Adjustment::AmountDiscount, Orb::Models::Plan::Adjustment::PercentageDiscount, Orb::Models::Plan::Adjustment::Minimum, Orb::Models::Plan::Adjustment::Maximum]
-            )
+        sig { override.returns(T::Array[Orb::Plan::Adjustment::Variants]) }
+        def self.variants
         end
-        def self.variants; end
       end
 
       class BasePlan < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(T.nilable(String)) }
         attr_accessor :id
 
@@ -787,8 +817,11 @@ module Orb
         attr_accessor :name
 
         sig do
-          params(id: T.nilable(String), external_plan_id: T.nilable(String), name: T.nilable(String))
-            .returns(T.attached_class)
+          params(
+            id: T.nilable(String),
+            external_plan_id: T.nilable(String),
+            name: T.nilable(String)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -797,7 +830,9 @@ module Orb
           # identifier in your system.
           external_plan_id:,
           name:
-        ); end
+        )
+        end
+
         sig do
           override.returns(
             {
@@ -807,10 +842,13 @@ module Orb
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class Maximum < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         # List of price_ids that this maximum amount applies to. For plan/plan phase
         # maximums, this can be a subset of prices.
         sig { returns(T::Array[String]) }
@@ -821,7 +859,10 @@ module Orb
         attr_accessor :maximum_amount
 
         sig do
-          params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          params(
+            applies_to_price_ids: T::Array[String],
+            maximum_amount: String
+          ).returns(T.attached_class)
         end
         def self.new(
           # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -829,12 +870,21 @@ module Orb
           applies_to_price_ids:,
           # Maximum amount applied
           maximum_amount:
-        ); end
-        sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-        def to_hash; end
+        )
+        end
+
+        sig do
+          override.returns(
+            { applies_to_price_ids: T::Array[String], maximum_amount: String }
+          )
+        end
+        def to_hash
+        end
       end
 
       class Minimum < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         # List of price_ids that this minimum amount applies to. For plan/plan phase
         # minimums, this can be a subset of prices.
         sig { returns(T::Array[String]) }
@@ -845,7 +895,10 @@ module Orb
         attr_accessor :minimum_amount
 
         sig do
-          params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          params(
+            applies_to_price_ids: T::Array[String],
+            minimum_amount: String
+          ).returns(T.attached_class)
         end
         def self.new(
           # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -853,12 +906,21 @@ module Orb
           applies_to_price_ids:,
           # Minimum amount applied
           minimum_amount:
-        ); end
-        sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-        def to_hash; end
+        )
+        end
+
+        sig do
+          override.returns(
+            { applies_to_price_ids: T::Array[String], minimum_amount: String }
+          )
+        end
+        def to_hash
+        end
       end
 
       class PlanPhase < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
@@ -869,10 +931,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -884,22 +946,28 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :duration
 
-        sig { returns(T.nilable(Orb::Models::Plan::PlanPhase::DurationUnit::TaggedSymbol)) }
+        sig do
+          returns(T.nilable(Orb::Plan::PlanPhase::DurationUnit::TaggedSymbol))
+        end
         attr_accessor :duration_unit
 
-        sig { returns(T.nilable(Orb::Models::Plan::PlanPhase::Maximum)) }
+        sig { returns(T.nilable(Orb::Plan::PlanPhase::Maximum)) }
         attr_reader :maximum
 
-        sig { params(maximum: T.nilable(T.any(Orb::Models::Plan::PlanPhase::Maximum, Orb::Internal::AnyHash))).void }
+        sig do
+          params(maximum: T.nilable(Orb::Plan::PlanPhase::Maximum::OrHash)).void
+        end
         attr_writer :maximum
 
         sig { returns(T.nilable(String)) }
         attr_accessor :maximum_amount
 
-        sig { returns(T.nilable(Orb::Models::Plan::PlanPhase::Minimum)) }
+        sig { returns(T.nilable(Orb::Plan::PlanPhase::Minimum)) }
         attr_reader :minimum
 
-        sig { params(minimum: T.nilable(T.any(Orb::Models::Plan::PlanPhase::Minimum, Orb::Internal::AnyHash))).void }
+        sig do
+          params(minimum: T.nilable(Orb::Plan::PlanPhase::Minimum::OrHash)).void
+        end
         attr_writer :minimum
 
         sig { returns(T.nilable(String)) }
@@ -916,25 +984,25 @@ module Orb
           params(
             id: String,
             description: T.nilable(String),
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             duration: T.nilable(Integer),
-            duration_unit: T.nilable(Orb::Models::Plan::PlanPhase::DurationUnit::OrSymbol),
-            maximum: T.nilable(T.any(Orb::Models::Plan::PlanPhase::Maximum, Orb::Internal::AnyHash)),
+            duration_unit:
+              T.nilable(Orb::Plan::PlanPhase::DurationUnit::OrSymbol),
+            maximum: T.nilable(Orb::Plan::PlanPhase::Maximum::OrHash),
             maximum_amount: T.nilable(String),
-            minimum: T.nilable(T.any(Orb::Models::Plan::PlanPhase::Minimum, Orb::Internal::AnyHash)),
+            minimum: T.nilable(Orb::Plan::PlanPhase::Minimum::OrHash),
             minimum_amount: T.nilable(String),
             name: String,
             order: Integer
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -951,51 +1019,71 @@ module Orb
           name:,
           # Determines the ordering of the phase in a plan's lifecycle. 1 = first phase.
           order:
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                description: T.nilable(String),
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              description: T.nilable(String),
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                duration: T.nilable(Integer),
-                duration_unit: T.nilable(Orb::Models::Plan::PlanPhase::DurationUnit::TaggedSymbol),
-                maximum: T.nilable(Orb::Models::Plan::PlanPhase::Maximum),
-                maximum_amount: T.nilable(String),
-                minimum: T.nilable(Orb::Models::Plan::PlanPhase::Minimum),
-                minimum_amount: T.nilable(String),
-                name: String,
-                order: Integer
-              }
-            )
+              duration: T.nilable(Integer),
+              duration_unit:
+                T.nilable(Orb::Plan::PlanPhase::DurationUnit::TaggedSymbol),
+              maximum: T.nilable(Orb::Plan::PlanPhase::Maximum),
+              maximum_amount: T.nilable(String),
+              minimum: T.nilable(Orb::Plan::PlanPhase::Minimum),
+              minimum_amount: T.nilable(String),
+              name: String,
+              order: Integer
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         module DurationUnit
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Plan::PlanPhase::DurationUnit) }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Plan::PlanPhase::DurationUnit) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          DAILY = T.let(:daily, Orb::Models::Plan::PlanPhase::DurationUnit::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Plan::PlanPhase::DurationUnit::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Plan::PlanPhase::DurationUnit::TaggedSymbol)
-          SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::Plan::PlanPhase::DurationUnit::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Plan::PlanPhase::DurationUnit::TaggedSymbol)
+          DAILY =
+            T.let(:daily, Orb::Plan::PlanPhase::DurationUnit::TaggedSymbol)
+          MONTHLY =
+            T.let(:monthly, Orb::Plan::PlanPhase::DurationUnit::TaggedSymbol)
+          QUARTERLY =
+            T.let(:quarterly, Orb::Plan::PlanPhase::DurationUnit::TaggedSymbol)
+          SEMI_ANNUAL =
+            T.let(
+              :semi_annual,
+              Orb::Plan::PlanPhase::DurationUnit::TaggedSymbol
+            )
+          ANNUAL =
+            T.let(:annual, Orb::Plan::PlanPhase::DurationUnit::TaggedSymbol)
 
-          sig { override.returns(T::Array[Orb::Models::Plan::PlanPhase::DurationUnit::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Plan::PlanPhase::DurationUnit::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -1006,7 +1094,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -1014,12 +1105,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -1030,7 +1130,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -1038,13 +1141,22 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class Product < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
@@ -1054,64 +1166,83 @@ module Orb
         sig { returns(String) }
         attr_accessor :name
 
-        sig { params(id: String, created_at: Time, name: String).returns(T.attached_class) }
-        def self.new(id:, created_at:, name:); end
+        sig do
+          params(id: String, created_at: Time, name: String).returns(
+            T.attached_class
+          )
+        end
+        def self.new(id:, created_at:, name:)
+        end
 
-        sig { override.returns({id: String, created_at: Time, name: String}) }
-        def to_hash; end
+        sig { override.returns({ id: String, created_at: Time, name: String }) }
+        def to_hash
+        end
       end
 
       module Status
         extend Orb::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Plan::Status) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Plan::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        ACTIVE = T.let(:active, Orb::Models::Plan::Status::TaggedSymbol)
-        ARCHIVED = T.let(:archived, Orb::Models::Plan::Status::TaggedSymbol)
-        DRAFT = T.let(:draft, Orb::Models::Plan::Status::TaggedSymbol)
+        ACTIVE = T.let(:active, Orb::Plan::Status::TaggedSymbol)
+        ARCHIVED = T.let(:archived, Orb::Plan::Status::TaggedSymbol)
+        DRAFT = T.let(:draft, Orb::Plan::Status::TaggedSymbol)
 
-        sig { override.returns(T::Array[Orb::Models::Plan::Status::TaggedSymbol]) }
-        def self.values; end
+        sig { override.returns(T::Array[Orb::Plan::Status::TaggedSymbol]) }
+        def self.values
+        end
       end
 
       class TrialConfig < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(T.nilable(Integer)) }
         attr_accessor :trial_period
 
-        sig { returns(Orb::Models::Plan::TrialConfig::TrialPeriodUnit::TaggedSymbol) }
+        sig { returns(Orb::Plan::TrialConfig::TrialPeriodUnit::TaggedSymbol) }
         attr_accessor :trial_period_unit
 
         sig do
           params(
             trial_period: T.nilable(Integer),
-            trial_period_unit: Orb::Models::Plan::TrialConfig::TrialPeriodUnit::OrSymbol
-          )
-            .returns(T.attached_class)
+            trial_period_unit: Orb::Plan::TrialConfig::TrialPeriodUnit::OrSymbol
+          ).returns(T.attached_class)
         end
-        def self.new(trial_period:, trial_period_unit:); end
+        def self.new(trial_period:, trial_period_unit:)
+        end
 
         sig do
-          override
-            .returns(
-              {
-                trial_period: T.nilable(Integer),
-                trial_period_unit: Orb::Models::Plan::TrialConfig::TrialPeriodUnit::TaggedSymbol
-              }
-            )
+          override.returns(
+            {
+              trial_period: T.nilable(Integer),
+              trial_period_unit:
+                Orb::Plan::TrialConfig::TrialPeriodUnit::TaggedSymbol
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         module TrialPeriodUnit
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Plan::TrialConfig::TrialPeriodUnit) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Plan::TrialConfig::TrialPeriodUnit)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          DAYS = T.let(:days, Orb::Models::Plan::TrialConfig::TrialPeriodUnit::TaggedSymbol)
+          DAYS =
+            T.let(:days, Orb::Plan::TrialConfig::TrialPeriodUnit::TaggedSymbol)
 
-          sig { override.returns(T::Array[Orb::Models::Plan::TrialConfig::TrialPeriodUnit::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Plan::TrialConfig::TrialPeriodUnit::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
       end
     end

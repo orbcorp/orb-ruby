@@ -95,25 +95,30 @@ module Orb
               created_at_lte: T.nilable(Time),
               currency: T.nilable(String),
               cursor: T.nilable(String),
-              entry_status: T.nilable(Orb::Models::Customers::Credits::LedgerListParams::EntryStatus::OrSymbol),
-              entry_type: T.nilable(Orb::Models::Customers::Credits::LedgerListParams::EntryType::OrSymbol),
+              entry_status:
+                T.nilable(
+                  Orb::Customers::Credits::LedgerListParams::EntryStatus::OrSymbol
+                ),
+              entry_type:
+                T.nilable(
+                  Orb::Customers::Credits::LedgerListParams::EntryType::OrSymbol
+                ),
               limit: Integer,
               minimum_amount: T.nilable(String),
-              request_options: Orb::RequestOpts
+              request_options: Orb::RequestOptions::OrHash
+            ).returns(
+              Orb::Internal::Page[
+                T.any(
+                  Orb::Models::Customers::Credits::LedgerListResponse::Increment,
+                  Orb::Models::Customers::Credits::LedgerListResponse::Decrement,
+                  Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChange,
+                  Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiry,
+                  Orb::Models::Customers::Credits::LedgerListResponse::Void,
+                  Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiated,
+                  Orb::Models::Customers::Credits::LedgerListResponse::Amendment
+                )
+              ]
             )
-              .returns(
-                Orb::Internal::Page[
-                  T.any(
-                    Orb::Models::Customers::Credits::LedgerListResponse::Increment,
-                    Orb::Models::Customers::Credits::LedgerListResponse::Decrement,
-                    Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChange,
-                    Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiry,
-                    Orb::Models::Customers::Credits::LedgerListResponse::Void,
-                    Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiated,
-                    Orb::Models::Customers::Credits::LedgerListResponse::Amendment
-                  )
-                ]
-              )
           end
           def list(
             customer_id,
@@ -132,7 +137,9 @@ module Orb
             limit: nil,
             minimum_amount: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # This endpoint allows you to create a new ledger entry for a specified customer's
           # balance. This can be used to increment balance, deduct credits, and change the
           # expiry date of existing credits.
@@ -247,32 +254,36 @@ module Orb
             params(
               customer_id: String,
               amount: Float,
-              entry_type: Orb::Models::Customers::Credits::LedgerCreateEntryParams::EntryType::OrSymbol,
+              entry_type:
+                Orb::Customers::Credits::LedgerCreateEntryParams::EntryType::OrSymbol,
               expiry_date: T.nilable(Time),
               target_expiry_date: Date,
               block_id: String,
               currency: T.nilable(String),
               description: T.nilable(String),
               effective_date: T.nilable(Time),
-              invoice_settings: T.nilable(
-                T.any(Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings, Orb::Internal::AnyHash)
-              ),
+              invoice_settings:
+                T.nilable(
+                  Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::OrHash
+                ),
               metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
               per_unit_cost_basis: T.nilable(String),
-              void_reason: T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryParams::VoidReason::OrSymbol),
-              request_options: Orb::RequestOpts
-            )
-              .returns(
-                T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment,
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement,
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange,
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry,
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void,
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated,
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment
-                )
+              void_reason:
+                T.nilable(
+                  Orb::Customers::Credits::LedgerCreateEntryParams::VoidReason::OrSymbol
+                ),
+              request_options: Orb::RequestOptions::OrHash
+            ).returns(
+              T.any(
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment,
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement,
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange,
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry,
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void,
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated,
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment
               )
+            )
           end
           def create_entry(
             customer_id,
@@ -313,7 +324,9 @@ module Orb
             # Can only be specified when `entry_type=void`. The reason for the void.
             void_reason: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # This endpoint allows you to create a new ledger entry for a specified customer's
           # balance. This can be used to increment balance, deduct credits, and change the
           # expiry date of existing credits.
@@ -428,35 +441,36 @@ module Orb
             params(
               external_customer_id: String,
               amount: Float,
-              entry_type: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType::OrSymbol,
+              entry_type:
+                Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType::OrSymbol,
               expiry_date: T.nilable(Time),
               target_expiry_date: Date,
               block_id: String,
               currency: T.nilable(String),
               description: T.nilable(String),
               effective_date: T.nilable(Time),
-              invoice_settings: T.nilable(
-                T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings,
-                  Orb::Internal::AnyHash
-                )
-              ),
+              invoice_settings:
+                T.nilable(
+                  Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings::OrHash
+                ),
               metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
               per_unit_cost_basis: T.nilable(String),
-              void_reason: T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason::OrSymbol),
-              request_options: Orb::RequestOpts
-            )
-              .returns(
-                T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment,
-                  Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Decrement,
-                  Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChange,
-                  Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiry,
-                  Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Void,
-                  Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiated,
-                  Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Amendment
-                )
+              void_reason:
+                T.nilable(
+                  Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason::OrSymbol
+                ),
+              request_options: Orb::RequestOptions::OrHash
+            ).returns(
+              T.any(
+                Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment,
+                Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Decrement,
+                Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChange,
+                Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiry,
+                Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Void,
+                Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiated,
+                Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Amendment
               )
+            )
           end
           def create_entry_by_external_id(
             external_customer_id,
@@ -497,7 +511,9 @@ module Orb
             # Can only be specified when `entry_type=void`. The reason for the void.
             void_reason: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # The credits ledger provides _auditing_ functionality over Orb's credits system
           # with a list of actions that have taken place to modify a customer's credit
           # balance. This [paginated endpoint](/api-reference/pagination) lists these
@@ -588,25 +604,30 @@ module Orb
               created_at_lte: T.nilable(Time),
               currency: T.nilable(String),
               cursor: T.nilable(String),
-              entry_status: T.nilable(Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryStatus::OrSymbol),
-              entry_type: T.nilable(Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryType::OrSymbol),
+              entry_status:
+                T.nilable(
+                  Orb::Customers::Credits::LedgerListByExternalIDParams::EntryStatus::OrSymbol
+                ),
+              entry_type:
+                T.nilable(
+                  Orb::Customers::Credits::LedgerListByExternalIDParams::EntryType::OrSymbol
+                ),
               limit: Integer,
               minimum_amount: T.nilable(String),
-              request_options: Orb::RequestOpts
+              request_options: Orb::RequestOptions::OrHash
+            ).returns(
+              Orb::Internal::Page[
+                T.any(
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Increment,
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Decrement,
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChange,
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiry,
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Void,
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiated,
+                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Amendment
+                )
+              ]
             )
-              .returns(
-                Orb::Internal::Page[
-                  T.any(
-                    Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Increment,
-                    Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Decrement,
-                    Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChange,
-                    Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiry,
-                    Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Void,
-                    Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiated,
-                    Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Amendment
-                  )
-                ]
-              )
           end
           def list_by_external_id(
             external_customer_id,
@@ -625,10 +646,13 @@ module Orb
             limit: nil,
             minimum_amount: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # @api private
           sig { params(client: Orb::Client).returns(T.attached_class) }
-          def self.new(client:); end
+          def self.new(client:)
+          end
         end
       end
     end

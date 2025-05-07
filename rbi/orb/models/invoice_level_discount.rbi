@@ -5,11 +5,18 @@ module Orb
     module InvoiceLevelDiscount
       extend Orb::Internal::Type::Union
 
-      sig do
-        override
-          .returns([Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount, Orb::Models::TrialDiscount])
+      Variants =
+        T.type_alias do
+          T.any(
+            Orb::PercentageDiscount,
+            Orb::AmountDiscount,
+            Orb::TrialDiscount
+          )
+        end
+
+      sig { override.returns(T::Array[Orb::InvoiceLevelDiscount::Variants]) }
+      def self.variants
       end
-      def self.variants; end
     end
   end
 end

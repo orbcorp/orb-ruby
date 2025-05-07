@@ -19,8 +19,8 @@ module Orb
 
       # @!attribute discount
       #
-      #   @return [Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount]
-      required :discount, union: -> { Orb::Models::Coupon::Discount }
+      #   @return [Orb::PercentageDiscount, Orb::AmountDiscount]
+      required :discount, union: -> { Orb::Coupon::Discount }
 
       # @!attribute duration_in_months
       #   This allows for a coupon's discount to apply for a limited time (determined in
@@ -49,8 +49,8 @@ module Orb
       required :times_redeemed, Integer
 
       # @!method initialize(id:, archived_at:, discount:, duration_in_months:, max_redemptions:, redemption_code:, times_redeemed:)
-      #   Some parameter documentations has been truncated, see {Orb::Models::Coupon} for
-      #   more details.
+      #   Some parameter documentations has been truncated, see {Orb::Coupon} for more
+      #   details.
       #
       #   A coupon represents a reusable discount configuration that can be applied either
       #   as a fixed or percentage amount to an invoice or subscription. Coupons are
@@ -61,32 +61,29 @@ module Orb
       #   @param id [String] Also referred to as coupon_id in this documentation.
       #
       #   @param archived_at [Time, nil] An archived coupon can no longer be redeemed. Active coupons will have a value o
-      #   ...
       #
-      #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount]
+      #   @param discount [Orb::PercentageDiscount, Orb::AmountDiscount]
       #
       #   @param duration_in_months [Integer, nil] This allows for a coupon's discount to apply for a limited time (determined in m
-      #   ...
       #
       #   @param max_redemptions [Integer, nil] The maximum number of redemptions allowed for this coupon before it is exhausted
-      #   ...
       #
       #   @param redemption_code [String] This string can be used to redeem this coupon for a given subscription.
       #
       #   @param times_redeemed [Integer] The number of times this coupon has been redeemed.
 
-      # @see Orb::Models::Coupon#discount
+      # @see Orb::Coupon#discount
       module Discount
         extend Orb::Internal::Type::Union
 
         discriminator :discount_type
 
-        variant :percentage, -> { Orb::Models::PercentageDiscount }
+        variant :percentage, -> { Orb::PercentageDiscount }
 
-        variant :amount, -> { Orb::Models::AmountDiscount }
+        variant :amount, -> { Orb::AmountDiscount }
 
         # @!method self.variants
-        #   @return [Array(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount)]
+        #   @return [Array(Orb::PercentageDiscount, Orb::AmountDiscount)]
       end
     end
   end

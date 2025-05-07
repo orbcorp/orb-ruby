@@ -13,8 +13,6 @@ module Orb
         name: String,
         ?request_options: Orb::request_opts
       ) -> void
-
-      def to_hash: -> Orb::Models::item_create_params
     end
   end
 end

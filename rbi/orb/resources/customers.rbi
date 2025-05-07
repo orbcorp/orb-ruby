@@ -28,31 +28,39 @@ module Orb
         params(
           email: String,
           name: String,
-          accounting_sync_configuration: T.nilable(T.any(Orb::Models::CustomerCreateParams::AccountingSyncConfiguration, Orb::Internal::AnyHash)),
+          accounting_sync_configuration:
+            T.nilable(
+              Orb::CustomerCreateParams::AccountingSyncConfiguration::OrHash
+            ),
           additional_emails: T.nilable(T::Array[String]),
           auto_collection: T.nilable(T::Boolean),
-          billing_address: T.nilable(T.any(Orb::Models::CustomerCreateParams::BillingAddress, Orb::Internal::AnyHash)),
+          billing_address:
+            T.nilable(Orb::CustomerCreateParams::BillingAddress::OrHash),
           currency: T.nilable(String),
           email_delivery: T.nilable(T::Boolean),
           external_customer_id: T.nilable(String),
-          hierarchy: T.nilable(T.any(Orb::Models::CustomerCreateParams::Hierarchy, Orb::Internal::AnyHash)),
+          hierarchy: T.nilable(Orb::CustomerCreateParams::Hierarchy::OrHash),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          payment_provider: T.nilable(Orb::Models::CustomerCreateParams::PaymentProvider::OrSymbol),
+          payment_provider:
+            T.nilable(Orb::CustomerCreateParams::PaymentProvider::OrSymbol),
           payment_provider_id: T.nilable(String),
-          reporting_configuration: T.nilable(T.any(Orb::Models::CustomerCreateParams::ReportingConfiguration, Orb::Internal::AnyHash)),
-          shipping_address: T.nilable(T.any(Orb::Models::CustomerCreateParams::ShippingAddress, Orb::Internal::AnyHash)),
-          tax_configuration: T.nilable(
-            T.any(
-              Orb::Models::CustomerCreateParams::TaxConfiguration::Avalara,
-              Orb::Internal::AnyHash,
-              Orb::Models::CustomerCreateParams::TaxConfiguration::Taxjar
-            )
-          ),
-          tax_id: T.nilable(T.any(Orb::Models::CustomerCreateParams::TaxID, Orb::Internal::AnyHash)),
+          reporting_configuration:
+            T.nilable(
+              Orb::CustomerCreateParams::ReportingConfiguration::OrHash
+            ),
+          shipping_address:
+            T.nilable(Orb::CustomerCreateParams::ShippingAddress::OrHash),
+          tax_configuration:
+            T.nilable(
+              T.any(
+                Orb::CustomerCreateParams::TaxConfiguration::Avalara::OrHash,
+                Orb::CustomerCreateParams::TaxConfiguration::Taxjar::OrHash
+              )
+            ),
+          tax_id: T.nilable(Orb::CustomerCreateParams::TaxID::OrHash),
           timezone: T.nilable(String),
-          request_options: Orb::RequestOpts
-        )
-          .returns(Orb::Models::Customer)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Customer)
       end
       def create(
         # A valid customer email, to be used for notifications. When Orb triggers payment
@@ -205,7 +213,9 @@ module Orb
         # This cannot be changed after customer creation.
         timezone: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint can be used to update the `payment_provider`,
       # `payment_provider_id`, `name`, `email`, `email_delivery`, `tax_id`,
       # `auto_collection`, `metadata`, `shipping_address`, `billing_address`, and
@@ -214,32 +224,40 @@ module Orb
       sig do
         params(
           customer_id: String,
-          accounting_sync_configuration: T.nilable(T.any(Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration, Orb::Internal::AnyHash)),
+          accounting_sync_configuration:
+            T.nilable(
+              Orb::CustomerUpdateParams::AccountingSyncConfiguration::OrHash
+            ),
           additional_emails: T.nilable(T::Array[String]),
           auto_collection: T.nilable(T::Boolean),
-          billing_address: T.nilable(T.any(Orb::Models::CustomerUpdateParams::BillingAddress, Orb::Internal::AnyHash)),
+          billing_address:
+            T.nilable(Orb::CustomerUpdateParams::BillingAddress::OrHash),
           currency: T.nilable(String),
           email: T.nilable(String),
           email_delivery: T.nilable(T::Boolean),
           external_customer_id: T.nilable(String),
-          hierarchy: T.nilable(T.any(Orb::Models::CustomerUpdateParams::Hierarchy, Orb::Internal::AnyHash)),
+          hierarchy: T.nilable(Orb::CustomerUpdateParams::Hierarchy::OrHash),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           name: T.nilable(String),
-          payment_provider: T.nilable(Orb::Models::CustomerUpdateParams::PaymentProvider::OrSymbol),
+          payment_provider:
+            T.nilable(Orb::CustomerUpdateParams::PaymentProvider::OrSymbol),
           payment_provider_id: T.nilable(String),
-          reporting_configuration: T.nilable(T.any(Orb::Models::CustomerUpdateParams::ReportingConfiguration, Orb::Internal::AnyHash)),
-          shipping_address: T.nilable(T.any(Orb::Models::CustomerUpdateParams::ShippingAddress, Orb::Internal::AnyHash)),
-          tax_configuration: T.nilable(
-            T.any(
-              Orb::Models::CustomerUpdateParams::TaxConfiguration::Avalara,
-              Orb::Internal::AnyHash,
-              Orb::Models::CustomerUpdateParams::TaxConfiguration::Taxjar
-            )
-          ),
-          tax_id: T.nilable(T.any(Orb::Models::CustomerUpdateParams::TaxID, Orb::Internal::AnyHash)),
-          request_options: Orb::RequestOpts
-        )
-          .returns(Orb::Models::Customer)
+          reporting_configuration:
+            T.nilable(
+              Orb::CustomerUpdateParams::ReportingConfiguration::OrHash
+            ),
+          shipping_address:
+            T.nilable(Orb::CustomerUpdateParams::ShippingAddress::OrHash),
+          tax_configuration:
+            T.nilable(
+              T.any(
+                Orb::CustomerUpdateParams::TaxConfiguration::Avalara::OrHash,
+                Orb::CustomerUpdateParams::TaxConfiguration::Taxjar::OrHash
+              )
+            ),
+          tax_id: T.nilable(Orb::CustomerUpdateParams::TaxID::OrHash),
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Customer)
       end
       def update(
         customer_id,
@@ -390,7 +408,9 @@ module Orb
         # | Vietnam              | `vn_tin`     | Vietnamese Tax ID Number                                                                                |
         tax_id: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint returns a list of all customers for an account. The list of
       # customers is ordered starting from the most recently created customer. This
       # endpoint follows Orb's
@@ -405,9 +425,8 @@ module Orb
           created_at_lte: T.nilable(Time),
           cursor: T.nilable(String),
           limit: Integer,
-          request_options: Orb::RequestOpts
-        )
-          .returns(Orb::Internal::Page[Orb::Models::Customer])
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Internal::Page[Orb::Customer])
       end
       def list(
         created_at_gt: nil,
@@ -420,7 +439,9 @@ module Orb
         # The number of items to fetch. Defaults to 20.
         limit: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # This performs a deletion of this customer, its subscriptions, and its invoices,
       # provided the customer does not have any issued invoices. Customers with issued
       # invoices cannot be deleted. This operation is irreversible. Note that this is a
@@ -436,8 +457,14 @@ module Orb
       # been fully processed, the customer will not be returned in the API.
       #
       # On successful processing, this returns an empty dictionary (`{}`) in the API.
-      sig { params(customer_id: String, request_options: Orb::RequestOpts).void }
-      def delete(customer_id, request_options: {}); end
+      sig do
+        params(
+          customer_id: String,
+          request_options: Orb::RequestOptions::OrHash
+        ).void
+      end
+      def delete(customer_id, request_options: {})
+      end
 
       # This endpoint is used to fetch customer details given an identifier. If the
       # `Customer` is in the process of being deleted, only the properties `id` and
@@ -445,16 +472,28 @@ module Orb
       #
       # See the [Customer resource](/core-concepts#customer) for a full discussion of
       # the Customer model.
-      sig { params(customer_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::Customer) }
-      def fetch(customer_id, request_options: {}); end
+      sig do
+        params(
+          customer_id: String,
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Customer)
+      end
+      def fetch(customer_id, request_options: {})
+      end
 
       # This endpoint is used to fetch customer details given an `external_customer_id`
       # (see [Customer ID Aliases](/events-and-metrics/customer-aliases)).
       #
       # Note that the resource and semantics of this endpoint exactly mirror
       # [Get Customer](fetch-customer).
-      sig { params(external_customer_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::Customer) }
-      def fetch_by_external_id(external_customer_id, request_options: {}); end
+      sig do
+        params(
+          external_customer_id: String,
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Customer)
+      end
+      def fetch_by_external_id(external_customer_id, request_options: {})
+      end
 
       # Sync Orb's payment methods for the customer with their gateway.
       #
@@ -462,8 +501,14 @@ module Orb
       # be charged, ensuring that the most up-to-date payment method is charged.
       #
       # **Note**: This functionality is currently only available for Stripe.
-      sig { params(customer_id: String, request_options: Orb::RequestOpts).void }
-      def sync_payment_methods_from_gateway(customer_id, request_options: {}); end
+      sig do
+        params(
+          customer_id: String,
+          request_options: Orb::RequestOptions::OrHash
+        ).void
+      end
+      def sync_payment_methods_from_gateway(customer_id, request_options: {})
+      end
 
       # Sync Orb's payment methods for the customer with their gateway.
       #
@@ -471,7 +516,12 @@ module Orb
       # be charged, ensuring that the most up-to-date payment method is charged.
       #
       # **Note**: This functionality is currently only available for Stripe.
-      sig { params(external_customer_id: String, request_options: Orb::RequestOpts).void }
+      sig do
+        params(
+          external_customer_id: String,
+          request_options: Orb::RequestOptions::OrHash
+        ).void
+      end
       def sync_payment_methods_from_gateway_by_external_customer_id(
         external_customer_id,
         request_options: {}
@@ -485,36 +535,48 @@ module Orb
       sig do
         params(
           id: String,
-          accounting_sync_configuration: T.nilable(
-            T.any(Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration, Orb::Internal::AnyHash)
-          ),
+          accounting_sync_configuration:
+            T.nilable(
+              Orb::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::OrHash
+            ),
           additional_emails: T.nilable(T::Array[String]),
           auto_collection: T.nilable(T::Boolean),
-          billing_address: T.nilable(T.any(Orb::Models::CustomerUpdateByExternalIDParams::BillingAddress, Orb::Internal::AnyHash)),
+          billing_address:
+            T.nilable(
+              Orb::CustomerUpdateByExternalIDParams::BillingAddress::OrHash
+            ),
           currency: T.nilable(String),
           email: T.nilable(String),
           email_delivery: T.nilable(T::Boolean),
           external_customer_id: T.nilable(String),
-          hierarchy: T.nilable(T.any(Orb::Models::CustomerUpdateByExternalIDParams::Hierarchy, Orb::Internal::AnyHash)),
+          hierarchy:
+            T.nilable(Orb::CustomerUpdateByExternalIDParams::Hierarchy::OrHash),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           name: T.nilable(String),
-          payment_provider: T.nilable(Orb::Models::CustomerUpdateByExternalIDParams::PaymentProvider::OrSymbol),
+          payment_provider:
+            T.nilable(
+              Orb::CustomerUpdateByExternalIDParams::PaymentProvider::OrSymbol
+            ),
           payment_provider_id: T.nilable(String),
-          reporting_configuration: T.nilable(
-            T.any(Orb::Models::CustomerUpdateByExternalIDParams::ReportingConfiguration, Orb::Internal::AnyHash)
-          ),
-          shipping_address: T.nilable(T.any(Orb::Models::CustomerUpdateByExternalIDParams::ShippingAddress, Orb::Internal::AnyHash)),
-          tax_configuration: T.nilable(
-            T.any(
-              Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Avalara,
-              Orb::Internal::AnyHash,
-              Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Taxjar
-            )
-          ),
-          tax_id: T.nilable(T.any(Orb::Models::CustomerUpdateByExternalIDParams::TaxID, Orb::Internal::AnyHash)),
-          request_options: Orb::RequestOpts
-        )
-          .returns(Orb::Models::Customer)
+          reporting_configuration:
+            T.nilable(
+              Orb::CustomerUpdateByExternalIDParams::ReportingConfiguration::OrHash
+            ),
+          shipping_address:
+            T.nilable(
+              Orb::CustomerUpdateByExternalIDParams::ShippingAddress::OrHash
+            ),
+          tax_configuration:
+            T.nilable(
+              T.any(
+                Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Avalara::OrHash,
+                Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Taxjar::OrHash
+              )
+            ),
+          tax_id:
+            T.nilable(Orb::CustomerUpdateByExternalIDParams::TaxID::OrHash),
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Customer)
       end
       def update_by_external_id(
         id,
@@ -665,10 +727,13 @@ module Orb
         # | Vietnam              | `vn_tin`     | Vietnamese Tax ID Number                                                                                |
         tax_id: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Orb::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

@@ -21,20 +21,19 @@ module Orb
       # @param sql [String] A sql string defining the metric.
       #
       # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
-      # ...
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::BillableMetric]
+      # @return [Orb::BillableMetric]
       #
       # @see Orb::Models::MetricCreateParams
       def create(params)
-        parsed, options = Orb::Models::MetricCreateParams.dump_request(params)
+        parsed, options = Orb::MetricCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "metrics",
           body: parsed,
-          model: Orb::Models::BillableMetric,
+          model: Orb::BillableMetric,
           options: options
         )
       end
@@ -51,20 +50,19 @@ module Orb
       # @param metric_id [String]
       #
       # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
-      # ...
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::BillableMetric]
+      # @return [Orb::BillableMetric]
       #
       # @see Orb::Models::MetricUpdateParams
       def update(metric_id, params = {})
-        parsed, options = Orb::Models::MetricUpdateParams.dump_request(params)
+        parsed, options = Orb::MetricUpdateParams.dump_request(params)
         @client.request(
           method: :put,
           path: ["metrics/%1$s", metric_id],
           body: parsed,
-          model: Orb::Models::BillableMetric,
+          model: Orb::BillableMetric,
           options: options
         )
       end
@@ -87,17 +85,16 @@ module Orb
       # @param created_at_lte [Time, nil]
       #
       # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
-      # ...
       #
       # @param limit [Integer] The number of items to fetch. Defaults to 20.
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Internal::Page<Orb::Models::BillableMetric>]
+      # @return [Orb::Internal::Page<Orb::BillableMetric>]
       #
       # @see Orb::Models::MetricListParams
       def list(params = {})
-        parsed, options = Orb::Models::MetricListParams.dump_request(params)
+        parsed, options = Orb::MetricListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "metrics",
@@ -108,7 +105,7 @@ module Orb
             created_at_lte: "created_at[lte]"
           ),
           page: Orb::Internal::Page,
-          model: Orb::Models::BillableMetric,
+          model: Orb::BillableMetric,
           options: options
         )
       end
@@ -121,14 +118,14 @@ module Orb
       # @param metric_id [String]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::BillableMetric]
+      # @return [Orb::BillableMetric]
       #
       # @see Orb::Models::MetricFetchParams
       def fetch(metric_id, params = {})
         @client.request(
           method: :get,
           path: ["metrics/%1$s", metric_id],
-          model: Orb::Models::BillableMetric,
+          model: Orb::BillableMetric,
           options: params[:request_options]
         )
       end

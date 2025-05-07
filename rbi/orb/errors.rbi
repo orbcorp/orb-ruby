@@ -29,10 +29,17 @@ module Orb
           request: NilClass,
           response: NilClass,
           message: T.nilable(String)
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
-      def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: nil); end
+      def self.new(
+        url:,
+        status: nil,
+        body: nil,
+        request: nil,
+        response: nil,
+        message: nil
+      )
+      end
     end
 
     class APIConnectionError < Orb::Errors::APIError
@@ -51,10 +58,16 @@ module Orb
           request: NilClass,
           response: NilClass,
           message: T.nilable(String)
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
-      def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: "Connection error.")
+      def self.new(
+        url:,
+        status: nil,
+        body: nil,
+        request: nil,
+        response: nil,
+        message: "Connection error."
+      )
       end
     end
 
@@ -68,10 +81,16 @@ module Orb
           request: NilClass,
           response: NilClass,
           message: T.nilable(String)
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
-      def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: "Request timed out.")
+      def self.new(
+        url:,
+        status: nil,
+        body: nil,
+        request: nil,
+        response: nil,
+        message: "Request timed out."
+      )
       end
     end
 
@@ -85,10 +104,10 @@ module Orb
           request: NilClass,
           response: NilClass,
           message: T.nilable(String)
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
-      def self.for(url:, status:, body:, request:, response:, message: nil); end
+      def self.for(url:, status:, body:, request:, response:, message: nil)
+      end
 
       sig { returns(Integer) }
       attr_accessor :status
@@ -102,10 +121,10 @@ module Orb
           request: NilClass,
           response: NilClass,
           message: T.nilable(String)
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
-      def self.new(url:, status:, body:, request:, response:, message: nil); end
+      def self.new(url:, status:, body:, request:, response:, message: nil)
+      end
     end
 
     class BadRequestError < Orb::Errors::APIStatusError
@@ -137,55 +156,67 @@ module Orb
     end
 
     class InternalServerError < Orb::Errors::APIStatusError
-      HTTP_STATUS = T.let(500.., T::Range[Integer])
+      HTTP_STATUS = T.let((500..), T::Range[Integer])
     end
 
     class ConstraintViolation < Orb::Errors::BadRequestError
-      TYPE = "https://docs.withorb.com/reference/error-responses#400-constraint-violation"
+      TYPE =
+        "https://docs.withorb.com/reference/error-responses#400-constraint-violation"
     end
 
     class DuplicateResourceCreation < Orb::Errors::BadRequestError
-      TYPE = "https://docs.withorb.com/reference/error-responses#400-duplicate-resource-creation"
+      TYPE =
+        "https://docs.withorb.com/reference/error-responses#400-duplicate-resource-creation"
     end
 
     class FeatureNotAvailable < Orb::Errors::BadRequestError
-      TYPE = "https://docs.withorb.com/reference/error-responses#404-feature-not-available"
+      TYPE =
+        "https://docs.withorb.com/reference/error-responses#404-feature-not-available"
     end
 
     class RequestValidationError < Orb::Errors::BadRequestError
-      TYPE = "https://docs.withorb.com/reference/error-responses#400-request-validation-errors"
+      TYPE =
+        "https://docs.withorb.com/reference/error-responses#400-request-validation-errors"
     end
 
     class OrbAuthenticationError < Orb::Errors::AuthenticationError
-      TYPE = "https://docs.withorb.com/reference/error-responses#401-authentication-error"
+      TYPE =
+        "https://docs.withorb.com/reference/error-responses#401-authentication-error"
     end
 
     class ResourceNotFound < Orb::Errors::NotFoundError
-      TYPE = "https://docs.withorb.com/reference/error-responses#404-resource-not-found"
+      TYPE =
+        "https://docs.withorb.com/reference/error-responses#404-resource-not-found"
     end
 
     class URLNotFound < Orb::Errors::NotFoundError
-      TYPE = "https://docs.withorb.com/reference/error-responses#404-url-not-found"
+      TYPE =
+        "https://docs.withorb.com/reference/error-responses#404-url-not-found"
     end
 
     class ResourceConflict < Orb::Errors::ConflictError
-      TYPE = "https://docs.withorb.com/reference/error-responses#409-resource-conflict"
+      TYPE =
+        "https://docs.withorb.com/reference/error-responses#409-resource-conflict"
     end
 
     class RequestTooLarge < Orb::Errors::APIStatusError
-      TYPE = "https://docs.withorb.com/reference/error-responses#413-request-too-large"
+      TYPE =
+        "https://docs.withorb.com/reference/error-responses#413-request-too-large"
     end
 
     class ResourceTooLarge < Orb::Errors::APIStatusError
-      TYPE = "https://docs.withorb.com/reference/error-responses#413-resource-too-large"
+      TYPE =
+        "https://docs.withorb.com/reference/error-responses#413-resource-too-large"
     end
 
     class TooManyRequests < Orb::Errors::RateLimitError
-      TYPE = "https://docs.withorb.com/reference/error-responses#429-too-many-requests"
+      TYPE =
+        "https://docs.withorb.com/reference/error-responses#429-too-many-requests"
     end
 
     class OrbInternalServerError < Orb::Errors::InternalServerError
-      TYPE = "https://docs.withorb.com/reference/error-responses#500-internal-server-error"
+      TYPE =
+        "https://docs.withorb.com/reference/error-responses#500-internal-server-error"
     end
   end
 end

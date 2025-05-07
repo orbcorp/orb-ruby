@@ -7,11 +7,11 @@ module Orb
       class EventVolumes < Orb::Internal::Type::BaseModel
         # @!attribute data
         #
-        #   @return [Array<Orb::Models::Events::EventVolumes::Data>]
-        required :data, -> { Orb::Internal::Type::ArrayOf[Orb::Models::Events::EventVolumes::Data] }
+        #   @return [Array<Orb::Events::EventVolumes::Data>]
+        required :data, -> { Orb::Internal::Type::ArrayOf[Orb::Events::EventVolumes::Data] }
 
         # @!method initialize(data:)
-        #   @param data [Array<Orb::Models::Events::EventVolumes::Data>]
+        #   @param data [Array<Orb::Events::EventVolumes::Data>]
 
         class Data < Orb::Internal::Type::BaseModel
           # @!attribute count

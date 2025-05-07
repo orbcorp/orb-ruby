@@ -16,8 +16,6 @@ module Orb
         ?debug: Orb::Models::EventIngestResponse::Debug?
       ) -> void
 
-      def to_hash: -> Orb::Models::event_ingest_response
-
       type validation_failed =
         { idempotency_key: String, validation_errors: ::Array[String] }
 
@@ -30,8 +28,6 @@ module Orb
           idempotency_key: String,
           validation_errors: ::Array[String]
         ) -> void
-
-        def to_hash: -> Orb::Models::EventIngestResponse::validation_failed
       end
 
       type debug = { duplicate: ::Array[String], ingested: ::Array[String] }
@@ -45,8 +41,6 @@ module Orb
           duplicate: ::Array[String],
           ingested: ::Array[String]
         ) -> void
-
-        def to_hash: -> Orb::Models::EventIngestResponse::debug
       end
     end
   end

@@ -3,17 +3,22 @@
 module Orb
   module Models
     class PriceEvaluateResponse < Orb::Internal::Type::BaseModel
-      sig { returns(T::Array[Orb::Models::EvaluatePriceGroup]) }
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
+      sig { returns(T::Array[Orb::EvaluatePriceGroup]) }
       attr_accessor :data
 
       sig do
-        params(data: T::Array[T.any(Orb::Models::EvaluatePriceGroup, Orb::Internal::AnyHash)])
-          .returns(T.attached_class)
+        params(data: T::Array[Orb::EvaluatePriceGroup::OrHash]).returns(
+          T.attached_class
+        )
       end
-      def self.new(data:); end
+      def self.new(data:)
+      end
 
-      sig { override.returns({data: T::Array[Orb::Models::EvaluatePriceGroup]}) }
-      def to_hash; end
+      sig { override.returns({ data: T::Array[Orb::EvaluatePriceGroup] }) }
+      def to_hash
+      end
     end
   end
 end

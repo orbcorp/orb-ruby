@@ -13,9 +13,8 @@ module Orb
             coupon_id: String,
             cursor: T.nilable(String),
             limit: Integer,
-            request_options: Orb::RequestOpts
-          )
-            .returns(Orb::Internal::Page[Orb::Models::Subscription])
+            request_options: Orb::RequestOptions::OrHash
+          ).returns(Orb::Internal::Page[Orb::Subscription])
         end
         def list(
           coupon_id,
@@ -25,10 +24,13 @@ module Orb
           # The number of items to fetch. Defaults to 20.
           limit: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: Orb::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

@@ -9,8 +9,8 @@ module Orb
 
       # @!attribute discount
       #
-      #   @return [Orb::Models::CouponCreateParams::Discount::Percentage, Orb::Models::CouponCreateParams::Discount::Amount]
-      required :discount, union: -> { Orb::Models::CouponCreateParams::Discount }
+      #   @return [Orb::CouponCreateParams::Discount::Percentage, Orb::CouponCreateParams::Discount::Amount]
+      required :discount, union: -> { Orb::CouponCreateParams::Discount }
 
       # @!attribute redemption_code
       #   This string can be used to redeem this coupon for a given subscription.
@@ -36,15 +36,13 @@ module Orb
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::CouponCreateParams} for more details.
       #
-      #   @param discount [Orb::Models::CouponCreateParams::Discount::Percentage, Orb::Models::CouponCreateParams::Discount::Amount]
+      #   @param discount [Orb::CouponCreateParams::Discount::Percentage, Orb::CouponCreateParams::Discount::Amount]
       #
       #   @param redemption_code [String] This string can be used to redeem this coupon for a given subscription.
       #
       #   @param duration_in_months [Integer, nil] This allows for a coupon's discount to apply for a limited time (determined in m
-      #   ...
       #
       #   @param max_redemptions [Integer, nil] The maximum number of redemptions allowed for this coupon before it is exhausted
-      #   ...
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
@@ -53,9 +51,9 @@ module Orb
 
         discriminator :discount_type
 
-        variant :percentage, -> { Orb::Models::CouponCreateParams::Discount::Percentage }
+        variant :percentage, -> { Orb::CouponCreateParams::Discount::Percentage }
 
-        variant :amount, -> { Orb::Models::CouponCreateParams::Discount::Amount }
+        variant :amount, -> { Orb::CouponCreateParams::Discount::Amount }
 
         class Percentage < Orb::Internal::Type::BaseModel
           # @!attribute discount_type
@@ -90,7 +88,7 @@ module Orb
         end
 
         # @!method self.variants
-        #   @return [Array(Orb::Models::CouponCreateParams::Discount::Percentage, Orb::Models::CouponCreateParams::Discount::Amount)]
+        #   @return [Array(Orb::CouponCreateParams::Discount::Percentage, Orb::CouponCreateParams::Discount::Amount)]
       end
     end
   end

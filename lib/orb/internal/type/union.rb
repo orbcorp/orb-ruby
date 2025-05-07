@@ -6,13 +6,13 @@ module Orb
       # @api private
       #
       # @example
-      #   # `discount` is a `Orb::Models::Discount`
+      #   # `discount` is a `Orb::Discount`
       #   case discount
-      #   when Orb::Models::PercentageDiscount
+      #   when Orb::PercentageDiscount
       #     puts(discount.applies_to_price_ids)
-      #   when Orb::Models::TrialDiscount
+      #   when Orb::TrialDiscount
       #     puts(discount.discount_type)
-      #   when Orb::Models::UsageDiscount
+      #   when Orb::UsageDiscount
       #     puts(discount.usage_discount)
       #   else
       #     puts(discount)

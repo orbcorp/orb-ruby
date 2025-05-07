@@ -55,7 +55,6 @@ module Orb
       #   @param invoice_id [String] The id of the Invoice to add this line item.
       #
       #   @param name [String] The item name associated with this line item. If an item with the same name exis
-      #   ...
       #
       #   @param quantity [Float] The number of units on the line item
       #

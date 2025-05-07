@@ -3,13 +3,15 @@
 module Orb
   module Models
     class Item < Orb::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
       sig { returns(String) }
       attr_accessor :id
 
       sig { returns(Time) }
       attr_accessor :created_at
 
-      sig { returns(T::Array[Orb::Models::Item::ExternalConnection]) }
+      sig { returns(T::Array[Orb::Item::ExternalConnection]) }
       attr_accessor :external_connections
 
       sig { returns(String) }
@@ -22,28 +24,34 @@ module Orb
         params(
           id: String,
           created_at: Time,
-          external_connections: T::Array[T.any(Orb::Models::Item::ExternalConnection, Orb::Internal::AnyHash)],
+          external_connections: T::Array[Orb::Item::ExternalConnection::OrHash],
           name: String
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
-      def self.new(id:, created_at:, external_connections:, name:); end
+      def self.new(id:, created_at:, external_connections:, name:)
+      end
 
       sig do
-        override
-          .returns(
-            {
-              id: String,
-              created_at: Time,
-              external_connections: T::Array[Orb::Models::Item::ExternalConnection],
-              name: String
-            }
-          )
+        override.returns(
+          {
+            id: String,
+            created_at: Time,
+            external_connections: T::Array[Orb::Item::ExternalConnection],
+            name: String
+          }
+        )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class ExternalConnection < Orb::Internal::Type::BaseModel
-        sig { returns(Orb::Models::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol) }
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
+        sig do
+          returns(
+            Orb::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol
+          )
+        end
         attr_accessor :external_connection_name
 
         sig { returns(String) }
@@ -51,43 +59,83 @@ module Orb
 
         sig do
           params(
-            external_connection_name: Orb::Models::Item::ExternalConnection::ExternalConnectionName::OrSymbol,
+            external_connection_name:
+              Orb::Item::ExternalConnection::ExternalConnectionName::OrSymbol,
             external_entity_id: String
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
-        def self.new(external_connection_name:, external_entity_id:); end
+        def self.new(external_connection_name:, external_entity_id:)
+        end
 
         sig do
-          override
-            .returns(
-              {
-                external_connection_name: Orb::Models::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol,
-                external_entity_id: String
-              }
-            )
+          override.returns(
+            {
+              external_connection_name:
+                Orb::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol,
+              external_entity_id: String
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         module ExternalConnectionName
           extend Orb::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Orb::Models::Item::ExternalConnection::ExternalConnectionName) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Orb::Item::ExternalConnection::ExternalConnectionName
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          STRIPE = T.let(:stripe, Orb::Models::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol)
+          STRIPE =
+            T.let(
+              :stripe,
+              Orb::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol
+            )
           QUICKBOOKS =
-            T.let(:quickbooks, Orb::Models::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol)
+            T.let(
+              :quickbooks,
+              Orb::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol
+            )
           BILL_COM =
-            T.let(:"bill.com", Orb::Models::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol)
-          NETSUITE = T.let(:netsuite, Orb::Models::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol)
-          TAXJAR = T.let(:taxjar, Orb::Models::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol)
-          AVALARA = T.let(:avalara, Orb::Models::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol)
-          ANROK = T.let(:anrok, Orb::Models::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol)
+            T.let(
+              :"bill.com",
+              Orb::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol
+            )
+          NETSUITE =
+            T.let(
+              :netsuite,
+              Orb::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol
+            )
+          TAXJAR =
+            T.let(
+              :taxjar,
+              Orb::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol
+            )
+          AVALARA =
+            T.let(
+              :avalara,
+              Orb::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol
+            )
+          ANROK =
+            T.let(
+              :anrok,
+              Orb::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
     end

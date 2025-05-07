@@ -10,18 +10,18 @@ module Orb
         ?external_dimensional_price_group_id: String?,
         ?metadata: ::Hash[Symbol, String?]?,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::DimensionalPriceGroup
+      ) -> Orb::DimensionalPriceGroup
 
       def retrieve: (
         String dimensional_price_group_id,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::DimensionalPriceGroup
+      ) -> Orb::DimensionalPriceGroup
 
       def list: (
         ?cursor: String?,
         ?limit: Integer,
         ?request_options: Orb::request_opts
-      ) -> Orb::Internal::Page[Orb::Models::DimensionalPriceGroup]
+      ) -> Orb::Internal::Page[Orb::DimensionalPriceGroup]
 
       def initialize: (client: Orb::Client) -> void
     end

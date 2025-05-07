@@ -19,8 +19,6 @@ module Orb
         ?limit: Integer,
         ?request_options: Orb::request_opts
       ) -> void
-
-      def to_hash: -> Orb::Models::price_list_params
     end
   end
 end

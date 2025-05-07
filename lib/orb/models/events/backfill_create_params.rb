@@ -66,25 +66,18 @@ module Orb
         #   {Orb::Models::Events::BackfillCreateParams} for more details.
         #
         #   @param timeframe_end [Time] The (exclusive) end of the usage timeframe affected by this backfill. By default
-        #   ...
         #
         #   @param timeframe_start [Time] The (inclusive) start of the usage timeframe affected by this backfill. By defau
-        #   ...
         #
         #   @param close_time [Time, nil] The time at which no more events will be accepted for this backfill. The backfil
-        #   ...
         #
         #   @param customer_id [String, nil] The Orb-generated ID of the customer to which this backfill is scoped. Omitting
-        #   ...
         #
         #   @param deprecation_filter [String, nil] A boolean [computed property](/extensibility/advanced-metrics#computed-propertie
-        #   ...
         #
         #   @param external_customer_id [String, nil] The external customer ID of the customer to which this backfill is scoped. Omitt
-        #   ...
         #
         #   @param replace_existing_events [Boolean] If true, replaces all existing events in the timeframe with the newly ingested e
-        #   ...
         #
         #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
       end

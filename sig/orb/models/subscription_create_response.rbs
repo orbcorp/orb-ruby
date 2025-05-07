@@ -11,7 +11,7 @@ module Orb
         created_at: Time,
         current_billing_period_end_date: Time?,
         current_billing_period_start_date: Time?,
-        customer: Orb::Models::Customer,
+        customer: Orb::Customer,
         default_invoice_memo: String?,
         discount_intervals: ::Array[Orb::Models::SubscriptionCreateResponse::discount_interval],
         end_date: Time?,
@@ -22,7 +22,7 @@ module Orb
         minimum_intervals: ::Array[Orb::Models::SubscriptionCreateResponse::MinimumInterval],
         net_terms: Integer,
         pending_subscription_change: Orb::Models::SubscriptionCreateResponse::PendingSubscriptionChange?,
-        plan: Orb::Models::Plan,
+        plan: Orb::Plan,
         price_intervals: ::Array[Orb::Models::SubscriptionCreateResponse::PriceInterval],
         redeemed_coupon: Orb::Models::SubscriptionCreateResponse::RedeemedCoupon?,
         start_date: Time,
@@ -50,7 +50,7 @@ module Orb
 
       attr_accessor current_billing_period_start_date: Time?
 
-      attr_accessor customer: Orb::Models::Customer
+      attr_accessor customer: Orb::Customer
 
       attr_accessor default_invoice_memo: String?
 
@@ -72,7 +72,7 @@ module Orb
 
       attr_accessor pending_subscription_change: Orb::Models::SubscriptionCreateResponse::PendingSubscriptionChange?
 
-      attr_accessor plan: Orb::Models::Plan
+      attr_accessor plan: Orb::Plan
 
       attr_accessor price_intervals: ::Array[Orb::Models::SubscriptionCreateResponse::PriceInterval]
 
@@ -96,7 +96,7 @@ module Orb
         created_at: Time,
         current_billing_period_end_date: Time?,
         current_billing_period_start_date: Time?,
-        customer: Orb::Models::Customer,
+        customer: Orb::Customer,
         default_invoice_memo: String?,
         discount_intervals: ::Array[Orb::Models::SubscriptionCreateResponse::discount_interval],
         end_date: Time?,
@@ -107,7 +107,7 @@ module Orb
         minimum_intervals: ::Array[Orb::Models::SubscriptionCreateResponse::MinimumInterval],
         net_terms: Integer,
         pending_subscription_change: Orb::Models::SubscriptionCreateResponse::PendingSubscriptionChange?,
-        plan: Orb::Models::Plan,
+        plan: Orb::Plan,
         price_intervals: ::Array[Orb::Models::SubscriptionCreateResponse::PriceInterval],
         redeemed_coupon: Orb::Models::SubscriptionCreateResponse::RedeemedCoupon?,
         start_date: Time,
@@ -115,8 +115,6 @@ module Orb
         trial_info: Orb::Models::SubscriptionCreateResponse::TrialInfo,
         ?changed_resources: Orb::Models::SubscriptionCreateResponse::ChangedResources?
       ) -> void
-
-      def to_hash: -> Orb::Models::subscription_create_response
 
       type adjustment_interval =
         {
@@ -145,8 +143,6 @@ module Orb
           end_date: Time?,
           start_date: Time
         ) -> void
-
-        def to_hash: -> Orb::Models::SubscriptionCreateResponse::adjustment_interval
 
         type adjustment =
           Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::UsageDiscount
@@ -193,8 +189,6 @@ module Orb
               usage_discount: Float,
               ?adjustment_type: :usage_discount
             ) -> void
-
-            def to_hash: -> Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::usage_discount
           end
 
           type amount_discount =
@@ -232,8 +226,6 @@ module Orb
               reason: String?,
               ?adjustment_type: :amount_discount
             ) -> void
-
-            def to_hash: -> Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::amount_discount
           end
 
           type percentage_discount =
@@ -271,8 +263,6 @@ module Orb
               reason: String?,
               ?adjustment_type: :percentage_discount
             ) -> void
-
-            def to_hash: -> Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::percentage_discount
           end
 
           type minimum =
@@ -314,8 +304,6 @@ module Orb
               reason: String?,
               ?adjustment_type: :minimum
             ) -> void
-
-            def to_hash: -> Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::minimum
           end
 
           type maximum =
@@ -353,11 +341,9 @@ module Orb
               reason: String?,
               ?adjustment_type: :maximum
             ) -> void
-
-            def to_hash: -> Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::maximum
           end
 
-          def self?.variants: -> [Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::UsageDiscount, Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::AmountDiscount, Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::PercentageDiscount, Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::Minimum, Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::Adjustment::Maximum]
+          def self?.variants: -> ::Array[Orb::Models::SubscriptionCreateResponse::AdjustmentInterval::adjustment]
         end
       end
 
@@ -376,8 +362,6 @@ module Orb
           ?month: Integer?,
           ?year: Integer?
         ) -> void
-
-        def to_hash: -> Orb::Models::SubscriptionCreateResponse::billing_cycle_anchor_configuration
       end
 
       type discount_interval =
@@ -419,8 +403,6 @@ module Orb
             start_date: Time,
             ?discount_type: :amount
           ) -> void
-
-          def to_hash: -> Orb::Models::SubscriptionCreateResponse::DiscountInterval::amount
         end
 
         type percentage =
@@ -454,8 +436,6 @@ module Orb
             start_date: Time,
             ?discount_type: :percentage
           ) -> void
-
-          def to_hash: -> Orb::Models::SubscriptionCreateResponse::DiscountInterval::percentage
         end
 
         type usage =
@@ -489,11 +469,9 @@ module Orb
             usage_discount: Float,
             ?discount_type: :usage
           ) -> void
-
-          def to_hash: -> Orb::Models::SubscriptionCreateResponse::DiscountInterval::usage
         end
 
-        def self?.variants: -> [Orb::Models::SubscriptionCreateResponse::DiscountInterval::Amount, Orb::Models::SubscriptionCreateResponse::DiscountInterval::Percentage, Orb::Models::SubscriptionCreateResponse::DiscountInterval::Usage]
+        def self?.variants: -> ::Array[Orb::Models::SubscriptionCreateResponse::discount_interval]
       end
 
       type fixed_fee_quantity_schedule =
@@ -514,8 +492,6 @@ module Orb
           quantity: Float,
           start_date: Time
         ) -> void
-
-        def to_hash: -> Orb::Models::SubscriptionCreateResponse::fixed_fee_quantity_schedule
       end
 
       type maximum_interval =
@@ -545,8 +521,6 @@ module Orb
           maximum_amount: String,
           start_date: Time
         ) -> void
-
-        def to_hash: -> Orb::Models::SubscriptionCreateResponse::maximum_interval
       end
 
       type minimum_interval =
@@ -576,8 +550,6 @@ module Orb
           minimum_amount: String,
           start_date: Time
         ) -> void
-
-        def to_hash: -> Orb::Models::SubscriptionCreateResponse::minimum_interval
       end
 
       type pending_subscription_change = { id: String }
@@ -586,8 +558,6 @@ module Orb
         attr_accessor id: String
 
         def initialize: (id: String) -> void
-
-        def to_hash: -> Orb::Models::SubscriptionCreateResponse::pending_subscription_change
       end
 
       type price_interval =
@@ -638,8 +608,6 @@ module Orb
           usage_customer_ids: ::Array[String]?
         ) -> void
 
-        def to_hash: -> Orb::Models::SubscriptionCreateResponse::price_interval
-
         type fixed_fee_quantity_transition =
           { effective_date: Time, price_id: String, quantity: Integer }
 
@@ -655,8 +623,6 @@ module Orb
             price_id: String,
             quantity: Integer
           ) -> void
-
-          def to_hash: -> Orb::Models::SubscriptionCreateResponse::PriceInterval::fixed_fee_quantity_transition
         end
       end
 
@@ -675,8 +641,6 @@ module Orb
           end_date: Time?,
           start_date: Time
         ) -> void
-
-        def to_hash: -> Orb::Models::SubscriptionCreateResponse::redeemed_coupon
       end
 
       type status = :active | :ended | :upcoming
@@ -697,35 +661,31 @@ module Orb
         attr_accessor end_date: Time?
 
         def initialize: (end_date: Time?) -> void
-
-        def to_hash: -> Orb::Models::SubscriptionCreateResponse::trial_info
       end
 
       type changed_resources =
         {
-          created_credit_notes: ::Array[Orb::Models::CreditNote],
-          created_invoices: ::Array[Orb::Models::Invoice],
-          voided_credit_notes: ::Array[Orb::Models::CreditNote],
-          voided_invoices: ::Array[Orb::Models::Invoice]
+          created_credit_notes: ::Array[Orb::CreditNote],
+          created_invoices: ::Array[Orb::Invoice],
+          voided_credit_notes: ::Array[Orb::CreditNote],
+          voided_invoices: ::Array[Orb::Invoice]
         }
 
       class ChangedResources < Orb::Internal::Type::BaseModel
-        attr_accessor created_credit_notes: ::Array[Orb::Models::CreditNote]
+        attr_accessor created_credit_notes: ::Array[Orb::CreditNote]
 
-        attr_accessor created_invoices: ::Array[Orb::Models::Invoice]
+        attr_accessor created_invoices: ::Array[Orb::Invoice]
 
-        attr_accessor voided_credit_notes: ::Array[Orb::Models::CreditNote]
+        attr_accessor voided_credit_notes: ::Array[Orb::CreditNote]
 
-        attr_accessor voided_invoices: ::Array[Orb::Models::Invoice]
+        attr_accessor voided_invoices: ::Array[Orb::Invoice]
 
         def initialize: (
-          created_credit_notes: ::Array[Orb::Models::CreditNote],
-          created_invoices: ::Array[Orb::Models::Invoice],
-          voided_credit_notes: ::Array[Orb::Models::CreditNote],
-          voided_invoices: ::Array[Orb::Models::Invoice]
+          created_credit_notes: ::Array[Orb::CreditNote],
+          created_invoices: ::Array[Orb::Invoice],
+          voided_credit_notes: ::Array[Orb::CreditNote],
+          voided_invoices: ::Array[Orb::Invoice]
         ) -> void
-
-        def to_hash: -> Orb::Models::SubscriptionCreateResponse::changed_resources
       end
     end
   end

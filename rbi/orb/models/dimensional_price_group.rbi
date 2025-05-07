@@ -3,6 +3,8 @@
 module Orb
   module Models
     class DimensionalPriceGroup < Orb::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
       sig { returns(String) }
       attr_accessor :id
 
@@ -42,8 +44,7 @@ module Orb
           external_dimensional_price_group_id: T.nilable(String),
           metadata: T::Hash[Symbol, String],
           name: String
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         id:,
@@ -62,21 +63,23 @@ module Orb
         metadata:,
         # The name of the dimensional price group
         name:
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              billable_metric_id: String,
-              dimensions: T::Array[String],
-              external_dimensional_price_group_id: T.nilable(String),
-              metadata: T::Hash[Symbol, String],
-              name: String
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            billable_metric_id: String,
+            dimensions: T::Array[String],
+            external_dimensional_price_group_id: T.nilable(String),
+            metadata: T::Hash[Symbol, String],
+            name: String
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

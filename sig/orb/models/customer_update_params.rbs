@@ -2,23 +2,23 @@ module Orb
   module Models
     type customer_update_params =
       {
-        accounting_sync_configuration: Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration?,
+        accounting_sync_configuration: Orb::CustomerUpdateParams::AccountingSyncConfiguration?,
         additional_emails: ::Array[String]?,
         auto_collection: bool?,
-        billing_address: Orb::Models::CustomerUpdateParams::BillingAddress?,
+        billing_address: Orb::CustomerUpdateParams::BillingAddress?,
         currency: String?,
         email: String?,
         email_delivery: bool?,
         external_customer_id: String?,
-        hierarchy: Orb::Models::CustomerUpdateParams::Hierarchy?,
+        hierarchy: Orb::CustomerUpdateParams::Hierarchy?,
         metadata: ::Hash[Symbol, String?]?,
         name: String?,
         payment_provider: Orb::Models::CustomerUpdateParams::payment_provider?,
         payment_provider_id: String?,
-        reporting_configuration: Orb::Models::CustomerUpdateParams::ReportingConfiguration?,
-        shipping_address: Orb::Models::CustomerUpdateParams::ShippingAddress?,
+        reporting_configuration: Orb::CustomerUpdateParams::ReportingConfiguration?,
+        shipping_address: Orb::CustomerUpdateParams::ShippingAddress?,
         tax_configuration: Orb::Models::CustomerUpdateParams::tax_configuration?,
-        tax_id: Orb::Models::CustomerUpdateParams::TaxID?
+        tax_id: Orb::CustomerUpdateParams::TaxID?
       }
       & Orb::Internal::Type::request_parameters
 
@@ -26,13 +26,13 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      attr_accessor accounting_sync_configuration: Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration?
+      attr_accessor accounting_sync_configuration: Orb::CustomerUpdateParams::AccountingSyncConfiguration?
 
       attr_accessor additional_emails: ::Array[String]?
 
       attr_accessor auto_collection: bool?
 
-      attr_accessor billing_address: Orb::Models::CustomerUpdateParams::BillingAddress?
+      attr_accessor billing_address: Orb::CustomerUpdateParams::BillingAddress?
 
       attr_accessor currency: String?
 
@@ -42,7 +42,7 @@ module Orb
 
       attr_accessor external_customer_id: String?
 
-      attr_accessor hierarchy: Orb::Models::CustomerUpdateParams::Hierarchy?
+      attr_accessor hierarchy: Orb::CustomerUpdateParams::Hierarchy?
 
       attr_accessor metadata: ::Hash[Symbol, String?]?
 
@@ -52,54 +52,50 @@ module Orb
 
       attr_accessor payment_provider_id: String?
 
-      attr_accessor reporting_configuration: Orb::Models::CustomerUpdateParams::ReportingConfiguration?
+      attr_accessor reporting_configuration: Orb::CustomerUpdateParams::ReportingConfiguration?
 
-      attr_accessor shipping_address: Orb::Models::CustomerUpdateParams::ShippingAddress?
+      attr_accessor shipping_address: Orb::CustomerUpdateParams::ShippingAddress?
 
       attr_accessor tax_configuration: Orb::Models::CustomerUpdateParams::tax_configuration?
 
-      attr_accessor tax_id: Orb::Models::CustomerUpdateParams::TaxID?
+      attr_accessor tax_id: Orb::CustomerUpdateParams::TaxID?
 
       def initialize: (
-        ?accounting_sync_configuration: Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration?,
+        ?accounting_sync_configuration: Orb::CustomerUpdateParams::AccountingSyncConfiguration?,
         ?additional_emails: ::Array[String]?,
         ?auto_collection: bool?,
-        ?billing_address: Orb::Models::CustomerUpdateParams::BillingAddress?,
+        ?billing_address: Orb::CustomerUpdateParams::BillingAddress?,
         ?currency: String?,
         ?email: String?,
         ?email_delivery: bool?,
         ?external_customer_id: String?,
-        ?hierarchy: Orb::Models::CustomerUpdateParams::Hierarchy?,
+        ?hierarchy: Orb::CustomerUpdateParams::Hierarchy?,
         ?metadata: ::Hash[Symbol, String?]?,
         ?name: String?,
         ?payment_provider: Orb::Models::CustomerUpdateParams::payment_provider?,
         ?payment_provider_id: String?,
-        ?reporting_configuration: Orb::Models::CustomerUpdateParams::ReportingConfiguration?,
-        ?shipping_address: Orb::Models::CustomerUpdateParams::ShippingAddress?,
+        ?reporting_configuration: Orb::CustomerUpdateParams::ReportingConfiguration?,
+        ?shipping_address: Orb::CustomerUpdateParams::ShippingAddress?,
         ?tax_configuration: Orb::Models::CustomerUpdateParams::tax_configuration?,
-        ?tax_id: Orb::Models::CustomerUpdateParams::TaxID?,
+        ?tax_id: Orb::CustomerUpdateParams::TaxID?,
         ?request_options: Orb::request_opts
       ) -> void
 
-      def to_hash: -> Orb::Models::customer_update_params
-
       type accounting_sync_configuration =
         {
-          accounting_providers: ::Array[Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration::AccountingProvider]?,
+          accounting_providers: ::Array[Orb::CustomerUpdateParams::AccountingSyncConfiguration::AccountingProvider]?,
           excluded: bool?
         }
 
       class AccountingSyncConfiguration < Orb::Internal::Type::BaseModel
-        attr_accessor accounting_providers: ::Array[Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration::AccountingProvider]?
+        attr_accessor accounting_providers: ::Array[Orb::CustomerUpdateParams::AccountingSyncConfiguration::AccountingProvider]?
 
         attr_accessor excluded: bool?
 
         def initialize: (
-          ?accounting_providers: ::Array[Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration::AccountingProvider]?,
+          ?accounting_providers: ::Array[Orb::CustomerUpdateParams::AccountingSyncConfiguration::AccountingProvider]?,
           ?excluded: bool?
         ) -> void
-
-        def to_hash: -> Orb::Models::CustomerUpdateParams::accounting_sync_configuration
 
         type accounting_provider =
           { external_provider_id: String, provider_type: String }
@@ -113,8 +109,6 @@ module Orb
             external_provider_id: String,
             provider_type: String
           ) -> void
-
-          def to_hash: -> Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration::accounting_provider
         end
       end
 
@@ -149,8 +143,6 @@ module Orb
           ?postal_code: String?,
           ?state: String?
         ) -> void
-
-        def to_hash: -> Orb::Models::CustomerUpdateParams::billing_address
       end
 
       type hierarchy =
@@ -167,8 +159,6 @@ module Orb
           ?child_customer_ids: ::Array[String],
           ?parent_customer_id: String?
         ) -> void
-
-        def to_hash: -> Orb::Models::CustomerUpdateParams::hierarchy
       end
 
       type payment_provider =
@@ -192,8 +182,6 @@ module Orb
         attr_accessor exempt: bool
 
         def initialize: (exempt: bool) -> void
-
-        def to_hash: -> Orb::Models::CustomerUpdateParams::reporting_configuration
       end
 
       type shipping_address =
@@ -227,13 +215,11 @@ module Orb
           ?postal_code: String?,
           ?state: String?
         ) -> void
-
-        def to_hash: -> Orb::Models::CustomerUpdateParams::shipping_address
       end
 
       type tax_configuration =
-        Orb::Models::CustomerUpdateParams::TaxConfiguration::Avalara
-        | Orb::Models::CustomerUpdateParams::TaxConfiguration::Taxjar
+        Orb::CustomerUpdateParams::TaxConfiguration::Avalara
+        | Orb::CustomerUpdateParams::TaxConfiguration::Taxjar
 
       module TaxConfiguration
         extend Orb::Internal::Type::Union
@@ -257,8 +243,6 @@ module Orb
             ?tax_exemption_code: String?,
             ?tax_provider: :avalara
           ) -> void
-
-          def to_hash: -> Orb::Models::CustomerUpdateParams::TaxConfiguration::avalara
         end
 
         type taxjar = { tax_exempt: bool, tax_provider: :taxjar }
@@ -269,34 +253,30 @@ module Orb
           attr_accessor tax_provider: :taxjar
 
           def initialize: (tax_exempt: bool, ?tax_provider: :taxjar) -> void
-
-          def to_hash: -> Orb::Models::CustomerUpdateParams::TaxConfiguration::taxjar
         end
 
-        def self?.variants: -> [Orb::Models::CustomerUpdateParams::TaxConfiguration::Avalara, Orb::Models::CustomerUpdateParams::TaxConfiguration::Taxjar]
+        def self?.variants: -> ::Array[Orb::Models::CustomerUpdateParams::tax_configuration]
       end
 
       type tax_id =
         {
-          country: Orb::Models::CustomerUpdateParams::TaxID::country,
-          type: Orb::Models::CustomerUpdateParams::TaxID::type_,
+          country: Orb::CustomerUpdateParams::TaxID::country,
+          type: Orb::CustomerUpdateParams::TaxID::type_,
           value: String
         }
 
       class TaxID < Orb::Internal::Type::BaseModel
-        attr_accessor country: Orb::Models::CustomerUpdateParams::TaxID::country
+        attr_accessor country: Orb::CustomerUpdateParams::TaxID::country
 
-        attr_accessor type: Orb::Models::CustomerUpdateParams::TaxID::type_
+        attr_accessor type: Orb::CustomerUpdateParams::TaxID::type_
 
         attr_accessor value: String
 
         def initialize: (
-          country: Orb::Models::CustomerUpdateParams::TaxID::country,
-          type: Orb::Models::CustomerUpdateParams::TaxID::type_,
+          country: Orb::CustomerUpdateParams::TaxID::country,
+          type: Orb::CustomerUpdateParams::TaxID::type_,
           value: String
         ) -> void
-
-        def to_hash: -> Orb::Models::CustomerUpdateParams::tax_id
 
         type country =
           :AD
@@ -460,7 +440,7 @@ module Orb
           VN: :VN
           ZA: :ZA
 
-          def self?.values: -> ::Array[Orb::Models::CustomerUpdateParams::TaxID::country]
+          def self?.values: -> ::Array[Orb::CustomerUpdateParams::TaxID::country]
         end
 
         type type_ =
@@ -611,7 +591,7 @@ module Orb
           VN_TIN: :vn_tin
           ZA_VAT: :za_vat
 
-          def self?.values: -> ::Array[Orb::Models::CustomerUpdateParams::TaxID::type_]
+          def self?.values: -> ::Array[Orb::CustomerUpdateParams::TaxID::type_]
         end
       end
     end

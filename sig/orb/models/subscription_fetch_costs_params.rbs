@@ -29,8 +29,6 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> void
 
-      def to_hash: -> Orb::Models::subscription_fetch_costs_params
-
       type view_mode = :periodic | :cumulative
 
       module ViewMode

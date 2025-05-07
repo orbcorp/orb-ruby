@@ -48,7 +48,7 @@ module Orb
       #
       # @see Orb::Models::SubscriptionChangeApplyParams
       def apply(subscription_change_id, params = {})
-        parsed, options = Orb::Models::SubscriptionChangeApplyParams.dump_request(params)
+        parsed, options = Orb::SubscriptionChangeApplyParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["subscription_changes/%1$s/apply", subscription_change_id],

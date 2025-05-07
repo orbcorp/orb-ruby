@@ -7,6 +7,8 @@ module Orb
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         # The currency or custom pricing unit to use.
         sig { returns(T.nilable(String)) }
         attr_accessor :currency
@@ -23,7 +25,13 @@ module Orb
         # period, or incremental day-by-day costs. If your customer has minimums or
         # discounts, it's strongly recommended that you use the default cumulative
         # behavior.
-        sig { returns(T.nilable(Orb::Models::Customers::CostListByExternalIDParams::ViewMode::OrSymbol)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Customers::CostListByExternalIDParams::ViewMode::OrSymbol
+            )
+          )
+        end
         attr_accessor :view_mode
 
         sig do
@@ -31,10 +39,12 @@ module Orb
             currency: T.nilable(String),
             timeframe_end: T.nilable(Time),
             timeframe_start: T.nilable(Time),
-            view_mode: T.nilable(Orb::Models::Customers::CostListByExternalIDParams::ViewMode::OrSymbol),
-            request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            view_mode:
+              T.nilable(
+                Orb::Customers::CostListByExternalIDParams::ViewMode::OrSymbol
+              ),
+            request_options: Orb::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # The currency or custom pricing unit to use.
@@ -49,20 +59,25 @@ module Orb
           # behavior.
           view_mode: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                currency: T.nilable(String),
-                timeframe_end: T.nilable(Time),
-                timeframe_start: T.nilable(Time),
-                view_mode: T.nilable(Orb::Models::Customers::CostListByExternalIDParams::ViewMode::OrSymbol),
-                request_options: Orb::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              currency: T.nilable(String),
+              timeframe_end: T.nilable(Time),
+              timeframe_start: T.nilable(Time),
+              view_mode:
+                T.nilable(
+                  Orb::Customers::CostListByExternalIDParams::ViewMode::OrSymbol
+                ),
+              request_options: Orb::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
 
         # Controls whether Orb returns cumulative costs since the start of the billing
         # period, or incremental day-by-day costs. If your customer has minimums or
@@ -72,15 +87,34 @@ module Orb
           extend Orb::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Orb::Models::Customers::CostListByExternalIDParams::ViewMode) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Orb::Customers::CostListByExternalIDParams::ViewMode
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          PERIODIC = T.let(:periodic, Orb::Models::Customers::CostListByExternalIDParams::ViewMode::TaggedSymbol)
+          PERIODIC =
+            T.let(
+              :periodic,
+              Orb::Customers::CostListByExternalIDParams::ViewMode::TaggedSymbol
+            )
           CUMULATIVE =
-            T.let(:cumulative, Orb::Models::Customers::CostListByExternalIDParams::ViewMode::TaggedSymbol)
+            T.let(
+              :cumulative,
+              Orb::Customers::CostListByExternalIDParams::ViewMode::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Customers::CostListByExternalIDParams::ViewMode::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Customers::CostListByExternalIDParams::ViewMode::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
     end

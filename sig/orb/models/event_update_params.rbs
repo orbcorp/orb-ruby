@@ -32,8 +32,6 @@ module Orb
         ?external_customer_id: String?,
         ?request_options: Orb::request_opts
       ) -> void
-
-      def to_hash: -> Orb::Models::event_update_params
     end
   end
 end

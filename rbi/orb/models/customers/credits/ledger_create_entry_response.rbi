@@ -9,7 +9,22 @@ module Orb
         module LedgerCreateEntryResponse
           extend Orb::Internal::Type::Union
 
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment,
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement,
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange,
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry,
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void,
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated,
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment
+              )
+            end
+
           class Increment < Orb::Internal::Type::BaseModel
+            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
             sig { returns(String) }
             attr_accessor :id
 
@@ -19,34 +34,36 @@ module Orb
             sig { returns(Time) }
             attr_accessor :created_at
 
-            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::CreditBlock) }
+            sig do
+              returns(
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::CreditBlock
+              )
+            end
             attr_reader :credit_block
 
             sig do
               params(
-                credit_block: T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::CreditBlock,
-                  Orb::Internal::AnyHash
-                )
-              )
-                .void
+                credit_block:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::CreditBlock::OrHash
+              ).void
             end
             attr_writer :credit_block
 
             sig { returns(String) }
             attr_accessor :currency
 
-            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::Customer) }
+            sig do
+              returns(
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::Customer
+              )
+            end
             attr_reader :customer
 
             sig do
               params(
-                customer: T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::Customer,
-                  Orb::Internal::AnyHash
-                )
-              )
-                .void
+                customer:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::Customer::OrHash
+              ).void
             end
             attr_writer :customer
 
@@ -56,7 +73,11 @@ module Orb
             sig { returns(Float) }
             attr_accessor :ending_balance
 
-            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::EntryStatus::TaggedSymbol) }
+            sig do
+              returns(
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::EntryStatus::TaggedSymbol
+              )
+            end
             attr_accessor :entry_status
 
             sig { returns(Symbol) }
@@ -80,24 +101,20 @@ module Orb
                 id: String,
                 amount: Float,
                 created_at: Time,
-                credit_block: T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::CreditBlock,
-                  Orb::Internal::AnyHash
-                ),
+                credit_block:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::CreditBlock::OrHash,
                 currency: String,
-                customer: T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::Customer,
-                  Orb::Internal::AnyHash
-                ),
+                customer:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::Customer::OrHash,
                 description: T.nilable(String),
                 ending_balance: Float,
-                entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::EntryStatus::OrSymbol,
+                entry_status:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::EntryStatus::OrSymbol,
                 ledger_sequence_number: Integer,
                 metadata: T::Hash[Symbol, String],
                 starting_balance: Float,
                 entry_type: Symbol
-              )
-                .returns(T.attached_class)
+              ).returns(T.attached_class)
             end
             def self.new(
               id:,
@@ -117,30 +134,38 @@ module Orb
               metadata:,
               starting_balance:,
               entry_type: :increment
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    id: String,
-                    amount: Float,
-                    created_at: Time,
-                    credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::CreditBlock,
-                    currency: String,
-                    customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::Customer,
-                    description: T.nilable(String),
-                    ending_balance: Float,
-                    entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::EntryStatus::TaggedSymbol,
-                    entry_type: Symbol,
-                    ledger_sequence_number: Integer,
-                    metadata: T::Hash[Symbol, String],
-                    starting_balance: Float
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  id: String,
+                  amount: Float,
+                  created_at: Time,
+                  credit_block:
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::CreditBlock,
+                  currency: String,
+                  customer:
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::Customer,
+                  description: T.nilable(String),
+                  ending_balance: Float,
+                  entry_status:
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::EntryStatus::TaggedSymbol,
+                  entry_type: Symbol,
+                  ledger_sequence_number: Integer,
+                  metadata: T::Hash[Symbol, String],
+                  starting_balance: Float
+                }
+              )
+            end
+            def to_hash
+            end
 
             class CreditBlock < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
               sig { returns(String) }
               attr_accessor :id
 
@@ -151,10 +176,14 @@ module Orb
               attr_accessor :per_unit_cost_basis
 
               sig do
-                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String))
-                  .returns(T.attached_class)
+                params(
+                  id: String,
+                  expiry_date: T.nilable(Time),
+                  per_unit_cost_basis: T.nilable(String)
+                ).returns(T.attached_class)
               end
-              def self.new(id:, expiry_date:, per_unit_cost_basis:); end
+              def self.new(id:, expiry_date:, per_unit_cost_basis:)
+              end
 
               sig do
                 override.returns(
@@ -165,28 +194,48 @@ module Orb
                   }
                 )
               end
-              def to_hash; end
+              def to_hash
+              end
             end
 
             class Customer < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
               sig { returns(String) }
               attr_accessor :id
 
               sig { returns(T.nilable(String)) }
               attr_accessor :external_customer_id
 
-              sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
-              def self.new(id:, external_customer_id:); end
+              sig do
+                params(
+                  id: String,
+                  external_customer_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(id:, external_customer_id:)
+              end
 
-              sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
-              def to_hash; end
+              sig do
+                override.returns(
+                  { id: String, external_customer_id: T.nilable(String) }
+                )
+              end
+              def to_hash
+              end
             end
 
             module EntryStatus
               extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias { T.all(Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::EntryStatus) }
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::EntryStatus
+                  )
+                end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               COMMITTED =
@@ -201,16 +250,20 @@ module Orb
                 )
 
               sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::EntryStatus::TaggedSymbol]
-                  )
+                override.returns(
+                  T::Array[
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::EntryStatus::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
           end
 
           class Decrement < Orb::Internal::Type::BaseModel
+            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
             sig { returns(String) }
             attr_accessor :id
 
@@ -220,34 +273,36 @@ module Orb
             sig { returns(Time) }
             attr_accessor :created_at
 
-            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::CreditBlock) }
+            sig do
+              returns(
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::CreditBlock
+              )
+            end
             attr_reader :credit_block
 
             sig do
               params(
-                credit_block: T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::CreditBlock,
-                  Orb::Internal::AnyHash
-                )
-              )
-                .void
+                credit_block:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::CreditBlock::OrHash
+              ).void
             end
             attr_writer :credit_block
 
             sig { returns(String) }
             attr_accessor :currency
 
-            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::Customer) }
+            sig do
+              returns(
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::Customer
+              )
+            end
             attr_reader :customer
 
             sig do
               params(
-                customer: T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::Customer,
-                  Orb::Internal::AnyHash
-                )
-              )
-                .void
+                customer:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::Customer::OrHash
+              ).void
             end
             attr_writer :customer
 
@@ -257,7 +312,11 @@ module Orb
             sig { returns(Float) }
             attr_accessor :ending_balance
 
-            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::EntryStatus::TaggedSymbol) }
+            sig do
+              returns(
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::EntryStatus::TaggedSymbol
+              )
+            end
             attr_accessor :entry_status
 
             sig { returns(Symbol) }
@@ -290,18 +349,15 @@ module Orb
                 id: String,
                 amount: Float,
                 created_at: Time,
-                credit_block: T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::CreditBlock,
-                  Orb::Internal::AnyHash
-                ),
+                credit_block:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::CreditBlock::OrHash,
                 currency: String,
-                customer: T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::Customer,
-                  Orb::Internal::AnyHash
-                ),
+                customer:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::Customer::OrHash,
                 description: T.nilable(String),
                 ending_balance: Float,
-                entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::EntryStatus::OrSymbol,
+                entry_status:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::EntryStatus::OrSymbol,
                 ledger_sequence_number: Integer,
                 metadata: T::Hash[Symbol, String],
                 starting_balance: Float,
@@ -309,8 +365,7 @@ module Orb
                 invoice_id: T.nilable(String),
                 price_id: T.nilable(String),
                 entry_type: Symbol
-              )
-                .returns(T.attached_class)
+              ).returns(T.attached_class)
             end
             def self.new(
               id:,
@@ -333,33 +388,41 @@ module Orb
               invoice_id: nil,
               price_id: nil,
               entry_type: :decrement
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    id: String,
-                    amount: Float,
-                    created_at: Time,
-                    credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::CreditBlock,
-                    currency: String,
-                    customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::Customer,
-                    description: T.nilable(String),
-                    ending_balance: Float,
-                    entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::EntryStatus::TaggedSymbol,
-                    entry_type: Symbol,
-                    ledger_sequence_number: Integer,
-                    metadata: T::Hash[Symbol, String],
-                    starting_balance: Float,
-                    event_id: T.nilable(String),
-                    invoice_id: T.nilable(String),
-                    price_id: T.nilable(String)
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  id: String,
+                  amount: Float,
+                  created_at: Time,
+                  credit_block:
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::CreditBlock,
+                  currency: String,
+                  customer:
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::Customer,
+                  description: T.nilable(String),
+                  ending_balance: Float,
+                  entry_status:
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::EntryStatus::TaggedSymbol,
+                  entry_type: Symbol,
+                  ledger_sequence_number: Integer,
+                  metadata: T::Hash[Symbol, String],
+                  starting_balance: Float,
+                  event_id: T.nilable(String),
+                  invoice_id: T.nilable(String),
+                  price_id: T.nilable(String)
+                }
+              )
+            end
+            def to_hash
+            end
 
             class CreditBlock < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
               sig { returns(String) }
               attr_accessor :id
 
@@ -370,10 +433,14 @@ module Orb
               attr_accessor :per_unit_cost_basis
 
               sig do
-                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String))
-                  .returns(T.attached_class)
+                params(
+                  id: String,
+                  expiry_date: T.nilable(Time),
+                  per_unit_cost_basis: T.nilable(String)
+                ).returns(T.attached_class)
               end
-              def self.new(id:, expiry_date:, per_unit_cost_basis:); end
+              def self.new(id:, expiry_date:, per_unit_cost_basis:)
+              end
 
               sig do
                 override.returns(
@@ -384,28 +451,48 @@ module Orb
                   }
                 )
               end
-              def to_hash; end
+              def to_hash
+              end
             end
 
             class Customer < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
               sig { returns(String) }
               attr_accessor :id
 
               sig { returns(T.nilable(String)) }
               attr_accessor :external_customer_id
 
-              sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
-              def self.new(id:, external_customer_id:); end
+              sig do
+                params(
+                  id: String,
+                  external_customer_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(id:, external_customer_id:)
+              end
 
-              sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
-              def to_hash; end
+              sig do
+                override.returns(
+                  { id: String, external_customer_id: T.nilable(String) }
+                )
+              end
+              def to_hash
+              end
             end
 
             module EntryStatus
               extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias { T.all(Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::EntryStatus) }
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::EntryStatus
+                  )
+                end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               COMMITTED =
@@ -420,16 +507,20 @@ module Orb
                 )
 
               sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::EntryStatus::TaggedSymbol]
-                  )
+                override.returns(
+                  T::Array[
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::EntryStatus::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
           end
 
           class ExpirationChange < Orb::Internal::Type::BaseModel
+            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
             sig { returns(String) }
             attr_accessor :id
 
@@ -439,34 +530,36 @@ module Orb
             sig { returns(Time) }
             attr_accessor :created_at
 
-            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::CreditBlock) }
+            sig do
+              returns(
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::CreditBlock
+              )
+            end
             attr_reader :credit_block
 
             sig do
               params(
-                credit_block: T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::CreditBlock,
-                  Orb::Internal::AnyHash
-                )
-              )
-                .void
+                credit_block:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::CreditBlock::OrHash
+              ).void
             end
             attr_writer :credit_block
 
             sig { returns(String) }
             attr_accessor :currency
 
-            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::Customer) }
+            sig do
+              returns(
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::Customer
+              )
+            end
             attr_reader :customer
 
             sig do
               params(
-                customer: T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::Customer,
-                  Orb::Internal::AnyHash
-                )
-              )
-                .void
+                customer:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::Customer::OrHash
+              ).void
             end
             attr_writer :customer
 
@@ -507,25 +600,21 @@ module Orb
                 id: String,
                 amount: Float,
                 created_at: Time,
-                credit_block: T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::CreditBlock,
-                  Orb::Internal::AnyHash
-                ),
+                credit_block:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::CreditBlock::OrHash,
                 currency: String,
-                customer: T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::Customer,
-                  Orb::Internal::AnyHash
-                ),
+                customer:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::Customer::OrHash,
                 description: T.nilable(String),
                 ending_balance: Float,
-                entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::EntryStatus::OrSymbol,
+                entry_status:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::EntryStatus::OrSymbol,
                 ledger_sequence_number: Integer,
                 metadata: T::Hash[Symbol, String],
                 new_block_expiry_date: T.nilable(Time),
                 starting_balance: Float,
                 entry_type: Symbol
-              )
-                .returns(T.attached_class)
+              ).returns(T.attached_class)
             end
             def self.new(
               id:,
@@ -546,31 +635,39 @@ module Orb
               new_block_expiry_date:,
               starting_balance:,
               entry_type: :expiration_change
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    id: String,
-                    amount: Float,
-                    created_at: Time,
-                    credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::CreditBlock,
-                    currency: String,
-                    customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::Customer,
-                    description: T.nilable(String),
-                    ending_balance: Float,
-                    entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::EntryStatus::TaggedSymbol,
-                    entry_type: Symbol,
-                    ledger_sequence_number: Integer,
-                    metadata: T::Hash[Symbol, String],
-                    new_block_expiry_date: T.nilable(Time),
-                    starting_balance: Float
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  id: String,
+                  amount: Float,
+                  created_at: Time,
+                  credit_block:
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::CreditBlock,
+                  currency: String,
+                  customer:
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::Customer,
+                  description: T.nilable(String),
+                  ending_balance: Float,
+                  entry_status:
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::EntryStatus::TaggedSymbol,
+                  entry_type: Symbol,
+                  ledger_sequence_number: Integer,
+                  metadata: T::Hash[Symbol, String],
+                  new_block_expiry_date: T.nilable(Time),
+                  starting_balance: Float
+                }
+              )
+            end
+            def to_hash
+            end
 
             class CreditBlock < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
               sig { returns(String) }
               attr_accessor :id
 
@@ -581,10 +678,14 @@ module Orb
               attr_accessor :per_unit_cost_basis
 
               sig do
-                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String))
-                  .returns(T.attached_class)
+                params(
+                  id: String,
+                  expiry_date: T.nilable(Time),
+                  per_unit_cost_basis: T.nilable(String)
+                ).returns(T.attached_class)
               end
-              def self.new(id:, expiry_date:, per_unit_cost_basis:); end
+              def self.new(id:, expiry_date:, per_unit_cost_basis:)
+              end
 
               sig do
                 override.returns(
@@ -595,28 +696,48 @@ module Orb
                   }
                 )
               end
-              def to_hash; end
+              def to_hash
+              end
             end
 
             class Customer < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
               sig { returns(String) }
               attr_accessor :id
 
               sig { returns(T.nilable(String)) }
               attr_accessor :external_customer_id
 
-              sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
-              def self.new(id:, external_customer_id:); end
+              sig do
+                params(
+                  id: String,
+                  external_customer_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(id:, external_customer_id:)
+              end
 
-              sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
-              def to_hash; end
+              sig do
+                override.returns(
+                  { id: String, external_customer_id: T.nilable(String) }
+                )
+              end
+              def to_hash
+              end
             end
 
             module EntryStatus
               extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias { T.all(Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::EntryStatus) }
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::EntryStatus
+                  )
+                end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               COMMITTED =
@@ -631,16 +752,20 @@ module Orb
                 )
 
               sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::EntryStatus::TaggedSymbol]
-                  )
+                override.returns(
+                  T::Array[
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::EntryStatus::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
           end
 
           class CreditBlockExpiry < Orb::Internal::Type::BaseModel
+            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
             sig { returns(String) }
             attr_accessor :id
 
@@ -650,34 +775,36 @@ module Orb
             sig { returns(Time) }
             attr_accessor :created_at
 
-            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::CreditBlock) }
+            sig do
+              returns(
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::CreditBlock
+              )
+            end
             attr_reader :credit_block
 
             sig do
               params(
-                credit_block: T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::CreditBlock,
-                  Orb::Internal::AnyHash
-                )
-              )
-                .void
+                credit_block:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::CreditBlock::OrHash
+              ).void
             end
             attr_writer :credit_block
 
             sig { returns(String) }
             attr_accessor :currency
 
-            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::Customer) }
+            sig do
+              returns(
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::Customer
+              )
+            end
             attr_reader :customer
 
             sig do
               params(
-                customer: T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::Customer,
-                  Orb::Internal::AnyHash
-                )
-              )
-                .void
+                customer:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::Customer::OrHash
+              ).void
             end
             attr_writer :customer
 
@@ -715,24 +842,20 @@ module Orb
                 id: String,
                 amount: Float,
                 created_at: Time,
-                credit_block: T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::CreditBlock,
-                  Orb::Internal::AnyHash
-                ),
+                credit_block:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::CreditBlock::OrHash,
                 currency: String,
-                customer: T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::Customer,
-                  Orb::Internal::AnyHash
-                ),
+                customer:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::Customer::OrHash,
                 description: T.nilable(String),
                 ending_balance: Float,
-                entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::EntryStatus::OrSymbol,
+                entry_status:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::EntryStatus::OrSymbol,
                 ledger_sequence_number: Integer,
                 metadata: T::Hash[Symbol, String],
                 starting_balance: Float,
                 entry_type: Symbol
-              )
-                .returns(T.attached_class)
+              ).returns(T.attached_class)
             end
             def self.new(
               id:,
@@ -752,30 +875,38 @@ module Orb
               metadata:,
               starting_balance:,
               entry_type: :credit_block_expiry
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    id: String,
-                    amount: Float,
-                    created_at: Time,
-                    credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::CreditBlock,
-                    currency: String,
-                    customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::Customer,
-                    description: T.nilable(String),
-                    ending_balance: Float,
-                    entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::EntryStatus::TaggedSymbol,
-                    entry_type: Symbol,
-                    ledger_sequence_number: Integer,
-                    metadata: T::Hash[Symbol, String],
-                    starting_balance: Float
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  id: String,
+                  amount: Float,
+                  created_at: Time,
+                  credit_block:
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::CreditBlock,
+                  currency: String,
+                  customer:
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::Customer,
+                  description: T.nilable(String),
+                  ending_balance: Float,
+                  entry_status:
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::EntryStatus::TaggedSymbol,
+                  entry_type: Symbol,
+                  ledger_sequence_number: Integer,
+                  metadata: T::Hash[Symbol, String],
+                  starting_balance: Float
+                }
+              )
+            end
+            def to_hash
+            end
 
             class CreditBlock < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
               sig { returns(String) }
               attr_accessor :id
 
@@ -786,10 +917,14 @@ module Orb
               attr_accessor :per_unit_cost_basis
 
               sig do
-                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String))
-                  .returns(T.attached_class)
+                params(
+                  id: String,
+                  expiry_date: T.nilable(Time),
+                  per_unit_cost_basis: T.nilable(String)
+                ).returns(T.attached_class)
               end
-              def self.new(id:, expiry_date:, per_unit_cost_basis:); end
+              def self.new(id:, expiry_date:, per_unit_cost_basis:)
+              end
 
               sig do
                 override.returns(
@@ -800,28 +935,48 @@ module Orb
                   }
                 )
               end
-              def to_hash; end
+              def to_hash
+              end
             end
 
             class Customer < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
               sig { returns(String) }
               attr_accessor :id
 
               sig { returns(T.nilable(String)) }
               attr_accessor :external_customer_id
 
-              sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
-              def self.new(id:, external_customer_id:); end
+              sig do
+                params(
+                  id: String,
+                  external_customer_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(id:, external_customer_id:)
+              end
 
-              sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
-              def to_hash; end
+              sig do
+                override.returns(
+                  { id: String, external_customer_id: T.nilable(String) }
+                )
+              end
+              def to_hash
+              end
             end
 
             module EntryStatus
               extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias { T.all(Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::EntryStatus) }
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::EntryStatus
+                  )
+                end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               COMMITTED =
@@ -836,16 +991,20 @@ module Orb
                 )
 
               sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::EntryStatus::TaggedSymbol]
-                  )
+                override.returns(
+                  T::Array[
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::EntryStatus::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
           end
 
           class Void < Orb::Internal::Type::BaseModel
+            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
             sig { returns(String) }
             attr_accessor :id
 
@@ -855,31 +1014,36 @@ module Orb
             sig { returns(Time) }
             attr_accessor :created_at
 
-            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::CreditBlock) }
+            sig do
+              returns(
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::CreditBlock
+              )
+            end
             attr_reader :credit_block
 
             sig do
               params(
-                credit_block: T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::CreditBlock,
-                  Orb::Internal::AnyHash
-                )
-              )
-                .void
+                credit_block:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::CreditBlock::OrHash
+              ).void
             end
             attr_writer :credit_block
 
             sig { returns(String) }
             attr_accessor :currency
 
-            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::Customer) }
+            sig do
+              returns(
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::Customer
+              )
+            end
             attr_reader :customer
 
             sig do
               params(
-                customer: T.any(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::Customer, Orb::Internal::AnyHash)
-              )
-                .void
+                customer:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::Customer::OrHash
+              ).void
             end
             attr_writer :customer
 
@@ -889,7 +1053,11 @@ module Orb
             sig { returns(Float) }
             attr_accessor :ending_balance
 
-            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::EntryStatus::TaggedSymbol) }
+            sig do
+              returns(
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::EntryStatus::TaggedSymbol
+              )
+            end
             attr_accessor :entry_status
 
             sig { returns(Symbol) }
@@ -919,23 +1087,22 @@ module Orb
                 id: String,
                 amount: Float,
                 created_at: Time,
-                credit_block: T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::CreditBlock,
-                  Orb::Internal::AnyHash
-                ),
+                credit_block:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::CreditBlock::OrHash,
                 currency: String,
-                customer: T.any(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::Customer, Orb::Internal::AnyHash),
+                customer:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::Customer::OrHash,
                 description: T.nilable(String),
                 ending_balance: Float,
-                entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::EntryStatus::OrSymbol,
+                entry_status:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::EntryStatus::OrSymbol,
                 ledger_sequence_number: Integer,
                 metadata: T::Hash[Symbol, String],
                 starting_balance: Float,
                 void_amount: Float,
                 void_reason: T.nilable(String),
                 entry_type: Symbol
-              )
-                .returns(T.attached_class)
+              ).returns(T.attached_class)
             end
             def self.new(
               id:,
@@ -957,32 +1124,40 @@ module Orb
               void_amount:,
               void_reason:,
               entry_type: :void
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    id: String,
-                    amount: Float,
-                    created_at: Time,
-                    credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::CreditBlock,
-                    currency: String,
-                    customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::Customer,
-                    description: T.nilable(String),
-                    ending_balance: Float,
-                    entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::EntryStatus::TaggedSymbol,
-                    entry_type: Symbol,
-                    ledger_sequence_number: Integer,
-                    metadata: T::Hash[Symbol, String],
-                    starting_balance: Float,
-                    void_amount: Float,
-                    void_reason: T.nilable(String)
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  id: String,
+                  amount: Float,
+                  created_at: Time,
+                  credit_block:
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::CreditBlock,
+                  currency: String,
+                  customer:
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::Customer,
+                  description: T.nilable(String),
+                  ending_balance: Float,
+                  entry_status:
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::EntryStatus::TaggedSymbol,
+                  entry_type: Symbol,
+                  ledger_sequence_number: Integer,
+                  metadata: T::Hash[Symbol, String],
+                  starting_balance: Float,
+                  void_amount: Float,
+                  void_reason: T.nilable(String)
+                }
+              )
+            end
+            def to_hash
+            end
 
             class CreditBlock < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
               sig { returns(String) }
               attr_accessor :id
 
@@ -993,10 +1168,14 @@ module Orb
               attr_accessor :per_unit_cost_basis
 
               sig do
-                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String))
-                  .returns(T.attached_class)
+                params(
+                  id: String,
+                  expiry_date: T.nilable(Time),
+                  per_unit_cost_basis: T.nilable(String)
+                ).returns(T.attached_class)
               end
-              def self.new(id:, expiry_date:, per_unit_cost_basis:); end
+              def self.new(id:, expiry_date:, per_unit_cost_basis:)
+              end
 
               sig do
                 override.returns(
@@ -1007,28 +1186,48 @@ module Orb
                   }
                 )
               end
-              def to_hash; end
+              def to_hash
+              end
             end
 
             class Customer < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
               sig { returns(String) }
               attr_accessor :id
 
               sig { returns(T.nilable(String)) }
               attr_accessor :external_customer_id
 
-              sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
-              def self.new(id:, external_customer_id:); end
+              sig do
+                params(
+                  id: String,
+                  external_customer_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(id:, external_customer_id:)
+              end
 
-              sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
-              def to_hash; end
+              sig do
+                override.returns(
+                  { id: String, external_customer_id: T.nilable(String) }
+                )
+              end
+              def to_hash
+              end
             end
 
             module EntryStatus
               extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias { T.all(Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::EntryStatus) }
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::EntryStatus
+                  )
+                end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               COMMITTED =
@@ -1043,16 +1242,20 @@ module Orb
                 )
 
               sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::EntryStatus::TaggedSymbol]
-                  )
+                override.returns(
+                  T::Array[
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::EntryStatus::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
           end
 
           class VoidInitiated < Orb::Internal::Type::BaseModel
+            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
             sig { returns(String) }
             attr_accessor :id
 
@@ -1062,34 +1265,36 @@ module Orb
             sig { returns(Time) }
             attr_accessor :created_at
 
-            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::CreditBlock) }
+            sig do
+              returns(
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::CreditBlock
+              )
+            end
             attr_reader :credit_block
 
             sig do
               params(
-                credit_block: T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::CreditBlock,
-                  Orb::Internal::AnyHash
-                )
-              )
-                .void
+                credit_block:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::CreditBlock::OrHash
+              ).void
             end
             attr_writer :credit_block
 
             sig { returns(String) }
             attr_accessor :currency
 
-            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::Customer) }
+            sig do
+              returns(
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::Customer
+              )
+            end
             attr_reader :customer
 
             sig do
               params(
-                customer: T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::Customer,
-                  Orb::Internal::AnyHash
-                )
-              )
-                .void
+                customer:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::Customer::OrHash
+              ).void
             end
             attr_writer :customer
 
@@ -1136,18 +1341,15 @@ module Orb
                 id: String,
                 amount: Float,
                 created_at: Time,
-                credit_block: T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::CreditBlock,
-                  Orb::Internal::AnyHash
-                ),
+                credit_block:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::CreditBlock::OrHash,
                 currency: String,
-                customer: T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::Customer,
-                  Orb::Internal::AnyHash
-                ),
+                customer:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::Customer::OrHash,
                 description: T.nilable(String),
                 ending_balance: Float,
-                entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::EntryStatus::OrSymbol,
+                entry_status:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::EntryStatus::OrSymbol,
                 ledger_sequence_number: Integer,
                 metadata: T::Hash[Symbol, String],
                 new_block_expiry_date: Time,
@@ -1155,8 +1357,7 @@ module Orb
                 void_amount: Float,
                 void_reason: T.nilable(String),
                 entry_type: Symbol
-              )
-                .returns(T.attached_class)
+              ).returns(T.attached_class)
             end
             def self.new(
               id:,
@@ -1179,33 +1380,41 @@ module Orb
               void_amount:,
               void_reason:,
               entry_type: :void_initiated
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    id: String,
-                    amount: Float,
-                    created_at: Time,
-                    credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::CreditBlock,
-                    currency: String,
-                    customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::Customer,
-                    description: T.nilable(String),
-                    ending_balance: Float,
-                    entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::EntryStatus::TaggedSymbol,
-                    entry_type: Symbol,
-                    ledger_sequence_number: Integer,
-                    metadata: T::Hash[Symbol, String],
-                    new_block_expiry_date: Time,
-                    starting_balance: Float,
-                    void_amount: Float,
-                    void_reason: T.nilable(String)
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  id: String,
+                  amount: Float,
+                  created_at: Time,
+                  credit_block:
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::CreditBlock,
+                  currency: String,
+                  customer:
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::Customer,
+                  description: T.nilable(String),
+                  ending_balance: Float,
+                  entry_status:
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::EntryStatus::TaggedSymbol,
+                  entry_type: Symbol,
+                  ledger_sequence_number: Integer,
+                  metadata: T::Hash[Symbol, String],
+                  new_block_expiry_date: Time,
+                  starting_balance: Float,
+                  void_amount: Float,
+                  void_reason: T.nilable(String)
+                }
+              )
+            end
+            def to_hash
+            end
 
             class CreditBlock < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
               sig { returns(String) }
               attr_accessor :id
 
@@ -1216,10 +1425,14 @@ module Orb
               attr_accessor :per_unit_cost_basis
 
               sig do
-                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String))
-                  .returns(T.attached_class)
+                params(
+                  id: String,
+                  expiry_date: T.nilable(Time),
+                  per_unit_cost_basis: T.nilable(String)
+                ).returns(T.attached_class)
               end
-              def self.new(id:, expiry_date:, per_unit_cost_basis:); end
+              def self.new(id:, expiry_date:, per_unit_cost_basis:)
+              end
 
               sig do
                 override.returns(
@@ -1230,28 +1443,48 @@ module Orb
                   }
                 )
               end
-              def to_hash; end
+              def to_hash
+              end
             end
 
             class Customer < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
               sig { returns(String) }
               attr_accessor :id
 
               sig { returns(T.nilable(String)) }
               attr_accessor :external_customer_id
 
-              sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
-              def self.new(id:, external_customer_id:); end
+              sig do
+                params(
+                  id: String,
+                  external_customer_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(id:, external_customer_id:)
+              end
 
-              sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
-              def to_hash; end
+              sig do
+                override.returns(
+                  { id: String, external_customer_id: T.nilable(String) }
+                )
+              end
+              def to_hash
+              end
             end
 
             module EntryStatus
               extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias { T.all(Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::EntryStatus) }
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::EntryStatus
+                  )
+                end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               COMMITTED =
@@ -1266,16 +1499,20 @@ module Orb
                 )
 
               sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::EntryStatus::TaggedSymbol]
-                  )
+                override.returns(
+                  T::Array[
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::EntryStatus::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
           end
 
           class Amendment < Orb::Internal::Type::BaseModel
+            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
             sig { returns(String) }
             attr_accessor :id
 
@@ -1285,34 +1522,36 @@ module Orb
             sig { returns(Time) }
             attr_accessor :created_at
 
-            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::CreditBlock) }
+            sig do
+              returns(
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::CreditBlock
+              )
+            end
             attr_reader :credit_block
 
             sig do
               params(
-                credit_block: T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::CreditBlock,
-                  Orb::Internal::AnyHash
-                )
-              )
-                .void
+                credit_block:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::CreditBlock::OrHash
+              ).void
             end
             attr_writer :credit_block
 
             sig { returns(String) }
             attr_accessor :currency
 
-            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::Customer) }
+            sig do
+              returns(
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::Customer
+              )
+            end
             attr_reader :customer
 
             sig do
               params(
-                customer: T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::Customer,
-                  Orb::Internal::AnyHash
-                )
-              )
-                .void
+                customer:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::Customer::OrHash
+              ).void
             end
             attr_writer :customer
 
@@ -1322,7 +1561,11 @@ module Orb
             sig { returns(Float) }
             attr_accessor :ending_balance
 
-            sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::EntryStatus::TaggedSymbol) }
+            sig do
+              returns(
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::EntryStatus::TaggedSymbol
+              )
+            end
             attr_accessor :entry_status
 
             sig { returns(Symbol) }
@@ -1346,24 +1589,20 @@ module Orb
                 id: String,
                 amount: Float,
                 created_at: Time,
-                credit_block: T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::CreditBlock,
-                  Orb::Internal::AnyHash
-                ),
+                credit_block:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::CreditBlock::OrHash,
                 currency: String,
-                customer: T.any(
-                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::Customer,
-                  Orb::Internal::AnyHash
-                ),
+                customer:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::Customer::OrHash,
                 description: T.nilable(String),
                 ending_balance: Float,
-                entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::EntryStatus::OrSymbol,
+                entry_status:
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::EntryStatus::OrSymbol,
                 ledger_sequence_number: Integer,
                 metadata: T::Hash[Symbol, String],
                 starting_balance: Float,
                 entry_type: Symbol
-              )
-                .returns(T.attached_class)
+              ).returns(T.attached_class)
             end
             def self.new(
               id:,
@@ -1383,30 +1622,38 @@ module Orb
               metadata:,
               starting_balance:,
               entry_type: :amendment
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    id: String,
-                    amount: Float,
-                    created_at: Time,
-                    credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::CreditBlock,
-                    currency: String,
-                    customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::Customer,
-                    description: T.nilable(String),
-                    ending_balance: Float,
-                    entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::EntryStatus::TaggedSymbol,
-                    entry_type: Symbol,
-                    ledger_sequence_number: Integer,
-                    metadata: T::Hash[Symbol, String],
-                    starting_balance: Float
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  id: String,
+                  amount: Float,
+                  created_at: Time,
+                  credit_block:
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::CreditBlock,
+                  currency: String,
+                  customer:
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::Customer,
+                  description: T.nilable(String),
+                  ending_balance: Float,
+                  entry_status:
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::EntryStatus::TaggedSymbol,
+                  entry_type: Symbol,
+                  ledger_sequence_number: Integer,
+                  metadata: T::Hash[Symbol, String],
+                  starting_balance: Float
+                }
+              )
+            end
+            def to_hash
+            end
 
             class CreditBlock < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
               sig { returns(String) }
               attr_accessor :id
 
@@ -1417,10 +1664,14 @@ module Orb
               attr_accessor :per_unit_cost_basis
 
               sig do
-                params(id: String, expiry_date: T.nilable(Time), per_unit_cost_basis: T.nilable(String))
-                  .returns(T.attached_class)
+                params(
+                  id: String,
+                  expiry_date: T.nilable(Time),
+                  per_unit_cost_basis: T.nilable(String)
+                ).returns(T.attached_class)
               end
-              def self.new(id:, expiry_date:, per_unit_cost_basis:); end
+              def self.new(id:, expiry_date:, per_unit_cost_basis:)
+              end
 
               sig do
                 override.returns(
@@ -1431,28 +1682,48 @@ module Orb
                   }
                 )
               end
-              def to_hash; end
+              def to_hash
+              end
             end
 
             class Customer < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
               sig { returns(String) }
               attr_accessor :id
 
               sig { returns(T.nilable(String)) }
               attr_accessor :external_customer_id
 
-              sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
-              def self.new(id:, external_customer_id:); end
+              sig do
+                params(
+                  id: String,
+                  external_customer_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(id:, external_customer_id:)
+              end
 
-              sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
-              def to_hash; end
+              sig do
+                override.returns(
+                  { id: String, external_customer_id: T.nilable(String) }
+                )
+              end
+              def to_hash
+              end
             end
 
             module EntryStatus
               extend Orb::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias { T.all(Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::EntryStatus) }
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::EntryStatus
+                  )
+                end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               COMMITTED =
@@ -1467,22 +1738,26 @@ module Orb
                 )
 
               sig do
-                override
-                  .returns(
-                    T::Array[Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::EntryStatus::TaggedSymbol]
-                  )
+                override.returns(
+                  T::Array[
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::EntryStatus::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
           end
 
           sig do
-            override
-              .returns(
-                [Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment]
-              )
+            override.returns(
+              T::Array[
+                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Variants
+              ]
+            )
           end
-          def self.variants; end
+          def self.variants
+          end
         end
       end
     end

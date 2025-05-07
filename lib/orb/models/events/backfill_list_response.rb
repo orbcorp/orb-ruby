@@ -83,17 +83,14 @@ module Orb
         #   @param id [String]
         #
         #   @param close_time [Time, nil] If in the future, the time at which the backfill will automatically close. If in
-        #   ...
         #
         #   @param created_at [Time]
         #
         #   @param customer_id [String, nil] The Orb-generated ID of the customer to which this backfill is scoped. If `null`
-        #   ...
         #
         #   @param events_ingested [Integer] The number of events ingested in this backfill.
         #
         #   @param replace_existing_events [Boolean] If `true`, existing events in the backfill's timeframe will be replaced with the
-        #   ...
         #
         #   @param reverted_at [Time, nil] The time at which this backfill was reverted.
         #
@@ -104,7 +101,6 @@ module Orb
         #   @param timeframe_start [Time]
         #
         #   @param deprecation_filter [String, nil] A boolean [computed property](/extensibility/advanced-metrics#computed-propertie
-        #   ...
 
         # The status of the backfill.
         #

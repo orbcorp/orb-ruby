@@ -74,8 +74,6 @@ module Orb
               ?entry_type: :increment
             ) -> void
 
-            def to_hash: -> Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::increment
-
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
 
@@ -91,8 +89,6 @@ module Orb
                 expiry_date: Time?,
                 per_unit_cost_basis: String?
               ) -> void
-
-              def to_hash: -> Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment::credit_block
             end
 
             type customer = { id: String, external_customer_id: String? }
@@ -106,8 +102,6 @@ module Orb
                 id: String,
                 external_customer_id: String?
               ) -> void
-
-              def to_hash: -> Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment::customer
             end
 
             type entry_status = :committed | :pending
@@ -194,8 +188,6 @@ module Orb
               ?entry_type: :decrement
             ) -> void
 
-            def to_hash: -> Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::decrement
-
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
 
@@ -211,8 +203,6 @@ module Orb
                 expiry_date: Time?,
                 per_unit_cost_basis: String?
               ) -> void
-
-              def to_hash: -> Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Decrement::credit_block
             end
 
             type customer = { id: String, external_customer_id: String? }
@@ -226,8 +216,6 @@ module Orb
                 id: String,
                 external_customer_id: String?
               ) -> void
-
-              def to_hash: -> Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Decrement::customer
             end
 
             type entry_status = :committed | :pending
@@ -306,8 +294,6 @@ module Orb
               ?entry_type: :expiration_change
             ) -> void
 
-            def to_hash: -> Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::expiration_change
-
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
 
@@ -323,8 +309,6 @@ module Orb
                 expiry_date: Time?,
                 per_unit_cost_basis: String?
               ) -> void
-
-              def to_hash: -> Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChange::credit_block
             end
 
             type customer = { id: String, external_customer_id: String? }
@@ -338,8 +322,6 @@ module Orb
                 id: String,
                 external_customer_id: String?
               ) -> void
-
-              def to_hash: -> Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChange::customer
             end
 
             type entry_status = :committed | :pending
@@ -414,8 +396,6 @@ module Orb
               ?entry_type: :credit_block_expiry
             ) -> void
 
-            def to_hash: -> Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::credit_block_expiry
-
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
 
@@ -431,8 +411,6 @@ module Orb
                 expiry_date: Time?,
                 per_unit_cost_basis: String?
               ) -> void
-
-              def to_hash: -> Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiry::credit_block
             end
 
             type customer = { id: String, external_customer_id: String? }
@@ -446,8 +424,6 @@ module Orb
                 id: String,
                 external_customer_id: String?
               ) -> void
-
-              def to_hash: -> Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiry::customer
             end
 
             type entry_status = :committed | :pending
@@ -530,8 +506,6 @@ module Orb
               ?entry_type: :void
             ) -> void
 
-            def to_hash: -> Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::void_
-
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
 
@@ -547,8 +521,6 @@ module Orb
                 expiry_date: Time?,
                 per_unit_cost_basis: String?
               ) -> void
-
-              def to_hash: -> Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Void::credit_block
             end
 
             type customer = { id: String, external_customer_id: String? }
@@ -562,8 +534,6 @@ module Orb
                 id: String,
                 external_customer_id: String?
               ) -> void
-
-              def to_hash: -> Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Void::customer
             end
 
             type entry_status = :committed | :pending
@@ -650,8 +620,6 @@ module Orb
               ?entry_type: :void_initiated
             ) -> void
 
-            def to_hash: -> Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::void_initiated
-
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
 
@@ -667,8 +635,6 @@ module Orb
                 expiry_date: Time?,
                 per_unit_cost_basis: String?
               ) -> void
-
-              def to_hash: -> Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiated::credit_block
             end
 
             type customer = { id: String, external_customer_id: String? }
@@ -682,8 +648,6 @@ module Orb
                 id: String,
                 external_customer_id: String?
               ) -> void
-
-              def to_hash: -> Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiated::customer
             end
 
             type entry_status = :committed | :pending
@@ -758,8 +722,6 @@ module Orb
               ?entry_type: :amendment
             ) -> void
 
-            def to_hash: -> Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::amendment
-
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
 
@@ -775,8 +737,6 @@ module Orb
                 expiry_date: Time?,
                 per_unit_cost_basis: String?
               ) -> void
-
-              def to_hash: -> Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Amendment::credit_block
             end
 
             type customer = { id: String, external_customer_id: String? }
@@ -790,8 +750,6 @@ module Orb
                 id: String,
                 external_customer_id: String?
               ) -> void
-
-              def to_hash: -> Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Amendment::customer
             end
 
             type entry_status = :committed | :pending
@@ -806,7 +764,7 @@ module Orb
             end
           end
 
-          def self?.variants: -> [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Decrement, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChange, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Void, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiated, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Amendment]
+          def self?.variants: -> ::Array[Orb::Models::Customers::Credits::ledger_create_entry_by_external_id_response]
         end
       end
     end

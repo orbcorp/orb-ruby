@@ -43,8 +43,6 @@ module Orb
           ?replace_existing_events: bool,
           ?request_options: Orb::request_opts
         ) -> void
-
-        def to_hash: -> Orb::Models::Events::backfill_create_params
       end
     end
   end

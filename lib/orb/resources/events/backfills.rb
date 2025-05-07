@@ -48,25 +48,18 @@ module Orb
         # @overload create(timeframe_end:, timeframe_start:, close_time: nil, customer_id: nil, deprecation_filter: nil, external_customer_id: nil, replace_existing_events: nil, request_options: {})
         #
         # @param timeframe_end [Time] The (exclusive) end of the usage timeframe affected by this backfill. By default
-        # ...
         #
         # @param timeframe_start [Time] The (inclusive) start of the usage timeframe affected by this backfill. By defau
-        # ...
         #
         # @param close_time [Time, nil] The time at which no more events will be accepted for this backfill. The backfil
-        # ...
         #
         # @param customer_id [String, nil] The Orb-generated ID of the customer to which this backfill is scoped. Omitting
-        # ...
         #
         # @param deprecation_filter [String, nil] A boolean [computed property](/extensibility/advanced-metrics#computed-propertie
-        # ...
         #
         # @param external_customer_id [String, nil] The external customer ID of the customer to which this backfill is scoped. Omitt
-        # ...
         #
         # @param replace_existing_events [Boolean] If true, replaces all existing events in the timeframe with the newly ingested e
-        # ...
         #
         # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -74,7 +67,7 @@ module Orb
         #
         # @see Orb::Models::Events::BackfillCreateParams
         def create(params)
-          parsed, options = Orb::Models::Events::BackfillCreateParams.dump_request(params)
+          parsed, options = Orb::Events::BackfillCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "events/backfills",
@@ -98,7 +91,6 @@ module Orb
         # @overload list(cursor: nil, limit: nil, request_options: {})
         #
         # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
-        # ...
         #
         # @param limit [Integer] The number of items to fetch. Defaults to 20.
         #
@@ -108,7 +100,7 @@ module Orb
         #
         # @see Orb::Models::Events::BackfillListParams
         def list(params = {})
-          parsed, options = Orb::Models::Events::BackfillListParams.dump_request(params)
+          parsed, options = Orb::Events::BackfillListParams.dump_request(params)
           @client.request(
             method: :get,
             path: "events/backfills",

@@ -29,10 +29,8 @@ module Orb
         #   {Orb::Models::Plans::ExternalPlanIDUpdateParams} for more details.
         #
         #   @param external_plan_id [String, nil] An optional user-defined ID for this plan resource, used throughout the system a
-        #   ...
         #
         #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
-        #   ...
         #
         #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
       end

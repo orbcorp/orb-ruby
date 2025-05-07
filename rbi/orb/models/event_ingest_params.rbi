@@ -6,7 +6,9 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      sig { returns(T::Array[Orb::Models::EventIngestParams::Event]) }
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
+      sig { returns(T::Array[Orb::EventIngestParams::Event]) }
       attr_accessor :events
 
       # If this ingestion request is part of a backfill, this parameter ties the
@@ -23,12 +25,11 @@ module Orb
 
       sig do
         params(
-          events: T::Array[T.any(Orb::Models::EventIngestParams::Event, Orb::Internal::AnyHash)],
+          events: T::Array[Orb::EventIngestParams::Event::OrHash],
           backfill_id: T.nilable(String),
           debug: T::Boolean,
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         events:,
@@ -38,21 +39,25 @@ module Orb
         # Flag to enable additional debug information in the endpoint response
         debug: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              events: T::Array[Orb::Models::EventIngestParams::Event],
-              backfill_id: T.nilable(String),
-              debug: T::Boolean,
-              request_options: Orb::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            events: T::Array[Orb::EventIngestParams::Event],
+            backfill_id: T.nilable(String),
+            debug: T::Boolean,
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       class Event < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         # A name to meaningfully identify the action or event type.
         sig { returns(String) }
         attr_accessor :event_name
@@ -91,8 +96,7 @@ module Orb
             timestamp: Time,
             customer_id: T.nilable(String),
             external_customer_id: T.nilable(String)
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # A name to meaningfully identify the action or event type.
@@ -113,21 +117,23 @@ module Orb
           # An alias for the Orb customer, whose mapping is specified when creating the
           # customer
           external_customer_id: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                event_name: String,
-                idempotency_key: String,
-                properties: T.anything,
-                timestamp: Time,
-                customer_id: T.nilable(String),
-                external_customer_id: T.nilable(String)
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              event_name: String,
+              idempotency_key: String,
+              properties: T.anything,
+              timestamp: Time,
+              customer_id: T.nilable(String),
+              external_customer_id: T.nilable(String)
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

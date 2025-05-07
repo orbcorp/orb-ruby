@@ -8,7 +8,7 @@ module Orb
           ?limit: Integer,
           ?timeframe_end: Time,
           ?request_options: Orb::request_opts
-        ) -> Orb::Models::Events::EventVolumes
+        ) -> Orb::Events::EventVolumes
 
         def initialize: (client: Orb::Client) -> void
       end

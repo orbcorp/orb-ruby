@@ -6,6 +6,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
       sig { returns(T.nilable(Time)) }
       attr_accessor :created_at_gt
 
@@ -53,9 +55,8 @@ module Orb
           external_customer_id: T.nilable(String),
           limit: Integer,
           subscription_id: T.nilable(String),
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         created_at_gt: nil,
@@ -74,25 +75,27 @@ module Orb
         # Fetch alerts scoped to this subscription_id
         subscription_id: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              created_at_gt: T.nilable(Time),
-              created_at_gte: T.nilable(Time),
-              created_at_lt: T.nilable(Time),
-              created_at_lte: T.nilable(Time),
-              cursor: T.nilable(String),
-              customer_id: T.nilable(String),
-              external_customer_id: T.nilable(String),
-              limit: Integer,
-              subscription_id: T.nilable(String),
-              request_options: Orb::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            created_at_gt: T.nilable(Time),
+            created_at_gte: T.nilable(Time),
+            created_at_lt: T.nilable(Time),
+            created_at_lte: T.nilable(Time),
+            cursor: T.nilable(String),
+            customer_id: T.nilable(String),
+            external_customer_id: T.nilable(String),
+            limit: Integer,
+            subscription_id: T.nilable(String),
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

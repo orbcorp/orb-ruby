@@ -6,7 +6,11 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      sig { returns(T.nilable(T::Array[Orb::Models::ItemUpdateParams::ExternalConnection])) }
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
+      sig do
+        returns(T.nilable(T::Array[Orb::ItemUpdateParams::ExternalConnection]))
+      end
       attr_accessor :external_connections
 
       sig { returns(T.nilable(String)) }
@@ -14,28 +18,38 @@ module Orb
 
       sig do
         params(
-          external_connections: T.nilable(T::Array[T.any(Orb::Models::ItemUpdateParams::ExternalConnection, Orb::Internal::AnyHash)]),
+          external_connections:
+            T.nilable(
+              T::Array[Orb::ItemUpdateParams::ExternalConnection::OrHash]
+            ),
           name: T.nilable(String),
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
-      def self.new(external_connections: nil, name: nil, request_options: {}); end
+      def self.new(external_connections: nil, name: nil, request_options: {})
+      end
 
       sig do
-        override
-          .returns(
-            {
-              external_connections: T.nilable(T::Array[Orb::Models::ItemUpdateParams::ExternalConnection]),
-              name: T.nilable(String),
-              request_options: Orb::RequestOptions
-            }
-          )
+        override.returns(
+          {
+            external_connections:
+              T.nilable(T::Array[Orb::ItemUpdateParams::ExternalConnection]),
+            name: T.nilable(String),
+            request_options: Orb::RequestOptions
+          }
+        )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class ExternalConnection < Orb::Internal::Type::BaseModel
-        sig { returns(Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName::OrSymbol) }
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
+        sig do
+          returns(
+            Orb::ItemUpdateParams::ExternalConnection::ExternalConnectionName::OrSymbol
+          )
+        end
         attr_accessor :external_connection_name
 
         sig { returns(String) }
@@ -43,57 +57,83 @@ module Orb
 
         sig do
           params(
-            external_connection_name: Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName::OrSymbol,
+            external_connection_name:
+              Orb::ItemUpdateParams::ExternalConnection::ExternalConnectionName::OrSymbol,
             external_entity_id: String
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
-        def self.new(external_connection_name:, external_entity_id:); end
+        def self.new(external_connection_name:, external_entity_id:)
+        end
 
         sig do
-          override
-            .returns(
-              {
-                external_connection_name: Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName::OrSymbol,
-                external_entity_id: String
-              }
-            )
+          override.returns(
+            {
+              external_connection_name:
+                Orb::ItemUpdateParams::ExternalConnection::ExternalConnectionName::OrSymbol,
+              external_entity_id: String
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         module ExternalConnectionName
           extend Orb::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Orb::ItemUpdateParams::ExternalConnection::ExternalConnectionName
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           STRIPE =
-            T.let(:stripe, Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName::TaggedSymbol)
+            T.let(
+              :stripe,
+              Orb::ItemUpdateParams::ExternalConnection::ExternalConnectionName::TaggedSymbol
+            )
           QUICKBOOKS =
             T.let(
               :quickbooks,
-              Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName::TaggedSymbol
+              Orb::ItemUpdateParams::ExternalConnection::ExternalConnectionName::TaggedSymbol
             )
           BILL_COM =
             T.let(
               :"bill.com",
-              Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName::TaggedSymbol
+              Orb::ItemUpdateParams::ExternalConnection::ExternalConnectionName::TaggedSymbol
             )
           NETSUITE =
-            T.let(:netsuite, Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName::TaggedSymbol)
+            T.let(
+              :netsuite,
+              Orb::ItemUpdateParams::ExternalConnection::ExternalConnectionName::TaggedSymbol
+            )
           TAXJAR =
-            T.let(:taxjar, Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName::TaggedSymbol)
+            T.let(
+              :taxjar,
+              Orb::ItemUpdateParams::ExternalConnection::ExternalConnectionName::TaggedSymbol
+            )
           AVALARA =
-            T.let(:avalara, Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName::TaggedSymbol)
+            T.let(
+              :avalara,
+              Orb::ItemUpdateParams::ExternalConnection::ExternalConnectionName::TaggedSymbol
+            )
           ANROK =
-            T.let(:anrok, Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName::TaggedSymbol)
+            T.let(
+              :anrok,
+              Orb::ItemUpdateParams::ExternalConnection::ExternalConnectionName::TaggedSymbol
+            )
 
           sig do
-            override
-              .returns(T::Array[Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName::TaggedSymbol])
+            override.returns(
+              T::Array[
+                Orb::ItemUpdateParams::ExternalConnection::ExternalConnectionName::TaggedSymbol
+              ]
+            )
           end
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

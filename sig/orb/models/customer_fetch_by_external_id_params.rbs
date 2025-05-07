@@ -8,8 +8,6 @@ module Orb
       include Orb::Internal::Type::RequestParameters
 
       def initialize: (?request_options: Orb::request_opts) -> void
-
-      def to_hash: -> Orb::Models::customer_fetch_by_external_id_params
     end
   end
 end

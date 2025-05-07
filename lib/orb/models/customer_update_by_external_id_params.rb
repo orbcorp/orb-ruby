@@ -9,9 +9,9 @@ module Orb
 
       # @!attribute accounting_sync_configuration
       #
-      #   @return [Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration, nil]
+      #   @return [Orb::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration, nil]
       optional :accounting_sync_configuration,
-               -> { Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration },
+               -> { Orb::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration },
                nil?: true
 
       # @!attribute additional_emails
@@ -31,10 +31,8 @@ module Orb
 
       # @!attribute billing_address
       #
-      #   @return [Orb::Models::CustomerUpdateByExternalIDParams::BillingAddress, nil]
-      optional :billing_address,
-               -> { Orb::Models::CustomerUpdateByExternalIDParams::BillingAddress },
-               nil?: true
+      #   @return [Orb::CustomerUpdateByExternalIDParams::BillingAddress, nil]
+      optional :billing_address, -> { Orb::CustomerUpdateByExternalIDParams::BillingAddress }, nil?: true
 
       # @!attribute currency
       #   An ISO 4217 currency string used for the customer's invoices and balance. If not
@@ -64,8 +62,8 @@ module Orb
       # @!attribute hierarchy
       #   The hierarchical relationships for this customer.
       #
-      #   @return [Orb::Models::CustomerUpdateByExternalIDParams::Hierarchy, nil]
-      optional :hierarchy, -> { Orb::Models::CustomerUpdateByExternalIDParams::Hierarchy }, nil?: true
+      #   @return [Orb::CustomerUpdateByExternalIDParams::Hierarchy, nil]
+      optional :hierarchy, -> { Orb::CustomerUpdateByExternalIDParams::Hierarchy }, nil?: true
 
       # @!attribute metadata
       #   User-specified key/value pairs for the resource. Individual keys can be removed
@@ -90,9 +88,9 @@ module Orb
       #     `bill.com`, `netsuite`), any product mappings must first be configured with
       #     the Orb team.
       #
-      #   @return [Symbol, Orb::Models::CustomerUpdateByExternalIDParams::PaymentProvider, nil]
+      #   @return [Symbol, Orb::CustomerUpdateByExternalIDParams::PaymentProvider, nil]
       optional :payment_provider,
-               enum: -> { Orb::Models::CustomerUpdateByExternalIDParams::PaymentProvider },
+               enum: -> { Orb::CustomerUpdateByExternalIDParams::PaymentProvider },
                nil?: true
 
       # @!attribute payment_provider_id
@@ -104,23 +102,21 @@ module Orb
 
       # @!attribute reporting_configuration
       #
-      #   @return [Orb::Models::CustomerUpdateByExternalIDParams::ReportingConfiguration, nil]
+      #   @return [Orb::CustomerUpdateByExternalIDParams::ReportingConfiguration, nil]
       optional :reporting_configuration,
-               -> { Orb::Models::CustomerUpdateByExternalIDParams::ReportingConfiguration },
+               -> { Orb::CustomerUpdateByExternalIDParams::ReportingConfiguration },
                nil?: true
 
       # @!attribute shipping_address
       #
-      #   @return [Orb::Models::CustomerUpdateByExternalIDParams::ShippingAddress, nil]
-      optional :shipping_address,
-               -> { Orb::Models::CustomerUpdateByExternalIDParams::ShippingAddress },
-               nil?: true
+      #   @return [Orb::CustomerUpdateByExternalIDParams::ShippingAddress, nil]
+      optional :shipping_address, -> { Orb::CustomerUpdateByExternalIDParams::ShippingAddress }, nil?: true
 
       # @!attribute tax_configuration
       #
-      #   @return [Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Avalara, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Taxjar, nil]
+      #   @return [Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Avalara, Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Taxjar, nil]
       optional :tax_configuration,
-               union: -> { Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration },
+               union: -> { Orb::CustomerUpdateByExternalIDParams::TaxConfiguration },
                nil?: true
 
       # @!attribute tax_id
@@ -230,63 +226,57 @@ module Orb
       #   | Venezuela            | `ve_rif`     | Venezuelan RIF Number                                                                                   |
       #   | Vietnam              | `vn_tin`     | Vietnamese Tax ID Number                                                                                |
       #
-      #   @return [Orb::Models::CustomerUpdateByExternalIDParams::TaxID, nil]
-      optional :tax_id, -> { Orb::Models::CustomerUpdateByExternalIDParams::TaxID }, nil?: true
+      #   @return [Orb::CustomerUpdateByExternalIDParams::TaxID, nil]
+      optional :tax_id, -> { Orb::CustomerUpdateByExternalIDParams::TaxID }, nil?: true
 
       # @!method initialize(accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, billing_address: nil, currency: nil, email: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, name: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::CustomerUpdateByExternalIDParams} for more details.
       #
-      #   @param accounting_sync_configuration [Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration, nil]
+      #   @param accounting_sync_configuration [Orb::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration, nil]
       #
       #   @param additional_emails [Array<String>, nil] Additional email addresses for this customer. If populated, these email addresse
-      #   ...
       #
       #   @param auto_collection [Boolean, nil] Used to determine if invoices for this customer will automatically attempt to ch
-      #   ...
       #
-      #   @param billing_address [Orb::Models::CustomerUpdateByExternalIDParams::BillingAddress, nil]
+      #   @param billing_address [Orb::CustomerUpdateByExternalIDParams::BillingAddress, nil]
       #
       #   @param currency [String, nil] An ISO 4217 currency string used for the customer's invoices and balance. If not
-      #   ...
       #
       #   @param email [String, nil] A valid customer email, to be used for invoicing and notifications.
       #
       #   @param email_delivery [Boolean, nil]
       #
       #   @param external_customer_id [String, nil] The external customer ID. This can only be set if empty and the customer has no
-      #   ...
       #
-      #   @param hierarchy [Orb::Models::CustomerUpdateByExternalIDParams::Hierarchy, nil] The hierarchical relationships for this customer.
+      #   @param hierarchy [Orb::CustomerUpdateByExternalIDParams::Hierarchy, nil] The hierarchical relationships for this customer.
       #
       #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
-      #   ...
       #
       #   @param name [String, nil] The full name of the customer
       #
-      #   @param payment_provider [Symbol, Orb::Models::CustomerUpdateByExternalIDParams::PaymentProvider, nil] This is used for creating charges or invoices in an external system via Orb. Whe
-      #   ...
+      #   @param payment_provider [Symbol, Orb::CustomerUpdateByExternalIDParams::PaymentProvider, nil] This is used for creating charges or invoices in an external system via Orb. Whe
       #
       #   @param payment_provider_id [String, nil] The ID of this customer in an external payments solution, such as Stripe. This i
-      #   ...
       #
-      #   @param reporting_configuration [Orb::Models::CustomerUpdateByExternalIDParams::ReportingConfiguration, nil]
+      #   @param reporting_configuration [Orb::CustomerUpdateByExternalIDParams::ReportingConfiguration, nil]
       #
-      #   @param shipping_address [Orb::Models::CustomerUpdateByExternalIDParams::ShippingAddress, nil]
+      #   @param shipping_address [Orb::CustomerUpdateByExternalIDParams::ShippingAddress, nil]
       #
-      #   @param tax_configuration [Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Avalara, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Taxjar, nil]
+      #   @param tax_configuration [Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Avalara, Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Taxjar, nil]
       #
-      #   @param tax_id [Orb::Models::CustomerUpdateByExternalIDParams::TaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
-      #   ...
+      #   @param tax_id [Orb::CustomerUpdateByExternalIDParams::TaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
       class AccountingSyncConfiguration < Orb::Internal::Type::BaseModel
         # @!attribute accounting_providers
         #
-        #   @return [Array<Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider>, nil]
+        #   @return [Array<Orb::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider>, nil]
         optional :accounting_providers,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider] },
+                 -> {
+                   Orb::Internal::Type::ArrayOf[Orb::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider]
+                 },
                  nil?: true
 
         # @!attribute excluded
@@ -295,7 +285,7 @@ module Orb
         optional :excluded, Orb::Internal::Type::Boolean, nil?: true
 
         # @!method initialize(accounting_providers: nil, excluded: nil)
-        #   @param accounting_providers [Array<Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider>, nil]
+        #   @param accounting_providers [Array<Orb::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider>, nil]
         #   @param excluded [Boolean, nil]
 
         class AccountingProvider < Orb::Internal::Type::BaseModel
@@ -372,15 +362,13 @@ module Orb
 
         # @!method initialize(child_customer_ids: nil, parent_customer_id: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Orb::Models::CustomerUpdateByExternalIDParams::Hierarchy} for more details.
+        #   {Orb::CustomerUpdateByExternalIDParams::Hierarchy} for more details.
         #
         #   The hierarchical relationships for this customer.
         #
         #   @param child_customer_ids [Array<String>] A list of child customer IDs to add to the hierarchy. The desired child customer
-        #   ...
         #
         #   @param parent_customer_id [String, nil] The ID of the parent customer in the hierarchy. The desired parent customer must
-        #   ...
       end
 
       # This is used for creating charges or invoices in an external system via Orb.
@@ -458,9 +446,9 @@ module Orb
 
         discriminator :tax_provider
 
-        variant :avalara, -> { Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Avalara }
+        variant :avalara, -> { Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Avalara }
 
-        variant :taxjar, -> { Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Taxjar }
+        variant :taxjar, -> { Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Taxjar }
 
         class Avalara < Orb::Internal::Type::BaseModel
           # @!attribute tax_exempt
@@ -501,19 +489,19 @@ module Orb
         end
 
         # @!method self.variants
-        #   @return [Array(Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Avalara, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Taxjar)]
+        #   @return [Array(Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Avalara, Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Taxjar)]
       end
 
       class TaxID < Orb::Internal::Type::BaseModel
         # @!attribute country
         #
-        #   @return [Symbol, Orb::Models::CustomerUpdateByExternalIDParams::TaxID::Country]
-        required :country, enum: -> { Orb::Models::CustomerUpdateByExternalIDParams::TaxID::Country }
+        #   @return [Symbol, Orb::CustomerUpdateByExternalIDParams::TaxID::Country]
+        required :country, enum: -> { Orb::CustomerUpdateByExternalIDParams::TaxID::Country }
 
         # @!attribute type
         #
-        #   @return [Symbol, Orb::Models::CustomerUpdateByExternalIDParams::TaxID::Type]
-        required :type, enum: -> { Orb::Models::CustomerUpdateByExternalIDParams::TaxID::Type }
+        #   @return [Symbol, Orb::CustomerUpdateByExternalIDParams::TaxID::Type]
+        required :type, enum: -> { Orb::CustomerUpdateByExternalIDParams::TaxID::Type }
 
         # @!attribute value
         #
@@ -627,11 +615,11 @@ module Orb
         #   | Venezuela            | `ve_rif`     | Venezuelan RIF Number                                                                                   |
         #   | Vietnam              | `vn_tin`     | Vietnamese Tax ID Number                                                                                |
         #
-        #   @param country [Symbol, Orb::Models::CustomerUpdateByExternalIDParams::TaxID::Country]
-        #   @param type [Symbol, Orb::Models::CustomerUpdateByExternalIDParams::TaxID::Type]
+        #   @param country [Symbol, Orb::CustomerUpdateByExternalIDParams::TaxID::Country]
+        #   @param type [Symbol, Orb::CustomerUpdateByExternalIDParams::TaxID::Type]
         #   @param value [String]
 
-        # @see Orb::Models::CustomerUpdateByExternalIDParams::TaxID#country
+        # @see Orb::CustomerUpdateByExternalIDParams::TaxID#country
         module Country
           extend Orb::Internal::Type::Enum
 
@@ -718,7 +706,7 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::CustomerUpdateByExternalIDParams::TaxID#type
+        # @see Orb::CustomerUpdateByExternalIDParams::TaxID#type
         module Type
           extend Orb::Internal::Type::Enum
 

@@ -27,8 +27,8 @@ module Orb
 
       # @!attribute billing_address
       #
-      #   @return [Orb::Models::Customer::BillingAddress, nil]
-      required :billing_address, -> { Orb::Models::Customer::BillingAddress }, nil?: true
+      #   @return [Orb::Customer::BillingAddress, nil]
+      required :billing_address, -> { Orb::Customer::BillingAddress }, nil?: true
 
       # @!attribute created_at
       #
@@ -69,8 +69,8 @@ module Orb
       # @!attribute hierarchy
       #   The hierarchical relationships for this customer.
       #
-      #   @return [Orb::Models::Customer::Hierarchy]
-      required :hierarchy, -> { Orb::Models::Customer::Hierarchy }
+      #   @return [Orb::Customer::Hierarchy]
+      required :hierarchy, -> { Orb::Customer::Hierarchy }
 
       # @!attribute metadata
       #   User specified key-value pairs for the resource. If not present, this defaults
@@ -92,8 +92,8 @@ module Orb
       #   When not in test mode, the connection must first be configured in the Orb
       #   webapp.
       #
-      #   @return [Symbol, Orb::Models::Customer::PaymentProvider, nil]
-      required :payment_provider, enum: -> { Orb::Models::Customer::PaymentProvider }, nil?: true
+      #   @return [Symbol, Orb::Customer::PaymentProvider, nil]
+      required :payment_provider, enum: -> { Orb::Customer::PaymentProvider }, nil?: true
 
       # @!attribute payment_provider_id
       #   The ID of this customer in an external payments solution, such as Stripe. This
@@ -109,8 +109,8 @@ module Orb
 
       # @!attribute shipping_address
       #
-      #   @return [Orb::Models::Customer::ShippingAddress, nil]
-      required :shipping_address, -> { Orb::Models::Customer::ShippingAddress }, nil?: true
+      #   @return [Orb::Customer::ShippingAddress, nil]
+      required :shipping_address, -> { Orb::Customer::ShippingAddress }, nil?: true
 
       # @!attribute tax_id
       #   Tax IDs are commonly required to be displayed on customer invoices, which are
@@ -219,8 +219,8 @@ module Orb
       #   | Venezuela            | `ve_rif`     | Venezuelan RIF Number                                                                                   |
       #   | Vietnam              | `vn_tin`     | Vietnamese Tax ID Number                                                                                |
       #
-      #   @return [Orb::Models::Customer::TaxID, nil]
-      required :tax_id, -> { Orb::Models::Customer::TaxID }, nil?: true
+      #   @return [Orb::Customer::TaxID, nil]
+      required :tax_id, -> { Orb::Customer::TaxID }, nil?: true
 
       # @!attribute timezone
       #   A timezone identifier from the IANA timezone database, such as
@@ -232,19 +232,17 @@ module Orb
 
       # @!attribute accounting_sync_configuration
       #
-      #   @return [Orb::Models::Customer::AccountingSyncConfiguration, nil]
-      optional :accounting_sync_configuration,
-               -> { Orb::Models::Customer::AccountingSyncConfiguration },
-               nil?: true
+      #   @return [Orb::Customer::AccountingSyncConfiguration, nil]
+      optional :accounting_sync_configuration, -> { Orb::Customer::AccountingSyncConfiguration }, nil?: true
 
       # @!attribute reporting_configuration
       #
-      #   @return [Orb::Models::Customer::ReportingConfiguration, nil]
-      optional :reporting_configuration, -> { Orb::Models::Customer::ReportingConfiguration }, nil?: true
+      #   @return [Orb::Customer::ReportingConfiguration, nil]
+      optional :reporting_configuration, -> { Orb::Customer::ReportingConfiguration }, nil?: true
 
       # @!method initialize(id:, additional_emails:, auto_collection:, balance:, billing_address:, created_at:, currency:, email:, email_delivery:, exempt_from_automated_tax:, external_customer_id:, hierarchy:, metadata:, name:, payment_provider:, payment_provider_id:, portal_url:, shipping_address:, tax_id:, timezone:, accounting_sync_configuration: nil, reporting_configuration: nil)
-      #   Some parameter documentations has been truncated, see {Orb::Models::Customer}
-      #   for more details.
+      #   Some parameter documentations has been truncated, see {Orb::Customer} for more
+      #   details.
       #
       #   A customer is a buyer of your products, and the other party to the billing
       #   relationship.
@@ -273,50 +271,43 @@ module Orb
       #
       #   @param balance [String] The customer's current balance in their currency.
       #
-      #   @param billing_address [Orb::Models::Customer::BillingAddress, nil]
+      #   @param billing_address [Orb::Customer::BillingAddress, nil]
       #
       #   @param created_at [Time]
       #
       #   @param currency [String, nil]
       #
       #   @param email [String] A valid customer email, to be used for notifications. When Orb triggers payment
-      #   ...
       #
       #   @param email_delivery [Boolean]
       #
       #   @param exempt_from_automated_tax [Boolean, nil]
       #
       #   @param external_customer_id [String, nil] An optional user-defined ID for this customer resource, used throughout the syst
-      #   ...
       #
-      #   @param hierarchy [Orb::Models::Customer::Hierarchy] The hierarchical relationships for this customer.
+      #   @param hierarchy [Orb::Customer::Hierarchy] The hierarchical relationships for this customer.
       #
       #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
-      #   ...
       #
       #   @param name [String] The full name of the customer
       #
-      #   @param payment_provider [Symbol, Orb::Models::Customer::PaymentProvider, nil] This is used for creating charges or invoices in an external system via Orb. Whe
-      #   ...
+      #   @param payment_provider [Symbol, Orb::Customer::PaymentProvider, nil] This is used for creating charges or invoices in an external system via Orb. Whe
       #
       #   @param payment_provider_id [String, nil] The ID of this customer in an external payments solution, such as Stripe. This i
-      #   ...
       #
       #   @param portal_url [String, nil]
       #
-      #   @param shipping_address [Orb::Models::Customer::ShippingAddress, nil]
+      #   @param shipping_address [Orb::Customer::ShippingAddress, nil]
       #
-      #   @param tax_id [Orb::Models::Customer::TaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
-      #   ...
+      #   @param tax_id [Orb::Customer::TaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
       #
       #   @param timezone [String] A timezone identifier from the IANA timezone database, such as "America/Los_Ange
-      #   ...
       #
-      #   @param accounting_sync_configuration [Orb::Models::Customer::AccountingSyncConfiguration, nil]
+      #   @param accounting_sync_configuration [Orb::Customer::AccountingSyncConfiguration, nil]
       #
-      #   @param reporting_configuration [Orb::Models::Customer::ReportingConfiguration, nil]
+      #   @param reporting_configuration [Orb::Customer::ReportingConfiguration, nil]
 
-      # @see Orb::Models::Customer#billing_address
+      # @see Orb::Customer#billing_address
       class BillingAddress < Orb::Internal::Type::BaseModel
         # @!attribute city
         #
@@ -357,23 +348,23 @@ module Orb
         #   @param state [String, nil]
       end
 
-      # @see Orb::Models::Customer#hierarchy
+      # @see Orb::Customer#hierarchy
       class Hierarchy < Orb::Internal::Type::BaseModel
         # @!attribute children
         #
-        #   @return [Array<Orb::Models::Customer::Hierarchy::Child>]
-        required :children, -> { Orb::Internal::Type::ArrayOf[Orb::Models::Customer::Hierarchy::Child] }
+        #   @return [Array<Orb::Customer::Hierarchy::Child>]
+        required :children, -> { Orb::Internal::Type::ArrayOf[Orb::Customer::Hierarchy::Child] }
 
         # @!attribute parent
         #
-        #   @return [Orb::Models::Customer::Hierarchy::Parent, nil]
-        required :parent, -> { Orb::Models::Customer::Hierarchy::Parent }, nil?: true
+        #   @return [Orb::Customer::Hierarchy::Parent, nil]
+        required :parent, -> { Orb::Customer::Hierarchy::Parent }, nil?: true
 
         # @!method initialize(children:, parent:)
         #   The hierarchical relationships for this customer.
         #
-        #   @param children [Array<Orb::Models::Customer::Hierarchy::Child>]
-        #   @param parent [Orb::Models::Customer::Hierarchy::Parent, nil]
+        #   @param children [Array<Orb::Customer::Hierarchy::Child>]
+        #   @param parent [Orb::Customer::Hierarchy::Parent, nil]
 
         class Child < Orb::Internal::Type::BaseModel
           # @!attribute id
@@ -391,7 +382,7 @@ module Orb
           #   @param external_customer_id [String, nil]
         end
 
-        # @see Orb::Models::Customer::Hierarchy#parent
+        # @see Orb::Customer::Hierarchy#parent
         class Parent < Orb::Internal::Type::BaseModel
           # @!attribute id
           #
@@ -413,7 +404,7 @@ module Orb
       # When not in test mode, the connection must first be configured in the Orb
       # webapp.
       #
-      # @see Orb::Models::Customer#payment_provider
+      # @see Orb::Customer#payment_provider
       module PaymentProvider
         extend Orb::Internal::Type::Enum
 
@@ -427,7 +418,7 @@ module Orb
         #   @return [Array<Symbol>]
       end
 
-      # @see Orb::Models::Customer#shipping_address
+      # @see Orb::Customer#shipping_address
       class ShippingAddress < Orb::Internal::Type::BaseModel
         # @!attribute city
         #
@@ -468,17 +459,17 @@ module Orb
         #   @param state [String, nil]
       end
 
-      # @see Orb::Models::Customer#tax_id
+      # @see Orb::Customer#tax_id
       class TaxID < Orb::Internal::Type::BaseModel
         # @!attribute country
         #
-        #   @return [Symbol, Orb::Models::Customer::TaxID::Country]
-        required :country, enum: -> { Orb::Models::Customer::TaxID::Country }
+        #   @return [Symbol, Orb::Customer::TaxID::Country]
+        required :country, enum: -> { Orb::Customer::TaxID::Country }
 
         # @!attribute type
         #
-        #   @return [Symbol, Orb::Models::Customer::TaxID::Type]
-        required :type, enum: -> { Orb::Models::Customer::TaxID::Type }
+        #   @return [Symbol, Orb::Customer::TaxID::Type]
+        required :type, enum: -> { Orb::Customer::TaxID::Type }
 
         # @!attribute value
         #
@@ -592,11 +583,11 @@ module Orb
         #   | Venezuela            | `ve_rif`     | Venezuelan RIF Number                                                                                   |
         #   | Vietnam              | `vn_tin`     | Vietnamese Tax ID Number                                                                                |
         #
-        #   @param country [Symbol, Orb::Models::Customer::TaxID::Country]
-        #   @param type [Symbol, Orb::Models::Customer::TaxID::Type]
+        #   @param country [Symbol, Orb::Customer::TaxID::Country]
+        #   @param type [Symbol, Orb::Customer::TaxID::Type]
         #   @param value [String]
 
-        # @see Orb::Models::Customer::TaxID#country
+        # @see Orb::Customer::TaxID#country
         module Country
           extend Orb::Internal::Type::Enum
 
@@ -683,7 +674,7 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Customer::TaxID#type
+        # @see Orb::Customer::TaxID#type
         module Type
           extend Orb::Internal::Type::Enum
 
@@ -764,13 +755,15 @@ module Orb
         end
       end
 
-      # @see Orb::Models::Customer#accounting_sync_configuration
+      # @see Orb::Customer#accounting_sync_configuration
       class AccountingSyncConfiguration < Orb::Internal::Type::BaseModel
         # @!attribute accounting_providers
         #
-        #   @return [Array<Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider>]
+        #   @return [Array<Orb::Customer::AccountingSyncConfiguration::AccountingProvider>]
         required :accounting_providers,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider] }
+                 -> {
+                   Orb::Internal::Type::ArrayOf[Orb::Customer::AccountingSyncConfiguration::AccountingProvider]
+                 }
 
         # @!attribute excluded
         #
@@ -778,7 +771,7 @@ module Orb
         required :excluded, Orb::Internal::Type::Boolean
 
         # @!method initialize(accounting_providers:, excluded:)
-        #   @param accounting_providers [Array<Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider>]
+        #   @param accounting_providers [Array<Orb::Customer::AccountingSyncConfiguration::AccountingProvider>]
         #   @param excluded [Boolean]
 
         class AccountingProvider < Orb::Internal::Type::BaseModel
@@ -789,15 +782,15 @@ module Orb
 
           # @!attribute provider_type
           #
-          #   @return [Symbol, Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::ProviderType]
+          #   @return [Symbol, Orb::Customer::AccountingSyncConfiguration::AccountingProvider::ProviderType]
           required :provider_type,
-                   enum: -> { Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::ProviderType }
+                   enum: -> { Orb::Customer::AccountingSyncConfiguration::AccountingProvider::ProviderType }
 
           # @!method initialize(external_provider_id:, provider_type:)
           #   @param external_provider_id [String, nil]
-          #   @param provider_type [Symbol, Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::ProviderType]
+          #   @param provider_type [Symbol, Orb::Customer::AccountingSyncConfiguration::AccountingProvider::ProviderType]
 
-          # @see Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider#provider_type
+          # @see Orb::Customer::AccountingSyncConfiguration::AccountingProvider#provider_type
           module ProviderType
             extend Orb::Internal::Type::Enum
 
@@ -810,7 +803,7 @@ module Orb
         end
       end
 
-      # @see Orb::Models::Customer#reporting_configuration
+      # @see Orb::Customer#reporting_configuration
       class ReportingConfiguration < Orb::Internal::Type::BaseModel
         # @!attribute exempt
         #

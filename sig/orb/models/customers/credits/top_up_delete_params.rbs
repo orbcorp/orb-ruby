@@ -15,8 +15,6 @@ module Orb
             customer_id: String,
             ?request_options: Orb::request_opts
           ) -> void
-
-          def to_hash: -> Orb::Models::Customers::Credits::top_up_delete_params
         end
       end
     end

@@ -20,7 +20,6 @@ module Orb
       #   {Orb::Models::InvoiceUpdateParams} for more details.
       #
       #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
-      #   ...
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end

@@ -10,7 +10,7 @@ module Orb
             description: String?,
             effective_date: Time?,
             expiry_date: Time?,
-            invoice_settings: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings?,
+            invoice_settings: Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings?,
             metadata: ::Hash[Symbol, String?]?,
             per_unit_cost_basis: String?,
             target_expiry_date: Date,
@@ -35,7 +35,7 @@ module Orb
 
           attr_accessor expiry_date: Time?
 
-          attr_accessor invoice_settings: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings?
+          attr_accessor invoice_settings: Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings?
 
           attr_accessor metadata: ::Hash[Symbol, String?]?
 
@@ -56,14 +56,12 @@ module Orb
             ?currency: String?,
             ?description: String?,
             ?effective_date: Time?,
-            ?invoice_settings: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings?,
+            ?invoice_settings: Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings?,
             ?metadata: ::Hash[Symbol, String?]?,
             ?per_unit_cost_basis: String?,
             ?void_reason: Orb::Models::Customers::Credits::LedgerCreateEntryParams::void_reason?,
             ?request_options: Orb::request_opts
           ) -> void
-
-          def to_hash: -> Orb::Models::Customers::Credits::ledger_create_entry_params
 
           type entry_type = :amendment
 
@@ -100,8 +98,6 @@ module Orb
               ?memo: String?,
               ?require_successful_payment: bool
             ) -> void
-
-            def to_hash: -> Orb::Models::Customers::Credits::LedgerCreateEntryParams::invoice_settings
           end
 
           type void_reason = :refund

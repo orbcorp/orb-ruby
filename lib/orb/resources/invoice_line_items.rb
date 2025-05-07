@@ -18,7 +18,6 @@ module Orb
       # @param invoice_id [String] The id of the Invoice to add this line item.
       #
       # @param name [String] The item name associated with this line item. If an item with the same name exis
-      # ...
       #
       # @param quantity [Float] The number of units on the line item
       #
@@ -30,7 +29,7 @@ module Orb
       #
       # @see Orb::Models::InvoiceLineItemCreateParams
       def create(params)
-        parsed, options = Orb::Models::InvoiceLineItemCreateParams.dump_request(params)
+        parsed, options = Orb::InvoiceLineItemCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "invoice_line_items",

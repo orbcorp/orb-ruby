@@ -88,8 +88,8 @@ module Orb
       #   your account's timezone. See [Timezone localization](/essentials/timezones) for
       #   information on what this timezone parameter influences within Orb.
       #
-      #   @return [Orb::Models::Customer]
-      required :customer, -> { Orb::Models::Customer }
+      #   @return [Orb::Customer]
+      required :customer, -> { Orb::Customer }
 
       # @!attribute default_invoice_memo
       #   Determines the default memo on this subscriptions' invoices. Note that if this
@@ -168,8 +168,8 @@ module Orb
       #   subscription. You can see more about how to configure prices in the
       #   [Price resource](/reference/price).
       #
-      #   @return [Orb::Models::Plan]
-      required :plan, -> { Orb::Models::Plan }
+      #   @return [Orb::Plan]
+      required :plan, -> { Orb::Plan }
 
       # @!attribute price_intervals
       #   The price intervals for this subscription.
@@ -214,32 +214,24 @@ module Orb
       #   @param id [String]
       #
       #   @param active_plan_phase_order [Integer, nil] The current plan phase that is active, only if the subscription's plan has phase
-      #   ...
       #
       #   @param adjustment_intervals [Array<Orb::Models::SubscriptionCreateResponse::AdjustmentInterval>] The adjustment intervals for this subscription sorted by the start_date of the a
-      #   ...
       #
       #   @param auto_collection [Boolean, nil] Determines whether issued invoices for this subscription will automatically be c
-      #   ...
       #
       #   @param billing_cycle_anchor_configuration [Orb::Models::SubscriptionCreateResponse::BillingCycleAnchorConfiguration]
       #
       #   @param billing_cycle_day [Integer] The day of the month on which the billing cycle is anchored. If the maximum numb
-      #   ...
       #
       #   @param created_at [Time]
       #
       #   @param current_billing_period_end_date [Time, nil] The end of the current billing period. This is an exclusive timestamp, such that
-      #   ...
       #
       #   @param current_billing_period_start_date [Time, nil] The start date of the current billing period. This is an inclusive timestamp; th
-      #   ...
       #
-      #   @param customer [Orb::Models::Customer] A customer is a buyer of your products, and the other party to the billing relat
-      #   ...
+      #   @param customer [Orb::Customer] A customer is a buyer of your products, and the other party to the billing relat
       #
       #   @param default_invoice_memo [String, nil] Determines the default memo on this subscriptions' invoices. Note that if this i
-      #   ...
       #
       #   @param discount_intervals [Array<Orb::Models::SubscriptionCreateResponse::DiscountInterval::Amount, Orb::Models::SubscriptionCreateResponse::DiscountInterval::Percentage, Orb::Models::SubscriptionCreateResponse::DiscountInterval::Usage>] The discount intervals for this subscription sorted by the start_date.
       #
@@ -252,17 +244,14 @@ module Orb
       #   @param maximum_intervals [Array<Orb::Models::SubscriptionCreateResponse::MaximumInterval>] The maximum intervals for this subscription sorted by the start_date.
       #
       #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
-      #   ...
       #
       #   @param minimum_intervals [Array<Orb::Models::SubscriptionCreateResponse::MinimumInterval>] The minimum intervals for this subscription sorted by the start_date.
       #
       #   @param net_terms [Integer] Determines the difference between the invoice issue date for subscription invoic
-      #   ...
       #
       #   @param pending_subscription_change [Orb::Models::SubscriptionCreateResponse::PendingSubscriptionChange, nil] A pending subscription change if one exists on this subscription.
       #
-      #   @param plan [Orb::Models::Plan] The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be
-      #   ...
+      #   @param plan [Orb::Plan] The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be
       #
       #   @param price_intervals [Array<Orb::Models::SubscriptionCreateResponse::PriceInterval>] The price intervals for this subscription.
       #
@@ -275,7 +264,6 @@ module Orb
       #   @param trial_info [Orb::Models::SubscriptionCreateResponse::TrialInfo]
       #
       #   @param changed_resources [Orb::Models::SubscriptionCreateResponse::ChangedResources, nil] The resources that were changed as part of this operation. Only present when fet
-      #   ...
 
       class AdjustmentInterval < Orb::Internal::Type::BaseModel
         # @!attribute id
@@ -390,14 +378,12 @@ module Orb
             #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
             #
             #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
-            #   ...
             #
             #   @param plan_phase_order [Integer, nil] The plan phase in which this adjustment is active.
             #
             #   @param reason [String, nil] The reason for the adjustment.
             #
             #   @param usage_discount [Float] The number of usage units by which to discount the price this adjustment applies
-            #   ...
             #
             #   @param adjustment_type [Symbol, :usage_discount]
           end
@@ -453,12 +439,10 @@ module Orb
             #   @param id [String]
             #
             #   @param amount_discount [String] The amount by which to discount the prices this adjustment applies to in a given
-            #   ...
             #
             #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
             #
             #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
-            #   ...
             #
             #   @param plan_phase_order [Integer, nil] The plan phase in which this adjustment is active.
             #
@@ -520,10 +504,8 @@ module Orb
             #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
             #
             #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
-            #   ...
             #
             #   @param percentage_discount [Float] The percentage (as a value between 0 and 1) by which to discount the price inter
-            #   ...
             #
             #   @param plan_phase_order [Integer, nil] The plan phase in which this adjustment is active.
             #
@@ -591,12 +573,10 @@ module Orb
             #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
             #
             #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
-            #   ...
             #
             #   @param item_id [String] The item ID that revenue from this minimum will be attributed to.
             #
             #   @param minimum_amount [String] The minimum amount to charge in a given billing period for the prices this adjus
-            #   ...
             #
             #   @param plan_phase_order [Integer, nil] The plan phase in which this adjustment is active.
             #
@@ -658,10 +638,8 @@ module Orb
             #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
             #
             #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
-            #   ...
             #
             #   @param maximum_amount [String] The maximum amount to charge in a given billing period for the prices this adjus
-            #   ...
             #
             #   @param plan_phase_order [Integer, nil] The plan phase in which this adjustment is active.
             #
@@ -707,13 +685,10 @@ module Orb
         #   more details.
         #
         #   @param day [Integer] The day of the month on which the billing cycle is anchored. If the maximum numb
-        #   ...
         #
         #   @param month [Integer, nil] The month on which the billing cycle is anchored (e.g. a quarterly price anchore
-        #   ...
         #
         #   @param year [Integer, nil] The year on which the billing cycle is anchored (e.g. a 2 year billing cycle anc
-        #   ...
       end
 
       module DiscountInterval
@@ -826,7 +801,6 @@ module Orb
           #   @param end_date [Time, nil] The end date of the discount interval.
           #
           #   @param percentage_discount [Float] Only available if discount_type is `percentage`.This is a number between 0 and 1
-          #   ...
           #
           #   @param start_date [Time] The start date of the discount interval.
           #
@@ -884,7 +858,6 @@ module Orb
           #   @param start_date [Time] The start date of the discount interval.
           #
           #   @param usage_discount [Float] Only available if discount_type is `usage`. Number of usage units that this disc
-          #   ...
           #
           #   @param discount_type [Symbol, :usage]
         end
@@ -964,7 +937,6 @@ module Orb
         #   @param end_date [Time, nil] The end date of the maximum interval.
         #
         #   @param maximum_amount [String] The maximum amount to charge in a given billing period for the price intervals t
-        #   ...
         #
         #   @param start_date [Time] The start date of the maximum interval.
       end
@@ -1012,7 +984,6 @@ module Orb
         #   @param end_date [Time, nil] The end date of the minimum interval.
         #
         #   @param minimum_amount [String] The minimum amount to charge in a given billing period for the price intervals t
-        #   ...
         #
         #   @param start_date [Time] The start date of the minimum interval.
       end
@@ -1092,8 +1063,8 @@ module Orb
         #   For more on the types of prices, see
         #   [the core concepts documentation](/core-concepts#plan-and-price)
         #
-        #   @return [Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBps, Orb::Models::Price::Bps, Orb::Models::Price::BulkBps, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk]
-        required :price, union: -> { Orb::Models::Price }
+        #   @return [Orb::Price::Unit, Orb::Price::Package, Orb::Price::Matrix, Orb::Price::Tiered, Orb::Price::TieredBps, Orb::Price::Bps, Orb::Price::BulkBps, Orb::Price::Bulk, Orb::Price::ThresholdTotalAmount, Orb::Price::TieredPackage, Orb::Price::GroupedTiered, Orb::Price::TieredWithMinimum, Orb::Price::TieredPackageWithMinimum, Orb::Price::PackageWithAllocation, Orb::Price::UnitWithPercent, Orb::Price::MatrixWithAllocation, Orb::Price::TieredWithProration, Orb::Price::UnitWithProration, Orb::Price::GroupedAllocation, Orb::Price::GroupedWithProratedMinimum, Orb::Price::GroupedWithMeteredMinimum, Orb::Price::MatrixWithDisplayName, Orb::Price::BulkWithProration, Orb::Price::GroupedTieredPackage, Orb::Price::MaxGroupTieredPackage, Orb::Price::ScalableMatrixWithUnitPricing, Orb::Price::ScalableMatrixWithTieredPricing, Orb::Price::CumulativeGroupedBulk]
+        required :price, union: -> { Orb::Price }
 
         # @!attribute start_date
         #   The start date of the price interval. This is the date that Orb starts billing
@@ -1122,27 +1093,20 @@ module Orb
         #   @param billing_cycle_day [Integer] The day of the month that Orb bills for this price
         #
         #   @param current_billing_period_end_date [Time, nil] The end of the current billing period. This is an exclusive timestamp, such that
-        #   ...
         #
         #   @param current_billing_period_start_date [Time, nil] The start date of the current billing period. This is an inclusive timestamp; th
-        #   ...
         #
         #   @param end_date [Time, nil] The end date of the price interval. This is the date that Orb stops billing for
-        #   ...
         #
         #   @param filter [String, nil] An additional filter to apply to usage queries.
         #
         #   @param fixed_fee_quantity_transitions [Array<Orb::Models::SubscriptionCreateResponse::PriceInterval::FixedFeeQuantityTransition>, nil] The fixed fee quantity transitions for this price interval. This is only relevan
-        #   ...
         #
-        #   @param price [Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBps, Orb::Models::Price::Bps, Orb::Models::Price::BulkBps, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk] The Price resource represents a price that can be billed on a subscription, resu
-        #   ...
+        #   @param price [Orb::Price::Unit, Orb::Price::Package, Orb::Price::Matrix, Orb::Price::Tiered, Orb::Price::TieredBps, Orb::Price::Bps, Orb::Price::BulkBps, Orb::Price::Bulk, Orb::Price::ThresholdTotalAmount, Orb::Price::TieredPackage, Orb::Price::GroupedTiered, Orb::Price::TieredWithMinimum, Orb::Price::TieredPackageWithMinimum, Orb::Price::PackageWithAllocation, Orb::Price::UnitWithPercent, Orb::Price::MatrixWithAllocation, Orb::Price::TieredWithProration, Orb::Price::UnitWithProration, Orb::Price::GroupedAllocation, Orb::Price::GroupedWithProratedMinimum, Orb::Price::GroupedWithMeteredMinimum, Orb::Price::MatrixWithDisplayName, Orb::Price::BulkWithProration, Orb::Price::GroupedTieredPackage, Orb::Price::MaxGroupTieredPackage, Orb::Price::ScalableMatrixWithUnitPricing, Orb::Price::ScalableMatrixWithTieredPricing, Orb::Price::CumulativeGroupedBulk] The Price resource represents a price that can be billed on a subscription, resu
         #
         #   @param start_date [Time] The start date of the price interval. This is the date that Orb starts billing f
-        #   ...
         #
         #   @param usage_customer_ids [Array<String>, nil] A list of customer IDs whose usage events will be aggregated and billed under th
-        #   ...
 
         class FixedFeeQuantityTransition < Orb::Internal::Type::BaseModel
           # @!attribute effective_date
@@ -1218,39 +1182,39 @@ module Orb
         # @!attribute created_credit_notes
         #   The credit notes that were created as part of this operation.
         #
-        #   @return [Array<Orb::Models::CreditNote>]
-        required :created_credit_notes, -> { Orb::Internal::Type::ArrayOf[Orb::Models::CreditNote] }
+        #   @return [Array<Orb::CreditNote>]
+        required :created_credit_notes, -> { Orb::Internal::Type::ArrayOf[Orb::CreditNote] }
 
         # @!attribute created_invoices
         #   The invoices that were created as part of this operation.
         #
-        #   @return [Array<Orb::Models::Invoice>]
-        required :created_invoices, -> { Orb::Internal::Type::ArrayOf[Orb::Models::Invoice] }
+        #   @return [Array<Orb::Invoice>]
+        required :created_invoices, -> { Orb::Internal::Type::ArrayOf[Orb::Invoice] }
 
         # @!attribute voided_credit_notes
         #   The credit notes that were voided as part of this operation.
         #
-        #   @return [Array<Orb::Models::CreditNote>]
-        required :voided_credit_notes, -> { Orb::Internal::Type::ArrayOf[Orb::Models::CreditNote] }
+        #   @return [Array<Orb::CreditNote>]
+        required :voided_credit_notes, -> { Orb::Internal::Type::ArrayOf[Orb::CreditNote] }
 
         # @!attribute voided_invoices
         #   The invoices that were voided as part of this operation.
         #
-        #   @return [Array<Orb::Models::Invoice>]
-        required :voided_invoices, -> { Orb::Internal::Type::ArrayOf[Orb::Models::Invoice] }
+        #   @return [Array<Orb::Invoice>]
+        required :voided_invoices, -> { Orb::Internal::Type::ArrayOf[Orb::Invoice] }
 
         # @!method initialize(created_credit_notes:, created_invoices:, voided_credit_notes:, voided_invoices:)
         #   The resources that were changed as part of this operation. Only present when
         #   fetched through the subscription changes API or if the
         #   `include_changed_resources` parameter was passed in the request.
         #
-        #   @param created_credit_notes [Array<Orb::Models::CreditNote>] The credit notes that were created as part of this operation.
+        #   @param created_credit_notes [Array<Orb::CreditNote>] The credit notes that were created as part of this operation.
         #
-        #   @param created_invoices [Array<Orb::Models::Invoice>] The invoices that were created as part of this operation.
+        #   @param created_invoices [Array<Orb::Invoice>] The invoices that were created as part of this operation.
         #
-        #   @param voided_credit_notes [Array<Orb::Models::CreditNote>] The credit notes that were voided as part of this operation.
+        #   @param voided_credit_notes [Array<Orb::CreditNote>] The credit notes that were voided as part of this operation.
         #
-        #   @param voided_invoices [Array<Orb::Models::Invoice>] The invoices that were voided as part of this operation.
+        #   @param voided_invoices [Array<Orb::Invoice>] The invoices that were voided as part of this operation.
       end
     end
   end

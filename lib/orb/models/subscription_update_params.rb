@@ -52,19 +52,14 @@ module Orb
       #   {Orb::Models::SubscriptionUpdateParams} for more details.
       #
       #   @param auto_collection [Boolean, nil] Determines whether issued invoices for this subscription will automatically be c
-      #   ...
       #
       #   @param default_invoice_memo [String, nil] Determines the default memo on this subscription's invoices. Note that if this i
-      #   ...
       #
       #   @param invoicing_threshold [String, nil] When this subscription's accrued usage reaches this threshold, an invoice will b
-      #   ...
       #
       #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
-      #   ...
       #
       #   @param net_terms [Integer, nil] Determines the difference between the invoice issue date for subscription invoic
-      #   ...
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end

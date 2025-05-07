@@ -15,8 +15,8 @@ module Orb
 
         # @!attribute type
         #
-        #   @return [Symbol, Orb::Models::Customers::BalanceTransactionCreateParams::Type]
-        required :type, enum: -> { Orb::Models::Customers::BalanceTransactionCreateParams::Type }
+        #   @return [Symbol, Orb::Customers::BalanceTransactionCreateParams::Type]
+        required :type, enum: -> { Orb::Customers::BalanceTransactionCreateParams::Type }
 
         # @!attribute description
         #   An optional description that can be specified around this entry.
@@ -27,7 +27,7 @@ module Orb
         # @!method initialize(amount:, type:, description: nil, request_options: {})
         #   @param amount [String]
         #
-        #   @param type [Symbol, Orb::Models::Customers::BalanceTransactionCreateParams::Type]
+        #   @param type [Symbol, Orb::Customers::BalanceTransactionCreateParams::Type]
         #
         #   @param description [String, nil] An optional description that can be specified around this entry.
         #

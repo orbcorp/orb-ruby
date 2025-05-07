@@ -3,6 +3,8 @@
 module Orb
   module Models
     class Coupon < Orb::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
       # Also referred to as coupon_id in this documentation.
       sig { returns(String) }
       attr_accessor :id
@@ -12,7 +14,7 @@ module Orb
       sig { returns(T.nilable(Time)) }
       attr_accessor :archived_at
 
-      sig { returns(T.any(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount)) }
+      sig { returns(T.any(Orb::PercentageDiscount, Orb::AmountDiscount)) }
       attr_accessor :discount
 
       # This allows for a coupon's discount to apply for a limited time (determined in
@@ -42,13 +44,13 @@ module Orb
         params(
           id: String,
           archived_at: T.nilable(Time),
-          discount: T.any(Orb::Models::PercentageDiscount, Orb::Internal::AnyHash, Orb::Models::AmountDiscount),
+          discount:
+            T.any(Orb::PercentageDiscount::OrHash, Orb::AmountDiscount::OrHash),
           duration_in_months: T.nilable(Integer),
           max_redemptions: T.nilable(Integer),
           redemption_code: String,
           times_redeemed: Integer
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Also referred to as coupon_id in this documentation.
@@ -67,28 +69,34 @@ module Orb
         redemption_code:,
         # The number of times this coupon has been redeemed.
         times_redeemed:
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              archived_at: T.nilable(Time),
-              discount: T.any(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount),
-              duration_in_months: T.nilable(Integer),
-              max_redemptions: T.nilable(Integer),
-              redemption_code: String,
-              times_redeemed: Integer
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            archived_at: T.nilable(Time),
+            discount: T.any(Orb::PercentageDiscount, Orb::AmountDiscount),
+            duration_in_months: T.nilable(Integer),
+            max_redemptions: T.nilable(Integer),
+            redemption_code: String,
+            times_redeemed: Integer
+          }
+        )
+      end
+      def to_hash
+      end
 
       module Discount
         extend Orb::Internal::Type::Union
 
-        sig { override.returns([Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount]) }
-        def self.variants; end
+        Variants =
+          T.type_alias { T.any(Orb::PercentageDiscount, Orb::AmountDiscount) }
+
+        sig { override.returns(T::Array[Orb::Coupon::Discount::Variants]) }
+        def self.variants
+        end
       end
     end
   end

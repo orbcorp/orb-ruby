@@ -6,6 +6,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
       # Cursor for pagination. This can be populated by the `next_cursor` value returned
       # from the initial request.
       sig { returns(T.nilable(String)) }
@@ -38,9 +40,8 @@ module Orb
           start_date_gte: T.nilable(Time),
           start_date_lt: T.nilable(Time),
           start_date_lte: T.nilable(Time),
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Cursor for pagination. This can be populated by the `next_cursor` value returned
@@ -53,22 +54,24 @@ module Orb
         start_date_lt: nil,
         start_date_lte: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              cursor: T.nilable(String),
-              limit: Integer,
-              start_date_gt: T.nilable(Time),
-              start_date_gte: T.nilable(Time),
-              start_date_lt: T.nilable(Time),
-              start_date_lte: T.nilable(Time),
-              request_options: Orb::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            cursor: T.nilable(String),
+            limit: Integer,
+            start_date_gt: T.nilable(Time),
+            start_date_gte: T.nilable(Time),
+            start_date_lt: T.nilable(Time),
+            start_date_lte: T.nilable(Time),
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

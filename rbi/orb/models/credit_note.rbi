@@ -3,6 +3,8 @@
 module Orb
   module Models
     class CreditNote < Orb::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
       # The Orb id of this credit note.
       sig { returns(String) }
       attr_accessor :id
@@ -19,10 +21,10 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :credit_note_pdf
 
-      sig { returns(Orb::Models::CreditNote::Customer) }
+      sig { returns(Orb::CreditNote::Customer) }
       attr_reader :customer
 
-      sig { params(customer: T.any(Orb::Models::CreditNote::Customer, Orb::Internal::AnyHash)).void }
+      sig { params(customer: Orb::CreditNote::Customer::OrHash).void }
       attr_writer :customer
 
       # The id of the invoice resource that this credit note is applied to.
@@ -30,18 +32,18 @@ module Orb
       attr_accessor :invoice_id
 
       # All of the line items associated with this credit note.
-      sig { returns(T::Array[Orb::Models::CreditNote::LineItem]) }
+      sig { returns(T::Array[Orb::CreditNote::LineItem]) }
       attr_accessor :line_items
 
       # The maximum amount applied on the original invoice
-      sig { returns(T.nilable(Orb::Models::CreditNote::MaximumAmountAdjustment)) }
+      sig { returns(T.nilable(Orb::CreditNote::MaximumAmountAdjustment)) }
       attr_reader :maximum_amount_adjustment
 
       sig do
         params(
-          maximum_amount_adjustment: T.nilable(T.any(Orb::Models::CreditNote::MaximumAmountAdjustment, Orb::Internal::AnyHash))
-        )
-          .void
+          maximum_amount_adjustment:
+            T.nilable(Orb::CreditNote::MaximumAmountAdjustment::OrHash)
+        ).void
       end
       attr_writer :maximum_amount_adjustment
 
@@ -53,7 +55,7 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :minimum_amount_refunded
 
-      sig { returns(T.nilable(Orb::Models::CreditNote::Reason::TaggedSymbol)) }
+      sig { returns(T.nilable(Orb::CreditNote::Reason::TaggedSymbol)) }
       attr_accessor :reason
 
       # The total prior to any creditable invoice-level discounts or minimums.
@@ -64,7 +66,7 @@ module Orb
       sig { returns(String) }
       attr_accessor :total
 
-      sig { returns(Orb::Models::CreditNote::Type::TaggedSymbol) }
+      sig { returns(Orb::CreditNote::Type::TaggedSymbol) }
       attr_accessor :type
 
       # The time at which the credit note was voided in Orb, if applicable.
@@ -72,10 +74,12 @@ module Orb
       attr_accessor :voided_at
 
       # Any discounts applied on the original invoice.
-      sig { returns(T.nilable(T::Array[Orb::Models::CreditNote::Discount])) }
+      sig { returns(T.nilable(T::Array[Orb::CreditNote::Discount])) }
       attr_reader :discounts
 
-      sig { params(discounts: T::Array[T.any(Orb::Models::CreditNote::Discount, Orb::Internal::AnyHash)]).void }
+      sig do
+        params(discounts: T::Array[Orb::CreditNote::Discount::OrHash]).void
+      end
       attr_writer :discounts
 
       # The [Credit Note](/invoicing/credit-notes) resource represents a credit that has
@@ -86,20 +90,20 @@ module Orb
           created_at: Time,
           credit_note_number: String,
           credit_note_pdf: T.nilable(String),
-          customer: T.any(Orb::Models::CreditNote::Customer, Orb::Internal::AnyHash),
+          customer: Orb::CreditNote::Customer::OrHash,
           invoice_id: String,
-          line_items: T::Array[T.any(Orb::Models::CreditNote::LineItem, Orb::Internal::AnyHash)],
-          maximum_amount_adjustment: T.nilable(T.any(Orb::Models::CreditNote::MaximumAmountAdjustment, Orb::Internal::AnyHash)),
+          line_items: T::Array[Orb::CreditNote::LineItem::OrHash],
+          maximum_amount_adjustment:
+            T.nilable(Orb::CreditNote::MaximumAmountAdjustment::OrHash),
           memo: T.nilable(String),
           minimum_amount_refunded: T.nilable(String),
-          reason: T.nilable(Orb::Models::CreditNote::Reason::OrSymbol),
+          reason: T.nilable(Orb::CreditNote::Reason::OrSymbol),
           subtotal: String,
           total: String,
-          type: Orb::Models::CreditNote::Type::OrSymbol,
+          type: Orb::CreditNote::Type::OrSymbol,
           voided_at: T.nilable(Time),
-          discounts: T::Array[T.any(Orb::Models::CreditNote::Discount, Orb::Internal::AnyHash)]
-        )
-          .returns(T.attached_class)
+          discounts: T::Array[Orb::CreditNote::Discount::OrHash]
+        ).returns(T.attached_class)
       end
       def self.new(
         # The Orb id of this credit note.
@@ -131,47 +135,64 @@ module Orb
         voided_at:,
         # Any discounts applied on the original invoice.
         discounts: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              created_at: Time,
-              credit_note_number: String,
-              credit_note_pdf: T.nilable(String),
-              customer: Orb::Models::CreditNote::Customer,
-              invoice_id: String,
-              line_items: T::Array[Orb::Models::CreditNote::LineItem],
-              maximum_amount_adjustment: T.nilable(Orb::Models::CreditNote::MaximumAmountAdjustment),
-              memo: T.nilable(String),
-              minimum_amount_refunded: T.nilable(String),
-              reason: T.nilable(Orb::Models::CreditNote::Reason::TaggedSymbol),
-              subtotal: String,
-              total: String,
-              type: Orb::Models::CreditNote::Type::TaggedSymbol,
-              voided_at: T.nilable(Time),
-              discounts: T::Array[Orb::Models::CreditNote::Discount]
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            created_at: Time,
+            credit_note_number: String,
+            credit_note_pdf: T.nilable(String),
+            customer: Orb::CreditNote::Customer,
+            invoice_id: String,
+            line_items: T::Array[Orb::CreditNote::LineItem],
+            maximum_amount_adjustment:
+              T.nilable(Orb::CreditNote::MaximumAmountAdjustment),
+            memo: T.nilable(String),
+            minimum_amount_refunded: T.nilable(String),
+            reason: T.nilable(Orb::CreditNote::Reason::TaggedSymbol),
+            subtotal: String,
+            total: String,
+            type: Orb::CreditNote::Type::TaggedSymbol,
+            voided_at: T.nilable(Time),
+            discounts: T::Array[Orb::CreditNote::Discount]
+          }
+        )
+      end
+      def to_hash
+      end
 
       class Customer < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
         sig { returns(T.nilable(String)) }
         attr_accessor :external_customer_id
 
-        sig { params(id: String, external_customer_id: T.nilable(String)).returns(T.attached_class) }
-        def self.new(id:, external_customer_id:); end
+        sig do
+          params(id: String, external_customer_id: T.nilable(String)).returns(
+            T.attached_class
+          )
+        end
+        def self.new(id:, external_customer_id:)
+        end
 
-        sig { override.returns({id: String, external_customer_id: T.nilable(String)}) }
-        def to_hash; end
+        sig do
+          override.returns(
+            { id: String, external_customer_id: T.nilable(String) }
+          )
+        end
+        def to_hash
+        end
       end
 
       class LineItem < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         # The Orb id of this resource.
         sig { returns(String) }
         attr_accessor :id
@@ -197,16 +218,19 @@ module Orb
         attr_accessor :subtotal
 
         # Any tax amounts applied onto the line item.
-        sig { returns(T::Array[Orb::Models::CreditNote::LineItem::TaxAmount]) }
+        sig { returns(T::Array[Orb::CreditNote::LineItem::TaxAmount]) }
         attr_accessor :tax_amounts
 
         # Any line item discounts from the invoice's line item.
-        sig { returns(T.nilable(T::Array[Orb::Models::CreditNote::LineItem::Discount])) }
+        sig do
+          returns(T.nilable(T::Array[Orb::CreditNote::LineItem::Discount]))
+        end
         attr_reader :discounts
 
         sig do
-          params(discounts: T::Array[T.any(Orb::Models::CreditNote::LineItem::Discount, Orb::Internal::AnyHash)])
-            .void
+          params(
+            discounts: T::Array[Orb::CreditNote::LineItem::Discount::OrHash]
+          ).void
         end
         attr_writer :discounts
 
@@ -218,10 +242,9 @@ module Orb
             name: String,
             quantity: T.nilable(Float),
             subtotal: String,
-            tax_amounts: T::Array[T.any(Orb::Models::CreditNote::LineItem::TaxAmount, Orb::Internal::AnyHash)],
-            discounts: T::Array[T.any(Orb::Models::CreditNote::LineItem::Discount, Orb::Internal::AnyHash)]
-          )
-            .returns(T.attached_class)
+            tax_amounts: T::Array[Orb::CreditNote::LineItem::TaxAmount::OrHash],
+            discounts: T::Array[Orb::CreditNote::LineItem::Discount::OrHash]
+          ).returns(T.attached_class)
         end
         def self.new(
           # The Orb id of this resource.
@@ -240,25 +263,29 @@ module Orb
           tax_amounts:,
           # Any line item discounts from the invoice's line item.
           discounts: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                id: String,
-                amount: String,
-                item_id: String,
-                name: String,
-                quantity: T.nilable(Float),
-                subtotal: String,
-                tax_amounts: T::Array[Orb::Models::CreditNote::LineItem::TaxAmount],
-                discounts: T::Array[Orb::Models::CreditNote::LineItem::Discount]
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              id: String,
+              amount: String,
+              item_id: String,
+              name: String,
+              quantity: T.nilable(Float),
+              subtotal: String,
+              tax_amounts: T::Array[Orb::CreditNote::LineItem::TaxAmount],
+              discounts: T::Array[Orb::CreditNote::LineItem::Discount]
+            }
+          )
+        end
+        def to_hash
+        end
 
         class TaxAmount < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # The amount of additional tax incurred by this tax rate.
           sig { returns(String) }
           attr_accessor :amount
@@ -272,8 +299,11 @@ module Orb
           attr_accessor :tax_rate_percentage
 
           sig do
-            params(amount: String, tax_rate_description: String, tax_rate_percentage: T.nilable(String))
-              .returns(T.attached_class)
+            params(
+              amount: String,
+              tax_rate_description: String,
+              tax_rate_percentage: T.nilable(String)
+            ).returns(T.attached_class)
           end
           def self.new(
             # The amount of additional tax incurred by this tax rate.
@@ -282,7 +312,9 @@ module Orb
             tax_rate_description:,
             # The tax rate percentage, out of 100.
             tax_rate_percentage:
-          ); end
+          )
+          end
+
           sig do
             override.returns(
               {
@@ -292,10 +324,13 @@ module Orb
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
         end
 
         class Discount < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -305,7 +340,11 @@ module Orb
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
-          sig { returns(Orb::Models::CreditNote::LineItem::Discount::DiscountType::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::CreditNote::LineItem::Discount::DiscountType::TaggedSymbol
+            )
+          end
           attr_accessor :discount_type
 
           sig { returns(Float) }
@@ -322,12 +361,12 @@ module Orb
               id: String,
               amount_applied: String,
               applies_to_price_ids: T::Array[String],
-              discount_type: Orb::Models::CreditNote::LineItem::Discount::DiscountType::OrSymbol,
+              discount_type:
+                Orb::CreditNote::LineItem::Discount::DiscountType::OrSymbol,
               percentage_discount: Float,
               amount_discount: T.nilable(String),
               reason: T.nilable(String)
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             id:,
@@ -337,49 +376,82 @@ module Orb
             percentage_discount:,
             amount_discount: nil,
             reason: nil
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  id: String,
-                  amount_applied: String,
-                  applies_to_price_ids: T::Array[String],
-                  discount_type: Orb::Models::CreditNote::LineItem::Discount::DiscountType::TaggedSymbol,
-                  percentage_discount: Float,
-                  amount_discount: T.nilable(String),
-                  reason: T.nilable(String)
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                id: String,
+                amount_applied: String,
+                applies_to_price_ids: T::Array[String],
+                discount_type:
+                  Orb::CreditNote::LineItem::Discount::DiscountType::TaggedSymbol,
+                percentage_discount: Float,
+                amount_discount: T.nilable(String),
+                reason: T.nilable(String)
+              }
+            )
+          end
+          def to_hash
+          end
 
           module DiscountType
             extend Orb::Internal::Type::Enum
 
-            TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::CreditNote::LineItem::Discount::DiscountType) }
+            TaggedSymbol =
+              T.type_alias do
+                T.all(Symbol, Orb::CreditNote::LineItem::Discount::DiscountType)
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            PERCENTAGE = T.let(:percentage, Orb::Models::CreditNote::LineItem::Discount::DiscountType::TaggedSymbol)
-            AMOUNT = T.let(:amount, Orb::Models::CreditNote::LineItem::Discount::DiscountType::TaggedSymbol)
+            PERCENTAGE =
+              T.let(
+                :percentage,
+                Orb::CreditNote::LineItem::Discount::DiscountType::TaggedSymbol
+              )
+            AMOUNT =
+              T.let(
+                :amount,
+                Orb::CreditNote::LineItem::Discount::DiscountType::TaggedSymbol
+              )
 
-            sig { override.returns(T::Array[Orb::Models::CreditNote::LineItem::Discount::DiscountType::TaggedSymbol]) }
-            def self.values; end
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::CreditNote::LineItem::Discount::DiscountType::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
       end
 
       class MaximumAmountAdjustment < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :amount_applied
 
-        sig { returns(Orb::Models::CreditNote::MaximumAmountAdjustment::DiscountType::TaggedSymbol) }
+        sig do
+          returns(
+            Orb::CreditNote::MaximumAmountAdjustment::DiscountType::TaggedSymbol
+          )
+        end
         attr_accessor :discount_type
 
         sig { returns(Float) }
         attr_accessor :percentage_discount
 
-        sig { returns(T.nilable(T::Array[Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice])) }
+        sig do
+          returns(
+            T.nilable(
+              T::Array[Orb::CreditNote::MaximumAmountAdjustment::AppliesToPrice]
+            )
+          )
+        end
         attr_accessor :applies_to_prices
 
         sig { returns(T.nilable(String)) }
@@ -389,14 +461,17 @@ module Orb
         sig do
           params(
             amount_applied: String,
-            discount_type: Orb::Models::CreditNote::MaximumAmountAdjustment::DiscountType::OrSymbol,
+            discount_type:
+              Orb::CreditNote::MaximumAmountAdjustment::DiscountType::OrSymbol,
             percentage_discount: Float,
-            applies_to_prices: T.nilable(
-              T::Array[T.any(Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice, Orb::Internal::AnyHash)]
-            ),
+            applies_to_prices:
+              T.nilable(
+                T::Array[
+                  Orb::CreditNote::MaximumAmountAdjustment::AppliesToPrice::OrHash
+                ]
+              ),
             reason: T.nilable(String)
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           amount_applied:,
@@ -408,34 +483,57 @@ module Orb
         end
 
         sig do
-          override
-            .returns(
-              {
-                amount_applied: String,
-                discount_type: Orb::Models::CreditNote::MaximumAmountAdjustment::DiscountType::TaggedSymbol,
-                percentage_discount: Float,
-                applies_to_prices: T.nilable(T::Array[Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice]),
-                reason: T.nilable(String)
-              }
-            )
+          override.returns(
+            {
+              amount_applied: String,
+              discount_type:
+                Orb::CreditNote::MaximumAmountAdjustment::DiscountType::TaggedSymbol,
+              percentage_discount: Float,
+              applies_to_prices:
+                T.nilable(
+                  T::Array[
+                    Orb::CreditNote::MaximumAmountAdjustment::AppliesToPrice
+                  ]
+                ),
+              reason: T.nilable(String)
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         module DiscountType
           extend Orb::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Orb::Models::CreditNote::MaximumAmountAdjustment::DiscountType) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Orb::CreditNote::MaximumAmountAdjustment::DiscountType
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           PERCENTAGE =
-            T.let(:percentage, Orb::Models::CreditNote::MaximumAmountAdjustment::DiscountType::TaggedSymbol)
+            T.let(
+              :percentage,
+              Orb::CreditNote::MaximumAmountAdjustment::DiscountType::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::CreditNote::MaximumAmountAdjustment::DiscountType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Orb::CreditNote::MaximumAmountAdjustment::DiscountType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class AppliesToPrice < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -443,52 +541,69 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
       end
 
       module Reason
         extend Orb::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::CreditNote::Reason) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Orb::CreditNote::Reason) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        DUPLICATE = T.let(:Duplicate, Orb::Models::CreditNote::Reason::TaggedSymbol)
-        FRAUDULENT = T.let(:Fraudulent, Orb::Models::CreditNote::Reason::TaggedSymbol)
-        ORDER_CHANGE = T.let(:"Order change", Orb::Models::CreditNote::Reason::TaggedSymbol)
-        PRODUCT_UNSATISFACTORY = T.let(:"Product unsatisfactory", Orb::Models::CreditNote::Reason::TaggedSymbol)
+        DUPLICATE = T.let(:Duplicate, Orb::CreditNote::Reason::TaggedSymbol)
+        FRAUDULENT = T.let(:Fraudulent, Orb::CreditNote::Reason::TaggedSymbol)
+        ORDER_CHANGE =
+          T.let(:"Order change", Orb::CreditNote::Reason::TaggedSymbol)
+        PRODUCT_UNSATISFACTORY =
+          T.let(
+            :"Product unsatisfactory",
+            Orb::CreditNote::Reason::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Orb::Models::CreditNote::Reason::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(T::Array[Orb::CreditNote::Reason::TaggedSymbol])
+        end
+        def self.values
+        end
       end
 
       module Type
         extend Orb::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::CreditNote::Type) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Orb::CreditNote::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        REFUND = T.let(:refund, Orb::Models::CreditNote::Type::TaggedSymbol)
-        ADJUSTMENT = T.let(:adjustment, Orb::Models::CreditNote::Type::TaggedSymbol)
+        REFUND = T.let(:refund, Orb::CreditNote::Type::TaggedSymbol)
+        ADJUSTMENT = T.let(:adjustment, Orb::CreditNote::Type::TaggedSymbol)
 
-        sig { override.returns(T::Array[Orb::Models::CreditNote::Type::TaggedSymbol]) }
-        def self.values; end
+        sig { override.returns(T::Array[Orb::CreditNote::Type::TaggedSymbol]) }
+        def self.values
+        end
       end
 
       class Discount < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :amount_applied
 
-        sig { returns(Orb::Models::CreditNote::Discount::DiscountType::TaggedSymbol) }
+        sig { returns(Orb::CreditNote::Discount::DiscountType::TaggedSymbol) }
         attr_accessor :discount_type
 
         sig { returns(Float) }
         attr_accessor :percentage_discount
 
-        sig { returns(T.nilable(T::Array[Orb::Models::CreditNote::Discount::AppliesToPrice])) }
+        sig do
+          returns(
+            T.nilable(T::Array[Orb::CreditNote::Discount::AppliesToPrice])
+          )
+        end
         attr_accessor :applies_to_prices
 
         sig { returns(T.nilable(String)) }
@@ -497,12 +612,14 @@ module Orb
         sig do
           params(
             amount_applied: String,
-            discount_type: Orb::Models::CreditNote::Discount::DiscountType::OrSymbol,
+            discount_type: Orb::CreditNote::Discount::DiscountType::OrSymbol,
             percentage_discount: Float,
-            applies_to_prices: T.nilable(T::Array[T.any(Orb::Models::CreditNote::Discount::AppliesToPrice, Orb::Internal::AnyHash)]),
+            applies_to_prices:
+              T.nilable(
+                T::Array[Orb::CreditNote::Discount::AppliesToPrice::OrHash]
+              ),
             reason: T.nilable(String)
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           amount_applied:,
@@ -514,32 +631,48 @@ module Orb
         end
 
         sig do
-          override
-            .returns(
-              {
-                amount_applied: String,
-                discount_type: Orb::Models::CreditNote::Discount::DiscountType::TaggedSymbol,
-                percentage_discount: Float,
-                applies_to_prices: T.nilable(T::Array[Orb::Models::CreditNote::Discount::AppliesToPrice]),
-                reason: T.nilable(String)
-              }
-            )
+          override.returns(
+            {
+              amount_applied: String,
+              discount_type:
+                Orb::CreditNote::Discount::DiscountType::TaggedSymbol,
+              percentage_discount: Float,
+              applies_to_prices:
+                T.nilable(T::Array[Orb::CreditNote::Discount::AppliesToPrice]),
+              reason: T.nilable(String)
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         module DiscountType
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::CreditNote::Discount::DiscountType) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::CreditNote::Discount::DiscountType)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          PERCENTAGE = T.let(:percentage, Orb::Models::CreditNote::Discount::DiscountType::TaggedSymbol)
+          PERCENTAGE =
+            T.let(
+              :percentage,
+              Orb::CreditNote::Discount::DiscountType::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::CreditNote::Discount::DiscountType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::CreditNote::Discount::DiscountType::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class AppliesToPrice < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -547,10 +680,12 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
       end
     end

@@ -2,12 +2,12 @@ module Orb
   module Resources
     class Subscriptions
       def create: (
-        ?add_adjustments: ::Array[Orb::Models::SubscriptionCreateParams::AddAdjustment]?,
-        ?add_prices: ::Array[Orb::Models::SubscriptionCreateParams::AddPrice]?,
+        ?add_adjustments: ::Array[Orb::SubscriptionCreateParams::AddAdjustment]?,
+        ?add_prices: ::Array[Orb::SubscriptionCreateParams::AddPrice]?,
         ?align_billing_with_subscription_start_date: bool,
         ?auto_collection: bool?,
         ?aws_region: String?,
-        ?billing_cycle_anchor_configuration: Orb::Models::SubscriptionCreateParams::BillingCycleAnchorConfiguration?,
+        ?billing_cycle_anchor_configuration: Orb::SubscriptionCreateParams::BillingCycleAnchorConfiguration?,
         ?coupon_redemption_code: String?,
         ?credits_overage_rate: Float?,
         ?customer_id: String?,
@@ -26,10 +26,10 @@ module Orb
         ?plan_id: String?,
         ?plan_version_number: Integer?,
         ?price_overrides: ::Array[top]?,
-        ?remove_adjustments: ::Array[Orb::Models::SubscriptionCreateParams::RemoveAdjustment]?,
-        ?remove_prices: ::Array[Orb::Models::SubscriptionCreateParams::RemovePrice]?,
-        ?replace_adjustments: ::Array[Orb::Models::SubscriptionCreateParams::ReplaceAdjustment]?,
-        ?replace_prices: ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice]?,
+        ?remove_adjustments: ::Array[Orb::SubscriptionCreateParams::RemoveAdjustment]?,
+        ?remove_prices: ::Array[Orb::SubscriptionCreateParams::RemovePrice]?,
+        ?replace_adjustments: ::Array[Orb::SubscriptionCreateParams::ReplaceAdjustment]?,
+        ?replace_prices: ::Array[Orb::SubscriptionCreateParams::ReplacePrice]?,
         ?start_date: Time?,
         ?trial_duration_days: Integer?,
         ?usage_customer_ids: ::Array[String]?,
@@ -44,7 +44,7 @@ module Orb
         ?metadata: ::Hash[Symbol, String?]?,
         ?net_terms: Integer?,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::Subscription
+      ) -> Orb::Subscription
 
       def list: (
         ?created_at_gt: Time?,
@@ -57,7 +57,7 @@ module Orb
         ?limit: Integer,
         ?status: Orb::Models::SubscriptionListParams::status?,
         ?request_options: Orb::request_opts
-      ) -> Orb::Internal::Page[Orb::Models::Subscription]
+      ) -> Orb::Internal::Page[Orb::Subscription]
 
       def cancel: (
         String subscription_id,
@@ -70,7 +70,7 @@ module Orb
       def fetch: (
         String subscription_id,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::Subscription
+      ) -> Orb::Subscription
 
       def fetch_costs: (
         String subscription_id,
@@ -109,23 +109,23 @@ module Orb
 
       def price_intervals: (
         String subscription_id,
-        ?add: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add],
-        ?add_adjustments: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment],
+        ?add: ::Array[Orb::SubscriptionPriceIntervalsParams::Add],
+        ?add_adjustments: ::Array[Orb::SubscriptionPriceIntervalsParams::AddAdjustment],
         ?allow_invoice_credit_or_void: bool?,
-        ?edit: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Edit],
-        ?edit_adjustments: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment],
+        ?edit: ::Array[Orb::SubscriptionPriceIntervalsParams::Edit],
+        ?edit_adjustments: ::Array[Orb::SubscriptionPriceIntervalsParams::EditAdjustment],
         ?request_options: Orb::request_opts
       ) -> Orb::Models::SubscriptionPriceIntervalsResponse
 
       def schedule_plan_change: (
         String subscription_id,
         change_option: Orb::Models::SubscriptionSchedulePlanChangeParams::change_option,
-        ?add_adjustments: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddAdjustment]?,
-        ?add_prices: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice]?,
+        ?add_adjustments: ::Array[Orb::SubscriptionSchedulePlanChangeParams::AddAdjustment]?,
+        ?add_prices: ::Array[Orb::SubscriptionSchedulePlanChangeParams::AddPrice]?,
         ?align_billing_with_plan_change_date: bool?,
         ?auto_collection: bool?,
         ?billing_cycle_alignment: Orb::Models::SubscriptionSchedulePlanChangeParams::billing_cycle_alignment?,
-        ?billing_cycle_anchor_configuration: Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAnchorConfiguration?,
+        ?billing_cycle_anchor_configuration: Orb::SubscriptionSchedulePlanChangeParams::BillingCycleAnchorConfiguration?,
         ?change_date: Time?,
         ?coupon_redemption_code: String?,
         ?credits_overage_rate: Float?,
@@ -139,10 +139,10 @@ module Orb
         ?plan_id: String?,
         ?plan_version_number: Integer?,
         ?price_overrides: ::Array[top]?,
-        ?remove_adjustments: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::RemoveAdjustment]?,
-        ?remove_prices: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::RemovePrice]?,
-        ?replace_adjustments: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment]?,
-        ?replace_prices: ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice]?,
+        ?remove_adjustments: ::Array[Orb::SubscriptionSchedulePlanChangeParams::RemoveAdjustment]?,
+        ?remove_prices: ::Array[Orb::SubscriptionSchedulePlanChangeParams::RemovePrice]?,
+        ?replace_adjustments: ::Array[Orb::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment]?,
+        ?replace_prices: ::Array[Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice]?,
         ?trial_duration_days: Integer?,
         ?usage_customer_ids: ::Array[String]?,
         ?request_options: Orb::request_opts

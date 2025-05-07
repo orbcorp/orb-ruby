@@ -30,8 +30,6 @@ module Orb
           ?request_options: Orb::request_opts
         ) -> void
 
-        def to_hash: -> Orb::Models::Customers::cost_list_by_external_id_params
-
         type view_mode = :periodic | :cumulative
 
         module ViewMode

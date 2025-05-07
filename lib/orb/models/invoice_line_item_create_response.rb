@@ -41,8 +41,8 @@ module Orb
 
       # @!attribute discount
       #
-      #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-      required :discount, union: -> { Orb::Models::Discount }, nil?: true
+      #   @return [Orb::PercentageDiscount, Orb::TrialDiscount, Orb::UsageDiscount, Orb::AmountDiscount, nil]
+      required :discount, union: -> { Orb::Discount }, nil?: true
 
       # @!attribute end_date
       #   The end date of the range of time applied for this line item's price.
@@ -120,8 +120,8 @@ module Orb
       #   For more on the types of prices, see
       #   [the core concepts documentation](/core-concepts#plan-and-price)
       #
-      #   @return [Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBps, Orb::Models::Price::Bps, Orb::Models::Price::BulkBps, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk, nil]
-      required :price, union: -> { Orb::Models::Price }, nil?: true
+      #   @return [Orb::Price::Unit, Orb::Price::Package, Orb::Price::Matrix, Orb::Price::Tiered, Orb::Price::TieredBps, Orb::Price::Bps, Orb::Price::BulkBps, Orb::Price::Bulk, Orb::Price::ThresholdTotalAmount, Orb::Price::TieredPackage, Orb::Price::GroupedTiered, Orb::Price::TieredWithMinimum, Orb::Price::TieredPackageWithMinimum, Orb::Price::PackageWithAllocation, Orb::Price::UnitWithPercent, Orb::Price::MatrixWithAllocation, Orb::Price::TieredWithProration, Orb::Price::UnitWithProration, Orb::Price::GroupedAllocation, Orb::Price::GroupedWithProratedMinimum, Orb::Price::GroupedWithMeteredMinimum, Orb::Price::MatrixWithDisplayName, Orb::Price::BulkWithProration, Orb::Price::GroupedTieredPackage, Orb::Price::MaxGroupTieredPackage, Orb::Price::ScalableMatrixWithUnitPricing, Orb::Price::ScalableMatrixWithTieredPricing, Orb::Price::CumulativeGroupedBulk, nil]
+      required :price, union: -> { Orb::Price }, nil?: true
 
       # @!attribute quantity
       #   Either the fixed fee quantity or the usage during the service period.
@@ -170,24 +170,20 @@ module Orb
       #   @param id [String] A unique ID for this line item.
       #
       #   @param adjusted_subtotal [String] The line amount after any adjustments and before overage conversion, credits and
-      #   ...
       #
       #   @param adjustments [Array<Orb::Models::InvoiceLineItemCreateResponse::Adjustment::UsageDiscount, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscount, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::PercentageDiscount, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Minimum, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Maximum>] All adjustments applied to the line item in the order they were applied based on
-      #   ...
       #
       #   @param amount [String] The final amount for a line item after all adjustments and pre paid credits have
-      #   ...
       #
       #   @param credits_applied [String] The number of prepaid credits applied.
       #
-      #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+      #   @param discount [Orb::PercentageDiscount, Orb::TrialDiscount, Orb::UsageDiscount, Orb::AmountDiscount, nil]
       #
       #   @param end_date [Time] The end date of the range of time applied for this line item's price.
       #
       #   @param filter [String, nil] An additional filter that was used to calculate the usage for this line item.
       #
       #   @param grouping [String, nil] [DEPRECATED] For configured prices that are split by a grouping key, this will b
-      #   ...
       #
       #   @param maximum [Orb::Models::InvoiceLineItemCreateResponse::Maximum, nil] This field is deprecated in favor of `adjustments`.
       #
@@ -201,23 +197,19 @@ module Orb
       #
       #   @param partially_invoiced_amount [String] Any amount applied from a partial invoice
       #
-      #   @param price [Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBps, Orb::Models::Price::Bps, Orb::Models::Price::BulkBps, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk, nil] The Price resource represents a price that can be billed on a subscription, resu
-      #   ...
+      #   @param price [Orb::Price::Unit, Orb::Price::Package, Orb::Price::Matrix, Orb::Price::Tiered, Orb::Price::TieredBps, Orb::Price::Bps, Orb::Price::BulkBps, Orb::Price::Bulk, Orb::Price::ThresholdTotalAmount, Orb::Price::TieredPackage, Orb::Price::GroupedTiered, Orb::Price::TieredWithMinimum, Orb::Price::TieredPackageWithMinimum, Orb::Price::PackageWithAllocation, Orb::Price::UnitWithPercent, Orb::Price::MatrixWithAllocation, Orb::Price::TieredWithProration, Orb::Price::UnitWithProration, Orb::Price::GroupedAllocation, Orb::Price::GroupedWithProratedMinimum, Orb::Price::GroupedWithMeteredMinimum, Orb::Price::MatrixWithDisplayName, Orb::Price::BulkWithProration, Orb::Price::GroupedTieredPackage, Orb::Price::MaxGroupTieredPackage, Orb::Price::ScalableMatrixWithUnitPricing, Orb::Price::ScalableMatrixWithTieredPricing, Orb::Price::CumulativeGroupedBulk, nil] The Price resource represents a price that can be billed on a subscription, resu
       #
       #   @param quantity [Float] Either the fixed fee quantity or the usage during the service period.
       #
       #   @param start_date [Time] The start date of the range of time applied for this line item's price.
       #
       #   @param sub_line_items [Array<Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Null>] For complex pricing structures, the line item can be broken down further in `sub
-      #   ...
       #
       #   @param subtotal [String] The line amount before before any adjustments.
       #
       #   @param tax_amounts [Array<Orb::Models::InvoiceLineItemCreateResponse::TaxAmount>] An array of tax rates and their incurred tax amounts. Empty if no tax integratio
-      #   ...
       #
       #   @param usage_customer_ids [Array<String>, nil] A list of customer ids that were used to calculate the usage for this line item.
-      #   ...
 
       module Adjustment
         extend Orb::Internal::Type::Union
@@ -290,12 +282,10 @@ module Orb
           #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
           #
           #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
-          #   ...
           #
           #   @param reason [String, nil] The reason for the adjustment.
           #
           #   @param usage_discount [Float] The number of usage units by which to discount the price this adjustment applies
-          #   ...
           #
           #   @param adjustment_type [Symbol, :usage_discount]
         end
@@ -353,12 +343,10 @@ module Orb
           #   @param amount [String] The value applied by an adjustment.
           #
           #   @param amount_discount [String] The amount by which to discount the prices this adjustment applies to in a given
-          #   ...
           #
           #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
           #
           #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
-          #   ...
           #
           #   @param reason [String, nil] The reason for the adjustment.
           #
@@ -420,10 +408,8 @@ module Orb
           #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
           #
           #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
-          #   ...
           #
           #   @param percentage_discount [Float] The percentage (as a value between 0 and 1) by which to discount the price inter
-          #   ...
           #
           #   @param reason [String, nil] The reason for the adjustment.
           #
@@ -491,12 +477,10 @@ module Orb
           #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
           #
           #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
-          #   ...
           #
           #   @param item_id [String] The item ID that revenue from this minimum will be attributed to.
           #
           #   @param minimum_amount [String] The minimum amount to charge in a given billing period for the prices this adjus
-          #   ...
           #
           #   @param reason [String, nil] The reason for the adjustment.
           #
@@ -558,10 +542,8 @@ module Orb
           #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
           #
           #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
-          #   ...
           #
           #   @param maximum_amount [String] The maximum amount to charge in a given billing period for the prices this adjus
-          #   ...
           #
           #   @param reason [String, nil] The reason for the adjustment.
           #
@@ -596,7 +578,6 @@ module Orb
         #   This field is deprecated in favor of `adjustments`.
         #
         #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
-        #   ...
         #
         #   @param maximum_amount [String] Maximum amount applied
       end
@@ -625,7 +606,6 @@ module Orb
         #   This field is deprecated in favor of `adjustments`.
         #
         #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
-        #   ...
         #
         #   @param minimum_amount [String] Minimum amount applied
       end

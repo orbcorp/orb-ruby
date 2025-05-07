@@ -14,7 +14,7 @@ module Orb
       #
       #   @return [Array<String, Float, Boolean>]
       required :grouping_values,
-               -> { Orb::Internal::Type::ArrayOf[union: Orb::Models::EvaluatePriceGroup::GroupingValue] }
+               -> { Orb::Internal::Type::ArrayOf[union: Orb::EvaluatePriceGroup::GroupingValue] }
 
       # @!attribute quantity
       #   The price's usage quantity for the group

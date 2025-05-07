@@ -10,46 +10,46 @@ module Orb
       def create: (
         email: String,
         name: String,
-        ?accounting_sync_configuration: Orb::Models::CustomerCreateParams::AccountingSyncConfiguration?,
+        ?accounting_sync_configuration: Orb::CustomerCreateParams::AccountingSyncConfiguration?,
         ?additional_emails: ::Array[String]?,
         ?auto_collection: bool?,
-        ?billing_address: Orb::Models::CustomerCreateParams::BillingAddress?,
+        ?billing_address: Orb::CustomerCreateParams::BillingAddress?,
         ?currency: String?,
         ?email_delivery: bool?,
         ?external_customer_id: String?,
-        ?hierarchy: Orb::Models::CustomerCreateParams::Hierarchy?,
+        ?hierarchy: Orb::CustomerCreateParams::Hierarchy?,
         ?metadata: ::Hash[Symbol, String?]?,
         ?payment_provider: Orb::Models::CustomerCreateParams::payment_provider?,
         ?payment_provider_id: String?,
-        ?reporting_configuration: Orb::Models::CustomerCreateParams::ReportingConfiguration?,
-        ?shipping_address: Orb::Models::CustomerCreateParams::ShippingAddress?,
+        ?reporting_configuration: Orb::CustomerCreateParams::ReportingConfiguration?,
+        ?shipping_address: Orb::CustomerCreateParams::ShippingAddress?,
         ?tax_configuration: Orb::Models::CustomerCreateParams::tax_configuration?,
-        ?tax_id: Orb::Models::CustomerCreateParams::TaxID?,
+        ?tax_id: Orb::CustomerCreateParams::TaxID?,
         ?timezone: String?,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::Customer
+      ) -> Orb::Customer
 
       def update: (
         String customer_id,
-        ?accounting_sync_configuration: Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration?,
+        ?accounting_sync_configuration: Orb::CustomerUpdateParams::AccountingSyncConfiguration?,
         ?additional_emails: ::Array[String]?,
         ?auto_collection: bool?,
-        ?billing_address: Orb::Models::CustomerUpdateParams::BillingAddress?,
+        ?billing_address: Orb::CustomerUpdateParams::BillingAddress?,
         ?currency: String?,
         ?email: String?,
         ?email_delivery: bool?,
         ?external_customer_id: String?,
-        ?hierarchy: Orb::Models::CustomerUpdateParams::Hierarchy?,
+        ?hierarchy: Orb::CustomerUpdateParams::Hierarchy?,
         ?metadata: ::Hash[Symbol, String?]?,
         ?name: String?,
         ?payment_provider: Orb::Models::CustomerUpdateParams::payment_provider?,
         ?payment_provider_id: String?,
-        ?reporting_configuration: Orb::Models::CustomerUpdateParams::ReportingConfiguration?,
-        ?shipping_address: Orb::Models::CustomerUpdateParams::ShippingAddress?,
+        ?reporting_configuration: Orb::CustomerUpdateParams::ReportingConfiguration?,
+        ?shipping_address: Orb::CustomerUpdateParams::ShippingAddress?,
         ?tax_configuration: Orb::Models::CustomerUpdateParams::tax_configuration?,
-        ?tax_id: Orb::Models::CustomerUpdateParams::TaxID?,
+        ?tax_id: Orb::CustomerUpdateParams::TaxID?,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::Customer
+      ) -> Orb::Customer
 
       def list: (
         ?created_at_gt: Time?,
@@ -59,7 +59,7 @@ module Orb
         ?cursor: String?,
         ?limit: Integer,
         ?request_options: Orb::request_opts
-      ) -> Orb::Internal::Page[Orb::Models::Customer]
+      ) -> Orb::Internal::Page[Orb::Customer]
 
       def delete: (
         String customer_id,
@@ -69,12 +69,12 @@ module Orb
       def fetch: (
         String customer_id,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::Customer
+      ) -> Orb::Customer
 
       def fetch_by_external_id: (
         String external_customer_id,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::Customer
+      ) -> Orb::Customer
 
       def sync_payment_methods_from_gateway: (
         String customer_id,
@@ -88,25 +88,25 @@ module Orb
 
       def update_by_external_id: (
         String id,
-        ?accounting_sync_configuration: Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration?,
+        ?accounting_sync_configuration: Orb::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration?,
         ?additional_emails: ::Array[String]?,
         ?auto_collection: bool?,
-        ?billing_address: Orb::Models::CustomerUpdateByExternalIDParams::BillingAddress?,
+        ?billing_address: Orb::CustomerUpdateByExternalIDParams::BillingAddress?,
         ?currency: String?,
         ?email: String?,
         ?email_delivery: bool?,
         ?external_customer_id: String?,
-        ?hierarchy: Orb::Models::CustomerUpdateByExternalIDParams::Hierarchy?,
+        ?hierarchy: Orb::CustomerUpdateByExternalIDParams::Hierarchy?,
         ?metadata: ::Hash[Symbol, String?]?,
         ?name: String?,
         ?payment_provider: Orb::Models::CustomerUpdateByExternalIDParams::payment_provider?,
         ?payment_provider_id: String?,
-        ?reporting_configuration: Orb::Models::CustomerUpdateByExternalIDParams::ReportingConfiguration?,
-        ?shipping_address: Orb::Models::CustomerUpdateByExternalIDParams::ShippingAddress?,
+        ?reporting_configuration: Orb::CustomerUpdateByExternalIDParams::ReportingConfiguration?,
+        ?shipping_address: Orb::CustomerUpdateByExternalIDParams::ShippingAddress?,
         ?tax_configuration: Orb::Models::CustomerUpdateByExternalIDParams::tax_configuration?,
-        ?tax_id: Orb::Models::CustomerUpdateByExternalIDParams::TaxID?,
+        ?tax_id: Orb::CustomerUpdateByExternalIDParams::TaxID?,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::Customer
+      ) -> Orb::Customer
 
       def initialize: (client: Orb::Client) -> void
     end

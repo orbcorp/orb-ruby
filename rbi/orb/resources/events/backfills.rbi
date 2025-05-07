@@ -50,9 +50,8 @@ module Orb
             deprecation_filter: T.nilable(String),
             external_customer_id: T.nilable(String),
             replace_existing_events: T::Boolean,
-            request_options: Orb::RequestOpts
-          )
-            .returns(Orb::Models::Events::BackfillCreateResponse)
+            request_options: Orb::RequestOptions::OrHash
+          ).returns(Orb::Models::Events::BackfillCreateResponse)
         end
         def create(
           # The (exclusive) end of the usage timeframe affected by this backfill. By
@@ -81,7 +80,9 @@ module Orb
           # events. If false, adds the newly ingested events to the existing events.
           replace_existing_events: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # This endpoint returns a list of all backfills in a list format.
         #
         # The list of backfills is ordered starting from the most recently created
@@ -90,8 +91,13 @@ module Orb
         # retrieve the next page of results if they exist. More information about
         # pagination can be found in the [Pagination-metadata schema](pagination).
         sig do
-          params(cursor: T.nilable(String), limit: Integer, request_options: Orb::RequestOpts)
-            .returns(Orb::Internal::Page[Orb::Models::Events::BackfillListResponse])
+          params(
+            cursor: T.nilable(String),
+            limit: Integer,
+            request_options: Orb::RequestOptions::OrHash
+          ).returns(
+            Orb::Internal::Page[Orb::Models::Events::BackfillListResponse]
+          )
         end
         def list(
           # Cursor for pagination. This can be populated by the `next_cursor` value returned
@@ -100,23 +106,31 @@ module Orb
           # The number of items to fetch. Defaults to 20.
           limit: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Closing a backfill makes the updated usage visible in Orb. Upon closing a
         # backfill, Orb will asynchronously reflect the updated usage in invoice amounts
         # and usage graphs. Once all of the updates are complete, the backfill's status
         # will transition to `reflected`.
         sig do
-          params(backfill_id: String, request_options: Orb::RequestOpts)
-            .returns(Orb::Models::Events::BackfillCloseResponse)
+          params(
+            backfill_id: String,
+            request_options: Orb::RequestOptions::OrHash
+          ).returns(Orb::Models::Events::BackfillCloseResponse)
         end
-        def close(backfill_id, request_options: {}); end
+        def close(backfill_id, request_options: {})
+        end
 
         # This endpoint is used to fetch a backfill given an identifier.
         sig do
-          params(backfill_id: String, request_options: Orb::RequestOpts)
-            .returns(Orb::Models::Events::BackfillFetchResponse)
+          params(
+            backfill_id: String,
+            request_options: Orb::RequestOptions::OrHash
+          ).returns(Orb::Models::Events::BackfillFetchResponse)
         end
-        def fetch(backfill_id, request_options: {}); end
+        def fetch(backfill_id, request_options: {})
+        end
 
         # Reverting a backfill undoes all the effects of closing the backfill. If the
         # backfill is reflected, the status will transition to `pending_revert` while the
@@ -126,14 +140,18 @@ module Orb
         # If a backfill is reverted before its closed, no usage will be updated as a
         # result of the backfill and it will immediately transition to `reverted`.
         sig do
-          params(backfill_id: String, request_options: Orb::RequestOpts)
-            .returns(Orb::Models::Events::BackfillRevertResponse)
+          params(
+            backfill_id: String,
+            request_options: Orb::RequestOptions::OrHash
+          ).returns(Orb::Models::Events::BackfillRevertResponse)
         end
-        def revert(backfill_id, request_options: {}); end
+        def revert(backfill_id, request_options: {})
+        end
 
         # @api private
         sig { params(client: Orb::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

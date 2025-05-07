@@ -11,12 +11,12 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::Item]
+      # @return [Orb::Item]
       #
       # @see Orb::Models::ItemCreateParams
       def create(params)
-        parsed, options = Orb::Models::ItemCreateParams.dump_request(params)
-        @client.request(method: :post, path: "items", body: parsed, model: Orb::Models::Item, options: options)
+        parsed, options = Orb::ItemCreateParams.dump_request(params)
+        @client.request(method: :post, path: "items", body: parsed, model: Orb::Item, options: options)
       end
 
       # This endpoint can be used to update properties on the Item.
@@ -24,20 +24,20 @@ module Orb
       # @overload update(item_id, external_connections: nil, name: nil, request_options: {})
       #
       # @param item_id [String]
-      # @param external_connections [Array<Orb::Models::ItemUpdateParams::ExternalConnection>, nil]
+      # @param external_connections [Array<Orb::ItemUpdateParams::ExternalConnection>, nil]
       # @param name [String, nil]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::Item]
+      # @return [Orb::Item]
       #
       # @see Orb::Models::ItemUpdateParams
       def update(item_id, params = {})
-        parsed, options = Orb::Models::ItemUpdateParams.dump_request(params)
+        parsed, options = Orb::ItemUpdateParams.dump_request(params)
         @client.request(
           method: :put,
           path: ["items/%1$s", item_id],
           body: parsed,
-          model: Orb::Models::Item,
+          model: Orb::Item,
           options: options
         )
       end
@@ -51,23 +51,22 @@ module Orb
       # @overload list(cursor: nil, limit: nil, request_options: {})
       #
       # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
-      # ...
       #
       # @param limit [Integer] The number of items to fetch. Defaults to 20.
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Internal::Page<Orb::Models::Item>]
+      # @return [Orb::Internal::Page<Orb::Item>]
       #
       # @see Orb::Models::ItemListParams
       def list(params = {})
-        parsed, options = Orb::Models::ItemListParams.dump_request(params)
+        parsed, options = Orb::ItemListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "items",
           query: parsed,
           page: Orb::Internal::Page,
-          model: Orb::Models::Item,
+          model: Orb::Item,
           options: options
         )
       end
@@ -79,14 +78,14 @@ module Orb
       # @param item_id [String]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::Item]
+      # @return [Orb::Item]
       #
       # @see Orb::Models::ItemFetchParams
       def fetch(item_id, params = {})
         @client.request(
           method: :get,
           path: ["items/%1$s", item_id],
-          model: Orb::Models::Item,
+          model: Orb::Item,
           options: params[:request_options]
         )
       end

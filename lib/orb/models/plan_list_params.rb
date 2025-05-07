@@ -43,8 +43,8 @@ module Orb
       # @!attribute status
       #   The plan status to filter to ('active', 'archived', or 'draft').
       #
-      #   @return [Symbol, Orb::Models::PlanListParams::Status, nil]
-      optional :status, enum: -> { Orb::Models::PlanListParams::Status }
+      #   @return [Symbol, Orb::PlanListParams::Status, nil]
+      optional :status, enum: -> { Orb::PlanListParams::Status }
 
       # @!method initialize(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, limit: nil, status: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
@@ -59,11 +59,10 @@ module Orb
       #   @param created_at_lte [Time, nil]
       #
       #   @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
-      #   ...
       #
       #   @param limit [Integer] The number of items to fetch. Defaults to 20.
       #
-      #   @param status [Symbol, Orb::Models::PlanListParams::Status] The plan status to filter to ('active', 'archived', or 'draft').
+      #   @param status [Symbol, Orb::PlanListParams::Status] The plan status to filter to ('active', 'archived', or 'draft').
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 

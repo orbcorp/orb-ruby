@@ -127,10 +127,10 @@ module Orb
             currency: T.nilable(String),
             timeframe_end: T.nilable(Time),
             timeframe_start: T.nilable(Time),
-            view_mode: T.nilable(Orb::Models::Customers::CostListParams::ViewMode::OrSymbol),
-            request_options: Orb::RequestOpts
-          )
-            .returns(Orb::Models::Customers::CostListResponse)
+            view_mode:
+              T.nilable(Orb::Customers::CostListParams::ViewMode::OrSymbol),
+            request_options: Orb::RequestOptions::OrHash
+          ).returns(Orb::Models::Customers::CostListResponse)
         end
         def list(
           customer_id,
@@ -146,7 +146,9 @@ module Orb
           # behavior.
           view_mode: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # This endpoint is used to fetch a day-by-day snapshot of a customer's costs in
         # Orb, calculated by applying pricing information to the underlying usage (see the
         # [subscription usage endpoint](/api-reference/subscription/fetch-subscription-usage)
@@ -270,10 +272,12 @@ module Orb
             currency: T.nilable(String),
             timeframe_end: T.nilable(Time),
             timeframe_start: T.nilable(Time),
-            view_mode: T.nilable(Orb::Models::Customers::CostListByExternalIDParams::ViewMode::OrSymbol),
-            request_options: Orb::RequestOpts
-          )
-            .returns(Orb::Models::Customers::CostListByExternalIDResponse)
+            view_mode:
+              T.nilable(
+                Orb::Customers::CostListByExternalIDParams::ViewMode::OrSymbol
+              ),
+            request_options: Orb::RequestOptions::OrHash
+          ).returns(Orb::Models::Customers::CostListByExternalIDResponse)
         end
         def list_by_external_id(
           external_customer_id,
@@ -289,10 +293,13 @@ module Orb
           # behavior.
           view_mode: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: Orb::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

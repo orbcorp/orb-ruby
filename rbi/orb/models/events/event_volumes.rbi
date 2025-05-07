@@ -6,19 +6,28 @@ module Orb
 
     module Events
       class EventVolumes < Orb::Internal::Type::BaseModel
-        sig { returns(T::Array[Orb::Models::Events::EventVolumes::Data]) }
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
+        sig { returns(T::Array[Orb::Events::EventVolumes::Data]) }
         attr_accessor :data
 
         sig do
-          params(data: T::Array[T.any(Orb::Models::Events::EventVolumes::Data, Orb::Internal::AnyHash)])
-            .returns(T.attached_class)
+          params(
+            data: T::Array[Orb::Events::EventVolumes::Data::OrHash]
+          ).returns(T.attached_class)
         end
-        def self.new(data:); end
+        def self.new(data:)
+        end
 
-        sig { override.returns({data: T::Array[Orb::Models::Events::EventVolumes::Data]}) }
-        def to_hash; end
+        sig do
+          override.returns({ data: T::Array[Orb::Events::EventVolumes::Data] })
+        end
+        def to_hash
+        end
 
         class Data < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # The number of events ingested with a timestamp between the timeframe
           sig { returns(Integer) }
           attr_accessor :count
@@ -31,15 +40,28 @@ module Orb
 
           # An EventVolume contains the event volume ingested in an hourly window. The
           # timestamp used for the aggregation is the `timestamp` datetime field on events.
-          sig { params(count: Integer, timeframe_end: Time, timeframe_start: Time).returns(T.attached_class) }
+          sig do
+            params(
+              count: Integer,
+              timeframe_end: Time,
+              timeframe_start: Time
+            ).returns(T.attached_class)
+          end
           def self.new(
             # The number of events ingested with a timestamp between the timeframe
             count:,
             timeframe_end:,
             timeframe_start:
-          ); end
-          sig { override.returns({count: Integer, timeframe_end: Time, timeframe_start: Time}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { count: Integer, timeframe_end: Time, timeframe_start: Time }
+            )
+          end
+          def to_hash
+          end
         end
       end
     end
