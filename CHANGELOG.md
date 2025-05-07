@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.3.2 (2025-05-07)
+
+Full Changelog: [v0.3.1...v0.3.2](https://github.com/orbcorp/orb-ruby/compare/v0.3.1...v0.3.2)
+
+### Bug Fixes
+
+* **internal:** ensure formatting always uses c.utf-8 locale ([c4cc44a](https://github.com/orbcorp/orb-ruby/commit/c4cc44a8e280089938586de353b08e8091056ca0))
+
+
+### Chores
+
+* **internal:** version bump ([fede0e6](https://github.com/orbcorp/orb-ruby/commit/fede0e64ca4753cc961e8308ddcef2b39dcb6f24))
+* revert ignoring Gemfile.lock ([e572719](https://github.com/orbcorp/orb-ruby/commit/e572719854490cfa7735dcc70d9cfd1dc4d4a122))
+
 ## 0.3.1 (2025-05-06)
 
 Full Changelog: [v0.3.0...v0.3.1](https://github.com/orbcorp/orb-ruby/compare/v0.3.0...v0.3.1)
