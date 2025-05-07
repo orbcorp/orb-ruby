@@ -15,33 +15,68 @@ module Orb
     module Price
       extend Orb::Internal::Type::Union
 
+      Variants =
+        T.type_alias do
+          T.any(
+            Orb::Price::Unit,
+            Orb::Price::Package,
+            Orb::Price::Matrix,
+            Orb::Price::Tiered,
+            Orb::Price::TieredBps,
+            Orb::Price::Bps,
+            Orb::Price::BulkBps,
+            Orb::Price::Bulk,
+            Orb::Price::ThresholdTotalAmount,
+            Orb::Price::TieredPackage,
+            Orb::Price::GroupedTiered,
+            Orb::Price::TieredWithMinimum,
+            Orb::Price::TieredPackageWithMinimum,
+            Orb::Price::PackageWithAllocation,
+            Orb::Price::UnitWithPercent,
+            Orb::Price::MatrixWithAllocation,
+            Orb::Price::TieredWithProration,
+            Orb::Price::UnitWithProration,
+            Orb::Price::GroupedAllocation,
+            Orb::Price::GroupedWithProratedMinimum,
+            Orb::Price::GroupedWithMeteredMinimum,
+            Orb::Price::MatrixWithDisplayName,
+            Orb::Price::BulkWithProration,
+            Orb::Price::GroupedTieredPackage,
+            Orb::Price::MaxGroupTieredPackage,
+            Orb::Price::ScalableMatrixWithUnitPricing,
+            Orb::Price::ScalableMatrixWithTieredPricing,
+            Orb::Price::CumulativeGroupedBulk
+          )
+        end
+
       class Unit < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(T.nilable(Orb::Models::Price::Unit::BillableMetric)) }
+        sig { returns(T.nilable(Orb::Price::Unit::BillableMetric)) }
         attr_reader :billable_metric
 
         sig do
           params(
-            billable_metric: T.nilable(T.any(Orb::Models::Price::Unit::BillableMetric, Orb::Internal::AnyHash))
-          )
-            .void
+            billable_metric: T.nilable(Orb::Price::Unit::BillableMetric::OrHash)
+          ).void
         end
         attr_writer :billable_metric
 
-        sig { returns(Orb::Models::Price::Unit::BillingCycleConfiguration) }
+        sig { returns(Orb::Price::Unit::BillingCycleConfiguration) }
         attr_reader :billing_cycle_configuration
 
         sig do
           params(
-            billing_cycle_configuration: T.any(Orb::Models::Price::Unit::BillingCycleConfiguration, Orb::Internal::AnyHash)
-          )
-            .void
+            billing_cycle_configuration:
+              Orb::Price::Unit::BillingCycleConfiguration::OrHash
+          ).void
         end
         attr_writer :billing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::Unit::Cadence::TaggedSymbol) }
+        sig { returns(Orb::Price::Unit::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
         sig { returns(T.nilable(Float)) }
@@ -50,14 +85,14 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T.nilable(Orb::Models::Price::Unit::CreditAllocation)) }
+        sig { returns(T.nilable(Orb::Price::Unit::CreditAllocation)) }
         attr_reader :credit_allocation
 
         sig do
           params(
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::Unit::CreditAllocation, Orb::Internal::AnyHash))
-          )
-            .void
+            credit_allocation:
+              T.nilable(Orb::Price::Unit::CreditAllocation::OrHash)
+          ).void
         end
         attr_writer :credit_allocation
 
@@ -68,10 +103,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -84,27 +119,31 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
-        sig { returns(T.nilable(Orb::Models::Price::Unit::InvoicingCycleConfiguration)) }
+        sig do
+          returns(T.nilable(Orb::Price::Unit::InvoicingCycleConfiguration))
+        end
         attr_reader :invoicing_cycle_configuration
 
         sig do
           params(
-            invoicing_cycle_configuration: T.nilable(T.any(Orb::Models::Price::Unit::InvoicingCycleConfiguration, Orb::Internal::AnyHash))
-          )
-            .void
+            invoicing_cycle_configuration:
+              T.nilable(Orb::Price::Unit::InvoicingCycleConfiguration::OrHash)
+          ).void
         end
         attr_writer :invoicing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::Unit::Item) }
+        sig { returns(Orb::Price::Unit::Item) }
         attr_reader :item
 
-        sig { params(item: T.any(Orb::Models::Price::Unit::Item, Orb::Internal::AnyHash)).void }
+        sig { params(item: Orb::Price::Unit::Item::OrHash).void }
         attr_writer :item
 
-        sig { returns(T.nilable(Orb::Models::Price::Unit::Maximum)) }
+        sig { returns(T.nilable(Orb::Price::Unit::Maximum)) }
         attr_reader :maximum
 
-        sig { params(maximum: T.nilable(T.any(Orb::Models::Price::Unit::Maximum, Orb::Internal::AnyHash))).void }
+        sig do
+          params(maximum: T.nilable(Orb::Price::Unit::Maximum::OrHash)).void
+        end
         attr_writer :maximum
 
         sig { returns(T.nilable(String)) }
@@ -117,10 +156,12 @@ module Orb
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
-        sig { returns(T.nilable(Orb::Models::Price::Unit::Minimum)) }
+        sig { returns(T.nilable(Orb::Price::Unit::Minimum)) }
         attr_reader :minimum
 
-        sig { params(minimum: T.nilable(T.any(Orb::Models::Price::Unit::Minimum, Orb::Internal::AnyHash))).void }
+        sig do
+          params(minimum: T.nilable(Orb::Price::Unit::Minimum::OrHash)).void
+        end
         attr_writer :minimum
 
         sig { returns(T.nilable(String)) }
@@ -135,62 +176,70 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :plan_phase_order
 
-        sig { returns(Orb::Models::Price::Unit::PriceType::TaggedSymbol) }
+        sig { returns(Orb::Price::Unit::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
-        sig { returns(Orb::Models::Price::Unit::UnitConfig) }
+        sig { returns(Orb::Price::Unit::UnitConfig) }
         attr_reader :unit_config
 
-        sig { params(unit_config: T.any(Orb::Models::Price::Unit::UnitConfig, Orb::Internal::AnyHash)).void }
+        sig { params(unit_config: Orb::Price::Unit::UnitConfig::OrHash).void }
         attr_writer :unit_config
 
-        sig { returns(T.nilable(Orb::Models::Price::Unit::DimensionalPriceConfiguration)) }
+        sig do
+          returns(T.nilable(Orb::Price::Unit::DimensionalPriceConfiguration))
+        end
         attr_reader :dimensional_price_configuration
 
         sig do
           params(
-            dimensional_price_configuration: T.nilable(T.any(Orb::Models::Price::Unit::DimensionalPriceConfiguration, Orb::Internal::AnyHash))
-          )
-            .void
+            dimensional_price_configuration:
+              T.nilable(Orb::Price::Unit::DimensionalPriceConfiguration::OrHash)
+          ).void
         end
         attr_writer :dimensional_price_configuration
 
         sig do
           params(
             id: String,
-            billable_metric: T.nilable(T.any(Orb::Models::Price::Unit::BillableMetric, Orb::Internal::AnyHash)),
-            billing_cycle_configuration: T.any(Orb::Models::Price::Unit::BillingCycleConfiguration, Orb::Internal::AnyHash),
-            cadence: Orb::Models::Price::Unit::Cadence::OrSymbol,
+            billable_metric:
+              T.nilable(Orb::Price::Unit::BillableMetric::OrHash),
+            billing_cycle_configuration:
+              Orb::Price::Unit::BillingCycleConfiguration::OrHash,
+            cadence: Orb::Price::Unit::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
             created_at: Time,
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::Unit::CreditAllocation, Orb::Internal::AnyHash)),
+            credit_allocation:
+              T.nilable(Orb::Price::Unit::CreditAllocation::OrHash),
             currency: String,
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
-            invoicing_cycle_configuration: T.nilable(T.any(Orb::Models::Price::Unit::InvoicingCycleConfiguration, Orb::Internal::AnyHash)),
-            item: T.any(Orb::Models::Price::Unit::Item, Orb::Internal::AnyHash),
-            maximum: T.nilable(T.any(Orb::Models::Price::Unit::Maximum, Orb::Internal::AnyHash)),
+            invoicing_cycle_configuration:
+              T.nilable(Orb::Price::Unit::InvoicingCycleConfiguration::OrHash),
+            item: Orb::Price::Unit::Item::OrHash,
+            maximum: T.nilable(Orb::Price::Unit::Maximum::OrHash),
             maximum_amount: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(T.any(Orb::Models::Price::Unit::Minimum, Orb::Internal::AnyHash)),
+            minimum: T.nilable(Orb::Price::Unit::Minimum::OrHash),
             minimum_amount: T.nilable(String),
             name: String,
             plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Models::Price::Unit::PriceType::OrSymbol,
-            unit_config: T.any(Orb::Models::Price::Unit::UnitConfig, Orb::Internal::AnyHash),
-            dimensional_price_configuration: T.nilable(T.any(Orb::Models::Price::Unit::DimensionalPriceConfiguration, Orb::Internal::AnyHash)),
+            price_type: Orb::Price::Unit::PriceType::OrSymbol,
+            unit_config: Orb::Price::Unit::UnitConfig::OrHash,
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::Unit::DimensionalPriceConfiguration::OrHash
+              ),
             model_type: Symbol
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -221,179 +270,257 @@ module Orb
           unit_config:,
           dimensional_price_configuration: nil,
           model_type: :unit
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                billable_metric: T.nilable(Orb::Models::Price::Unit::BillableMetric),
-                billing_cycle_configuration: Orb::Models::Price::Unit::BillingCycleConfiguration,
-                cadence: Orb::Models::Price::Unit::Cadence::TaggedSymbol,
-                conversion_rate: T.nilable(Float),
-                created_at: Time,
-                credit_allocation: T.nilable(Orb::Models::Price::Unit::CreditAllocation),
-                currency: String,
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              billable_metric: T.nilable(Orb::Price::Unit::BillableMetric),
+              billing_cycle_configuration:
+                Orb::Price::Unit::BillingCycleConfiguration,
+              cadence: Orb::Price::Unit::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation: T.nilable(Orb::Price::Unit::CreditAllocation),
+              currency: String,
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoicing_cycle_configuration: T.nilable(Orb::Models::Price::Unit::InvoicingCycleConfiguration),
-                item: Orb::Models::Price::Unit::Item,
-                maximum: T.nilable(Orb::Models::Price::Unit::Maximum),
-                maximum_amount: T.nilable(String),
-                metadata: T::Hash[Symbol, String],
-                minimum: T.nilable(Orb::Models::Price::Unit::Minimum),
-                minimum_amount: T.nilable(String),
-                model_type: Symbol,
-                name: String,
-                plan_phase_order: T.nilable(Integer),
-                price_type: Orb::Models::Price::Unit::PriceType::TaggedSymbol,
-                unit_config: Orb::Models::Price::Unit::UnitConfig,
-                dimensional_price_configuration: T.nilable(Orb::Models::Price::Unit::DimensionalPriceConfiguration)
-              }
-            )
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoicing_cycle_configuration:
+                T.nilable(Orb::Price::Unit::InvoicingCycleConfiguration),
+              item: Orb::Price::Unit::Item,
+              maximum: T.nilable(Orb::Price::Unit::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Price::Unit::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type: Orb::Price::Unit::PriceType::TaggedSymbol,
+              unit_config: Orb::Price::Unit::UnitConfig,
+              dimensional_price_configuration:
+                T.nilable(Orb::Price::Unit::DimensionalPriceConfiguration)
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
+          def self.new(id:)
+          end
 
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::Unit::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::Unit::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::Unit::BillingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::Unit::BillingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::Unit::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::Unit::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::Unit::BillingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::Unit::BillingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            DAY = T.let(:day, Orb::Models::Price::Unit::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
-            MONTH = T.let(:month, Orb::Models::Price::Unit::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
+            DAY =
+              T.let(
+                :day,
+                Orb::Price::Unit::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
+            MONTH =
+              T.let(
+                :month,
+                Orb::Price::Unit::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
 
             sig do
-              override.returns(T::Array[Orb::Models::Price::Unit::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  Orb::Price::Unit::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         module Cadence
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::Unit::Cadence) }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::Unit::Cadence) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ONE_TIME = T.let(:one_time, Orb::Models::Price::Unit::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Price::Unit::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Price::Unit::Cadence::TaggedSymbol)
-          SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::Price::Unit::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Price::Unit::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Models::Price::Unit::Cadence::TaggedSymbol)
+          ONE_TIME = T.let(:one_time, Orb::Price::Unit::Cadence::TaggedSymbol)
+          MONTHLY = T.let(:monthly, Orb::Price::Unit::Cadence::TaggedSymbol)
+          QUARTERLY = T.let(:quarterly, Orb::Price::Unit::Cadence::TaggedSymbol)
+          SEMI_ANNUAL =
+            T.let(:semi_annual, Orb::Price::Unit::Cadence::TaggedSymbol)
+          ANNUAL = T.let(:annual, Orb::Price::Unit::Cadence::TaggedSymbol)
+          CUSTOM = T.let(:custom, Orb::Price::Unit::Cadence::TaggedSymbol)
 
-          sig { override.returns(T::Array[Orb::Models::Price::Unit::Cadence::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(T::Array[Orb::Price::Unit::Cadence::TaggedSymbol])
+          end
+          def self.values
+          end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
 
           sig { returns(String) }
           attr_accessor :currency
 
-          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:); end
+          sig do
+            params(allows_rollover: T::Boolean, currency: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(allows_rollover:, currency:)
+          end
 
-          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash; end
+          sig do
+            override.returns({ allows_rollover: T::Boolean, currency: String })
+          end
+          def to_hash
+          end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::Unit::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::Unit::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::Unit::InvoicingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::Unit::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::Unit::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::Unit::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::Unit::InvoicingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::Unit::InvoicingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            DAY = T.let(:day, Orb::Models::Price::Unit::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
-            MONTH = T.let(:month, Orb::Models::Price::Unit::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
+            DAY =
+              T.let(
+                :day,
+                Orb::Price::Unit::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
+            MONTH =
+              T.let(
+                :month,
+                Orb::Price::Unit::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(T::Array[Orb::Models::Price::Unit::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  Orb::Price::Unit::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Item < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -401,13 +528,17 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -418,7 +549,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -426,12 +560,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -442,7 +585,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -450,25 +596,42 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::Unit::PriceType) }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::Unit::PriceType) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::Unit::PriceType::TaggedSymbol)
-          FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::Unit::PriceType::TaggedSymbol)
+          USAGE_PRICE =
+            T.let(:usage_price, Orb::Price::Unit::PriceType::TaggedSymbol)
+          FIXED_PRICE =
+            T.let(:fixed_price, Orb::Price::Unit::PriceType::TaggedSymbol)
 
-          sig { override.returns(T::Array[Orb::Models::Price::Unit::PriceType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::Unit::PriceType::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class UnitConfig < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # Rate per unit of usage
           sig { returns(String) }
           attr_accessor :unit_amount
@@ -477,12 +640,17 @@ module Orb
           def self.new(
             # Rate per unit of usage
             unit_amount:
-          ); end
-          sig { override.returns({unit_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig { override.returns({ unit_amount: String }) }
+          def to_hash
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
 
@@ -495,40 +663,51 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:); end
+          def self.new(dimension_values:, dimensional_price_group_id:)
+          end
 
-          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                dimension_values: T::Array[String],
+                dimensional_price_group_id: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class Package < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(T.nilable(Orb::Models::Price::Package::BillableMetric)) }
+        sig { returns(T.nilable(Orb::Price::Package::BillableMetric)) }
         attr_reader :billable_metric
 
         sig do
           params(
-            billable_metric: T.nilable(T.any(Orb::Models::Price::Package::BillableMetric, Orb::Internal::AnyHash))
-          )
-            .void
+            billable_metric:
+              T.nilable(Orb::Price::Package::BillableMetric::OrHash)
+          ).void
         end
         attr_writer :billable_metric
 
-        sig { returns(Orb::Models::Price::Package::BillingCycleConfiguration) }
+        sig { returns(Orb::Price::Package::BillingCycleConfiguration) }
         attr_reader :billing_cycle_configuration
 
         sig do
           params(
-            billing_cycle_configuration: T.any(Orb::Models::Price::Package::BillingCycleConfiguration, Orb::Internal::AnyHash)
-          )
-            .void
+            billing_cycle_configuration:
+              Orb::Price::Package::BillingCycleConfiguration::OrHash
+          ).void
         end
         attr_writer :billing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::Package::Cadence::TaggedSymbol) }
+        sig { returns(Orb::Price::Package::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
         sig { returns(T.nilable(Float)) }
@@ -537,14 +716,14 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T.nilable(Orb::Models::Price::Package::CreditAllocation)) }
+        sig { returns(T.nilable(Orb::Price::Package::CreditAllocation)) }
         attr_reader :credit_allocation
 
         sig do
           params(
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::Package::CreditAllocation, Orb::Internal::AnyHash))
-          )
-            .void
+            credit_allocation:
+              T.nilable(Orb::Price::Package::CreditAllocation::OrHash)
+          ).void
         end
         attr_writer :credit_allocation
 
@@ -555,10 +734,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -571,27 +750,33 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
-        sig { returns(T.nilable(Orb::Models::Price::Package::InvoicingCycleConfiguration)) }
+        sig do
+          returns(T.nilable(Orb::Price::Package::InvoicingCycleConfiguration))
+        end
         attr_reader :invoicing_cycle_configuration
 
         sig do
           params(
-            invoicing_cycle_configuration: T.nilable(T.any(Orb::Models::Price::Package::InvoicingCycleConfiguration, Orb::Internal::AnyHash))
-          )
-            .void
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::Package::InvoicingCycleConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :invoicing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::Package::Item) }
+        sig { returns(Orb::Price::Package::Item) }
         attr_reader :item
 
-        sig { params(item: T.any(Orb::Models::Price::Package::Item, Orb::Internal::AnyHash)).void }
+        sig { params(item: Orb::Price::Package::Item::OrHash).void }
         attr_writer :item
 
-        sig { returns(T.nilable(Orb::Models::Price::Package::Maximum)) }
+        sig { returns(T.nilable(Orb::Price::Package::Maximum)) }
         attr_reader :maximum
 
-        sig { params(maximum: T.nilable(T.any(Orb::Models::Price::Package::Maximum, Orb::Internal::AnyHash))).void }
+        sig do
+          params(maximum: T.nilable(Orb::Price::Package::Maximum::OrHash)).void
+        end
         attr_writer :maximum
 
         sig { returns(T.nilable(String)) }
@@ -604,10 +789,12 @@ module Orb
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
-        sig { returns(T.nilable(Orb::Models::Price::Package::Minimum)) }
+        sig { returns(T.nilable(Orb::Price::Package::Minimum)) }
         attr_reader :minimum
 
-        sig { params(minimum: T.nilable(T.any(Orb::Models::Price::Package::Minimum, Orb::Internal::AnyHash))).void }
+        sig do
+          params(minimum: T.nilable(Orb::Price::Package::Minimum::OrHash)).void
+        end
         attr_writer :minimum
 
         sig { returns(T.nilable(String)) }
@@ -619,65 +806,81 @@ module Orb
         sig { returns(String) }
         attr_accessor :name
 
-        sig { returns(Orb::Models::Price::Package::PackageConfig) }
+        sig { returns(Orb::Price::Package::PackageConfig) }
         attr_reader :package_config
 
-        sig { params(package_config: T.any(Orb::Models::Price::Package::PackageConfig, Orb::Internal::AnyHash)).void }
+        sig do
+          params(
+            package_config: Orb::Price::Package::PackageConfig::OrHash
+          ).void
+        end
         attr_writer :package_config
 
         sig { returns(T.nilable(Integer)) }
         attr_accessor :plan_phase_order
 
-        sig { returns(Orb::Models::Price::Package::PriceType::TaggedSymbol) }
+        sig { returns(Orb::Price::Package::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
-        sig { returns(T.nilable(Orb::Models::Price::Package::DimensionalPriceConfiguration)) }
+        sig do
+          returns(T.nilable(Orb::Price::Package::DimensionalPriceConfiguration))
+        end
         attr_reader :dimensional_price_configuration
 
         sig do
           params(
-            dimensional_price_configuration: T.nilable(T.any(Orb::Models::Price::Package::DimensionalPriceConfiguration, Orb::Internal::AnyHash))
-          )
-            .void
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::Package::DimensionalPriceConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :dimensional_price_configuration
 
         sig do
           params(
             id: String,
-            billable_metric: T.nilable(T.any(Orb::Models::Price::Package::BillableMetric, Orb::Internal::AnyHash)),
-            billing_cycle_configuration: T.any(Orb::Models::Price::Package::BillingCycleConfiguration, Orb::Internal::AnyHash),
-            cadence: Orb::Models::Price::Package::Cadence::OrSymbol,
+            billable_metric:
+              T.nilable(Orb::Price::Package::BillableMetric::OrHash),
+            billing_cycle_configuration:
+              Orb::Price::Package::BillingCycleConfiguration::OrHash,
+            cadence: Orb::Price::Package::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
             created_at: Time,
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::Package::CreditAllocation, Orb::Internal::AnyHash)),
+            credit_allocation:
+              T.nilable(Orb::Price::Package::CreditAllocation::OrHash),
             currency: String,
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
-            invoicing_cycle_configuration: T.nilable(T.any(Orb::Models::Price::Package::InvoicingCycleConfiguration, Orb::Internal::AnyHash)),
-            item: T.any(Orb::Models::Price::Package::Item, Orb::Internal::AnyHash),
-            maximum: T.nilable(T.any(Orb::Models::Price::Package::Maximum, Orb::Internal::AnyHash)),
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::Package::InvoicingCycleConfiguration::OrHash
+              ),
+            item: Orb::Price::Package::Item::OrHash,
+            maximum: T.nilable(Orb::Price::Package::Maximum::OrHash),
             maximum_amount: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(T.any(Orb::Models::Price::Package::Minimum, Orb::Internal::AnyHash)),
+            minimum: T.nilable(Orb::Price::Package::Minimum::OrHash),
             minimum_amount: T.nilable(String),
             name: String,
-            package_config: T.any(Orb::Models::Price::Package::PackageConfig, Orb::Internal::AnyHash),
+            package_config: Orb::Price::Package::PackageConfig::OrHash,
             plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Models::Price::Package::PriceType::OrSymbol,
-            dimensional_price_configuration: T.nilable(T.any(Orb::Models::Price::Package::DimensionalPriceConfiguration, Orb::Internal::AnyHash)),
+            price_type: Orb::Price::Package::PriceType::OrSymbol,
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::Package::DimensionalPriceConfiguration::OrHash
+              ),
             model_type: Symbol
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -708,181 +911,262 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :package
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                billable_metric: T.nilable(Orb::Models::Price::Package::BillableMetric),
-                billing_cycle_configuration: Orb::Models::Price::Package::BillingCycleConfiguration,
-                cadence: Orb::Models::Price::Package::Cadence::TaggedSymbol,
-                conversion_rate: T.nilable(Float),
-                created_at: Time,
-                credit_allocation: T.nilable(Orb::Models::Price::Package::CreditAllocation),
-                currency: String,
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              billable_metric: T.nilable(Orb::Price::Package::BillableMetric),
+              billing_cycle_configuration:
+                Orb::Price::Package::BillingCycleConfiguration,
+              cadence: Orb::Price::Package::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation:
+                T.nilable(Orb::Price::Package::CreditAllocation),
+              currency: String,
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoicing_cycle_configuration: T.nilable(Orb::Models::Price::Package::InvoicingCycleConfiguration),
-                item: Orb::Models::Price::Package::Item,
-                maximum: T.nilable(Orb::Models::Price::Package::Maximum),
-                maximum_amount: T.nilable(String),
-                metadata: T::Hash[Symbol, String],
-                minimum: T.nilable(Orb::Models::Price::Package::Minimum),
-                minimum_amount: T.nilable(String),
-                model_type: Symbol,
-                name: String,
-                package_config: Orb::Models::Price::Package::PackageConfig,
-                plan_phase_order: T.nilable(Integer),
-                price_type: Orb::Models::Price::Package::PriceType::TaggedSymbol,
-                dimensional_price_configuration: T.nilable(Orb::Models::Price::Package::DimensionalPriceConfiguration)
-              }
-            )
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoicing_cycle_configuration:
+                T.nilable(Orb::Price::Package::InvoicingCycleConfiguration),
+              item: Orb::Price::Package::Item,
+              maximum: T.nilable(Orb::Price::Package::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Price::Package::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              package_config: Orb::Price::Package::PackageConfig,
+              plan_phase_order: T.nilable(Integer),
+              price_type: Orb::Price::Package::PriceType::TaggedSymbol,
+              dimensional_price_configuration:
+                T.nilable(Orb::Price::Package::DimensionalPriceConfiguration)
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
+          def self.new(id:)
+          end
 
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::Package::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::Package::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::Package::BillingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::Package::BillingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::Package::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::Package::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::Package::BillingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::Package::BillingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            DAY = T.let(:day, Orb::Models::Price::Package::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
-            MONTH = T.let(:month, Orb::Models::Price::Package::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
+            DAY =
+              T.let(
+                :day,
+                Orb::Price::Package::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
+            MONTH =
+              T.let(
+                :month,
+                Orb::Price::Package::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(T::Array[Orb::Models::Price::Package::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  Orb::Price::Package::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         module Cadence
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::Package::Cadence) }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::Package::Cadence) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ONE_TIME = T.let(:one_time, Orb::Models::Price::Package::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Price::Package::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Price::Package::Cadence::TaggedSymbol)
-          SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::Price::Package::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Price::Package::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Models::Price::Package::Cadence::TaggedSymbol)
+          ONE_TIME =
+            T.let(:one_time, Orb::Price::Package::Cadence::TaggedSymbol)
+          MONTHLY = T.let(:monthly, Orb::Price::Package::Cadence::TaggedSymbol)
+          QUARTERLY =
+            T.let(:quarterly, Orb::Price::Package::Cadence::TaggedSymbol)
+          SEMI_ANNUAL =
+            T.let(:semi_annual, Orb::Price::Package::Cadence::TaggedSymbol)
+          ANNUAL = T.let(:annual, Orb::Price::Package::Cadence::TaggedSymbol)
+          CUSTOM = T.let(:custom, Orb::Price::Package::Cadence::TaggedSymbol)
 
-          sig { override.returns(T::Array[Orb::Models::Price::Package::Cadence::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::Package::Cadence::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
 
           sig { returns(String) }
           attr_accessor :currency
 
-          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:); end
+          sig do
+            params(allows_rollover: T::Boolean, currency: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(allows_rollover:, currency:)
+          end
 
-          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash; end
+          sig do
+            override.returns({ allows_rollover: T::Boolean, currency: String })
+          end
+          def to_hash
+          end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::Package::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::Package::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::Package::InvoicingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::Package::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::Package::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::Package::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::Package::InvoicingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::Package::InvoicingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            DAY = T.let(:day, Orb::Models::Price::Package::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
+            DAY =
+              T.let(
+                :day,
+                Orb::Price::Package::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
             MONTH =
-              T.let(:month, Orb::Models::Price::Package::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
+              T.let(
+                :month,
+                Orb::Price::Package::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(T::Array[Orb::Models::Price::Package::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  Orb::Price::Package::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Item < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -890,13 +1174,17 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -907,7 +1195,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -915,12 +1206,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -931,7 +1231,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -939,12 +1242,21 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class PackageConfig < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # A currency amount to rate usage by
           sig { returns(String) }
           attr_accessor :package_amount
@@ -954,32 +1266,51 @@ module Orb
           sig { returns(Integer) }
           attr_accessor :package_size
 
-          sig { params(package_amount: String, package_size: Integer).returns(T.attached_class) }
+          sig do
+            params(package_amount: String, package_size: Integer).returns(
+              T.attached_class
+            )
+          end
           def self.new(
             # A currency amount to rate usage by
             package_amount:,
             # An integer amount to represent package size. For example, 1000 here would divide
             # usage by 1000 before multiplying by package_amount in rating
             package_size:
-          ); end
-          sig { override.returns({package_amount: String, package_size: Integer}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns({ package_amount: String, package_size: Integer })
+          end
+          def to_hash
+          end
         end
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::Package::PriceType) }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::Package::PriceType) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::Package::PriceType::TaggedSymbol)
-          FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::Package::PriceType::TaggedSymbol)
+          USAGE_PRICE =
+            T.let(:usage_price, Orb::Price::Package::PriceType::TaggedSymbol)
+          FIXED_PRICE =
+            T.let(:fixed_price, Orb::Price::Package::PriceType::TaggedSymbol)
 
-          sig { override.returns(T::Array[Orb::Models::Price::Package::PriceType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::Package::PriceType::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
 
@@ -992,40 +1323,51 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:); end
+          def self.new(dimension_values:, dimensional_price_group_id:)
+          end
 
-          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                dimension_values: T::Array[String],
+                dimensional_price_group_id: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class Matrix < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(T.nilable(Orb::Models::Price::Matrix::BillableMetric)) }
+        sig { returns(T.nilable(Orb::Price::Matrix::BillableMetric)) }
         attr_reader :billable_metric
 
         sig do
           params(
-            billable_metric: T.nilable(T.any(Orb::Models::Price::Matrix::BillableMetric, Orb::Internal::AnyHash))
-          )
-            .void
+            billable_metric:
+              T.nilable(Orb::Price::Matrix::BillableMetric::OrHash)
+          ).void
         end
         attr_writer :billable_metric
 
-        sig { returns(Orb::Models::Price::Matrix::BillingCycleConfiguration) }
+        sig { returns(Orb::Price::Matrix::BillingCycleConfiguration) }
         attr_reader :billing_cycle_configuration
 
         sig do
           params(
-            billing_cycle_configuration: T.any(Orb::Models::Price::Matrix::BillingCycleConfiguration, Orb::Internal::AnyHash)
-          )
-            .void
+            billing_cycle_configuration:
+              Orb::Price::Matrix::BillingCycleConfiguration::OrHash
+          ).void
         end
         attr_writer :billing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::Matrix::Cadence::TaggedSymbol) }
+        sig { returns(Orb::Price::Matrix::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
         sig { returns(T.nilable(Float)) }
@@ -1034,14 +1376,14 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T.nilable(Orb::Models::Price::Matrix::CreditAllocation)) }
+        sig { returns(T.nilable(Orb::Price::Matrix::CreditAllocation)) }
         attr_reader :credit_allocation
 
         sig do
           params(
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::Matrix::CreditAllocation, Orb::Internal::AnyHash))
-          )
-            .void
+            credit_allocation:
+              T.nilable(Orb::Price::Matrix::CreditAllocation::OrHash)
+          ).void
         end
         attr_writer :credit_allocation
 
@@ -1052,10 +1394,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -1068,33 +1410,39 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
-        sig { returns(T.nilable(Orb::Models::Price::Matrix::InvoicingCycleConfiguration)) }
+        sig do
+          returns(T.nilable(Orb::Price::Matrix::InvoicingCycleConfiguration))
+        end
         attr_reader :invoicing_cycle_configuration
 
         sig do
           params(
-            invoicing_cycle_configuration: T.nilable(T.any(Orb::Models::Price::Matrix::InvoicingCycleConfiguration, Orb::Internal::AnyHash))
-          )
-            .void
+            invoicing_cycle_configuration:
+              T.nilable(Orb::Price::Matrix::InvoicingCycleConfiguration::OrHash)
+          ).void
         end
         attr_writer :invoicing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::Matrix::Item) }
+        sig { returns(Orb::Price::Matrix::Item) }
         attr_reader :item
 
-        sig { params(item: T.any(Orb::Models::Price::Matrix::Item, Orb::Internal::AnyHash)).void }
+        sig { params(item: Orb::Price::Matrix::Item::OrHash).void }
         attr_writer :item
 
-        sig { returns(Orb::Models::Price::Matrix::MatrixConfig) }
+        sig { returns(Orb::Price::Matrix::MatrixConfig) }
         attr_reader :matrix_config
 
-        sig { params(matrix_config: T.any(Orb::Models::Price::Matrix::MatrixConfig, Orb::Internal::AnyHash)).void }
+        sig do
+          params(matrix_config: Orb::Price::Matrix::MatrixConfig::OrHash).void
+        end
         attr_writer :matrix_config
 
-        sig { returns(T.nilable(Orb::Models::Price::Matrix::Maximum)) }
+        sig { returns(T.nilable(Orb::Price::Matrix::Maximum)) }
         attr_reader :maximum
 
-        sig { params(maximum: T.nilable(T.any(Orb::Models::Price::Matrix::Maximum, Orb::Internal::AnyHash))).void }
+        sig do
+          params(maximum: T.nilable(Orb::Price::Matrix::Maximum::OrHash)).void
+        end
         attr_writer :maximum
 
         sig { returns(T.nilable(String)) }
@@ -1107,10 +1455,12 @@ module Orb
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
-        sig { returns(T.nilable(Orb::Models::Price::Matrix::Minimum)) }
+        sig { returns(T.nilable(Orb::Price::Matrix::Minimum)) }
         attr_reader :minimum
 
-        sig { params(minimum: T.nilable(T.any(Orb::Models::Price::Matrix::Minimum, Orb::Internal::AnyHash))).void }
+        sig do
+          params(minimum: T.nilable(Orb::Price::Matrix::Minimum::OrHash)).void
+        end
         attr_writer :minimum
 
         sig { returns(T.nilable(String)) }
@@ -1125,56 +1475,68 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :plan_phase_order
 
-        sig { returns(Orb::Models::Price::Matrix::PriceType::TaggedSymbol) }
+        sig { returns(Orb::Price::Matrix::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
-        sig { returns(T.nilable(Orb::Models::Price::Matrix::DimensionalPriceConfiguration)) }
+        sig do
+          returns(T.nilable(Orb::Price::Matrix::DimensionalPriceConfiguration))
+        end
         attr_reader :dimensional_price_configuration
 
         sig do
           params(
-            dimensional_price_configuration: T.nilable(T.any(Orb::Models::Price::Matrix::DimensionalPriceConfiguration, Orb::Internal::AnyHash))
-          )
-            .void
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::Matrix::DimensionalPriceConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :dimensional_price_configuration
 
         sig do
           params(
             id: String,
-            billable_metric: T.nilable(T.any(Orb::Models::Price::Matrix::BillableMetric, Orb::Internal::AnyHash)),
-            billing_cycle_configuration: T.any(Orb::Models::Price::Matrix::BillingCycleConfiguration, Orb::Internal::AnyHash),
-            cadence: Orb::Models::Price::Matrix::Cadence::OrSymbol,
+            billable_metric:
+              T.nilable(Orb::Price::Matrix::BillableMetric::OrHash),
+            billing_cycle_configuration:
+              Orb::Price::Matrix::BillingCycleConfiguration::OrHash,
+            cadence: Orb::Price::Matrix::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
             created_at: Time,
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::Matrix::CreditAllocation, Orb::Internal::AnyHash)),
+            credit_allocation:
+              T.nilable(Orb::Price::Matrix::CreditAllocation::OrHash),
             currency: String,
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
-            invoicing_cycle_configuration: T.nilable(T.any(Orb::Models::Price::Matrix::InvoicingCycleConfiguration, Orb::Internal::AnyHash)),
-            item: T.any(Orb::Models::Price::Matrix::Item, Orb::Internal::AnyHash),
-            matrix_config: T.any(Orb::Models::Price::Matrix::MatrixConfig, Orb::Internal::AnyHash),
-            maximum: T.nilable(T.any(Orb::Models::Price::Matrix::Maximum, Orb::Internal::AnyHash)),
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::Matrix::InvoicingCycleConfiguration::OrHash
+              ),
+            item: Orb::Price::Matrix::Item::OrHash,
+            matrix_config: Orb::Price::Matrix::MatrixConfig::OrHash,
+            maximum: T.nilable(Orb::Price::Matrix::Maximum::OrHash),
             maximum_amount: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(T.any(Orb::Models::Price::Matrix::Minimum, Orb::Internal::AnyHash)),
+            minimum: T.nilable(Orb::Price::Matrix::Minimum::OrHash),
             minimum_amount: T.nilable(String),
             name: String,
             plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Models::Price::Matrix::PriceType::OrSymbol,
-            dimensional_price_configuration: T.nilable(T.any(Orb::Models::Price::Matrix::DimensionalPriceConfiguration, Orb::Internal::AnyHash)),
+            price_type: Orb::Price::Matrix::PriceType::OrSymbol,
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::Matrix::DimensionalPriceConfiguration::OrHash
+              ),
             model_type: Symbol
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -1205,181 +1567,261 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :matrix
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                billable_metric: T.nilable(Orb::Models::Price::Matrix::BillableMetric),
-                billing_cycle_configuration: Orb::Models::Price::Matrix::BillingCycleConfiguration,
-                cadence: Orb::Models::Price::Matrix::Cadence::TaggedSymbol,
-                conversion_rate: T.nilable(Float),
-                created_at: Time,
-                credit_allocation: T.nilable(Orb::Models::Price::Matrix::CreditAllocation),
-                currency: String,
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              billable_metric: T.nilable(Orb::Price::Matrix::BillableMetric),
+              billing_cycle_configuration:
+                Orb::Price::Matrix::BillingCycleConfiguration,
+              cadence: Orb::Price::Matrix::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation:
+                T.nilable(Orb::Price::Matrix::CreditAllocation),
+              currency: String,
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoicing_cycle_configuration: T.nilable(Orb::Models::Price::Matrix::InvoicingCycleConfiguration),
-                item: Orb::Models::Price::Matrix::Item,
-                matrix_config: Orb::Models::Price::Matrix::MatrixConfig,
-                maximum: T.nilable(Orb::Models::Price::Matrix::Maximum),
-                maximum_amount: T.nilable(String),
-                metadata: T::Hash[Symbol, String],
-                minimum: T.nilable(Orb::Models::Price::Matrix::Minimum),
-                minimum_amount: T.nilable(String),
-                model_type: Symbol,
-                name: String,
-                plan_phase_order: T.nilable(Integer),
-                price_type: Orb::Models::Price::Matrix::PriceType::TaggedSymbol,
-                dimensional_price_configuration: T.nilable(Orb::Models::Price::Matrix::DimensionalPriceConfiguration)
-              }
-            )
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoicing_cycle_configuration:
+                T.nilable(Orb::Price::Matrix::InvoicingCycleConfiguration),
+              item: Orb::Price::Matrix::Item,
+              matrix_config: Orb::Price::Matrix::MatrixConfig,
+              maximum: T.nilable(Orb::Price::Matrix::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Price::Matrix::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type: Orb::Price::Matrix::PriceType::TaggedSymbol,
+              dimensional_price_configuration:
+                T.nilable(Orb::Price::Matrix::DimensionalPriceConfiguration)
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
+          def self.new(id:)
+          end
 
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::Matrix::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::Matrix::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::Matrix::BillingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::Matrix::BillingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::Matrix::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::Matrix::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::Matrix::BillingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::Matrix::BillingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            DAY = T.let(:day, Orb::Models::Price::Matrix::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
-            MONTH = T.let(:month, Orb::Models::Price::Matrix::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
+            DAY =
+              T.let(
+                :day,
+                Orb::Price::Matrix::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
+            MONTH =
+              T.let(
+                :month,
+                Orb::Price::Matrix::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(T::Array[Orb::Models::Price::Matrix::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  Orb::Price::Matrix::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         module Cadence
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::Matrix::Cadence) }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::Matrix::Cadence) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ONE_TIME = T.let(:one_time, Orb::Models::Price::Matrix::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Price::Matrix::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Price::Matrix::Cadence::TaggedSymbol)
-          SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::Price::Matrix::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Price::Matrix::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Models::Price::Matrix::Cadence::TaggedSymbol)
+          ONE_TIME = T.let(:one_time, Orb::Price::Matrix::Cadence::TaggedSymbol)
+          MONTHLY = T.let(:monthly, Orb::Price::Matrix::Cadence::TaggedSymbol)
+          QUARTERLY =
+            T.let(:quarterly, Orb::Price::Matrix::Cadence::TaggedSymbol)
+          SEMI_ANNUAL =
+            T.let(:semi_annual, Orb::Price::Matrix::Cadence::TaggedSymbol)
+          ANNUAL = T.let(:annual, Orb::Price::Matrix::Cadence::TaggedSymbol)
+          CUSTOM = T.let(:custom, Orb::Price::Matrix::Cadence::TaggedSymbol)
 
-          sig { override.returns(T::Array[Orb::Models::Price::Matrix::Cadence::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::Matrix::Cadence::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
 
           sig { returns(String) }
           attr_accessor :currency
 
-          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:); end
+          sig do
+            params(allows_rollover: T::Boolean, currency: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(allows_rollover:, currency:)
+          end
 
-          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash; end
+          sig do
+            override.returns({ allows_rollover: T::Boolean, currency: String })
+          end
+          def to_hash
+          end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::Matrix::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::Matrix::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::Matrix::InvoicingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::Matrix::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::Matrix::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::Matrix::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::Matrix::InvoicingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::Matrix::InvoicingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            DAY = T.let(:day, Orb::Models::Price::Matrix::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
+            DAY =
+              T.let(
+                :day,
+                Orb::Price::Matrix::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
             MONTH =
-              T.let(:month, Orb::Models::Price::Matrix::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
+              T.let(
+                :month,
+                Orb::Price::Matrix::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(T::Array[Orb::Models::Price::Matrix::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  Orb::Price::Matrix::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Item < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -1387,13 +1829,17 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
 
         class MatrixConfig < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # Default per unit rate for any usage not bucketed into a specified matrix_value
           sig { returns(String) }
           attr_accessor :default_unit_amount
@@ -1403,16 +1849,18 @@ module Orb
           attr_accessor :dimensions
 
           # Matrix values for specified matrix grouping keys
-          sig { returns(T::Array[Orb::Models::Price::Matrix::MatrixConfig::MatrixValue]) }
+          sig do
+            returns(T::Array[Orb::Price::Matrix::MatrixConfig::MatrixValue])
+          end
           attr_accessor :matrix_values
 
           sig do
             params(
               default_unit_amount: String,
               dimensions: T::Array[T.nilable(String)],
-              matrix_values: T::Array[T.any(Orb::Models::Price::Matrix::MatrixConfig::MatrixValue, Orb::Internal::AnyHash)]
-            )
-              .returns(T.attached_class)
+              matrix_values:
+                T::Array[Orb::Price::Matrix::MatrixConfig::MatrixValue::OrHash]
+            ).returns(T.attached_class)
           end
           def self.new(
             # Default per unit rate for any usage not bucketed into a specified matrix_value
@@ -1421,20 +1869,25 @@ module Orb
             dimensions:,
             # Matrix values for specified matrix grouping keys
             matrix_values:
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  default_unit_amount: String,
-                  dimensions: T::Array[T.nilable(String)],
-                  matrix_values: T::Array[Orb::Models::Price::Matrix::MatrixConfig::MatrixValue]
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                default_unit_amount: String,
+                dimensions: T::Array[T.nilable(String)],
+                matrix_values:
+                  T::Array[Orb::Price::Matrix::MatrixConfig::MatrixValue]
+              }
+            )
+          end
+          def to_hash
+          end
 
           class MatrixValue < Orb::Internal::Type::BaseModel
+            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
             # One or two matrix keys to filter usage to this Matrix value by. For example,
             # ["region", "tier"] could be used to filter cloud usage by a cloud region and an
             # instance tier.
@@ -1458,13 +1911,25 @@ module Orb
               dimension_values:,
               # Unit price for the specified dimension_values
               unit_amount:
-            ); end
-            sig { override.returns({dimension_values: T::Array[T.nilable(String)], unit_amount: String}) }
-            def to_hash; end
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  dimension_values: T::Array[T.nilable(String)],
+                  unit_amount: String
+                }
+              )
+            end
+            def to_hash
+            end
           end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -1475,7 +1940,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -1483,12 +1951,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -1499,7 +1976,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -1507,25 +1987,42 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::Matrix::PriceType) }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::Matrix::PriceType) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::Matrix::PriceType::TaggedSymbol)
-          FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::Matrix::PriceType::TaggedSymbol)
+          USAGE_PRICE =
+            T.let(:usage_price, Orb::Price::Matrix::PriceType::TaggedSymbol)
+          FIXED_PRICE =
+            T.let(:fixed_price, Orb::Price::Matrix::PriceType::TaggedSymbol)
 
-          sig { override.returns(T::Array[Orb::Models::Price::Matrix::PriceType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::Matrix::PriceType::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
 
@@ -1538,40 +2035,51 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:); end
+          def self.new(dimension_values:, dimensional_price_group_id:)
+          end
 
-          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                dimension_values: T::Array[String],
+                dimensional_price_group_id: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class Tiered < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(T.nilable(Orb::Models::Price::Tiered::BillableMetric)) }
+        sig { returns(T.nilable(Orb::Price::Tiered::BillableMetric)) }
         attr_reader :billable_metric
 
         sig do
           params(
-            billable_metric: T.nilable(T.any(Orb::Models::Price::Tiered::BillableMetric, Orb::Internal::AnyHash))
-          )
-            .void
+            billable_metric:
+              T.nilable(Orb::Price::Tiered::BillableMetric::OrHash)
+          ).void
         end
         attr_writer :billable_metric
 
-        sig { returns(Orb::Models::Price::Tiered::BillingCycleConfiguration) }
+        sig { returns(Orb::Price::Tiered::BillingCycleConfiguration) }
         attr_reader :billing_cycle_configuration
 
         sig do
           params(
-            billing_cycle_configuration: T.any(Orb::Models::Price::Tiered::BillingCycleConfiguration, Orb::Internal::AnyHash)
-          )
-            .void
+            billing_cycle_configuration:
+              Orb::Price::Tiered::BillingCycleConfiguration::OrHash
+          ).void
         end
         attr_writer :billing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::Tiered::Cadence::TaggedSymbol) }
+        sig { returns(Orb::Price::Tiered::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
         sig { returns(T.nilable(Float)) }
@@ -1580,14 +2088,14 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T.nilable(Orb::Models::Price::Tiered::CreditAllocation)) }
+        sig { returns(T.nilable(Orb::Price::Tiered::CreditAllocation)) }
         attr_reader :credit_allocation
 
         sig do
           params(
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::Tiered::CreditAllocation, Orb::Internal::AnyHash))
-          )
-            .void
+            credit_allocation:
+              T.nilable(Orb::Price::Tiered::CreditAllocation::OrHash)
+          ).void
         end
         attr_writer :credit_allocation
 
@@ -1598,10 +2106,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -1614,27 +2122,31 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
-        sig { returns(T.nilable(Orb::Models::Price::Tiered::InvoicingCycleConfiguration)) }
+        sig do
+          returns(T.nilable(Orb::Price::Tiered::InvoicingCycleConfiguration))
+        end
         attr_reader :invoicing_cycle_configuration
 
         sig do
           params(
-            invoicing_cycle_configuration: T.nilable(T.any(Orb::Models::Price::Tiered::InvoicingCycleConfiguration, Orb::Internal::AnyHash))
-          )
-            .void
+            invoicing_cycle_configuration:
+              T.nilable(Orb::Price::Tiered::InvoicingCycleConfiguration::OrHash)
+          ).void
         end
         attr_writer :invoicing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::Tiered::Item) }
+        sig { returns(Orb::Price::Tiered::Item) }
         attr_reader :item
 
-        sig { params(item: T.any(Orb::Models::Price::Tiered::Item, Orb::Internal::AnyHash)).void }
+        sig { params(item: Orb::Price::Tiered::Item::OrHash).void }
         attr_writer :item
 
-        sig { returns(T.nilable(Orb::Models::Price::Tiered::Maximum)) }
+        sig { returns(T.nilable(Orb::Price::Tiered::Maximum)) }
         attr_reader :maximum
 
-        sig { params(maximum: T.nilable(T.any(Orb::Models::Price::Tiered::Maximum, Orb::Internal::AnyHash))).void }
+        sig do
+          params(maximum: T.nilable(Orb::Price::Tiered::Maximum::OrHash)).void
+        end
         attr_writer :maximum
 
         sig { returns(T.nilable(String)) }
@@ -1647,10 +2159,12 @@ module Orb
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
-        sig { returns(T.nilable(Orb::Models::Price::Tiered::Minimum)) }
+        sig { returns(T.nilable(Orb::Price::Tiered::Minimum)) }
         attr_reader :minimum
 
-        sig { params(minimum: T.nilable(T.any(Orb::Models::Price::Tiered::Minimum, Orb::Internal::AnyHash))).void }
+        sig do
+          params(minimum: T.nilable(Orb::Price::Tiered::Minimum::OrHash)).void
+        end
         attr_writer :minimum
 
         sig { returns(T.nilable(String)) }
@@ -1665,62 +2179,76 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :plan_phase_order
 
-        sig { returns(Orb::Models::Price::Tiered::PriceType::TaggedSymbol) }
+        sig { returns(Orb::Price::Tiered::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
-        sig { returns(Orb::Models::Price::Tiered::TieredConfig) }
+        sig { returns(Orb::Price::Tiered::TieredConfig) }
         attr_reader :tiered_config
 
-        sig { params(tiered_config: T.any(Orb::Models::Price::Tiered::TieredConfig, Orb::Internal::AnyHash)).void }
+        sig do
+          params(tiered_config: Orb::Price::Tiered::TieredConfig::OrHash).void
+        end
         attr_writer :tiered_config
 
-        sig { returns(T.nilable(Orb::Models::Price::Tiered::DimensionalPriceConfiguration)) }
+        sig do
+          returns(T.nilable(Orb::Price::Tiered::DimensionalPriceConfiguration))
+        end
         attr_reader :dimensional_price_configuration
 
         sig do
           params(
-            dimensional_price_configuration: T.nilable(T.any(Orb::Models::Price::Tiered::DimensionalPriceConfiguration, Orb::Internal::AnyHash))
-          )
-            .void
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::Tiered::DimensionalPriceConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :dimensional_price_configuration
 
         sig do
           params(
             id: String,
-            billable_metric: T.nilable(T.any(Orb::Models::Price::Tiered::BillableMetric, Orb::Internal::AnyHash)),
-            billing_cycle_configuration: T.any(Orb::Models::Price::Tiered::BillingCycleConfiguration, Orb::Internal::AnyHash),
-            cadence: Orb::Models::Price::Tiered::Cadence::OrSymbol,
+            billable_metric:
+              T.nilable(Orb::Price::Tiered::BillableMetric::OrHash),
+            billing_cycle_configuration:
+              Orb::Price::Tiered::BillingCycleConfiguration::OrHash,
+            cadence: Orb::Price::Tiered::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
             created_at: Time,
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::Tiered::CreditAllocation, Orb::Internal::AnyHash)),
+            credit_allocation:
+              T.nilable(Orb::Price::Tiered::CreditAllocation::OrHash),
             currency: String,
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
-            invoicing_cycle_configuration: T.nilable(T.any(Orb::Models::Price::Tiered::InvoicingCycleConfiguration, Orb::Internal::AnyHash)),
-            item: T.any(Orb::Models::Price::Tiered::Item, Orb::Internal::AnyHash),
-            maximum: T.nilable(T.any(Orb::Models::Price::Tiered::Maximum, Orb::Internal::AnyHash)),
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::Tiered::InvoicingCycleConfiguration::OrHash
+              ),
+            item: Orb::Price::Tiered::Item::OrHash,
+            maximum: T.nilable(Orb::Price::Tiered::Maximum::OrHash),
             maximum_amount: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(T.any(Orb::Models::Price::Tiered::Minimum, Orb::Internal::AnyHash)),
+            minimum: T.nilable(Orb::Price::Tiered::Minimum::OrHash),
             minimum_amount: T.nilable(String),
             name: String,
             plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Models::Price::Tiered::PriceType::OrSymbol,
-            tiered_config: T.any(Orb::Models::Price::Tiered::TieredConfig, Orb::Internal::AnyHash),
-            dimensional_price_configuration: T.nilable(T.any(Orb::Models::Price::Tiered::DimensionalPriceConfiguration, Orb::Internal::AnyHash)),
+            price_type: Orb::Price::Tiered::PriceType::OrSymbol,
+            tiered_config: Orb::Price::Tiered::TieredConfig::OrHash,
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::Tiered::DimensionalPriceConfiguration::OrHash
+              ),
             model_type: Symbol
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -1751,181 +2279,261 @@ module Orb
           tiered_config:,
           dimensional_price_configuration: nil,
           model_type: :tiered
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                billable_metric: T.nilable(Orb::Models::Price::Tiered::BillableMetric),
-                billing_cycle_configuration: Orb::Models::Price::Tiered::BillingCycleConfiguration,
-                cadence: Orb::Models::Price::Tiered::Cadence::TaggedSymbol,
-                conversion_rate: T.nilable(Float),
-                created_at: Time,
-                credit_allocation: T.nilable(Orb::Models::Price::Tiered::CreditAllocation),
-                currency: String,
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              billable_metric: T.nilable(Orb::Price::Tiered::BillableMetric),
+              billing_cycle_configuration:
+                Orb::Price::Tiered::BillingCycleConfiguration,
+              cadence: Orb::Price::Tiered::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation:
+                T.nilable(Orb::Price::Tiered::CreditAllocation),
+              currency: String,
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoicing_cycle_configuration: T.nilable(Orb::Models::Price::Tiered::InvoicingCycleConfiguration),
-                item: Orb::Models::Price::Tiered::Item,
-                maximum: T.nilable(Orb::Models::Price::Tiered::Maximum),
-                maximum_amount: T.nilable(String),
-                metadata: T::Hash[Symbol, String],
-                minimum: T.nilable(Orb::Models::Price::Tiered::Minimum),
-                minimum_amount: T.nilable(String),
-                model_type: Symbol,
-                name: String,
-                plan_phase_order: T.nilable(Integer),
-                price_type: Orb::Models::Price::Tiered::PriceType::TaggedSymbol,
-                tiered_config: Orb::Models::Price::Tiered::TieredConfig,
-                dimensional_price_configuration: T.nilable(Orb::Models::Price::Tiered::DimensionalPriceConfiguration)
-              }
-            )
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoicing_cycle_configuration:
+                T.nilable(Orb::Price::Tiered::InvoicingCycleConfiguration),
+              item: Orb::Price::Tiered::Item,
+              maximum: T.nilable(Orb::Price::Tiered::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Price::Tiered::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type: Orb::Price::Tiered::PriceType::TaggedSymbol,
+              tiered_config: Orb::Price::Tiered::TieredConfig,
+              dimensional_price_configuration:
+                T.nilable(Orb::Price::Tiered::DimensionalPriceConfiguration)
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
+          def self.new(id:)
+          end
 
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::Tiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::Tiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::Tiered::BillingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::Tiered::BillingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::Tiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::Tiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::Tiered::BillingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::Tiered::BillingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            DAY = T.let(:day, Orb::Models::Price::Tiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
-            MONTH = T.let(:month, Orb::Models::Price::Tiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
+            DAY =
+              T.let(
+                :day,
+                Orb::Price::Tiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
+            MONTH =
+              T.let(
+                :month,
+                Orb::Price::Tiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(T::Array[Orb::Models::Price::Tiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  Orb::Price::Tiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         module Cadence
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::Tiered::Cadence) }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::Tiered::Cadence) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ONE_TIME = T.let(:one_time, Orb::Models::Price::Tiered::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Price::Tiered::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Price::Tiered::Cadence::TaggedSymbol)
-          SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::Price::Tiered::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Price::Tiered::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Models::Price::Tiered::Cadence::TaggedSymbol)
+          ONE_TIME = T.let(:one_time, Orb::Price::Tiered::Cadence::TaggedSymbol)
+          MONTHLY = T.let(:monthly, Orb::Price::Tiered::Cadence::TaggedSymbol)
+          QUARTERLY =
+            T.let(:quarterly, Orb::Price::Tiered::Cadence::TaggedSymbol)
+          SEMI_ANNUAL =
+            T.let(:semi_annual, Orb::Price::Tiered::Cadence::TaggedSymbol)
+          ANNUAL = T.let(:annual, Orb::Price::Tiered::Cadence::TaggedSymbol)
+          CUSTOM = T.let(:custom, Orb::Price::Tiered::Cadence::TaggedSymbol)
 
-          sig { override.returns(T::Array[Orb::Models::Price::Tiered::Cadence::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::Tiered::Cadence::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
 
           sig { returns(String) }
           attr_accessor :currency
 
-          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:); end
+          sig do
+            params(allows_rollover: T::Boolean, currency: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(allows_rollover:, currency:)
+          end
 
-          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash; end
+          sig do
+            override.returns({ allows_rollover: T::Boolean, currency: String })
+          end
+          def to_hash
+          end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::Tiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::Tiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::Tiered::InvoicingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::Tiered::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::Tiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::Tiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::Tiered::InvoicingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::Tiered::InvoicingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            DAY = T.let(:day, Orb::Models::Price::Tiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
+            DAY =
+              T.let(
+                :day,
+                Orb::Price::Tiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
             MONTH =
-              T.let(:month, Orb::Models::Price::Tiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
+              T.let(
+                :month,
+                Orb::Price::Tiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(T::Array[Orb::Models::Price::Tiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  Orb::Price::Tiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Item < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -1933,13 +2541,17 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -1950,7 +2562,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -1958,12 +2573,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -1974,7 +2598,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -1982,41 +2609,68 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::Tiered::PriceType) }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::Tiered::PriceType) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::Tiered::PriceType::TaggedSymbol)
-          FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::Tiered::PriceType::TaggedSymbol)
+          USAGE_PRICE =
+            T.let(:usage_price, Orb::Price::Tiered::PriceType::TaggedSymbol)
+          FIXED_PRICE =
+            T.let(:fixed_price, Orb::Price::Tiered::PriceType::TaggedSymbol)
 
-          sig { override.returns(T::Array[Orb::Models::Price::Tiered::PriceType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::Tiered::PriceType::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class TieredConfig < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # Tiers for rating based on total usage quantities into the specified tier
-          sig { returns(T::Array[Orb::Models::Price::Tiered::TieredConfig::Tier]) }
+          sig { returns(T::Array[Orb::Price::Tiered::TieredConfig::Tier]) }
           attr_accessor :tiers
 
           sig do
-            params(tiers: T::Array[T.any(Orb::Models::Price::Tiered::TieredConfig::Tier, Orb::Internal::AnyHash)])
-              .returns(T.attached_class)
+            params(
+              tiers: T::Array[Orb::Price::Tiered::TieredConfig::Tier::OrHash]
+            ).returns(T.attached_class)
           end
           def self.new(
             # Tiers for rating based on total usage quantities into the specified tier
             tiers:
-          ); end
-          sig { override.returns({tiers: T::Array[Orb::Models::Price::Tiered::TieredConfig::Tier]}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { tiers: T::Array[Orb::Price::Tiered::TieredConfig::Tier] }
+            )
+          end
+          def to_hash
+          end
 
           class Tier < Orb::Internal::Type::BaseModel
+            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
             # Exclusive tier starting value
             sig { returns(Float) }
             attr_accessor :first_unit
@@ -2043,13 +2697,26 @@ module Orb
               unit_amount:,
               # Inclusive tier ending value. If null, this is treated as the last tier
               last_unit: nil
-            ); end
-            sig { override.returns({first_unit: Float, unit_amount: String, last_unit: T.nilable(Float)}) }
-            def to_hash; end
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: T.nilable(Float)
+                }
+              )
+            end
+            def to_hash
+            end
           end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
 
@@ -2062,40 +2729,51 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:); end
+          def self.new(dimension_values:, dimensional_price_group_id:)
+          end
 
-          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                dimension_values: T::Array[String],
+                dimensional_price_group_id: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class TieredBps < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredBps::BillableMetric)) }
+        sig { returns(T.nilable(Orb::Price::TieredBps::BillableMetric)) }
         attr_reader :billable_metric
 
         sig do
           params(
-            billable_metric: T.nilable(T.any(Orb::Models::Price::TieredBps::BillableMetric, Orb::Internal::AnyHash))
-          )
-            .void
+            billable_metric:
+              T.nilable(Orb::Price::TieredBps::BillableMetric::OrHash)
+          ).void
         end
         attr_writer :billable_metric
 
-        sig { returns(Orb::Models::Price::TieredBps::BillingCycleConfiguration) }
+        sig { returns(Orb::Price::TieredBps::BillingCycleConfiguration) }
         attr_reader :billing_cycle_configuration
 
         sig do
           params(
-            billing_cycle_configuration: T.any(Orb::Models::Price::TieredBps::BillingCycleConfiguration, Orb::Internal::AnyHash)
-          )
-            .void
+            billing_cycle_configuration:
+              Orb::Price::TieredBps::BillingCycleConfiguration::OrHash
+          ).void
         end
         attr_writer :billing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::TieredBps::Cadence::TaggedSymbol) }
+        sig { returns(Orb::Price::TieredBps::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
         sig { returns(T.nilable(Float)) }
@@ -2104,14 +2782,14 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredBps::CreditAllocation)) }
+        sig { returns(T.nilable(Orb::Price::TieredBps::CreditAllocation)) }
         attr_reader :credit_allocation
 
         sig do
           params(
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::TieredBps::CreditAllocation, Orb::Internal::AnyHash))
-          )
-            .void
+            credit_allocation:
+              T.nilable(Orb::Price::TieredBps::CreditAllocation::OrHash)
+          ).void
         end
         attr_writer :credit_allocation
 
@@ -2122,10 +2800,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -2138,27 +2816,35 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredBps::InvoicingCycleConfiguration)) }
+        sig do
+          returns(T.nilable(Orb::Price::TieredBps::InvoicingCycleConfiguration))
+        end
         attr_reader :invoicing_cycle_configuration
 
         sig do
           params(
-            invoicing_cycle_configuration: T.nilable(T.any(Orb::Models::Price::TieredBps::InvoicingCycleConfiguration, Orb::Internal::AnyHash))
-          )
-            .void
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::TieredBps::InvoicingCycleConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :invoicing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::TieredBps::Item) }
+        sig { returns(Orb::Price::TieredBps::Item) }
         attr_reader :item
 
-        sig { params(item: T.any(Orb::Models::Price::TieredBps::Item, Orb::Internal::AnyHash)).void }
+        sig { params(item: Orb::Price::TieredBps::Item::OrHash).void }
         attr_writer :item
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredBps::Maximum)) }
+        sig { returns(T.nilable(Orb::Price::TieredBps::Maximum)) }
         attr_reader :maximum
 
-        sig { params(maximum: T.nilable(T.any(Orb::Models::Price::TieredBps::Maximum, Orb::Internal::AnyHash))).void }
+        sig do
+          params(
+            maximum: T.nilable(Orb::Price::TieredBps::Maximum::OrHash)
+          ).void
+        end
         attr_writer :maximum
 
         sig { returns(T.nilable(String)) }
@@ -2171,10 +2857,14 @@ module Orb
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredBps::Minimum)) }
+        sig { returns(T.nilable(Orb::Price::TieredBps::Minimum)) }
         attr_reader :minimum
 
-        sig { params(minimum: T.nilable(T.any(Orb::Models::Price::TieredBps::Minimum, Orb::Internal::AnyHash))).void }
+        sig do
+          params(
+            minimum: T.nilable(Orb::Price::TieredBps::Minimum::OrHash)
+          ).void
+        end
         attr_writer :minimum
 
         sig { returns(T.nilable(String)) }
@@ -2189,65 +2879,80 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :plan_phase_order
 
-        sig { returns(Orb::Models::Price::TieredBps::PriceType::TaggedSymbol) }
+        sig { returns(Orb::Price::TieredBps::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
-        sig { returns(Orb::Models::Price::TieredBps::TieredBpsConfig) }
+        sig { returns(Orb::Price::TieredBps::TieredBpsConfig) }
         attr_reader :tiered_bps_config
 
         sig do
-          params(tiered_bps_config: T.any(Orb::Models::Price::TieredBps::TieredBpsConfig, Orb::Internal::AnyHash))
-            .void
+          params(
+            tiered_bps_config: Orb::Price::TieredBps::TieredBpsConfig::OrHash
+          ).void
         end
         attr_writer :tiered_bps_config
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredBps::DimensionalPriceConfiguration)) }
+        sig do
+          returns(
+            T.nilable(Orb::Price::TieredBps::DimensionalPriceConfiguration)
+          )
+        end
         attr_reader :dimensional_price_configuration
 
         sig do
           params(
-            dimensional_price_configuration: T.nilable(T.any(Orb::Models::Price::TieredBps::DimensionalPriceConfiguration, Orb::Internal::AnyHash))
-          )
-            .void
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::TieredBps::DimensionalPriceConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :dimensional_price_configuration
 
         sig do
           params(
             id: String,
-            billable_metric: T.nilable(T.any(Orb::Models::Price::TieredBps::BillableMetric, Orb::Internal::AnyHash)),
-            billing_cycle_configuration: T.any(Orb::Models::Price::TieredBps::BillingCycleConfiguration, Orb::Internal::AnyHash),
-            cadence: Orb::Models::Price::TieredBps::Cadence::OrSymbol,
+            billable_metric:
+              T.nilable(Orb::Price::TieredBps::BillableMetric::OrHash),
+            billing_cycle_configuration:
+              Orb::Price::TieredBps::BillingCycleConfiguration::OrHash,
+            cadence: Orb::Price::TieredBps::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
             created_at: Time,
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::TieredBps::CreditAllocation, Orb::Internal::AnyHash)),
+            credit_allocation:
+              T.nilable(Orb::Price::TieredBps::CreditAllocation::OrHash),
             currency: String,
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
-            invoicing_cycle_configuration: T.nilable(T.any(Orb::Models::Price::TieredBps::InvoicingCycleConfiguration, Orb::Internal::AnyHash)),
-            item: T.any(Orb::Models::Price::TieredBps::Item, Orb::Internal::AnyHash),
-            maximum: T.nilable(T.any(Orb::Models::Price::TieredBps::Maximum, Orb::Internal::AnyHash)),
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::TieredBps::InvoicingCycleConfiguration::OrHash
+              ),
+            item: Orb::Price::TieredBps::Item::OrHash,
+            maximum: T.nilable(Orb::Price::TieredBps::Maximum::OrHash),
             maximum_amount: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(T.any(Orb::Models::Price::TieredBps::Minimum, Orb::Internal::AnyHash)),
+            minimum: T.nilable(Orb::Price::TieredBps::Minimum::OrHash),
             minimum_amount: T.nilable(String),
             name: String,
             plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Models::Price::TieredBps::PriceType::OrSymbol,
-            tiered_bps_config: T.any(Orb::Models::Price::TieredBps::TieredBpsConfig, Orb::Internal::AnyHash),
-            dimensional_price_configuration: T.nilable(T.any(Orb::Models::Price::TieredBps::DimensionalPriceConfiguration, Orb::Internal::AnyHash)),
+            price_type: Orb::Price::TieredBps::PriceType::OrSymbol,
+            tiered_bps_config: Orb::Price::TieredBps::TieredBpsConfig::OrHash,
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::TieredBps::DimensionalPriceConfiguration::OrHash
+              ),
             model_type: Symbol
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -2278,182 +2983,263 @@ module Orb
           tiered_bps_config:,
           dimensional_price_configuration: nil,
           model_type: :tiered_bps
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                billable_metric: T.nilable(Orb::Models::Price::TieredBps::BillableMetric),
-                billing_cycle_configuration: Orb::Models::Price::TieredBps::BillingCycleConfiguration,
-                cadence: Orb::Models::Price::TieredBps::Cadence::TaggedSymbol,
-                conversion_rate: T.nilable(Float),
-                created_at: Time,
-                credit_allocation: T.nilable(Orb::Models::Price::TieredBps::CreditAllocation),
-                currency: String,
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              billable_metric: T.nilable(Orb::Price::TieredBps::BillableMetric),
+              billing_cycle_configuration:
+                Orb::Price::TieredBps::BillingCycleConfiguration,
+              cadence: Orb::Price::TieredBps::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation:
+                T.nilable(Orb::Price::TieredBps::CreditAllocation),
+              currency: String,
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoicing_cycle_configuration: T.nilable(Orb::Models::Price::TieredBps::InvoicingCycleConfiguration),
-                item: Orb::Models::Price::TieredBps::Item,
-                maximum: T.nilable(Orb::Models::Price::TieredBps::Maximum),
-                maximum_amount: T.nilable(String),
-                metadata: T::Hash[Symbol, String],
-                minimum: T.nilable(Orb::Models::Price::TieredBps::Minimum),
-                minimum_amount: T.nilable(String),
-                model_type: Symbol,
-                name: String,
-                plan_phase_order: T.nilable(Integer),
-                price_type: Orb::Models::Price::TieredBps::PriceType::TaggedSymbol,
-                tiered_bps_config: Orb::Models::Price::TieredBps::TieredBpsConfig,
-                dimensional_price_configuration: T.nilable(Orb::Models::Price::TieredBps::DimensionalPriceConfiguration)
-              }
-            )
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoicing_cycle_configuration:
+                T.nilable(Orb::Price::TieredBps::InvoicingCycleConfiguration),
+              item: Orb::Price::TieredBps::Item,
+              maximum: T.nilable(Orb::Price::TieredBps::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Price::TieredBps::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type: Orb::Price::TieredBps::PriceType::TaggedSymbol,
+              tiered_bps_config: Orb::Price::TieredBps::TieredBpsConfig,
+              dimensional_price_configuration:
+                T.nilable(Orb::Price::TieredBps::DimensionalPriceConfiguration)
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
+          def self.new(id:)
+          end
 
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::TieredBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::TieredBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::TieredBps::BillingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::TieredBps::BillingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::TieredBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::TieredBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::TieredBps::BillingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::TieredBps::BillingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            DAY = T.let(:day, Orb::Models::Price::TieredBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
+            DAY =
+              T.let(
+                :day,
+                Orb::Price::TieredBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
             MONTH =
-              T.let(:month, Orb::Models::Price::TieredBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
+              T.let(
+                :month,
+                Orb::Price::TieredBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(T::Array[Orb::Models::Price::TieredBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  Orb::Price::TieredBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         module Cadence
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::TieredBps::Cadence) }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::TieredBps::Cadence) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ONE_TIME = T.let(:one_time, Orb::Models::Price::TieredBps::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Price::TieredBps::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Price::TieredBps::Cadence::TaggedSymbol)
-          SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::Price::TieredBps::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Price::TieredBps::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Models::Price::TieredBps::Cadence::TaggedSymbol)
+          ONE_TIME =
+            T.let(:one_time, Orb::Price::TieredBps::Cadence::TaggedSymbol)
+          MONTHLY =
+            T.let(:monthly, Orb::Price::TieredBps::Cadence::TaggedSymbol)
+          QUARTERLY =
+            T.let(:quarterly, Orb::Price::TieredBps::Cadence::TaggedSymbol)
+          SEMI_ANNUAL =
+            T.let(:semi_annual, Orb::Price::TieredBps::Cadence::TaggedSymbol)
+          ANNUAL = T.let(:annual, Orb::Price::TieredBps::Cadence::TaggedSymbol)
+          CUSTOM = T.let(:custom, Orb::Price::TieredBps::Cadence::TaggedSymbol)
 
-          sig { override.returns(T::Array[Orb::Models::Price::TieredBps::Cadence::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::TieredBps::Cadence::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
 
           sig { returns(String) }
           attr_accessor :currency
 
-          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:); end
+          sig do
+            params(allows_rollover: T::Boolean, currency: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(allows_rollover:, currency:)
+          end
 
-          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash; end
+          sig do
+            override.returns({ allows_rollover: T::Boolean, currency: String })
+          end
+          def to_hash
+          end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::TieredBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::TieredBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::TieredBps::InvoicingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::TieredBps::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::TieredBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::TieredBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::TieredBps::InvoicingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::TieredBps::InvoicingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            DAY = T.let(:day, Orb::Models::Price::TieredBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
+            DAY =
+              T.let(
+                :day,
+                Orb::Price::TieredBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
             MONTH =
-              T.let(:month, Orb::Models::Price::TieredBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
+              T.let(
+                :month,
+                Orb::Price::TieredBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(T::Array[Orb::Models::Price::TieredBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  Orb::Price::TieredBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Item < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -2461,13 +3247,17 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -2478,7 +3268,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -2486,12 +3279,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -2502,7 +3304,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -2510,45 +3315,73 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::TieredBps::PriceType) }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::TieredBps::PriceType) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::TieredBps::PriceType::TaggedSymbol)
-          FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::TieredBps::PriceType::TaggedSymbol)
+          USAGE_PRICE =
+            T.let(:usage_price, Orb::Price::TieredBps::PriceType::TaggedSymbol)
+          FIXED_PRICE =
+            T.let(:fixed_price, Orb::Price::TieredBps::PriceType::TaggedSymbol)
 
-          sig { override.returns(T::Array[Orb::Models::Price::TieredBps::PriceType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::TieredBps::PriceType::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class TieredBpsConfig < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
           # tiers
-          sig { returns(T::Array[Orb::Models::Price::TieredBps::TieredBpsConfig::Tier]) }
+          sig do
+            returns(T::Array[Orb::Price::TieredBps::TieredBpsConfig::Tier])
+          end
           attr_accessor :tiers
 
           sig do
             params(
-              tiers: T::Array[T.any(Orb::Models::Price::TieredBps::TieredBpsConfig::Tier, Orb::Internal::AnyHash)]
-            )
-              .returns(T.attached_class)
+              tiers:
+                T::Array[Orb::Price::TieredBps::TieredBpsConfig::Tier::OrHash]
+            ).returns(T.attached_class)
           end
           def self.new(
             # Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
             # tiers
             tiers:
-          ); end
-          sig { override.returns({tiers: T::Array[Orb::Models::Price::TieredBps::TieredBpsConfig::Tier]}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { tiers: T::Array[Orb::Price::TieredBps::TieredBpsConfig::Tier] }
+            )
+          end
+          def to_hash
+          end
 
           class Tier < Orb::Internal::Type::BaseModel
+            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
             # Per-event basis point rate
             sig { returns(Float) }
             attr_accessor :bps
@@ -2571,8 +3404,7 @@ module Orb
                 minimum_amount: String,
                 maximum_amount: T.nilable(String),
                 per_unit_maximum: T.nilable(String)
-              )
-                .returns(T.attached_class)
+              ).returns(T.attached_class)
             end
             def self.new(
               # Per-event basis point rate
@@ -2583,23 +3415,27 @@ module Orb
               maximum_amount: nil,
               # Per unit maximum to charge
               per_unit_maximum: nil
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    bps: Float,
-                    minimum_amount: String,
-                    maximum_amount: T.nilable(String),
-                    per_unit_maximum: T.nilable(String)
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  bps: Float,
+                  minimum_amount: String,
+                  maximum_amount: T.nilable(String),
+                  per_unit_maximum: T.nilable(String)
+                }
+              )
+            end
+            def to_hash
+            end
           end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
 
@@ -2612,44 +3448,56 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:); end
+          def self.new(dimension_values:, dimensional_price_group_id:)
+          end
 
-          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                dimension_values: T::Array[String],
+                dimensional_price_group_id: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class Bps < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(T.nilable(Orb::Models::Price::Bps::BillableMetric)) }
+        sig { returns(T.nilable(Orb::Price::Bps::BillableMetric)) }
         attr_reader :billable_metric
 
         sig do
-          params(billable_metric: T.nilable(T.any(Orb::Models::Price::Bps::BillableMetric, Orb::Internal::AnyHash)))
-            .void
+          params(
+            billable_metric: T.nilable(Orb::Price::Bps::BillableMetric::OrHash)
+          ).void
         end
         attr_writer :billable_metric
 
-        sig { returns(Orb::Models::Price::Bps::BillingCycleConfiguration) }
+        sig { returns(Orb::Price::Bps::BillingCycleConfiguration) }
         attr_reader :billing_cycle_configuration
 
         sig do
           params(
-            billing_cycle_configuration: T.any(Orb::Models::Price::Bps::BillingCycleConfiguration, Orb::Internal::AnyHash)
-          )
-            .void
+            billing_cycle_configuration:
+              Orb::Price::Bps::BillingCycleConfiguration::OrHash
+          ).void
         end
         attr_writer :billing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::Bps::BpsConfig) }
+        sig { returns(Orb::Price::Bps::BpsConfig) }
         attr_reader :bps_config
 
-        sig { params(bps_config: T.any(Orb::Models::Price::Bps::BpsConfig, Orb::Internal::AnyHash)).void }
+        sig { params(bps_config: Orb::Price::Bps::BpsConfig::OrHash).void }
         attr_writer :bps_config
 
-        sig { returns(Orb::Models::Price::Bps::Cadence::TaggedSymbol) }
+        sig { returns(Orb::Price::Bps::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
         sig { returns(T.nilable(Float)) }
@@ -2658,14 +3506,14 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T.nilable(Orb::Models::Price::Bps::CreditAllocation)) }
+        sig { returns(T.nilable(Orb::Price::Bps::CreditAllocation)) }
         attr_reader :credit_allocation
 
         sig do
           params(
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::Bps::CreditAllocation, Orb::Internal::AnyHash))
-          )
-            .void
+            credit_allocation:
+              T.nilable(Orb::Price::Bps::CreditAllocation::OrHash)
+          ).void
         end
         attr_writer :credit_allocation
 
@@ -2676,10 +3524,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -2692,27 +3540,29 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
-        sig { returns(T.nilable(Orb::Models::Price::Bps::InvoicingCycleConfiguration)) }
+        sig { returns(T.nilable(Orb::Price::Bps::InvoicingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
         sig do
           params(
-            invoicing_cycle_configuration: T.nilable(T.any(Orb::Models::Price::Bps::InvoicingCycleConfiguration, Orb::Internal::AnyHash))
-          )
-            .void
+            invoicing_cycle_configuration:
+              T.nilable(Orb::Price::Bps::InvoicingCycleConfiguration::OrHash)
+          ).void
         end
         attr_writer :invoicing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::Bps::Item) }
+        sig { returns(Orb::Price::Bps::Item) }
         attr_reader :item
 
-        sig { params(item: T.any(Orb::Models::Price::Bps::Item, Orb::Internal::AnyHash)).void }
+        sig { params(item: Orb::Price::Bps::Item::OrHash).void }
         attr_writer :item
 
-        sig { returns(T.nilable(Orb::Models::Price::Bps::Maximum)) }
+        sig { returns(T.nilable(Orb::Price::Bps::Maximum)) }
         attr_reader :maximum
 
-        sig { params(maximum: T.nilable(T.any(Orb::Models::Price::Bps::Maximum, Orb::Internal::AnyHash))).void }
+        sig do
+          params(maximum: T.nilable(Orb::Price::Bps::Maximum::OrHash)).void
+        end
         attr_writer :maximum
 
         sig { returns(T.nilable(String)) }
@@ -2725,10 +3575,12 @@ module Orb
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
-        sig { returns(T.nilable(Orb::Models::Price::Bps::Minimum)) }
+        sig { returns(T.nilable(Orb::Price::Bps::Minimum)) }
         attr_reader :minimum
 
-        sig { params(minimum: T.nilable(T.any(Orb::Models::Price::Bps::Minimum, Orb::Internal::AnyHash))).void }
+        sig do
+          params(minimum: T.nilable(Orb::Price::Bps::Minimum::OrHash)).void
+        end
         attr_writer :minimum
 
         sig { returns(T.nilable(String)) }
@@ -2743,56 +3595,61 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :plan_phase_order
 
-        sig { returns(Orb::Models::Price::Bps::PriceType::TaggedSymbol) }
+        sig { returns(Orb::Price::Bps::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
-        sig { returns(T.nilable(Orb::Models::Price::Bps::DimensionalPriceConfiguration)) }
+        sig do
+          returns(T.nilable(Orb::Price::Bps::DimensionalPriceConfiguration))
+        end
         attr_reader :dimensional_price_configuration
 
         sig do
           params(
-            dimensional_price_configuration: T.nilable(T.any(Orb::Models::Price::Bps::DimensionalPriceConfiguration, Orb::Internal::AnyHash))
-          )
-            .void
+            dimensional_price_configuration:
+              T.nilable(Orb::Price::Bps::DimensionalPriceConfiguration::OrHash)
+          ).void
         end
         attr_writer :dimensional_price_configuration
 
         sig do
           params(
             id: String,
-            billable_metric: T.nilable(T.any(Orb::Models::Price::Bps::BillableMetric, Orb::Internal::AnyHash)),
-            billing_cycle_configuration: T.any(Orb::Models::Price::Bps::BillingCycleConfiguration, Orb::Internal::AnyHash),
-            bps_config: T.any(Orb::Models::Price::Bps::BpsConfig, Orb::Internal::AnyHash),
-            cadence: Orb::Models::Price::Bps::Cadence::OrSymbol,
+            billable_metric: T.nilable(Orb::Price::Bps::BillableMetric::OrHash),
+            billing_cycle_configuration:
+              Orb::Price::Bps::BillingCycleConfiguration::OrHash,
+            bps_config: Orb::Price::Bps::BpsConfig::OrHash,
+            cadence: Orb::Price::Bps::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
             created_at: Time,
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::Bps::CreditAllocation, Orb::Internal::AnyHash)),
+            credit_allocation:
+              T.nilable(Orb::Price::Bps::CreditAllocation::OrHash),
             currency: String,
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
-            invoicing_cycle_configuration: T.nilable(T.any(Orb::Models::Price::Bps::InvoicingCycleConfiguration, Orb::Internal::AnyHash)),
-            item: T.any(Orb::Models::Price::Bps::Item, Orb::Internal::AnyHash),
-            maximum: T.nilable(T.any(Orb::Models::Price::Bps::Maximum, Orb::Internal::AnyHash)),
+            invoicing_cycle_configuration:
+              T.nilable(Orb::Price::Bps::InvoicingCycleConfiguration::OrHash),
+            item: Orb::Price::Bps::Item::OrHash,
+            maximum: T.nilable(Orb::Price::Bps::Maximum::OrHash),
             maximum_amount: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(T.any(Orb::Models::Price::Bps::Minimum, Orb::Internal::AnyHash)),
+            minimum: T.nilable(Orb::Price::Bps::Minimum::OrHash),
             minimum_amount: T.nilable(String),
             name: String,
             plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Models::Price::Bps::PriceType::OrSymbol,
-            dimensional_price_configuration: T.nilable(T.any(Orb::Models::Price::Bps::DimensionalPriceConfiguration, Orb::Internal::AnyHash)),
+            price_type: Orb::Price::Bps::PriceType::OrSymbol,
+            dimensional_price_configuration:
+              T.nilable(Orb::Price::Bps::DimensionalPriceConfiguration::OrHash),
             model_type: Symbol
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -2823,101 +3680,141 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :bps
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                billable_metric: T.nilable(Orb::Models::Price::Bps::BillableMetric),
-                billing_cycle_configuration: Orb::Models::Price::Bps::BillingCycleConfiguration,
-                bps_config: Orb::Models::Price::Bps::BpsConfig,
-                cadence: Orb::Models::Price::Bps::Cadence::TaggedSymbol,
-                conversion_rate: T.nilable(Float),
-                created_at: Time,
-                credit_allocation: T.nilable(Orb::Models::Price::Bps::CreditAllocation),
-                currency: String,
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              billable_metric: T.nilable(Orb::Price::Bps::BillableMetric),
+              billing_cycle_configuration:
+                Orb::Price::Bps::BillingCycleConfiguration,
+              bps_config: Orb::Price::Bps::BpsConfig,
+              cadence: Orb::Price::Bps::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation: T.nilable(Orb::Price::Bps::CreditAllocation),
+              currency: String,
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoicing_cycle_configuration: T.nilable(Orb::Models::Price::Bps::InvoicingCycleConfiguration),
-                item: Orb::Models::Price::Bps::Item,
-                maximum: T.nilable(Orb::Models::Price::Bps::Maximum),
-                maximum_amount: T.nilable(String),
-                metadata: T::Hash[Symbol, String],
-                minimum: T.nilable(Orb::Models::Price::Bps::Minimum),
-                minimum_amount: T.nilable(String),
-                model_type: Symbol,
-                name: String,
-                plan_phase_order: T.nilable(Integer),
-                price_type: Orb::Models::Price::Bps::PriceType::TaggedSymbol,
-                dimensional_price_configuration: T.nilable(Orb::Models::Price::Bps::DimensionalPriceConfiguration)
-              }
-            )
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoicing_cycle_configuration:
+                T.nilable(Orb::Price::Bps::InvoicingCycleConfiguration),
+              item: Orb::Price::Bps::Item,
+              maximum: T.nilable(Orb::Price::Bps::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Price::Bps::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type: Orb::Price::Bps::PriceType::TaggedSymbol,
+              dimensional_price_configuration:
+                T.nilable(Orb::Price::Bps::DimensionalPriceConfiguration)
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
+          def self.new(id:)
+          end
 
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::Bps::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::Bps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::Bps::BillingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::Bps::BillingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::Bps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::Bps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::Bps::BillingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::Bps::BillingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            DAY = T.let(:day, Orb::Models::Price::Bps::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
-            MONTH = T.let(:month, Orb::Models::Price::Bps::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
+            DAY =
+              T.let(
+                :day,
+                Orb::Price::Bps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
+            MONTH =
+              T.let(
+                :month,
+                Orb::Price::Bps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
 
-            sig { override.returns(T::Array[Orb::Models::Price::Bps::BillingCycleConfiguration::DurationUnit::TaggedSymbol]) }
-            def self.values; end
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::Bps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 
         class BpsConfig < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # Basis point take rate per event
           sig { returns(Float) }
           attr_accessor :bps
@@ -2926,94 +3823,147 @@ module Orb
           sig { returns(T.nilable(String)) }
           attr_accessor :per_unit_maximum
 
-          sig { params(bps: Float, per_unit_maximum: T.nilable(String)).returns(T.attached_class) }
+          sig do
+            params(bps: Float, per_unit_maximum: T.nilable(String)).returns(
+              T.attached_class
+            )
+          end
           def self.new(
             # Basis point take rate per event
             bps:,
             # Optional currency amount maximum to cap spend per event
             per_unit_maximum: nil
-          ); end
-          sig { override.returns({bps: Float, per_unit_maximum: T.nilable(String)}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { bps: Float, per_unit_maximum: T.nilable(String) }
+            )
+          end
+          def to_hash
+          end
         end
 
         module Cadence
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::Bps::Cadence) }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::Bps::Cadence) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ONE_TIME = T.let(:one_time, Orb::Models::Price::Bps::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Price::Bps::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Price::Bps::Cadence::TaggedSymbol)
-          SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::Price::Bps::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Price::Bps::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Models::Price::Bps::Cadence::TaggedSymbol)
+          ONE_TIME = T.let(:one_time, Orb::Price::Bps::Cadence::TaggedSymbol)
+          MONTHLY = T.let(:monthly, Orb::Price::Bps::Cadence::TaggedSymbol)
+          QUARTERLY = T.let(:quarterly, Orb::Price::Bps::Cadence::TaggedSymbol)
+          SEMI_ANNUAL =
+            T.let(:semi_annual, Orb::Price::Bps::Cadence::TaggedSymbol)
+          ANNUAL = T.let(:annual, Orb::Price::Bps::Cadence::TaggedSymbol)
+          CUSTOM = T.let(:custom, Orb::Price::Bps::Cadence::TaggedSymbol)
 
-          sig { override.returns(T::Array[Orb::Models::Price::Bps::Cadence::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(T::Array[Orb::Price::Bps::Cadence::TaggedSymbol])
+          end
+          def self.values
+          end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
 
           sig { returns(String) }
           attr_accessor :currency
 
-          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:); end
+          sig do
+            params(allows_rollover: T::Boolean, currency: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(allows_rollover:, currency:)
+          end
 
-          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash; end
+          sig do
+            override.returns({ allows_rollover: T::Boolean, currency: String })
+          end
+          def to_hash
+          end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::Bps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::Bps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::Bps::InvoicingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::Bps::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::Bps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::Bps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::Bps::InvoicingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::Bps::InvoicingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            DAY = T.let(:day, Orb::Models::Price::Bps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
-            MONTH = T.let(:month, Orb::Models::Price::Bps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
+            DAY =
+              T.let(
+                :day,
+                Orb::Price::Bps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
+            MONTH =
+              T.let(
+                :month,
+                Orb::Price::Bps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(T::Array[Orb::Models::Price::Bps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  Orb::Price::Bps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Item < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -3021,13 +3971,17 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -3038,7 +3992,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -3046,12 +4003,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -3062,7 +4028,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -3070,25 +4039,40 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::Bps::PriceType) }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::Bps::PriceType) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::Bps::PriceType::TaggedSymbol)
-          FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::Bps::PriceType::TaggedSymbol)
+          USAGE_PRICE =
+            T.let(:usage_price, Orb::Price::Bps::PriceType::TaggedSymbol)
+          FIXED_PRICE =
+            T.let(:fixed_price, Orb::Price::Bps::PriceType::TaggedSymbol)
 
-          sig { override.returns(T::Array[Orb::Models::Price::Bps::PriceType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(T::Array[Orb::Price::Bps::PriceType::TaggedSymbol])
+          end
+          def self.values
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
 
@@ -3101,46 +4085,61 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:); end
+          def self.new(dimension_values:, dimensional_price_group_id:)
+          end
 
-          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                dimension_values: T::Array[String],
+                dimensional_price_group_id: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class BulkBps < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(T.nilable(Orb::Models::Price::BulkBps::BillableMetric)) }
+        sig { returns(T.nilable(Orb::Price::BulkBps::BillableMetric)) }
         attr_reader :billable_metric
 
         sig do
           params(
-            billable_metric: T.nilable(T.any(Orb::Models::Price::BulkBps::BillableMetric, Orb::Internal::AnyHash))
-          )
-            .void
+            billable_metric:
+              T.nilable(Orb::Price::BulkBps::BillableMetric::OrHash)
+          ).void
         end
         attr_writer :billable_metric
 
-        sig { returns(Orb::Models::Price::BulkBps::BillingCycleConfiguration) }
+        sig { returns(Orb::Price::BulkBps::BillingCycleConfiguration) }
         attr_reader :billing_cycle_configuration
 
         sig do
           params(
-            billing_cycle_configuration: T.any(Orb::Models::Price::BulkBps::BillingCycleConfiguration, Orb::Internal::AnyHash)
-          )
-            .void
+            billing_cycle_configuration:
+              Orb::Price::BulkBps::BillingCycleConfiguration::OrHash
+          ).void
         end
         attr_writer :billing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::BulkBps::BulkBpsConfig) }
+        sig { returns(Orb::Price::BulkBps::BulkBpsConfig) }
         attr_reader :bulk_bps_config
 
-        sig { params(bulk_bps_config: T.any(Orb::Models::Price::BulkBps::BulkBpsConfig, Orb::Internal::AnyHash)).void }
+        sig do
+          params(
+            bulk_bps_config: Orb::Price::BulkBps::BulkBpsConfig::OrHash
+          ).void
+        end
         attr_writer :bulk_bps_config
 
-        sig { returns(Orb::Models::Price::BulkBps::Cadence::TaggedSymbol) }
+        sig { returns(Orb::Price::BulkBps::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
         sig { returns(T.nilable(Float)) }
@@ -3149,14 +4148,14 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T.nilable(Orb::Models::Price::BulkBps::CreditAllocation)) }
+        sig { returns(T.nilable(Orb::Price::BulkBps::CreditAllocation)) }
         attr_reader :credit_allocation
 
         sig do
           params(
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::BulkBps::CreditAllocation, Orb::Internal::AnyHash))
-          )
-            .void
+            credit_allocation:
+              T.nilable(Orb::Price::BulkBps::CreditAllocation::OrHash)
+          ).void
         end
         attr_writer :credit_allocation
 
@@ -3167,10 +4166,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -3183,27 +4182,33 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
-        sig { returns(T.nilable(Orb::Models::Price::BulkBps::InvoicingCycleConfiguration)) }
+        sig do
+          returns(T.nilable(Orb::Price::BulkBps::InvoicingCycleConfiguration))
+        end
         attr_reader :invoicing_cycle_configuration
 
         sig do
           params(
-            invoicing_cycle_configuration: T.nilable(T.any(Orb::Models::Price::BulkBps::InvoicingCycleConfiguration, Orb::Internal::AnyHash))
-          )
-            .void
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::BulkBps::InvoicingCycleConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :invoicing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::BulkBps::Item) }
+        sig { returns(Orb::Price::BulkBps::Item) }
         attr_reader :item
 
-        sig { params(item: T.any(Orb::Models::Price::BulkBps::Item, Orb::Internal::AnyHash)).void }
+        sig { params(item: Orb::Price::BulkBps::Item::OrHash).void }
         attr_writer :item
 
-        sig { returns(T.nilable(Orb::Models::Price::BulkBps::Maximum)) }
+        sig { returns(T.nilable(Orb::Price::BulkBps::Maximum)) }
         attr_reader :maximum
 
-        sig { params(maximum: T.nilable(T.any(Orb::Models::Price::BulkBps::Maximum, Orb::Internal::AnyHash))).void }
+        sig do
+          params(maximum: T.nilable(Orb::Price::BulkBps::Maximum::OrHash)).void
+        end
         attr_writer :maximum
 
         sig { returns(T.nilable(String)) }
@@ -3216,10 +4221,12 @@ module Orb
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
-        sig { returns(T.nilable(Orb::Models::Price::BulkBps::Minimum)) }
+        sig { returns(T.nilable(Orb::Price::BulkBps::Minimum)) }
         attr_reader :minimum
 
-        sig { params(minimum: T.nilable(T.any(Orb::Models::Price::BulkBps::Minimum, Orb::Internal::AnyHash))).void }
+        sig do
+          params(minimum: T.nilable(Orb::Price::BulkBps::Minimum::OrHash)).void
+        end
         attr_writer :minimum
 
         sig { returns(T.nilable(String)) }
@@ -3234,56 +4241,68 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :plan_phase_order
 
-        sig { returns(Orb::Models::Price::BulkBps::PriceType::TaggedSymbol) }
+        sig { returns(Orb::Price::BulkBps::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
-        sig { returns(T.nilable(Orb::Models::Price::BulkBps::DimensionalPriceConfiguration)) }
+        sig do
+          returns(T.nilable(Orb::Price::BulkBps::DimensionalPriceConfiguration))
+        end
         attr_reader :dimensional_price_configuration
 
         sig do
           params(
-            dimensional_price_configuration: T.nilable(T.any(Orb::Models::Price::BulkBps::DimensionalPriceConfiguration, Orb::Internal::AnyHash))
-          )
-            .void
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::BulkBps::DimensionalPriceConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :dimensional_price_configuration
 
         sig do
           params(
             id: String,
-            billable_metric: T.nilable(T.any(Orb::Models::Price::BulkBps::BillableMetric, Orb::Internal::AnyHash)),
-            billing_cycle_configuration: T.any(Orb::Models::Price::BulkBps::BillingCycleConfiguration, Orb::Internal::AnyHash),
-            bulk_bps_config: T.any(Orb::Models::Price::BulkBps::BulkBpsConfig, Orb::Internal::AnyHash),
-            cadence: Orb::Models::Price::BulkBps::Cadence::OrSymbol,
+            billable_metric:
+              T.nilable(Orb::Price::BulkBps::BillableMetric::OrHash),
+            billing_cycle_configuration:
+              Orb::Price::BulkBps::BillingCycleConfiguration::OrHash,
+            bulk_bps_config: Orb::Price::BulkBps::BulkBpsConfig::OrHash,
+            cadence: Orb::Price::BulkBps::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
             created_at: Time,
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::BulkBps::CreditAllocation, Orb::Internal::AnyHash)),
+            credit_allocation:
+              T.nilable(Orb::Price::BulkBps::CreditAllocation::OrHash),
             currency: String,
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
-            invoicing_cycle_configuration: T.nilable(T.any(Orb::Models::Price::BulkBps::InvoicingCycleConfiguration, Orb::Internal::AnyHash)),
-            item: T.any(Orb::Models::Price::BulkBps::Item, Orb::Internal::AnyHash),
-            maximum: T.nilable(T.any(Orb::Models::Price::BulkBps::Maximum, Orb::Internal::AnyHash)),
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::BulkBps::InvoicingCycleConfiguration::OrHash
+              ),
+            item: Orb::Price::BulkBps::Item::OrHash,
+            maximum: T.nilable(Orb::Price::BulkBps::Maximum::OrHash),
             maximum_amount: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(T.any(Orb::Models::Price::BulkBps::Minimum, Orb::Internal::AnyHash)),
+            minimum: T.nilable(Orb::Price::BulkBps::Minimum::OrHash),
             minimum_amount: T.nilable(String),
             name: String,
             plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Models::Price::BulkBps::PriceType::OrSymbol,
-            dimensional_price_configuration: T.nilable(T.any(Orb::Models::Price::BulkBps::DimensionalPriceConfiguration, Orb::Internal::AnyHash)),
+            price_type: Orb::Price::BulkBps::PriceType::OrSymbol,
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::BulkBps::DimensionalPriceConfiguration::OrHash
+              ),
             model_type: Symbol
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -3314,122 +4333,170 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :bulk_bps
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                billable_metric: T.nilable(Orb::Models::Price::BulkBps::BillableMetric),
-                billing_cycle_configuration: Orb::Models::Price::BulkBps::BillingCycleConfiguration,
-                bulk_bps_config: Orb::Models::Price::BulkBps::BulkBpsConfig,
-                cadence: Orb::Models::Price::BulkBps::Cadence::TaggedSymbol,
-                conversion_rate: T.nilable(Float),
-                created_at: Time,
-                credit_allocation: T.nilable(Orb::Models::Price::BulkBps::CreditAllocation),
-                currency: String,
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              billable_metric: T.nilable(Orb::Price::BulkBps::BillableMetric),
+              billing_cycle_configuration:
+                Orb::Price::BulkBps::BillingCycleConfiguration,
+              bulk_bps_config: Orb::Price::BulkBps::BulkBpsConfig,
+              cadence: Orb::Price::BulkBps::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation:
+                T.nilable(Orb::Price::BulkBps::CreditAllocation),
+              currency: String,
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoicing_cycle_configuration: T.nilable(Orb::Models::Price::BulkBps::InvoicingCycleConfiguration),
-                item: Orb::Models::Price::BulkBps::Item,
-                maximum: T.nilable(Orb::Models::Price::BulkBps::Maximum),
-                maximum_amount: T.nilable(String),
-                metadata: T::Hash[Symbol, String],
-                minimum: T.nilable(Orb::Models::Price::BulkBps::Minimum),
-                minimum_amount: T.nilable(String),
-                model_type: Symbol,
-                name: String,
-                plan_phase_order: T.nilable(Integer),
-                price_type: Orb::Models::Price::BulkBps::PriceType::TaggedSymbol,
-                dimensional_price_configuration: T.nilable(Orb::Models::Price::BulkBps::DimensionalPriceConfiguration)
-              }
-            )
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoicing_cycle_configuration:
+                T.nilable(Orb::Price::BulkBps::InvoicingCycleConfiguration),
+              item: Orb::Price::BulkBps::Item,
+              maximum: T.nilable(Orb::Price::BulkBps::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Price::BulkBps::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type: Orb::Price::BulkBps::PriceType::TaggedSymbol,
+              dimensional_price_configuration:
+                T.nilable(Orb::Price::BulkBps::DimensionalPriceConfiguration)
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
+          def self.new(id:)
+          end
 
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::BulkBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::BulkBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::BulkBps::BillingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::BulkBps::BillingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::BulkBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::BulkBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::BulkBps::BillingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::BulkBps::BillingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            DAY = T.let(:day, Orb::Models::Price::BulkBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
-            MONTH = T.let(:month, Orb::Models::Price::BulkBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
+            DAY =
+              T.let(
+                :day,
+                Orb::Price::BulkBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
+            MONTH =
+              T.let(
+                :month,
+                Orb::Price::BulkBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(T::Array[Orb::Models::Price::BulkBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  Orb::Price::BulkBps::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class BulkBpsConfig < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # Tiers for a bulk BPS pricing model where all usage is aggregated to a single
           # tier based on total volume
-          sig { returns(T::Array[Orb::Models::Price::BulkBps::BulkBpsConfig::Tier]) }
+          sig { returns(T::Array[Orb::Price::BulkBps::BulkBpsConfig::Tier]) }
           attr_accessor :tiers
 
           sig do
-            params(tiers: T::Array[T.any(Orb::Models::Price::BulkBps::BulkBpsConfig::Tier, Orb::Internal::AnyHash)])
-              .returns(T.attached_class)
+            params(
+              tiers: T::Array[Orb::Price::BulkBps::BulkBpsConfig::Tier::OrHash]
+            ).returns(T.attached_class)
           end
           def self.new(
             # Tiers for a bulk BPS pricing model where all usage is aggregated to a single
             # tier based on total volume
             tiers:
-          ); end
-          sig { override.returns({tiers: T::Array[Orb::Models::Price::BulkBps::BulkBpsConfig::Tier]}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { tiers: T::Array[Orb::Price::BulkBps::BulkBpsConfig::Tier] }
+            )
+          end
+          def to_hash
+          end
 
           class Tier < Orb::Internal::Type::BaseModel
+            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
             # Basis points to rate on
             sig { returns(Float) }
             attr_accessor :bps
@@ -3443,8 +4510,11 @@ module Orb
             attr_accessor :per_unit_maximum
 
             sig do
-              params(bps: Float, maximum_amount: T.nilable(String), per_unit_maximum: T.nilable(String))
-                .returns(T.attached_class)
+              params(
+                bps: Float,
+                maximum_amount: T.nilable(String),
+                per_unit_maximum: T.nilable(String)
+              ).returns(T.attached_class)
             end
             def self.new(
               # Basis points to rate on
@@ -3453,7 +4523,9 @@ module Orb
               maximum_amount: nil,
               # The maximum amount to charge for any one event
               per_unit_maximum: nil
-            ); end
+            )
+            end
+
             sig do
               override.returns(
                 {
@@ -3463,88 +4535,134 @@ module Orb
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
           end
         end
 
         module Cadence
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::BulkBps::Cadence) }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::BulkBps::Cadence) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ONE_TIME = T.let(:one_time, Orb::Models::Price::BulkBps::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Price::BulkBps::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Price::BulkBps::Cadence::TaggedSymbol)
-          SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::Price::BulkBps::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Price::BulkBps::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Models::Price::BulkBps::Cadence::TaggedSymbol)
+          ONE_TIME =
+            T.let(:one_time, Orb::Price::BulkBps::Cadence::TaggedSymbol)
+          MONTHLY = T.let(:monthly, Orb::Price::BulkBps::Cadence::TaggedSymbol)
+          QUARTERLY =
+            T.let(:quarterly, Orb::Price::BulkBps::Cadence::TaggedSymbol)
+          SEMI_ANNUAL =
+            T.let(:semi_annual, Orb::Price::BulkBps::Cadence::TaggedSymbol)
+          ANNUAL = T.let(:annual, Orb::Price::BulkBps::Cadence::TaggedSymbol)
+          CUSTOM = T.let(:custom, Orb::Price::BulkBps::Cadence::TaggedSymbol)
 
-          sig { override.returns(T::Array[Orb::Models::Price::BulkBps::Cadence::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::BulkBps::Cadence::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
 
           sig { returns(String) }
           attr_accessor :currency
 
-          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:); end
+          sig do
+            params(allows_rollover: T::Boolean, currency: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(allows_rollover:, currency:)
+          end
 
-          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash; end
+          sig do
+            override.returns({ allows_rollover: T::Boolean, currency: String })
+          end
+          def to_hash
+          end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::BulkBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::BulkBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::BulkBps::InvoicingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::BulkBps::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::BulkBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::BulkBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::BulkBps::InvoicingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::BulkBps::InvoicingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            DAY = T.let(:day, Orb::Models::Price::BulkBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
+            DAY =
+              T.let(
+                :day,
+                Orb::Price::BulkBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
             MONTH =
-              T.let(:month, Orb::Models::Price::BulkBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
+              T.let(
+                :month,
+                Orb::Price::BulkBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(T::Array[Orb::Models::Price::BulkBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  Orb::Price::BulkBps::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Item < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -3552,13 +4670,17 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -3569,7 +4691,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -3577,12 +4702,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -3593,7 +4727,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -3601,25 +4738,42 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::BulkBps::PriceType) }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::BulkBps::PriceType) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::BulkBps::PriceType::TaggedSymbol)
-          FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::BulkBps::PriceType::TaggedSymbol)
+          USAGE_PRICE =
+            T.let(:usage_price, Orb::Price::BulkBps::PriceType::TaggedSymbol)
+          FIXED_PRICE =
+            T.let(:fixed_price, Orb::Price::BulkBps::PriceType::TaggedSymbol)
 
-          sig { override.returns(T::Array[Orb::Models::Price::BulkBps::PriceType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::BulkBps::PriceType::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
 
@@ -3632,46 +4786,56 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:); end
+          def self.new(dimension_values:, dimensional_price_group_id:)
+          end
 
-          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                dimension_values: T::Array[String],
+                dimensional_price_group_id: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class Bulk < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(T.nilable(Orb::Models::Price::Bulk::BillableMetric)) }
+        sig { returns(T.nilable(Orb::Price::Bulk::BillableMetric)) }
         attr_reader :billable_metric
 
         sig do
           params(
-            billable_metric: T.nilable(T.any(Orb::Models::Price::Bulk::BillableMetric, Orb::Internal::AnyHash))
-          )
-            .void
+            billable_metric: T.nilable(Orb::Price::Bulk::BillableMetric::OrHash)
+          ).void
         end
         attr_writer :billable_metric
 
-        sig { returns(Orb::Models::Price::Bulk::BillingCycleConfiguration) }
+        sig { returns(Orb::Price::Bulk::BillingCycleConfiguration) }
         attr_reader :billing_cycle_configuration
 
         sig do
           params(
-            billing_cycle_configuration: T.any(Orb::Models::Price::Bulk::BillingCycleConfiguration, Orb::Internal::AnyHash)
-          )
-            .void
+            billing_cycle_configuration:
+              Orb::Price::Bulk::BillingCycleConfiguration::OrHash
+          ).void
         end
         attr_writer :billing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::Bulk::BulkConfig) }
+        sig { returns(Orb::Price::Bulk::BulkConfig) }
         attr_reader :bulk_config
 
-        sig { params(bulk_config: T.any(Orb::Models::Price::Bulk::BulkConfig, Orb::Internal::AnyHash)).void }
+        sig { params(bulk_config: Orb::Price::Bulk::BulkConfig::OrHash).void }
         attr_writer :bulk_config
 
-        sig { returns(Orb::Models::Price::Bulk::Cadence::TaggedSymbol) }
+        sig { returns(Orb::Price::Bulk::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
         sig { returns(T.nilable(Float)) }
@@ -3680,14 +4844,14 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T.nilable(Orb::Models::Price::Bulk::CreditAllocation)) }
+        sig { returns(T.nilable(Orb::Price::Bulk::CreditAllocation)) }
         attr_reader :credit_allocation
 
         sig do
           params(
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::Bulk::CreditAllocation, Orb::Internal::AnyHash))
-          )
-            .void
+            credit_allocation:
+              T.nilable(Orb::Price::Bulk::CreditAllocation::OrHash)
+          ).void
         end
         attr_writer :credit_allocation
 
@@ -3698,10 +4862,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -3714,27 +4878,31 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
-        sig { returns(T.nilable(Orb::Models::Price::Bulk::InvoicingCycleConfiguration)) }
+        sig do
+          returns(T.nilable(Orb::Price::Bulk::InvoicingCycleConfiguration))
+        end
         attr_reader :invoicing_cycle_configuration
 
         sig do
           params(
-            invoicing_cycle_configuration: T.nilable(T.any(Orb::Models::Price::Bulk::InvoicingCycleConfiguration, Orb::Internal::AnyHash))
-          )
-            .void
+            invoicing_cycle_configuration:
+              T.nilable(Orb::Price::Bulk::InvoicingCycleConfiguration::OrHash)
+          ).void
         end
         attr_writer :invoicing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::Bulk::Item) }
+        sig { returns(Orb::Price::Bulk::Item) }
         attr_reader :item
 
-        sig { params(item: T.any(Orb::Models::Price::Bulk::Item, Orb::Internal::AnyHash)).void }
+        sig { params(item: Orb::Price::Bulk::Item::OrHash).void }
         attr_writer :item
 
-        sig { returns(T.nilable(Orb::Models::Price::Bulk::Maximum)) }
+        sig { returns(T.nilable(Orb::Price::Bulk::Maximum)) }
         attr_reader :maximum
 
-        sig { params(maximum: T.nilable(T.any(Orb::Models::Price::Bulk::Maximum, Orb::Internal::AnyHash))).void }
+        sig do
+          params(maximum: T.nilable(Orb::Price::Bulk::Maximum::OrHash)).void
+        end
         attr_writer :maximum
 
         sig { returns(T.nilable(String)) }
@@ -3747,10 +4915,12 @@ module Orb
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
-        sig { returns(T.nilable(Orb::Models::Price::Bulk::Minimum)) }
+        sig { returns(T.nilable(Orb::Price::Bulk::Minimum)) }
         attr_reader :minimum
 
-        sig { params(minimum: T.nilable(T.any(Orb::Models::Price::Bulk::Minimum, Orb::Internal::AnyHash))).void }
+        sig do
+          params(minimum: T.nilable(Orb::Price::Bulk::Minimum::OrHash)).void
+        end
         attr_writer :minimum
 
         sig { returns(T.nilable(String)) }
@@ -3765,56 +4935,64 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :plan_phase_order
 
-        sig { returns(Orb::Models::Price::Bulk::PriceType::TaggedSymbol) }
+        sig { returns(Orb::Price::Bulk::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
-        sig { returns(T.nilable(Orb::Models::Price::Bulk::DimensionalPriceConfiguration)) }
+        sig do
+          returns(T.nilable(Orb::Price::Bulk::DimensionalPriceConfiguration))
+        end
         attr_reader :dimensional_price_configuration
 
         sig do
           params(
-            dimensional_price_configuration: T.nilable(T.any(Orb::Models::Price::Bulk::DimensionalPriceConfiguration, Orb::Internal::AnyHash))
-          )
-            .void
+            dimensional_price_configuration:
+              T.nilable(Orb::Price::Bulk::DimensionalPriceConfiguration::OrHash)
+          ).void
         end
         attr_writer :dimensional_price_configuration
 
         sig do
           params(
             id: String,
-            billable_metric: T.nilable(T.any(Orb::Models::Price::Bulk::BillableMetric, Orb::Internal::AnyHash)),
-            billing_cycle_configuration: T.any(Orb::Models::Price::Bulk::BillingCycleConfiguration, Orb::Internal::AnyHash),
-            bulk_config: T.any(Orb::Models::Price::Bulk::BulkConfig, Orb::Internal::AnyHash),
-            cadence: Orb::Models::Price::Bulk::Cadence::OrSymbol,
+            billable_metric:
+              T.nilable(Orb::Price::Bulk::BillableMetric::OrHash),
+            billing_cycle_configuration:
+              Orb::Price::Bulk::BillingCycleConfiguration::OrHash,
+            bulk_config: Orb::Price::Bulk::BulkConfig::OrHash,
+            cadence: Orb::Price::Bulk::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
             created_at: Time,
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::Bulk::CreditAllocation, Orb::Internal::AnyHash)),
+            credit_allocation:
+              T.nilable(Orb::Price::Bulk::CreditAllocation::OrHash),
             currency: String,
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
-            invoicing_cycle_configuration: T.nilable(T.any(Orb::Models::Price::Bulk::InvoicingCycleConfiguration, Orb::Internal::AnyHash)),
-            item: T.any(Orb::Models::Price::Bulk::Item, Orb::Internal::AnyHash),
-            maximum: T.nilable(T.any(Orb::Models::Price::Bulk::Maximum, Orb::Internal::AnyHash)),
+            invoicing_cycle_configuration:
+              T.nilable(Orb::Price::Bulk::InvoicingCycleConfiguration::OrHash),
+            item: Orb::Price::Bulk::Item::OrHash,
+            maximum: T.nilable(Orb::Price::Bulk::Maximum::OrHash),
             maximum_amount: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(T.any(Orb::Models::Price::Bulk::Minimum, Orb::Internal::AnyHash)),
+            minimum: T.nilable(Orb::Price::Bulk::Minimum::OrHash),
             minimum_amount: T.nilable(String),
             name: String,
             plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Models::Price::Bulk::PriceType::OrSymbol,
-            dimensional_price_configuration: T.nilable(T.any(Orb::Models::Price::Bulk::DimensionalPriceConfiguration, Orb::Internal::AnyHash)),
+            price_type: Orb::Price::Bulk::PriceType::OrSymbol,
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::Bulk::DimensionalPriceConfiguration::OrHash
+              ),
             model_type: Symbol
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -3845,119 +5023,167 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :bulk
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                billable_metric: T.nilable(Orb::Models::Price::Bulk::BillableMetric),
-                billing_cycle_configuration: Orb::Models::Price::Bulk::BillingCycleConfiguration,
-                bulk_config: Orb::Models::Price::Bulk::BulkConfig,
-                cadence: Orb::Models::Price::Bulk::Cadence::TaggedSymbol,
-                conversion_rate: T.nilable(Float),
-                created_at: Time,
-                credit_allocation: T.nilable(Orb::Models::Price::Bulk::CreditAllocation),
-                currency: String,
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              billable_metric: T.nilable(Orb::Price::Bulk::BillableMetric),
+              billing_cycle_configuration:
+                Orb::Price::Bulk::BillingCycleConfiguration,
+              bulk_config: Orb::Price::Bulk::BulkConfig,
+              cadence: Orb::Price::Bulk::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation: T.nilable(Orb::Price::Bulk::CreditAllocation),
+              currency: String,
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoicing_cycle_configuration: T.nilable(Orb::Models::Price::Bulk::InvoicingCycleConfiguration),
-                item: Orb::Models::Price::Bulk::Item,
-                maximum: T.nilable(Orb::Models::Price::Bulk::Maximum),
-                maximum_amount: T.nilable(String),
-                metadata: T::Hash[Symbol, String],
-                minimum: T.nilable(Orb::Models::Price::Bulk::Minimum),
-                minimum_amount: T.nilable(String),
-                model_type: Symbol,
-                name: String,
-                plan_phase_order: T.nilable(Integer),
-                price_type: Orb::Models::Price::Bulk::PriceType::TaggedSymbol,
-                dimensional_price_configuration: T.nilable(Orb::Models::Price::Bulk::DimensionalPriceConfiguration)
-              }
-            )
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoicing_cycle_configuration:
+                T.nilable(Orb::Price::Bulk::InvoicingCycleConfiguration),
+              item: Orb::Price::Bulk::Item,
+              maximum: T.nilable(Orb::Price::Bulk::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Price::Bulk::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type: Orb::Price::Bulk::PriceType::TaggedSymbol,
+              dimensional_price_configuration:
+                T.nilable(Orb::Price::Bulk::DimensionalPriceConfiguration)
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
+          def self.new(id:)
+          end
 
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::Bulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::Bulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::Bulk::BillingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::Bulk::BillingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::Bulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::Bulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::Bulk::BillingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::Bulk::BillingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            DAY = T.let(:day, Orb::Models::Price::Bulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
-            MONTH = T.let(:month, Orb::Models::Price::Bulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
+            DAY =
+              T.let(
+                :day,
+                Orb::Price::Bulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
+            MONTH =
+              T.let(
+                :month,
+                Orb::Price::Bulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
 
             sig do
-              override.returns(T::Array[Orb::Models::Price::Bulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  Orb::Price::Bulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class BulkConfig < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # Bulk tiers for rating based on total usage volume
-          sig { returns(T::Array[Orb::Models::Price::Bulk::BulkConfig::Tier]) }
+          sig { returns(T::Array[Orb::Price::Bulk::BulkConfig::Tier]) }
           attr_accessor :tiers
 
           sig do
-            params(tiers: T::Array[T.any(Orb::Models::Price::Bulk::BulkConfig::Tier, Orb::Internal::AnyHash)])
-              .returns(T.attached_class)
+            params(
+              tiers: T::Array[Orb::Price::Bulk::BulkConfig::Tier::OrHash]
+            ).returns(T.attached_class)
           end
           def self.new(
             # Bulk tiers for rating based on total usage volume
             tiers:
-          ); end
-          sig { override.returns({tiers: T::Array[Orb::Models::Price::Bulk::BulkConfig::Tier]}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { tiers: T::Array[Orb::Price::Bulk::BulkConfig::Tier] }
+            )
+          end
+          def to_hash
+          end
 
           class Tier < Orb::Internal::Type::BaseModel
+            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
             # Amount per unit
             sig { returns(String) }
             attr_accessor :unit_amount
@@ -3966,95 +5192,149 @@ module Orb
             sig { returns(T.nilable(Float)) }
             attr_accessor :maximum_units
 
-            sig { params(unit_amount: String, maximum_units: T.nilable(Float)).returns(T.attached_class) }
+            sig do
+              params(
+                unit_amount: String,
+                maximum_units: T.nilable(Float)
+              ).returns(T.attached_class)
+            end
             def self.new(
               # Amount per unit
               unit_amount:,
               # Upper bound for this tier
               maximum_units: nil
-            ); end
-            sig { override.returns({unit_amount: String, maximum_units: T.nilable(Float)}) }
-            def to_hash; end
+            )
+            end
+
+            sig do
+              override.returns(
+                { unit_amount: String, maximum_units: T.nilable(Float) }
+              )
+            end
+            def to_hash
+            end
           end
         end
 
         module Cadence
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::Bulk::Cadence) }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::Bulk::Cadence) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ONE_TIME = T.let(:one_time, Orb::Models::Price::Bulk::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Price::Bulk::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Price::Bulk::Cadence::TaggedSymbol)
-          SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::Price::Bulk::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Price::Bulk::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Models::Price::Bulk::Cadence::TaggedSymbol)
+          ONE_TIME = T.let(:one_time, Orb::Price::Bulk::Cadence::TaggedSymbol)
+          MONTHLY = T.let(:monthly, Orb::Price::Bulk::Cadence::TaggedSymbol)
+          QUARTERLY = T.let(:quarterly, Orb::Price::Bulk::Cadence::TaggedSymbol)
+          SEMI_ANNUAL =
+            T.let(:semi_annual, Orb::Price::Bulk::Cadence::TaggedSymbol)
+          ANNUAL = T.let(:annual, Orb::Price::Bulk::Cadence::TaggedSymbol)
+          CUSTOM = T.let(:custom, Orb::Price::Bulk::Cadence::TaggedSymbol)
 
-          sig { override.returns(T::Array[Orb::Models::Price::Bulk::Cadence::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(T::Array[Orb::Price::Bulk::Cadence::TaggedSymbol])
+          end
+          def self.values
+          end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
 
           sig { returns(String) }
           attr_accessor :currency
 
-          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:); end
+          sig do
+            params(allows_rollover: T::Boolean, currency: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(allows_rollover:, currency:)
+          end
 
-          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash; end
+          sig do
+            override.returns({ allows_rollover: T::Boolean, currency: String })
+          end
+          def to_hash
+          end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::Bulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::Bulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::Bulk::InvoicingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::Bulk::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::Bulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::Bulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::Bulk::InvoicingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::Bulk::InvoicingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            DAY = T.let(:day, Orb::Models::Price::Bulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
-            MONTH = T.let(:month, Orb::Models::Price::Bulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
+            DAY =
+              T.let(
+                :day,
+                Orb::Price::Bulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
+            MONTH =
+              T.let(
+                :month,
+                Orb::Price::Bulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(T::Array[Orb::Models::Price::Bulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  Orb::Price::Bulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Item < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -4062,13 +5342,17 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -4079,7 +5363,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -4087,12 +5374,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -4103,7 +5399,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -4111,25 +5410,42 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::Bulk::PriceType) }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::Bulk::PriceType) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::Bulk::PriceType::TaggedSymbol)
-          FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::Bulk::PriceType::TaggedSymbol)
+          USAGE_PRICE =
+            T.let(:usage_price, Orb::Price::Bulk::PriceType::TaggedSymbol)
+          FIXED_PRICE =
+            T.let(:fixed_price, Orb::Price::Bulk::PriceType::TaggedSymbol)
 
-          sig { override.returns(T::Array[Orb::Models::Price::Bulk::PriceType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::Bulk::PriceType::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
 
@@ -4142,40 +5458,57 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:); end
+          def self.new(dimension_values:, dimensional_price_group_id:)
+          end
 
-          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                dimension_values: T::Array[String],
+                dimensional_price_group_id: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class ThresholdTotalAmount < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(T.nilable(Orb::Models::Price::ThresholdTotalAmount::BillableMetric)) }
+        sig do
+          returns(T.nilable(Orb::Price::ThresholdTotalAmount::BillableMetric))
+        end
         attr_reader :billable_metric
 
         sig do
           params(
-            billable_metric: T.nilable(T.any(Orb::Models::Price::ThresholdTotalAmount::BillableMetric, Orb::Internal::AnyHash))
-          )
-            .void
+            billable_metric:
+              T.nilable(
+                Orb::Price::ThresholdTotalAmount::BillableMetric::OrHash
+              )
+          ).void
         end
         attr_writer :billable_metric
 
-        sig { returns(Orb::Models::Price::ThresholdTotalAmount::BillingCycleConfiguration) }
+        sig do
+          returns(Orb::Price::ThresholdTotalAmount::BillingCycleConfiguration)
+        end
         attr_reader :billing_cycle_configuration
 
         sig do
           params(
-            billing_cycle_configuration: T.any(Orb::Models::Price::ThresholdTotalAmount::BillingCycleConfiguration, Orb::Internal::AnyHash)
-          )
-            .void
+            billing_cycle_configuration:
+              Orb::Price::ThresholdTotalAmount::BillingCycleConfiguration::OrHash
+          ).void
         end
         attr_writer :billing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::ThresholdTotalAmount::Cadence::TaggedSymbol) }
+        sig { returns(Orb::Price::ThresholdTotalAmount::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
         sig { returns(T.nilable(Float)) }
@@ -4184,14 +5517,18 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T.nilable(Orb::Models::Price::ThresholdTotalAmount::CreditAllocation)) }
+        sig do
+          returns(T.nilable(Orb::Price::ThresholdTotalAmount::CreditAllocation))
+        end
         attr_reader :credit_allocation
 
         sig do
           params(
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::ThresholdTotalAmount::CreditAllocation, Orb::Internal::AnyHash))
-          )
-            .void
+            credit_allocation:
+              T.nilable(
+                Orb::Price::ThresholdTotalAmount::CreditAllocation::OrHash
+              )
+          ).void
         end
         attr_writer :credit_allocation
 
@@ -4202,10 +5539,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -4218,33 +5555,41 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
-        sig { returns(T.nilable(Orb::Models::Price::ThresholdTotalAmount::InvoicingCycleConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::ThresholdTotalAmount::InvoicingCycleConfiguration
+            )
+          )
+        end
         attr_reader :invoicing_cycle_configuration
 
         sig do
           params(
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::ThresholdTotalAmount::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :invoicing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::ThresholdTotalAmount::Item) }
+        sig { returns(Orb::Price::ThresholdTotalAmount::Item) }
         attr_reader :item
 
-        sig { params(item: T.any(Orb::Models::Price::ThresholdTotalAmount::Item, Orb::Internal::AnyHash)).void }
+        sig do
+          params(item: Orb::Price::ThresholdTotalAmount::Item::OrHash).void
+        end
         attr_writer :item
 
-        sig { returns(T.nilable(Orb::Models::Price::ThresholdTotalAmount::Maximum)) }
+        sig { returns(T.nilable(Orb::Price::ThresholdTotalAmount::Maximum)) }
         attr_reader :maximum
 
         sig do
           params(
-            maximum: T.nilable(T.any(Orb::Models::Price::ThresholdTotalAmount::Maximum, Orb::Internal::AnyHash))
-          )
-            .void
+            maximum:
+              T.nilable(Orb::Price::ThresholdTotalAmount::Maximum::OrHash)
+          ).void
         end
         attr_writer :maximum
 
@@ -4258,14 +5603,14 @@ module Orb
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
-        sig { returns(T.nilable(Orb::Models::Price::ThresholdTotalAmount::Minimum)) }
+        sig { returns(T.nilable(Orb::Price::ThresholdTotalAmount::Minimum)) }
         attr_reader :minimum
 
         sig do
           params(
-            minimum: T.nilable(T.any(Orb::Models::Price::ThresholdTotalAmount::Minimum, Orb::Internal::AnyHash))
-          )
-            .void
+            minimum:
+              T.nilable(Orb::Price::ThresholdTotalAmount::Minimum::OrHash)
+          ).void
         end
         attr_writer :minimum
 
@@ -4281,65 +5626,83 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :plan_phase_order
 
-        sig { returns(Orb::Models::Price::ThresholdTotalAmount::PriceType::TaggedSymbol) }
+        sig do
+          returns(Orb::Price::ThresholdTotalAmount::PriceType::TaggedSymbol)
+        end
         attr_accessor :price_type
 
         sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :threshold_total_amount_config
 
-        sig { returns(T.nilable(Orb::Models::Price::ThresholdTotalAmount::DimensionalPriceConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::ThresholdTotalAmount::DimensionalPriceConfiguration
+            )
+          )
+        end
         attr_reader :dimensional_price_configuration
 
         sig do
           params(
-            dimensional_price_configuration: T.nilable(
-              T.any(Orb::Models::Price::ThresholdTotalAmount::DimensionalPriceConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::ThresholdTotalAmount::DimensionalPriceConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :dimensional_price_configuration
 
         sig do
           params(
             id: String,
-            billable_metric: T.nilable(T.any(Orb::Models::Price::ThresholdTotalAmount::BillableMetric, Orb::Internal::AnyHash)),
-            billing_cycle_configuration: T.any(Orb::Models::Price::ThresholdTotalAmount::BillingCycleConfiguration, Orb::Internal::AnyHash),
-            cadence: Orb::Models::Price::ThresholdTotalAmount::Cadence::OrSymbol,
+            billable_metric:
+              T.nilable(
+                Orb::Price::ThresholdTotalAmount::BillableMetric::OrHash
+              ),
+            billing_cycle_configuration:
+              Orb::Price::ThresholdTotalAmount::BillingCycleConfiguration::OrHash,
+            cadence: Orb::Price::ThresholdTotalAmount::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
             created_at: Time,
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::ThresholdTotalAmount::CreditAllocation, Orb::Internal::AnyHash)),
+            credit_allocation:
+              T.nilable(
+                Orb::Price::ThresholdTotalAmount::CreditAllocation::OrHash
+              ),
             currency: String,
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::ThresholdTotalAmount::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            ),
-            item: T.any(Orb::Models::Price::ThresholdTotalAmount::Item, Orb::Internal::AnyHash),
-            maximum: T.nilable(T.any(Orb::Models::Price::ThresholdTotalAmount::Maximum, Orb::Internal::AnyHash)),
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::OrHash
+              ),
+            item: Orb::Price::ThresholdTotalAmount::Item::OrHash,
+            maximum:
+              T.nilable(Orb::Price::ThresholdTotalAmount::Maximum::OrHash),
             maximum_amount: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(T.any(Orb::Models::Price::ThresholdTotalAmount::Minimum, Orb::Internal::AnyHash)),
+            minimum:
+              T.nilable(Orb::Price::ThresholdTotalAmount::Minimum::OrHash),
             minimum_amount: T.nilable(String),
             name: String,
             plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Models::Price::ThresholdTotalAmount::PriceType::OrSymbol,
+            price_type: Orb::Price::ThresholdTotalAmount::PriceType::OrSymbol,
             threshold_total_amount_config: T::Hash[Symbol, T.anything],
-            dimensional_price_configuration: T.nilable(
-              T.any(Orb::Models::Price::ThresholdTotalAmount::DimensionalPriceConfiguration, Orb::Internal::AnyHash)
-            ),
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::ThresholdTotalAmount::DimensionalPriceConfiguration::OrHash
+              ),
             model_type: Symbol
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -4370,200 +5733,291 @@ module Orb
           threshold_total_amount_config:,
           dimensional_price_configuration: nil,
           model_type: :threshold_total_amount
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                billable_metric: T.nilable(Orb::Models::Price::ThresholdTotalAmount::BillableMetric),
-                billing_cycle_configuration: Orb::Models::Price::ThresholdTotalAmount::BillingCycleConfiguration,
-                cadence: Orb::Models::Price::ThresholdTotalAmount::Cadence::TaggedSymbol,
-                conversion_rate: T.nilable(Float),
-                created_at: Time,
-                credit_allocation: T.nilable(Orb::Models::Price::ThresholdTotalAmount::CreditAllocation),
-                currency: String,
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              billable_metric:
+                T.nilable(Orb::Price::ThresholdTotalAmount::BillableMetric),
+              billing_cycle_configuration:
+                Orb::Price::ThresholdTotalAmount::BillingCycleConfiguration,
+              cadence: Orb::Price::ThresholdTotalAmount::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation:
+                T.nilable(Orb::Price::ThresholdTotalAmount::CreditAllocation),
+              currency: String,
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoicing_cycle_configuration: T.nilable(Orb::Models::Price::ThresholdTotalAmount::InvoicingCycleConfiguration),
-                item: Orb::Models::Price::ThresholdTotalAmount::Item,
-                maximum: T.nilable(Orb::Models::Price::ThresholdTotalAmount::Maximum),
-                maximum_amount: T.nilable(String),
-                metadata: T::Hash[Symbol, String],
-                minimum: T.nilable(Orb::Models::Price::ThresholdTotalAmount::Minimum),
-                minimum_amount: T.nilable(String),
-                model_type: Symbol,
-                name: String,
-                plan_phase_order: T.nilable(Integer),
-                price_type: Orb::Models::Price::ThresholdTotalAmount::PriceType::TaggedSymbol,
-                threshold_total_amount_config: T::Hash[Symbol, T.anything],
-                dimensional_price_configuration: T.nilable(Orb::Models::Price::ThresholdTotalAmount::DimensionalPriceConfiguration)
-              }
-            )
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoicing_cycle_configuration:
+                T.nilable(
+                  Orb::Price::ThresholdTotalAmount::InvoicingCycleConfiguration
+                ),
+              item: Orb::Price::ThresholdTotalAmount::Item,
+              maximum: T.nilable(Orb::Price::ThresholdTotalAmount::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Price::ThresholdTotalAmount::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type:
+                Orb::Price::ThresholdTotalAmount::PriceType::TaggedSymbol,
+              threshold_total_amount_config: T::Hash[Symbol, T.anything],
+              dimensional_price_configuration:
+                T.nilable(
+                  Orb::Price::ThresholdTotalAmount::DimensionalPriceConfiguration
+                )
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
+          def self.new(id:)
+          end
 
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::ThresholdTotalAmount::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::ThresholdTotalAmount::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::ThresholdTotalAmount::BillingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::ThresholdTotalAmount::BillingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::ThresholdTotalAmount::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::ThresholdTotalAmount::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::ThresholdTotalAmount::BillingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::ThresholdTotalAmount::BillingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::ThresholdTotalAmount::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::ThresholdTotalAmount::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::ThresholdTotalAmount::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::ThresholdTotalAmount::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::ThresholdTotalAmount::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::ThresholdTotalAmount::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         module Cadence
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::ThresholdTotalAmount::Cadence) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::ThresholdTotalAmount::Cadence)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ONE_TIME = T.let(:one_time, Orb::Models::Price::ThresholdTotalAmount::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Price::ThresholdTotalAmount::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Price::ThresholdTotalAmount::Cadence::TaggedSymbol)
-          SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::Price::ThresholdTotalAmount::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Price::ThresholdTotalAmount::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Models::Price::ThresholdTotalAmount::Cadence::TaggedSymbol)
+          ONE_TIME =
+            T.let(
+              :one_time,
+              Orb::Price::ThresholdTotalAmount::Cadence::TaggedSymbol
+            )
+          MONTHLY =
+            T.let(
+              :monthly,
+              Orb::Price::ThresholdTotalAmount::Cadence::TaggedSymbol
+            )
+          QUARTERLY =
+            T.let(
+              :quarterly,
+              Orb::Price::ThresholdTotalAmount::Cadence::TaggedSymbol
+            )
+          SEMI_ANNUAL =
+            T.let(
+              :semi_annual,
+              Orb::Price::ThresholdTotalAmount::Cadence::TaggedSymbol
+            )
+          ANNUAL =
+            T.let(
+              :annual,
+              Orb::Price::ThresholdTotalAmount::Cadence::TaggedSymbol
+            )
+          CUSTOM =
+            T.let(
+              :custom,
+              Orb::Price::ThresholdTotalAmount::Cadence::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::ThresholdTotalAmount::Cadence::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::ThresholdTotalAmount::Cadence::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
 
           sig { returns(String) }
           attr_accessor :currency
 
-          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:); end
+          sig do
+            params(allows_rollover: T::Boolean, currency: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(allows_rollover:, currency:)
+          end
 
-          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash; end
+          sig do
+            override.returns({ allows_rollover: T::Boolean, currency: String })
+          end
+          def to_hash
+          end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::ThresholdTotalAmount::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Item < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -4571,13 +6025,17 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -4588,7 +6046,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -4596,12 +6057,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -4612,7 +6082,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -4620,25 +6093,52 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::ThresholdTotalAmount::PriceType) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::ThresholdTotalAmount::PriceType)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::ThresholdTotalAmount::PriceType::TaggedSymbol)
-          FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::ThresholdTotalAmount::PriceType::TaggedSymbol)
+          USAGE_PRICE =
+            T.let(
+              :usage_price,
+              Orb::Price::ThresholdTotalAmount::PriceType::TaggedSymbol
+            )
+          FIXED_PRICE =
+            T.let(
+              :fixed_price,
+              Orb::Price::ThresholdTotalAmount::PriceType::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::ThresholdTotalAmount::PriceType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::ThresholdTotalAmount::PriceType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
 
@@ -4651,40 +6151,51 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:); end
+          def self.new(dimension_values:, dimensional_price_group_id:)
+          end
 
-          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                dimension_values: T::Array[String],
+                dimensional_price_group_id: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class TieredPackage < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredPackage::BillableMetric)) }
+        sig { returns(T.nilable(Orb::Price::TieredPackage::BillableMetric)) }
         attr_reader :billable_metric
 
         sig do
           params(
-            billable_metric: T.nilable(T.any(Orb::Models::Price::TieredPackage::BillableMetric, Orb::Internal::AnyHash))
-          )
-            .void
+            billable_metric:
+              T.nilable(Orb::Price::TieredPackage::BillableMetric::OrHash)
+          ).void
         end
         attr_writer :billable_metric
 
-        sig { returns(Orb::Models::Price::TieredPackage::BillingCycleConfiguration) }
+        sig { returns(Orb::Price::TieredPackage::BillingCycleConfiguration) }
         attr_reader :billing_cycle_configuration
 
         sig do
           params(
-            billing_cycle_configuration: T.any(Orb::Models::Price::TieredPackage::BillingCycleConfiguration, Orb::Internal::AnyHash)
-          )
-            .void
+            billing_cycle_configuration:
+              Orb::Price::TieredPackage::BillingCycleConfiguration::OrHash
+          ).void
         end
         attr_writer :billing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::TieredPackage::Cadence::TaggedSymbol) }
+        sig { returns(Orb::Price::TieredPackage::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
         sig { returns(T.nilable(Float)) }
@@ -4693,14 +6204,14 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredPackage::CreditAllocation)) }
+        sig { returns(T.nilable(Orb::Price::TieredPackage::CreditAllocation)) }
         attr_reader :credit_allocation
 
         sig do
           params(
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::TieredPackage::CreditAllocation, Orb::Internal::AnyHash))
-          )
-            .void
+            credit_allocation:
+              T.nilable(Orb::Price::TieredPackage::CreditAllocation::OrHash)
+          ).void
         end
         attr_writer :credit_allocation
 
@@ -4711,10 +6222,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -4727,27 +6238,37 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredPackage::InvoicingCycleConfiguration)) }
+        sig do
+          returns(
+            T.nilable(Orb::Price::TieredPackage::InvoicingCycleConfiguration)
+          )
+        end
         attr_reader :invoicing_cycle_configuration
 
         sig do
           params(
-            invoicing_cycle_configuration: T.nilable(T.any(Orb::Models::Price::TieredPackage::InvoicingCycleConfiguration, Orb::Internal::AnyHash))
-          )
-            .void
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::TieredPackage::InvoicingCycleConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :invoicing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::TieredPackage::Item) }
+        sig { returns(Orb::Price::TieredPackage::Item) }
         attr_reader :item
 
-        sig { params(item: T.any(Orb::Models::Price::TieredPackage::Item, Orb::Internal::AnyHash)).void }
+        sig { params(item: Orb::Price::TieredPackage::Item::OrHash).void }
         attr_writer :item
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredPackage::Maximum)) }
+        sig { returns(T.nilable(Orb::Price::TieredPackage::Maximum)) }
         attr_reader :maximum
 
-        sig { params(maximum: T.nilable(T.any(Orb::Models::Price::TieredPackage::Maximum, Orb::Internal::AnyHash))).void }
+        sig do
+          params(
+            maximum: T.nilable(Orb::Price::TieredPackage::Maximum::OrHash)
+          ).void
+        end
         attr_writer :maximum
 
         sig { returns(T.nilable(String)) }
@@ -4760,10 +6281,14 @@ module Orb
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredPackage::Minimum)) }
+        sig { returns(T.nilable(Orb::Price::TieredPackage::Minimum)) }
         attr_reader :minimum
 
-        sig { params(minimum: T.nilable(T.any(Orb::Models::Price::TieredPackage::Minimum, Orb::Internal::AnyHash))).void }
+        sig do
+          params(
+            minimum: T.nilable(Orb::Price::TieredPackage::Minimum::OrHash)
+          ).void
+        end
         attr_writer :minimum
 
         sig { returns(T.nilable(String)) }
@@ -4778,59 +6303,73 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :plan_phase_order
 
-        sig { returns(Orb::Models::Price::TieredPackage::PriceType::TaggedSymbol) }
+        sig { returns(Orb::Price::TieredPackage::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
         sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :tiered_package_config
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredPackage::DimensionalPriceConfiguration)) }
+        sig do
+          returns(
+            T.nilable(Orb::Price::TieredPackage::DimensionalPriceConfiguration)
+          )
+        end
         attr_reader :dimensional_price_configuration
 
         sig do
           params(
-            dimensional_price_configuration: T.nilable(T.any(Orb::Models::Price::TieredPackage::DimensionalPriceConfiguration, Orb::Internal::AnyHash))
-          )
-            .void
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::TieredPackage::DimensionalPriceConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :dimensional_price_configuration
 
         sig do
           params(
             id: String,
-            billable_metric: T.nilable(T.any(Orb::Models::Price::TieredPackage::BillableMetric, Orb::Internal::AnyHash)),
-            billing_cycle_configuration: T.any(Orb::Models::Price::TieredPackage::BillingCycleConfiguration, Orb::Internal::AnyHash),
-            cadence: Orb::Models::Price::TieredPackage::Cadence::OrSymbol,
+            billable_metric:
+              T.nilable(Orb::Price::TieredPackage::BillableMetric::OrHash),
+            billing_cycle_configuration:
+              Orb::Price::TieredPackage::BillingCycleConfiguration::OrHash,
+            cadence: Orb::Price::TieredPackage::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
             created_at: Time,
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::TieredPackage::CreditAllocation, Orb::Internal::AnyHash)),
+            credit_allocation:
+              T.nilable(Orb::Price::TieredPackage::CreditAllocation::OrHash),
             currency: String,
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
-            invoicing_cycle_configuration: T.nilable(T.any(Orb::Models::Price::TieredPackage::InvoicingCycleConfiguration, Orb::Internal::AnyHash)),
-            item: T.any(Orb::Models::Price::TieredPackage::Item, Orb::Internal::AnyHash),
-            maximum: T.nilable(T.any(Orb::Models::Price::TieredPackage::Maximum, Orb::Internal::AnyHash)),
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::TieredPackage::InvoicingCycleConfiguration::OrHash
+              ),
+            item: Orb::Price::TieredPackage::Item::OrHash,
+            maximum: T.nilable(Orb::Price::TieredPackage::Maximum::OrHash),
             maximum_amount: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(T.any(Orb::Models::Price::TieredPackage::Minimum, Orb::Internal::AnyHash)),
+            minimum: T.nilable(Orb::Price::TieredPackage::Minimum::OrHash),
             minimum_amount: T.nilable(String),
             name: String,
             plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Models::Price::TieredPackage::PriceType::OrSymbol,
+            price_type: Orb::Price::TieredPackage::PriceType::OrSymbol,
             tiered_package_config: T::Hash[Symbol, T.anything],
-            dimensional_price_configuration: T.nilable(T.any(Orb::Models::Price::TieredPackage::DimensionalPriceConfiguration, Orb::Internal::AnyHash)),
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::TieredPackage::DimensionalPriceConfiguration::OrHash
+              ),
             model_type: Symbol
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -4861,188 +6400,273 @@ module Orb
           tiered_package_config:,
           dimensional_price_configuration: nil,
           model_type: :tiered_package
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                billable_metric: T.nilable(Orb::Models::Price::TieredPackage::BillableMetric),
-                billing_cycle_configuration: Orb::Models::Price::TieredPackage::BillingCycleConfiguration,
-                cadence: Orb::Models::Price::TieredPackage::Cadence::TaggedSymbol,
-                conversion_rate: T.nilable(Float),
-                created_at: Time,
-                credit_allocation: T.nilable(Orb::Models::Price::TieredPackage::CreditAllocation),
-                currency: String,
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              billable_metric:
+                T.nilable(Orb::Price::TieredPackage::BillableMetric),
+              billing_cycle_configuration:
+                Orb::Price::TieredPackage::BillingCycleConfiguration,
+              cadence: Orb::Price::TieredPackage::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation:
+                T.nilable(Orb::Price::TieredPackage::CreditAllocation),
+              currency: String,
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoicing_cycle_configuration: T.nilable(Orb::Models::Price::TieredPackage::InvoicingCycleConfiguration),
-                item: Orb::Models::Price::TieredPackage::Item,
-                maximum: T.nilable(Orb::Models::Price::TieredPackage::Maximum),
-                maximum_amount: T.nilable(String),
-                metadata: T::Hash[Symbol, String],
-                minimum: T.nilable(Orb::Models::Price::TieredPackage::Minimum),
-                minimum_amount: T.nilable(String),
-                model_type: Symbol,
-                name: String,
-                plan_phase_order: T.nilable(Integer),
-                price_type: Orb::Models::Price::TieredPackage::PriceType::TaggedSymbol,
-                tiered_package_config: T::Hash[Symbol, T.anything],
-                dimensional_price_configuration: T.nilable(Orb::Models::Price::TieredPackage::DimensionalPriceConfiguration)
-              }
-            )
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoicing_cycle_configuration:
+                T.nilable(
+                  Orb::Price::TieredPackage::InvoicingCycleConfiguration
+                ),
+              item: Orb::Price::TieredPackage::Item,
+              maximum: T.nilable(Orb::Price::TieredPackage::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Price::TieredPackage::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type: Orb::Price::TieredPackage::PriceType::TaggedSymbol,
+              tiered_package_config: T::Hash[Symbol, T.anything],
+              dimensional_price_configuration:
+                T.nilable(
+                  Orb::Price::TieredPackage::DimensionalPriceConfiguration
+                )
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
+          def self.new(id:)
+          end
 
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::TieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::TieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::TieredPackage::BillingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::TieredPackage::BillingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::TieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::TieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::TieredPackage::BillingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::TieredPackage::BillingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
-              T.let(:day, Orb::Models::Price::TieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
+              T.let(
+                :day,
+                Orb::Price::TieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
             MONTH =
-              T.let(:month, Orb::Models::Price::TieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
+              T.let(
+                :month,
+                Orb::Price::TieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::TieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::TieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         module Cadence
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::TieredPackage::Cadence) }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::TieredPackage::Cadence) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ONE_TIME = T.let(:one_time, Orb::Models::Price::TieredPackage::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Price::TieredPackage::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Price::TieredPackage::Cadence::TaggedSymbol)
-          SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::Price::TieredPackage::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Price::TieredPackage::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Models::Price::TieredPackage::Cadence::TaggedSymbol)
+          ONE_TIME =
+            T.let(:one_time, Orb::Price::TieredPackage::Cadence::TaggedSymbol)
+          MONTHLY =
+            T.let(:monthly, Orb::Price::TieredPackage::Cadence::TaggedSymbol)
+          QUARTERLY =
+            T.let(:quarterly, Orb::Price::TieredPackage::Cadence::TaggedSymbol)
+          SEMI_ANNUAL =
+            T.let(
+              :semi_annual,
+              Orb::Price::TieredPackage::Cadence::TaggedSymbol
+            )
+          ANNUAL =
+            T.let(:annual, Orb::Price::TieredPackage::Cadence::TaggedSymbol)
+          CUSTOM =
+            T.let(:custom, Orb::Price::TieredPackage::Cadence::TaggedSymbol)
 
-          sig { override.returns(T::Array[Orb::Models::Price::TieredPackage::Cadence::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::TieredPackage::Cadence::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
 
           sig { returns(String) }
           attr_accessor :currency
 
-          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:); end
+          sig do
+            params(allows_rollover: T::Boolean, currency: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(allows_rollover:, currency:)
+          end
 
-          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash; end
+          sig do
+            override.returns({ allows_rollover: T::Boolean, currency: String })
+          end
+          def to_hash
+          end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::TieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::TieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::TieredPackage::InvoicingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::TieredPackage::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::TieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::TieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::TieredPackage::InvoicingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::TieredPackage::InvoicingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
-              T.let(:day, Orb::Models::Price::TieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
+              T.let(
+                :day,
+                Orb::Price::TieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
             MONTH =
-              T.let(:month, Orb::Models::Price::TieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
+              T.let(
+                :month,
+                Orb::Price::TieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::TieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::TieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Item < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -5050,13 +6674,17 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -5067,7 +6695,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -5075,12 +6706,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -5091,7 +6731,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -5099,25 +6742,48 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::TieredPackage::PriceType) }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::TieredPackage::PriceType) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::TieredPackage::PriceType::TaggedSymbol)
-          FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::TieredPackage::PriceType::TaggedSymbol)
+          USAGE_PRICE =
+            T.let(
+              :usage_price,
+              Orb::Price::TieredPackage::PriceType::TaggedSymbol
+            )
+          FIXED_PRICE =
+            T.let(
+              :fixed_price,
+              Orb::Price::TieredPackage::PriceType::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::TieredPackage::PriceType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::TieredPackage::PriceType::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
 
@@ -5130,40 +6796,51 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:); end
+          def self.new(dimension_values:, dimensional_price_group_id:)
+          end
 
-          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                dimension_values: T::Array[String],
+                dimensional_price_group_id: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class GroupedTiered < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedTiered::BillableMetric)) }
+        sig { returns(T.nilable(Orb::Price::GroupedTiered::BillableMetric)) }
         attr_reader :billable_metric
 
         sig do
           params(
-            billable_metric: T.nilable(T.any(Orb::Models::Price::GroupedTiered::BillableMetric, Orb::Internal::AnyHash))
-          )
-            .void
+            billable_metric:
+              T.nilable(Orb::Price::GroupedTiered::BillableMetric::OrHash)
+          ).void
         end
         attr_writer :billable_metric
 
-        sig { returns(Orb::Models::Price::GroupedTiered::BillingCycleConfiguration) }
+        sig { returns(Orb::Price::GroupedTiered::BillingCycleConfiguration) }
         attr_reader :billing_cycle_configuration
 
         sig do
           params(
-            billing_cycle_configuration: T.any(Orb::Models::Price::GroupedTiered::BillingCycleConfiguration, Orb::Internal::AnyHash)
-          )
-            .void
+            billing_cycle_configuration:
+              Orb::Price::GroupedTiered::BillingCycleConfiguration::OrHash
+          ).void
         end
         attr_writer :billing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::GroupedTiered::Cadence::TaggedSymbol) }
+        sig { returns(Orb::Price::GroupedTiered::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
         sig { returns(T.nilable(Float)) }
@@ -5172,14 +6849,14 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedTiered::CreditAllocation)) }
+        sig { returns(T.nilable(Orb::Price::GroupedTiered::CreditAllocation)) }
         attr_reader :credit_allocation
 
         sig do
           params(
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::GroupedTiered::CreditAllocation, Orb::Internal::AnyHash))
-          )
-            .void
+            credit_allocation:
+              T.nilable(Orb::Price::GroupedTiered::CreditAllocation::OrHash)
+          ).void
         end
         attr_writer :credit_allocation
 
@@ -5190,10 +6867,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -5209,27 +6886,37 @@ module Orb
         sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :grouped_tiered_config
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedTiered::InvoicingCycleConfiguration)) }
+        sig do
+          returns(
+            T.nilable(Orb::Price::GroupedTiered::InvoicingCycleConfiguration)
+          )
+        end
         attr_reader :invoicing_cycle_configuration
 
         sig do
           params(
-            invoicing_cycle_configuration: T.nilable(T.any(Orb::Models::Price::GroupedTiered::InvoicingCycleConfiguration, Orb::Internal::AnyHash))
-          )
-            .void
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::GroupedTiered::InvoicingCycleConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :invoicing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::GroupedTiered::Item) }
+        sig { returns(Orb::Price::GroupedTiered::Item) }
         attr_reader :item
 
-        sig { params(item: T.any(Orb::Models::Price::GroupedTiered::Item, Orb::Internal::AnyHash)).void }
+        sig { params(item: Orb::Price::GroupedTiered::Item::OrHash).void }
         attr_writer :item
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedTiered::Maximum)) }
+        sig { returns(T.nilable(Orb::Price::GroupedTiered::Maximum)) }
         attr_reader :maximum
 
-        sig { params(maximum: T.nilable(T.any(Orb::Models::Price::GroupedTiered::Maximum, Orb::Internal::AnyHash))).void }
+        sig do
+          params(
+            maximum: T.nilable(Orb::Price::GroupedTiered::Maximum::OrHash)
+          ).void
+        end
         attr_writer :maximum
 
         sig { returns(T.nilable(String)) }
@@ -5242,10 +6929,14 @@ module Orb
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedTiered::Minimum)) }
+        sig { returns(T.nilable(Orb::Price::GroupedTiered::Minimum)) }
         attr_reader :minimum
 
-        sig { params(minimum: T.nilable(T.any(Orb::Models::Price::GroupedTiered::Minimum, Orb::Internal::AnyHash))).void }
+        sig do
+          params(
+            minimum: T.nilable(Orb::Price::GroupedTiered::Minimum::OrHash)
+          ).void
+        end
         attr_writer :minimum
 
         sig { returns(T.nilable(String)) }
@@ -5260,56 +6951,70 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :plan_phase_order
 
-        sig { returns(Orb::Models::Price::GroupedTiered::PriceType::TaggedSymbol) }
+        sig { returns(Orb::Price::GroupedTiered::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedTiered::DimensionalPriceConfiguration)) }
+        sig do
+          returns(
+            T.nilable(Orb::Price::GroupedTiered::DimensionalPriceConfiguration)
+          )
+        end
         attr_reader :dimensional_price_configuration
 
         sig do
           params(
-            dimensional_price_configuration: T.nilable(T.any(Orb::Models::Price::GroupedTiered::DimensionalPriceConfiguration, Orb::Internal::AnyHash))
-          )
-            .void
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::GroupedTiered::DimensionalPriceConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :dimensional_price_configuration
 
         sig do
           params(
             id: String,
-            billable_metric: T.nilable(T.any(Orb::Models::Price::GroupedTiered::BillableMetric, Orb::Internal::AnyHash)),
-            billing_cycle_configuration: T.any(Orb::Models::Price::GroupedTiered::BillingCycleConfiguration, Orb::Internal::AnyHash),
-            cadence: Orb::Models::Price::GroupedTiered::Cadence::OrSymbol,
+            billable_metric:
+              T.nilable(Orb::Price::GroupedTiered::BillableMetric::OrHash),
+            billing_cycle_configuration:
+              Orb::Price::GroupedTiered::BillingCycleConfiguration::OrHash,
+            cadence: Orb::Price::GroupedTiered::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
             created_at: Time,
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::GroupedTiered::CreditAllocation, Orb::Internal::AnyHash)),
+            credit_allocation:
+              T.nilable(Orb::Price::GroupedTiered::CreditAllocation::OrHash),
             currency: String,
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
             grouped_tiered_config: T::Hash[Symbol, T.anything],
-            invoicing_cycle_configuration: T.nilable(T.any(Orb::Models::Price::GroupedTiered::InvoicingCycleConfiguration, Orb::Internal::AnyHash)),
-            item: T.any(Orb::Models::Price::GroupedTiered::Item, Orb::Internal::AnyHash),
-            maximum: T.nilable(T.any(Orb::Models::Price::GroupedTiered::Maximum, Orb::Internal::AnyHash)),
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::GroupedTiered::InvoicingCycleConfiguration::OrHash
+              ),
+            item: Orb::Price::GroupedTiered::Item::OrHash,
+            maximum: T.nilable(Orb::Price::GroupedTiered::Maximum::OrHash),
             maximum_amount: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(T.any(Orb::Models::Price::GroupedTiered::Minimum, Orb::Internal::AnyHash)),
+            minimum: T.nilable(Orb::Price::GroupedTiered::Minimum::OrHash),
             minimum_amount: T.nilable(String),
             name: String,
             plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Models::Price::GroupedTiered::PriceType::OrSymbol,
-            dimensional_price_configuration: T.nilable(T.any(Orb::Models::Price::GroupedTiered::DimensionalPriceConfiguration, Orb::Internal::AnyHash)),
+            price_type: Orb::Price::GroupedTiered::PriceType::OrSymbol,
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::GroupedTiered::DimensionalPriceConfiguration::OrHash
+              ),
             model_type: Symbol
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -5340,188 +7045,273 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :grouped_tiered
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                billable_metric: T.nilable(Orb::Models::Price::GroupedTiered::BillableMetric),
-                billing_cycle_configuration: Orb::Models::Price::GroupedTiered::BillingCycleConfiguration,
-                cadence: Orb::Models::Price::GroupedTiered::Cadence::TaggedSymbol,
-                conversion_rate: T.nilable(Float),
-                created_at: Time,
-                credit_allocation: T.nilable(Orb::Models::Price::GroupedTiered::CreditAllocation),
-                currency: String,
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              billable_metric:
+                T.nilable(Orb::Price::GroupedTiered::BillableMetric),
+              billing_cycle_configuration:
+                Orb::Price::GroupedTiered::BillingCycleConfiguration,
+              cadence: Orb::Price::GroupedTiered::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation:
+                T.nilable(Orb::Price::GroupedTiered::CreditAllocation),
+              currency: String,
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                grouped_tiered_config: T::Hash[Symbol, T.anything],
-                invoicing_cycle_configuration: T.nilable(Orb::Models::Price::GroupedTiered::InvoicingCycleConfiguration),
-                item: Orb::Models::Price::GroupedTiered::Item,
-                maximum: T.nilable(Orb::Models::Price::GroupedTiered::Maximum),
-                maximum_amount: T.nilable(String),
-                metadata: T::Hash[Symbol, String],
-                minimum: T.nilable(Orb::Models::Price::GroupedTiered::Minimum),
-                minimum_amount: T.nilable(String),
-                model_type: Symbol,
-                name: String,
-                plan_phase_order: T.nilable(Integer),
-                price_type: Orb::Models::Price::GroupedTiered::PriceType::TaggedSymbol,
-                dimensional_price_configuration: T.nilable(Orb::Models::Price::GroupedTiered::DimensionalPriceConfiguration)
-              }
-            )
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              grouped_tiered_config: T::Hash[Symbol, T.anything],
+              invoicing_cycle_configuration:
+                T.nilable(
+                  Orb::Price::GroupedTiered::InvoicingCycleConfiguration
+                ),
+              item: Orb::Price::GroupedTiered::Item,
+              maximum: T.nilable(Orb::Price::GroupedTiered::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Price::GroupedTiered::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type: Orb::Price::GroupedTiered::PriceType::TaggedSymbol,
+              dimensional_price_configuration:
+                T.nilable(
+                  Orb::Price::GroupedTiered::DimensionalPriceConfiguration
+                )
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
+          def self.new(id:)
+          end
 
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::GroupedTiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::GroupedTiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::GroupedTiered::BillingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::GroupedTiered::BillingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::GroupedTiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::GroupedTiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedTiered::BillingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::GroupedTiered::BillingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
-              T.let(:day, Orb::Models::Price::GroupedTiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
+              T.let(
+                :day,
+                Orb::Price::GroupedTiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
             MONTH =
-              T.let(:month, Orb::Models::Price::GroupedTiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
+              T.let(
+                :month,
+                Orb::Price::GroupedTiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::GroupedTiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::GroupedTiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         module Cadence
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedTiered::Cadence) }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::GroupedTiered::Cadence) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ONE_TIME = T.let(:one_time, Orb::Models::Price::GroupedTiered::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Price::GroupedTiered::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Price::GroupedTiered::Cadence::TaggedSymbol)
-          SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::Price::GroupedTiered::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Price::GroupedTiered::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Models::Price::GroupedTiered::Cadence::TaggedSymbol)
+          ONE_TIME =
+            T.let(:one_time, Orb::Price::GroupedTiered::Cadence::TaggedSymbol)
+          MONTHLY =
+            T.let(:monthly, Orb::Price::GroupedTiered::Cadence::TaggedSymbol)
+          QUARTERLY =
+            T.let(:quarterly, Orb::Price::GroupedTiered::Cadence::TaggedSymbol)
+          SEMI_ANNUAL =
+            T.let(
+              :semi_annual,
+              Orb::Price::GroupedTiered::Cadence::TaggedSymbol
+            )
+          ANNUAL =
+            T.let(:annual, Orb::Price::GroupedTiered::Cadence::TaggedSymbol)
+          CUSTOM =
+            T.let(:custom, Orb::Price::GroupedTiered::Cadence::TaggedSymbol)
 
-          sig { override.returns(T::Array[Orb::Models::Price::GroupedTiered::Cadence::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::GroupedTiered::Cadence::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
 
           sig { returns(String) }
           attr_accessor :currency
 
-          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:); end
+          sig do
+            params(allows_rollover: T::Boolean, currency: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(allows_rollover:, currency:)
+          end
 
-          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash; end
+          sig do
+            override.returns({ allows_rollover: T::Boolean, currency: String })
+          end
+          def to_hash
+          end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::GroupedTiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::GroupedTiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::GroupedTiered::InvoicingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::GroupedTiered::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::GroupedTiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::GroupedTiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedTiered::InvoicingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::GroupedTiered::InvoicingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
-              T.let(:day, Orb::Models::Price::GroupedTiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
+              T.let(
+                :day,
+                Orb::Price::GroupedTiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
             MONTH =
-              T.let(:month, Orb::Models::Price::GroupedTiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
+              T.let(
+                :month,
+                Orb::Price::GroupedTiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::GroupedTiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::GroupedTiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Item < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -5529,13 +7319,17 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -5546,7 +7340,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -5554,12 +7351,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -5570,7 +7376,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -5578,25 +7387,48 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedTiered::PriceType) }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::GroupedTiered::PriceType) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::GroupedTiered::PriceType::TaggedSymbol)
-          FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::GroupedTiered::PriceType::TaggedSymbol)
+          USAGE_PRICE =
+            T.let(
+              :usage_price,
+              Orb::Price::GroupedTiered::PriceType::TaggedSymbol
+            )
+          FIXED_PRICE =
+            T.let(
+              :fixed_price,
+              Orb::Price::GroupedTiered::PriceType::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::GroupedTiered::PriceType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::GroupedTiered::PriceType::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
 
@@ -5609,40 +7441,55 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:); end
+          def self.new(dimension_values:, dimensional_price_group_id:)
+          end
 
-          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                dimension_values: T::Array[String],
+                dimensional_price_group_id: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class TieredWithMinimum < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredWithMinimum::BillableMetric)) }
+        sig do
+          returns(T.nilable(Orb::Price::TieredWithMinimum::BillableMetric))
+        end
         attr_reader :billable_metric
 
         sig do
           params(
-            billable_metric: T.nilable(T.any(Orb::Models::Price::TieredWithMinimum::BillableMetric, Orb::Internal::AnyHash))
-          )
-            .void
+            billable_metric:
+              T.nilable(Orb::Price::TieredWithMinimum::BillableMetric::OrHash)
+          ).void
         end
         attr_writer :billable_metric
 
-        sig { returns(Orb::Models::Price::TieredWithMinimum::BillingCycleConfiguration) }
+        sig do
+          returns(Orb::Price::TieredWithMinimum::BillingCycleConfiguration)
+        end
         attr_reader :billing_cycle_configuration
 
         sig do
           params(
-            billing_cycle_configuration: T.any(Orb::Models::Price::TieredWithMinimum::BillingCycleConfiguration, Orb::Internal::AnyHash)
-          )
-            .void
+            billing_cycle_configuration:
+              Orb::Price::TieredWithMinimum::BillingCycleConfiguration::OrHash
+          ).void
         end
         attr_writer :billing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::TieredWithMinimum::Cadence::TaggedSymbol) }
+        sig { returns(Orb::Price::TieredWithMinimum::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
         sig { returns(T.nilable(Float)) }
@@ -5651,14 +7498,16 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredWithMinimum::CreditAllocation)) }
+        sig do
+          returns(T.nilable(Orb::Price::TieredWithMinimum::CreditAllocation))
+        end
         attr_reader :credit_allocation
 
         sig do
           params(
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::TieredWithMinimum::CreditAllocation, Orb::Internal::AnyHash))
-          )
-            .void
+            credit_allocation:
+              T.nilable(Orb::Price::TieredWithMinimum::CreditAllocation::OrHash)
+          ).void
         end
         attr_writer :credit_allocation
 
@@ -5669,10 +7518,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -5685,31 +7534,38 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredWithMinimum::InvoicingCycleConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::TieredWithMinimum::InvoicingCycleConfiguration
+            )
+          )
+        end
         attr_reader :invoicing_cycle_configuration
 
         sig do
           params(
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::TieredWithMinimum::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::TieredWithMinimum::InvoicingCycleConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :invoicing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::TieredWithMinimum::Item) }
+        sig { returns(Orb::Price::TieredWithMinimum::Item) }
         attr_reader :item
 
-        sig { params(item: T.any(Orb::Models::Price::TieredWithMinimum::Item, Orb::Internal::AnyHash)).void }
+        sig { params(item: Orb::Price::TieredWithMinimum::Item::OrHash).void }
         attr_writer :item
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredWithMinimum::Maximum)) }
+        sig { returns(T.nilable(Orb::Price::TieredWithMinimum::Maximum)) }
         attr_reader :maximum
 
         sig do
-          params(maximum: T.nilable(T.any(Orb::Models::Price::TieredWithMinimum::Maximum, Orb::Internal::AnyHash)))
-            .void
+          params(
+            maximum: T.nilable(Orb::Price::TieredWithMinimum::Maximum::OrHash)
+          ).void
         end
         attr_writer :maximum
 
@@ -5723,12 +7579,13 @@ module Orb
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredWithMinimum::Minimum)) }
+        sig { returns(T.nilable(Orb::Price::TieredWithMinimum::Minimum)) }
         attr_reader :minimum
 
         sig do
-          params(minimum: T.nilable(T.any(Orb::Models::Price::TieredWithMinimum::Minimum, Orb::Internal::AnyHash)))
-            .void
+          params(
+            minimum: T.nilable(Orb::Price::TieredWithMinimum::Minimum::OrHash)
+          ).void
         end
         attr_writer :minimum
 
@@ -5744,65 +7601,77 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :plan_phase_order
 
-        sig { returns(Orb::Models::Price::TieredWithMinimum::PriceType::TaggedSymbol) }
+        sig { returns(Orb::Price::TieredWithMinimum::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
         sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :tiered_with_minimum_config
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredWithMinimum::DimensionalPriceConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::TieredWithMinimum::DimensionalPriceConfiguration
+            )
+          )
+        end
         attr_reader :dimensional_price_configuration
 
         sig do
           params(
-            dimensional_price_configuration: T.nilable(
-              T.any(Orb::Models::Price::TieredWithMinimum::DimensionalPriceConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::TieredWithMinimum::DimensionalPriceConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :dimensional_price_configuration
 
         sig do
           params(
             id: String,
-            billable_metric: T.nilable(T.any(Orb::Models::Price::TieredWithMinimum::BillableMetric, Orb::Internal::AnyHash)),
-            billing_cycle_configuration: T.any(Orb::Models::Price::TieredWithMinimum::BillingCycleConfiguration, Orb::Internal::AnyHash),
-            cadence: Orb::Models::Price::TieredWithMinimum::Cadence::OrSymbol,
+            billable_metric:
+              T.nilable(Orb::Price::TieredWithMinimum::BillableMetric::OrHash),
+            billing_cycle_configuration:
+              Orb::Price::TieredWithMinimum::BillingCycleConfiguration::OrHash,
+            cadence: Orb::Price::TieredWithMinimum::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
             created_at: Time,
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::TieredWithMinimum::CreditAllocation, Orb::Internal::AnyHash)),
+            credit_allocation:
+              T.nilable(
+                Orb::Price::TieredWithMinimum::CreditAllocation::OrHash
+              ),
             currency: String,
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::TieredWithMinimum::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            ),
-            item: T.any(Orb::Models::Price::TieredWithMinimum::Item, Orb::Internal::AnyHash),
-            maximum: T.nilable(T.any(Orb::Models::Price::TieredWithMinimum::Maximum, Orb::Internal::AnyHash)),
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::TieredWithMinimum::InvoicingCycleConfiguration::OrHash
+              ),
+            item: Orb::Price::TieredWithMinimum::Item::OrHash,
+            maximum: T.nilable(Orb::Price::TieredWithMinimum::Maximum::OrHash),
             maximum_amount: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(T.any(Orb::Models::Price::TieredWithMinimum::Minimum, Orb::Internal::AnyHash)),
+            minimum: T.nilable(Orb::Price::TieredWithMinimum::Minimum::OrHash),
             minimum_amount: T.nilable(String),
             name: String,
             plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Models::Price::TieredWithMinimum::PriceType::OrSymbol,
+            price_type: Orb::Price::TieredWithMinimum::PriceType::OrSymbol,
             tiered_with_minimum_config: T::Hash[Symbol, T.anything],
-            dimensional_price_configuration: T.nilable(
-              T.any(Orb::Models::Price::TieredWithMinimum::DimensionalPriceConfiguration, Orb::Internal::AnyHash)
-            ),
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::TieredWithMinimum::DimensionalPriceConfiguration::OrHash
+              ),
             model_type: Symbol
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -5833,197 +7702,285 @@ module Orb
           tiered_with_minimum_config:,
           dimensional_price_configuration: nil,
           model_type: :tiered_with_minimum
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                billable_metric: T.nilable(Orb::Models::Price::TieredWithMinimum::BillableMetric),
-                billing_cycle_configuration: Orb::Models::Price::TieredWithMinimum::BillingCycleConfiguration,
-                cadence: Orb::Models::Price::TieredWithMinimum::Cadence::TaggedSymbol,
-                conversion_rate: T.nilable(Float),
-                created_at: Time,
-                credit_allocation: T.nilable(Orb::Models::Price::TieredWithMinimum::CreditAllocation),
-                currency: String,
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              billable_metric:
+                T.nilable(Orb::Price::TieredWithMinimum::BillableMetric),
+              billing_cycle_configuration:
+                Orb::Price::TieredWithMinimum::BillingCycleConfiguration,
+              cadence: Orb::Price::TieredWithMinimum::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation:
+                T.nilable(Orb::Price::TieredWithMinimum::CreditAllocation),
+              currency: String,
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoicing_cycle_configuration: T.nilable(Orb::Models::Price::TieredWithMinimum::InvoicingCycleConfiguration),
-                item: Orb::Models::Price::TieredWithMinimum::Item,
-                maximum: T.nilable(Orb::Models::Price::TieredWithMinimum::Maximum),
-                maximum_amount: T.nilable(String),
-                metadata: T::Hash[Symbol, String],
-                minimum: T.nilable(Orb::Models::Price::TieredWithMinimum::Minimum),
-                minimum_amount: T.nilable(String),
-                model_type: Symbol,
-                name: String,
-                plan_phase_order: T.nilable(Integer),
-                price_type: Orb::Models::Price::TieredWithMinimum::PriceType::TaggedSymbol,
-                tiered_with_minimum_config: T::Hash[Symbol, T.anything],
-                dimensional_price_configuration: T.nilable(Orb::Models::Price::TieredWithMinimum::DimensionalPriceConfiguration)
-              }
-            )
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoicing_cycle_configuration:
+                T.nilable(
+                  Orb::Price::TieredWithMinimum::InvoicingCycleConfiguration
+                ),
+              item: Orb::Price::TieredWithMinimum::Item,
+              maximum: T.nilable(Orb::Price::TieredWithMinimum::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Price::TieredWithMinimum::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type:
+                Orb::Price::TieredWithMinimum::PriceType::TaggedSymbol,
+              tiered_with_minimum_config: T::Hash[Symbol, T.anything],
+              dimensional_price_configuration:
+                T.nilable(
+                  Orb::Price::TieredWithMinimum::DimensionalPriceConfiguration
+                )
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
+          def self.new(id:)
+          end
 
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::TieredWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::TieredWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::TieredWithMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::TieredWithMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::TieredWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::TieredWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::TieredWithMinimum::BillingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::TieredWithMinimum::BillingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
-              T.let(:day, Orb::Models::Price::TieredWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
+              T.let(
+                :day,
+                Orb::Price::TieredWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::TieredWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::TieredWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::TieredWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::TieredWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         module Cadence
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::TieredWithMinimum::Cadence) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::TieredWithMinimum::Cadence)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ONE_TIME = T.let(:one_time, Orb::Models::Price::TieredWithMinimum::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Price::TieredWithMinimum::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Price::TieredWithMinimum::Cadence::TaggedSymbol)
-          SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::Price::TieredWithMinimum::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Price::TieredWithMinimum::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Models::Price::TieredWithMinimum::Cadence::TaggedSymbol)
+          ONE_TIME =
+            T.let(
+              :one_time,
+              Orb::Price::TieredWithMinimum::Cadence::TaggedSymbol
+            )
+          MONTHLY =
+            T.let(
+              :monthly,
+              Orb::Price::TieredWithMinimum::Cadence::TaggedSymbol
+            )
+          QUARTERLY =
+            T.let(
+              :quarterly,
+              Orb::Price::TieredWithMinimum::Cadence::TaggedSymbol
+            )
+          SEMI_ANNUAL =
+            T.let(
+              :semi_annual,
+              Orb::Price::TieredWithMinimum::Cadence::TaggedSymbol
+            )
+          ANNUAL =
+            T.let(:annual, Orb::Price::TieredWithMinimum::Cadence::TaggedSymbol)
+          CUSTOM =
+            T.let(:custom, Orb::Price::TieredWithMinimum::Cadence::TaggedSymbol)
 
-          sig { override.returns(T::Array[Orb::Models::Price::TieredWithMinimum::Cadence::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::TieredWithMinimum::Cadence::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
 
           sig { returns(String) }
           attr_accessor :currency
 
-          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:); end
+          sig do
+            params(allows_rollover: T::Boolean, currency: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(allows_rollover:, currency:)
+          end
 
-          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash; end
+          sig do
+            override.returns({ allows_rollover: T::Boolean, currency: String })
+          end
+          def to_hash
+          end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::TieredWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::TieredWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::TieredWithMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::TieredWithMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::TieredWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::TieredWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::TieredWithMinimum::InvoicingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::TieredWithMinimum::InvoicingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::TieredWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::TieredWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::TieredWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::TieredWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::TieredWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::TieredWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Item < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -6031,13 +7988,17 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -6048,7 +8009,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -6056,12 +8020,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -6072,7 +8045,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -6080,25 +8056,50 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::TieredWithMinimum::PriceType) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::TieredWithMinimum::PriceType)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::TieredWithMinimum::PriceType::TaggedSymbol)
-          FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::TieredWithMinimum::PriceType::TaggedSymbol)
+          USAGE_PRICE =
+            T.let(
+              :usage_price,
+              Orb::Price::TieredWithMinimum::PriceType::TaggedSymbol
+            )
+          FIXED_PRICE =
+            T.let(
+              :fixed_price,
+              Orb::Price::TieredWithMinimum::PriceType::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::TieredWithMinimum::PriceType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::TieredWithMinimum::PriceType::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
 
@@ -6111,40 +8112,63 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:); end
+          def self.new(dimension_values:, dimensional_price_group_id:)
+          end
 
-          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                dimension_values: T::Array[String],
+                dimensional_price_group_id: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class TieredPackageWithMinimum < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredPackageWithMinimum::BillableMetric)) }
+        sig do
+          returns(
+            T.nilable(Orb::Price::TieredPackageWithMinimum::BillableMetric)
+          )
+        end
         attr_reader :billable_metric
 
         sig do
           params(
-            billable_metric: T.nilable(T.any(Orb::Models::Price::TieredPackageWithMinimum::BillableMetric, Orb::Internal::AnyHash))
-          )
-            .void
+            billable_metric:
+              T.nilable(
+                Orb::Price::TieredPackageWithMinimum::BillableMetric::OrHash
+              )
+          ).void
         end
         attr_writer :billable_metric
 
-        sig { returns(Orb::Models::Price::TieredPackageWithMinimum::BillingCycleConfiguration) }
+        sig do
+          returns(
+            Orb::Price::TieredPackageWithMinimum::BillingCycleConfiguration
+          )
+        end
         attr_reader :billing_cycle_configuration
 
         sig do
           params(
-            billing_cycle_configuration: T.any(Orb::Models::Price::TieredPackageWithMinimum::BillingCycleConfiguration, Orb::Internal::AnyHash)
-          )
-            .void
+            billing_cycle_configuration:
+              Orb::Price::TieredPackageWithMinimum::BillingCycleConfiguration::OrHash
+          ).void
         end
         attr_writer :billing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol) }
+        sig do
+          returns(Orb::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol)
+        end
         attr_accessor :cadence
 
         sig { returns(T.nilable(Float)) }
@@ -6153,14 +8177,20 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredPackageWithMinimum::CreditAllocation)) }
+        sig do
+          returns(
+            T.nilable(Orb::Price::TieredPackageWithMinimum::CreditAllocation)
+          )
+        end
         attr_reader :credit_allocation
 
         sig do
           params(
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::TieredPackageWithMinimum::CreditAllocation, Orb::Internal::AnyHash))
-          )
-            .void
+            credit_allocation:
+              T.nilable(
+                Orb::Price::TieredPackageWithMinimum::CreditAllocation::OrHash
+              )
+          ).void
         end
         attr_writer :credit_allocation
 
@@ -6171,10 +8201,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -6187,33 +8217,43 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration
+            )
+          )
+        end
         attr_reader :invoicing_cycle_configuration
 
         sig do
           params(
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :invoicing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::TieredPackageWithMinimum::Item) }
+        sig { returns(Orb::Price::TieredPackageWithMinimum::Item) }
         attr_reader :item
 
-        sig { params(item: T.any(Orb::Models::Price::TieredPackageWithMinimum::Item, Orb::Internal::AnyHash)).void }
+        sig do
+          params(item: Orb::Price::TieredPackageWithMinimum::Item::OrHash).void
+        end
         attr_writer :item
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredPackageWithMinimum::Maximum)) }
+        sig do
+          returns(T.nilable(Orb::Price::TieredPackageWithMinimum::Maximum))
+        end
         attr_reader :maximum
 
         sig do
           params(
-            maximum: T.nilable(T.any(Orb::Models::Price::TieredPackageWithMinimum::Maximum, Orb::Internal::AnyHash))
-          )
-            .void
+            maximum:
+              T.nilable(Orb::Price::TieredPackageWithMinimum::Maximum::OrHash)
+          ).void
         end
         attr_writer :maximum
 
@@ -6227,14 +8267,16 @@ module Orb
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredPackageWithMinimum::Minimum)) }
+        sig do
+          returns(T.nilable(Orb::Price::TieredPackageWithMinimum::Minimum))
+        end
         attr_reader :minimum
 
         sig do
           params(
-            minimum: T.nilable(T.any(Orb::Models::Price::TieredPackageWithMinimum::Minimum, Orb::Internal::AnyHash))
-          )
-            .void
+            minimum:
+              T.nilable(Orb::Price::TieredPackageWithMinimum::Minimum::OrHash)
+          ).void
         end
         attr_writer :minimum
 
@@ -6250,65 +8292,84 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :plan_phase_order
 
-        sig { returns(Orb::Models::Price::TieredPackageWithMinimum::PriceType::TaggedSymbol) }
+        sig do
+          returns(Orb::Price::TieredPackageWithMinimum::PriceType::TaggedSymbol)
+        end
         attr_accessor :price_type
 
         sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :tiered_package_with_minimum_config
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration
+            )
+          )
+        end
         attr_reader :dimensional_price_configuration
 
         sig do
           params(
-            dimensional_price_configuration: T.nilable(
-              T.any(Orb::Models::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :dimensional_price_configuration
 
         sig do
           params(
             id: String,
-            billable_metric: T.nilable(T.any(Orb::Models::Price::TieredPackageWithMinimum::BillableMetric, Orb::Internal::AnyHash)),
-            billing_cycle_configuration: T.any(Orb::Models::Price::TieredPackageWithMinimum::BillingCycleConfiguration, Orb::Internal::AnyHash),
-            cadence: Orb::Models::Price::TieredPackageWithMinimum::Cadence::OrSymbol,
+            billable_metric:
+              T.nilable(
+                Orb::Price::TieredPackageWithMinimum::BillableMetric::OrHash
+              ),
+            billing_cycle_configuration:
+              Orb::Price::TieredPackageWithMinimum::BillingCycleConfiguration::OrHash,
+            cadence: Orb::Price::TieredPackageWithMinimum::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
             created_at: Time,
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::TieredPackageWithMinimum::CreditAllocation, Orb::Internal::AnyHash)),
+            credit_allocation:
+              T.nilable(
+                Orb::Price::TieredPackageWithMinimum::CreditAllocation::OrHash
+              ),
             currency: String,
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            ),
-            item: T.any(Orb::Models::Price::TieredPackageWithMinimum::Item, Orb::Internal::AnyHash),
-            maximum: T.nilable(T.any(Orb::Models::Price::TieredPackageWithMinimum::Maximum, Orb::Internal::AnyHash)),
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::OrHash
+              ),
+            item: Orb::Price::TieredPackageWithMinimum::Item::OrHash,
+            maximum:
+              T.nilable(Orb::Price::TieredPackageWithMinimum::Maximum::OrHash),
             maximum_amount: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(T.any(Orb::Models::Price::TieredPackageWithMinimum::Minimum, Orb::Internal::AnyHash)),
+            minimum:
+              T.nilable(Orb::Price::TieredPackageWithMinimum::Minimum::OrHash),
             minimum_amount: T.nilable(String),
             name: String,
             plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Models::Price::TieredPackageWithMinimum::PriceType::OrSymbol,
+            price_type:
+              Orb::Price::TieredPackageWithMinimum::PriceType::OrSymbol,
             tiered_package_with_minimum_config: T::Hash[Symbol, T.anything],
-            dimensional_price_configuration: T.nilable(
-              T.any(Orb::Models::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration, Orb::Internal::AnyHash)
-            ),
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration::OrHash
+              ),
             model_type: Symbol
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -6339,65 +8400,87 @@ module Orb
           tiered_package_with_minimum_config:,
           dimensional_price_configuration: nil,
           model_type: :tiered_package_with_minimum
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                billable_metric: T.nilable(Orb::Models::Price::TieredPackageWithMinimum::BillableMetric),
-                billing_cycle_configuration: Orb::Models::Price::TieredPackageWithMinimum::BillingCycleConfiguration,
-                cadence: Orb::Models::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol,
-                conversion_rate: T.nilable(Float),
-                created_at: Time,
-                credit_allocation: T.nilable(Orb::Models::Price::TieredPackageWithMinimum::CreditAllocation),
-                currency: String,
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              billable_metric:
+                T.nilable(Orb::Price::TieredPackageWithMinimum::BillableMetric),
+              billing_cycle_configuration:
+                Orb::Price::TieredPackageWithMinimum::BillingCycleConfiguration,
+              cadence:
+                Orb::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation:
+                T.nilable(
+                  Orb::Price::TieredPackageWithMinimum::CreditAllocation
+                ),
+              currency: String,
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoicing_cycle_configuration: T.nilable(Orb::Models::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration),
-                item: Orb::Models::Price::TieredPackageWithMinimum::Item,
-                maximum: T.nilable(Orb::Models::Price::TieredPackageWithMinimum::Maximum),
-                maximum_amount: T.nilable(String),
-                metadata: T::Hash[Symbol, String],
-                minimum: T.nilable(Orb::Models::Price::TieredPackageWithMinimum::Minimum),
-                minimum_amount: T.nilable(String),
-                model_type: Symbol,
-                name: String,
-                plan_phase_order: T.nilable(Integer),
-                price_type: Orb::Models::Price::TieredPackageWithMinimum::PriceType::TaggedSymbol,
-                tiered_package_with_minimum_config: T::Hash[Symbol, T.anything],
-                dimensional_price_configuration: T.nilable(Orb::Models::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration)
-              }
-            )
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoicing_cycle_configuration:
+                T.nilable(
+                  Orb::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration
+                ),
+              item: Orb::Price::TieredPackageWithMinimum::Item,
+              maximum: T.nilable(Orb::Price::TieredPackageWithMinimum::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Price::TieredPackageWithMinimum::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type:
+                Orb::Price::TieredPackageWithMinimum::PriceType::TaggedSymbol,
+              tiered_package_with_minimum_config: T::Hash[Symbol, T.anything],
+              dimensional_price_configuration:
+                T.nilable(
+                  Orb::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration
+                )
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
+          def self.new(id:)
+          end
 
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
           sig do
             returns(
-              Orb::Models::Price::TieredPackageWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              Orb::Price::TieredPackageWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
             )
           end
           attr_accessor :duration_unit
@@ -6405,89 +8488,144 @@ module Orb
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::TieredPackageWithMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::TieredPackageWithMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::TieredPackageWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::TieredPackageWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::TieredPackageWithMinimum::BillingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::TieredPackageWithMinimum::BillingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::TieredPackageWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::TieredPackageWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::TieredPackageWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::TieredPackageWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::TieredPackageWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::TieredPackageWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         module Cadence
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::TieredPackageWithMinimum::Cadence) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::TieredPackageWithMinimum::Cadence)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ONE_TIME = T.let(:one_time, Orb::Models::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol)
-          SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Models::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol)
+          ONE_TIME =
+            T.let(
+              :one_time,
+              Orb::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol
+            )
+          MONTHLY =
+            T.let(
+              :monthly,
+              Orb::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol
+            )
+          QUARTERLY =
+            T.let(
+              :quarterly,
+              Orb::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol
+            )
+          SEMI_ANNUAL =
+            T.let(
+              :semi_annual,
+              Orb::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol
+            )
+          ANNUAL =
+            T.let(
+              :annual,
+              Orb::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol
+            )
+          CUSTOM =
+            T.let(
+              :custom,
+              Orb::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
 
           sig { returns(String) }
           attr_accessor :currency
 
-          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:); end
+          sig do
+            params(allows_rollover: T::Boolean, currency: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(allows_rollover:, currency:)
+          end
 
-          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash; end
+          sig do
+            override.returns({ allows_rollover: T::Boolean, currency: String })
+          end
+          def to_hash
+          end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
           sig do
             returns(
-              Orb::Models::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              Orb::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
             )
           end
           attr_accessor :duration_unit
@@ -6495,52 +8633,63 @@ module Orb
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Item < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -6548,13 +8697,17 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -6565,7 +8718,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -6573,12 +8729,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -6589,7 +8754,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -6597,25 +8765,52 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::TieredPackageWithMinimum::PriceType) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::TieredPackageWithMinimum::PriceType)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::TieredPackageWithMinimum::PriceType::TaggedSymbol)
-          FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::TieredPackageWithMinimum::PriceType::TaggedSymbol)
+          USAGE_PRICE =
+            T.let(
+              :usage_price,
+              Orb::Price::TieredPackageWithMinimum::PriceType::TaggedSymbol
+            )
+          FIXED_PRICE =
+            T.let(
+              :fixed_price,
+              Orb::Price::TieredPackageWithMinimum::PriceType::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::TieredPackageWithMinimum::PriceType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::TieredPackageWithMinimum::PriceType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
 
@@ -6628,40 +8823,59 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:); end
+          def self.new(dimension_values:, dimensional_price_group_id:)
+          end
 
-          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                dimension_values: T::Array[String],
+                dimensional_price_group_id: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class PackageWithAllocation < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(T.nilable(Orb::Models::Price::PackageWithAllocation::BillableMetric)) }
+        sig do
+          returns(T.nilable(Orb::Price::PackageWithAllocation::BillableMetric))
+        end
         attr_reader :billable_metric
 
         sig do
           params(
-            billable_metric: T.nilable(T.any(Orb::Models::Price::PackageWithAllocation::BillableMetric, Orb::Internal::AnyHash))
-          )
-            .void
+            billable_metric:
+              T.nilable(
+                Orb::Price::PackageWithAllocation::BillableMetric::OrHash
+              )
+          ).void
         end
         attr_writer :billable_metric
 
-        sig { returns(Orb::Models::Price::PackageWithAllocation::BillingCycleConfiguration) }
+        sig do
+          returns(Orb::Price::PackageWithAllocation::BillingCycleConfiguration)
+        end
         attr_reader :billing_cycle_configuration
 
         sig do
           params(
-            billing_cycle_configuration: T.any(Orb::Models::Price::PackageWithAllocation::BillingCycleConfiguration, Orb::Internal::AnyHash)
-          )
-            .void
+            billing_cycle_configuration:
+              Orb::Price::PackageWithAllocation::BillingCycleConfiguration::OrHash
+          ).void
         end
         attr_writer :billing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::PackageWithAllocation::Cadence::TaggedSymbol) }
+        sig do
+          returns(Orb::Price::PackageWithAllocation::Cadence::TaggedSymbol)
+        end
         attr_accessor :cadence
 
         sig { returns(T.nilable(Float)) }
@@ -6670,14 +8884,20 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T.nilable(Orb::Models::Price::PackageWithAllocation::CreditAllocation)) }
+        sig do
+          returns(
+            T.nilable(Orb::Price::PackageWithAllocation::CreditAllocation)
+          )
+        end
         attr_reader :credit_allocation
 
         sig do
           params(
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::PackageWithAllocation::CreditAllocation, Orb::Internal::AnyHash))
-          )
-            .void
+            credit_allocation:
+              T.nilable(
+                Orb::Price::PackageWithAllocation::CreditAllocation::OrHash
+              )
+          ).void
         end
         attr_writer :credit_allocation
 
@@ -6688,10 +8908,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -6704,33 +8924,41 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
-        sig { returns(T.nilable(Orb::Models::Price::PackageWithAllocation::InvoicingCycleConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::PackageWithAllocation::InvoicingCycleConfiguration
+            )
+          )
+        end
         attr_reader :invoicing_cycle_configuration
 
         sig do
           params(
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::PackageWithAllocation::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::PackageWithAllocation::InvoicingCycleConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :invoicing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::PackageWithAllocation::Item) }
+        sig { returns(Orb::Price::PackageWithAllocation::Item) }
         attr_reader :item
 
-        sig { params(item: T.any(Orb::Models::Price::PackageWithAllocation::Item, Orb::Internal::AnyHash)).void }
+        sig do
+          params(item: Orb::Price::PackageWithAllocation::Item::OrHash).void
+        end
         attr_writer :item
 
-        sig { returns(T.nilable(Orb::Models::Price::PackageWithAllocation::Maximum)) }
+        sig { returns(T.nilable(Orb::Price::PackageWithAllocation::Maximum)) }
         attr_reader :maximum
 
         sig do
           params(
-            maximum: T.nilable(T.any(Orb::Models::Price::PackageWithAllocation::Maximum, Orb::Internal::AnyHash))
-          )
-            .void
+            maximum:
+              T.nilable(Orb::Price::PackageWithAllocation::Maximum::OrHash)
+          ).void
         end
         attr_writer :maximum
 
@@ -6744,14 +8972,14 @@ module Orb
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
-        sig { returns(T.nilable(Orb::Models::Price::PackageWithAllocation::Minimum)) }
+        sig { returns(T.nilable(Orb::Price::PackageWithAllocation::Minimum)) }
         attr_reader :minimum
 
         sig do
           params(
-            minimum: T.nilable(T.any(Orb::Models::Price::PackageWithAllocation::Minimum, Orb::Internal::AnyHash))
-          )
-            .void
+            minimum:
+              T.nilable(Orb::Price::PackageWithAllocation::Minimum::OrHash)
+          ).void
         end
         attr_writer :minimum
 
@@ -6770,62 +8998,80 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :plan_phase_order
 
-        sig { returns(Orb::Models::Price::PackageWithAllocation::PriceType::TaggedSymbol) }
+        sig do
+          returns(Orb::Price::PackageWithAllocation::PriceType::TaggedSymbol)
+        end
         attr_accessor :price_type
 
-        sig { returns(T.nilable(Orb::Models::Price::PackageWithAllocation::DimensionalPriceConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::PackageWithAllocation::DimensionalPriceConfiguration
+            )
+          )
+        end
         attr_reader :dimensional_price_configuration
 
         sig do
           params(
-            dimensional_price_configuration: T.nilable(
-              T.any(Orb::Models::Price::PackageWithAllocation::DimensionalPriceConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::PackageWithAllocation::DimensionalPriceConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :dimensional_price_configuration
 
         sig do
           params(
             id: String,
-            billable_metric: T.nilable(T.any(Orb::Models::Price::PackageWithAllocation::BillableMetric, Orb::Internal::AnyHash)),
-            billing_cycle_configuration: T.any(Orb::Models::Price::PackageWithAllocation::BillingCycleConfiguration, Orb::Internal::AnyHash),
-            cadence: Orb::Models::Price::PackageWithAllocation::Cadence::OrSymbol,
+            billable_metric:
+              T.nilable(
+                Orb::Price::PackageWithAllocation::BillableMetric::OrHash
+              ),
+            billing_cycle_configuration:
+              Orb::Price::PackageWithAllocation::BillingCycleConfiguration::OrHash,
+            cadence: Orb::Price::PackageWithAllocation::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
             created_at: Time,
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::PackageWithAllocation::CreditAllocation, Orb::Internal::AnyHash)),
+            credit_allocation:
+              T.nilable(
+                Orb::Price::PackageWithAllocation::CreditAllocation::OrHash
+              ),
             currency: String,
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::PackageWithAllocation::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            ),
-            item: T.any(Orb::Models::Price::PackageWithAllocation::Item, Orb::Internal::AnyHash),
-            maximum: T.nilable(T.any(Orb::Models::Price::PackageWithAllocation::Maximum, Orb::Internal::AnyHash)),
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::PackageWithAllocation::InvoicingCycleConfiguration::OrHash
+              ),
+            item: Orb::Price::PackageWithAllocation::Item::OrHash,
+            maximum:
+              T.nilable(Orb::Price::PackageWithAllocation::Maximum::OrHash),
             maximum_amount: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(T.any(Orb::Models::Price::PackageWithAllocation::Minimum, Orb::Internal::AnyHash)),
+            minimum:
+              T.nilable(Orb::Price::PackageWithAllocation::Minimum::OrHash),
             minimum_amount: T.nilable(String),
             name: String,
             package_with_allocation_config: T::Hash[Symbol, T.anything],
             plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Models::Price::PackageWithAllocation::PriceType::OrSymbol,
-            dimensional_price_configuration: T.nilable(
-              T.any(Orb::Models::Price::PackageWithAllocation::DimensionalPriceConfiguration, Orb::Internal::AnyHash)
-            ),
+            price_type: Orb::Price::PackageWithAllocation::PriceType::OrSymbol,
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::PackageWithAllocation::DimensionalPriceConfiguration::OrHash
+              ),
             model_type: Symbol
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -6856,151 +9102,227 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :package_with_allocation
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                billable_metric: T.nilable(Orb::Models::Price::PackageWithAllocation::BillableMetric),
-                billing_cycle_configuration: Orb::Models::Price::PackageWithAllocation::BillingCycleConfiguration,
-                cadence: Orb::Models::Price::PackageWithAllocation::Cadence::TaggedSymbol,
-                conversion_rate: T.nilable(Float),
-                created_at: Time,
-                credit_allocation: T.nilable(Orb::Models::Price::PackageWithAllocation::CreditAllocation),
-                currency: String,
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              billable_metric:
+                T.nilable(Orb::Price::PackageWithAllocation::BillableMetric),
+              billing_cycle_configuration:
+                Orb::Price::PackageWithAllocation::BillingCycleConfiguration,
+              cadence: Orb::Price::PackageWithAllocation::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation:
+                T.nilable(Orb::Price::PackageWithAllocation::CreditAllocation),
+              currency: String,
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoicing_cycle_configuration: T.nilable(Orb::Models::Price::PackageWithAllocation::InvoicingCycleConfiguration),
-                item: Orb::Models::Price::PackageWithAllocation::Item,
-                maximum: T.nilable(Orb::Models::Price::PackageWithAllocation::Maximum),
-                maximum_amount: T.nilable(String),
-                metadata: T::Hash[Symbol, String],
-                minimum: T.nilable(Orb::Models::Price::PackageWithAllocation::Minimum),
-                minimum_amount: T.nilable(String),
-                model_type: Symbol,
-                name: String,
-                package_with_allocation_config: T::Hash[Symbol, T.anything],
-                plan_phase_order: T.nilable(Integer),
-                price_type: Orb::Models::Price::PackageWithAllocation::PriceType::TaggedSymbol,
-                dimensional_price_configuration: T.nilable(Orb::Models::Price::PackageWithAllocation::DimensionalPriceConfiguration)
-              }
-            )
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoicing_cycle_configuration:
+                T.nilable(
+                  Orb::Price::PackageWithAllocation::InvoicingCycleConfiguration
+                ),
+              item: Orb::Price::PackageWithAllocation::Item,
+              maximum: T.nilable(Orb::Price::PackageWithAllocation::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Price::PackageWithAllocation::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              package_with_allocation_config: T::Hash[Symbol, T.anything],
+              plan_phase_order: T.nilable(Integer),
+              price_type:
+                Orb::Price::PackageWithAllocation::PriceType::TaggedSymbol,
+              dimensional_price_configuration:
+                T.nilable(
+                  Orb::Price::PackageWithAllocation::DimensionalPriceConfiguration
+                )
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
+          def self.new(id:)
+          end
 
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::PackageWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::PackageWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::PackageWithAllocation::BillingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::PackageWithAllocation::BillingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::PackageWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::PackageWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::PackageWithAllocation::BillingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::PackageWithAllocation::BillingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::PackageWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::PackageWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::PackageWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::PackageWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::PackageWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::PackageWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         module Cadence
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::PackageWithAllocation::Cadence) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::PackageWithAllocation::Cadence)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ONE_TIME = T.let(:one_time, Orb::Models::Price::PackageWithAllocation::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Price::PackageWithAllocation::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Price::PackageWithAllocation::Cadence::TaggedSymbol)
-          SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::Price::PackageWithAllocation::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Price::PackageWithAllocation::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Models::Price::PackageWithAllocation::Cadence::TaggedSymbol)
+          ONE_TIME =
+            T.let(
+              :one_time,
+              Orb::Price::PackageWithAllocation::Cadence::TaggedSymbol
+            )
+          MONTHLY =
+            T.let(
+              :monthly,
+              Orb::Price::PackageWithAllocation::Cadence::TaggedSymbol
+            )
+          QUARTERLY =
+            T.let(
+              :quarterly,
+              Orb::Price::PackageWithAllocation::Cadence::TaggedSymbol
+            )
+          SEMI_ANNUAL =
+            T.let(
+              :semi_annual,
+              Orb::Price::PackageWithAllocation::Cadence::TaggedSymbol
+            )
+          ANNUAL =
+            T.let(
+              :annual,
+              Orb::Price::PackageWithAllocation::Cadence::TaggedSymbol
+            )
+          CUSTOM =
+            T.let(
+              :custom,
+              Orb::Price::PackageWithAllocation::Cadence::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::PackageWithAllocation::Cadence::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::PackageWithAllocation::Cadence::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
 
           sig { returns(String) }
           attr_accessor :currency
 
-          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:); end
+          sig do
+            params(allows_rollover: T::Boolean, currency: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(allows_rollover:, currency:)
+          end
 
-          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash; end
+          sig do
+            override.returns({ allows_rollover: T::Boolean, currency: String })
+          end
+          def to_hash
+          end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
           sig do
             returns(
-              Orb::Models::Price::PackageWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              Orb::Price::PackageWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
             )
           end
           attr_accessor :duration_unit
@@ -7008,52 +9330,63 @@ module Orb
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::PackageWithAllocation::InvoicingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::PackageWithAllocation::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::PackageWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::PackageWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::PackageWithAllocation::InvoicingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::PackageWithAllocation::InvoicingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::PackageWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::PackageWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::PackageWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::PackageWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::PackageWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::PackageWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Item < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -7061,13 +9394,17 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -7078,7 +9415,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -7086,12 +9426,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -7102,7 +9451,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -7110,25 +9462,52 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::PackageWithAllocation::PriceType) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::PackageWithAllocation::PriceType)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::PackageWithAllocation::PriceType::TaggedSymbol)
-          FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::PackageWithAllocation::PriceType::TaggedSymbol)
+          USAGE_PRICE =
+            T.let(
+              :usage_price,
+              Orb::Price::PackageWithAllocation::PriceType::TaggedSymbol
+            )
+          FIXED_PRICE =
+            T.let(
+              :fixed_price,
+              Orb::Price::PackageWithAllocation::PriceType::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::PackageWithAllocation::PriceType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::PackageWithAllocation::PriceType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
 
@@ -7141,40 +9520,51 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:); end
+          def self.new(dimension_values:, dimensional_price_group_id:)
+          end
 
-          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                dimension_values: T::Array[String],
+                dimensional_price_group_id: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class UnitWithPercent < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(T.nilable(Orb::Models::Price::UnitWithPercent::BillableMetric)) }
+        sig { returns(T.nilable(Orb::Price::UnitWithPercent::BillableMetric)) }
         attr_reader :billable_metric
 
         sig do
           params(
-            billable_metric: T.nilable(T.any(Orb::Models::Price::UnitWithPercent::BillableMetric, Orb::Internal::AnyHash))
-          )
-            .void
+            billable_metric:
+              T.nilable(Orb::Price::UnitWithPercent::BillableMetric::OrHash)
+          ).void
         end
         attr_writer :billable_metric
 
-        sig { returns(Orb::Models::Price::UnitWithPercent::BillingCycleConfiguration) }
+        sig { returns(Orb::Price::UnitWithPercent::BillingCycleConfiguration) }
         attr_reader :billing_cycle_configuration
 
         sig do
           params(
-            billing_cycle_configuration: T.any(Orb::Models::Price::UnitWithPercent::BillingCycleConfiguration, Orb::Internal::AnyHash)
-          )
-            .void
+            billing_cycle_configuration:
+              Orb::Price::UnitWithPercent::BillingCycleConfiguration::OrHash
+          ).void
         end
         attr_writer :billing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::UnitWithPercent::Cadence::TaggedSymbol) }
+        sig { returns(Orb::Price::UnitWithPercent::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
         sig { returns(T.nilable(Float)) }
@@ -7183,14 +9573,16 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T.nilable(Orb::Models::Price::UnitWithPercent::CreditAllocation)) }
+        sig do
+          returns(T.nilable(Orb::Price::UnitWithPercent::CreditAllocation))
+        end
         attr_reader :credit_allocation
 
         sig do
           params(
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::UnitWithPercent::CreditAllocation, Orb::Internal::AnyHash))
-          )
-            .void
+            credit_allocation:
+              T.nilable(Orb::Price::UnitWithPercent::CreditAllocation::OrHash)
+          ).void
         end
         attr_writer :credit_allocation
 
@@ -7201,10 +9593,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -7217,29 +9609,36 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
-        sig { returns(T.nilable(Orb::Models::Price::UnitWithPercent::InvoicingCycleConfiguration)) }
+        sig do
+          returns(
+            T.nilable(Orb::Price::UnitWithPercent::InvoicingCycleConfiguration)
+          )
+        end
         attr_reader :invoicing_cycle_configuration
 
         sig do
           params(
-            invoicing_cycle_configuration: T.nilable(T.any(Orb::Models::Price::UnitWithPercent::InvoicingCycleConfiguration, Orb::Internal::AnyHash))
-          )
-            .void
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::UnitWithPercent::InvoicingCycleConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :invoicing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::UnitWithPercent::Item) }
+        sig { returns(Orb::Price::UnitWithPercent::Item) }
         attr_reader :item
 
-        sig { params(item: T.any(Orb::Models::Price::UnitWithPercent::Item, Orb::Internal::AnyHash)).void }
+        sig { params(item: Orb::Price::UnitWithPercent::Item::OrHash).void }
         attr_writer :item
 
-        sig { returns(T.nilable(Orb::Models::Price::UnitWithPercent::Maximum)) }
+        sig { returns(T.nilable(Orb::Price::UnitWithPercent::Maximum)) }
         attr_reader :maximum
 
         sig do
-          params(maximum: T.nilable(T.any(Orb::Models::Price::UnitWithPercent::Maximum, Orb::Internal::AnyHash)))
-            .void
+          params(
+            maximum: T.nilable(Orb::Price::UnitWithPercent::Maximum::OrHash)
+          ).void
         end
         attr_writer :maximum
 
@@ -7253,12 +9652,13 @@ module Orb
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
-        sig { returns(T.nilable(Orb::Models::Price::UnitWithPercent::Minimum)) }
+        sig { returns(T.nilable(Orb::Price::UnitWithPercent::Minimum)) }
         attr_reader :minimum
 
         sig do
-          params(minimum: T.nilable(T.any(Orb::Models::Price::UnitWithPercent::Minimum, Orb::Internal::AnyHash)))
-            .void
+          params(
+            minimum: T.nilable(Orb::Price::UnitWithPercent::Minimum::OrHash)
+          ).void
         end
         attr_writer :minimum
 
@@ -7274,63 +9674,75 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :plan_phase_order
 
-        sig { returns(Orb::Models::Price::UnitWithPercent::PriceType::TaggedSymbol) }
+        sig { returns(Orb::Price::UnitWithPercent::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
         sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :unit_with_percent_config
 
-        sig { returns(T.nilable(Orb::Models::Price::UnitWithPercent::DimensionalPriceConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::UnitWithPercent::DimensionalPriceConfiguration
+            )
+          )
+        end
         attr_reader :dimensional_price_configuration
 
         sig do
           params(
-            dimensional_price_configuration: T.nilable(
-              T.any(Orb::Models::Price::UnitWithPercent::DimensionalPriceConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::UnitWithPercent::DimensionalPriceConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :dimensional_price_configuration
 
         sig do
           params(
             id: String,
-            billable_metric: T.nilable(T.any(Orb::Models::Price::UnitWithPercent::BillableMetric, Orb::Internal::AnyHash)),
-            billing_cycle_configuration: T.any(Orb::Models::Price::UnitWithPercent::BillingCycleConfiguration, Orb::Internal::AnyHash),
-            cadence: Orb::Models::Price::UnitWithPercent::Cadence::OrSymbol,
+            billable_metric:
+              T.nilable(Orb::Price::UnitWithPercent::BillableMetric::OrHash),
+            billing_cycle_configuration:
+              Orb::Price::UnitWithPercent::BillingCycleConfiguration::OrHash,
+            cadence: Orb::Price::UnitWithPercent::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
             created_at: Time,
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::UnitWithPercent::CreditAllocation, Orb::Internal::AnyHash)),
+            credit_allocation:
+              T.nilable(Orb::Price::UnitWithPercent::CreditAllocation::OrHash),
             currency: String,
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
-            invoicing_cycle_configuration: T.nilable(T.any(Orb::Models::Price::UnitWithPercent::InvoicingCycleConfiguration, Orb::Internal::AnyHash)),
-            item: T.any(Orb::Models::Price::UnitWithPercent::Item, Orb::Internal::AnyHash),
-            maximum: T.nilable(T.any(Orb::Models::Price::UnitWithPercent::Maximum, Orb::Internal::AnyHash)),
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::UnitWithPercent::InvoicingCycleConfiguration::OrHash
+              ),
+            item: Orb::Price::UnitWithPercent::Item::OrHash,
+            maximum: T.nilable(Orb::Price::UnitWithPercent::Maximum::OrHash),
             maximum_amount: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(T.any(Orb::Models::Price::UnitWithPercent::Minimum, Orb::Internal::AnyHash)),
+            minimum: T.nilable(Orb::Price::UnitWithPercent::Minimum::OrHash),
             minimum_amount: T.nilable(String),
             name: String,
             plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Models::Price::UnitWithPercent::PriceType::OrSymbol,
+            price_type: Orb::Price::UnitWithPercent::PriceType::OrSymbol,
             unit_with_percent_config: T::Hash[Symbol, T.anything],
-            dimensional_price_configuration: T.nilable(
-              T.any(Orb::Models::Price::UnitWithPercent::DimensionalPriceConfiguration, Orb::Internal::AnyHash)
-            ),
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::UnitWithPercent::DimensionalPriceConfiguration::OrHash
+              ),
             model_type: Symbol
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -7361,191 +9773,276 @@ module Orb
           unit_with_percent_config:,
           dimensional_price_configuration: nil,
           model_type: :unit_with_percent
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                billable_metric: T.nilable(Orb::Models::Price::UnitWithPercent::BillableMetric),
-                billing_cycle_configuration: Orb::Models::Price::UnitWithPercent::BillingCycleConfiguration,
-                cadence: Orb::Models::Price::UnitWithPercent::Cadence::TaggedSymbol,
-                conversion_rate: T.nilable(Float),
-                created_at: Time,
-                credit_allocation: T.nilable(Orb::Models::Price::UnitWithPercent::CreditAllocation),
-                currency: String,
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              billable_metric:
+                T.nilable(Orb::Price::UnitWithPercent::BillableMetric),
+              billing_cycle_configuration:
+                Orb::Price::UnitWithPercent::BillingCycleConfiguration,
+              cadence: Orb::Price::UnitWithPercent::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation:
+                T.nilable(Orb::Price::UnitWithPercent::CreditAllocation),
+              currency: String,
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoicing_cycle_configuration: T.nilable(Orb::Models::Price::UnitWithPercent::InvoicingCycleConfiguration),
-                item: Orb::Models::Price::UnitWithPercent::Item,
-                maximum: T.nilable(Orb::Models::Price::UnitWithPercent::Maximum),
-                maximum_amount: T.nilable(String),
-                metadata: T::Hash[Symbol, String],
-                minimum: T.nilable(Orb::Models::Price::UnitWithPercent::Minimum),
-                minimum_amount: T.nilable(String),
-                model_type: Symbol,
-                name: String,
-                plan_phase_order: T.nilable(Integer),
-                price_type: Orb::Models::Price::UnitWithPercent::PriceType::TaggedSymbol,
-                unit_with_percent_config: T::Hash[Symbol, T.anything],
-                dimensional_price_configuration: T.nilable(Orb::Models::Price::UnitWithPercent::DimensionalPriceConfiguration)
-              }
-            )
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoicing_cycle_configuration:
+                T.nilable(
+                  Orb::Price::UnitWithPercent::InvoicingCycleConfiguration
+                ),
+              item: Orb::Price::UnitWithPercent::Item,
+              maximum: T.nilable(Orb::Price::UnitWithPercent::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Price::UnitWithPercent::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type: Orb::Price::UnitWithPercent::PriceType::TaggedSymbol,
+              unit_with_percent_config: T::Hash[Symbol, T.anything],
+              dimensional_price_configuration:
+                T.nilable(
+                  Orb::Price::UnitWithPercent::DimensionalPriceConfiguration
+                )
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
+          def self.new(id:)
+          end
 
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::UnitWithPercent::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::UnitWithPercent::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::UnitWithPercent::BillingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::UnitWithPercent::BillingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::UnitWithPercent::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::UnitWithPercent::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::UnitWithPercent::BillingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::UnitWithPercent::BillingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
-              T.let(:day, Orb::Models::Price::UnitWithPercent::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
+              T.let(
+                :day,
+                Orb::Price::UnitWithPercent::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
             MONTH =
-              T.let(:month, Orb::Models::Price::UnitWithPercent::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
+              T.let(
+                :month,
+                Orb::Price::UnitWithPercent::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::UnitWithPercent::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::UnitWithPercent::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         module Cadence
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::UnitWithPercent::Cadence) }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::UnitWithPercent::Cadence) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ONE_TIME = T.let(:one_time, Orb::Models::Price::UnitWithPercent::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Price::UnitWithPercent::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Price::UnitWithPercent::Cadence::TaggedSymbol)
-          SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::Price::UnitWithPercent::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Price::UnitWithPercent::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Models::Price::UnitWithPercent::Cadence::TaggedSymbol)
+          ONE_TIME =
+            T.let(:one_time, Orb::Price::UnitWithPercent::Cadence::TaggedSymbol)
+          MONTHLY =
+            T.let(:monthly, Orb::Price::UnitWithPercent::Cadence::TaggedSymbol)
+          QUARTERLY =
+            T.let(
+              :quarterly,
+              Orb::Price::UnitWithPercent::Cadence::TaggedSymbol
+            )
+          SEMI_ANNUAL =
+            T.let(
+              :semi_annual,
+              Orb::Price::UnitWithPercent::Cadence::TaggedSymbol
+            )
+          ANNUAL =
+            T.let(:annual, Orb::Price::UnitWithPercent::Cadence::TaggedSymbol)
+          CUSTOM =
+            T.let(:custom, Orb::Price::UnitWithPercent::Cadence::TaggedSymbol)
 
-          sig { override.returns(T::Array[Orb::Models::Price::UnitWithPercent::Cadence::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::UnitWithPercent::Cadence::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
 
           sig { returns(String) }
           attr_accessor :currency
 
-          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:); end
+          sig do
+            params(allows_rollover: T::Boolean, currency: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(allows_rollover:, currency:)
+          end
 
-          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash; end
+          sig do
+            override.returns({ allows_rollover: T::Boolean, currency: String })
+          end
+          def to_hash
+          end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::UnitWithPercent::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::UnitWithPercent::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::UnitWithPercent::InvoicingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::UnitWithPercent::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::UnitWithPercent::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::UnitWithPercent::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::UnitWithPercent::InvoicingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::UnitWithPercent::InvoicingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
-              T.let(:day, Orb::Models::Price::UnitWithPercent::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol)
+              T.let(
+                :day,
+                Orb::Price::UnitWithPercent::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::UnitWithPercent::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::UnitWithPercent::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::UnitWithPercent::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::UnitWithPercent::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Item < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -7553,13 +10050,17 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -7570,7 +10071,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -7578,12 +10082,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -7594,7 +10107,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -7602,25 +10118,50 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::UnitWithPercent::PriceType) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::UnitWithPercent::PriceType)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::UnitWithPercent::PriceType::TaggedSymbol)
-          FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::UnitWithPercent::PriceType::TaggedSymbol)
+          USAGE_PRICE =
+            T.let(
+              :usage_price,
+              Orb::Price::UnitWithPercent::PriceType::TaggedSymbol
+            )
+          FIXED_PRICE =
+            T.let(
+              :fixed_price,
+              Orb::Price::UnitWithPercent::PriceType::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::UnitWithPercent::PriceType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::UnitWithPercent::PriceType::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
 
@@ -7633,40 +10174,57 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:); end
+          def self.new(dimension_values:, dimensional_price_group_id:)
+          end
 
-          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                dimension_values: T::Array[String],
+                dimensional_price_group_id: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class MatrixWithAllocation < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(T.nilable(Orb::Models::Price::MatrixWithAllocation::BillableMetric)) }
+        sig do
+          returns(T.nilable(Orb::Price::MatrixWithAllocation::BillableMetric))
+        end
         attr_reader :billable_metric
 
         sig do
           params(
-            billable_metric: T.nilable(T.any(Orb::Models::Price::MatrixWithAllocation::BillableMetric, Orb::Internal::AnyHash))
-          )
-            .void
+            billable_metric:
+              T.nilable(
+                Orb::Price::MatrixWithAllocation::BillableMetric::OrHash
+              )
+          ).void
         end
         attr_writer :billable_metric
 
-        sig { returns(Orb::Models::Price::MatrixWithAllocation::BillingCycleConfiguration) }
+        sig do
+          returns(Orb::Price::MatrixWithAllocation::BillingCycleConfiguration)
+        end
         attr_reader :billing_cycle_configuration
 
         sig do
           params(
-            billing_cycle_configuration: T.any(Orb::Models::Price::MatrixWithAllocation::BillingCycleConfiguration, Orb::Internal::AnyHash)
-          )
-            .void
+            billing_cycle_configuration:
+              Orb::Price::MatrixWithAllocation::BillingCycleConfiguration::OrHash
+          ).void
         end
         attr_writer :billing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::MatrixWithAllocation::Cadence::TaggedSymbol) }
+        sig { returns(Orb::Price::MatrixWithAllocation::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
         sig { returns(T.nilable(Float)) }
@@ -7675,14 +10233,18 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T.nilable(Orb::Models::Price::MatrixWithAllocation::CreditAllocation)) }
+        sig do
+          returns(T.nilable(Orb::Price::MatrixWithAllocation::CreditAllocation))
+        end
         attr_reader :credit_allocation
 
         sig do
           params(
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::MatrixWithAllocation::CreditAllocation, Orb::Internal::AnyHash))
-          )
-            .void
+            credit_allocation:
+              T.nilable(
+                Orb::Price::MatrixWithAllocation::CreditAllocation::OrHash
+              )
+          ).void
         end
         attr_writer :credit_allocation
 
@@ -7693,10 +10255,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -7709,44 +10271,54 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
-        sig { returns(T.nilable(Orb::Models::Price::MatrixWithAllocation::InvoicingCycleConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::MatrixWithAllocation::InvoicingCycleConfiguration
+            )
+          )
+        end
         attr_reader :invoicing_cycle_configuration
 
         sig do
           params(
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::MatrixWithAllocation::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::MatrixWithAllocation::InvoicingCycleConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :invoicing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::MatrixWithAllocation::Item) }
+        sig { returns(Orb::Price::MatrixWithAllocation::Item) }
         attr_reader :item
 
-        sig { params(item: T.any(Orb::Models::Price::MatrixWithAllocation::Item, Orb::Internal::AnyHash)).void }
+        sig do
+          params(item: Orb::Price::MatrixWithAllocation::Item::OrHash).void
+        end
         attr_writer :item
 
-        sig { returns(Orb::Models::Price::MatrixWithAllocation::MatrixWithAllocationConfig) }
+        sig do
+          returns(Orb::Price::MatrixWithAllocation::MatrixWithAllocationConfig)
+        end
         attr_reader :matrix_with_allocation_config
 
         sig do
           params(
-            matrix_with_allocation_config: T.any(Orb::Models::Price::MatrixWithAllocation::MatrixWithAllocationConfig, Orb::Internal::AnyHash)
-          )
-            .void
+            matrix_with_allocation_config:
+              Orb::Price::MatrixWithAllocation::MatrixWithAllocationConfig::OrHash
+          ).void
         end
         attr_writer :matrix_with_allocation_config
 
-        sig { returns(T.nilable(Orb::Models::Price::MatrixWithAllocation::Maximum)) }
+        sig { returns(T.nilable(Orb::Price::MatrixWithAllocation::Maximum)) }
         attr_reader :maximum
 
         sig do
           params(
-            maximum: T.nilable(T.any(Orb::Models::Price::MatrixWithAllocation::Maximum, Orb::Internal::AnyHash))
-          )
-            .void
+            maximum:
+              T.nilable(Orb::Price::MatrixWithAllocation::Maximum::OrHash)
+          ).void
         end
         attr_writer :maximum
 
@@ -7760,14 +10332,14 @@ module Orb
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
-        sig { returns(T.nilable(Orb::Models::Price::MatrixWithAllocation::Minimum)) }
+        sig { returns(T.nilable(Orb::Price::MatrixWithAllocation::Minimum)) }
         attr_reader :minimum
 
         sig do
           params(
-            minimum: T.nilable(T.any(Orb::Models::Price::MatrixWithAllocation::Minimum, Orb::Internal::AnyHash))
-          )
-            .void
+            minimum:
+              T.nilable(Orb::Price::MatrixWithAllocation::Minimum::OrHash)
+          ).void
         end
         attr_writer :minimum
 
@@ -7783,62 +10355,81 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :plan_phase_order
 
-        sig { returns(Orb::Models::Price::MatrixWithAllocation::PriceType::TaggedSymbol) }
+        sig do
+          returns(Orb::Price::MatrixWithAllocation::PriceType::TaggedSymbol)
+        end
         attr_accessor :price_type
 
-        sig { returns(T.nilable(Orb::Models::Price::MatrixWithAllocation::DimensionalPriceConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::MatrixWithAllocation::DimensionalPriceConfiguration
+            )
+          )
+        end
         attr_reader :dimensional_price_configuration
 
         sig do
           params(
-            dimensional_price_configuration: T.nilable(
-              T.any(Orb::Models::Price::MatrixWithAllocation::DimensionalPriceConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::MatrixWithAllocation::DimensionalPriceConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :dimensional_price_configuration
 
         sig do
           params(
             id: String,
-            billable_metric: T.nilable(T.any(Orb::Models::Price::MatrixWithAllocation::BillableMetric, Orb::Internal::AnyHash)),
-            billing_cycle_configuration: T.any(Orb::Models::Price::MatrixWithAllocation::BillingCycleConfiguration, Orb::Internal::AnyHash),
-            cadence: Orb::Models::Price::MatrixWithAllocation::Cadence::OrSymbol,
+            billable_metric:
+              T.nilable(
+                Orb::Price::MatrixWithAllocation::BillableMetric::OrHash
+              ),
+            billing_cycle_configuration:
+              Orb::Price::MatrixWithAllocation::BillingCycleConfiguration::OrHash,
+            cadence: Orb::Price::MatrixWithAllocation::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
             created_at: Time,
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::MatrixWithAllocation::CreditAllocation, Orb::Internal::AnyHash)),
+            credit_allocation:
+              T.nilable(
+                Orb::Price::MatrixWithAllocation::CreditAllocation::OrHash
+              ),
             currency: String,
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::MatrixWithAllocation::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            ),
-            item: T.any(Orb::Models::Price::MatrixWithAllocation::Item, Orb::Internal::AnyHash),
-            matrix_with_allocation_config: T.any(Orb::Models::Price::MatrixWithAllocation::MatrixWithAllocationConfig, Orb::Internal::AnyHash),
-            maximum: T.nilable(T.any(Orb::Models::Price::MatrixWithAllocation::Maximum, Orb::Internal::AnyHash)),
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::MatrixWithAllocation::InvoicingCycleConfiguration::OrHash
+              ),
+            item: Orb::Price::MatrixWithAllocation::Item::OrHash,
+            matrix_with_allocation_config:
+              Orb::Price::MatrixWithAllocation::MatrixWithAllocationConfig::OrHash,
+            maximum:
+              T.nilable(Orb::Price::MatrixWithAllocation::Maximum::OrHash),
             maximum_amount: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(T.any(Orb::Models::Price::MatrixWithAllocation::Minimum, Orb::Internal::AnyHash)),
+            minimum:
+              T.nilable(Orb::Price::MatrixWithAllocation::Minimum::OrHash),
             minimum_amount: T.nilable(String),
             name: String,
             plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Models::Price::MatrixWithAllocation::PriceType::OrSymbol,
-            dimensional_price_configuration: T.nilable(
-              T.any(Orb::Models::Price::MatrixWithAllocation::DimensionalPriceConfiguration, Orb::Internal::AnyHash)
-            ),
+            price_type: Orb::Price::MatrixWithAllocation::PriceType::OrSymbol,
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::MatrixWithAllocation::DimensionalPriceConfiguration::OrHash
+              ),
             model_type: Symbol
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -7869,200 +10460,292 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :matrix_with_allocation
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                billable_metric: T.nilable(Orb::Models::Price::MatrixWithAllocation::BillableMetric),
-                billing_cycle_configuration: Orb::Models::Price::MatrixWithAllocation::BillingCycleConfiguration,
-                cadence: Orb::Models::Price::MatrixWithAllocation::Cadence::TaggedSymbol,
-                conversion_rate: T.nilable(Float),
-                created_at: Time,
-                credit_allocation: T.nilable(Orb::Models::Price::MatrixWithAllocation::CreditAllocation),
-                currency: String,
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              billable_metric:
+                T.nilable(Orb::Price::MatrixWithAllocation::BillableMetric),
+              billing_cycle_configuration:
+                Orb::Price::MatrixWithAllocation::BillingCycleConfiguration,
+              cadence: Orb::Price::MatrixWithAllocation::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation:
+                T.nilable(Orb::Price::MatrixWithAllocation::CreditAllocation),
+              currency: String,
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoicing_cycle_configuration: T.nilable(Orb::Models::Price::MatrixWithAllocation::InvoicingCycleConfiguration),
-                item: Orb::Models::Price::MatrixWithAllocation::Item,
-                matrix_with_allocation_config: Orb::Models::Price::MatrixWithAllocation::MatrixWithAllocationConfig,
-                maximum: T.nilable(Orb::Models::Price::MatrixWithAllocation::Maximum),
-                maximum_amount: T.nilable(String),
-                metadata: T::Hash[Symbol, String],
-                minimum: T.nilable(Orb::Models::Price::MatrixWithAllocation::Minimum),
-                minimum_amount: T.nilable(String),
-                model_type: Symbol,
-                name: String,
-                plan_phase_order: T.nilable(Integer),
-                price_type: Orb::Models::Price::MatrixWithAllocation::PriceType::TaggedSymbol,
-                dimensional_price_configuration: T.nilable(Orb::Models::Price::MatrixWithAllocation::DimensionalPriceConfiguration)
-              }
-            )
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoicing_cycle_configuration:
+                T.nilable(
+                  Orb::Price::MatrixWithAllocation::InvoicingCycleConfiguration
+                ),
+              item: Orb::Price::MatrixWithAllocation::Item,
+              matrix_with_allocation_config:
+                Orb::Price::MatrixWithAllocation::MatrixWithAllocationConfig,
+              maximum: T.nilable(Orb::Price::MatrixWithAllocation::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Price::MatrixWithAllocation::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type:
+                Orb::Price::MatrixWithAllocation::PriceType::TaggedSymbol,
+              dimensional_price_configuration:
+                T.nilable(
+                  Orb::Price::MatrixWithAllocation::DimensionalPriceConfiguration
+                )
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
+          def self.new(id:)
+          end
 
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::MatrixWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::MatrixWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::MatrixWithAllocation::BillingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::MatrixWithAllocation::BillingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::MatrixWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::MatrixWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::MatrixWithAllocation::BillingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::MatrixWithAllocation::BillingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::MatrixWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::MatrixWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::MatrixWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::MatrixWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::MatrixWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::MatrixWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         module Cadence
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::MatrixWithAllocation::Cadence) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::MatrixWithAllocation::Cadence)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ONE_TIME = T.let(:one_time, Orb::Models::Price::MatrixWithAllocation::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Price::MatrixWithAllocation::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Price::MatrixWithAllocation::Cadence::TaggedSymbol)
-          SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::Price::MatrixWithAllocation::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Price::MatrixWithAllocation::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Models::Price::MatrixWithAllocation::Cadence::TaggedSymbol)
+          ONE_TIME =
+            T.let(
+              :one_time,
+              Orb::Price::MatrixWithAllocation::Cadence::TaggedSymbol
+            )
+          MONTHLY =
+            T.let(
+              :monthly,
+              Orb::Price::MatrixWithAllocation::Cadence::TaggedSymbol
+            )
+          QUARTERLY =
+            T.let(
+              :quarterly,
+              Orb::Price::MatrixWithAllocation::Cadence::TaggedSymbol
+            )
+          SEMI_ANNUAL =
+            T.let(
+              :semi_annual,
+              Orb::Price::MatrixWithAllocation::Cadence::TaggedSymbol
+            )
+          ANNUAL =
+            T.let(
+              :annual,
+              Orb::Price::MatrixWithAllocation::Cadence::TaggedSymbol
+            )
+          CUSTOM =
+            T.let(
+              :custom,
+              Orb::Price::MatrixWithAllocation::Cadence::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::MatrixWithAllocation::Cadence::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::MatrixWithAllocation::Cadence::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
 
           sig { returns(String) }
           attr_accessor :currency
 
-          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:); end
+          sig do
+            params(allows_rollover: T::Boolean, currency: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(allows_rollover:, currency:)
+          end
 
-          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash; end
+          sig do
+            override.returns({ allows_rollover: T::Boolean, currency: String })
+          end
+          def to_hash
+          end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::MatrixWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::MatrixWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::MatrixWithAllocation::InvoicingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::MatrixWithAllocation::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::MatrixWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::MatrixWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::MatrixWithAllocation::InvoicingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::MatrixWithAllocation::InvoicingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::MatrixWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::MatrixWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::MatrixWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::MatrixWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::MatrixWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::MatrixWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Item < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -8070,13 +10753,17 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
 
         class MatrixWithAllocationConfig < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # Allocation to be used to calculate the price
           sig { returns(Float) }
           attr_accessor :allocation
@@ -8090,7 +10777,13 @@ module Orb
           attr_accessor :dimensions
 
           # Matrix values for specified matrix grouping keys
-          sig { returns(T::Array[Orb::Models::Price::MatrixWithAllocation::MatrixWithAllocationConfig::MatrixValue]) }
+          sig do
+            returns(
+              T::Array[
+                Orb::Price::MatrixWithAllocation::MatrixWithAllocationConfig::MatrixValue
+              ]
+            )
+          end
           attr_accessor :matrix_values
 
           sig do
@@ -8098,14 +10791,11 @@ module Orb
               allocation: Float,
               default_unit_amount: String,
               dimensions: T::Array[T.nilable(String)],
-              matrix_values: T::Array[
-                T.any(
-                  Orb::Models::Price::MatrixWithAllocation::MatrixWithAllocationConfig::MatrixValue,
-                  Orb::Internal::AnyHash
-                )
-              ]
-            )
-              .returns(T.attached_class)
+              matrix_values:
+                T::Array[
+                  Orb::Price::MatrixWithAllocation::MatrixWithAllocationConfig::MatrixValue::OrHash
+                ]
+            ).returns(T.attached_class)
           end
           def self.new(
             # Allocation to be used to calculate the price
@@ -8116,21 +10806,28 @@ module Orb
             dimensions:,
             # Matrix values for specified matrix grouping keys
             matrix_values:
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  allocation: Float,
-                  default_unit_amount: String,
-                  dimensions: T::Array[T.nilable(String)],
-                  matrix_values: T::Array[Orb::Models::Price::MatrixWithAllocation::MatrixWithAllocationConfig::MatrixValue]
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                allocation: Float,
+                default_unit_amount: String,
+                dimensions: T::Array[T.nilable(String)],
+                matrix_values:
+                  T::Array[
+                    Orb::Price::MatrixWithAllocation::MatrixWithAllocationConfig::MatrixValue
+                  ]
+              }
+            )
+          end
+          def to_hash
+          end
 
           class MatrixValue < Orb::Internal::Type::BaseModel
+            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
             # One or two matrix keys to filter usage to this Matrix value by. For example,
             # ["region", "tier"] could be used to filter cloud usage by a cloud region and an
             # instance tier.
@@ -8154,13 +10851,25 @@ module Orb
               dimension_values:,
               # Unit price for the specified dimension_values
               unit_amount:
-            ); end
-            sig { override.returns({dimension_values: T::Array[T.nilable(String)], unit_amount: String}) }
-            def to_hash; end
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  dimension_values: T::Array[T.nilable(String)],
+                  unit_amount: String
+                }
+              )
+            end
+            def to_hash
+            end
           end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -8171,7 +10880,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -8179,12 +10891,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -8195,7 +10916,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -8203,25 +10927,52 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::MatrixWithAllocation::PriceType) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::MatrixWithAllocation::PriceType)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::MatrixWithAllocation::PriceType::TaggedSymbol)
-          FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::MatrixWithAllocation::PriceType::TaggedSymbol)
+          USAGE_PRICE =
+            T.let(
+              :usage_price,
+              Orb::Price::MatrixWithAllocation::PriceType::TaggedSymbol
+            )
+          FIXED_PRICE =
+            T.let(
+              :fixed_price,
+              Orb::Price::MatrixWithAllocation::PriceType::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::MatrixWithAllocation::PriceType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::MatrixWithAllocation::PriceType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
 
@@ -8234,40 +10985,55 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:); end
+          def self.new(dimension_values:, dimensional_price_group_id:)
+          end
 
-          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                dimension_values: T::Array[String],
+                dimensional_price_group_id: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class TieredWithProration < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredWithProration::BillableMetric)) }
+        sig do
+          returns(T.nilable(Orb::Price::TieredWithProration::BillableMetric))
+        end
         attr_reader :billable_metric
 
         sig do
           params(
-            billable_metric: T.nilable(T.any(Orb::Models::Price::TieredWithProration::BillableMetric, Orb::Internal::AnyHash))
-          )
-            .void
+            billable_metric:
+              T.nilable(Orb::Price::TieredWithProration::BillableMetric::OrHash)
+          ).void
         end
         attr_writer :billable_metric
 
-        sig { returns(Orb::Models::Price::TieredWithProration::BillingCycleConfiguration) }
+        sig do
+          returns(Orb::Price::TieredWithProration::BillingCycleConfiguration)
+        end
         attr_reader :billing_cycle_configuration
 
         sig do
           params(
-            billing_cycle_configuration: T.any(Orb::Models::Price::TieredWithProration::BillingCycleConfiguration, Orb::Internal::AnyHash)
-          )
-            .void
+            billing_cycle_configuration:
+              Orb::Price::TieredWithProration::BillingCycleConfiguration::OrHash
+          ).void
         end
         attr_writer :billing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::TieredWithProration::Cadence::TaggedSymbol) }
+        sig { returns(Orb::Price::TieredWithProration::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
         sig { returns(T.nilable(Float)) }
@@ -8276,14 +11042,18 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredWithProration::CreditAllocation)) }
+        sig do
+          returns(T.nilable(Orb::Price::TieredWithProration::CreditAllocation))
+        end
         attr_reader :credit_allocation
 
         sig do
           params(
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::TieredWithProration::CreditAllocation, Orb::Internal::AnyHash))
-          )
-            .void
+            credit_allocation:
+              T.nilable(
+                Orb::Price::TieredWithProration::CreditAllocation::OrHash
+              )
+          ).void
         end
         attr_writer :credit_allocation
 
@@ -8294,10 +11064,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -8310,33 +11080,38 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredWithProration::InvoicingCycleConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::TieredWithProration::InvoicingCycleConfiguration
+            )
+          )
+        end
         attr_reader :invoicing_cycle_configuration
 
         sig do
           params(
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::TieredWithProration::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::TieredWithProration::InvoicingCycleConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :invoicing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::TieredWithProration::Item) }
+        sig { returns(Orb::Price::TieredWithProration::Item) }
         attr_reader :item
 
-        sig { params(item: T.any(Orb::Models::Price::TieredWithProration::Item, Orb::Internal::AnyHash)).void }
+        sig { params(item: Orb::Price::TieredWithProration::Item::OrHash).void }
         attr_writer :item
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredWithProration::Maximum)) }
+        sig { returns(T.nilable(Orb::Price::TieredWithProration::Maximum)) }
         attr_reader :maximum
 
         sig do
           params(
-            maximum: T.nilable(T.any(Orb::Models::Price::TieredWithProration::Maximum, Orb::Internal::AnyHash))
-          )
-            .void
+            maximum: T.nilable(Orb::Price::TieredWithProration::Maximum::OrHash)
+          ).void
         end
         attr_writer :maximum
 
@@ -8350,14 +11125,13 @@ module Orb
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredWithProration::Minimum)) }
+        sig { returns(T.nilable(Orb::Price::TieredWithProration::Minimum)) }
         attr_reader :minimum
 
         sig do
           params(
-            minimum: T.nilable(T.any(Orb::Models::Price::TieredWithProration::Minimum, Orb::Internal::AnyHash))
-          )
-            .void
+            minimum: T.nilable(Orb::Price::TieredWithProration::Minimum::OrHash)
+          ).void
         end
         attr_writer :minimum
 
@@ -8373,65 +11147,83 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :plan_phase_order
 
-        sig { returns(Orb::Models::Price::TieredWithProration::PriceType::TaggedSymbol) }
+        sig do
+          returns(Orb::Price::TieredWithProration::PriceType::TaggedSymbol)
+        end
         attr_accessor :price_type
 
         sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :tiered_with_proration_config
 
-        sig { returns(T.nilable(Orb::Models::Price::TieredWithProration::DimensionalPriceConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::TieredWithProration::DimensionalPriceConfiguration
+            )
+          )
+        end
         attr_reader :dimensional_price_configuration
 
         sig do
           params(
-            dimensional_price_configuration: T.nilable(
-              T.any(Orb::Models::Price::TieredWithProration::DimensionalPriceConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::TieredWithProration::DimensionalPriceConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :dimensional_price_configuration
 
         sig do
           params(
             id: String,
-            billable_metric: T.nilable(T.any(Orb::Models::Price::TieredWithProration::BillableMetric, Orb::Internal::AnyHash)),
-            billing_cycle_configuration: T.any(Orb::Models::Price::TieredWithProration::BillingCycleConfiguration, Orb::Internal::AnyHash),
-            cadence: Orb::Models::Price::TieredWithProration::Cadence::OrSymbol,
+            billable_metric:
+              T.nilable(
+                Orb::Price::TieredWithProration::BillableMetric::OrHash
+              ),
+            billing_cycle_configuration:
+              Orb::Price::TieredWithProration::BillingCycleConfiguration::OrHash,
+            cadence: Orb::Price::TieredWithProration::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
             created_at: Time,
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::TieredWithProration::CreditAllocation, Orb::Internal::AnyHash)),
+            credit_allocation:
+              T.nilable(
+                Orb::Price::TieredWithProration::CreditAllocation::OrHash
+              ),
             currency: String,
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::TieredWithProration::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            ),
-            item: T.any(Orb::Models::Price::TieredWithProration::Item, Orb::Internal::AnyHash),
-            maximum: T.nilable(T.any(Orb::Models::Price::TieredWithProration::Maximum, Orb::Internal::AnyHash)),
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::TieredWithProration::InvoicingCycleConfiguration::OrHash
+              ),
+            item: Orb::Price::TieredWithProration::Item::OrHash,
+            maximum:
+              T.nilable(Orb::Price::TieredWithProration::Maximum::OrHash),
             maximum_amount: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(T.any(Orb::Models::Price::TieredWithProration::Minimum, Orb::Internal::AnyHash)),
+            minimum:
+              T.nilable(Orb::Price::TieredWithProration::Minimum::OrHash),
             minimum_amount: T.nilable(String),
             name: String,
             plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Models::Price::TieredWithProration::PriceType::OrSymbol,
+            price_type: Orb::Price::TieredWithProration::PriceType::OrSymbol,
             tiered_with_proration_config: T::Hash[Symbol, T.anything],
-            dimensional_price_configuration: T.nilable(
-              T.any(Orb::Models::Price::TieredWithProration::DimensionalPriceConfiguration, Orb::Internal::AnyHash)
-            ),
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::TieredWithProration::DimensionalPriceConfiguration::OrHash
+              ),
             model_type: Symbol
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -8462,200 +11254,291 @@ module Orb
           tiered_with_proration_config:,
           dimensional_price_configuration: nil,
           model_type: :tiered_with_proration
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                billable_metric: T.nilable(Orb::Models::Price::TieredWithProration::BillableMetric),
-                billing_cycle_configuration: Orb::Models::Price::TieredWithProration::BillingCycleConfiguration,
-                cadence: Orb::Models::Price::TieredWithProration::Cadence::TaggedSymbol,
-                conversion_rate: T.nilable(Float),
-                created_at: Time,
-                credit_allocation: T.nilable(Orb::Models::Price::TieredWithProration::CreditAllocation),
-                currency: String,
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              billable_metric:
+                T.nilable(Orb::Price::TieredWithProration::BillableMetric),
+              billing_cycle_configuration:
+                Orb::Price::TieredWithProration::BillingCycleConfiguration,
+              cadence: Orb::Price::TieredWithProration::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation:
+                T.nilable(Orb::Price::TieredWithProration::CreditAllocation),
+              currency: String,
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoicing_cycle_configuration: T.nilable(Orb::Models::Price::TieredWithProration::InvoicingCycleConfiguration),
-                item: Orb::Models::Price::TieredWithProration::Item,
-                maximum: T.nilable(Orb::Models::Price::TieredWithProration::Maximum),
-                maximum_amount: T.nilable(String),
-                metadata: T::Hash[Symbol, String],
-                minimum: T.nilable(Orb::Models::Price::TieredWithProration::Minimum),
-                minimum_amount: T.nilable(String),
-                model_type: Symbol,
-                name: String,
-                plan_phase_order: T.nilable(Integer),
-                price_type: Orb::Models::Price::TieredWithProration::PriceType::TaggedSymbol,
-                tiered_with_proration_config: T::Hash[Symbol, T.anything],
-                dimensional_price_configuration: T.nilable(Orb::Models::Price::TieredWithProration::DimensionalPriceConfiguration)
-              }
-            )
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoicing_cycle_configuration:
+                T.nilable(
+                  Orb::Price::TieredWithProration::InvoicingCycleConfiguration
+                ),
+              item: Orb::Price::TieredWithProration::Item,
+              maximum: T.nilable(Orb::Price::TieredWithProration::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Price::TieredWithProration::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type:
+                Orb::Price::TieredWithProration::PriceType::TaggedSymbol,
+              tiered_with_proration_config: T::Hash[Symbol, T.anything],
+              dimensional_price_configuration:
+                T.nilable(
+                  Orb::Price::TieredWithProration::DimensionalPriceConfiguration
+                )
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
+          def self.new(id:)
+          end
 
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::TieredWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::TieredWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::TieredWithProration::BillingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::TieredWithProration::BillingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::TieredWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::TieredWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::TieredWithProration::BillingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::TieredWithProration::BillingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::TieredWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::TieredWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::TieredWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::TieredWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::TieredWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::TieredWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         module Cadence
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::TieredWithProration::Cadence) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::TieredWithProration::Cadence)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ONE_TIME = T.let(:one_time, Orb::Models::Price::TieredWithProration::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Price::TieredWithProration::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Price::TieredWithProration::Cadence::TaggedSymbol)
-          SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::Price::TieredWithProration::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Price::TieredWithProration::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Models::Price::TieredWithProration::Cadence::TaggedSymbol)
+          ONE_TIME =
+            T.let(
+              :one_time,
+              Orb::Price::TieredWithProration::Cadence::TaggedSymbol
+            )
+          MONTHLY =
+            T.let(
+              :monthly,
+              Orb::Price::TieredWithProration::Cadence::TaggedSymbol
+            )
+          QUARTERLY =
+            T.let(
+              :quarterly,
+              Orb::Price::TieredWithProration::Cadence::TaggedSymbol
+            )
+          SEMI_ANNUAL =
+            T.let(
+              :semi_annual,
+              Orb::Price::TieredWithProration::Cadence::TaggedSymbol
+            )
+          ANNUAL =
+            T.let(
+              :annual,
+              Orb::Price::TieredWithProration::Cadence::TaggedSymbol
+            )
+          CUSTOM =
+            T.let(
+              :custom,
+              Orb::Price::TieredWithProration::Cadence::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::TieredWithProration::Cadence::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::TieredWithProration::Cadence::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
 
           sig { returns(String) }
           attr_accessor :currency
 
-          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:); end
+          sig do
+            params(allows_rollover: T::Boolean, currency: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(allows_rollover:, currency:)
+          end
 
-          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash; end
+          sig do
+            override.returns({ allows_rollover: T::Boolean, currency: String })
+          end
+          def to_hash
+          end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::TieredWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::TieredWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::TieredWithProration::InvoicingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::TieredWithProration::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::TieredWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::TieredWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::TieredWithProration::InvoicingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::TieredWithProration::InvoicingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::TieredWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::TieredWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::TieredWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::TieredWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::TieredWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::TieredWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Item < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -8663,13 +11546,17 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -8680,7 +11567,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -8688,12 +11578,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -8704,7 +11603,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -8712,25 +11614,50 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::TieredWithProration::PriceType) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::TieredWithProration::PriceType)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::TieredWithProration::PriceType::TaggedSymbol)
-          FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::TieredWithProration::PriceType::TaggedSymbol)
+          USAGE_PRICE =
+            T.let(
+              :usage_price,
+              Orb::Price::TieredWithProration::PriceType::TaggedSymbol
+            )
+          FIXED_PRICE =
+            T.let(
+              :fixed_price,
+              Orb::Price::TieredWithProration::PriceType::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::TieredWithProration::PriceType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::TieredWithProration::PriceType::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
 
@@ -8743,40 +11670,55 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:); end
+          def self.new(dimension_values:, dimensional_price_group_id:)
+          end
 
-          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                dimension_values: T::Array[String],
+                dimensional_price_group_id: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class UnitWithProration < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(T.nilable(Orb::Models::Price::UnitWithProration::BillableMetric)) }
+        sig do
+          returns(T.nilable(Orb::Price::UnitWithProration::BillableMetric))
+        end
         attr_reader :billable_metric
 
         sig do
           params(
-            billable_metric: T.nilable(T.any(Orb::Models::Price::UnitWithProration::BillableMetric, Orb::Internal::AnyHash))
-          )
-            .void
+            billable_metric:
+              T.nilable(Orb::Price::UnitWithProration::BillableMetric::OrHash)
+          ).void
         end
         attr_writer :billable_metric
 
-        sig { returns(Orb::Models::Price::UnitWithProration::BillingCycleConfiguration) }
+        sig do
+          returns(Orb::Price::UnitWithProration::BillingCycleConfiguration)
+        end
         attr_reader :billing_cycle_configuration
 
         sig do
           params(
-            billing_cycle_configuration: T.any(Orb::Models::Price::UnitWithProration::BillingCycleConfiguration, Orb::Internal::AnyHash)
-          )
-            .void
+            billing_cycle_configuration:
+              Orb::Price::UnitWithProration::BillingCycleConfiguration::OrHash
+          ).void
         end
         attr_writer :billing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::UnitWithProration::Cadence::TaggedSymbol) }
+        sig { returns(Orb::Price::UnitWithProration::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
         sig { returns(T.nilable(Float)) }
@@ -8785,14 +11727,16 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T.nilable(Orb::Models::Price::UnitWithProration::CreditAllocation)) }
+        sig do
+          returns(T.nilable(Orb::Price::UnitWithProration::CreditAllocation))
+        end
         attr_reader :credit_allocation
 
         sig do
           params(
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::UnitWithProration::CreditAllocation, Orb::Internal::AnyHash))
-          )
-            .void
+            credit_allocation:
+              T.nilable(Orb::Price::UnitWithProration::CreditAllocation::OrHash)
+          ).void
         end
         attr_writer :credit_allocation
 
@@ -8803,10 +11747,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -8819,31 +11763,38 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
-        sig { returns(T.nilable(Orb::Models::Price::UnitWithProration::InvoicingCycleConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::UnitWithProration::InvoicingCycleConfiguration
+            )
+          )
+        end
         attr_reader :invoicing_cycle_configuration
 
         sig do
           params(
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::UnitWithProration::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::UnitWithProration::InvoicingCycleConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :invoicing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::UnitWithProration::Item) }
+        sig { returns(Orb::Price::UnitWithProration::Item) }
         attr_reader :item
 
-        sig { params(item: T.any(Orb::Models::Price::UnitWithProration::Item, Orb::Internal::AnyHash)).void }
+        sig { params(item: Orb::Price::UnitWithProration::Item::OrHash).void }
         attr_writer :item
 
-        sig { returns(T.nilable(Orb::Models::Price::UnitWithProration::Maximum)) }
+        sig { returns(T.nilable(Orb::Price::UnitWithProration::Maximum)) }
         attr_reader :maximum
 
         sig do
-          params(maximum: T.nilable(T.any(Orb::Models::Price::UnitWithProration::Maximum, Orb::Internal::AnyHash)))
-            .void
+          params(
+            maximum: T.nilable(Orb::Price::UnitWithProration::Maximum::OrHash)
+          ).void
         end
         attr_writer :maximum
 
@@ -8857,12 +11808,13 @@ module Orb
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
-        sig { returns(T.nilable(Orb::Models::Price::UnitWithProration::Minimum)) }
+        sig { returns(T.nilable(Orb::Price::UnitWithProration::Minimum)) }
         attr_reader :minimum
 
         sig do
-          params(minimum: T.nilable(T.any(Orb::Models::Price::UnitWithProration::Minimum, Orb::Internal::AnyHash)))
-            .void
+          params(
+            minimum: T.nilable(Orb::Price::UnitWithProration::Minimum::OrHash)
+          ).void
         end
         attr_writer :minimum
 
@@ -8878,65 +11830,77 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :plan_phase_order
 
-        sig { returns(Orb::Models::Price::UnitWithProration::PriceType::TaggedSymbol) }
+        sig { returns(Orb::Price::UnitWithProration::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
         sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :unit_with_proration_config
 
-        sig { returns(T.nilable(Orb::Models::Price::UnitWithProration::DimensionalPriceConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::UnitWithProration::DimensionalPriceConfiguration
+            )
+          )
+        end
         attr_reader :dimensional_price_configuration
 
         sig do
           params(
-            dimensional_price_configuration: T.nilable(
-              T.any(Orb::Models::Price::UnitWithProration::DimensionalPriceConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::UnitWithProration::DimensionalPriceConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :dimensional_price_configuration
 
         sig do
           params(
             id: String,
-            billable_metric: T.nilable(T.any(Orb::Models::Price::UnitWithProration::BillableMetric, Orb::Internal::AnyHash)),
-            billing_cycle_configuration: T.any(Orb::Models::Price::UnitWithProration::BillingCycleConfiguration, Orb::Internal::AnyHash),
-            cadence: Orb::Models::Price::UnitWithProration::Cadence::OrSymbol,
+            billable_metric:
+              T.nilable(Orb::Price::UnitWithProration::BillableMetric::OrHash),
+            billing_cycle_configuration:
+              Orb::Price::UnitWithProration::BillingCycleConfiguration::OrHash,
+            cadence: Orb::Price::UnitWithProration::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
             created_at: Time,
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::UnitWithProration::CreditAllocation, Orb::Internal::AnyHash)),
+            credit_allocation:
+              T.nilable(
+                Orb::Price::UnitWithProration::CreditAllocation::OrHash
+              ),
             currency: String,
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::UnitWithProration::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            ),
-            item: T.any(Orb::Models::Price::UnitWithProration::Item, Orb::Internal::AnyHash),
-            maximum: T.nilable(T.any(Orb::Models::Price::UnitWithProration::Maximum, Orb::Internal::AnyHash)),
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::UnitWithProration::InvoicingCycleConfiguration::OrHash
+              ),
+            item: Orb::Price::UnitWithProration::Item::OrHash,
+            maximum: T.nilable(Orb::Price::UnitWithProration::Maximum::OrHash),
             maximum_amount: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(T.any(Orb::Models::Price::UnitWithProration::Minimum, Orb::Internal::AnyHash)),
+            minimum: T.nilable(Orb::Price::UnitWithProration::Minimum::OrHash),
             minimum_amount: T.nilable(String),
             name: String,
             plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Models::Price::UnitWithProration::PriceType::OrSymbol,
+            price_type: Orb::Price::UnitWithProration::PriceType::OrSymbol,
             unit_with_proration_config: T::Hash[Symbol, T.anything],
-            dimensional_price_configuration: T.nilable(
-              T.any(Orb::Models::Price::UnitWithProration::DimensionalPriceConfiguration, Orb::Internal::AnyHash)
-            ),
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::UnitWithProration::DimensionalPriceConfiguration::OrHash
+              ),
             model_type: Symbol
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -8967,197 +11931,285 @@ module Orb
           unit_with_proration_config:,
           dimensional_price_configuration: nil,
           model_type: :unit_with_proration
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                billable_metric: T.nilable(Orb::Models::Price::UnitWithProration::BillableMetric),
-                billing_cycle_configuration: Orb::Models::Price::UnitWithProration::BillingCycleConfiguration,
-                cadence: Orb::Models::Price::UnitWithProration::Cadence::TaggedSymbol,
-                conversion_rate: T.nilable(Float),
-                created_at: Time,
-                credit_allocation: T.nilable(Orb::Models::Price::UnitWithProration::CreditAllocation),
-                currency: String,
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              billable_metric:
+                T.nilable(Orb::Price::UnitWithProration::BillableMetric),
+              billing_cycle_configuration:
+                Orb::Price::UnitWithProration::BillingCycleConfiguration,
+              cadence: Orb::Price::UnitWithProration::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation:
+                T.nilable(Orb::Price::UnitWithProration::CreditAllocation),
+              currency: String,
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoicing_cycle_configuration: T.nilable(Orb::Models::Price::UnitWithProration::InvoicingCycleConfiguration),
-                item: Orb::Models::Price::UnitWithProration::Item,
-                maximum: T.nilable(Orb::Models::Price::UnitWithProration::Maximum),
-                maximum_amount: T.nilable(String),
-                metadata: T::Hash[Symbol, String],
-                minimum: T.nilable(Orb::Models::Price::UnitWithProration::Minimum),
-                minimum_amount: T.nilable(String),
-                model_type: Symbol,
-                name: String,
-                plan_phase_order: T.nilable(Integer),
-                price_type: Orb::Models::Price::UnitWithProration::PriceType::TaggedSymbol,
-                unit_with_proration_config: T::Hash[Symbol, T.anything],
-                dimensional_price_configuration: T.nilable(Orb::Models::Price::UnitWithProration::DimensionalPriceConfiguration)
-              }
-            )
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoicing_cycle_configuration:
+                T.nilable(
+                  Orb::Price::UnitWithProration::InvoicingCycleConfiguration
+                ),
+              item: Orb::Price::UnitWithProration::Item,
+              maximum: T.nilable(Orb::Price::UnitWithProration::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Price::UnitWithProration::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type:
+                Orb::Price::UnitWithProration::PriceType::TaggedSymbol,
+              unit_with_proration_config: T::Hash[Symbol, T.anything],
+              dimensional_price_configuration:
+                T.nilable(
+                  Orb::Price::UnitWithProration::DimensionalPriceConfiguration
+                )
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
+          def self.new(id:)
+          end
 
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::UnitWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::UnitWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::UnitWithProration::BillingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::UnitWithProration::BillingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::UnitWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::UnitWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::UnitWithProration::BillingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::UnitWithProration::BillingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
-              T.let(:day, Orb::Models::Price::UnitWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
+              T.let(
+                :day,
+                Orb::Price::UnitWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::UnitWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::UnitWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::UnitWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::UnitWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         module Cadence
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::UnitWithProration::Cadence) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::UnitWithProration::Cadence)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ONE_TIME = T.let(:one_time, Orb::Models::Price::UnitWithProration::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Price::UnitWithProration::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Price::UnitWithProration::Cadence::TaggedSymbol)
-          SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::Price::UnitWithProration::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Price::UnitWithProration::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Models::Price::UnitWithProration::Cadence::TaggedSymbol)
+          ONE_TIME =
+            T.let(
+              :one_time,
+              Orb::Price::UnitWithProration::Cadence::TaggedSymbol
+            )
+          MONTHLY =
+            T.let(
+              :monthly,
+              Orb::Price::UnitWithProration::Cadence::TaggedSymbol
+            )
+          QUARTERLY =
+            T.let(
+              :quarterly,
+              Orb::Price::UnitWithProration::Cadence::TaggedSymbol
+            )
+          SEMI_ANNUAL =
+            T.let(
+              :semi_annual,
+              Orb::Price::UnitWithProration::Cadence::TaggedSymbol
+            )
+          ANNUAL =
+            T.let(:annual, Orb::Price::UnitWithProration::Cadence::TaggedSymbol)
+          CUSTOM =
+            T.let(:custom, Orb::Price::UnitWithProration::Cadence::TaggedSymbol)
 
-          sig { override.returns(T::Array[Orb::Models::Price::UnitWithProration::Cadence::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::UnitWithProration::Cadence::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
 
           sig { returns(String) }
           attr_accessor :currency
 
-          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:); end
+          sig do
+            params(allows_rollover: T::Boolean, currency: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(allows_rollover:, currency:)
+          end
 
-          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash; end
+          sig do
+            override.returns({ allows_rollover: T::Boolean, currency: String })
+          end
+          def to_hash
+          end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::UnitWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::UnitWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::UnitWithProration::InvoicingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::UnitWithProration::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::UnitWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::UnitWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::UnitWithProration::InvoicingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::UnitWithProration::InvoicingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::UnitWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::UnitWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::UnitWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::UnitWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::UnitWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::UnitWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Item < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -9165,13 +12217,17 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -9182,7 +12238,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -9190,12 +12249,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -9206,7 +12274,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -9214,25 +12285,50 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::UnitWithProration::PriceType) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::UnitWithProration::PriceType)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::UnitWithProration::PriceType::TaggedSymbol)
-          FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::UnitWithProration::PriceType::TaggedSymbol)
+          USAGE_PRICE =
+            T.let(
+              :usage_price,
+              Orb::Price::UnitWithProration::PriceType::TaggedSymbol
+            )
+          FIXED_PRICE =
+            T.let(
+              :fixed_price,
+              Orb::Price::UnitWithProration::PriceType::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::UnitWithProration::PriceType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::UnitWithProration::PriceType::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
 
@@ -9245,40 +12341,55 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:); end
+          def self.new(dimension_values:, dimensional_price_group_id:)
+          end
 
-          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                dimension_values: T::Array[String],
+                dimensional_price_group_id: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class GroupedAllocation < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedAllocation::BillableMetric)) }
+        sig do
+          returns(T.nilable(Orb::Price::GroupedAllocation::BillableMetric))
+        end
         attr_reader :billable_metric
 
         sig do
           params(
-            billable_metric: T.nilable(T.any(Orb::Models::Price::GroupedAllocation::BillableMetric, Orb::Internal::AnyHash))
-          )
-            .void
+            billable_metric:
+              T.nilable(Orb::Price::GroupedAllocation::BillableMetric::OrHash)
+          ).void
         end
         attr_writer :billable_metric
 
-        sig { returns(Orb::Models::Price::GroupedAllocation::BillingCycleConfiguration) }
+        sig do
+          returns(Orb::Price::GroupedAllocation::BillingCycleConfiguration)
+        end
         attr_reader :billing_cycle_configuration
 
         sig do
           params(
-            billing_cycle_configuration: T.any(Orb::Models::Price::GroupedAllocation::BillingCycleConfiguration, Orb::Internal::AnyHash)
-          )
-            .void
+            billing_cycle_configuration:
+              Orb::Price::GroupedAllocation::BillingCycleConfiguration::OrHash
+          ).void
         end
         attr_writer :billing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::GroupedAllocation::Cadence::TaggedSymbol) }
+        sig { returns(Orb::Price::GroupedAllocation::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
         sig { returns(T.nilable(Float)) }
@@ -9287,14 +12398,16 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedAllocation::CreditAllocation)) }
+        sig do
+          returns(T.nilable(Orb::Price::GroupedAllocation::CreditAllocation))
+        end
         attr_reader :credit_allocation
 
         sig do
           params(
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::GroupedAllocation::CreditAllocation, Orb::Internal::AnyHash))
-          )
-            .void
+            credit_allocation:
+              T.nilable(Orb::Price::GroupedAllocation::CreditAllocation::OrHash)
+          ).void
         end
         attr_writer :credit_allocation
 
@@ -9305,10 +12418,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -9324,31 +12437,38 @@ module Orb
         sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :grouped_allocation_config
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedAllocation::InvoicingCycleConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::GroupedAllocation::InvoicingCycleConfiguration
+            )
+          )
+        end
         attr_reader :invoicing_cycle_configuration
 
         sig do
           params(
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::GroupedAllocation::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::GroupedAllocation::InvoicingCycleConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :invoicing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::GroupedAllocation::Item) }
+        sig { returns(Orb::Price::GroupedAllocation::Item) }
         attr_reader :item
 
-        sig { params(item: T.any(Orb::Models::Price::GroupedAllocation::Item, Orb::Internal::AnyHash)).void }
+        sig { params(item: Orb::Price::GroupedAllocation::Item::OrHash).void }
         attr_writer :item
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedAllocation::Maximum)) }
+        sig { returns(T.nilable(Orb::Price::GroupedAllocation::Maximum)) }
         attr_reader :maximum
 
         sig do
-          params(maximum: T.nilable(T.any(Orb::Models::Price::GroupedAllocation::Maximum, Orb::Internal::AnyHash)))
-            .void
+          params(
+            maximum: T.nilable(Orb::Price::GroupedAllocation::Maximum::OrHash)
+          ).void
         end
         attr_writer :maximum
 
@@ -9362,12 +12482,13 @@ module Orb
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedAllocation::Minimum)) }
+        sig { returns(T.nilable(Orb::Price::GroupedAllocation::Minimum)) }
         attr_reader :minimum
 
         sig do
-          params(minimum: T.nilable(T.any(Orb::Models::Price::GroupedAllocation::Minimum, Orb::Internal::AnyHash)))
-            .void
+          params(
+            minimum: T.nilable(Orb::Price::GroupedAllocation::Minimum::OrHash)
+          ).void
         end
         attr_writer :minimum
 
@@ -9383,62 +12504,74 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :plan_phase_order
 
-        sig { returns(Orb::Models::Price::GroupedAllocation::PriceType::TaggedSymbol) }
+        sig { returns(Orb::Price::GroupedAllocation::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedAllocation::DimensionalPriceConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::GroupedAllocation::DimensionalPriceConfiguration
+            )
+          )
+        end
         attr_reader :dimensional_price_configuration
 
         sig do
           params(
-            dimensional_price_configuration: T.nilable(
-              T.any(Orb::Models::Price::GroupedAllocation::DimensionalPriceConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::GroupedAllocation::DimensionalPriceConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :dimensional_price_configuration
 
         sig do
           params(
             id: String,
-            billable_metric: T.nilable(T.any(Orb::Models::Price::GroupedAllocation::BillableMetric, Orb::Internal::AnyHash)),
-            billing_cycle_configuration: T.any(Orb::Models::Price::GroupedAllocation::BillingCycleConfiguration, Orb::Internal::AnyHash),
-            cadence: Orb::Models::Price::GroupedAllocation::Cadence::OrSymbol,
+            billable_metric:
+              T.nilable(Orb::Price::GroupedAllocation::BillableMetric::OrHash),
+            billing_cycle_configuration:
+              Orb::Price::GroupedAllocation::BillingCycleConfiguration::OrHash,
+            cadence: Orb::Price::GroupedAllocation::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
             created_at: Time,
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::GroupedAllocation::CreditAllocation, Orb::Internal::AnyHash)),
+            credit_allocation:
+              T.nilable(
+                Orb::Price::GroupedAllocation::CreditAllocation::OrHash
+              ),
             currency: String,
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
             grouped_allocation_config: T::Hash[Symbol, T.anything],
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::GroupedAllocation::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            ),
-            item: T.any(Orb::Models::Price::GroupedAllocation::Item, Orb::Internal::AnyHash),
-            maximum: T.nilable(T.any(Orb::Models::Price::GroupedAllocation::Maximum, Orb::Internal::AnyHash)),
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::GroupedAllocation::InvoicingCycleConfiguration::OrHash
+              ),
+            item: Orb::Price::GroupedAllocation::Item::OrHash,
+            maximum: T.nilable(Orb::Price::GroupedAllocation::Maximum::OrHash),
             maximum_amount: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(T.any(Orb::Models::Price::GroupedAllocation::Minimum, Orb::Internal::AnyHash)),
+            minimum: T.nilable(Orb::Price::GroupedAllocation::Minimum::OrHash),
             minimum_amount: T.nilable(String),
             name: String,
             plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Models::Price::GroupedAllocation::PriceType::OrSymbol,
-            dimensional_price_configuration: T.nilable(
-              T.any(Orb::Models::Price::GroupedAllocation::DimensionalPriceConfiguration, Orb::Internal::AnyHash)
-            ),
+            price_type: Orb::Price::GroupedAllocation::PriceType::OrSymbol,
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::GroupedAllocation::DimensionalPriceConfiguration::OrHash
+              ),
             model_type: Symbol
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -9469,197 +12602,285 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :grouped_allocation
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                billable_metric: T.nilable(Orb::Models::Price::GroupedAllocation::BillableMetric),
-                billing_cycle_configuration: Orb::Models::Price::GroupedAllocation::BillingCycleConfiguration,
-                cadence: Orb::Models::Price::GroupedAllocation::Cadence::TaggedSymbol,
-                conversion_rate: T.nilable(Float),
-                created_at: Time,
-                credit_allocation: T.nilable(Orb::Models::Price::GroupedAllocation::CreditAllocation),
-                currency: String,
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              billable_metric:
+                T.nilable(Orb::Price::GroupedAllocation::BillableMetric),
+              billing_cycle_configuration:
+                Orb::Price::GroupedAllocation::BillingCycleConfiguration,
+              cadence: Orb::Price::GroupedAllocation::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation:
+                T.nilable(Orb::Price::GroupedAllocation::CreditAllocation),
+              currency: String,
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                grouped_allocation_config: T::Hash[Symbol, T.anything],
-                invoicing_cycle_configuration: T.nilable(Orb::Models::Price::GroupedAllocation::InvoicingCycleConfiguration),
-                item: Orb::Models::Price::GroupedAllocation::Item,
-                maximum: T.nilable(Orb::Models::Price::GroupedAllocation::Maximum),
-                maximum_amount: T.nilable(String),
-                metadata: T::Hash[Symbol, String],
-                minimum: T.nilable(Orb::Models::Price::GroupedAllocation::Minimum),
-                minimum_amount: T.nilable(String),
-                model_type: Symbol,
-                name: String,
-                plan_phase_order: T.nilable(Integer),
-                price_type: Orb::Models::Price::GroupedAllocation::PriceType::TaggedSymbol,
-                dimensional_price_configuration: T.nilable(Orb::Models::Price::GroupedAllocation::DimensionalPriceConfiguration)
-              }
-            )
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              grouped_allocation_config: T::Hash[Symbol, T.anything],
+              invoicing_cycle_configuration:
+                T.nilable(
+                  Orb::Price::GroupedAllocation::InvoicingCycleConfiguration
+                ),
+              item: Orb::Price::GroupedAllocation::Item,
+              maximum: T.nilable(Orb::Price::GroupedAllocation::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Price::GroupedAllocation::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type:
+                Orb::Price::GroupedAllocation::PriceType::TaggedSymbol,
+              dimensional_price_configuration:
+                T.nilable(
+                  Orb::Price::GroupedAllocation::DimensionalPriceConfiguration
+                )
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
+          def self.new(id:)
+          end
 
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::GroupedAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::GroupedAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::GroupedAllocation::BillingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::GroupedAllocation::BillingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::GroupedAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::GroupedAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedAllocation::BillingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::GroupedAllocation::BillingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
-              T.let(:day, Orb::Models::Price::GroupedAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
+              T.let(
+                :day,
+                Orb::Price::GroupedAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::GroupedAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::GroupedAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::GroupedAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::GroupedAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         module Cadence
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedAllocation::Cadence) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::GroupedAllocation::Cadence)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ONE_TIME = T.let(:one_time, Orb::Models::Price::GroupedAllocation::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Price::GroupedAllocation::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Price::GroupedAllocation::Cadence::TaggedSymbol)
-          SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::Price::GroupedAllocation::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Price::GroupedAllocation::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Models::Price::GroupedAllocation::Cadence::TaggedSymbol)
+          ONE_TIME =
+            T.let(
+              :one_time,
+              Orb::Price::GroupedAllocation::Cadence::TaggedSymbol
+            )
+          MONTHLY =
+            T.let(
+              :monthly,
+              Orb::Price::GroupedAllocation::Cadence::TaggedSymbol
+            )
+          QUARTERLY =
+            T.let(
+              :quarterly,
+              Orb::Price::GroupedAllocation::Cadence::TaggedSymbol
+            )
+          SEMI_ANNUAL =
+            T.let(
+              :semi_annual,
+              Orb::Price::GroupedAllocation::Cadence::TaggedSymbol
+            )
+          ANNUAL =
+            T.let(:annual, Orb::Price::GroupedAllocation::Cadence::TaggedSymbol)
+          CUSTOM =
+            T.let(:custom, Orb::Price::GroupedAllocation::Cadence::TaggedSymbol)
 
-          sig { override.returns(T::Array[Orb::Models::Price::GroupedAllocation::Cadence::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::GroupedAllocation::Cadence::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
 
           sig { returns(String) }
           attr_accessor :currency
 
-          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:); end
+          sig do
+            params(allows_rollover: T::Boolean, currency: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(allows_rollover:, currency:)
+          end
 
-          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash; end
+          sig do
+            override.returns({ allows_rollover: T::Boolean, currency: String })
+          end
+          def to_hash
+          end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::GroupedAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::GroupedAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::GroupedAllocation::InvoicingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::GroupedAllocation::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::GroupedAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::GroupedAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedAllocation::InvoicingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::GroupedAllocation::InvoicingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::GroupedAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::GroupedAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::GroupedAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::GroupedAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::GroupedAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::GroupedAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Item < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -9667,13 +12888,17 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -9684,7 +12909,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -9692,12 +12920,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -9708,7 +12945,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -9716,25 +12956,50 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedAllocation::PriceType) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::GroupedAllocation::PriceType)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::GroupedAllocation::PriceType::TaggedSymbol)
-          FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::GroupedAllocation::PriceType::TaggedSymbol)
+          USAGE_PRICE =
+            T.let(
+              :usage_price,
+              Orb::Price::GroupedAllocation::PriceType::TaggedSymbol
+            )
+          FIXED_PRICE =
+            T.let(
+              :fixed_price,
+              Orb::Price::GroupedAllocation::PriceType::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::GroupedAllocation::PriceType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::GroupedAllocation::PriceType::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
 
@@ -9747,40 +13012,63 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:); end
+          def self.new(dimension_values:, dimensional_price_group_id:)
+          end
 
-          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                dimension_values: T::Array[String],
+                dimensional_price_group_id: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class GroupedWithProratedMinimum < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedWithProratedMinimum::BillableMetric)) }
+        sig do
+          returns(
+            T.nilable(Orb::Price::GroupedWithProratedMinimum::BillableMetric)
+          )
+        end
         attr_reader :billable_metric
 
         sig do
           params(
-            billable_metric: T.nilable(T.any(Orb::Models::Price::GroupedWithProratedMinimum::BillableMetric, Orb::Internal::AnyHash))
-          )
-            .void
+            billable_metric:
+              T.nilable(
+                Orb::Price::GroupedWithProratedMinimum::BillableMetric::OrHash
+              )
+          ).void
         end
         attr_writer :billable_metric
 
-        sig { returns(Orb::Models::Price::GroupedWithProratedMinimum::BillingCycleConfiguration) }
+        sig do
+          returns(
+            Orb::Price::GroupedWithProratedMinimum::BillingCycleConfiguration
+          )
+        end
         attr_reader :billing_cycle_configuration
 
         sig do
           params(
-            billing_cycle_configuration: T.any(Orb::Models::Price::GroupedWithProratedMinimum::BillingCycleConfiguration, Orb::Internal::AnyHash)
-          )
-            .void
+            billing_cycle_configuration:
+              Orb::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::OrHash
+          ).void
         end
         attr_writer :billing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol) }
+        sig do
+          returns(Orb::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol)
+        end
         attr_accessor :cadence
 
         sig { returns(T.nilable(Float)) }
@@ -9789,14 +13077,20 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedWithProratedMinimum::CreditAllocation)) }
+        sig do
+          returns(
+            T.nilable(Orb::Price::GroupedWithProratedMinimum::CreditAllocation)
+          )
+        end
         attr_reader :credit_allocation
 
         sig do
           params(
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::GroupedWithProratedMinimum::CreditAllocation, Orb::Internal::AnyHash))
-          )
-            .void
+            credit_allocation:
+              T.nilable(
+                Orb::Price::GroupedWithProratedMinimum::CreditAllocation::OrHash
+              )
+          ).void
         end
         attr_writer :credit_allocation
 
@@ -9807,10 +13101,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -9826,33 +13120,45 @@ module Orb
         sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :grouped_with_prorated_minimum_config
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration
+            )
+          )
+        end
         attr_reader :invoicing_cycle_configuration
 
         sig do
           params(
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :invoicing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::GroupedWithProratedMinimum::Item) }
+        sig { returns(Orb::Price::GroupedWithProratedMinimum::Item) }
         attr_reader :item
 
-        sig { params(item: T.any(Orb::Models::Price::GroupedWithProratedMinimum::Item, Orb::Internal::AnyHash)).void }
+        sig do
+          params(
+            item: Orb::Price::GroupedWithProratedMinimum::Item::OrHash
+          ).void
+        end
         attr_writer :item
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedWithProratedMinimum::Maximum)) }
+        sig do
+          returns(T.nilable(Orb::Price::GroupedWithProratedMinimum::Maximum))
+        end
         attr_reader :maximum
 
         sig do
           params(
-            maximum: T.nilable(T.any(Orb::Models::Price::GroupedWithProratedMinimum::Maximum, Orb::Internal::AnyHash))
-          )
-            .void
+            maximum:
+              T.nilable(Orb::Price::GroupedWithProratedMinimum::Maximum::OrHash)
+          ).void
         end
         attr_writer :maximum
 
@@ -9866,14 +13172,16 @@ module Orb
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedWithProratedMinimum::Minimum)) }
+        sig do
+          returns(T.nilable(Orb::Price::GroupedWithProratedMinimum::Minimum))
+        end
         attr_reader :minimum
 
         sig do
           params(
-            minimum: T.nilable(T.any(Orb::Models::Price::GroupedWithProratedMinimum::Minimum, Orb::Internal::AnyHash))
-          )
-            .void
+            minimum:
+              T.nilable(Orb::Price::GroupedWithProratedMinimum::Minimum::OrHash)
+          ).void
         end
         attr_writer :minimum
 
@@ -9889,68 +13197,87 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :plan_phase_order
 
-        sig { returns(Orb::Models::Price::GroupedWithProratedMinimum::PriceType::TaggedSymbol) }
+        sig do
+          returns(
+            Orb::Price::GroupedWithProratedMinimum::PriceType::TaggedSymbol
+          )
+        end
         attr_accessor :price_type
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration
+            )
+          )
+        end
         attr_reader :dimensional_price_configuration
 
         sig do
           params(
-            dimensional_price_configuration: T.nilable(
-              T.any(
-                Orb::Models::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration,
-                Orb::Internal::AnyHash
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration::OrHash
               )
-            )
-          )
-            .void
+          ).void
         end
         attr_writer :dimensional_price_configuration
 
         sig do
           params(
             id: String,
-            billable_metric: T.nilable(T.any(Orb::Models::Price::GroupedWithProratedMinimum::BillableMetric, Orb::Internal::AnyHash)),
-            billing_cycle_configuration: T.any(Orb::Models::Price::GroupedWithProratedMinimum::BillingCycleConfiguration, Orb::Internal::AnyHash),
-            cadence: Orb::Models::Price::GroupedWithProratedMinimum::Cadence::OrSymbol,
+            billable_metric:
+              T.nilable(
+                Orb::Price::GroupedWithProratedMinimum::BillableMetric::OrHash
+              ),
+            billing_cycle_configuration:
+              Orb::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::OrHash,
+            cadence: Orb::Price::GroupedWithProratedMinimum::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
             created_at: Time,
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::GroupedWithProratedMinimum::CreditAllocation, Orb::Internal::AnyHash)),
+            credit_allocation:
+              T.nilable(
+                Orb::Price::GroupedWithProratedMinimum::CreditAllocation::OrHash
+              ),
             currency: String,
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
             grouped_with_prorated_minimum_config: T::Hash[Symbol, T.anything],
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            ),
-            item: T.any(Orb::Models::Price::GroupedWithProratedMinimum::Item, Orb::Internal::AnyHash),
-            maximum: T.nilable(T.any(Orb::Models::Price::GroupedWithProratedMinimum::Maximum, Orb::Internal::AnyHash)),
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::OrHash
+              ),
+            item: Orb::Price::GroupedWithProratedMinimum::Item::OrHash,
+            maximum:
+              T.nilable(
+                Orb::Price::GroupedWithProratedMinimum::Maximum::OrHash
+              ),
             maximum_amount: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(T.any(Orb::Models::Price::GroupedWithProratedMinimum::Minimum, Orb::Internal::AnyHash)),
+            minimum:
+              T.nilable(
+                Orb::Price::GroupedWithProratedMinimum::Minimum::OrHash
+              ),
             minimum_amount: T.nilable(String),
             name: String,
             plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Models::Price::GroupedWithProratedMinimum::PriceType::OrSymbol,
-            dimensional_price_configuration: T.nilable(
-              T.any(
-                Orb::Models::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration,
-                Orb::Internal::AnyHash
-              )
-            ),
+            price_type:
+              Orb::Price::GroupedWithProratedMinimum::PriceType::OrSymbol,
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration::OrHash
+              ),
             model_type: Symbol
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -9981,65 +13308,91 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :grouped_with_prorated_minimum
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                billable_metric: T.nilable(Orb::Models::Price::GroupedWithProratedMinimum::BillableMetric),
-                billing_cycle_configuration: Orb::Models::Price::GroupedWithProratedMinimum::BillingCycleConfiguration,
-                cadence: Orb::Models::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol,
-                conversion_rate: T.nilable(Float),
-                created_at: Time,
-                credit_allocation: T.nilable(Orb::Models::Price::GroupedWithProratedMinimum::CreditAllocation),
-                currency: String,
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              billable_metric:
+                T.nilable(
+                  Orb::Price::GroupedWithProratedMinimum::BillableMetric
+                ),
+              billing_cycle_configuration:
+                Orb::Price::GroupedWithProratedMinimum::BillingCycleConfiguration,
+              cadence:
+                Orb::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation:
+                T.nilable(
+                  Orb::Price::GroupedWithProratedMinimum::CreditAllocation
+                ),
+              currency: String,
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                grouped_with_prorated_minimum_config: T::Hash[Symbol, T.anything],
-                invoicing_cycle_configuration: T.nilable(Orb::Models::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration),
-                item: Orb::Models::Price::GroupedWithProratedMinimum::Item,
-                maximum: T.nilable(Orb::Models::Price::GroupedWithProratedMinimum::Maximum),
-                maximum_amount: T.nilable(String),
-                metadata: T::Hash[Symbol, String],
-                minimum: T.nilable(Orb::Models::Price::GroupedWithProratedMinimum::Minimum),
-                minimum_amount: T.nilable(String),
-                model_type: Symbol,
-                name: String,
-                plan_phase_order: T.nilable(Integer),
-                price_type: Orb::Models::Price::GroupedWithProratedMinimum::PriceType::TaggedSymbol,
-                dimensional_price_configuration: T.nilable(Orb::Models::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration)
-              }
-            )
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              grouped_with_prorated_minimum_config: T::Hash[Symbol, T.anything],
+              invoicing_cycle_configuration:
+                T.nilable(
+                  Orb::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration
+                ),
+              item: Orb::Price::GroupedWithProratedMinimum::Item,
+              maximum:
+                T.nilable(Orb::Price::GroupedWithProratedMinimum::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum:
+                T.nilable(Orb::Price::GroupedWithProratedMinimum::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type:
+                Orb::Price::GroupedWithProratedMinimum::PriceType::TaggedSymbol,
+              dimensional_price_configuration:
+                T.nilable(
+                  Orb::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration
+                )
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
+          def self.new(id:)
+          end
 
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
           sig do
             returns(
-              Orb::Models::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              Orb::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
             )
           end
           attr_accessor :duration_unit
@@ -10047,89 +13400,144 @@ module Orb
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::GroupedWithProratedMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         module Cadence
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedWithProratedMinimum::Cadence) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::GroupedWithProratedMinimum::Cadence)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ONE_TIME = T.let(:one_time, Orb::Models::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol)
-          SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Models::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol)
+          ONE_TIME =
+            T.let(
+              :one_time,
+              Orb::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol
+            )
+          MONTHLY =
+            T.let(
+              :monthly,
+              Orb::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol
+            )
+          QUARTERLY =
+            T.let(
+              :quarterly,
+              Orb::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol
+            )
+          SEMI_ANNUAL =
+            T.let(
+              :semi_annual,
+              Orb::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol
+            )
+          ANNUAL =
+            T.let(
+              :annual,
+              Orb::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol
+            )
+          CUSTOM =
+            T.let(
+              :custom,
+              Orb::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
 
           sig { returns(String) }
           attr_accessor :currency
 
-          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:); end
+          sig do
+            params(allows_rollover: T::Boolean, currency: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(allows_rollover:, currency:)
+          end
 
-          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash; end
+          sig do
+            override.returns({ allows_rollover: T::Boolean, currency: String })
+          end
+          def to_hash
+          end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
           sig do
             returns(
-              Orb::Models::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              Orb::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
             )
           end
           attr_accessor :duration_unit
@@ -10137,52 +13545,63 @@ module Orb
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Item < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -10190,13 +13609,17 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -10207,7 +13630,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -10215,12 +13641,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -10231,7 +13666,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -10239,27 +13677,52 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedWithProratedMinimum::PriceType) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::GroupedWithProratedMinimum::PriceType)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           USAGE_PRICE =
-            T.let(:usage_price, Orb::Models::Price::GroupedWithProratedMinimum::PriceType::TaggedSymbol)
+            T.let(
+              :usage_price,
+              Orb::Price::GroupedWithProratedMinimum::PriceType::TaggedSymbol
+            )
           FIXED_PRICE =
-            T.let(:fixed_price, Orb::Models::Price::GroupedWithProratedMinimum::PriceType::TaggedSymbol)
+            T.let(
+              :fixed_price,
+              Orb::Price::GroupedWithProratedMinimum::PriceType::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::GroupedWithProratedMinimum::PriceType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::GroupedWithProratedMinimum::PriceType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
 
@@ -10272,40 +13735,63 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:); end
+          def self.new(dimension_values:, dimensional_price_group_id:)
+          end
 
-          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                dimension_values: T::Array[String],
+                dimensional_price_group_id: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class GroupedWithMeteredMinimum < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedWithMeteredMinimum::BillableMetric)) }
+        sig do
+          returns(
+            T.nilable(Orb::Price::GroupedWithMeteredMinimum::BillableMetric)
+          )
+        end
         attr_reader :billable_metric
 
         sig do
           params(
-            billable_metric: T.nilable(T.any(Orb::Models::Price::GroupedWithMeteredMinimum::BillableMetric, Orb::Internal::AnyHash))
-          )
-            .void
+            billable_metric:
+              T.nilable(
+                Orb::Price::GroupedWithMeteredMinimum::BillableMetric::OrHash
+              )
+          ).void
         end
         attr_writer :billable_metric
 
-        sig { returns(Orb::Models::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration) }
+        sig do
+          returns(
+            Orb::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration
+          )
+        end
         attr_reader :billing_cycle_configuration
 
         sig do
           params(
-            billing_cycle_configuration: T.any(Orb::Models::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration, Orb::Internal::AnyHash)
-          )
-            .void
+            billing_cycle_configuration:
+              Orb::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::OrHash
+          ).void
         end
         attr_writer :billing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol) }
+        sig do
+          returns(Orb::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol)
+        end
         attr_accessor :cadence
 
         sig { returns(T.nilable(Float)) }
@@ -10314,14 +13800,20 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedWithMeteredMinimum::CreditAllocation)) }
+        sig do
+          returns(
+            T.nilable(Orb::Price::GroupedWithMeteredMinimum::CreditAllocation)
+          )
+        end
         attr_reader :credit_allocation
 
         sig do
           params(
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::GroupedWithMeteredMinimum::CreditAllocation, Orb::Internal::AnyHash))
-          )
-            .void
+            credit_allocation:
+              T.nilable(
+                Orb::Price::GroupedWithMeteredMinimum::CreditAllocation::OrHash
+              )
+          ).void
         end
         attr_writer :credit_allocation
 
@@ -10332,10 +13824,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -10351,33 +13843,43 @@ module Orb
         sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :grouped_with_metered_minimum_config
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration
+            )
+          )
+        end
         attr_reader :invoicing_cycle_configuration
 
         sig do
           params(
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :invoicing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::GroupedWithMeteredMinimum::Item) }
+        sig { returns(Orb::Price::GroupedWithMeteredMinimum::Item) }
         attr_reader :item
 
-        sig { params(item: T.any(Orb::Models::Price::GroupedWithMeteredMinimum::Item, Orb::Internal::AnyHash)).void }
+        sig do
+          params(item: Orb::Price::GroupedWithMeteredMinimum::Item::OrHash).void
+        end
         attr_writer :item
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedWithMeteredMinimum::Maximum)) }
+        sig do
+          returns(T.nilable(Orb::Price::GroupedWithMeteredMinimum::Maximum))
+        end
         attr_reader :maximum
 
         sig do
           params(
-            maximum: T.nilable(T.any(Orb::Models::Price::GroupedWithMeteredMinimum::Maximum, Orb::Internal::AnyHash))
-          )
-            .void
+            maximum:
+              T.nilable(Orb::Price::GroupedWithMeteredMinimum::Maximum::OrHash)
+          ).void
         end
         attr_writer :maximum
 
@@ -10391,14 +13893,16 @@ module Orb
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedWithMeteredMinimum::Minimum)) }
+        sig do
+          returns(T.nilable(Orb::Price::GroupedWithMeteredMinimum::Minimum))
+        end
         attr_reader :minimum
 
         sig do
           params(
-            minimum: T.nilable(T.any(Orb::Models::Price::GroupedWithMeteredMinimum::Minimum, Orb::Internal::AnyHash))
-          )
-            .void
+            minimum:
+              T.nilable(Orb::Price::GroupedWithMeteredMinimum::Minimum::OrHash)
+          ).void
         end
         attr_writer :minimum
 
@@ -10414,68 +13918,83 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :plan_phase_order
 
-        sig { returns(Orb::Models::Price::GroupedWithMeteredMinimum::PriceType::TaggedSymbol) }
+        sig do
+          returns(
+            Orb::Price::GroupedWithMeteredMinimum::PriceType::TaggedSymbol
+          )
+        end
         attr_accessor :price_type
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration
+            )
+          )
+        end
         attr_reader :dimensional_price_configuration
 
         sig do
           params(
-            dimensional_price_configuration: T.nilable(
-              T.any(
-                Orb::Models::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration,
-                Orb::Internal::AnyHash
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration::OrHash
               )
-            )
-          )
-            .void
+          ).void
         end
         attr_writer :dimensional_price_configuration
 
         sig do
           params(
             id: String,
-            billable_metric: T.nilable(T.any(Orb::Models::Price::GroupedWithMeteredMinimum::BillableMetric, Orb::Internal::AnyHash)),
-            billing_cycle_configuration: T.any(Orb::Models::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration, Orb::Internal::AnyHash),
-            cadence: Orb::Models::Price::GroupedWithMeteredMinimum::Cadence::OrSymbol,
+            billable_metric:
+              T.nilable(
+                Orb::Price::GroupedWithMeteredMinimum::BillableMetric::OrHash
+              ),
+            billing_cycle_configuration:
+              Orb::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::OrHash,
+            cadence: Orb::Price::GroupedWithMeteredMinimum::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
             created_at: Time,
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::GroupedWithMeteredMinimum::CreditAllocation, Orb::Internal::AnyHash)),
+            credit_allocation:
+              T.nilable(
+                Orb::Price::GroupedWithMeteredMinimum::CreditAllocation::OrHash
+              ),
             currency: String,
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
             grouped_with_metered_minimum_config: T::Hash[Symbol, T.anything],
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            ),
-            item: T.any(Orb::Models::Price::GroupedWithMeteredMinimum::Item, Orb::Internal::AnyHash),
-            maximum: T.nilable(T.any(Orb::Models::Price::GroupedWithMeteredMinimum::Maximum, Orb::Internal::AnyHash)),
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::OrHash
+              ),
+            item: Orb::Price::GroupedWithMeteredMinimum::Item::OrHash,
+            maximum:
+              T.nilable(Orb::Price::GroupedWithMeteredMinimum::Maximum::OrHash),
             maximum_amount: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(T.any(Orb::Models::Price::GroupedWithMeteredMinimum::Minimum, Orb::Internal::AnyHash)),
+            minimum:
+              T.nilable(Orb::Price::GroupedWithMeteredMinimum::Minimum::OrHash),
             minimum_amount: T.nilable(String),
             name: String,
             plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Models::Price::GroupedWithMeteredMinimum::PriceType::OrSymbol,
-            dimensional_price_configuration: T.nilable(
-              T.any(
-                Orb::Models::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration,
-                Orb::Internal::AnyHash
-              )
-            ),
+            price_type:
+              Orb::Price::GroupedWithMeteredMinimum::PriceType::OrSymbol,
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration::OrHash
+              ),
             model_type: Symbol
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -10506,65 +14025,91 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :grouped_with_metered_minimum
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                billable_metric: T.nilable(Orb::Models::Price::GroupedWithMeteredMinimum::BillableMetric),
-                billing_cycle_configuration: Orb::Models::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration,
-                cadence: Orb::Models::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol,
-                conversion_rate: T.nilable(Float),
-                created_at: Time,
-                credit_allocation: T.nilable(Orb::Models::Price::GroupedWithMeteredMinimum::CreditAllocation),
-                currency: String,
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              billable_metric:
+                T.nilable(
+                  Orb::Price::GroupedWithMeteredMinimum::BillableMetric
+                ),
+              billing_cycle_configuration:
+                Orb::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration,
+              cadence:
+                Orb::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation:
+                T.nilable(
+                  Orb::Price::GroupedWithMeteredMinimum::CreditAllocation
+                ),
+              currency: String,
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                grouped_with_metered_minimum_config: T::Hash[Symbol, T.anything],
-                invoicing_cycle_configuration: T.nilable(Orb::Models::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration),
-                item: Orb::Models::Price::GroupedWithMeteredMinimum::Item,
-                maximum: T.nilable(Orb::Models::Price::GroupedWithMeteredMinimum::Maximum),
-                maximum_amount: T.nilable(String),
-                metadata: T::Hash[Symbol, String],
-                minimum: T.nilable(Orb::Models::Price::GroupedWithMeteredMinimum::Minimum),
-                minimum_amount: T.nilable(String),
-                model_type: Symbol,
-                name: String,
-                plan_phase_order: T.nilable(Integer),
-                price_type: Orb::Models::Price::GroupedWithMeteredMinimum::PriceType::TaggedSymbol,
-                dimensional_price_configuration: T.nilable(Orb::Models::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration)
-              }
-            )
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              grouped_with_metered_minimum_config: T::Hash[Symbol, T.anything],
+              invoicing_cycle_configuration:
+                T.nilable(
+                  Orb::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration
+                ),
+              item: Orb::Price::GroupedWithMeteredMinimum::Item,
+              maximum:
+                T.nilable(Orb::Price::GroupedWithMeteredMinimum::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum:
+                T.nilable(Orb::Price::GroupedWithMeteredMinimum::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type:
+                Orb::Price::GroupedWithMeteredMinimum::PriceType::TaggedSymbol,
+              dimensional_price_configuration:
+                T.nilable(
+                  Orb::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration
+                )
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
+          def self.new(id:)
+          end
 
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
           sig do
             returns(
-              Orb::Models::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              Orb::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
             )
           end
           attr_accessor :duration_unit
@@ -10572,89 +14117,144 @@ module Orb
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         module Cadence
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedWithMeteredMinimum::Cadence) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::GroupedWithMeteredMinimum::Cadence)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ONE_TIME = T.let(:one_time, Orb::Models::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol)
-          SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Models::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol)
+          ONE_TIME =
+            T.let(
+              :one_time,
+              Orb::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol
+            )
+          MONTHLY =
+            T.let(
+              :monthly,
+              Orb::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol
+            )
+          QUARTERLY =
+            T.let(
+              :quarterly,
+              Orb::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol
+            )
+          SEMI_ANNUAL =
+            T.let(
+              :semi_annual,
+              Orb::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol
+            )
+          ANNUAL =
+            T.let(
+              :annual,
+              Orb::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol
+            )
+          CUSTOM =
+            T.let(
+              :custom,
+              Orb::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
 
           sig { returns(String) }
           attr_accessor :currency
 
-          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:); end
+          sig do
+            params(allows_rollover: T::Boolean, currency: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(allows_rollover:, currency:)
+          end
 
-          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash; end
+          sig do
+            override.returns({ allows_rollover: T::Boolean, currency: String })
+          end
+          def to_hash
+          end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
           sig do
             returns(
-              Orb::Models::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              Orb::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
             )
           end
           attr_accessor :duration_unit
@@ -10662,52 +14262,63 @@ module Orb
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Item < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -10715,13 +14326,17 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -10732,7 +14347,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -10740,12 +14358,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -10756,7 +14383,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -10764,25 +14394,52 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedWithMeteredMinimum::PriceType) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::GroupedWithMeteredMinimum::PriceType)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::GroupedWithMeteredMinimum::PriceType::TaggedSymbol)
-          FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::GroupedWithMeteredMinimum::PriceType::TaggedSymbol)
+          USAGE_PRICE =
+            T.let(
+              :usage_price,
+              Orb::Price::GroupedWithMeteredMinimum::PriceType::TaggedSymbol
+            )
+          FIXED_PRICE =
+            T.let(
+              :fixed_price,
+              Orb::Price::GroupedWithMeteredMinimum::PriceType::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::GroupedWithMeteredMinimum::PriceType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::GroupedWithMeteredMinimum::PriceType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
 
@@ -10795,40 +14452,59 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:); end
+          def self.new(dimension_values:, dimensional_price_group_id:)
+          end
 
-          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                dimension_values: T::Array[String],
+                dimensional_price_group_id: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class MatrixWithDisplayName < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(T.nilable(Orb::Models::Price::MatrixWithDisplayName::BillableMetric)) }
+        sig do
+          returns(T.nilable(Orb::Price::MatrixWithDisplayName::BillableMetric))
+        end
         attr_reader :billable_metric
 
         sig do
           params(
-            billable_metric: T.nilable(T.any(Orb::Models::Price::MatrixWithDisplayName::BillableMetric, Orb::Internal::AnyHash))
-          )
-            .void
+            billable_metric:
+              T.nilable(
+                Orb::Price::MatrixWithDisplayName::BillableMetric::OrHash
+              )
+          ).void
         end
         attr_writer :billable_metric
 
-        sig { returns(Orb::Models::Price::MatrixWithDisplayName::BillingCycleConfiguration) }
+        sig do
+          returns(Orb::Price::MatrixWithDisplayName::BillingCycleConfiguration)
+        end
         attr_reader :billing_cycle_configuration
 
         sig do
           params(
-            billing_cycle_configuration: T.any(Orb::Models::Price::MatrixWithDisplayName::BillingCycleConfiguration, Orb::Internal::AnyHash)
-          )
-            .void
+            billing_cycle_configuration:
+              Orb::Price::MatrixWithDisplayName::BillingCycleConfiguration::OrHash
+          ).void
         end
         attr_writer :billing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::MatrixWithDisplayName::Cadence::TaggedSymbol) }
+        sig do
+          returns(Orb::Price::MatrixWithDisplayName::Cadence::TaggedSymbol)
+        end
         attr_accessor :cadence
 
         sig { returns(T.nilable(Float)) }
@@ -10837,14 +14513,20 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T.nilable(Orb::Models::Price::MatrixWithDisplayName::CreditAllocation)) }
+        sig do
+          returns(
+            T.nilable(Orb::Price::MatrixWithDisplayName::CreditAllocation)
+          )
+        end
         attr_reader :credit_allocation
 
         sig do
           params(
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::MatrixWithDisplayName::CreditAllocation, Orb::Internal::AnyHash))
-          )
-            .void
+            credit_allocation:
+              T.nilable(
+                Orb::Price::MatrixWithDisplayName::CreditAllocation::OrHash
+              )
+          ).void
         end
         attr_writer :credit_allocation
 
@@ -10855,10 +14537,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -10871,36 +14553,44 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
-        sig { returns(T.nilable(Orb::Models::Price::MatrixWithDisplayName::InvoicingCycleConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::MatrixWithDisplayName::InvoicingCycleConfiguration
+            )
+          )
+        end
         attr_reader :invoicing_cycle_configuration
 
         sig do
           params(
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::MatrixWithDisplayName::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :invoicing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::MatrixWithDisplayName::Item) }
+        sig { returns(Orb::Price::MatrixWithDisplayName::Item) }
         attr_reader :item
 
-        sig { params(item: T.any(Orb::Models::Price::MatrixWithDisplayName::Item, Orb::Internal::AnyHash)).void }
+        sig do
+          params(item: Orb::Price::MatrixWithDisplayName::Item::OrHash).void
+        end
         attr_writer :item
 
         sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :matrix_with_display_name_config
 
-        sig { returns(T.nilable(Orb::Models::Price::MatrixWithDisplayName::Maximum)) }
+        sig { returns(T.nilable(Orb::Price::MatrixWithDisplayName::Maximum)) }
         attr_reader :maximum
 
         sig do
           params(
-            maximum: T.nilable(T.any(Orb::Models::Price::MatrixWithDisplayName::Maximum, Orb::Internal::AnyHash))
-          )
-            .void
+            maximum:
+              T.nilable(Orb::Price::MatrixWithDisplayName::Maximum::OrHash)
+          ).void
         end
         attr_writer :maximum
 
@@ -10914,14 +14604,14 @@ module Orb
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
-        sig { returns(T.nilable(Orb::Models::Price::MatrixWithDisplayName::Minimum)) }
+        sig { returns(T.nilable(Orb::Price::MatrixWithDisplayName::Minimum)) }
         attr_reader :minimum
 
         sig do
           params(
-            minimum: T.nilable(T.any(Orb::Models::Price::MatrixWithDisplayName::Minimum, Orb::Internal::AnyHash))
-          )
-            .void
+            minimum:
+              T.nilable(Orb::Price::MatrixWithDisplayName::Minimum::OrHash)
+          ).void
         end
         attr_writer :minimum
 
@@ -10937,62 +14627,80 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :plan_phase_order
 
-        sig { returns(Orb::Models::Price::MatrixWithDisplayName::PriceType::TaggedSymbol) }
+        sig do
+          returns(Orb::Price::MatrixWithDisplayName::PriceType::TaggedSymbol)
+        end
         attr_accessor :price_type
 
-        sig { returns(T.nilable(Orb::Models::Price::MatrixWithDisplayName::DimensionalPriceConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::MatrixWithDisplayName::DimensionalPriceConfiguration
+            )
+          )
+        end
         attr_reader :dimensional_price_configuration
 
         sig do
           params(
-            dimensional_price_configuration: T.nilable(
-              T.any(Orb::Models::Price::MatrixWithDisplayName::DimensionalPriceConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::MatrixWithDisplayName::DimensionalPriceConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :dimensional_price_configuration
 
         sig do
           params(
             id: String,
-            billable_metric: T.nilable(T.any(Orb::Models::Price::MatrixWithDisplayName::BillableMetric, Orb::Internal::AnyHash)),
-            billing_cycle_configuration: T.any(Orb::Models::Price::MatrixWithDisplayName::BillingCycleConfiguration, Orb::Internal::AnyHash),
-            cadence: Orb::Models::Price::MatrixWithDisplayName::Cadence::OrSymbol,
+            billable_metric:
+              T.nilable(
+                Orb::Price::MatrixWithDisplayName::BillableMetric::OrHash
+              ),
+            billing_cycle_configuration:
+              Orb::Price::MatrixWithDisplayName::BillingCycleConfiguration::OrHash,
+            cadence: Orb::Price::MatrixWithDisplayName::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
             created_at: Time,
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::MatrixWithDisplayName::CreditAllocation, Orb::Internal::AnyHash)),
+            credit_allocation:
+              T.nilable(
+                Orb::Price::MatrixWithDisplayName::CreditAllocation::OrHash
+              ),
             currency: String,
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::MatrixWithDisplayName::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            ),
-            item: T.any(Orb::Models::Price::MatrixWithDisplayName::Item, Orb::Internal::AnyHash),
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::OrHash
+              ),
+            item: Orb::Price::MatrixWithDisplayName::Item::OrHash,
             matrix_with_display_name_config: T::Hash[Symbol, T.anything],
-            maximum: T.nilable(T.any(Orb::Models::Price::MatrixWithDisplayName::Maximum, Orb::Internal::AnyHash)),
+            maximum:
+              T.nilable(Orb::Price::MatrixWithDisplayName::Maximum::OrHash),
             maximum_amount: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(T.any(Orb::Models::Price::MatrixWithDisplayName::Minimum, Orb::Internal::AnyHash)),
+            minimum:
+              T.nilable(Orb::Price::MatrixWithDisplayName::Minimum::OrHash),
             minimum_amount: T.nilable(String),
             name: String,
             plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Models::Price::MatrixWithDisplayName::PriceType::OrSymbol,
-            dimensional_price_configuration: T.nilable(
-              T.any(Orb::Models::Price::MatrixWithDisplayName::DimensionalPriceConfiguration, Orb::Internal::AnyHash)
-            ),
+            price_type: Orb::Price::MatrixWithDisplayName::PriceType::OrSymbol,
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::MatrixWithDisplayName::DimensionalPriceConfiguration::OrHash
+              ),
             model_type: Symbol
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -11023,151 +14731,227 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :matrix_with_display_name
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                billable_metric: T.nilable(Orb::Models::Price::MatrixWithDisplayName::BillableMetric),
-                billing_cycle_configuration: Orb::Models::Price::MatrixWithDisplayName::BillingCycleConfiguration,
-                cadence: Orb::Models::Price::MatrixWithDisplayName::Cadence::TaggedSymbol,
-                conversion_rate: T.nilable(Float),
-                created_at: Time,
-                credit_allocation: T.nilable(Orb::Models::Price::MatrixWithDisplayName::CreditAllocation),
-                currency: String,
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              billable_metric:
+                T.nilable(Orb::Price::MatrixWithDisplayName::BillableMetric),
+              billing_cycle_configuration:
+                Orb::Price::MatrixWithDisplayName::BillingCycleConfiguration,
+              cadence: Orb::Price::MatrixWithDisplayName::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation:
+                T.nilable(Orb::Price::MatrixWithDisplayName::CreditAllocation),
+              currency: String,
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoicing_cycle_configuration: T.nilable(Orb::Models::Price::MatrixWithDisplayName::InvoicingCycleConfiguration),
-                item: Orb::Models::Price::MatrixWithDisplayName::Item,
-                matrix_with_display_name_config: T::Hash[Symbol, T.anything],
-                maximum: T.nilable(Orb::Models::Price::MatrixWithDisplayName::Maximum),
-                maximum_amount: T.nilable(String),
-                metadata: T::Hash[Symbol, String],
-                minimum: T.nilable(Orb::Models::Price::MatrixWithDisplayName::Minimum),
-                minimum_amount: T.nilable(String),
-                model_type: Symbol,
-                name: String,
-                plan_phase_order: T.nilable(Integer),
-                price_type: Orb::Models::Price::MatrixWithDisplayName::PriceType::TaggedSymbol,
-                dimensional_price_configuration: T.nilable(Orb::Models::Price::MatrixWithDisplayName::DimensionalPriceConfiguration)
-              }
-            )
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoicing_cycle_configuration:
+                T.nilable(
+                  Orb::Price::MatrixWithDisplayName::InvoicingCycleConfiguration
+                ),
+              item: Orb::Price::MatrixWithDisplayName::Item,
+              matrix_with_display_name_config: T::Hash[Symbol, T.anything],
+              maximum: T.nilable(Orb::Price::MatrixWithDisplayName::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Price::MatrixWithDisplayName::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type:
+                Orb::Price::MatrixWithDisplayName::PriceType::TaggedSymbol,
+              dimensional_price_configuration:
+                T.nilable(
+                  Orb::Price::MatrixWithDisplayName::DimensionalPriceConfiguration
+                )
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
+          def self.new(id:)
+          end
 
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::MatrixWithDisplayName::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::MatrixWithDisplayName::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::MatrixWithDisplayName::BillingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::MatrixWithDisplayName::BillingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::MatrixWithDisplayName::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::MatrixWithDisplayName::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::MatrixWithDisplayName::BillingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::MatrixWithDisplayName::BillingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::MatrixWithDisplayName::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::MatrixWithDisplayName::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::MatrixWithDisplayName::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::MatrixWithDisplayName::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::MatrixWithDisplayName::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::MatrixWithDisplayName::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         module Cadence
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::MatrixWithDisplayName::Cadence) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::MatrixWithDisplayName::Cadence)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ONE_TIME = T.let(:one_time, Orb::Models::Price::MatrixWithDisplayName::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Price::MatrixWithDisplayName::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Price::MatrixWithDisplayName::Cadence::TaggedSymbol)
-          SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::Price::MatrixWithDisplayName::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Price::MatrixWithDisplayName::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Models::Price::MatrixWithDisplayName::Cadence::TaggedSymbol)
+          ONE_TIME =
+            T.let(
+              :one_time,
+              Orb::Price::MatrixWithDisplayName::Cadence::TaggedSymbol
+            )
+          MONTHLY =
+            T.let(
+              :monthly,
+              Orb::Price::MatrixWithDisplayName::Cadence::TaggedSymbol
+            )
+          QUARTERLY =
+            T.let(
+              :quarterly,
+              Orb::Price::MatrixWithDisplayName::Cadence::TaggedSymbol
+            )
+          SEMI_ANNUAL =
+            T.let(
+              :semi_annual,
+              Orb::Price::MatrixWithDisplayName::Cadence::TaggedSymbol
+            )
+          ANNUAL =
+            T.let(
+              :annual,
+              Orb::Price::MatrixWithDisplayName::Cadence::TaggedSymbol
+            )
+          CUSTOM =
+            T.let(
+              :custom,
+              Orb::Price::MatrixWithDisplayName::Cadence::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::MatrixWithDisplayName::Cadence::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::MatrixWithDisplayName::Cadence::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
 
           sig { returns(String) }
           attr_accessor :currency
 
-          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:); end
+          sig do
+            params(allows_rollover: T::Boolean, currency: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(allows_rollover:, currency:)
+          end
 
-          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash; end
+          sig do
+            override.returns({ allows_rollover: T::Boolean, currency: String })
+          end
+          def to_hash
+          end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
           sig do
             returns(
-              Orb::Models::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              Orb::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
             )
           end
           attr_accessor :duration_unit
@@ -11175,52 +14959,63 @@ module Orb
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::MatrixWithDisplayName::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Item < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -11228,13 +15023,17 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -11245,7 +15044,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -11253,12 +15055,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -11269,7 +15080,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -11277,25 +15091,52 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::MatrixWithDisplayName::PriceType) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::MatrixWithDisplayName::PriceType)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::MatrixWithDisplayName::PriceType::TaggedSymbol)
-          FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::MatrixWithDisplayName::PriceType::TaggedSymbol)
+          USAGE_PRICE =
+            T.let(
+              :usage_price,
+              Orb::Price::MatrixWithDisplayName::PriceType::TaggedSymbol
+            )
+          FIXED_PRICE =
+            T.let(
+              :fixed_price,
+              Orb::Price::MatrixWithDisplayName::PriceType::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::MatrixWithDisplayName::PriceType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::MatrixWithDisplayName::PriceType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
 
@@ -11308,43 +15149,58 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:); end
+          def self.new(dimension_values:, dimensional_price_group_id:)
+          end
 
-          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                dimension_values: T::Array[String],
+                dimensional_price_group_id: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class BulkWithProration < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(T.nilable(Orb::Models::Price::BulkWithProration::BillableMetric)) }
+        sig do
+          returns(T.nilable(Orb::Price::BulkWithProration::BillableMetric))
+        end
         attr_reader :billable_metric
 
         sig do
           params(
-            billable_metric: T.nilable(T.any(Orb::Models::Price::BulkWithProration::BillableMetric, Orb::Internal::AnyHash))
-          )
-            .void
+            billable_metric:
+              T.nilable(Orb::Price::BulkWithProration::BillableMetric::OrHash)
+          ).void
         end
         attr_writer :billable_metric
 
-        sig { returns(Orb::Models::Price::BulkWithProration::BillingCycleConfiguration) }
+        sig do
+          returns(Orb::Price::BulkWithProration::BillingCycleConfiguration)
+        end
         attr_reader :billing_cycle_configuration
 
         sig do
           params(
-            billing_cycle_configuration: T.any(Orb::Models::Price::BulkWithProration::BillingCycleConfiguration, Orb::Internal::AnyHash)
-          )
-            .void
+            billing_cycle_configuration:
+              Orb::Price::BulkWithProration::BillingCycleConfiguration::OrHash
+          ).void
         end
         attr_writer :billing_cycle_configuration
 
         sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :bulk_with_proration_config
 
-        sig { returns(Orb::Models::Price::BulkWithProration::Cadence::TaggedSymbol) }
+        sig { returns(Orb::Price::BulkWithProration::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
         sig { returns(T.nilable(Float)) }
@@ -11353,14 +15209,16 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T.nilable(Orb::Models::Price::BulkWithProration::CreditAllocation)) }
+        sig do
+          returns(T.nilable(Orb::Price::BulkWithProration::CreditAllocation))
+        end
         attr_reader :credit_allocation
 
         sig do
           params(
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::BulkWithProration::CreditAllocation, Orb::Internal::AnyHash))
-          )
-            .void
+            credit_allocation:
+              T.nilable(Orb::Price::BulkWithProration::CreditAllocation::OrHash)
+          ).void
         end
         attr_writer :credit_allocation
 
@@ -11371,10 +15229,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -11387,31 +15245,38 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
-        sig { returns(T.nilable(Orb::Models::Price::BulkWithProration::InvoicingCycleConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::BulkWithProration::InvoicingCycleConfiguration
+            )
+          )
+        end
         attr_reader :invoicing_cycle_configuration
 
         sig do
           params(
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::BulkWithProration::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::BulkWithProration::InvoicingCycleConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :invoicing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::BulkWithProration::Item) }
+        sig { returns(Orb::Price::BulkWithProration::Item) }
         attr_reader :item
 
-        sig { params(item: T.any(Orb::Models::Price::BulkWithProration::Item, Orb::Internal::AnyHash)).void }
+        sig { params(item: Orb::Price::BulkWithProration::Item::OrHash).void }
         attr_writer :item
 
-        sig { returns(T.nilable(Orb::Models::Price::BulkWithProration::Maximum)) }
+        sig { returns(T.nilable(Orb::Price::BulkWithProration::Maximum)) }
         attr_reader :maximum
 
         sig do
-          params(maximum: T.nilable(T.any(Orb::Models::Price::BulkWithProration::Maximum, Orb::Internal::AnyHash)))
-            .void
+          params(
+            maximum: T.nilable(Orb::Price::BulkWithProration::Maximum::OrHash)
+          ).void
         end
         attr_writer :maximum
 
@@ -11425,12 +15290,13 @@ module Orb
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
-        sig { returns(T.nilable(Orb::Models::Price::BulkWithProration::Minimum)) }
+        sig { returns(T.nilable(Orb::Price::BulkWithProration::Minimum)) }
         attr_reader :minimum
 
         sig do
-          params(minimum: T.nilable(T.any(Orb::Models::Price::BulkWithProration::Minimum, Orb::Internal::AnyHash)))
-            .void
+          params(
+            minimum: T.nilable(Orb::Price::BulkWithProration::Minimum::OrHash)
+          ).void
         end
         attr_writer :minimum
 
@@ -11446,62 +15312,74 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :plan_phase_order
 
-        sig { returns(Orb::Models::Price::BulkWithProration::PriceType::TaggedSymbol) }
+        sig { returns(Orb::Price::BulkWithProration::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
-        sig { returns(T.nilable(Orb::Models::Price::BulkWithProration::DimensionalPriceConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::BulkWithProration::DimensionalPriceConfiguration
+            )
+          )
+        end
         attr_reader :dimensional_price_configuration
 
         sig do
           params(
-            dimensional_price_configuration: T.nilable(
-              T.any(Orb::Models::Price::BulkWithProration::DimensionalPriceConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::BulkWithProration::DimensionalPriceConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :dimensional_price_configuration
 
         sig do
           params(
             id: String,
-            billable_metric: T.nilable(T.any(Orb::Models::Price::BulkWithProration::BillableMetric, Orb::Internal::AnyHash)),
-            billing_cycle_configuration: T.any(Orb::Models::Price::BulkWithProration::BillingCycleConfiguration, Orb::Internal::AnyHash),
+            billable_metric:
+              T.nilable(Orb::Price::BulkWithProration::BillableMetric::OrHash),
+            billing_cycle_configuration:
+              Orb::Price::BulkWithProration::BillingCycleConfiguration::OrHash,
             bulk_with_proration_config: T::Hash[Symbol, T.anything],
-            cadence: Orb::Models::Price::BulkWithProration::Cadence::OrSymbol,
+            cadence: Orb::Price::BulkWithProration::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
             created_at: Time,
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::BulkWithProration::CreditAllocation, Orb::Internal::AnyHash)),
+            credit_allocation:
+              T.nilable(
+                Orb::Price::BulkWithProration::CreditAllocation::OrHash
+              ),
             currency: String,
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::BulkWithProration::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            ),
-            item: T.any(Orb::Models::Price::BulkWithProration::Item, Orb::Internal::AnyHash),
-            maximum: T.nilable(T.any(Orb::Models::Price::BulkWithProration::Maximum, Orb::Internal::AnyHash)),
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::BulkWithProration::InvoicingCycleConfiguration::OrHash
+              ),
+            item: Orb::Price::BulkWithProration::Item::OrHash,
+            maximum: T.nilable(Orb::Price::BulkWithProration::Maximum::OrHash),
             maximum_amount: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(T.any(Orb::Models::Price::BulkWithProration::Minimum, Orb::Internal::AnyHash)),
+            minimum: T.nilable(Orb::Price::BulkWithProration::Minimum::OrHash),
             minimum_amount: T.nilable(String),
             name: String,
             plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Models::Price::BulkWithProration::PriceType::OrSymbol,
-            dimensional_price_configuration: T.nilable(
-              T.any(Orb::Models::Price::BulkWithProration::DimensionalPriceConfiguration, Orb::Internal::AnyHash)
-            ),
+            price_type: Orb::Price::BulkWithProration::PriceType::OrSymbol,
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::BulkWithProration::DimensionalPriceConfiguration::OrHash
+              ),
             model_type: Symbol
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -11532,197 +15410,285 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :bulk_with_proration
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                billable_metric: T.nilable(Orb::Models::Price::BulkWithProration::BillableMetric),
-                billing_cycle_configuration: Orb::Models::Price::BulkWithProration::BillingCycleConfiguration,
-                bulk_with_proration_config: T::Hash[Symbol, T.anything],
-                cadence: Orb::Models::Price::BulkWithProration::Cadence::TaggedSymbol,
-                conversion_rate: T.nilable(Float),
-                created_at: Time,
-                credit_allocation: T.nilable(Orb::Models::Price::BulkWithProration::CreditAllocation),
-                currency: String,
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              billable_metric:
+                T.nilable(Orb::Price::BulkWithProration::BillableMetric),
+              billing_cycle_configuration:
+                Orb::Price::BulkWithProration::BillingCycleConfiguration,
+              bulk_with_proration_config: T::Hash[Symbol, T.anything],
+              cadence: Orb::Price::BulkWithProration::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation:
+                T.nilable(Orb::Price::BulkWithProration::CreditAllocation),
+              currency: String,
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoicing_cycle_configuration: T.nilable(Orb::Models::Price::BulkWithProration::InvoicingCycleConfiguration),
-                item: Orb::Models::Price::BulkWithProration::Item,
-                maximum: T.nilable(Orb::Models::Price::BulkWithProration::Maximum),
-                maximum_amount: T.nilable(String),
-                metadata: T::Hash[Symbol, String],
-                minimum: T.nilable(Orb::Models::Price::BulkWithProration::Minimum),
-                minimum_amount: T.nilable(String),
-                model_type: Symbol,
-                name: String,
-                plan_phase_order: T.nilable(Integer),
-                price_type: Orb::Models::Price::BulkWithProration::PriceType::TaggedSymbol,
-                dimensional_price_configuration: T.nilable(Orb::Models::Price::BulkWithProration::DimensionalPriceConfiguration)
-              }
-            )
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoicing_cycle_configuration:
+                T.nilable(
+                  Orb::Price::BulkWithProration::InvoicingCycleConfiguration
+                ),
+              item: Orb::Price::BulkWithProration::Item,
+              maximum: T.nilable(Orb::Price::BulkWithProration::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Price::BulkWithProration::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type:
+                Orb::Price::BulkWithProration::PriceType::TaggedSymbol,
+              dimensional_price_configuration:
+                T.nilable(
+                  Orb::Price::BulkWithProration::DimensionalPriceConfiguration
+                )
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
+          def self.new(id:)
+          end
 
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::BulkWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::BulkWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::BulkWithProration::BillingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::BulkWithProration::BillingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::BulkWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::BulkWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::BulkWithProration::BillingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::BulkWithProration::BillingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
-              T.let(:day, Orb::Models::Price::BulkWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol)
+              T.let(
+                :day,
+                Orb::Price::BulkWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::BulkWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::BulkWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::BulkWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::BulkWithProration::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         module Cadence
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::BulkWithProration::Cadence) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::BulkWithProration::Cadence)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ONE_TIME = T.let(:one_time, Orb::Models::Price::BulkWithProration::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Price::BulkWithProration::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Price::BulkWithProration::Cadence::TaggedSymbol)
-          SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::Price::BulkWithProration::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Price::BulkWithProration::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Models::Price::BulkWithProration::Cadence::TaggedSymbol)
+          ONE_TIME =
+            T.let(
+              :one_time,
+              Orb::Price::BulkWithProration::Cadence::TaggedSymbol
+            )
+          MONTHLY =
+            T.let(
+              :monthly,
+              Orb::Price::BulkWithProration::Cadence::TaggedSymbol
+            )
+          QUARTERLY =
+            T.let(
+              :quarterly,
+              Orb::Price::BulkWithProration::Cadence::TaggedSymbol
+            )
+          SEMI_ANNUAL =
+            T.let(
+              :semi_annual,
+              Orb::Price::BulkWithProration::Cadence::TaggedSymbol
+            )
+          ANNUAL =
+            T.let(:annual, Orb::Price::BulkWithProration::Cadence::TaggedSymbol)
+          CUSTOM =
+            T.let(:custom, Orb::Price::BulkWithProration::Cadence::TaggedSymbol)
 
-          sig { override.returns(T::Array[Orb::Models::Price::BulkWithProration::Cadence::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::BulkWithProration::Cadence::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
 
           sig { returns(String) }
           attr_accessor :currency
 
-          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:); end
+          sig do
+            params(allows_rollover: T::Boolean, currency: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(allows_rollover:, currency:)
+          end
 
-          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash; end
+          sig do
+            override.returns({ allows_rollover: T::Boolean, currency: String })
+          end
+          def to_hash
+          end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::BulkWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::BulkWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::BulkWithProration::InvoicingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::BulkWithProration::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::BulkWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::BulkWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::BulkWithProration::InvoicingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::BulkWithProration::InvoicingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::BulkWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::BulkWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::BulkWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::BulkWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::BulkWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::BulkWithProration::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Item < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -11730,13 +15696,17 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -11747,7 +15717,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -11755,12 +15728,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -11771,7 +15753,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -11779,25 +15764,50 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::BulkWithProration::PriceType) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::BulkWithProration::PriceType)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::BulkWithProration::PriceType::TaggedSymbol)
-          FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::BulkWithProration::PriceType::TaggedSymbol)
+          USAGE_PRICE =
+            T.let(
+              :usage_price,
+              Orb::Price::BulkWithProration::PriceType::TaggedSymbol
+            )
+          FIXED_PRICE =
+            T.let(
+              :fixed_price,
+              Orb::Price::BulkWithProration::PriceType::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::BulkWithProration::PriceType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::BulkWithProration::PriceType::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
 
@@ -11810,40 +15820,57 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:); end
+          def self.new(dimension_values:, dimensional_price_group_id:)
+          end
 
-          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                dimension_values: T::Array[String],
+                dimensional_price_group_id: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class GroupedTieredPackage < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedTieredPackage::BillableMetric)) }
+        sig do
+          returns(T.nilable(Orb::Price::GroupedTieredPackage::BillableMetric))
+        end
         attr_reader :billable_metric
 
         sig do
           params(
-            billable_metric: T.nilable(T.any(Orb::Models::Price::GroupedTieredPackage::BillableMetric, Orb::Internal::AnyHash))
-          )
-            .void
+            billable_metric:
+              T.nilable(
+                Orb::Price::GroupedTieredPackage::BillableMetric::OrHash
+              )
+          ).void
         end
         attr_writer :billable_metric
 
-        sig { returns(Orb::Models::Price::GroupedTieredPackage::BillingCycleConfiguration) }
+        sig do
+          returns(Orb::Price::GroupedTieredPackage::BillingCycleConfiguration)
+        end
         attr_reader :billing_cycle_configuration
 
         sig do
           params(
-            billing_cycle_configuration: T.any(Orb::Models::Price::GroupedTieredPackage::BillingCycleConfiguration, Orb::Internal::AnyHash)
-          )
-            .void
+            billing_cycle_configuration:
+              Orb::Price::GroupedTieredPackage::BillingCycleConfiguration::OrHash
+          ).void
         end
         attr_writer :billing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::GroupedTieredPackage::Cadence::TaggedSymbol) }
+        sig { returns(Orb::Price::GroupedTieredPackage::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
         sig { returns(T.nilable(Float)) }
@@ -11852,14 +15879,18 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedTieredPackage::CreditAllocation)) }
+        sig do
+          returns(T.nilable(Orb::Price::GroupedTieredPackage::CreditAllocation))
+        end
         attr_reader :credit_allocation
 
         sig do
           params(
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::GroupedTieredPackage::CreditAllocation, Orb::Internal::AnyHash))
-          )
-            .void
+            credit_allocation:
+              T.nilable(
+                Orb::Price::GroupedTieredPackage::CreditAllocation::OrHash
+              )
+          ).void
         end
         attr_writer :credit_allocation
 
@@ -11870,10 +15901,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -11889,33 +15920,41 @@ module Orb
         sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :grouped_tiered_package_config
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedTieredPackage::InvoicingCycleConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::GroupedTieredPackage::InvoicingCycleConfiguration
+            )
+          )
+        end
         attr_reader :invoicing_cycle_configuration
 
         sig do
           params(
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::GroupedTieredPackage::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::GroupedTieredPackage::InvoicingCycleConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :invoicing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::GroupedTieredPackage::Item) }
+        sig { returns(Orb::Price::GroupedTieredPackage::Item) }
         attr_reader :item
 
-        sig { params(item: T.any(Orb::Models::Price::GroupedTieredPackage::Item, Orb::Internal::AnyHash)).void }
+        sig do
+          params(item: Orb::Price::GroupedTieredPackage::Item::OrHash).void
+        end
         attr_writer :item
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedTieredPackage::Maximum)) }
+        sig { returns(T.nilable(Orb::Price::GroupedTieredPackage::Maximum)) }
         attr_reader :maximum
 
         sig do
           params(
-            maximum: T.nilable(T.any(Orb::Models::Price::GroupedTieredPackage::Maximum, Orb::Internal::AnyHash))
-          )
-            .void
+            maximum:
+              T.nilable(Orb::Price::GroupedTieredPackage::Maximum::OrHash)
+          ).void
         end
         attr_writer :maximum
 
@@ -11929,14 +15968,14 @@ module Orb
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedTieredPackage::Minimum)) }
+        sig { returns(T.nilable(Orb::Price::GroupedTieredPackage::Minimum)) }
         attr_reader :minimum
 
         sig do
           params(
-            minimum: T.nilable(T.any(Orb::Models::Price::GroupedTieredPackage::Minimum, Orb::Internal::AnyHash))
-          )
-            .void
+            minimum:
+              T.nilable(Orb::Price::GroupedTieredPackage::Minimum::OrHash)
+          ).void
         end
         attr_writer :minimum
 
@@ -11952,62 +15991,80 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :plan_phase_order
 
-        sig { returns(Orb::Models::Price::GroupedTieredPackage::PriceType::TaggedSymbol) }
+        sig do
+          returns(Orb::Price::GroupedTieredPackage::PriceType::TaggedSymbol)
+        end
         attr_accessor :price_type
 
-        sig { returns(T.nilable(Orb::Models::Price::GroupedTieredPackage::DimensionalPriceConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::GroupedTieredPackage::DimensionalPriceConfiguration
+            )
+          )
+        end
         attr_reader :dimensional_price_configuration
 
         sig do
           params(
-            dimensional_price_configuration: T.nilable(
-              T.any(Orb::Models::Price::GroupedTieredPackage::DimensionalPriceConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::GroupedTieredPackage::DimensionalPriceConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :dimensional_price_configuration
 
         sig do
           params(
             id: String,
-            billable_metric: T.nilable(T.any(Orb::Models::Price::GroupedTieredPackage::BillableMetric, Orb::Internal::AnyHash)),
-            billing_cycle_configuration: T.any(Orb::Models::Price::GroupedTieredPackage::BillingCycleConfiguration, Orb::Internal::AnyHash),
-            cadence: Orb::Models::Price::GroupedTieredPackage::Cadence::OrSymbol,
+            billable_metric:
+              T.nilable(
+                Orb::Price::GroupedTieredPackage::BillableMetric::OrHash
+              ),
+            billing_cycle_configuration:
+              Orb::Price::GroupedTieredPackage::BillingCycleConfiguration::OrHash,
+            cadence: Orb::Price::GroupedTieredPackage::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
             created_at: Time,
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::GroupedTieredPackage::CreditAllocation, Orb::Internal::AnyHash)),
+            credit_allocation:
+              T.nilable(
+                Orb::Price::GroupedTieredPackage::CreditAllocation::OrHash
+              ),
             currency: String,
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
             grouped_tiered_package_config: T::Hash[Symbol, T.anything],
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::GroupedTieredPackage::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            ),
-            item: T.any(Orb::Models::Price::GroupedTieredPackage::Item, Orb::Internal::AnyHash),
-            maximum: T.nilable(T.any(Orb::Models::Price::GroupedTieredPackage::Maximum, Orb::Internal::AnyHash)),
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::GroupedTieredPackage::InvoicingCycleConfiguration::OrHash
+              ),
+            item: Orb::Price::GroupedTieredPackage::Item::OrHash,
+            maximum:
+              T.nilable(Orb::Price::GroupedTieredPackage::Maximum::OrHash),
             maximum_amount: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(T.any(Orb::Models::Price::GroupedTieredPackage::Minimum, Orb::Internal::AnyHash)),
+            minimum:
+              T.nilable(Orb::Price::GroupedTieredPackage::Minimum::OrHash),
             minimum_amount: T.nilable(String),
             name: String,
             plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Models::Price::GroupedTieredPackage::PriceType::OrSymbol,
-            dimensional_price_configuration: T.nilable(
-              T.any(Orb::Models::Price::GroupedTieredPackage::DimensionalPriceConfiguration, Orb::Internal::AnyHash)
-            ),
+            price_type: Orb::Price::GroupedTieredPackage::PriceType::OrSymbol,
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::GroupedTieredPackage::DimensionalPriceConfiguration::OrHash
+              ),
             model_type: Symbol
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -12038,200 +16095,291 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :grouped_tiered_package
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                billable_metric: T.nilable(Orb::Models::Price::GroupedTieredPackage::BillableMetric),
-                billing_cycle_configuration: Orb::Models::Price::GroupedTieredPackage::BillingCycleConfiguration,
-                cadence: Orb::Models::Price::GroupedTieredPackage::Cadence::TaggedSymbol,
-                conversion_rate: T.nilable(Float),
-                created_at: Time,
-                credit_allocation: T.nilable(Orb::Models::Price::GroupedTieredPackage::CreditAllocation),
-                currency: String,
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              billable_metric:
+                T.nilable(Orb::Price::GroupedTieredPackage::BillableMetric),
+              billing_cycle_configuration:
+                Orb::Price::GroupedTieredPackage::BillingCycleConfiguration,
+              cadence: Orb::Price::GroupedTieredPackage::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation:
+                T.nilable(Orb::Price::GroupedTieredPackage::CreditAllocation),
+              currency: String,
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                grouped_tiered_package_config: T::Hash[Symbol, T.anything],
-                invoicing_cycle_configuration: T.nilable(Orb::Models::Price::GroupedTieredPackage::InvoicingCycleConfiguration),
-                item: Orb::Models::Price::GroupedTieredPackage::Item,
-                maximum: T.nilable(Orb::Models::Price::GroupedTieredPackage::Maximum),
-                maximum_amount: T.nilable(String),
-                metadata: T::Hash[Symbol, String],
-                minimum: T.nilable(Orb::Models::Price::GroupedTieredPackage::Minimum),
-                minimum_amount: T.nilable(String),
-                model_type: Symbol,
-                name: String,
-                plan_phase_order: T.nilable(Integer),
-                price_type: Orb::Models::Price::GroupedTieredPackage::PriceType::TaggedSymbol,
-                dimensional_price_configuration: T.nilable(Orb::Models::Price::GroupedTieredPackage::DimensionalPriceConfiguration)
-              }
-            )
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              grouped_tiered_package_config: T::Hash[Symbol, T.anything],
+              invoicing_cycle_configuration:
+                T.nilable(
+                  Orb::Price::GroupedTieredPackage::InvoicingCycleConfiguration
+                ),
+              item: Orb::Price::GroupedTieredPackage::Item,
+              maximum: T.nilable(Orb::Price::GroupedTieredPackage::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Price::GroupedTieredPackage::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type:
+                Orb::Price::GroupedTieredPackage::PriceType::TaggedSymbol,
+              dimensional_price_configuration:
+                T.nilable(
+                  Orb::Price::GroupedTieredPackage::DimensionalPriceConfiguration
+                )
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
+          def self.new(id:)
+          end
 
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::GroupedTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::GroupedTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::GroupedTieredPackage::BillingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::GroupedTieredPackage::BillingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::GroupedTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::GroupedTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedTieredPackage::BillingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::GroupedTieredPackage::BillingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::GroupedTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::GroupedTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::GroupedTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::GroupedTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::GroupedTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::GroupedTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         module Cadence
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedTieredPackage::Cadence) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::GroupedTieredPackage::Cadence)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ONE_TIME = T.let(:one_time, Orb::Models::Price::GroupedTieredPackage::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Price::GroupedTieredPackage::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Price::GroupedTieredPackage::Cadence::TaggedSymbol)
-          SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::Price::GroupedTieredPackage::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Price::GroupedTieredPackage::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Models::Price::GroupedTieredPackage::Cadence::TaggedSymbol)
+          ONE_TIME =
+            T.let(
+              :one_time,
+              Orb::Price::GroupedTieredPackage::Cadence::TaggedSymbol
+            )
+          MONTHLY =
+            T.let(
+              :monthly,
+              Orb::Price::GroupedTieredPackage::Cadence::TaggedSymbol
+            )
+          QUARTERLY =
+            T.let(
+              :quarterly,
+              Orb::Price::GroupedTieredPackage::Cadence::TaggedSymbol
+            )
+          SEMI_ANNUAL =
+            T.let(
+              :semi_annual,
+              Orb::Price::GroupedTieredPackage::Cadence::TaggedSymbol
+            )
+          ANNUAL =
+            T.let(
+              :annual,
+              Orb::Price::GroupedTieredPackage::Cadence::TaggedSymbol
+            )
+          CUSTOM =
+            T.let(
+              :custom,
+              Orb::Price::GroupedTieredPackage::Cadence::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::GroupedTieredPackage::Cadence::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::GroupedTieredPackage::Cadence::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
 
           sig { returns(String) }
           attr_accessor :currency
 
-          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:); end
+          sig do
+            params(allows_rollover: T::Boolean, currency: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(allows_rollover:, currency:)
+          end
 
-          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash; end
+          sig do
+            override.returns({ allows_rollover: T::Boolean, currency: String })
+          end
+          def to_hash
+          end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Item < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -12239,13 +16387,17 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -12256,7 +16408,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -12264,12 +16419,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -12280,7 +16444,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -12288,25 +16455,52 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::GroupedTieredPackage::PriceType) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::GroupedTieredPackage::PriceType)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::GroupedTieredPackage::PriceType::TaggedSymbol)
-          FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::GroupedTieredPackage::PriceType::TaggedSymbol)
+          USAGE_PRICE =
+            T.let(
+              :usage_price,
+              Orb::Price::GroupedTieredPackage::PriceType::TaggedSymbol
+            )
+          FIXED_PRICE =
+            T.let(
+              :fixed_price,
+              Orb::Price::GroupedTieredPackage::PriceType::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::GroupedTieredPackage::PriceType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::GroupedTieredPackage::PriceType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
 
@@ -12319,40 +16513,59 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:); end
+          def self.new(dimension_values:, dimensional_price_group_id:)
+          end
 
-          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                dimension_values: T::Array[String],
+                dimensional_price_group_id: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class MaxGroupTieredPackage < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(T.nilable(Orb::Models::Price::MaxGroupTieredPackage::BillableMetric)) }
+        sig do
+          returns(T.nilable(Orb::Price::MaxGroupTieredPackage::BillableMetric))
+        end
         attr_reader :billable_metric
 
         sig do
           params(
-            billable_metric: T.nilable(T.any(Orb::Models::Price::MaxGroupTieredPackage::BillableMetric, Orb::Internal::AnyHash))
-          )
-            .void
+            billable_metric:
+              T.nilable(
+                Orb::Price::MaxGroupTieredPackage::BillableMetric::OrHash
+              )
+          ).void
         end
         attr_writer :billable_metric
 
-        sig { returns(Orb::Models::Price::MaxGroupTieredPackage::BillingCycleConfiguration) }
+        sig do
+          returns(Orb::Price::MaxGroupTieredPackage::BillingCycleConfiguration)
+        end
         attr_reader :billing_cycle_configuration
 
         sig do
           params(
-            billing_cycle_configuration: T.any(Orb::Models::Price::MaxGroupTieredPackage::BillingCycleConfiguration, Orb::Internal::AnyHash)
-          )
-            .void
+            billing_cycle_configuration:
+              Orb::Price::MaxGroupTieredPackage::BillingCycleConfiguration::OrHash
+          ).void
         end
         attr_writer :billing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol) }
+        sig do
+          returns(Orb::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol)
+        end
         attr_accessor :cadence
 
         sig { returns(T.nilable(Float)) }
@@ -12361,14 +16574,20 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T.nilable(Orb::Models::Price::MaxGroupTieredPackage::CreditAllocation)) }
+        sig do
+          returns(
+            T.nilable(Orb::Price::MaxGroupTieredPackage::CreditAllocation)
+          )
+        end
         attr_reader :credit_allocation
 
         sig do
           params(
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::MaxGroupTieredPackage::CreditAllocation, Orb::Internal::AnyHash))
-          )
-            .void
+            credit_allocation:
+              T.nilable(
+                Orb::Price::MaxGroupTieredPackage::CreditAllocation::OrHash
+              )
+          ).void
         end
         attr_writer :credit_allocation
 
@@ -12379,10 +16598,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -12395,36 +16614,44 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
-        sig { returns(T.nilable(Orb::Models::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration
+            )
+          )
+        end
         attr_reader :invoicing_cycle_configuration
 
         sig do
           params(
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :invoicing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::MaxGroupTieredPackage::Item) }
+        sig { returns(Orb::Price::MaxGroupTieredPackage::Item) }
         attr_reader :item
 
-        sig { params(item: T.any(Orb::Models::Price::MaxGroupTieredPackage::Item, Orb::Internal::AnyHash)).void }
+        sig do
+          params(item: Orb::Price::MaxGroupTieredPackage::Item::OrHash).void
+        end
         attr_writer :item
 
         sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :max_group_tiered_package_config
 
-        sig { returns(T.nilable(Orb::Models::Price::MaxGroupTieredPackage::Maximum)) }
+        sig { returns(T.nilable(Orb::Price::MaxGroupTieredPackage::Maximum)) }
         attr_reader :maximum
 
         sig do
           params(
-            maximum: T.nilable(T.any(Orb::Models::Price::MaxGroupTieredPackage::Maximum, Orb::Internal::AnyHash))
-          )
-            .void
+            maximum:
+              T.nilable(Orb::Price::MaxGroupTieredPackage::Maximum::OrHash)
+          ).void
         end
         attr_writer :maximum
 
@@ -12438,14 +16665,14 @@ module Orb
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
-        sig { returns(T.nilable(Orb::Models::Price::MaxGroupTieredPackage::Minimum)) }
+        sig { returns(T.nilable(Orb::Price::MaxGroupTieredPackage::Minimum)) }
         attr_reader :minimum
 
         sig do
           params(
-            minimum: T.nilable(T.any(Orb::Models::Price::MaxGroupTieredPackage::Minimum, Orb::Internal::AnyHash))
-          )
-            .void
+            minimum:
+              T.nilable(Orb::Price::MaxGroupTieredPackage::Minimum::OrHash)
+          ).void
         end
         attr_writer :minimum
 
@@ -12461,62 +16688,80 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :plan_phase_order
 
-        sig { returns(Orb::Models::Price::MaxGroupTieredPackage::PriceType::TaggedSymbol) }
+        sig do
+          returns(Orb::Price::MaxGroupTieredPackage::PriceType::TaggedSymbol)
+        end
         attr_accessor :price_type
 
-        sig { returns(T.nilable(Orb::Models::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration
+            )
+          )
+        end
         attr_reader :dimensional_price_configuration
 
         sig do
           params(
-            dimensional_price_configuration: T.nilable(
-              T.any(Orb::Models::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :dimensional_price_configuration
 
         sig do
           params(
             id: String,
-            billable_metric: T.nilable(T.any(Orb::Models::Price::MaxGroupTieredPackage::BillableMetric, Orb::Internal::AnyHash)),
-            billing_cycle_configuration: T.any(Orb::Models::Price::MaxGroupTieredPackage::BillingCycleConfiguration, Orb::Internal::AnyHash),
-            cadence: Orb::Models::Price::MaxGroupTieredPackage::Cadence::OrSymbol,
+            billable_metric:
+              T.nilable(
+                Orb::Price::MaxGroupTieredPackage::BillableMetric::OrHash
+              ),
+            billing_cycle_configuration:
+              Orb::Price::MaxGroupTieredPackage::BillingCycleConfiguration::OrHash,
+            cadence: Orb::Price::MaxGroupTieredPackage::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
             created_at: Time,
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::MaxGroupTieredPackage::CreditAllocation, Orb::Internal::AnyHash)),
+            credit_allocation:
+              T.nilable(
+                Orb::Price::MaxGroupTieredPackage::CreditAllocation::OrHash
+              ),
             currency: String,
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            ),
-            item: T.any(Orb::Models::Price::MaxGroupTieredPackage::Item, Orb::Internal::AnyHash),
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::OrHash
+              ),
+            item: Orb::Price::MaxGroupTieredPackage::Item::OrHash,
             max_group_tiered_package_config: T::Hash[Symbol, T.anything],
-            maximum: T.nilable(T.any(Orb::Models::Price::MaxGroupTieredPackage::Maximum, Orb::Internal::AnyHash)),
+            maximum:
+              T.nilable(Orb::Price::MaxGroupTieredPackage::Maximum::OrHash),
             maximum_amount: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(T.any(Orb::Models::Price::MaxGroupTieredPackage::Minimum, Orb::Internal::AnyHash)),
+            minimum:
+              T.nilable(Orb::Price::MaxGroupTieredPackage::Minimum::OrHash),
             minimum_amount: T.nilable(String),
             name: String,
             plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Models::Price::MaxGroupTieredPackage::PriceType::OrSymbol,
-            dimensional_price_configuration: T.nilable(
-              T.any(Orb::Models::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration, Orb::Internal::AnyHash)
-            ),
+            price_type: Orb::Price::MaxGroupTieredPackage::PriceType::OrSymbol,
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration::OrHash
+              ),
             model_type: Symbol
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -12547,151 +16792,227 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :max_group_tiered_package
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                billable_metric: T.nilable(Orb::Models::Price::MaxGroupTieredPackage::BillableMetric),
-                billing_cycle_configuration: Orb::Models::Price::MaxGroupTieredPackage::BillingCycleConfiguration,
-                cadence: Orb::Models::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol,
-                conversion_rate: T.nilable(Float),
-                created_at: Time,
-                credit_allocation: T.nilable(Orb::Models::Price::MaxGroupTieredPackage::CreditAllocation),
-                currency: String,
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              billable_metric:
+                T.nilable(Orb::Price::MaxGroupTieredPackage::BillableMetric),
+              billing_cycle_configuration:
+                Orb::Price::MaxGroupTieredPackage::BillingCycleConfiguration,
+              cadence: Orb::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation:
+                T.nilable(Orb::Price::MaxGroupTieredPackage::CreditAllocation),
+              currency: String,
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoicing_cycle_configuration: T.nilable(Orb::Models::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration),
-                item: Orb::Models::Price::MaxGroupTieredPackage::Item,
-                max_group_tiered_package_config: T::Hash[Symbol, T.anything],
-                maximum: T.nilable(Orb::Models::Price::MaxGroupTieredPackage::Maximum),
-                maximum_amount: T.nilable(String),
-                metadata: T::Hash[Symbol, String],
-                minimum: T.nilable(Orb::Models::Price::MaxGroupTieredPackage::Minimum),
-                minimum_amount: T.nilable(String),
-                model_type: Symbol,
-                name: String,
-                plan_phase_order: T.nilable(Integer),
-                price_type: Orb::Models::Price::MaxGroupTieredPackage::PriceType::TaggedSymbol,
-                dimensional_price_configuration: T.nilable(Orb::Models::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration)
-              }
-            )
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoicing_cycle_configuration:
+                T.nilable(
+                  Orb::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration
+                ),
+              item: Orb::Price::MaxGroupTieredPackage::Item,
+              max_group_tiered_package_config: T::Hash[Symbol, T.anything],
+              maximum: T.nilable(Orb::Price::MaxGroupTieredPackage::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Price::MaxGroupTieredPackage::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type:
+                Orb::Price::MaxGroupTieredPackage::PriceType::TaggedSymbol,
+              dimensional_price_configuration:
+                T.nilable(
+                  Orb::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration
+                )
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
+          def self.new(id:)
+          end
 
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::MaxGroupTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::MaxGroupTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::MaxGroupTieredPackage::BillingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::MaxGroupTieredPackage::BillingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::MaxGroupTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::MaxGroupTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::MaxGroupTieredPackage::BillingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::MaxGroupTieredPackage::BillingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::MaxGroupTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::MaxGroupTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::MaxGroupTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::MaxGroupTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::MaxGroupTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::MaxGroupTieredPackage::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         module Cadence
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::MaxGroupTieredPackage::Cadence) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::MaxGroupTieredPackage::Cadence)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ONE_TIME = T.let(:one_time, Orb::Models::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol)
-          SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Models::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol)
+          ONE_TIME =
+            T.let(
+              :one_time,
+              Orb::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol
+            )
+          MONTHLY =
+            T.let(
+              :monthly,
+              Orb::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol
+            )
+          QUARTERLY =
+            T.let(
+              :quarterly,
+              Orb::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol
+            )
+          SEMI_ANNUAL =
+            T.let(
+              :semi_annual,
+              Orb::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol
+            )
+          ANNUAL =
+            T.let(
+              :annual,
+              Orb::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol
+            )
+          CUSTOM =
+            T.let(
+              :custom,
+              Orb::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
 
           sig { returns(String) }
           attr_accessor :currency
 
-          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:); end
+          sig do
+            params(allows_rollover: T::Boolean, currency: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(allows_rollover:, currency:)
+          end
 
-          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash; end
+          sig do
+            override.returns({ allows_rollover: T::Boolean, currency: String })
+          end
+          def to_hash
+          end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
           sig do
             returns(
-              Orb::Models::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              Orb::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
             )
           end
           attr_accessor :duration_unit
@@ -12699,52 +17020,63 @@ module Orb
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Item < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -12752,13 +17084,17 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -12769,7 +17105,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -12777,12 +17116,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -12793,7 +17141,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -12801,25 +17152,52 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::MaxGroupTieredPackage::PriceType) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::MaxGroupTieredPackage::PriceType)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::MaxGroupTieredPackage::PriceType::TaggedSymbol)
-          FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::MaxGroupTieredPackage::PriceType::TaggedSymbol)
+          USAGE_PRICE =
+            T.let(
+              :usage_price,
+              Orb::Price::MaxGroupTieredPackage::PriceType::TaggedSymbol
+            )
+          FIXED_PRICE =
+            T.let(
+              :fixed_price,
+              Orb::Price::MaxGroupTieredPackage::PriceType::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::MaxGroupTieredPackage::PriceType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::MaxGroupTieredPackage::PriceType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
 
@@ -12832,45 +17210,65 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:); end
+          def self.new(dimension_values:, dimensional_price_group_id:)
+          end
 
-          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                dimension_values: T::Array[String],
+                dimensional_price_group_id: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class ScalableMatrixWithUnitPricing < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(T.nilable(Orb::Models::Price::ScalableMatrixWithUnitPricing::BillableMetric)) }
+        sig do
+          returns(
+            T.nilable(Orb::Price::ScalableMatrixWithUnitPricing::BillableMetric)
+          )
+        end
         attr_reader :billable_metric
 
         sig do
           params(
-            billable_metric: T.nilable(
-              T.any(Orb::Models::Price::ScalableMatrixWithUnitPricing::BillableMetric, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            billable_metric:
+              T.nilable(
+                Orb::Price::ScalableMatrixWithUnitPricing::BillableMetric::OrHash
+              )
+          ).void
         end
         attr_writer :billable_metric
 
-        sig { returns(Orb::Models::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration) }
+        sig do
+          returns(
+            Orb::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration
+          )
+        end
         attr_reader :billing_cycle_configuration
 
         sig do
           params(
-            billing_cycle_configuration: T.any(
-              Orb::Models::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration,
-              Orb::Internal::AnyHash
-            )
-          )
-            .void
+            billing_cycle_configuration:
+              Orb::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::OrHash
+          ).void
         end
         attr_writer :billing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol) }
+        sig do
+          returns(
+            Orb::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol
+          )
+        end
         attr_accessor :cadence
 
         sig { returns(T.nilable(Float)) }
@@ -12879,16 +17277,22 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T.nilable(Orb::Models::Price::ScalableMatrixWithUnitPricing::CreditAllocation)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::ScalableMatrixWithUnitPricing::CreditAllocation
+            )
+          )
+        end
         attr_reader :credit_allocation
 
         sig do
           params(
-            credit_allocation: T.nilable(
-              T.any(Orb::Models::Price::ScalableMatrixWithUnitPricing::CreditAllocation, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            credit_allocation:
+              T.nilable(
+                Orb::Price::ScalableMatrixWithUnitPricing::CreditAllocation::OrHash
+              )
+          ).void
         end
         attr_writer :credit_allocation
 
@@ -12899,10 +17303,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -12915,36 +17319,47 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
-        sig { returns(T.nilable(Orb::Models::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration
+            )
+          )
+        end
         attr_reader :invoicing_cycle_configuration
 
         sig do
           params(
-            invoicing_cycle_configuration: T.nilable(
-              T.any(
-                Orb::Models::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration,
-                Orb::Internal::AnyHash
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::OrHash
               )
-            )
-          )
-            .void
+          ).void
         end
         attr_writer :invoicing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::ScalableMatrixWithUnitPricing::Item) }
+        sig { returns(Orb::Price::ScalableMatrixWithUnitPricing::Item) }
         attr_reader :item
 
-        sig { params(item: T.any(Orb::Models::Price::ScalableMatrixWithUnitPricing::Item, Orb::Internal::AnyHash)).void }
+        sig do
+          params(
+            item: Orb::Price::ScalableMatrixWithUnitPricing::Item::OrHash
+          ).void
+        end
         attr_writer :item
 
-        sig { returns(T.nilable(Orb::Models::Price::ScalableMatrixWithUnitPricing::Maximum)) }
+        sig do
+          returns(T.nilable(Orb::Price::ScalableMatrixWithUnitPricing::Maximum))
+        end
         attr_reader :maximum
 
         sig do
           params(
-            maximum: T.nilable(T.any(Orb::Models::Price::ScalableMatrixWithUnitPricing::Maximum, Orb::Internal::AnyHash))
-          )
-            .void
+            maximum:
+              T.nilable(
+                Orb::Price::ScalableMatrixWithUnitPricing::Maximum::OrHash
+              )
+          ).void
         end
         attr_writer :maximum
 
@@ -12958,14 +17373,18 @@ module Orb
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
-        sig { returns(T.nilable(Orb::Models::Price::ScalableMatrixWithUnitPricing::Minimum)) }
+        sig do
+          returns(T.nilable(Orb::Price::ScalableMatrixWithUnitPricing::Minimum))
+        end
         attr_reader :minimum
 
         sig do
           params(
-            minimum: T.nilable(T.any(Orb::Models::Price::ScalableMatrixWithUnitPricing::Minimum, Orb::Internal::AnyHash))
-          )
-            .void
+            minimum:
+              T.nilable(
+                Orb::Price::ScalableMatrixWithUnitPricing::Minimum::OrHash
+              )
+          ).void
         end
         attr_writer :minimum
 
@@ -12981,81 +17400,92 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :plan_phase_order
 
-        sig { returns(Orb::Models::Price::ScalableMatrixWithUnitPricing::PriceType::TaggedSymbol) }
+        sig do
+          returns(
+            Orb::Price::ScalableMatrixWithUnitPricing::PriceType::TaggedSymbol
+          )
+        end
         attr_accessor :price_type
 
         sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :scalable_matrix_with_unit_pricing_config
 
-        sig { returns(T.nilable(Orb::Models::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration
+            )
+          )
+        end
         attr_reader :dimensional_price_configuration
 
         sig do
           params(
-            dimensional_price_configuration: T.nilable(
-              T.any(
-                Orb::Models::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration,
-                Orb::Internal::AnyHash
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration::OrHash
               )
-            )
-          )
-            .void
+          ).void
         end
         attr_writer :dimensional_price_configuration
 
         sig do
           params(
             id: String,
-            billable_metric: T.nilable(
-              T.any(Orb::Models::Price::ScalableMatrixWithUnitPricing::BillableMetric, Orb::Internal::AnyHash)
-            ),
-            billing_cycle_configuration: T.any(
-              Orb::Models::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration,
-              Orb::Internal::AnyHash
-            ),
-            cadence: Orb::Models::Price::ScalableMatrixWithUnitPricing::Cadence::OrSymbol,
+            billable_metric:
+              T.nilable(
+                Orb::Price::ScalableMatrixWithUnitPricing::BillableMetric::OrHash
+              ),
+            billing_cycle_configuration:
+              Orb::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::OrHash,
+            cadence:
+              Orb::Price::ScalableMatrixWithUnitPricing::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
             created_at: Time,
-            credit_allocation: T.nilable(
-              T.any(Orb::Models::Price::ScalableMatrixWithUnitPricing::CreditAllocation, Orb::Internal::AnyHash)
-            ),
+            credit_allocation:
+              T.nilable(
+                Orb::Price::ScalableMatrixWithUnitPricing::CreditAllocation::OrHash
+              ),
             currency: String,
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
-            invoicing_cycle_configuration: T.nilable(
-              T.any(
-                Orb::Models::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration,
-                Orb::Internal::AnyHash
-              )
-            ),
-            item: T.any(Orb::Models::Price::ScalableMatrixWithUnitPricing::Item, Orb::Internal::AnyHash),
-            maximum: T.nilable(T.any(Orb::Models::Price::ScalableMatrixWithUnitPricing::Maximum, Orb::Internal::AnyHash)),
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::OrHash
+              ),
+            item: Orb::Price::ScalableMatrixWithUnitPricing::Item::OrHash,
+            maximum:
+              T.nilable(
+                Orb::Price::ScalableMatrixWithUnitPricing::Maximum::OrHash
+              ),
             maximum_amount: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(T.any(Orb::Models::Price::ScalableMatrixWithUnitPricing::Minimum, Orb::Internal::AnyHash)),
+            minimum:
+              T.nilable(
+                Orb::Price::ScalableMatrixWithUnitPricing::Minimum::OrHash
+              ),
             minimum_amount: T.nilable(String),
             name: String,
             plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Models::Price::ScalableMatrixWithUnitPricing::PriceType::OrSymbol,
-            scalable_matrix_with_unit_pricing_config: T::Hash[Symbol, T.anything],
-            dimensional_price_configuration: T.nilable(
-              T.any(
-                Orb::Models::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration,
-                Orb::Internal::AnyHash
-              )
-            ),
+            price_type:
+              Orb::Price::ScalableMatrixWithUnitPricing::PriceType::OrSymbol,
+            scalable_matrix_with_unit_pricing_config:
+              T::Hash[Symbol, T.anything],
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration::OrHash
+              ),
             model_type: Symbol
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -13086,65 +17516,92 @@ module Orb
           scalable_matrix_with_unit_pricing_config:,
           dimensional_price_configuration: nil,
           model_type: :scalable_matrix_with_unit_pricing
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                billable_metric: T.nilable(Orb::Models::Price::ScalableMatrixWithUnitPricing::BillableMetric),
-                billing_cycle_configuration: Orb::Models::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration,
-                cadence: Orb::Models::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol,
-                conversion_rate: T.nilable(Float),
-                created_at: Time,
-                credit_allocation: T.nilable(Orb::Models::Price::ScalableMatrixWithUnitPricing::CreditAllocation),
-                currency: String,
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              billable_metric:
+                T.nilable(
+                  Orb::Price::ScalableMatrixWithUnitPricing::BillableMetric
+                ),
+              billing_cycle_configuration:
+                Orb::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration,
+              cadence:
+                Orb::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation:
+                T.nilable(
+                  Orb::Price::ScalableMatrixWithUnitPricing::CreditAllocation
+                ),
+              currency: String,
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoicing_cycle_configuration: T.nilable(Orb::Models::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration),
-                item: Orb::Models::Price::ScalableMatrixWithUnitPricing::Item,
-                maximum: T.nilable(Orb::Models::Price::ScalableMatrixWithUnitPricing::Maximum),
-                maximum_amount: T.nilable(String),
-                metadata: T::Hash[Symbol, String],
-                minimum: T.nilable(Orb::Models::Price::ScalableMatrixWithUnitPricing::Minimum),
-                minimum_amount: T.nilable(String),
-                model_type: Symbol,
-                name: String,
-                plan_phase_order: T.nilable(Integer),
-                price_type: Orb::Models::Price::ScalableMatrixWithUnitPricing::PriceType::TaggedSymbol,
-                scalable_matrix_with_unit_pricing_config: T::Hash[Symbol, T.anything],
-                dimensional_price_configuration: T.nilable(Orb::Models::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration)
-              }
-            )
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoicing_cycle_configuration:
+                T.nilable(
+                  Orb::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration
+                ),
+              item: Orb::Price::ScalableMatrixWithUnitPricing::Item,
+              maximum:
+                T.nilable(Orb::Price::ScalableMatrixWithUnitPricing::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum:
+                T.nilable(Orb::Price::ScalableMatrixWithUnitPricing::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type:
+                Orb::Price::ScalableMatrixWithUnitPricing::PriceType::TaggedSymbol,
+              scalable_matrix_with_unit_pricing_config:
+                T::Hash[Symbol, T.anything],
+              dimensional_price_configuration:
+                T.nilable(
+                  Orb::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration
+                )
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
+          def self.new(id:)
+          end
 
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
           sig do
             returns(
-              Orb::Models::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              Orb::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
             )
           end
           attr_accessor :duration_unit
@@ -13152,145 +17609,208 @@ module Orb
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
-          end
-          def to_hash; end
-
-          module DurationUnit
-            extend Orb::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::DurationUnit) }
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            DAY =
-              T.let(
-                :day,
-                Orb::Models::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-              )
-            MONTH =
-              T.let(
-                :month,
-                Orb::Models::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-              )
-
-            sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
-            end
-            def self.values; end
-          end
-        end
-
-        module Cadence
-          extend Orb::Internal::Type::Enum
-
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricing::Cadence) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          ONE_TIME = T.let(:one_time, Orb::Models::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol)
-          SEMI_ANNUAL =
-            T.let(:semi_annual, Orb::Models::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Models::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol)
-
-          sig { override.returns(T::Array[Orb::Models::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol]) }
-          def self.values; end
-        end
-
-        class CreditAllocation < Orb::Internal::Type::BaseModel
-          sig { returns(T::Boolean) }
-          attr_accessor :allows_rollover
-
-          sig { returns(String) }
-          attr_accessor :currency
-
-          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:); end
-
-          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash; end
-        end
-
-        class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          sig { returns(Integer) }
-          attr_accessor :duration
-
-          sig do
-            returns(
-              Orb::Models::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
             )
           end
-          attr_accessor :duration_unit
-
-          sig do
-            params(
-              duration: Integer,
-              duration_unit: Orb::Models::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+          def to_hash
           end
-          def self.new(duration:, duration_unit:); end
-
-          sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
-          end
-          def to_hash; end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias do
-                T.all(Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::DurationUnit)
+                T.all(
+                  Symbol,
+                  Orb::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::DurationUnit
+                )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
+          end
+        end
+
+        module Cadence
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::ScalableMatrixWithUnitPricing::Cadence)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          ONE_TIME =
+            T.let(
+              :one_time,
+              Orb::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol
+            )
+          MONTHLY =
+            T.let(
+              :monthly,
+              Orb::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol
+            )
+          QUARTERLY =
+            T.let(
+              :quarterly,
+              Orb::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol
+            )
+          SEMI_ANNUAL =
+            T.let(
+              :semi_annual,
+              Orb::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol
+            )
+          ANNUAL =
+            T.let(
+              :annual,
+              Orb::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol
+            )
+          CUSTOM =
+            T.let(
+              :custom,
+              Orb::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        class CreditAllocation < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
+          sig { returns(T::Boolean) }
+          attr_accessor :allows_rollover
+
+          sig { returns(String) }
+          attr_accessor :currency
+
+          sig do
+            params(allows_rollover: T::Boolean, currency: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(allows_rollover:, currency:)
+          end
+
+          sig do
+            override.returns({ allows_rollover: T::Boolean, currency: String })
+          end
+          def to_hash
+          end
+        end
+
+        class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
+          sig { returns(Integer) }
+          attr_accessor :duration
+
+          sig do
+            returns(
+              Orb::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
+          attr_accessor :duration_unit
+
+          sig do
+            params(
+              duration: Integer,
+              duration_unit:
+                Orb::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
+          end
+          def self.new(duration:, duration_unit:)
+          end
+
+          sig do
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
+          end
+          def to_hash
+          end
+
+          module DurationUnit
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::DurationUnit
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            DAY =
+              T.let(
+                :day,
+                Orb::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
+            MONTH =
+              T.let(
+                :month,
+                Orb::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 
         class Item < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -13298,13 +17818,17 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -13315,7 +17839,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -13323,12 +17850,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -13339,7 +17875,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -13347,28 +17886,55 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricing::PriceType) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Orb::Price::ScalableMatrixWithUnitPricing::PriceType
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           USAGE_PRICE =
-            T.let(:usage_price, Orb::Models::Price::ScalableMatrixWithUnitPricing::PriceType::TaggedSymbol)
+            T.let(
+              :usage_price,
+              Orb::Price::ScalableMatrixWithUnitPricing::PriceType::TaggedSymbol
+            )
           FIXED_PRICE =
-            T.let(:fixed_price, Orb::Models::Price::ScalableMatrixWithUnitPricing::PriceType::TaggedSymbol)
+            T.let(
+              :fixed_price,
+              Orb::Price::ScalableMatrixWithUnitPricing::PriceType::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::ScalableMatrixWithUnitPricing::PriceType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::ScalableMatrixWithUnitPricing::PriceType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
 
@@ -13381,45 +17947,67 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:); end
+          def self.new(dimension_values:, dimensional_price_group_id:)
+          end
 
-          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                dimension_values: T::Array[String],
+                dimensional_price_group_id: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class ScalableMatrixWithTieredPricing < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(T.nilable(Orb::Models::Price::ScalableMatrixWithTieredPricing::BillableMetric)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::ScalableMatrixWithTieredPricing::BillableMetric
+            )
+          )
+        end
         attr_reader :billable_metric
 
         sig do
           params(
-            billable_metric: T.nilable(
-              T.any(Orb::Models::Price::ScalableMatrixWithTieredPricing::BillableMetric, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            billable_metric:
+              T.nilable(
+                Orb::Price::ScalableMatrixWithTieredPricing::BillableMetric::OrHash
+              )
+          ).void
         end
         attr_writer :billable_metric
 
-        sig { returns(Orb::Models::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration) }
+        sig do
+          returns(
+            Orb::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration
+          )
+        end
         attr_reader :billing_cycle_configuration
 
         sig do
           params(
-            billing_cycle_configuration: T.any(
-              Orb::Models::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration,
-              Orb::Internal::AnyHash
-            )
-          )
-            .void
+            billing_cycle_configuration:
+              Orb::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::OrHash
+          ).void
         end
         attr_writer :billing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol) }
+        sig do
+          returns(
+            Orb::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol
+          )
+        end
         attr_accessor :cadence
 
         sig { returns(T.nilable(Float)) }
@@ -13428,16 +18016,22 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T.nilable(Orb::Models::Price::ScalableMatrixWithTieredPricing::CreditAllocation)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::ScalableMatrixWithTieredPricing::CreditAllocation
+            )
+          )
+        end
         attr_reader :credit_allocation
 
         sig do
           params(
-            credit_allocation: T.nilable(
-              T.any(Orb::Models::Price::ScalableMatrixWithTieredPricing::CreditAllocation, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            credit_allocation:
+              T.nilable(
+                Orb::Price::ScalableMatrixWithTieredPricing::CreditAllocation::OrHash
+              )
+          ).void
         end
         attr_writer :credit_allocation
 
@@ -13448,10 +18042,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -13464,38 +18058,49 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
-        sig { returns(T.nilable(Orb::Models::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration
+            )
+          )
+        end
         attr_reader :invoicing_cycle_configuration
 
         sig do
           params(
-            invoicing_cycle_configuration: T.nilable(
-              T.any(
-                Orb::Models::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration,
-                Orb::Internal::AnyHash
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::OrHash
               )
-            )
-          )
-            .void
+          ).void
         end
         attr_writer :invoicing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::ScalableMatrixWithTieredPricing::Item) }
+        sig { returns(Orb::Price::ScalableMatrixWithTieredPricing::Item) }
         attr_reader :item
 
         sig do
-          params(item: T.any(Orb::Models::Price::ScalableMatrixWithTieredPricing::Item, Orb::Internal::AnyHash)).void
+          params(
+            item: Orb::Price::ScalableMatrixWithTieredPricing::Item::OrHash
+          ).void
         end
         attr_writer :item
 
-        sig { returns(T.nilable(Orb::Models::Price::ScalableMatrixWithTieredPricing::Maximum)) }
+        sig do
+          returns(
+            T.nilable(Orb::Price::ScalableMatrixWithTieredPricing::Maximum)
+          )
+        end
         attr_reader :maximum
 
         sig do
           params(
-            maximum: T.nilable(T.any(Orb::Models::Price::ScalableMatrixWithTieredPricing::Maximum, Orb::Internal::AnyHash))
-          )
-            .void
+            maximum:
+              T.nilable(
+                Orb::Price::ScalableMatrixWithTieredPricing::Maximum::OrHash
+              )
+          ).void
         end
         attr_writer :maximum
 
@@ -13509,14 +18114,20 @@ module Orb
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
-        sig { returns(T.nilable(Orb::Models::Price::ScalableMatrixWithTieredPricing::Minimum)) }
+        sig do
+          returns(
+            T.nilable(Orb::Price::ScalableMatrixWithTieredPricing::Minimum)
+          )
+        end
         attr_reader :minimum
 
         sig do
           params(
-            minimum: T.nilable(T.any(Orb::Models::Price::ScalableMatrixWithTieredPricing::Minimum, Orb::Internal::AnyHash))
-          )
-            .void
+            minimum:
+              T.nilable(
+                Orb::Price::ScalableMatrixWithTieredPricing::Minimum::OrHash
+              )
+          ).void
         end
         attr_writer :minimum
 
@@ -13532,81 +18143,92 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :plan_phase_order
 
-        sig { returns(Orb::Models::Price::ScalableMatrixWithTieredPricing::PriceType::TaggedSymbol) }
+        sig do
+          returns(
+            Orb::Price::ScalableMatrixWithTieredPricing::PriceType::TaggedSymbol
+          )
+        end
         attr_accessor :price_type
 
         sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :scalable_matrix_with_tiered_pricing_config
 
-        sig { returns(T.nilable(Orb::Models::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration
+            )
+          )
+        end
         attr_reader :dimensional_price_configuration
 
         sig do
           params(
-            dimensional_price_configuration: T.nilable(
-              T.any(
-                Orb::Models::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration,
-                Orb::Internal::AnyHash
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration::OrHash
               )
-            )
-          )
-            .void
+          ).void
         end
         attr_writer :dimensional_price_configuration
 
         sig do
           params(
             id: String,
-            billable_metric: T.nilable(
-              T.any(Orb::Models::Price::ScalableMatrixWithTieredPricing::BillableMetric, Orb::Internal::AnyHash)
-            ),
-            billing_cycle_configuration: T.any(
-              Orb::Models::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration,
-              Orb::Internal::AnyHash
-            ),
-            cadence: Orb::Models::Price::ScalableMatrixWithTieredPricing::Cadence::OrSymbol,
+            billable_metric:
+              T.nilable(
+                Orb::Price::ScalableMatrixWithTieredPricing::BillableMetric::OrHash
+              ),
+            billing_cycle_configuration:
+              Orb::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::OrHash,
+            cadence:
+              Orb::Price::ScalableMatrixWithTieredPricing::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
             created_at: Time,
-            credit_allocation: T.nilable(
-              T.any(Orb::Models::Price::ScalableMatrixWithTieredPricing::CreditAllocation, Orb::Internal::AnyHash)
-            ),
+            credit_allocation:
+              T.nilable(
+                Orb::Price::ScalableMatrixWithTieredPricing::CreditAllocation::OrHash
+              ),
             currency: String,
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
-            invoicing_cycle_configuration: T.nilable(
-              T.any(
-                Orb::Models::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration,
-                Orb::Internal::AnyHash
-              )
-            ),
-            item: T.any(Orb::Models::Price::ScalableMatrixWithTieredPricing::Item, Orb::Internal::AnyHash),
-            maximum: T.nilable(T.any(Orb::Models::Price::ScalableMatrixWithTieredPricing::Maximum, Orb::Internal::AnyHash)),
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::OrHash
+              ),
+            item: Orb::Price::ScalableMatrixWithTieredPricing::Item::OrHash,
+            maximum:
+              T.nilable(
+                Orb::Price::ScalableMatrixWithTieredPricing::Maximum::OrHash
+              ),
             maximum_amount: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(T.any(Orb::Models::Price::ScalableMatrixWithTieredPricing::Minimum, Orb::Internal::AnyHash)),
+            minimum:
+              T.nilable(
+                Orb::Price::ScalableMatrixWithTieredPricing::Minimum::OrHash
+              ),
             minimum_amount: T.nilable(String),
             name: String,
             plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Models::Price::ScalableMatrixWithTieredPricing::PriceType::OrSymbol,
-            scalable_matrix_with_tiered_pricing_config: T::Hash[Symbol, T.anything],
-            dimensional_price_configuration: T.nilable(
-              T.any(
-                Orb::Models::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration,
-                Orb::Internal::AnyHash
-              )
-            ),
+            price_type:
+              Orb::Price::ScalableMatrixWithTieredPricing::PriceType::OrSymbol,
+            scalable_matrix_with_tiered_pricing_config:
+              T::Hash[Symbol, T.anything],
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration::OrHash
+              ),
             model_type: Symbol
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -13637,65 +18259,92 @@ module Orb
           scalable_matrix_with_tiered_pricing_config:,
           dimensional_price_configuration: nil,
           model_type: :scalable_matrix_with_tiered_pricing
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                billable_metric: T.nilable(Orb::Models::Price::ScalableMatrixWithTieredPricing::BillableMetric),
-                billing_cycle_configuration: Orb::Models::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration,
-                cadence: Orb::Models::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol,
-                conversion_rate: T.nilable(Float),
-                created_at: Time,
-                credit_allocation: T.nilable(Orb::Models::Price::ScalableMatrixWithTieredPricing::CreditAllocation),
-                currency: String,
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              billable_metric:
+                T.nilable(
+                  Orb::Price::ScalableMatrixWithTieredPricing::BillableMetric
+                ),
+              billing_cycle_configuration:
+                Orb::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration,
+              cadence:
+                Orb::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation:
+                T.nilable(
+                  Orb::Price::ScalableMatrixWithTieredPricing::CreditAllocation
+                ),
+              currency: String,
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoicing_cycle_configuration: T.nilable(Orb::Models::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration),
-                item: Orb::Models::Price::ScalableMatrixWithTieredPricing::Item,
-                maximum: T.nilable(Orb::Models::Price::ScalableMatrixWithTieredPricing::Maximum),
-                maximum_amount: T.nilable(String),
-                metadata: T::Hash[Symbol, String],
-                minimum: T.nilable(Orb::Models::Price::ScalableMatrixWithTieredPricing::Minimum),
-                minimum_amount: T.nilable(String),
-                model_type: Symbol,
-                name: String,
-                plan_phase_order: T.nilable(Integer),
-                price_type: Orb::Models::Price::ScalableMatrixWithTieredPricing::PriceType::TaggedSymbol,
-                scalable_matrix_with_tiered_pricing_config: T::Hash[Symbol, T.anything],
-                dimensional_price_configuration: T.nilable(Orb::Models::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration)
-              }
-            )
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoicing_cycle_configuration:
+                T.nilable(
+                  Orb::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration
+                ),
+              item: Orb::Price::ScalableMatrixWithTieredPricing::Item,
+              maximum:
+                T.nilable(Orb::Price::ScalableMatrixWithTieredPricing::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum:
+                T.nilable(Orb::Price::ScalableMatrixWithTieredPricing::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type:
+                Orb::Price::ScalableMatrixWithTieredPricing::PriceType::TaggedSymbol,
+              scalable_matrix_with_tiered_pricing_config:
+                T::Hash[Symbol, T.anything],
+              dimensional_price_configuration:
+                T.nilable(
+                  Orb::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration
+                )
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
+          def self.new(id:)
+          end
 
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
           sig do
             returns(
-              Orb::Models::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              Orb::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
             )
           end
           attr_accessor :duration_unit
@@ -13703,50 +18352,57 @@ module Orb
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias do
-                T.all(Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::DurationUnit)
+                T.all(
+                  Symbol,
+                  Orb::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::DurationUnit
+                )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
@@ -13754,42 +18410,89 @@ module Orb
           extend Orb::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricing::Cadence) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Orb::Price::ScalableMatrixWithTieredPricing::Cadence
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ONE_TIME = T.let(:one_time, Orb::Models::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol)
+          ONE_TIME =
+            T.let(
+              :one_time,
+              Orb::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol
+            )
+          MONTHLY =
+            T.let(
+              :monthly,
+              Orb::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol
+            )
+          QUARTERLY =
+            T.let(
+              :quarterly,
+              Orb::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol
+            )
           SEMI_ANNUAL =
-            T.let(:semi_annual, Orb::Models::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Models::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol)
+            T.let(
+              :semi_annual,
+              Orb::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol
+            )
+          ANNUAL =
+            T.let(
+              :annual,
+              Orb::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol
+            )
+          CUSTOM =
+            T.let(
+              :custom,
+              Orb::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
 
           sig { returns(String) }
           attr_accessor :currency
 
-          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:); end
+          sig do
+            params(allows_rollover: T::Boolean, currency: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(allows_rollover:, currency:)
+          end
 
-          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash; end
+          sig do
+            override.returns({ allows_rollover: T::Boolean, currency: String })
+          end
+          def to_hash
+          end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
           sig do
             returns(
-              Orb::Models::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              Orb::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
             )
           end
           attr_accessor :duration_unit
@@ -13797,56 +18500,63 @@ module Orb
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias do
-                T.all(Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::DurationUnit)
+                T.all(
+                  Symbol,
+                  Orb::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::DurationUnit
+                )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[
-                    Orb::Models::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                  ]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Item < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -13854,13 +18564,17 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -13871,7 +18585,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -13879,12 +18596,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -13895,7 +18621,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -13903,28 +18632,55 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricing::PriceType) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Orb::Price::ScalableMatrixWithTieredPricing::PriceType
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           USAGE_PRICE =
-            T.let(:usage_price, Orb::Models::Price::ScalableMatrixWithTieredPricing::PriceType::TaggedSymbol)
+            T.let(
+              :usage_price,
+              Orb::Price::ScalableMatrixWithTieredPricing::PriceType::TaggedSymbol
+            )
           FIXED_PRICE =
-            T.let(:fixed_price, Orb::Models::Price::ScalableMatrixWithTieredPricing::PriceType::TaggedSymbol)
+            T.let(
+              :fixed_price,
+              Orb::Price::ScalableMatrixWithTieredPricing::PriceType::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::ScalableMatrixWithTieredPricing::PriceType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::ScalableMatrixWithTieredPricing::PriceType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
 
@@ -13937,40 +18693,59 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:); end
+          def self.new(dimension_values:, dimensional_price_group_id:)
+          end
 
-          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                dimension_values: T::Array[String],
+                dimensional_price_group_id: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
       class CumulativeGroupedBulk < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(T.nilable(Orb::Models::Price::CumulativeGroupedBulk::BillableMetric)) }
+        sig do
+          returns(T.nilable(Orb::Price::CumulativeGroupedBulk::BillableMetric))
+        end
         attr_reader :billable_metric
 
         sig do
           params(
-            billable_metric: T.nilable(T.any(Orb::Models::Price::CumulativeGroupedBulk::BillableMetric, Orb::Internal::AnyHash))
-          )
-            .void
+            billable_metric:
+              T.nilable(
+                Orb::Price::CumulativeGroupedBulk::BillableMetric::OrHash
+              )
+          ).void
         end
         attr_writer :billable_metric
 
-        sig { returns(Orb::Models::Price::CumulativeGroupedBulk::BillingCycleConfiguration) }
+        sig do
+          returns(Orb::Price::CumulativeGroupedBulk::BillingCycleConfiguration)
+        end
         attr_reader :billing_cycle_configuration
 
         sig do
           params(
-            billing_cycle_configuration: T.any(Orb::Models::Price::CumulativeGroupedBulk::BillingCycleConfiguration, Orb::Internal::AnyHash)
-          )
-            .void
+            billing_cycle_configuration:
+              Orb::Price::CumulativeGroupedBulk::BillingCycleConfiguration::OrHash
+          ).void
         end
         attr_writer :billing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol) }
+        sig do
+          returns(Orb::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol)
+        end
         attr_accessor :cadence
 
         sig { returns(T.nilable(Float)) }
@@ -13979,14 +18754,20 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T.nilable(Orb::Models::Price::CumulativeGroupedBulk::CreditAllocation)) }
+        sig do
+          returns(
+            T.nilable(Orb::Price::CumulativeGroupedBulk::CreditAllocation)
+          )
+        end
         attr_reader :credit_allocation
 
         sig do
           params(
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::CumulativeGroupedBulk::CreditAllocation, Orb::Internal::AnyHash))
-          )
-            .void
+            credit_allocation:
+              T.nilable(
+                Orb::Price::CumulativeGroupedBulk::CreditAllocation::OrHash
+              )
+          ).void
         end
         attr_writer :credit_allocation
 
@@ -14000,10 +18781,10 @@ module Orb
           returns(
             T.nilable(
               T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
+                Orb::PercentageDiscount,
+                Orb::TrialDiscount,
+                Orb::UsageDiscount,
+                Orb::AmountDiscount
               )
             )
           )
@@ -14016,33 +18797,41 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
-        sig { returns(T.nilable(Orb::Models::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration
+            )
+          )
+        end
         attr_reader :invoicing_cycle_configuration
 
         sig do
           params(
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :invoicing_cycle_configuration
 
-        sig { returns(Orb::Models::Price::CumulativeGroupedBulk::Item) }
+        sig { returns(Orb::Price::CumulativeGroupedBulk::Item) }
         attr_reader :item
 
-        sig { params(item: T.any(Orb::Models::Price::CumulativeGroupedBulk::Item, Orb::Internal::AnyHash)).void }
+        sig do
+          params(item: Orb::Price::CumulativeGroupedBulk::Item::OrHash).void
+        end
         attr_writer :item
 
-        sig { returns(T.nilable(Orb::Models::Price::CumulativeGroupedBulk::Maximum)) }
+        sig { returns(T.nilable(Orb::Price::CumulativeGroupedBulk::Maximum)) }
         attr_reader :maximum
 
         sig do
           params(
-            maximum: T.nilable(T.any(Orb::Models::Price::CumulativeGroupedBulk::Maximum, Orb::Internal::AnyHash))
-          )
-            .void
+            maximum:
+              T.nilable(Orb::Price::CumulativeGroupedBulk::Maximum::OrHash)
+          ).void
         end
         attr_writer :maximum
 
@@ -14056,14 +18845,14 @@ module Orb
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :metadata
 
-        sig { returns(T.nilable(Orb::Models::Price::CumulativeGroupedBulk::Minimum)) }
+        sig { returns(T.nilable(Orb::Price::CumulativeGroupedBulk::Minimum)) }
         attr_reader :minimum
 
         sig do
           params(
-            minimum: T.nilable(T.any(Orb::Models::Price::CumulativeGroupedBulk::Minimum, Orb::Internal::AnyHash))
-          )
-            .void
+            minimum:
+              T.nilable(Orb::Price::CumulativeGroupedBulk::Minimum::OrHash)
+          ).void
         end
         attr_writer :minimum
 
@@ -14079,62 +18868,80 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :plan_phase_order
 
-        sig { returns(Orb::Models::Price::CumulativeGroupedBulk::PriceType::TaggedSymbol) }
+        sig do
+          returns(Orb::Price::CumulativeGroupedBulk::PriceType::TaggedSymbol)
+        end
         attr_accessor :price_type
 
-        sig { returns(T.nilable(Orb::Models::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration)) }
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration
+            )
+          )
+        end
         attr_reader :dimensional_price_configuration
 
         sig do
           params(
-            dimensional_price_configuration: T.nilable(
-              T.any(Orb::Models::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration, Orb::Internal::AnyHash)
-            )
-          )
-            .void
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration::OrHash
+              )
+          ).void
         end
         attr_writer :dimensional_price_configuration
 
         sig do
           params(
             id: String,
-            billable_metric: T.nilable(T.any(Orb::Models::Price::CumulativeGroupedBulk::BillableMetric, Orb::Internal::AnyHash)),
-            billing_cycle_configuration: T.any(Orb::Models::Price::CumulativeGroupedBulk::BillingCycleConfiguration, Orb::Internal::AnyHash),
-            cadence: Orb::Models::Price::CumulativeGroupedBulk::Cadence::OrSymbol,
+            billable_metric:
+              T.nilable(
+                Orb::Price::CumulativeGroupedBulk::BillableMetric::OrHash
+              ),
+            billing_cycle_configuration:
+              Orb::Price::CumulativeGroupedBulk::BillingCycleConfiguration::OrHash,
+            cadence: Orb::Price::CumulativeGroupedBulk::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
             created_at: Time,
-            credit_allocation: T.nilable(T.any(Orb::Models::Price::CumulativeGroupedBulk::CreditAllocation, Orb::Internal::AnyHash)),
+            credit_allocation:
+              T.nilable(
+                Orb::Price::CumulativeGroupedBulk::CreditAllocation::OrHash
+              ),
             cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
             currency: String,
-            discount: T.nilable(
-              T.any(
-                Orb::Models::PercentageDiscount,
-                Orb::Internal::AnyHash,
-                Orb::Models::TrialDiscount,
-                Orb::Models::UsageDiscount,
-                Orb::Models::AmountDiscount
-              )
-            ),
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
-            invoicing_cycle_configuration: T.nilable(
-              T.any(Orb::Models::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration, Orb::Internal::AnyHash)
-            ),
-            item: T.any(Orb::Models::Price::CumulativeGroupedBulk::Item, Orb::Internal::AnyHash),
-            maximum: T.nilable(T.any(Orb::Models::Price::CumulativeGroupedBulk::Maximum, Orb::Internal::AnyHash)),
+            invoicing_cycle_configuration:
+              T.nilable(
+                Orb::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::OrHash
+              ),
+            item: Orb::Price::CumulativeGroupedBulk::Item::OrHash,
+            maximum:
+              T.nilable(Orb::Price::CumulativeGroupedBulk::Maximum::OrHash),
             maximum_amount: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(T.any(Orb::Models::Price::CumulativeGroupedBulk::Minimum, Orb::Internal::AnyHash)),
+            minimum:
+              T.nilable(Orb::Price::CumulativeGroupedBulk::Minimum::OrHash),
             minimum_amount: T.nilable(String),
             name: String,
             plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Models::Price::CumulativeGroupedBulk::PriceType::OrSymbol,
-            dimensional_price_configuration: T.nilable(
-              T.any(Orb::Models::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration, Orb::Internal::AnyHash)
-            ),
+            price_type: Orb::Price::CumulativeGroupedBulk::PriceType::OrSymbol,
+            dimensional_price_configuration:
+              T.nilable(
+                Orb::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration::OrHash
+              ),
             model_type: Symbol
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -14165,151 +18972,227 @@ module Orb
           price_type:,
           dimensional_price_configuration: nil,
           model_type: :cumulative_grouped_bulk
-        ); end
+        )
+        end
+
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                billable_metric: T.nilable(Orb::Models::Price::CumulativeGroupedBulk::BillableMetric),
-                billing_cycle_configuration: Orb::Models::Price::CumulativeGroupedBulk::BillingCycleConfiguration,
-                cadence: Orb::Models::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol,
-                conversion_rate: T.nilable(Float),
-                created_at: Time,
-                credit_allocation: T.nilable(Orb::Models::Price::CumulativeGroupedBulk::CreditAllocation),
-                cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
-                currency: String,
-                discount: T.nilable(
+          override.returns(
+            {
+              id: String,
+              billable_metric:
+                T.nilable(Orb::Price::CumulativeGroupedBulk::BillableMetric),
+              billing_cycle_configuration:
+                Orb::Price::CumulativeGroupedBulk::BillingCycleConfiguration,
+              cadence: Orb::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              created_at: Time,
+              credit_allocation:
+                T.nilable(Orb::Price::CumulativeGroupedBulk::CreditAllocation),
+              cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
+              currency: String,
+              discount:
+                T.nilable(
                   T.any(
-                    Orb::Models::PercentageDiscount,
-                    Orb::Models::TrialDiscount,
-                    Orb::Models::UsageDiscount,
-                    Orb::Models::AmountDiscount
+                    Orb::PercentageDiscount,
+                    Orb::TrialDiscount,
+                    Orb::UsageDiscount,
+                    Orb::AmountDiscount
                   )
                 ),
-                external_price_id: T.nilable(String),
-                fixed_price_quantity: T.nilable(Float),
-                invoicing_cycle_configuration: T.nilable(Orb::Models::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration),
-                item: Orb::Models::Price::CumulativeGroupedBulk::Item,
-                maximum: T.nilable(Orb::Models::Price::CumulativeGroupedBulk::Maximum),
-                maximum_amount: T.nilable(String),
-                metadata: T::Hash[Symbol, String],
-                minimum: T.nilable(Orb::Models::Price::CumulativeGroupedBulk::Minimum),
-                minimum_amount: T.nilable(String),
-                model_type: Symbol,
-                name: String,
-                plan_phase_order: T.nilable(Integer),
-                price_type: Orb::Models::Price::CumulativeGroupedBulk::PriceType::TaggedSymbol,
-                dimensional_price_configuration: T.nilable(Orb::Models::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration)
-              }
-            )
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoicing_cycle_configuration:
+                T.nilable(
+                  Orb::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration
+                ),
+              item: Orb::Price::CumulativeGroupedBulk::Item,
+              maximum: T.nilable(Orb::Price::CumulativeGroupedBulk::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Price::CumulativeGroupedBulk::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type:
+                Orb::Price::CumulativeGroupedBulk::PriceType::TaggedSymbol,
+              dimensional_price_configuration:
+                T.nilable(
+                  Orb::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration
+                )
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
           sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:); end
+          def self.new(id:)
+          end
 
-          sig { override.returns({id: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
-          sig { returns(Orb::Models::Price::CumulativeGroupedBulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol) }
+          sig do
+            returns(
+              Orb::Price::CumulativeGroupedBulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+            )
+          end
           attr_accessor :duration_unit
 
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::CumulativeGroupedBulk::BillingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::CumulativeGroupedBulk::BillingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::CumulativeGroupedBulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::CumulativeGroupedBulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::CumulativeGroupedBulk::BillingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::CumulativeGroupedBulk::BillingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::CumulativeGroupedBulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::CumulativeGroupedBulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::CumulativeGroupedBulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::CumulativeGroupedBulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::CumulativeGroupedBulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::CumulativeGroupedBulk::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         module Cadence
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::CumulativeGroupedBulk::Cadence) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::CumulativeGroupedBulk::Cadence)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ONE_TIME = T.let(:one_time, Orb::Models::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Models::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Models::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol)
-          SEMI_ANNUAL = T.let(:semi_annual, Orb::Models::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Models::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Models::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol)
+          ONE_TIME =
+            T.let(
+              :one_time,
+              Orb::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol
+            )
+          MONTHLY =
+            T.let(
+              :monthly,
+              Orb::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol
+            )
+          QUARTERLY =
+            T.let(
+              :quarterly,
+              Orb::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol
+            )
+          SEMI_ANNUAL =
+            T.let(
+              :semi_annual,
+              Orb::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol
+            )
+          ANNUAL =
+            T.let(
+              :annual,
+              Orb::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol
+            )
+          CUSTOM =
+            T.let(
+              :custom,
+              Orb::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[Orb::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
 
           sig { returns(String) }
           attr_accessor :currency
 
-          sig { params(allows_rollover: T::Boolean, currency: String).returns(T.attached_class) }
-          def self.new(allows_rollover:, currency:); end
+          sig do
+            params(allows_rollover: T::Boolean, currency: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(allows_rollover:, currency:)
+          end
 
-          sig { override.returns({allows_rollover: T::Boolean, currency: String}) }
-          def to_hash; end
+          sig do
+            override.returns({ allows_rollover: T::Boolean, currency: String })
+          end
+          def to_hash
+          end
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(Integer) }
           attr_accessor :duration
 
           sig do
             returns(
-              Orb::Models::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              Orb::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
             )
           end
           attr_accessor :duration_unit
@@ -14317,52 +19200,63 @@ module Orb
           sig do
             params(
               duration: Integer,
-              duration_unit: Orb::Models::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::DurationUnit::OrSymbol
-            )
-              .returns(T.attached_class)
+              duration_unit:
+                Orb::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(duration:, duration_unit:); end
+          def self.new(duration:, duration_unit:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  duration: Integer,
-                  duration_unit: Orb::Models::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
-                }
-              )
+            override.returns(
+              {
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module DurationUnit
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::DurationUnit) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::DurationUnit
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DAY =
               T.let(
                 :day,
-                Orb::Models::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Orb::Models::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                Orb::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[Orb::Models::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  Orb::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Item < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -14370,13 +19264,17 @@ module Orb
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -14387,7 +19285,10 @@ module Orb
           attr_accessor :maximum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              maximum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -14395,12 +19296,21 @@ module Orb
             applies_to_price_ids:,
             # Maximum amount applied
             maximum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           sig { returns(T::Array[String]) }
@@ -14411,7 +19321,10 @@ module Orb
           attr_accessor :minimum_amount
 
           sig do
-            params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+            params(
+              applies_to_price_ids: T::Array[String],
+              minimum_amount: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -14419,25 +19332,52 @@ module Orb
             applies_to_price_ids:,
             # Minimum amount applied
             minimum_amount:
-          ); end
-          sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            )
+          end
+          def to_hash
+          end
         end
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Price::CumulativeGroupedBulk::PriceType) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::CumulativeGroupedBulk::PriceType)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          USAGE_PRICE = T.let(:usage_price, Orb::Models::Price::CumulativeGroupedBulk::PriceType::TaggedSymbol)
-          FIXED_PRICE = T.let(:fixed_price, Orb::Models::Price::CumulativeGroupedBulk::PriceType::TaggedSymbol)
+          USAGE_PRICE =
+            T.let(
+              :usage_price,
+              Orb::Price::CumulativeGroupedBulk::PriceType::TaggedSymbol
+            )
+          FIXED_PRICE =
+            T.let(
+              :fixed_price,
+              Orb::Price::CumulativeGroupedBulk::PriceType::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Price::CumulativeGroupedBulk::PriceType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::CumulativeGroupedBulk::PriceType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
 
@@ -14450,20 +19390,25 @@ module Orb
               dimensional_price_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(dimension_values:, dimensional_price_group_id:); end
+          def self.new(dimension_values:, dimensional_price_group_id:)
+          end
 
-          sig { override.returns({dimension_values: T::Array[String], dimensional_price_group_id: String}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                dimension_values: T::Array[String],
+                dimensional_price_group_id: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
-      sig do
-        override
-          .returns(
-            [Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBps, Orb::Models::Price::Bps, Orb::Models::Price::BulkBps, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk]
-          )
+      sig { override.returns(T::Array[Orb::Price::Variants]) }
+      def self.variants
       end
-      def self.variants; end
     end
   end
 end

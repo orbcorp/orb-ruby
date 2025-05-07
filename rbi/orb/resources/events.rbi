@@ -62,9 +62,8 @@ module Orb
           timestamp: Time,
           customer_id: T.nilable(String),
           external_customer_id: T.nilable(String),
-          request_options: Orb::RequestOpts
-        )
-          .returns(Orb::Models::EventUpdateResponse)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Models::EventUpdateResponse)
       end
       def update(
         event_id,
@@ -83,7 +82,9 @@ module Orb
         # customer
         external_customer_id: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint is used to deprecate a single usage event with a given `event_id`.
       # `event_id` refers to the `idempotency_key` passed in during ingestion.
       #
@@ -124,8 +125,14 @@ module Orb
       # - By default, no more than 100 events can be deprecated for a single customer in
       #   a 100 day period. For higher volume updates, consider using the
       #   [event backfill](create-backfill) endpoint.
-      sig { params(event_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::EventDeprecateResponse) }
-      def deprecate(event_id, request_options: {}); end
+      sig do
+        params(
+          event_id: String,
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Models::EventDeprecateResponse)
+      end
+      def deprecate(event_id, request_options: {})
+      end
 
       # Orb's event ingestion model and API is designed around two core principles:
       #
@@ -333,12 +340,11 @@ module Orb
       # ```
       sig do
         params(
-          events: T::Array[T.any(Orb::Models::EventIngestParams::Event, Orb::Internal::AnyHash)],
+          events: T::Array[Orb::EventIngestParams::Event::OrHash],
           backfill_id: T.nilable(String),
           debug: T::Boolean,
-          request_options: Orb::RequestOpts
-        )
-          .returns(Orb::Models::EventIngestResponse)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Models::EventIngestResponse)
       end
       def ingest(
         # Body param:
@@ -350,7 +356,9 @@ module Orb
         # response
         debug: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint returns a filtered set of events for an account in a
       # [paginated list format](/api-reference/pagination).
       #
@@ -371,9 +379,8 @@ module Orb
           event_ids: T::Array[String],
           timeframe_end: T.nilable(Time),
           timeframe_start: T.nilable(Time),
-          request_options: Orb::RequestOpts
-        )
-          .returns(Orb::Models::EventSearchResponse)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Models::EventSearchResponse)
       end
       def search(
         # This is an explicit array of IDs to filter by. Note that an event's ID is the
@@ -388,10 +395,13 @@ module Orb
         # specified, the one week ago is used.
         timeframe_start: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Orb::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

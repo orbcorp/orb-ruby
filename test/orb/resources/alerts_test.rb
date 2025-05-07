@@ -7,7 +7,7 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
     response = @orb.alerts.retrieve("alert_id")
 
     assert_pattern do
-      response => Orb::Models::Alert
+      response => Orb::Alert
     end
 
     assert_pattern do
@@ -15,13 +15,13 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         id: String,
         created_at: Time,
         currency: String | nil,
-        customer: Orb::Models::Alert::Customer | nil,
+        customer: Orb::Alert::Customer | nil,
         enabled: Orb::Internal::Type::Boolean,
-        metric: Orb::Models::Alert::Metric | nil,
-        plan: Orb::Models::Alert::Plan | nil,
-        subscription: Orb::Models::Alert::Subscription | nil,
-        thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
-        type: Orb::Models::Alert::Type
+        metric: Orb::Alert::Metric | nil,
+        plan: Orb::Alert::Plan | nil,
+        subscription: Orb::Alert::Subscription | nil,
+        thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::Threshold]) | nil,
+        type: Orb::Alert::Type
       }
     end
   end
@@ -30,7 +30,7 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
     response = @orb.alerts.update("alert_configuration_id", thresholds: [{value: 0}])
 
     assert_pattern do
-      response => Orb::Models::Alert
+      response => Orb::Alert
     end
 
     assert_pattern do
@@ -38,13 +38,13 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         id: String,
         created_at: Time,
         currency: String | nil,
-        customer: Orb::Models::Alert::Customer | nil,
+        customer: Orb::Alert::Customer | nil,
         enabled: Orb::Internal::Type::Boolean,
-        metric: Orb::Models::Alert::Metric | nil,
-        plan: Orb::Models::Alert::Plan | nil,
-        subscription: Orb::Models::Alert::Subscription | nil,
-        thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
-        type: Orb::Models::Alert::Type
+        metric: Orb::Alert::Metric | nil,
+        plan: Orb::Alert::Plan | nil,
+        subscription: Orb::Alert::Subscription | nil,
+        thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::Threshold]) | nil,
+        type: Orb::Alert::Type
       }
     end
   end
@@ -62,7 +62,7 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Orb::Models::Alert
+      row => Orb::Alert
     end
 
     assert_pattern do
@@ -70,13 +70,13 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         id: String,
         created_at: Time,
         currency: String | nil,
-        customer: Orb::Models::Alert::Customer | nil,
+        customer: Orb::Alert::Customer | nil,
         enabled: Orb::Internal::Type::Boolean,
-        metric: Orb::Models::Alert::Metric | nil,
-        plan: Orb::Models::Alert::Plan | nil,
-        subscription: Orb::Models::Alert::Subscription | nil,
-        thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
-        type: Orb::Models::Alert::Type
+        metric: Orb::Alert::Metric | nil,
+        plan: Orb::Alert::Plan | nil,
+        subscription: Orb::Alert::Subscription | nil,
+        thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::Threshold]) | nil,
+        type: Orb::Alert::Type
       }
     end
   end
@@ -86,7 +86,7 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
       @orb.alerts.create_for_customer("customer_id", currency: "currency", type: :credit_balance_depleted)
 
     assert_pattern do
-      response => Orb::Models::Alert
+      response => Orb::Alert
     end
 
     assert_pattern do
@@ -94,13 +94,13 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         id: String,
         created_at: Time,
         currency: String | nil,
-        customer: Orb::Models::Alert::Customer | nil,
+        customer: Orb::Alert::Customer | nil,
         enabled: Orb::Internal::Type::Boolean,
-        metric: Orb::Models::Alert::Metric | nil,
-        plan: Orb::Models::Alert::Plan | nil,
-        subscription: Orb::Models::Alert::Subscription | nil,
-        thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
-        type: Orb::Models::Alert::Type
+        metric: Orb::Alert::Metric | nil,
+        plan: Orb::Alert::Plan | nil,
+        subscription: Orb::Alert::Subscription | nil,
+        thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::Threshold]) | nil,
+        type: Orb::Alert::Type
       }
     end
   end
@@ -114,7 +114,7 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Orb::Models::Alert
+      response => Orb::Alert
     end
 
     assert_pattern do
@@ -122,13 +122,13 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         id: String,
         created_at: Time,
         currency: String | nil,
-        customer: Orb::Models::Alert::Customer | nil,
+        customer: Orb::Alert::Customer | nil,
         enabled: Orb::Internal::Type::Boolean,
-        metric: Orb::Models::Alert::Metric | nil,
-        plan: Orb::Models::Alert::Plan | nil,
-        subscription: Orb::Models::Alert::Subscription | nil,
-        thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
-        type: Orb::Models::Alert::Type
+        metric: Orb::Alert::Metric | nil,
+        plan: Orb::Alert::Plan | nil,
+        subscription: Orb::Alert::Subscription | nil,
+        thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::Threshold]) | nil,
+        type: Orb::Alert::Type
       }
     end
   end
@@ -138,7 +138,7 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
       @orb.alerts.create_for_subscription("subscription_id", thresholds: [{value: 0}], type: :usage_exceeded)
 
     assert_pattern do
-      response => Orb::Models::Alert
+      response => Orb::Alert
     end
 
     assert_pattern do
@@ -146,13 +146,13 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         id: String,
         created_at: Time,
         currency: String | nil,
-        customer: Orb::Models::Alert::Customer | nil,
+        customer: Orb::Alert::Customer | nil,
         enabled: Orb::Internal::Type::Boolean,
-        metric: Orb::Models::Alert::Metric | nil,
-        plan: Orb::Models::Alert::Plan | nil,
-        subscription: Orb::Models::Alert::Subscription | nil,
-        thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
-        type: Orb::Models::Alert::Type
+        metric: Orb::Alert::Metric | nil,
+        plan: Orb::Alert::Plan | nil,
+        subscription: Orb::Alert::Subscription | nil,
+        thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::Threshold]) | nil,
+        type: Orb::Alert::Type
       }
     end
   end
@@ -161,7 +161,7 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
     response = @orb.alerts.disable("alert_configuration_id")
 
     assert_pattern do
-      response => Orb::Models::Alert
+      response => Orb::Alert
     end
 
     assert_pattern do
@@ -169,13 +169,13 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         id: String,
         created_at: Time,
         currency: String | nil,
-        customer: Orb::Models::Alert::Customer | nil,
+        customer: Orb::Alert::Customer | nil,
         enabled: Orb::Internal::Type::Boolean,
-        metric: Orb::Models::Alert::Metric | nil,
-        plan: Orb::Models::Alert::Plan | nil,
-        subscription: Orb::Models::Alert::Subscription | nil,
-        thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
-        type: Orb::Models::Alert::Type
+        metric: Orb::Alert::Metric | nil,
+        plan: Orb::Alert::Plan | nil,
+        subscription: Orb::Alert::Subscription | nil,
+        thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::Threshold]) | nil,
+        type: Orb::Alert::Type
       }
     end
   end
@@ -184,7 +184,7 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
     response = @orb.alerts.enable("alert_configuration_id")
 
     assert_pattern do
-      response => Orb::Models::Alert
+      response => Orb::Alert
     end
 
     assert_pattern do
@@ -192,13 +192,13 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         id: String,
         created_at: Time,
         currency: String | nil,
-        customer: Orb::Models::Alert::Customer | nil,
+        customer: Orb::Alert::Customer | nil,
         enabled: Orb::Internal::Type::Boolean,
-        metric: Orb::Models::Alert::Metric | nil,
-        plan: Orb::Models::Alert::Plan | nil,
-        subscription: Orb::Models::Alert::Subscription | nil,
-        thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Alert::Threshold]) | nil,
-        type: Orb::Models::Alert::Type
+        metric: Orb::Alert::Metric | nil,
+        plan: Orb::Alert::Plan | nil,
+        subscription: Orb::Alert::Subscription | nil,
+        thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::Threshold]) | nil,
+        type: Orb::Alert::Type
       }
     end
   end

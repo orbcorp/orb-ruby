@@ -9,12 +9,18 @@ module Orb
       # is a great choice for connectors and integrations.
       #
       # This API does not have any side-effects or return any Orb resources.
-      sig { params(request_options: Orb::RequestOpts).returns(Orb::Models::TopLevelPingResponse) }
-      def ping(request_options: {}); end
+      sig do
+        params(request_options: Orb::RequestOptions::OrHash).returns(
+          Orb::Models::TopLevelPingResponse
+        )
+      end
+      def ping(request_options: {})
+      end
 
       # @api private
       sig { params(client: Orb::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

@@ -13,7 +13,7 @@ module Orb
     }
 
   class RequestOptions < Orb::Internal::Type::BaseModel
-    def self.validate!: (self | ::Hash[Symbol, top] opts) -> void
+    def self.validate!: (Orb::request_opts opts) -> void
 
     attr_accessor idempotency_key: String?
 

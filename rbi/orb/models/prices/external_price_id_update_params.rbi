@@ -7,6 +7,8 @@ module Orb
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         # User-specified key/value pairs for the resource. Individual keys can be removed
         # by setting the value to `null`, and the entire metadata mapping can be cleared
         # by setting `metadata` to `null`.
@@ -16,9 +18,8 @@ module Orb
         sig do
           params(
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-            request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: Orb::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # User-specified key/value pairs for the resource. Individual keys can be removed
@@ -26,15 +27,19 @@ module Orb
           # by setting `metadata` to `null`.
           metadata: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns({
-                       metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                       request_options: Orb::RequestOptions
-                     })
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+              request_options: Orb::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

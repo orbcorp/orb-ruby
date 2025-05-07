@@ -36,8 +36,8 @@ module Orb
 
       # @!attribute date_type
       #
-      #   @return [Symbol, Orb::Models::InvoiceListParams::DateType, nil]
-      optional :date_type, enum: -> { Orb::Models::InvoiceListParams::DateType }, nil?: true
+      #   @return [Symbol, Orb::InvoiceListParams::DateType, nil]
+      optional :date_type, enum: -> { Orb::InvoiceListParams::DateType }, nil?: true
 
       # @!attribute due_date
       #
@@ -101,10 +101,8 @@ module Orb
 
       # @!attribute status
       #
-      #   @return [Array<Symbol, Orb::Models::InvoiceListParams::Status>, nil]
-      optional :status,
-               -> { Orb::Internal::Type::ArrayOf[enum: Orb::Models::InvoiceListParams::Status] },
-               nil?: true
+      #   @return [Array<Symbol, Orb::InvoiceListParams::Status>, nil]
+      optional :status, -> { Orb::Internal::Type::ArrayOf[enum: Orb::InvoiceListParams::Status] }, nil?: true
 
       # @!attribute subscription_id
       #
@@ -122,16 +120,14 @@ module Orb
       #   @param amount_lt [String, nil]
       #
       #   @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
-      #   ...
       #
       #   @param customer_id [String, nil]
       #
-      #   @param date_type [Symbol, Orb::Models::InvoiceListParams::DateType, nil]
+      #   @param date_type [Symbol, Orb::InvoiceListParams::DateType, nil]
       #
       #   @param due_date [Date, nil]
       #
       #   @param due_date_window [String, nil] Filters invoices by their due dates within a specific time range in the past. Sp
-      #   ...
       #
       #   @param due_date_gt [Date, nil]
       #
@@ -151,7 +147,7 @@ module Orb
       #
       #   @param limit [Integer] The number of items to fetch. Defaults to 20.
       #
-      #   @param status [Array<Symbol, Orb::Models::InvoiceListParams::Status>, nil]
+      #   @param status [Array<Symbol, Orb::InvoiceListParams::Status>, nil]
       #
       #   @param subscription_id [String, nil]
       #

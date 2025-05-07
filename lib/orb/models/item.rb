@@ -16,8 +16,8 @@ module Orb
 
       # @!attribute external_connections
       #
-      #   @return [Array<Orb::Models::Item::ExternalConnection>]
-      required :external_connections, -> { Orb::Internal::Type::ArrayOf[Orb::Models::Item::ExternalConnection] }
+      #   @return [Array<Orb::Item::ExternalConnection>]
+      required :external_connections, -> { Orb::Internal::Type::ArrayOf[Orb::Item::ExternalConnection] }
 
       # @!attribute name
       #
@@ -31,15 +31,14 @@ module Orb
       #
       #   @param id [String]
       #   @param created_at [Time]
-      #   @param external_connections [Array<Orb::Models::Item::ExternalConnection>]
+      #   @param external_connections [Array<Orb::Item::ExternalConnection>]
       #   @param name [String]
 
       class ExternalConnection < Orb::Internal::Type::BaseModel
         # @!attribute external_connection_name
         #
-        #   @return [Symbol, Orb::Models::Item::ExternalConnection::ExternalConnectionName]
-        required :external_connection_name,
-                 enum: -> { Orb::Models::Item::ExternalConnection::ExternalConnectionName }
+        #   @return [Symbol, Orb::Item::ExternalConnection::ExternalConnectionName]
+        required :external_connection_name, enum: -> { Orb::Item::ExternalConnection::ExternalConnectionName }
 
         # @!attribute external_entity_id
         #
@@ -47,10 +46,10 @@ module Orb
         required :external_entity_id, String
 
         # @!method initialize(external_connection_name:, external_entity_id:)
-        #   @param external_connection_name [Symbol, Orb::Models::Item::ExternalConnection::ExternalConnectionName]
+        #   @param external_connection_name [Symbol, Orb::Item::ExternalConnection::ExternalConnectionName]
         #   @param external_entity_id [String]
 
-        # @see Orb::Models::Item::ExternalConnection#external_connection_name
+        # @see Orb::Item::ExternalConnection#external_connection_name
         module ExternalConnectionName
           extend Orb::Internal::Type::Enum
 

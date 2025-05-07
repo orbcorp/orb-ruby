@@ -28,10 +28,8 @@ module Orb
         # @param currency [String, nil] The ledger currency or custom pricing unit to use.
         #
         # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
-        # ...
         #
         # @param include_all_blocks [Boolean] If set to True, all expired and depleted blocks, as well as active block will be
-        # ...
         #
         # @param limit [Integer] The number of items to fetch. Defaults to 20.
         #
@@ -41,7 +39,7 @@ module Orb
         #
         # @see Orb::Models::Customers::CreditListParams
         def list(customer_id, params = {})
-          parsed, options = Orb::Models::Customers::CreditListParams.dump_request(params)
+          parsed, options = Orb::Customers::CreditListParams.dump_request(params)
           @client.request(
             method: :get,
             path: ["customers/%1$s/credits", customer_id],
@@ -70,10 +68,8 @@ module Orb
         # @param currency [String, nil] The ledger currency or custom pricing unit to use.
         #
         # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
-        # ...
         #
         # @param include_all_blocks [Boolean] If set to True, all expired and depleted blocks, as well as active block will be
-        # ...
         #
         # @param limit [Integer] The number of items to fetch. Defaults to 20.
         #
@@ -83,7 +79,7 @@ module Orb
         #
         # @see Orb::Models::Customers::CreditListByExternalIDParams
         def list_by_external_id(external_customer_id, params = {})
-          parsed, options = Orb::Models::Customers::CreditListByExternalIDParams.dump_request(params)
+          parsed, options = Orb::Customers::CreditListByExternalIDParams.dump_request(params)
           @client.request(
             method: :get,
             path: ["customers/external_customer_id/%1$s/credits", external_customer_id],

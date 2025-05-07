@@ -10,8 +10,6 @@ module Orb
         data: ::Array[Orb::Models::EventSearchResponse::Data]
       ) -> void
 
-      def to_hash: -> Orb::Models::event_search_response
-
       type data =
         {
           id: String,
@@ -47,8 +45,6 @@ module Orb
           properties: top,
           timestamp: Time
         ) -> void
-
-        def to_hash: -> Orb::Models::EventSearchResponse::data
       end
     end
   end

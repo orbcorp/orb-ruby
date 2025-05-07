@@ -7,8 +7,6 @@ module Orb
       include Orb::Internal::Type::RequestParameters
 
       def initialize: (?request_options: Orb::request_opts) -> void
-
-      def to_hash: -> Orb::Models::coupon_archive_params
     end
   end
 end

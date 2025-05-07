@@ -4,24 +4,31 @@ module Orb
   module Resources
     class Alerts
       # This endpoint retrieves an alert by its ID.
-      sig { params(alert_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::Alert) }
-      def retrieve(alert_id, request_options: {}); end
+      sig do
+        params(
+          alert_id: String,
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Alert)
+      end
+      def retrieve(alert_id, request_options: {})
+      end
 
       # This endpoint updates the thresholds of an alert.
       sig do
         params(
           alert_configuration_id: String,
-          thresholds: T::Array[T.any(Orb::Models::AlertUpdateParams::Threshold, Orb::Internal::AnyHash)],
-          request_options: Orb::RequestOpts
-        )
-          .returns(Orb::Models::Alert)
+          thresholds: T::Array[Orb::AlertUpdateParams::Threshold::OrHash],
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Alert)
       end
       def update(
         alert_configuration_id,
         # The thresholds that define the values at which the alert will be triggered.
         thresholds:,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint returns a list of alerts within Orb.
       #
       # The request must specify one of `customer_id`, `external_customer_id`, or
@@ -44,9 +51,8 @@ module Orb
           external_customer_id: T.nilable(String),
           limit: Integer,
           subscription_id: T.nilable(String),
-          request_options: Orb::RequestOpts
-        )
-          .returns(Orb::Internal::Page[Orb::Models::Alert])
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Internal::Page[Orb::Alert])
       end
       def list(
         created_at_gt: nil,
@@ -65,7 +71,9 @@ module Orb
         # Fetch alerts scoped to this subscription_id
         subscription_id: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint creates a new alert to monitor a customer's credit balance. There
       # are three types of alerts that can be scoped to customers:
       # `credit_balance_depleted`, `credit_balance_dropped`, and
@@ -78,11 +86,13 @@ module Orb
         params(
           customer_id: String,
           currency: String,
-          type: Orb::Models::AlertCreateForCustomerParams::Type::OrSymbol,
-          thresholds: T.nilable(T::Array[T.any(Orb::Models::AlertCreateForCustomerParams::Threshold, Orb::Internal::AnyHash)]),
-          request_options: Orb::RequestOpts
-        )
-          .returns(Orb::Models::Alert)
+          type: Orb::AlertCreateForCustomerParams::Type::OrSymbol,
+          thresholds:
+            T.nilable(
+              T::Array[Orb::AlertCreateForCustomerParams::Threshold::OrHash]
+            ),
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Alert)
       end
       def create_for_customer(
         customer_id,
@@ -93,7 +103,9 @@ module Orb
         # The thresholds that define the values at which the alert will be triggered.
         thresholds: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint creates a new alert to monitor a customer's credit balance. There
       # are three types of alerts that can be scoped to customers:
       # `credit_balance_depleted`, `credit_balance_dropped`, and
@@ -106,13 +118,15 @@ module Orb
         params(
           external_customer_id: String,
           currency: String,
-          type: Orb::Models::AlertCreateForExternalCustomerParams::Type::OrSymbol,
-          thresholds: T.nilable(
-            T::Array[T.any(Orb::Models::AlertCreateForExternalCustomerParams::Threshold, Orb::Internal::AnyHash)]
-          ),
-          request_options: Orb::RequestOpts
-        )
-          .returns(Orb::Models::Alert)
+          type: Orb::AlertCreateForExternalCustomerParams::Type::OrSymbol,
+          thresholds:
+            T.nilable(
+              T::Array[
+                Orb::AlertCreateForExternalCustomerParams::Threshold::OrHash
+              ]
+            ),
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Alert)
       end
       def create_for_external_customer(
         external_customer_id,
@@ -123,7 +137,9 @@ module Orb
         # The thresholds that define the values at which the alert will be triggered.
         thresholds: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint is used to create alerts at the subscription level.
       #
       # Subscription level alerts can be one of two types: `usage_exceeded` or
@@ -138,12 +154,12 @@ module Orb
       sig do
         params(
           subscription_id: String,
-          thresholds: T::Array[T.any(Orb::Models::AlertCreateForSubscriptionParams::Threshold, Orb::Internal::AnyHash)],
-          type: Orb::Models::AlertCreateForSubscriptionParams::Type::OrSymbol,
+          thresholds:
+            T::Array[Orb::AlertCreateForSubscriptionParams::Threshold::OrHash],
+          type: Orb::AlertCreateForSubscriptionParams::Type::OrSymbol,
           metric_id: T.nilable(String),
-          request_options: Orb::RequestOpts
-        )
-          .returns(Orb::Models::Alert)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Alert)
       end
       def create_for_subscription(
         subscription_id,
@@ -154,7 +170,9 @@ module Orb
         # The metric to track usage for.
         metric_id: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint allows you to disable an alert. To disable a plan-level alert for
       # a specific subscription, you must include the `subscription_id`. The
       # `subscription_id` is not required for customer or subscription level alerts.
@@ -162,16 +180,17 @@ module Orb
         params(
           alert_configuration_id: String,
           subscription_id: T.nilable(String),
-          request_options: Orb::RequestOpts
-        )
-          .returns(Orb::Models::Alert)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Alert)
       end
       def disable(
         alert_configuration_id,
         # Used to update the status of a plan alert scoped to this subscription_id
         subscription_id: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint allows you to enable an alert. To enable a plan-level alert for a
       # specific subscription, you must include the `subscription_id`. The
       # `subscription_id` is not required for customer or subscription level alerts.
@@ -179,19 +198,21 @@ module Orb
         params(
           alert_configuration_id: String,
           subscription_id: T.nilable(String),
-          request_options: Orb::RequestOpts
-        )
-          .returns(Orb::Models::Alert)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Alert)
       end
       def enable(
         alert_configuration_id,
         # Used to update the status of a plan alert scoped to this subscription_id
         subscription_id: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Orb::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

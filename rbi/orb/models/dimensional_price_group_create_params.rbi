@@ -6,6 +6,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
       sig { returns(String) }
       attr_accessor :billable_metric_id
 
@@ -32,9 +34,8 @@ module Orb
           name: String,
           external_dimensional_price_group_id: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         billable_metric_id:,
@@ -47,21 +48,23 @@ module Orb
         # by setting `metadata` to `null`.
         metadata: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              billable_metric_id: String,
-              dimensions: T::Array[String],
-              name: String,
-              external_dimensional_price_group_id: T.nilable(String),
-              metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-              request_options: Orb::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            billable_metric_id: String,
+            dimensions: T::Array[String],
+            name: String,
+            external_dimensional_price_group_id: T.nilable(String),
+            metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

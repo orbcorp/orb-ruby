@@ -49,7 +49,6 @@ module Orb
       #   @param external_dimensional_price_group_id [String, nil]
       #
       #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
-      #   ...
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end

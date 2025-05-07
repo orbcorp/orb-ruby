@@ -8,13 +8,13 @@ module Orb
         sql: String,
         ?metadata: ::Hash[Symbol, String?]?,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::BillableMetric
+      ) -> Orb::BillableMetric
 
       def update: (
         String metric_id,
         ?metadata: ::Hash[Symbol, String?]?,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::BillableMetric
+      ) -> Orb::BillableMetric
 
       def list: (
         ?created_at_gt: Time?,
@@ -24,12 +24,12 @@ module Orb
         ?cursor: String?,
         ?limit: Integer,
         ?request_options: Orb::request_opts
-      ) -> Orb::Internal::Page[Orb::Models::BillableMetric]
+      ) -> Orb::Internal::Page[Orb::BillableMetric]
 
       def fetch: (
         String metric_id,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::BillableMetric
+      ) -> Orb::BillableMetric
 
       def initialize: (client: Orb::Client) -> void
     end

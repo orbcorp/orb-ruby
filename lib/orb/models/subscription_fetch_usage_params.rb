@@ -28,8 +28,8 @@ module Orb
       # @!attribute granularity
       #   This determines the windowing of usage reporting.
       #
-      #   @return [Symbol, Orb::Models::SubscriptionFetchUsageParams::Granularity, nil]
-      optional :granularity, enum: -> { Orb::Models::SubscriptionFetchUsageParams::Granularity }, nil?: true
+      #   @return [Symbol, Orb::SubscriptionFetchUsageParams::Granularity, nil]
+      optional :granularity, enum: -> { Orb::SubscriptionFetchUsageParams::Granularity }, nil?: true
 
       # @!attribute group_by
       #   Groups per-price usage by the key provided.
@@ -65,21 +65,20 @@ module Orb
       #   discounts, it's strongly recommended that you use the default cumulative
       #   behavior.
       #
-      #   @return [Symbol, Orb::Models::SubscriptionFetchUsageParams::ViewMode, nil]
-      optional :view_mode, enum: -> { Orb::Models::SubscriptionFetchUsageParams::ViewMode }, nil?: true
+      #   @return [Symbol, Orb::SubscriptionFetchUsageParams::ViewMode, nil]
+      optional :view_mode, enum: -> { Orb::SubscriptionFetchUsageParams::ViewMode }, nil?: true
 
       # @!method initialize(billable_metric_id: nil, first_dimension_key: nil, first_dimension_value: nil, granularity: nil, group_by: nil, second_dimension_key: nil, second_dimension_value: nil, timeframe_end: nil, timeframe_start: nil, view_mode: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::SubscriptionFetchUsageParams} for more details.
       #
       #   @param billable_metric_id [String, nil] When specified in conjunction with `group_by`, this parameter filters usage to a
-      #   ...
       #
       #   @param first_dimension_key [String, nil]
       #
       #   @param first_dimension_value [String, nil]
       #
-      #   @param granularity [Symbol, Orb::Models::SubscriptionFetchUsageParams::Granularity, nil] This determines the windowing of usage reporting.
+      #   @param granularity [Symbol, Orb::SubscriptionFetchUsageParams::Granularity, nil] This determines the windowing of usage reporting.
       #
       #   @param group_by [String, nil] Groups per-price usage by the key provided.
       #
@@ -91,8 +90,7 @@ module Orb
       #
       #   @param timeframe_start [Time, nil] Usage returned is inclusive of `timeframe_start`.
       #
-      #   @param view_mode [Symbol, Orb::Models::SubscriptionFetchUsageParams::ViewMode, nil] Controls whether Orb returns cumulative usage since the start of the billing per
-      #   ...
+      #   @param view_mode [Symbol, Orb::SubscriptionFetchUsageParams::ViewMode, nil] Controls whether Orb returns cumulative usage since the start of the billing per
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 

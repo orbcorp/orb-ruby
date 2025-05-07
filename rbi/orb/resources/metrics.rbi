@@ -13,9 +13,8 @@ module Orb
           name: String,
           sql: String,
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: Orb::RequestOpts
-        )
-          .returns(Orb::Models::BillableMetric)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::BillableMetric)
       end
       def create(
         # A description of the metric.
@@ -31,7 +30,9 @@ module Orb
         # by setting `metadata` to `null`.
         metadata: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint allows you to update the `metadata` property on a metric. If you
       # pass `null` for the metadata value, it will clear any existing metadata for that
       # invoice.
@@ -39,9 +40,8 @@ module Orb
         params(
           metric_id: String,
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: Orb::RequestOpts
-        )
-          .returns(Orb::Models::BillableMetric)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::BillableMetric)
       end
       def update(
         metric_id,
@@ -50,7 +50,9 @@ module Orb
         # by setting `metadata` to `null`.
         metadata: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint is used to fetch [metric](/core-concepts##metric) details given a
       # metric identifier. It returns information about the metrics including its name,
       # description, and item.
@@ -62,9 +64,8 @@ module Orb
           created_at_lte: T.nilable(Time),
           cursor: T.nilable(String),
           limit: Integer,
-          request_options: Orb::RequestOpts
-        )
-          .returns(Orb::Internal::Page[Orb::Models::BillableMetric])
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Internal::Page[Orb::BillableMetric])
       end
       def list(
         created_at_gt: nil,
@@ -77,15 +78,24 @@ module Orb
         # The number of items to fetch. Defaults to 20.
         limit: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint is used to list [metrics](/core-concepts#metric). It returns
       # information about the metrics including its name, description, and item.
-      sig { params(metric_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::BillableMetric) }
-      def fetch(metric_id, request_options: {}); end
+      sig do
+        params(
+          metric_id: String,
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::BillableMetric)
+      end
+      def fetch(metric_id, request_options: {})
+      end
 
       # @api private
       sig { params(client: Orb::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

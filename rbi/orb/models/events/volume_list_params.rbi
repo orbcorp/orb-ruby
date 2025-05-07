@@ -7,6 +7,8 @@ module Orb
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         # The start of the timeframe, inclusive, in which to return event volume. All
         # datetime values are converted to UTC time. If the specified time isn't
         # hour-aligned, the response includes the event volume count for the hour the time
@@ -42,9 +44,8 @@ module Orb
             cursor: T.nilable(String),
             limit: Integer,
             timeframe_end: Time,
-            request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: Orb::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # The start of the timeframe, inclusive, in which to return event volume. All
@@ -63,20 +64,22 @@ module Orb
           # volumecount for the hour the time falls in.
           timeframe_end: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                timeframe_start: Time,
-                cursor: T.nilable(String),
-                limit: Integer,
-                timeframe_end: Time,
-                request_options: Orb::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              timeframe_start: Time,
+              cursor: T.nilable(String),
+              limit: Integer,
+              timeframe_end: Time,
+              request_options: Orb::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

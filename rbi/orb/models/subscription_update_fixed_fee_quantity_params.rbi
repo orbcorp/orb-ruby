@@ -6,6 +6,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
       # Price for which the quantity should be updated. Must be a fixed fee.
       sig { returns(String) }
       attr_accessor :price_id
@@ -22,10 +24,21 @@ module Orb
       # Determines when the change takes effect. Note that if `effective_date` is
       # specified, this defaults to `effective_date`. Otherwise, this defaults to
       # `immediate` unless it's explicitly set to `upcoming_invoice`.
-      sig { returns(T.nilable(Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption::OrSymbol)) }
+      sig do
+        returns(
+          T.nilable(
+            Orb::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption::OrSymbol
+          )
+        )
+      end
       attr_reader :change_option
 
-      sig { params(change_option: Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption::OrSymbol).void }
+      sig do
+        params(
+          change_option:
+            Orb::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption::OrSymbol
+        ).void
+      end
       attr_writer :change_option
 
       # The date that the quantity change should take effect, localized to the
@@ -39,11 +52,11 @@ module Orb
           price_id: String,
           quantity: Float,
           allow_invoice_credit_or_void: T.nilable(T::Boolean),
-          change_option: Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption::OrSymbol,
+          change_option:
+            Orb::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption::OrSymbol,
           effective_date: T.nilable(Date),
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Price for which the quantity should be updated. Must be a fixed fee.
@@ -62,21 +75,24 @@ module Orb
         # effective according to `change_option`.
         effective_date: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              price_id: String,
-              quantity: Float,
-              allow_invoice_credit_or_void: T.nilable(T::Boolean),
-              change_option: Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption::OrSymbol,
-              effective_date: T.nilable(Date),
-              request_options: Orb::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            price_id: String,
+            quantity: Float,
+            allow_invoice_credit_or_void: T.nilable(T::Boolean),
+            change_option:
+              Orb::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption::OrSymbol,
+            effective_date: T.nilable(Date),
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Determines when the change takes effect. Note that if `effective_date` is
       # specified, this defaults to `effective_date`. Otherwise, this defaults to
@@ -85,24 +101,39 @@ module Orb
         extend Orb::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption) }
+          T.type_alias do
+            T.all(
+              Symbol,
+              Orb::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption
+            )
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         IMMEDIATE =
-          T.let(:immediate, Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption::TaggedSymbol)
+          T.let(
+            :immediate,
+            Orb::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption::TaggedSymbol
+          )
         UPCOMING_INVOICE =
           T.let(
             :upcoming_invoice,
-            Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption::TaggedSymbol
+            Orb::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption::TaggedSymbol
           )
         EFFECTIVE_DATE =
-          T.let(:effective_date, Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption::TaggedSymbol)
+          T.let(
+            :effective_date,
+            Orb::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption::TaggedSymbol
+          )
 
         sig do
-          override
-            .returns(T::Array[Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption::TaggedSymbol])
+          override.returns(
+            T::Array[
+              Orb::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption::TaggedSymbol
+            ]
+          )
         end
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

@@ -5,13 +5,19 @@ module Orb
     module Discount
       extend Orb::Internal::Type::Union
 
-      sig do
-        override
-          .returns(
-            [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount]
+      Variants =
+        T.type_alias do
+          T.any(
+            Orb::PercentageDiscount,
+            Orb::TrialDiscount,
+            Orb::UsageDiscount,
+            Orb::AmountDiscount
           )
+        end
+
+      sig { override.returns(T::Array[Orb::Discount::Variants]) }
+      def self.variants
       end
-      def self.variants; end
     end
   end
 end

@@ -12,7 +12,7 @@ class Orb::Test::Resources::DimensionalPriceGroupsTest < Orb::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Orb::Models::DimensionalPriceGroup
+      response => Orb::DimensionalPriceGroup
     end
 
     assert_pattern do
@@ -31,7 +31,7 @@ class Orb::Test::Resources::DimensionalPriceGroupsTest < Orb::Test::ResourceTest
     response = @orb.dimensional_price_groups.retrieve("dimensional_price_group_id")
 
     assert_pattern do
-      response => Orb::Models::DimensionalPriceGroup
+      response => Orb::DimensionalPriceGroup
     end
 
     assert_pattern do
@@ -57,7 +57,7 @@ class Orb::Test::Resources::DimensionalPriceGroupsTest < Orb::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Orb::Models::DimensionalPriceGroup
+      row => Orb::DimensionalPriceGroup
     end
 
     assert_pattern do

@@ -52,8 +52,8 @@ module Orb
 
       # @!attribute status
       #
-      #   @return [Symbol, Orb::Models::SubscriptionListParams::Status, nil]
-      optional :status, enum: -> { Orb::Models::SubscriptionListParams::Status }, nil?: true
+      #   @return [Symbol, Orb::SubscriptionListParams::Status, nil]
+      optional :status, enum: -> { Orb::SubscriptionListParams::Status }, nil?: true
 
       # @!method initialize(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, customer_id: nil, external_customer_id: nil, limit: nil, status: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
@@ -68,7 +68,6 @@ module Orb
       #   @param created_at_lte [Time, nil]
       #
       #   @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
-      #   ...
       #
       #   @param customer_id [Array<String>, nil]
       #
@@ -76,7 +75,7 @@ module Orb
       #
       #   @param limit [Integer] The number of items to fetch. Defaults to 20.
       #
-      #   @param status [Symbol, Orb::Models::SubscriptionListParams::Status, nil]
+      #   @param status [Symbol, Orb::SubscriptionListParams::Status, nil]
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 

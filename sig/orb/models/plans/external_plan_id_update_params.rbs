@@ -18,8 +18,6 @@ module Orb
           ?metadata: ::Hash[Symbol, String?]?,
           ?request_options: Orb::request_opts
         ) -> void
-
-        def to_hash: -> Orb::Models::Plans::external_plan_id_update_params
       end
     end
   end

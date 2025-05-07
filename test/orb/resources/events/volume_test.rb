@@ -7,12 +7,12 @@ class Orb::Test::Resources::Events::VolumeTest < Orb::Test::ResourceTest
     response = @orb.events.volume.list(timeframe_start: "2019-12-27T18:11:19.117Z")
 
     assert_pattern do
-      response => Orb::Models::Events::EventVolumes
+      response => Orb::Events::EventVolumes
     end
 
     assert_pattern do
       response => {
-        data: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Events::EventVolumes::Data])
+        data: ^(Orb::Internal::Type::ArrayOf[Orb::Events::EventVolumes::Data])
       }
     end
   end

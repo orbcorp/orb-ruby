@@ -4,7 +4,7 @@ module Orb
       {
         id: String,
         archived_at: Time?,
-        discount: Orb::Models::Coupon::discount,
+        discount: Orb::Coupon::discount,
         duration_in_months: Integer?,
         max_redemptions: Integer?,
         redemption_code: String,
@@ -16,7 +16,7 @@ module Orb
 
       attr_accessor archived_at: Time?
 
-      attr_accessor discount: Orb::Models::Coupon::discount
+      attr_accessor discount: Orb::Coupon::discount
 
       attr_accessor duration_in_months: Integer?
 
@@ -29,22 +29,19 @@ module Orb
       def initialize: (
         id: String,
         archived_at: Time?,
-        discount: Orb::Models::Coupon::discount,
+        discount: Orb::Coupon::discount,
         duration_in_months: Integer?,
         max_redemptions: Integer?,
         redemption_code: String,
         times_redeemed: Integer
       ) -> void
 
-      def to_hash: -> Orb::Models::coupon
-
-      type discount =
-        Orb::Models::PercentageDiscount | Orb::Models::AmountDiscount
+      type discount = Orb::PercentageDiscount | Orb::AmountDiscount
 
       module Discount
         extend Orb::Internal::Type::Union
 
-        def self?.variants: -> [Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount]
+        def self?.variants: -> ::Array[Orb::Coupon::discount]
       end
     end
   end

@@ -15,8 +15,6 @@ module Orb
         ?synchronous: bool,
         ?request_options: Orb::request_opts
       ) -> void
-
-      def to_hash: -> Orb::Models::invoice_issue_params
     end
   end
 end

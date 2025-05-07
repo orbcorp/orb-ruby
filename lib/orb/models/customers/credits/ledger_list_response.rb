@@ -125,7 +125,6 @@ module Orb
             #   @param ledger_sequence_number [Integer]
             #
             #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
-            #   ...
             #
             #   @param starting_balance [Float]
             #
@@ -295,7 +294,6 @@ module Orb
             #   @param ledger_sequence_number [Integer]
             #
             #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
-            #   ...
             #
             #   @param starting_balance [Float]
             #
@@ -462,7 +460,6 @@ module Orb
             #   @param ledger_sequence_number [Integer]
             #
             #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
-            #   ...
             #
             #   @param new_block_expiry_date [Time, nil]
             #
@@ -621,7 +618,6 @@ module Orb
             #   @param ledger_sequence_number [Integer]
             #
             #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
-            #   ...
             #
             #   @param starting_balance [Float]
             #
@@ -785,7 +781,6 @@ module Orb
             #   @param ledger_sequence_number [Integer]
             #
             #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
-            #   ...
             #
             #   @param starting_balance [Float]
             #
@@ -960,7 +955,6 @@ module Orb
             #   @param ledger_sequence_number [Integer]
             #
             #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
-            #   ...
             #
             #   @param new_block_expiry_date [Time]
             #
@@ -1121,7 +1115,6 @@ module Orb
             #   @param ledger_sequence_number [Integer]
             #
             #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
-            #   ...
             #
             #   @param starting_balance [Float]
             #

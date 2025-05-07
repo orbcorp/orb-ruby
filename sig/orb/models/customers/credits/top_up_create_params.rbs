@@ -6,7 +6,7 @@ module Orb
           {
             amount: String,
             currency: String,
-            invoice_settings: Orb::Models::Customers::Credits::TopUpCreateParams::InvoiceSettings,
+            invoice_settings: Orb::Customers::Credits::TopUpCreateParams::InvoiceSettings,
             per_unit_cost_basis: String,
             threshold: String,
             active_from: Time?,
@@ -23,7 +23,7 @@ module Orb
 
           attr_accessor currency: String
 
-          attr_accessor invoice_settings: Orb::Models::Customers::Credits::TopUpCreateParams::InvoiceSettings
+          attr_accessor invoice_settings: Orb::Customers::Credits::TopUpCreateParams::InvoiceSettings
 
           attr_accessor per_unit_cost_basis: String
 
@@ -38,7 +38,7 @@ module Orb
           def initialize: (
             amount: String,
             currency: String,
-            invoice_settings: Orb::Models::Customers::Credits::TopUpCreateParams::InvoiceSettings,
+            invoice_settings: Orb::Customers::Credits::TopUpCreateParams::InvoiceSettings,
             per_unit_cost_basis: String,
             threshold: String,
             ?active_from: Time?,
@@ -46,8 +46,6 @@ module Orb
             ?expires_after_unit: Orb::Models::Customers::Credits::TopUpCreateParams::expires_after_unit?,
             ?request_options: Orb::request_opts
           ) -> void
-
-          def to_hash: -> Orb::Models::Customers::Credits::top_up_create_params
 
           type invoice_settings =
             {
@@ -74,8 +72,6 @@ module Orb
               ?memo: String?,
               ?require_successful_payment: bool
             ) -> void
-
-            def to_hash: -> Orb::Models::Customers::Credits::TopUpCreateParams::invoice_settings
           end
 
           type expires_after_unit = :day | :month

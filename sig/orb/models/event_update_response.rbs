@@ -6,8 +6,6 @@ module Orb
       attr_accessor amended: String
 
       def initialize: (amended: String) -> void
-
-      def to_hash: -> Orb::Models::event_update_response
     end
   end
 end

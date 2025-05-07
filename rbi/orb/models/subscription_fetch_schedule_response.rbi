@@ -3,6 +3,8 @@
 module Orb
   module Models
     class SubscriptionFetchScheduleResponse < Orb::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -12,7 +14,11 @@ module Orb
       sig { returns(Orb::Models::SubscriptionFetchScheduleResponse::Plan) }
       attr_reader :plan
 
-      sig { params(plan: T.any(Orb::Models::SubscriptionFetchScheduleResponse::Plan, Orb::Internal::AnyHash)).void }
+      sig do
+        params(
+          plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan::OrHash
+        ).void
+      end
       attr_writer :plan
 
       sig { returns(Time) }
@@ -22,27 +28,29 @@ module Orb
         params(
           created_at: Time,
           end_date: T.nilable(Time),
-          plan: T.any(Orb::Models::SubscriptionFetchScheduleResponse::Plan, Orb::Internal::AnyHash),
+          plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan::OrHash,
           start_date: Time
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
-      def self.new(created_at:, end_date:, plan:, start_date:); end
+      def self.new(created_at:, end_date:, plan:, start_date:)
+      end
 
       sig do
-        override
-          .returns(
-            {
-              created_at: Time,
-              end_date: T.nilable(Time),
-              plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan,
-              start_date: Time
-            }
-          )
+        override.returns(
+          {
+            created_at: Time,
+            end_date: T.nilable(Time),
+            plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan,
+            start_date: Time
+          }
+        )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Plan < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(T.nilable(String)) }
         attr_accessor :id
 
@@ -56,8 +64,11 @@ module Orb
         attr_accessor :name
 
         sig do
-          params(id: T.nilable(String), external_plan_id: T.nilable(String), name: T.nilable(String))
-            .returns(T.attached_class)
+          params(
+            id: T.nilable(String),
+            external_plan_id: T.nilable(String),
+            name: T.nilable(String)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -66,7 +77,9 @@ module Orb
           # identifier in your system.
           external_plan_id:,
           name:
-        ); end
+        )
+        end
+
         sig do
           override.returns(
             {
@@ -76,7 +89,8 @@ module Orb
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

@@ -7,24 +7,24 @@ module Orb
         item_id: String,
         model_type: Orb::Models::PriceCreateParams::model_type,
         name: String,
-        unit_config: Orb::Models::PriceCreateParams::UnitConfig,
+        unit_config: Orb::PriceCreateParams::UnitConfig,
         billable_metric_id: String?,
         billed_in_advance: bool?,
-        billing_cycle_configuration: Orb::Models::PriceCreateParams::BillingCycleConfiguration?,
+        billing_cycle_configuration: Orb::PriceCreateParams::BillingCycleConfiguration?,
         conversion_rate: Float?,
         external_price_id: String?,
         fixed_price_quantity: Float?,
         invoice_grouping_key: String?,
-        invoicing_cycle_configuration: Orb::Models::PriceCreateParams::InvoicingCycleConfiguration?,
+        invoicing_cycle_configuration: Orb::PriceCreateParams::InvoicingCycleConfiguration?,
         metadata: ::Hash[Symbol, String?]?,
-        package_config: Orb::Models::PriceCreateParams::PackageConfig,
-        matrix_config: Orb::Models::PriceCreateParams::MatrixConfig,
-        matrix_with_allocation_config: Orb::Models::PriceCreateParams::MatrixWithAllocationConfig,
-        tiered_config: Orb::Models::PriceCreateParams::TieredConfig,
-        tiered_bps_config: Orb::Models::PriceCreateParams::TieredBpsConfig,
-        bps_config: Orb::Models::PriceCreateParams::BpsConfig,
-        bulk_bps_config: Orb::Models::PriceCreateParams::BulkBpsConfig,
-        bulk_config: Orb::Models::PriceCreateParams::BulkConfig,
+        package_config: Orb::PriceCreateParams::PackageConfig,
+        matrix_config: Orb::PriceCreateParams::MatrixConfig,
+        matrix_with_allocation_config: Orb::PriceCreateParams::MatrixWithAllocationConfig,
+        tiered_config: Orb::PriceCreateParams::TieredConfig,
+        tiered_bps_config: Orb::PriceCreateParams::TieredBpsConfig,
+        bps_config: Orb::PriceCreateParams::BpsConfig,
+        bulk_bps_config: Orb::PriceCreateParams::BulkBpsConfig,
+        bulk_config: Orb::PriceCreateParams::BulkConfig,
         threshold_total_amount_config: ::Hash[Symbol, top],
         tiered_package_config: ::Hash[Symbol, top],
         grouped_tiered_config: ::Hash[Symbol, top],
@@ -61,13 +61,13 @@ module Orb
 
       attr_accessor name: String
 
-      attr_accessor unit_config: Orb::Models::PriceCreateParams::UnitConfig
+      attr_accessor unit_config: Orb::PriceCreateParams::UnitConfig
 
       attr_accessor billable_metric_id: String?
 
       attr_accessor billed_in_advance: bool?
 
-      attr_accessor billing_cycle_configuration: Orb::Models::PriceCreateParams::BillingCycleConfiguration?
+      attr_accessor billing_cycle_configuration: Orb::PriceCreateParams::BillingCycleConfiguration?
 
       attr_accessor conversion_rate: Float?
 
@@ -77,25 +77,25 @@ module Orb
 
       attr_accessor invoice_grouping_key: String?
 
-      attr_accessor invoicing_cycle_configuration: Orb::Models::PriceCreateParams::InvoicingCycleConfiguration?
+      attr_accessor invoicing_cycle_configuration: Orb::PriceCreateParams::InvoicingCycleConfiguration?
 
       attr_accessor metadata: ::Hash[Symbol, String?]?
 
-      attr_accessor package_config: Orb::Models::PriceCreateParams::PackageConfig
+      attr_accessor package_config: Orb::PriceCreateParams::PackageConfig
 
-      attr_accessor matrix_config: Orb::Models::PriceCreateParams::MatrixConfig
+      attr_accessor matrix_config: Orb::PriceCreateParams::MatrixConfig
 
-      attr_accessor matrix_with_allocation_config: Orb::Models::PriceCreateParams::MatrixWithAllocationConfig
+      attr_accessor matrix_with_allocation_config: Orb::PriceCreateParams::MatrixWithAllocationConfig
 
-      attr_accessor tiered_config: Orb::Models::PriceCreateParams::TieredConfig
+      attr_accessor tiered_config: Orb::PriceCreateParams::TieredConfig
 
-      attr_accessor tiered_bps_config: Orb::Models::PriceCreateParams::TieredBpsConfig
+      attr_accessor tiered_bps_config: Orb::PriceCreateParams::TieredBpsConfig
 
-      attr_accessor bps_config: Orb::Models::PriceCreateParams::BpsConfig
+      attr_accessor bps_config: Orb::PriceCreateParams::BpsConfig
 
-      attr_accessor bulk_bps_config: Orb::Models::PriceCreateParams::BulkBpsConfig
+      attr_accessor bulk_bps_config: Orb::PriceCreateParams::BulkBpsConfig
 
-      attr_accessor bulk_config: Orb::Models::PriceCreateParams::BulkConfig
+      attr_accessor bulk_config: Orb::PriceCreateParams::BulkConfig
 
       attr_accessor threshold_total_amount_config: ::Hash[Symbol, top]
 
@@ -141,15 +141,15 @@ module Orb
         item_id: String,
         model_type: Orb::Models::PriceCreateParams::model_type,
         name: String,
-        unit_config: Orb::Models::PriceCreateParams::UnitConfig,
-        package_config: Orb::Models::PriceCreateParams::PackageConfig,
-        matrix_config: Orb::Models::PriceCreateParams::MatrixConfig,
-        matrix_with_allocation_config: Orb::Models::PriceCreateParams::MatrixWithAllocationConfig,
-        tiered_config: Orb::Models::PriceCreateParams::TieredConfig,
-        tiered_bps_config: Orb::Models::PriceCreateParams::TieredBpsConfig,
-        bps_config: Orb::Models::PriceCreateParams::BpsConfig,
-        bulk_bps_config: Orb::Models::PriceCreateParams::BulkBpsConfig,
-        bulk_config: Orb::Models::PriceCreateParams::BulkConfig,
+        unit_config: Orb::PriceCreateParams::UnitConfig,
+        package_config: Orb::PriceCreateParams::PackageConfig,
+        matrix_config: Orb::PriceCreateParams::MatrixConfig,
+        matrix_with_allocation_config: Orb::PriceCreateParams::MatrixWithAllocationConfig,
+        tiered_config: Orb::PriceCreateParams::TieredConfig,
+        tiered_bps_config: Orb::PriceCreateParams::TieredBpsConfig,
+        bps_config: Orb::PriceCreateParams::BpsConfig,
+        bulk_bps_config: Orb::PriceCreateParams::BulkBpsConfig,
+        bulk_config: Orb::PriceCreateParams::BulkConfig,
         threshold_total_amount_config: ::Hash[Symbol, top],
         tiered_package_config: ::Hash[Symbol, top],
         grouped_tiered_config: ::Hash[Symbol, top],
@@ -171,17 +171,15 @@ module Orb
         cumulative_grouped_bulk_config: ::Hash[Symbol, top],
         ?billable_metric_id: String?,
         ?billed_in_advance: bool?,
-        ?billing_cycle_configuration: Orb::Models::PriceCreateParams::BillingCycleConfiguration?,
+        ?billing_cycle_configuration: Orb::PriceCreateParams::BillingCycleConfiguration?,
         ?conversion_rate: Float?,
         ?external_price_id: String?,
         ?fixed_price_quantity: Float?,
         ?invoice_grouping_key: String?,
-        ?invoicing_cycle_configuration: Orb::Models::PriceCreateParams::InvoicingCycleConfiguration?,
+        ?invoicing_cycle_configuration: Orb::PriceCreateParams::InvoicingCycleConfiguration?,
         ?metadata: ::Hash[Symbol, String?]?,
         ?request_options: Orb::request_opts
       ) -> void
-
-      def to_hash: -> Orb::Models::price_create_params
 
       type cadence =
         :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
@@ -215,27 +213,23 @@ module Orb
         attr_accessor unit_amount: String
 
         def initialize: (unit_amount: String) -> void
-
-        def to_hash: -> Orb::Models::PriceCreateParams::unit_config
       end
 
       type billing_cycle_configuration =
         {
           duration: Integer,
-          duration_unit: Orb::Models::PriceCreateParams::BillingCycleConfiguration::duration_unit
+          duration_unit: Orb::PriceCreateParams::BillingCycleConfiguration::duration_unit
         }
 
       class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
         attr_accessor duration: Integer
 
-        attr_accessor duration_unit: Orb::Models::PriceCreateParams::BillingCycleConfiguration::duration_unit
+        attr_accessor duration_unit: Orb::PriceCreateParams::BillingCycleConfiguration::duration_unit
 
         def initialize: (
           duration: Integer,
-          duration_unit: Orb::Models::PriceCreateParams::BillingCycleConfiguration::duration_unit
+          duration_unit: Orb::PriceCreateParams::BillingCycleConfiguration::duration_unit
         ) -> void
-
-        def to_hash: -> Orb::Models::PriceCreateParams::billing_cycle_configuration
 
         type duration_unit = :day | :month
 
@@ -245,27 +239,25 @@ module Orb
           DAY: :day
           MONTH: :month
 
-          def self?.values: -> ::Array[Orb::Models::PriceCreateParams::BillingCycleConfiguration::duration_unit]
+          def self?.values: -> ::Array[Orb::PriceCreateParams::BillingCycleConfiguration::duration_unit]
         end
       end
 
       type invoicing_cycle_configuration =
         {
           duration: Integer,
-          duration_unit: Orb::Models::PriceCreateParams::InvoicingCycleConfiguration::duration_unit
+          duration_unit: Orb::PriceCreateParams::InvoicingCycleConfiguration::duration_unit
         }
 
       class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
         attr_accessor duration: Integer
 
-        attr_accessor duration_unit: Orb::Models::PriceCreateParams::InvoicingCycleConfiguration::duration_unit
+        attr_accessor duration_unit: Orb::PriceCreateParams::InvoicingCycleConfiguration::duration_unit
 
         def initialize: (
           duration: Integer,
-          duration_unit: Orb::Models::PriceCreateParams::InvoicingCycleConfiguration::duration_unit
+          duration_unit: Orb::PriceCreateParams::InvoicingCycleConfiguration::duration_unit
         ) -> void
-
-        def to_hash: -> Orb::Models::PriceCreateParams::invoicing_cycle_configuration
 
         type duration_unit = :day | :month
 
@@ -275,7 +267,7 @@ module Orb
           DAY: :day
           MONTH: :month
 
-          def self?.values: -> ::Array[Orb::Models::PriceCreateParams::InvoicingCycleConfiguration::duration_unit]
+          def self?.values: -> ::Array[Orb::PriceCreateParams::InvoicingCycleConfiguration::duration_unit]
         end
       end
 
@@ -287,15 +279,13 @@ module Orb
         attr_accessor package_size: Integer
 
         def initialize: (package_amount: String, package_size: Integer) -> void
-
-        def to_hash: -> Orb::Models::PriceCreateParams::package_config
       end
 
       type matrix_config =
         {
           default_unit_amount: String,
           dimensions: ::Array[String?],
-          matrix_values: ::Array[Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue]
+          matrix_values: ::Array[Orb::PriceCreateParams::MatrixConfig::MatrixValue]
         }
 
       class MatrixConfig < Orb::Internal::Type::BaseModel
@@ -303,15 +293,13 @@ module Orb
 
         attr_accessor dimensions: ::Array[String?]
 
-        attr_accessor matrix_values: ::Array[Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue]
+        attr_accessor matrix_values: ::Array[Orb::PriceCreateParams::MatrixConfig::MatrixValue]
 
         def initialize: (
           default_unit_amount: String,
           dimensions: ::Array[String?],
-          matrix_values: ::Array[Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue]
+          matrix_values: ::Array[Orb::PriceCreateParams::MatrixConfig::MatrixValue]
         ) -> void
-
-        def to_hash: -> Orb::Models::PriceCreateParams::matrix_config
 
         type matrix_value =
           { dimension_values: ::Array[String?], unit_amount: String }
@@ -325,8 +313,6 @@ module Orb
             dimension_values: ::Array[String?],
             unit_amount: String
           ) -> void
-
-          def to_hash: -> Orb::Models::PriceCreateParams::MatrixConfig::matrix_value
         end
       end
 
@@ -335,7 +321,7 @@ module Orb
           allocation: Float,
           default_unit_amount: String,
           dimensions: ::Array[String?],
-          matrix_values: ::Array[Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue]
+          matrix_values: ::Array[Orb::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue]
         }
 
       class MatrixWithAllocationConfig < Orb::Internal::Type::BaseModel
@@ -345,16 +331,14 @@ module Orb
 
         attr_accessor dimensions: ::Array[String?]
 
-        attr_accessor matrix_values: ::Array[Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue]
+        attr_accessor matrix_values: ::Array[Orb::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue]
 
         def initialize: (
           allocation: Float,
           default_unit_amount: String,
           dimensions: ::Array[String?],
-          matrix_values: ::Array[Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue]
+          matrix_values: ::Array[Orb::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue]
         ) -> void
-
-        def to_hash: -> Orb::Models::PriceCreateParams::matrix_with_allocation_config
 
         type matrix_value =
           { dimension_values: ::Array[String?], unit_amount: String }
@@ -368,22 +352,18 @@ module Orb
             dimension_values: ::Array[String?],
             unit_amount: String
           ) -> void
-
-          def to_hash: -> Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::matrix_value
         end
       end
 
       type tiered_config =
-        { tiers: ::Array[Orb::Models::PriceCreateParams::TieredConfig::Tier] }
+        { tiers: ::Array[Orb::PriceCreateParams::TieredConfig::Tier] }
 
       class TieredConfig < Orb::Internal::Type::BaseModel
-        attr_accessor tiers: ::Array[Orb::Models::PriceCreateParams::TieredConfig::Tier]
+        attr_accessor tiers: ::Array[Orb::PriceCreateParams::TieredConfig::Tier]
 
         def initialize: (
-          tiers: ::Array[Orb::Models::PriceCreateParams::TieredConfig::Tier]
+          tiers: ::Array[Orb::PriceCreateParams::TieredConfig::Tier]
         ) -> void
-
-        def to_hash: -> Orb::Models::PriceCreateParams::tiered_config
 
         type tier =
           { first_unit: Float, unit_amount: String, last_unit: Float? }
@@ -400,24 +380,18 @@ module Orb
             unit_amount: String,
             ?last_unit: Float?
           ) -> void
-
-          def to_hash: -> Orb::Models::PriceCreateParams::TieredConfig::tier
         end
       end
 
       type tiered_bps_config =
-        {
-          tiers: ::Array[Orb::Models::PriceCreateParams::TieredBpsConfig::Tier]
-        }
+        { tiers: ::Array[Orb::PriceCreateParams::TieredBpsConfig::Tier] }
 
       class TieredBpsConfig < Orb::Internal::Type::BaseModel
-        attr_accessor tiers: ::Array[Orb::Models::PriceCreateParams::TieredBpsConfig::Tier]
+        attr_accessor tiers: ::Array[Orb::PriceCreateParams::TieredBpsConfig::Tier]
 
         def initialize: (
-          tiers: ::Array[Orb::Models::PriceCreateParams::TieredBpsConfig::Tier]
+          tiers: ::Array[Orb::PriceCreateParams::TieredBpsConfig::Tier]
         ) -> void
-
-        def to_hash: -> Orb::Models::PriceCreateParams::tiered_bps_config
 
         type tier =
           {
@@ -442,8 +416,6 @@ module Orb
             ?maximum_amount: String?,
             ?per_unit_maximum: String?
           ) -> void
-
-          def to_hash: -> Orb::Models::PriceCreateParams::TieredBpsConfig::tier
         end
       end
 
@@ -455,21 +427,17 @@ module Orb
         attr_accessor per_unit_maximum: String?
 
         def initialize: (bps: Float, ?per_unit_maximum: String?) -> void
-
-        def to_hash: -> Orb::Models::PriceCreateParams::bps_config
       end
 
       type bulk_bps_config =
-        { tiers: ::Array[Orb::Models::PriceCreateParams::BulkBpsConfig::Tier] }
+        { tiers: ::Array[Orb::PriceCreateParams::BulkBpsConfig::Tier] }
 
       class BulkBpsConfig < Orb::Internal::Type::BaseModel
-        attr_accessor tiers: ::Array[Orb::Models::PriceCreateParams::BulkBpsConfig::Tier]
+        attr_accessor tiers: ::Array[Orb::PriceCreateParams::BulkBpsConfig::Tier]
 
         def initialize: (
-          tiers: ::Array[Orb::Models::PriceCreateParams::BulkBpsConfig::Tier]
+          tiers: ::Array[Orb::PriceCreateParams::BulkBpsConfig::Tier]
         ) -> void
-
-        def to_hash: -> Orb::Models::PriceCreateParams::bulk_bps_config
 
         type tier =
           { bps: Float, maximum_amount: String?, per_unit_maximum: String? }
@@ -486,22 +454,18 @@ module Orb
             ?maximum_amount: String?,
             ?per_unit_maximum: String?
           ) -> void
-
-          def to_hash: -> Orb::Models::PriceCreateParams::BulkBpsConfig::tier
         end
       end
 
       type bulk_config =
-        { tiers: ::Array[Orb::Models::PriceCreateParams::BulkConfig::Tier] }
+        { tiers: ::Array[Orb::PriceCreateParams::BulkConfig::Tier] }
 
       class BulkConfig < Orb::Internal::Type::BaseModel
-        attr_accessor tiers: ::Array[Orb::Models::PriceCreateParams::BulkConfig::Tier]
+        attr_accessor tiers: ::Array[Orb::PriceCreateParams::BulkConfig::Tier]
 
         def initialize: (
-          tiers: ::Array[Orb::Models::PriceCreateParams::BulkConfig::Tier]
+          tiers: ::Array[Orb::PriceCreateParams::BulkConfig::Tier]
         ) -> void
-
-        def to_hash: -> Orb::Models::PriceCreateParams::bulk_config
 
         type tier = { unit_amount: String, maximum_units: Float? }
 
@@ -511,8 +475,6 @@ module Orb
           attr_accessor maximum_units: Float?
 
           def initialize: (unit_amount: String, ?maximum_units: Float?) -> void
-
-          def to_hash: -> Orb::Models::PriceCreateParams::BulkConfig::tier
         end
       end
     end

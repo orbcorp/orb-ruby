@@ -37,8 +37,6 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> void
 
-      def to_hash: -> Orb::Models::subscription_update_fixed_fee_quantity_params
-
       type change_option = :immediate | :upcoming_invoice | :effective_date
 
       module ChangeOption

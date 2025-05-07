@@ -17,23 +17,21 @@ module Orb
         # @param other_external_plan_id [String]
         #
         # @param external_plan_id [String, nil] An optional user-defined ID for this plan resource, used throughout the system a
-        # ...
         #
         # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
-        # ...
         #
         # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Orb::Models::Plan]
+        # @return [Orb::Plan]
         #
         # @see Orb::Models::Plans::ExternalPlanIDUpdateParams
         def update(other_external_plan_id, params = {})
-          parsed, options = Orb::Models::Plans::ExternalPlanIDUpdateParams.dump_request(params)
+          parsed, options = Orb::Plans::ExternalPlanIDUpdateParams.dump_request(params)
           @client.request(
             method: :put,
             path: ["plans/external_plan_id/%1$s", other_external_plan_id],
             body: parsed,
-            model: Orb::Models::Plan,
+            model: Orb::Plan,
             options: options
           )
         end
@@ -60,14 +58,14 @@ module Orb
         # @param external_plan_id [String]
         # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Orb::Models::Plan]
+        # @return [Orb::Plan]
         #
         # @see Orb::Models::Plans::ExternalPlanIDFetchParams
         def fetch(external_plan_id, params = {})
           @client.request(
             method: :get,
             path: ["plans/external_plan_id/%1$s", external_plan_id],
-            model: Orb::Models::Plan,
+            model: Orb::Plan,
             options: params[:request_options]
           )
         end

@@ -6,21 +6,21 @@ module Orb
       def create: (
         currency: String,
         name: String,
-        prices: ::Array[Orb::Models::PlanCreateParams::price],
+        prices: ::Array[Orb::PlanCreateParams::price],
         ?default_invoice_memo: String?,
         ?external_plan_id: String?,
         ?metadata: ::Hash[Symbol, String?]?,
         ?net_terms: Integer?,
         ?status: Orb::Models::PlanCreateParams::status,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::Plan
+      ) -> Orb::Plan
 
       def update: (
         String plan_id,
         ?external_plan_id: String?,
         ?metadata: ::Hash[Symbol, String?]?,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::Plan
+      ) -> Orb::Plan
 
       def list: (
         ?created_at_gt: Time?,
@@ -31,12 +31,12 @@ module Orb
         ?limit: Integer,
         ?status: Orb::Models::PlanListParams::status,
         ?request_options: Orb::request_opts
-      ) -> Orb::Internal::Page[Orb::Models::Plan]
+      ) -> Orb::Internal::Page[Orb::Plan]
 
       def fetch: (
         String plan_id,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::Plan
+      ) -> Orb::Plan
 
       def initialize: (client: Orb::Client) -> void
     end

@@ -6,6 +6,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
       # A name to meaningfully identify the action or event type.
       sig { returns(String) }
       attr_accessor :event_name
@@ -37,9 +39,8 @@ module Orb
           timestamp: Time,
           customer_id: T.nilable(String),
           external_customer_id: T.nilable(String),
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # A name to meaningfully identify the action or event type.
@@ -57,21 +58,23 @@ module Orb
         # customer
         external_customer_id: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              event_name: String,
-              properties: T.anything,
-              timestamp: Time,
-              customer_id: T.nilable(String),
-              external_customer_id: T.nilable(String),
-              request_options: Orb::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            event_name: String,
+            properties: T.anything,
+            timestamp: Time,
+            customer_id: T.nilable(String),
+            external_customer_id: T.nilable(String),
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

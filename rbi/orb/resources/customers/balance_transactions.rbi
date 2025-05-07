@@ -10,11 +10,11 @@ module Orb
           params(
             customer_id: String,
             amount: String,
-            type: Orb::Models::Customers::BalanceTransactionCreateParams::Type::OrSymbol,
+            type:
+              Orb::Customers::BalanceTransactionCreateParams::Type::OrSymbol,
             description: T.nilable(String),
-            request_options: Orb::RequestOpts
-          )
-            .returns(Orb::Models::Customers::BalanceTransactionCreateResponse)
+            request_options: Orb::RequestOptions::OrHash
+          ).returns(Orb::Models::Customers::BalanceTransactionCreateResponse)
         end
         def create(
           customer_id,
@@ -23,7 +23,9 @@ module Orb
           # An optional description that can be specified around this entry.
           description: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # ## The customer balance
         #
         # The customer balance is an amount in the customer's currency, which Orb
@@ -61,9 +63,12 @@ module Orb
             operation_time_gte: T.nilable(Time),
             operation_time_lt: T.nilable(Time),
             operation_time_lte: T.nilable(Time),
-            request_options: Orb::RequestOpts
+            request_options: Orb::RequestOptions::OrHash
+          ).returns(
+            Orb::Internal::Page[
+              Orb::Models::Customers::BalanceTransactionListResponse
+            ]
           )
-            .returns(Orb::Internal::Page[Orb::Models::Customers::BalanceTransactionListResponse])
         end
         def list(
           customer_id,
@@ -77,10 +82,13 @@ module Orb
           operation_time_lt: nil,
           operation_time_lte: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: Orb::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

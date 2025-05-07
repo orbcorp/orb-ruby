@@ -6,18 +6,18 @@ module Orb
         created_at: Time,
         credit_note_number: String,
         credit_note_pdf: String?,
-        customer: Orb::Models::CreditNote::Customer,
+        customer: Orb::CreditNote::Customer,
         invoice_id: String,
-        line_items: ::Array[Orb::Models::CreditNote::LineItem],
-        maximum_amount_adjustment: Orb::Models::CreditNote::MaximumAmountAdjustment?,
+        line_items: ::Array[Orb::CreditNote::LineItem],
+        maximum_amount_adjustment: Orb::CreditNote::MaximumAmountAdjustment?,
         memo: String?,
         minimum_amount_refunded: String?,
-        reason: Orb::Models::CreditNote::reason?,
+        reason: Orb::CreditNote::reason?,
         subtotal: String,
         total: String,
-        type: Orb::Models::CreditNote::type_,
+        type: Orb::CreditNote::type_,
         voided_at: Time?,
-        discounts: ::Array[Orb::Models::CreditNote::Discount]
+        discounts: ::Array[Orb::CreditNote::Discount]
       }
 
     class CreditNote < Orb::Internal::Type::BaseModel
@@ -29,54 +29,52 @@ module Orb
 
       attr_accessor credit_note_pdf: String?
 
-      attr_accessor customer: Orb::Models::CreditNote::Customer
+      attr_accessor customer: Orb::CreditNote::Customer
 
       attr_accessor invoice_id: String
 
-      attr_accessor line_items: ::Array[Orb::Models::CreditNote::LineItem]
+      attr_accessor line_items: ::Array[Orb::CreditNote::LineItem]
 
-      attr_accessor maximum_amount_adjustment: Orb::Models::CreditNote::MaximumAmountAdjustment?
+      attr_accessor maximum_amount_adjustment: Orb::CreditNote::MaximumAmountAdjustment?
 
       attr_accessor memo: String?
 
       attr_accessor minimum_amount_refunded: String?
 
-      attr_accessor reason: Orb::Models::CreditNote::reason?
+      attr_accessor reason: Orb::CreditNote::reason?
 
       attr_accessor subtotal: String
 
       attr_accessor total: String
 
-      attr_accessor type: Orb::Models::CreditNote::type_
+      attr_accessor type: Orb::CreditNote::type_
 
       attr_accessor voided_at: Time?
 
-      attr_reader discounts: ::Array[Orb::Models::CreditNote::Discount]?
+      attr_reader discounts: ::Array[Orb::CreditNote::Discount]?
 
       def discounts=: (
-        ::Array[Orb::Models::CreditNote::Discount]
-      ) -> ::Array[Orb::Models::CreditNote::Discount]
+        ::Array[Orb::CreditNote::Discount]
+      ) -> ::Array[Orb::CreditNote::Discount]
 
       def initialize: (
         id: String,
         created_at: Time,
         credit_note_number: String,
         credit_note_pdf: String?,
-        customer: Orb::Models::CreditNote::Customer,
+        customer: Orb::CreditNote::Customer,
         invoice_id: String,
-        line_items: ::Array[Orb::Models::CreditNote::LineItem],
-        maximum_amount_adjustment: Orb::Models::CreditNote::MaximumAmountAdjustment?,
+        line_items: ::Array[Orb::CreditNote::LineItem],
+        maximum_amount_adjustment: Orb::CreditNote::MaximumAmountAdjustment?,
         memo: String?,
         minimum_amount_refunded: String?,
-        reason: Orb::Models::CreditNote::reason?,
+        reason: Orb::CreditNote::reason?,
         subtotal: String,
         total: String,
-        type: Orb::Models::CreditNote::type_,
+        type: Orb::CreditNote::type_,
         voided_at: Time?,
-        ?discounts: ::Array[Orb::Models::CreditNote::Discount]
+        ?discounts: ::Array[Orb::CreditNote::Discount]
       ) -> void
-
-      def to_hash: -> Orb::Models::credit_note
 
       type customer = { id: String, external_customer_id: String? }
 
@@ -86,8 +84,6 @@ module Orb
         attr_accessor external_customer_id: String?
 
         def initialize: (id: String, external_customer_id: String?) -> void
-
-        def to_hash: -> Orb::Models::CreditNote::customer
       end
 
       type line_item =
@@ -98,8 +94,8 @@ module Orb
           name: String,
           quantity: Float?,
           subtotal: String,
-          tax_amounts: ::Array[Orb::Models::CreditNote::LineItem::TaxAmount],
-          discounts: ::Array[Orb::Models::CreditNote::LineItem::Discount]
+          tax_amounts: ::Array[Orb::CreditNote::LineItem::TaxAmount],
+          discounts: ::Array[Orb::CreditNote::LineItem::Discount]
         }
 
       class LineItem < Orb::Internal::Type::BaseModel
@@ -115,13 +111,13 @@ module Orb
 
         attr_accessor subtotal: String
 
-        attr_accessor tax_amounts: ::Array[Orb::Models::CreditNote::LineItem::TaxAmount]
+        attr_accessor tax_amounts: ::Array[Orb::CreditNote::LineItem::TaxAmount]
 
-        attr_reader discounts: ::Array[Orb::Models::CreditNote::LineItem::Discount]?
+        attr_reader discounts: ::Array[Orb::CreditNote::LineItem::Discount]?
 
         def discounts=: (
-          ::Array[Orb::Models::CreditNote::LineItem::Discount]
-        ) -> ::Array[Orb::Models::CreditNote::LineItem::Discount]
+          ::Array[Orb::CreditNote::LineItem::Discount]
+        ) -> ::Array[Orb::CreditNote::LineItem::Discount]
 
         def initialize: (
           id: String,
@@ -130,11 +126,9 @@ module Orb
           name: String,
           quantity: Float?,
           subtotal: String,
-          tax_amounts: ::Array[Orb::Models::CreditNote::LineItem::TaxAmount],
-          ?discounts: ::Array[Orb::Models::CreditNote::LineItem::Discount]
+          tax_amounts: ::Array[Orb::CreditNote::LineItem::TaxAmount],
+          ?discounts: ::Array[Orb::CreditNote::LineItem::Discount]
         ) -> void
-
-        def to_hash: -> Orb::Models::CreditNote::line_item
 
         type tax_amount =
           {
@@ -155,8 +149,6 @@ module Orb
             tax_rate_description: String,
             tax_rate_percentage: String?
           ) -> void
-
-          def to_hash: -> Orb::Models::CreditNote::LineItem::tax_amount
         end
 
         type discount =
@@ -164,7 +156,7 @@ module Orb
             id: String,
             amount_applied: String,
             applies_to_price_ids: ::Array[String],
-            discount_type: Orb::Models::CreditNote::LineItem::Discount::discount_type,
+            discount_type: Orb::CreditNote::LineItem::Discount::discount_type,
             percentage_discount: Float,
             amount_discount: String?,
             reason: String?
@@ -177,7 +169,7 @@ module Orb
 
           attr_accessor applies_to_price_ids: ::Array[String]
 
-          attr_accessor discount_type: Orb::Models::CreditNote::LineItem::Discount::discount_type
+          attr_accessor discount_type: Orb::CreditNote::LineItem::Discount::discount_type
 
           attr_accessor percentage_discount: Float
 
@@ -189,13 +181,11 @@ module Orb
             id: String,
             amount_applied: String,
             applies_to_price_ids: ::Array[String],
-            discount_type: Orb::Models::CreditNote::LineItem::Discount::discount_type,
+            discount_type: Orb::CreditNote::LineItem::Discount::discount_type,
             percentage_discount: Float,
             ?amount_discount: String?,
             ?reason: String?
           ) -> void
-
-          def to_hash: -> Orb::Models::CreditNote::LineItem::discount
 
           type discount_type = :percentage | :amount
 
@@ -205,7 +195,7 @@ module Orb
             PERCENTAGE: :percentage
             AMOUNT: :amount
 
-            def self?.values: -> ::Array[Orb::Models::CreditNote::LineItem::Discount::discount_type]
+            def self?.values: -> ::Array[Orb::CreditNote::LineItem::Discount::discount_type]
           end
         end
       end
@@ -213,32 +203,30 @@ module Orb
       type maximum_amount_adjustment =
         {
           amount_applied: String,
-          discount_type: Orb::Models::CreditNote::MaximumAmountAdjustment::discount_type,
+          discount_type: Orb::CreditNote::MaximumAmountAdjustment::discount_type,
           percentage_discount: Float,
-          applies_to_prices: ::Array[Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice]?,
+          applies_to_prices: ::Array[Orb::CreditNote::MaximumAmountAdjustment::AppliesToPrice]?,
           reason: String?
         }
 
       class MaximumAmountAdjustment < Orb::Internal::Type::BaseModel
         attr_accessor amount_applied: String
 
-        attr_accessor discount_type: Orb::Models::CreditNote::MaximumAmountAdjustment::discount_type
+        attr_accessor discount_type: Orb::CreditNote::MaximumAmountAdjustment::discount_type
 
         attr_accessor percentage_discount: Float
 
-        attr_accessor applies_to_prices: ::Array[Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice]?
+        attr_accessor applies_to_prices: ::Array[Orb::CreditNote::MaximumAmountAdjustment::AppliesToPrice]?
 
         attr_accessor reason: String?
 
         def initialize: (
           amount_applied: String,
-          discount_type: Orb::Models::CreditNote::MaximumAmountAdjustment::discount_type,
+          discount_type: Orb::CreditNote::MaximumAmountAdjustment::discount_type,
           percentage_discount: Float,
-          ?applies_to_prices: ::Array[Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice]?,
+          ?applies_to_prices: ::Array[Orb::CreditNote::MaximumAmountAdjustment::AppliesToPrice]?,
           ?reason: String?
         ) -> void
-
-        def to_hash: -> Orb::Models::CreditNote::maximum_amount_adjustment
 
         type discount_type = :percentage
 
@@ -247,7 +235,7 @@ module Orb
 
           PERCENTAGE: :percentage
 
-          def self?.values: -> ::Array[Orb::Models::CreditNote::MaximumAmountAdjustment::discount_type]
+          def self?.values: -> ::Array[Orb::CreditNote::MaximumAmountAdjustment::discount_type]
         end
 
         type applies_to_price = { id: String, name: String }
@@ -258,8 +246,6 @@ module Orb
           attr_accessor name: String
 
           def initialize: (id: String, name: String) -> void
-
-          def to_hash: -> Orb::Models::CreditNote::MaximumAmountAdjustment::applies_to_price
         end
       end
 
@@ -274,7 +260,7 @@ module Orb
         ORDER_CHANGE: :"Order change"
         PRODUCT_UNSATISFACTORY: :"Product unsatisfactory"
 
-        def self?.values: -> ::Array[Orb::Models::CreditNote::reason]
+        def self?.values: -> ::Array[Orb::CreditNote::reason]
       end
 
       type type_ = :refund | :adjustment
@@ -285,38 +271,36 @@ module Orb
         REFUND: :refund
         ADJUSTMENT: :adjustment
 
-        def self?.values: -> ::Array[Orb::Models::CreditNote::type_]
+        def self?.values: -> ::Array[Orb::CreditNote::type_]
       end
 
       type discount =
         {
           amount_applied: String,
-          discount_type: Orb::Models::CreditNote::Discount::discount_type,
+          discount_type: Orb::CreditNote::Discount::discount_type,
           percentage_discount: Float,
-          applies_to_prices: ::Array[Orb::Models::CreditNote::Discount::AppliesToPrice]?,
+          applies_to_prices: ::Array[Orb::CreditNote::Discount::AppliesToPrice]?,
           reason: String?
         }
 
       class Discount < Orb::Internal::Type::BaseModel
         attr_accessor amount_applied: String
 
-        attr_accessor discount_type: Orb::Models::CreditNote::Discount::discount_type
+        attr_accessor discount_type: Orb::CreditNote::Discount::discount_type
 
         attr_accessor percentage_discount: Float
 
-        attr_accessor applies_to_prices: ::Array[Orb::Models::CreditNote::Discount::AppliesToPrice]?
+        attr_accessor applies_to_prices: ::Array[Orb::CreditNote::Discount::AppliesToPrice]?
 
         attr_accessor reason: String?
 
         def initialize: (
           amount_applied: String,
-          discount_type: Orb::Models::CreditNote::Discount::discount_type,
+          discount_type: Orb::CreditNote::Discount::discount_type,
           percentage_discount: Float,
-          ?applies_to_prices: ::Array[Orb::Models::CreditNote::Discount::AppliesToPrice]?,
+          ?applies_to_prices: ::Array[Orb::CreditNote::Discount::AppliesToPrice]?,
           ?reason: String?
         ) -> void
-
-        def to_hash: -> Orb::Models::CreditNote::discount
 
         type discount_type = :percentage
 
@@ -325,7 +309,7 @@ module Orb
 
           PERCENTAGE: :percentage
 
-          def self?.values: -> ::Array[Orb::Models::CreditNote::Discount::discount_type]
+          def self?.values: -> ::Array[Orb::CreditNote::Discount::discount_type]
         end
 
         type applies_to_price = { id: String, name: String }
@@ -336,8 +320,6 @@ module Orb
           attr_accessor name: String
 
           def initialize: (id: String, name: String) -> void
-
-          def to_hash: -> Orb::Models::CreditNote::Discount::applies_to_price
         end
       end
     end

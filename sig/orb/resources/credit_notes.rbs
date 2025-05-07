@@ -2,11 +2,11 @@ module Orb
   module Resources
     class CreditNotes
       def create: (
-        line_items: ::Array[Orb::Models::CreditNoteCreateParams::LineItem],
+        line_items: ::Array[Orb::CreditNoteCreateParams::LineItem],
         ?memo: String?,
         ?reason: Orb::Models::CreditNoteCreateParams::reason?,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::CreditNote
+      ) -> Orb::CreditNote
 
       def list: (
         ?created_at_gt: Time?,
@@ -16,12 +16,12 @@ module Orb
         ?cursor: String?,
         ?limit: Integer,
         ?request_options: Orb::request_opts
-      ) -> Orb::Internal::Page[Orb::Models::CreditNote]
+      ) -> Orb::Internal::Page[Orb::CreditNote]
 
       def fetch: (
         String credit_note_id,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::CreditNote
+      ) -> Orb::CreditNote
 
       def initialize: (client: Orb::Client) -> void
     end

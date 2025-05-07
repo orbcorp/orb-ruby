@@ -42,8 +42,6 @@ module Orb
             ?expires_after_unit: Orb::Models::Customers::Credits::TopUpListByExternalIDResponse::expires_after_unit?
           ) -> void
 
-          def to_hash: -> Orb::Models::Customers::Credits::top_up_list_by_external_id_response
-
           type invoice_settings =
             {
               auto_collection: bool,
@@ -69,8 +67,6 @@ module Orb
               ?memo: String?,
               ?require_successful_payment: bool
             ) -> void
-
-            def to_hash: -> Orb::Models::Customers::Credits::TopUpListByExternalIDResponse::invoice_settings
           end
 
           type expires_after_unit = :day | :month

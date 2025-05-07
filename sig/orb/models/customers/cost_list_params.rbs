@@ -30,8 +30,6 @@ module Orb
           ?request_options: Orb::request_opts
         ) -> void
 
-        def to_hash: -> Orb::Models::Customers::cost_list_params
-
         type view_mode = :periodic | :cumulative
 
         module ViewMode

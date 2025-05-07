@@ -41,10 +41,8 @@ module Orb
         #   @param currency [String, nil] The ledger currency or custom pricing unit to use.
         #
         #   @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
-        #   ...
         #
         #   @param include_all_blocks [Boolean] If set to True, all expired and depleted blocks, as well as active block will be
-        #   ...
         #
         #   @param limit [Integer] The number of items to fetch. Defaults to 20.
         #

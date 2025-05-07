@@ -21,7 +21,7 @@ module Orb
       ) -> Orb::Models::EventDeprecateResponse
 
       def ingest: (
-        events: ::Array[Orb::Models::EventIngestParams::Event],
+        events: ::Array[Orb::EventIngestParams::Event],
         ?backfill_id: String?,
         ?debug: bool,
         ?request_options: Orb::request_opts

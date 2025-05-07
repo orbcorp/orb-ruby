@@ -17,8 +17,6 @@ module Orb
         ?previously_collected_amount: String?,
         ?request_options: Orb::request_opts
       ) -> void
-
-      def to_hash: -> Orb::Models::subscription_change_apply_params
     end
   end
 end

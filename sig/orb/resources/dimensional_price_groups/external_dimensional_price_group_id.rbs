@@ -5,7 +5,7 @@ module Orb
         def retrieve: (
           String external_dimensional_price_group_id,
           ?request_options: Orb::request_opts
-        ) -> Orb::Models::DimensionalPriceGroup
+        ) -> Orb::DimensionalPriceGroup
 
         def initialize: (client: Orb::Client) -> void
       end

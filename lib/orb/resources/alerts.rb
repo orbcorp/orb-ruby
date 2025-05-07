@@ -10,14 +10,14 @@ module Orb
       # @param alert_id [String]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::Alert]
+      # @return [Orb::Alert]
       #
       # @see Orb::Models::AlertRetrieveParams
       def retrieve(alert_id, params = {})
         @client.request(
           method: :get,
           path: ["alerts/%1$s", alert_id],
-          model: Orb::Models::Alert,
+          model: Orb::Alert,
           options: params[:request_options]
         )
       end
@@ -28,20 +28,20 @@ module Orb
       #
       # @param alert_configuration_id [String]
       #
-      # @param thresholds [Array<Orb::Models::AlertUpdateParams::Threshold>] The thresholds that define the values at which the alert will be triggered.
+      # @param thresholds [Array<Orb::AlertUpdateParams::Threshold>] The thresholds that define the values at which the alert will be triggered.
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::Alert]
+      # @return [Orb::Alert]
       #
       # @see Orb::Models::AlertUpdateParams
       def update(alert_configuration_id, params)
-        parsed, options = Orb::Models::AlertUpdateParams.dump_request(params)
+        parsed, options = Orb::AlertUpdateParams.dump_request(params)
         @client.request(
           method: :put,
           path: ["alerts/%1$s", alert_configuration_id],
           body: parsed,
-          model: Orb::Models::Alert,
+          model: Orb::Alert,
           options: options
         )
       end
@@ -72,7 +72,6 @@ module Orb
       # @param created_at_lte [Time, nil]
       #
       # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
-      # ...
       #
       # @param customer_id [String, nil] Fetch alerts scoped to this customer_id
       #
@@ -84,11 +83,11 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Internal::Page<Orb::Models::Alert>]
+      # @return [Orb::Internal::Page<Orb::Alert>]
       #
       # @see Orb::Models::AlertListParams
       def list(params = {})
-        parsed, options = Orb::Models::AlertListParams.dump_request(params)
+        parsed, options = Orb::AlertListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "alerts",
@@ -99,7 +98,7 @@ module Orb
             created_at_lte: "created_at[lte]"
           ),
           page: Orb::Internal::Page,
-          model: Orb::Models::Alert,
+          model: Orb::Alert,
           options: options
         )
       end
@@ -119,22 +118,22 @@ module Orb
       #
       # @param currency [String] The case sensitive currency or custom pricing unit to use for this alert.
       #
-      # @param type [Symbol, Orb::Models::AlertCreateForCustomerParams::Type] The type of alert to create. This must be a valid alert type.
+      # @param type [Symbol, Orb::AlertCreateForCustomerParams::Type] The type of alert to create. This must be a valid alert type.
       #
-      # @param thresholds [Array<Orb::Models::AlertCreateForCustomerParams::Threshold>, nil] The thresholds that define the values at which the alert will be triggered.
+      # @param thresholds [Array<Orb::AlertCreateForCustomerParams::Threshold>, nil] The thresholds that define the values at which the alert will be triggered.
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::Alert]
+      # @return [Orb::Alert]
       #
       # @see Orb::Models::AlertCreateForCustomerParams
       def create_for_customer(customer_id, params)
-        parsed, options = Orb::Models::AlertCreateForCustomerParams.dump_request(params)
+        parsed, options = Orb::AlertCreateForCustomerParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["alerts/customer_id/%1$s", customer_id],
           body: parsed,
-          model: Orb::Models::Alert,
+          model: Orb::Alert,
           options: options
         )
       end
@@ -154,22 +153,22 @@ module Orb
       #
       # @param currency [String] The case sensitive currency or custom pricing unit to use for this alert.
       #
-      # @param type [Symbol, Orb::Models::AlertCreateForExternalCustomerParams::Type] The type of alert to create. This must be a valid alert type.
+      # @param type [Symbol, Orb::AlertCreateForExternalCustomerParams::Type] The type of alert to create. This must be a valid alert type.
       #
-      # @param thresholds [Array<Orb::Models::AlertCreateForExternalCustomerParams::Threshold>, nil] The thresholds that define the values at which the alert will be triggered.
+      # @param thresholds [Array<Orb::AlertCreateForExternalCustomerParams::Threshold>, nil] The thresholds that define the values at which the alert will be triggered.
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::Alert]
+      # @return [Orb::Alert]
       #
       # @see Orb::Models::AlertCreateForExternalCustomerParams
       def create_for_external_customer(external_customer_id, params)
-        parsed, options = Orb::Models::AlertCreateForExternalCustomerParams.dump_request(params)
+        parsed, options = Orb::AlertCreateForExternalCustomerParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["alerts/external_customer_id/%1$s", external_customer_id],
           body: parsed,
-          model: Orb::Models::Alert,
+          model: Orb::Alert,
           options: options
         )
       end
@@ -190,24 +189,24 @@ module Orb
       #
       # @param subscription_id [String]
       #
-      # @param thresholds [Array<Orb::Models::AlertCreateForSubscriptionParams::Threshold>] The thresholds that define the values at which the alert will be triggered.
+      # @param thresholds [Array<Orb::AlertCreateForSubscriptionParams::Threshold>] The thresholds that define the values at which the alert will be triggered.
       #
-      # @param type [Symbol, Orb::Models::AlertCreateForSubscriptionParams::Type] The type of alert to create. This must be a valid alert type.
+      # @param type [Symbol, Orb::AlertCreateForSubscriptionParams::Type] The type of alert to create. This must be a valid alert type.
       #
       # @param metric_id [String, nil] The metric to track usage for.
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::Alert]
+      # @return [Orb::Alert]
       #
       # @see Orb::Models::AlertCreateForSubscriptionParams
       def create_for_subscription(subscription_id, params)
-        parsed, options = Orb::Models::AlertCreateForSubscriptionParams.dump_request(params)
+        parsed, options = Orb::AlertCreateForSubscriptionParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["alerts/subscription_id/%1$s", subscription_id],
           body: parsed,
-          model: Orb::Models::Alert,
+          model: Orb::Alert,
           options: options
         )
       end
@@ -224,16 +223,16 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::Alert]
+      # @return [Orb::Alert]
       #
       # @see Orb::Models::AlertDisableParams
       def disable(alert_configuration_id, params = {})
-        parsed, options = Orb::Models::AlertDisableParams.dump_request(params)
+        parsed, options = Orb::AlertDisableParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["alerts/%1$s/disable", alert_configuration_id],
           query: parsed,
-          model: Orb::Models::Alert,
+          model: Orb::Alert,
           options: options
         )
       end
@@ -250,16 +249,16 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::Alert]
+      # @return [Orb::Alert]
       #
       # @see Orb::Models::AlertEnableParams
       def enable(alert_configuration_id, params = {})
-        parsed, options = Orb::Models::AlertEnableParams.dump_request(params)
+        parsed, options = Orb::AlertEnableParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["alerts/%1$s/enable", alert_configuration_id],
           query: parsed,
-          model: Orb::Models::Alert,
+          model: Orb::Alert,
           options: options
         )
       end

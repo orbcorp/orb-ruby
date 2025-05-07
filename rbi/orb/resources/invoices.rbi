@@ -8,25 +8,24 @@ module Orb
         params(
           currency: String,
           invoice_date: Time,
-          line_items: T::Array[T.any(Orb::Models::InvoiceCreateParams::LineItem, Orb::Internal::AnyHash)],
+          line_items: T::Array[Orb::InvoiceCreateParams::LineItem::OrHash],
           net_terms: Integer,
           customer_id: T.nilable(String),
-          discount: T.nilable(
-            T.any(
-              Orb::Models::PercentageDiscount,
-              Orb::Internal::AnyHash,
-              Orb::Models::TrialDiscount,
-              Orb::Models::UsageDiscount,
-              Orb::Models::AmountDiscount
-            )
-          ),
+          discount:
+            T.nilable(
+              T.any(
+                Orb::PercentageDiscount::OrHash,
+                Orb::TrialDiscount::OrHash,
+                Orb::UsageDiscount::OrHash,
+                Orb::AmountDiscount::OrHash
+              )
+            ),
           external_customer_id: T.nilable(String),
           memo: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           will_auto_issue: T::Boolean,
-          request_options: Orb::RequestOpts
-        )
-          .returns(Orb::Models::Invoice)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Invoice)
       end
       def create(
         # An ISO 4217 currency string. Must be the same as the customer's currency if it
@@ -60,7 +59,9 @@ module Orb
         # false.
         will_auto_issue: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint allows you to update the `metadata` property on an invoice. If you
       # pass null for the metadata value, it will clear any existing metadata for that
       # invoice.
@@ -70,9 +71,8 @@ module Orb
         params(
           invoice_id: String,
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: Orb::RequestOpts
-        )
-          .returns(Orb::Models::Invoice)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Invoice)
       end
       def update(
         invoice_id,
@@ -81,7 +81,9 @@ module Orb
         # by setting `metadata` to `null`.
         metadata: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint returns a list of all [`Invoice`](/core-concepts#invoice)s for an
       # account in a list format.
       #
@@ -102,7 +104,7 @@ module Orb
           amount_lt: T.nilable(String),
           cursor: T.nilable(String),
           customer_id: T.nilable(String),
-          date_type: T.nilable(Orb::Models::InvoiceListParams::DateType::OrSymbol),
+          date_type: T.nilable(Orb::InvoiceListParams::DateType::OrSymbol),
           due_date: T.nilable(Date),
           due_date_window: T.nilable(String),
           due_date_gt: T.nilable(Date),
@@ -114,11 +116,10 @@ module Orb
           invoice_date_lte: T.nilable(Time),
           is_recurring: T.nilable(T::Boolean),
           limit: Integer,
-          status: T.nilable(T::Array[Orb::Models::InvoiceListParams::Status::OrSymbol]),
+          status: T.nilable(T::Array[Orb::InvoiceListParams::Status::OrSymbol]),
           subscription_id: T.nilable(String),
-          request_options: Orb::RequestOpts
-        )
-          .returns(Orb::Internal::Page[Orb::Models::Invoice])
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Internal::Page[Orb::Invoice])
       end
       def list(
         amount: nil,
@@ -148,20 +149,31 @@ module Orb
         status: nil,
         subscription_id: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint is used to fetch an [`Invoice`](/core-concepts#invoice) given an
       # identifier.
-      sig { params(invoice_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::Invoice) }
-      def fetch(invoice_id, request_options: {}); end
+      sig do
+        params(
+          invoice_id: String,
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Invoice)
+      end
+      def fetch(invoice_id, request_options: {})
+      end
 
       # This endpoint can be used to fetch the upcoming
       # [invoice](/core-concepts#invoice) for the current billing period given a
       # subscription.
       sig do
-        params(subscription_id: String, request_options: Orb::RequestOpts)
-          .returns(Orb::Models::InvoiceFetchUpcomingResponse)
+        params(
+          subscription_id: String,
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Models::InvoiceFetchUpcomingResponse)
       end
-      def fetch_upcoming(subscription_id:, request_options: {}); end
+      def fetch_upcoming(subscription_id:, request_options: {})
+      end
 
       # This endpoint allows an eligible invoice to be issued manually. This is only
       # possible with invoices where status is `draft`, `will_auto_issue` is false, and
@@ -170,8 +182,11 @@ module Orb
       # sending emails, auto-collecting payment, syncing the invoice to external
       # providers, etc).
       sig do
-        params(invoice_id: String, synchronous: T::Boolean, request_options: Orb::RequestOpts)
-          .returns(Orb::Models::Invoice)
+        params(
+          invoice_id: String,
+          synchronous: T::Boolean,
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Invoice)
       end
       def issue(
         invoice_id,
@@ -182,7 +197,9 @@ module Orb
         # present in the provider.
         synchronous: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint allows an invoice's status to be set the `paid` status. This can
       # only be done to invoices that are in the `issued` status.
       sig do
@@ -191,9 +208,8 @@ module Orb
           payment_received_date: Date,
           external_id: T.nilable(String),
           notes: T.nilable(String),
-          request_options: Orb::RequestOpts
-        )
-          .returns(Orb::Models::Invoice)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Invoice)
       end
       def mark_paid(
         invoice_id,
@@ -204,11 +220,19 @@ module Orb
         # An optional note to associate with the payment.
         notes: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint collects payment for an invoice using the customer's default
       # payment method. This action can only be taken on invoices with status "issued".
-      sig { params(invoice_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::Invoice) }
-      def pay(invoice_id, request_options: {}); end
+      sig do
+        params(
+          invoice_id: String,
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Invoice)
+      end
+      def pay(invoice_id, request_options: {})
+      end
 
       # This endpoint allows an invoice's status to be set the `void` status. This can
       # only be done to invoices that are in the `issued` status.
@@ -221,12 +245,19 @@ module Orb
       # If the invoice was used to purchase a credit block, but the invoice is not yet
       # paid, the credit block will be voided. If the invoice was created due to a
       # top-up, the top-up will be disabled.
-      sig { params(invoice_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::Invoice) }
-      def void(invoice_id, request_options: {}); end
+      sig do
+        params(
+          invoice_id: String,
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Invoice)
+      end
+      def void(invoice_id, request_options: {})
+      end
 
       # @api private
       sig { params(client: Orb::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

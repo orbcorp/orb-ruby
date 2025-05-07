@@ -37,8 +37,6 @@ module Orb
           status: Orb::Models::Customers::CreditListByExternalIDResponse::status
         ) -> void
 
-        def to_hash: -> Orb::Models::Customers::credit_list_by_external_id_response
-
         type status = :active | :pending_payment
 
         module Status

@@ -36,8 +36,6 @@ module Orb
         start_date: Date,
         ?request_options: Orb::request_opts
       ) -> void
-
-      def to_hash: -> Orb::Models::invoice_line_item_create_params
     end
   end
 end

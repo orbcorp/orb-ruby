@@ -19,8 +19,8 @@ module Orb
       #   with all line items, billable metrics, and prices and are used for defining
       #   external sync behavior for invoices and tax calculation purposes.
       #
-      #   @return [Orb::Models::Item]
-      required :item, -> { Orb::Models::Item }
+      #   @return [Orb::Item]
+      required :item, -> { Orb::Item }
 
       # @!attribute metadata
       #   User specified key-value pairs for the resource. If not present, this defaults
@@ -38,12 +38,12 @@ module Orb
 
       # @!attribute status
       #
-      #   @return [Symbol, Orb::Models::BillableMetric::Status]
-      required :status, enum: -> { Orb::Models::BillableMetric::Status }
+      #   @return [Symbol, Orb::BillableMetric::Status]
+      required :status, enum: -> { Orb::BillableMetric::Status }
 
       # @!method initialize(id:, description:, item:, metadata:, name:, status:)
-      #   Some parameter documentations has been truncated, see
-      #   {Orb::Models::BillableMetric} for more details.
+      #   Some parameter documentations has been truncated, see {Orb::BillableMetric} for
+      #   more details.
       #
       #   The Metric resource represents a calculation of a quantity based on events.
       #   Metrics are defined by the query that transforms raw usage events into
@@ -53,17 +53,15 @@ module Orb
       #
       #   @param description [String, nil]
       #
-      #   @param item [Orb::Models::Item] The Item resource represents a sellable product or good. Items are associated wi
-      #   ...
+      #   @param item [Orb::Item] The Item resource represents a sellable product or good. Items are associated wi
       #
       #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
-      #   ...
       #
       #   @param name [String]
       #
-      #   @param status [Symbol, Orb::Models::BillableMetric::Status]
+      #   @param status [Symbol, Orb::BillableMetric::Status]
 
-      # @see Orb::Models::BillableMetric#status
+      # @see Orb::BillableMetric#status
       module Status
         extend Orb::Internal::Type::Enum
 

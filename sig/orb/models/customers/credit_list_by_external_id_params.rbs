@@ -33,8 +33,6 @@ module Orb
           ?limit: Integer,
           ?request_options: Orb::request_opts
         ) -> void
-
-        def to_hash: -> Orb::Models::Customers::credit_list_by_external_id_params
       end
     end
   end

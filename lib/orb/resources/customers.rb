@@ -31,63 +31,53 @@ module Orb
       # @overload create(email:, name:, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, billing_address: nil, currency: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, timezone: nil, request_options: {})
       #
       # @param email [String] A valid customer email, to be used for notifications. When Orb triggers payment
-      # ...
       #
       # @param name [String] The full name of the customer
       #
-      # @param accounting_sync_configuration [Orb::Models::CustomerCreateParams::AccountingSyncConfiguration, nil]
+      # @param accounting_sync_configuration [Orb::CustomerCreateParams::AccountingSyncConfiguration, nil]
       #
       # @param additional_emails [Array<String>, nil] Additional email addresses for this customer. If populated, these email addresse
-      # ...
       #
       # @param auto_collection [Boolean, nil] Used to determine if invoices for this customer will automatically attempt to ch
-      # ...
       #
-      # @param billing_address [Orb::Models::CustomerCreateParams::BillingAddress, nil]
+      # @param billing_address [Orb::CustomerCreateParams::BillingAddress, nil]
       #
       # @param currency [String, nil] An ISO 4217 currency string used for the customer's invoices and balance. If not
-      # ...
       #
       # @param email_delivery [Boolean, nil]
       #
       # @param external_customer_id [String, nil] An optional user-defined ID for this customer resource, used throughout the syst
-      # ...
       #
-      # @param hierarchy [Orb::Models::CustomerCreateParams::Hierarchy, nil] The hierarchical relationships for this customer.
+      # @param hierarchy [Orb::CustomerCreateParams::Hierarchy, nil] The hierarchical relationships for this customer.
       #
       # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
-      # ...
       #
-      # @param payment_provider [Symbol, Orb::Models::CustomerCreateParams::PaymentProvider, nil] This is used for creating charges or invoices in an external system via Orb. Whe
-      # ...
+      # @param payment_provider [Symbol, Orb::CustomerCreateParams::PaymentProvider, nil] This is used for creating charges or invoices in an external system via Orb. Whe
       #
       # @param payment_provider_id [String, nil] The ID of this customer in an external payments solution, such as Stripe. This i
-      # ...
       #
-      # @param reporting_configuration [Orb::Models::CustomerCreateParams::ReportingConfiguration, nil]
+      # @param reporting_configuration [Orb::CustomerCreateParams::ReportingConfiguration, nil]
       #
-      # @param shipping_address [Orb::Models::CustomerCreateParams::ShippingAddress, nil]
+      # @param shipping_address [Orb::CustomerCreateParams::ShippingAddress, nil]
       #
-      # @param tax_configuration [Orb::Models::CustomerCreateParams::TaxConfiguration::Avalara, Orb::Models::CustomerCreateParams::TaxConfiguration::Taxjar, nil]
+      # @param tax_configuration [Orb::CustomerCreateParams::TaxConfiguration::Avalara, Orb::CustomerCreateParams::TaxConfiguration::Taxjar, nil]
       #
-      # @param tax_id [Orb::Models::CustomerCreateParams::TaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
-      # ...
+      # @param tax_id [Orb::CustomerCreateParams::TaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
       #
       # @param timezone [String, nil] A timezone identifier from the IANA timezone database, such as `"America/Los_Ang
-      # ...
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::Customer]
+      # @return [Orb::Customer]
       #
       # @see Orb::Models::CustomerCreateParams
       def create(params)
-        parsed, options = Orb::Models::CustomerCreateParams.dump_request(params)
+        parsed, options = Orb::CustomerCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "customers",
           body: parsed,
-          model: Orb::Models::Customer,
+          model: Orb::Customer,
           options: options
         )
       end
@@ -105,60 +95,52 @@ module Orb
       #
       # @param customer_id [String]
       #
-      # @param accounting_sync_configuration [Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration, nil]
+      # @param accounting_sync_configuration [Orb::CustomerUpdateParams::AccountingSyncConfiguration, nil]
       #
       # @param additional_emails [Array<String>, nil] Additional email addresses for this customer. If populated, these email addresse
-      # ...
       #
       # @param auto_collection [Boolean, nil] Used to determine if invoices for this customer will automatically attempt to ch
-      # ...
       #
-      # @param billing_address [Orb::Models::CustomerUpdateParams::BillingAddress, nil]
+      # @param billing_address [Orb::CustomerUpdateParams::BillingAddress, nil]
       #
       # @param currency [String, nil] An ISO 4217 currency string used for the customer's invoices and balance. If not
-      # ...
       #
       # @param email [String, nil] A valid customer email, to be used for invoicing and notifications.
       #
       # @param email_delivery [Boolean, nil]
       #
       # @param external_customer_id [String, nil] The external customer ID. This can only be set if empty and the customer has no
-      # ...
       #
-      # @param hierarchy [Orb::Models::CustomerUpdateParams::Hierarchy, nil] The hierarchical relationships for this customer.
+      # @param hierarchy [Orb::CustomerUpdateParams::Hierarchy, nil] The hierarchical relationships for this customer.
       #
       # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
-      # ...
       #
       # @param name [String, nil] The full name of the customer
       #
-      # @param payment_provider [Symbol, Orb::Models::CustomerUpdateParams::PaymentProvider, nil] This is used for creating charges or invoices in an external system via Orb. Whe
-      # ...
+      # @param payment_provider [Symbol, Orb::CustomerUpdateParams::PaymentProvider, nil] This is used for creating charges or invoices in an external system via Orb. Whe
       #
       # @param payment_provider_id [String, nil] The ID of this customer in an external payments solution, such as Stripe. This i
-      # ...
       #
-      # @param reporting_configuration [Orb::Models::CustomerUpdateParams::ReportingConfiguration, nil]
+      # @param reporting_configuration [Orb::CustomerUpdateParams::ReportingConfiguration, nil]
       #
-      # @param shipping_address [Orb::Models::CustomerUpdateParams::ShippingAddress, nil]
+      # @param shipping_address [Orb::CustomerUpdateParams::ShippingAddress, nil]
       #
-      # @param tax_configuration [Orb::Models::CustomerUpdateParams::TaxConfiguration::Avalara, Orb::Models::CustomerUpdateParams::TaxConfiguration::Taxjar, nil]
+      # @param tax_configuration [Orb::CustomerUpdateParams::TaxConfiguration::Avalara, Orb::CustomerUpdateParams::TaxConfiguration::Taxjar, nil]
       #
-      # @param tax_id [Orb::Models::CustomerUpdateParams::TaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
-      # ...
+      # @param tax_id [Orb::CustomerUpdateParams::TaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::Customer]
+      # @return [Orb::Customer]
       #
       # @see Orb::Models::CustomerUpdateParams
       def update(customer_id, params = {})
-        parsed, options = Orb::Models::CustomerUpdateParams.dump_request(params)
+        parsed, options = Orb::CustomerUpdateParams.dump_request(params)
         @client.request(
           method: :put,
           path: ["customers/%1$s", customer_id],
           body: parsed,
-          model: Orb::Models::Customer,
+          model: Orb::Customer,
           options: options
         )
       end
@@ -184,17 +166,16 @@ module Orb
       # @param created_at_lte [Time, nil]
       #
       # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
-      # ...
       #
       # @param limit [Integer] The number of items to fetch. Defaults to 20.
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Internal::Page<Orb::Models::Customer>]
+      # @return [Orb::Internal::Page<Orb::Customer>]
       #
       # @see Orb::Models::CustomerListParams
       def list(params = {})
-        parsed, options = Orb::Models::CustomerListParams.dump_request(params)
+        parsed, options = Orb::CustomerListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "customers",
@@ -205,7 +186,7 @@ module Orb
             created_at_lte: "created_at[lte]"
           ),
           page: Orb::Internal::Page,
-          model: Orb::Models::Customer,
+          model: Orb::Customer,
           options: options
         )
       end
@@ -255,14 +236,14 @@ module Orb
       # @param customer_id [String]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::Customer]
+      # @return [Orb::Customer]
       #
       # @see Orb::Models::CustomerFetchParams
       def fetch(customer_id, params = {})
         @client.request(
           method: :get,
           path: ["customers/%1$s", customer_id],
-          model: Orb::Models::Customer,
+          model: Orb::Customer,
           options: params[:request_options]
         )
       end
@@ -278,14 +259,14 @@ module Orb
       # @param external_customer_id [String]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::Customer]
+      # @return [Orb::Customer]
       #
       # @see Orb::Models::CustomerFetchByExternalIDParams
       def fetch_by_external_id(external_customer_id, params = {})
         @client.request(
           method: :get,
           path: ["customers/external_customer_id/%1$s", external_customer_id],
-          model: Orb::Models::Customer,
+          model: Orb::Customer,
           options: params[:request_options]
         )
       end
@@ -353,60 +334,52 @@ module Orb
       #
       # @param id [String]
       #
-      # @param accounting_sync_configuration [Orb::Models::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration, nil]
+      # @param accounting_sync_configuration [Orb::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration, nil]
       #
       # @param additional_emails [Array<String>, nil] Additional email addresses for this customer. If populated, these email addresse
-      # ...
       #
       # @param auto_collection [Boolean, nil] Used to determine if invoices for this customer will automatically attempt to ch
-      # ...
       #
-      # @param billing_address [Orb::Models::CustomerUpdateByExternalIDParams::BillingAddress, nil]
+      # @param billing_address [Orb::CustomerUpdateByExternalIDParams::BillingAddress, nil]
       #
       # @param currency [String, nil] An ISO 4217 currency string used for the customer's invoices and balance. If not
-      # ...
       #
       # @param email [String, nil] A valid customer email, to be used for invoicing and notifications.
       #
       # @param email_delivery [Boolean, nil]
       #
       # @param external_customer_id [String, nil] The external customer ID. This can only be set if empty and the customer has no
-      # ...
       #
-      # @param hierarchy [Orb::Models::CustomerUpdateByExternalIDParams::Hierarchy, nil] The hierarchical relationships for this customer.
+      # @param hierarchy [Orb::CustomerUpdateByExternalIDParams::Hierarchy, nil] The hierarchical relationships for this customer.
       #
       # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
-      # ...
       #
       # @param name [String, nil] The full name of the customer
       #
-      # @param payment_provider [Symbol, Orb::Models::CustomerUpdateByExternalIDParams::PaymentProvider, nil] This is used for creating charges or invoices in an external system via Orb. Whe
-      # ...
+      # @param payment_provider [Symbol, Orb::CustomerUpdateByExternalIDParams::PaymentProvider, nil] This is used for creating charges or invoices in an external system via Orb. Whe
       #
       # @param payment_provider_id [String, nil] The ID of this customer in an external payments solution, such as Stripe. This i
-      # ...
       #
-      # @param reporting_configuration [Orb::Models::CustomerUpdateByExternalIDParams::ReportingConfiguration, nil]
+      # @param reporting_configuration [Orb::CustomerUpdateByExternalIDParams::ReportingConfiguration, nil]
       #
-      # @param shipping_address [Orb::Models::CustomerUpdateByExternalIDParams::ShippingAddress, nil]
+      # @param shipping_address [Orb::CustomerUpdateByExternalIDParams::ShippingAddress, nil]
       #
-      # @param tax_configuration [Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Avalara, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Taxjar, nil]
+      # @param tax_configuration [Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Avalara, Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Taxjar, nil]
       #
-      # @param tax_id [Orb::Models::CustomerUpdateByExternalIDParams::TaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
-      # ...
+      # @param tax_id [Orb::CustomerUpdateByExternalIDParams::TaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::Customer]
+      # @return [Orb::Customer]
       #
       # @see Orb::Models::CustomerUpdateByExternalIDParams
       def update_by_external_id(id, params = {})
-        parsed, options = Orb::Models::CustomerUpdateByExternalIDParams.dump_request(params)
+        parsed, options = Orb::CustomerUpdateByExternalIDParams.dump_request(params)
         @client.request(
           method: :put,
           path: ["customers/external_customer_id/%1$s", id],
           body: parsed,
-          model: Orb::Models::Customer,
+          model: Orb::Customer,
           options: options
         )
       end

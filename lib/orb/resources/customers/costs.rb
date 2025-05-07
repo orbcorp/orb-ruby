@@ -135,8 +135,7 @@ module Orb
         #
         # @param timeframe_start [Time, nil] Costs returned are inclusive of `timeframe_start`.
         #
-        # @param view_mode [Symbol, Orb::Models::Customers::CostListParams::ViewMode, nil] Controls whether Orb returns cumulative costs since the start of the billing per
-        # ...
+        # @param view_mode [Symbol, Orb::Customers::CostListParams::ViewMode, nil] Controls whether Orb returns cumulative costs since the start of the billing per
         #
         # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -144,7 +143,7 @@ module Orb
         #
         # @see Orb::Models::Customers::CostListParams
         def list(customer_id, params = {})
-          parsed, options = Orb::Models::Customers::CostListParams.dump_request(params)
+          parsed, options = Orb::Customers::CostListParams.dump_request(params)
           @client.request(
             method: :get,
             path: ["customers/%1$s/costs", customer_id],
@@ -285,8 +284,7 @@ module Orb
         #
         # @param timeframe_start [Time, nil] Costs returned are inclusive of `timeframe_start`.
         #
-        # @param view_mode [Symbol, Orb::Models::Customers::CostListByExternalIDParams::ViewMode, nil] Controls whether Orb returns cumulative costs since the start of the billing per
-        # ...
+        # @param view_mode [Symbol, Orb::Customers::CostListByExternalIDParams::ViewMode, nil] Controls whether Orb returns cumulative costs since the start of the billing per
         #
         # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -294,7 +292,7 @@ module Orb
         #
         # @see Orb::Models::Customers::CostListByExternalIDParams
         def list_by_external_id(external_customer_id, params = {})
-          parsed, options = Orb::Models::Customers::CostListByExternalIDParams.dump_request(params)
+          parsed, options = Orb::Customers::CostListByExternalIDParams.dump_request(params)
           @client.request(
             method: :get,
             path: ["customers/external_customer_id/%1$s/costs", external_customer_id],

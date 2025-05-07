@@ -47,8 +47,6 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> void
 
-      def to_hash: -> Orb::Models::plan_list_params
-
       type status = :active | :archived | :draft
 
       module Status

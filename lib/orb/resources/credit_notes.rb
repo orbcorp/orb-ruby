@@ -8,24 +8,24 @@ module Orb
       #
       # @overload create(line_items:, memo: nil, reason: nil, request_options: {})
       #
-      # @param line_items [Array<Orb::Models::CreditNoteCreateParams::LineItem>]
+      # @param line_items [Array<Orb::CreditNoteCreateParams::LineItem>]
       #
       # @param memo [String, nil] An optional memo to attach to the credit note.
       #
-      # @param reason [Symbol, Orb::Models::CreditNoteCreateParams::Reason, nil] An optional reason for the credit note.
+      # @param reason [Symbol, Orb::CreditNoteCreateParams::Reason, nil] An optional reason for the credit note.
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::CreditNote]
+      # @return [Orb::CreditNote]
       #
       # @see Orb::Models::CreditNoteCreateParams
       def create(params)
-        parsed, options = Orb::Models::CreditNoteCreateParams.dump_request(params)
+        parsed, options = Orb::CreditNoteCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "credit_notes",
           body: parsed,
-          model: Orb::Models::CreditNote,
+          model: Orb::CreditNote,
           options: options
         )
       end
@@ -48,17 +48,16 @@ module Orb
       # @param created_at_lte [Time, nil]
       #
       # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
-      # ...
       #
       # @param limit [Integer] The number of items to fetch. Defaults to 20.
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Internal::Page<Orb::Models::CreditNote>]
+      # @return [Orb::Internal::Page<Orb::CreditNote>]
       #
       # @see Orb::Models::CreditNoteListParams
       def list(params = {})
-        parsed, options = Orb::Models::CreditNoteListParams.dump_request(params)
+        parsed, options = Orb::CreditNoteListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "credit_notes",
@@ -69,7 +68,7 @@ module Orb
             created_at_lte: "created_at[lte]"
           ),
           page: Orb::Internal::Page,
-          model: Orb::Models::CreditNote,
+          model: Orb::CreditNote,
           options: options
         )
       end
@@ -82,14 +81,14 @@ module Orb
       # @param credit_note_id [String]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::CreditNote]
+      # @return [Orb::CreditNote]
       #
       # @see Orb::Models::CreditNoteFetchParams
       def fetch(credit_note_id, params = {})
         @client.request(
           method: :get,
           path: ["credit_notes/%1$s", credit_note_id],
-          model: Orb::Models::CreditNote,
+          model: Orb::CreditNote,
           options: params[:request_options]
         )
       end

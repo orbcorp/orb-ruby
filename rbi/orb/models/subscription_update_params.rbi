@@ -6,6 +6,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
       # Determines whether issued invoices for this subscription will automatically be
       # charged with the saved payment method on the due date. This property defaults to
       # the plan's behavior.
@@ -43,9 +45,8 @@ module Orb
           invoicing_threshold: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           net_terms: T.nilable(Integer),
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Determines whether issued invoices for this subscription will automatically be
@@ -69,21 +70,23 @@ module Orb
         # has a month to pay the invoice.
         net_terms: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              auto_collection: T.nilable(T::Boolean),
-              default_invoice_memo: T.nilable(String),
-              invoicing_threshold: T.nilable(String),
-              metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-              net_terms: T.nilable(Integer),
-              request_options: Orb::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            auto_collection: T.nilable(T::Boolean),
+            default_invoice_memo: T.nilable(String),
+            invoicing_threshold: T.nilable(String),
+            metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+            net_terms: T.nilable(Integer),
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

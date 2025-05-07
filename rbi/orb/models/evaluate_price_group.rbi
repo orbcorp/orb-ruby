@@ -3,6 +3,8 @@
 module Orb
   module Models
     class EvaluatePriceGroup < Orb::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
       # The price's output for the group
       sig { returns(String) }
       attr_accessor :amount
@@ -16,8 +18,11 @@ module Orb
       attr_accessor :quantity
 
       sig do
-        params(amount: String, grouping_values: T::Array[T.any(String, Float, T::Boolean)], quantity: Float)
-          .returns(T.attached_class)
+        params(
+          amount: String,
+          grouping_values: T::Array[T.any(String, Float, T::Boolean)],
+          quantity: Float
+        ).returns(T.attached_class)
       end
       def self.new(
         # The price's output for the group
@@ -26,22 +31,33 @@ module Orb
         grouping_values:,
         # The price's usage quantity for the group
         quantity:
-      ); end
-      sig do
-        override
-          .returns({
-                     amount: String,
-                     grouping_values: T::Array[T.any(String, Float, T::Boolean)],
-                     quantity: Float
-                   })
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            amount: String,
+            grouping_values: T::Array[T.any(String, Float, T::Boolean)],
+            quantity: Float
+          }
+        )
+      end
+      def to_hash
+      end
 
       module GroupingValue
         extend Orb::Internal::Type::Union
 
-        sig { override.returns([String, Float, T::Boolean]) }
-        def self.variants; end
+        Variants = T.type_alias { T.any(String, Float, T::Boolean) }
+
+        sig do
+          override.returns(
+            T::Array[Orb::EvaluatePriceGroup::GroupingValue::Variants]
+          )
+        end
+        def self.variants
+        end
       end
     end
   end

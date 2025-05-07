@@ -6,6 +6,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
       # If true, the invoice will be issued synchronously. If false, the invoice will be
       # issued asynchronously. The synchronous option is only available for invoices
       # that have no usage fees. If the invoice is configured to sync to an external
@@ -18,8 +20,10 @@ module Orb
       attr_writer :synchronous
 
       sig do
-        params(synchronous: T::Boolean, request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash))
-          .returns(T.attached_class)
+        params(
+          synchronous: T::Boolean,
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # If true, the invoice will be issued synchronously. If false, the invoice will be
@@ -29,9 +33,16 @@ module Orb
         # present in the provider.
         synchronous: nil,
         request_options: {}
-      ); end
-      sig { override.returns({synchronous: T::Boolean, request_options: Orb::RequestOptions}) }
-      def to_hash; end
+      )
+      end
+
+      sig do
+        override.returns(
+          { synchronous: T::Boolean, request_options: Orb::RequestOptions }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

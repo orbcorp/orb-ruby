@@ -4,7 +4,7 @@ module Orb
       {
         currency: String,
         type: Orb::Models::AlertCreateForCustomerParams::type_,
-        thresholds: ::Array[Orb::Models::AlertCreateForCustomerParams::Threshold]?
+        thresholds: ::Array[Orb::AlertCreateForCustomerParams::Threshold]?
       }
       & Orb::Internal::Type::request_parameters
 
@@ -16,16 +16,14 @@ module Orb
 
       attr_accessor type: Orb::Models::AlertCreateForCustomerParams::type_
 
-      attr_accessor thresholds: ::Array[Orb::Models::AlertCreateForCustomerParams::Threshold]?
+      attr_accessor thresholds: ::Array[Orb::AlertCreateForCustomerParams::Threshold]?
 
       def initialize: (
         currency: String,
         type: Orb::Models::AlertCreateForCustomerParams::type_,
-        ?thresholds: ::Array[Orb::Models::AlertCreateForCustomerParams::Threshold]?,
+        ?thresholds: ::Array[Orb::AlertCreateForCustomerParams::Threshold]?,
         ?request_options: Orb::request_opts
       ) -> void
-
-      def to_hash: -> Orb::Models::alert_create_for_customer_params
 
       type type_ =
         :credit_balance_depleted
@@ -48,8 +46,6 @@ module Orb
         attr_accessor value: Float
 
         def initialize: (value: Float) -> void
-
-        def to_hash: -> Orb::Models::AlertCreateForCustomerParams::threshold
       end
     end
   end

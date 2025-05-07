@@ -6,6 +6,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
       # The total amount in the invoice's currency to add to the line item.
       sig { returns(String) }
       attr_accessor :amount
@@ -39,9 +41,8 @@ module Orb
           name: String,
           quantity: Float,
           start_date: Date,
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # The total amount in the invoice's currency to add to the line item.
@@ -58,22 +59,24 @@ module Orb
         # A date string to specify the line item's start date in the customer's timezone.
         start_date:,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              amount: String,
-              end_date: Date,
-              invoice_id: String,
-              name: String,
-              quantity: Float,
-              start_date: Date,
-              request_options: Orb::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            amount: String,
+            end_date: Date,
+            invoice_id: String,
+            name: String,
+            quantity: Float,
+            start_date: Date,
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

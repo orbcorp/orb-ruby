@@ -6,8 +6,6 @@ module Orb
       attr_accessor response: String
 
       def initialize: (response: String) -> void
-
-      def to_hash: -> Orb::Models::top_level_ping_response
     end
   end
 end

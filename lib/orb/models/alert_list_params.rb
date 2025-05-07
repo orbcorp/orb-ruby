@@ -71,7 +71,6 @@ module Orb
       #   @param created_at_lte [Time, nil]
       #
       #   @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
-      #   ...
       #
       #   @param customer_id [String, nil] Fetch alerts scoped to this customer_id
       #

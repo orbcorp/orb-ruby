@@ -82,12 +82,10 @@ module Orb
         #   @param description [String, nil] An optional description provided for manual customer balance adjustments.
         #
         #   @param ending_balance [String] The new value of the customer's balance prior to the transaction, in the custome
-        #   ...
         #
         #   @param invoice [Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice, nil]
         #
         #   @param starting_balance [String] The original value of the customer's balance prior to the transaction, in the cu
-        #   ...
         #
         #   @param type [Symbol, Orb::Models::Customers::BalanceTransactionCreateResponse::Type]
 

@@ -6,6 +6,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
       sig { returns(T.nilable(Time)) }
       attr_accessor :created_at_gt
 
@@ -31,10 +33,10 @@ module Orb
       attr_writer :limit
 
       # The plan status to filter to ('active', 'archived', or 'draft').
-      sig { returns(T.nilable(Orb::Models::PlanListParams::Status::OrSymbol)) }
+      sig { returns(T.nilable(Orb::PlanListParams::Status::OrSymbol)) }
       attr_reader :status
 
-      sig { params(status: Orb::Models::PlanListParams::Status::OrSymbol).void }
+      sig { params(status: Orb::PlanListParams::Status::OrSymbol).void }
       attr_writer :status
 
       sig do
@@ -45,10 +47,9 @@ module Orb
           created_at_lte: T.nilable(Time),
           cursor: T.nilable(String),
           limit: Integer,
-          status: Orb::Models::PlanListParams::Status::OrSymbol,
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          status: Orb::PlanListParams::Status::OrSymbol,
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         created_at_gt: nil,
@@ -63,37 +64,43 @@ module Orb
         # The plan status to filter to ('active', 'archived', or 'draft').
         status: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              created_at_gt: T.nilable(Time),
-              created_at_gte: T.nilable(Time),
-              created_at_lt: T.nilable(Time),
-              created_at_lte: T.nilable(Time),
-              cursor: T.nilable(String),
-              limit: Integer,
-              status: Orb::Models::PlanListParams::Status::OrSymbol,
-              request_options: Orb::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            created_at_gt: T.nilable(Time),
+            created_at_gte: T.nilable(Time),
+            created_at_lt: T.nilable(Time),
+            created_at_lte: T.nilable(Time),
+            cursor: T.nilable(String),
+            limit: Integer,
+            status: Orb::PlanListParams::Status::OrSymbol,
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # The plan status to filter to ('active', 'archived', or 'draft').
       module Status
         extend Orb::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::PlanListParams::Status) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Orb::PlanListParams::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        ACTIVE = T.let(:active, Orb::Models::PlanListParams::Status::TaggedSymbol)
-        ARCHIVED = T.let(:archived, Orb::Models::PlanListParams::Status::TaggedSymbol)
-        DRAFT = T.let(:draft, Orb::Models::PlanListParams::Status::TaggedSymbol)
+        ACTIVE = T.let(:active, Orb::PlanListParams::Status::TaggedSymbol)
+        ARCHIVED = T.let(:archived, Orb::PlanListParams::Status::TaggedSymbol)
+        DRAFT = T.let(:draft, Orb::PlanListParams::Status::TaggedSymbol)
 
-        sig { override.returns(T::Array[Orb::Models::PlanListParams::Status::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(T::Array[Orb::PlanListParams::Status::TaggedSymbol])
+        end
+        def self.values
+        end
       end
     end
   end

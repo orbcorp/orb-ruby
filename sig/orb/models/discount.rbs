@@ -1,15 +1,15 @@
 module Orb
   module Models
     type discount =
-      Orb::Models::PercentageDiscount
-      | Orb::Models::TrialDiscount
-      | Orb::Models::UsageDiscount
-      | Orb::Models::AmountDiscount
+      Orb::PercentageDiscount
+      | Orb::TrialDiscount
+      | Orb::UsageDiscount
+      | Orb::AmountDiscount
 
     module Discount
       extend Orb::Internal::Type::Union
 
-      def self?.variants: -> [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount]
+      def self?.variants: -> ::Array[Orb::Models::discount]
     end
   end
 end

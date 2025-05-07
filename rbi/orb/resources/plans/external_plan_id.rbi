@@ -13,9 +13,8 @@ module Orb
             other_external_plan_id: String,
             external_plan_id: T.nilable(String),
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-            request_options: Orb::RequestOpts
-          )
-            .returns(Orb::Models::Plan)
+            request_options: Orb::RequestOptions::OrHash
+          ).returns(Orb::Plan)
         end
         def update(
           other_external_plan_id,
@@ -28,7 +27,9 @@ module Orb
           # by setting `metadata` to `null`.
           metadata: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # This endpoint is used to fetch [plan](/core-concepts##plan-and-price) details
         # given an external_plan_id identifier. It returns information about the prices
         # included in the plan and their configuration, as well as the product that the
@@ -45,12 +46,19 @@ module Orb
         # object. The `model_type` field determines the key for the configuration object
         # that is present. A detailed explanation of price types can be found in the
         # [Price schema](/core-concepts#plan-and-price). "
-        sig { params(external_plan_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::Plan) }
-        def fetch(external_plan_id, request_options: {}); end
+        sig do
+          params(
+            external_plan_id: String,
+            request_options: Orb::RequestOptions::OrHash
+          ).returns(Orb::Plan)
+        end
+        def fetch(external_plan_id, request_options: {})
+        end
 
         # @api private
         sig { params(client: Orb::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

@@ -32,8 +32,6 @@ module Orb
         ?metadata: ::Hash[Symbol, String?]?,
         ?request_options: Orb::request_opts
       ) -> void
-
-      def to_hash: -> Orb::Models::metric_create_params
     end
   end
 end

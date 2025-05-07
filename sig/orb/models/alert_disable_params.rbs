@@ -13,8 +13,6 @@ module Orb
         ?subscription_id: String?,
         ?request_options: Orb::request_opts
       ) -> void
-
-      def to_hash: -> Orb::Models::alert_disable_params
     end
   end
 end

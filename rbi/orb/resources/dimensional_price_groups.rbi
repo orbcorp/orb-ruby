@@ -3,7 +3,11 @@
 module Orb
   module Resources
     class DimensionalPriceGroups
-      sig { returns(Orb::Resources::DimensionalPriceGroups::ExternalDimensionalPriceGroupID) }
+      sig do
+        returns(
+          Orb::Resources::DimensionalPriceGroups::ExternalDimensionalPriceGroupID
+        )
+      end
       attr_reader :external_dimensional_price_group_id
 
       # A dimensional price group is used to partition the result of a billable metric
@@ -21,9 +25,8 @@ module Orb
           name: String,
           external_dimensional_price_group_id: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: Orb::RequestOpts
-        )
-          .returns(Orb::Models::DimensionalPriceGroup)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::DimensionalPriceGroup)
       end
       def create(
         billable_metric_id:,
@@ -36,18 +39,26 @@ module Orb
         # by setting `metadata` to `null`.
         metadata: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Fetch dimensional price group
       sig do
-        params(dimensional_price_group_id: String, request_options: Orb::RequestOpts)
-          .returns(Orb::Models::DimensionalPriceGroup)
+        params(
+          dimensional_price_group_id: String,
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::DimensionalPriceGroup)
       end
-      def retrieve(dimensional_price_group_id, request_options: {}); end
+      def retrieve(dimensional_price_group_id, request_options: {})
+      end
 
       # List dimensional price groups
       sig do
-        params(cursor: T.nilable(String), limit: Integer, request_options: Orb::RequestOpts)
-          .returns(Orb::Internal::Page[Orb::Models::DimensionalPriceGroup])
+        params(
+          cursor: T.nilable(String),
+          limit: Integer,
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Internal::Page[Orb::DimensionalPriceGroup])
       end
       def list(
         # Cursor for pagination. This can be populated by the `next_cursor` value returned
@@ -56,10 +67,13 @@ module Orb
         # The number of items to fetch. Defaults to 20.
         limit: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Orb::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

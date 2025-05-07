@@ -60,10 +60,8 @@ module Orb
       #   @param external_customer_id [String, nil] The external customer ID of the customer to which this evaluation is scoped.
       #
       #   @param filter [String, nil] A boolean [computed property](/extensibility/advanced-metrics#computed-propertie
-      #   ...
       #
       #   @param grouping_keys [Array<String>] Properties (or [computed properties](/extensibility/advanced-metrics#computed-pr
-      #   ...
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end

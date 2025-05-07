@@ -7,14 +7,14 @@ module Orb
 
       discriminator :discount_type
 
-      variant :percentage, -> { Orb::Models::PercentageDiscount }
+      variant :percentage, -> { Orb::PercentageDiscount }
 
-      variant :amount, -> { Orb::Models::AmountDiscount }
+      variant :amount, -> { Orb::AmountDiscount }
 
-      variant :trial, -> { Orb::Models::TrialDiscount }
+      variant :trial, -> { Orb::TrialDiscount }
 
       # @!method self.variants
-      #   @return [Array(Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount, Orb::Models::TrialDiscount)]
+      #   @return [Array(Orb::PercentageDiscount, Orb::AmountDiscount, Orb::TrialDiscount)]
     end
   end
 end

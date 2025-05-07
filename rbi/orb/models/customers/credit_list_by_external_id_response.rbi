@@ -4,6 +4,8 @@ module Orb
   module Models
     module Customers
       class CreditListByExternalIDResponse < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
@@ -22,7 +24,11 @@ module Orb
         sig { returns(T.nilable(String)) }
         attr_accessor :per_unit_cost_basis
 
-        sig { returns(Orb::Models::Customers::CreditListByExternalIDResponse::Status::TaggedSymbol) }
+        sig do
+          returns(
+            Orb::Models::Customers::CreditListByExternalIDResponse::Status::TaggedSymbol
+          )
+        end
         attr_accessor :status
 
         sig do
@@ -33,9 +39,9 @@ module Orb
             expiry_date: T.nilable(Time),
             maximum_initial_balance: T.nilable(Float),
             per_unit_cost_basis: T.nilable(String),
-            status: Orb::Models::Customers::CreditListByExternalIDResponse::Status::OrSymbol
-          )
-            .returns(T.attached_class)
+            status:
+              Orb::Models::Customers::CreditListByExternalIDResponse::Status::OrSymbol
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -49,34 +55,54 @@ module Orb
         end
 
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                balance: Float,
-                effective_date: T.nilable(Time),
-                expiry_date: T.nilable(Time),
-                maximum_initial_balance: T.nilable(Float),
-                per_unit_cost_basis: T.nilable(String),
-                status: Orb::Models::Customers::CreditListByExternalIDResponse::Status::TaggedSymbol
-              }
-            )
+          override.returns(
+            {
+              id: String,
+              balance: Float,
+              effective_date: T.nilable(Time),
+              expiry_date: T.nilable(Time),
+              maximum_initial_balance: T.nilable(Float),
+              per_unit_cost_basis: T.nilable(String),
+              status:
+                Orb::Models::Customers::CreditListByExternalIDResponse::Status::TaggedSymbol
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         module Status
           extend Orb::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Orb::Models::Customers::CreditListByExternalIDResponse::Status) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Orb::Models::Customers::CreditListByExternalIDResponse::Status
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ACTIVE = T.let(:active, Orb::Models::Customers::CreditListByExternalIDResponse::Status::TaggedSymbol)
+          ACTIVE =
+            T.let(
+              :active,
+              Orb::Models::Customers::CreditListByExternalIDResponse::Status::TaggedSymbol
+            )
           PENDING_PAYMENT =
-            T.let(:pending_payment, Orb::Models::Customers::CreditListByExternalIDResponse::Status::TaggedSymbol)
+            T.let(
+              :pending_payment,
+              Orb::Models::Customers::CreditListByExternalIDResponse::Status::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Customers::CreditListByExternalIDResponse::Status::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Models::Customers::CreditListByExternalIDResponse::Status::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
     end

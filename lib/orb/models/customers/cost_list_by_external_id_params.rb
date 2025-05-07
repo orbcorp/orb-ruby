@@ -32,8 +32,8 @@ module Orb
         #   discounts, it's strongly recommended that you use the default cumulative
         #   behavior.
         #
-        #   @return [Symbol, Orb::Models::Customers::CostListByExternalIDParams::ViewMode, nil]
-        optional :view_mode, enum: -> { Orb::Models::Customers::CostListByExternalIDParams::ViewMode }, nil?: true
+        #   @return [Symbol, Orb::Customers::CostListByExternalIDParams::ViewMode, nil]
+        optional :view_mode, enum: -> { Orb::Customers::CostListByExternalIDParams::ViewMode }, nil?: true
 
         # @!method initialize(currency: nil, timeframe_end: nil, timeframe_start: nil, view_mode: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
@@ -45,8 +45,7 @@ module Orb
         #
         #   @param timeframe_start [Time, nil] Costs returned are inclusive of `timeframe_start`.
         #
-        #   @param view_mode [Symbol, Orb::Models::Customers::CostListByExternalIDParams::ViewMode, nil] Controls whether Orb returns cumulative costs since the start of the billing per
-        #   ...
+        #   @param view_mode [Symbol, Orb::Customers::CostListByExternalIDParams::ViewMode, nil] Controls whether Orb returns cumulative costs since the start of the billing per
         #
         #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
