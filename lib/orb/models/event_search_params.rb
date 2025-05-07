@@ -35,13 +35,10 @@ module Orb
       #   {Orb::Models::EventSearchParams} for more details.
       #
       #   @param event_ids [Array<String>] This is an explicit array of IDs to filter by. Note that an event's ID is the id
-      #   ...
       #
       #   @param timeframe_end [Time, nil] The end of the timeframe, exclusive, in which to search events. If not specified
-      #   ...
       #
       #   @param timeframe_start [Time, nil] The start of the timeframe, inclusive, in which to search events. If not specifi
-      #   ...
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end

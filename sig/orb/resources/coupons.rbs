@@ -9,7 +9,7 @@ module Orb
         ?duration_in_months: Integer?,
         ?max_redemptions: Integer?,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::Coupon
+      ) -> Orb::Coupon
 
       def list: (
         ?cursor: String?,
@@ -17,17 +17,17 @@ module Orb
         ?redemption_code: String?,
         ?show_archived: bool?,
         ?request_options: Orb::request_opts
-      ) -> Orb::Internal::Page[Orb::Models::Coupon]
+      ) -> Orb::Internal::Page[Orb::Coupon]
 
       def archive: (
         String coupon_id,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::Coupon
+      ) -> Orb::Coupon
 
       def fetch: (
         String coupon_id,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::Coupon
+      ) -> Orb::Coupon
 
       def initialize: (client: Orb::Client) -> void
     end

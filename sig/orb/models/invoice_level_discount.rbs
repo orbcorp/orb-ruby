@@ -1,14 +1,12 @@
 module Orb
   module Models
     type invoice_level_discount =
-      Orb::Models::PercentageDiscount
-      | Orb::Models::AmountDiscount
-      | Orb::Models::TrialDiscount
+      Orb::PercentageDiscount | Orb::AmountDiscount | Orb::TrialDiscount
 
     module InvoiceLevelDiscount
       extend Orb::Internal::Type::Union
 
-      def self?.variants: -> [Orb::Models::PercentageDiscount, Orb::Models::AmountDiscount, Orb::Models::TrialDiscount]
+      def self?.variants: -> ::Array[Orb::Models::invoice_level_discount]
     end
   end
 end

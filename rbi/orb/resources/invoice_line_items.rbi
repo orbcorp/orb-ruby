@@ -13,9 +13,8 @@ module Orb
           name: String,
           quantity: Float,
           start_date: Date,
-          request_options: Orb::RequestOpts
-        )
-          .returns(Orb::Models::InvoiceLineItemCreateResponse)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Models::InvoiceLineItemCreateResponse)
       end
       def create(
         # The total amount in the invoice's currency to add to the line item.
@@ -32,10 +31,13 @@ module Orb
         # A date string to specify the line item's start date in the customer's timezone.
         start_date:,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Orb::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

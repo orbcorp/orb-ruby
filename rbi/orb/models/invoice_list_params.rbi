@@ -6,6 +6,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
       sig { returns(T.nilable(String)) }
       attr_accessor :amount
 
@@ -23,7 +25,7 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :customer_id
 
-      sig { returns(T.nilable(Orb::Models::InvoiceListParams::DateType::OrSymbol)) }
+      sig { returns(T.nilable(Orb::InvoiceListParams::DateType::OrSymbol)) }
       attr_accessor :date_type
 
       sig { returns(T.nilable(Date)) }
@@ -67,7 +69,9 @@ module Orb
       sig { params(limit: Integer).void }
       attr_writer :limit
 
-      sig { returns(T.nilable(T::Array[Orb::Models::InvoiceListParams::Status::OrSymbol])) }
+      sig do
+        returns(T.nilable(T::Array[Orb::InvoiceListParams::Status::OrSymbol]))
+      end
       attr_accessor :status
 
       sig { returns(T.nilable(String)) }
@@ -80,7 +84,7 @@ module Orb
           amount_lt: T.nilable(String),
           cursor: T.nilable(String),
           customer_id: T.nilable(String),
-          date_type: T.nilable(Orb::Models::InvoiceListParams::DateType::OrSymbol),
+          date_type: T.nilable(Orb::InvoiceListParams::DateType::OrSymbol),
           due_date: T.nilable(Date),
           due_date_window: T.nilable(String),
           due_date_gt: T.nilable(Date),
@@ -92,11 +96,10 @@ module Orb
           invoice_date_lte: T.nilable(Time),
           is_recurring: T.nilable(T::Boolean),
           limit: Integer,
-          status: T.nilable(T::Array[Orb::Models::InvoiceListParams::Status::OrSymbol]),
+          status: T.nilable(T::Array[Orb::InvoiceListParams::Status::OrSymbol]),
           subscription_id: T.nilable(String),
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         amount: nil,
@@ -126,63 +129,80 @@ module Orb
         status: nil,
         subscription_id: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              amount: T.nilable(String),
-              amount_gt: T.nilable(String),
-              amount_lt: T.nilable(String),
-              cursor: T.nilable(String),
-              customer_id: T.nilable(String),
-              date_type: T.nilable(Orb::Models::InvoiceListParams::DateType::OrSymbol),
-              due_date: T.nilable(Date),
-              due_date_window: T.nilable(String),
-              due_date_gt: T.nilable(Date),
-              due_date_lt: T.nilable(Date),
-              external_customer_id: T.nilable(String),
-              invoice_date_gt: T.nilable(Time),
-              invoice_date_gte: T.nilable(Time),
-              invoice_date_lt: T.nilable(Time),
-              invoice_date_lte: T.nilable(Time),
-              is_recurring: T.nilable(T::Boolean),
-              limit: Integer,
-              status: T.nilable(T::Array[Orb::Models::InvoiceListParams::Status::OrSymbol]),
-              subscription_id: T.nilable(String),
-              request_options: Orb::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            amount: T.nilable(String),
+            amount_gt: T.nilable(String),
+            amount_lt: T.nilable(String),
+            cursor: T.nilable(String),
+            customer_id: T.nilable(String),
+            date_type: T.nilable(Orb::InvoiceListParams::DateType::OrSymbol),
+            due_date: T.nilable(Date),
+            due_date_window: T.nilable(String),
+            due_date_gt: T.nilable(Date),
+            due_date_lt: T.nilable(Date),
+            external_customer_id: T.nilable(String),
+            invoice_date_gt: T.nilable(Time),
+            invoice_date_gte: T.nilable(Time),
+            invoice_date_lt: T.nilable(Time),
+            invoice_date_lte: T.nilable(Time),
+            is_recurring: T.nilable(T::Boolean),
+            limit: Integer,
+            status:
+              T.nilable(T::Array[Orb::InvoiceListParams::Status::OrSymbol]),
+            subscription_id: T.nilable(String),
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       module DateType
         extend Orb::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::InvoiceListParams::DateType) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Orb::InvoiceListParams::DateType) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        DUE_DATE = T.let(:due_date, Orb::Models::InvoiceListParams::DateType::TaggedSymbol)
-        INVOICE_DATE = T.let(:invoice_date, Orb::Models::InvoiceListParams::DateType::TaggedSymbol)
+        DUE_DATE =
+          T.let(:due_date, Orb::InvoiceListParams::DateType::TaggedSymbol)
+        INVOICE_DATE =
+          T.let(:invoice_date, Orb::InvoiceListParams::DateType::TaggedSymbol)
 
-        sig { override.returns(T::Array[Orb::Models::InvoiceListParams::DateType::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Orb::InvoiceListParams::DateType::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       module Status
         extend Orb::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::InvoiceListParams::Status) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Orb::InvoiceListParams::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        DRAFT = T.let(:draft, Orb::Models::InvoiceListParams::Status::TaggedSymbol)
-        ISSUED = T.let(:issued, Orb::Models::InvoiceListParams::Status::TaggedSymbol)
-        PAID = T.let(:paid, Orb::Models::InvoiceListParams::Status::TaggedSymbol)
-        SYNCED = T.let(:synced, Orb::Models::InvoiceListParams::Status::TaggedSymbol)
-        VOID = T.let(:void, Orb::Models::InvoiceListParams::Status::TaggedSymbol)
+        DRAFT = T.let(:draft, Orb::InvoiceListParams::Status::TaggedSymbol)
+        ISSUED = T.let(:issued, Orb::InvoiceListParams::Status::TaggedSymbol)
+        PAID = T.let(:paid, Orb::InvoiceListParams::Status::TaggedSymbol)
+        SYNCED = T.let(:synced, Orb::InvoiceListParams::Status::TaggedSymbol)
+        VOID = T.let(:void, Orb::InvoiceListParams::Status::TaggedSymbol)
 
-        sig { override.returns(T::Array[Orb::Models::InvoiceListParams::Status::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Orb::InvoiceListParams::Status::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

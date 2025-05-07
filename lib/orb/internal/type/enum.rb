@@ -17,11 +17,11 @@ module Orb
       # values safely.
       #
       # @example
-      #   # `billing_cycle_relative_date` is a `Orb::Models::BillingCycleRelativeDate`
+      #   # `billing_cycle_relative_date` is a `Orb::BillingCycleRelativeDate`
       #   case billing_cycle_relative_date
-      #   when Orb::Models::BillingCycleRelativeDate::START_OF_TERM
+      #   when Orb::BillingCycleRelativeDate::START_OF_TERM
       #     # ...
-      #   when Orb::Models::BillingCycleRelativeDate::END_OF_TERM
+      #   when Orb::BillingCycleRelativeDate::END_OF_TERM
       #     # ...
       #   else
       #     puts(billing_cycle_relative_date)

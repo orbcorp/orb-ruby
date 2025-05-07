@@ -2,21 +2,19 @@ module Orb
   module Models
     type subscriptions_api =
       {
-        data: ::Array[Orb::Models::Subscription],
-        pagination_metadata: Orb::Models::PaginationMetadata
+        data: ::Array[Orb::Subscription],
+        pagination_metadata: Orb::PaginationMetadata
       }
 
     class SubscriptionsAPI < Orb::Internal::Type::BaseModel
-      attr_accessor data: ::Array[Orb::Models::Subscription]
+      attr_accessor data: ::Array[Orb::Subscription]
 
-      attr_accessor pagination_metadata: Orb::Models::PaginationMetadata
+      attr_accessor pagination_metadata: Orb::PaginationMetadata
 
       def initialize: (
-        data: ::Array[Orb::Models::Subscription],
-        pagination_metadata: Orb::Models::PaginationMetadata
+        data: ::Array[Orb::Subscription],
+        pagination_metadata: Orb::PaginationMetadata
       ) -> void
-
-      def to_hash: -> Orb::Models::subscriptions_api
     end
   end
 end

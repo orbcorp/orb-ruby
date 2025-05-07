@@ -39,8 +39,6 @@ module Orb
           ?operation_time_lte: Time?,
           ?request_options: Orb::request_opts
         ) -> void
-
-        def to_hash: -> Orb::Models::Customers::balance_transaction_list_params
       end
     end
   end

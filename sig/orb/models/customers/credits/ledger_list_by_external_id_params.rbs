@@ -57,8 +57,6 @@ module Orb
             ?request_options: Orb::request_opts
           ) -> void
 
-          def to_hash: -> Orb::Models::Customers::Credits::ledger_list_by_external_id_params
-
           type entry_status = :committed | :pending
 
           module EntryStatus

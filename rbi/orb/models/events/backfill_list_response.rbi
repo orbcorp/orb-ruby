@@ -4,6 +4,8 @@ module Orb
   module Models
     module Events
       class BackfillListResponse < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
@@ -35,7 +37,11 @@ module Orb
         attr_accessor :reverted_at
 
         # The status of the backfill.
-        sig { returns(Orb::Models::Events::BackfillListResponse::Status::TaggedSymbol) }
+        sig do
+          returns(
+            Orb::Models::Events::BackfillListResponse::Status::TaggedSymbol
+          )
+        end
         attr_accessor :status
 
         sig { returns(Time) }
@@ -65,8 +71,7 @@ module Orb
             timeframe_end: Time,
             timeframe_start: Time,
             deprecation_filter: T.nilable(String)
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -93,41 +98,70 @@ module Orb
           # [computed property](/extensibility/advanced-metrics#computed-properties) used to
           # filter the set of events to deprecate
           deprecation_filter: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                id: String,
-                close_time: T.nilable(Time),
-                created_at: Time,
-                customer_id: T.nilable(String),
-                events_ingested: Integer,
-                replace_existing_events: T::Boolean,
-                reverted_at: T.nilable(Time),
-                status: Orb::Models::Events::BackfillListResponse::Status::TaggedSymbol,
-                timeframe_end: Time,
-                timeframe_start: Time,
-                deprecation_filter: T.nilable(String)
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              id: String,
+              close_time: T.nilable(Time),
+              created_at: Time,
+              customer_id: T.nilable(String),
+              events_ingested: Integer,
+              replace_existing_events: T::Boolean,
+              reverted_at: T.nilable(Time),
+              status:
+                Orb::Models::Events::BackfillListResponse::Status::TaggedSymbol,
+              timeframe_end: Time,
+              timeframe_start: Time,
+              deprecation_filter: T.nilable(String)
+            }
+          )
+        end
+        def to_hash
+        end
 
         # The status of the backfill.
         module Status
           extend Orb::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::Events::BackfillListResponse::Status) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Models::Events::BackfillListResponse::Status)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          PENDING = T.let(:pending, Orb::Models::Events::BackfillListResponse::Status::TaggedSymbol)
-          REFLECTED = T.let(:reflected, Orb::Models::Events::BackfillListResponse::Status::TaggedSymbol)
-          PENDING_REVERT = T.let(:pending_revert, Orb::Models::Events::BackfillListResponse::Status::TaggedSymbol)
-          REVERTED = T.let(:reverted, Orb::Models::Events::BackfillListResponse::Status::TaggedSymbol)
+          PENDING =
+            T.let(
+              :pending,
+              Orb::Models::Events::BackfillListResponse::Status::TaggedSymbol
+            )
+          REFLECTED =
+            T.let(
+              :reflected,
+              Orb::Models::Events::BackfillListResponse::Status::TaggedSymbol
+            )
+          PENDING_REVERT =
+            T.let(
+              :pending_revert,
+              Orb::Models::Events::BackfillListResponse::Status::TaggedSymbol
+            )
+          REVERTED =
+            T.let(
+              :reverted,
+              Orb::Models::Events::BackfillListResponse::Status::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Orb::Models::Events::BackfillListResponse::Status::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Models::Events::BackfillListResponse::Status::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
     end

@@ -24,9 +24,10 @@ module Orb
             cursor: T.nilable(String),
             include_all_blocks: T::Boolean,
             limit: Integer,
-            request_options: Orb::RequestOpts
+            request_options: Orb::RequestOptions::OrHash
+          ).returns(
+            Orb::Internal::Page[Orb::Models::Customers::CreditListResponse]
           )
-            .returns(Orb::Internal::Page[Orb::Models::Customers::CreditListResponse])
         end
         def list(
           customer_id,
@@ -41,7 +42,9 @@ module Orb
           # The number of items to fetch. Defaults to 20.
           limit: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Returns a paginated list of unexpired, non-zero credit blocks for a customer.
         #
         # If `include_all_blocks` is set to `true`, all credit blocks (including expired
@@ -56,9 +59,12 @@ module Orb
             cursor: T.nilable(String),
             include_all_blocks: T::Boolean,
             limit: Integer,
-            request_options: Orb::RequestOpts
+            request_options: Orb::RequestOptions::OrHash
+          ).returns(
+            Orb::Internal::Page[
+              Orb::Models::Customers::CreditListByExternalIDResponse
+            ]
           )
-            .returns(Orb::Internal::Page[Orb::Models::Customers::CreditListByExternalIDResponse])
         end
         def list_by_external_id(
           external_customer_id,
@@ -73,10 +79,13 @@ module Orb
           # The number of items to fetch. Defaults to 20.
           limit: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: Orb::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

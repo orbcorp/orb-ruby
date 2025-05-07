@@ -52,7 +52,6 @@ module Orb
       #   @param sql [String] A sql string defining the metric.
       #
       #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
-      #   ...
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end

@@ -6,6 +6,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
       # The exclusive upper bound for event timestamps
       sig { returns(Time) }
       attr_accessor :timeframe_end
@@ -45,9 +47,8 @@ module Orb
           external_customer_id: T.nilable(String),
           filter: T.nilable(String),
           grouping_keys: T::Array[String],
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # The exclusive upper bound for event timestamps
@@ -67,22 +68,24 @@ module Orb
         # to group the underlying billable metric
         grouping_keys: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              timeframe_end: Time,
-              timeframe_start: Time,
-              customer_id: T.nilable(String),
-              external_customer_id: T.nilable(String),
-              filter: T.nilable(String),
-              grouping_keys: T::Array[String],
-              request_options: Orb::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            timeframe_end: Time,
+            timeframe_start: Time,
+            customer_id: T.nilable(String),
+            external_customer_id: T.nilable(String),
+            filter: T.nilable(String),
+            grouping_keys: T::Array[String],
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

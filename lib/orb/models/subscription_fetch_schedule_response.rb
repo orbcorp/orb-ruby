@@ -57,7 +57,6 @@ module Orb
         #   @param id [String, nil]
         #
         #   @param external_plan_id [String, nil] An optional user-defined ID for this plan resource, used throughout the system a
-        #   ...
         #
         #   @param name [String, nil]
       end

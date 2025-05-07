@@ -2,7 +2,7 @@ module Orb
   module Models
     type credit_note_create_params =
       {
-        line_items: ::Array[Orb::Models::CreditNoteCreateParams::LineItem],
+        line_items: ::Array[Orb::CreditNoteCreateParams::LineItem],
         memo: String?,
         reason: Orb::Models::CreditNoteCreateParams::reason?
       }
@@ -12,20 +12,18 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      attr_accessor line_items: ::Array[Orb::Models::CreditNoteCreateParams::LineItem]
+      attr_accessor line_items: ::Array[Orb::CreditNoteCreateParams::LineItem]
 
       attr_accessor memo: String?
 
       attr_accessor reason: Orb::Models::CreditNoteCreateParams::reason?
 
       def initialize: (
-        line_items: ::Array[Orb::Models::CreditNoteCreateParams::LineItem],
+        line_items: ::Array[Orb::CreditNoteCreateParams::LineItem],
         ?memo: String?,
         ?reason: Orb::Models::CreditNoteCreateParams::reason?,
         ?request_options: Orb::request_opts
       ) -> void
-
-      def to_hash: -> Orb::Models::credit_note_create_params
 
       type line_item = { amount: String, invoice_line_item_id: String }
 
@@ -35,8 +33,6 @@ module Orb
         attr_accessor invoice_line_item_id: String
 
         def initialize: (amount: String, invoice_line_item_id: String) -> void
-
-        def to_hash: -> Orb::Models::CreditNoteCreateParams::line_item
       end
 
       type reason =

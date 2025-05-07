@@ -7,12 +7,12 @@ module Orb
           ?external_plan_id: String?,
           ?metadata: ::Hash[Symbol, String?]?,
           ?request_options: Orb::request_opts
-        ) -> Orb::Models::Plan
+        ) -> Orb::Plan
 
         def fetch: (
           String external_plan_id,
           ?request_options: Orb::request_opts
-        ) -> Orb::Models::Plan
+        ) -> Orb::Plan
 
         def initialize: (client: Orb::Client) -> void
       end

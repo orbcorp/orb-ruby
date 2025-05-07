@@ -6,8 +6,10 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
       # Determines the timing of subscription cancellation
-      sig { returns(Orb::Models::SubscriptionCancelParams::CancelOption::OrSymbol) }
+      sig { returns(Orb::SubscriptionCancelParams::CancelOption::OrSymbol) }
       attr_accessor :cancel_option
 
       # If false, this request will fail if it would void an issued invoice or create a
@@ -23,12 +25,11 @@ module Orb
 
       sig do
         params(
-          cancel_option: Orb::Models::SubscriptionCancelParams::CancelOption::OrSymbol,
+          cancel_option: Orb::SubscriptionCancelParams::CancelOption::OrSymbol,
           allow_invoice_credit_or_void: T.nilable(T::Boolean),
           cancellation_date: T.nilable(Time),
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Determines the timing of subscription cancellation
@@ -41,35 +42,56 @@ module Orb
         # passed if the `cancel_option` is `requested_date`.
         cancellation_date: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              cancel_option: Orb::Models::SubscriptionCancelParams::CancelOption::OrSymbol,
-              allow_invoice_credit_or_void: T.nilable(T::Boolean),
-              cancellation_date: T.nilable(Time),
-              request_options: Orb::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            cancel_option:
+              Orb::SubscriptionCancelParams::CancelOption::OrSymbol,
+            allow_invoice_credit_or_void: T.nilable(T::Boolean),
+            cancellation_date: T.nilable(Time),
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Determines the timing of subscription cancellation
       module CancelOption
         extend Orb::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::SubscriptionCancelParams::CancelOption) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Orb::SubscriptionCancelParams::CancelOption)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         END_OF_SUBSCRIPTION_TERM =
-          T.let(:end_of_subscription_term, Orb::Models::SubscriptionCancelParams::CancelOption::TaggedSymbol)
-        IMMEDIATE = T.let(:immediate, Orb::Models::SubscriptionCancelParams::CancelOption::TaggedSymbol)
+          T.let(
+            :end_of_subscription_term,
+            Orb::SubscriptionCancelParams::CancelOption::TaggedSymbol
+          )
+        IMMEDIATE =
+          T.let(
+            :immediate,
+            Orb::SubscriptionCancelParams::CancelOption::TaggedSymbol
+          )
         REQUESTED_DATE =
-          T.let(:requested_date, Orb::Models::SubscriptionCancelParams::CancelOption::TaggedSymbol)
+          T.let(
+            :requested_date,
+            Orb::SubscriptionCancelParams::CancelOption::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Orb::Models::SubscriptionCancelParams::CancelOption::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Orb::SubscriptionCancelParams::CancelOption::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

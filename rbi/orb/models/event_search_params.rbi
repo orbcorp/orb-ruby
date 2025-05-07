@@ -6,6 +6,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
       # This is an explicit array of IDs to filter by. Note that an event's ID is the
       # idempotency_key that was originally used for ingestion, and this only supports
       # events that have not been amended. Values in this array will be treated case
@@ -28,9 +30,8 @@ module Orb
           event_ids: T::Array[String],
           timeframe_end: T.nilable(Time),
           timeframe_start: T.nilable(Time),
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # This is an explicit array of IDs to filter by. Note that an event's ID is the
@@ -45,19 +46,21 @@ module Orb
         # specified, the one week ago is used.
         timeframe_start: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              event_ids: T::Array[String],
-              timeframe_end: T.nilable(Time),
-              timeframe_start: T.nilable(Time),
-              request_options: Orb::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            event_ids: T::Array[String],
+            timeframe_end: T.nilable(Time),
+            timeframe_start: T.nilable(Time),
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

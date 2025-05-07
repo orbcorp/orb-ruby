@@ -23,14 +23,12 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> void
 
-      def to_hash: -> Orb::Models::subscription_update_trial_params
-
       type trial_end_date = Time | :immediate
 
       module TrialEndDate
         extend Orb::Internal::Type::Union
 
-        def self?.variants: -> [Time, :immediate]
+        def self?.variants: -> ::Array[Orb::Models::SubscriptionUpdateTrialParams::trial_end_date]
 
         IMMEDIATE: :immediate
       end

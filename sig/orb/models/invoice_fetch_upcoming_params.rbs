@@ -13,8 +13,6 @@ module Orb
         subscription_id: String,
         ?request_options: Orb::request_opts
       ) -> void
-
-      def to_hash: -> Orb::Models::invoice_fetch_upcoming_params
     end
   end
 end

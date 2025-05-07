@@ -9,8 +9,6 @@ module Orb
         include Orb::Internal::Type::RequestParameters
 
         def initialize: (?request_options: Orb::request_opts) -> void
-
-        def to_hash: -> Orb::Models::DimensionalPriceGroups::external_dimensional_price_group_id_retrieve_params
       end
     end
   end

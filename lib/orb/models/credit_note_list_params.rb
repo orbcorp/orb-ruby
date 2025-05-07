@@ -53,7 +53,6 @@ module Orb
       #   @param created_at_lte [Time, nil]
       #
       #   @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
-      #   ...
       #
       #   @param limit [Integer] The number of items to fetch. Defaults to 20.
       #

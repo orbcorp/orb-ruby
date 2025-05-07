@@ -6,6 +6,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
       sig { returns(T.nilable(Time)) }
       attr_accessor :created_at_gt
 
@@ -38,9 +40,8 @@ module Orb
           created_at_lte: T.nilable(Time),
           cursor: T.nilable(String),
           limit: Integer,
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         created_at_gt: nil,
@@ -53,22 +54,24 @@ module Orb
         # The number of items to fetch. Defaults to 20.
         limit: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              created_at_gt: T.nilable(Time),
-              created_at_gte: T.nilable(Time),
-              created_at_lt: T.nilable(Time),
-              created_at_lte: T.nilable(Time),
-              cursor: T.nilable(String),
-              limit: Integer,
-              request_options: Orb::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            created_at_gt: T.nilable(Time),
+            created_at_gte: T.nilable(Time),
+            created_at_lt: T.nilable(Time),
+            created_at_lte: T.nilable(Time),
+            cursor: T.nilable(String),
+            limit: Integer,
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

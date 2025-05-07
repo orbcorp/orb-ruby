@@ -38,8 +38,6 @@ module Orb
         ?grouping_keys: ::Array[String],
         ?request_options: Orb::request_opts
       ) -> void
-
-      def to_hash: -> Orb::Models::price_evaluate_params
     end
   end
 end

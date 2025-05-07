@@ -44,17 +44,17 @@ module Orb
 
           # @!attribute entry_status
           #
-          #   @return [Symbol, Orb::Models::Customers::Credits::LedgerListParams::EntryStatus, nil]
+          #   @return [Symbol, Orb::Customers::Credits::LedgerListParams::EntryStatus, nil]
           optional :entry_status,
-                   enum: -> { Orb::Models::Customers::Credits::LedgerListParams::EntryStatus },
+                   enum: -> {
+                     Orb::Customers::Credits::LedgerListParams::EntryStatus
+                   },
                    nil?: true
 
           # @!attribute entry_type
           #
-          #   @return [Symbol, Orb::Models::Customers::Credits::LedgerListParams::EntryType, nil]
-          optional :entry_type,
-                   enum: -> { Orb::Models::Customers::Credits::LedgerListParams::EntryType },
-                   nil?: true
+          #   @return [Symbol, Orb::Customers::Credits::LedgerListParams::EntryType, nil]
+          optional :entry_type, enum: -> { Orb::Customers::Credits::LedgerListParams::EntryType }, nil?: true
 
           # @!attribute limit
           #   The number of items to fetch. Defaults to 20.
@@ -82,11 +82,10 @@ module Orb
           #   @param currency [String, nil] The ledger currency or custom pricing unit to use.
           #
           #   @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
-          #   ...
           #
-          #   @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListParams::EntryStatus, nil]
+          #   @param entry_status [Symbol, Orb::Customers::Credits::LedgerListParams::EntryStatus, nil]
           #
-          #   @param entry_type [Symbol, Orb::Models::Customers::Credits::LedgerListParams::EntryType, nil]
+          #   @param entry_type [Symbol, Orb::Customers::Credits::LedgerListParams::EntryType, nil]
           #
           #   @param limit [Integer] The number of items to fetch. Defaults to 20.
           #

@@ -14,8 +14,6 @@ module Orb
         ?metadata: ::Hash[Symbol, String?]?,
         ?request_options: Orb::request_opts
       ) -> void
-
-      def to_hash: -> Orb::Models::metric_update_params
     end
   end
 end

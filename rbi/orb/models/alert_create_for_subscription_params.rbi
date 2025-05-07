@@ -6,12 +6,16 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
       # The thresholds that define the values at which the alert will be triggered.
-      sig { returns(T::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold]) }
+      sig do
+        returns(T::Array[Orb::AlertCreateForSubscriptionParams::Threshold])
+      end
       attr_accessor :thresholds
 
       # The type of alert to create. This must be a valid alert type.
-      sig { returns(Orb::Models::AlertCreateForSubscriptionParams::Type::OrSymbol) }
+      sig { returns(Orb::AlertCreateForSubscriptionParams::Type::OrSymbol) }
       attr_accessor :type
 
       # The metric to track usage for.
@@ -20,12 +24,12 @@ module Orb
 
       sig do
         params(
-          thresholds: T::Array[T.any(Orb::Models::AlertCreateForSubscriptionParams::Threshold, Orb::Internal::AnyHash)],
-          type: Orb::Models::AlertCreateForSubscriptionParams::Type::OrSymbol,
+          thresholds:
+            T::Array[Orb::AlertCreateForSubscriptionParams::Threshold::OrHash],
+          type: Orb::AlertCreateForSubscriptionParams::Type::OrSymbol,
           metric_id: T.nilable(String),
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # The thresholds that define the values at which the alert will be triggered.
@@ -35,21 +39,26 @@ module Orb
         # The metric to track usage for.
         metric_id: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              thresholds: T::Array[Orb::Models::AlertCreateForSubscriptionParams::Threshold],
-              type: Orb::Models::AlertCreateForSubscriptionParams::Type::OrSymbol,
-              metric_id: T.nilable(String),
-              request_options: Orb::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            thresholds:
+              T::Array[Orb::AlertCreateForSubscriptionParams::Threshold],
+            type: Orb::AlertCreateForSubscriptionParams::Type::OrSymbol,
+            metric_id: T.nilable(String),
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       class Threshold < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         # The value at which an alert will fire. For credit balance alerts, the alert will
         # fire at or below this value. For usage and cost alerts, the alert will fire at
         # or above this value.
@@ -64,24 +73,42 @@ module Orb
           # fire at or below this value. For usage and cost alerts, the alert will fire at
           # or above this value.
           value:
-        ); end
-        sig { override.returns({value: Float}) }
-        def to_hash; end
+        )
+        end
+
+        sig { override.returns({ value: Float }) }
+        def to_hash
+        end
       end
 
       # The type of alert to create. This must be a valid alert type.
       module Type
         extend Orb::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::AlertCreateForSubscriptionParams::Type) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Orb::AlertCreateForSubscriptionParams::Type)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         USAGE_EXCEEDED =
-          T.let(:usage_exceeded, Orb::Models::AlertCreateForSubscriptionParams::Type::TaggedSymbol)
-        COST_EXCEEDED = T.let(:cost_exceeded, Orb::Models::AlertCreateForSubscriptionParams::Type::TaggedSymbol)
+          T.let(
+            :usage_exceeded,
+            Orb::AlertCreateForSubscriptionParams::Type::TaggedSymbol
+          )
+        COST_EXCEEDED =
+          T.let(
+            :cost_exceeded,
+            Orb::AlertCreateForSubscriptionParams::Type::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Orb::Models::AlertCreateForSubscriptionParams::Type::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Orb::AlertCreateForSubscriptionParams::Type::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

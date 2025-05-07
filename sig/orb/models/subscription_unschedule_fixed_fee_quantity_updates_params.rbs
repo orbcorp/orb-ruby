@@ -13,8 +13,6 @@ module Orb
         price_id: String,
         ?request_options: Orb::request_opts
       ) -> void
-
-      def to_hash: -> Orb::Models::subscription_unschedule_fixed_fee_quantity_updates_params
     end
   end
 end

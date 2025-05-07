@@ -29,20 +29,19 @@ module Orb
       # @param external_dimensional_price_group_id [String, nil]
       #
       # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
-      # ...
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::DimensionalPriceGroup]
+      # @return [Orb::DimensionalPriceGroup]
       #
       # @see Orb::Models::DimensionalPriceGroupCreateParams
       def create(params)
-        parsed, options = Orb::Models::DimensionalPriceGroupCreateParams.dump_request(params)
+        parsed, options = Orb::DimensionalPriceGroupCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "dimensional_price_groups",
           body: parsed,
-          model: Orb::Models::DimensionalPriceGroup,
+          model: Orb::DimensionalPriceGroup,
           options: options
         )
       end
@@ -54,14 +53,14 @@ module Orb
       # @param dimensional_price_group_id [String]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::DimensionalPriceGroup]
+      # @return [Orb::DimensionalPriceGroup]
       #
       # @see Orb::Models::DimensionalPriceGroupRetrieveParams
       def retrieve(dimensional_price_group_id, params = {})
         @client.request(
           method: :get,
           path: ["dimensional_price_groups/%1$s", dimensional_price_group_id],
-          model: Orb::Models::DimensionalPriceGroup,
+          model: Orb::DimensionalPriceGroup,
           options: params[:request_options]
         )
       end
@@ -74,23 +73,22 @@ module Orb
       # @overload list(cursor: nil, limit: nil, request_options: {})
       #
       # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
-      # ...
       #
       # @param limit [Integer] The number of items to fetch. Defaults to 20.
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Internal::Page<Orb::Models::DimensionalPriceGroup>]
+      # @return [Orb::Internal::Page<Orb::DimensionalPriceGroup>]
       #
       # @see Orb::Models::DimensionalPriceGroupListParams
       def list(params = {})
-        parsed, options = Orb::Models::DimensionalPriceGroupListParams.dump_request(params)
+        parsed, options = Orb::DimensionalPriceGroupListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "dimensional_price_groups",
           query: parsed,
           page: Orb::Internal::Page,
-          model: Orb::Models::DimensionalPriceGroup,
+          model: Orb::DimensionalPriceGroup,
           options: options
         )
       end

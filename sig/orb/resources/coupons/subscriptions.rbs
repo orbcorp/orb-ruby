@@ -7,7 +7,7 @@ module Orb
           ?cursor: String?,
           ?limit: Integer,
           ?request_options: Orb::request_opts
-        ) -> Orb::Internal::Page[Orb::Models::Subscription]
+        ) -> Orb::Internal::Page[Orb::Subscription]
 
         def initialize: (client: Orb::Client) -> void
       end

@@ -16,23 +16,23 @@ module Orb
       # @!attribute type
       #   The type of alert to create. This must be a valid alert type.
       #
-      #   @return [Symbol, Orb::Models::AlertCreateForCustomerParams::Type]
-      required :type, enum: -> { Orb::Models::AlertCreateForCustomerParams::Type }
+      #   @return [Symbol, Orb::AlertCreateForCustomerParams::Type]
+      required :type, enum: -> { Orb::AlertCreateForCustomerParams::Type }
 
       # @!attribute thresholds
       #   The thresholds that define the values at which the alert will be triggered.
       #
-      #   @return [Array<Orb::Models::AlertCreateForCustomerParams::Threshold>, nil]
+      #   @return [Array<Orb::AlertCreateForCustomerParams::Threshold>, nil]
       optional :thresholds,
-               -> { Orb::Internal::Type::ArrayOf[Orb::Models::AlertCreateForCustomerParams::Threshold] },
+               -> { Orb::Internal::Type::ArrayOf[Orb::AlertCreateForCustomerParams::Threshold] },
                nil?: true
 
       # @!method initialize(currency:, type:, thresholds: nil, request_options: {})
       #   @param currency [String] The case sensitive currency or custom pricing unit to use for this alert.
       #
-      #   @param type [Symbol, Orb::Models::AlertCreateForCustomerParams::Type] The type of alert to create. This must be a valid alert type.
+      #   @param type [Symbol, Orb::AlertCreateForCustomerParams::Type] The type of alert to create. This must be a valid alert type.
       #
-      #   @param thresholds [Array<Orb::Models::AlertCreateForCustomerParams::Threshold>, nil] The thresholds that define the values at which the alert will be triggered.
+      #   @param thresholds [Array<Orb::AlertCreateForCustomerParams::Threshold>, nil] The thresholds that define the values at which the alert will be triggered.
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
@@ -59,13 +59,12 @@ module Orb
 
         # @!method initialize(value:)
         #   Some parameter documentations has been truncated, see
-        #   {Orb::Models::AlertCreateForCustomerParams::Threshold} for more details.
+        #   {Orb::AlertCreateForCustomerParams::Threshold} for more details.
         #
         #   Thresholds are used to define the conditions under which an alert will be
         #   triggered.
         #
         #   @param value [Float] The value at which an alert will fire. For credit balance alerts, the alert will
-        #   ...
       end
     end
   end

@@ -51,8 +51,6 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> void
 
-      def to_hash: -> Orb::Models::subscription_list_params
-
       type status = :active | :ended | :upcoming
 
       module Status

@@ -20,8 +20,6 @@ module Orb
         ?notes: String?,
         ?request_options: Orb::request_opts
       ) -> void
-
-      def to_hash: -> Orb::Models::invoice_mark_paid_params
     end
   end
 end

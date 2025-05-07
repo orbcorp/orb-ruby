@@ -8,12 +8,18 @@ module Orb
           extend Orb::Internal::Type::RequestParameters::Converter
           include Orb::Internal::Type::RequestParameters
 
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # The number of credits to effect. Note that this is required for increment,
           # decrement or void operations.
           sig { returns(Float) }
           attr_accessor :amount
 
-          sig { returns(Orb::Models::Customers::Credits::LedgerCreateEntryParams::EntryType::OrSymbol) }
+          sig do
+            returns(
+              Orb::Customers::Credits::LedgerCreateEntryParams::EntryType::OrSymbol
+            )
+          end
           attr_accessor :entry_type
 
           # The currency or custom pricing unit to use for this ledger entry. If this is a
@@ -40,16 +46,22 @@ module Orb
           # added credits. If `invoice_settings` is passed, you must specify
           # per_unit_cost_basis, as the calculation of the invoice total is done on that
           # basis.
-          sig { returns(T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings)) }
+          sig do
+            returns(
+              T.nilable(
+                Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings
+              )
+            )
+          end
           attr_reader :invoice_settings
 
           sig do
             params(
-              invoice_settings: T.nilable(
-                T.any(Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings, Orb::Internal::AnyHash)
-              )
-            )
-              .void
+              invoice_settings:
+                T.nilable(
+                  Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::OrHash
+                )
+            ).void
           end
           attr_writer :invoice_settings
 
@@ -75,28 +87,38 @@ module Orb
           attr_accessor :block_id
 
           # Can only be specified when `entry_type=void`. The reason for the void.
-          sig { returns(T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryParams::VoidReason::OrSymbol)) }
+          sig do
+            returns(
+              T.nilable(
+                Orb::Customers::Credits::LedgerCreateEntryParams::VoidReason::OrSymbol
+              )
+            )
+          end
           attr_accessor :void_reason
 
           sig do
             params(
               amount: Float,
-              entry_type: Orb::Models::Customers::Credits::LedgerCreateEntryParams::EntryType::OrSymbol,
+              entry_type:
+                Orb::Customers::Credits::LedgerCreateEntryParams::EntryType::OrSymbol,
               expiry_date: T.nilable(Time),
               target_expiry_date: Date,
               block_id: String,
               currency: T.nilable(String),
               description: T.nilable(String),
               effective_date: T.nilable(Time),
-              invoice_settings: T.nilable(
-                T.any(Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings, Orb::Internal::AnyHash)
-              ),
+              invoice_settings:
+                T.nilable(
+                  Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::OrHash
+                ),
               metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
               per_unit_cost_basis: T.nilable(String),
-              void_reason: T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryParams::VoidReason::OrSymbol),
-              request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
-            )
-              .returns(T.attached_class)
+              void_reason:
+                T.nilable(
+                  Orb::Customers::Credits::LedgerCreateEntryParams::VoidReason::OrSymbol
+                ),
+              request_options: Orb::RequestOptions::OrHash
+            ).returns(T.attached_class)
           end
           def self.new(
             # The number of credits to effect. Note that this is required for increment,
@@ -136,47 +158,70 @@ module Orb
             # Can only be specified when `entry_type=void`. The reason for the void.
             void_reason: nil,
             request_options: {}
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  amount: Float,
-                  entry_type: Orb::Models::Customers::Credits::LedgerCreateEntryParams::EntryType::OrSymbol,
-                  currency: T.nilable(String),
-                  description: T.nilable(String),
-                  effective_date: T.nilable(Time),
-                  expiry_date: T.nilable(Time),
-                  invoice_settings: T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings),
-                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-                  per_unit_cost_basis: T.nilable(String),
-                  target_expiry_date: Date,
-                  block_id: String,
-                  void_reason: T.nilable(Orb::Models::Customers::Credits::LedgerCreateEntryParams::VoidReason::OrSymbol),
-                  request_options: Orb::RequestOptions
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                amount: Float,
+                entry_type:
+                  Orb::Customers::Credits::LedgerCreateEntryParams::EntryType::OrSymbol,
+                currency: T.nilable(String),
+                description: T.nilable(String),
+                effective_date: T.nilable(Time),
+                expiry_date: T.nilable(Time),
+                invoice_settings:
+                  T.nilable(
+                    Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings
+                  ),
+                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                per_unit_cost_basis: T.nilable(String),
+                target_expiry_date: Date,
+                block_id: String,
+                void_reason:
+                  T.nilable(
+                    Orb::Customers::Credits::LedgerCreateEntryParams::VoidReason::OrSymbol
+                  ),
+                request_options: Orb::RequestOptions
+              }
+            )
+          end
+          def to_hash
+          end
 
           module EntryType
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::EntryType) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Customers::Credits::LedgerCreateEntryParams::EntryType
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             AMENDMENT =
-              T.let(:amendment, Orb::Models::Customers::Credits::LedgerCreateEntryParams::EntryType::TaggedSymbol)
+              T.let(
+                :amendment,
+                Orb::Customers::Credits::LedgerCreateEntryParams::EntryType::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(T::Array[Orb::Models::Customers::Credits::LedgerCreateEntryParams::EntryType::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  Orb::Customers::Credits::LedgerCreateEntryParams::EntryType::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
 
           class InvoiceSettings < Orb::Internal::Type::BaseModel
+            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
             # Whether the credits purchase invoice should auto collect with the customer's
             # saved payment method.
             sig { returns(T::Boolean) }
@@ -210,8 +255,7 @@ module Orb
                 net_terms: Integer,
                 memo: T.nilable(String),
                 require_successful_payment: T::Boolean
-              )
-                .returns(T.attached_class)
+              ).returns(T.attached_class)
             end
             def self.new(
               # Whether the credits purchase invoice should auto collect with the customer's
@@ -226,19 +270,21 @@ module Orb
               # If true, the new credit block will require that the corresponding invoice is
               # paid before it can be drawn down from.
               require_successful_payment: nil
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    auto_collection: T::Boolean,
-                    net_terms: Integer,
-                    memo: T.nilable(String),
-                    require_successful_payment: T::Boolean
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  auto_collection: T::Boolean,
+                  net_terms: Integer,
+                  memo: T.nilable(String),
+                  require_successful_payment: T::Boolean
+                }
+              )
+            end
+            def to_hash
+            end
           end
 
           # Can only be specified when `entry_type=void`. The reason for the void.
@@ -246,17 +292,29 @@ module Orb
             extend Orb::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::VoidReason) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Customers::Credits::LedgerCreateEntryParams::VoidReason
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             REFUND =
-              T.let(:refund, Orb::Models::Customers::Credits::LedgerCreateEntryParams::VoidReason::TaggedSymbol)
+              T.let(
+                :refund,
+                Orb::Customers::Credits::LedgerCreateEntryParams::VoidReason::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(T::Array[Orb::Models::Customers::Credits::LedgerCreateEntryParams::VoidReason::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  Orb::Customers::Credits::LedgerCreateEntryParams::VoidReason::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
       end

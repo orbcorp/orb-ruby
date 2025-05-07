@@ -17,23 +17,22 @@ module Orb
         # @param coupon_id [String]
         #
         # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
-        # ...
         #
         # @param limit [Integer] The number of items to fetch. Defaults to 20.
         #
         # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Orb::Internal::Page<Orb::Models::Subscription>]
+        # @return [Orb::Internal::Page<Orb::Subscription>]
         #
         # @see Orb::Models::Coupons::SubscriptionListParams
         def list(coupon_id, params = {})
-          parsed, options = Orb::Models::Coupons::SubscriptionListParams.dump_request(params)
+          parsed, options = Orb::Coupons::SubscriptionListParams.dump_request(params)
           @client.request(
             method: :get,
             path: ["coupons/%1$s/subscriptions", coupon_id],
             query: parsed,
             page: Orb::Internal::Page,
-            model: Orb::Models::Subscription,
+            model: Orb::Subscription,
             options: options
           )
         end

@@ -7,6 +7,8 @@ module Orb
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         # The (exclusive) end of the usage timeframe affected by this backfill. By
         # default, Orb allows backfills up to 10 days in duration at a time. Reach out to
         # discuss extending this limit and your use case.
@@ -58,9 +60,8 @@ module Orb
             deprecation_filter: T.nilable(String),
             external_customer_id: T.nilable(String),
             replace_existing_events: T::Boolean,
-            request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: Orb::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # The (exclusive) end of the usage timeframe affected by this backfill. By
@@ -89,23 +90,25 @@ module Orb
           # events. If false, adds the newly ingested events to the existing events.
           replace_existing_events: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                timeframe_end: Time,
-                timeframe_start: Time,
-                close_time: T.nilable(Time),
-                customer_id: T.nilable(String),
-                deprecation_filter: T.nilable(String),
-                external_customer_id: T.nilable(String),
-                replace_existing_events: T::Boolean,
-                request_options: Orb::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              timeframe_end: Time,
+              timeframe_start: Time,
+              close_time: T.nilable(Time),
+              customer_id: T.nilable(String),
+              deprecation_filter: T.nilable(String),
+              external_customer_id: T.nilable(String),
+              replace_existing_events: T::Boolean,
+              request_options: Orb::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

@@ -18,20 +18,21 @@ module Orb
       # specification of different price model configurations possible in this endpoint.
       sig do
         params(
-          cadence: Orb::Models::PriceCreateParams::Cadence::OrSymbol,
+          cadence: Orb::PriceCreateParams::Cadence::OrSymbol,
           currency: String,
           item_id: String,
-          model_type: Orb::Models::PriceCreateParams::ModelType::OrSymbol,
+          model_type: Orb::PriceCreateParams::ModelType::OrSymbol,
           name: String,
-          unit_config: T.any(Orb::Models::PriceCreateParams::UnitConfig, Orb::Internal::AnyHash),
-          package_config: T.any(Orb::Models::PriceCreateParams::PackageConfig, Orb::Internal::AnyHash),
-          matrix_config: T.any(Orb::Models::PriceCreateParams::MatrixConfig, Orb::Internal::AnyHash),
-          matrix_with_allocation_config: T.any(Orb::Models::PriceCreateParams::MatrixWithAllocationConfig, Orb::Internal::AnyHash),
-          tiered_config: T.any(Orb::Models::PriceCreateParams::TieredConfig, Orb::Internal::AnyHash),
-          tiered_bps_config: T.any(Orb::Models::PriceCreateParams::TieredBpsConfig, Orb::Internal::AnyHash),
-          bps_config: T.any(Orb::Models::PriceCreateParams::BpsConfig, Orb::Internal::AnyHash),
-          bulk_bps_config: T.any(Orb::Models::PriceCreateParams::BulkBpsConfig, Orb::Internal::AnyHash),
-          bulk_config: T.any(Orb::Models::PriceCreateParams::BulkConfig, Orb::Internal::AnyHash),
+          unit_config: Orb::PriceCreateParams::UnitConfig::OrHash,
+          package_config: Orb::PriceCreateParams::PackageConfig::OrHash,
+          matrix_config: Orb::PriceCreateParams::MatrixConfig::OrHash,
+          matrix_with_allocation_config:
+            Orb::PriceCreateParams::MatrixWithAllocationConfig::OrHash,
+          tiered_config: Orb::PriceCreateParams::TieredConfig::OrHash,
+          tiered_bps_config: Orb::PriceCreateParams::TieredBpsConfig::OrHash,
+          bps_config: Orb::PriceCreateParams::BpsConfig::OrHash,
+          bulk_bps_config: Orb::PriceCreateParams::BulkBpsConfig::OrHash,
+          bulk_config: Orb::PriceCreateParams::BulkConfig::OrHash,
           threshold_total_amount_config: T::Hash[Symbol, T.anything],
           tiered_package_config: T::Hash[Symbol, T.anything],
           grouped_tiered_config: T::Hash[Symbol, T.anything],
@@ -49,51 +50,57 @@ module Orb
           bulk_with_proration_config: T::Hash[Symbol, T.anything],
           grouped_tiered_package_config: T::Hash[Symbol, T.anything],
           scalable_matrix_with_unit_pricing_config: T::Hash[Symbol, T.anything],
-          scalable_matrix_with_tiered_pricing_config: T::Hash[Symbol, T.anything],
+          scalable_matrix_with_tiered_pricing_config:
+            T::Hash[Symbol, T.anything],
           cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
           billable_metric_id: T.nilable(String),
           billed_in_advance: T.nilable(T::Boolean),
-          billing_cycle_configuration: T.nilable(T.any(Orb::Models::PriceCreateParams::BillingCycleConfiguration, Orb::Internal::AnyHash)),
+          billing_cycle_configuration:
+            T.nilable(
+              Orb::PriceCreateParams::BillingCycleConfiguration::OrHash
+            ),
           conversion_rate: T.nilable(Float),
           external_price_id: T.nilable(String),
           fixed_price_quantity: T.nilable(Float),
           invoice_grouping_key: T.nilable(String),
-          invoicing_cycle_configuration: T.nilable(T.any(Orb::Models::PriceCreateParams::InvoicingCycleConfiguration, Orb::Internal::AnyHash)),
+          invoicing_cycle_configuration:
+            T.nilable(
+              Orb::PriceCreateParams::InvoicingCycleConfiguration::OrHash
+            ),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: Orb::RequestOpts
-        )
-          .returns(
-            T.any(
-              Orb::Models::Price::Unit,
-              Orb::Models::Price::Package,
-              Orb::Models::Price::Matrix,
-              Orb::Models::Price::Tiered,
-              Orb::Models::Price::TieredBps,
-              Orb::Models::Price::Bps,
-              Orb::Models::Price::BulkBps,
-              Orb::Models::Price::Bulk,
-              Orb::Models::Price::ThresholdTotalAmount,
-              Orb::Models::Price::TieredPackage,
-              Orb::Models::Price::GroupedTiered,
-              Orb::Models::Price::TieredWithMinimum,
-              Orb::Models::Price::TieredPackageWithMinimum,
-              Orb::Models::Price::PackageWithAllocation,
-              Orb::Models::Price::UnitWithPercent,
-              Orb::Models::Price::MatrixWithAllocation,
-              Orb::Models::Price::TieredWithProration,
-              Orb::Models::Price::UnitWithProration,
-              Orb::Models::Price::GroupedAllocation,
-              Orb::Models::Price::GroupedWithProratedMinimum,
-              Orb::Models::Price::GroupedWithMeteredMinimum,
-              Orb::Models::Price::MatrixWithDisplayName,
-              Orb::Models::Price::BulkWithProration,
-              Orb::Models::Price::GroupedTieredPackage,
-              Orb::Models::Price::MaxGroupTieredPackage,
-              Orb::Models::Price::ScalableMatrixWithUnitPricing,
-              Orb::Models::Price::ScalableMatrixWithTieredPricing,
-              Orb::Models::Price::CumulativeGroupedBulk
-            )
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(
+          T.any(
+            Orb::Price::Unit,
+            Orb::Price::Package,
+            Orb::Price::Matrix,
+            Orb::Price::Tiered,
+            Orb::Price::TieredBps,
+            Orb::Price::Bps,
+            Orb::Price::BulkBps,
+            Orb::Price::Bulk,
+            Orb::Price::ThresholdTotalAmount,
+            Orb::Price::TieredPackage,
+            Orb::Price::GroupedTiered,
+            Orb::Price::TieredWithMinimum,
+            Orb::Price::TieredPackageWithMinimum,
+            Orb::Price::PackageWithAllocation,
+            Orb::Price::UnitWithPercent,
+            Orb::Price::MatrixWithAllocation,
+            Orb::Price::TieredWithProration,
+            Orb::Price::UnitWithProration,
+            Orb::Price::GroupedAllocation,
+            Orb::Price::GroupedWithProratedMinimum,
+            Orb::Price::GroupedWithMeteredMinimum,
+            Orb::Price::MatrixWithDisplayName,
+            Orb::Price::BulkWithProration,
+            Orb::Price::GroupedTieredPackage,
+            Orb::Price::MaxGroupTieredPackage,
+            Orb::Price::ScalableMatrixWithUnitPricing,
+            Orb::Price::ScalableMatrixWithTieredPricing,
+            Orb::Price::CumulativeGroupedBulk
           )
+        )
       end
       def create(
         # The cadence to bill for this price on.
@@ -159,7 +166,9 @@ module Orb
         # by setting `metadata` to `null`.
         metadata: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint allows you to update the `metadata` property on a price. If you
       # pass null for the metadata value, it will clear any existing metadata for that
       # price.
@@ -167,40 +176,39 @@ module Orb
         params(
           price_id: String,
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-          request_options: Orb::RequestOpts
-        )
-          .returns(
-            T.any(
-              Orb::Models::Price::Unit,
-              Orb::Models::Price::Package,
-              Orb::Models::Price::Matrix,
-              Orb::Models::Price::Tiered,
-              Orb::Models::Price::TieredBps,
-              Orb::Models::Price::Bps,
-              Orb::Models::Price::BulkBps,
-              Orb::Models::Price::Bulk,
-              Orb::Models::Price::ThresholdTotalAmount,
-              Orb::Models::Price::TieredPackage,
-              Orb::Models::Price::GroupedTiered,
-              Orb::Models::Price::TieredWithMinimum,
-              Orb::Models::Price::TieredPackageWithMinimum,
-              Orb::Models::Price::PackageWithAllocation,
-              Orb::Models::Price::UnitWithPercent,
-              Orb::Models::Price::MatrixWithAllocation,
-              Orb::Models::Price::TieredWithProration,
-              Orb::Models::Price::UnitWithProration,
-              Orb::Models::Price::GroupedAllocation,
-              Orb::Models::Price::GroupedWithProratedMinimum,
-              Orb::Models::Price::GroupedWithMeteredMinimum,
-              Orb::Models::Price::MatrixWithDisplayName,
-              Orb::Models::Price::BulkWithProration,
-              Orb::Models::Price::GroupedTieredPackage,
-              Orb::Models::Price::MaxGroupTieredPackage,
-              Orb::Models::Price::ScalableMatrixWithUnitPricing,
-              Orb::Models::Price::ScalableMatrixWithTieredPricing,
-              Orb::Models::Price::CumulativeGroupedBulk
-            )
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(
+          T.any(
+            Orb::Price::Unit,
+            Orb::Price::Package,
+            Orb::Price::Matrix,
+            Orb::Price::Tiered,
+            Orb::Price::TieredBps,
+            Orb::Price::Bps,
+            Orb::Price::BulkBps,
+            Orb::Price::Bulk,
+            Orb::Price::ThresholdTotalAmount,
+            Orb::Price::TieredPackage,
+            Orb::Price::GroupedTiered,
+            Orb::Price::TieredWithMinimum,
+            Orb::Price::TieredPackageWithMinimum,
+            Orb::Price::PackageWithAllocation,
+            Orb::Price::UnitWithPercent,
+            Orb::Price::MatrixWithAllocation,
+            Orb::Price::TieredWithProration,
+            Orb::Price::UnitWithProration,
+            Orb::Price::GroupedAllocation,
+            Orb::Price::GroupedWithProratedMinimum,
+            Orb::Price::GroupedWithMeteredMinimum,
+            Orb::Price::MatrixWithDisplayName,
+            Orb::Price::BulkWithProration,
+            Orb::Price::GroupedTieredPackage,
+            Orb::Price::MaxGroupTieredPackage,
+            Orb::Price::ScalableMatrixWithUnitPricing,
+            Orb::Price::ScalableMatrixWithTieredPricing,
+            Orb::Price::CumulativeGroupedBulk
           )
+        )
       end
       def update(
         price_id,
@@ -209,45 +217,50 @@ module Orb
         # by setting `metadata` to `null`.
         metadata: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint is used to list all add-on prices created using the
       # [price creation endpoint](/api-reference/price/create-price).
       sig do
-        params(cursor: T.nilable(String), limit: Integer, request_options: Orb::RequestOpts)
-          .returns(
-            Orb::Internal::Page[
-              T.any(
-                Orb::Models::Price::Unit,
-                Orb::Models::Price::Package,
-                Orb::Models::Price::Matrix,
-                Orb::Models::Price::Tiered,
-                Orb::Models::Price::TieredBps,
-                Orb::Models::Price::Bps,
-                Orb::Models::Price::BulkBps,
-                Orb::Models::Price::Bulk,
-                Orb::Models::Price::ThresholdTotalAmount,
-                Orb::Models::Price::TieredPackage,
-                Orb::Models::Price::GroupedTiered,
-                Orb::Models::Price::TieredWithMinimum,
-                Orb::Models::Price::TieredPackageWithMinimum,
-                Orb::Models::Price::PackageWithAllocation,
-                Orb::Models::Price::UnitWithPercent,
-                Orb::Models::Price::MatrixWithAllocation,
-                Orb::Models::Price::TieredWithProration,
-                Orb::Models::Price::UnitWithProration,
-                Orb::Models::Price::GroupedAllocation,
-                Orb::Models::Price::GroupedWithProratedMinimum,
-                Orb::Models::Price::GroupedWithMeteredMinimum,
-                Orb::Models::Price::MatrixWithDisplayName,
-                Orb::Models::Price::BulkWithProration,
-                Orb::Models::Price::GroupedTieredPackage,
-                Orb::Models::Price::MaxGroupTieredPackage,
-                Orb::Models::Price::ScalableMatrixWithUnitPricing,
-                Orb::Models::Price::ScalableMatrixWithTieredPricing,
-                Orb::Models::Price::CumulativeGroupedBulk
-              )
-            ]
-          )
+        params(
+          cursor: T.nilable(String),
+          limit: Integer,
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(
+          Orb::Internal::Page[
+            T.any(
+              Orb::Price::Unit,
+              Orb::Price::Package,
+              Orb::Price::Matrix,
+              Orb::Price::Tiered,
+              Orb::Price::TieredBps,
+              Orb::Price::Bps,
+              Orb::Price::BulkBps,
+              Orb::Price::Bulk,
+              Orb::Price::ThresholdTotalAmount,
+              Orb::Price::TieredPackage,
+              Orb::Price::GroupedTiered,
+              Orb::Price::TieredWithMinimum,
+              Orb::Price::TieredPackageWithMinimum,
+              Orb::Price::PackageWithAllocation,
+              Orb::Price::UnitWithPercent,
+              Orb::Price::MatrixWithAllocation,
+              Orb::Price::TieredWithProration,
+              Orb::Price::UnitWithProration,
+              Orb::Price::GroupedAllocation,
+              Orb::Price::GroupedWithProratedMinimum,
+              Orb::Price::GroupedWithMeteredMinimum,
+              Orb::Price::MatrixWithDisplayName,
+              Orb::Price::BulkWithProration,
+              Orb::Price::GroupedTieredPackage,
+              Orb::Price::MaxGroupTieredPackage,
+              Orb::Price::ScalableMatrixWithUnitPricing,
+              Orb::Price::ScalableMatrixWithTieredPricing,
+              Orb::Price::CumulativeGroupedBulk
+            )
+          ]
+        )
       end
       def list(
         # Cursor for pagination. This can be populated by the `next_cursor` value returned
@@ -256,7 +269,9 @@ module Orb
         # The number of items to fetch. Defaults to 20.
         limit: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint is used to evaluate the output of a price for a given customer and
       # time range. It enables filtering and grouping the output using
       # [computed properties](/extensibility/advanced-metrics#computed-properties),
@@ -287,9 +302,8 @@ module Orb
           external_customer_id: T.nilable(String),
           filter: T.nilable(String),
           grouping_keys: T::Array[String],
-          request_options: Orb::RequestOpts
-        )
-          .returns(Orb::Models::PriceEvaluateResponse)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Models::PriceEvaluateResponse)
       end
       def evaluate(
         price_id,
@@ -310,48 +324,54 @@ module Orb
         # to group the underlying billable metric
         grouping_keys: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint returns a price given an identifier.
       sig do
-        params(price_id: String, request_options: Orb::RequestOpts)
-          .returns(
-            T.any(
-              Orb::Models::Price::Unit,
-              Orb::Models::Price::Package,
-              Orb::Models::Price::Matrix,
-              Orb::Models::Price::Tiered,
-              Orb::Models::Price::TieredBps,
-              Orb::Models::Price::Bps,
-              Orb::Models::Price::BulkBps,
-              Orb::Models::Price::Bulk,
-              Orb::Models::Price::ThresholdTotalAmount,
-              Orb::Models::Price::TieredPackage,
-              Orb::Models::Price::GroupedTiered,
-              Orb::Models::Price::TieredWithMinimum,
-              Orb::Models::Price::TieredPackageWithMinimum,
-              Orb::Models::Price::PackageWithAllocation,
-              Orb::Models::Price::UnitWithPercent,
-              Orb::Models::Price::MatrixWithAllocation,
-              Orb::Models::Price::TieredWithProration,
-              Orb::Models::Price::UnitWithProration,
-              Orb::Models::Price::GroupedAllocation,
-              Orb::Models::Price::GroupedWithProratedMinimum,
-              Orb::Models::Price::GroupedWithMeteredMinimum,
-              Orb::Models::Price::MatrixWithDisplayName,
-              Orb::Models::Price::BulkWithProration,
-              Orb::Models::Price::GroupedTieredPackage,
-              Orb::Models::Price::MaxGroupTieredPackage,
-              Orb::Models::Price::ScalableMatrixWithUnitPricing,
-              Orb::Models::Price::ScalableMatrixWithTieredPricing,
-              Orb::Models::Price::CumulativeGroupedBulk
-            )
+        params(
+          price_id: String,
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(
+          T.any(
+            Orb::Price::Unit,
+            Orb::Price::Package,
+            Orb::Price::Matrix,
+            Orb::Price::Tiered,
+            Orb::Price::TieredBps,
+            Orb::Price::Bps,
+            Orb::Price::BulkBps,
+            Orb::Price::Bulk,
+            Orb::Price::ThresholdTotalAmount,
+            Orb::Price::TieredPackage,
+            Orb::Price::GroupedTiered,
+            Orb::Price::TieredWithMinimum,
+            Orb::Price::TieredPackageWithMinimum,
+            Orb::Price::PackageWithAllocation,
+            Orb::Price::UnitWithPercent,
+            Orb::Price::MatrixWithAllocation,
+            Orb::Price::TieredWithProration,
+            Orb::Price::UnitWithProration,
+            Orb::Price::GroupedAllocation,
+            Orb::Price::GroupedWithProratedMinimum,
+            Orb::Price::GroupedWithMeteredMinimum,
+            Orb::Price::MatrixWithDisplayName,
+            Orb::Price::BulkWithProration,
+            Orb::Price::GroupedTieredPackage,
+            Orb::Price::MaxGroupTieredPackage,
+            Orb::Price::ScalableMatrixWithUnitPricing,
+            Orb::Price::ScalableMatrixWithTieredPricing,
+            Orb::Price::CumulativeGroupedBulk
           )
+        )
       end
-      def fetch(price_id, request_options: {}); end
+      def fetch(price_id, request_options: {})
+      end
 
       # @api private
       sig { params(client: Orb::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

@@ -30,8 +30,8 @@ module Orb
 
       # @!attribute customer
       #
-      #   @return [Orb::Models::CreditNote::Customer]
-      required :customer, -> { Orb::Models::CreditNote::Customer }
+      #   @return [Orb::CreditNote::Customer]
+      required :customer, -> { Orb::CreditNote::Customer }
 
       # @!attribute invoice_id
       #   The id of the invoice resource that this credit note is applied to.
@@ -42,14 +42,14 @@ module Orb
       # @!attribute line_items
       #   All of the line items associated with this credit note.
       #
-      #   @return [Array<Orb::Models::CreditNote::LineItem>]
-      required :line_items, -> { Orb::Internal::Type::ArrayOf[Orb::Models::CreditNote::LineItem] }
+      #   @return [Array<Orb::CreditNote::LineItem>]
+      required :line_items, -> { Orb::Internal::Type::ArrayOf[Orb::CreditNote::LineItem] }
 
       # @!attribute maximum_amount_adjustment
       #   The maximum amount applied on the original invoice
       #
-      #   @return [Orb::Models::CreditNote::MaximumAmountAdjustment, nil]
-      required :maximum_amount_adjustment, -> { Orb::Models::CreditNote::MaximumAmountAdjustment }, nil?: true
+      #   @return [Orb::CreditNote::MaximumAmountAdjustment, nil]
+      required :maximum_amount_adjustment, -> { Orb::CreditNote::MaximumAmountAdjustment }, nil?: true
 
       # @!attribute memo
       #   An optional memo supplied on the credit note.
@@ -65,8 +65,8 @@ module Orb
 
       # @!attribute reason
       #
-      #   @return [Symbol, Orb::Models::CreditNote::Reason, nil]
-      required :reason, enum: -> { Orb::Models::CreditNote::Reason }, nil?: true
+      #   @return [Symbol, Orb::CreditNote::Reason, nil]
+      required :reason, enum: -> { Orb::CreditNote::Reason }, nil?: true
 
       # @!attribute subtotal
       #   The total prior to any creditable invoice-level discounts or minimums.
@@ -82,8 +82,8 @@ module Orb
 
       # @!attribute type
       #
-      #   @return [Symbol, Orb::Models::CreditNote::Type]
-      required :type, enum: -> { Orb::Models::CreditNote::Type }
+      #   @return [Symbol, Orb::CreditNote::Type]
+      required :type, enum: -> { Orb::CreditNote::Type }
 
       # @!attribute voided_at
       #   The time at which the credit note was voided in Orb, if applicable.
@@ -94,8 +94,8 @@ module Orb
       # @!attribute discounts
       #   Any discounts applied on the original invoice.
       #
-      #   @return [Array<Orb::Models::CreditNote::Discount>, nil]
-      optional :discounts, -> { Orb::Internal::Type::ArrayOf[Orb::Models::CreditNote::Discount] }
+      #   @return [Array<Orb::CreditNote::Discount>, nil]
+      optional :discounts, -> { Orb::Internal::Type::ArrayOf[Orb::CreditNote::Discount] }
 
       # @!method initialize(id:, created_at:, credit_note_number:, credit_note_pdf:, customer:, invoice_id:, line_items:, maximum_amount_adjustment:, memo:, minimum_amount_refunded:, reason:, subtotal:, total:, type:, voided_at:, discounts: nil)
       #   The [Credit Note](/invoicing/credit-notes) resource represents a credit that has
@@ -109,31 +109,31 @@ module Orb
       #
       #   @param credit_note_pdf [String, nil] A URL to a PDF of the credit note.
       #
-      #   @param customer [Orb::Models::CreditNote::Customer]
+      #   @param customer [Orb::CreditNote::Customer]
       #
       #   @param invoice_id [String] The id of the invoice resource that this credit note is applied to.
       #
-      #   @param line_items [Array<Orb::Models::CreditNote::LineItem>] All of the line items associated with this credit note.
+      #   @param line_items [Array<Orb::CreditNote::LineItem>] All of the line items associated with this credit note.
       #
-      #   @param maximum_amount_adjustment [Orb::Models::CreditNote::MaximumAmountAdjustment, nil] The maximum amount applied on the original invoice
+      #   @param maximum_amount_adjustment [Orb::CreditNote::MaximumAmountAdjustment, nil] The maximum amount applied on the original invoice
       #
       #   @param memo [String, nil] An optional memo supplied on the credit note.
       #
       #   @param minimum_amount_refunded [String, nil] Any credited amount from the applied minimum on the invoice.
       #
-      #   @param reason [Symbol, Orb::Models::CreditNote::Reason, nil]
+      #   @param reason [Symbol, Orb::CreditNote::Reason, nil]
       #
       #   @param subtotal [String] The total prior to any creditable invoice-level discounts or minimums.
       #
       #   @param total [String] The total including creditable invoice-level discounts or minimums, and tax.
       #
-      #   @param type [Symbol, Orb::Models::CreditNote::Type]
+      #   @param type [Symbol, Orb::CreditNote::Type]
       #
       #   @param voided_at [Time, nil] The time at which the credit note was voided in Orb, if applicable.
       #
-      #   @param discounts [Array<Orb::Models::CreditNote::Discount>] Any discounts applied on the original invoice.
+      #   @param discounts [Array<Orb::CreditNote::Discount>] Any discounts applied on the original invoice.
 
-      # @see Orb::Models::CreditNote#customer
+      # @see Orb::CreditNote#customer
       class Customer < Orb::Internal::Type::BaseModel
         # @!attribute id
         #
@@ -190,14 +190,14 @@ module Orb
         # @!attribute tax_amounts
         #   Any tax amounts applied onto the line item.
         #
-        #   @return [Array<Orb::Models::CreditNote::LineItem::TaxAmount>]
-        required :tax_amounts, -> { Orb::Internal::Type::ArrayOf[Orb::Models::CreditNote::LineItem::TaxAmount] }
+        #   @return [Array<Orb::CreditNote::LineItem::TaxAmount>]
+        required :tax_amounts, -> { Orb::Internal::Type::ArrayOf[Orb::CreditNote::LineItem::TaxAmount] }
 
         # @!attribute discounts
         #   Any line item discounts from the invoice's line item.
         #
-        #   @return [Array<Orb::Models::CreditNote::LineItem::Discount>, nil]
-        optional :discounts, -> { Orb::Internal::Type::ArrayOf[Orb::Models::CreditNote::LineItem::Discount] }
+        #   @return [Array<Orb::CreditNote::LineItem::Discount>, nil]
+        optional :discounts, -> { Orb::Internal::Type::ArrayOf[Orb::CreditNote::LineItem::Discount] }
 
         # @!method initialize(id:, amount:, item_id:, name:, quantity:, subtotal:, tax_amounts:, discounts: nil)
         #   @param id [String] The Orb id of this resource.
@@ -212,9 +212,9 @@ module Orb
         #
         #   @param subtotal [String] The amount of the line item, excluding any line item minimums and discounts.
         #
-        #   @param tax_amounts [Array<Orb::Models::CreditNote::LineItem::TaxAmount>] Any tax amounts applied onto the line item.
+        #   @param tax_amounts [Array<Orb::CreditNote::LineItem::TaxAmount>] Any tax amounts applied onto the line item.
         #
-        #   @param discounts [Array<Orb::Models::CreditNote::LineItem::Discount>] Any line item discounts from the invoice's line item.
+        #   @param discounts [Array<Orb::CreditNote::LineItem::Discount>] Any line item discounts from the invoice's line item.
 
         class TaxAmount < Orb::Internal::Type::BaseModel
           # @!attribute amount
@@ -261,8 +261,8 @@ module Orb
 
           # @!attribute discount_type
           #
-          #   @return [Symbol, Orb::Models::CreditNote::LineItem::Discount::DiscountType]
-          required :discount_type, enum: -> { Orb::Models::CreditNote::LineItem::Discount::DiscountType }
+          #   @return [Symbol, Orb::CreditNote::LineItem::Discount::DiscountType]
+          required :discount_type, enum: -> { Orb::CreditNote::LineItem::Discount::DiscountType }
 
           # @!attribute percentage_discount
           #
@@ -283,12 +283,12 @@ module Orb
           #   @param id [String]
           #   @param amount_applied [String]
           #   @param applies_to_price_ids [Array<String>]
-          #   @param discount_type [Symbol, Orb::Models::CreditNote::LineItem::Discount::DiscountType]
+          #   @param discount_type [Symbol, Orb::CreditNote::LineItem::Discount::DiscountType]
           #   @param percentage_discount [Float]
           #   @param amount_discount [String, nil]
           #   @param reason [String, nil]
 
-          # @see Orb::Models::CreditNote::LineItem::Discount#discount_type
+          # @see Orb::CreditNote::LineItem::Discount#discount_type
           module DiscountType
             extend Orb::Internal::Type::Enum
 
@@ -301,7 +301,7 @@ module Orb
         end
       end
 
-      # @see Orb::Models::CreditNote#maximum_amount_adjustment
+      # @see Orb::CreditNote#maximum_amount_adjustment
       class MaximumAmountAdjustment < Orb::Internal::Type::BaseModel
         # @!attribute amount_applied
         #
@@ -310,8 +310,8 @@ module Orb
 
         # @!attribute discount_type
         #
-        #   @return [Symbol, Orb::Models::CreditNote::MaximumAmountAdjustment::DiscountType]
-        required :discount_type, enum: -> { Orb::Models::CreditNote::MaximumAmountAdjustment::DiscountType }
+        #   @return [Symbol, Orb::CreditNote::MaximumAmountAdjustment::DiscountType]
+        required :discount_type, enum: -> { Orb::CreditNote::MaximumAmountAdjustment::DiscountType }
 
         # @!attribute percentage_discount
         #
@@ -320,9 +320,11 @@ module Orb
 
         # @!attribute applies_to_prices
         #
-        #   @return [Array<Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice>, nil]
+        #   @return [Array<Orb::CreditNote::MaximumAmountAdjustment::AppliesToPrice>, nil]
         optional :applies_to_prices,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice] },
+                 -> {
+                   Orb::Internal::Type::ArrayOf[Orb::CreditNote::MaximumAmountAdjustment::AppliesToPrice]
+                 },
                  nil?: true
 
         # @!attribute reason
@@ -334,12 +336,12 @@ module Orb
         #   The maximum amount applied on the original invoice
         #
         #   @param amount_applied [String]
-        #   @param discount_type [Symbol, Orb::Models::CreditNote::MaximumAmountAdjustment::DiscountType]
+        #   @param discount_type [Symbol, Orb::CreditNote::MaximumAmountAdjustment::DiscountType]
         #   @param percentage_discount [Float]
-        #   @param applies_to_prices [Array<Orb::Models::CreditNote::MaximumAmountAdjustment::AppliesToPrice>, nil]
+        #   @param applies_to_prices [Array<Orb::CreditNote::MaximumAmountAdjustment::AppliesToPrice>, nil]
         #   @param reason [String, nil]
 
-        # @see Orb::Models::CreditNote::MaximumAmountAdjustment#discount_type
+        # @see Orb::CreditNote::MaximumAmountAdjustment#discount_type
         module DiscountType
           extend Orb::Internal::Type::Enum
 
@@ -366,7 +368,7 @@ module Orb
         end
       end
 
-      # @see Orb::Models::CreditNote#reason
+      # @see Orb::CreditNote#reason
       module Reason
         extend Orb::Internal::Type::Enum
 
@@ -379,7 +381,7 @@ module Orb
         #   @return [Array<Symbol>]
       end
 
-      # @see Orb::Models::CreditNote#type
+      # @see Orb::CreditNote#type
       module Type
         extend Orb::Internal::Type::Enum
 
@@ -398,8 +400,8 @@ module Orb
 
         # @!attribute discount_type
         #
-        #   @return [Symbol, Orb::Models::CreditNote::Discount::DiscountType]
-        required :discount_type, enum: -> { Orb::Models::CreditNote::Discount::DiscountType }
+        #   @return [Symbol, Orb::CreditNote::Discount::DiscountType]
+        required :discount_type, enum: -> { Orb::CreditNote::Discount::DiscountType }
 
         # @!attribute percentage_discount
         #
@@ -408,9 +410,9 @@ module Orb
 
         # @!attribute applies_to_prices
         #
-        #   @return [Array<Orb::Models::CreditNote::Discount::AppliesToPrice>, nil]
+        #   @return [Array<Orb::CreditNote::Discount::AppliesToPrice>, nil]
         optional :applies_to_prices,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::Models::CreditNote::Discount::AppliesToPrice] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::CreditNote::Discount::AppliesToPrice] },
                  nil?: true
 
         # @!attribute reason
@@ -420,12 +422,12 @@ module Orb
 
         # @!method initialize(amount_applied:, discount_type:, percentage_discount:, applies_to_prices: nil, reason: nil)
         #   @param amount_applied [String]
-        #   @param discount_type [Symbol, Orb::Models::CreditNote::Discount::DiscountType]
+        #   @param discount_type [Symbol, Orb::CreditNote::Discount::DiscountType]
         #   @param percentage_discount [Float]
-        #   @param applies_to_prices [Array<Orb::Models::CreditNote::Discount::AppliesToPrice>, nil]
+        #   @param applies_to_prices [Array<Orb::CreditNote::Discount::AppliesToPrice>, nil]
         #   @param reason [String, nil]
 
-        # @see Orb::Models::CreditNote::Discount#discount_type
+        # @see Orb::CreditNote::Discount#discount_type
         module DiscountType
           extend Orb::Internal::Type::Enum
 

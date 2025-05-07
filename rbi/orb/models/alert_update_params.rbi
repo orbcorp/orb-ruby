@@ -6,31 +6,39 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
       # The thresholds that define the values at which the alert will be triggered.
-      sig { returns(T::Array[Orb::Models::AlertUpdateParams::Threshold]) }
+      sig { returns(T::Array[Orb::AlertUpdateParams::Threshold]) }
       attr_accessor :thresholds
 
       sig do
         params(
-          thresholds: T::Array[T.any(Orb::Models::AlertUpdateParams::Threshold, Orb::Internal::AnyHash)],
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          thresholds: T::Array[Orb::AlertUpdateParams::Threshold::OrHash],
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # The thresholds that define the values at which the alert will be triggered.
         thresholds:,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {thresholds: T::Array[Orb::Models::AlertUpdateParams::Threshold], request_options: Orb::RequestOptions}
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            thresholds: T::Array[Orb::AlertUpdateParams::Threshold],
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       class Threshold < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         # The value at which an alert will fire. For credit balance alerts, the alert will
         # fire at or below this value. For usage and cost alerts, the alert will fire at
         # or above this value.
@@ -45,9 +53,12 @@ module Orb
           # fire at or below this value. For usage and cost alerts, the alert will fire at
           # or above this value.
           value:
-        ); end
-        sig { override.returns({value: Float}) }
-        def to_hash; end
+        )
+        end
+
+        sig { override.returns({ value: Float }) }
+        def to_hash
+        end
       end
     end
   end

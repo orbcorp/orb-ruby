@@ -7,12 +7,11 @@ module Orb
       # [`Credit Note`](/invoicing/credit-notes).
       sig do
         params(
-          line_items: T::Array[T.any(Orb::Models::CreditNoteCreateParams::LineItem, Orb::Internal::AnyHash)],
+          line_items: T::Array[Orb::CreditNoteCreateParams::LineItem::OrHash],
           memo: T.nilable(String),
-          reason: T.nilable(Orb::Models::CreditNoteCreateParams::Reason::OrSymbol),
-          request_options: Orb::RequestOpts
-        )
-          .returns(Orb::Models::CreditNote)
+          reason: T.nilable(Orb::CreditNoteCreateParams::Reason::OrSymbol),
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::CreditNote)
       end
       def create(
         line_items:,
@@ -21,7 +20,9 @@ module Orb
         # An optional reason for the credit note.
         reason: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Get a paginated list of CreditNotes. Users can also filter by customer_id,
       # subscription_id, or external_customer_id. The credit notes will be returned in
       # reverse chronological order by `creation_time`.
@@ -33,9 +34,8 @@ module Orb
           created_at_lte: T.nilable(Time),
           cursor: T.nilable(String),
           limit: Integer,
-          request_options: Orb::RequestOpts
-        )
-          .returns(Orb::Internal::Page[Orb::Models::CreditNote])
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Internal::Page[Orb::CreditNote])
       end
       def list(
         created_at_gt: nil,
@@ -48,15 +48,24 @@ module Orb
         # The number of items to fetch. Defaults to 20.
         limit: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint is used to fetch a single [`Credit Note`](/invoicing/credit-notes)
       # given an identifier.
-      sig { params(credit_note_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::CreditNote) }
-      def fetch(credit_note_id, request_options: {}); end
+      sig do
+        params(
+          credit_note_id: String,
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::CreditNote)
+      end
+      def fetch(credit_note_id, request_options: {})
+      end
 
       # @api private
       sig { params(client: Orb::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

@@ -1,14 +1,11 @@
 module Orb
   module Models
-    type price_evaluate_response =
-      { data: ::Array[Orb::Models::EvaluatePriceGroup] }
+    type price_evaluate_response = { data: ::Array[Orb::EvaluatePriceGroup] }
 
     class PriceEvaluateResponse < Orb::Internal::Type::BaseModel
-      attr_accessor data: ::Array[Orb::Models::EvaluatePriceGroup]
+      attr_accessor data: ::Array[Orb::EvaluatePriceGroup]
 
-      def initialize: (data: ::Array[Orb::Models::EvaluatePriceGroup]) -> void
-
-      def to_hash: -> Orb::Models::price_evaluate_response
+      def initialize: (data: ::Array[Orb::EvaluatePriceGroup]) -> void
     end
   end
 end

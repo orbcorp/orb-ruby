@@ -3,6 +3,8 @@
 module Orb
   module Models
     class InvoiceLineItemCreateResponse < Orb::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
       # A unique ID for this line item.
       sig { returns(String) }
       attr_accessor :id
@@ -43,10 +45,10 @@ module Orb
         returns(
           T.nilable(
             T.any(
-              Orb::Models::PercentageDiscount,
-              Orb::Models::TrialDiscount,
-              Orb::Models::UsageDiscount,
-              Orb::Models::AmountDiscount
+              Orb::PercentageDiscount,
+              Orb::TrialDiscount,
+              Orb::UsageDiscount,
+              Orb::AmountDiscount
             )
           )
         )
@@ -68,14 +70,18 @@ module Orb
       attr_accessor :grouping
 
       # This field is deprecated in favor of `adjustments`.
-      sig { returns(T.nilable(Orb::Models::InvoiceLineItemCreateResponse::Maximum)) }
+      sig do
+        returns(T.nilable(Orb::Models::InvoiceLineItemCreateResponse::Maximum))
+      end
       attr_reader :maximum
 
       sig do
         params(
-          maximum: T.nilable(T.any(Orb::Models::InvoiceLineItemCreateResponse::Maximum, Orb::Internal::AnyHash))
-        )
-          .void
+          maximum:
+            T.nilable(
+              Orb::Models::InvoiceLineItemCreateResponse::Maximum::OrHash
+            )
+        ).void
       end
       attr_writer :maximum
 
@@ -84,14 +90,18 @@ module Orb
       attr_accessor :maximum_amount
 
       # This field is deprecated in favor of `adjustments`.
-      sig { returns(T.nilable(Orb::Models::InvoiceLineItemCreateResponse::Minimum)) }
+      sig do
+        returns(T.nilable(Orb::Models::InvoiceLineItemCreateResponse::Minimum))
+      end
       attr_reader :minimum
 
       sig do
         params(
-          minimum: T.nilable(T.any(Orb::Models::InvoiceLineItemCreateResponse::Minimum, Orb::Internal::AnyHash))
-        )
-          .void
+          minimum:
+            T.nilable(
+              Orb::Models::InvoiceLineItemCreateResponse::Minimum::OrHash
+            )
+        ).void
       end
       attr_writer :minimum
 
@@ -121,34 +131,34 @@ module Orb
         returns(
           T.nilable(
             T.any(
-              Orb::Models::Price::Unit,
-              Orb::Models::Price::Package,
-              Orb::Models::Price::Matrix,
-              Orb::Models::Price::Tiered,
-              Orb::Models::Price::TieredBps,
-              Orb::Models::Price::Bps,
-              Orb::Models::Price::BulkBps,
-              Orb::Models::Price::Bulk,
-              Orb::Models::Price::ThresholdTotalAmount,
-              Orb::Models::Price::TieredPackage,
-              Orb::Models::Price::GroupedTiered,
-              Orb::Models::Price::TieredWithMinimum,
-              Orb::Models::Price::TieredPackageWithMinimum,
-              Orb::Models::Price::PackageWithAllocation,
-              Orb::Models::Price::UnitWithPercent,
-              Orb::Models::Price::MatrixWithAllocation,
-              Orb::Models::Price::TieredWithProration,
-              Orb::Models::Price::UnitWithProration,
-              Orb::Models::Price::GroupedAllocation,
-              Orb::Models::Price::GroupedWithProratedMinimum,
-              Orb::Models::Price::GroupedWithMeteredMinimum,
-              Orb::Models::Price::MatrixWithDisplayName,
-              Orb::Models::Price::BulkWithProration,
-              Orb::Models::Price::GroupedTieredPackage,
-              Orb::Models::Price::MaxGroupTieredPackage,
-              Orb::Models::Price::ScalableMatrixWithUnitPricing,
-              Orb::Models::Price::ScalableMatrixWithTieredPricing,
-              Orb::Models::Price::CumulativeGroupedBulk
+              Orb::Price::Unit,
+              Orb::Price::Package,
+              Orb::Price::Matrix,
+              Orb::Price::Tiered,
+              Orb::Price::TieredBps,
+              Orb::Price::Bps,
+              Orb::Price::BulkBps,
+              Orb::Price::Bulk,
+              Orb::Price::ThresholdTotalAmount,
+              Orb::Price::TieredPackage,
+              Orb::Price::GroupedTiered,
+              Orb::Price::TieredWithMinimum,
+              Orb::Price::TieredPackageWithMinimum,
+              Orb::Price::PackageWithAllocation,
+              Orb::Price::UnitWithPercent,
+              Orb::Price::MatrixWithAllocation,
+              Orb::Price::TieredWithProration,
+              Orb::Price::UnitWithProration,
+              Orb::Price::GroupedAllocation,
+              Orb::Price::GroupedWithProratedMinimum,
+              Orb::Price::GroupedWithMeteredMinimum,
+              Orb::Price::MatrixWithDisplayName,
+              Orb::Price::BulkWithProration,
+              Orb::Price::GroupedTieredPackage,
+              Orb::Price::MaxGroupTieredPackage,
+              Orb::Price::ScalableMatrixWithUnitPricing,
+              Orb::Price::ScalableMatrixWithTieredPricing,
+              Orb::Price::CumulativeGroupedBulk
             )
           )
         )
@@ -184,7 +194,9 @@ module Orb
 
       # An array of tax rates and their incurred tax amounts. Empty if no tax
       # integration is configured.
-      sig { returns(T::Array[Orb::Models::InvoiceLineItemCreateResponse::TaxAmount]) }
+      sig do
+        returns(T::Array[Orb::Models::InvoiceLineItemCreateResponse::TaxAmount])
+      end
       attr_accessor :tax_amounts
 
       # A list of customer ids that were used to calculate the usage for this line item.
@@ -195,84 +207,92 @@ module Orb
         params(
           id: String,
           adjusted_subtotal: String,
-          adjustments: T::Array[
-            T.any(
-              Orb::Models::InvoiceLineItemCreateResponse::Adjustment::UsageDiscount,
-              Orb::Internal::AnyHash,
-              Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscount,
-              Orb::Models::InvoiceLineItemCreateResponse::Adjustment::PercentageDiscount,
-              Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Minimum,
-              Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Maximum
-            )
-          ],
+          adjustments:
+            T::Array[
+              T.any(
+                Orb::Models::InvoiceLineItemCreateResponse::Adjustment::UsageDiscount::OrHash,
+                Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscount::OrHash,
+                Orb::Models::InvoiceLineItemCreateResponse::Adjustment::PercentageDiscount::OrHash,
+                Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Minimum::OrHash,
+                Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Maximum::OrHash
+              )
+            ],
           amount: String,
           credits_applied: String,
-          discount: T.nilable(
-            T.any(
-              Orb::Models::PercentageDiscount,
-              Orb::Internal::AnyHash,
-              Orb::Models::TrialDiscount,
-              Orb::Models::UsageDiscount,
-              Orb::Models::AmountDiscount
-            )
-          ),
+          discount:
+            T.nilable(
+              T.any(
+                Orb::PercentageDiscount::OrHash,
+                Orb::TrialDiscount::OrHash,
+                Orb::UsageDiscount::OrHash,
+                Orb::AmountDiscount::OrHash
+              )
+            ),
           end_date: Time,
           filter: T.nilable(String),
           grouping: T.nilable(String),
-          maximum: T.nilable(T.any(Orb::Models::InvoiceLineItemCreateResponse::Maximum, Orb::Internal::AnyHash)),
+          maximum:
+            T.nilable(
+              Orb::Models::InvoiceLineItemCreateResponse::Maximum::OrHash
+            ),
           maximum_amount: T.nilable(String),
-          minimum: T.nilable(T.any(Orb::Models::InvoiceLineItemCreateResponse::Minimum, Orb::Internal::AnyHash)),
+          minimum:
+            T.nilable(
+              Orb::Models::InvoiceLineItemCreateResponse::Minimum::OrHash
+            ),
           minimum_amount: T.nilable(String),
           name: String,
           partially_invoiced_amount: String,
-          price: T.nilable(
-            T.any(
-              Orb::Models::Price::Unit,
-              Orb::Internal::AnyHash,
-              Orb::Models::Price::Package,
-              Orb::Models::Price::Matrix,
-              Orb::Models::Price::Tiered,
-              Orb::Models::Price::TieredBps,
-              Orb::Models::Price::Bps,
-              Orb::Models::Price::BulkBps,
-              Orb::Models::Price::Bulk,
-              Orb::Models::Price::ThresholdTotalAmount,
-              Orb::Models::Price::TieredPackage,
-              Orb::Models::Price::GroupedTiered,
-              Orb::Models::Price::TieredWithMinimum,
-              Orb::Models::Price::TieredPackageWithMinimum,
-              Orb::Models::Price::PackageWithAllocation,
-              Orb::Models::Price::UnitWithPercent,
-              Orb::Models::Price::MatrixWithAllocation,
-              Orb::Models::Price::TieredWithProration,
-              Orb::Models::Price::UnitWithProration,
-              Orb::Models::Price::GroupedAllocation,
-              Orb::Models::Price::GroupedWithProratedMinimum,
-              Orb::Models::Price::GroupedWithMeteredMinimum,
-              Orb::Models::Price::MatrixWithDisplayName,
-              Orb::Models::Price::BulkWithProration,
-              Orb::Models::Price::GroupedTieredPackage,
-              Orb::Models::Price::MaxGroupTieredPackage,
-              Orb::Models::Price::ScalableMatrixWithUnitPricing,
-              Orb::Models::Price::ScalableMatrixWithTieredPricing,
-              Orb::Models::Price::CumulativeGroupedBulk
-            )
-          ),
+          price:
+            T.nilable(
+              T.any(
+                Orb::Price::Unit::OrHash,
+                Orb::Price::Package::OrHash,
+                Orb::Price::Matrix::OrHash,
+                Orb::Price::Tiered::OrHash,
+                Orb::Price::TieredBps::OrHash,
+                Orb::Price::Bps::OrHash,
+                Orb::Price::BulkBps::OrHash,
+                Orb::Price::Bulk::OrHash,
+                Orb::Price::ThresholdTotalAmount::OrHash,
+                Orb::Price::TieredPackage::OrHash,
+                Orb::Price::GroupedTiered::OrHash,
+                Orb::Price::TieredWithMinimum::OrHash,
+                Orb::Price::TieredPackageWithMinimum::OrHash,
+                Orb::Price::PackageWithAllocation::OrHash,
+                Orb::Price::UnitWithPercent::OrHash,
+                Orb::Price::MatrixWithAllocation::OrHash,
+                Orb::Price::TieredWithProration::OrHash,
+                Orb::Price::UnitWithProration::OrHash,
+                Orb::Price::GroupedAllocation::OrHash,
+                Orb::Price::GroupedWithProratedMinimum::OrHash,
+                Orb::Price::GroupedWithMeteredMinimum::OrHash,
+                Orb::Price::MatrixWithDisplayName::OrHash,
+                Orb::Price::BulkWithProration::OrHash,
+                Orb::Price::GroupedTieredPackage::OrHash,
+                Orb::Price::MaxGroupTieredPackage::OrHash,
+                Orb::Price::ScalableMatrixWithUnitPricing::OrHash,
+                Orb::Price::ScalableMatrixWithTieredPricing::OrHash,
+                Orb::Price::CumulativeGroupedBulk::OrHash
+              )
+            ),
           quantity: Float,
           start_date: Time,
-          sub_line_items: T::Array[
-            T.any(
-              Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix,
-              Orb::Internal::AnyHash,
-              Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier,
-              Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Null
-            )
-          ],
+          sub_line_items:
+            T::Array[
+              T.any(
+                Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix::OrHash,
+                Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier::OrHash,
+                Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Null::OrHash
+              )
+            ],
           subtotal: String,
-          tax_amounts: T::Array[T.any(Orb::Models::InvoiceLineItemCreateResponse::TaxAmount, Orb::Internal::AnyHash)],
+          tax_amounts:
+            T::Array[
+              Orb::Models::InvoiceLineItemCreateResponse::TaxAmount::OrHash
+            ],
           usage_customer_ids: T.nilable(T::Array[String])
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # A unique ID for this line item.
@@ -335,14 +355,16 @@ module Orb
         tax_amounts:,
         # A list of customer ids that were used to calculate the usage for this line item.
         usage_customer_ids:
-      ); end
+      )
+      end
+
       sig do
-        override
-          .returns(
-            {
-              id: String,
-              adjusted_subtotal: String,
-              adjustments: T::Array[
+        override.returns(
+          {
+            id: String,
+            adjusted_subtotal: String,
+            adjustments:
+              T::Array[
                 T.any(
                   Orb::Models::InvoiceLineItemCreateResponse::Adjustment::UsageDiscount,
                   Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscount,
@@ -351,78 +373,98 @@ module Orb
                   Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Maximum
                 )
               ],
-              amount: String,
-              credits_applied: String,
-              discount: T.nilable(
+            amount: String,
+            credits_applied: String,
+            discount:
+              T.nilable(
                 T.any(
-                  Orb::Models::PercentageDiscount,
-                  Orb::Models::TrialDiscount,
-                  Orb::Models::UsageDiscount,
-                  Orb::Models::AmountDiscount
+                  Orb::PercentageDiscount,
+                  Orb::TrialDiscount,
+                  Orb::UsageDiscount,
+                  Orb::AmountDiscount
                 )
               ),
-              end_date: Time,
-              filter: T.nilable(String),
-              grouping: T.nilable(String),
-              maximum: T.nilable(Orb::Models::InvoiceLineItemCreateResponse::Maximum),
-              maximum_amount: T.nilable(String),
-              minimum: T.nilable(Orb::Models::InvoiceLineItemCreateResponse::Minimum),
-              minimum_amount: T.nilable(String),
-              name: String,
-              partially_invoiced_amount: String,
-              price: T.nilable(
+            end_date: Time,
+            filter: T.nilable(String),
+            grouping: T.nilable(String),
+            maximum:
+              T.nilable(Orb::Models::InvoiceLineItemCreateResponse::Maximum),
+            maximum_amount: T.nilable(String),
+            minimum:
+              T.nilable(Orb::Models::InvoiceLineItemCreateResponse::Minimum),
+            minimum_amount: T.nilable(String),
+            name: String,
+            partially_invoiced_amount: String,
+            price:
+              T.nilable(
                 T.any(
-                  Orb::Models::Price::Unit,
-                  Orb::Models::Price::Package,
-                  Orb::Models::Price::Matrix,
-                  Orb::Models::Price::Tiered,
-                  Orb::Models::Price::TieredBps,
-                  Orb::Models::Price::Bps,
-                  Orb::Models::Price::BulkBps,
-                  Orb::Models::Price::Bulk,
-                  Orb::Models::Price::ThresholdTotalAmount,
-                  Orb::Models::Price::TieredPackage,
-                  Orb::Models::Price::GroupedTiered,
-                  Orb::Models::Price::TieredWithMinimum,
-                  Orb::Models::Price::TieredPackageWithMinimum,
-                  Orb::Models::Price::PackageWithAllocation,
-                  Orb::Models::Price::UnitWithPercent,
-                  Orb::Models::Price::MatrixWithAllocation,
-                  Orb::Models::Price::TieredWithProration,
-                  Orb::Models::Price::UnitWithProration,
-                  Orb::Models::Price::GroupedAllocation,
-                  Orb::Models::Price::GroupedWithProratedMinimum,
-                  Orb::Models::Price::GroupedWithMeteredMinimum,
-                  Orb::Models::Price::MatrixWithDisplayName,
-                  Orb::Models::Price::BulkWithProration,
-                  Orb::Models::Price::GroupedTieredPackage,
-                  Orb::Models::Price::MaxGroupTieredPackage,
-                  Orb::Models::Price::ScalableMatrixWithUnitPricing,
-                  Orb::Models::Price::ScalableMatrixWithTieredPricing,
-                  Orb::Models::Price::CumulativeGroupedBulk
+                  Orb::Price::Unit,
+                  Orb::Price::Package,
+                  Orb::Price::Matrix,
+                  Orb::Price::Tiered,
+                  Orb::Price::TieredBps,
+                  Orb::Price::Bps,
+                  Orb::Price::BulkBps,
+                  Orb::Price::Bulk,
+                  Orb::Price::ThresholdTotalAmount,
+                  Orb::Price::TieredPackage,
+                  Orb::Price::GroupedTiered,
+                  Orb::Price::TieredWithMinimum,
+                  Orb::Price::TieredPackageWithMinimum,
+                  Orb::Price::PackageWithAllocation,
+                  Orb::Price::UnitWithPercent,
+                  Orb::Price::MatrixWithAllocation,
+                  Orb::Price::TieredWithProration,
+                  Orb::Price::UnitWithProration,
+                  Orb::Price::GroupedAllocation,
+                  Orb::Price::GroupedWithProratedMinimum,
+                  Orb::Price::GroupedWithMeteredMinimum,
+                  Orb::Price::MatrixWithDisplayName,
+                  Orb::Price::BulkWithProration,
+                  Orb::Price::GroupedTieredPackage,
+                  Orb::Price::MaxGroupTieredPackage,
+                  Orb::Price::ScalableMatrixWithUnitPricing,
+                  Orb::Price::ScalableMatrixWithTieredPricing,
+                  Orb::Price::CumulativeGroupedBulk
                 )
               ),
-              quantity: Float,
-              start_date: Time,
-              sub_line_items: T::Array[
+            quantity: Float,
+            start_date: Time,
+            sub_line_items:
+              T::Array[
                 T.any(
                   Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix,
                   Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier,
                   Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Null
                 )
               ],
-              subtotal: String,
-              tax_amounts: T::Array[Orb::Models::InvoiceLineItemCreateResponse::TaxAmount],
-              usage_customer_ids: T.nilable(T::Array[String])
-            }
-          )
+            subtotal: String,
+            tax_amounts:
+              T::Array[Orb::Models::InvoiceLineItemCreateResponse::TaxAmount],
+            usage_customer_ids: T.nilable(T::Array[String])
+          }
+        )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       module Adjustment
         extend Orb::Internal::Type::Union
 
+        Variants =
+          T.type_alias do
+            T.any(
+              Orb::Models::InvoiceLineItemCreateResponse::Adjustment::UsageDiscount,
+              Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscount,
+              Orb::Models::InvoiceLineItemCreateResponse::Adjustment::PercentageDiscount,
+              Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Minimum,
+              Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Maximum
+            )
+          end
+
         class UsageDiscount < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -460,8 +502,7 @@ module Orb
               reason: T.nilable(String),
               usage_discount: Float,
               adjustment_type: Symbol
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             id:,
@@ -478,25 +519,29 @@ module Orb
             # to in a given billing period.
             usage_discount:,
             adjustment_type: :usage_discount
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  id: String,
-                  adjustment_type: Symbol,
-                  amount: String,
-                  applies_to_price_ids: T::Array[String],
-                  is_invoice_level: T::Boolean,
-                  reason: T.nilable(String),
-                  usage_discount: Float
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                id: String,
+                adjustment_type: Symbol,
+                amount: String,
+                applies_to_price_ids: T::Array[String],
+                is_invoice_level: T::Boolean,
+                reason: T.nilable(String),
+                usage_discount: Float
+              }
+            )
+          end
+          def to_hash
+          end
         end
 
         class AmountDiscount < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -534,8 +579,7 @@ module Orb
               is_invoice_level: T::Boolean,
               reason: T.nilable(String),
               adjustment_type: Symbol
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             id:,
@@ -552,25 +596,29 @@ module Orb
             # The reason for the adjustment.
             reason:,
             adjustment_type: :amount_discount
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  id: String,
-                  adjustment_type: Symbol,
-                  amount: String,
-                  amount_discount: String,
-                  applies_to_price_ids: T::Array[String],
-                  is_invoice_level: T::Boolean,
-                  reason: T.nilable(String)
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                id: String,
+                adjustment_type: Symbol,
+                amount: String,
+                amount_discount: String,
+                applies_to_price_ids: T::Array[String],
+                is_invoice_level: T::Boolean,
+                reason: T.nilable(String)
+              }
+            )
+          end
+          def to_hash
+          end
         end
 
         class PercentageDiscount < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -608,8 +656,7 @@ module Orb
               percentage_discount: Float,
               reason: T.nilable(String),
               adjustment_type: Symbol
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             id:,
@@ -626,25 +673,29 @@ module Orb
             # The reason for the adjustment.
             reason:,
             adjustment_type: :percentage_discount
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  id: String,
-                  adjustment_type: Symbol,
-                  amount: String,
-                  applies_to_price_ids: T::Array[String],
-                  is_invoice_level: T::Boolean,
-                  percentage_discount: Float,
-                  reason: T.nilable(String)
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                id: String,
+                adjustment_type: Symbol,
+                amount: String,
+                applies_to_price_ids: T::Array[String],
+                is_invoice_level: T::Boolean,
+                percentage_discount: Float,
+                reason: T.nilable(String)
+              }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -687,8 +738,7 @@ module Orb
               minimum_amount: String,
               reason: T.nilable(String),
               adjustment_type: Symbol
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             id:,
@@ -707,26 +757,30 @@ module Orb
             # The reason for the adjustment.
             reason:,
             adjustment_type: :minimum
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  id: String,
-                  adjustment_type: Symbol,
-                  amount: String,
-                  applies_to_price_ids: T::Array[String],
-                  is_invoice_level: T::Boolean,
-                  item_id: String,
-                  minimum_amount: String,
-                  reason: T.nilable(String)
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                id: String,
+                adjustment_type: Symbol,
+                amount: String,
+                applies_to_price_ids: T::Array[String],
+                is_invoice_level: T::Boolean,
+                item_id: String,
+                minimum_amount: String,
+                reason: T.nilable(String)
+              }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -764,8 +818,7 @@ module Orb
               maximum_amount: String,
               reason: T.nilable(String),
               adjustment_type: Symbol
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             id:,
@@ -782,34 +835,40 @@ module Orb
             # The reason for the adjustment.
             reason:,
             adjustment_type: :maximum
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  id: String,
-                  adjustment_type: Symbol,
-                  amount: String,
-                  applies_to_price_ids: T::Array[String],
-                  is_invoice_level: T::Boolean,
-                  maximum_amount: String,
-                  reason: T.nilable(String)
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                id: String,
+                adjustment_type: Symbol,
+                amount: String,
+                applies_to_price_ids: T::Array[String],
+                is_invoice_level: T::Boolean,
+                maximum_amount: String,
+                reason: T.nilable(String)
+              }
+            )
+          end
+          def to_hash
+          end
         end
 
         sig do
-          override
-            .returns(
-              [Orb::Models::InvoiceLineItemCreateResponse::Adjustment::UsageDiscount, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscount, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::PercentageDiscount, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Minimum, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Maximum]
-            )
+          override.returns(
+            T::Array[
+              Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Variants
+            ]
+          )
         end
-        def self.variants; end
+        def self.variants
+        end
       end
 
       class Maximum < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         # List of price_ids that this maximum amount applies to. For plan/plan phase
         # maximums, this can be a subset of prices.
         sig { returns(T::Array[String]) }
@@ -821,7 +880,10 @@ module Orb
 
         # This field is deprecated in favor of `adjustments`.
         sig do
-          params(applies_to_price_ids: T::Array[String], maximum_amount: String).returns(T.attached_class)
+          params(
+            applies_to_price_ids: T::Array[String],
+            maximum_amount: String
+          ).returns(T.attached_class)
         end
         def self.new(
           # List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -829,12 +891,21 @@ module Orb
           applies_to_price_ids:,
           # Maximum amount applied
           maximum_amount:
-        ); end
-        sig { override.returns({applies_to_price_ids: T::Array[String], maximum_amount: String}) }
-        def to_hash; end
+        )
+        end
+
+        sig do
+          override.returns(
+            { applies_to_price_ids: T::Array[String], maximum_amount: String }
+          )
+        end
+        def to_hash
+        end
       end
 
       class Minimum < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         # List of price_ids that this minimum amount applies to. For plan/plan phase
         # minimums, this can be a subset of prices.
         sig { returns(T::Array[String]) }
@@ -846,7 +917,10 @@ module Orb
 
         # This field is deprecated in favor of `adjustments`.
         sig do
-          params(applies_to_price_ids: T::Array[String], minimum_amount: String).returns(T.attached_class)
+          params(
+            applies_to_price_ids: T::Array[String],
+            minimum_amount: String
+          ).returns(T.attached_class)
         end
         def self.new(
           # List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -854,43 +928,68 @@ module Orb
           applies_to_price_ids:,
           # Minimum amount applied
           minimum_amount:
-        ); end
-        sig { override.returns({applies_to_price_ids: T::Array[String], minimum_amount: String}) }
-        def to_hash; end
+        )
+        end
+
+        sig do
+          override.returns(
+            { applies_to_price_ids: T::Array[String], minimum_amount: String }
+          )
+        end
+        def to_hash
+        end
       end
 
       module SubLineItem
         extend Orb::Internal::Type::Union
 
+        Variants =
+          T.type_alias do
+            T.any(
+              Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix,
+              Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier,
+              Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Null
+            )
+          end
+
         class Matrix < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # The total amount for this sub line item.
           sig { returns(String) }
           attr_accessor :amount
 
-          sig { returns(T.nilable(Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix::Grouping)) }
+          sig do
+            returns(
+              T.nilable(
+                Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix::Grouping
+              )
+            )
+          end
           attr_reader :grouping
 
           sig do
             params(
-              grouping: T.nilable(
-                T.any(Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix::Grouping, Orb::Internal::AnyHash)
-              )
-            )
-              .void
+              grouping:
+                T.nilable(
+                  Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix::Grouping::OrHash
+                )
+            ).void
           end
           attr_writer :grouping
 
-          sig { returns(Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix::MatrixConfig) }
+          sig do
+            returns(
+              Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix::MatrixConfig
+            )
+          end
           attr_reader :matrix_config
 
           sig do
             params(
-              matrix_config: T.any(
-                Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix::MatrixConfig,
-                Orb::Internal::AnyHash
-              )
-            )
-              .void
+              matrix_config:
+                Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix::MatrixConfig::OrHash
+            ).void
           end
           attr_writer :matrix_config
 
@@ -906,18 +1005,16 @@ module Orb
           sig do
             params(
               amount: String,
-              grouping: T.nilable(
-                T.any(Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix::Grouping, Orb::Internal::AnyHash)
-              ),
-              matrix_config: T.any(
-                Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix::MatrixConfig,
-                Orb::Internal::AnyHash
-              ),
+              grouping:
+                T.nilable(
+                  Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix::Grouping::OrHash
+                ),
+              matrix_config:
+                Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix::MatrixConfig::OrHash,
               name: String,
               quantity: Float,
               type: Symbol
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             # The total amount for this sub line item.
@@ -927,23 +1024,31 @@ module Orb
             name:,
             quantity:,
             type: :matrix
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  amount: String,
-                  grouping: T.nilable(Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix::Grouping),
-                  matrix_config: Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix::MatrixConfig,
-                  name: String,
-                  quantity: Float,
-                  type: Symbol
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                amount: String,
+                grouping:
+                  T.nilable(
+                    Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix::Grouping
+                  ),
+                matrix_config:
+                  Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix::MatrixConfig,
+                name: String,
+                quantity: Float,
+                type: Symbol
+              }
+            )
+          end
+          def to_hash
+          end
 
           class Grouping < Orb::Internal::Type::BaseModel
+            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
             sig { returns(String) }
             attr_accessor :key
 
@@ -951,46 +1056,74 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :value
 
-            sig { params(key: String, value: T.nilable(String)).returns(T.attached_class) }
+            sig do
+              params(key: String, value: T.nilable(String)).returns(
+                T.attached_class
+              )
+            end
             def self.new(
               key:,
               # No value indicates the default group
               value:
-            ); end
-            sig { override.returns({key: String, value: T.nilable(String)}) }
-            def to_hash; end
+            )
+            end
+
+            sig { override.returns({ key: String, value: T.nilable(String) }) }
+            def to_hash
+            end
           end
 
           class MatrixConfig < Orb::Internal::Type::BaseModel
+            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
             # The ordered dimension values for this line item.
             sig { returns(T::Array[T.nilable(String)]) }
             attr_accessor :dimension_values
 
-            sig { params(dimension_values: T::Array[T.nilable(String)]).returns(T.attached_class) }
+            sig do
+              params(dimension_values: T::Array[T.nilable(String)]).returns(
+                T.attached_class
+              )
+            end
             def self.new(
               # The ordered dimension values for this line item.
               dimension_values:
-            ); end
-            sig { override.returns({dimension_values: T::Array[T.nilable(String)]}) }
-            def to_hash; end
+            )
+            end
+
+            sig do
+              override.returns(
+                { dimension_values: T::Array[T.nilable(String)] }
+              )
+            end
+            def to_hash
+            end
           end
         end
 
         class Tier < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # The total amount for this sub line item.
           sig { returns(String) }
           attr_accessor :amount
 
-          sig { returns(T.nilable(Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier::Grouping)) }
+          sig do
+            returns(
+              T.nilable(
+                Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier::Grouping
+              )
+            )
+          end
           attr_reader :grouping
 
           sig do
             params(
-              grouping: T.nilable(
-                T.any(Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier::Grouping, Orb::Internal::AnyHash)
-              )
-            )
-              .void
+              grouping:
+                T.nilable(
+                  Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier::Grouping::OrHash
+                )
+            ).void
           end
           attr_writer :grouping
 
@@ -1000,14 +1133,18 @@ module Orb
           sig { returns(Float) }
           attr_accessor :quantity
 
-          sig { returns(Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier::TierConfig) }
+          sig do
+            returns(
+              Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier::TierConfig
+            )
+          end
           attr_reader :tier_config
 
           sig do
             params(
-              tier_config: T.any(Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier::TierConfig, Orb::Internal::AnyHash)
-            )
-              .void
+              tier_config:
+                Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier::TierConfig::OrHash
+            ).void
           end
           attr_writer :tier_config
 
@@ -1017,15 +1154,16 @@ module Orb
           sig do
             params(
               amount: String,
-              grouping: T.nilable(
-                T.any(Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier::Grouping, Orb::Internal::AnyHash)
-              ),
+              grouping:
+                T.nilable(
+                  Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier::Grouping::OrHash
+                ),
               name: String,
               quantity: Float,
-              tier_config: T.any(Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier::TierConfig, Orb::Internal::AnyHash),
+              tier_config:
+                Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier::TierConfig::OrHash,
               type: Symbol
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             # The total amount for this sub line item.
@@ -1035,23 +1173,31 @@ module Orb
             quantity:,
             tier_config:,
             type: :tier
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  amount: String,
-                  grouping: T.nilable(Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier::Grouping),
-                  name: String,
-                  quantity: Float,
-                  tier_config: Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier::TierConfig,
-                  type: Symbol
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                amount: String,
+                grouping:
+                  T.nilable(
+                    Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier::Grouping
+                  ),
+                name: String,
+                quantity: Float,
+                tier_config:
+                  Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier::TierConfig,
+                type: Symbol
+              }
+            )
+          end
+          def to_hash
+          end
 
           class Grouping < Orb::Internal::Type::BaseModel
+            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
             sig { returns(String) }
             attr_accessor :key
 
@@ -1059,17 +1205,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :value
 
-            sig { params(key: String, value: T.nilable(String)).returns(T.attached_class) }
+            sig do
+              params(key: String, value: T.nilable(String)).returns(
+                T.attached_class
+              )
+            end
             def self.new(
               key:,
               # No value indicates the default group
               value:
-            ); end
-            sig { override.returns({key: String, value: T.nilable(String)}) }
-            def to_hash; end
+            )
+            end
+
+            sig { override.returns({ key: String, value: T.nilable(String) }) }
+            def to_hash
+            end
           end
 
           class TierConfig < Orb::Internal::Type::BaseModel
+            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
             sig { returns(Float) }
             attr_accessor :first_unit
 
@@ -1086,28 +1241,46 @@ module Orb
                 unit_amount: String
               ).returns(T.attached_class)
             end
-            def self.new(first_unit:, last_unit:, unit_amount:); end
+            def self.new(first_unit:, last_unit:, unit_amount:)
+            end
 
-            sig { override.returns({first_unit: Float, last_unit: T.nilable(Float), unit_amount: String}) }
-            def to_hash; end
+            sig do
+              override.returns(
+                {
+                  first_unit: Float,
+                  last_unit: T.nilable(Float),
+                  unit_amount: String
+                }
+              )
+            end
+            def to_hash
+            end
           end
         end
 
         class Null < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # The total amount for this sub line item.
           sig { returns(String) }
           attr_accessor :amount
 
-          sig { returns(T.nilable(Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Null::Grouping)) }
+          sig do
+            returns(
+              T.nilable(
+                Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Null::Grouping
+              )
+            )
+          end
           attr_reader :grouping
 
           sig do
             params(
-              grouping: T.nilable(
-                T.any(Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Null::Grouping, Orb::Internal::AnyHash)
-              )
-            )
-              .void
+              grouping:
+                T.nilable(
+                  Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Null::Grouping::OrHash
+                )
+            ).void
           end
           attr_writer :grouping
 
@@ -1123,14 +1296,14 @@ module Orb
           sig do
             params(
               amount: String,
-              grouping: T.nilable(
-                T.any(Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Null::Grouping, Orb::Internal::AnyHash)
-              ),
+              grouping:
+                T.nilable(
+                  Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Null::Grouping::OrHash
+                ),
               name: String,
               quantity: Float,
               type: Symbol
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             # The total amount for this sub line item.
@@ -1139,22 +1312,29 @@ module Orb
             name:,
             quantity:,
             type: :"'null'"
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  amount: String,
-                  grouping: T.nilable(Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Null::Grouping),
-                  name: String,
-                  quantity: Float,
-                  type: Symbol
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                amount: String,
+                grouping:
+                  T.nilable(
+                    Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Null::Grouping
+                  ),
+                name: String,
+                quantity: Float,
+                type: Symbol
+              }
+            )
+          end
+          def to_hash
+          end
 
           class Grouping < Orb::Internal::Type::BaseModel
+            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
             sig { returns(String) }
             attr_accessor :key
 
@@ -1162,27 +1342,38 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :value
 
-            sig { params(key: String, value: T.nilable(String)).returns(T.attached_class) }
+            sig do
+              params(key: String, value: T.nilable(String)).returns(
+                T.attached_class
+              )
+            end
             def self.new(
               key:,
               # No value indicates the default group
               value:
-            ); end
-            sig { override.returns({key: String, value: T.nilable(String)}) }
-            def to_hash; end
+            )
+            end
+
+            sig { override.returns({ key: String, value: T.nilable(String) }) }
+            def to_hash
+            end
           end
         end
 
         sig do
-          override
-            .returns(
-              [Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier, Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Null]
-            )
+          override.returns(
+            T::Array[
+              Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Variants
+            ]
+          )
         end
-        def self.variants; end
+        def self.variants
+        end
       end
 
       class TaxAmount < Orb::Internal::Type::BaseModel
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
         # The amount of additional tax incurred by this tax rate.
         sig { returns(String) }
         attr_accessor :amount
@@ -1196,8 +1387,11 @@ module Orb
         attr_accessor :tax_rate_percentage
 
         sig do
-          params(amount: String, tax_rate_description: String, tax_rate_percentage: T.nilable(String))
-            .returns(T.attached_class)
+          params(
+            amount: String,
+            tax_rate_description: String,
+            tax_rate_percentage: T.nilable(String)
+          ).returns(T.attached_class)
         end
         def self.new(
           # The amount of additional tax incurred by this tax rate.
@@ -1206,7 +1400,9 @@ module Orb
           tax_rate_description:,
           # The tax rate percentage, out of 100.
           tax_rate_percentage:
-        ); end
+        )
+        end
+
         sig do
           override.returns(
             {
@@ -1216,7 +1412,8 @@ module Orb
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

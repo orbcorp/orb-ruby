@@ -6,9 +6,18 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
       # The new date that the trial should end, or the literal string `immediate` to end
       # the trial immediately.
-      sig { returns(T.any(Time, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::OrSymbol)) }
+      sig do
+        returns(
+          T.any(
+            Time,
+            Orb::SubscriptionUpdateTrialParams::TrialEndDate::OrSymbol
+          )
+        )
+      end
       attr_accessor :trial_end_date
 
       # If true, shifts subsequent price and adjustment intervals (preserving their
@@ -21,11 +30,14 @@ module Orb
 
       sig do
         params(
-          trial_end_date: T.any(Time, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::OrSymbol),
+          trial_end_date:
+            T.any(
+              Time,
+              Orb::SubscriptionUpdateTrialParams::TrialEndDate::OrSymbol
+            ),
           shift: T::Boolean,
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # The new date that the trial should end, or the literal string `immediate` to end
@@ -35,31 +47,57 @@ module Orb
         # durations, but adjusting their absolute dates).
         shift: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              trial_end_date: T.any(Time, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::OrSymbol),
-              shift: T::Boolean,
-              request_options: Orb::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            trial_end_date:
+              T.any(
+                Time,
+                Orb::SubscriptionUpdateTrialParams::TrialEndDate::OrSymbol
+              ),
+            shift: T::Boolean,
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # The new date that the trial should end, or the literal string `immediate` to end
       # the trial immediately.
       module TrialEndDate
         extend Orb::Internal::Type::Union
 
-        sig { override.returns([Time, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::TaggedSymbol]) }
-        def self.variants; end
+        Variants =
+          T.type_alias do
+            T.any(
+              Time,
+              Orb::SubscriptionUpdateTrialParams::TrialEndDate::TaggedSymbol
+            )
+          end
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate) }
+        sig do
+          override.returns(
+            T::Array[Orb::SubscriptionUpdateTrialParams::TrialEndDate::Variants]
+          )
+        end
+        def self.variants
+        end
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Orb::SubscriptionUpdateTrialParams::TrialEndDate)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        IMMEDIATE = T.let(:immediate, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::TaggedSymbol)
+        IMMEDIATE =
+          T.let(
+            :immediate,
+            Orb::SubscriptionUpdateTrialParams::TrialEndDate::TaggedSymbol
+          )
       end
     end
   end

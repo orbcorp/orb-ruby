@@ -24,8 +24,6 @@ module Orb
         start_date: Time
       ) -> void
 
-      def to_hash: -> Orb::Models::subscription_fetch_schedule_response
-
       type plan = { id: String?, external_plan_id: String?, name: String? }
 
       class Plan < Orb::Internal::Type::BaseModel
@@ -40,8 +38,6 @@ module Orb
           external_plan_id: String?,
           name: String?
         ) -> void
-
-        def to_hash: -> Orb::Models::SubscriptionFetchScheduleResponse::plan
       end
     end
   end

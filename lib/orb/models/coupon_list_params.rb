@@ -38,14 +38,12 @@ module Orb
       #   {Orb::Models::CouponListParams} for more details.
       #
       #   @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
-      #   ...
       #
       #   @param limit [Integer] The number of items to fetch. Defaults to 20.
       #
       #   @param redemption_code [String, nil] Filter to coupons matching this redemption code.
       #
       #   @param show_archived [Boolean, nil] Show archived coupons as well (by default, this endpoint only returns active cou
-      #   ...
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end

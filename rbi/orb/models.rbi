@@ -5,9 +5,11 @@ module Orb
 
   AlertCreateForCustomerParams = Orb::Models::AlertCreateForCustomerParams
 
-  AlertCreateForExternalCustomerParams = Orb::Models::AlertCreateForExternalCustomerParams
+  AlertCreateForExternalCustomerParams =
+    Orb::Models::AlertCreateForExternalCustomerParams
 
-  AlertCreateForSubscriptionParams = Orb::Models::AlertCreateForSubscriptionParams
+  AlertCreateForSubscriptionParams =
+    Orb::Models::AlertCreateForSubscriptionParams
 
   AlertDisableParams = Orb::Models::AlertDisableParams
 
@@ -62,19 +64,23 @@ module Orb
   CustomerSyncPaymentMethodsFromGatewayByExternalCustomerIDParams =
     Orb::Models::CustomerSyncPaymentMethodsFromGatewayByExternalCustomerIDParams
 
-  CustomerSyncPaymentMethodsFromGatewayParams = Orb::Models::CustomerSyncPaymentMethodsFromGatewayParams
+  CustomerSyncPaymentMethodsFromGatewayParams =
+    Orb::Models::CustomerSyncPaymentMethodsFromGatewayParams
 
-  CustomerUpdateByExternalIDParams = Orb::Models::CustomerUpdateByExternalIDParams
+  CustomerUpdateByExternalIDParams =
+    Orb::Models::CustomerUpdateByExternalIDParams
 
   CustomerUpdateParams = Orb::Models::CustomerUpdateParams
 
   DimensionalPriceGroup = Orb::Models::DimensionalPriceGroup
 
-  DimensionalPriceGroupCreateParams = Orb::Models::DimensionalPriceGroupCreateParams
+  DimensionalPriceGroupCreateParams =
+    Orb::Models::DimensionalPriceGroupCreateParams
 
   DimensionalPriceGroupListParams = Orb::Models::DimensionalPriceGroupListParams
 
-  DimensionalPriceGroupRetrieveParams = Orb::Models::DimensionalPriceGroupRetrieveParams
+  DimensionalPriceGroupRetrieveParams =
+    Orb::Models::DimensionalPriceGroupRetrieveParams
 
   DimensionalPriceGroups = Orb::Models::DimensionalPriceGroups
 
@@ -174,7 +180,8 @@ module Orb
 
   SubscriptionChangeCancelParams = Orb::Models::SubscriptionChangeCancelParams
 
-  SubscriptionChangeRetrieveParams = Orb::Models::SubscriptionChangeRetrieveParams
+  SubscriptionChangeRetrieveParams =
+    Orb::Models::SubscriptionChangeRetrieveParams
 
   SubscriptionCreateParams = Orb::Models::SubscriptionCreateParams
 
@@ -188,15 +195,18 @@ module Orb
 
   SubscriptionListParams = Orb::Models::SubscriptionListParams
 
-  SubscriptionPriceIntervalsParams = Orb::Models::SubscriptionPriceIntervalsParams
+  SubscriptionPriceIntervalsParams =
+    Orb::Models::SubscriptionPriceIntervalsParams
 
   SubscriptionsAPI = Orb::Models::SubscriptionsAPI
 
-  SubscriptionSchedulePlanChangeParams = Orb::Models::SubscriptionSchedulePlanChangeParams
+  SubscriptionSchedulePlanChangeParams =
+    Orb::Models::SubscriptionSchedulePlanChangeParams
 
   SubscriptionTriggerPhaseParams = Orb::Models::SubscriptionTriggerPhaseParams
 
-  SubscriptionUnscheduleCancellationParams = Orb::Models::SubscriptionUnscheduleCancellationParams
+  SubscriptionUnscheduleCancellationParams =
+    Orb::Models::SubscriptionUnscheduleCancellationParams
 
   SubscriptionUnscheduleFixedFeeQuantityUpdatesParams =
     Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesParams
@@ -204,7 +214,8 @@ module Orb
   SubscriptionUnschedulePendingPlanChangesParams =
     Orb::Models::SubscriptionUnschedulePendingPlanChangesParams
 
-  SubscriptionUpdateFixedFeeQuantityParams = Orb::Models::SubscriptionUpdateFixedFeeQuantityParams
+  SubscriptionUpdateFixedFeeQuantityParams =
+    Orb::Models::SubscriptionUpdateFixedFeeQuantityParams
 
   SubscriptionUpdateParams = Orb::Models::SubscriptionUpdateParams
 

@@ -10,17 +10,16 @@ module Orb
       # subscription creation or plan change.
       sig do
         params(
-          discount: T.any(
-            Orb::Models::CouponCreateParams::Discount::Percentage,
-            Orb::Internal::AnyHash,
-            Orb::Models::CouponCreateParams::Discount::Amount
-          ),
+          discount:
+            T.any(
+              Orb::CouponCreateParams::Discount::Percentage::OrHash,
+              Orb::CouponCreateParams::Discount::Amount::OrHash
+            ),
           redemption_code: String,
           duration_in_months: T.nilable(Integer),
           max_redemptions: T.nilable(Integer),
-          request_options: Orb::RequestOpts
-        )
-          .returns(Orb::Models::Coupon)
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Coupon)
       end
       def create(
         discount:,
@@ -33,7 +32,9 @@ module Orb
         # exhausted;`null` here means "unlimited".
         max_redemptions: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint returns a list of all coupons for an account in a list format.
       #
       # The list of coupons is ordered starting from the most recently created coupon.
@@ -46,9 +47,8 @@ module Orb
           limit: Integer,
           redemption_code: T.nilable(String),
           show_archived: T.nilable(T::Boolean),
-          request_options: Orb::RequestOpts
-        )
-          .returns(Orb::Internal::Page[Orb::Models::Coupon])
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Internal::Page[Orb::Coupon])
       end
       def list(
         # Cursor for pagination. This can be populated by the `next_cursor` value returned
@@ -62,22 +62,37 @@ module Orb
         # coupons).
         show_archived: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # This endpoint allows a coupon to be archived. Archived coupons can no longer be
       # redeemed, and will be hidden from lists of active coupons. Additionally, once a
       # coupon is archived, its redemption code can be reused for a different coupon.
-      sig { params(coupon_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::Coupon) }
-      def archive(coupon_id, request_options: {}); end
+      sig do
+        params(
+          coupon_id: String,
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Coupon)
+      end
+      def archive(coupon_id, request_options: {})
+      end
 
       # This endpoint retrieves a coupon by its ID. To fetch coupons by their redemption
       # code, use the [List coupons](list-coupons) endpoint with the redemption_code
       # parameter.
-      sig { params(coupon_id: String, request_options: Orb::RequestOpts).returns(Orb::Models::Coupon) }
-      def fetch(coupon_id, request_options: {}); end
+      sig do
+        params(
+          coupon_id: String,
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Coupon)
+      end
+      def fetch(coupon_id, request_options: {})
+      end
 
       # @api private
       sig { params(client: Orb::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

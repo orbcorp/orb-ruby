@@ -6,6 +6,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
       sig { returns(T.nilable(Time)) }
       attr_accessor :created_at_gt
 
@@ -36,7 +38,7 @@ module Orb
       sig { params(limit: Integer).void }
       attr_writer :limit
 
-      sig { returns(T.nilable(Orb::Models::SubscriptionListParams::Status::OrSymbol)) }
+      sig { returns(T.nilable(Orb::SubscriptionListParams::Status::OrSymbol)) }
       attr_accessor :status
 
       sig do
@@ -49,10 +51,9 @@ module Orb
           customer_id: T.nilable(T::Array[String]),
           external_customer_id: T.nilable(T::Array[String]),
           limit: Integer,
-          status: T.nilable(Orb::Models::SubscriptionListParams::Status::OrSymbol),
-          request_options: T.any(Orb::RequestOptions, Orb::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          status: T.nilable(Orb::SubscriptionListParams::Status::OrSymbol),
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         created_at_gt: nil,
@@ -68,38 +69,48 @@ module Orb
         limit: nil,
         status: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              created_at_gt: T.nilable(Time),
-              created_at_gte: T.nilable(Time),
-              created_at_lt: T.nilable(Time),
-              created_at_lte: T.nilable(Time),
-              cursor: T.nilable(String),
-              customer_id: T.nilable(T::Array[String]),
-              external_customer_id: T.nilable(T::Array[String]),
-              limit: Integer,
-              status: T.nilable(Orb::Models::SubscriptionListParams::Status::OrSymbol),
-              request_options: Orb::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            created_at_gt: T.nilable(Time),
+            created_at_gte: T.nilable(Time),
+            created_at_lt: T.nilable(Time),
+            created_at_lte: T.nilable(Time),
+            cursor: T.nilable(String),
+            customer_id: T.nilable(T::Array[String]),
+            external_customer_id: T.nilable(T::Array[String]),
+            limit: Integer,
+            status: T.nilable(Orb::SubscriptionListParams::Status::OrSymbol),
+            request_options: Orb::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       module Status
         extend Orb::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Orb::Models::SubscriptionListParams::Status) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Orb::SubscriptionListParams::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        ACTIVE = T.let(:active, Orb::Models::SubscriptionListParams::Status::TaggedSymbol)
-        ENDED = T.let(:ended, Orb::Models::SubscriptionListParams::Status::TaggedSymbol)
-        UPCOMING = T.let(:upcoming, Orb::Models::SubscriptionListParams::Status::TaggedSymbol)
+        ACTIVE =
+          T.let(:active, Orb::SubscriptionListParams::Status::TaggedSymbol)
+        ENDED = T.let(:ended, Orb::SubscriptionListParams::Status::TaggedSymbol)
+        UPCOMING =
+          T.let(:upcoming, Orb::SubscriptionListParams::Status::TaggedSymbol)
 
-        sig { override.returns(T::Array[Orb::Models::SubscriptionListParams::Status::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Orb::SubscriptionListParams::Status::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

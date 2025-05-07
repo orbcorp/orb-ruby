@@ -32,8 +32,6 @@ module Orb
         ?net_terms: Integer?,
         ?request_options: Orb::request_opts
       ) -> void
-
-      def to_hash: -> Orb::Models::subscription_update_params
     end
   end
 end

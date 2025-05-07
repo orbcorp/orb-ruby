@@ -3,20 +3,40 @@
 module Orb
   module Models
     class SubscriptionFetchCostsResponse < Orb::Internal::Type::BaseModel
-      sig { returns(T::Array[Orb::Models::SubscriptionFetchCostsResponse::Data]) }
+      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
+      sig do
+        returns(T::Array[Orb::Models::SubscriptionFetchCostsResponse::Data])
+      end
       attr_accessor :data
 
       sig do
-        params(data: T::Array[T.any(Orb::Models::SubscriptionFetchCostsResponse::Data, Orb::Internal::AnyHash)])
-          .returns(T.attached_class)
+        params(
+          data:
+            T::Array[Orb::Models::SubscriptionFetchCostsResponse::Data::OrHash]
+        ).returns(T.attached_class)
       end
-      def self.new(data:); end
+      def self.new(data:)
+      end
 
-      sig { override.returns({data: T::Array[Orb::Models::SubscriptionFetchCostsResponse::Data]}) }
-      def to_hash; end
+      sig do
+        override.returns(
+          { data: T::Array[Orb::Models::SubscriptionFetchCostsResponse::Data] }
+        )
+      end
+      def to_hash
+      end
 
       class Data < Orb::Internal::Type::BaseModel
-        sig { returns(T::Array[Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost]) }
+        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
+        sig do
+          returns(
+            T::Array[
+              Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost
+            ]
+          )
+        end
         attr_accessor :per_price_costs
 
         # Total costs for the timeframe, excluding any minimums and discounts.
@@ -35,13 +55,15 @@ module Orb
 
         sig do
           params(
-            per_price_costs: T::Array[T.any(Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost, Orb::Internal::AnyHash)],
+            per_price_costs:
+              T::Array[
+                Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost::OrHash
+              ],
             subtotal: String,
             timeframe_end: Time,
             timeframe_start: Time,
             total: String
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           per_price_costs:,
@@ -51,54 +73,61 @@ module Orb
           timeframe_start:,
           # Total costs for the timeframe, including any minimums and discounts.
           total:
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                per_price_costs: T::Array[Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost],
-                subtotal: String,
-                timeframe_end: Time,
-                timeframe_start: Time,
-                total: String
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              per_price_costs:
+                T::Array[
+                  Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost
+                ],
+              subtotal: String,
+              timeframe_end: Time,
+              timeframe_start: Time,
+              total: String
+            }
+          )
+        end
+        def to_hash
+        end
 
         class PerPriceCost < Orb::Internal::Type::BaseModel
+          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+
           # The price object
           sig do
             returns(
               T.any(
-                Orb::Models::Price::Unit,
-                Orb::Models::Price::Package,
-                Orb::Models::Price::Matrix,
-                Orb::Models::Price::Tiered,
-                Orb::Models::Price::TieredBps,
-                Orb::Models::Price::Bps,
-                Orb::Models::Price::BulkBps,
-                Orb::Models::Price::Bulk,
-                Orb::Models::Price::ThresholdTotalAmount,
-                Orb::Models::Price::TieredPackage,
-                Orb::Models::Price::GroupedTiered,
-                Orb::Models::Price::TieredWithMinimum,
-                Orb::Models::Price::TieredPackageWithMinimum,
-                Orb::Models::Price::PackageWithAllocation,
-                Orb::Models::Price::UnitWithPercent,
-                Orb::Models::Price::MatrixWithAllocation,
-                Orb::Models::Price::TieredWithProration,
-                Orb::Models::Price::UnitWithProration,
-                Orb::Models::Price::GroupedAllocation,
-                Orb::Models::Price::GroupedWithProratedMinimum,
-                Orb::Models::Price::GroupedWithMeteredMinimum,
-                Orb::Models::Price::MatrixWithDisplayName,
-                Orb::Models::Price::BulkWithProration,
-                Orb::Models::Price::GroupedTieredPackage,
-                Orb::Models::Price::MaxGroupTieredPackage,
-                Orb::Models::Price::ScalableMatrixWithUnitPricing,
-                Orb::Models::Price::ScalableMatrixWithTieredPricing,
-                Orb::Models::Price::CumulativeGroupedBulk
+                Orb::Price::Unit,
+                Orb::Price::Package,
+                Orb::Price::Matrix,
+                Orb::Price::Tiered,
+                Orb::Price::TieredBps,
+                Orb::Price::Bps,
+                Orb::Price::BulkBps,
+                Orb::Price::Bulk,
+                Orb::Price::ThresholdTotalAmount,
+                Orb::Price::TieredPackage,
+                Orb::Price::GroupedTiered,
+                Orb::Price::TieredWithMinimum,
+                Orb::Price::TieredPackageWithMinimum,
+                Orb::Price::PackageWithAllocation,
+                Orb::Price::UnitWithPercent,
+                Orb::Price::MatrixWithAllocation,
+                Orb::Price::TieredWithProration,
+                Orb::Price::UnitWithProration,
+                Orb::Price::GroupedAllocation,
+                Orb::Price::GroupedWithProratedMinimum,
+                Orb::Price::GroupedWithMeteredMinimum,
+                Orb::Price::MatrixWithDisplayName,
+                Orb::Price::BulkWithProration,
+                Orb::Price::GroupedTieredPackage,
+                Orb::Price::MaxGroupTieredPackage,
+                Orb::Price::ScalableMatrixWithUnitPricing,
+                Orb::Price::ScalableMatrixWithTieredPricing,
+                Orb::Price::CumulativeGroupedBulk
               )
             )
           end
@@ -122,43 +151,42 @@ module Orb
 
           sig do
             params(
-              price: T.any(
-                Orb::Models::Price::Unit,
-                Orb::Internal::AnyHash,
-                Orb::Models::Price::Package,
-                Orb::Models::Price::Matrix,
-                Orb::Models::Price::Tiered,
-                Orb::Models::Price::TieredBps,
-                Orb::Models::Price::Bps,
-                Orb::Models::Price::BulkBps,
-                Orb::Models::Price::Bulk,
-                Orb::Models::Price::ThresholdTotalAmount,
-                Orb::Models::Price::TieredPackage,
-                Orb::Models::Price::GroupedTiered,
-                Orb::Models::Price::TieredWithMinimum,
-                Orb::Models::Price::TieredPackageWithMinimum,
-                Orb::Models::Price::PackageWithAllocation,
-                Orb::Models::Price::UnitWithPercent,
-                Orb::Models::Price::MatrixWithAllocation,
-                Orb::Models::Price::TieredWithProration,
-                Orb::Models::Price::UnitWithProration,
-                Orb::Models::Price::GroupedAllocation,
-                Orb::Models::Price::GroupedWithProratedMinimum,
-                Orb::Models::Price::GroupedWithMeteredMinimum,
-                Orb::Models::Price::MatrixWithDisplayName,
-                Orb::Models::Price::BulkWithProration,
-                Orb::Models::Price::GroupedTieredPackage,
-                Orb::Models::Price::MaxGroupTieredPackage,
-                Orb::Models::Price::ScalableMatrixWithUnitPricing,
-                Orb::Models::Price::ScalableMatrixWithTieredPricing,
-                Orb::Models::Price::CumulativeGroupedBulk
-              ),
+              price:
+                T.any(
+                  Orb::Price::Unit::OrHash,
+                  Orb::Price::Package::OrHash,
+                  Orb::Price::Matrix::OrHash,
+                  Orb::Price::Tiered::OrHash,
+                  Orb::Price::TieredBps::OrHash,
+                  Orb::Price::Bps::OrHash,
+                  Orb::Price::BulkBps::OrHash,
+                  Orb::Price::Bulk::OrHash,
+                  Orb::Price::ThresholdTotalAmount::OrHash,
+                  Orb::Price::TieredPackage::OrHash,
+                  Orb::Price::GroupedTiered::OrHash,
+                  Orb::Price::TieredWithMinimum::OrHash,
+                  Orb::Price::TieredPackageWithMinimum::OrHash,
+                  Orb::Price::PackageWithAllocation::OrHash,
+                  Orb::Price::UnitWithPercent::OrHash,
+                  Orb::Price::MatrixWithAllocation::OrHash,
+                  Orb::Price::TieredWithProration::OrHash,
+                  Orb::Price::UnitWithProration::OrHash,
+                  Orb::Price::GroupedAllocation::OrHash,
+                  Orb::Price::GroupedWithProratedMinimum::OrHash,
+                  Orb::Price::GroupedWithMeteredMinimum::OrHash,
+                  Orb::Price::MatrixWithDisplayName::OrHash,
+                  Orb::Price::BulkWithProration::OrHash,
+                  Orb::Price::GroupedTieredPackage::OrHash,
+                  Orb::Price::MaxGroupTieredPackage::OrHash,
+                  Orb::Price::ScalableMatrixWithUnitPricing::OrHash,
+                  Orb::Price::ScalableMatrixWithTieredPricing::OrHash,
+                  Orb::Price::CumulativeGroupedBulk::OrHash
+                ),
               price_id: String,
               subtotal: String,
               total: String,
               quantity: T.nilable(Float)
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             # The price object
@@ -171,49 +199,52 @@ module Orb
             total:,
             # The price's quantity for the timeframe
             quantity: nil
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  price: T.any(
-                    Orb::Models::Price::Unit,
-                    Orb::Models::Price::Package,
-                    Orb::Models::Price::Matrix,
-                    Orb::Models::Price::Tiered,
-                    Orb::Models::Price::TieredBps,
-                    Orb::Models::Price::Bps,
-                    Orb::Models::Price::BulkBps,
-                    Orb::Models::Price::Bulk,
-                    Orb::Models::Price::ThresholdTotalAmount,
-                    Orb::Models::Price::TieredPackage,
-                    Orb::Models::Price::GroupedTiered,
-                    Orb::Models::Price::TieredWithMinimum,
-                    Orb::Models::Price::TieredPackageWithMinimum,
-                    Orb::Models::Price::PackageWithAllocation,
-                    Orb::Models::Price::UnitWithPercent,
-                    Orb::Models::Price::MatrixWithAllocation,
-                    Orb::Models::Price::TieredWithProration,
-                    Orb::Models::Price::UnitWithProration,
-                    Orb::Models::Price::GroupedAllocation,
-                    Orb::Models::Price::GroupedWithProratedMinimum,
-                    Orb::Models::Price::GroupedWithMeteredMinimum,
-                    Orb::Models::Price::MatrixWithDisplayName,
-                    Orb::Models::Price::BulkWithProration,
-                    Orb::Models::Price::GroupedTieredPackage,
-                    Orb::Models::Price::MaxGroupTieredPackage,
-                    Orb::Models::Price::ScalableMatrixWithUnitPricing,
-                    Orb::Models::Price::ScalableMatrixWithTieredPricing,
-                    Orb::Models::Price::CumulativeGroupedBulk
-                  ),
-                  price_id: String,
-                  subtotal: String,
-                  total: String,
-                  quantity: T.nilable(Float)
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                price:
+                  T.any(
+                    Orb::Price::Unit,
+                    Orb::Price::Package,
+                    Orb::Price::Matrix,
+                    Orb::Price::Tiered,
+                    Orb::Price::TieredBps,
+                    Orb::Price::Bps,
+                    Orb::Price::BulkBps,
+                    Orb::Price::Bulk,
+                    Orb::Price::ThresholdTotalAmount,
+                    Orb::Price::TieredPackage,
+                    Orb::Price::GroupedTiered,
+                    Orb::Price::TieredWithMinimum,
+                    Orb::Price::TieredPackageWithMinimum,
+                    Orb::Price::PackageWithAllocation,
+                    Orb::Price::UnitWithPercent,
+                    Orb::Price::MatrixWithAllocation,
+                    Orb::Price::TieredWithProration,
+                    Orb::Price::UnitWithProration,
+                    Orb::Price::GroupedAllocation,
+                    Orb::Price::GroupedWithProratedMinimum,
+                    Orb::Price::GroupedWithMeteredMinimum,
+                    Orb::Price::MatrixWithDisplayName,
+                    Orb::Price::BulkWithProration,
+                    Orb::Price::GroupedTieredPackage,
+                    Orb::Price::MaxGroupTieredPackage,
+                    Orb::Price::ScalableMatrixWithUnitPricing,
+                    Orb::Price::ScalableMatrixWithTieredPricing,
+                    Orb::Price::CumulativeGroupedBulk
+                  ),
+                price_id: String,
+                subtotal: String,
+                total: String,
+                quantity: T.nilable(Float)
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
     end

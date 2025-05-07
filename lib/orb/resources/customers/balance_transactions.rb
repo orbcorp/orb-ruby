@@ -13,7 +13,7 @@ module Orb
         #
         # @param amount [String]
         #
-        # @param type [Symbol, Orb::Models::Customers::BalanceTransactionCreateParams::Type]
+        # @param type [Symbol, Orb::Customers::BalanceTransactionCreateParams::Type]
         #
         # @param description [String, nil] An optional description that can be specified around this entry.
         #
@@ -23,7 +23,7 @@ module Orb
         #
         # @see Orb::Models::Customers::BalanceTransactionCreateParams
         def create(customer_id, params)
-          parsed, options = Orb::Models::Customers::BalanceTransactionCreateParams.dump_request(params)
+          parsed, options = Orb::Customers::BalanceTransactionCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: ["customers/%1$s/balance_transactions", customer_id],
@@ -70,7 +70,6 @@ module Orb
         # @param customer_id [String]
         #
         # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
-        # ...
         #
         # @param limit [Integer] The number of items to fetch. Defaults to 20.
         #
@@ -88,7 +87,7 @@ module Orb
         #
         # @see Orb::Models::Customers::BalanceTransactionListParams
         def list(customer_id, params = {})
-          parsed, options = Orb::Models::Customers::BalanceTransactionListParams.dump_request(params)
+          parsed, options = Orb::Customers::BalanceTransactionListParams.dump_request(params)
           @client.request(
             method: :get,
             path: ["customers/%1$s/balance_transactions", customer_id],

@@ -31,8 +31,6 @@ module Orb
         metadata: ::Hash[Symbol, String],
         name: String
       ) -> void
-
-      def to_hash: -> Orb::Models::dimensional_price_group
     end
   end
 end

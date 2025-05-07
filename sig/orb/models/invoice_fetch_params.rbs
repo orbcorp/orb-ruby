@@ -7,8 +7,6 @@ module Orb
       include Orb::Internal::Type::RequestParameters
 
       def initialize: (?request_options: Orb::request_opts) -> void
-
-      def to_hash: -> Orb::Models::invoice_fetch_params
     end
   end
 end

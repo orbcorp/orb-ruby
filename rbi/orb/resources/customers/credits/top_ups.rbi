@@ -17,15 +17,18 @@ module Orb
               customer_id: String,
               amount: String,
               currency: String,
-              invoice_settings: T.any(Orb::Models::Customers::Credits::TopUpCreateParams::InvoiceSettings, Orb::Internal::AnyHash),
+              invoice_settings:
+                Orb::Customers::Credits::TopUpCreateParams::InvoiceSettings::OrHash,
               per_unit_cost_basis: String,
               threshold: String,
               active_from: T.nilable(Time),
               expires_after: T.nilable(Integer),
-              expires_after_unit: T.nilable(Orb::Models::Customers::Credits::TopUpCreateParams::ExpiresAfterUnit::OrSymbol),
-              request_options: Orb::RequestOpts
-            )
-              .returns(Orb::Models::Customers::Credits::TopUpCreateResponse)
+              expires_after_unit:
+                T.nilable(
+                  Orb::Customers::Credits::TopUpCreateParams::ExpiresAfterUnit::OrSymbol
+                ),
+              request_options: Orb::RequestOptions::OrHash
+            ).returns(Orb::Models::Customers::Credits::TopUpCreateResponse)
           end
           def create(
             customer_id,
@@ -50,16 +53,21 @@ module Orb
             # The unit of expires_after.
             expires_after_unit: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # List top-ups
           sig do
             params(
               customer_id: String,
               cursor: T.nilable(String),
               limit: Integer,
-              request_options: Orb::RequestOpts
+              request_options: Orb::RequestOptions::OrHash
+            ).returns(
+              Orb::Internal::Page[
+                Orb::Models::Customers::Credits::TopUpListResponse
+              ]
             )
-              .returns(Orb::Internal::Page[Orb::Models::Customers::Credits::TopUpListResponse])
           end
           def list(
             customer_id,
@@ -69,11 +77,20 @@ module Orb
             # The number of items to fetch. Defaults to 20.
             limit: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # This deactivates the top-up and voids any invoices associated with pending
           # credit blocks purchased through the top-up.
-          sig { params(top_up_id: String, customer_id: String, request_options: Orb::RequestOpts).void }
-          def delete(top_up_id, customer_id:, request_options: {}); end
+          sig do
+            params(
+              top_up_id: String,
+              customer_id: String,
+              request_options: Orb::RequestOptions::OrHash
+            ).void
+          end
+          def delete(top_up_id, customer_id:, request_options: {})
+          end
 
           # This endpoint allows you to create a new top-up for a specified customer's
           # balance. While this top-up is active, the customer's balance will added in
@@ -87,18 +104,20 @@ module Orb
               external_customer_id: String,
               amount: String,
               currency: String,
-              invoice_settings: T.any(
-                Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams::InvoiceSettings,
-                Orb::Internal::AnyHash
-              ),
+              invoice_settings:
+                Orb::Customers::Credits::TopUpCreateByExternalIDParams::InvoiceSettings::OrHash,
               per_unit_cost_basis: String,
               threshold: String,
               active_from: T.nilable(Time),
               expires_after: T.nilable(Integer),
-              expires_after_unit: T.nilable(Orb::Models::Customers::Credits::TopUpCreateByExternalIDParams::ExpiresAfterUnit::OrSymbol),
-              request_options: Orb::RequestOpts
+              expires_after_unit:
+                T.nilable(
+                  Orb::Customers::Credits::TopUpCreateByExternalIDParams::ExpiresAfterUnit::OrSymbol
+                ),
+              request_options: Orb::RequestOptions::OrHash
+            ).returns(
+              Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse
             )
-              .returns(Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse)
           end
           def create_by_external_id(
             external_customer_id,
@@ -123,13 +142,24 @@ module Orb
             # The unit of expires_after.
             expires_after_unit: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # This deactivates the top-up and voids any invoices associated with pending
           # credit blocks purchased through the top-up.
           sig do
-            params(top_up_id: String, external_customer_id: String, request_options: Orb::RequestOpts).void
+            params(
+              top_up_id: String,
+              external_customer_id: String,
+              request_options: Orb::RequestOptions::OrHash
+            ).void
           end
-          def delete_by_external_id(top_up_id, external_customer_id:, request_options: {}); end
+          def delete_by_external_id(
+            top_up_id,
+            external_customer_id:,
+            request_options: {}
+          )
+          end
 
           # List top-ups by external ID
           sig do
@@ -137,9 +167,12 @@ module Orb
               external_customer_id: String,
               cursor: T.nilable(String),
               limit: Integer,
-              request_options: Orb::RequestOpts
+              request_options: Orb::RequestOptions::OrHash
+            ).returns(
+              Orb::Internal::Page[
+                Orb::Models::Customers::Credits::TopUpListByExternalIDResponse
+              ]
             )
-              .returns(Orb::Internal::Page[Orb::Models::Customers::Credits::TopUpListByExternalIDResponse])
           end
           def list_by_external_id(
             external_customer_id,
@@ -149,10 +182,13 @@ module Orb
             # The number of items to fetch. Defaults to 20.
             limit: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # @api private
           sig { params(client: Orb::Client).returns(T.attached_class) }
-          def self.new(client:); end
+          def self.new(client:)
+          end
         end
       end
     end

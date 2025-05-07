@@ -24,10 +24,8 @@ module Orb
       #   {Orb::Models::EventIngestResponse} for more details.
       #
       #   @param validation_failed [Array<Orb::Models::EventIngestResponse::ValidationFailed>] Contains all failing validation events. In the case of a 200, this array will al
-      #   ...
       #
       #   @param debug [Orb::Models::EventIngestResponse::Debug, nil] Optional debug information (only present when debug=true is passed to the endpoi
-      #   ...
 
       class ValidationFailed < Orb::Internal::Type::BaseModel
         # @!attribute idempotency_key
@@ -50,7 +48,6 @@ module Orb
         #   @param idempotency_key [String] The passed idempotency_key corresponding to the validation_errors
         #
         #   @param validation_errors [Array<String>] An array of strings corresponding to validation failures for this idempotency_ke
-        #   ...
       end
 
       # @see Orb::Models::EventIngestResponse#debug

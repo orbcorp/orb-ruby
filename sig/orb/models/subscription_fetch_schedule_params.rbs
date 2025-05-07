@@ -38,8 +38,6 @@ module Orb
         ?start_date_lte: Time?,
         ?request_options: Orb::request_opts
       ) -> void
-
-      def to_hash: -> Orb::Models::subscription_fetch_schedule_params
     end
   end
 end
