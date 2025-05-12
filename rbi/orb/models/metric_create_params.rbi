@@ -6,7 +6,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(Orb::MetricCreateParams, Orb::Internal::AnyHash) }
 
       # A description of the metric.
       sig { returns(T.nilable(String)) }

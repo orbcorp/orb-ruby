@@ -3,7 +3,13 @@
 module Orb
   module Models
     class InvoiceFetchUpcomingResponse < Orb::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(
+            Orb::Models::InvoiceFetchUpcomingResponse,
+            Orb::Internal::AnyHash
+          )
+        end
 
       sig { returns(String) }
       attr_accessor :id
@@ -773,7 +779,13 @@ module Orb
       end
 
       class AutoCollection < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Models::InvoiceFetchUpcomingResponse::AutoCollection,
+              Orb::Internal::AnyHash
+            )
+          end
 
         # True only if auto-collection is enabled for this invoice.
         sig { returns(T.nilable(T::Boolean)) }
@@ -840,7 +852,13 @@ module Orb
       end
 
       class BillingAddress < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Models::InvoiceFetchUpcomingResponse::BillingAddress,
+              Orb::Internal::AnyHash
+            )
+          end
 
         sig { returns(T.nilable(String)) }
         attr_accessor :city
@@ -890,7 +908,13 @@ module Orb
       end
 
       class CreditNote < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Models::InvoiceFetchUpcomingResponse::CreditNote,
+              Orb::Internal::AnyHash
+            )
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -959,7 +983,13 @@ module Orb
       end
 
       class Customer < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Models::InvoiceFetchUpcomingResponse::Customer,
+              Orb::Internal::AnyHash
+            )
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -985,7 +1015,13 @@ module Orb
       end
 
       class CustomerBalanceTransaction < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction,
+              Orb::Internal::AnyHash
+            )
+          end
 
         # A unique id for this transaction.
         sig { returns(String) }
@@ -1206,7 +1242,13 @@ module Orb
         end
 
         class CreditNote < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::CreditNote,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # The id of the Credit note
           sig { returns(String) }
@@ -1225,7 +1267,13 @@ module Orb
         end
 
         class Invoice < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Invoice,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # The Invoice id
           sig { returns(String) }
@@ -1279,7 +1327,13 @@ module Orb
       end
 
       class CustomerTaxID < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID,
+              Orb::Internal::AnyHash
+            )
+          end
 
         sig do
           returns(
@@ -2263,7 +2317,13 @@ module Orb
       end
 
       class LineItem < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Models::InvoiceFetchUpcomingResponse::LineItem,
+              Orb::Internal::AnyHash
+            )
+          end
 
         # A unique ID for this line item.
         sig { returns(String) }
@@ -2741,7 +2801,13 @@ module Orb
             end
 
           class UsageDiscount < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(String) }
             attr_accessor :id
@@ -2818,7 +2884,13 @@ module Orb
           end
 
           class AmountDiscount < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(String) }
             attr_accessor :id
@@ -2895,7 +2967,13 @@ module Orb
           end
 
           class PercentageDiscount < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(String) }
             attr_accessor :id
@@ -2972,7 +3050,13 @@ module Orb
           end
 
           class Minimum < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(String) }
             attr_accessor :id
@@ -3057,7 +3141,13 @@ module Orb
           end
 
           class Maximum < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(String) }
             attr_accessor :id
@@ -3145,7 +3235,13 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -3182,7 +3278,13 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -3231,7 +3333,13 @@ module Orb
             end
 
           class Matrix < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Matrix,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The total amount for this sub line item.
             sig { returns(String) }
@@ -3326,7 +3434,12 @@ module Orb
 
             class Grouping < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Matrix::Grouping,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :key
@@ -3356,7 +3469,12 @@ module Orb
 
             class MatrixConfig < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Matrix::MatrixConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The ordered dimension values for this line item.
               sig { returns(T::Array[T.nilable(String)]) }
@@ -3384,7 +3502,13 @@ module Orb
           end
 
           class Tier < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Tier,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The total amount for this sub line item.
             sig { returns(String) }
@@ -3479,7 +3603,12 @@ module Orb
 
             class Grouping < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Tier::Grouping,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :key
@@ -3509,7 +3638,12 @@ module Orb
 
             class TierConfig < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Tier::TierConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               sig { returns(Float) }
               attr_accessor :first_unit
@@ -3545,7 +3679,13 @@ module Orb
           end
 
           class Null < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Null,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The total amount for this sub line item.
             sig { returns(String) }
@@ -3620,7 +3760,12 @@ module Orb
 
             class Grouping < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Null::Grouping,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :key
@@ -3661,7 +3806,13 @@ module Orb
         end
 
         class TaxAmount < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::TaxAmount,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # The amount of additional tax incurred by this tax rate.
           sig { returns(String) }
@@ -3707,7 +3858,13 @@ module Orb
       end
 
       class Maximum < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Models::InvoiceFetchUpcomingResponse::Maximum,
+              Orb::Internal::AnyHash
+            )
+          end
 
         # List of price_ids that this maximum amount applies to. For plan/plan phase
         # maximums, this can be a subset of prices.
@@ -3743,7 +3900,13 @@ module Orb
       end
 
       class Minimum < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Models::InvoiceFetchUpcomingResponse::Minimum,
+              Orb::Internal::AnyHash
+            )
+          end
 
         # List of price_ids that this minimum amount applies to. For plan/plan phase
         # minimums, this can be a subset of prices.
@@ -3779,7 +3942,13 @@ module Orb
       end
 
       class PaymentAttempt < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt,
+              Orb::Internal::AnyHash
+            )
+          end
 
         # The ID of the payment attempt.
         sig { returns(String) }
@@ -3890,7 +4059,13 @@ module Orb
       end
 
       class ShippingAddress < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Models::InvoiceFetchUpcomingResponse::ShippingAddress,
+              Orb::Internal::AnyHash
+            )
+          end
 
         sig { returns(T.nilable(String)) }
         attr_accessor :city
@@ -3986,7 +4161,13 @@ module Orb
       end
 
       class Subscription < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Models::InvoiceFetchUpcomingResponse::Subscription,
+              Orb::Internal::AnyHash
+            )
+          end
 
         sig { returns(String) }
         attr_accessor :id

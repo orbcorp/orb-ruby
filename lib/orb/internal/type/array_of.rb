@@ -29,7 +29,7 @@ module Orb
         #
         #   @option spec [Boolean] :"nil?"
         #
-        # @return [Orb::Internal::Type::ArrayOf]
+        # @return [self]
         def self.[](...) = new(...)
 
         # @api public

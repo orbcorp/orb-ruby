@@ -3,7 +3,8 @@
 module Orb
   module Models
     class EvaluatePriceGroup < Orb::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(Orb::EvaluatePriceGroup, Orb::Internal::AnyHash) }
 
       # The price's output for the group
       sig { returns(String) }

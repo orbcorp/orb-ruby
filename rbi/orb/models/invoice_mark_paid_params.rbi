@@ -6,7 +6,10 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Orb::InvoiceMarkPaidParams, Orb::Internal::AnyHash)
+        end
 
       # A date string to specify the date of the payment.
       sig { returns(Date) }

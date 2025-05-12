@@ -6,7 +6,10 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Orb::InvoiceLineItemCreateParams, Orb::Internal::AnyHash)
+        end
 
       # The total amount in the invoice's currency to add to the line item.
       sig { returns(String) }

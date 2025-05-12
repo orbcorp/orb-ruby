@@ -7,7 +7,10 @@ module Orb
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Events::VolumeListParams, Orb::Internal::AnyHash)
+          end
 
         # The start of the timeframe, inclusive, in which to return event volume. All
         # datetime values are converted to UTC time. If the specified time isn't

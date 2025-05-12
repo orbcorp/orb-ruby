@@ -6,7 +6,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(Orb::PriceListParams, Orb::Internal::AnyHash) }
 
       # Cursor for pagination. This can be populated by the `next_cursor` value returned
       # from the initial request.

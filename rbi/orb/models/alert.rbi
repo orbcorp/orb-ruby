@@ -3,7 +3,7 @@
 module Orb
   module Models
     class Alert < Orb::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash = T.type_alias { T.any(Orb::Alert, Orb::Internal::AnyHash) }
 
       # Also referred to as alert_id in this documentation.
       sig { returns(String) }
@@ -124,7 +124,8 @@ module Orb
       end
 
       class Customer < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias { T.any(Orb::Alert::Customer, Orb::Internal::AnyHash) }
 
         sig { returns(String) }
         attr_accessor :id
@@ -151,7 +152,8 @@ module Orb
       end
 
       class Metric < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias { T.any(Orb::Alert::Metric, Orb::Internal::AnyHash) }
 
         sig { returns(String) }
         attr_accessor :id
@@ -167,7 +169,8 @@ module Orb
       end
 
       class Plan < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias { T.any(Orb::Alert::Plan, Orb::Internal::AnyHash) }
 
         sig { returns(T.nilable(String)) }
         attr_accessor :id
@@ -219,7 +222,10 @@ module Orb
       end
 
       class Subscription < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Alert::Subscription, Orb::Internal::AnyHash)
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -235,7 +241,8 @@ module Orb
       end
 
       class Threshold < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias { T.any(Orb::Alert::Threshold, Orb::Internal::AnyHash) }
 
         # The value at which an alert will fire. For credit balance alerts, the alert will
         # fire at or below this value. For usage and cost alerts, the alert will fire at

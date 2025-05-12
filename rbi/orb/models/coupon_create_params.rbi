@@ -6,7 +6,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(Orb::CouponCreateParams, Orb::Internal::AnyHash) }
 
       sig do
         returns(
@@ -89,7 +90,13 @@ module Orb
           end
 
         class Percentage < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::CouponCreateParams::Discount::Percentage,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Symbol) }
           attr_accessor :discount_type
@@ -115,7 +122,13 @@ module Orb
         end
 
         class Amount < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::CouponCreateParams::Discount::Amount,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :amount_discount

@@ -5,10 +5,11 @@ module Orb
     module Type
       class BaseModel
         extend Orb::Internal::Type::Converter
+        extend Orb::Internal::Util::SorbetRuntimeSupport
 
         abstract!
 
-        KnownFieldShape =
+        KnownField =
           T.type_alias do
             {
               mode: T.nilable(Symbol),
@@ -17,19 +18,27 @@ module Orb
             }
           end
 
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Internal::Type::BaseModel, Orb::Internal::AnyHash)
+          end
 
         class << self
           # @api private
           #
           # Assumes superclass fields are totally defined before fields are accessed /
           # defined on subclasses.
+          sig { params(child: T.self_type).void }
+          def inherited(child)
+          end
+
+          # @api private
           sig do
             returns(
               T::Hash[
                 Symbol,
                 T.all(
-                  Orb::Internal::Type::BaseModel::KnownFieldShape,
+                  Orb::Internal::Type::BaseModel::KnownField,
                   {
                     type_fn:
                       T.proc.returns(Orb::Internal::Type::Converter::Input)
@@ -47,7 +56,7 @@ module Orb
               T::Hash[
                 Symbol,
                 T.all(
-                  Orb::Internal::Type::BaseModel::KnownFieldShape,
+                  Orb::Internal::Type::BaseModel::KnownField,
                   { type: Orb::Internal::Type::Converter::Input }
                 )
               ]

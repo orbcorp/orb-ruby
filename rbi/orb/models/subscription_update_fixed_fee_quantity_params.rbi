@@ -6,7 +6,13 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(
+            Orb::SubscriptionUpdateFixedFeeQuantityParams,
+            Orb::Internal::AnyHash
+          )
+        end
 
       # Price for which the quantity should be updated. Must be a fixed fee.
       sig { returns(String) }

@@ -8,7 +8,13 @@ module Orb
           extend Orb::Internal::Type::RequestParameters::Converter
           include Orb::Internal::Type::RequestParameters
 
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Customers::Credits::TopUpCreateParams,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # The amount to increment when the threshold is reached.
           sig { returns(String) }
@@ -127,7 +133,13 @@ module Orb
           end
 
           class InvoiceSettings < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Customers::Credits::TopUpCreateParams::InvoiceSettings,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # Whether the credits purchase invoice should auto collect with the customer's
             # saved payment method.

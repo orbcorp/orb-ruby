@@ -89,6 +89,12 @@ module Orb
 
         # @!method self.variants
         #   @return [Array(Orb::CouponCreateParams::Discount::Percentage, Orb::CouponCreateParams::Discount::Amount)]
+
+        define_sorbet_constant!(:Variants) do
+          T.type_alias do
+            T.any(Orb::CouponCreateParams::Discount::Percentage, Orb::CouponCreateParams::Discount::Amount)
+          end
+        end
       end
     end
   end

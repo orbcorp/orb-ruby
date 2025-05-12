@@ -3,7 +3,8 @@
 module Orb
   module Models
     class TrialDiscount < Orb::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(Orb::TrialDiscount, Orb::Internal::AnyHash) }
 
       # List of price_ids that this discount applies to. For plan/plan phase discounts,
       # this can be a subset of prices.

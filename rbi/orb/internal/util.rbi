@@ -4,6 +4,8 @@ module Orb
   module Internal
     # @api private
     module Util
+      extend Orb::Internal::Util::SorbetRuntimeSupport
+
       # @api private
       sig { returns(Float) }
       def self.monotonic_secs
@@ -168,7 +170,7 @@ module Orb
         end
       end
 
-      ParsedUriShape =
+      ParsedUri =
         T.type_alias do
           {
             scheme: T.nilable(String),
@@ -183,7 +185,7 @@ module Orb
         # @api private
         sig do
           params(url: T.any(URI::Generic, String)).returns(
-            Orb::Internal::Util::ParsedUriShape
+            Orb::Internal::Util::ParsedUri
           )
         end
         def parse_uri(url)
@@ -191,9 +193,7 @@ module Orb
 
         # @api private
         sig do
-          params(parsed: Orb::Internal::Util::ParsedUriShape).returns(
-            URI::Generic
-          )
+          params(parsed: Orb::Internal::Util::ParsedUri).returns(URI::Generic)
         end
         def unparse_uri(parsed)
         end
@@ -201,8 +201,8 @@ module Orb
         # @api private
         sig do
           params(
-            lhs: Orb::Internal::Util::ParsedUriShape,
-            rhs: Orb::Internal::Util::ParsedUriShape
+            lhs: Orb::Internal::Util::ParsedUri,
+            rhs: Orb::Internal::Util::ParsedUri
           ).returns(URI::Generic)
         end
         def join_parsed_uri(lhs, rhs)
@@ -417,6 +417,27 @@ module Orb
           )
         end
         def decode_sse(lines)
+        end
+      end
+
+      # @api private
+      module SorbetRuntimeSupport
+        class MissingSorbetRuntimeError < ::RuntimeError
+        end
+
+        # @api private
+        sig { returns(T::Hash[Symbol, T.anything]) }
+        private def sorbet_runtime_constants
+        end
+
+        # @api private
+        sig { params(name: Symbol).void }
+        def const_missing(name)
+        end
+
+        # @api private
+        sig { params(name: Symbol, blk: T.proc.returns(T.anything)).void }
+        def define_sorbet_constant!(name, &blk)
         end
       end
     end

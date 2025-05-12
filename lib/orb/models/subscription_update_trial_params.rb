@@ -43,6 +43,10 @@ module Orb
         # @!method self.variants
         #   @return [Array(Time, Symbol)]
 
+        define_sorbet_constant!(:Variants) do
+          T.type_alias { T.any(Time, Orb::SubscriptionUpdateTrialParams::TrialEndDate::TaggedSymbol) }
+        end
+
         # @!group
 
         IMMEDIATE = :immediate

@@ -3,7 +3,13 @@
 module Orb
   module Models
     class SubscriptionFetchCostsResponse < Orb::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(
+            Orb::Models::SubscriptionFetchCostsResponse,
+            Orb::Internal::AnyHash
+          )
+        end
 
       sig do
         returns(T::Array[Orb::Models::SubscriptionFetchCostsResponse::Data])
@@ -28,7 +34,13 @@ module Orb
       end
 
       class Data < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Models::SubscriptionFetchCostsResponse::Data,
+              Orb::Internal::AnyHash
+            )
+          end
 
         sig do
           returns(
@@ -94,7 +106,13 @@ module Orb
         end
 
         class PerPriceCost < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::SubscriptionFetchCostsResponse::Data::PerPriceCost,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # The price object
           sig do

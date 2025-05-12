@@ -3,7 +3,10 @@
 module Orb
   module Models
     class TopLevelPingResponse < Orb::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Orb::Models::TopLevelPingResponse, Orb::Internal::AnyHash)
+        end
 
       sig { returns(String) }
       attr_accessor :response

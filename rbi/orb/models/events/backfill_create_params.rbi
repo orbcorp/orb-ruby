@@ -7,7 +7,10 @@ module Orb
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Events::BackfillCreateParams, Orb::Internal::AnyHash)
+          end
 
         # The (exclusive) end of the usage timeframe affected by this backfill. By
         # default, Orb allows backfills up to 10 days in duration at a time. Reach out to

@@ -656,6 +656,18 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::UsageDiscount, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::AmountDiscount, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PercentageDiscount, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::Minimum, Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::Maximum)]
+
+          define_sorbet_constant!(:Variants) do
+            T.type_alias do
+              T.any(
+                Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::UsageDiscount,
+                Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::AmountDiscount,
+                Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::PercentageDiscount,
+                Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::Minimum,
+                Orb::Models::SubscriptionPriceIntervalsResponse::AdjustmentInterval::Adjustment::Maximum
+              )
+            end
+          end
         end
       end
 
@@ -870,6 +882,16 @@ module Orb
 
         # @!method self.variants
         #   @return [Array(Orb::Models::SubscriptionPriceIntervalsResponse::DiscountInterval::Amount, Orb::Models::SubscriptionPriceIntervalsResponse::DiscountInterval::Percentage, Orb::Models::SubscriptionPriceIntervalsResponse::DiscountInterval::Usage)]
+
+        define_sorbet_constant!(:Variants) do
+          T.type_alias do
+            T.any(
+              Orb::Models::SubscriptionPriceIntervalsResponse::DiscountInterval::Amount,
+              Orb::Models::SubscriptionPriceIntervalsResponse::DiscountInterval::Percentage,
+              Orb::Models::SubscriptionPriceIntervalsResponse::DiscountInterval::Usage
+            )
+          end
+        end
       end
 
       class FixedFeeQuantitySchedule < Orb::Internal::Type::BaseModel

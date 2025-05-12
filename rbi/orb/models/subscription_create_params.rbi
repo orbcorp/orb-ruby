@@ -6,7 +6,10 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Orb::SubscriptionCreateParams, Orb::Internal::AnyHash)
+        end
 
       # Additional adjustments to be added to the subscription. (Only available for
       # accounts that have migrated off of legacy subscription overrides)
@@ -404,7 +407,13 @@ module Orb
       end
 
       class AddAdjustment < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::SubscriptionCreateParams::AddAdjustment,
+              Orb::Internal::AnyHash
+            )
+          end
 
         # The definition of a new adjustment to create and add to the subscription.
         sig do
@@ -501,7 +510,13 @@ module Orb
             end
 
           class PercentageDiscount < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddAdjustment::Adjustment::PercentageDiscount,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
@@ -555,7 +570,13 @@ module Orb
           end
 
           class UsageDiscount < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddAdjustment::Adjustment::UsageDiscount,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
@@ -609,7 +630,13 @@ module Orb
           end
 
           class AmountDiscount < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddAdjustment::Adjustment::AmountDiscount,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
@@ -663,7 +690,13 @@ module Orb
           end
 
           class Minimum < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddAdjustment::Adjustment::Minimum,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
@@ -725,7 +758,13 @@ module Orb
           end
 
           class Maximum < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddAdjustment::Adjustment::Maximum,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
@@ -791,7 +830,13 @@ module Orb
       end
 
       class AddPrice < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::SubscriptionCreateParams::AddPrice,
+              Orb::Internal::AnyHash
+            )
+          end
 
         # The definition of a new allocation price to create and add to the subscription.
         sig do
@@ -1029,7 +1074,13 @@ module Orb
         end
 
         class AllocationPrice < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::SubscriptionCreateParams::AddPrice::AllocationPrice,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # An amount of the currency to allocate to the customer at the specified cadence.
           sig { returns(String) }
@@ -1148,7 +1199,13 @@ module Orb
         end
 
         class Discount < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::SubscriptionCreateParams::AddPrice::Discount,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(
@@ -1283,7 +1340,13 @@ module Orb
             end
 
           class Unit < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddPrice::Price::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -1565,7 +1628,12 @@ module Orb
 
             class UnitConfig < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # Rate per unit of usage
               sig { returns(String) }
@@ -1585,7 +1653,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::Unit::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -1666,7 +1739,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::Unit::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -1747,7 +1825,13 @@ module Orb
           end
 
           class Package < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddPrice::Price::Package,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -2029,7 +2113,12 @@ module Orb
 
             class PackageConfig < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::Package::PackageConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # A currency amount to rate usage by
               sig { returns(String) }
@@ -2065,7 +2154,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::Package::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -2146,7 +2240,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::Package::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -2227,7 +2326,13 @@ module Orb
           end
 
           class Matrix < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddPrice::Price::Matrix,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -2509,7 +2614,12 @@ module Orb
 
             class MatrixConfig < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::Matrix::MatrixConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # Default per unit rate for any usage not bucketed into a specified matrix_value
               sig { returns(String) }
@@ -2566,7 +2676,12 @@ module Orb
 
               class MatrixValue < Orb::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Orb::SubscriptionCreateParams::AddPrice::Price::Matrix::MatrixConfig::MatrixValue,
+                      Orb::Internal::AnyHash
+                    )
+                  end
 
                 # One or two matrix keys to filter usage to this Matrix value by. For example,
                 # ["region", "tier"] could be used to filter cloud usage by a cloud region and an
@@ -2609,7 +2724,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::Matrix::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -2690,7 +2810,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::Matrix::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -2771,7 +2896,13 @@ module Orb
           end
 
           class Tiered < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddPrice::Price::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -3053,7 +3184,12 @@ module Orb
 
             class TieredConfig < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # Tiers for rating based on total usage quantities into the specified tier
               sig do
@@ -3094,7 +3230,12 @@ module Orb
 
               class Tier < Orb::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Orb::SubscriptionCreateParams::AddPrice::Price::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
 
                 # Exclusive tier starting value
                 sig { returns(Float) }
@@ -3141,7 +3282,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::Tiered::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -3222,7 +3368,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::Tiered::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -3303,7 +3454,13 @@ module Orb
           end
 
           class TieredBps < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddPrice::Price::TieredBps,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -3585,7 +3742,12 @@ module Orb
 
             class TieredBpsConfig < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::TieredBps::TieredBpsConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
               # tiers
@@ -3628,7 +3790,12 @@ module Orb
 
               class Tier < Orb::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Orb::SubscriptionCreateParams::AddPrice::Price::TieredBps::TieredBpsConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
 
                 # Per-event basis point rate
                 sig { returns(Float) }
@@ -3683,7 +3850,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::TieredBps::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -3764,7 +3936,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::TieredBps::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -3845,7 +4022,13 @@ module Orb
           end
 
           class Bps < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddPrice::Price::Bps,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig do
               returns(
@@ -4072,7 +4255,12 @@ module Orb
 
             class BpsConfig < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::Bps::BpsConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # Basis point take rate per event
               sig { returns(Float) }
@@ -4161,7 +4349,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::Bps::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -4242,7 +4435,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::Bps::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -4323,7 +4521,13 @@ module Orb
           end
 
           class BulkBps < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddPrice::Price::BulkBps,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig do
               returns(
@@ -4550,7 +4754,12 @@ module Orb
 
             class BulkBpsConfig < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::BulkBps::BulkBpsConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # Tiers for a bulk BPS pricing model where all usage is aggregated to a single
               # tier based on total volume
@@ -4593,7 +4802,12 @@ module Orb
 
               class Tier < Orb::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Orb::SubscriptionCreateParams::AddPrice::Price::BulkBps::BulkBpsConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
 
                 # Basis points to rate on
                 sig { returns(Float) }
@@ -4695,7 +4909,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::BulkBps::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -4776,7 +4995,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::BulkBps::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -4857,7 +5081,13 @@ module Orb
           end
 
           class Bulk < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddPrice::Price::Bulk,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig do
               returns(
@@ -5084,7 +5314,12 @@ module Orb
 
             class BulkConfig < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::Bulk::BulkConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # Bulk tiers for rating based on total usage volume
               sig do
@@ -5125,7 +5360,12 @@ module Orb
 
               class Tier < Orb::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Orb::SubscriptionCreateParams::AddPrice::Price::Bulk::BulkConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
 
                 # Amount per unit
                 sig { returns(String) }
@@ -5216,7 +5456,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::Bulk::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -5297,7 +5542,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::Bulk::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -5378,7 +5628,13 @@ module Orb
           end
 
           class ThresholdTotalAmount < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddPrice::Price::ThresholdTotalAmount,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -5646,7 +5902,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::ThresholdTotalAmount::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -5727,7 +5988,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::ThresholdTotalAmount::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -5808,7 +6074,13 @@ module Orb
           end
 
           class TieredPackage < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddPrice::Price::TieredPackage,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -6076,7 +6348,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::TieredPackage::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -6157,7 +6434,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::TieredPackage::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -6238,7 +6520,13 @@ module Orb
           end
 
           class TieredWithMinimum < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddPrice::Price::TieredWithMinimum,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -6506,7 +6794,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::TieredWithMinimum::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -6587,7 +6880,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::TieredWithMinimum::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -6668,7 +6966,13 @@ module Orb
           end
 
           class UnitWithPercent < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddPrice::Price::UnitWithPercent,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -6936,7 +7240,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::UnitWithPercent::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -7017,7 +7326,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::UnitWithPercent::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -7098,7 +7412,13 @@ module Orb
           end
 
           class PackageWithAllocation < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddPrice::Price::PackageWithAllocation,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -7366,7 +7686,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::PackageWithAllocation::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -7447,7 +7772,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::PackageWithAllocation::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -7528,7 +7858,13 @@ module Orb
           end
 
           class TieredWithProration < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddPrice::Price::TieredWithProration,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -7796,7 +8132,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::TieredWithProration::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -7877,7 +8218,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::TieredWithProration::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -7958,7 +8304,13 @@ module Orb
           end
 
           class UnitWithProration < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddPrice::Price::UnitWithProration,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -8226,7 +8578,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::UnitWithProration::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -8307,7 +8664,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::UnitWithProration::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -8388,7 +8750,13 @@ module Orb
           end
 
           class GroupedAllocation < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddPrice::Price::GroupedAllocation,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -8656,7 +9024,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::GroupedAllocation::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -8737,7 +9110,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::GroupedAllocation::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -8818,7 +9196,13 @@ module Orb
           end
 
           class GroupedWithProratedMinimum < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddPrice::Price::GroupedWithProratedMinimum,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -9088,7 +9472,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::GroupedWithProratedMinimum::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -9169,7 +9558,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -9250,7 +9644,13 @@ module Orb
           end
 
           class BulkWithProration < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddPrice::Price::BulkWithProration,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(T::Hash[Symbol, T.anything]) }
             attr_accessor :bulk_with_proration_config
@@ -9518,7 +9918,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::BulkWithProration::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -9599,7 +10004,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::BulkWithProration::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -9680,7 +10090,13 @@ module Orb
           end
 
           class ScalableMatrixWithUnitPricing < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddPrice::Price::ScalableMatrixWithUnitPricing,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -9950,7 +10366,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -10031,7 +10452,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -10112,7 +10538,13 @@ module Orb
           end
 
           class ScalableMatrixWithTieredPricing < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddPrice::Price::ScalableMatrixWithTieredPricing,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -10382,7 +10814,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -10463,7 +10900,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -10544,7 +10986,13 @@ module Orb
           end
 
           class CumulativeGroupedBulk < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddPrice::Price::CumulativeGroupedBulk,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -10812,7 +11260,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::CumulativeGroupedBulk::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -10893,7 +11346,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -10974,7 +11432,13 @@ module Orb
           end
 
           class MaxGroupTieredPackage < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddPrice::Price::MaxGroupTieredPackage,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -11242,7 +11706,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::MaxGroupTieredPackage::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -11323,7 +11792,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -11404,7 +11878,13 @@ module Orb
           end
 
           class GroupedWithMeteredMinimum < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddPrice::Price::GroupedWithMeteredMinimum,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -11674,7 +12154,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -11755,7 +12240,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -11836,7 +12326,13 @@ module Orb
           end
 
           class MatrixWithDisplayName < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddPrice::Price::MatrixWithDisplayName,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -12104,7 +12600,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::MatrixWithDisplayName::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -12185,7 +12686,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::MatrixWithDisplayName::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -12266,7 +12772,13 @@ module Orb
           end
 
           class GroupedTieredPackage < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::AddPrice::Price::GroupedTieredPackage,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -12534,7 +13046,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::GroupedTieredPackage::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -12615,7 +13132,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::AddPrice::Price::GroupedTieredPackage::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -12706,7 +13228,13 @@ module Orb
       end
 
       class BillingCycleAnchorConfiguration < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::SubscriptionCreateParams::BillingCycleAnchorConfiguration,
+              Orb::Internal::AnyHash
+            )
+          end
 
         # The day of the month on which the billing cycle is anchored. If the maximum
         # number of days in a month is greater than this value, the last day of the month
@@ -12799,7 +13327,13 @@ module Orb
       end
 
       class RemoveAdjustment < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::SubscriptionCreateParams::RemoveAdjustment,
+              Orb::Internal::AnyHash
+            )
+          end
 
         # The id of the adjustment to remove on the subscription.
         sig { returns(String) }
@@ -12818,7 +13352,13 @@ module Orb
       end
 
       class RemovePrice < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::SubscriptionCreateParams::RemovePrice,
+              Orb::Internal::AnyHash
+            )
+          end
 
         # The external price id of the price to remove on the subscription.
         sig { returns(T.nilable(String)) }
@@ -12855,7 +13395,13 @@ module Orb
       end
 
       class ReplaceAdjustment < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::SubscriptionCreateParams::ReplaceAdjustment,
+              Orb::Internal::AnyHash
+            )
+          end
 
         # The definition of a new adjustment to create and add to the subscription.
         sig do
@@ -12930,7 +13476,13 @@ module Orb
             end
 
           class PercentageDiscount < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::PercentageDiscount,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
@@ -12984,7 +13536,13 @@ module Orb
           end
 
           class UsageDiscount < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::UsageDiscount,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
@@ -13038,7 +13596,13 @@ module Orb
           end
 
           class AmountDiscount < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::AmountDiscount,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
@@ -13092,7 +13656,13 @@ module Orb
           end
 
           class Minimum < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::Minimum,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
@@ -13154,7 +13724,13 @@ module Orb
           end
 
           class Maximum < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::Maximum,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
@@ -13220,7 +13796,13 @@ module Orb
       end
 
       class ReplacePrice < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::SubscriptionCreateParams::ReplacePrice,
+              Orb::Internal::AnyHash
+            )
+          end
 
         # The id of the price on the plan to replace in the subscription.
         sig { returns(String) }
@@ -13446,7 +14028,13 @@ module Orb
         end
 
         class AllocationPrice < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::SubscriptionCreateParams::ReplacePrice::AllocationPrice,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # An amount of the currency to allocate to the customer at the specified cadence.
           sig { returns(String) }
@@ -13565,7 +14153,13 @@ module Orb
         end
 
         class Discount < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::SubscriptionCreateParams::ReplacePrice::Discount,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(
@@ -13700,7 +14294,13 @@ module Orb
             end
 
           class Unit < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplacePrice::Price::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -13982,7 +14582,12 @@ module Orb
 
             class UnitConfig < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # Rate per unit of usage
               sig { returns(String) }
@@ -14002,7 +14607,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::Unit::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -14083,7 +14693,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::Unit::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -14164,7 +14779,13 @@ module Orb
           end
 
           class Package < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplacePrice::Price::Package,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -14446,7 +15067,12 @@ module Orb
 
             class PackageConfig < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::Package::PackageConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # A currency amount to rate usage by
               sig { returns(String) }
@@ -14482,7 +15108,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::Package::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -14563,7 +15194,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::Package::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -14644,7 +15280,13 @@ module Orb
           end
 
           class Matrix < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplacePrice::Price::Matrix,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -14926,7 +15568,12 @@ module Orb
 
             class MatrixConfig < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::Matrix::MatrixConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # Default per unit rate for any usage not bucketed into a specified matrix_value
               sig { returns(String) }
@@ -14983,7 +15630,12 @@ module Orb
 
               class MatrixValue < Orb::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Orb::SubscriptionCreateParams::ReplacePrice::Price::Matrix::MatrixConfig::MatrixValue,
+                      Orb::Internal::AnyHash
+                    )
+                  end
 
                 # One or two matrix keys to filter usage to this Matrix value by. For example,
                 # ["region", "tier"] could be used to filter cloud usage by a cloud region and an
@@ -15026,7 +15678,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::Matrix::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -15107,7 +15764,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::Matrix::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -15188,7 +15850,13 @@ module Orb
           end
 
           class Tiered < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplacePrice::Price::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -15470,7 +16138,12 @@ module Orb
 
             class TieredConfig < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # Tiers for rating based on total usage quantities into the specified tier
               sig do
@@ -15511,7 +16184,12 @@ module Orb
 
               class Tier < Orb::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Orb::SubscriptionCreateParams::ReplacePrice::Price::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
 
                 # Exclusive tier starting value
                 sig { returns(Float) }
@@ -15558,7 +16236,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::Tiered::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -15639,7 +16322,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::Tiered::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -15720,7 +16408,13 @@ module Orb
           end
 
           class TieredBps < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredBps,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -16002,7 +16696,12 @@ module Orb
 
             class TieredBpsConfig < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredBps::TieredBpsConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
               # tiers
@@ -16045,7 +16744,12 @@ module Orb
 
               class Tier < Orb::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredBps::TieredBpsConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
 
                 # Per-event basis point rate
                 sig { returns(Float) }
@@ -16100,7 +16804,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredBps::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -16181,7 +16890,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredBps::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -16262,7 +16976,13 @@ module Orb
           end
 
           class Bps < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplacePrice::Price::Bps,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig do
               returns(
@@ -16489,7 +17209,12 @@ module Orb
 
             class BpsConfig < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::Bps::BpsConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # Basis point take rate per event
               sig { returns(Float) }
@@ -16578,7 +17303,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::Bps::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -16659,7 +17389,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::Bps::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -16740,7 +17475,13 @@ module Orb
           end
 
           class BulkBps < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplacePrice::Price::BulkBps,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig do
               returns(
@@ -16967,7 +17708,12 @@ module Orb
 
             class BulkBpsConfig < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::BulkBps::BulkBpsConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # Tiers for a bulk BPS pricing model where all usage is aggregated to a single
               # tier based on total volume
@@ -17010,7 +17756,12 @@ module Orb
 
               class Tier < Orb::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Orb::SubscriptionCreateParams::ReplacePrice::Price::BulkBps::BulkBpsConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
 
                 # Basis points to rate on
                 sig { returns(Float) }
@@ -17112,7 +17863,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::BulkBps::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -17193,7 +17949,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::BulkBps::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -17274,7 +18035,13 @@ module Orb
           end
 
           class Bulk < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplacePrice::Price::Bulk,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig do
               returns(
@@ -17501,7 +18268,12 @@ module Orb
 
             class BulkConfig < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::Bulk::BulkConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # Bulk tiers for rating based on total usage volume
               sig do
@@ -17542,7 +18314,12 @@ module Orb
 
               class Tier < Orb::Internal::Type::BaseModel
                 OrHash =
-                  T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                  T.type_alias do
+                    T.any(
+                      Orb::SubscriptionCreateParams::ReplacePrice::Price::Bulk::BulkConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
 
                 # Amount per unit
                 sig { returns(String) }
@@ -17633,7 +18410,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::Bulk::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -17714,7 +18496,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::Bulk::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -17795,7 +18582,13 @@ module Orb
           end
 
           class ThresholdTotalAmount < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplacePrice::Price::ThresholdTotalAmount,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -18063,7 +18856,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::ThresholdTotalAmount::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -18144,7 +18942,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::ThresholdTotalAmount::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -18225,7 +19028,13 @@ module Orb
           end
 
           class TieredPackage < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredPackage,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -18493,7 +19302,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredPackage::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -18574,7 +19388,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredPackage::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -18655,7 +19474,13 @@ module Orb
           end
 
           class TieredWithMinimum < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredWithMinimum,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -18923,7 +19748,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredWithMinimum::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -19004,7 +19834,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredWithMinimum::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -19085,7 +19920,13 @@ module Orb
           end
 
           class UnitWithPercent < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplacePrice::Price::UnitWithPercent,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -19353,7 +20194,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::UnitWithPercent::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -19434,7 +20280,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::UnitWithPercent::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -19515,7 +20366,13 @@ module Orb
           end
 
           class PackageWithAllocation < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplacePrice::Price::PackageWithAllocation,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -19783,7 +20640,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::PackageWithAllocation::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -19864,7 +20726,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::PackageWithAllocation::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -19945,7 +20812,13 @@ module Orb
           end
 
           class TieredWithProration < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredWithProration,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -20213,7 +21086,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredWithProration::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -20294,7 +21172,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredWithProration::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -20375,7 +21258,13 @@ module Orb
           end
 
           class UnitWithProration < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplacePrice::Price::UnitWithProration,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -20643,7 +21532,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::UnitWithProration::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -20724,7 +21618,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::UnitWithProration::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -20805,7 +21704,13 @@ module Orb
           end
 
           class GroupedAllocation < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplacePrice::Price::GroupedAllocation,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -21073,7 +21978,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::GroupedAllocation::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -21154,7 +22064,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::GroupedAllocation::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -21235,7 +22150,13 @@ module Orb
           end
 
           class GroupedWithProratedMinimum < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithProratedMinimum,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -21505,7 +22426,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithProratedMinimum::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -21586,7 +22512,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -21667,7 +22598,13 @@ module Orb
           end
 
           class BulkWithProration < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplacePrice::Price::BulkWithProration,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(T::Hash[Symbol, T.anything]) }
             attr_accessor :bulk_with_proration_config
@@ -21935,7 +22872,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::BulkWithProration::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -22016,7 +22958,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::BulkWithProration::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -22097,7 +23044,13 @@ module Orb
           end
 
           class ScalableMatrixWithUnitPricing < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -22367,7 +23320,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -22448,7 +23406,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -22529,7 +23492,13 @@ module Orb
           end
 
           class ScalableMatrixWithTieredPricing < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -22799,7 +23768,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -22880,7 +23854,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -22961,7 +23940,13 @@ module Orb
           end
 
           class CumulativeGroupedBulk < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplacePrice::Price::CumulativeGroupedBulk,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -23229,7 +24214,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::CumulativeGroupedBulk::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -23310,7 +24300,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -23391,7 +24386,13 @@ module Orb
           end
 
           class MaxGroupTieredPackage < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplacePrice::Price::MaxGroupTieredPackage,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -23659,7 +24660,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::MaxGroupTieredPackage::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -23740,7 +24746,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -23821,7 +24832,13 @@ module Orb
           end
 
           class GroupedWithMeteredMinimum < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithMeteredMinimum,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -24091,7 +25108,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -24172,7 +25194,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -24253,7 +25280,13 @@ module Orb
           end
 
           class MatrixWithDisplayName < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplacePrice::Price::MatrixWithDisplayName,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -24521,7 +25554,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::MatrixWithDisplayName::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -24602,7 +25640,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::MatrixWithDisplayName::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -24683,7 +25726,13 @@ module Orb
           end
 
           class GroupedTieredPackage < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionCreateParams::ReplacePrice::Price::GroupedTieredPackage,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The cadence to bill for this price on.
             sig do
@@ -24951,7 +26000,12 @@ module Orb
 
             class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::GroupedTieredPackage::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }
@@ -25032,7 +26086,12 @@ module Orb
 
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionCreateParams::ReplacePrice::Price::GroupedTieredPackage::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               # The duration of the billing period.
               sig { returns(Integer) }

@@ -29,7 +29,7 @@ module Orb
         sig do
           params(
             client: Orb::Internal::Transport::BaseClient,
-            req: Orb::Internal::Transport::BaseClient::RequestComponentsShape,
+            req: Orb::Internal::Transport::BaseClient::RequestComponents,
             headers: T.any(T::Hash[String, String], Net::HTTPHeader),
             page_data: T.anything
           ).void

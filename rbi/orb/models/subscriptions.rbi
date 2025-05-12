@@ -3,7 +3,8 @@
 module Orb
   module Models
     class SubscriptionsAPI < Orb::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(Orb::SubscriptionsAPI, Orb::Internal::AnyHash) }
 
       sig { returns(T::Array[Orb::Subscription]) }
       attr_accessor :data

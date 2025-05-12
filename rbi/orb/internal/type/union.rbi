@@ -6,6 +6,7 @@ module Orb
       # @api private
       module Union
         include Orb::Internal::Type::Converter
+        include Orb::Internal::Util::SorbetRuntimeSupport
 
         # @api private
         #

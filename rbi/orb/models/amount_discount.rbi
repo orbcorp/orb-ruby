@@ -3,7 +3,8 @@
 module Orb
   module Models
     class AmountDiscount < Orb::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(Orb::AmountDiscount, Orb::Internal::AnyHash) }
 
       # Only available if discount_type is `amount`.
       sig { returns(String) }

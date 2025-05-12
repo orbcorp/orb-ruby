@@ -7,7 +7,7 @@ module Orb
   # When making a request, you can pass an actual {RequestOptions} instance, or
   # simply pass a Hash with symbol keys matching the attributes on this class.
   class RequestOptions < Orb::Internal::Type::BaseModel
-    OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+    OrHash = T.type_alias { T.any(Orb::RequestOptions, Orb::Internal::AnyHash) }
 
     # @api private
     sig { params(opts: Orb::RequestOptions::OrHash).void }

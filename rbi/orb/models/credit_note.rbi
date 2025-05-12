@@ -3,7 +3,7 @@
 module Orb
   module Models
     class CreditNote < Orb::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash = T.type_alias { T.any(Orb::CreditNote, Orb::Internal::AnyHash) }
 
       # The Orb id of this credit note.
       sig { returns(String) }
@@ -165,7 +165,10 @@ module Orb
       end
 
       class Customer < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::CreditNote::Customer, Orb::Internal::AnyHash)
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -191,7 +194,10 @@ module Orb
       end
 
       class LineItem < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::CreditNote::LineItem, Orb::Internal::AnyHash)
+          end
 
         # The Orb id of this resource.
         sig { returns(String) }
@@ -284,7 +290,13 @@ module Orb
         end
 
         class TaxAmount < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::CreditNote::LineItem::TaxAmount,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # The amount of additional tax incurred by this tax rate.
           sig { returns(String) }
@@ -329,7 +341,10 @@ module Orb
         end
 
         class Discount < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::CreditNote::LineItem::Discount, Orb::Internal::AnyHash)
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -430,7 +445,13 @@ module Orb
       end
 
       class MaximumAmountAdjustment < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::CreditNote::MaximumAmountAdjustment,
+              Orb::Internal::AnyHash
+            )
+          end
 
         sig { returns(String) }
         attr_accessor :amount_applied
@@ -532,7 +553,13 @@ module Orb
         end
 
         class AppliesToPrice < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::CreditNote::MaximumAmountAdjustment::AppliesToPrice,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -588,7 +615,10 @@ module Orb
       end
 
       class Discount < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::CreditNote::Discount, Orb::Internal::AnyHash)
+          end
 
         sig { returns(String) }
         attr_accessor :amount_applied
@@ -671,7 +701,13 @@ module Orb
         end
 
         class AppliesToPrice < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::CreditNote::Discount::AppliesToPrice,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id

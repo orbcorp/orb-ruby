@@ -14,7 +14,13 @@ module Orb
         end
 
       class UngroupedSubscriptionUsage < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::SubscriptionUsage::UngroupedSubscriptionUsage,
+              Orb::Internal::AnyHash
+            )
+          end
 
         sig do
           returns(
@@ -48,7 +54,13 @@ module Orb
         end
 
         class Data < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::SubscriptionUsage::UngroupedSubscriptionUsage::Data,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(
@@ -114,7 +126,13 @@ module Orb
           end
 
           class BillableMetric < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(String) }
             attr_accessor :id
@@ -132,7 +150,13 @@ module Orb
           end
 
           class Usage < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(Float) }
             attr_accessor :quantity
@@ -199,7 +223,13 @@ module Orb
       end
 
       class GroupedSubscriptionUsage < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::SubscriptionUsage::GroupedSubscriptionUsage,
+              Orb::Internal::AnyHash
+            )
+          end
 
         sig do
           returns(
@@ -245,7 +275,13 @@ module Orb
         end
 
         class Data < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::SubscriptionUsage::GroupedSubscriptionUsage::Data,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(
@@ -330,7 +366,13 @@ module Orb
           end
 
           class BillableMetric < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(String) }
             attr_accessor :id
@@ -348,7 +390,13 @@ module Orb
           end
 
           class MetricGroup < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(String) }
             attr_accessor :property_key
@@ -372,7 +420,13 @@ module Orb
           end
 
           class Usage < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(Float) }
             attr_accessor :quantity
