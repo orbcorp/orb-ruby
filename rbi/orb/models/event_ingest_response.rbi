@@ -3,7 +3,10 @@
 module Orb
   module Models
     class EventIngestResponse < Orb::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Orb::Models::EventIngestResponse, Orb::Internal::AnyHash)
+        end
 
       # Contains all failing validation events. In the case of a 200, this array will
       # always be empty. This field will always be present.
@@ -56,7 +59,13 @@ module Orb
       end
 
       class ValidationFailed < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Models::EventIngestResponse::ValidationFailed,
+              Orb::Internal::AnyHash
+            )
+          end
 
         # The passed idempotency_key corresponding to the validation_errors
         sig { returns(String) }
@@ -92,7 +101,13 @@ module Orb
       end
 
       class Debug < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Models::EventIngestResponse::Debug,
+              Orb::Internal::AnyHash
+            )
+          end
 
         sig { returns(T::Array[String]) }
         attr_accessor :duplicate

@@ -23,7 +23,13 @@ module Orb
             end
 
           class Increment < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(String) }
             attr_accessor :id
@@ -164,7 +170,12 @@ module Orb
 
             class CreditBlock < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::CreditBlock,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :id
@@ -200,7 +211,12 @@ module Orb
 
             class Customer < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::Customer,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :id
@@ -262,7 +278,13 @@ module Orb
           end
 
           class Decrement < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(String) }
             attr_accessor :id
@@ -421,7 +443,12 @@ module Orb
 
             class CreditBlock < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::CreditBlock,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :id
@@ -457,7 +484,12 @@ module Orb
 
             class Customer < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::Customer,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :id
@@ -519,7 +551,13 @@ module Orb
           end
 
           class ExpirationChange < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(String) }
             attr_accessor :id
@@ -666,7 +704,12 @@ module Orb
 
             class CreditBlock < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::CreditBlock,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :id
@@ -702,7 +745,12 @@ module Orb
 
             class Customer < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::Customer,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :id
@@ -764,7 +812,13 @@ module Orb
           end
 
           class CreditBlockExpiry < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(String) }
             attr_accessor :id
@@ -905,7 +959,12 @@ module Orb
 
             class CreditBlock < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::CreditBlock,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :id
@@ -941,7 +1000,12 @@ module Orb
 
             class Customer < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::Customer,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :id
@@ -1003,7 +1067,13 @@ module Orb
           end
 
           class Void < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(String) }
             attr_accessor :id
@@ -1156,7 +1226,12 @@ module Orb
 
             class CreditBlock < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::CreditBlock,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :id
@@ -1192,7 +1267,12 @@ module Orb
 
             class Customer < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::Customer,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :id
@@ -1254,7 +1334,13 @@ module Orb
           end
 
           class VoidInitiated < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(String) }
             attr_accessor :id
@@ -1413,7 +1499,12 @@ module Orb
 
             class CreditBlock < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::CreditBlock,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :id
@@ -1449,7 +1540,12 @@ module Orb
 
             class Customer < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::Customer,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :id
@@ -1511,7 +1607,13 @@ module Orb
           end
 
           class Amendment < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(String) }
             attr_accessor :id
@@ -1652,7 +1754,12 @@ module Orb
 
             class CreditBlock < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::CreditBlock,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :id
@@ -1688,7 +1795,12 @@ module Orb
 
             class Customer < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::Customer,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :id

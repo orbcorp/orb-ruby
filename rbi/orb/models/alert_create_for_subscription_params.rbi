@@ -6,7 +6,10 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Orb::AlertCreateForSubscriptionParams, Orb::Internal::AnyHash)
+        end
 
       # The thresholds that define the values at which the alert will be triggered.
       sig do
@@ -57,7 +60,13 @@ module Orb
       end
 
       class Threshold < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::AlertCreateForSubscriptionParams::Threshold,
+              Orb::Internal::AnyHash
+            )
+          end
 
         # The value at which an alert will fire. For credit balance alerts, the alert will
         # fire at or below this value. For usage and cost alerts, the alert will fire at

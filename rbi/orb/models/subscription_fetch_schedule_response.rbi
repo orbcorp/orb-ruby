@@ -3,7 +3,13 @@
 module Orb
   module Models
     class SubscriptionFetchScheduleResponse < Orb::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(
+            Orb::Models::SubscriptionFetchScheduleResponse,
+            Orb::Internal::AnyHash
+          )
+        end
 
       sig { returns(Time) }
       attr_accessor :created_at
@@ -49,7 +55,13 @@ module Orb
       end
 
       class Plan < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Models::SubscriptionFetchScheduleResponse::Plan,
+              Orb::Internal::AnyHash
+            )
+          end
 
         sig { returns(T.nilable(String)) }
         attr_accessor :id

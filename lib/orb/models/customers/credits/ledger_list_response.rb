@@ -1174,6 +1174,20 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Orb::Models::Customers::Credits::LedgerListResponse::Increment, Orb::Models::Customers::Credits::LedgerListResponse::Decrement, Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChange, Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiry, Orb::Models::Customers::Credits::LedgerListResponse::Void, Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiated, Orb::Models::Customers::Credits::LedgerListResponse::Amendment)]
+
+          define_sorbet_constant!(:Variants) do
+            T.type_alias do
+              T.any(
+                Orb::Models::Customers::Credits::LedgerListResponse::Increment,
+                Orb::Models::Customers::Credits::LedgerListResponse::Decrement,
+                Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChange,
+                Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiry,
+                Orb::Models::Customers::Credits::LedgerListResponse::Void,
+                Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiated,
+                Orb::Models::Customers::Credits::LedgerListResponse::Amendment
+              )
+            end
+          end
         end
       end
     end

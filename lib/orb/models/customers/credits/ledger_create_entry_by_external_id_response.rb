@@ -1190,6 +1190,20 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Decrement, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChange, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Void, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiated, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Amendment)]
+
+          define_sorbet_constant!(:Variants) do
+            T.type_alias do
+              T.any(
+                Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment,
+                Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Decrement,
+                Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChange,
+                Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiry,
+                Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Void,
+                Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiated,
+                Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Amendment
+              )
+            end
+          end
         end
       end
     end

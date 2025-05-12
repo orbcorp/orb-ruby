@@ -17,6 +17,7 @@ module Orb
       # values safely.
       module Enum
         include Orb::Internal::Type::Converter
+        include Orb::Internal::Util::SorbetRuntimeSupport
 
         # All of the valid Symbol values for this enum.
         sig do

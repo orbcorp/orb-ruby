@@ -8,7 +8,13 @@ module Orb
           extend Orb::Internal::Type::RequestParameters::Converter
           include Orb::Internal::Type::RequestParameters
 
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # The number of credits to effect. Note that this is required for increment,
           # decrement or void operations.
@@ -220,7 +226,13 @@ module Orb
           end
 
           class InvoiceSettings < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # Whether the credits purchase invoice should auto collect with the customer's
             # saved payment method.

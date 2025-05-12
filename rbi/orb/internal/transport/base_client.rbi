@@ -5,9 +5,11 @@ module Orb
     module Transport
       # @api private
       class BaseClient
+        extend Orb::Internal::Util::SorbetRuntimeSupport
+
         abstract!
 
-        RequestComponentsShape =
+        RequestComponents =
           T.type_alias do
             {
               method: Symbol,
@@ -53,7 +55,7 @@ module Orb
             }
           end
 
-        RequestInputShape =
+        RequestInput =
           T.type_alias do
             {
               method: Symbol,
@@ -74,7 +76,7 @@ module Orb
           # @api private
           sig do
             params(
-              req: Orb::Internal::Transport::BaseClient::RequestComponentsShape
+              req: Orb::Internal::Transport::BaseClient::RequestComponents
             ).void
           end
           def validate!(req)
@@ -93,10 +95,10 @@ module Orb
           # @api private
           sig do
             params(
-              request: Orb::Internal::Transport::BaseClient::RequestInputShape,
+              request: Orb::Internal::Transport::BaseClient::RequestInput,
               status: Integer,
               response_headers: T.any(T::Hash[String, String], Net::HTTPHeader)
-            ).returns(Orb::Internal::Transport::BaseClient::RequestInputShape)
+            ).returns(Orb::Internal::Transport::BaseClient::RequestInput)
           end
           def follow_redirect(request, status:, response_headers:)
           end
@@ -163,10 +165,10 @@ module Orb
         sig do
           overridable
             .params(
-              req: Orb::Internal::Transport::BaseClient::RequestComponentsShape,
+              req: Orb::Internal::Transport::BaseClient::RequestComponents,
               opts: Orb::Internal::AnyHash
             )
-            .returns(Orb::Internal::Transport::BaseClient::RequestInputShape)
+            .returns(Orb::Internal::Transport::BaseClient::RequestInput)
         end
         private def build_request(req, opts)
         end
@@ -184,7 +186,7 @@ module Orb
         # @api private
         sig do
           params(
-            request: Orb::Internal::Transport::BaseClient::RequestInputShape,
+            request: Orb::Internal::Transport::BaseClient::RequestInput,
             redirect_count: Integer,
             retry_count: Integer,
             send_retry_header: T::Boolean

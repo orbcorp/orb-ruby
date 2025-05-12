@@ -6,7 +6,10 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Orb::SubscriptionUpdateTrialParams, Orb::Internal::AnyHash)
+        end
 
       # The new date that the trial should end, or the literal string `immediate` to end
       # the trial immediately.

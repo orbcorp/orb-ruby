@@ -6,7 +6,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(Orb::InvoiceCreateParams, Orb::Internal::AnyHash) }
 
       # An ISO 4217 currency string. Must be the same as the customer's currency if it
       # is set.
@@ -159,7 +160,10 @@ module Orb
       end
 
       class LineItem < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::InvoiceCreateParams::LineItem, Orb::Internal::AnyHash)
+          end
 
         # A date string to specify the line item's end date in the customer's timezone.
         sig { returns(Date) }
@@ -263,7 +267,13 @@ module Orb
         end
 
         class UnitConfig < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::InvoiceCreateParams::LineItem::UnitConfig,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # Rate per unit of usage
           sig { returns(String) }

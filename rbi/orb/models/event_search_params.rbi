@@ -6,7 +6,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(Orb::EventSearchParams, Orb::Internal::AnyHash) }
 
       # This is an explicit array of IDs to filter by. Note that an event's ID is the
       # idempotency_key that was originally used for ingestion, and this only supports

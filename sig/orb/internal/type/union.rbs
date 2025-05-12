@@ -3,6 +3,7 @@ module Orb
     module Type
       module Union
         include Orb::Internal::Type::Converter
+        include Orb::Internal::Util::SorbetRuntimeSupport
 
         private def self.known_variants: -> ::Array[[Symbol?, (^-> Orb::Internal::Type::Converter::input)]]
 

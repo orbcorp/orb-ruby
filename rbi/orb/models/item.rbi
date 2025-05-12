@@ -3,7 +3,7 @@
 module Orb
   module Models
     class Item < Orb::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash = T.type_alias { T.any(Orb::Item, Orb::Internal::AnyHash) }
 
       sig { returns(String) }
       attr_accessor :id
@@ -45,7 +45,10 @@ module Orb
       end
 
       class ExternalConnection < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Item::ExternalConnection, Orb::Internal::AnyHash)
+          end
 
         sig do
           returns(

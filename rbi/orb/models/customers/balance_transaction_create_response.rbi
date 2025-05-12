@@ -4,7 +4,13 @@ module Orb
   module Models
     module Customers
       class BalanceTransactionCreateResponse < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Models::Customers::BalanceTransactionCreateResponse,
+              Orb::Internal::AnyHash
+            )
+          end
 
         # A unique id for this transaction.
         sig { returns(String) }
@@ -225,7 +231,13 @@ module Orb
         end
 
         class CreditNote < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # The id of the Credit note
           sig { returns(String) }
@@ -244,7 +256,13 @@ module Orb
         end
 
         class Invoice < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # The Invoice id
           sig { returns(String) }

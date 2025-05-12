@@ -484,6 +484,15 @@ module Orb
 
         # @!method self.variants
         #   @return [Array(Orb::CustomerUpdateParams::TaxConfiguration::Avalara, Orb::CustomerUpdateParams::TaxConfiguration::Taxjar)]
+
+        define_sorbet_constant!(:Variants) do
+          T.type_alias do
+            T.any(
+              Orb::CustomerUpdateParams::TaxConfiguration::Avalara,
+              Orb::CustomerUpdateParams::TaxConfiguration::Taxjar
+            )
+          end
+        end
       end
 
       class TaxID < Orb::Internal::Type::BaseModel

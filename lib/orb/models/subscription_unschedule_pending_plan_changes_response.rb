@@ -657,6 +657,18 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::UsageDiscount, Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::AmountDiscount, Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PercentageDiscount, Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Minimum, Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Maximum)]
+
+          define_sorbet_constant!(:Variants) do
+            T.type_alias do
+              T.any(
+                Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::UsageDiscount,
+                Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::AmountDiscount,
+                Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PercentageDiscount,
+                Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Minimum,
+                Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Maximum
+              )
+            end
+          end
         end
       end
 
@@ -874,6 +886,16 @@ module Orb
 
         # @!method self.variants
         #   @return [Array(Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Amount, Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Percentage, Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Usage)]
+
+        define_sorbet_constant!(:Variants) do
+          T.type_alias do
+            T.any(
+              Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Amount,
+              Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Percentage,
+              Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Usage
+            )
+          end
+        end
       end
 
       class FixedFeeQuantitySchedule < Orb::Internal::Type::BaseModel

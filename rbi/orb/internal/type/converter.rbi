@@ -5,6 +5,8 @@ module Orb
     module Type
       # @api private
       module Converter
+        extend Orb::Internal::Util::SorbetRuntimeSupport
+
         Input =
           T.type_alias do
             T.any(Orb::Internal::Type::Converter, T::Class[T.anything])

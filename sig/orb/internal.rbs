@@ -1,5 +1,7 @@
 module Orb
   module Internal
+    extend Orb::Internal::Util::SorbetRuntimeSupport
+
     OMIT: Object
   end
 end

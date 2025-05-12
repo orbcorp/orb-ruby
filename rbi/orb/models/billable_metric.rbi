@@ -3,7 +3,8 @@
 module Orb
   module Models
     class BillableMetric < Orb::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(Orb::BillableMetric, Orb::Internal::AnyHash) }
 
       sig { returns(String) }
       attr_accessor :id

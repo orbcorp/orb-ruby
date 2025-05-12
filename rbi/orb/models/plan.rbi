@@ -3,7 +3,7 @@
 module Orb
   module Models
     class Plan < Orb::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash = T.type_alias { T.any(Orb::Plan, Orb::Internal::AnyHash) }
 
       sig { returns(String) }
       attr_accessor :id
@@ -404,7 +404,13 @@ module Orb
           end
 
         class UsageDiscount < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Plan::Adjustment::UsageDiscount,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -481,7 +487,13 @@ module Orb
         end
 
         class AmountDiscount < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Plan::Adjustment::AmountDiscount,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -558,7 +570,13 @@ module Orb
         end
 
         class PercentageDiscount < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Plan::Adjustment::PercentageDiscount,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -635,7 +653,10 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Plan::Adjustment::Minimum, Orb::Internal::AnyHash)
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -720,7 +741,10 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Plan::Adjustment::Maximum, Orb::Internal::AnyHash)
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -802,7 +826,8 @@ module Orb
       end
 
       class BasePlan < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias { T.any(Orb::Plan::BasePlan, Orb::Internal::AnyHash) }
 
         sig { returns(T.nilable(String)) }
         attr_accessor :id
@@ -847,7 +872,8 @@ module Orb
       end
 
       class Maximum < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias { T.any(Orb::Plan::Maximum, Orb::Internal::AnyHash) }
 
         # List of price_ids that this maximum amount applies to. For plan/plan phase
         # maximums, this can be a subset of prices.
@@ -883,7 +909,8 @@ module Orb
       end
 
       class Minimum < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias { T.any(Orb::Plan::Minimum, Orb::Internal::AnyHash) }
 
         # List of price_ids that this minimum amount applies to. For plan/plan phase
         # minimums, this can be a subset of prices.
@@ -919,7 +946,8 @@ module Orb
       end
 
       class PlanPhase < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias { T.any(Orb::Plan::PlanPhase, Orb::Internal::AnyHash) }
 
         sig { returns(String) }
         attr_accessor :id
@@ -1082,7 +1110,10 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Plan::PlanPhase::Maximum, Orb::Internal::AnyHash)
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -1118,7 +1149,10 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Plan::PlanPhase::Minimum, Orb::Internal::AnyHash)
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -1155,7 +1189,8 @@ module Orb
       end
 
       class Product < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias { T.any(Orb::Plan::Product, Orb::Internal::AnyHash) }
 
         sig { returns(String) }
         attr_accessor :id
@@ -1195,7 +1230,8 @@ module Orb
       end
 
       class TrialConfig < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias { T.any(Orb::Plan::TrialConfig, Orb::Internal::AnyHash) }
 
         sig { returns(T.nilable(Integer)) }
         attr_accessor :trial_period

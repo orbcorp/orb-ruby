@@ -6,7 +6,13 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(
+            Orb::AlertCreateForExternalCustomerParams,
+            Orb::Internal::AnyHash
+          )
+        end
 
       # The case sensitive currency or custom pricing unit to use for this alert.
       sig { returns(String) }
@@ -104,7 +110,13 @@ module Orb
       end
 
       class Threshold < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::AlertCreateForExternalCustomerParams::Threshold,
+              Orb::Internal::AnyHash
+            )
+          end
 
         # The value at which an alert will fire. For credit balance alerts, the alert will
         # fire at or below this value. For usage and cost alerts, the alert will fire at

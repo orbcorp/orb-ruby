@@ -7,7 +7,13 @@ module Orb
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Prices::ExternalPriceIDUpdateParams,
+              Orb::Internal::AnyHash
+            )
+          end
 
         # User-specified key/value pairs for the resource. Individual keys can be removed
         # by setting the value to `null`, and the entire metadata mapping can be cleared

@@ -6219,6 +6219,38 @@ module Orb
 
         # @!method self.variants
         #   @return [Array(Orb::PlanCreateParams::Price::Unit, Orb::PlanCreateParams::Price::Package, Orb::PlanCreateParams::Price::Matrix, Orb::PlanCreateParams::Price::Tiered, Orb::PlanCreateParams::Price::TieredBps, Orb::PlanCreateParams::Price::Bps, Orb::PlanCreateParams::Price::BulkBps, Orb::PlanCreateParams::Price::Bulk, Orb::PlanCreateParams::Price::ThresholdTotalAmount, Orb::PlanCreateParams::Price::TieredPackage, Orb::PlanCreateParams::Price::TieredWithMinimum, Orb::PlanCreateParams::Price::UnitWithPercent, Orb::PlanCreateParams::Price::PackageWithAllocation, Orb::PlanCreateParams::Price::TieredWithProration, Orb::PlanCreateParams::Price::UnitWithProration, Orb::PlanCreateParams::Price::GroupedAllocation, Orb::PlanCreateParams::Price::GroupedWithProratedMinimum, Orb::PlanCreateParams::Price::GroupedWithMeteredMinimum, Orb::PlanCreateParams::Price::MatrixWithDisplayName, Orb::PlanCreateParams::Price::BulkWithProration, Orb::PlanCreateParams::Price::GroupedTieredPackage, Orb::PlanCreateParams::Price::MaxGroupTieredPackage, Orb::PlanCreateParams::Price::ScalableMatrixWithUnitPricing, Orb::PlanCreateParams::Price::ScalableMatrixWithTieredPricing, Orb::PlanCreateParams::Price::CumulativeGroupedBulk)]
+
+        define_sorbet_constant!(:Variants) do
+          T.type_alias do
+            T.any(
+              Orb::PlanCreateParams::Price::Unit,
+              Orb::PlanCreateParams::Price::Package,
+              Orb::PlanCreateParams::Price::Matrix,
+              Orb::PlanCreateParams::Price::Tiered,
+              Orb::PlanCreateParams::Price::TieredBps,
+              Orb::PlanCreateParams::Price::Bps,
+              Orb::PlanCreateParams::Price::BulkBps,
+              Orb::PlanCreateParams::Price::Bulk,
+              Orb::PlanCreateParams::Price::ThresholdTotalAmount,
+              Orb::PlanCreateParams::Price::TieredPackage,
+              Orb::PlanCreateParams::Price::TieredWithMinimum,
+              Orb::PlanCreateParams::Price::UnitWithPercent,
+              Orb::PlanCreateParams::Price::PackageWithAllocation,
+              Orb::PlanCreateParams::Price::TieredWithProration,
+              Orb::PlanCreateParams::Price::UnitWithProration,
+              Orb::PlanCreateParams::Price::GroupedAllocation,
+              Orb::PlanCreateParams::Price::GroupedWithProratedMinimum,
+              Orb::PlanCreateParams::Price::GroupedWithMeteredMinimum,
+              Orb::PlanCreateParams::Price::MatrixWithDisplayName,
+              Orb::PlanCreateParams::Price::BulkWithProration,
+              Orb::PlanCreateParams::Price::GroupedTieredPackage,
+              Orb::PlanCreateParams::Price::MaxGroupTieredPackage,
+              Orb::PlanCreateParams::Price::ScalableMatrixWithUnitPricing,
+              Orb::PlanCreateParams::Price::ScalableMatrixWithTieredPricing,
+              Orb::PlanCreateParams::Price::CumulativeGroupedBulk
+            )
+          end
+        end
       end
 
       # The status of the plan to create (either active or draft). If not specified,

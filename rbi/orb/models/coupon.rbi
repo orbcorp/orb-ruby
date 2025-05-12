@@ -3,7 +3,7 @@
 module Orb
   module Models
     class Coupon < Orb::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash = T.type_alias { T.any(Orb::Coupon, Orb::Internal::AnyHash) }
 
       # Also referred to as coupon_id in this documentation.
       sig { returns(String) }

@@ -38,6 +38,7 @@ module Orb
       #   end
       module Enum
         include Orb::Internal::Type::Converter
+        include Orb::Internal::Util::SorbetRuntimeSupport
 
         # All of the valid Symbol values for this enum.
         #

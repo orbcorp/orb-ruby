@@ -3,7 +3,10 @@
 module Orb
   module Models
     class EventDeprecateResponse < Orb::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Orb::Models::EventDeprecateResponse, Orb::Internal::AnyHash)
+        end
 
       # event_id of the deprecated event, if successfully updated
       sig { returns(String) }
