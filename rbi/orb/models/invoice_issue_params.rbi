@@ -6,7 +6,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(Orb::InvoiceIssueParams, Orb::Internal::AnyHash) }
 
       # If true, the invoice will be issued synchronously. If false, the invoice will be
       # issued asynchronously. The synchronous option is only available for invoices

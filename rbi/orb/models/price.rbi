@@ -50,7 +50,8 @@ module Orb
         end
 
       class Unit < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias { T.any(Orb::Price::Unit, Orb::Internal::AnyHash) }
 
         sig { returns(String) }
         attr_accessor :id
@@ -318,7 +319,10 @@ module Orb
         end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Unit::BillableMetric, Orb::Internal::AnyHash)
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -333,7 +337,13 @@ module Orb
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::Unit::BillingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -425,7 +435,10 @@ module Orb
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Unit::CreditAllocation, Orb::Internal::AnyHash)
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
@@ -449,7 +462,13 @@ module Orb
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::Unit::InvoicingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -519,7 +538,10 @@ module Orb
         end
 
         class Item < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Unit::Item, Orb::Internal::AnyHash)
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -537,7 +559,10 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Unit::Maximum, Orb::Internal::AnyHash)
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -573,7 +598,10 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Unit::Minimum, Orb::Internal::AnyHash)
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -630,7 +658,10 @@ module Orb
         end
 
         class UnitConfig < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Unit::UnitConfig, Orb::Internal::AnyHash)
+            end
 
           # Rate per unit of usage
           sig { returns(String) }
@@ -649,7 +680,13 @@ module Orb
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::Unit::DimensionalPriceConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
@@ -680,7 +717,8 @@ module Orb
       end
 
       class Package < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias { T.any(Orb::Price::Package, Orb::Internal::AnyHash) }
 
         sig { returns(String) }
         attr_accessor :id
@@ -960,7 +998,10 @@ module Orb
         end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Package::BillableMetric, Orb::Internal::AnyHash)
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -975,7 +1016,13 @@ module Orb
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::Package::BillingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -1071,7 +1118,13 @@ module Orb
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::Package::CreditAllocation,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
@@ -1095,7 +1148,13 @@ module Orb
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::Package::InvoicingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -1165,7 +1224,10 @@ module Orb
         end
 
         class Item < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Package::Item, Orb::Internal::AnyHash)
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -1183,7 +1245,10 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Package::Maximum, Orb::Internal::AnyHash)
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -1219,7 +1284,10 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Package::Minimum, Orb::Internal::AnyHash)
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -1255,7 +1323,10 @@ module Orb
         end
 
         class PackageConfig < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Package::PackageConfig, Orb::Internal::AnyHash)
+            end
 
           # A currency amount to rate usage by
           sig { returns(String) }
@@ -1309,7 +1380,13 @@ module Orb
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::Package::DimensionalPriceConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
@@ -1340,7 +1417,8 @@ module Orb
       end
 
       class Matrix < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias { T.any(Orb::Price::Matrix, Orb::Internal::AnyHash) }
 
         sig { returns(String) }
         attr_accessor :id
@@ -1616,7 +1694,10 @@ module Orb
         end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Matrix::BillableMetric, Orb::Internal::AnyHash)
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -1631,7 +1712,13 @@ module Orb
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::Matrix::BillingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -1726,7 +1813,13 @@ module Orb
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::Matrix::CreditAllocation,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
@@ -1750,7 +1843,13 @@ module Orb
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::Matrix::InvoicingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -1820,7 +1919,10 @@ module Orb
         end
 
         class Item < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Matrix::Item, Orb::Internal::AnyHash)
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -1838,7 +1940,10 @@ module Orb
         end
 
         class MatrixConfig < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Matrix::MatrixConfig, Orb::Internal::AnyHash)
+            end
 
           # Default per unit rate for any usage not bucketed into a specified matrix_value
           sig { returns(String) }
@@ -1886,7 +1991,13 @@ module Orb
           end
 
           class MatrixValue < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::Matrix::MatrixConfig::MatrixValue,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # One or two matrix keys to filter usage to this Matrix value by. For example,
             # ["region", "tier"] could be used to filter cloud usage by a cloud region and an
@@ -1928,7 +2039,10 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Matrix::Maximum, Orb::Internal::AnyHash)
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -1964,7 +2078,10 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Matrix::Minimum, Orb::Internal::AnyHash)
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -2021,7 +2138,13 @@ module Orb
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::Matrix::DimensionalPriceConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
@@ -2052,7 +2175,8 @@ module Orb
       end
 
       class Tiered < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias { T.any(Orb::Price::Tiered, Orb::Internal::AnyHash) }
 
         sig { returns(String) }
         attr_accessor :id
@@ -2328,7 +2452,10 @@ module Orb
         end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Tiered::BillableMetric, Orb::Internal::AnyHash)
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -2343,7 +2470,13 @@ module Orb
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::Tiered::BillingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -2438,7 +2571,13 @@ module Orb
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::Tiered::CreditAllocation,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
@@ -2462,7 +2601,13 @@ module Orb
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::Tiered::InvoicingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -2532,7 +2677,10 @@ module Orb
         end
 
         class Item < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Tiered::Item, Orb::Internal::AnyHash)
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -2550,7 +2698,10 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Tiered::Maximum, Orb::Internal::AnyHash)
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -2586,7 +2737,10 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Tiered::Minimum, Orb::Internal::AnyHash)
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -2643,7 +2797,10 @@ module Orb
         end
 
         class TieredConfig < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Tiered::TieredConfig, Orb::Internal::AnyHash)
+            end
 
           # Tiers for rating based on total usage quantities into the specified tier
           sig { returns(T::Array[Orb::Price::Tiered::TieredConfig::Tier]) }
@@ -2669,7 +2826,13 @@ module Orb
           end
 
           class Tier < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::Tiered::TieredConfig::Tier,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # Exclusive tier starting value
             sig { returns(Float) }
@@ -2715,7 +2878,13 @@ module Orb
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::Tiered::DimensionalPriceConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
@@ -2746,7 +2915,8 @@ module Orb
       end
 
       class TieredBps < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias { T.any(Orb::Price::TieredBps, Orb::Internal::AnyHash) }
 
         sig { returns(String) }
         attr_accessor :id
@@ -3032,7 +3202,13 @@ module Orb
         end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredBps::BillableMetric,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -3047,7 +3223,13 @@ module Orb
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredBps::BillingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -3144,7 +3326,13 @@ module Orb
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredBps::CreditAllocation,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
@@ -3168,7 +3356,13 @@ module Orb
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredBps::InvoicingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -3238,7 +3432,10 @@ module Orb
         end
 
         class Item < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::TieredBps::Item, Orb::Internal::AnyHash)
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -3256,7 +3453,10 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::TieredBps::Maximum, Orb::Internal::AnyHash)
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -3292,7 +3492,10 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::TieredBps::Minimum, Orb::Internal::AnyHash)
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -3349,7 +3552,13 @@ module Orb
         end
 
         class TieredBpsConfig < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredBps::TieredBpsConfig,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
           # tiers
@@ -3380,7 +3589,13 @@ module Orb
           end
 
           class Tier < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::TieredBps::TieredBpsConfig::Tier,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # Per-event basis point rate
             sig { returns(Float) }
@@ -3434,7 +3649,13 @@ module Orb
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredBps::DimensionalPriceConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
@@ -3465,7 +3686,7 @@ module Orb
       end
 
       class Bps < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash = T.type_alias { T.any(Orb::Price::Bps, Orb::Internal::AnyHash) }
 
         sig { returns(String) }
         attr_accessor :id
@@ -3728,7 +3949,10 @@ module Orb
         end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Bps::BillableMetric, Orb::Internal::AnyHash)
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -3743,7 +3967,13 @@ module Orb
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::Bps::BillingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -3813,7 +4043,10 @@ module Orb
         end
 
         class BpsConfig < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Bps::BpsConfig, Orb::Internal::AnyHash)
+            end
 
           # Basis point take rate per event
           sig { returns(Float) }
@@ -3868,7 +4101,10 @@ module Orb
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Bps::CreditAllocation, Orb::Internal::AnyHash)
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
@@ -3892,7 +4128,13 @@ module Orb
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::Bps::InvoicingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -3962,7 +4204,10 @@ module Orb
         end
 
         class Item < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Bps::Item, Orb::Internal::AnyHash)
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -3980,7 +4225,10 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Bps::Maximum, Orb::Internal::AnyHash)
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -4016,7 +4264,10 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Bps::Minimum, Orb::Internal::AnyHash)
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -4071,7 +4322,13 @@ module Orb
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::Bps::DimensionalPriceConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
@@ -4102,7 +4359,8 @@ module Orb
       end
 
       class BulkBps < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias { T.any(Orb::Price::BulkBps, Orb::Internal::AnyHash) }
 
         sig { returns(String) }
         attr_accessor :id
@@ -4382,7 +4640,10 @@ module Orb
         end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::BulkBps::BillableMetric, Orb::Internal::AnyHash)
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -4397,7 +4658,13 @@ module Orb
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::BulkBps::BillingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -4467,7 +4734,10 @@ module Orb
         end
 
         class BulkBpsConfig < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::BulkBps::BulkBpsConfig, Orb::Internal::AnyHash)
+            end
 
           # Tiers for a bulk BPS pricing model where all usage is aggregated to a single
           # tier based on total volume
@@ -4495,7 +4765,13 @@ module Orb
           end
 
           class Tier < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::BulkBps::BulkBpsConfig::Tier,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # Basis points to rate on
             sig { returns(Float) }
@@ -4567,7 +4843,13 @@ module Orb
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::BulkBps::CreditAllocation,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
@@ -4591,7 +4873,13 @@ module Orb
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::BulkBps::InvoicingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -4661,7 +4949,10 @@ module Orb
         end
 
         class Item < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::BulkBps::Item, Orb::Internal::AnyHash)
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -4679,7 +4970,10 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::BulkBps::Maximum, Orb::Internal::AnyHash)
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -4715,7 +5009,10 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::BulkBps::Minimum, Orb::Internal::AnyHash)
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -4772,7 +5069,13 @@ module Orb
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::BulkBps::DimensionalPriceConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
@@ -4803,7 +5106,8 @@ module Orb
       end
 
       class Bulk < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias { T.any(Orb::Price::Bulk, Orb::Internal::AnyHash) }
 
         sig { returns(String) }
         attr_accessor :id
@@ -5071,7 +5375,10 @@ module Orb
         end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Bulk::BillableMetric, Orb::Internal::AnyHash)
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -5086,7 +5393,13 @@ module Orb
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::Bulk::BillingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -5156,7 +5469,10 @@ module Orb
         end
 
         class BulkConfig < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Bulk::BulkConfig, Orb::Internal::AnyHash)
+            end
 
           # Bulk tiers for rating based on total usage volume
           sig { returns(T::Array[Orb::Price::Bulk::BulkConfig::Tier]) }
@@ -5182,7 +5498,13 @@ module Orb
           end
 
           class Tier < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::Bulk::BulkConfig::Tier,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # Amount per unit
             sig { returns(String) }
@@ -5239,7 +5561,10 @@ module Orb
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Bulk::CreditAllocation, Orb::Internal::AnyHash)
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
@@ -5263,7 +5588,13 @@ module Orb
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::Bulk::InvoicingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -5333,7 +5664,10 @@ module Orb
         end
 
         class Item < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Bulk::Item, Orb::Internal::AnyHash)
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -5351,7 +5685,10 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Bulk::Maximum, Orb::Internal::AnyHash)
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -5387,7 +5724,10 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Bulk::Minimum, Orb::Internal::AnyHash)
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -5444,7 +5784,13 @@ module Orb
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::Bulk::DimensionalPriceConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
@@ -5475,7 +5821,10 @@ module Orb
       end
 
       class ThresholdTotalAmount < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Price::ThresholdTotalAmount, Orb::Internal::AnyHash)
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -5788,7 +6137,13 @@ module Orb
         end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ThresholdTotalAmount::BillableMetric,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -5803,7 +6158,13 @@ module Orb
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ThresholdTotalAmount::BillingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -5922,7 +6283,13 @@ module Orb
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ThresholdTotalAmount::CreditAllocation,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
@@ -5946,7 +6313,13 @@ module Orb
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ThresholdTotalAmount::InvoicingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -6016,7 +6389,13 @@ module Orb
         end
 
         class Item < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ThresholdTotalAmount::Item,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -6034,7 +6413,13 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ThresholdTotalAmount::Maximum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -6070,7 +6455,13 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ThresholdTotalAmount::Minimum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -6137,7 +6528,13 @@ module Orb
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ThresholdTotalAmount::DimensionalPriceConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
@@ -6168,7 +6565,10 @@ module Orb
       end
 
       class TieredPackage < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Price::TieredPackage, Orb::Internal::AnyHash)
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -6454,7 +6854,13 @@ module Orb
         end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredPackage::BillableMetric,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -6469,7 +6875,13 @@ module Orb
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredPackage::BillingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -6571,7 +6983,13 @@ module Orb
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredPackage::CreditAllocation,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
@@ -6595,7 +7013,13 @@ module Orb
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredPackage::InvoicingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -6665,7 +7089,10 @@ module Orb
         end
 
         class Item < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::TieredPackage::Item, Orb::Internal::AnyHash)
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -6683,7 +7110,10 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::TieredPackage::Maximum, Orb::Internal::AnyHash)
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -6719,7 +7149,10 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::TieredPackage::Minimum, Orb::Internal::AnyHash)
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -6782,7 +7215,13 @@ module Orb
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredPackage::DimensionalPriceConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
@@ -6813,7 +7252,10 @@ module Orb
       end
 
       class GroupedTiered < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Price::GroupedTiered, Orb::Internal::AnyHash)
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -7099,7 +7541,13 @@ module Orb
         end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedTiered::BillableMetric,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -7114,7 +7562,13 @@ module Orb
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedTiered::BillingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -7216,7 +7670,13 @@ module Orb
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedTiered::CreditAllocation,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
@@ -7240,7 +7700,13 @@ module Orb
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedTiered::InvoicingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -7310,7 +7776,10 @@ module Orb
         end
 
         class Item < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::GroupedTiered::Item, Orb::Internal::AnyHash)
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -7328,7 +7797,10 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::GroupedTiered::Maximum, Orb::Internal::AnyHash)
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -7364,7 +7836,10 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::GroupedTiered::Minimum, Orb::Internal::AnyHash)
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -7427,7 +7902,13 @@ module Orb
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedTiered::DimensionalPriceConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
@@ -7458,7 +7939,10 @@ module Orb
       end
 
       class TieredWithMinimum < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Price::TieredWithMinimum, Orb::Internal::AnyHash)
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -7757,7 +8241,13 @@ module Orb
         end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredWithMinimum::BillableMetric,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -7772,7 +8262,13 @@ module Orb
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredWithMinimum::BillingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -7885,7 +8381,13 @@ module Orb
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredWithMinimum::CreditAllocation,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
@@ -7909,7 +8411,13 @@ module Orb
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredWithMinimum::InvoicingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -7979,7 +8487,10 @@ module Orb
         end
 
         class Item < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::TieredWithMinimum::Item, Orb::Internal::AnyHash)
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -7997,7 +8508,13 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredWithMinimum::Maximum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -8033,7 +8550,13 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredWithMinimum::Minimum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -8098,7 +8621,13 @@ module Orb
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredWithMinimum::DimensionalPriceConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
@@ -8129,7 +8658,10 @@ module Orb
       end
 
       class TieredPackageWithMinimum < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Price::TieredPackageWithMinimum, Orb::Internal::AnyHash)
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -8458,7 +8990,13 @@ module Orb
         end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredPackageWithMinimum::BillableMetric,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -8473,7 +9011,13 @@ module Orb
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredPackageWithMinimum::BillingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -8594,7 +9138,13 @@ module Orb
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredPackageWithMinimum::CreditAllocation,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
@@ -8618,7 +9168,13 @@ module Orb
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -8688,7 +9244,13 @@ module Orb
         end
 
         class Item < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredPackageWithMinimum::Item,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -8706,7 +9268,13 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredPackageWithMinimum::Maximum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -8742,7 +9310,13 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredPackageWithMinimum::Minimum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -8809,7 +9383,13 @@ module Orb
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
@@ -8840,7 +9420,10 @@ module Orb
       end
 
       class PackageWithAllocation < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Price::PackageWithAllocation, Orb::Internal::AnyHash)
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -9157,7 +9740,13 @@ module Orb
         end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::PackageWithAllocation::BillableMetric,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -9172,7 +9761,13 @@ module Orb
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::PackageWithAllocation::BillingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -9291,7 +9886,13 @@ module Orb
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::PackageWithAllocation::CreditAllocation,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
@@ -9315,7 +9916,13 @@ module Orb
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::PackageWithAllocation::InvoicingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -9385,7 +9992,13 @@ module Orb
         end
 
         class Item < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::PackageWithAllocation::Item,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -9403,7 +10016,13 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::PackageWithAllocation::Maximum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -9439,7 +10058,13 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::PackageWithAllocation::Minimum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -9506,7 +10131,13 @@ module Orb
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::PackageWithAllocation::DimensionalPriceConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
@@ -9537,7 +10168,10 @@ module Orb
       end
 
       class UnitWithPercent < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Price::UnitWithPercent, Orb::Internal::AnyHash)
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -9827,7 +10461,13 @@ module Orb
         end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::UnitWithPercent::BillableMetric,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -9842,7 +10482,13 @@ module Orb
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::UnitWithPercent::BillingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -9947,7 +10593,13 @@ module Orb
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::UnitWithPercent::CreditAllocation,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
@@ -9971,7 +10623,13 @@ module Orb
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::UnitWithPercent::InvoicingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -10041,7 +10699,10 @@ module Orb
         end
 
         class Item < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::UnitWithPercent::Item, Orb::Internal::AnyHash)
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -10059,7 +10720,13 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::UnitWithPercent::Maximum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -10095,7 +10762,13 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::UnitWithPercent::Minimum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -10160,7 +10833,13 @@ module Orb
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::UnitWithPercent::DimensionalPriceConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
@@ -10191,7 +10870,10 @@ module Orb
       end
 
       class MatrixWithAllocation < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Price::MatrixWithAllocation, Orb::Internal::AnyHash)
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -10516,7 +11198,13 @@ module Orb
         end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MatrixWithAllocation::BillableMetric,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -10531,7 +11219,13 @@ module Orb
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MatrixWithAllocation::BillingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -10650,7 +11344,13 @@ module Orb
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MatrixWithAllocation::CreditAllocation,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
@@ -10674,7 +11374,13 @@ module Orb
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MatrixWithAllocation::InvoicingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -10744,7 +11450,13 @@ module Orb
         end
 
         class Item < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MatrixWithAllocation::Item,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -10762,7 +11474,13 @@ module Orb
         end
 
         class MatrixWithAllocationConfig < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MatrixWithAllocation::MatrixWithAllocationConfig,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # Allocation to be used to calculate the price
           sig { returns(Float) }
@@ -10826,7 +11544,13 @@ module Orb
           end
 
           class MatrixValue < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::MatrixWithAllocation::MatrixWithAllocationConfig::MatrixValue,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # One or two matrix keys to filter usage to this Matrix value by. For example,
             # ["region", "tier"] could be used to filter cloud usage by a cloud region and an
@@ -10868,7 +11592,13 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MatrixWithAllocation::Maximum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -10904,7 +11634,13 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MatrixWithAllocation::Minimum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -10971,7 +11707,13 @@ module Orb
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MatrixWithAllocation::DimensionalPriceConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
@@ -11002,7 +11744,10 @@ module Orb
       end
 
       class TieredWithProration < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Price::TieredWithProration, Orb::Internal::AnyHash)
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -11309,7 +12054,13 @@ module Orb
         end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredWithProration::BillableMetric,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -11324,7 +12075,13 @@ module Orb
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredWithProration::BillingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -11443,7 +12200,13 @@ module Orb
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredWithProration::CreditAllocation,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
@@ -11467,7 +12230,13 @@ module Orb
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredWithProration::InvoicingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -11537,7 +12306,13 @@ module Orb
         end
 
         class Item < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredWithProration::Item,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -11555,7 +12330,13 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredWithProration::Maximum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -11591,7 +12372,13 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredWithProration::Minimum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -11656,7 +12443,13 @@ module Orb
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredWithProration::DimensionalPriceConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
@@ -11687,7 +12480,10 @@ module Orb
       end
 
       class UnitWithProration < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Price::UnitWithProration, Orb::Internal::AnyHash)
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -11986,7 +12782,13 @@ module Orb
         end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::UnitWithProration::BillableMetric,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -12001,7 +12803,13 @@ module Orb
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::UnitWithProration::BillingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -12114,7 +12922,13 @@ module Orb
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::UnitWithProration::CreditAllocation,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
@@ -12138,7 +12952,13 @@ module Orb
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::UnitWithProration::InvoicingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -12208,7 +13028,10 @@ module Orb
         end
 
         class Item < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::UnitWithProration::Item, Orb::Internal::AnyHash)
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -12226,7 +13049,13 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::UnitWithProration::Maximum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -12262,7 +13091,13 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::UnitWithProration::Minimum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -12327,7 +13162,13 @@ module Orb
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::UnitWithProration::DimensionalPriceConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
@@ -12358,7 +13199,10 @@ module Orb
       end
 
       class GroupedAllocation < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Price::GroupedAllocation, Orb::Internal::AnyHash)
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -12657,7 +13501,13 @@ module Orb
         end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedAllocation::BillableMetric,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -12672,7 +13522,13 @@ module Orb
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedAllocation::BillingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -12785,7 +13641,13 @@ module Orb
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedAllocation::CreditAllocation,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
@@ -12809,7 +13671,13 @@ module Orb
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedAllocation::InvoicingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -12879,7 +13747,10 @@ module Orb
         end
 
         class Item < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::GroupedAllocation::Item, Orb::Internal::AnyHash)
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -12897,7 +13768,13 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedAllocation::Maximum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -12933,7 +13810,13 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedAllocation::Minimum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -12998,7 +13881,13 @@ module Orb
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedAllocation::DimensionalPriceConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
@@ -13029,7 +13918,13 @@ module Orb
       end
 
       class GroupedWithProratedMinimum < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Price::GroupedWithProratedMinimum,
+              Orb::Internal::AnyHash
+            )
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -13370,7 +14265,13 @@ module Orb
         end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedWithProratedMinimum::BillableMetric,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -13385,7 +14286,13 @@ module Orb
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedWithProratedMinimum::BillingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -13506,7 +14413,13 @@ module Orb
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedWithProratedMinimum::CreditAllocation,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
@@ -13530,7 +14443,13 @@ module Orb
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedWithProratedMinimum::InvoicingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -13600,7 +14519,13 @@ module Orb
         end
 
         class Item < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedWithProratedMinimum::Item,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -13618,7 +14543,13 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedWithProratedMinimum::Maximum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -13654,7 +14585,13 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedWithProratedMinimum::Minimum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -13721,7 +14658,13 @@ module Orb
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
@@ -13752,7 +14695,10 @@ module Orb
       end
 
       class GroupedWithMeteredMinimum < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Price::GroupedWithMeteredMinimum, Orb::Internal::AnyHash)
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -14087,7 +15033,13 @@ module Orb
         end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedWithMeteredMinimum::BillableMetric,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -14102,7 +15054,13 @@ module Orb
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -14223,7 +15181,13 @@ module Orb
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedWithMeteredMinimum::CreditAllocation,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
@@ -14247,7 +15211,13 @@ module Orb
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedWithMeteredMinimum::InvoicingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -14317,7 +15287,13 @@ module Orb
         end
 
         class Item < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedWithMeteredMinimum::Item,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -14335,7 +15311,13 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedWithMeteredMinimum::Maximum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -14371,7 +15353,13 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedWithMeteredMinimum::Minimum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -14438,7 +15426,13 @@ module Orb
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
@@ -14469,7 +15463,10 @@ module Orb
       end
 
       class MatrixWithDisplayName < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Price::MatrixWithDisplayName, Orb::Internal::AnyHash)
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -14786,7 +15783,13 @@ module Orb
         end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MatrixWithDisplayName::BillableMetric,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -14801,7 +15804,13 @@ module Orb
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MatrixWithDisplayName::BillingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -14920,7 +15929,13 @@ module Orb
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MatrixWithDisplayName::CreditAllocation,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
@@ -14944,7 +15959,13 @@ module Orb
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MatrixWithDisplayName::InvoicingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -15014,7 +16035,13 @@ module Orb
         end
 
         class Item < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MatrixWithDisplayName::Item,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -15032,7 +16059,13 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MatrixWithDisplayName::Maximum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -15068,7 +16101,13 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MatrixWithDisplayName::Minimum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -15135,7 +16174,13 @@ module Orb
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MatrixWithDisplayName::DimensionalPriceConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
@@ -15166,7 +16211,10 @@ module Orb
       end
 
       class BulkWithProration < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Price::BulkWithProration, Orb::Internal::AnyHash)
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -15465,7 +16513,13 @@ module Orb
         end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::BulkWithProration::BillableMetric,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -15480,7 +16534,13 @@ module Orb
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::BulkWithProration::BillingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -15593,7 +16653,13 @@ module Orb
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::BulkWithProration::CreditAllocation,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
@@ -15617,7 +16683,13 @@ module Orb
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::BulkWithProration::InvoicingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -15687,7 +16759,10 @@ module Orb
         end
 
         class Item < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::BulkWithProration::Item, Orb::Internal::AnyHash)
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -15705,7 +16780,13 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::BulkWithProration::Maximum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -15741,7 +16822,13 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::BulkWithProration::Minimum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -15806,7 +16893,13 @@ module Orb
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::BulkWithProration::DimensionalPriceConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
@@ -15837,7 +16930,10 @@ module Orb
       end
 
       class GroupedTieredPackage < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Price::GroupedTieredPackage, Orb::Internal::AnyHash)
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -16150,7 +17246,13 @@ module Orb
         end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedTieredPackage::BillableMetric,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -16165,7 +17267,13 @@ module Orb
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedTieredPackage::BillingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -16284,7 +17392,13 @@ module Orb
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedTieredPackage::CreditAllocation,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
@@ -16308,7 +17422,13 @@ module Orb
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedTieredPackage::InvoicingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -16378,7 +17498,13 @@ module Orb
         end
 
         class Item < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedTieredPackage::Item,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -16396,7 +17522,13 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedTieredPackage::Maximum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -16432,7 +17564,13 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedTieredPackage::Minimum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -16499,7 +17637,13 @@ module Orb
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedTieredPackage::DimensionalPriceConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
@@ -16530,7 +17674,10 @@ module Orb
       end
 
       class MaxGroupTieredPackage < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Price::MaxGroupTieredPackage, Orb::Internal::AnyHash)
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -16847,7 +17994,13 @@ module Orb
         end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MaxGroupTieredPackage::BillableMetric,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -16862,7 +18015,13 @@ module Orb
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MaxGroupTieredPackage::BillingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -16981,7 +18140,13 @@ module Orb
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MaxGroupTieredPackage::CreditAllocation,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
@@ -17005,7 +18170,13 @@ module Orb
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MaxGroupTieredPackage::InvoicingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -17075,7 +18246,13 @@ module Orb
         end
 
         class Item < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MaxGroupTieredPackage::Item,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -17093,7 +18270,13 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MaxGroupTieredPackage::Maximum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -17129,7 +18312,13 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MaxGroupTieredPackage::Minimum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -17196,7 +18385,13 @@ module Orb
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
@@ -17227,7 +18422,13 @@ module Orb
       end
 
       class ScalableMatrixWithUnitPricing < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Price::ScalableMatrixWithUnitPricing,
+              Orb::Internal::AnyHash
+            )
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -17579,7 +18780,13 @@ module Orb
         end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ScalableMatrixWithUnitPricing::BillableMetric,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -17594,7 +18801,13 @@ module Orb
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -17715,7 +18928,13 @@ module Orb
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ScalableMatrixWithUnitPricing::CreditAllocation,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
@@ -17739,7 +18958,13 @@ module Orb
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ScalableMatrixWithUnitPricing::InvoicingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -17809,7 +19034,13 @@ module Orb
         end
 
         class Item < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ScalableMatrixWithUnitPricing::Item,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -17827,7 +19058,13 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ScalableMatrixWithUnitPricing::Maximum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -17863,7 +19100,13 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ScalableMatrixWithUnitPricing::Minimum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -17933,7 +19176,13 @@ module Orb
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
@@ -17964,7 +19213,13 @@ module Orb
       end
 
       class ScalableMatrixWithTieredPricing < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Price::ScalableMatrixWithTieredPricing,
+              Orb::Internal::AnyHash
+            )
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -18322,7 +19577,13 @@ module Orb
         end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ScalableMatrixWithTieredPricing::BillableMetric,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -18337,7 +19598,13 @@ module Orb
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -18461,7 +19728,13 @@ module Orb
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ScalableMatrixWithTieredPricing::CreditAllocation,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
@@ -18485,7 +19758,13 @@ module Orb
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ScalableMatrixWithTieredPricing::InvoicingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -18555,7 +19834,13 @@ module Orb
         end
 
         class Item < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ScalableMatrixWithTieredPricing::Item,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -18573,7 +19858,13 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ScalableMatrixWithTieredPricing::Maximum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -18609,7 +19900,13 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ScalableMatrixWithTieredPricing::Minimum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -18679,7 +19976,13 @@ module Orb
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values
@@ -18710,7 +20013,10 @@ module Orb
       end
 
       class CumulativeGroupedBulk < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Price::CumulativeGroupedBulk, Orb::Internal::AnyHash)
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -19027,7 +20333,13 @@ module Orb
         end
 
         class BillableMetric < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::CumulativeGroupedBulk::BillableMetric,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -19042,7 +20354,13 @@ module Orb
         end
 
         class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::CumulativeGroupedBulk::BillingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -19161,7 +20479,13 @@ module Orb
         end
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::CumulativeGroupedBulk::CreditAllocation,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :allows_rollover
@@ -19185,7 +20509,13 @@ module Orb
         end
 
         class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :duration
@@ -19255,7 +20585,13 @@ module Orb
         end
 
         class Item < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::CumulativeGroupedBulk::Item,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -19273,7 +20609,13 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::CumulativeGroupedBulk::Maximum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
@@ -19309,7 +20651,13 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::CumulativeGroupedBulk::Minimum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
@@ -19376,7 +20724,13 @@ module Orb
         end
 
         class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[String]) }
           attr_accessor :dimension_values

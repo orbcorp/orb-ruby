@@ -4,7 +4,13 @@ module Orb
   module Models
     module Customers
       class CostListResponse < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Models::Customers::CostListResponse,
+              Orb::Internal::AnyHash
+            )
+          end
 
         sig do
           returns(T::Array[Orb::Models::Customers::CostListResponse::Data])
@@ -29,7 +35,13 @@ module Orb
         end
 
         class Data < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::Customers::CostListResponse::Data,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(
@@ -95,7 +107,13 @@ module Orb
           end
 
           class PerPriceCost < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Models::Customers::CostListResponse::Data::PerPriceCost,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The price object
             sig do

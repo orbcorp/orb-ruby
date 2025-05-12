@@ -6,7 +6,10 @@ module Orb
 
     module Events
       class EventVolumes < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Events::EventVolumes, Orb::Internal::AnyHash)
+          end
 
         sig { returns(T::Array[Orb::Events::EventVolumes::Data]) }
         attr_accessor :data
@@ -26,7 +29,10 @@ module Orb
         end
 
         class Data < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Events::EventVolumes::Data, Orb::Internal::AnyHash)
+            end
 
           # The number of events ingested with a timestamp between the timeframe
           sig { returns(Integer) }

@@ -40,6 +40,10 @@ module Orb
 
         # @!method self.variants
         #   @return [Array(String, Float, Boolean)]
+
+        define_sorbet_constant!(:Variants) do
+          T.type_alias { T.any(String, Float, T::Boolean) }
+        end
       end
     end
   end

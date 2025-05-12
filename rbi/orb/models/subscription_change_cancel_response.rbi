@@ -3,7 +3,13 @@
 module Orb
   module Models
     class SubscriptionChangeCancelResponse < Orb::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(
+            Orb::Models::SubscriptionChangeCancelResponse,
+            Orb::Internal::AnyHash
+          )
+        end
 
       sig { returns(String) }
       attr_accessor :id
@@ -131,7 +137,13 @@ module Orb
       end
 
       class Subscription < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Models::SubscriptionChangeCancelResponse::Subscription,
+              Orb::Internal::AnyHash
+            )
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -621,7 +633,13 @@ module Orb
         end
 
         class AdjustmentInterval < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -716,7 +734,12 @@ module Orb
 
             class UsageDiscount < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::UsageDiscount,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :id
@@ -794,7 +817,12 @@ module Orb
 
             class AmountDiscount < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::AmountDiscount,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :id
@@ -872,7 +900,12 @@ module Orb
 
             class PercentageDiscount < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::PercentageDiscount,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :id
@@ -950,7 +983,12 @@ module Orb
 
             class Minimum < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::Minimum,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :id
@@ -1036,7 +1074,12 @@ module Orb
 
             class Maximum < Orb::Internal::Type::BaseModel
               OrHash =
-                T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+                T.type_alias do
+                  T.any(
+                    Orb::Models::SubscriptionChangeCancelResponse::Subscription::AdjustmentInterval::Adjustment::Maximum,
+                    Orb::Internal::AnyHash
+                  )
+                end
 
               sig { returns(String) }
               attr_accessor :id
@@ -1125,7 +1168,13 @@ module Orb
         end
 
         class BillingCycleAnchorConfiguration < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::SubscriptionChangeCancelResponse::Subscription::BillingCycleAnchorConfiguration,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # The day of the month on which the billing cycle is anchored. If the maximum
           # number of days in a month is greater than this value, the last day of the month
@@ -1194,7 +1243,13 @@ module Orb
             end
 
           class Amount < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::Amount,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # Only available if discount_type is `amount`.
             sig { returns(String) }
@@ -1261,7 +1316,13 @@ module Orb
           end
 
           class Percentage < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::Percentage,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The price ids that this discount interval applies to.
             sig { returns(T::Array[String]) }
@@ -1330,7 +1391,13 @@ module Orb
           end
 
           class Usage < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Models::SubscriptionChangeCancelResponse::Subscription::DiscountInterval::Usage,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The price ids that this discount interval applies to.
             sig { returns(T::Array[String]) }
@@ -1410,7 +1477,13 @@ module Orb
         end
 
         class FixedFeeQuantitySchedule < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::SubscriptionChangeCancelResponse::Subscription::FixedFeeQuantitySchedule,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T.nilable(Time)) }
           attr_accessor :end_date
@@ -1450,7 +1523,13 @@ module Orb
         end
 
         class MaximumInterval < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::SubscriptionChangeCancelResponse::Subscription::MaximumInterval,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # The price ids that this maximum interval applies to.
           sig { returns(T::Array[String]) }
@@ -1513,7 +1592,13 @@ module Orb
         end
 
         class MinimumInterval < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::SubscriptionChangeCancelResponse::Subscription::MinimumInterval,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # The price ids that this minimum interval applies to.
           sig { returns(T::Array[String]) }
@@ -1576,7 +1661,13 @@ module Orb
         end
 
         class PendingSubscriptionChange < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::SubscriptionChangeCancelResponse::Subscription::PendingSubscriptionChange,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -1592,7 +1683,13 @@ module Orb
         end
 
         class PriceInterval < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::SubscriptionChangeCancelResponse::Subscription::PriceInterval,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -1838,7 +1935,13 @@ module Orb
           end
 
           class FixedFeeQuantityTransition < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Models::SubscriptionChangeCancelResponse::Subscription::PriceInterval::FixedFeeQuantityTransition,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(Time) }
             attr_accessor :effective_date
@@ -1870,7 +1973,13 @@ module Orb
         end
 
         class RedeemedCoupon < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::SubscriptionChangeCancelResponse::Subscription::RedeemedCoupon,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :coupon_id
@@ -1940,7 +2049,13 @@ module Orb
         end
 
         class TrialInfo < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::SubscriptionChangeCancelResponse::Subscription::TrialInfo,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T.nilable(Time)) }
           attr_accessor :end_date
@@ -1955,7 +2070,13 @@ module Orb
         end
 
         class ChangedResources < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::SubscriptionChangeCancelResponse::Subscription::ChangedResources,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # The credit notes that were created as part of this operation.
           sig { returns(T::Array[Orb::CreditNote]) }

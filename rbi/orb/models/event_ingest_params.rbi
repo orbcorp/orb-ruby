@@ -6,7 +6,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(Orb::EventIngestParams, Orb::Internal::AnyHash) }
 
       sig { returns(T::Array[Orb::EventIngestParams::Event]) }
       attr_accessor :events
@@ -56,7 +57,10 @@ module Orb
       end
 
       class Event < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::EventIngestParams::Event, Orb::Internal::AnyHash)
+          end
 
         # A name to meaningfully identify the action or event type.
         sig { returns(String) }

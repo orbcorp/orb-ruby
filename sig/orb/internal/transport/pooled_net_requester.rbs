@@ -2,6 +2,8 @@ module Orb
   module Internal
     module Transport
       class PooledNetRequester
+        extend Orb::Internal::Util::SorbetRuntimeSupport
+
         type request =
           {
             method: Symbol,

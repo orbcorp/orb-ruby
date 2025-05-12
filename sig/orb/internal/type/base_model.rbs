@@ -3,9 +3,12 @@ module Orb
     module Type
       class BaseModel
         extend Orb::Internal::Type::Converter
+        extend Orb::Internal::Util::SorbetRuntimeSupport
 
         type known_field =
           { mode: (:coerce | :dump)?, required: bool, nilable: bool }
+
+        def self.inherited: (self child) -> void
 
         def self.known_fields: -> ::Hash[Symbol, (Orb::Internal::Type::BaseModel::known_field
         & { type_fn: (^-> Orb::Internal::Type::Converter::input) })]
@@ -58,10 +61,10 @@ module Orb
         def self.coerce: (
           Orb::Internal::Type::BaseModel | ::Hash[top, top] | top value,
           state: Orb::Internal::Type::Converter::coerce_state
-        ) -> (instance | top)
+        ) -> (self | top)
 
         def self.dump: (
-          instance | top value,
+          self | top value,
           state: Orb::Internal::Type::Converter::dump_state
         ) -> (::Hash[top, top] | top)
 

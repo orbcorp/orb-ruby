@@ -6,7 +6,10 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Orb::CustomerUpdateByExternalIDParams, Orb::Internal::AnyHash)
+        end
 
       sig do
         returns(
@@ -523,7 +526,13 @@ module Orb
       end
 
       class AccountingSyncConfiguration < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration,
+              Orb::Internal::AnyHash
+            )
+          end
 
         sig do
           returns(
@@ -570,7 +579,13 @@ module Orb
         end
 
         class AccountingProvider < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :external_provider_id
@@ -597,7 +612,13 @@ module Orb
       end
 
       class BillingAddress < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::CustomerUpdateByExternalIDParams::BillingAddress,
+              Orb::Internal::AnyHash
+            )
+          end
 
         sig { returns(T.nilable(String)) }
         attr_accessor :city
@@ -654,7 +675,13 @@ module Orb
       end
 
       class Hierarchy < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::CustomerUpdateByExternalIDParams::Hierarchy,
+              Orb::Internal::AnyHash
+            )
+          end
 
         # A list of child customer IDs to add to the hierarchy. The desired child
         # customers must not already be part of another hierarchy.
@@ -755,7 +782,13 @@ module Orb
       end
 
       class ReportingConfiguration < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::CustomerUpdateByExternalIDParams::ReportingConfiguration,
+              Orb::Internal::AnyHash
+            )
+          end
 
         sig { returns(T::Boolean) }
         attr_accessor :exempt
@@ -770,7 +803,13 @@ module Orb
       end
 
       class ShippingAddress < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::CustomerUpdateByExternalIDParams::ShippingAddress,
+              Orb::Internal::AnyHash
+            )
+          end
 
         sig { returns(T.nilable(String)) }
         attr_accessor :city
@@ -838,7 +877,13 @@ module Orb
           end
 
         class Avalara < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Avalara,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :tax_exempt
@@ -877,7 +922,13 @@ module Orb
         end
 
         class Taxjar < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Taxjar,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :tax_exempt
@@ -912,7 +963,13 @@ module Orb
       end
 
       class TaxID < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::CustomerUpdateByExternalIDParams::TaxID,
+              Orb::Internal::AnyHash
+            )
+          end
 
         sig do
           returns(

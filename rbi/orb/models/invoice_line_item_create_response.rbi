@@ -3,7 +3,13 @@
 module Orb
   module Models
     class InvoiceLineItemCreateResponse < Orb::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(
+            Orb::Models::InvoiceLineItemCreateResponse,
+            Orb::Internal::AnyHash
+          )
+        end
 
       # A unique ID for this line item.
       sig { returns(String) }
@@ -463,7 +469,13 @@ module Orb
           end
 
         class UsageDiscount < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::InvoiceLineItemCreateResponse::Adjustment::UsageDiscount,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -540,7 +552,13 @@ module Orb
         end
 
         class AmountDiscount < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscount,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -617,7 +635,13 @@ module Orb
         end
 
         class PercentageDiscount < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::InvoiceLineItemCreateResponse::Adjustment::PercentageDiscount,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -694,7 +718,13 @@ module Orb
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Minimum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -779,7 +809,13 @@ module Orb
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Maximum,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -867,7 +903,13 @@ module Orb
       end
 
       class Maximum < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Models::InvoiceLineItemCreateResponse::Maximum,
+              Orb::Internal::AnyHash
+            )
+          end
 
         # List of price_ids that this maximum amount applies to. For plan/plan phase
         # maximums, this can be a subset of prices.
@@ -904,7 +946,13 @@ module Orb
       end
 
       class Minimum < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Models::InvoiceLineItemCreateResponse::Minimum,
+              Orb::Internal::AnyHash
+            )
+          end
 
         # List of price_ids that this minimum amount applies to. For plan/plan phase
         # minimums, this can be a subset of prices.
@@ -953,7 +1001,13 @@ module Orb
           end
 
         class Matrix < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # The total amount for this sub line item.
           sig { returns(String) }
@@ -1047,7 +1101,13 @@ module Orb
           end
 
           class Grouping < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix::Grouping,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(String) }
             attr_accessor :key
@@ -1074,7 +1134,13 @@ module Orb
           end
 
           class MatrixConfig < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix::MatrixConfig,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             # The ordered dimension values for this line item.
             sig { returns(T::Array[T.nilable(String)]) }
@@ -1102,7 +1168,13 @@ module Orb
         end
 
         class Tier < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # The total amount for this sub line item.
           sig { returns(String) }
@@ -1196,7 +1268,13 @@ module Orb
           end
 
           class Grouping < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier::Grouping,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(String) }
             attr_accessor :key
@@ -1223,7 +1301,13 @@ module Orb
           end
 
           class TierConfig < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier::TierConfig,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(Float) }
             attr_accessor :first_unit
@@ -1259,7 +1343,13 @@ module Orb
         end
 
         class Null < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Null,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # The total amount for this sub line item.
           sig { returns(String) }
@@ -1333,7 +1423,13 @@ module Orb
           end
 
           class Grouping < Orb::Internal::Type::BaseModel
-            OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Null::Grouping,
+                  Orb::Internal::AnyHash
+                )
+              end
 
             sig { returns(String) }
             attr_accessor :key
@@ -1372,7 +1468,13 @@ module Orb
       end
 
       class TaxAmount < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Models::InvoiceLineItemCreateResponse::TaxAmount,
+              Orb::Internal::AnyHash
+            )
+          end
 
         # The amount of additional tax incurred by this tax rate.
         sig { returns(String) }

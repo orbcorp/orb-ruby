@@ -6,7 +6,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(Orb::PriceCreateParams, Orb::Internal::AnyHash) }
 
       # The cadence to bill for this price on.
       sig { returns(Orb::PriceCreateParams::Cadence::OrSymbol) }
@@ -457,7 +458,10 @@ module Orb
       end
 
       class UnitConfig < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::PriceCreateParams::UnitConfig, Orb::Internal::AnyHash)
+          end
 
         # Rate per unit of usage
         sig { returns(String) }
@@ -476,7 +480,13 @@ module Orb
       end
 
       class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::PriceCreateParams::BillingCycleConfiguration,
+              Orb::Internal::AnyHash
+            )
+          end
 
         # The duration of the billing period.
         sig { returns(Integer) }
@@ -556,7 +566,13 @@ module Orb
       end
 
       class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::PriceCreateParams::InvoicingCycleConfiguration,
+              Orb::Internal::AnyHash
+            )
+          end
 
         # The duration of the billing period.
         sig { returns(Integer) }
@@ -636,7 +652,10 @@ module Orb
       end
 
       class PackageConfig < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::PriceCreateParams::PackageConfig, Orb::Internal::AnyHash)
+          end
 
         # A currency amount to rate usage by
         sig { returns(String) }
@@ -669,7 +688,10 @@ module Orb
       end
 
       class MatrixConfig < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::PriceCreateParams::MatrixConfig, Orb::Internal::AnyHash)
+          end
 
         # Default per unit rate for any usage not bucketed into a specified matrix_value
         sig { returns(String) }
@@ -719,7 +741,13 @@ module Orb
         end
 
         class MatrixValue < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::PriceCreateParams::MatrixConfig::MatrixValue,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # One or two matrix keys to filter usage to this Matrix value by. For example,
           # ["region", "tier"] could be used to filter cloud usage by a cloud region and an
@@ -761,7 +789,13 @@ module Orb
       end
 
       class MatrixWithAllocationConfig < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::PriceCreateParams::MatrixWithAllocationConfig,
+              Orb::Internal::AnyHash
+            )
+          end
 
         # Allocation to be used to calculate the price
         sig { returns(Float) }
@@ -825,7 +859,13 @@ module Orb
         end
 
         class MatrixValue < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # One or two matrix keys to filter usage to this Matrix value by. For example,
           # ["region", "tier"] could be used to filter cloud usage by a cloud region and an
@@ -867,7 +907,10 @@ module Orb
       end
 
       class TieredConfig < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::PriceCreateParams::TieredConfig, Orb::Internal::AnyHash)
+          end
 
         # Tiers for rating based on total usage quantities into the specified tier
         sig { returns(T::Array[Orb::PriceCreateParams::TieredConfig::Tier]) }
@@ -893,7 +936,13 @@ module Orb
         end
 
         class Tier < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::PriceCreateParams::TieredConfig::Tier,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # Exclusive tier starting value
           sig { returns(Float) }
@@ -939,7 +988,13 @@ module Orb
       end
 
       class TieredBpsConfig < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::PriceCreateParams::TieredBpsConfig,
+              Orb::Internal::AnyHash
+            )
+          end
 
         # Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
         # tiers
@@ -968,7 +1023,13 @@ module Orb
         end
 
         class Tier < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::PriceCreateParams::TieredBpsConfig::Tier,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # Per-event basis point rate
           sig { returns(Float) }
@@ -1022,7 +1083,10 @@ module Orb
       end
 
       class BpsConfig < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::PriceCreateParams::BpsConfig, Orb::Internal::AnyHash)
+          end
 
         # Basis point take rate per event
         sig { returns(Float) }
@@ -1053,7 +1117,10 @@ module Orb
       end
 
       class BulkBpsConfig < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::PriceCreateParams::BulkBpsConfig, Orb::Internal::AnyHash)
+          end
 
         # Tiers for a bulk BPS pricing model where all usage is aggregated to a single
         # tier based on total volume
@@ -1081,7 +1148,13 @@ module Orb
         end
 
         class Tier < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::PriceCreateParams::BulkBpsConfig::Tier,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # Basis points to rate on
           sig { returns(Float) }
@@ -1127,7 +1200,10 @@ module Orb
       end
 
       class BulkConfig < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::PriceCreateParams::BulkConfig, Orb::Internal::AnyHash)
+          end
 
         # Bulk tiers for rating based on total usage volume
         sig { returns(T::Array[Orb::PriceCreateParams::BulkConfig::Tier]) }
@@ -1153,7 +1229,13 @@ module Orb
         end
 
         class Tier < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::PriceCreateParams::BulkConfig::Tier,
+                Orb::Internal::AnyHash
+              )
+            end
 
           # Amount per unit
           sig { returns(String) }

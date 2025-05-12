@@ -3,7 +3,7 @@
 module Orb
   module Models
     class Customer < Orb::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash = T.type_alias { T.any(Orb::Customer, Orb::Internal::AnyHash) }
 
       sig { returns(String) }
       attr_accessor :id
@@ -466,7 +466,10 @@ module Orb
       end
 
       class BillingAddress < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Customer::BillingAddress, Orb::Internal::AnyHash)
+          end
 
         sig { returns(T.nilable(String)) }
         attr_accessor :city
@@ -516,7 +519,10 @@ module Orb
       end
 
       class Hierarchy < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Customer::Hierarchy, Orb::Internal::AnyHash)
+          end
 
         sig { returns(T::Array[Orb::Customer::Hierarchy::Child]) }
         attr_accessor :children
@@ -553,7 +559,10 @@ module Orb
         end
 
         class Child < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Customer::Hierarchy::Child, Orb::Internal::AnyHash)
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -579,7 +588,10 @@ module Orb
         end
 
         class Parent < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Customer::Hierarchy::Parent, Orb::Internal::AnyHash)
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -636,7 +648,10 @@ module Orb
       end
 
       class ShippingAddress < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Customer::ShippingAddress, Orb::Internal::AnyHash)
+          end
 
         sig { returns(T.nilable(String)) }
         attr_accessor :city
@@ -686,7 +701,8 @@ module Orb
       end
 
       class TaxID < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias { T.any(Orb::Customer::TaxID, Orb::Internal::AnyHash) }
 
         sig { returns(Orb::Customer::TaxID::Country::TaggedSymbol) }
         attr_accessor :country
@@ -1012,7 +1028,13 @@ module Orb
       end
 
       class AccountingSyncConfiguration < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Customer::AccountingSyncConfiguration,
+              Orb::Internal::AnyHash
+            )
+          end
 
         sig do
           returns(
@@ -1053,7 +1075,13 @@ module Orb
         end
 
         class AccountingProvider < Orb::Internal::Type::BaseModel
-          OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Customer::AccountingSyncConfiguration::AccountingProvider,
+                Orb::Internal::AnyHash
+              )
+            end
 
           sig { returns(T.nilable(String)) }
           attr_accessor :external_provider_id
@@ -1124,7 +1152,10 @@ module Orb
       end
 
       class ReportingConfiguration < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Customer::ReportingConfiguration, Orb::Internal::AnyHash)
+          end
 
         sig { returns(T::Boolean) }
         attr_accessor :exempt

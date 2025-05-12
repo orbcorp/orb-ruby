@@ -2,6 +2,8 @@ module Orb
   module Internal
     module Transport
       class BaseClient
+        extend Orb::Internal::Util::SorbetRuntimeSupport
+
         type request_components =
           {
             method: Symbol,
@@ -20,7 +22,6 @@ module Orb
             model: Orb::Internal::Type::Converter::input?,
             options: Orb::request_opts?
           }
-
         type request_input =
           {
             method: Symbol,

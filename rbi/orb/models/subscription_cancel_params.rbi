@@ -6,7 +6,10 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Orb::SubscriptionCancelParams, Orb::Internal::AnyHash)
+        end
 
       # Determines the timing of subscription cancellation
       sig { returns(Orb::SubscriptionCancelParams::CancelOption::OrSymbol) }

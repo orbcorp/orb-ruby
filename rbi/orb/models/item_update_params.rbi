@@ -6,7 +6,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias { T.any(Orb::ItemUpdateParams, Orb::Internal::AnyHash) }
 
       sig do
         returns(T.nilable(T::Array[Orb::ItemUpdateParams::ExternalConnection]))
@@ -43,7 +44,13 @@ module Orb
       end
 
       class ExternalConnection < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::ItemUpdateParams::ExternalConnection,
+              Orb::Internal::AnyHash
+            )
+          end
 
         sig do
           returns(

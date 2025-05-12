@@ -19,7 +19,8 @@ module Orb
       end
 
       class PaginationMetadata < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias { T.any(PaginationMetadata, Orb::Internal::AnyHash) }
 
         sig { returns(T::Boolean) }
         attr_accessor :has_more

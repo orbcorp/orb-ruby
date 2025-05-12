@@ -542,6 +542,18 @@ module Orb
 
         # @!method self.variants
         #   @return [Array(Orb::Plan::Adjustment::UsageDiscount, Orb::Plan::Adjustment::AmountDiscount, Orb::Plan::Adjustment::PercentageDiscount, Orb::Plan::Adjustment::Minimum, Orb::Plan::Adjustment::Maximum)]
+
+        define_sorbet_constant!(:Variants) do
+          T.type_alias do
+            T.any(
+              Orb::Plan::Adjustment::UsageDiscount,
+              Orb::Plan::Adjustment::AmountDiscount,
+              Orb::Plan::Adjustment::PercentageDiscount,
+              Orb::Plan::Adjustment::Minimum,
+              Orb::Plan::Adjustment::Maximum
+            )
+          end
+        end
       end
 
       # @see Orb::Plan#base_plan

@@ -29,7 +29,7 @@ module Orb
         #
         #   @option spec [Boolean] :"nil?"
         #
-        # @return [Orb::Internal::Type::HashOf]
+        # @return [self]
         def self.[](...) = new(...)
 
         # @api public

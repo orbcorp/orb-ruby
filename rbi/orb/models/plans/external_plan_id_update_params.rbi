@@ -7,7 +7,13 @@ module Orb
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Plans::ExternalPlanIDUpdateParams,
+              Orb::Internal::AnyHash
+            )
+          end
 
         # An optional user-defined ID for this plan resource, used throughout the system
         # as an alias for this Plan. Use this field to identify a plan by an existing

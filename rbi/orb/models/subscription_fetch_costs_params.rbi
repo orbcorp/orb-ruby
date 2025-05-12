@@ -6,7 +6,10 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Orb::SubscriptionFetchCostsParams, Orb::Internal::AnyHash)
+        end
 
       # The currency or custom pricing unit to use.
       sig { returns(T.nilable(String)) }

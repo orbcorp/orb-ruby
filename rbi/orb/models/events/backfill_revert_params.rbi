@@ -7,7 +7,10 @@ module Orb
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
-        OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Events::BackfillRevertParams, Orb::Internal::AnyHash)
+          end
 
         sig do
           params(request_options: Orb::RequestOptions::OrHash).returns(

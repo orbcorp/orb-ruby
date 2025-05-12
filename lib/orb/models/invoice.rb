@@ -1608,6 +1608,18 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Orb::Invoice::LineItem::Adjustment::UsageDiscount, Orb::Invoice::LineItem::Adjustment::AmountDiscount, Orb::Invoice::LineItem::Adjustment::PercentageDiscount, Orb::Invoice::LineItem::Adjustment::Minimum, Orb::Invoice::LineItem::Adjustment::Maximum)]
+
+          define_sorbet_constant!(:Variants) do
+            T.type_alias do
+              T.any(
+                Orb::Invoice::LineItem::Adjustment::UsageDiscount,
+                Orb::Invoice::LineItem::Adjustment::AmountDiscount,
+                Orb::Invoice::LineItem::Adjustment::PercentageDiscount,
+                Orb::Invoice::LineItem::Adjustment::Minimum,
+                Orb::Invoice::LineItem::Adjustment::Maximum
+              )
+            end
+          end
         end
 
         # @deprecated
@@ -1902,6 +1914,16 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Orb::Invoice::LineItem::SubLineItem::Matrix, Orb::Invoice::LineItem::SubLineItem::Tier, Orb::Invoice::LineItem::SubLineItem::Null)]
+
+          define_sorbet_constant!(:Variants) do
+            T.type_alias do
+              T.any(
+                Orb::Invoice::LineItem::SubLineItem::Matrix,
+                Orb::Invoice::LineItem::SubLineItem::Tier,
+                Orb::Invoice::LineItem::SubLineItem::Null
+              )
+            end
+          end
         end
 
         class TaxAmount < Orb::Internal::Type::BaseModel

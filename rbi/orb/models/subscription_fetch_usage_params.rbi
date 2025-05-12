@@ -6,7 +6,10 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Orb::SubscriptionFetchUsageParams, Orb::Internal::AnyHash)
+        end
 
       # When specified in conjunction with `group_by`, this parameter filters usage to a
       # single billable metric. Note that both `group_by` and `billable_metric_id` must

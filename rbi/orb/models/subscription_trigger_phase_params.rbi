@@ -6,7 +6,10 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Orb::Internal::AnyHash) }
+      OrHash =
+        T.type_alias do
+          T.any(Orb::SubscriptionTriggerPhaseParams, Orb::Internal::AnyHash)
+        end
 
       # If false, this request will fail if it would void an issued invoice or create a
       # credit note. Consider using this as a safety mechanism if you do not expect
