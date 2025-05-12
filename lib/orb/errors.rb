@@ -99,7 +99,7 @@ module Orb
       # @param response [nil]
       # @param message [String, nil]
       #
-      # @return [Orb::Errors::APIStatusError]
+      # @return [self]
       def self.for(url:, status:, body:, request:, response:, message: nil)
         key = Orb::Internal::Util.dig(body, :type)
         kwargs = {
