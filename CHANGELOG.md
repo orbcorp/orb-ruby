@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.4.0 (2025-05-13)
+
+Full Changelog: [v0.3.2...v0.4.0](https://github.com/orbcorp/orb-ruby/compare/v0.3.2...v0.4.0)
+
+### Features
+
+* expose base client options as read only attributes ([1f638b6](https://github.com/orbcorp/orb-ruby/commit/1f638b60ad1679bc7969f441650ba61fb9a65e8a))
+* expose recursive `#to_h` conversion ([cfd49a1](https://github.com/orbcorp/orb-ruby/commit/cfd49a15d805ffaa5828249c5b91565661ae7e52))
+* support sorbet aliases at the runtime ([786d1e3](https://github.com/orbcorp/orb-ruby/commit/786d1e3dd882054bd298e33a448a194f1d68bac4))
+
+
+### Bug Fixes
+
+* **internal:** update gemspec name ([852ab56](https://github.com/orbcorp/orb-ruby/commit/852ab562ee4948d3fe4de8dd877f9301f36c8a4b))
+
+
+### Chores
+
+* fix misc linting / minor issues ([0e7dd84](https://github.com/orbcorp/orb-ruby/commit/0e7dd846c906cc2e72827f5477a93e4799ab9482))
+* **internal:** version bump ([359839c](https://github.com/orbcorp/orb-ruby/commit/359839c734c4bcf8051490b1e8723674ef634753))
+
 ## 0.3.2 (2025-05-07)
 
 Full Changelog: [v0.3.1...v0.3.2](https://github.com/orbcorp/orb-ruby/compare/v0.3.1...v0.3.2)
