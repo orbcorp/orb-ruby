@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.5.0 (2025-05-14)
+
+Full Changelog: [v0.4.0...v0.5.0](https://github.com/orbcorp/orb-ruby/compare/v0.4.0...v0.5.0)
+
+### Features
+
+* bump default connection pool size limit to minimum of 99 ([79f9994](https://github.com/orbcorp/orb-ruby/commit/79f9994e2a77d786a7e1ffaa52c56916835b9b5f))
+
+
+### Chores
+
+* **internal:** version bump ([cfc1793](https://github.com/orbcorp/orb-ruby/commit/cfc17939f09ece0217ea7683991e509c30491e96))
+
+
+### Documentation
+
+* rewrite much of README.md for readability ([ac8a45d](https://github.com/orbcorp/orb-ruby/commit/ac8a45d8765183d41fbeaf23d1bd03c372908b45))
+
 ## 0.4.0 (2025-05-13)
 
 Full Changelog: [v0.3.2...v0.4.0](https://github.com/orbcorp/orb-ruby/compare/v0.3.2...v0.4.0)
