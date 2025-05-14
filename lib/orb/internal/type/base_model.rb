@@ -386,6 +386,14 @@ module Orb
         # @param keys [Array<Symbol>, nil]
         #
         # @return [Hash{Symbol=>Object}]
+        #
+        # @example
+        #   # `amount_discount` is a `Orb::AmountDiscount`
+        #   amount_discount => {
+        #     amount_discount: amount_discount,
+        #     applies_to_price_ids: applies_to_price_ids,
+        #     discount_type: discount_type
+        #   }
         def deconstruct_keys(keys)
           (keys || self.class.known_fields.keys)
             .filter_map do |k|
