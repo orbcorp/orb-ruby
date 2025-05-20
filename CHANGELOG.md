@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.5.2 (2025-05-20)
+
+Full Changelog: [v0.5.1...v0.5.2](https://github.com/orbcorp/orb-ruby/compare/v0.5.1...v0.5.2)
+
+### Bug Fixes
+
+* correctly instantiate sorbet type aliases for enums and unions ([fe6a29e](https://github.com/orbcorp/orb-ruby/commit/fe6a29e33ae5266fd130d703da02eec410a3902f))
+
+
+### Chores
+
+* **internal:** version bump ([b4afd0a](https://github.com/orbcorp/orb-ruby/commit/b4afd0af68ade8e7a53de012123bce96cedb8670))
+* use sorbet union aliases where available ([444add5](https://github.com/orbcorp/orb-ruby/commit/444add556f04ae705e8c918421419cf43df1b053))
+
 ## 0.5.1 (2025-05-20)
 
 Full Changelog: [v0.5.0...v0.5.1](https://github.com/orbcorp/orb-ruby/compare/v0.5.0...v0.5.1)
