@@ -110,6 +110,18 @@ module Orb
 
         # @api private
         #
+        # @return [Object]
+        def to_sorbet_type
+          case values
+          in []
+            T.noreturn
+          in [value, *_]
+            T.all(Orb::Internal::Util::SorbetRuntimeSupport.to_sorbet_type(value), self)
+          end
+        end
+
+        # @api private
+        #
         # @param depth [Integer]
         #
         # @return [String]

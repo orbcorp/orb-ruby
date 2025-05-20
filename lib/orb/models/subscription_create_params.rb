@@ -569,18 +569,6 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Orb::SubscriptionCreateParams::AddAdjustment::Adjustment::PercentageDiscount, Orb::SubscriptionCreateParams::AddAdjustment::Adjustment::UsageDiscount, Orb::SubscriptionCreateParams::AddAdjustment::Adjustment::AmountDiscount, Orb::SubscriptionCreateParams::AddAdjustment::Adjustment::Minimum, Orb::SubscriptionCreateParams::AddAdjustment::Adjustment::Maximum)]
-
-          define_sorbet_constant!(:Variants) do
-            T.type_alias do
-              T.any(
-                Orb::SubscriptionCreateParams::AddAdjustment::Adjustment::PercentageDiscount,
-                Orb::SubscriptionCreateParams::AddAdjustment::Adjustment::UsageDiscount,
-                Orb::SubscriptionCreateParams::AddAdjustment::Adjustment::AmountDiscount,
-                Orb::SubscriptionCreateParams::AddAdjustment::Adjustment::Minimum,
-                Orb::SubscriptionCreateParams::AddAdjustment::Adjustment::Maximum
-              )
-            end
-          end
         end
       end
 
@@ -7349,38 +7337,6 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Orb::SubscriptionCreateParams::AddPrice::Price::Unit, Orb::SubscriptionCreateParams::AddPrice::Price::Package, Orb::SubscriptionCreateParams::AddPrice::Price::Matrix, Orb::SubscriptionCreateParams::AddPrice::Price::Tiered, Orb::SubscriptionCreateParams::AddPrice::Price::TieredBps, Orb::SubscriptionCreateParams::AddPrice::Price::Bps, Orb::SubscriptionCreateParams::AddPrice::Price::BulkBps, Orb::SubscriptionCreateParams::AddPrice::Price::Bulk, Orb::SubscriptionCreateParams::AddPrice::Price::ThresholdTotalAmount, Orb::SubscriptionCreateParams::AddPrice::Price::TieredPackage, Orb::SubscriptionCreateParams::AddPrice::Price::TieredWithMinimum, Orb::SubscriptionCreateParams::AddPrice::Price::UnitWithPercent, Orb::SubscriptionCreateParams::AddPrice::Price::PackageWithAllocation, Orb::SubscriptionCreateParams::AddPrice::Price::TieredWithProration, Orb::SubscriptionCreateParams::AddPrice::Price::UnitWithProration, Orb::SubscriptionCreateParams::AddPrice::Price::GroupedAllocation, Orb::SubscriptionCreateParams::AddPrice::Price::GroupedWithProratedMinimum, Orb::SubscriptionCreateParams::AddPrice::Price::BulkWithProration, Orb::SubscriptionCreateParams::AddPrice::Price::ScalableMatrixWithUnitPricing, Orb::SubscriptionCreateParams::AddPrice::Price::ScalableMatrixWithTieredPricing, Orb::SubscriptionCreateParams::AddPrice::Price::CumulativeGroupedBulk, Orb::SubscriptionCreateParams::AddPrice::Price::MaxGroupTieredPackage, Orb::SubscriptionCreateParams::AddPrice::Price::GroupedWithMeteredMinimum, Orb::SubscriptionCreateParams::AddPrice::Price::MatrixWithDisplayName, Orb::SubscriptionCreateParams::AddPrice::Price::GroupedTieredPackage)]
-
-          define_sorbet_constant!(:Variants) do
-            T.type_alias do
-              T.any(
-                Orb::SubscriptionCreateParams::AddPrice::Price::Unit,
-                Orb::SubscriptionCreateParams::AddPrice::Price::Package,
-                Orb::SubscriptionCreateParams::AddPrice::Price::Matrix,
-                Orb::SubscriptionCreateParams::AddPrice::Price::Tiered,
-                Orb::SubscriptionCreateParams::AddPrice::Price::TieredBps,
-                Orb::SubscriptionCreateParams::AddPrice::Price::Bps,
-                Orb::SubscriptionCreateParams::AddPrice::Price::BulkBps,
-                Orb::SubscriptionCreateParams::AddPrice::Price::Bulk,
-                Orb::SubscriptionCreateParams::AddPrice::Price::ThresholdTotalAmount,
-                Orb::SubscriptionCreateParams::AddPrice::Price::TieredPackage,
-                Orb::SubscriptionCreateParams::AddPrice::Price::TieredWithMinimum,
-                Orb::SubscriptionCreateParams::AddPrice::Price::UnitWithPercent,
-                Orb::SubscriptionCreateParams::AddPrice::Price::PackageWithAllocation,
-                Orb::SubscriptionCreateParams::AddPrice::Price::TieredWithProration,
-                Orb::SubscriptionCreateParams::AddPrice::Price::UnitWithProration,
-                Orb::SubscriptionCreateParams::AddPrice::Price::GroupedAllocation,
-                Orb::SubscriptionCreateParams::AddPrice::Price::GroupedWithProratedMinimum,
-                Orb::SubscriptionCreateParams::AddPrice::Price::BulkWithProration,
-                Orb::SubscriptionCreateParams::AddPrice::Price::ScalableMatrixWithUnitPricing,
-                Orb::SubscriptionCreateParams::AddPrice::Price::ScalableMatrixWithTieredPricing,
-                Orb::SubscriptionCreateParams::AddPrice::Price::CumulativeGroupedBulk,
-                Orb::SubscriptionCreateParams::AddPrice::Price::MaxGroupTieredPackage,
-                Orb::SubscriptionCreateParams::AddPrice::Price::GroupedWithMeteredMinimum,
-                Orb::SubscriptionCreateParams::AddPrice::Price::MatrixWithDisplayName,
-                Orb::SubscriptionCreateParams::AddPrice::Price::GroupedTieredPackage
-              )
-            end
-          end
         end
       end
 
@@ -7702,18 +7658,6 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Orb::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::PercentageDiscount, Orb::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::UsageDiscount, Orb::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::AmountDiscount, Orb::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::Minimum, Orb::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::Maximum)]
-
-          define_sorbet_constant!(:Variants) do
-            T.type_alias do
-              T.any(
-                Orb::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::PercentageDiscount,
-                Orb::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::UsageDiscount,
-                Orb::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::AmountDiscount,
-                Orb::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::Minimum,
-                Orb::SubscriptionCreateParams::ReplaceAdjustment::Adjustment::Maximum
-              )
-            end
-          end
         end
       end
 
@@ -14500,38 +14444,6 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Orb::SubscriptionCreateParams::ReplacePrice::Price::Unit, Orb::SubscriptionCreateParams::ReplacePrice::Price::Package, Orb::SubscriptionCreateParams::ReplacePrice::Price::Matrix, Orb::SubscriptionCreateParams::ReplacePrice::Price::Tiered, Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredBps, Orb::SubscriptionCreateParams::ReplacePrice::Price::Bps, Orb::SubscriptionCreateParams::ReplacePrice::Price::BulkBps, Orb::SubscriptionCreateParams::ReplacePrice::Price::Bulk, Orb::SubscriptionCreateParams::ReplacePrice::Price::ThresholdTotalAmount, Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredPackage, Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredWithMinimum, Orb::SubscriptionCreateParams::ReplacePrice::Price::UnitWithPercent, Orb::SubscriptionCreateParams::ReplacePrice::Price::PackageWithAllocation, Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredWithProration, Orb::SubscriptionCreateParams::ReplacePrice::Price::UnitWithProration, Orb::SubscriptionCreateParams::ReplacePrice::Price::GroupedAllocation, Orb::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithProratedMinimum, Orb::SubscriptionCreateParams::ReplacePrice::Price::BulkWithProration, Orb::SubscriptionCreateParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing, Orb::SubscriptionCreateParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing, Orb::SubscriptionCreateParams::ReplacePrice::Price::CumulativeGroupedBulk, Orb::SubscriptionCreateParams::ReplacePrice::Price::MaxGroupTieredPackage, Orb::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithMeteredMinimum, Orb::SubscriptionCreateParams::ReplacePrice::Price::MatrixWithDisplayName, Orb::SubscriptionCreateParams::ReplacePrice::Price::GroupedTieredPackage)]
-
-          define_sorbet_constant!(:Variants) do
-            T.type_alias do
-              T.any(
-                Orb::SubscriptionCreateParams::ReplacePrice::Price::Unit,
-                Orb::SubscriptionCreateParams::ReplacePrice::Price::Package,
-                Orb::SubscriptionCreateParams::ReplacePrice::Price::Matrix,
-                Orb::SubscriptionCreateParams::ReplacePrice::Price::Tiered,
-                Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredBps,
-                Orb::SubscriptionCreateParams::ReplacePrice::Price::Bps,
-                Orb::SubscriptionCreateParams::ReplacePrice::Price::BulkBps,
-                Orb::SubscriptionCreateParams::ReplacePrice::Price::Bulk,
-                Orb::SubscriptionCreateParams::ReplacePrice::Price::ThresholdTotalAmount,
-                Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredPackage,
-                Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredWithMinimum,
-                Orb::SubscriptionCreateParams::ReplacePrice::Price::UnitWithPercent,
-                Orb::SubscriptionCreateParams::ReplacePrice::Price::PackageWithAllocation,
-                Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredWithProration,
-                Orb::SubscriptionCreateParams::ReplacePrice::Price::UnitWithProration,
-                Orb::SubscriptionCreateParams::ReplacePrice::Price::GroupedAllocation,
-                Orb::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithProratedMinimum,
-                Orb::SubscriptionCreateParams::ReplacePrice::Price::BulkWithProration,
-                Orb::SubscriptionCreateParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing,
-                Orb::SubscriptionCreateParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing,
-                Orb::SubscriptionCreateParams::ReplacePrice::Price::CumulativeGroupedBulk,
-                Orb::SubscriptionCreateParams::ReplacePrice::Price::MaxGroupTieredPackage,
-                Orb::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithMeteredMinimum,
-                Orb::SubscriptionCreateParams::ReplacePrice::Price::MatrixWithDisplayName,
-                Orb::SubscriptionCreateParams::ReplacePrice::Price::GroupedTieredPackage
-              )
-            end
-          end
         end
       end
     end

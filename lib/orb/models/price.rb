@@ -11016,41 +11016,6 @@ module Orb
 
       # @!method self.variants
       #   @return [Array(Orb::Price::Unit, Orb::Price::Package, Orb::Price::Matrix, Orb::Price::Tiered, Orb::Price::TieredBps, Orb::Price::Bps, Orb::Price::BulkBps, Orb::Price::Bulk, Orb::Price::ThresholdTotalAmount, Orb::Price::TieredPackage, Orb::Price::GroupedTiered, Orb::Price::TieredWithMinimum, Orb::Price::TieredPackageWithMinimum, Orb::Price::PackageWithAllocation, Orb::Price::UnitWithPercent, Orb::Price::MatrixWithAllocation, Orb::Price::TieredWithProration, Orb::Price::UnitWithProration, Orb::Price::GroupedAllocation, Orb::Price::GroupedWithProratedMinimum, Orb::Price::GroupedWithMeteredMinimum, Orb::Price::MatrixWithDisplayName, Orb::Price::BulkWithProration, Orb::Price::GroupedTieredPackage, Orb::Price::MaxGroupTieredPackage, Orb::Price::ScalableMatrixWithUnitPricing, Orb::Price::ScalableMatrixWithTieredPricing, Orb::Price::CumulativeGroupedBulk)]
-
-      define_sorbet_constant!(:Variants) do
-        T.type_alias do
-          T.any(
-            Orb::Price::Unit,
-            Orb::Price::Package,
-            Orb::Price::Matrix,
-            Orb::Price::Tiered,
-            Orb::Price::TieredBps,
-            Orb::Price::Bps,
-            Orb::Price::BulkBps,
-            Orb::Price::Bulk,
-            Orb::Price::ThresholdTotalAmount,
-            Orb::Price::TieredPackage,
-            Orb::Price::GroupedTiered,
-            Orb::Price::TieredWithMinimum,
-            Orb::Price::TieredPackageWithMinimum,
-            Orb::Price::PackageWithAllocation,
-            Orb::Price::UnitWithPercent,
-            Orb::Price::MatrixWithAllocation,
-            Orb::Price::TieredWithProration,
-            Orb::Price::UnitWithProration,
-            Orb::Price::GroupedAllocation,
-            Orb::Price::GroupedWithProratedMinimum,
-            Orb::Price::GroupedWithMeteredMinimum,
-            Orb::Price::MatrixWithDisplayName,
-            Orb::Price::BulkWithProration,
-            Orb::Price::GroupedTieredPackage,
-            Orb::Price::MaxGroupTieredPackage,
-            Orb::Price::ScalableMatrixWithUnitPricing,
-            Orb::Price::ScalableMatrixWithTieredPricing,
-            Orb::Price::CumulativeGroupedBulk
-          )
-        end
-      end
     end
   end
 end

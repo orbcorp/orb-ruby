@@ -653,18 +653,6 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Orb::Subscription::AdjustmentInterval::Adjustment::UsageDiscount, Orb::Subscription::AdjustmentInterval::Adjustment::AmountDiscount, Orb::Subscription::AdjustmentInterval::Adjustment::PercentageDiscount, Orb::Subscription::AdjustmentInterval::Adjustment::Minimum, Orb::Subscription::AdjustmentInterval::Adjustment::Maximum)]
-
-          define_sorbet_constant!(:Variants) do
-            T.type_alias do
-              T.any(
-                Orb::Subscription::AdjustmentInterval::Adjustment::UsageDiscount,
-                Orb::Subscription::AdjustmentInterval::Adjustment::AmountDiscount,
-                Orb::Subscription::AdjustmentInterval::Adjustment::PercentageDiscount,
-                Orb::Subscription::AdjustmentInterval::Adjustment::Minimum,
-                Orb::Subscription::AdjustmentInterval::Adjustment::Maximum
-              )
-            end
-          end
         end
       end
 
@@ -876,16 +864,6 @@ module Orb
 
         # @!method self.variants
         #   @return [Array(Orb::Subscription::DiscountInterval::Amount, Orb::Subscription::DiscountInterval::Percentage, Orb::Subscription::DiscountInterval::Usage)]
-
-        define_sorbet_constant!(:Variants) do
-          T.type_alias do
-            T.any(
-              Orb::Subscription::DiscountInterval::Amount,
-              Orb::Subscription::DiscountInterval::Percentage,
-              Orb::Subscription::DiscountInterval::Usage
-            )
-          end
-        end
       end
 
       class FixedFeeQuantitySchedule < Orb::Internal::Type::BaseModel

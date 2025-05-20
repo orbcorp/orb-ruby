@@ -12,6 +12,7 @@ module Orb
       # Array of items of a given type.
       class ArrayOf
         include Orb::Internal::Type::Converter
+        include Orb::Internal::Util::SorbetRuntimeSupport
 
         private_class_method :new
 
@@ -108,6 +109,13 @@ module Orb
           else
             super
           end
+        end
+
+        # @api private
+        #
+        # @return [Object]
+        def to_sorbet_type
+          T::Array[Orb::Internal::Util::SorbetRuntimeSupport.to_sorbet_type(item_type)]
         end
 
         # @api private

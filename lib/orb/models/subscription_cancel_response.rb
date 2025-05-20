@@ -650,18 +650,6 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::UsageDiscount, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::AmountDiscount, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PercentageDiscount, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::Minimum, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::Maximum)]
-
-          define_sorbet_constant!(:Variants) do
-            T.type_alias do
-              T.any(
-                Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::UsageDiscount,
-                Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::AmountDiscount,
-                Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PercentageDiscount,
-                Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::Minimum,
-                Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::Maximum
-              )
-            end
-          end
         end
       end
 
@@ -876,16 +864,6 @@ module Orb
 
         # @!method self.variants
         #   @return [Array(Orb::Models::SubscriptionCancelResponse::DiscountInterval::Amount, Orb::Models::SubscriptionCancelResponse::DiscountInterval::Percentage, Orb::Models::SubscriptionCancelResponse::DiscountInterval::Usage)]
-
-        define_sorbet_constant!(:Variants) do
-          T.type_alias do
-            T.any(
-              Orb::Models::SubscriptionCancelResponse::DiscountInterval::Amount,
-              Orb::Models::SubscriptionCancelResponse::DiscountInterval::Percentage,
-              Orb::Models::SubscriptionCancelResponse::DiscountInterval::Usage
-            )
-          end
-        end
       end
 
       class FixedFeeQuantitySchedule < Orb::Internal::Type::BaseModel
