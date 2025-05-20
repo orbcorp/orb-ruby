@@ -25,6 +25,7 @@ class Orb::Test::SorbetRuntimeSupportTest < Minitest::Test
     err = Orb::Internal::Util::SorbetRuntimeSupport::MissingSorbetRuntimeError
 
     assert_raises(err) { Orb::Internal::AnyHash }
+    assert_raises(err) { Orb::Internal::FileInput }
     assert_raises(err) { Orb::Internal::Type::Converter::Input }
     assert_raises(err) { Orb::Internal::Type::Converter::CoerceState }
     assert_raises(err) { Orb::Internal::Type::Converter::DumpState }

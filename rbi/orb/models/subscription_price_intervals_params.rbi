@@ -146,11 +146,7 @@ module Orb
 
         # The start date of the price interval. This is the date that the price will start
         # billing on the subscription.
-        sig do
-          returns(
-            Orb::SubscriptionPriceIntervalsParams::Add::StartDate::Variants
-          )
-        end
+        sig { returns(T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol)) }
         attr_accessor :start_date
 
         # The definition of a new allocation price to create and add to the subscription.
@@ -193,9 +189,7 @@ module Orb
         # billing on the subscription.
         sig do
           returns(
-            T.nilable(
-              Orb::SubscriptionPriceIntervalsParams::Add::EndDate::Variants
-            )
+            T.nilable(T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol))
           )
         end
         attr_accessor :end_date
@@ -287,8 +281,7 @@ module Orb
 
         sig do
           params(
-            start_date:
-              Orb::SubscriptionPriceIntervalsParams::Add::StartDate::Variants,
+            start_date: T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol),
             allocation_price:
               T.nilable(
                 Orb::SubscriptionPriceIntervalsParams::Add::AllocationPrice::OrHash
@@ -304,9 +297,7 @@ module Orb
                 ]
               ),
             end_date:
-              T.nilable(
-                Orb::SubscriptionPriceIntervalsParams::Add::EndDate::Variants
-              ),
+              T.nilable(T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol)),
             external_price_id: T.nilable(String),
             filter: T.nilable(String),
             fixed_fee_quantity_transitions:
@@ -397,8 +388,7 @@ module Orb
         sig do
           override.returns(
             {
-              start_date:
-                Orb::SubscriptionPriceIntervalsParams::Add::StartDate::Variants,
+              start_date: T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol),
               allocation_price:
                 T.nilable(
                   Orb::SubscriptionPriceIntervalsParams::Add::AllocationPrice
@@ -414,9 +404,7 @@ module Orb
                   ]
                 ),
               end_date:
-                T.nilable(
-                  Orb::SubscriptionPriceIntervalsParams::Add::EndDate::Variants
-                ),
+                T.nilable(T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol)),
               external_price_id: T.nilable(String),
               filter: T.nilable(String),
               fixed_fee_quantity_transitions:
@@ -13896,11 +13884,7 @@ module Orb
         # will start affecting prices on the subscription. The adjustment will apply to
         # invoice dates that overlap with this `start_date`. This `start_date` is treated
         # as inclusive for in-advance prices, and exclusive for in-arrears prices.
-        sig do
-          returns(
-            Orb::SubscriptionPriceIntervalsParams::AddAdjustment::StartDate::Variants
-          )
-        end
+        sig { returns(T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol)) }
         attr_accessor :start_date
 
         # The end date of the adjustment interval. This is the date that the adjustment
@@ -13909,9 +13893,7 @@ module Orb
         # exclusive for in-advance prices, and inclusive for in-arrears prices.
         sig do
           returns(
-            T.nilable(
-              Orb::SubscriptionPriceIntervalsParams::AddAdjustment::EndDate::Variants
-            )
+            T.nilable(T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol))
           )
         end
         attr_accessor :end_date
@@ -13926,12 +13908,9 @@ module Orb
                 Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::OrHash,
                 Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::OrHash
               ),
-            start_date:
-              Orb::SubscriptionPriceIntervalsParams::AddAdjustment::StartDate::Variants,
+            start_date: T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol),
             end_date:
-              T.nilable(
-                Orb::SubscriptionPriceIntervalsParams::AddAdjustment::EndDate::Variants
-              )
+              T.nilable(T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol))
           ).returns(T.attached_class)
         end
         def self.new(
@@ -13961,12 +13940,9 @@ module Orb
                   Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum,
                   Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum
                 ),
-              start_date:
-                Orb::SubscriptionPriceIntervalsParams::AddAdjustment::StartDate::Variants,
+              start_date: T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol),
               end_date:
-                T.nilable(
-                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::EndDate::Variants
-                )
+                T.nilable(T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol))
             }
           )
         end
@@ -14377,9 +14353,7 @@ module Orb
         # will not be updated.
         sig do
           returns(
-            T.nilable(
-              Orb::SubscriptionPriceIntervalsParams::Edit::EndDate::Variants
-            )
+            T.nilable(T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol))
           )
         end
         attr_accessor :end_date
@@ -14409,17 +14383,14 @@ module Orb
         # will not be updated.
         sig do
           returns(
-            T.nilable(
-              Orb::SubscriptionPriceIntervalsParams::Edit::StartDate::Variants
-            )
+            T.nilable(T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol))
           )
         end
         attr_reader :start_date
 
         sig do
           params(
-            start_date:
-              Orb::SubscriptionPriceIntervalsParams::Edit::StartDate::Variants
+            start_date: T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol)
           ).void
         end
         attr_writer :start_date
@@ -14438,9 +14409,7 @@ module Orb
             price_interval_id: String,
             billing_cycle_day: T.nilable(Integer),
             end_date:
-              T.nilable(
-                Orb::SubscriptionPriceIntervalsParams::Edit::EndDate::Variants
-              ),
+              T.nilable(T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol)),
             filter: T.nilable(String),
             fixed_fee_quantity_transitions:
               T.nilable(
@@ -14448,8 +14417,7 @@ module Orb
                   Orb::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition::OrHash
                 ]
               ),
-            start_date:
-              Orb::SubscriptionPriceIntervalsParams::Edit::StartDate::Variants,
+            start_date: T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol),
             usage_customer_ids: T.nilable(T::Array[String])
           ).returns(T.attached_class)
         end
@@ -14491,9 +14459,7 @@ module Orb
               price_interval_id: String,
               billing_cycle_day: T.nilable(Integer),
               end_date:
-                T.nilable(
-                  Orb::SubscriptionPriceIntervalsParams::Edit::EndDate::Variants
-                ),
+                T.nilable(T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol)),
               filter: T.nilable(String),
               fixed_fee_quantity_transitions:
                 T.nilable(
@@ -14501,8 +14467,7 @@ module Orb
                     Orb::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition
                   ]
                 ),
-              start_date:
-                Orb::SubscriptionPriceIntervalsParams::Edit::StartDate::Variants,
+              start_date: T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol),
               usage_customer_ids: T.nilable(T::Array[String])
             }
           )
@@ -14605,9 +14570,7 @@ module Orb
         # date will not be updated.
         sig do
           returns(
-            T.nilable(
-              Orb::SubscriptionPriceIntervalsParams::EditAdjustment::EndDate::Variants
-            )
+            T.nilable(T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol))
           )
         end
         attr_accessor :end_date
@@ -14616,17 +14579,14 @@ module Orb
         # date will not be updated.
         sig do
           returns(
-            T.nilable(
-              Orb::SubscriptionPriceIntervalsParams::EditAdjustment::StartDate::Variants
-            )
+            T.nilable(T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol))
           )
         end
         attr_reader :start_date
 
         sig do
           params(
-            start_date:
-              Orb::SubscriptionPriceIntervalsParams::EditAdjustment::StartDate::Variants
+            start_date: T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol)
           ).void
         end
         attr_writer :start_date
@@ -14635,11 +14595,8 @@ module Orb
           params(
             adjustment_interval_id: String,
             end_date:
-              T.nilable(
-                Orb::SubscriptionPriceIntervalsParams::EditAdjustment::EndDate::Variants
-              ),
-            start_date:
-              Orb::SubscriptionPriceIntervalsParams::EditAdjustment::StartDate::Variants
+              T.nilable(T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol)),
+            start_date: T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol)
           ).returns(T.attached_class)
         end
         def self.new(
@@ -14659,11 +14616,8 @@ module Orb
             {
               adjustment_interval_id: String,
               end_date:
-                T.nilable(
-                  Orb::SubscriptionPriceIntervalsParams::EditAdjustment::EndDate::Variants
-                ),
-              start_date:
-                Orb::SubscriptionPriceIntervalsParams::EditAdjustment::StartDate::Variants
+                T.nilable(T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol)),
+              start_date: T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol)
             }
           )
         end

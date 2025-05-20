@@ -14,7 +14,12 @@ module Orb
       # The new date that the trial should end, or the literal string `immediate` to end
       # the trial immediately.
       sig do
-        returns(Orb::SubscriptionUpdateTrialParams::TrialEndDate::Variants)
+        returns(
+          T.any(
+            Time,
+            Orb::SubscriptionUpdateTrialParams::TrialEndDate::OrSymbol
+          )
+        )
       end
       attr_accessor :trial_end_date
 
@@ -29,7 +34,10 @@ module Orb
       sig do
         params(
           trial_end_date:
-            Orb::SubscriptionUpdateTrialParams::TrialEndDate::Variants,
+            T.any(
+              Time,
+              Orb::SubscriptionUpdateTrialParams::TrialEndDate::OrSymbol
+            ),
           shift: T::Boolean,
           request_options: Orb::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -49,7 +57,10 @@ module Orb
         override.returns(
           {
             trial_end_date:
-              Orb::SubscriptionUpdateTrialParams::TrialEndDate::Variants,
+              T.any(
+                Time,
+                Orb::SubscriptionUpdateTrialParams::TrialEndDate::OrSymbol
+              ),
             shift: T::Boolean,
             request_options: Orb::RequestOptions
           }

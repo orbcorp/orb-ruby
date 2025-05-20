@@ -1479,7 +1479,10 @@ module Orb
         params(
           subscription_id: String,
           trial_end_date:
-            Orb::SubscriptionUpdateTrialParams::TrialEndDate::Variants,
+            T.any(
+              Time,
+              Orb::SubscriptionUpdateTrialParams::TrialEndDate::OrSymbol
+            ),
           shift: T::Boolean,
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Models::SubscriptionUpdateTrialResponse)
