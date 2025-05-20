@@ -654,18 +654,6 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval::Adjustment::UsageDiscount, Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval::Adjustment::AmountDiscount, Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval::Adjustment::PercentageDiscount, Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval::Adjustment::Minimum, Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval::Adjustment::Maximum)]
-
-          define_sorbet_constant!(:Variants) do
-            T.type_alias do
-              T.any(
-                Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval::Adjustment::UsageDiscount,
-                Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval::Adjustment::AmountDiscount,
-                Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval::Adjustment::PercentageDiscount,
-                Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval::Adjustment::Minimum,
-                Orb::Models::SubscriptionUpdateTrialResponse::AdjustmentInterval::Adjustment::Maximum
-              )
-            end
-          end
         end
       end
 
@@ -880,16 +868,6 @@ module Orb
 
         # @!method self.variants
         #   @return [Array(Orb::Models::SubscriptionUpdateTrialResponse::DiscountInterval::Amount, Orb::Models::SubscriptionUpdateTrialResponse::DiscountInterval::Percentage, Orb::Models::SubscriptionUpdateTrialResponse::DiscountInterval::Usage)]
-
-        define_sorbet_constant!(:Variants) do
-          T.type_alias do
-            T.any(
-              Orb::Models::SubscriptionUpdateTrialResponse::DiscountInterval::Amount,
-              Orb::Models::SubscriptionUpdateTrialResponse::DiscountInterval::Percentage,
-              Orb::Models::SubscriptionUpdateTrialResponse::DiscountInterval::Usage
-            )
-          end
-        end
       end
 
       class FixedFeeQuantitySchedule < Orb::Internal::Type::BaseModel

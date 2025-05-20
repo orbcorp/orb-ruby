@@ -84,10 +84,6 @@ module Orb
 
         # @!method self.variants
         #   @return [Array(Orb::PercentageDiscount, Orb::AmountDiscount)]
-
-        define_sorbet_constant!(:Variants) do
-          T.type_alias { T.any(Orb::PercentageDiscount, Orb::AmountDiscount) }
-        end
       end
     end
   end

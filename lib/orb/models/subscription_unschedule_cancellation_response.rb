@@ -656,18 +656,6 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::UsageDiscount, Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::AmountDiscount, Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::PercentageDiscount, Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::Minimum, Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::Maximum)]
-
-          define_sorbet_constant!(:Variants) do
-            T.type_alias do
-              T.any(
-                Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::UsageDiscount,
-                Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::AmountDiscount,
-                Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::PercentageDiscount,
-                Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::Minimum,
-                Orb::Models::SubscriptionUnscheduleCancellationResponse::AdjustmentInterval::Adjustment::Maximum
-              )
-            end
-          end
         end
       end
 
@@ -883,16 +871,6 @@ module Orb
 
         # @!method self.variants
         #   @return [Array(Orb::Models::SubscriptionUnscheduleCancellationResponse::DiscountInterval::Amount, Orb::Models::SubscriptionUnscheduleCancellationResponse::DiscountInterval::Percentage, Orb::Models::SubscriptionUnscheduleCancellationResponse::DiscountInterval::Usage)]
-
-        define_sorbet_constant!(:Variants) do
-          T.type_alias do
-            T.any(
-              Orb::Models::SubscriptionUnscheduleCancellationResponse::DiscountInterval::Amount,
-              Orb::Models::SubscriptionUnscheduleCancellationResponse::DiscountInterval::Percentage,
-              Orb::Models::SubscriptionUnscheduleCancellationResponse::DiscountInterval::Usage
-            )
-          end
-        end
       end
 
       class FixedFeeQuantitySchedule < Orb::Internal::Type::BaseModel

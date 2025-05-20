@@ -219,15 +219,6 @@ module Orb
 
       # @!method self.variants
       #   @return [Array(Orb::SubscriptionUsage::UngroupedSubscriptionUsage, Orb::SubscriptionUsage::GroupedSubscriptionUsage)]
-
-      define_sorbet_constant!(:Variants) do
-        T.type_alias do
-          T.any(
-            Orb::SubscriptionUsage::UngroupedSubscriptionUsage,
-            Orb::SubscriptionUsage::GroupedSubscriptionUsage
-          )
-        end
-      end
     end
   end
 end

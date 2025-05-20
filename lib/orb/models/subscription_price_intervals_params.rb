@@ -195,10 +195,6 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Time, Symbol, Orb::BillingCycleRelativeDate)]
-
-          define_sorbet_constant!(:Variants) do
-            T.type_alias { T.any(Time, Orb::BillingCycleRelativeDate::TaggedSymbol) }
-          end
         end
 
         # @see Orb::SubscriptionPriceIntervalsParams::Add#allocation_price
@@ -337,16 +333,6 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Orb::SubscriptionPriceIntervalsParams::Add::Discount::Amount, Orb::SubscriptionPriceIntervalsParams::Add::Discount::Percentage, Orb::SubscriptionPriceIntervalsParams::Add::Discount::Usage)]
-
-          define_sorbet_constant!(:Variants) do
-            T.type_alias do
-              T.any(
-                Orb::SubscriptionPriceIntervalsParams::Add::Discount::Amount,
-                Orb::SubscriptionPriceIntervalsParams::Add::Discount::Percentage,
-                Orb::SubscriptionPriceIntervalsParams::Add::Discount::Usage
-              )
-            end
-          end
         end
 
         # The end date of the price interval. This is the date that the price will stop
@@ -362,10 +348,6 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Time, Symbol, Orb::BillingCycleRelativeDate)]
-
-          define_sorbet_constant!(:Variants) do
-            T.type_alias { T.any(Time, Orb::BillingCycleRelativeDate::TaggedSymbol) }
-          end
         end
 
         class FixedFeeQuantityTransition < Orb::Internal::Type::BaseModel
@@ -7498,41 +7480,6 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Orb::SubscriptionPriceIntervalsParams::Add::Price::Unit, Orb::SubscriptionPriceIntervalsParams::Add::Price::Package, Orb::SubscriptionPriceIntervalsParams::Add::Price::Matrix, Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithAllocation, Orb::SubscriptionPriceIntervalsParams::Add::Price::Tiered, Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredBps, Orb::SubscriptionPriceIntervalsParams::Add::Price::Bps, Orb::SubscriptionPriceIntervalsParams::Add::Price::BulkBps, Orb::SubscriptionPriceIntervalsParams::Add::Price::Bulk, Orb::SubscriptionPriceIntervalsParams::Add::Price::ThresholdTotalAmount, Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredPackage, Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedTiered, Orb::SubscriptionPriceIntervalsParams::Add::Price::MaxGroupTieredPackage, Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredWithMinimum, Orb::SubscriptionPriceIntervalsParams::Add::Price::PackageWithAllocation, Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredPackageWithMinimum, Orb::SubscriptionPriceIntervalsParams::Add::Price::UnitWithPercent, Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredWithProration, Orb::SubscriptionPriceIntervalsParams::Add::Price::UnitWithProration, Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedAllocation, Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithProratedMinimum, Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMeteredMinimum, Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithDisplayName, Orb::SubscriptionPriceIntervalsParams::Add::Price::BulkWithProration, Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedTieredPackage, Orb::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithUnitPricing, Orb::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithTieredPricing, Orb::SubscriptionPriceIntervalsParams::Add::Price::CumulativeGroupedBulk)]
-
-          define_sorbet_constant!(:Variants) do
-            T.type_alias do
-              T.any(
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::Unit,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::Package,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::Matrix,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithAllocation,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::Tiered,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredBps,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::Bps,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::BulkBps,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::Bulk,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::ThresholdTotalAmount,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredPackage,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedTiered,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::MaxGroupTieredPackage,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredWithMinimum,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::PackageWithAllocation,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredPackageWithMinimum,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::UnitWithPercent,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredWithProration,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::UnitWithProration,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedAllocation,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithProratedMinimum,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMeteredMinimum,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithDisplayName,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::BulkWithProration,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedTieredPackage,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithUnitPricing,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithTieredPricing,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::CumulativeGroupedBulk
-              )
-            end
-          end
         end
       end
 
@@ -7794,18 +7741,6 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount, Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount, Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount, Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum, Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum)]
-
-          define_sorbet_constant!(:Variants) do
-            T.type_alias do
-              T.any(
-                Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount,
-                Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount,
-                Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount,
-                Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum,
-                Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum
-              )
-            end
-          end
         end
 
         # The start date of the adjustment interval. This is the date that the adjustment
@@ -7823,10 +7758,6 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Time, Symbol, Orb::BillingCycleRelativeDate)]
-
-          define_sorbet_constant!(:Variants) do
-            T.type_alias { T.any(Time, Orb::BillingCycleRelativeDate::TaggedSymbol) }
-          end
         end
 
         # The end date of the adjustment interval. This is the date that the adjustment
@@ -7844,10 +7775,6 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Time, Symbol, Orb::BillingCycleRelativeDate)]
-
-          define_sorbet_constant!(:Variants) do
-            T.type_alias { T.any(Time, Orb::BillingCycleRelativeDate::TaggedSymbol) }
-          end
         end
       end
 
@@ -7943,10 +7870,6 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Time, Symbol, Orb::BillingCycleRelativeDate)]
-
-          define_sorbet_constant!(:Variants) do
-            T.type_alias { T.any(Time, Orb::BillingCycleRelativeDate::TaggedSymbol) }
-          end
         end
 
         class FixedFeeQuantityTransition < Orb::Internal::Type::BaseModel
@@ -7981,10 +7904,6 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Time, Symbol, Orb::BillingCycleRelativeDate)]
-
-          define_sorbet_constant!(:Variants) do
-            T.type_alias { T.any(Time, Orb::BillingCycleRelativeDate::TaggedSymbol) }
-          end
         end
       end
 
@@ -8034,10 +7953,6 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Time, Symbol, Orb::BillingCycleRelativeDate)]
-
-          define_sorbet_constant!(:Variants) do
-            T.type_alias { T.any(Time, Orb::BillingCycleRelativeDate::TaggedSymbol) }
-          end
         end
 
         # The updated start date of this adjustment interval. If not specified, the start
@@ -8053,10 +7968,6 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Time, Symbol, Orb::BillingCycleRelativeDate)]
-
-          define_sorbet_constant!(:Variants) do
-            T.type_alias { T.any(Time, Orb::BillingCycleRelativeDate::TaggedSymbol) }
-          end
         end
       end
     end
