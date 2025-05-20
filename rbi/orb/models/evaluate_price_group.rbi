@@ -11,7 +11,9 @@ module Orb
       attr_accessor :amount
 
       # The values for the group in the order specified by `grouping_keys`
-      sig { returns(T::Array[T.any(String, Float, T::Boolean)]) }
+      sig do
+        returns(T::Array[Orb::EvaluatePriceGroup::GroupingValue::Variants])
+      end
       attr_accessor :grouping_values
 
       # The price's usage quantity for the group
@@ -21,7 +23,8 @@ module Orb
       sig do
         params(
           amount: String,
-          grouping_values: T::Array[T.any(String, Float, T::Boolean)],
+          grouping_values:
+            T::Array[Orb::EvaluatePriceGroup::GroupingValue::Variants],
           quantity: Float
         ).returns(T.attached_class)
       end
@@ -39,7 +42,8 @@ module Orb
         override.returns(
           {
             amount: String,
-            grouping_values: T::Array[T.any(String, Float, T::Boolean)],
+            grouping_values:
+              T::Array[Orb::EvaluatePriceGroup::GroupingValue::Variants],
             quantity: Float
           }
         )

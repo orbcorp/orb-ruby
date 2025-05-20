@@ -171,17 +171,7 @@ module Orb
       sig { returns(T.anything) }
       attr_accessor :discount
 
-      sig do
-        returns(
-          T::Array[
-            T.any(
-              Orb::PercentageDiscount,
-              Orb::AmountDiscount,
-              Orb::TrialDiscount
-            )
-          ]
-        )
-      end
+      sig { returns(T::Array[Orb::InvoiceLevelDiscount::Variants]) }
       attr_accessor :discounts
 
       # When the invoice payment is due. The due date is null if the invoice is not yet
@@ -602,14 +592,7 @@ module Orb
               T::Array[Orb::Invoice::CustomerBalanceTransaction],
             customer_tax_id: T.nilable(Orb::Invoice::CustomerTaxID),
             discount: T.anything,
-            discounts:
-              T::Array[
-                T.any(
-                  Orb::PercentageDiscount,
-                  Orb::AmountDiscount,
-                  Orb::TrialDiscount
-                )
-              ],
+            discounts: T::Array[Orb::InvoiceLevelDiscount::Variants],
             due_date: T.nilable(Time),
             eligible_to_issue_at: T.nilable(Time),
             hosted_invoice_url: T.nilable(String),
@@ -1586,19 +1569,7 @@ module Orb
         # All adjustments applied to the line item in the order they were applied based on
         # invoice calculations (ie. usage discounts -> amount discounts -> percentage
         # discounts -> minimums -> maximums).
-        sig do
-          returns(
-            T::Array[
-              T.any(
-                Orb::Invoice::LineItem::Adjustment::UsageDiscount,
-                Orb::Invoice::LineItem::Adjustment::AmountDiscount,
-                Orb::Invoice::LineItem::Adjustment::PercentageDiscount,
-                Orb::Invoice::LineItem::Adjustment::Minimum,
-                Orb::Invoice::LineItem::Adjustment::Maximum
-              )
-            ]
-          )
-        end
+        sig { returns(T::Array[Orb::Invoice::LineItem::Adjustment::Variants]) }
         attr_accessor :adjustments
 
         # The final amount for a line item after all adjustments and pre paid credits have
@@ -1610,18 +1581,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :credits_applied
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         # The end date of the range of time applied for this line item's price.
@@ -1686,42 +1646,7 @@ module Orb
         #
         # For more on the types of prices, see
         # [the core concepts documentation](/core-concepts#plan-and-price)
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::Price::Unit,
-                Orb::Price::Package,
-                Orb::Price::Matrix,
-                Orb::Price::Tiered,
-                Orb::Price::TieredBps,
-                Orb::Price::Bps,
-                Orb::Price::BulkBps,
-                Orb::Price::Bulk,
-                Orb::Price::ThresholdTotalAmount,
-                Orb::Price::TieredPackage,
-                Orb::Price::GroupedTiered,
-                Orb::Price::TieredWithMinimum,
-                Orb::Price::TieredPackageWithMinimum,
-                Orb::Price::PackageWithAllocation,
-                Orb::Price::UnitWithPercent,
-                Orb::Price::MatrixWithAllocation,
-                Orb::Price::TieredWithProration,
-                Orb::Price::UnitWithProration,
-                Orb::Price::GroupedAllocation,
-                Orb::Price::GroupedWithProratedMinimum,
-                Orb::Price::GroupedWithMeteredMinimum,
-                Orb::Price::MatrixWithDisplayName,
-                Orb::Price::BulkWithProration,
-                Orb::Price::GroupedTieredPackage,
-                Orb::Price::MaxGroupTieredPackage,
-                Orb::Price::ScalableMatrixWithUnitPricing,
-                Orb::Price::ScalableMatrixWithTieredPricing,
-                Orb::Price::CumulativeGroupedBulk
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Price::Variants)) }
         attr_accessor :price
 
         # Either the fixed fee quantity or the usage during the service period.
@@ -1734,17 +1659,7 @@ module Orb
 
         # For complex pricing structures, the line item can be broken down further in
         # `sub_line_items`.
-        sig do
-          returns(
-            T::Array[
-              T.any(
-                Orb::Invoice::LineItem::SubLineItem::Matrix,
-                Orb::Invoice::LineItem::SubLineItem::Tier,
-                Orb::Invoice::LineItem::SubLineItem::Null
-              )
-            ]
-          )
-        end
+        sig { returns(T::Array[Orb::Invoice::LineItem::SubLineItem::Variants]) }
         attr_accessor :sub_line_items
 
         # The line amount before before any adjustments.
@@ -1912,26 +1827,10 @@ module Orb
               id: String,
               adjusted_subtotal: String,
               adjustments:
-                T::Array[
-                  T.any(
-                    Orb::Invoice::LineItem::Adjustment::UsageDiscount,
-                    Orb::Invoice::LineItem::Adjustment::AmountDiscount,
-                    Orb::Invoice::LineItem::Adjustment::PercentageDiscount,
-                    Orb::Invoice::LineItem::Adjustment::Minimum,
-                    Orb::Invoice::LineItem::Adjustment::Maximum
-                  )
-                ],
+                T::Array[Orb::Invoice::LineItem::Adjustment::Variants],
               amount: String,
               credits_applied: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               end_date: Time,
               filter: T.nilable(String),
               grouping: T.nilable(String),
@@ -1941,49 +1840,11 @@ module Orb
               minimum_amount: T.nilable(String),
               name: String,
               partially_invoiced_amount: String,
-              price:
-                T.nilable(
-                  T.any(
-                    Orb::Price::Unit,
-                    Orb::Price::Package,
-                    Orb::Price::Matrix,
-                    Orb::Price::Tiered,
-                    Orb::Price::TieredBps,
-                    Orb::Price::Bps,
-                    Orb::Price::BulkBps,
-                    Orb::Price::Bulk,
-                    Orb::Price::ThresholdTotalAmount,
-                    Orb::Price::TieredPackage,
-                    Orb::Price::GroupedTiered,
-                    Orb::Price::TieredWithMinimum,
-                    Orb::Price::TieredPackageWithMinimum,
-                    Orb::Price::PackageWithAllocation,
-                    Orb::Price::UnitWithPercent,
-                    Orb::Price::MatrixWithAllocation,
-                    Orb::Price::TieredWithProration,
-                    Orb::Price::UnitWithProration,
-                    Orb::Price::GroupedAllocation,
-                    Orb::Price::GroupedWithProratedMinimum,
-                    Orb::Price::GroupedWithMeteredMinimum,
-                    Orb::Price::MatrixWithDisplayName,
-                    Orb::Price::BulkWithProration,
-                    Orb::Price::GroupedTieredPackage,
-                    Orb::Price::MaxGroupTieredPackage,
-                    Orb::Price::ScalableMatrixWithUnitPricing,
-                    Orb::Price::ScalableMatrixWithTieredPricing,
-                    Orb::Price::CumulativeGroupedBulk
-                  )
-                ),
+              price: T.nilable(Orb::Price::Variants),
               quantity: Float,
               start_date: Time,
               sub_line_items:
-                T::Array[
-                  T.any(
-                    Orb::Invoice::LineItem::SubLineItem::Matrix,
-                    Orb::Invoice::LineItem::SubLineItem::Tier,
-                    Orb::Invoice::LineItem::SubLineItem::Null
-                  )
-                ],
+                T::Array[Orb::Invoice::LineItem::SubLineItem::Variants],
               subtotal: String,
               tax_amounts: T::Array[Orb::Invoice::LineItem::TaxAmount],
               usage_customer_ids: T.nilable(T::Array[String])

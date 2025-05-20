@@ -10,19 +10,7 @@ module Orb
 
       # Adjustments for this plan. If the plan has phases, this includes adjustments
       # across all phases of the plan.
-      sig do
-        returns(
-          T::Array[
-            T.any(
-              Orb::Plan::Adjustment::UsageDiscount,
-              Orb::Plan::Adjustment::AmountDiscount,
-              Orb::Plan::Adjustment::PercentageDiscount,
-              Orb::Plan::Adjustment::Minimum,
-              Orb::Plan::Adjustment::Maximum
-            )
-          ]
-        )
-      end
+      sig { returns(T::Array[Orb::Plan::Adjustment::Variants]) }
       attr_accessor :adjustments
 
       sig { returns(T.nilable(Orb::Plan::BasePlan)) }
@@ -52,18 +40,7 @@ module Orb
       sig { returns(String) }
       attr_accessor :description
 
-      sig do
-        returns(
-          T.nilable(
-            T.any(
-              Orb::PercentageDiscount,
-              Orb::TrialDiscount,
-              Orb::UsageDiscount,
-              Orb::AmountDiscount
-            )
-          )
-        )
-      end
+      sig { returns(T.nilable(Orb::Discount::Variants)) }
       attr_accessor :discount
 
       # An optional user-defined ID for this plan resource, used throughout the system
@@ -118,42 +95,7 @@ module Orb
 
       # Prices for this plan. If the plan has phases, this includes prices across all
       # phases of the plan.
-      sig do
-        returns(
-          T::Array[
-            T.any(
-              Orb::Price::Unit,
-              Orb::Price::Package,
-              Orb::Price::Matrix,
-              Orb::Price::Tiered,
-              Orb::Price::TieredBps,
-              Orb::Price::Bps,
-              Orb::Price::BulkBps,
-              Orb::Price::Bulk,
-              Orb::Price::ThresholdTotalAmount,
-              Orb::Price::TieredPackage,
-              Orb::Price::GroupedTiered,
-              Orb::Price::TieredWithMinimum,
-              Orb::Price::TieredPackageWithMinimum,
-              Orb::Price::PackageWithAllocation,
-              Orb::Price::UnitWithPercent,
-              Orb::Price::MatrixWithAllocation,
-              Orb::Price::TieredWithProration,
-              Orb::Price::UnitWithProration,
-              Orb::Price::GroupedAllocation,
-              Orb::Price::GroupedWithProratedMinimum,
-              Orb::Price::GroupedWithMeteredMinimum,
-              Orb::Price::MatrixWithDisplayName,
-              Orb::Price::BulkWithProration,
-              Orb::Price::GroupedTieredPackage,
-              Orb::Price::MaxGroupTieredPackage,
-              Orb::Price::ScalableMatrixWithUnitPricing,
-              Orb::Price::ScalableMatrixWithTieredPricing,
-              Orb::Price::CumulativeGroupedBulk
-            )
-          ]
-        )
-      end
+      sig { returns(T::Array[Orb::Price::Variants]) }
       attr_accessor :prices
 
       sig { returns(Orb::Plan::Product) }
@@ -311,31 +253,14 @@ module Orb
         override.returns(
           {
             id: String,
-            adjustments:
-              T::Array[
-                T.any(
-                  Orb::Plan::Adjustment::UsageDiscount,
-                  Orb::Plan::Adjustment::AmountDiscount,
-                  Orb::Plan::Adjustment::PercentageDiscount,
-                  Orb::Plan::Adjustment::Minimum,
-                  Orb::Plan::Adjustment::Maximum
-                )
-              ],
+            adjustments: T::Array[Orb::Plan::Adjustment::Variants],
             base_plan: T.nilable(Orb::Plan::BasePlan),
             base_plan_id: T.nilable(String),
             created_at: Time,
             currency: String,
             default_invoice_memo: T.nilable(String),
             description: String,
-            discount:
-              T.nilable(
-                T.any(
-                  Orb::PercentageDiscount,
-                  Orb::TrialDiscount,
-                  Orb::UsageDiscount,
-                  Orb::AmountDiscount
-                )
-              ),
+            discount: T.nilable(Orb::Discount::Variants),
             external_plan_id: T.nilable(String),
             invoicing_currency: String,
             maximum: T.nilable(Orb::Plan::Maximum),
@@ -346,39 +271,7 @@ module Orb
             name: String,
             net_terms: T.nilable(Integer),
             plan_phases: T.nilable(T::Array[Orb::Plan::PlanPhase]),
-            prices:
-              T::Array[
-                T.any(
-                  Orb::Price::Unit,
-                  Orb::Price::Package,
-                  Orb::Price::Matrix,
-                  Orb::Price::Tiered,
-                  Orb::Price::TieredBps,
-                  Orb::Price::Bps,
-                  Orb::Price::BulkBps,
-                  Orb::Price::Bulk,
-                  Orb::Price::ThresholdTotalAmount,
-                  Orb::Price::TieredPackage,
-                  Orb::Price::GroupedTiered,
-                  Orb::Price::TieredWithMinimum,
-                  Orb::Price::TieredPackageWithMinimum,
-                  Orb::Price::PackageWithAllocation,
-                  Orb::Price::UnitWithPercent,
-                  Orb::Price::MatrixWithAllocation,
-                  Orb::Price::TieredWithProration,
-                  Orb::Price::UnitWithProration,
-                  Orb::Price::GroupedAllocation,
-                  Orb::Price::GroupedWithProratedMinimum,
-                  Orb::Price::GroupedWithMeteredMinimum,
-                  Orb::Price::MatrixWithDisplayName,
-                  Orb::Price::BulkWithProration,
-                  Orb::Price::GroupedTieredPackage,
-                  Orb::Price::MaxGroupTieredPackage,
-                  Orb::Price::ScalableMatrixWithUnitPricing,
-                  Orb::Price::ScalableMatrixWithTieredPricing,
-                  Orb::Price::CumulativeGroupedBulk
-                )
-              ],
+            prices: T::Array[Orb::Price::Variants],
             product: Orb::Plan::Product,
             status: Orb::Plan::Status::TaggedSymbol,
             trial_config: Orb::Plan::TrialConfig,
@@ -955,18 +848,7 @@ module Orb
         sig { returns(T.nilable(String)) }
         attr_accessor :description
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         # How many terms of length `duration_unit` this phase is active for. If null, this
@@ -1055,15 +937,7 @@ module Orb
             {
               id: String,
               description: T.nilable(String),
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               duration: T.nilable(Integer),
               duration_unit:
                 T.nilable(Orb::Plan::PlanPhase::DurationUnit::TaggedSymbol),
