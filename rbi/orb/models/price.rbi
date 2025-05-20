@@ -100,18 +100,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :currency
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         sig { returns(T.nilable(String)) }
@@ -286,15 +275,7 @@ module Orb
               created_at: Time,
               credit_allocation: T.nilable(Orb::Price::Unit::CreditAllocation),
               currency: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               invoicing_cycle_configuration:
@@ -768,18 +749,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :currency
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         sig { returns(T.nilable(String)) }
@@ -965,15 +935,7 @@ module Orb
               credit_allocation:
                 T.nilable(Orb::Price::Package::CreditAllocation),
               currency: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               invoicing_cycle_configuration:
@@ -1468,18 +1430,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :currency
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         sig { returns(T.nilable(String)) }
@@ -1661,15 +1612,7 @@ module Orb
               credit_allocation:
                 T.nilable(Orb::Price::Matrix::CreditAllocation),
               currency: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               invoicing_cycle_configuration:
@@ -2226,18 +2169,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :currency
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         sig { returns(T.nilable(String)) }
@@ -2419,15 +2351,7 @@ module Orb
               credit_allocation:
                 T.nilable(Orb::Price::Tiered::CreditAllocation),
               currency: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               invoicing_cycle_configuration:
@@ -2966,18 +2890,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :currency
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         sig { returns(T.nilable(String)) }
@@ -3169,15 +3082,7 @@ module Orb
               credit_allocation:
                 T.nilable(Orb::Price::TieredBps::CreditAllocation),
               currency: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               invoicing_cycle_configuration:
@@ -3741,18 +3646,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :currency
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         sig { returns(T.nilable(String)) }
@@ -3917,15 +3811,7 @@ module Orb
               created_at: Time,
               credit_allocation: T.nilable(Orb::Price::Bps::CreditAllocation),
               currency: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               invoicing_cycle_configuration:
@@ -4420,18 +4306,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :currency
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         sig { returns(T.nilable(String)) }
@@ -4608,15 +4483,7 @@ module Orb
               credit_allocation:
                 T.nilable(Orb::Price::BulkBps::CreditAllocation),
               currency: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               invoicing_cycle_configuration:
@@ -5162,18 +5029,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :currency
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         sig { returns(T.nilable(String)) }
@@ -5343,15 +5199,7 @@ module Orb
               created_at: Time,
               credit_allocation: T.nilable(Orb::Price::Bulk::CreditAllocation),
               currency: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               invoicing_cycle_configuration:
@@ -5884,18 +5732,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :currency
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         sig { returns(T.nilable(String)) }
@@ -6099,15 +5936,7 @@ module Orb
               credit_allocation:
                 T.nilable(Orb::Price::ThresholdTotalAmount::CreditAllocation),
               currency: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               invoicing_cycle_configuration:
@@ -6618,18 +6447,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :currency
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         sig { returns(T.nilable(String)) }
@@ -6817,15 +6635,7 @@ module Orb
               credit_allocation:
                 T.nilable(Orb::Price::TieredPackage::CreditAllocation),
               currency: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               invoicing_cycle_configuration:
@@ -7305,18 +7115,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :currency
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         sig { returns(T.nilable(String)) }
@@ -7504,15 +7303,7 @@ module Orb
               credit_allocation:
                 T.nilable(Orb::Price::GroupedTiered::CreditAllocation),
               currency: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               grouped_tiered_config: T::Hash[Symbol, T.anything],
@@ -7998,18 +7789,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :currency
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         sig { returns(T.nilable(String)) }
@@ -8203,15 +7983,7 @@ module Orb
               credit_allocation:
                 T.nilable(Orb::Price::TieredWithMinimum::CreditAllocation),
               currency: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               invoicing_cycle_configuration:
@@ -8729,18 +8501,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :currency
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         sig { returns(T.nilable(String)) }
@@ -8952,15 +8713,7 @@ module Orb
                   Orb::Price::TieredPackageWithMinimum::CreditAllocation
                 ),
               currency: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               invoicing_cycle_configuration:
@@ -9487,18 +9240,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :currency
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         sig { returns(T.nilable(String)) }
@@ -9702,15 +9444,7 @@ module Orb
               credit_allocation:
                 T.nilable(Orb::Price::PackageWithAllocation::CreditAllocation),
               currency: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               invoicing_cycle_configuration:
@@ -10223,18 +9957,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :currency
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         sig { returns(T.nilable(String)) }
@@ -10424,15 +10147,7 @@ module Orb
               credit_allocation:
                 T.nilable(Orb::Price::UnitWithPercent::CreditAllocation),
               currency: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               invoicing_cycle_configuration:
@@ -10933,18 +10648,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :currency
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         sig { returns(T.nilable(String)) }
@@ -11159,15 +10863,7 @@ module Orb
               credit_allocation:
                 T.nilable(Orb::Price::MatrixWithAllocation::CreditAllocation),
               currency: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               invoicing_cycle_configuration:
@@ -11805,18 +11501,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :currency
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         sig { returns(T.nilable(String)) }
@@ -12016,15 +11701,7 @@ module Orb
               credit_allocation:
                 T.nilable(Orb::Price::TieredWithProration::CreditAllocation),
               currency: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               invoicing_cycle_configuration:
@@ -12539,18 +12216,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :currency
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         sig { returns(T.nilable(String)) }
@@ -12744,15 +12410,7 @@ module Orb
               credit_allocation:
                 T.nilable(Orb::Price::UnitWithProration::CreditAllocation),
               currency: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               invoicing_cycle_configuration:
@@ -13258,18 +12916,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :currency
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         sig { returns(T.nilable(String)) }
@@ -13463,15 +13110,7 @@ module Orb
               credit_allocation:
                 T.nilable(Orb::Price::GroupedAllocation::CreditAllocation),
               currency: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               grouped_allocation_config: T::Hash[Symbol, T.anything],
@@ -13992,18 +13631,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :currency
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         sig { returns(T.nilable(String)) }
@@ -14225,15 +13853,7 @@ module Orb
                   Orb::Price::GroupedWithProratedMinimum::CreditAllocation
                 ),
               currency: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               grouped_with_prorated_minimum_config: T::Hash[Symbol, T.anything],
@@ -14766,18 +14386,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :currency
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         sig { returns(T.nilable(String)) }
@@ -14993,15 +14602,7 @@ module Orb
                   Orb::Price::GroupedWithMeteredMinimum::CreditAllocation
                 ),
               currency: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               grouped_with_metered_minimum_config: T::Hash[Symbol, T.anything],
@@ -15530,18 +15131,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :currency
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         sig { returns(T.nilable(String)) }
@@ -15745,15 +15335,7 @@ module Orb
               credit_allocation:
                 T.nilable(Orb::Price::MatrixWithDisplayName::CreditAllocation),
               currency: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               invoicing_cycle_configuration:
@@ -16273,18 +15855,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :currency
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         sig { returns(T.nilable(String)) }
@@ -16476,15 +16047,7 @@ module Orb
               credit_allocation:
                 T.nilable(Orb::Price::BulkWithProration::CreditAllocation),
               currency: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               invoicing_cycle_configuration:
@@ -16993,18 +16556,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :currency
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         sig { returns(T.nilable(String)) }
@@ -17208,15 +16760,7 @@ module Orb
               credit_allocation:
                 T.nilable(Orb::Price::GroupedTieredPackage::CreditAllocation),
               currency: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               grouped_tiered_package_config: T::Hash[Symbol, T.anything],
@@ -17741,18 +17285,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :currency
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         sig { returns(T.nilable(String)) }
@@ -17956,15 +17489,7 @@ module Orb
               credit_allocation:
                 T.nilable(Orb::Price::MaxGroupTieredPackage::CreditAllocation),
               currency: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               invoicing_cycle_configuration:
@@ -18500,18 +18025,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :currency
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         sig { returns(T.nilable(String)) }
@@ -18739,15 +18253,7 @@ module Orb
                   Orb::Price::ScalableMatrixWithUnitPricing::CreditAllocation
                 ),
               currency: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               invoicing_cycle_configuration:
@@ -19293,18 +18799,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :currency
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         sig { returns(T.nilable(String)) }
@@ -19536,15 +19031,7 @@ module Orb
                   Orb::Price::ScalableMatrixWithTieredPricing::CreditAllocation
                 ),
               currency: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               invoicing_cycle_configuration:
@@ -20083,18 +19570,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :currency
 
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount,
-                Orb::TrialDiscount,
-                Orb::UsageDiscount,
-                Orb::AmountDiscount
-              )
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
         sig { returns(T.nilable(String)) }
@@ -20296,15 +19772,7 @@ module Orb
                 T.nilable(Orb::Price::CumulativeGroupedBulk::CreditAllocation),
               cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
               currency: String,
-              discount:
-                T.nilable(
-                  T.any(
-                    Orb::PercentageDiscount,
-                    Orb::TrialDiscount,
-                    Orb::UsageDiscount,
-                    Orb::AmountDiscount
-                  )
-                ),
+              discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               invoicing_cycle_configuration:

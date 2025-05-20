@@ -26,13 +26,7 @@ module Orb
       sig do
         returns(
           T::Array[
-            T.any(
-              Orb::Models::InvoiceLineItemCreateResponse::Adjustment::UsageDiscount,
-              Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscount,
-              Orb::Models::InvoiceLineItemCreateResponse::Adjustment::PercentageDiscount,
-              Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Minimum,
-              Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Maximum
-            )
+            Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Variants
           ]
         )
       end
@@ -47,18 +41,7 @@ module Orb
       sig { returns(String) }
       attr_accessor :credits_applied
 
-      sig do
-        returns(
-          T.nilable(
-            T.any(
-              Orb::PercentageDiscount,
-              Orb::TrialDiscount,
-              Orb::UsageDiscount,
-              Orb::AmountDiscount
-            )
-          )
-        )
-      end
+      sig { returns(T.nilable(Orb::Discount::Variants)) }
       attr_accessor :discount
 
       # The end date of the range of time applied for this line item's price.
@@ -133,42 +116,7 @@ module Orb
       #
       # For more on the types of prices, see
       # [the core concepts documentation](/core-concepts#plan-and-price)
-      sig do
-        returns(
-          T.nilable(
-            T.any(
-              Orb::Price::Unit,
-              Orb::Price::Package,
-              Orb::Price::Matrix,
-              Orb::Price::Tiered,
-              Orb::Price::TieredBps,
-              Orb::Price::Bps,
-              Orb::Price::BulkBps,
-              Orb::Price::Bulk,
-              Orb::Price::ThresholdTotalAmount,
-              Orb::Price::TieredPackage,
-              Orb::Price::GroupedTiered,
-              Orb::Price::TieredWithMinimum,
-              Orb::Price::TieredPackageWithMinimum,
-              Orb::Price::PackageWithAllocation,
-              Orb::Price::UnitWithPercent,
-              Orb::Price::MatrixWithAllocation,
-              Orb::Price::TieredWithProration,
-              Orb::Price::UnitWithProration,
-              Orb::Price::GroupedAllocation,
-              Orb::Price::GroupedWithProratedMinimum,
-              Orb::Price::GroupedWithMeteredMinimum,
-              Orb::Price::MatrixWithDisplayName,
-              Orb::Price::BulkWithProration,
-              Orb::Price::GroupedTieredPackage,
-              Orb::Price::MaxGroupTieredPackage,
-              Orb::Price::ScalableMatrixWithUnitPricing,
-              Orb::Price::ScalableMatrixWithTieredPricing,
-              Orb::Price::CumulativeGroupedBulk
-            )
-          )
-        )
-      end
+      sig { returns(T.nilable(Orb::Price::Variants)) }
       attr_accessor :price
 
       # Either the fixed fee quantity or the usage during the service period.
@@ -184,11 +132,7 @@ module Orb
       sig do
         returns(
           T::Array[
-            T.any(
-              Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix,
-              Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier,
-              Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Null
-            )
+            Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Variants
           ]
         )
       end
@@ -371,25 +315,11 @@ module Orb
             adjusted_subtotal: String,
             adjustments:
               T::Array[
-                T.any(
-                  Orb::Models::InvoiceLineItemCreateResponse::Adjustment::UsageDiscount,
-                  Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscount,
-                  Orb::Models::InvoiceLineItemCreateResponse::Adjustment::PercentageDiscount,
-                  Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Minimum,
-                  Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Maximum
-                )
+                Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Variants
               ],
             amount: String,
             credits_applied: String,
-            discount:
-              T.nilable(
-                T.any(
-                  Orb::PercentageDiscount,
-                  Orb::TrialDiscount,
-                  Orb::UsageDiscount,
-                  Orb::AmountDiscount
-                )
-              ),
+            discount: T.nilable(Orb::Discount::Variants),
             end_date: Time,
             filter: T.nilable(String),
             grouping: T.nilable(String),
@@ -401,48 +331,12 @@ module Orb
             minimum_amount: T.nilable(String),
             name: String,
             partially_invoiced_amount: String,
-            price:
-              T.nilable(
-                T.any(
-                  Orb::Price::Unit,
-                  Orb::Price::Package,
-                  Orb::Price::Matrix,
-                  Orb::Price::Tiered,
-                  Orb::Price::TieredBps,
-                  Orb::Price::Bps,
-                  Orb::Price::BulkBps,
-                  Orb::Price::Bulk,
-                  Orb::Price::ThresholdTotalAmount,
-                  Orb::Price::TieredPackage,
-                  Orb::Price::GroupedTiered,
-                  Orb::Price::TieredWithMinimum,
-                  Orb::Price::TieredPackageWithMinimum,
-                  Orb::Price::PackageWithAllocation,
-                  Orb::Price::UnitWithPercent,
-                  Orb::Price::MatrixWithAllocation,
-                  Orb::Price::TieredWithProration,
-                  Orb::Price::UnitWithProration,
-                  Orb::Price::GroupedAllocation,
-                  Orb::Price::GroupedWithProratedMinimum,
-                  Orb::Price::GroupedWithMeteredMinimum,
-                  Orb::Price::MatrixWithDisplayName,
-                  Orb::Price::BulkWithProration,
-                  Orb::Price::GroupedTieredPackage,
-                  Orb::Price::MaxGroupTieredPackage,
-                  Orb::Price::ScalableMatrixWithUnitPricing,
-                  Orb::Price::ScalableMatrixWithTieredPricing,
-                  Orb::Price::CumulativeGroupedBulk
-                )
-              ),
+            price: T.nilable(Orb::Price::Variants),
             quantity: Float,
             start_date: Time,
             sub_line_items:
               T::Array[
-                T.any(
-                  Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix,
-                  Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier,
-                  Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Null
-                )
+                Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Variants
               ],
             subtotal: String,
             tax_amounts:

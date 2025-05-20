@@ -116,40 +116,7 @@ module Orb
               end
 
             # The price object
-            sig do
-              returns(
-                T.any(
-                  Orb::Price::Unit,
-                  Orb::Price::Package,
-                  Orb::Price::Matrix,
-                  Orb::Price::Tiered,
-                  Orb::Price::TieredBps,
-                  Orb::Price::Bps,
-                  Orb::Price::BulkBps,
-                  Orb::Price::Bulk,
-                  Orb::Price::ThresholdTotalAmount,
-                  Orb::Price::TieredPackage,
-                  Orb::Price::GroupedTiered,
-                  Orb::Price::TieredWithMinimum,
-                  Orb::Price::TieredPackageWithMinimum,
-                  Orb::Price::PackageWithAllocation,
-                  Orb::Price::UnitWithPercent,
-                  Orb::Price::MatrixWithAllocation,
-                  Orb::Price::TieredWithProration,
-                  Orb::Price::UnitWithProration,
-                  Orb::Price::GroupedAllocation,
-                  Orb::Price::GroupedWithProratedMinimum,
-                  Orb::Price::GroupedWithMeteredMinimum,
-                  Orb::Price::MatrixWithDisplayName,
-                  Orb::Price::BulkWithProration,
-                  Orb::Price::GroupedTieredPackage,
-                  Orb::Price::MaxGroupTieredPackage,
-                  Orb::Price::ScalableMatrixWithUnitPricing,
-                  Orb::Price::ScalableMatrixWithTieredPricing,
-                  Orb::Price::CumulativeGroupedBulk
-                )
-              )
-            end
+            sig { returns(Orb::Price::Variants) }
             attr_accessor :price
 
             # The price the cost is associated with
@@ -224,37 +191,7 @@ module Orb
             sig do
               override.returns(
                 {
-                  price:
-                    T.any(
-                      Orb::Price::Unit,
-                      Orb::Price::Package,
-                      Orb::Price::Matrix,
-                      Orb::Price::Tiered,
-                      Orb::Price::TieredBps,
-                      Orb::Price::Bps,
-                      Orb::Price::BulkBps,
-                      Orb::Price::Bulk,
-                      Orb::Price::ThresholdTotalAmount,
-                      Orb::Price::TieredPackage,
-                      Orb::Price::GroupedTiered,
-                      Orb::Price::TieredWithMinimum,
-                      Orb::Price::TieredPackageWithMinimum,
-                      Orb::Price::PackageWithAllocation,
-                      Orb::Price::UnitWithPercent,
-                      Orb::Price::MatrixWithAllocation,
-                      Orb::Price::TieredWithProration,
-                      Orb::Price::UnitWithProration,
-                      Orb::Price::GroupedAllocation,
-                      Orb::Price::GroupedWithProratedMinimum,
-                      Orb::Price::GroupedWithMeteredMinimum,
-                      Orb::Price::MatrixWithDisplayName,
-                      Orb::Price::BulkWithProration,
-                      Orb::Price::GroupedTieredPackage,
-                      Orb::Price::MaxGroupTieredPackage,
-                      Orb::Price::ScalableMatrixWithUnitPricing,
-                      Orb::Price::ScalableMatrixWithTieredPricing,
-                      Orb::Price::CumulativeGroupedBulk
-                    ),
+                  price: Orb::Price::Variants,
                   price_id: String,
                   subtotal: String,
                   total: String,
