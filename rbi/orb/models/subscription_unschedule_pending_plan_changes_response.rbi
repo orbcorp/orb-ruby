@@ -106,11 +106,7 @@ module Orb
       sig do
         returns(
           T::Array[
-            T.any(
-              Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Amount,
-              Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Percentage,
-              Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Usage
-            )
+            Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Variants
           ]
         )
       end
@@ -448,11 +444,7 @@ module Orb
             default_invoice_memo: T.nilable(String),
             discount_intervals:
               T::Array[
-                T.any(
-                  Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Amount,
-                  Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Percentage,
-                  Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Usage
-                )
+                Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Variants
               ],
             end_date: T.nilable(Time),
             fixed_fee_quantity_schedule:
@@ -512,13 +504,7 @@ module Orb
 
         sig do
           returns(
-            T.any(
-              Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::UsageDiscount,
-              Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::AmountDiscount,
-              Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PercentageDiscount,
-              Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Minimum,
-              Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Maximum
-            )
+            Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Variants
           )
         end
         attr_accessor :adjustment
@@ -568,13 +554,7 @@ module Orb
             {
               id: String,
               adjustment:
-                T.any(
-                  Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::UsageDiscount,
-                  Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::AmountDiscount,
-                  Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PercentageDiscount,
-                  Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Minimum,
-                  Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Maximum
-                ),
+                Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Variants,
               applies_to_price_interval_ids: T::Array[String],
               end_date: T.nilable(Time),
               start_date: Time
@@ -1608,40 +1588,7 @@ module Orb
         #
         # For more on the types of prices, see
         # [the core concepts documentation](/core-concepts#plan-and-price)
-        sig do
-          returns(
-            T.any(
-              Orb::Price::Unit,
-              Orb::Price::Package,
-              Orb::Price::Matrix,
-              Orb::Price::Tiered,
-              Orb::Price::TieredBps,
-              Orb::Price::Bps,
-              Orb::Price::BulkBps,
-              Orb::Price::Bulk,
-              Orb::Price::ThresholdTotalAmount,
-              Orb::Price::TieredPackage,
-              Orb::Price::GroupedTiered,
-              Orb::Price::TieredWithMinimum,
-              Orb::Price::TieredPackageWithMinimum,
-              Orb::Price::PackageWithAllocation,
-              Orb::Price::UnitWithPercent,
-              Orb::Price::MatrixWithAllocation,
-              Orb::Price::TieredWithProration,
-              Orb::Price::UnitWithProration,
-              Orb::Price::GroupedAllocation,
-              Orb::Price::GroupedWithProratedMinimum,
-              Orb::Price::GroupedWithMeteredMinimum,
-              Orb::Price::MatrixWithDisplayName,
-              Orb::Price::BulkWithProration,
-              Orb::Price::GroupedTieredPackage,
-              Orb::Price::MaxGroupTieredPackage,
-              Orb::Price::ScalableMatrixWithUnitPricing,
-              Orb::Price::ScalableMatrixWithTieredPricing,
-              Orb::Price::CumulativeGroupedBulk
-            )
-          )
-        end
+        sig { returns(Orb::Price::Variants) }
         attr_accessor :price
 
         # The start date of the price interval. This is the date that Orb starts billing
@@ -1761,37 +1708,7 @@ module Orb
                     Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PriceInterval::FixedFeeQuantityTransition
                   ]
                 ),
-              price:
-                T.any(
-                  Orb::Price::Unit,
-                  Orb::Price::Package,
-                  Orb::Price::Matrix,
-                  Orb::Price::Tiered,
-                  Orb::Price::TieredBps,
-                  Orb::Price::Bps,
-                  Orb::Price::BulkBps,
-                  Orb::Price::Bulk,
-                  Orb::Price::ThresholdTotalAmount,
-                  Orb::Price::TieredPackage,
-                  Orb::Price::GroupedTiered,
-                  Orb::Price::TieredWithMinimum,
-                  Orb::Price::TieredPackageWithMinimum,
-                  Orb::Price::PackageWithAllocation,
-                  Orb::Price::UnitWithPercent,
-                  Orb::Price::MatrixWithAllocation,
-                  Orb::Price::TieredWithProration,
-                  Orb::Price::UnitWithProration,
-                  Orb::Price::GroupedAllocation,
-                  Orb::Price::GroupedWithProratedMinimum,
-                  Orb::Price::GroupedWithMeteredMinimum,
-                  Orb::Price::MatrixWithDisplayName,
-                  Orb::Price::BulkWithProration,
-                  Orb::Price::GroupedTieredPackage,
-                  Orb::Price::MaxGroupTieredPackage,
-                  Orb::Price::ScalableMatrixWithUnitPricing,
-                  Orb::Price::ScalableMatrixWithTieredPricing,
-                  Orb::Price::CumulativeGroupedBulk
-                ),
+              price: Orb::Price::Variants,
               start_date: Time,
               usage_customer_ids: T.nilable(T::Array[String])
             }

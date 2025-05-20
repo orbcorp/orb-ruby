@@ -108,15 +108,7 @@ module Orb
               request_options: Orb::RequestOptions::OrHash
             ).returns(
               Orb::Internal::Page[
-                T.any(
-                  Orb::Models::Customers::Credits::LedgerListResponse::Increment,
-                  Orb::Models::Customers::Credits::LedgerListResponse::Decrement,
-                  Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChange,
-                  Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiry,
-                  Orb::Models::Customers::Credits::LedgerListResponse::Void,
-                  Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiated,
-                  Orb::Models::Customers::Credits::LedgerListResponse::Amendment
-                )
+                Orb::Models::Customers::Credits::LedgerListResponse::Variants
               ]
             )
           end
@@ -274,15 +266,7 @@ module Orb
                 ),
               request_options: Orb::RequestOptions::OrHash
             ).returns(
-              T.any(
-                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment,
-                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement,
-                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange,
-                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry,
-                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void,
-                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated,
-                Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment
-              )
+              Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Variants
             )
           end
           def create_entry(
@@ -461,15 +445,7 @@ module Orb
                 ),
               request_options: Orb::RequestOptions::OrHash
             ).returns(
-              T.any(
-                Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment,
-                Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Decrement,
-                Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChange,
-                Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiry,
-                Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Void,
-                Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiated,
-                Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Amendment
-              )
+              Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Variants
             )
           end
           def create_entry_by_external_id(
@@ -617,15 +593,7 @@ module Orb
               request_options: Orb::RequestOptions::OrHash
             ).returns(
               Orb::Internal::Page[
-                T.any(
-                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Increment,
-                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Decrement,
-                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChange,
-                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiry,
-                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Void,
-                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiated,
-                  Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Amendment
-                )
+                Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Variants
               ]
             )
           end

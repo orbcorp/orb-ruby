@@ -863,12 +863,7 @@ module Orb
           view_mode:
             T.nilable(Orb::SubscriptionFetchUsageParams::ViewMode::OrSymbol),
           request_options: Orb::RequestOptions::OrHash
-        ).returns(
-          T.any(
-            Orb::SubscriptionUsage::UngroupedSubscriptionUsage,
-            Orb::SubscriptionUsage::GroupedSubscriptionUsage
-          )
-        )
+        ).returns(Orb::SubscriptionUsage::Variants)
       end
       def fetch_usage(
         subscription_id,
@@ -1484,10 +1479,7 @@ module Orb
         params(
           subscription_id: String,
           trial_end_date:
-            T.any(
-              Time,
-              Orb::SubscriptionUpdateTrialParams::TrialEndDate::OrSymbol
-            ),
+            Orb::SubscriptionUpdateTrialParams::TrialEndDate::Variants,
           shift: T::Boolean,
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Models::SubscriptionUpdateTrialResponse)

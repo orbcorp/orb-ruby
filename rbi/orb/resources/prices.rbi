@@ -69,38 +69,7 @@ module Orb
             ),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           request_options: Orb::RequestOptions::OrHash
-        ).returns(
-          T.any(
-            Orb::Price::Unit,
-            Orb::Price::Package,
-            Orb::Price::Matrix,
-            Orb::Price::Tiered,
-            Orb::Price::TieredBps,
-            Orb::Price::Bps,
-            Orb::Price::BulkBps,
-            Orb::Price::Bulk,
-            Orb::Price::ThresholdTotalAmount,
-            Orb::Price::TieredPackage,
-            Orb::Price::GroupedTiered,
-            Orb::Price::TieredWithMinimum,
-            Orb::Price::TieredPackageWithMinimum,
-            Orb::Price::PackageWithAllocation,
-            Orb::Price::UnitWithPercent,
-            Orb::Price::MatrixWithAllocation,
-            Orb::Price::TieredWithProration,
-            Orb::Price::UnitWithProration,
-            Orb::Price::GroupedAllocation,
-            Orb::Price::GroupedWithProratedMinimum,
-            Orb::Price::GroupedWithMeteredMinimum,
-            Orb::Price::MatrixWithDisplayName,
-            Orb::Price::BulkWithProration,
-            Orb::Price::GroupedTieredPackage,
-            Orb::Price::MaxGroupTieredPackage,
-            Orb::Price::ScalableMatrixWithUnitPricing,
-            Orb::Price::ScalableMatrixWithTieredPricing,
-            Orb::Price::CumulativeGroupedBulk
-          )
-        )
+        ).returns(Orb::Price::Variants)
       end
       def create(
         # The cadence to bill for this price on.
@@ -177,38 +146,7 @@ module Orb
           price_id: String,
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           request_options: Orb::RequestOptions::OrHash
-        ).returns(
-          T.any(
-            Orb::Price::Unit,
-            Orb::Price::Package,
-            Orb::Price::Matrix,
-            Orb::Price::Tiered,
-            Orb::Price::TieredBps,
-            Orb::Price::Bps,
-            Orb::Price::BulkBps,
-            Orb::Price::Bulk,
-            Orb::Price::ThresholdTotalAmount,
-            Orb::Price::TieredPackage,
-            Orb::Price::GroupedTiered,
-            Orb::Price::TieredWithMinimum,
-            Orb::Price::TieredPackageWithMinimum,
-            Orb::Price::PackageWithAllocation,
-            Orb::Price::UnitWithPercent,
-            Orb::Price::MatrixWithAllocation,
-            Orb::Price::TieredWithProration,
-            Orb::Price::UnitWithProration,
-            Orb::Price::GroupedAllocation,
-            Orb::Price::GroupedWithProratedMinimum,
-            Orb::Price::GroupedWithMeteredMinimum,
-            Orb::Price::MatrixWithDisplayName,
-            Orb::Price::BulkWithProration,
-            Orb::Price::GroupedTieredPackage,
-            Orb::Price::MaxGroupTieredPackage,
-            Orb::Price::ScalableMatrixWithUnitPricing,
-            Orb::Price::ScalableMatrixWithTieredPricing,
-            Orb::Price::CumulativeGroupedBulk
-          )
-        )
+        ).returns(Orb::Price::Variants)
       end
       def update(
         price_id,
@@ -227,40 +165,7 @@ module Orb
           cursor: T.nilable(String),
           limit: Integer,
           request_options: Orb::RequestOptions::OrHash
-        ).returns(
-          Orb::Internal::Page[
-            T.any(
-              Orb::Price::Unit,
-              Orb::Price::Package,
-              Orb::Price::Matrix,
-              Orb::Price::Tiered,
-              Orb::Price::TieredBps,
-              Orb::Price::Bps,
-              Orb::Price::BulkBps,
-              Orb::Price::Bulk,
-              Orb::Price::ThresholdTotalAmount,
-              Orb::Price::TieredPackage,
-              Orb::Price::GroupedTiered,
-              Orb::Price::TieredWithMinimum,
-              Orb::Price::TieredPackageWithMinimum,
-              Orb::Price::PackageWithAllocation,
-              Orb::Price::UnitWithPercent,
-              Orb::Price::MatrixWithAllocation,
-              Orb::Price::TieredWithProration,
-              Orb::Price::UnitWithProration,
-              Orb::Price::GroupedAllocation,
-              Orb::Price::GroupedWithProratedMinimum,
-              Orb::Price::GroupedWithMeteredMinimum,
-              Orb::Price::MatrixWithDisplayName,
-              Orb::Price::BulkWithProration,
-              Orb::Price::GroupedTieredPackage,
-              Orb::Price::MaxGroupTieredPackage,
-              Orb::Price::ScalableMatrixWithUnitPricing,
-              Orb::Price::ScalableMatrixWithTieredPricing,
-              Orb::Price::CumulativeGroupedBulk
-            )
-          ]
-        )
+        ).returns(Orb::Internal::Page[Orb::Price::Variants])
       end
       def list(
         # Cursor for pagination. This can be populated by the `next_cursor` value returned
@@ -332,38 +237,7 @@ module Orb
         params(
           price_id: String,
           request_options: Orb::RequestOptions::OrHash
-        ).returns(
-          T.any(
-            Orb::Price::Unit,
-            Orb::Price::Package,
-            Orb::Price::Matrix,
-            Orb::Price::Tiered,
-            Orb::Price::TieredBps,
-            Orb::Price::Bps,
-            Orb::Price::BulkBps,
-            Orb::Price::Bulk,
-            Orb::Price::ThresholdTotalAmount,
-            Orb::Price::TieredPackage,
-            Orb::Price::GroupedTiered,
-            Orb::Price::TieredWithMinimum,
-            Orb::Price::TieredPackageWithMinimum,
-            Orb::Price::PackageWithAllocation,
-            Orb::Price::UnitWithPercent,
-            Orb::Price::MatrixWithAllocation,
-            Orb::Price::TieredWithProration,
-            Orb::Price::UnitWithProration,
-            Orb::Price::GroupedAllocation,
-            Orb::Price::GroupedWithProratedMinimum,
-            Orb::Price::GroupedWithMeteredMinimum,
-            Orb::Price::MatrixWithDisplayName,
-            Orb::Price::BulkWithProration,
-            Orb::Price::GroupedTieredPackage,
-            Orb::Price::MaxGroupTieredPackage,
-            Orb::Price::ScalableMatrixWithUnitPricing,
-            Orb::Price::ScalableMatrixWithTieredPricing,
-            Orb::Price::CumulativeGroupedBulk
-          )
-        )
+        ).returns(Orb::Price::Variants)
       end
       def fetch(price_id, request_options: {})
       end

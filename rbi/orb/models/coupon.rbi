@@ -14,7 +14,7 @@ module Orb
       sig { returns(T.nilable(Time)) }
       attr_accessor :archived_at
 
-      sig { returns(T.any(Orb::PercentageDiscount, Orb::AmountDiscount)) }
+      sig { returns(Orb::Coupon::Discount::Variants) }
       attr_accessor :discount
 
       # This allows for a coupon's discount to apply for a limited time (determined in
@@ -77,7 +77,7 @@ module Orb
           {
             id: String,
             archived_at: T.nilable(Time),
-            discount: T.any(Orb::PercentageDiscount, Orb::AmountDiscount),
+            discount: Orb::Coupon::Discount::Variants,
             duration_in_months: T.nilable(Integer),
             max_redemptions: T.nilable(Integer),
             redemption_code: String,
