@@ -1619,18 +1619,6 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum)]
-
-          define_sorbet_constant!(:Variants) do
-            T.type_alias do
-              T.any(
-                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount,
-                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount,
-                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount,
-                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum,
-                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum
-              )
-            end
-          end
         end
 
         # @deprecated
@@ -1933,16 +1921,6 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Matrix, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Tier, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Null)]
-
-          define_sorbet_constant!(:Variants) do
-            T.type_alias do
-              T.any(
-                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Matrix,
-                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Tier,
-                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Null
-              )
-            end
-          end
         end
 
         class TaxAmount < Orb::Internal::Type::BaseModel

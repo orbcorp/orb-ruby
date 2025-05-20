@@ -558,18 +558,6 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Orb::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::PercentageDiscount, Orb::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::UsageDiscount, Orb::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::AmountDiscount, Orb::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::Minimum, Orb::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::Maximum)]
-
-          define_sorbet_constant!(:Variants) do
-            T.type_alias do
-              T.any(
-                Orb::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::PercentageDiscount,
-                Orb::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::UsageDiscount,
-                Orb::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::AmountDiscount,
-                Orb::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::Minimum,
-                Orb::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment::Maximum
-              )
-            end
-          end
         end
       end
 
@@ -7384,38 +7372,6 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit, Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package, Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix, Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered, Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps, Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps, Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps, Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk, Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount, Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage, Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum, Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent, Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation, Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration, Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration, Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation, Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum, Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration, Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing, Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing, Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk, Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage, Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum, Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName, Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage)]
-
-          define_sorbet_constant!(:Variants) do
-            T.type_alias do
-              T.any(
-                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit,
-                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package,
-                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix,
-                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered,
-                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps,
-                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps,
-                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps,
-                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk,
-                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount,
-                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage,
-                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum,
-                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent,
-                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation,
-                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration,
-                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration,
-                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation,
-                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum,
-                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration,
-                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing,
-                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing,
-                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk,
-                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage,
-                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum,
-                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName,
-                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage
-              )
-            end
-          end
         end
       end
 
@@ -7752,18 +7708,6 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Orb::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::PercentageDiscount, Orb::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::UsageDiscount, Orb::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::AmountDiscount, Orb::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::Minimum, Orb::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::Maximum)]
-
-          define_sorbet_constant!(:Variants) do
-            T.type_alias do
-              T.any(
-                Orb::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::PercentageDiscount,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::UsageDiscount,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::AmountDiscount,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::Minimum,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplaceAdjustment::Adjustment::Maximum
-              )
-            end
-          end
         end
       end
 
@@ -14585,38 +14529,6 @@ module Orb
 
           # @!method self.variants
           #   @return [Array(Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit, Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package, Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix, Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered, Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps, Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps, Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps, Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk, Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount, Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage, Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum, Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent, Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation, Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration, Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration, Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation, Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum, Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration, Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing, Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing, Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk, Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage, Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum, Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName, Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage)]
-
-          define_sorbet_constant!(:Variants) do
-            T.type_alias do
-              T.any(
-                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage
-              )
-            end
-          end
         end
       end
     end

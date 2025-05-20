@@ -8,6 +8,7 @@ module Orb
       # Hash of items of a given type.
       class HashOf
         include Orb::Internal::Type::Converter
+        include Orb::Internal::Util::SorbetRuntimeSupport
 
         abstract!
 
@@ -61,6 +62,11 @@ module Orb
             .returns(T.any(Orb::Internal::AnyHash, T.anything))
         end
         def dump(value, state:)
+        end
+
+        # @api private
+        sig { returns(T.anything) }
+        def to_sorbet_type
         end
 
         # @api private
