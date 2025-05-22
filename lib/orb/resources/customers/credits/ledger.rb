@@ -106,9 +106,9 @@ module Orb
           #
           # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
           #
-          # @param entry_status [Symbol, Orb::Customers::Credits::LedgerListParams::EntryStatus, nil]
+          # @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListParams::EntryStatus, nil]
           #
-          # @param entry_type [Symbol, Orb::Customers::Credits::LedgerListParams::EntryType, nil]
+          # @param entry_type [Symbol, Orb::Models::Customers::Credits::LedgerListParams::EntryType, nil]
           #
           # @param limit [Integer] The number of items to fetch. Defaults to 20.
           #
@@ -256,7 +256,7 @@ module Orb
           #
           # @param amount [Float] The number of credits to effect. Note that this is required for increment, decre
           #
-          # @param entry_type [Symbol, Orb::Customers::Credits::LedgerCreateEntryParams::EntryType]
+          # @param entry_type [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::EntryType]
           #
           # @param expiry_date [Time, nil] An ISO 8601 format date that identifies the origination credit block to expire
           #
@@ -270,13 +270,13 @@ module Orb
           #
           # @param effective_date [Time, nil] An ISO 8601 format date that denotes when this credit balance should become avai
           #
-          # @param invoice_settings [Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings, nil] Passing `invoice_settings` automatically generates an invoice for the newly adde
+          # @param invoice_settings [Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings, nil] Passing `invoice_settings` automatically generates an invoice for the newly adde
           #
           # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
           #
           # @param per_unit_cost_basis [String, nil] Can only be specified when entry_type=increment. How much, in the customer's cur
           #
-          # @param void_reason [Symbol, Orb::Customers::Credits::LedgerCreateEntryParams::VoidReason, nil] Can only be specified when `entry_type=void`. The reason for the void.
+          # @param void_reason [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::VoidReason, nil] Can only be specified when `entry_type=void`. The reason for the void.
           #
           # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -415,7 +415,7 @@ module Orb
           #
           # @param amount [Float] The number of credits to effect. Note that this is required for increment, decre
           #
-          # @param entry_type [Symbol, Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType]
+          # @param entry_type [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType]
           #
           # @param expiry_date [Time, nil] An ISO 8601 format date that identifies the origination credit block to expire
           #
@@ -429,13 +429,13 @@ module Orb
           #
           # @param effective_date [Time, nil] An ISO 8601 format date that denotes when this credit balance should become avai
           #
-          # @param invoice_settings [Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings, nil] Passing `invoice_settings` automatically generates an invoice for the newly adde
+          # @param invoice_settings [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings, nil] Passing `invoice_settings` automatically generates an invoice for the newly adde
           #
           # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
           #
           # @param per_unit_cost_basis [String, nil] Can only be specified when entry_type=increment. How much, in the customer's cur
           #
-          # @param void_reason [Symbol, Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason, nil] Can only be specified when `entry_type=void`. The reason for the void.
+          # @param void_reason [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason, nil] Can only be specified when `entry_type=void`. The reason for the void.
           #
           # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -555,9 +555,9 @@ module Orb
           #
           # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
           #
-          # @param entry_status [Symbol, Orb::Customers::Credits::LedgerListByExternalIDParams::EntryStatus, nil]
+          # @param entry_status [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryStatus, nil]
           #
-          # @param entry_type [Symbol, Orb::Customers::Credits::LedgerListByExternalIDParams::EntryType, nil]
+          # @param entry_type [Symbol, Orb::Models::Customers::Credits::LedgerListByExternalIDParams::EntryType, nil]
           #
           # @param limit [Integer] The number of items to fetch. Defaults to 20.
           #

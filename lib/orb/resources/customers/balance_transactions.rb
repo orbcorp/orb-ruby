@@ -13,7 +13,7 @@ module Orb
         #
         # @param amount [String]
         #
-        # @param type [Symbol, Orb::Customers::BalanceTransactionCreateParams::Type]
+        # @param type [Symbol, Orb::Models::Customers::BalanceTransactionCreateParams::Type]
         #
         # @param description [String, nil] An optional description that can be specified around this entry.
         #

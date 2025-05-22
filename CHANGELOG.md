@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.5.3 (2025-05-22)
+
+Full Changelog: [v0.5.2...v0.5.3](https://github.com/orbcorp/orb-ruby/compare/v0.5.2...v0.5.3)
+
+### Chores
+
+* **docs:** grammar improvements ([3c1a4d4](https://github.com/orbcorp/orb-ruby/commit/3c1a4d421f276c01935659d401c8383470f2f10c))
+* force utf-8 locale via `RUBYOPT` when formatting ([42a4919](https://github.com/orbcorp/orb-ruby/commit/42a49195c6ea42836d56e130113158c013f4d5d7))
+* **internal:** version bump ([1decdd2](https://github.com/orbcorp/orb-ruby/commit/1decdd2778f75a19da2218937d4a4f6a44009b84))
+* refine Yard and Sorbet types and ensure linting is turned on for examples ([8ec00ad](https://github.com/orbcorp/orb-ruby/commit/8ec00ad8007fa9ff78d8c479eb592f3083da8ad9))
+* use fully qualified names for yard annotations and rbs aliases ([22efb17](https://github.com/orbcorp/orb-ruby/commit/22efb17c873701d2d583c9c517a128128b1bd4d5))
+
 ## 0.5.2 (2025-05-20)
 
 Full Changelog: [v0.5.1...v0.5.2](https://github.com/orbcorp/orb-ruby/compare/v0.5.1...v0.5.2)

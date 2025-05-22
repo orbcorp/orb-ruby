@@ -10,14 +10,14 @@ module Orb
       # @!attribute thresholds
       #   The thresholds that define the values at which the alert will be triggered.
       #
-      #   @return [Array<Orb::AlertCreateForSubscriptionParams::Threshold>]
+      #   @return [Array<Orb::Models::AlertCreateForSubscriptionParams::Threshold>]
       required :thresholds,
                -> { Orb::Internal::Type::ArrayOf[Orb::AlertCreateForSubscriptionParams::Threshold] }
 
       # @!attribute type
       #   The type of alert to create. This must be a valid alert type.
       #
-      #   @return [Symbol, Orb::AlertCreateForSubscriptionParams::Type]
+      #   @return [Symbol, Orb::Models::AlertCreateForSubscriptionParams::Type]
       required :type, enum: -> { Orb::AlertCreateForSubscriptionParams::Type }
 
       # @!attribute metric_id
@@ -27,9 +27,9 @@ module Orb
       optional :metric_id, String, nil?: true
 
       # @!method initialize(thresholds:, type:, metric_id: nil, request_options: {})
-      #   @param thresholds [Array<Orb::AlertCreateForSubscriptionParams::Threshold>] The thresholds that define the values at which the alert will be triggered.
+      #   @param thresholds [Array<Orb::Models::AlertCreateForSubscriptionParams::Threshold>] The thresholds that define the values at which the alert will be triggered.
       #
-      #   @param type [Symbol, Orb::AlertCreateForSubscriptionParams::Type] The type of alert to create. This must be a valid alert type.
+      #   @param type [Symbol, Orb::Models::AlertCreateForSubscriptionParams::Type] The type of alert to create. This must be a valid alert type.
       #
       #   @param metric_id [String, nil] The metric to track usage for.
       #
@@ -46,7 +46,7 @@ module Orb
 
         # @!method initialize(value:)
         #   Some parameter documentations has been truncated, see
-        #   {Orb::AlertCreateForSubscriptionParams::Threshold} for more details.
+        #   {Orb::Models::AlertCreateForSubscriptionParams::Threshold} for more details.
         #
         #   Thresholds are used to define the conditions under which an alert will be
         #   triggered.

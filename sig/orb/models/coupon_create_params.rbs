@@ -29,6 +29,14 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> void
 
+      def to_hash: -> {
+        discount: Orb::Models::CouponCreateParams::discount,
+        redemption_code: String,
+        duration_in_months: Integer?,
+        max_redemptions: Integer?,
+        request_options: Orb::RequestOptions
+      }
+
       type discount =
         Orb::CouponCreateParams::Discount::Percentage
         | Orb::CouponCreateParams::Discount::Amount
@@ -48,6 +56,11 @@ module Orb
             percentage_discount: Float,
             ?discount_type: :percentage
           ) -> void
+
+          def to_hash: -> {
+            discount_type: :percentage,
+            percentage_discount: Float
+          }
         end
 
         type amount = { amount_discount: String, discount_type: :amount }
@@ -61,6 +74,8 @@ module Orb
             amount_discount: String,
             ?discount_type: :amount
           ) -> void
+
+          def to_hash: -> { amount_discount: String, discount_type: :amount }
         end
 
         def self?.variants: -> ::Array[Orb::Models::CouponCreateParams::discount]

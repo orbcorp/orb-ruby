@@ -25,7 +25,7 @@ module Orb
       # @!attribute customer
       #   The customer the alert applies to.
       #
-      #   @return [Orb::Alert::Customer, nil]
+      #   @return [Orb::Models::Alert::Customer, nil]
       required :customer, -> { Orb::Alert::Customer }, nil?: true
 
       # @!attribute enabled
@@ -37,37 +37,37 @@ module Orb
       # @!attribute metric
       #   The metric the alert applies to.
       #
-      #   @return [Orb::Alert::Metric, nil]
+      #   @return [Orb::Models::Alert::Metric, nil]
       required :metric, -> { Orb::Alert::Metric }, nil?: true
 
       # @!attribute plan
       #   The plan the alert applies to.
       #
-      #   @return [Orb::Alert::Plan, nil]
+      #   @return [Orb::Models::Alert::Plan, nil]
       required :plan, -> { Orb::Alert::Plan }, nil?: true
 
       # @!attribute subscription
       #   The subscription the alert applies to.
       #
-      #   @return [Orb::Alert::Subscription, nil]
+      #   @return [Orb::Models::Alert::Subscription, nil]
       required :subscription, -> { Orb::Alert::Subscription }, nil?: true
 
       # @!attribute thresholds
       #   The thresholds that define the conditions under which the alert will be
       #   triggered.
       #
-      #   @return [Array<Orb::Alert::Threshold>, nil]
+      #   @return [Array<Orb::Models::Alert::Threshold>, nil]
       required :thresholds, -> { Orb::Internal::Type::ArrayOf[Orb::Alert::Threshold] }, nil?: true
 
       # @!attribute type
       #   The type of alert. This must be a valid alert type.
       #
-      #   @return [Symbol, Orb::Alert::Type]
+      #   @return [Symbol, Orb::Models::Alert::Type]
       required :type, enum: -> { Orb::Alert::Type }
 
       # @!method initialize(id:, created_at:, currency:, customer:, enabled:, metric:, plan:, subscription:, thresholds:, type:)
-      #   Some parameter documentations has been truncated, see {Orb::Alert} for more
-      #   details.
+      #   Some parameter documentations has been truncated, see {Orb::Models::Alert} for
+      #   more details.
       #
       #   [Alerts within Orb](/product-catalog/configuring-alerts) monitor spending,
       #   usage, or credit balance and trigger webhooks when a threshold is exceeded.
@@ -81,21 +81,21 @@ module Orb
       #
       #   @param currency [String, nil] The name of the currency the credit balance or invoice cost is denominated in.
       #
-      #   @param customer [Orb::Alert::Customer, nil] The customer the alert applies to.
+      #   @param customer [Orb::Models::Alert::Customer, nil] The customer the alert applies to.
       #
       #   @param enabled [Boolean] Whether the alert is enabled or disabled.
       #
-      #   @param metric [Orb::Alert::Metric, nil] The metric the alert applies to.
+      #   @param metric [Orb::Models::Alert::Metric, nil] The metric the alert applies to.
       #
-      #   @param plan [Orb::Alert::Plan, nil] The plan the alert applies to.
+      #   @param plan [Orb::Models::Alert::Plan, nil] The plan the alert applies to.
       #
-      #   @param subscription [Orb::Alert::Subscription, nil] The subscription the alert applies to.
+      #   @param subscription [Orb::Models::Alert::Subscription, nil] The subscription the alert applies to.
       #
-      #   @param thresholds [Array<Orb::Alert::Threshold>, nil] The thresholds that define the conditions under which the alert will be triggere
+      #   @param thresholds [Array<Orb::Models::Alert::Threshold>, nil] The thresholds that define the conditions under which the alert will be triggere
       #
-      #   @param type [Symbol, Orb::Alert::Type] The type of alert. This must be a valid alert type.
+      #   @param type [Symbol, Orb::Models::Alert::Type] The type of alert. This must be a valid alert type.
 
-      # @see Orb::Alert#customer
+      # @see Orb::Models::Alert#customer
       class Customer < Orb::Internal::Type::BaseModel
         # @!attribute id
         #
@@ -114,7 +114,7 @@ module Orb
         #   @param external_customer_id [String, nil]
       end
 
-      # @see Orb::Alert#metric
+      # @see Orb::Models::Alert#metric
       class Metric < Orb::Internal::Type::BaseModel
         # @!attribute id
         #
@@ -127,7 +127,7 @@ module Orb
         #   @param id [String]
       end
 
-      # @see Orb::Alert#plan
+      # @see Orb::Models::Alert#plan
       class Plan < Orb::Internal::Type::BaseModel
         # @!attribute id
         #
@@ -153,8 +153,8 @@ module Orb
         required :plan_version, String
 
         # @!method initialize(id:, external_plan_id:, name:, plan_version:)
-        #   Some parameter documentations has been truncated, see {Orb::Alert::Plan} for
-        #   more details.
+        #   Some parameter documentations has been truncated, see {Orb::Models::Alert::Plan}
+        #   for more details.
         #
         #   The plan the alert applies to.
         #
@@ -167,7 +167,7 @@ module Orb
         #   @param plan_version [String]
       end
 
-      # @see Orb::Alert#subscription
+      # @see Orb::Models::Alert#subscription
       class Subscription < Orb::Internal::Type::BaseModel
         # @!attribute id
         #
@@ -190,8 +190,8 @@ module Orb
         required :value, Float
 
         # @!method initialize(value:)
-        #   Some parameter documentations has been truncated, see {Orb::Alert::Threshold}
-        #   for more details.
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Alert::Threshold} for more details.
         #
         #   Thresholds are used to define the conditions under which an alert will be
         #   triggered.
@@ -201,7 +201,7 @@ module Orb
 
       # The type of alert. This must be a valid alert type.
       #
-      # @see Orb::Alert#type
+      # @see Orb::Models::Alert#type
       module Type
         extend Orb::Internal::Type::Enum
 

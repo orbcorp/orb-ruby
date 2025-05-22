@@ -43,6 +43,17 @@ module Orb
           ?replace_existing_events: bool,
           ?request_options: Orb::request_opts
         ) -> void
+
+        def to_hash: -> {
+          timeframe_end: Time,
+          timeframe_start: Time,
+          close_time: Time?,
+          customer_id: String?,
+          deprecation_filter: String?,
+          external_customer_id: String?,
+          replace_existing_events: bool,
+          request_options: Orb::RequestOptions
+        }
       end
     end
   end

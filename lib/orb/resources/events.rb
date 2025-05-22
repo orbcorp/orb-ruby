@@ -356,7 +356,7 @@ module Orb
       #
       # @overload ingest(events:, backfill_id: nil, debug: nil, request_options: {})
       #
-      # @param events [Array<Orb::EventIngestParams::Event>] Body param:
+      # @param events [Array<Orb::Models::EventIngestParams::Event>] Body param:
       #
       # @param backfill_id [String, nil] Query param: If this ingestion request is part of a backfill, this parameter tie
       #

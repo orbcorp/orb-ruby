@@ -6,6 +6,8 @@ module Orb
       attr_accessor deprecated: String
 
       def initialize: (deprecated: String) -> void
+
+      def to_hash: -> { deprecated: String }
     end
   end
 end

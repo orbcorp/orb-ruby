@@ -10,7 +10,7 @@ module Orb
       # @!attribute cancel_option
       #   Determines the timing of subscription cancellation
       #
-      #   @return [Symbol, Orb::SubscriptionCancelParams::CancelOption]
+      #   @return [Symbol, Orb::Models::SubscriptionCancelParams::CancelOption]
       required :cancel_option, enum: -> { Orb::SubscriptionCancelParams::CancelOption }
 
       # @!attribute allow_invoice_credit_or_void
@@ -32,7 +32,7 @@ module Orb
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::SubscriptionCancelParams} for more details.
       #
-      #   @param cancel_option [Symbol, Orb::SubscriptionCancelParams::CancelOption] Determines the timing of subscription cancellation
+      #   @param cancel_option [Symbol, Orb::Models::SubscriptionCancelParams::CancelOption] Determines the timing of subscription cancellation
       #
       #   @param allow_invoice_credit_or_void [Boolean, nil] If false, this request will fail if it would void an issued invoice or create a
       #

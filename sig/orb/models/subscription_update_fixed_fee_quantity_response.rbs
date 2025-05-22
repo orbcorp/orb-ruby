@@ -116,6 +116,36 @@ module Orb
         ?changed_resources: Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::ChangedResources?
       ) -> void
 
+      def to_hash: -> {
+        id: String,
+        active_plan_phase_order: Integer?,
+        adjustment_intervals: ::Array[Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::AdjustmentInterval],
+        auto_collection: bool?,
+        billing_cycle_anchor_configuration: Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::BillingCycleAnchorConfiguration,
+        billing_cycle_day: Integer,
+        created_at: Time,
+        current_billing_period_end_date: Time?,
+        current_billing_period_start_date: Time?,
+        customer: Orb::Customer,
+        default_invoice_memo: String?,
+        discount_intervals: ::Array[Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::discount_interval],
+        end_date: Time?,
+        fixed_fee_quantity_schedule: ::Array[Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::FixedFeeQuantitySchedule],
+        invoicing_threshold: String?,
+        maximum_intervals: ::Array[Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::MaximumInterval],
+        metadata: ::Hash[Symbol, String],
+        minimum_intervals: ::Array[Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::MinimumInterval],
+        net_terms: Integer,
+        pending_subscription_change: Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::PendingSubscriptionChange?,
+        plan: Orb::Plan,
+        price_intervals: ::Array[Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::PriceInterval],
+        redeemed_coupon: Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::RedeemedCoupon?,
+        start_date: Time,
+        status: Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::status,
+        trial_info: Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::TrialInfo,
+        changed_resources: Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::ChangedResources?
+      }
+
       type adjustment_interval =
         {
           id: String,
@@ -143,6 +173,14 @@ module Orb
           end_date: Time?,
           start_date: Time
         ) -> void
+
+        def to_hash: -> {
+          id: String,
+          adjustment: Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::AdjustmentInterval::adjustment,
+          applies_to_price_interval_ids: ::Array[String],
+          end_date: Time?,
+          start_date: Time
+        }
 
         type adjustment =
           Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::AdjustmentInterval::Adjustment::UsageDiscount
@@ -189,6 +227,16 @@ module Orb
               usage_discount: Float,
               ?adjustment_type: :usage_discount
             ) -> void
+
+            def to_hash: -> {
+              id: String,
+              adjustment_type: :usage_discount,
+              applies_to_price_ids: ::Array[String],
+              is_invoice_level: bool,
+              plan_phase_order: Integer?,
+              reason: String?,
+              usage_discount: Float
+            }
           end
 
           type amount_discount =
@@ -226,6 +274,16 @@ module Orb
               reason: String?,
               ?adjustment_type: :amount_discount
             ) -> void
+
+            def to_hash: -> {
+              id: String,
+              adjustment_type: :amount_discount,
+              amount_discount: String,
+              applies_to_price_ids: ::Array[String],
+              is_invoice_level: bool,
+              plan_phase_order: Integer?,
+              reason: String?
+            }
           end
 
           type percentage_discount =
@@ -263,6 +321,16 @@ module Orb
               reason: String?,
               ?adjustment_type: :percentage_discount
             ) -> void
+
+            def to_hash: -> {
+              id: String,
+              adjustment_type: :percentage_discount,
+              applies_to_price_ids: ::Array[String],
+              is_invoice_level: bool,
+              percentage_discount: Float,
+              plan_phase_order: Integer?,
+              reason: String?
+            }
           end
 
           type minimum =
@@ -304,6 +372,17 @@ module Orb
               reason: String?,
               ?adjustment_type: :minimum
             ) -> void
+
+            def to_hash: -> {
+              id: String,
+              adjustment_type: :minimum,
+              applies_to_price_ids: ::Array[String],
+              is_invoice_level: bool,
+              item_id: String,
+              minimum_amount: String,
+              plan_phase_order: Integer?,
+              reason: String?
+            }
           end
 
           type maximum =
@@ -341,6 +420,16 @@ module Orb
               reason: String?,
               ?adjustment_type: :maximum
             ) -> void
+
+            def to_hash: -> {
+              id: String,
+              adjustment_type: :maximum,
+              applies_to_price_ids: ::Array[String],
+              is_invoice_level: bool,
+              maximum_amount: String,
+              plan_phase_order: Integer?,
+              reason: String?
+            }
           end
 
           def self?.variants: -> ::Array[Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::AdjustmentInterval::adjustment]
@@ -362,6 +451,8 @@ module Orb
           ?month: Integer?,
           ?year: Integer?
         ) -> void
+
+        def to_hash: -> { day: Integer, month: Integer?, year: Integer? }
       end
 
       type discount_interval =
@@ -403,6 +494,15 @@ module Orb
             start_date: Time,
             ?discount_type: :amount
           ) -> void
+
+          def to_hash: -> {
+            amount_discount: String,
+            applies_to_price_ids: ::Array[String],
+            applies_to_price_interval_ids: ::Array[String],
+            discount_type: :amount,
+            end_date: Time?,
+            start_date: Time
+          }
         end
 
         type percentage =
@@ -436,6 +536,15 @@ module Orb
             start_date: Time,
             ?discount_type: :percentage
           ) -> void
+
+          def to_hash: -> {
+            applies_to_price_ids: ::Array[String],
+            applies_to_price_interval_ids: ::Array[String],
+            discount_type: :percentage,
+            end_date: Time?,
+            percentage_discount: Float,
+            start_date: Time
+          }
         end
 
         type usage =
@@ -469,6 +578,15 @@ module Orb
             usage_discount: Float,
             ?discount_type: :usage
           ) -> void
+
+          def to_hash: -> {
+            applies_to_price_ids: ::Array[String],
+            applies_to_price_interval_ids: ::Array[String],
+            discount_type: :usage,
+            end_date: Time?,
+            start_date: Time,
+            usage_discount: Float
+          }
         end
 
         def self?.variants: -> ::Array[Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::discount_interval]
@@ -492,6 +610,13 @@ module Orb
           quantity: Float,
           start_date: Time
         ) -> void
+
+        def to_hash: -> {
+          end_date: Time?,
+          price_id: String,
+          quantity: Float,
+          start_date: Time
+        }
       end
 
       type maximum_interval =
@@ -521,6 +646,14 @@ module Orb
           maximum_amount: String,
           start_date: Time
         ) -> void
+
+        def to_hash: -> {
+          applies_to_price_ids: ::Array[String],
+          applies_to_price_interval_ids: ::Array[String],
+          end_date: Time?,
+          maximum_amount: String,
+          start_date: Time
+        }
       end
 
       type minimum_interval =
@@ -550,6 +683,14 @@ module Orb
           minimum_amount: String,
           start_date: Time
         ) -> void
+
+        def to_hash: -> {
+          applies_to_price_ids: ::Array[String],
+          applies_to_price_interval_ids: ::Array[String],
+          end_date: Time?,
+          minimum_amount: String,
+          start_date: Time
+        }
       end
 
       type pending_subscription_change = { id: String }
@@ -558,6 +699,8 @@ module Orb
         attr_accessor id: String
 
         def initialize: (id: String) -> void
+
+        def to_hash: -> { id: String }
       end
 
       type price_interval =
@@ -608,6 +751,19 @@ module Orb
           usage_customer_ids: ::Array[String]?
         ) -> void
 
+        def to_hash: -> {
+          id: String,
+          billing_cycle_day: Integer,
+          current_billing_period_end_date: Time?,
+          current_billing_period_start_date: Time?,
+          end_date: Time?,
+          filter: String?,
+          fixed_fee_quantity_transitions: ::Array[Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse::PriceInterval::FixedFeeQuantityTransition]?,
+          price: Orb::Models::price,
+          start_date: Time,
+          usage_customer_ids: ::Array[String]?
+        }
+
         type fixed_fee_quantity_transition =
           { effective_date: Time, price_id: String, quantity: Integer }
 
@@ -623,6 +779,12 @@ module Orb
             price_id: String,
             quantity: Integer
           ) -> void
+
+          def to_hash: -> {
+            effective_date: Time,
+            price_id: String,
+            quantity: Integer
+          }
         end
       end
 
@@ -641,6 +803,8 @@ module Orb
           end_date: Time?,
           start_date: Time
         ) -> void
+
+        def to_hash: -> { coupon_id: String, end_date: Time?, start_date: Time }
       end
 
       type status = :active | :ended | :upcoming
@@ -661,6 +825,8 @@ module Orb
         attr_accessor end_date: Time?
 
         def initialize: (end_date: Time?) -> void
+
+        def to_hash: -> { end_date: Time? }
       end
 
       type changed_resources =
@@ -686,6 +852,13 @@ module Orb
           voided_credit_notes: ::Array[Orb::CreditNote],
           voided_invoices: ::Array[Orb::Invoice]
         ) -> void
+
+        def to_hash: -> {
+          created_credit_notes: ::Array[Orb::CreditNote],
+          created_invoices: ::Array[Orb::Invoice],
+          voided_credit_notes: ::Array[Orb::CreditNote],
+          voided_invoices: ::Array[Orb::Invoice]
+        }
       end
     end
   end

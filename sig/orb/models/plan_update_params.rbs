@@ -17,6 +17,12 @@ module Orb
         ?metadata: ::Hash[Symbol, String?]?,
         ?request_options: Orb::request_opts
       ) -> void
+
+      def to_hash: -> {
+        external_plan_id: String?,
+        metadata: ::Hash[Symbol, String?]?,
+        request_options: Orb::RequestOptions
+      }
     end
   end
 end

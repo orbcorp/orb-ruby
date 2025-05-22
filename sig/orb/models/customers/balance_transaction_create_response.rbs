@@ -49,6 +49,19 @@ module Orb
           type: Orb::Models::Customers::BalanceTransactionCreateResponse::type_
         ) -> void
 
+        def to_hash: -> {
+          id: String,
+          action: Orb::Models::Customers::BalanceTransactionCreateResponse::action,
+          amount: String,
+          created_at: Time,
+          credit_note: Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote?,
+          description: String?,
+          ending_balance: String,
+          invoice: Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice?,
+          starting_balance: String,
+          type: Orb::Models::Customers::BalanceTransactionCreateResponse::type_
+        }
+
         type action =
           :applied_to_invoice
           | :manual_adjustment
@@ -82,6 +95,8 @@ module Orb
           attr_accessor id: String
 
           def initialize: (id: String) -> void
+
+          def to_hash: -> { id: String }
         end
 
         type invoice = { id: String }
@@ -90,6 +105,8 @@ module Orb
           attr_accessor id: String
 
           def initialize: (id: String) -> void
+
+          def to_hash: -> { id: String }
         end
 
         type type_ = :increment | :decrement

@@ -3,29 +3,35 @@ module Orb
     type evaluate_price_group =
       {
         amount: String,
-        grouping_values: ::Array[Orb::EvaluatePriceGroup::grouping_value],
+        grouping_values: ::Array[Orb::Models::EvaluatePriceGroup::grouping_value],
         quantity: Float
       }
 
     class EvaluatePriceGroup < Orb::Internal::Type::BaseModel
       attr_accessor amount: String
 
-      attr_accessor grouping_values: ::Array[Orb::EvaluatePriceGroup::grouping_value]
+      attr_accessor grouping_values: ::Array[Orb::Models::EvaluatePriceGroup::grouping_value]
 
       attr_accessor quantity: Float
 
       def initialize: (
         amount: String,
-        grouping_values: ::Array[Orb::EvaluatePriceGroup::grouping_value],
+        grouping_values: ::Array[Orb::Models::EvaluatePriceGroup::grouping_value],
         quantity: Float
       ) -> void
+
+      def to_hash: -> {
+        amount: String,
+        grouping_values: ::Array[Orb::Models::EvaluatePriceGroup::grouping_value],
+        quantity: Float
+      }
 
       type grouping_value = String | Float | bool
 
       module GroupingValue
         extend Orb::Internal::Type::Union
 
-        def self?.variants: -> ::Array[Orb::EvaluatePriceGroup::grouping_value]
+        def self?.variants: -> ::Array[Orb::Models::EvaluatePriceGroup::grouping_value]
       end
     end
   end

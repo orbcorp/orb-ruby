@@ -9,7 +9,7 @@ module Orb
 
       # @!attribute accounting_sync_configuration
       #
-      #   @return [Orb::CustomerUpdateParams::AccountingSyncConfiguration, nil]
+      #   @return [Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration, nil]
       optional :accounting_sync_configuration,
                -> { Orb::CustomerUpdateParams::AccountingSyncConfiguration },
                nil?: true
@@ -31,7 +31,7 @@ module Orb
 
       # @!attribute billing_address
       #
-      #   @return [Orb::CustomerUpdateParams::BillingAddress, nil]
+      #   @return [Orb::Models::CustomerUpdateParams::BillingAddress, nil]
       optional :billing_address, -> { Orb::CustomerUpdateParams::BillingAddress }, nil?: true
 
       # @!attribute currency
@@ -62,7 +62,7 @@ module Orb
       # @!attribute hierarchy
       #   The hierarchical relationships for this customer.
       #
-      #   @return [Orb::CustomerUpdateParams::Hierarchy, nil]
+      #   @return [Orb::Models::CustomerUpdateParams::Hierarchy, nil]
       optional :hierarchy, -> { Orb::CustomerUpdateParams::Hierarchy }, nil?: true
 
       # @!attribute metadata
@@ -88,7 +88,7 @@ module Orb
       #     `bill.com`, `netsuite`), any product mappings must first be configured with
       #     the Orb team.
       #
-      #   @return [Symbol, Orb::CustomerUpdateParams::PaymentProvider, nil]
+      #   @return [Symbol, Orb::Models::CustomerUpdateParams::PaymentProvider, nil]
       optional :payment_provider, enum: -> { Orb::CustomerUpdateParams::PaymentProvider }, nil?: true
 
       # @!attribute payment_provider_id
@@ -100,17 +100,17 @@ module Orb
 
       # @!attribute reporting_configuration
       #
-      #   @return [Orb::CustomerUpdateParams::ReportingConfiguration, nil]
+      #   @return [Orb::Models::CustomerUpdateParams::ReportingConfiguration, nil]
       optional :reporting_configuration, -> { Orb::CustomerUpdateParams::ReportingConfiguration }, nil?: true
 
       # @!attribute shipping_address
       #
-      #   @return [Orb::CustomerUpdateParams::ShippingAddress, nil]
+      #   @return [Orb::Models::CustomerUpdateParams::ShippingAddress, nil]
       optional :shipping_address, -> { Orb::CustomerUpdateParams::ShippingAddress }, nil?: true
 
       # @!attribute tax_configuration
       #
-      #   @return [Orb::CustomerUpdateParams::TaxConfiguration::Avalara, Orb::CustomerUpdateParams::TaxConfiguration::Taxjar, nil]
+      #   @return [Orb::Models::CustomerUpdateParams::TaxConfiguration::Avalara, Orb::Models::CustomerUpdateParams::TaxConfiguration::Taxjar, nil]
       optional :tax_configuration, union: -> { Orb::CustomerUpdateParams::TaxConfiguration }, nil?: true
 
       # @!attribute tax_id
@@ -220,20 +220,20 @@ module Orb
       #   | Venezuela            | `ve_rif`     | Venezuelan RIF Number                                                                                   |
       #   | Vietnam              | `vn_tin`     | Vietnamese Tax ID Number                                                                                |
       #
-      #   @return [Orb::CustomerUpdateParams::TaxID, nil]
+      #   @return [Orb::Models::CustomerUpdateParams::TaxID, nil]
       optional :tax_id, -> { Orb::CustomerUpdateParams::TaxID }, nil?: true
 
       # @!method initialize(accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, billing_address: nil, currency: nil, email: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, name: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::CustomerUpdateParams} for more details.
       #
-      #   @param accounting_sync_configuration [Orb::CustomerUpdateParams::AccountingSyncConfiguration, nil]
+      #   @param accounting_sync_configuration [Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration, nil]
       #
       #   @param additional_emails [Array<String>, nil] Additional email addresses for this customer. If populated, these email addresse
       #
       #   @param auto_collection [Boolean, nil] Used to determine if invoices for this customer will automatically attempt to ch
       #
-      #   @param billing_address [Orb::CustomerUpdateParams::BillingAddress, nil]
+      #   @param billing_address [Orb::Models::CustomerUpdateParams::BillingAddress, nil]
       #
       #   @param currency [String, nil] An ISO 4217 currency string used for the customer's invoices and balance. If not
       #
@@ -243,30 +243,30 @@ module Orb
       #
       #   @param external_customer_id [String, nil] The external customer ID. This can only be set if empty and the customer has no
       #
-      #   @param hierarchy [Orb::CustomerUpdateParams::Hierarchy, nil] The hierarchical relationships for this customer.
+      #   @param hierarchy [Orb::Models::CustomerUpdateParams::Hierarchy, nil] The hierarchical relationships for this customer.
       #
       #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
       #
       #   @param name [String, nil] The full name of the customer
       #
-      #   @param payment_provider [Symbol, Orb::CustomerUpdateParams::PaymentProvider, nil] This is used for creating charges or invoices in an external system via Orb. Whe
+      #   @param payment_provider [Symbol, Orb::Models::CustomerUpdateParams::PaymentProvider, nil] This is used for creating charges or invoices in an external system via Orb. Whe
       #
       #   @param payment_provider_id [String, nil] The ID of this customer in an external payments solution, such as Stripe. This i
       #
-      #   @param reporting_configuration [Orb::CustomerUpdateParams::ReportingConfiguration, nil]
+      #   @param reporting_configuration [Orb::Models::CustomerUpdateParams::ReportingConfiguration, nil]
       #
-      #   @param shipping_address [Orb::CustomerUpdateParams::ShippingAddress, nil]
+      #   @param shipping_address [Orb::Models::CustomerUpdateParams::ShippingAddress, nil]
       #
-      #   @param tax_configuration [Orb::CustomerUpdateParams::TaxConfiguration::Avalara, Orb::CustomerUpdateParams::TaxConfiguration::Taxjar, nil]
+      #   @param tax_configuration [Orb::Models::CustomerUpdateParams::TaxConfiguration::Avalara, Orb::Models::CustomerUpdateParams::TaxConfiguration::Taxjar, nil]
       #
-      #   @param tax_id [Orb::CustomerUpdateParams::TaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
+      #   @param tax_id [Orb::Models::CustomerUpdateParams::TaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
       class AccountingSyncConfiguration < Orb::Internal::Type::BaseModel
         # @!attribute accounting_providers
         #
-        #   @return [Array<Orb::CustomerUpdateParams::AccountingSyncConfiguration::AccountingProvider>, nil]
+        #   @return [Array<Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration::AccountingProvider>, nil]
         optional :accounting_providers,
                  -> {
                    Orb::Internal::Type::ArrayOf[Orb::CustomerUpdateParams::AccountingSyncConfiguration::AccountingProvider]
@@ -279,7 +279,7 @@ module Orb
         optional :excluded, Orb::Internal::Type::Boolean, nil?: true
 
         # @!method initialize(accounting_providers: nil, excluded: nil)
-        #   @param accounting_providers [Array<Orb::CustomerUpdateParams::AccountingSyncConfiguration::AccountingProvider>, nil]
+        #   @param accounting_providers [Array<Orb::Models::CustomerUpdateParams::AccountingSyncConfiguration::AccountingProvider>, nil]
         #   @param excluded [Boolean, nil]
 
         class AccountingProvider < Orb::Internal::Type::BaseModel
@@ -356,7 +356,7 @@ module Orb
 
         # @!method initialize(child_customer_ids: nil, parent_customer_id: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Orb::CustomerUpdateParams::Hierarchy} for more details.
+        #   {Orb::Models::CustomerUpdateParams::Hierarchy} for more details.
         #
         #   The hierarchical relationships for this customer.
         #
@@ -483,18 +483,18 @@ module Orb
         end
 
         # @!method self.variants
-        #   @return [Array(Orb::CustomerUpdateParams::TaxConfiguration::Avalara, Orb::CustomerUpdateParams::TaxConfiguration::Taxjar)]
+        #   @return [Array(Orb::Models::CustomerUpdateParams::TaxConfiguration::Avalara, Orb::Models::CustomerUpdateParams::TaxConfiguration::Taxjar)]
       end
 
       class TaxID < Orb::Internal::Type::BaseModel
         # @!attribute country
         #
-        #   @return [Symbol, Orb::CustomerUpdateParams::TaxID::Country]
+        #   @return [Symbol, Orb::Models::CustomerUpdateParams::TaxID::Country]
         required :country, enum: -> { Orb::CustomerUpdateParams::TaxID::Country }
 
         # @!attribute type
         #
-        #   @return [Symbol, Orb::CustomerUpdateParams::TaxID::Type]
+        #   @return [Symbol, Orb::Models::CustomerUpdateParams::TaxID::Type]
         required :type, enum: -> { Orb::CustomerUpdateParams::TaxID::Type }
 
         # @!attribute value
@@ -609,11 +609,11 @@ module Orb
         #   | Venezuela            | `ve_rif`     | Venezuelan RIF Number                                                                                   |
         #   | Vietnam              | `vn_tin`     | Vietnamese Tax ID Number                                                                                |
         #
-        #   @param country [Symbol, Orb::CustomerUpdateParams::TaxID::Country]
-        #   @param type [Symbol, Orb::CustomerUpdateParams::TaxID::Type]
+        #   @param country [Symbol, Orb::Models::CustomerUpdateParams::TaxID::Country]
+        #   @param type [Symbol, Orb::Models::CustomerUpdateParams::TaxID::Type]
         #   @param value [String]
 
-        # @see Orb::CustomerUpdateParams::TaxID#country
+        # @see Orb::Models::CustomerUpdateParams::TaxID#country
         module Country
           extend Orb::Internal::Type::Enum
 
@@ -700,7 +700,7 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::CustomerUpdateParams::TaxID#type
+        # @see Orb::Models::CustomerUpdateParams::TaxID#type
         module Type
           extend Orb::Internal::Type::Enum
 

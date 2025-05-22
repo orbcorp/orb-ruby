@@ -9,7 +9,7 @@ module Orb
 
       # @!attribute events
       #
-      #   @return [Array<Orb::EventIngestParams::Event>]
+      #   @return [Array<Orb::Models::EventIngestParams::Event>]
       required :events, -> { Orb::Internal::Type::ArrayOf[Orb::EventIngestParams::Event] }
 
       # @!attribute backfill_id
@@ -29,7 +29,7 @@ module Orb
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::EventIngestParams} for more details.
       #
-      #   @param events [Array<Orb::EventIngestParams::Event>]
+      #   @param events [Array<Orb::Models::EventIngestParams::Event>]
       #
       #   @param backfill_id [String, nil] If this ingestion request is part of a backfill, this parameter ties the ingeste
       #
@@ -82,7 +82,7 @@ module Orb
 
         # @!method initialize(event_name:, idempotency_key:, properties:, timestamp:, customer_id: nil, external_customer_id: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Orb::EventIngestParams::Event} for more details.
+        #   {Orb::Models::EventIngestParams::Event} for more details.
         #
         #   @param event_name [String] A name to meaningfully identify the action or event type.
         #

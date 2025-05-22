@@ -6,6 +6,8 @@ module Orb
       attr_accessor amended: String
 
       def initialize: (amended: String) -> void
+
+      def to_hash: -> { amended: String }
     end
   end
 end

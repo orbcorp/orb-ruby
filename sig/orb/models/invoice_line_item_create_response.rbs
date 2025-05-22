@@ -96,6 +96,31 @@ module Orb
         usage_customer_ids: ::Array[String]?
       ) -> void
 
+      def to_hash: -> {
+        id: String,
+        adjusted_subtotal: String,
+        adjustments: ::Array[Orb::Models::InvoiceLineItemCreateResponse::adjustment],
+        amount: String,
+        credits_applied: String,
+        discount: Orb::Models::discount?,
+        end_date: Time,
+        filter: String?,
+        grouping: String?,
+        maximum: Orb::Models::InvoiceLineItemCreateResponse::Maximum?,
+        maximum_amount: String?,
+        minimum: Orb::Models::InvoiceLineItemCreateResponse::Minimum?,
+        minimum_amount: String?,
+        name: String,
+        partially_invoiced_amount: String,
+        price: Orb::Models::price?,
+        quantity: Float,
+        start_date: Time,
+        sub_line_items: ::Array[Orb::Models::InvoiceLineItemCreateResponse::sub_line_item],
+        subtotal: String,
+        tax_amounts: ::Array[Orb::Models::InvoiceLineItemCreateResponse::TaxAmount],
+        usage_customer_ids: ::Array[String]?
+      }
+
       type adjustment =
         Orb::Models::InvoiceLineItemCreateResponse::Adjustment::UsageDiscount
         | Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscount
@@ -141,6 +166,16 @@ module Orb
             usage_discount: Float,
             ?adjustment_type: :usage_discount
           ) -> void
+
+          def to_hash: -> {
+            id: String,
+            adjustment_type: :usage_discount,
+            amount: String,
+            applies_to_price_ids: ::Array[String],
+            is_invoice_level: bool,
+            reason: String?,
+            usage_discount: Float
+          }
         end
 
         type amount_discount =
@@ -178,6 +213,16 @@ module Orb
             reason: String?,
             ?adjustment_type: :amount_discount
           ) -> void
+
+          def to_hash: -> {
+            id: String,
+            adjustment_type: :amount_discount,
+            amount: String,
+            amount_discount: String,
+            applies_to_price_ids: ::Array[String],
+            is_invoice_level: bool,
+            reason: String?
+          }
         end
 
         type percentage_discount =
@@ -215,6 +260,16 @@ module Orb
             reason: String?,
             ?adjustment_type: :percentage_discount
           ) -> void
+
+          def to_hash: -> {
+            id: String,
+            adjustment_type: :percentage_discount,
+            amount: String,
+            applies_to_price_ids: ::Array[String],
+            is_invoice_level: bool,
+            percentage_discount: Float,
+            reason: String?
+          }
         end
 
         type minimum =
@@ -256,6 +311,17 @@ module Orb
             reason: String?,
             ?adjustment_type: :minimum
           ) -> void
+
+          def to_hash: -> {
+            id: String,
+            adjustment_type: :minimum,
+            amount: String,
+            applies_to_price_ids: ::Array[String],
+            is_invoice_level: bool,
+            item_id: String,
+            minimum_amount: String,
+            reason: String?
+          }
         end
 
         type maximum =
@@ -293,6 +359,16 @@ module Orb
             reason: String?,
             ?adjustment_type: :maximum
           ) -> void
+
+          def to_hash: -> {
+            id: String,
+            adjustment_type: :maximum,
+            amount: String,
+            applies_to_price_ids: ::Array[String],
+            is_invoice_level: bool,
+            maximum_amount: String,
+            reason: String?
+          }
         end
 
         def self?.variants: -> ::Array[Orb::Models::InvoiceLineItemCreateResponse::adjustment]
@@ -310,6 +386,11 @@ module Orb
           applies_to_price_ids: ::Array[String],
           maximum_amount: String
         ) -> void
+
+        def to_hash: -> {
+          applies_to_price_ids: ::Array[String],
+          maximum_amount: String
+        }
       end
 
       type minimum =
@@ -324,6 +405,11 @@ module Orb
           applies_to_price_ids: ::Array[String],
           minimum_amount: String
         ) -> void
+
+        def to_hash: -> {
+          applies_to_price_ids: ::Array[String],
+          minimum_amount: String
+        }
       end
 
       type sub_line_item =
@@ -366,6 +452,15 @@ module Orb
             ?type: :matrix
           ) -> void
 
+          def to_hash: -> {
+            amount: String,
+            grouping: Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix::Grouping?,
+            matrix_config: Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Matrix::MatrixConfig,
+            name: String,
+            quantity: Float,
+            type: :matrix
+          }
+
           type grouping = { key: String, value: String? }
 
           class Grouping < Orb::Internal::Type::BaseModel
@@ -374,6 +469,8 @@ module Orb
             attr_accessor value: String?
 
             def initialize: (key: String, value: String?) -> void
+
+            def to_hash: -> { key: String, value: String? }
           end
 
           type matrix_config = { dimension_values: ::Array[String?] }
@@ -382,6 +479,8 @@ module Orb
             attr_accessor dimension_values: ::Array[String?]
 
             def initialize: (dimension_values: ::Array[String?]) -> void
+
+            def to_hash: -> { dimension_values: ::Array[String?] }
           end
         end
 
@@ -417,6 +516,15 @@ module Orb
             ?type: :tier
           ) -> void
 
+          def to_hash: -> {
+            amount: String,
+            grouping: Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier::Grouping?,
+            name: String,
+            quantity: Float,
+            tier_config: Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Tier::TierConfig,
+            type: :tier
+          }
+
           type grouping = { key: String, value: String? }
 
           class Grouping < Orb::Internal::Type::BaseModel
@@ -425,6 +533,8 @@ module Orb
             attr_accessor value: String?
 
             def initialize: (key: String, value: String?) -> void
+
+            def to_hash: -> { key: String, value: String? }
           end
 
           type tier_config =
@@ -442,6 +552,12 @@ module Orb
               last_unit: Float?,
               unit_amount: String
             ) -> void
+
+            def to_hash: -> {
+              first_unit: Float,
+              last_unit: Float?,
+              unit_amount: String
+            }
           end
         end
 
@@ -473,6 +589,14 @@ module Orb
             ?type: :"'null'"
           ) -> void
 
+          def to_hash: -> {
+            amount: String,
+            grouping: Orb::Models::InvoiceLineItemCreateResponse::SubLineItem::Null::Grouping?,
+            name: String,
+            quantity: Float,
+            type: :"'null'"
+          }
+
           type grouping = { key: String, value: String? }
 
           class Grouping < Orb::Internal::Type::BaseModel
@@ -481,6 +605,8 @@ module Orb
             attr_accessor value: String?
 
             def initialize: (key: String, value: String?) -> void
+
+            def to_hash: -> { key: String, value: String? }
           end
         end
 
@@ -506,6 +632,12 @@ module Orb
           tax_rate_description: String,
           tax_rate_percentage: String?
         ) -> void
+
+        def to_hash: -> {
+          amount: String,
+          tax_rate_description: String,
+          tax_rate_percentage: String?
+        }
       end
     end
   end

@@ -11,7 +11,7 @@ module Orb
       #   The new date that the trial should end, or the literal string `immediate` to end
       #   the trial immediately.
       #
-      #   @return [Time, Symbol, Orb::SubscriptionUpdateTrialParams::TrialEndDate]
+      #   @return [Time, Symbol, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate]
       required :trial_end_date, union: -> { Orb::SubscriptionUpdateTrialParams::TrialEndDate }
 
       # @!attribute shift
@@ -25,7 +25,7 @@ module Orb
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::SubscriptionUpdateTrialParams} for more details.
       #
-      #   @param trial_end_date [Time, Symbol, Orb::SubscriptionUpdateTrialParams::TrialEndDate] The new date that the trial should end, or the literal string `immediate` to end
+      #   @param trial_end_date [Time, Symbol, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate] The new date that the trial should end, or the literal string `immediate` to end
       #
       #   @param shift [Boolean] If true, shifts subsequent price and adjustment intervals (preserving their dura
       #
@@ -38,7 +38,7 @@ module Orb
 
         variant Time
 
-        variant const: -> { Orb::SubscriptionUpdateTrialParams::TrialEndDate::IMMEDIATE }
+        variant const: -> { Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate::IMMEDIATE }
 
         # @!method self.variants
         #   @return [Array(Time, Symbol)]

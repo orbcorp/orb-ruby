@@ -13,6 +13,10 @@ module Orb
           data: ::Array[Orb::Models::Customers::CostListByExternalIDResponse::Data]
         ) -> void
 
+        def to_hash: -> {
+          data: ::Array[Orb::Models::Customers::CostListByExternalIDResponse::Data]
+        }
+
         type data =
           {
             per_price_costs: ::Array[Orb::Models::Customers::CostListByExternalIDResponse::Data::PerPriceCost],
@@ -41,6 +45,14 @@ module Orb
             total: String
           ) -> void
 
+          def to_hash: -> {
+            per_price_costs: ::Array[Orb::Models::Customers::CostListByExternalIDResponse::Data::PerPriceCost],
+            subtotal: String,
+            timeframe_end: Time,
+            timeframe_start: Time,
+            total: String
+          }
+
           type per_price_cost =
             {
               price: Orb::Models::price,
@@ -68,6 +80,14 @@ module Orb
               total: String,
               ?quantity: Float?
             ) -> void
+
+            def to_hash: -> {
+              price: Orb::Models::price,
+              price_id: String,
+              subtotal: String,
+              total: String,
+              quantity: Float?
+            }
           end
         end
       end

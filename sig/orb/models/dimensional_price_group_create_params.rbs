@@ -32,6 +32,15 @@ module Orb
         ?metadata: ::Hash[Symbol, String?]?,
         ?request_options: Orb::request_opts
       ) -> void
+
+      def to_hash: -> {
+        billable_metric_id: String,
+        dimensions: ::Array[String],
+        name: String,
+        external_dimensional_price_group_id: String?,
+        metadata: ::Hash[Symbol, String?]?,
+        request_options: Orb::RequestOptions
+      }
     end
   end
 end

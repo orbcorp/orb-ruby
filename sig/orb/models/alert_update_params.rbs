@@ -15,12 +15,19 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> void
 
+      def to_hash: -> {
+        thresholds: ::Array[Orb::AlertUpdateParams::Threshold],
+        request_options: Orb::RequestOptions
+      }
+
       type threshold = { value: Float }
 
       class Threshold < Orb::Internal::Type::BaseModel
         attr_accessor value: Float
 
         def initialize: (value: Float) -> void
+
+        def to_hash: -> { value: Float }
       end
     end
   end

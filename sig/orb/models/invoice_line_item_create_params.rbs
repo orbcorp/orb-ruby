@@ -36,6 +36,16 @@ module Orb
         start_date: Date,
         ?request_options: Orb::request_opts
       ) -> void
+
+      def to_hash: -> {
+        amount: String,
+        end_date: Date,
+        invoice_id: String,
+        name: String,
+        quantity: Float,
+        start_date: Date,
+        request_options: Orb::RequestOptions
+      }
     end
   end
 end

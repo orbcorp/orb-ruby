@@ -181,6 +181,52 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> void
 
+      def to_hash: -> {
+        cadence: Orb::Models::PriceCreateParams::cadence,
+        currency: String,
+        item_id: String,
+        model_type: Orb::Models::PriceCreateParams::model_type,
+        name: String,
+        unit_config: Orb::PriceCreateParams::UnitConfig,
+        billable_metric_id: String?,
+        billed_in_advance: bool?,
+        billing_cycle_configuration: Orb::PriceCreateParams::BillingCycleConfiguration?,
+        conversion_rate: Float?,
+        external_price_id: String?,
+        fixed_price_quantity: Float?,
+        invoice_grouping_key: String?,
+        invoicing_cycle_configuration: Orb::PriceCreateParams::InvoicingCycleConfiguration?,
+        metadata: ::Hash[Symbol, String?]?,
+        package_config: Orb::PriceCreateParams::PackageConfig,
+        matrix_config: Orb::PriceCreateParams::MatrixConfig,
+        matrix_with_allocation_config: Orb::PriceCreateParams::MatrixWithAllocationConfig,
+        tiered_config: Orb::PriceCreateParams::TieredConfig,
+        tiered_bps_config: Orb::PriceCreateParams::TieredBpsConfig,
+        bps_config: Orb::PriceCreateParams::BpsConfig,
+        bulk_bps_config: Orb::PriceCreateParams::BulkBpsConfig,
+        bulk_config: Orb::PriceCreateParams::BulkConfig,
+        threshold_total_amount_config: ::Hash[Symbol, top],
+        tiered_package_config: ::Hash[Symbol, top],
+        grouped_tiered_config: ::Hash[Symbol, top],
+        max_group_tiered_package_config: ::Hash[Symbol, top],
+        tiered_with_minimum_config: ::Hash[Symbol, top],
+        package_with_allocation_config: ::Hash[Symbol, top],
+        tiered_package_with_minimum_config: ::Hash[Symbol, top],
+        unit_with_percent_config: ::Hash[Symbol, top],
+        tiered_with_proration_config: ::Hash[Symbol, top],
+        unit_with_proration_config: ::Hash[Symbol, top],
+        grouped_allocation_config: ::Hash[Symbol, top],
+        grouped_with_prorated_minimum_config: ::Hash[Symbol, top],
+        grouped_with_metered_minimum_config: ::Hash[Symbol, top],
+        matrix_with_display_name_config: ::Hash[Symbol, top],
+        bulk_with_proration_config: ::Hash[Symbol, top],
+        grouped_tiered_package_config: ::Hash[Symbol, top],
+        scalable_matrix_with_unit_pricing_config: ::Hash[Symbol, top],
+        scalable_matrix_with_tiered_pricing_config: ::Hash[Symbol, top],
+        cumulative_grouped_bulk_config: ::Hash[Symbol, top],
+        request_options: Orb::RequestOptions
+      }
+
       type cadence =
         :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
 
@@ -213,23 +259,30 @@ module Orb
         attr_accessor unit_amount: String
 
         def initialize: (unit_amount: String) -> void
+
+        def to_hash: -> { unit_amount: String }
       end
 
       type billing_cycle_configuration =
         {
           duration: Integer,
-          duration_unit: Orb::PriceCreateParams::BillingCycleConfiguration::duration_unit
+          duration_unit: Orb::Models::PriceCreateParams::BillingCycleConfiguration::duration_unit
         }
 
       class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
         attr_accessor duration: Integer
 
-        attr_accessor duration_unit: Orb::PriceCreateParams::BillingCycleConfiguration::duration_unit
+        attr_accessor duration_unit: Orb::Models::PriceCreateParams::BillingCycleConfiguration::duration_unit
 
         def initialize: (
           duration: Integer,
-          duration_unit: Orb::PriceCreateParams::BillingCycleConfiguration::duration_unit
+          duration_unit: Orb::Models::PriceCreateParams::BillingCycleConfiguration::duration_unit
         ) -> void
+
+        def to_hash: -> {
+          duration: Integer,
+          duration_unit: Orb::Models::PriceCreateParams::BillingCycleConfiguration::duration_unit
+        }
 
         type duration_unit = :day | :month
 
@@ -239,25 +292,30 @@ module Orb
           DAY: :day
           MONTH: :month
 
-          def self?.values: -> ::Array[Orb::PriceCreateParams::BillingCycleConfiguration::duration_unit]
+          def self?.values: -> ::Array[Orb::Models::PriceCreateParams::BillingCycleConfiguration::duration_unit]
         end
       end
 
       type invoicing_cycle_configuration =
         {
           duration: Integer,
-          duration_unit: Orb::PriceCreateParams::InvoicingCycleConfiguration::duration_unit
+          duration_unit: Orb::Models::PriceCreateParams::InvoicingCycleConfiguration::duration_unit
         }
 
       class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
         attr_accessor duration: Integer
 
-        attr_accessor duration_unit: Orb::PriceCreateParams::InvoicingCycleConfiguration::duration_unit
+        attr_accessor duration_unit: Orb::Models::PriceCreateParams::InvoicingCycleConfiguration::duration_unit
 
         def initialize: (
           duration: Integer,
-          duration_unit: Orb::PriceCreateParams::InvoicingCycleConfiguration::duration_unit
+          duration_unit: Orb::Models::PriceCreateParams::InvoicingCycleConfiguration::duration_unit
         ) -> void
+
+        def to_hash: -> {
+          duration: Integer,
+          duration_unit: Orb::Models::PriceCreateParams::InvoicingCycleConfiguration::duration_unit
+        }
 
         type duration_unit = :day | :month
 
@@ -267,7 +325,7 @@ module Orb
           DAY: :day
           MONTH: :month
 
-          def self?.values: -> ::Array[Orb::PriceCreateParams::InvoicingCycleConfiguration::duration_unit]
+          def self?.values: -> ::Array[Orb::Models::PriceCreateParams::InvoicingCycleConfiguration::duration_unit]
         end
       end
 
@@ -279,6 +337,8 @@ module Orb
         attr_accessor package_size: Integer
 
         def initialize: (package_amount: String, package_size: Integer) -> void
+
+        def to_hash: -> { package_amount: String, package_size: Integer }
       end
 
       type matrix_config =
@@ -301,6 +361,12 @@ module Orb
           matrix_values: ::Array[Orb::PriceCreateParams::MatrixConfig::MatrixValue]
         ) -> void
 
+        def to_hash: -> {
+          default_unit_amount: String,
+          dimensions: ::Array[String?],
+          matrix_values: ::Array[Orb::PriceCreateParams::MatrixConfig::MatrixValue]
+        }
+
         type matrix_value =
           { dimension_values: ::Array[String?], unit_amount: String }
 
@@ -313,6 +379,11 @@ module Orb
             dimension_values: ::Array[String?],
             unit_amount: String
           ) -> void
+
+          def to_hash: -> {
+            dimension_values: ::Array[String?],
+            unit_amount: String
+          }
         end
       end
 
@@ -340,6 +411,13 @@ module Orb
           matrix_values: ::Array[Orb::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue]
         ) -> void
 
+        def to_hash: -> {
+          allocation: Float,
+          default_unit_amount: String,
+          dimensions: ::Array[String?],
+          matrix_values: ::Array[Orb::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue]
+        }
+
         type matrix_value =
           { dimension_values: ::Array[String?], unit_amount: String }
 
@@ -352,6 +430,11 @@ module Orb
             dimension_values: ::Array[String?],
             unit_amount: String
           ) -> void
+
+          def to_hash: -> {
+            dimension_values: ::Array[String?],
+            unit_amount: String
+          }
         end
       end
 
@@ -364,6 +447,10 @@ module Orb
         def initialize: (
           tiers: ::Array[Orb::PriceCreateParams::TieredConfig::Tier]
         ) -> void
+
+        def to_hash: -> {
+          tiers: ::Array[Orb::PriceCreateParams::TieredConfig::Tier]
+        }
 
         type tier =
           { first_unit: Float, unit_amount: String, last_unit: Float? }
@@ -380,6 +467,12 @@ module Orb
             unit_amount: String,
             ?last_unit: Float?
           ) -> void
+
+          def to_hash: -> {
+            first_unit: Float,
+            unit_amount: String,
+            last_unit: Float?
+          }
         end
       end
 
@@ -392,6 +485,10 @@ module Orb
         def initialize: (
           tiers: ::Array[Orb::PriceCreateParams::TieredBpsConfig::Tier]
         ) -> void
+
+        def to_hash: -> {
+          tiers: ::Array[Orb::PriceCreateParams::TieredBpsConfig::Tier]
+        }
 
         type tier =
           {
@@ -416,6 +513,13 @@ module Orb
             ?maximum_amount: String?,
             ?per_unit_maximum: String?
           ) -> void
+
+          def to_hash: -> {
+            bps: Float,
+            minimum_amount: String,
+            maximum_amount: String?,
+            per_unit_maximum: String?
+          }
         end
       end
 
@@ -427,6 +531,8 @@ module Orb
         attr_accessor per_unit_maximum: String?
 
         def initialize: (bps: Float, ?per_unit_maximum: String?) -> void
+
+        def to_hash: -> { bps: Float, per_unit_maximum: String? }
       end
 
       type bulk_bps_config =
@@ -438,6 +544,10 @@ module Orb
         def initialize: (
           tiers: ::Array[Orb::PriceCreateParams::BulkBpsConfig::Tier]
         ) -> void
+
+        def to_hash: -> {
+          tiers: ::Array[Orb::PriceCreateParams::BulkBpsConfig::Tier]
+        }
 
         type tier =
           { bps: Float, maximum_amount: String?, per_unit_maximum: String? }
@@ -454,6 +564,12 @@ module Orb
             ?maximum_amount: String?,
             ?per_unit_maximum: String?
           ) -> void
+
+          def to_hash: -> {
+            bps: Float,
+            maximum_amount: String?,
+            per_unit_maximum: String?
+          }
         end
       end
 
@@ -467,6 +583,10 @@ module Orb
           tiers: ::Array[Orb::PriceCreateParams::BulkConfig::Tier]
         ) -> void
 
+        def to_hash: -> {
+          tiers: ::Array[Orb::PriceCreateParams::BulkConfig::Tier]
+        }
+
         type tier = { unit_amount: String, maximum_units: Float? }
 
         class Tier < Orb::Internal::Type::BaseModel
@@ -475,6 +595,8 @@ module Orb
           attr_accessor maximum_units: Float?
 
           def initialize: (unit_amount: String, ?maximum_units: Float?) -> void
+
+          def to_hash: -> { unit_amount: String, maximum_units: Float? }
         end
       end
     end

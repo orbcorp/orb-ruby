@@ -16,7 +16,7 @@ module Orb
       variant :amount, -> { Orb::AmountDiscount }
 
       # @!method self.variants
-      #   @return [Array(Orb::PercentageDiscount, Orb::TrialDiscount, Orb::UsageDiscount, Orb::AmountDiscount)]
+      #   @return [Array(Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount)]
     end
   end
 end
