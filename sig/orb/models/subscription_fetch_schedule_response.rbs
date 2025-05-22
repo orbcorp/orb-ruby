@@ -24,6 +24,13 @@ module Orb
         start_date: Time
       ) -> void
 
+      def to_hash: -> {
+        created_at: Time,
+        end_date: Time?,
+        plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan,
+        start_date: Time
+      }
+
       type plan = { id: String?, external_plan_id: String?, name: String? }
 
       class Plan < Orb::Internal::Type::BaseModel
@@ -38,6 +45,12 @@ module Orb
           external_plan_id: String?,
           name: String?
         ) -> void
+
+        def to_hash: -> {
+          id: String?,
+          external_plan_id: String?,
+          name: String?
+        }
       end
     end
   end

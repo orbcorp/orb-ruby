@@ -63,6 +63,22 @@ module Orb
             ?request_options: Orb::request_opts
           ) -> void
 
+          def to_hash: -> {
+            amount: Float,
+            entry_type: Orb::Models::Customers::Credits::LedgerCreateEntryParams::entry_type,
+            currency: String?,
+            description: String?,
+            effective_date: Time?,
+            expiry_date: Time?,
+            invoice_settings: Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings?,
+            metadata: ::Hash[Symbol, String?]?,
+            per_unit_cost_basis: String?,
+            target_expiry_date: Date,
+            block_id: String,
+            void_reason: Orb::Models::Customers::Credits::LedgerCreateEntryParams::void_reason?,
+            request_options: Orb::RequestOptions
+          }
+
           type entry_type = :amendment
 
           module EntryType
@@ -98,6 +114,13 @@ module Orb
               ?memo: String?,
               ?require_successful_payment: bool
             ) -> void
+
+            def to_hash: -> {
+              auto_collection: bool,
+              net_terms: Integer,
+              memo: String?,
+              require_successful_payment: bool
+            }
           end
 
           type void_reason = :refund

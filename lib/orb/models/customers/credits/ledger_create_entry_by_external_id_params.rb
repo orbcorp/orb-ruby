@@ -18,7 +18,7 @@ module Orb
 
           # @!attribute entry_type
           #
-          #   @return [Symbol, Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType]
+          #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType]
           required :entry_type,
                    enum: -> {
                      Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType
@@ -58,7 +58,7 @@ module Orb
           #   per_unit_cost_basis, as the calculation of the invoice total is done on that
           #   basis.
           #
-          #   @return [Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings, nil]
+          #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings, nil]
           optional :invoice_settings,
                    -> { Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings },
                    nil?: true
@@ -95,7 +95,7 @@ module Orb
           # @!attribute void_reason
           #   Can only be specified when `entry_type=void`. The reason for the void.
           #
-          #   @return [Symbol, Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason, nil]
+          #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason, nil]
           optional :void_reason,
                    enum: -> { Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason },
                    nil?: true
@@ -107,7 +107,7 @@ module Orb
           #
           #   @param amount [Float] The number of credits to effect. Note that this is required for increment, decre
           #
-          #   @param entry_type [Symbol, Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType]
+          #   @param entry_type [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType]
           #
           #   @param expiry_date [Time, nil] An ISO 8601 format date that identifies the origination credit block to expire
           #
@@ -121,13 +121,13 @@ module Orb
           #
           #   @param effective_date [Time, nil] An ISO 8601 format date that denotes when this credit balance should become avai
           #
-          #   @param invoice_settings [Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings, nil] Passing `invoice_settings` automatically generates an invoice for the newly adde
+          #   @param invoice_settings [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings, nil] Passing `invoice_settings` automatically generates an invoice for the newly adde
           #
           #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
           #
           #   @param per_unit_cost_basis [String, nil] Can only be specified when entry_type=increment. How much, in the customer's cur
           #
-          #   @param void_reason [Symbol, Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason, nil] Can only be specified when `entry_type=void`. The reason for the void.
+          #   @param void_reason [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason, nil] Can only be specified when `entry_type=void`. The reason for the void.
           #
           #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
@@ -171,7 +171,7 @@ module Orb
 
             # @!method initialize(auto_collection:, net_terms:, memo: nil, require_successful_payment: nil)
             #   Some parameter documentations has been truncated, see
-            #   {Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings}
+            #   {Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings}
             #   for more details.
             #
             #   Passing `invoice_settings` automatically generates an invoice for the newly

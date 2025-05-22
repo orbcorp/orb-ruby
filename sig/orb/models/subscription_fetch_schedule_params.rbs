@@ -38,6 +38,16 @@ module Orb
         ?start_date_lte: Time?,
         ?request_options: Orb::request_opts
       ) -> void
+
+      def to_hash: -> {
+        cursor: String?,
+        limit: Integer,
+        start_date_gt: Time?,
+        start_date_gte: Time?,
+        start_date_lt: Time?,
+        start_date_lte: Time?,
+        request_options: Orb::RequestOptions
+      }
     end
   end
 end

@@ -31,7 +31,7 @@ module Orb
       #   discounts, it's strongly recommended that you use the default cumulative
       #   behavior.
       #
-      #   @return [Symbol, Orb::SubscriptionFetchCostsParams::ViewMode, nil]
+      #   @return [Symbol, Orb::Models::SubscriptionFetchCostsParams::ViewMode, nil]
       optional :view_mode, enum: -> { Orb::SubscriptionFetchCostsParams::ViewMode }, nil?: true
 
       # @!method initialize(currency: nil, timeframe_end: nil, timeframe_start: nil, view_mode: nil, request_options: {})
@@ -44,7 +44,7 @@ module Orb
       #
       #   @param timeframe_start [Time, nil] Costs returned are inclusive of `timeframe_start`.
       #
-      #   @param view_mode [Symbol, Orb::SubscriptionFetchCostsParams::ViewMode, nil] Controls whether Orb returns cumulative costs since the start of the billing per
+      #   @param view_mode [Symbol, Orb::Models::SubscriptionFetchCostsParams::ViewMode, nil] Controls whether Orb returns cumulative costs since the start of the billing per
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 

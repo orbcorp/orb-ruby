@@ -11,7 +11,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Item]
+      # @return [Orb::Models::Item]
       #
       # @see Orb::Models::ItemCreateParams
       def create(params)
@@ -24,11 +24,11 @@ module Orb
       # @overload update(item_id, external_connections: nil, name: nil, request_options: {})
       #
       # @param item_id [String]
-      # @param external_connections [Array<Orb::ItemUpdateParams::ExternalConnection>, nil]
+      # @param external_connections [Array<Orb::Models::ItemUpdateParams::ExternalConnection>, nil]
       # @param name [String, nil]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Item]
+      # @return [Orb::Models::Item]
       #
       # @see Orb::Models::ItemUpdateParams
       def update(item_id, params = {})
@@ -56,7 +56,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Internal::Page<Orb::Item>]
+      # @return [Orb::Internal::Page<Orb::Models::Item>]
       #
       # @see Orb::Models::ItemListParams
       def list(params = {})
@@ -78,7 +78,7 @@ module Orb
       # @param item_id [String]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Item]
+      # @return [Orb::Models::Item]
       #
       # @see Orb::Models::ItemFetchParams
       def fetch(item_id, params = {})

@@ -10,6 +10,8 @@ module Orb
 
         def initialize: (data: ::Array[Orb::Events::EventVolumes::Data]) -> void
 
+        def to_hash: -> { data: ::Array[Orb::Events::EventVolumes::Data] }
+
         type data =
           { count: Integer, timeframe_end: Time, timeframe_start: Time }
 
@@ -25,6 +27,12 @@ module Orb
             timeframe_end: Time,
             timeframe_start: Time
           ) -> void
+
+          def to_hash: -> {
+            count: Integer,
+            timeframe_end: Time,
+            timeframe_start: Time
+          }
         end
       end
     end

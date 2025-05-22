@@ -81,6 +81,27 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> void
 
+      def to_hash: -> {
+        accounting_sync_configuration: Orb::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration?,
+        additional_emails: ::Array[String]?,
+        auto_collection: bool?,
+        billing_address: Orb::CustomerUpdateByExternalIDParams::BillingAddress?,
+        currency: String?,
+        email: String?,
+        email_delivery: bool?,
+        external_customer_id: String?,
+        hierarchy: Orb::CustomerUpdateByExternalIDParams::Hierarchy?,
+        metadata: ::Hash[Symbol, String?]?,
+        name: String?,
+        payment_provider: Orb::Models::CustomerUpdateByExternalIDParams::payment_provider?,
+        payment_provider_id: String?,
+        reporting_configuration: Orb::CustomerUpdateByExternalIDParams::ReportingConfiguration?,
+        shipping_address: Orb::CustomerUpdateByExternalIDParams::ShippingAddress?,
+        tax_configuration: Orb::Models::CustomerUpdateByExternalIDParams::tax_configuration?,
+        tax_id: Orb::CustomerUpdateByExternalIDParams::TaxID?,
+        request_options: Orb::RequestOptions
+      }
+
       type accounting_sync_configuration =
         {
           accounting_providers: ::Array[Orb::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider]?,
@@ -97,6 +118,11 @@ module Orb
           ?excluded: bool?
         ) -> void
 
+        def to_hash: -> {
+          accounting_providers: ::Array[Orb::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider]?,
+          excluded: bool?
+        }
+
         type accounting_provider =
           { external_provider_id: String, provider_type: String }
 
@@ -109,6 +135,11 @@ module Orb
             external_provider_id: String,
             provider_type: String
           ) -> void
+
+          def to_hash: -> {
+            external_provider_id: String,
+            provider_type: String
+          }
         end
       end
 
@@ -143,6 +174,15 @@ module Orb
           ?postal_code: String?,
           ?state: String?
         ) -> void
+
+        def to_hash: -> {
+          city: String?,
+          country: String?,
+          :line1 => String?,
+          :line2 => String?,
+          postal_code: String?,
+          state: String?
+        }
       end
 
       type hierarchy =
@@ -159,6 +199,11 @@ module Orb
           ?child_customer_ids: ::Array[String],
           ?parent_customer_id: String?
         ) -> void
+
+        def to_hash: -> {
+          child_customer_ids: ::Array[String],
+          parent_customer_id: String?
+        }
       end
 
       type payment_provider =
@@ -182,6 +227,8 @@ module Orb
         attr_accessor exempt: bool
 
         def initialize: (exempt: bool) -> void
+
+        def to_hash: -> { exempt: bool }
       end
 
       type shipping_address =
@@ -215,6 +262,15 @@ module Orb
           ?postal_code: String?,
           ?state: String?
         ) -> void
+
+        def to_hash: -> {
+          city: String?,
+          country: String?,
+          :line1 => String?,
+          :line2 => String?,
+          postal_code: String?,
+          state: String?
+        }
       end
 
       type tax_configuration =
@@ -243,6 +299,12 @@ module Orb
             ?tax_exemption_code: String?,
             ?tax_provider: :avalara
           ) -> void
+
+          def to_hash: -> {
+            tax_exempt: bool,
+            tax_provider: :avalara,
+            tax_exemption_code: String?
+          }
         end
 
         type taxjar = { tax_exempt: bool, tax_provider: :taxjar }
@@ -253,6 +315,8 @@ module Orb
           attr_accessor tax_provider: :taxjar
 
           def initialize: (tax_exempt: bool, ?tax_provider: :taxjar) -> void
+
+          def to_hash: -> { tax_exempt: bool, tax_provider: :taxjar }
         end
 
         def self?.variants: -> ::Array[Orb::Models::CustomerUpdateByExternalIDParams::tax_configuration]
@@ -260,23 +324,29 @@ module Orb
 
       type tax_id =
         {
-          country: Orb::CustomerUpdateByExternalIDParams::TaxID::country,
-          type: Orb::CustomerUpdateByExternalIDParams::TaxID::type_,
+          country: Orb::Models::CustomerUpdateByExternalIDParams::TaxID::country,
+          type: Orb::Models::CustomerUpdateByExternalIDParams::TaxID::type_,
           value: String
         }
 
       class TaxID < Orb::Internal::Type::BaseModel
-        attr_accessor country: Orb::CustomerUpdateByExternalIDParams::TaxID::country
+        attr_accessor country: Orb::Models::CustomerUpdateByExternalIDParams::TaxID::country
 
-        attr_accessor type: Orb::CustomerUpdateByExternalIDParams::TaxID::type_
+        attr_accessor type: Orb::Models::CustomerUpdateByExternalIDParams::TaxID::type_
 
         attr_accessor value: String
 
         def initialize: (
-          country: Orb::CustomerUpdateByExternalIDParams::TaxID::country,
-          type: Orb::CustomerUpdateByExternalIDParams::TaxID::type_,
+          country: Orb::Models::CustomerUpdateByExternalIDParams::TaxID::country,
+          type: Orb::Models::CustomerUpdateByExternalIDParams::TaxID::type_,
           value: String
         ) -> void
+
+        def to_hash: -> {
+          country: Orb::Models::CustomerUpdateByExternalIDParams::TaxID::country,
+          type: Orb::Models::CustomerUpdateByExternalIDParams::TaxID::type_,
+          value: String
+        }
 
         type country =
           :AD
@@ -440,7 +510,7 @@ module Orb
           VN: :VN
           ZA: :ZA
 
-          def self?.values: -> ::Array[Orb::CustomerUpdateByExternalIDParams::TaxID::country]
+          def self?.values: -> ::Array[Orb::Models::CustomerUpdateByExternalIDParams::TaxID::country]
         end
 
         type type_ =
@@ -591,7 +661,7 @@ module Orb
           VN_TIN: :vn_tin
           ZA_VAT: :za_vat
 
-          def self?.values: -> ::Array[Orb::CustomerUpdateByExternalIDParams::TaxID::type_]
+          def self?.values: -> ::Array[Orb::Models::CustomerUpdateByExternalIDParams::TaxID::type_]
         end
       end
     end

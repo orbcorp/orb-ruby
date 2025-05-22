@@ -46,7 +46,7 @@ module Orb
 
       # @!method initialize(id:, billable_metric_id:, dimensions:, external_dimensional_price_group_id:, metadata:, name:)
       #   Some parameter documentations has been truncated, see
-      #   {Orb::DimensionalPriceGroup} for more details.
+      #   {Orb::Models::DimensionalPriceGroup} for more details.
       #
       #   A dimensional price group is used to partition the result of a billable metric
       #   by a set of dimensions. Prices in a price group must specify the parition used

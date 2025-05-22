@@ -42,6 +42,17 @@ module Orb
             ?expires_after_unit: Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse::expires_after_unit?
           ) -> void
 
+          def to_hash: -> {
+            id: String,
+            amount: String,
+            currency: String,
+            invoice_settings: Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse::InvoiceSettings,
+            per_unit_cost_basis: String,
+            threshold: String,
+            expires_after: Integer?,
+            expires_after_unit: Orb::Models::Customers::Credits::TopUpCreateByExternalIDResponse::expires_after_unit?
+          }
+
           type invoice_settings =
             {
               auto_collection: bool,
@@ -67,6 +78,13 @@ module Orb
               ?memo: String?,
               ?require_successful_payment: bool
             ) -> void
+
+            def to_hash: -> {
+              auto_collection: bool,
+              net_terms: Integer,
+              memo: String?,
+              require_successful_payment: bool
+            }
           end
 
           type expires_after_unit = :day | :month

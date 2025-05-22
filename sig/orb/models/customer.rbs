@@ -16,7 +16,7 @@ module Orb
         hierarchy: Orb::Customer::Hierarchy,
         metadata: ::Hash[Symbol, String],
         name: String,
-        payment_provider: Orb::Customer::payment_provider?,
+        payment_provider: Orb::Models::Customer::payment_provider?,
         payment_provider_id: String?,
         portal_url: String?,
         shipping_address: Orb::Customer::ShippingAddress?,
@@ -55,7 +55,7 @@ module Orb
 
       attr_accessor name: String
 
-      attr_accessor payment_provider: Orb::Customer::payment_provider?
+      attr_accessor payment_provider: Orb::Models::Customer::payment_provider?
 
       attr_accessor payment_provider_id: String?
 
@@ -86,7 +86,7 @@ module Orb
         hierarchy: Orb::Customer::Hierarchy,
         metadata: ::Hash[Symbol, String],
         name: String,
-        payment_provider: Orb::Customer::payment_provider?,
+        payment_provider: Orb::Models::Customer::payment_provider?,
         payment_provider_id: String?,
         portal_url: String?,
         shipping_address: Orb::Customer::ShippingAddress?,
@@ -95,6 +95,31 @@ module Orb
         ?accounting_sync_configuration: Orb::Customer::AccountingSyncConfiguration?,
         ?reporting_configuration: Orb::Customer::ReportingConfiguration?
       ) -> void
+
+      def to_hash: -> {
+        id: String,
+        additional_emails: ::Array[String],
+        auto_collection: bool,
+        balance: String,
+        billing_address: Orb::Customer::BillingAddress?,
+        created_at: Time,
+        currency: String?,
+        email: String,
+        email_delivery: bool,
+        exempt_from_automated_tax: bool?,
+        external_customer_id: String?,
+        hierarchy: Orb::Customer::Hierarchy,
+        metadata: ::Hash[Symbol, String],
+        name: String,
+        payment_provider: Orb::Models::Customer::payment_provider?,
+        payment_provider_id: String?,
+        portal_url: String?,
+        shipping_address: Orb::Customer::ShippingAddress?,
+        tax_id: Orb::Customer::TaxID?,
+        timezone: String,
+        accounting_sync_configuration: Orb::Customer::AccountingSyncConfiguration?,
+        reporting_configuration: Orb::Customer::ReportingConfiguration?
+      }
 
       type billing_address =
         {
@@ -127,6 +152,15 @@ module Orb
           postal_code: String?,
           state: String?
         ) -> void
+
+        def to_hash: -> {
+          city: String?,
+          country: String?,
+          :line1 => String?,
+          :line2 => String?,
+          postal_code: String?,
+          state: String?
+        }
       end
 
       type hierarchy =
@@ -145,6 +179,11 @@ module Orb
           parent: Orb::Customer::Hierarchy::Parent?
         ) -> void
 
+        def to_hash: -> {
+          children: ::Array[Orb::Customer::Hierarchy::Child],
+          parent: Orb::Customer::Hierarchy::Parent?
+        }
+
         type child = { id: String, external_customer_id: String? }
 
         class Child < Orb::Internal::Type::BaseModel
@@ -153,6 +192,8 @@ module Orb
           attr_accessor external_customer_id: String?
 
           def initialize: (id: String, external_customer_id: String?) -> void
+
+          def to_hash: -> { id: String, external_customer_id: String? }
         end
 
         type parent = { id: String, external_customer_id: String? }
@@ -163,6 +204,8 @@ module Orb
           attr_accessor external_customer_id: String?
 
           def initialize: (id: String, external_customer_id: String?) -> void
+
+          def to_hash: -> { id: String, external_customer_id: String? }
         end
       end
 
@@ -178,7 +221,7 @@ module Orb
         STRIPE_INVOICE: :stripe_invoice
         NETSUITE: :netsuite
 
-        def self?.values: -> ::Array[Orb::Customer::payment_provider]
+        def self?.values: -> ::Array[Orb::Models::Customer::payment_provider]
       end
 
       type shipping_address =
@@ -212,27 +255,42 @@ module Orb
           postal_code: String?,
           state: String?
         ) -> void
+
+        def to_hash: -> {
+          city: String?,
+          country: String?,
+          :line1 => String?,
+          :line2 => String?,
+          postal_code: String?,
+          state: String?
+        }
       end
 
       type tax_id =
         {
-          country: Orb::Customer::TaxID::country,
-          type: Orb::Customer::TaxID::type_,
+          country: Orb::Models::Customer::TaxID::country,
+          type: Orb::Models::Customer::TaxID::type_,
           value: String
         }
 
       class TaxID < Orb::Internal::Type::BaseModel
-        attr_accessor country: Orb::Customer::TaxID::country
+        attr_accessor country: Orb::Models::Customer::TaxID::country
 
-        attr_accessor type: Orb::Customer::TaxID::type_
+        attr_accessor type: Orb::Models::Customer::TaxID::type_
 
         attr_accessor value: String
 
         def initialize: (
-          country: Orb::Customer::TaxID::country,
-          type: Orb::Customer::TaxID::type_,
+          country: Orb::Models::Customer::TaxID::country,
+          type: Orb::Models::Customer::TaxID::type_,
           value: String
         ) -> void
+
+        def to_hash: -> {
+          country: Orb::Models::Customer::TaxID::country,
+          type: Orb::Models::Customer::TaxID::type_,
+          value: String
+        }
 
         type country =
           :AD
@@ -396,7 +454,7 @@ module Orb
           VN: :VN
           ZA: :ZA
 
-          def self?.values: -> ::Array[Orb::Customer::TaxID::country]
+          def self?.values: -> ::Array[Orb::Models::Customer::TaxID::country]
         end
 
         type type_ =
@@ -547,7 +605,7 @@ module Orb
           VN_TIN: :vn_tin
           ZA_VAT: :za_vat
 
-          def self?.values: -> ::Array[Orb::Customer::TaxID::type_]
+          def self?.values: -> ::Array[Orb::Models::Customer::TaxID::type_]
         end
       end
 
@@ -567,21 +625,31 @@ module Orb
           excluded: bool
         ) -> void
 
+        def to_hash: -> {
+          accounting_providers: ::Array[Orb::Customer::AccountingSyncConfiguration::AccountingProvider],
+          excluded: bool
+        }
+
         type accounting_provider =
           {
             external_provider_id: String?,
-            provider_type: Orb::Customer::AccountingSyncConfiguration::AccountingProvider::provider_type
+            provider_type: Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::provider_type
           }
 
         class AccountingProvider < Orb::Internal::Type::BaseModel
           attr_accessor external_provider_id: String?
 
-          attr_accessor provider_type: Orb::Customer::AccountingSyncConfiguration::AccountingProvider::provider_type
+          attr_accessor provider_type: Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::provider_type
 
           def initialize: (
             external_provider_id: String?,
-            provider_type: Orb::Customer::AccountingSyncConfiguration::AccountingProvider::provider_type
+            provider_type: Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::provider_type
           ) -> void
+
+          def to_hash: -> {
+            external_provider_id: String?,
+            provider_type: Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::provider_type
+          }
 
           type provider_type = :quickbooks | :netsuite
 
@@ -591,7 +659,7 @@ module Orb
             QUICKBOOKS: :quickbooks
             NETSUITE: :netsuite
 
-            def self?.values: -> ::Array[Orb::Customer::AccountingSyncConfiguration::AccountingProvider::provider_type]
+            def self?.values: -> ::Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::provider_type]
           end
         end
       end
@@ -602,6 +670,8 @@ module Orb
         attr_accessor exempt: bool
 
         def initialize: (exempt: bool) -> void
+
+        def to_hash: -> { exempt: bool }
       end
     end
   end

@@ -23,6 +23,12 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> void
 
+      def to_hash: -> {
+        trial_end_date: Orb::Models::SubscriptionUpdateTrialParams::trial_end_date,
+        shift: bool,
+        request_options: Orb::RequestOptions
+      }
+
       type trial_end_date = Time | :immediate
 
       module TrialEndDate

@@ -37,6 +37,15 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> void
 
+      def to_hash: -> {
+        price_id: String,
+        quantity: Float,
+        allow_invoice_credit_or_void: bool?,
+        change_option: Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::change_option,
+        effective_date: Date?,
+        request_options: Orb::RequestOptions
+      }
+
       type change_option = :immediate | :upcoming_invoice | :effective_date
 
       module ChangeOption

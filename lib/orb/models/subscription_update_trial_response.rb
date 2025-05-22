@@ -88,7 +88,7 @@ module Orb
       #   your account's timezone. See [Timezone localization](/essentials/timezones) for
       #   information on what this timezone parameter influences within Orb.
       #
-      #   @return [Orb::Customer]
+      #   @return [Orb::Models::Customer]
       required :customer, -> { Orb::Customer }
 
       # @!attribute default_invoice_memo
@@ -168,7 +168,7 @@ module Orb
       #   subscription. You can see more about how to configure prices in the
       #   [Price resource](/reference/price).
       #
-      #   @return [Orb::Plan]
+      #   @return [Orb::Models::Plan]
       required :plan, -> { Orb::Plan }
 
       # @!attribute price_intervals
@@ -231,7 +231,7 @@ module Orb
       #
       #   @param current_billing_period_start_date [Time, nil] The start date of the current billing period. This is an inclusive timestamp; th
       #
-      #   @param customer [Orb::Customer] A customer is a buyer of your products, and the other party to the billing relat
+      #   @param customer [Orb::Models::Customer] A customer is a buyer of your products, and the other party to the billing relat
       #
       #   @param default_invoice_memo [String, nil] Determines the default memo on this subscriptions' invoices. Note that if this i
       #
@@ -253,7 +253,7 @@ module Orb
       #
       #   @param pending_subscription_change [Orb::Models::SubscriptionUpdateTrialResponse::PendingSubscriptionChange, nil] A pending subscription change if one exists on this subscription.
       #
-      #   @param plan [Orb::Plan] The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be
+      #   @param plan [Orb::Models::Plan] The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be
       #
       #   @param price_intervals [Array<Orb::Models::SubscriptionUpdateTrialResponse::PriceInterval>] The price intervals for this subscription.
       #
@@ -1069,7 +1069,7 @@ module Orb
         #   For more on the types of prices, see
         #   [the core concepts documentation](/core-concepts#plan-and-price)
         #
-        #   @return [Orb::Price::Unit, Orb::Price::Package, Orb::Price::Matrix, Orb::Price::Tiered, Orb::Price::TieredBps, Orb::Price::Bps, Orb::Price::BulkBps, Orb::Price::Bulk, Orb::Price::ThresholdTotalAmount, Orb::Price::TieredPackage, Orb::Price::GroupedTiered, Orb::Price::TieredWithMinimum, Orb::Price::TieredPackageWithMinimum, Orb::Price::PackageWithAllocation, Orb::Price::UnitWithPercent, Orb::Price::MatrixWithAllocation, Orb::Price::TieredWithProration, Orb::Price::UnitWithProration, Orb::Price::GroupedAllocation, Orb::Price::GroupedWithProratedMinimum, Orb::Price::GroupedWithMeteredMinimum, Orb::Price::MatrixWithDisplayName, Orb::Price::BulkWithProration, Orb::Price::GroupedTieredPackage, Orb::Price::MaxGroupTieredPackage, Orb::Price::ScalableMatrixWithUnitPricing, Orb::Price::ScalableMatrixWithTieredPricing, Orb::Price::CumulativeGroupedBulk]
+        #   @return [Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBps, Orb::Models::Price::Bps, Orb::Models::Price::BulkBps, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk]
         required :price, union: -> { Orb::Price }
 
         # @!attribute start_date
@@ -1108,7 +1108,7 @@ module Orb
         #
         #   @param fixed_fee_quantity_transitions [Array<Orb::Models::SubscriptionUpdateTrialResponse::PriceInterval::FixedFeeQuantityTransition>, nil] The fixed fee quantity transitions for this price interval. This is only relevan
         #
-        #   @param price [Orb::Price::Unit, Orb::Price::Package, Orb::Price::Matrix, Orb::Price::Tiered, Orb::Price::TieredBps, Orb::Price::Bps, Orb::Price::BulkBps, Orb::Price::Bulk, Orb::Price::ThresholdTotalAmount, Orb::Price::TieredPackage, Orb::Price::GroupedTiered, Orb::Price::TieredWithMinimum, Orb::Price::TieredPackageWithMinimum, Orb::Price::PackageWithAllocation, Orb::Price::UnitWithPercent, Orb::Price::MatrixWithAllocation, Orb::Price::TieredWithProration, Orb::Price::UnitWithProration, Orb::Price::GroupedAllocation, Orb::Price::GroupedWithProratedMinimum, Orb::Price::GroupedWithMeteredMinimum, Orb::Price::MatrixWithDisplayName, Orb::Price::BulkWithProration, Orb::Price::GroupedTieredPackage, Orb::Price::MaxGroupTieredPackage, Orb::Price::ScalableMatrixWithUnitPricing, Orb::Price::ScalableMatrixWithTieredPricing, Orb::Price::CumulativeGroupedBulk] The Price resource represents a price that can be billed on a subscription, resu
+        #   @param price [Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBps, Orb::Models::Price::Bps, Orb::Models::Price::BulkBps, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk] The Price resource represents a price that can be billed on a subscription, resu
         #
         #   @param start_date [Time] The start date of the price interval. This is the date that Orb starts billing f
         #
@@ -1188,25 +1188,25 @@ module Orb
         # @!attribute created_credit_notes
         #   The credit notes that were created as part of this operation.
         #
-        #   @return [Array<Orb::CreditNote>]
+        #   @return [Array<Orb::Models::CreditNote>]
         required :created_credit_notes, -> { Orb::Internal::Type::ArrayOf[Orb::CreditNote] }
 
         # @!attribute created_invoices
         #   The invoices that were created as part of this operation.
         #
-        #   @return [Array<Orb::Invoice>]
+        #   @return [Array<Orb::Models::Invoice>]
         required :created_invoices, -> { Orb::Internal::Type::ArrayOf[Orb::Invoice] }
 
         # @!attribute voided_credit_notes
         #   The credit notes that were voided as part of this operation.
         #
-        #   @return [Array<Orb::CreditNote>]
+        #   @return [Array<Orb::Models::CreditNote>]
         required :voided_credit_notes, -> { Orb::Internal::Type::ArrayOf[Orb::CreditNote] }
 
         # @!attribute voided_invoices
         #   The invoices that were voided as part of this operation.
         #
-        #   @return [Array<Orb::Invoice>]
+        #   @return [Array<Orb::Models::Invoice>]
         required :voided_invoices, -> { Orb::Internal::Type::ArrayOf[Orb::Invoice] }
 
         # @!method initialize(created_credit_notes:, created_invoices:, voided_credit_notes:, voided_invoices:)
@@ -1214,13 +1214,13 @@ module Orb
         #   fetched through the subscription changes API or if the
         #   `include_changed_resources` parameter was passed in the request.
         #
-        #   @param created_credit_notes [Array<Orb::CreditNote>] The credit notes that were created as part of this operation.
+        #   @param created_credit_notes [Array<Orb::Models::CreditNote>] The credit notes that were created as part of this operation.
         #
-        #   @param created_invoices [Array<Orb::Invoice>] The invoices that were created as part of this operation.
+        #   @param created_invoices [Array<Orb::Models::Invoice>] The invoices that were created as part of this operation.
         #
-        #   @param voided_credit_notes [Array<Orb::CreditNote>] The credit notes that were voided as part of this operation.
+        #   @param voided_credit_notes [Array<Orb::Models::CreditNote>] The credit notes that were voided as part of this operation.
         #
-        #   @param voided_invoices [Array<Orb::Invoice>] The invoices that were voided as part of this operation.
+        #   @param voided_invoices [Array<Orb::Models::Invoice>] The invoices that were voided as part of this operation.
       end
     end
   end

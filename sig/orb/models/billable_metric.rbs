@@ -7,7 +7,7 @@ module Orb
         item: Orb::Item,
         metadata: ::Hash[Symbol, String],
         name: String,
-        status: Orb::BillableMetric::status
+        status: Orb::Models::BillableMetric::status
       }
 
     class BillableMetric < Orb::Internal::Type::BaseModel
@@ -21,7 +21,7 @@ module Orb
 
       attr_accessor name: String
 
-      attr_accessor status: Orb::BillableMetric::status
+      attr_accessor status: Orb::Models::BillableMetric::status
 
       def initialize: (
         id: String,
@@ -29,8 +29,17 @@ module Orb
         item: Orb::Item,
         metadata: ::Hash[Symbol, String],
         name: String,
-        status: Orb::BillableMetric::status
+        status: Orb::Models::BillableMetric::status
       ) -> void
+
+      def to_hash: -> {
+        id: String,
+        description: String?,
+        item: Orb::Item,
+        metadata: ::Hash[Symbol, String],
+        name: String,
+        status: Orb::Models::BillableMetric::status
+      }
 
       type status = :active | :draft | :archived
 
@@ -41,7 +50,7 @@ module Orb
         DRAFT: :draft
         ARCHIVED: :archived
 
-        def self?.values: -> ::Array[Orb::BillableMetric::status]
+        def self?.values: -> ::Array[Orb::Models::BillableMetric::status]
       end
     end
   end

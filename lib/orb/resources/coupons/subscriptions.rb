@@ -22,7 +22,7 @@ module Orb
         #
         # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Orb::Internal::Page<Orb::Subscription>]
+        # @return [Orb::Internal::Page<Orb::Models::Subscription>]
         #
         # @see Orb::Models::Coupons::SubscriptionListParams
         def list(coupon_id, params = {})

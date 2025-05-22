@@ -6,11 +6,11 @@ module Orb
     class PriceEvaluateResponse < Orb::Internal::Type::BaseModel
       # @!attribute data
       #
-      #   @return [Array<Orb::EvaluatePriceGroup>]
+      #   @return [Array<Orb::Models::EvaluatePriceGroup>]
       required :data, -> { Orb::Internal::Type::ArrayOf[Orb::EvaluatePriceGroup] }
 
       # @!method initialize(data:)
-      #   @param data [Array<Orb::EvaluatePriceGroup>]
+      #   @param data [Array<Orb::Models::EvaluatePriceGroup>]
     end
   end
 end

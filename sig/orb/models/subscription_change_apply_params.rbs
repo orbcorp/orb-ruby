@@ -17,6 +17,12 @@ module Orb
         ?previously_collected_amount: String?,
         ?request_options: Orb::request_opts
       ) -> void
+
+      def to_hash: -> {
+        description: String?,
+        previously_collected_amount: String?,
+        request_options: Orb::RequestOptions
+      }
     end
   end
 end

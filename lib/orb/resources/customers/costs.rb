@@ -135,7 +135,7 @@ module Orb
         #
         # @param timeframe_start [Time, nil] Costs returned are inclusive of `timeframe_start`.
         #
-        # @param view_mode [Symbol, Orb::Customers::CostListParams::ViewMode, nil] Controls whether Orb returns cumulative costs since the start of the billing per
+        # @param view_mode [Symbol, Orb::Models::Customers::CostListParams::ViewMode, nil] Controls whether Orb returns cumulative costs since the start of the billing per
         #
         # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -284,7 +284,7 @@ module Orb
         #
         # @param timeframe_start [Time, nil] Costs returned are inclusive of `timeframe_start`.
         #
-        # @param view_mode [Symbol, Orb::Customers::CostListByExternalIDParams::ViewMode, nil] Controls whether Orb returns cumulative costs since the start of the billing per
+        # @param view_mode [Symbol, Orb::Models::Customers::CostListByExternalIDParams::ViewMode, nil] Controls whether Orb returns cumulative costs since the start of the billing per
         #
         # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #

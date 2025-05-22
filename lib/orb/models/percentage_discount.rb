@@ -12,7 +12,7 @@ module Orb
 
       # @!attribute discount_type
       #
-      #   @return [Symbol, Orb::PercentageDiscount::DiscountType]
+      #   @return [Symbol, Orb::Models::PercentageDiscount::DiscountType]
       required :discount_type, enum: -> { Orb::PercentageDiscount::DiscountType }
 
       # @!attribute percentage_discount
@@ -28,18 +28,18 @@ module Orb
       optional :reason, String, nil?: true
 
       # @!method initialize(applies_to_price_ids:, discount_type:, percentage_discount:, reason: nil)
-      #   Some parameter documentations has been truncated, see {Orb::PercentageDiscount}
-      #   for more details.
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::PercentageDiscount} for more details.
       #
       #   @param applies_to_price_ids [Array<String>] List of price_ids that this discount applies to. For plan/plan phase discounts,
       #
-      #   @param discount_type [Symbol, Orb::PercentageDiscount::DiscountType]
+      #   @param discount_type [Symbol, Orb::Models::PercentageDiscount::DiscountType]
       #
       #   @param percentage_discount [Float] Only available if discount_type is `percentage`. This is a number between 0 and
       #
       #   @param reason [String, nil]
 
-      # @see Orb::PercentageDiscount#discount_type
+      # @see Orb::Models::PercentageDiscount#discount_type
       module DiscountType
         extend Orb::Internal::Type::Enum
 

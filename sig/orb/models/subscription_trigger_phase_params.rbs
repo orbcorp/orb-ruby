@@ -17,6 +17,12 @@ module Orb
         ?effective_date: Date?,
         ?request_options: Orb::request_opts
       ) -> void
+
+      def to_hash: -> {
+        allow_invoice_credit_or_void: bool?,
+        effective_date: Date?,
+        request_options: Orb::RequestOptions
+      }
     end
   end
 end

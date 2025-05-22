@@ -14,13 +14,13 @@ module Orb
       #
       # @param invoice_date [Time] Optional invoice date to set. Must be in the past, if not set, `invoice_date` is
       #
-      # @param line_items [Array<Orb::InvoiceCreateParams::LineItem>]
+      # @param line_items [Array<Orb::Models::InvoiceCreateParams::LineItem>]
       #
       # @param net_terms [Integer] Determines the difference between the invoice issue date for subscription invoic
       #
       # @param customer_id [String, nil] The id of the `Customer` to create this invoice for. One of `customer_id` and `e
       #
-      # @param discount [Orb::PercentageDiscount, Orb::TrialDiscount, Orb::UsageDiscount, Orb::AmountDiscount, nil] An optional discount to attach to the invoice.
+      # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil] An optional discount to attach to the invoice.
       #
       # @param external_customer_id [String, nil] The `external_customer_id` of the `Customer` to create this invoice for. One of
       #
@@ -32,7 +32,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Invoice]
+      # @return [Orb::Models::Invoice]
       #
       # @see Orb::Models::InvoiceCreateParams
       def create(params)
@@ -57,7 +57,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Invoice]
+      # @return [Orb::Models::Invoice]
       #
       # @see Orb::Models::InvoiceUpdateParams
       def update(invoice_id, params = {})
@@ -100,7 +100,7 @@ module Orb
       #
       # @param customer_id [String, nil]
       #
-      # @param date_type [Symbol, Orb::InvoiceListParams::DateType, nil]
+      # @param date_type [Symbol, Orb::Models::InvoiceListParams::DateType, nil]
       #
       # @param due_date [Date, nil]
       #
@@ -124,13 +124,13 @@ module Orb
       #
       # @param limit [Integer] The number of items to fetch. Defaults to 20.
       #
-      # @param status [Array<Symbol, Orb::InvoiceListParams::Status>, nil]
+      # @param status [Array<Symbol, Orb::Models::InvoiceListParams::Status>, nil]
       #
       # @param subscription_id [String, nil]
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Internal::Page<Orb::Invoice>]
+      # @return [Orb::Internal::Page<Orb::Models::Invoice>]
       #
       # @see Orb::Models::InvoiceListParams
       def list(params = {})
@@ -162,7 +162,7 @@ module Orb
       # @param invoice_id [String]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Invoice]
+      # @return [Orb::Models::Invoice]
       #
       # @see Orb::Models::InvoiceFetchParams
       def fetch(invoice_id, params = {})
@@ -215,7 +215,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Invoice]
+      # @return [Orb::Models::Invoice]
       #
       # @see Orb::Models::InvoiceIssueParams
       def issue(invoice_id, params = {})
@@ -244,7 +244,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Invoice]
+      # @return [Orb::Models::Invoice]
       #
       # @see Orb::Models::InvoiceMarkPaidParams
       def mark_paid(invoice_id, params)
@@ -266,7 +266,7 @@ module Orb
       # @param invoice_id [String]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Invoice]
+      # @return [Orb::Models::Invoice]
       #
       # @see Orb::Models::InvoicePayParams
       def pay(invoice_id, params = {})
@@ -295,7 +295,7 @@ module Orb
       # @param invoice_id [String]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Invoice]
+      # @return [Orb::Models::Invoice]
       #
       # @see Orb::Models::InvoiceVoidParams
       def void(invoice_id, params = {})

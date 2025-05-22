@@ -55,11 +55,25 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> void
 
+      def to_hash: -> {
+        currency: String,
+        invoice_date: Time,
+        line_items: ::Array[Orb::InvoiceCreateParams::LineItem],
+        net_terms: Integer,
+        customer_id: String?,
+        discount: Orb::Models::discount?,
+        external_customer_id: String?,
+        memo: String?,
+        metadata: ::Hash[Symbol, String?]?,
+        will_auto_issue: bool,
+        request_options: Orb::RequestOptions
+      }
+
       type line_item =
         {
           end_date: Date,
           item_id: String,
-          model_type: Orb::InvoiceCreateParams::LineItem::model_type,
+          model_type: Orb::Models::InvoiceCreateParams::LineItem::model_type,
           name: String,
           quantity: Float,
           start_date: Date,
@@ -71,7 +85,7 @@ module Orb
 
         attr_accessor item_id: String
 
-        attr_accessor model_type: Orb::InvoiceCreateParams::LineItem::model_type
+        attr_accessor model_type: Orb::Models::InvoiceCreateParams::LineItem::model_type
 
         attr_accessor name: String
 
@@ -84,12 +98,22 @@ module Orb
         def initialize: (
           end_date: Date,
           item_id: String,
-          model_type: Orb::InvoiceCreateParams::LineItem::model_type,
+          model_type: Orb::Models::InvoiceCreateParams::LineItem::model_type,
           name: String,
           quantity: Float,
           start_date: Date,
           unit_config: Orb::InvoiceCreateParams::LineItem::UnitConfig
         ) -> void
+
+        def to_hash: -> {
+          end_date: Date,
+          item_id: String,
+          model_type: Orb::Models::InvoiceCreateParams::LineItem::model_type,
+          name: String,
+          quantity: Float,
+          start_date: Date,
+          unit_config: Orb::InvoiceCreateParams::LineItem::UnitConfig
+        }
 
         type model_type = :unit
 
@@ -98,7 +122,7 @@ module Orb
 
           UNIT: :unit
 
-          def self?.values: -> ::Array[Orb::InvoiceCreateParams::LineItem::model_type]
+          def self?.values: -> ::Array[Orb::Models::InvoiceCreateParams::LineItem::model_type]
         end
 
         type unit_config = { unit_amount: String }
@@ -107,6 +131,8 @@ module Orb
           attr_accessor unit_amount: String
 
           def initialize: (unit_amount: String) -> void
+
+          def to_hash: -> { unit_amount: String }
         end
       end
     end

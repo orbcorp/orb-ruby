@@ -15,6 +15,11 @@ module Orb
             customer_id: String,
             ?request_options: Orb::request_opts
           ) -> void
+
+          def to_hash: -> {
+            customer_id: String,
+            request_options: Orb::RequestOptions
+          }
         end
       end
     end

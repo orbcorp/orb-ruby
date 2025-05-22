@@ -26,6 +26,13 @@ module Orb
           ?request_options: Orb::request_opts
         ) -> void
 
+        def to_hash: -> {
+          amount: String,
+          type: Orb::Models::Customers::BalanceTransactionCreateParams::type_,
+          description: String?,
+          request_options: Orb::RequestOptions
+        }
+
         type type_ = :increment | :decrement
 
         module Type

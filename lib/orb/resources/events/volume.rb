@@ -33,7 +33,7 @@ module Orb
         #
         # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Orb::Events::EventVolumes]
+        # @return [Orb::Models::Events::EventVolumes]
         #
         # @see Orb::Models::Events::VolumeListParams
         def list(params)

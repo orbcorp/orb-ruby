@@ -25,6 +25,13 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> void
 
+      def to_hash: -> {
+        currency: String,
+        type: Orb::Models::AlertCreateForExternalCustomerParams::type_,
+        thresholds: ::Array[Orb::AlertCreateForExternalCustomerParams::Threshold]?,
+        request_options: Orb::RequestOptions
+      }
+
       type type_ =
         :credit_balance_depleted
         | :credit_balance_dropped
@@ -46,6 +53,8 @@ module Orb
         attr_accessor value: Float
 
         def initialize: (value: Float) -> void
+
+        def to_hash: -> { value: Float }
       end
     end
   end

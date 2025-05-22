@@ -10,7 +10,7 @@ module Orb
       # @!attribute cadence
       #   The cadence to bill for this price on.
       #
-      #   @return [Symbol, Orb::PriceCreateParams::Cadence]
+      #   @return [Symbol, Orb::Models::PriceCreateParams::Cadence]
       required :cadence, enum: -> { Orb::PriceCreateParams::Cadence }
 
       # @!attribute currency
@@ -27,7 +27,7 @@ module Orb
 
       # @!attribute model_type
       #
-      #   @return [Symbol, Orb::PriceCreateParams::ModelType]
+      #   @return [Symbol, Orb::Models::PriceCreateParams::ModelType]
       required :model_type, enum: -> { Orb::PriceCreateParams::ModelType }
 
       # @!attribute name
@@ -38,7 +38,7 @@ module Orb
 
       # @!attribute unit_config
       #
-      #   @return [Orb::PriceCreateParams::UnitConfig]
+      #   @return [Orb::Models::PriceCreateParams::UnitConfig]
       required :unit_config, -> { Orb::PriceCreateParams::UnitConfig }
 
       # @!attribute billable_metric_id
@@ -59,7 +59,7 @@ module Orb
       #   For custom cadence: specifies the duration of the billing period in days or
       #   months.
       #
-      #   @return [Orb::PriceCreateParams::BillingCycleConfiguration, nil]
+      #   @return [Orb::Models::PriceCreateParams::BillingCycleConfiguration, nil]
       optional :billing_cycle_configuration,
                -> { Orb::PriceCreateParams::BillingCycleConfiguration },
                nil?: true
@@ -93,7 +93,7 @@ module Orb
       #   Within each billing cycle, specifies the cadence at which invoices are produced.
       #   If unspecified, a single invoice is produced per billing cycle.
       #
-      #   @return [Orb::PriceCreateParams::InvoicingCycleConfiguration, nil]
+      #   @return [Orb::Models::PriceCreateParams::InvoicingCycleConfiguration, nil]
       optional :invoicing_cycle_configuration,
                -> { Orb::PriceCreateParams::InvoicingCycleConfiguration },
                nil?: true
@@ -108,42 +108,42 @@ module Orb
 
       # @!attribute package_config
       #
-      #   @return [Orb::PriceCreateParams::PackageConfig]
+      #   @return [Orb::Models::PriceCreateParams::PackageConfig]
       required :package_config, -> { Orb::PriceCreateParams::PackageConfig }
 
       # @!attribute matrix_config
       #
-      #   @return [Orb::PriceCreateParams::MatrixConfig]
+      #   @return [Orb::Models::PriceCreateParams::MatrixConfig]
       required :matrix_config, -> { Orb::PriceCreateParams::MatrixConfig }
 
       # @!attribute matrix_with_allocation_config
       #
-      #   @return [Orb::PriceCreateParams::MatrixWithAllocationConfig]
+      #   @return [Orb::Models::PriceCreateParams::MatrixWithAllocationConfig]
       required :matrix_with_allocation_config, -> { Orb::PriceCreateParams::MatrixWithAllocationConfig }
 
       # @!attribute tiered_config
       #
-      #   @return [Orb::PriceCreateParams::TieredConfig]
+      #   @return [Orb::Models::PriceCreateParams::TieredConfig]
       required :tiered_config, -> { Orb::PriceCreateParams::TieredConfig }
 
       # @!attribute tiered_bps_config
       #
-      #   @return [Orb::PriceCreateParams::TieredBpsConfig]
+      #   @return [Orb::Models::PriceCreateParams::TieredBpsConfig]
       required :tiered_bps_config, -> { Orb::PriceCreateParams::TieredBpsConfig }
 
       # @!attribute bps_config
       #
-      #   @return [Orb::PriceCreateParams::BpsConfig]
+      #   @return [Orb::Models::PriceCreateParams::BpsConfig]
       required :bps_config, -> { Orb::PriceCreateParams::BpsConfig }
 
       # @!attribute bulk_bps_config
       #
-      #   @return [Orb::PriceCreateParams::BulkBpsConfig]
+      #   @return [Orb::Models::PriceCreateParams::BulkBpsConfig]
       required :bulk_bps_config, -> { Orb::PriceCreateParams::BulkBpsConfig }
 
       # @!attribute bulk_config
       #
-      #   @return [Orb::PriceCreateParams::BulkConfig]
+      #   @return [Orb::Models::PriceCreateParams::BulkConfig]
       required :bulk_config, -> { Orb::PriceCreateParams::BulkConfig }
 
       # @!attribute threshold_total_amount_config
@@ -248,33 +248,33 @@ module Orb
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::PriceCreateParams} for more details.
       #
-      #   @param cadence [Symbol, Orb::PriceCreateParams::Cadence] The cadence to bill for this price on.
+      #   @param cadence [Symbol, Orb::Models::PriceCreateParams::Cadence] The cadence to bill for this price on.
       #
       #   @param currency [String] An ISO 4217 currency string for which this price is billed in.
       #
       #   @param item_id [String] The id of the item the price will be associated with.
       #
-      #   @param model_type [Symbol, Orb::PriceCreateParams::ModelType]
+      #   @param model_type [Symbol, Orb::Models::PriceCreateParams::ModelType]
       #
       #   @param name [String] The name of the price.
       #
-      #   @param unit_config [Orb::PriceCreateParams::UnitConfig]
+      #   @param unit_config [Orb::Models::PriceCreateParams::UnitConfig]
       #
-      #   @param package_config [Orb::PriceCreateParams::PackageConfig]
+      #   @param package_config [Orb::Models::PriceCreateParams::PackageConfig]
       #
-      #   @param matrix_config [Orb::PriceCreateParams::MatrixConfig]
+      #   @param matrix_config [Orb::Models::PriceCreateParams::MatrixConfig]
       #
-      #   @param matrix_with_allocation_config [Orb::PriceCreateParams::MatrixWithAllocationConfig]
+      #   @param matrix_with_allocation_config [Orb::Models::PriceCreateParams::MatrixWithAllocationConfig]
       #
-      #   @param tiered_config [Orb::PriceCreateParams::TieredConfig]
+      #   @param tiered_config [Orb::Models::PriceCreateParams::TieredConfig]
       #
-      #   @param tiered_bps_config [Orb::PriceCreateParams::TieredBpsConfig]
+      #   @param tiered_bps_config [Orb::Models::PriceCreateParams::TieredBpsConfig]
       #
-      #   @param bps_config [Orb::PriceCreateParams::BpsConfig]
+      #   @param bps_config [Orb::Models::PriceCreateParams::BpsConfig]
       #
-      #   @param bulk_bps_config [Orb::PriceCreateParams::BulkBpsConfig]
+      #   @param bulk_bps_config [Orb::Models::PriceCreateParams::BulkBpsConfig]
       #
-      #   @param bulk_config [Orb::PriceCreateParams::BulkConfig]
+      #   @param bulk_config [Orb::Models::PriceCreateParams::BulkConfig]
       #
       #   @param threshold_total_amount_config [Hash{Symbol=>Object}]
       #
@@ -318,7 +318,7 @@ module Orb
       #
       #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
       #
-      #   @param billing_cycle_configuration [Orb::PriceCreateParams::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+      #   @param billing_cycle_configuration [Orb::Models::PriceCreateParams::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
       #
       #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
       #
@@ -328,7 +328,7 @@ module Orb
       #
       #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
       #
-      #   @param invoicing_cycle_configuration [Orb::PriceCreateParams::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+      #   @param invoicing_cycle_configuration [Orb::Models::PriceCreateParams::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
       #
       #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
       #
@@ -379,7 +379,7 @@ module Orb
         # @!attribute duration_unit
         #   The unit of billing period duration.
         #
-        #   @return [Symbol, Orb::PriceCreateParams::BillingCycleConfiguration::DurationUnit]
+        #   @return [Symbol, Orb::Models::PriceCreateParams::BillingCycleConfiguration::DurationUnit]
         required :duration_unit, enum: -> { Orb::PriceCreateParams::BillingCycleConfiguration::DurationUnit }
 
         # @!method initialize(duration:, duration_unit:)
@@ -388,11 +388,11 @@ module Orb
         #
         #   @param duration [Integer] The duration of the billing period.
         #
-        #   @param duration_unit [Symbol, Orb::PriceCreateParams::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
+        #   @param duration_unit [Symbol, Orb::Models::PriceCreateParams::BillingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
         # The unit of billing period duration.
         #
-        # @see Orb::PriceCreateParams::BillingCycleConfiguration#duration_unit
+        # @see Orb::Models::PriceCreateParams::BillingCycleConfiguration#duration_unit
         module DurationUnit
           extend Orb::Internal::Type::Enum
 
@@ -414,7 +414,7 @@ module Orb
         # @!attribute duration_unit
         #   The unit of billing period duration.
         #
-        #   @return [Symbol, Orb::PriceCreateParams::InvoicingCycleConfiguration::DurationUnit]
+        #   @return [Symbol, Orb::Models::PriceCreateParams::InvoicingCycleConfiguration::DurationUnit]
         required :duration_unit,
                  enum: -> {
                    Orb::PriceCreateParams::InvoicingCycleConfiguration::DurationUnit
@@ -426,11 +426,11 @@ module Orb
         #
         #   @param duration [Integer] The duration of the billing period.
         #
-        #   @param duration_unit [Symbol, Orb::PriceCreateParams::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
+        #   @param duration_unit [Symbol, Orb::Models::PriceCreateParams::InvoicingCycleConfiguration::DurationUnit] The unit of billing period duration.
 
         # The unit of billing period duration.
         #
-        # @see Orb::PriceCreateParams::InvoicingCycleConfiguration#duration_unit
+        # @see Orb::Models::PriceCreateParams::InvoicingCycleConfiguration#duration_unit
         module DurationUnit
           extend Orb::Internal::Type::Enum
 
@@ -458,7 +458,7 @@ module Orb
 
         # @!method initialize(package_amount:, package_size:)
         #   Some parameter documentations has been truncated, see
-        #   {Orb::PriceCreateParams::PackageConfig} for more details.
+        #   {Orb::Models::PriceCreateParams::PackageConfig} for more details.
         #
         #   @param package_amount [String] A currency amount to rate usage by
         #
@@ -481,7 +481,7 @@ module Orb
         # @!attribute matrix_values
         #   Matrix values for specified matrix grouping keys
         #
-        #   @return [Array<Orb::PriceCreateParams::MatrixConfig::MatrixValue>]
+        #   @return [Array<Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue>]
         required :matrix_values,
                  -> { Orb::Internal::Type::ArrayOf[Orb::PriceCreateParams::MatrixConfig::MatrixValue] }
 
@@ -490,7 +490,7 @@ module Orb
         #
         #   @param dimensions [Array<String, nil>] One or two event property values to evaluate matrix groups by
         #
-        #   @param matrix_values [Array<Orb::PriceCreateParams::MatrixConfig::MatrixValue>] Matrix values for specified matrix grouping keys
+        #   @param matrix_values [Array<Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue>] Matrix values for specified matrix grouping keys
 
         class MatrixValue < Orb::Internal::Type::BaseModel
           # @!attribute dimension_values
@@ -509,7 +509,7 @@ module Orb
 
           # @!method initialize(dimension_values:, unit_amount:)
           #   Some parameter documentations has been truncated, see
-          #   {Orb::PriceCreateParams::MatrixConfig::MatrixValue} for more details.
+          #   {Orb::Models::PriceCreateParams::MatrixConfig::MatrixValue} for more details.
           #
           #   @param dimension_values [Array<String, nil>] One or two matrix keys to filter usage to this Matrix value by. For example, ["r
           #
@@ -539,7 +539,7 @@ module Orb
         # @!attribute matrix_values
         #   Matrix values for specified matrix grouping keys
         #
-        #   @return [Array<Orb::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue>]
+        #   @return [Array<Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue>]
         required :matrix_values,
                  -> {
                    Orb::Internal::Type::ArrayOf[Orb::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue]
@@ -552,7 +552,7 @@ module Orb
         #
         #   @param dimensions [Array<String, nil>] One or two event property values to evaluate matrix groups by
         #
-        #   @param matrix_values [Array<Orb::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue>] Matrix values for specified matrix grouping keys
+        #   @param matrix_values [Array<Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue>] Matrix values for specified matrix grouping keys
 
         class MatrixValue < Orb::Internal::Type::BaseModel
           # @!attribute dimension_values
@@ -571,8 +571,8 @@ module Orb
 
           # @!method initialize(dimension_values:, unit_amount:)
           #   Some parameter documentations has been truncated, see
-          #   {Orb::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue} for more
-          #   details.
+          #   {Orb::Models::PriceCreateParams::MatrixWithAllocationConfig::MatrixValue} for
+          #   more details.
           #
           #   @param dimension_values [Array<String, nil>] One or two matrix keys to filter usage to this Matrix value by. For example, ["r
           #
@@ -584,11 +584,11 @@ module Orb
         # @!attribute tiers
         #   Tiers for rating based on total usage quantities into the specified tier
         #
-        #   @return [Array<Orb::PriceCreateParams::TieredConfig::Tier>]
+        #   @return [Array<Orb::Models::PriceCreateParams::TieredConfig::Tier>]
         required :tiers, -> { Orb::Internal::Type::ArrayOf[Orb::PriceCreateParams::TieredConfig::Tier] }
 
         # @!method initialize(tiers:)
-        #   @param tiers [Array<Orb::PriceCreateParams::TieredConfig::Tier>] Tiers for rating based on total usage quantities into the specified tier
+        #   @param tiers [Array<Orb::Models::PriceCreateParams::TieredConfig::Tier>] Tiers for rating based on total usage quantities into the specified tier
 
         class Tier < Orb::Internal::Type::BaseModel
           # @!attribute first_unit
@@ -623,14 +623,14 @@ module Orb
         #   Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
         #   tiers
         #
-        #   @return [Array<Orb::PriceCreateParams::TieredBpsConfig::Tier>]
+        #   @return [Array<Orb::Models::PriceCreateParams::TieredBpsConfig::Tier>]
         required :tiers, -> { Orb::Internal::Type::ArrayOf[Orb::PriceCreateParams::TieredBpsConfig::Tier] }
 
         # @!method initialize(tiers:)
         #   Some parameter documentations has been truncated, see
-        #   {Orb::PriceCreateParams::TieredBpsConfig} for more details.
+        #   {Orb::Models::PriceCreateParams::TieredBpsConfig} for more details.
         #
-        #   @param tiers [Array<Orb::PriceCreateParams::TieredBpsConfig::Tier>] Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
+        #   @param tiers [Array<Orb::Models::PriceCreateParams::TieredBpsConfig::Tier>] Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
 
         class Tier < Orb::Internal::Type::BaseModel
           # @!attribute bps
@@ -692,14 +692,14 @@ module Orb
         #   Tiers for a bulk BPS pricing model where all usage is aggregated to a single
         #   tier based on total volume
         #
-        #   @return [Array<Orb::PriceCreateParams::BulkBpsConfig::Tier>]
+        #   @return [Array<Orb::Models::PriceCreateParams::BulkBpsConfig::Tier>]
         required :tiers, -> { Orb::Internal::Type::ArrayOf[Orb::PriceCreateParams::BulkBpsConfig::Tier] }
 
         # @!method initialize(tiers:)
         #   Some parameter documentations has been truncated, see
-        #   {Orb::PriceCreateParams::BulkBpsConfig} for more details.
+        #   {Orb::Models::PriceCreateParams::BulkBpsConfig} for more details.
         #
-        #   @param tiers [Array<Orb::PriceCreateParams::BulkBpsConfig::Tier>] Tiers for a bulk BPS pricing model where all usage is aggregated to a single tie
+        #   @param tiers [Array<Orb::Models::PriceCreateParams::BulkBpsConfig::Tier>] Tiers for a bulk BPS pricing model where all usage is aggregated to a single tie
 
         class Tier < Orb::Internal::Type::BaseModel
           # @!attribute bps
@@ -733,11 +733,11 @@ module Orb
         # @!attribute tiers
         #   Bulk tiers for rating based on total usage volume
         #
-        #   @return [Array<Orb::PriceCreateParams::BulkConfig::Tier>]
+        #   @return [Array<Orb::Models::PriceCreateParams::BulkConfig::Tier>]
         required :tiers, -> { Orb::Internal::Type::ArrayOf[Orb::PriceCreateParams::BulkConfig::Tier] }
 
         # @!method initialize(tiers:)
-        #   @param tiers [Array<Orb::PriceCreateParams::BulkConfig::Tier>] Bulk tiers for rating based on total usage volume
+        #   @param tiers [Array<Orb::Models::PriceCreateParams::BulkConfig::Tier>] Bulk tiers for rating based on total usage volume
 
         class Tier < Orb::Internal::Type::BaseModel
           # @!attribute unit_amount

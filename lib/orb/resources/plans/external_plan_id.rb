@@ -22,7 +22,7 @@ module Orb
         #
         # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Orb::Plan]
+        # @return [Orb::Models::Plan]
         #
         # @see Orb::Models::Plans::ExternalPlanIDUpdateParams
         def update(other_external_plan_id, params = {})
@@ -58,7 +58,7 @@ module Orb
         # @param external_plan_id [String]
         # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Orb::Plan]
+        # @return [Orb::Models::Plan]
         #
         # @see Orb::Models::Plans::ExternalPlanIDFetchParams
         def fetch(external_plan_id, params = {})

@@ -19,7 +19,7 @@ module Orb
         invoice_date_lte: Time?,
         is_recurring: bool?,
         limit: Integer,
-        status: ::Array[Orb::InvoiceListParams::status]?,
+        status: ::Array[Orb::Models::InvoiceListParams::status]?,
         subscription_id: String?
       }
       & Orb::Internal::Type::request_parameters
@@ -64,7 +64,7 @@ module Orb
 
       def limit=: (Integer) -> Integer
 
-      attr_accessor status: ::Array[Orb::InvoiceListParams::status]?
+      attr_accessor status: ::Array[Orb::Models::InvoiceListParams::status]?
 
       attr_accessor subscription_id: String?
 
@@ -86,10 +86,33 @@ module Orb
         ?invoice_date_lte: Time?,
         ?is_recurring: bool?,
         ?limit: Integer,
-        ?status: ::Array[Orb::InvoiceListParams::status]?,
+        ?status: ::Array[Orb::Models::InvoiceListParams::status]?,
         ?subscription_id: String?,
         ?request_options: Orb::request_opts
       ) -> void
+
+      def to_hash: -> {
+        amount: String?,
+        amount_gt: String?,
+        amount_lt: String?,
+        cursor: String?,
+        customer_id: String?,
+        date_type: Orb::Models::InvoiceListParams::date_type?,
+        due_date: Date?,
+        due_date_window: String?,
+        due_date_gt: Date?,
+        due_date_lt: Date?,
+        external_customer_id: String?,
+        invoice_date_gt: Time?,
+        invoice_date_gte: Time?,
+        invoice_date_lt: Time?,
+        invoice_date_lte: Time?,
+        is_recurring: bool?,
+        limit: Integer,
+        status: ::Array[Orb::Models::InvoiceListParams::status]?,
+        subscription_id: String?,
+        request_options: Orb::RequestOptions
+      }
 
       type date_type = :due_date | :invoice_date
 
@@ -113,7 +136,7 @@ module Orb
         SYNCED: :synced
         VOID: :void
 
-        def self?.values: -> ::Array[Orb::InvoiceListParams::status]
+        def self?.values: -> ::Array[Orb::Models::InvoiceListParams::status]
       end
     end
   end

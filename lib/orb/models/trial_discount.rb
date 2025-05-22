@@ -12,7 +12,7 @@ module Orb
 
       # @!attribute discount_type
       #
-      #   @return [Symbol, Orb::TrialDiscount::DiscountType]
+      #   @return [Symbol, Orb::Models::TrialDiscount::DiscountType]
       required :discount_type, enum: -> { Orb::TrialDiscount::DiscountType }
 
       # @!attribute reason
@@ -33,12 +33,12 @@ module Orb
       optional :trial_percentage_discount, Float, nil?: true
 
       # @!method initialize(applies_to_price_ids:, discount_type:, reason: nil, trial_amount_discount: nil, trial_percentage_discount: nil)
-      #   Some parameter documentations has been truncated, see {Orb::TrialDiscount} for
-      #   more details.
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::TrialDiscount} for more details.
       #
       #   @param applies_to_price_ids [Array<String>] List of price_ids that this discount applies to. For plan/plan phase discounts,
       #
-      #   @param discount_type [Symbol, Orb::TrialDiscount::DiscountType]
+      #   @param discount_type [Symbol, Orb::Models::TrialDiscount::DiscountType]
       #
       #   @param reason [String, nil]
       #
@@ -46,7 +46,7 @@ module Orb
       #
       #   @param trial_percentage_discount [Float, nil] Only available if discount_type is `trial`
 
-      # @see Orb::TrialDiscount#discount_type
+      # @see Orb::Models::TrialDiscount#discount_type
       module DiscountType
         extend Orb::Internal::Type::Enum
 

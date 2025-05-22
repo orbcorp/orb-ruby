@@ -32,6 +32,15 @@ module Orb
         ?net_terms: Integer?,
         ?request_options: Orb::request_opts
       ) -> void
+
+      def to_hash: -> {
+        auto_collection: bool?,
+        default_invoice_memo: String?,
+        invoicing_threshold: String?,
+        metadata: ::Hash[Symbol, String?]?,
+        net_terms: Integer?,
+        request_options: Orb::RequestOptions
+      }
     end
   end
 end

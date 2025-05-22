@@ -47,6 +47,18 @@ module Orb
             ?request_options: Orb::request_opts
           ) -> void
 
+          def to_hash: -> {
+            amount: String,
+            currency: String,
+            invoice_settings: Orb::Customers::Credits::TopUpCreateParams::InvoiceSettings,
+            per_unit_cost_basis: String,
+            threshold: String,
+            active_from: Time?,
+            expires_after: Integer?,
+            expires_after_unit: Orb::Models::Customers::Credits::TopUpCreateParams::expires_after_unit?,
+            request_options: Orb::RequestOptions
+          }
+
           type invoice_settings =
             {
               auto_collection: bool,
@@ -72,6 +84,13 @@ module Orb
               ?memo: String?,
               ?require_successful_payment: bool
             ) -> void
+
+            def to_hash: -> {
+              auto_collection: bool,
+              net_terms: Integer,
+              memo: String?,
+              require_successful_payment: bool
+            }
           end
 
           type expires_after_unit = :day | :month

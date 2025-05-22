@@ -51,6 +51,19 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> void
 
+      def to_hash: -> {
+        created_at_gt: Time?,
+        created_at_gte: Time?,
+        created_at_lt: Time?,
+        created_at_lte: Time?,
+        cursor: String?,
+        customer_id: ::Array[String]?,
+        external_customer_id: ::Array[String]?,
+        limit: Integer,
+        status: Orb::Models::SubscriptionListParams::status?,
+        request_options: Orb::RequestOptions
+      }
+
       type status = :active | :ended | :upcoming
 
       module Status

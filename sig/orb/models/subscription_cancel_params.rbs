@@ -25,6 +25,13 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> void
 
+      def to_hash: -> {
+        cancel_option: Orb::Models::SubscriptionCancelParams::cancel_option,
+        allow_invoice_credit_or_void: bool?,
+        cancellation_date: Time?,
+        request_options: Orb::RequestOptions
+      }
+
       type cancel_option =
         :end_of_subscription_term | :immediate | :requested_date
 

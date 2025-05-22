@@ -3,7 +3,7 @@ module Orb
     type plan =
       {
         id: String,
-        adjustments: ::Array[Orb::Plan::adjustment],
+        adjustments: ::Array[Orb::Models::Plan::adjustment],
         base_plan: Orb::Plan::BasePlan?,
         base_plan_id: String?,
         created_at: Time,
@@ -23,7 +23,7 @@ module Orb
         plan_phases: ::Array[Orb::Plan::PlanPhase]?,
         prices: ::Array[Orb::Models::price],
         product: Orb::Plan::Product,
-        status: Orb::Plan::status,
+        status: Orb::Models::Plan::status,
         trial_config: Orb::Plan::TrialConfig,
         version: Integer
       }
@@ -31,7 +31,7 @@ module Orb
     class Plan < Orb::Internal::Type::BaseModel
       attr_accessor id: String
 
-      attr_accessor adjustments: ::Array[Orb::Plan::adjustment]
+      attr_accessor adjustments: ::Array[Orb::Models::Plan::adjustment]
 
       attr_accessor base_plan: Orb::Plan::BasePlan?
 
@@ -71,7 +71,7 @@ module Orb
 
       attr_accessor product: Orb::Plan::Product
 
-      attr_accessor status: Orb::Plan::status
+      attr_accessor status: Orb::Models::Plan::status
 
       attr_accessor trial_config: Orb::Plan::TrialConfig
 
@@ -79,7 +79,7 @@ module Orb
 
       def initialize: (
         id: String,
-        adjustments: ::Array[Orb::Plan::adjustment],
+        adjustments: ::Array[Orb::Models::Plan::adjustment],
         base_plan: Orb::Plan::BasePlan?,
         base_plan_id: String?,
         created_at: Time,
@@ -99,10 +99,37 @@ module Orb
         plan_phases: ::Array[Orb::Plan::PlanPhase]?,
         prices: ::Array[Orb::Models::price],
         product: Orb::Plan::Product,
-        status: Orb::Plan::status,
+        status: Orb::Models::Plan::status,
         trial_config: Orb::Plan::TrialConfig,
         version: Integer
       ) -> void
+
+      def to_hash: -> {
+        id: String,
+        adjustments: ::Array[Orb::Models::Plan::adjustment],
+        base_plan: Orb::Plan::BasePlan?,
+        base_plan_id: String?,
+        created_at: Time,
+        currency: String,
+        default_invoice_memo: String?,
+        description: String,
+        discount: Orb::Models::discount?,
+        external_plan_id: String?,
+        invoicing_currency: String,
+        maximum: Orb::Plan::Maximum?,
+        maximum_amount: String?,
+        metadata: ::Hash[Symbol, String],
+        minimum: Orb::Plan::Minimum?,
+        minimum_amount: String?,
+        name: String,
+        net_terms: Integer?,
+        plan_phases: ::Array[Orb::Plan::PlanPhase]?,
+        prices: ::Array[Orb::Models::price],
+        product: Orb::Plan::Product,
+        status: Orb::Models::Plan::status,
+        trial_config: Orb::Plan::TrialConfig,
+        version: Integer
+      }
 
       type adjustment =
         Orb::Plan::Adjustment::UsageDiscount
@@ -149,6 +176,16 @@ module Orb
             usage_discount: Float,
             ?adjustment_type: :usage_discount
           ) -> void
+
+          def to_hash: -> {
+            id: String,
+            adjustment_type: :usage_discount,
+            applies_to_price_ids: ::Array[String],
+            is_invoice_level: bool,
+            plan_phase_order: Integer?,
+            reason: String?,
+            usage_discount: Float
+          }
         end
 
         type amount_discount =
@@ -186,6 +223,16 @@ module Orb
             reason: String?,
             ?adjustment_type: :amount_discount
           ) -> void
+
+          def to_hash: -> {
+            id: String,
+            adjustment_type: :amount_discount,
+            amount_discount: String,
+            applies_to_price_ids: ::Array[String],
+            is_invoice_level: bool,
+            plan_phase_order: Integer?,
+            reason: String?
+          }
         end
 
         type percentage_discount =
@@ -223,6 +270,16 @@ module Orb
             reason: String?,
             ?adjustment_type: :percentage_discount
           ) -> void
+
+          def to_hash: -> {
+            id: String,
+            adjustment_type: :percentage_discount,
+            applies_to_price_ids: ::Array[String],
+            is_invoice_level: bool,
+            percentage_discount: Float,
+            plan_phase_order: Integer?,
+            reason: String?
+          }
         end
 
         type minimum =
@@ -264,6 +321,17 @@ module Orb
             reason: String?,
             ?adjustment_type: :minimum
           ) -> void
+
+          def to_hash: -> {
+            id: String,
+            adjustment_type: :minimum,
+            applies_to_price_ids: ::Array[String],
+            is_invoice_level: bool,
+            item_id: String,
+            minimum_amount: String,
+            plan_phase_order: Integer?,
+            reason: String?
+          }
         end
 
         type maximum =
@@ -301,9 +369,19 @@ module Orb
             reason: String?,
             ?adjustment_type: :maximum
           ) -> void
+
+          def to_hash: -> {
+            id: String,
+            adjustment_type: :maximum,
+            applies_to_price_ids: ::Array[String],
+            is_invoice_level: bool,
+            maximum_amount: String,
+            plan_phase_order: Integer?,
+            reason: String?
+          }
         end
 
-        def self?.variants: -> ::Array[Orb::Plan::adjustment]
+        def self?.variants: -> ::Array[Orb::Models::Plan::adjustment]
       end
 
       type base_plan = { id: String?, external_plan_id: String?, name: String? }
@@ -320,6 +398,12 @@ module Orb
           external_plan_id: String?,
           name: String?
         ) -> void
+
+        def to_hash: -> {
+          id: String?,
+          external_plan_id: String?,
+          name: String?
+        }
       end
 
       type maximum =
@@ -334,6 +418,11 @@ module Orb
           applies_to_price_ids: ::Array[String],
           maximum_amount: String
         ) -> void
+
+        def to_hash: -> {
+          applies_to_price_ids: ::Array[String],
+          maximum_amount: String
+        }
       end
 
       type minimum =
@@ -348,6 +437,11 @@ module Orb
           applies_to_price_ids: ::Array[String],
           minimum_amount: String
         ) -> void
+
+        def to_hash: -> {
+          applies_to_price_ids: ::Array[String],
+          minimum_amount: String
+        }
       end
 
       type plan_phase =
@@ -356,7 +450,7 @@ module Orb
           description: String?,
           discount: Orb::Models::discount?,
           duration: Integer?,
-          duration_unit: Orb::Plan::PlanPhase::duration_unit?,
+          duration_unit: Orb::Models::Plan::PlanPhase::duration_unit?,
           maximum: Orb::Plan::PlanPhase::Maximum?,
           maximum_amount: String?,
           minimum: Orb::Plan::PlanPhase::Minimum?,
@@ -374,7 +468,7 @@ module Orb
 
         attr_accessor duration: Integer?
 
-        attr_accessor duration_unit: Orb::Plan::PlanPhase::duration_unit?
+        attr_accessor duration_unit: Orb::Models::Plan::PlanPhase::duration_unit?
 
         attr_accessor maximum: Orb::Plan::PlanPhase::Maximum?
 
@@ -393,7 +487,7 @@ module Orb
           description: String?,
           discount: Orb::Models::discount?,
           duration: Integer?,
-          duration_unit: Orb::Plan::PlanPhase::duration_unit?,
+          duration_unit: Orb::Models::Plan::PlanPhase::duration_unit?,
           maximum: Orb::Plan::PlanPhase::Maximum?,
           maximum_amount: String?,
           minimum: Orb::Plan::PlanPhase::Minimum?,
@@ -401,6 +495,20 @@ module Orb
           name: String,
           order: Integer
         ) -> void
+
+        def to_hash: -> {
+          id: String,
+          description: String?,
+          discount: Orb::Models::discount?,
+          duration: Integer?,
+          duration_unit: Orb::Models::Plan::PlanPhase::duration_unit?,
+          maximum: Orb::Plan::PlanPhase::Maximum?,
+          maximum_amount: String?,
+          minimum: Orb::Plan::PlanPhase::Minimum?,
+          minimum_amount: String?,
+          name: String,
+          order: Integer
+        }
 
         type duration_unit =
           :daily | :monthly | :quarterly | :semi_annual | :annual
@@ -414,7 +522,7 @@ module Orb
           SEMI_ANNUAL: :semi_annual
           ANNUAL: :annual
 
-          def self?.values: -> ::Array[Orb::Plan::PlanPhase::duration_unit]
+          def self?.values: -> ::Array[Orb::Models::Plan::PlanPhase::duration_unit]
         end
 
         type maximum =
@@ -429,6 +537,11 @@ module Orb
             applies_to_price_ids: ::Array[String],
             maximum_amount: String
           ) -> void
+
+          def to_hash: -> {
+            applies_to_price_ids: ::Array[String],
+            maximum_amount: String
+          }
         end
 
         type minimum =
@@ -443,6 +556,11 @@ module Orb
             applies_to_price_ids: ::Array[String],
             minimum_amount: String
           ) -> void
+
+          def to_hash: -> {
+            applies_to_price_ids: ::Array[String],
+            minimum_amount: String
+          }
         end
       end
 
@@ -456,6 +574,8 @@ module Orb
         attr_accessor name: String
 
         def initialize: (id: String, created_at: Time, name: String) -> void
+
+        def to_hash: -> { id: String, created_at: Time, name: String }
       end
 
       type status = :active | :archived | :draft
@@ -467,24 +587,29 @@ module Orb
         ARCHIVED: :archived
         DRAFT: :draft
 
-        def self?.values: -> ::Array[Orb::Plan::status]
+        def self?.values: -> ::Array[Orb::Models::Plan::status]
       end
 
       type trial_config =
         {
           trial_period: Integer?,
-          trial_period_unit: Orb::Plan::TrialConfig::trial_period_unit
+          trial_period_unit: Orb::Models::Plan::TrialConfig::trial_period_unit
         }
 
       class TrialConfig < Orb::Internal::Type::BaseModel
         attr_accessor trial_period: Integer?
 
-        attr_accessor trial_period_unit: Orb::Plan::TrialConfig::trial_period_unit
+        attr_accessor trial_period_unit: Orb::Models::Plan::TrialConfig::trial_period_unit
 
         def initialize: (
           trial_period: Integer?,
-          trial_period_unit: Orb::Plan::TrialConfig::trial_period_unit
+          trial_period_unit: Orb::Models::Plan::TrialConfig::trial_period_unit
         ) -> void
+
+        def to_hash: -> {
+          trial_period: Integer?,
+          trial_period_unit: Orb::Models::Plan::TrialConfig::trial_period_unit
+        }
 
         type trial_period_unit = :days
 
@@ -493,7 +618,7 @@ module Orb
 
           DAYS: :days
 
-          def self?.values: -> ::Array[Orb::Plan::TrialConfig::trial_period_unit]
+          def self?.values: -> ::Array[Orb::Models::Plan::TrialConfig::trial_period_unit]
         end
       end
     end

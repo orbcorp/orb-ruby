@@ -37,6 +37,16 @@ module Orb
           status: Orb::Models::Customers::CreditListResponse::status
         ) -> void
 
+        def to_hash: -> {
+          id: String,
+          balance: Float,
+          effective_date: Time?,
+          expiry_date: Time?,
+          maximum_initial_balance: Float?,
+          per_unit_cost_basis: String?,
+          status: Orb::Models::Customers::CreditListResponse::status
+        }
+
         type status = :active | :pending_payment
 
         module Status

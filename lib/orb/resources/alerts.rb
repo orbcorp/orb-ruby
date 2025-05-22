@@ -10,7 +10,7 @@ module Orb
       # @param alert_id [String]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Alert]
+      # @return [Orb::Models::Alert]
       #
       # @see Orb::Models::AlertRetrieveParams
       def retrieve(alert_id, params = {})
@@ -28,11 +28,11 @@ module Orb
       #
       # @param alert_configuration_id [String]
       #
-      # @param thresholds [Array<Orb::AlertUpdateParams::Threshold>] The thresholds that define the values at which the alert will be triggered.
+      # @param thresholds [Array<Orb::Models::AlertUpdateParams::Threshold>] The thresholds that define the values at which the alert will be triggered.
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Alert]
+      # @return [Orb::Models::Alert]
       #
       # @see Orb::Models::AlertUpdateParams
       def update(alert_configuration_id, params)
@@ -83,7 +83,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Internal::Page<Orb::Alert>]
+      # @return [Orb::Internal::Page<Orb::Models::Alert>]
       #
       # @see Orb::Models::AlertListParams
       def list(params = {})
@@ -118,13 +118,13 @@ module Orb
       #
       # @param currency [String] The case sensitive currency or custom pricing unit to use for this alert.
       #
-      # @param type [Symbol, Orb::AlertCreateForCustomerParams::Type] The type of alert to create. This must be a valid alert type.
+      # @param type [Symbol, Orb::Models::AlertCreateForCustomerParams::Type] The type of alert to create. This must be a valid alert type.
       #
-      # @param thresholds [Array<Orb::AlertCreateForCustomerParams::Threshold>, nil] The thresholds that define the values at which the alert will be triggered.
+      # @param thresholds [Array<Orb::Models::AlertCreateForCustomerParams::Threshold>, nil] The thresholds that define the values at which the alert will be triggered.
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Alert]
+      # @return [Orb::Models::Alert]
       #
       # @see Orb::Models::AlertCreateForCustomerParams
       def create_for_customer(customer_id, params)
@@ -153,13 +153,13 @@ module Orb
       #
       # @param currency [String] The case sensitive currency or custom pricing unit to use for this alert.
       #
-      # @param type [Symbol, Orb::AlertCreateForExternalCustomerParams::Type] The type of alert to create. This must be a valid alert type.
+      # @param type [Symbol, Orb::Models::AlertCreateForExternalCustomerParams::Type] The type of alert to create. This must be a valid alert type.
       #
-      # @param thresholds [Array<Orb::AlertCreateForExternalCustomerParams::Threshold>, nil] The thresholds that define the values at which the alert will be triggered.
+      # @param thresholds [Array<Orb::Models::AlertCreateForExternalCustomerParams::Threshold>, nil] The thresholds that define the values at which the alert will be triggered.
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Alert]
+      # @return [Orb::Models::Alert]
       #
       # @see Orb::Models::AlertCreateForExternalCustomerParams
       def create_for_external_customer(external_customer_id, params)
@@ -189,15 +189,15 @@ module Orb
       #
       # @param subscription_id [String]
       #
-      # @param thresholds [Array<Orb::AlertCreateForSubscriptionParams::Threshold>] The thresholds that define the values at which the alert will be triggered.
+      # @param thresholds [Array<Orb::Models::AlertCreateForSubscriptionParams::Threshold>] The thresholds that define the values at which the alert will be triggered.
       #
-      # @param type [Symbol, Orb::AlertCreateForSubscriptionParams::Type] The type of alert to create. This must be a valid alert type.
+      # @param type [Symbol, Orb::Models::AlertCreateForSubscriptionParams::Type] The type of alert to create. This must be a valid alert type.
       #
       # @param metric_id [String, nil] The metric to track usage for.
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Alert]
+      # @return [Orb::Models::Alert]
       #
       # @see Orb::Models::AlertCreateForSubscriptionParams
       def create_for_subscription(subscription_id, params)
@@ -223,7 +223,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Alert]
+      # @return [Orb::Models::Alert]
       #
       # @see Orb::Models::AlertDisableParams
       def disable(alert_configuration_id, params = {})
@@ -249,7 +249,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Alert]
+      # @return [Orb::Models::Alert]
       #
       # @see Orb::Models::AlertEnableParams
       def enable(alert_configuration_id, params = {})
