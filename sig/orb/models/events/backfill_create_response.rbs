@@ -53,6 +53,20 @@ module Orb
           ?deprecation_filter: String?
         ) -> void
 
+        def to_hash: -> {
+          id: String,
+          close_time: Time?,
+          created_at: Time,
+          customer_id: String?,
+          events_ingested: Integer,
+          replace_existing_events: bool,
+          reverted_at: Time?,
+          status: Orb::Models::Events::BackfillCreateResponse::status,
+          timeframe_end: Time,
+          timeframe_start: Time,
+          deprecation_filter: String?
+        }
+
         type status = :pending | :reflected | :pending_revert | :reverted
 
         module Status

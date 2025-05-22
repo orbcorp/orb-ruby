@@ -24,7 +24,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::BillableMetric]
+      # @return [Orb::Models::BillableMetric]
       #
       # @see Orb::Models::MetricCreateParams
       def create(params)
@@ -53,7 +53,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::BillableMetric]
+      # @return [Orb::Models::BillableMetric]
       #
       # @see Orb::Models::MetricUpdateParams
       def update(metric_id, params = {})
@@ -90,7 +90,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Internal::Page<Orb::BillableMetric>]
+      # @return [Orb::Internal::Page<Orb::Models::BillableMetric>]
       #
       # @see Orb::Models::MetricListParams
       def list(params = {})
@@ -118,7 +118,7 @@ module Orb
       # @param metric_id [String]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::BillableMetric]
+      # @return [Orb::Models::BillableMetric]
       #
       # @see Orb::Models::MetricFetchParams
       def fetch(metric_id, params = {})

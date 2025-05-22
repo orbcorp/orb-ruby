@@ -31,7 +31,7 @@ module Orb
       #   specified, this defaults to `effective_date`. Otherwise, this defaults to
       #   `immediate` unless it's explicitly set to `upcoming_invoice`.
       #
-      #   @return [Symbol, Orb::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption, nil]
+      #   @return [Symbol, Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption, nil]
       optional :change_option, enum: -> { Orb::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption }
 
       # @!attribute effective_date
@@ -52,7 +52,7 @@ module Orb
       #
       #   @param allow_invoice_credit_or_void [Boolean, nil] If false, this request will fail if it would void an issued invoice or create a
       #
-      #   @param change_option [Symbol, Orb::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption] Determines when the change takes effect. Note that if `effective_date` is specif
+      #   @param change_option [Symbol, Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption] Determines when the change takes effect. Note that if `effective_date` is specif
       #
       #   @param effective_date [Date, nil] The date that the quantity change should take effect, localized to the customer'
       #

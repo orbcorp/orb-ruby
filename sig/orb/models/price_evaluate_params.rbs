@@ -38,6 +38,16 @@ module Orb
         ?grouping_keys: ::Array[String],
         ?request_options: Orb::request_opts
       ) -> void
+
+      def to_hash: -> {
+        timeframe_end: Time,
+        timeframe_start: Time,
+        customer_id: String?,
+        external_customer_id: String?,
+        filter: String?,
+        grouping_keys: ::Array[String],
+        request_options: Orb::RequestOptions
+      }
     end
   end
 end

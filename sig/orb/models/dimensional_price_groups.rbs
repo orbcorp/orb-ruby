@@ -15,6 +15,11 @@ module Orb
         data: ::Array[Orb::DimensionalPriceGroup],
         pagination_metadata: Orb::PaginationMetadata
       ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Orb::DimensionalPriceGroup],
+        pagination_metadata: Orb::PaginationMetadata
+      }
     end
   end
 end

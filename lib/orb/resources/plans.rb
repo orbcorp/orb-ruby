@@ -17,7 +17,7 @@ module Orb
       #
       # @param name [String]
       #
-      # @param prices [Array<Orb::PlanCreateParams::Price::Unit, Orb::PlanCreateParams::Price::Package, Orb::PlanCreateParams::Price::Matrix, Orb::PlanCreateParams::Price::Tiered, Orb::PlanCreateParams::Price::TieredBps, Orb::PlanCreateParams::Price::Bps, Orb::PlanCreateParams::Price::BulkBps, Orb::PlanCreateParams::Price::Bulk, Orb::PlanCreateParams::Price::ThresholdTotalAmount, Orb::PlanCreateParams::Price::TieredPackage, Orb::PlanCreateParams::Price::TieredWithMinimum, Orb::PlanCreateParams::Price::UnitWithPercent, Orb::PlanCreateParams::Price::PackageWithAllocation, Orb::PlanCreateParams::Price::TieredWithProration, Orb::PlanCreateParams::Price::UnitWithProration, Orb::PlanCreateParams::Price::GroupedAllocation, Orb::PlanCreateParams::Price::GroupedWithProratedMinimum, Orb::PlanCreateParams::Price::GroupedWithMeteredMinimum, Orb::PlanCreateParams::Price::MatrixWithDisplayName, Orb::PlanCreateParams::Price::BulkWithProration, Orb::PlanCreateParams::Price::GroupedTieredPackage, Orb::PlanCreateParams::Price::MaxGroupTieredPackage, Orb::PlanCreateParams::Price::ScalableMatrixWithUnitPricing, Orb::PlanCreateParams::Price::ScalableMatrixWithTieredPricing, Orb::PlanCreateParams::Price::CumulativeGroupedBulk>] Prices for this plan. If the plan has phases, this includes prices across all ph
+      # @param prices [Array<Orb::Models::PlanCreateParams::Price::Unit, Orb::Models::PlanCreateParams::Price::Package, Orb::Models::PlanCreateParams::Price::Matrix, Orb::Models::PlanCreateParams::Price::Tiered, Orb::Models::PlanCreateParams::Price::TieredBps, Orb::Models::PlanCreateParams::Price::Bps, Orb::Models::PlanCreateParams::Price::BulkBps, Orb::Models::PlanCreateParams::Price::Bulk, Orb::Models::PlanCreateParams::Price::ThresholdTotalAmount, Orb::Models::PlanCreateParams::Price::TieredPackage, Orb::Models::PlanCreateParams::Price::TieredWithMinimum, Orb::Models::PlanCreateParams::Price::UnitWithPercent, Orb::Models::PlanCreateParams::Price::PackageWithAllocation, Orb::Models::PlanCreateParams::Price::TieredWithProration, Orb::Models::PlanCreateParams::Price::UnitWithProration, Orb::Models::PlanCreateParams::Price::GroupedAllocation, Orb::Models::PlanCreateParams::Price::GroupedWithProratedMinimum, Orb::Models::PlanCreateParams::Price::GroupedWithMeteredMinimum, Orb::Models::PlanCreateParams::Price::MatrixWithDisplayName, Orb::Models::PlanCreateParams::Price::BulkWithProration, Orb::Models::PlanCreateParams::Price::GroupedTieredPackage, Orb::Models::PlanCreateParams::Price::MaxGroupTieredPackage, Orb::Models::PlanCreateParams::Price::ScalableMatrixWithUnitPricing, Orb::Models::PlanCreateParams::Price::ScalableMatrixWithTieredPricing, Orb::Models::PlanCreateParams::Price::CumulativeGroupedBulk>] Prices for this plan. If the plan has phases, this includes prices across all ph
       #
       # @param default_invoice_memo [String, nil] Free-form text which is available on the invoice PDF and the Orb invoice portal.
       #
@@ -27,11 +27,11 @@ module Orb
       #
       # @param net_terms [Integer, nil] The net terms determines the difference between the invoice date and the issue d
       #
-      # @param status [Symbol, Orb::PlanCreateParams::Status] The status of the plan to create (either active or draft). If not specified, thi
+      # @param status [Symbol, Orb::Models::PlanCreateParams::Status] The status of the plan to create (either active or draft). If not specified, thi
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Plan]
+      # @return [Orb::Models::Plan]
       #
       # @see Orb::Models::PlanCreateParams
       def create(params)
@@ -57,7 +57,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Plan]
+      # @return [Orb::Models::Plan]
       #
       # @see Orb::Models::PlanUpdateParams
       def update(plan_id, params = {})
@@ -94,11 +94,11 @@ module Orb
       #
       # @param limit [Integer] The number of items to fetch. Defaults to 20.
       #
-      # @param status [Symbol, Orb::PlanListParams::Status] The plan status to filter to ('active', 'archived', or 'draft').
+      # @param status [Symbol, Orb::Models::PlanListParams::Status] The plan status to filter to ('active', 'archived', or 'draft').
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Internal::Page<Orb::Plan>]
+      # @return [Orb::Internal::Page<Orb::Models::Plan>]
       #
       # @see Orb::Models::PlanListParams
       def list(params = {})
@@ -141,7 +141,7 @@ module Orb
       # @param plan_id [String]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Plan]
+      # @return [Orb::Models::Plan]
       #
       # @see Orb::Models::PlanFetchParams
       def fetch(plan_id, params = {})

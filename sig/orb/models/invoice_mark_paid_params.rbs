@@ -20,6 +20,13 @@ module Orb
         ?notes: String?,
         ?request_options: Orb::request_opts
       ) -> void
+
+      def to_hash: -> {
+        payment_received_date: Date,
+        external_id: String?,
+        notes: String?,
+        request_options: Orb::RequestOptions
+      }
     end
   end
 end

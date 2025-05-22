@@ -18,7 +18,7 @@ module Orb
 
           # @!attribute entry_type
           #
-          #   @return [Symbol, Orb::Customers::Credits::LedgerCreateEntryParams::EntryType]
+          #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::EntryType]
           required :entry_type, enum: -> { Orb::Customers::Credits::LedgerCreateEntryParams::EntryType }
 
           # @!attribute currency
@@ -55,7 +55,7 @@ module Orb
           #   per_unit_cost_basis, as the calculation of the invoice total is done on that
           #   basis.
           #
-          #   @return [Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings, nil]
+          #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings, nil]
           optional :invoice_settings,
                    -> { Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings },
                    nil?: true
@@ -92,7 +92,7 @@ module Orb
           # @!attribute void_reason
           #   Can only be specified when `entry_type=void`. The reason for the void.
           #
-          #   @return [Symbol, Orb::Customers::Credits::LedgerCreateEntryParams::VoidReason, nil]
+          #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::VoidReason, nil]
           optional :void_reason,
                    enum: -> { Orb::Customers::Credits::LedgerCreateEntryParams::VoidReason },
                    nil?: true
@@ -103,7 +103,7 @@ module Orb
           #
           #   @param amount [Float] The number of credits to effect. Note that this is required for increment, decre
           #
-          #   @param entry_type [Symbol, Orb::Customers::Credits::LedgerCreateEntryParams::EntryType]
+          #   @param entry_type [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::EntryType]
           #
           #   @param expiry_date [Time, nil] An ISO 8601 format date that identifies the origination credit block to expire
           #
@@ -117,13 +117,13 @@ module Orb
           #
           #   @param effective_date [Time, nil] An ISO 8601 format date that denotes when this credit balance should become avai
           #
-          #   @param invoice_settings [Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings, nil] Passing `invoice_settings` automatically generates an invoice for the newly adde
+          #   @param invoice_settings [Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings, nil] Passing `invoice_settings` automatically generates an invoice for the newly adde
           #
           #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
           #
           #   @param per_unit_cost_basis [String, nil] Can only be specified when entry_type=increment. How much, in the customer's cur
           #
-          #   @param void_reason [Symbol, Orb::Customers::Credits::LedgerCreateEntryParams::VoidReason, nil] Can only be specified when `entry_type=void`. The reason for the void.
+          #   @param void_reason [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::VoidReason, nil] Can only be specified when `entry_type=void`. The reason for the void.
           #
           #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
@@ -167,8 +167,8 @@ module Orb
 
             # @!method initialize(auto_collection:, net_terms:, memo: nil, require_successful_payment: nil)
             #   Some parameter documentations has been truncated, see
-            #   {Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings} for more
-            #   details.
+            #   {Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings} for
+            #   more details.
             #
             #   Passing `invoice_settings` automatically generates an invoice for the newly
             #   added credits. If `invoice_settings` is passed, you must specify

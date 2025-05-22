@@ -6,6 +6,8 @@ module Orb
       attr_accessor response: String
 
       def initialize: (response: String) -> void
+
+      def to_hash: -> { response: String }
     end
   end
 end

@@ -13,12 +13,12 @@ module Orb
       #   Adjustments for this plan. If the plan has phases, this includes adjustments
       #   across all phases of the plan.
       #
-      #   @return [Array<Orb::Plan::Adjustment::UsageDiscount, Orb::Plan::Adjustment::AmountDiscount, Orb::Plan::Adjustment::PercentageDiscount, Orb::Plan::Adjustment::Minimum, Orb::Plan::Adjustment::Maximum>]
+      #   @return [Array<Orb::Models::Plan::Adjustment::UsageDiscount, Orb::Models::Plan::Adjustment::AmountDiscount, Orb::Models::Plan::Adjustment::PercentageDiscount, Orb::Models::Plan::Adjustment::Minimum, Orb::Models::Plan::Adjustment::Maximum>]
       required :adjustments, -> { Orb::Internal::Type::ArrayOf[union: Orb::Plan::Adjustment] }
 
       # @!attribute base_plan
       #
-      #   @return [Orb::Plan::BasePlan, nil]
+      #   @return [Orb::Models::Plan::BasePlan, nil]
       required :base_plan, -> { Orb::Plan::BasePlan }, nil?: true
 
       # @!attribute base_plan_id
@@ -56,7 +56,7 @@ module Orb
 
       # @!attribute discount
       #
-      #   @return [Orb::PercentageDiscount, Orb::TrialDiscount, Orb::UsageDiscount, Orb::AmountDiscount, nil]
+      #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
       required :discount, union: -> { Orb::Discount }, nil?: true
 
       # @!attribute external_plan_id
@@ -76,7 +76,7 @@ module Orb
 
       # @!attribute maximum
       #
-      #   @return [Orb::Plan::Maximum, nil]
+      #   @return [Orb::Models::Plan::Maximum, nil]
       required :maximum, -> { Orb::Plan::Maximum }, nil?: true
 
       # @!attribute maximum_amount
@@ -95,7 +95,7 @@ module Orb
 
       # @!attribute minimum
       #
-      #   @return [Orb::Plan::Minimum, nil]
+      #   @return [Orb::Models::Plan::Minimum, nil]
       required :minimum, -> { Orb::Plan::Minimum }, nil?: true
 
       # @!attribute minimum_amount
@@ -120,29 +120,29 @@ module Orb
 
       # @!attribute plan_phases
       #
-      #   @return [Array<Orb::Plan::PlanPhase>, nil]
+      #   @return [Array<Orb::Models::Plan::PlanPhase>, nil]
       required :plan_phases, -> { Orb::Internal::Type::ArrayOf[Orb::Plan::PlanPhase] }, nil?: true
 
       # @!attribute prices
       #   Prices for this plan. If the plan has phases, this includes prices across all
       #   phases of the plan.
       #
-      #   @return [Array<Orb::Price::Unit, Orb::Price::Package, Orb::Price::Matrix, Orb::Price::Tiered, Orb::Price::TieredBps, Orb::Price::Bps, Orb::Price::BulkBps, Orb::Price::Bulk, Orb::Price::ThresholdTotalAmount, Orb::Price::TieredPackage, Orb::Price::GroupedTiered, Orb::Price::TieredWithMinimum, Orb::Price::TieredPackageWithMinimum, Orb::Price::PackageWithAllocation, Orb::Price::UnitWithPercent, Orb::Price::MatrixWithAllocation, Orb::Price::TieredWithProration, Orb::Price::UnitWithProration, Orb::Price::GroupedAllocation, Orb::Price::GroupedWithProratedMinimum, Orb::Price::GroupedWithMeteredMinimum, Orb::Price::MatrixWithDisplayName, Orb::Price::BulkWithProration, Orb::Price::GroupedTieredPackage, Orb::Price::MaxGroupTieredPackage, Orb::Price::ScalableMatrixWithUnitPricing, Orb::Price::ScalableMatrixWithTieredPricing, Orb::Price::CumulativeGroupedBulk>]
+      #   @return [Array<Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBps, Orb::Models::Price::Bps, Orb::Models::Price::BulkBps, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk>]
       required :prices, -> { Orb::Internal::Type::ArrayOf[union: Orb::Price] }
 
       # @!attribute product
       #
-      #   @return [Orb::Plan::Product]
+      #   @return [Orb::Models::Plan::Product]
       required :product, -> { Orb::Plan::Product }
 
       # @!attribute status
       #
-      #   @return [Symbol, Orb::Plan::Status]
+      #   @return [Symbol, Orb::Models::Plan::Status]
       required :status, enum: -> { Orb::Plan::Status }
 
       # @!attribute trial_config
       #
-      #   @return [Orb::Plan::TrialConfig]
+      #   @return [Orb::Models::Plan::TrialConfig]
       required :trial_config, -> { Orb::Plan::TrialConfig }
 
       # @!attribute version
@@ -151,8 +151,8 @@ module Orb
       required :version, Integer
 
       # @!method initialize(id:, adjustments:, base_plan:, base_plan_id:, created_at:, currency:, default_invoice_memo:, description:, discount:, external_plan_id:, invoicing_currency:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, net_terms:, plan_phases:, prices:, product:, status:, trial_config:, version:)
-      #   Some parameter documentations has been truncated, see {Orb::Plan} for more
-      #   details.
+      #   Some parameter documentations has been truncated, see {Orb::Models::Plan} for
+      #   more details.
       #
       #   The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be
       #   subscribed to by a customer. Plans define the billing behavior of the
@@ -161,9 +161,9 @@ module Orb
       #
       #   @param id [String]
       #
-      #   @param adjustments [Array<Orb::Plan::Adjustment::UsageDiscount, Orb::Plan::Adjustment::AmountDiscount, Orb::Plan::Adjustment::PercentageDiscount, Orb::Plan::Adjustment::Minimum, Orb::Plan::Adjustment::Maximum>] Adjustments for this plan. If the plan has phases, this includes adjustments acr
+      #   @param adjustments [Array<Orb::Models::Plan::Adjustment::UsageDiscount, Orb::Models::Plan::Adjustment::AmountDiscount, Orb::Models::Plan::Adjustment::PercentageDiscount, Orb::Models::Plan::Adjustment::Minimum, Orb::Models::Plan::Adjustment::Maximum>] Adjustments for this plan. If the plan has phases, this includes adjustments acr
       #
-      #   @param base_plan [Orb::Plan::BasePlan, nil]
+      #   @param base_plan [Orb::Models::Plan::BasePlan, nil]
       #
       #   @param base_plan_id [String, nil] The parent plan id if the given plan was created by overriding one or more of th
       #
@@ -175,19 +175,19 @@ module Orb
       #
       #   @param description [String]
       #
-      #   @param discount [Orb::PercentageDiscount, Orb::TrialDiscount, Orb::UsageDiscount, Orb::AmountDiscount, nil]
+      #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
       #
       #   @param external_plan_id [String, nil] An optional user-defined ID for this plan resource, used throughout the system a
       #
       #   @param invoicing_currency [String] An ISO 4217 currency string for which this plan is billed in. Matches `currency`
       #
-      #   @param maximum [Orb::Plan::Maximum, nil]
+      #   @param maximum [Orb::Models::Plan::Maximum, nil]
       #
       #   @param maximum_amount [String, nil]
       #
       #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
       #
-      #   @param minimum [Orb::Plan::Minimum, nil]
+      #   @param minimum [Orb::Models::Plan::Minimum, nil]
       #
       #   @param minimum_amount [String, nil]
       #
@@ -195,15 +195,15 @@ module Orb
       #
       #   @param net_terms [Integer, nil] Determines the difference between the invoice issue date and the due date. A val
       #
-      #   @param plan_phases [Array<Orb::Plan::PlanPhase>, nil]
+      #   @param plan_phases [Array<Orb::Models::Plan::PlanPhase>, nil]
       #
-      #   @param prices [Array<Orb::Price::Unit, Orb::Price::Package, Orb::Price::Matrix, Orb::Price::Tiered, Orb::Price::TieredBps, Orb::Price::Bps, Orb::Price::BulkBps, Orb::Price::Bulk, Orb::Price::ThresholdTotalAmount, Orb::Price::TieredPackage, Orb::Price::GroupedTiered, Orb::Price::TieredWithMinimum, Orb::Price::TieredPackageWithMinimum, Orb::Price::PackageWithAllocation, Orb::Price::UnitWithPercent, Orb::Price::MatrixWithAllocation, Orb::Price::TieredWithProration, Orb::Price::UnitWithProration, Orb::Price::GroupedAllocation, Orb::Price::GroupedWithProratedMinimum, Orb::Price::GroupedWithMeteredMinimum, Orb::Price::MatrixWithDisplayName, Orb::Price::BulkWithProration, Orb::Price::GroupedTieredPackage, Orb::Price::MaxGroupTieredPackage, Orb::Price::ScalableMatrixWithUnitPricing, Orb::Price::ScalableMatrixWithTieredPricing, Orb::Price::CumulativeGroupedBulk>] Prices for this plan. If the plan has phases, this includes prices across all ph
+      #   @param prices [Array<Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBps, Orb::Models::Price::Bps, Orb::Models::Price::BulkBps, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk>] Prices for this plan. If the plan has phases, this includes prices across all ph
       #
-      #   @param product [Orb::Plan::Product]
+      #   @param product [Orb::Models::Plan::Product]
       #
-      #   @param status [Symbol, Orb::Plan::Status]
+      #   @param status [Symbol, Orb::Models::Plan::Status]
       #
-      #   @param trial_config [Orb::Plan::TrialConfig]
+      #   @param trial_config [Orb::Models::Plan::TrialConfig]
       #
       #   @param version [Integer]
 
@@ -267,7 +267,7 @@ module Orb
 
           # @!method initialize(id:, applies_to_price_ids:, is_invoice_level:, plan_phase_order:, reason:, usage_discount:, adjustment_type: :usage_discount)
           #   Some parameter documentations has been truncated, see
-          #   {Orb::Plan::Adjustment::UsageDiscount} for more details.
+          #   {Orb::Models::Plan::Adjustment::UsageDiscount} for more details.
           #
           #   @param id [String]
           #
@@ -329,7 +329,7 @@ module Orb
 
           # @!method initialize(id:, amount_discount:, applies_to_price_ids:, is_invoice_level:, plan_phase_order:, reason:, adjustment_type: :amount_discount)
           #   Some parameter documentations has been truncated, see
-          #   {Orb::Plan::Adjustment::AmountDiscount} for more details.
+          #   {Orb::Models::Plan::Adjustment::AmountDiscount} for more details.
           #
           #   @param id [String]
           #
@@ -391,7 +391,7 @@ module Orb
 
           # @!method initialize(id:, applies_to_price_ids:, is_invoice_level:, percentage_discount:, plan_phase_order:, reason:, adjustment_type: :percentage_discount)
           #   Some parameter documentations has been truncated, see
-          #   {Orb::Plan::Adjustment::PercentageDiscount} for more details.
+          #   {Orb::Models::Plan::Adjustment::PercentageDiscount} for more details.
           #
           #   @param id [String]
           #
@@ -459,7 +459,7 @@ module Orb
 
           # @!method initialize(id:, applies_to_price_ids:, is_invoice_level:, item_id:, minimum_amount:, plan_phase_order:, reason:, adjustment_type: :minimum)
           #   Some parameter documentations has been truncated, see
-          #   {Orb::Plan::Adjustment::Minimum} for more details.
+          #   {Orb::Models::Plan::Adjustment::Minimum} for more details.
           #
           #   @param id [String]
           #
@@ -523,7 +523,7 @@ module Orb
 
           # @!method initialize(id:, applies_to_price_ids:, is_invoice_level:, maximum_amount:, plan_phase_order:, reason:, adjustment_type: :maximum)
           #   Some parameter documentations has been truncated, see
-          #   {Orb::Plan::Adjustment::Maximum} for more details.
+          #   {Orb::Models::Plan::Adjustment::Maximum} for more details.
           #
           #   @param id [String]
           #
@@ -541,10 +541,10 @@ module Orb
         end
 
         # @!method self.variants
-        #   @return [Array(Orb::Plan::Adjustment::UsageDiscount, Orb::Plan::Adjustment::AmountDiscount, Orb::Plan::Adjustment::PercentageDiscount, Orb::Plan::Adjustment::Minimum, Orb::Plan::Adjustment::Maximum)]
+        #   @return [Array(Orb::Models::Plan::Adjustment::UsageDiscount, Orb::Models::Plan::Adjustment::AmountDiscount, Orb::Models::Plan::Adjustment::PercentageDiscount, Orb::Models::Plan::Adjustment::Minimum, Orb::Models::Plan::Adjustment::Maximum)]
       end
 
-      # @see Orb::Plan#base_plan
+      # @see Orb::Models::Plan#base_plan
       class BasePlan < Orb::Internal::Type::BaseModel
         # @!attribute id
         #
@@ -565,8 +565,8 @@ module Orb
         required :name, String, nil?: true
 
         # @!method initialize(id:, external_plan_id:, name:)
-        #   Some parameter documentations has been truncated, see {Orb::Plan::BasePlan} for
-        #   more details.
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Plan::BasePlan} for more details.
         #
         #   @param id [String, nil]
         #
@@ -575,7 +575,7 @@ module Orb
         #   @param name [String, nil]
       end
 
-      # @see Orb::Plan#maximum
+      # @see Orb::Models::Plan#maximum
       class Maximum < Orb::Internal::Type::BaseModel
         # @!attribute applies_to_price_ids
         #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -591,15 +591,15 @@ module Orb
         required :maximum_amount, String
 
         # @!method initialize(applies_to_price_ids:, maximum_amount:)
-        #   Some parameter documentations has been truncated, see {Orb::Plan::Maximum} for
-        #   more details.
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Plan::Maximum} for more details.
         #
         #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
         #
         #   @param maximum_amount [String] Maximum amount applied
       end
 
-      # @see Orb::Plan#minimum
+      # @see Orb::Models::Plan#minimum
       class Minimum < Orb::Internal::Type::BaseModel
         # @!attribute applies_to_price_ids
         #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -615,8 +615,8 @@ module Orb
         required :minimum_amount, String
 
         # @!method initialize(applies_to_price_ids:, minimum_amount:)
-        #   Some parameter documentations has been truncated, see {Orb::Plan::Minimum} for
-        #   more details.
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Plan::Minimum} for more details.
         #
         #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
         #
@@ -636,7 +636,7 @@ module Orb
 
         # @!attribute discount
         #
-        #   @return [Orb::PercentageDiscount, Orb::TrialDiscount, Orb::UsageDiscount, Orb::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute duration
@@ -648,12 +648,12 @@ module Orb
 
         # @!attribute duration_unit
         #
-        #   @return [Symbol, Orb::Plan::PlanPhase::DurationUnit, nil]
+        #   @return [Symbol, Orb::Models::Plan::PlanPhase::DurationUnit, nil]
         required :duration_unit, enum: -> { Orb::Plan::PlanPhase::DurationUnit }, nil?: true
 
         # @!attribute maximum
         #
-        #   @return [Orb::Plan::PlanPhase::Maximum, nil]
+        #   @return [Orb::Models::Plan::PlanPhase::Maximum, nil]
         required :maximum, -> { Orb::Plan::PlanPhase::Maximum }, nil?: true
 
         # @!attribute maximum_amount
@@ -663,7 +663,7 @@ module Orb
 
         # @!attribute minimum
         #
-        #   @return [Orb::Plan::PlanPhase::Minimum, nil]
+        #   @return [Orb::Models::Plan::PlanPhase::Minimum, nil]
         required :minimum, -> { Orb::Plan::PlanPhase::Minimum }, nil?: true
 
         # @!attribute minimum_amount
@@ -683,24 +683,24 @@ module Orb
         required :order, Integer
 
         # @!method initialize(id:, description:, discount:, duration:, duration_unit:, maximum:, maximum_amount:, minimum:, minimum_amount:, name:, order:)
-        #   Some parameter documentations has been truncated, see {Orb::Plan::PlanPhase} for
-        #   more details.
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Plan::PlanPhase} for more details.
         #
         #   @param id [String]
         #
         #   @param description [String, nil]
         #
-        #   @param discount [Orb::PercentageDiscount, Orb::TrialDiscount, Orb::UsageDiscount, Orb::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         #
         #   @param duration [Integer, nil] How many terms of length `duration_unit` this phase is active for. If null, this
         #
-        #   @param duration_unit [Symbol, Orb::Plan::PlanPhase::DurationUnit, nil]
+        #   @param duration_unit [Symbol, Orb::Models::Plan::PlanPhase::DurationUnit, nil]
         #
-        #   @param maximum [Orb::Plan::PlanPhase::Maximum, nil]
+        #   @param maximum [Orb::Models::Plan::PlanPhase::Maximum, nil]
         #
         #   @param maximum_amount [String, nil]
         #
-        #   @param minimum [Orb::Plan::PlanPhase::Minimum, nil]
+        #   @param minimum [Orb::Models::Plan::PlanPhase::Minimum, nil]
         #
         #   @param minimum_amount [String, nil]
         #
@@ -708,7 +708,7 @@ module Orb
         #
         #   @param order [Integer] Determines the ordering of the phase in a plan's lifecycle. 1 = first phase.
 
-        # @see Orb::Plan::PlanPhase#duration_unit
+        # @see Orb::Models::Plan::PlanPhase#duration_unit
         module DurationUnit
           extend Orb::Internal::Type::Enum
 
@@ -722,7 +722,7 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Plan::PlanPhase#maximum
+        # @see Orb::Models::Plan::PlanPhase#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
@@ -739,14 +739,14 @@ module Orb
 
           # @!method initialize(applies_to_price_ids:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
-          #   {Orb::Plan::PlanPhase::Maximum} for more details.
+          #   {Orb::Models::Plan::PlanPhase::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
           #   @param maximum_amount [String] Maximum amount applied
         end
 
-        # @see Orb::Plan::PlanPhase#minimum
+        # @see Orb::Models::Plan::PlanPhase#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
@@ -763,7 +763,7 @@ module Orb
 
           # @!method initialize(applies_to_price_ids:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
-          #   {Orb::Plan::PlanPhase::Minimum} for more details.
+          #   {Orb::Models::Plan::PlanPhase::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
@@ -771,7 +771,7 @@ module Orb
         end
       end
 
-      # @see Orb::Plan#product
+      # @see Orb::Models::Plan#product
       class Product < Orb::Internal::Type::BaseModel
         # @!attribute id
         #
@@ -794,7 +794,7 @@ module Orb
         #   @param name [String]
       end
 
-      # @see Orb::Plan#status
+      # @see Orb::Models::Plan#status
       module Status
         extend Orb::Internal::Type::Enum
 
@@ -806,7 +806,7 @@ module Orb
         #   @return [Array<Symbol>]
       end
 
-      # @see Orb::Plan#trial_config
+      # @see Orb::Models::Plan#trial_config
       class TrialConfig < Orb::Internal::Type::BaseModel
         # @!attribute trial_period
         #
@@ -815,14 +815,14 @@ module Orb
 
         # @!attribute trial_period_unit
         #
-        #   @return [Symbol, Orb::Plan::TrialConfig::TrialPeriodUnit]
+        #   @return [Symbol, Orb::Models::Plan::TrialConfig::TrialPeriodUnit]
         required :trial_period_unit, enum: -> { Orb::Plan::TrialConfig::TrialPeriodUnit }
 
         # @!method initialize(trial_period:, trial_period_unit:)
         #   @param trial_period [Integer, nil]
-        #   @param trial_period_unit [Symbol, Orb::Plan::TrialConfig::TrialPeriodUnit]
+        #   @param trial_period_unit [Symbol, Orb::Models::Plan::TrialConfig::TrialPeriodUnit]
 
-        # @see Orb::Plan::TrialConfig#trial_period_unit
+        # @see Orb::Models::Plan::TrialConfig#trial_period_unit
         module TrialPeriodUnit
           extend Orb::Internal::Type::Enum
 

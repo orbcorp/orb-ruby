@@ -16,6 +16,8 @@ module Orb
         attr_accessor next_cursor: String?
 
         def initialize: (has_more: bool, next_cursor: String?) -> void
+
+        def to_hash: -> { has_more: bool, next_cursor: String? }
       end
     end
   end

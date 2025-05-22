@@ -25,12 +25,21 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> void
 
+      def to_hash: -> {
+        thresholds: ::Array[Orb::AlertCreateForSubscriptionParams::Threshold],
+        type: Orb::Models::AlertCreateForSubscriptionParams::type_,
+        metric_id: String?,
+        request_options: Orb::RequestOptions
+      }
+
       type threshold = { value: Float }
 
       class Threshold < Orb::Internal::Type::BaseModel
         attr_accessor value: Float
 
         def initialize: (value: Float) -> void
+
+        def to_hash: -> { value: Float }
       end
 
       type type_ = :usage_exceeded | :cost_exceeded

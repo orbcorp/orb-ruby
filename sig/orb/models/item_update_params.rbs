@@ -21,21 +21,32 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> void
 
+      def to_hash: -> {
+        external_connections: ::Array[Orb::ItemUpdateParams::ExternalConnection]?,
+        name: String?,
+        request_options: Orb::RequestOptions
+      }
+
       type external_connection =
         {
-          external_connection_name: Orb::ItemUpdateParams::ExternalConnection::external_connection_name,
+          external_connection_name: Orb::Models::ItemUpdateParams::ExternalConnection::external_connection_name,
           external_entity_id: String
         }
 
       class ExternalConnection < Orb::Internal::Type::BaseModel
-        attr_accessor external_connection_name: Orb::ItemUpdateParams::ExternalConnection::external_connection_name
+        attr_accessor external_connection_name: Orb::Models::ItemUpdateParams::ExternalConnection::external_connection_name
 
         attr_accessor external_entity_id: String
 
         def initialize: (
-          external_connection_name: Orb::ItemUpdateParams::ExternalConnection::external_connection_name,
+          external_connection_name: Orb::Models::ItemUpdateParams::ExternalConnection::external_connection_name,
           external_entity_id: String
         ) -> void
+
+        def to_hash: -> {
+          external_connection_name: Orb::Models::ItemUpdateParams::ExternalConnection::external_connection_name,
+          external_entity_id: String
+        }
 
         type external_connection_name =
           :stripe
@@ -57,7 +68,7 @@ module Orb
           AVALARA: :avalara
           ANROK: :anrok
 
-          def self?.values: -> ::Array[Orb::ItemUpdateParams::ExternalConnection::external_connection_name]
+          def self?.values: -> ::Array[Orb::Models::ItemUpdateParams::ExternalConnection::external_connection_name]
         end
       end
     end

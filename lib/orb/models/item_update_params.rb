@@ -9,7 +9,7 @@ module Orb
 
       # @!attribute external_connections
       #
-      #   @return [Array<Orb::ItemUpdateParams::ExternalConnection>, nil]
+      #   @return [Array<Orb::Models::ItemUpdateParams::ExternalConnection>, nil]
       optional :external_connections,
                -> { Orb::Internal::Type::ArrayOf[Orb::ItemUpdateParams::ExternalConnection] },
                nil?: true
@@ -20,14 +20,14 @@ module Orb
       optional :name, String, nil?: true
 
       # @!method initialize(external_connections: nil, name: nil, request_options: {})
-      #   @param external_connections [Array<Orb::ItemUpdateParams::ExternalConnection>, nil]
+      #   @param external_connections [Array<Orb::Models::ItemUpdateParams::ExternalConnection>, nil]
       #   @param name [String, nil]
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
       class ExternalConnection < Orb::Internal::Type::BaseModel
         # @!attribute external_connection_name
         #
-        #   @return [Symbol, Orb::ItemUpdateParams::ExternalConnection::ExternalConnectionName]
+        #   @return [Symbol, Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName]
         required :external_connection_name,
                  enum: -> { Orb::ItemUpdateParams::ExternalConnection::ExternalConnectionName }
 
@@ -37,10 +37,10 @@ module Orb
         required :external_entity_id, String
 
         # @!method initialize(external_connection_name:, external_entity_id:)
-        #   @param external_connection_name [Symbol, Orb::ItemUpdateParams::ExternalConnection::ExternalConnectionName]
+        #   @param external_connection_name [Symbol, Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName]
         #   @param external_entity_id [String]
 
-        # @see Orb::ItemUpdateParams::ExternalConnection#external_connection_name
+        # @see Orb::Models::ItemUpdateParams::ExternalConnection#external_connection_name
         module ExternalConnectionName
           extend Orb::Internal::Type::Enum
 

@@ -27,6 +27,13 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> void
 
+      def to_hash: -> {
+        events: ::Array[Orb::EventIngestParams::Event],
+        backfill_id: String?,
+        debug: bool,
+        request_options: Orb::RequestOptions
+      }
+
       type event =
         {
           event_name: String,
@@ -58,6 +65,15 @@ module Orb
           ?customer_id: String?,
           ?external_customer_id: String?
         ) -> void
+
+        def to_hash: -> {
+          event_name: String,
+          idempotency_key: String,
+          properties: top,
+          timestamp: Time,
+          customer_id: String?,
+          external_customer_id: String?
+        }
       end
     end
   end

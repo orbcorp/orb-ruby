@@ -6,6 +6,8 @@ module Orb
       attr_accessor data: ::Array[Orb::EvaluatePriceGroup]
 
       def initialize: (data: ::Array[Orb::EvaluatePriceGroup]) -> void
+
+      def to_hash: -> { data: ::Array[Orb::EvaluatePriceGroup] }
     end
   end
 end

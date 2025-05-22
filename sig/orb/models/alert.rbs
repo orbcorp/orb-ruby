@@ -11,7 +11,7 @@ module Orb
         plan: Orb::Alert::Plan?,
         subscription: Orb::Alert::Subscription?,
         thresholds: ::Array[Orb::Alert::Threshold]?,
-        type: Orb::Alert::type_
+        type: Orb::Models::Alert::type_
       }
 
     class Alert < Orb::Internal::Type::BaseModel
@@ -33,7 +33,7 @@ module Orb
 
       attr_accessor thresholds: ::Array[Orb::Alert::Threshold]?
 
-      attr_accessor type: Orb::Alert::type_
+      attr_accessor type: Orb::Models::Alert::type_
 
       def initialize: (
         id: String,
@@ -45,8 +45,21 @@ module Orb
         plan: Orb::Alert::Plan?,
         subscription: Orb::Alert::Subscription?,
         thresholds: ::Array[Orb::Alert::Threshold]?,
-        type: Orb::Alert::type_
+        type: Orb::Models::Alert::type_
       ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        currency: String?,
+        customer: Orb::Alert::Customer?,
+        enabled: bool,
+        metric: Orb::Alert::Metric?,
+        plan: Orb::Alert::Plan?,
+        subscription: Orb::Alert::Subscription?,
+        thresholds: ::Array[Orb::Alert::Threshold]?,
+        type: Orb::Models::Alert::type_
+      }
 
       type customer = { id: String, external_customer_id: String? }
 
@@ -56,6 +69,8 @@ module Orb
         attr_accessor external_customer_id: String?
 
         def initialize: (id: String, external_customer_id: String?) -> void
+
+        def to_hash: -> { id: String, external_customer_id: String? }
       end
 
       type metric = { id: String }
@@ -64,6 +79,8 @@ module Orb
         attr_accessor id: String
 
         def initialize: (id: String) -> void
+
+        def to_hash: -> { id: String }
       end
 
       type plan =
@@ -89,6 +106,13 @@ module Orb
           name: String?,
           plan_version: String
         ) -> void
+
+        def to_hash: -> {
+          id: String?,
+          external_plan_id: String?,
+          name: String?,
+          plan_version: String
+        }
       end
 
       type subscription = { id: String }
@@ -97,6 +121,8 @@ module Orb
         attr_accessor id: String
 
         def initialize: (id: String) -> void
+
+        def to_hash: -> { id: String }
       end
 
       type threshold = { value: Float }
@@ -105,6 +131,8 @@ module Orb
         attr_accessor value: Float
 
         def initialize: (value: Float) -> void
+
+        def to_hash: -> { value: Float }
       end
 
       type type_ =
@@ -123,7 +151,7 @@ module Orb
         USAGE_EXCEEDED: :usage_exceeded
         COST_EXCEEDED: :cost_exceeded
 
-        def self?.values: -> ::Array[Orb::Alert::type_]
+        def self?.values: -> ::Array[Orb::Models::Alert::type_]
       end
     end
   end

@@ -11,7 +11,7 @@ module Orb
         # @param external_dimensional_price_group_id [String]
         # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Orb::DimensionalPriceGroup]
+        # @return [Orb::Models::DimensionalPriceGroup]
         #
         # @see Orb::Models::DimensionalPriceGroups::ExternalDimensionalPriceGroupIDRetrieveParams
         def retrieve(external_dimensional_price_group_id, params = {})

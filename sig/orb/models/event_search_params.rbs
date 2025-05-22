@@ -24,6 +24,13 @@ module Orb
         ?timeframe_start: Time?,
         ?request_options: Orb::request_opts
       ) -> void
+
+      def to_hash: -> {
+        event_ids: ::Array[String],
+        timeframe_end: Time?,
+        timeframe_start: Time?,
+        request_options: Orb::RequestOptions
+      }
     end
   end
 end

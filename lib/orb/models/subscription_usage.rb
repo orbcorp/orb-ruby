@@ -13,17 +13,17 @@ module Orb
       class UngroupedSubscriptionUsage < Orb::Internal::Type::BaseModel
         # @!attribute data
         #
-        #   @return [Array<Orb::SubscriptionUsage::UngroupedSubscriptionUsage::Data>]
+        #   @return [Array<Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data>]
         required :data,
                  -> { Orb::Internal::Type::ArrayOf[Orb::SubscriptionUsage::UngroupedSubscriptionUsage::Data] }
 
         # @!method initialize(data:)
-        #   @param data [Array<Orb::SubscriptionUsage::UngroupedSubscriptionUsage::Data>]
+        #   @param data [Array<Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data>]
 
         class Data < Orb::Internal::Type::BaseModel
           # @!attribute billable_metric
           #
-          #   @return [Orb::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric]
+          #   @return [Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric]
           required :billable_metric,
                    -> {
                      Orb::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric
@@ -31,7 +31,7 @@ module Orb
 
           # @!attribute usage
           #
-          #   @return [Array<Orb::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage>]
+          #   @return [Array<Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage>]
           required :usage,
                    -> {
                      Orb::Internal::Type::ArrayOf[Orb::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage]
@@ -39,15 +39,15 @@ module Orb
 
           # @!attribute view_mode
           #
-          #   @return [Symbol, Orb::SubscriptionUsage::UngroupedSubscriptionUsage::Data::ViewMode]
+          #   @return [Symbol, Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::ViewMode]
           required :view_mode, enum: -> { Orb::SubscriptionUsage::UngroupedSubscriptionUsage::Data::ViewMode }
 
           # @!method initialize(billable_metric:, usage:, view_mode:)
-          #   @param billable_metric [Orb::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric]
-          #   @param usage [Array<Orb::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage>]
-          #   @param view_mode [Symbol, Orb::SubscriptionUsage::UngroupedSubscriptionUsage::Data::ViewMode]
+          #   @param billable_metric [Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric]
+          #   @param usage [Array<Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage>]
+          #   @param view_mode [Symbol, Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::ViewMode]
 
-          # @see Orb::SubscriptionUsage::UngroupedSubscriptionUsage::Data#billable_metric
+          # @see Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data#billable_metric
           class BillableMetric < Orb::Internal::Type::BaseModel
             # @!attribute id
             #
@@ -86,7 +86,7 @@ module Orb
             #   @param timeframe_start [Time]
           end
 
-          # @see Orb::SubscriptionUsage::UngroupedSubscriptionUsage::Data#view_mode
+          # @see Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data#view_mode
           module ViewMode
             extend Orb::Internal::Type::Enum
 
@@ -102,23 +102,23 @@ module Orb
       class GroupedSubscriptionUsage < Orb::Internal::Type::BaseModel
         # @!attribute data
         #
-        #   @return [Array<Orb::SubscriptionUsage::GroupedSubscriptionUsage::Data>]
+        #   @return [Array<Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data>]
         required :data,
                  -> { Orb::Internal::Type::ArrayOf[Orb::SubscriptionUsage::GroupedSubscriptionUsage::Data] }
 
         # @!attribute pagination_metadata
         #
-        #   @return [Orb::PaginationMetadata, nil]
+        #   @return [Orb::Models::PaginationMetadata, nil]
         optional :pagination_metadata, -> { Orb::PaginationMetadata }, nil?: true
 
         # @!method initialize(data:, pagination_metadata: nil)
-        #   @param data [Array<Orb::SubscriptionUsage::GroupedSubscriptionUsage::Data>]
-        #   @param pagination_metadata [Orb::PaginationMetadata, nil]
+        #   @param data [Array<Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data>]
+        #   @param pagination_metadata [Orb::Models::PaginationMetadata, nil]
 
         class Data < Orb::Internal::Type::BaseModel
           # @!attribute billable_metric
           #
-          #   @return [Orb::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric]
+          #   @return [Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric]
           required :billable_metric,
                    -> {
                      Orb::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric
@@ -126,12 +126,12 @@ module Orb
 
           # @!attribute metric_group
           #
-          #   @return [Orb::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup]
+          #   @return [Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup]
           required :metric_group, -> { Orb::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup }
 
           # @!attribute usage
           #
-          #   @return [Array<Orb::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage>]
+          #   @return [Array<Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage>]
           required :usage,
                    -> {
                      Orb::Internal::Type::ArrayOf[Orb::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage]
@@ -139,16 +139,16 @@ module Orb
 
           # @!attribute view_mode
           #
-          #   @return [Symbol, Orb::SubscriptionUsage::GroupedSubscriptionUsage::Data::ViewMode]
+          #   @return [Symbol, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::ViewMode]
           required :view_mode, enum: -> { Orb::SubscriptionUsage::GroupedSubscriptionUsage::Data::ViewMode }
 
           # @!method initialize(billable_metric:, metric_group:, usage:, view_mode:)
-          #   @param billable_metric [Orb::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric]
-          #   @param metric_group [Orb::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup]
-          #   @param usage [Array<Orb::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage>]
-          #   @param view_mode [Symbol, Orb::SubscriptionUsage::GroupedSubscriptionUsage::Data::ViewMode]
+          #   @param billable_metric [Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric]
+          #   @param metric_group [Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::MetricGroup]
+          #   @param usage [Array<Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage>]
+          #   @param view_mode [Symbol, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::ViewMode]
 
-          # @see Orb::SubscriptionUsage::GroupedSubscriptionUsage::Data#billable_metric
+          # @see Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data#billable_metric
           class BillableMetric < Orb::Internal::Type::BaseModel
             # @!attribute id
             #
@@ -165,7 +165,7 @@ module Orb
             #   @param name [String]
           end
 
-          # @see Orb::SubscriptionUsage::GroupedSubscriptionUsage::Data#metric_group
+          # @see Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data#metric_group
           class MetricGroup < Orb::Internal::Type::BaseModel
             # @!attribute property_key
             #
@@ -204,7 +204,7 @@ module Orb
             #   @param timeframe_start [Time]
           end
 
-          # @see Orb::SubscriptionUsage::GroupedSubscriptionUsage::Data#view_mode
+          # @see Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data#view_mode
           module ViewMode
             extend Orb::Internal::Type::Enum
 
@@ -218,7 +218,7 @@ module Orb
       end
 
       # @!method self.variants
-      #   @return [Array(Orb::SubscriptionUsage::UngroupedSubscriptionUsage, Orb::SubscriptionUsage::GroupedSubscriptionUsage)]
+      #   @return [Array(Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage, Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage)]
     end
   end
 end

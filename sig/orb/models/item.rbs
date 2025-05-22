@@ -24,21 +24,33 @@ module Orb
         name: String
       ) -> void
 
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        external_connections: ::Array[Orb::Item::ExternalConnection],
+        name: String
+      }
+
       type external_connection =
         {
-          external_connection_name: Orb::Item::ExternalConnection::external_connection_name,
+          external_connection_name: Orb::Models::Item::ExternalConnection::external_connection_name,
           external_entity_id: String
         }
 
       class ExternalConnection < Orb::Internal::Type::BaseModel
-        attr_accessor external_connection_name: Orb::Item::ExternalConnection::external_connection_name
+        attr_accessor external_connection_name: Orb::Models::Item::ExternalConnection::external_connection_name
 
         attr_accessor external_entity_id: String
 
         def initialize: (
-          external_connection_name: Orb::Item::ExternalConnection::external_connection_name,
+          external_connection_name: Orb::Models::Item::ExternalConnection::external_connection_name,
           external_entity_id: String
         ) -> void
+
+        def to_hash: -> {
+          external_connection_name: Orb::Models::Item::ExternalConnection::external_connection_name,
+          external_entity_id: String
+        }
 
         type external_connection_name =
           :stripe
@@ -60,7 +72,7 @@ module Orb
           AVALARA: :avalara
           ANROK: :anrok
 
-          def self?.values: -> ::Array[Orb::Item::ExternalConnection::external_connection_name]
+          def self?.values: -> ::Array[Orb::Models::Item::ExternalConnection::external_connection_name]
         end
       end
     end

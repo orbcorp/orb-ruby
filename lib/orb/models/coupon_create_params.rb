@@ -9,7 +9,7 @@ module Orb
 
       # @!attribute discount
       #
-      #   @return [Orb::CouponCreateParams::Discount::Percentage, Orb::CouponCreateParams::Discount::Amount]
+      #   @return [Orb::Models::CouponCreateParams::Discount::Percentage, Orb::Models::CouponCreateParams::Discount::Amount]
       required :discount, union: -> { Orb::CouponCreateParams::Discount }
 
       # @!attribute redemption_code
@@ -36,7 +36,7 @@ module Orb
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::CouponCreateParams} for more details.
       #
-      #   @param discount [Orb::CouponCreateParams::Discount::Percentage, Orb::CouponCreateParams::Discount::Amount]
+      #   @param discount [Orb::Models::CouponCreateParams::Discount::Percentage, Orb::Models::CouponCreateParams::Discount::Amount]
       #
       #   @param redemption_code [String] This string can be used to redeem this coupon for a given subscription.
       #
@@ -88,7 +88,7 @@ module Orb
         end
 
         # @!method self.variants
-        #   @return [Array(Orb::CouponCreateParams::Discount::Percentage, Orb::CouponCreateParams::Discount::Amount)]
+        #   @return [Array(Orb::Models::CouponCreateParams::Discount::Percentage, Orb::Models::CouponCreateParams::Discount::Amount)]
       end
     end
   end

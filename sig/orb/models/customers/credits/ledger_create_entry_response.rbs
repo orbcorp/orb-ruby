@@ -74,6 +74,22 @@ module Orb
               ?entry_type: :increment
             ) -> void
 
+            def to_hash: -> {
+              id: String,
+              amount: Float,
+              created_at: Time,
+              credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::CreditBlock,
+              currency: String,
+              customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::Customer,
+              description: String?,
+              ending_balance: Float,
+              entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::entry_status,
+              entry_type: :increment,
+              ledger_sequence_number: Integer,
+              metadata: ::Hash[Symbol, String],
+              starting_balance: Float
+            }
+
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
 
@@ -89,6 +105,12 @@ module Orb
                 expiry_date: Time?,
                 per_unit_cost_basis: String?
               ) -> void
+
+              def to_hash: -> {
+                id: String,
+                expiry_date: Time?,
+                per_unit_cost_basis: String?
+              }
             end
 
             type customer = { id: String, external_customer_id: String? }
@@ -102,6 +124,8 @@ module Orb
                 id: String,
                 external_customer_id: String?
               ) -> void
+
+              def to_hash: -> { id: String, external_customer_id: String? }
             end
 
             type entry_status = :committed | :pending
@@ -188,6 +212,25 @@ module Orb
               ?entry_type: :decrement
             ) -> void
 
+            def to_hash: -> {
+              id: String,
+              amount: Float,
+              created_at: Time,
+              credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::CreditBlock,
+              currency: String,
+              customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::Customer,
+              description: String?,
+              ending_balance: Float,
+              entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::entry_status,
+              entry_type: :decrement,
+              ledger_sequence_number: Integer,
+              metadata: ::Hash[Symbol, String],
+              starting_balance: Float,
+              event_id: String?,
+              invoice_id: String?,
+              price_id: String?
+            }
+
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
 
@@ -203,6 +246,12 @@ module Orb
                 expiry_date: Time?,
                 per_unit_cost_basis: String?
               ) -> void
+
+              def to_hash: -> {
+                id: String,
+                expiry_date: Time?,
+                per_unit_cost_basis: String?
+              }
             end
 
             type customer = { id: String, external_customer_id: String? }
@@ -216,6 +265,8 @@ module Orb
                 id: String,
                 external_customer_id: String?
               ) -> void
+
+              def to_hash: -> { id: String, external_customer_id: String? }
             end
 
             type entry_status = :committed | :pending
@@ -294,6 +345,23 @@ module Orb
               ?entry_type: :expiration_change
             ) -> void
 
+            def to_hash: -> {
+              id: String,
+              amount: Float,
+              created_at: Time,
+              credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::CreditBlock,
+              currency: String,
+              customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::Customer,
+              description: String?,
+              ending_balance: Float,
+              entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::entry_status,
+              entry_type: :expiration_change,
+              ledger_sequence_number: Integer,
+              metadata: ::Hash[Symbol, String],
+              new_block_expiry_date: Time?,
+              starting_balance: Float
+            }
+
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
 
@@ -309,6 +377,12 @@ module Orb
                 expiry_date: Time?,
                 per_unit_cost_basis: String?
               ) -> void
+
+              def to_hash: -> {
+                id: String,
+                expiry_date: Time?,
+                per_unit_cost_basis: String?
+              }
             end
 
             type customer = { id: String, external_customer_id: String? }
@@ -322,6 +396,8 @@ module Orb
                 id: String,
                 external_customer_id: String?
               ) -> void
+
+              def to_hash: -> { id: String, external_customer_id: String? }
             end
 
             type entry_status = :committed | :pending
@@ -396,6 +472,22 @@ module Orb
               ?entry_type: :credit_block_expiry
             ) -> void
 
+            def to_hash: -> {
+              id: String,
+              amount: Float,
+              created_at: Time,
+              credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::CreditBlock,
+              currency: String,
+              customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::Customer,
+              description: String?,
+              ending_balance: Float,
+              entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::entry_status,
+              entry_type: :credit_block_expiry,
+              ledger_sequence_number: Integer,
+              metadata: ::Hash[Symbol, String],
+              starting_balance: Float
+            }
+
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
 
@@ -411,6 +503,12 @@ module Orb
                 expiry_date: Time?,
                 per_unit_cost_basis: String?
               ) -> void
+
+              def to_hash: -> {
+                id: String,
+                expiry_date: Time?,
+                per_unit_cost_basis: String?
+              }
             end
 
             type customer = { id: String, external_customer_id: String? }
@@ -424,6 +522,8 @@ module Orb
                 id: String,
                 external_customer_id: String?
               ) -> void
+
+              def to_hash: -> { id: String, external_customer_id: String? }
             end
 
             type entry_status = :committed | :pending
@@ -506,6 +606,24 @@ module Orb
               ?entry_type: :void
             ) -> void
 
+            def to_hash: -> {
+              id: String,
+              amount: Float,
+              created_at: Time,
+              credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::CreditBlock,
+              currency: String,
+              customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::Customer,
+              description: String?,
+              ending_balance: Float,
+              entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::entry_status,
+              entry_type: :void,
+              ledger_sequence_number: Integer,
+              metadata: ::Hash[Symbol, String],
+              starting_balance: Float,
+              void_amount: Float,
+              void_reason: String?
+            }
+
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
 
@@ -521,6 +639,12 @@ module Orb
                 expiry_date: Time?,
                 per_unit_cost_basis: String?
               ) -> void
+
+              def to_hash: -> {
+                id: String,
+                expiry_date: Time?,
+                per_unit_cost_basis: String?
+              }
             end
 
             type customer = { id: String, external_customer_id: String? }
@@ -534,6 +658,8 @@ module Orb
                 id: String,
                 external_customer_id: String?
               ) -> void
+
+              def to_hash: -> { id: String, external_customer_id: String? }
             end
 
             type entry_status = :committed | :pending
@@ -620,6 +746,25 @@ module Orb
               ?entry_type: :void_initiated
             ) -> void
 
+            def to_hash: -> {
+              id: String,
+              amount: Float,
+              created_at: Time,
+              credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::CreditBlock,
+              currency: String,
+              customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::Customer,
+              description: String?,
+              ending_balance: Float,
+              entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::entry_status,
+              entry_type: :void_initiated,
+              ledger_sequence_number: Integer,
+              metadata: ::Hash[Symbol, String],
+              new_block_expiry_date: Time,
+              starting_balance: Float,
+              void_amount: Float,
+              void_reason: String?
+            }
+
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
 
@@ -635,6 +780,12 @@ module Orb
                 expiry_date: Time?,
                 per_unit_cost_basis: String?
               ) -> void
+
+              def to_hash: -> {
+                id: String,
+                expiry_date: Time?,
+                per_unit_cost_basis: String?
+              }
             end
 
             type customer = { id: String, external_customer_id: String? }
@@ -648,6 +799,8 @@ module Orb
                 id: String,
                 external_customer_id: String?
               ) -> void
+
+              def to_hash: -> { id: String, external_customer_id: String? }
             end
 
             type entry_status = :committed | :pending
@@ -722,6 +875,22 @@ module Orb
               ?entry_type: :amendment
             ) -> void
 
+            def to_hash: -> {
+              id: String,
+              amount: Float,
+              created_at: Time,
+              credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::CreditBlock,
+              currency: String,
+              customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::Customer,
+              description: String?,
+              ending_balance: Float,
+              entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::entry_status,
+              entry_type: :amendment,
+              ledger_sequence_number: Integer,
+              metadata: ::Hash[Symbol, String],
+              starting_balance: Float
+            }
+
             type credit_block =
               { id: String, expiry_date: Time?, per_unit_cost_basis: String? }
 
@@ -737,6 +906,12 @@ module Orb
                 expiry_date: Time?,
                 per_unit_cost_basis: String?
               ) -> void
+
+              def to_hash: -> {
+                id: String,
+                expiry_date: Time?,
+                per_unit_cost_basis: String?
+              }
             end
 
             type customer = { id: String, external_customer_id: String? }
@@ -750,6 +925,8 @@ module Orb
                 id: String,
                 external_customer_id: String?
               ) -> void
+
+              def to_hash: -> { id: String, external_customer_id: String? }
             end
 
             type entry_status = :committed | :pending

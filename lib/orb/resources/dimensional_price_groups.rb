@@ -32,7 +32,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::DimensionalPriceGroup]
+      # @return [Orb::Models::DimensionalPriceGroup]
       #
       # @see Orb::Models::DimensionalPriceGroupCreateParams
       def create(params)
@@ -53,7 +53,7 @@ module Orb
       # @param dimensional_price_group_id [String]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::DimensionalPriceGroup]
+      # @return [Orb::Models::DimensionalPriceGroup]
       #
       # @see Orb::Models::DimensionalPriceGroupRetrieveParams
       def retrieve(dimensional_price_group_id, params = {})
@@ -78,7 +78,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Internal::Page<Orb::DimensionalPriceGroup>]
+      # @return [Orb::Internal::Page<Orb::Models::DimensionalPriceGroup>]
       #
       # @see Orb::Models::DimensionalPriceGroupListParams
       def list(params = {})

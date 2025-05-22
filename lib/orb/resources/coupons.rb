@@ -14,7 +14,7 @@ module Orb
       #
       # @overload create(discount:, redemption_code:, duration_in_months: nil, max_redemptions: nil, request_options: {})
       #
-      # @param discount [Orb::CouponCreateParams::Discount::Percentage, Orb::CouponCreateParams::Discount::Amount]
+      # @param discount [Orb::Models::CouponCreateParams::Discount::Percentage, Orb::Models::CouponCreateParams::Discount::Amount]
       #
       # @param redemption_code [String] This string can be used to redeem this coupon for a given subscription.
       #
@@ -24,7 +24,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Coupon]
+      # @return [Orb::Models::Coupon]
       #
       # @see Orb::Models::CouponCreateParams
       def create(params)
@@ -54,7 +54,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Internal::Page<Orb::Coupon>]
+      # @return [Orb::Internal::Page<Orb::Models::Coupon>]
       #
       # @see Orb::Models::CouponListParams
       def list(params = {})
@@ -78,7 +78,7 @@ module Orb
       # @param coupon_id [String]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Coupon]
+      # @return [Orb::Models::Coupon]
       #
       # @see Orb::Models::CouponArchiveParams
       def archive(coupon_id, params = {})
@@ -99,7 +99,7 @@ module Orb
       # @param coupon_id [String]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Coupon]
+      # @return [Orb::Models::Coupon]
       #
       # @see Orb::Models::CouponFetchParams
       def fetch(coupon_id, params = {})

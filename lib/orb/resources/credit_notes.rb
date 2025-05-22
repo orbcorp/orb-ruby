@@ -8,15 +8,15 @@ module Orb
       #
       # @overload create(line_items:, memo: nil, reason: nil, request_options: {})
       #
-      # @param line_items [Array<Orb::CreditNoteCreateParams::LineItem>]
+      # @param line_items [Array<Orb::Models::CreditNoteCreateParams::LineItem>]
       #
       # @param memo [String, nil] An optional memo to attach to the credit note.
       #
-      # @param reason [Symbol, Orb::CreditNoteCreateParams::Reason, nil] An optional reason for the credit note.
+      # @param reason [Symbol, Orb::Models::CreditNoteCreateParams::Reason, nil] An optional reason for the credit note.
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::CreditNote]
+      # @return [Orb::Models::CreditNote]
       #
       # @see Orb::Models::CreditNoteCreateParams
       def create(params)
@@ -53,7 +53,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Internal::Page<Orb::CreditNote>]
+      # @return [Orb::Internal::Page<Orb::Models::CreditNote>]
       #
       # @see Orb::Models::CreditNoteListParams
       def list(params = {})
@@ -81,7 +81,7 @@ module Orb
       # @param credit_note_id [String]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::CreditNote]
+      # @return [Orb::Models::CreditNote]
       #
       # @see Orb::Models::CreditNoteFetchParams
       def fetch(credit_note_id, params = {})

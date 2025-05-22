@@ -47,6 +47,17 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> void
 
+      def to_hash: -> {
+        created_at_gt: Time?,
+        created_at_gte: Time?,
+        created_at_lt: Time?,
+        created_at_lte: Time?,
+        cursor: String?,
+        limit: Integer,
+        status: Orb::Models::PlanListParams::status,
+        request_options: Orb::RequestOptions
+      }
+
       type status = :active | :archived | :draft
 
       module Status
