@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.5.4 (2025-05-23)
+
+Full Changelog: [v0.5.3...v0.5.4](https://github.com/orbcorp/orb-ruby/compare/v0.5.3...v0.5.4)
+
+### Bug Fixes
+
+* prevent rubocop from mangling `===` to `is_a?` check ([dcff731](https://github.com/orbcorp/orb-ruby/commit/dcff7318aec9cfaa21b7a82849d9df89d82e3ecb))
+
+
+### Chores
+
+* **internal:** version bump ([853de30](https://github.com/orbcorp/orb-ruby/commit/853de30e4985aea443239b02ad9ce92ae6ff6ce9))
+
 ## 0.5.3 (2025-05-22)
 
 Full Changelog: [v0.5.2...v0.5.3](https://github.com/orbcorp/orb-ruby/compare/v0.5.2...v0.5.3)
