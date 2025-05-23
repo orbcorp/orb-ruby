@@ -600,11 +600,12 @@ module Orb
         #
         # @return [Object]
         def encode_content(headers, body)
+          # rubocop:disable Style/CaseEquality
           content_type = headers["content-type"]
           case [content_type, body]
           in [Orb::Internal::Util::JSON_CONTENT, Hash | Array | -> { primitive?(_1) }]
             [headers, JSON.generate(body)]
-          in [Orb::Internal::Util::JSONL_CONTENT, Enumerable] unless body.is_a?(Orb::Internal::Type::FileInput)
+          in [Orb::Internal::Util::JSONL_CONTENT, Enumerable] unless Orb::Internal::Type::FileInput === body
             [headers, body.lazy.map { JSON.generate(_1) }]
           in [%r{^multipart/form-data}, Hash | Orb::Internal::Type::FileInput]
             boundary, strio = encode_multipart_streaming(body)
@@ -619,6 +620,7 @@ module Orb
           else
             [headers, body]
           end
+          # rubocop:enable Style/CaseEquality
         end
 
         # @api private
