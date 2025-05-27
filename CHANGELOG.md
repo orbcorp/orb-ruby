@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.5.5 (2025-05-27)
+
+Full Changelog: [v0.5.4...v0.5.5](https://github.com/orbcorp/orb-ruby/compare/v0.5.4...v0.5.5)
+
+### Bug Fixes
+
+* sorbet types for enums, and make tapioca detection ignore `tapioca dsl` ([f3eec68](https://github.com/orbcorp/orb-ruby/commit/f3eec68e79230db42f9fe79145cec8bf8db41041))
+
+
+### Chores
+
+* **internal:** version bump ([23ded61](https://github.com/orbcorp/orb-ruby/commit/23ded619f628e545090c27e83c591cafa26505b7))
+
 ## 0.5.4 (2025-05-23)
 
 Full Changelog: [v0.5.3...v0.5.4](https://github.com/orbcorp/orb-ruby/compare/v0.5.3...v0.5.4)
