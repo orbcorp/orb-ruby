@@ -12,6 +12,8 @@ module Orb
 
     attr_reader top_level: Orb::Resources::TopLevel
 
+    attr_reader beta: Orb::Resources::Beta
+
     attr_reader coupons: Orb::Resources::Coupons
 
     attr_reader credit_notes: Orb::Resources::CreditNotes

@@ -1,0 +1,20 @@
+module Orb
+  module Models
+    type beta_fetch_plan_version_params =
+      { plan_id: String } & Orb::Internal::Type::request_parameters
+
+    class BetaFetchPlanVersionParams < Orb::Internal::Type::BaseModel
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
+
+      attr_accessor plan_id: String
+
+      def initialize: (
+        plan_id: String,
+        ?request_options: Orb::request_opts
+      ) -> void
+
+      def to_hash: -> { plan_id: String, request_options: Orb::RequestOptions }
+    end
+  end
+end

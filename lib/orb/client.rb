@@ -21,6 +21,9 @@ module Orb
     # @return [Orb::Resources::TopLevel]
     attr_reader :top_level
 
+    # @return [Orb::Resources::Beta]
+    attr_reader :beta
+
     # @return [Orb::Resources::Coupons]
     attr_reader :coupons
 
@@ -115,6 +118,7 @@ module Orb
       )
 
       @top_level = Orb::Resources::TopLevel.new(client: self)
+      @beta = Orb::Resources::Beta.new(client: self)
       @coupons = Orb::Resources::Coupons.new(client: self)
       @credit_notes = Orb::Resources::CreditNotes.new(client: self)
       @customers = Orb::Resources::Customers.new(client: self)

@@ -63,14 +63,25 @@ module Orb
       ) -> Orb::Internal::Page[Orb::Models::price]
 
       def evaluate: (
+        String price_id,
         timeframe_end: Time,
         timeframe_start: Time,
         ?customer_id: String?,
-        ?events: ::Array[Orb::PriceEvaluateParams::Event]?,
         ?external_customer_id: String?,
-        ?price_evaluations: ::Array[Orb::PriceEvaluateParams::PriceEvaluation],
+        ?filter: String?,
+        ?grouping_keys: ::Array[String],
         ?request_options: Orb::request_opts
       ) -> Orb::Models::PriceEvaluateResponse
+
+      def evaluate_multiple: (
+        timeframe_end: Time,
+        timeframe_start: Time,
+        ?customer_id: String?,
+        ?events: ::Array[Orb::PriceEvaluateMultipleParams::Event]?,
+        ?external_customer_id: String?,
+        ?price_evaluations: ::Array[Orb::PriceEvaluateMultipleParams::PriceEvaluation],
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::PriceEvaluateMultipleResponse
 
       def fetch: (
         String price_id,

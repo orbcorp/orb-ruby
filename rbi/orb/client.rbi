@@ -16,6 +16,9 @@ module Orb
     sig { returns(Orb::Resources::TopLevel) }
     attr_reader :top_level
 
+    sig { returns(Orb::Resources::Beta) }
+    attr_reader :beta
+
     sig { returns(Orb::Resources::Coupons) }
     attr_reader :coupons
 
