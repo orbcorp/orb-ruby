@@ -3,6 +3,9 @@
 module Orb
   module Test
     module Resources
+      module Beta
+      end
+
       module Coupons
       end
 
@@ -20,12 +23,7 @@ module Orb
       module Events
       end
 
-      module ExternalPlanID
-      end
-
       module Plans
-        module ExternalPlanID
-        end
       end
 
       module Prices

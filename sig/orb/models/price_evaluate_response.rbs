@@ -1,50 +1,13 @@
 module Orb
   module Models
-    type price_evaluate_response =
-      { data: ::Array[Orb::Models::PriceEvaluateResponse::Data] }
+    type price_evaluate_response = { data: ::Array[Orb::EvaluatePriceGroup] }
 
     class PriceEvaluateResponse < Orb::Internal::Type::BaseModel
-      attr_accessor data: ::Array[Orb::Models::PriceEvaluateResponse::Data]
+      attr_accessor data: ::Array[Orb::EvaluatePriceGroup]
 
-      def initialize: (
-        data: ::Array[Orb::Models::PriceEvaluateResponse::Data]
-      ) -> void
+      def initialize: (data: ::Array[Orb::EvaluatePriceGroup]) -> void
 
-      def to_hash: -> {
-        data: ::Array[Orb::Models::PriceEvaluateResponse::Data]
-      }
-
-      type data =
-        {
-          currency: String,
-          price_groups: ::Array[Orb::EvaluatePriceGroup],
-          inline_price_index: Integer?,
-          price_id: String?
-        }
-
-      class Data < Orb::Internal::Type::BaseModel
-        attr_accessor currency: String
-
-        attr_accessor price_groups: ::Array[Orb::EvaluatePriceGroup]
-
-        attr_accessor inline_price_index: Integer?
-
-        attr_accessor price_id: String?
-
-        def initialize: (
-          currency: String,
-          price_groups: ::Array[Orb::EvaluatePriceGroup],
-          ?inline_price_index: Integer?,
-          ?price_id: String?
-        ) -> void
-
-        def to_hash: -> {
-          currency: String,
-          price_groups: ::Array[Orb::EvaluatePriceGroup],
-          inline_price_index: Integer?,
-          price_id: String?
-        }
-      end
+      def to_hash: -> { data: ::Array[Orb::EvaluatePriceGroup] }
     end
   end
 end

@@ -1,0 +1,60 @@
+module Orb
+  module Models
+    type plan_version_phase =
+      {
+        id: String,
+        description: String?,
+        duration: Integer?,
+        duration_unit: Orb::Models::PlanVersionPhase::duration_unit?,
+        name: String,
+        order: Integer
+      }
+
+    class PlanVersionPhase < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor description: String?
+
+      attr_accessor duration: Integer?
+
+      attr_accessor duration_unit: Orb::Models::PlanVersionPhase::duration_unit?
+
+      attr_accessor name: String
+
+      attr_accessor order: Integer
+
+      def initialize: (
+        id: String,
+        description: String?,
+        duration: Integer?,
+        duration_unit: Orb::Models::PlanVersionPhase::duration_unit?,
+        name: String,
+        order: Integer
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        description: String?,
+        duration: Integer?,
+        duration_unit: Orb::Models::PlanVersionPhase::duration_unit?,
+        name: String,
+        order: Integer
+      }
+
+      type duration_unit =
+        :daily | :monthly | :quarterly | :semi_annual | :annual
+
+      module DurationUnit
+        extend Orb::Internal::Type::Enum
+
+        DAILY: :daily
+        MONTHLY: :monthly
+        QUARTERLY: :quarterly
+        SEMI_ANNUAL: :semi_annual
+        ANNUAL: :annual
+
+        def self?.values: -> ::Array[Orb::Models::PlanVersionPhase::duration_unit]
+      end
+    end
+  end
+end

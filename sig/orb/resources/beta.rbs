@@ -1,0 +1,34 @@
+module Orb
+  module Resources
+    class Beta
+      attr_reader external_plan_id: Orb::Resources::Beta::ExternalPlanID
+
+      def create_plan_version: (
+        String plan_id,
+        version: Integer,
+        ?add_adjustments: ::Array[Orb::BetaCreatePlanVersionParams::AddAdjustment]?,
+        ?add_prices: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice]?,
+        ?remove_adjustments: ::Array[Orb::BetaCreatePlanVersionParams::RemoveAdjustment]?,
+        ?remove_prices: ::Array[Orb::BetaCreatePlanVersionParams::RemovePrice]?,
+        ?replace_adjustments: ::Array[Orb::BetaCreatePlanVersionParams::ReplaceAdjustment]?,
+        ?replace_prices: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice]?,
+        ?set_as_default: bool?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::PlanVersion
+
+      def fetch_plan_version: (
+        String version,
+        plan_id: String,
+        ?request_options: Orb::request_opts
+      ) -> Orb::PlanVersion
+
+      def set_default_plan_version: (
+        String plan_id,
+        version: Integer,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Plan
+
+      def initialize: (client: Orb::Client) -> void
+    end
+  end
+end
