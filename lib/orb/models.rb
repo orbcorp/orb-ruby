@@ -59,6 +59,14 @@ module Orb
 
   AmountDiscount = Orb::Models::AmountDiscount
 
+  Beta = Orb::Models::Beta
+
+  BetaCreatePlanVersionParams = Orb::Models::BetaCreatePlanVersionParams
+
+  BetaFetchPlanVersionParams = Orb::Models::BetaFetchPlanVersionParams
+
+  BetaSetDefaultPlanVersionParams = Orb::Models::BetaSetDefaultPlanVersionParams
+
   BillableMetric = Orb::Models::BillableMetric
 
   BillingCycleRelativeDate = Orb::Models::BillingCycleRelativeDate
@@ -190,13 +198,17 @@ module Orb
 
   Plans = Orb::Models::Plans
 
-  PlanSetDefaultVersionParams = Orb::Models::PlanSetDefaultVersionParams
-
   PlanUpdateParams = Orb::Models::PlanUpdateParams
+
+  PlanVersion = Orb::Models::PlanVersion
+
+  PlanVersionPhase = Orb::Models::PlanVersionPhase
 
   Price = Orb::Models::Price
 
   PriceCreateParams = Orb::Models::PriceCreateParams
+
+  PriceEvaluateMultipleParams = Orb::Models::PriceEvaluateMultipleParams
 
   PriceEvaluateParams = Orb::Models::PriceEvaluateParams
 

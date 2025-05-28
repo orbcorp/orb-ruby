@@ -183,6 +183,65 @@ module Orb
       )
       end
 
+      # [NOTE] It is recommended to use the `/v1/prices/evaluate` which offers further
+      # functionality, such as multiple prices, inline price definitions, and querying
+      # over preview events.
+      #
+      # This endpoint is used to evaluate the output of a price for a given customer and
+      # time range. It enables filtering and grouping the output using
+      # [computed properties](/extensibility/advanced-metrics#computed-properties),
+      # supporting the following workflows:
+      #
+      # 1. Showing detailed usage and costs to the end customer.
+      # 2. Auditing subtotals on invoice line items.
+      #
+      # For these workflows, the expressiveness of computed properties in both the
+      # filters and grouping is critical. For example, if you'd like to show your
+      # customer their usage grouped by hour and another property, you can do so with
+      # the following `grouping_keys`:
+      # `["hour_floor_timestamp_millis(timestamp_millis)", "my_property"]`. If you'd
+      # like to examine a customer's usage for a specific property value, you can do so
+      # with the following `filter`:
+      # `my_property = 'foo' AND my_other_property = 'bar'`.
+      #
+      # By default, the start of the time range must be no more than 100 days ago and
+      # the length of the results must be no greater than 1000. Note that this is a POST
+      # endpoint rather than a GET endpoint because it employs a JSON body rather than
+      # query parameters.
+      sig do
+        params(
+          price_id: String,
+          timeframe_end: Time,
+          timeframe_start: Time,
+          customer_id: T.nilable(String),
+          external_customer_id: T.nilable(String),
+          filter: T.nilable(String),
+          grouping_keys: T::Array[String],
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Models::PriceEvaluateResponse)
+      end
+      def evaluate(
+        price_id,
+        # The exclusive upper bound for event timestamps
+        timeframe_end:,
+        # The inclusive lower bound for event timestamps
+        timeframe_start:,
+        # The ID of the customer to which this evaluation is scoped.
+        customer_id: nil,
+        # The external customer ID of the customer to which this evaluation is scoped.
+        external_customer_id: nil,
+        # A boolean
+        # [computed property](/extensibility/advanced-metrics#computed-properties) used to
+        # filter the underlying billable metric
+        filter: nil,
+        # Properties (or
+        # [computed properties](/extensibility/advanced-metrics#computed-properties)) used
+        # to group the underlying billable metric
+        grouping_keys: nil,
+        request_options: {}
+      )
+      end
+
       # This endpoint is used to evaluate the output of price(s) for a given customer
       # and time range over either ingested events or preview events. It enables
       # filtering and grouping the output using
@@ -218,14 +277,17 @@ module Orb
           timeframe_end: Time,
           timeframe_start: Time,
           customer_id: T.nilable(String),
-          events: T.nilable(T::Array[Orb::PriceEvaluateParams::Event::OrHash]),
+          events:
+            T.nilable(
+              T::Array[Orb::PriceEvaluateMultipleParams::Event::OrHash]
+            ),
           external_customer_id: T.nilable(String),
           price_evaluations:
-            T::Array[Orb::PriceEvaluateParams::PriceEvaluation::OrHash],
+            T::Array[Orb::PriceEvaluateMultipleParams::PriceEvaluation::OrHash],
           request_options: Orb::RequestOptions::OrHash
-        ).returns(Orb::Models::PriceEvaluateResponse)
+        ).returns(Orb::Models::PriceEvaluateMultipleResponse)
       end
-      def evaluate(
+      def evaluate_multiple(
         # The exclusive upper bound for event timestamps
         timeframe_end:,
         # The inclusive lower bound for event timestamps

@@ -1,0 +1,20 @@
+module Orb
+  module Models
+    type beta_set_default_plan_version_params =
+      { version: Integer } & Orb::Internal::Type::request_parameters
+
+    class BetaSetDefaultPlanVersionParams < Orb::Internal::Type::BaseModel
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
+
+      attr_accessor version: Integer
+
+      def initialize: (
+        version: Integer,
+        ?request_options: Orb::request_opts
+      ) -> void
+
+      def to_hash: -> { version: Integer, request_options: Orb::RequestOptions }
+    end
+  end
+end

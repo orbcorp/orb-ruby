@@ -4,9 +4,6 @@ module Orb
   module Resources
     class Plans
       class ExternalPlanID
-        sig { returns(Orb::Resources::Plans::ExternalPlanID::Versions) }
-        attr_reader :versions
-
         # This endpoint can be used to update the `external_plan_id`, and `metadata` of an
         # existing plan.
         #
@@ -56,25 +53,6 @@ module Orb
           ).returns(Orb::Plan)
         end
         def fetch(external_plan_id, request_options: {})
-        end
-
-        # This API endpoint is in beta and its interface may change. It is recommended for
-        # use only in test mode.
-        #
-        # This endpoint allows setting the default version of a plan.
-        sig do
-          params(
-            external_plan_id: String,
-            version: Integer,
-            request_options: Orb::RequestOptions::OrHash
-          ).returns(Orb::Plan)
-        end
-        def set_default_version(
-          external_plan_id,
-          # Plan version to set as the default.
-          version:,
-          request_options: {}
-        )
         end
 
         # @api private

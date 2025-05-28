@@ -6,9 +6,6 @@ module Orb
       # @return [Orb::Resources::Plans::ExternalPlanID]
       attr_reader :external_plan_id
 
-      # @return [Orb::Resources::Plans::Versions]
-      attr_reader :versions
-
       # Some parameter documentations has been truncated, see
       # {Orb::Models::PlanCreateParams} for more details.
       #
@@ -156,40 +153,12 @@ module Orb
         )
       end
 
-      # This API endpoint is in beta and its interface may change. It is recommended for
-      # use only in test mode.
-      #
-      # This endpoint allows setting the default version of a plan.
-      #
-      # @overload set_default_version(plan_id, version:, request_options: {})
-      #
-      # @param plan_id [String]
-      #
-      # @param version [Integer] Plan version to set as the default.
-      #
-      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
-      #
-      # @return [Orb::Models::Plan]
-      #
-      # @see Orb::Models::PlanSetDefaultVersionParams
-      def set_default_version(plan_id, params)
-        parsed, options = Orb::PlanSetDefaultVersionParams.dump_request(params)
-        @client.request(
-          method: :post,
-          path: ["plans/%1$s/set_default_version", plan_id],
-          body: parsed,
-          model: Orb::Plan,
-          options: options
-        )
-      end
-
       # @api private
       #
       # @param client [Orb::Client]
       def initialize(client:)
         @client = client
         @external_plan_id = Orb::Resources::Plans::ExternalPlanID.new(client: client)
-        @versions = Orb::Resources::Plans::Versions.new(client: client)
       end
     end
   end

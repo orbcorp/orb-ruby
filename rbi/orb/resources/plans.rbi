@@ -6,9 +6,6 @@ module Orb
       sig { returns(Orb::Resources::Plans::ExternalPlanID) }
       attr_reader :external_plan_id
 
-      sig { returns(Orb::Resources::Plans::Versions) }
-      attr_reader :versions
-
       # This endpoint allows creation of plans including their prices.
       sig do
         params(
@@ -164,25 +161,6 @@ module Orb
         ).returns(Orb::Plan)
       end
       def fetch(plan_id, request_options: {})
-      end
-
-      # This API endpoint is in beta and its interface may change. It is recommended for
-      # use only in test mode.
-      #
-      # This endpoint allows setting the default version of a plan.
-      sig do
-        params(
-          plan_id: String,
-          version: Integer,
-          request_options: Orb::RequestOptions::OrHash
-        ).returns(Orb::Plan)
-      end
-      def set_default_version(
-        plan_id,
-        # Plan version to set as the default.
-        version:,
-        request_options: {}
-      )
       end
 
       # @api private
