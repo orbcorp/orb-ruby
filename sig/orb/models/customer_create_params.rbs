@@ -281,6 +281,7 @@ module Orb
       type tax_configuration =
         Orb::CustomerCreateParams::TaxConfiguration::Avalara
         | Orb::CustomerCreateParams::TaxConfiguration::Taxjar
+        | Orb::CustomerCreateParams::TaxConfiguration::Sphere
 
       module TaxConfiguration
         extend Orb::Internal::Type::Union
@@ -322,6 +323,18 @@ module Orb
           def initialize: (tax_exempt: bool, ?tax_provider: :taxjar) -> void
 
           def to_hash: -> { tax_exempt: bool, tax_provider: :taxjar }
+        end
+
+        type sphere = { tax_exempt: bool, tax_provider: :sphere }
+
+        class Sphere < Orb::Internal::Type::BaseModel
+          attr_accessor tax_exempt: bool
+
+          attr_accessor tax_provider: :sphere
+
+          def initialize: (tax_exempt: bool, ?tax_provider: :sphere) -> void
+
+          def to_hash: -> { tax_exempt: bool, tax_provider: :sphere }
         end
 
         def self?.variants: -> ::Array[Orb::Models::CustomerCreateParams::tax_configuration]

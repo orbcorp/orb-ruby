@@ -16,8 +16,8 @@ module Orb
 
       # @!attribute plan
       #
-      #   @return [Orb::Models::SubscriptionFetchScheduleResponse::Plan]
-      required :plan, -> { Orb::Models::SubscriptionFetchScheduleResponse::Plan }
+      #   @return [Orb::Models::SubscriptionFetchScheduleResponse::Plan, nil]
+      required :plan, -> { Orb::Models::SubscriptionFetchScheduleResponse::Plan }, nil?: true
 
       # @!attribute start_date
       #
@@ -27,7 +27,7 @@ module Orb
       # @!method initialize(created_at:, end_date:, plan:, start_date:)
       #   @param created_at [Time]
       #   @param end_date [Time, nil]
-      #   @param plan [Orb::Models::SubscriptionFetchScheduleResponse::Plan]
+      #   @param plan [Orb::Models::SubscriptionFetchScheduleResponse::Plan, nil]
       #   @param start_date [Time]
 
       # @see Orb::Models::SubscriptionFetchScheduleResponse#plan

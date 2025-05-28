@@ -10,13 +10,13 @@ module Orb
       sig { returns(String) }
       attr_accessor :amount_discount
 
-      # List of price_ids that this discount applies to. For plan/plan phase discounts,
-      # this can be a subset of prices.
-      sig { returns(T::Array[String]) }
-      attr_accessor :applies_to_price_ids
-
       sig { returns(Orb::AmountDiscount::DiscountType::OrSymbol) }
       attr_accessor :discount_type
+
+      # List of price_ids that this discount applies to. For plan/plan phase discounts,
+      # this can be a subset of prices.
+      sig { returns(T.nilable(T::Array[String])) }
+      attr_accessor :applies_to_price_ids
 
       sig { returns(T.nilable(String)) }
       attr_accessor :reason
@@ -24,18 +24,18 @@ module Orb
       sig do
         params(
           amount_discount: String,
-          applies_to_price_ids: T::Array[String],
           discount_type: Orb::AmountDiscount::DiscountType::OrSymbol,
+          applies_to_price_ids: T.nilable(T::Array[String]),
           reason: T.nilable(String)
         ).returns(T.attached_class)
       end
       def self.new(
         # Only available if discount_type is `amount`.
         amount_discount:,
+        discount_type:,
         # List of price_ids that this discount applies to. For plan/plan phase discounts,
         # this can be a subset of prices.
-        applies_to_price_ids:,
-        discount_type:,
+        applies_to_price_ids: nil,
         reason: nil
       )
       end
@@ -44,8 +44,8 @@ module Orb
         override.returns(
           {
             amount_discount: String,
-            applies_to_price_ids: T::Array[String],
             discount_type: Orb::AmountDiscount::DiscountType::OrSymbol,
+            applies_to_price_ids: T.nilable(T::Array[String]),
             reason: T.nilable(String)
           }
         )

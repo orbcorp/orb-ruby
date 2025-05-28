@@ -278,6 +278,7 @@ module Orb
             ),
           coupon_redemption_code: T.nilable(String),
           credits_overage_rate: T.nilable(Float),
+          currency: T.nilable(String),
           customer_id: T.nilable(String),
           default_invoice_memo: T.nilable(String),
           end_date: T.nilable(Time),
@@ -292,6 +293,7 @@ module Orb
           initial_phase_order: T.nilable(Integer),
           invoicing_threshold: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+          name: T.nilable(String),
           net_terms: T.nilable(Integer),
           per_credit_overage_amount: T.nilable(Float),
           plan_id: T.nilable(String),
@@ -338,6 +340,9 @@ module Orb
         # returned and the subscription creation or plan change will not be scheduled.
         coupon_redemption_code: nil,
         credits_overage_rate: nil,
+        # The currency to use for the subscription. If not specified, the invoicing
+        # currency for the plan will be used.
+        currency: nil,
         customer_id: nil,
         # Determines the default memo on this subscription's invoices. Note that if this
         # is not provided, it is determined by the plan configuration.
@@ -364,6 +369,9 @@ module Orb
         # by setting the value to `null`, and the entire metadata mapping can be cleared
         # by setting `metadata` to `null`.
         metadata: nil,
+        # The name to use for the subscription. If not specified, the plan name will be
+        # used.
+        name: nil,
         # The net terms determines the difference between the invoice date and the issue
         # date for the invoice. If you intend the invoice to be due on issue, set this
         # to 0. If not provided, this defaults to the value specified in the plan.
@@ -1450,7 +1458,7 @@ module Orb
         # `immediate` unless it's explicitly set to `upcoming_invoice`.
         change_option: nil,
         # The date that the quantity change should take effect, localized to the
-        # customer's timezone. Ifthis parameter is not passed in, the quantity change is
+        # customer's timezone. If this parameter is not passed in, the quantity change is
         # effective according to `change_option`.
         effective_date: nil,
         request_options: {}

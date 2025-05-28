@@ -20,9 +20,10 @@ module Orb
         maximum_intervals: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MaximumInterval],
         metadata: ::Hash[Symbol, String],
         minimum_intervals: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MinimumInterval],
+        name: String,
         net_terms: Integer,
         pending_subscription_change: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PendingSubscriptionChange?,
-        plan: Orb::Plan,
+        plan: Orb::Plan?,
         price_intervals: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PriceInterval],
         redeemed_coupon: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::RedeemedCoupon?,
         start_date: Time,
@@ -68,11 +69,13 @@ module Orb
 
       attr_accessor minimum_intervals: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MinimumInterval]
 
+      attr_accessor name: String
+
       attr_accessor net_terms: Integer
 
       attr_accessor pending_subscription_change: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PendingSubscriptionChange?
 
-      attr_accessor plan: Orb::Plan
+      attr_accessor plan: Orb::Plan?
 
       attr_accessor price_intervals: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PriceInterval]
 
@@ -105,9 +108,10 @@ module Orb
         maximum_intervals: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MaximumInterval],
         metadata: ::Hash[Symbol, String],
         minimum_intervals: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MinimumInterval],
+        name: String,
         net_terms: Integer,
         pending_subscription_change: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PendingSubscriptionChange?,
-        plan: Orb::Plan,
+        plan: Orb::Plan?,
         price_intervals: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PriceInterval],
         redeemed_coupon: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::RedeemedCoupon?,
         start_date: Time,
@@ -135,9 +139,10 @@ module Orb
         maximum_intervals: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MaximumInterval],
         metadata: ::Hash[Symbol, String],
         minimum_intervals: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MinimumInterval],
+        name: String,
         net_terms: Integer,
         pending_subscription_change: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PendingSubscriptionChange?,
-        plan: Orb::Plan,
+        plan: Orb::Plan?,
         price_intervals: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::PriceInterval],
         redeemed_coupon: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::RedeemedCoupon?,
         start_date: Time,
@@ -197,6 +202,7 @@ module Orb
               id: String,
               adjustment_type: :usage_discount,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::UsageDiscount::Filter],
               is_invoice_level: bool,
               plan_phase_order: Integer?,
               reason: String?,
@@ -210,6 +216,8 @@ module Orb
 
             attr_accessor applies_to_price_ids: ::Array[String]
 
+            attr_accessor filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::UsageDiscount::Filter]
+
             attr_accessor is_invoice_level: bool
 
             attr_accessor plan_phase_order: Integer?
@@ -221,6 +229,7 @@ module Orb
             def initialize: (
               id: String,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::UsageDiscount::Filter],
               is_invoice_level: bool,
               plan_phase_order: Integer?,
               reason: String?,
@@ -232,11 +241,69 @@ module Orb
               id: String,
               adjustment_type: :usage_discount,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::UsageDiscount::Filter],
               is_invoice_level: bool,
               plan_phase_order: Integer?,
               reason: String?,
               usage_discount: Float
             }
+
+            type filter =
+              {
+                field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::UsageDiscount::Filter::field,
+                operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::UsageDiscount::Filter::operator,
+                values: ::Array[String]
+              }
+
+            class Filter < Orb::Internal::Type::BaseModel
+              attr_accessor field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::UsageDiscount::Filter::field
+
+              attr_accessor operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::UsageDiscount::Filter::operator
+
+              attr_accessor values: ::Array[String]
+
+              def initialize: (
+                field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::UsageDiscount::Filter::field,
+                operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::UsageDiscount::Filter::operator,
+                values: ::Array[String]
+              ) -> void
+
+              def to_hash: -> {
+                field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::UsageDiscount::Filter::field,
+                operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::UsageDiscount::Filter::operator,
+                values: ::Array[String]
+              }
+
+              type field =
+                :price_id
+                | :item_id
+                | :price_type
+                | :currency
+                | :pricing_unit_id
+
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                PRICE_ID: :price_id
+                ITEM_ID: :item_id
+                PRICE_TYPE: :price_type
+                CURRENCY: :currency
+                PRICING_UNIT_ID: :pricing_unit_id
+
+                def self?.values: -> ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::UsageDiscount::Filter::field]
+              end
+
+              type operator = :includes | :excludes
+
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                INCLUDES: :includes
+                EXCLUDES: :excludes
+
+                def self?.values: -> ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::UsageDiscount::Filter::operator]
+              end
+            end
           end
 
           type amount_discount =
@@ -245,6 +312,7 @@ module Orb
               adjustment_type: :amount_discount,
               amount_discount: String,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::AmountDiscount::Filter],
               is_invoice_level: bool,
               plan_phase_order: Integer?,
               reason: String?
@@ -259,6 +327,8 @@ module Orb
 
             attr_accessor applies_to_price_ids: ::Array[String]
 
+            attr_accessor filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::AmountDiscount::Filter]
+
             attr_accessor is_invoice_level: bool
 
             attr_accessor plan_phase_order: Integer?
@@ -269,6 +339,7 @@ module Orb
               id: String,
               amount_discount: String,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::AmountDiscount::Filter],
               is_invoice_level: bool,
               plan_phase_order: Integer?,
               reason: String?,
@@ -280,10 +351,68 @@ module Orb
               adjustment_type: :amount_discount,
               amount_discount: String,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::AmountDiscount::Filter],
               is_invoice_level: bool,
               plan_phase_order: Integer?,
               reason: String?
             }
+
+            type filter =
+              {
+                field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::AmountDiscount::Filter::field,
+                operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::AmountDiscount::Filter::operator,
+                values: ::Array[String]
+              }
+
+            class Filter < Orb::Internal::Type::BaseModel
+              attr_accessor field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::AmountDiscount::Filter::field
+
+              attr_accessor operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::AmountDiscount::Filter::operator
+
+              attr_accessor values: ::Array[String]
+
+              def initialize: (
+                field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::AmountDiscount::Filter::field,
+                operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::AmountDiscount::Filter::operator,
+                values: ::Array[String]
+              ) -> void
+
+              def to_hash: -> {
+                field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::AmountDiscount::Filter::field,
+                operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::AmountDiscount::Filter::operator,
+                values: ::Array[String]
+              }
+
+              type field =
+                :price_id
+                | :item_id
+                | :price_type
+                | :currency
+                | :pricing_unit_id
+
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                PRICE_ID: :price_id
+                ITEM_ID: :item_id
+                PRICE_TYPE: :price_type
+                CURRENCY: :currency
+                PRICING_UNIT_ID: :pricing_unit_id
+
+                def self?.values: -> ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::AmountDiscount::Filter::field]
+              end
+
+              type operator = :includes | :excludes
+
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                INCLUDES: :includes
+                EXCLUDES: :excludes
+
+                def self?.values: -> ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::AmountDiscount::Filter::operator]
+              end
+            end
           end
 
           type percentage_discount =
@@ -291,6 +420,7 @@ module Orb
               id: String,
               adjustment_type: :percentage_discount,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PercentageDiscount::Filter],
               is_invoice_level: bool,
               percentage_discount: Float,
               plan_phase_order: Integer?,
@@ -304,6 +434,8 @@ module Orb
 
             attr_accessor applies_to_price_ids: ::Array[String]
 
+            attr_accessor filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PercentageDiscount::Filter]
+
             attr_accessor is_invoice_level: bool
 
             attr_accessor percentage_discount: Float
@@ -315,6 +447,7 @@ module Orb
             def initialize: (
               id: String,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PercentageDiscount::Filter],
               is_invoice_level: bool,
               percentage_discount: Float,
               plan_phase_order: Integer?,
@@ -326,11 +459,69 @@ module Orb
               id: String,
               adjustment_type: :percentage_discount,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PercentageDiscount::Filter],
               is_invoice_level: bool,
               percentage_discount: Float,
               plan_phase_order: Integer?,
               reason: String?
             }
+
+            type filter =
+              {
+                field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PercentageDiscount::Filter::field,
+                operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PercentageDiscount::Filter::operator,
+                values: ::Array[String]
+              }
+
+            class Filter < Orb::Internal::Type::BaseModel
+              attr_accessor field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PercentageDiscount::Filter::field
+
+              attr_accessor operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PercentageDiscount::Filter::operator
+
+              attr_accessor values: ::Array[String]
+
+              def initialize: (
+                field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PercentageDiscount::Filter::field,
+                operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PercentageDiscount::Filter::operator,
+                values: ::Array[String]
+              ) -> void
+
+              def to_hash: -> {
+                field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PercentageDiscount::Filter::field,
+                operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PercentageDiscount::Filter::operator,
+                values: ::Array[String]
+              }
+
+              type field =
+                :price_id
+                | :item_id
+                | :price_type
+                | :currency
+                | :pricing_unit_id
+
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                PRICE_ID: :price_id
+                ITEM_ID: :item_id
+                PRICE_TYPE: :price_type
+                CURRENCY: :currency
+                PRICING_UNIT_ID: :pricing_unit_id
+
+                def self?.values: -> ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PercentageDiscount::Filter::field]
+              end
+
+              type operator = :includes | :excludes
+
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                INCLUDES: :includes
+                EXCLUDES: :excludes
+
+                def self?.values: -> ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::PercentageDiscount::Filter::operator]
+              end
+            end
           end
 
           type minimum =
@@ -338,6 +529,7 @@ module Orb
               id: String,
               adjustment_type: :minimum,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Minimum::Filter],
               is_invoice_level: bool,
               item_id: String,
               minimum_amount: String,
@@ -352,6 +544,8 @@ module Orb
 
             attr_accessor applies_to_price_ids: ::Array[String]
 
+            attr_accessor filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Minimum::Filter]
+
             attr_accessor is_invoice_level: bool
 
             attr_accessor item_id: String
@@ -365,6 +559,7 @@ module Orb
             def initialize: (
               id: String,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Minimum::Filter],
               is_invoice_level: bool,
               item_id: String,
               minimum_amount: String,
@@ -377,12 +572,70 @@ module Orb
               id: String,
               adjustment_type: :minimum,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Minimum::Filter],
               is_invoice_level: bool,
               item_id: String,
               minimum_amount: String,
               plan_phase_order: Integer?,
               reason: String?
             }
+
+            type filter =
+              {
+                field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Minimum::Filter::field,
+                operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Minimum::Filter::operator,
+                values: ::Array[String]
+              }
+
+            class Filter < Orb::Internal::Type::BaseModel
+              attr_accessor field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Minimum::Filter::field
+
+              attr_accessor operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Minimum::Filter::operator
+
+              attr_accessor values: ::Array[String]
+
+              def initialize: (
+                field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Minimum::Filter::field,
+                operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Minimum::Filter::operator,
+                values: ::Array[String]
+              ) -> void
+
+              def to_hash: -> {
+                field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Minimum::Filter::field,
+                operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Minimum::Filter::operator,
+                values: ::Array[String]
+              }
+
+              type field =
+                :price_id
+                | :item_id
+                | :price_type
+                | :currency
+                | :pricing_unit_id
+
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                PRICE_ID: :price_id
+                ITEM_ID: :item_id
+                PRICE_TYPE: :price_type
+                CURRENCY: :currency
+                PRICING_UNIT_ID: :pricing_unit_id
+
+                def self?.values: -> ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Minimum::Filter::field]
+              end
+
+              type operator = :includes | :excludes
+
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                INCLUDES: :includes
+                EXCLUDES: :excludes
+
+                def self?.values: -> ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Minimum::Filter::operator]
+              end
+            end
           end
 
           type maximum =
@@ -390,6 +643,7 @@ module Orb
               id: String,
               adjustment_type: :maximum,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Maximum::Filter],
               is_invoice_level: bool,
               maximum_amount: String,
               plan_phase_order: Integer?,
@@ -403,6 +657,8 @@ module Orb
 
             attr_accessor applies_to_price_ids: ::Array[String]
 
+            attr_accessor filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Maximum::Filter]
+
             attr_accessor is_invoice_level: bool
 
             attr_accessor maximum_amount: String
@@ -414,6 +670,7 @@ module Orb
             def initialize: (
               id: String,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Maximum::Filter],
               is_invoice_level: bool,
               maximum_amount: String,
               plan_phase_order: Integer?,
@@ -425,11 +682,69 @@ module Orb
               id: String,
               adjustment_type: :maximum,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Maximum::Filter],
               is_invoice_level: bool,
               maximum_amount: String,
               plan_phase_order: Integer?,
               reason: String?
             }
+
+            type filter =
+              {
+                field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Maximum::Filter::field,
+                operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Maximum::Filter::operator,
+                values: ::Array[String]
+              }
+
+            class Filter < Orb::Internal::Type::BaseModel
+              attr_accessor field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Maximum::Filter::field
+
+              attr_accessor operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Maximum::Filter::operator
+
+              attr_accessor values: ::Array[String]
+
+              def initialize: (
+                field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Maximum::Filter::field,
+                operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Maximum::Filter::operator,
+                values: ::Array[String]
+              ) -> void
+
+              def to_hash: -> {
+                field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Maximum::Filter::field,
+                operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Maximum::Filter::operator,
+                values: ::Array[String]
+              }
+
+              type field =
+                :price_id
+                | :item_id
+                | :price_type
+                | :currency
+                | :pricing_unit_id
+
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                PRICE_ID: :price_id
+                ITEM_ID: :item_id
+                PRICE_TYPE: :price_type
+                CURRENCY: :currency
+                PRICING_UNIT_ID: :pricing_unit_id
+
+                def self?.values: -> ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Maximum::Filter::field]
+              end
+
+              type operator = :includes | :excludes
+
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                INCLUDES: :includes
+                EXCLUDES: :excludes
+
+                def self?.values: -> ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::Adjustment::Maximum::Filter::operator]
+              end
+            end
           end
 
           def self?.variants: -> ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::AdjustmentInterval::adjustment]
@@ -466,17 +781,15 @@ module Orb
         type amount =
           {
             amount_discount: String,
-            applies_to_price_ids: ::Array[String],
             applies_to_price_interval_ids: ::Array[String],
             discount_type: :amount,
             end_date: Time?,
+            filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Amount::Filter],
             start_date: Time
           }
 
         class Amount < Orb::Internal::Type::BaseModel
           attr_accessor amount_discount: String
-
-          attr_accessor applies_to_price_ids: ::Array[String]
 
           attr_accessor applies_to_price_interval_ids: ::Array[String]
 
@@ -484,109 +797,270 @@ module Orb
 
           attr_accessor end_date: Time?
 
+          attr_accessor filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Amount::Filter]
+
           attr_accessor start_date: Time
 
           def initialize: (
             amount_discount: String,
-            applies_to_price_ids: ::Array[String],
             applies_to_price_interval_ids: ::Array[String],
             end_date: Time?,
+            filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Amount::Filter],
             start_date: Time,
             ?discount_type: :amount
           ) -> void
 
           def to_hash: -> {
             amount_discount: String,
-            applies_to_price_ids: ::Array[String],
             applies_to_price_interval_ids: ::Array[String],
             discount_type: :amount,
             end_date: Time?,
+            filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Amount::Filter],
             start_date: Time
           }
+
+          type filter =
+            {
+              field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Amount::Filter::field,
+              operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Amount::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Amount::Filter::field
+
+            attr_accessor operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Amount::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Amount::Filter::field,
+              operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Amount::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Amount::Filter::field,
+              operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Amount::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Amount::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Amount::Filter::operator]
+            end
+          end
         end
 
         type percentage =
           {
-            applies_to_price_ids: ::Array[String],
             applies_to_price_interval_ids: ::Array[String],
             discount_type: :percentage,
             end_date: Time?,
+            filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Percentage::Filter],
             percentage_discount: Float,
             start_date: Time
           }
 
         class Percentage < Orb::Internal::Type::BaseModel
-          attr_accessor applies_to_price_ids: ::Array[String]
-
           attr_accessor applies_to_price_interval_ids: ::Array[String]
 
           attr_accessor discount_type: :percentage
 
           attr_accessor end_date: Time?
 
+          attr_accessor filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Percentage::Filter]
+
           attr_accessor percentage_discount: Float
 
           attr_accessor start_date: Time
 
           def initialize: (
-            applies_to_price_ids: ::Array[String],
             applies_to_price_interval_ids: ::Array[String],
             end_date: Time?,
+            filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Percentage::Filter],
             percentage_discount: Float,
             start_date: Time,
             ?discount_type: :percentage
           ) -> void
 
           def to_hash: -> {
-            applies_to_price_ids: ::Array[String],
             applies_to_price_interval_ids: ::Array[String],
             discount_type: :percentage,
             end_date: Time?,
+            filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Percentage::Filter],
             percentage_discount: Float,
             start_date: Time
           }
+
+          type filter =
+            {
+              field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Percentage::Filter::field,
+              operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Percentage::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Percentage::Filter::field
+
+            attr_accessor operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Percentage::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Percentage::Filter::field,
+              operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Percentage::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Percentage::Filter::field,
+              operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Percentage::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Percentage::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Percentage::Filter::operator]
+            end
+          end
         end
 
         type usage =
           {
-            applies_to_price_ids: ::Array[String],
             applies_to_price_interval_ids: ::Array[String],
             discount_type: :usage,
             end_date: Time?,
+            filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Usage::Filter],
             start_date: Time,
             usage_discount: Float
           }
 
         class Usage < Orb::Internal::Type::BaseModel
-          attr_accessor applies_to_price_ids: ::Array[String]
-
           attr_accessor applies_to_price_interval_ids: ::Array[String]
 
           attr_accessor discount_type: :usage
 
           attr_accessor end_date: Time?
 
+          attr_accessor filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Usage::Filter]
+
           attr_accessor start_date: Time
 
           attr_accessor usage_discount: Float
 
           def initialize: (
-            applies_to_price_ids: ::Array[String],
             applies_to_price_interval_ids: ::Array[String],
             end_date: Time?,
+            filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Usage::Filter],
             start_date: Time,
             usage_discount: Float,
             ?discount_type: :usage
           ) -> void
 
           def to_hash: -> {
-            applies_to_price_ids: ::Array[String],
             applies_to_price_interval_ids: ::Array[String],
             discount_type: :usage,
             end_date: Time?,
+            filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Usage::Filter],
             start_date: Time,
             usage_discount: Float
           }
+
+          type filter =
+            {
+              field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Usage::Filter::field,
+              operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Usage::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Usage::Filter::field
+
+            attr_accessor operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Usage::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Usage::Filter::field,
+              operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Usage::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Usage::Filter::field,
+              operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Usage::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Usage::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::DiscountInterval::Usage::Filter::operator]
+            end
+          end
         end
 
         def self?.variants: -> ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::discount_interval]
@@ -621,76 +1095,182 @@ module Orb
 
       type maximum_interval =
         {
-          applies_to_price_ids: ::Array[String],
           applies_to_price_interval_ids: ::Array[String],
           end_date: Time?,
+          filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MaximumInterval::Filter],
           maximum_amount: String,
           start_date: Time
         }
 
       class MaximumInterval < Orb::Internal::Type::BaseModel
-        attr_accessor applies_to_price_ids: ::Array[String]
-
         attr_accessor applies_to_price_interval_ids: ::Array[String]
 
         attr_accessor end_date: Time?
+
+        attr_accessor filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MaximumInterval::Filter]
 
         attr_accessor maximum_amount: String
 
         attr_accessor start_date: Time
 
         def initialize: (
-          applies_to_price_ids: ::Array[String],
           applies_to_price_interval_ids: ::Array[String],
           end_date: Time?,
+          filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MaximumInterval::Filter],
           maximum_amount: String,
           start_date: Time
         ) -> void
 
         def to_hash: -> {
-          applies_to_price_ids: ::Array[String],
           applies_to_price_interval_ids: ::Array[String],
           end_date: Time?,
+          filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MaximumInterval::Filter],
           maximum_amount: String,
           start_date: Time
         }
+
+        type filter =
+          {
+            field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MaximumInterval::Filter::field,
+            operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MaximumInterval::Filter::operator,
+            values: ::Array[String]
+          }
+
+        class Filter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MaximumInterval::Filter::field
+
+          attr_accessor operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MaximumInterval::Filter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MaximumInterval::Filter::field,
+            operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MaximumInterval::Filter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MaximumInterval::Filter::field,
+            operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MaximumInterval::Filter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MaximumInterval::Filter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MaximumInterval::Filter::operator]
+          end
+        end
       end
 
       type minimum_interval =
         {
-          applies_to_price_ids: ::Array[String],
           applies_to_price_interval_ids: ::Array[String],
           end_date: Time?,
+          filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MinimumInterval::Filter],
           minimum_amount: String,
           start_date: Time
         }
 
       class MinimumInterval < Orb::Internal::Type::BaseModel
-        attr_accessor applies_to_price_ids: ::Array[String]
-
         attr_accessor applies_to_price_interval_ids: ::Array[String]
 
         attr_accessor end_date: Time?
+
+        attr_accessor filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MinimumInterval::Filter]
 
         attr_accessor minimum_amount: String
 
         attr_accessor start_date: Time
 
         def initialize: (
-          applies_to_price_ids: ::Array[String],
           applies_to_price_interval_ids: ::Array[String],
           end_date: Time?,
+          filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MinimumInterval::Filter],
           minimum_amount: String,
           start_date: Time
         ) -> void
 
         def to_hash: -> {
-          applies_to_price_ids: ::Array[String],
           applies_to_price_interval_ids: ::Array[String],
           end_date: Time?,
+          filters: ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MinimumInterval::Filter],
           minimum_amount: String,
           start_date: Time
         }
+
+        type filter =
+          {
+            field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MinimumInterval::Filter::field,
+            operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MinimumInterval::Filter::operator,
+            values: ::Array[String]
+          }
+
+        class Filter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MinimumInterval::Filter::field
+
+          attr_accessor operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MinimumInterval::Filter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MinimumInterval::Filter::field,
+            operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MinimumInterval::Filter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MinimumInterval::Filter::field,
+            operator: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MinimumInterval::Filter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MinimumInterval::Filter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse::MinimumInterval::Filter::operator]
+          end
+        end
       end
 
       type pending_subscription_change = { id: String }

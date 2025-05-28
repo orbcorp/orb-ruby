@@ -44,7 +44,8 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         entry_status: Orb::Models::Customers::Credits::LedgerListResponse::Increment::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
-        starting_balance: Float
+        starting_balance: Float,
+        created_invoices: ^(Orb::Internal::Type::ArrayOf[Orb::Invoice]) | nil
       }
       in {
         entry_type: :decrement,
@@ -189,7 +190,8 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
-        starting_balance: Float
+        starting_balance: Float,
+        created_invoices: ^(Orb::Internal::Type::ArrayOf[Orb::Invoice]) | nil
       }
       in {
         entry_type: :decrement,
@@ -334,7 +336,8 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
-        starting_balance: Float
+        starting_balance: Float,
+        created_invoices: ^(Orb::Internal::Type::ArrayOf[Orb::Invoice]) | nil
       }
       in {
         entry_type: :decrement,
@@ -480,7 +483,8 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         entry_status: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Increment::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
-        starting_balance: Float
+        starting_balance: Float,
+        created_invoices: ^(Orb::Internal::Type::ArrayOf[Orb::Invoice]) | nil
       }
       in {
         entry_type: :decrement,

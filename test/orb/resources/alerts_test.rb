@@ -21,7 +21,8 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         plan: Orb::Alert::Plan | nil,
         subscription: Orb::Alert::Subscription | nil,
         thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::Threshold]) | nil,
-        type: Orb::Alert::Type
+        type: Orb::Alert::Type,
+        balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil
       }
     end
   end
@@ -44,7 +45,8 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         plan: Orb::Alert::Plan | nil,
         subscription: Orb::Alert::Subscription | nil,
         thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::Threshold]) | nil,
-        type: Orb::Alert::Type
+        type: Orb::Alert::Type,
+        balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil
       }
     end
   end
@@ -76,7 +78,8 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         plan: Orb::Alert::Plan | nil,
         subscription: Orb::Alert::Subscription | nil,
         thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::Threshold]) | nil,
-        type: Orb::Alert::Type
+        type: Orb::Alert::Type,
+        balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil
       }
     end
   end
@@ -100,7 +103,8 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         plan: Orb::Alert::Plan | nil,
         subscription: Orb::Alert::Subscription | nil,
         thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::Threshold]) | nil,
-        type: Orb::Alert::Type
+        type: Orb::Alert::Type,
+        balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil
       }
     end
   end
@@ -128,7 +132,8 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         plan: Orb::Alert::Plan | nil,
         subscription: Orb::Alert::Subscription | nil,
         thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::Threshold]) | nil,
-        type: Orb::Alert::Type
+        type: Orb::Alert::Type,
+        balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil
       }
     end
   end
@@ -152,7 +157,8 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         plan: Orb::Alert::Plan | nil,
         subscription: Orb::Alert::Subscription | nil,
         thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::Threshold]) | nil,
-        type: Orb::Alert::Type
+        type: Orb::Alert::Type,
+        balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil
       }
     end
   end
@@ -175,7 +181,8 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         plan: Orb::Alert::Plan | nil,
         subscription: Orb::Alert::Subscription | nil,
         thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::Threshold]) | nil,
-        type: Orb::Alert::Type
+        type: Orb::Alert::Type,
+        balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil
       }
     end
   end
@@ -198,7 +205,8 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         plan: Orb::Alert::Plan | nil,
         subscription: Orb::Alert::Subscription | nil,
         thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::Threshold]) | nil,
-        type: Orb::Alert::Type
+        type: Orb::Alert::Type,
+        balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil
       }
     end
   end

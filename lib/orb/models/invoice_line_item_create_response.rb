@@ -245,10 +245,19 @@ module Orb
           required :amount, String
 
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   The price IDs that this adjustment applies to.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this adjustment to.
+          #
+          #   @return [Array<Orb::Models::InvoiceLineItemCreateResponse::Adjustment::UsageDiscount::Filter>]
+          required :filters,
+                   -> { Orb::Internal::Type::ArrayOf[Orb::Models::InvoiceLineItemCreateResponse::Adjustment::UsageDiscount::Filter] }
 
           # @!attribute is_invoice_level
           #   True for adjustments that apply to an entire invocice, false for adjustments
@@ -270,7 +279,7 @@ module Orb
           #   @return [Float]
           required :usage_discount, Float
 
-          # @!method initialize(id:, amount:, applies_to_price_ids:, is_invoice_level:, reason:, usage_discount:, adjustment_type: :usage_discount)
+          # @!method initialize(id:, amount:, applies_to_price_ids:, filters:, is_invoice_level:, reason:, usage_discount:, adjustment_type: :usage_discount)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::InvoiceLineItemCreateResponse::Adjustment::UsageDiscount} for more
           #   details.
@@ -281,6 +290,8 @@ module Orb
           #
           #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
           #
+          #   @param filters [Array<Orb::Models::InvoiceLineItemCreateResponse::Adjustment::UsageDiscount::Filter>] The filters that determine which prices to apply this adjustment to.
+          #
           #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
           #
           #   @param reason [String, nil] The reason for the adjustment.
@@ -288,6 +299,64 @@ module Orb
           #   @param usage_discount [Float] The number of usage units by which to discount the price this adjustment applies
           #
           #   @param adjustment_type [Symbol, :usage_discount]
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::UsageDiscount::Filter::Field]
+            required :field,
+                     enum: -> { Orb::Models::InvoiceLineItemCreateResponse::Adjustment::UsageDiscount::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::UsageDiscount::Filter::Operator]
+            required :operator,
+                     enum: -> { Orb::Models::InvoiceLineItemCreateResponse::Adjustment::UsageDiscount::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::UsageDiscount::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::UsageDiscount::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::InvoiceLineItemCreateResponse::Adjustment::UsageDiscount::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::InvoiceLineItemCreateResponse::Adjustment::UsageDiscount::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         class AmountDiscount < Orb::Internal::Type::BaseModel
@@ -315,10 +384,19 @@ module Orb
           required :amount_discount, String
 
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   The price IDs that this adjustment applies to.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this adjustment to.
+          #
+          #   @return [Array<Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscount::Filter>]
+          required :filters,
+                   -> { Orb::Internal::Type::ArrayOf[Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscount::Filter] }
 
           # @!attribute is_invoice_level
           #   True for adjustments that apply to an entire invocice, false for adjustments
@@ -333,7 +411,7 @@ module Orb
           #   @return [String, nil]
           required :reason, String, nil?: true
 
-          # @!method initialize(id:, amount:, amount_discount:, applies_to_price_ids:, is_invoice_level:, reason:, adjustment_type: :amount_discount)
+          # @!method initialize(id:, amount:, amount_discount:, applies_to_price_ids:, filters:, is_invoice_level:, reason:, adjustment_type: :amount_discount)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscount} for
           #   more details.
@@ -346,11 +424,71 @@ module Orb
           #
           #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
           #
+          #   @param filters [Array<Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscount::Filter>] The filters that determine which prices to apply this adjustment to.
+          #
           #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
           #
           #   @param reason [String, nil] The reason for the adjustment.
           #
           #   @param adjustment_type [Symbol, :amount_discount]
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscount::Filter::Field]
+            required :field,
+                     enum: -> { Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscount::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscount::Filter::Operator]
+            required :operator,
+                     enum: -> { Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscount::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscount::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscount::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscount::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::InvoiceLineItemCreateResponse::Adjustment::AmountDiscount::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         class PercentageDiscount < Orb::Internal::Type::BaseModel
@@ -371,10 +509,19 @@ module Orb
           required :amount, String
 
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   The price IDs that this adjustment applies to.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this adjustment to.
+          #
+          #   @return [Array<Orb::Models::InvoiceLineItemCreateResponse::Adjustment::PercentageDiscount::Filter>]
+          required :filters,
+                   -> { Orb::Internal::Type::ArrayOf[Orb::Models::InvoiceLineItemCreateResponse::Adjustment::PercentageDiscount::Filter] }
 
           # @!attribute is_invoice_level
           #   True for adjustments that apply to an entire invocice, false for adjustments
@@ -396,7 +543,7 @@ module Orb
           #   @return [String, nil]
           required :reason, String, nil?: true
 
-          # @!method initialize(id:, amount:, applies_to_price_ids:, is_invoice_level:, percentage_discount:, reason:, adjustment_type: :percentage_discount)
+          # @!method initialize(id:, amount:, applies_to_price_ids:, filters:, is_invoice_level:, percentage_discount:, reason:, adjustment_type: :percentage_discount)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::InvoiceLineItemCreateResponse::Adjustment::PercentageDiscount} for
           #   more details.
@@ -407,6 +554,8 @@ module Orb
           #
           #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
           #
+          #   @param filters [Array<Orb::Models::InvoiceLineItemCreateResponse::Adjustment::PercentageDiscount::Filter>] The filters that determine which prices to apply this adjustment to.
+          #
           #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
           #
           #   @param percentage_discount [Float] The percentage (as a value between 0 and 1) by which to discount the price inter
@@ -414,6 +563,64 @@ module Orb
           #   @param reason [String, nil] The reason for the adjustment.
           #
           #   @param adjustment_type [Symbol, :percentage_discount]
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::PercentageDiscount::Filter::Field]
+            required :field,
+                     enum: -> { Orb::Models::InvoiceLineItemCreateResponse::Adjustment::PercentageDiscount::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::PercentageDiscount::Filter::Operator]
+            required :operator,
+                     enum: -> { Orb::Models::InvoiceLineItemCreateResponse::Adjustment::PercentageDiscount::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::PercentageDiscount::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::PercentageDiscount::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::InvoiceLineItemCreateResponse::Adjustment::PercentageDiscount::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::InvoiceLineItemCreateResponse::Adjustment::PercentageDiscount::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         class Minimum < Orb::Internal::Type::BaseModel
@@ -434,10 +641,19 @@ module Orb
           required :amount, String
 
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   The price IDs that this adjustment applies to.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this adjustment to.
+          #
+          #   @return [Array<Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Minimum::Filter>]
+          required :filters,
+                   -> { Orb::Internal::Type::ArrayOf[Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Minimum::Filter] }
 
           # @!attribute is_invoice_level
           #   True for adjustments that apply to an entire invocice, false for adjustments
@@ -465,7 +681,7 @@ module Orb
           #   @return [String, nil]
           required :reason, String, nil?: true
 
-          # @!method initialize(id:, amount:, applies_to_price_ids:, is_invoice_level:, item_id:, minimum_amount:, reason:, adjustment_type: :minimum)
+          # @!method initialize(id:, amount:, applies_to_price_ids:, filters:, is_invoice_level:, item_id:, minimum_amount:, reason:, adjustment_type: :minimum)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Minimum} for more
           #   details.
@@ -476,6 +692,8 @@ module Orb
           #
           #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
           #
+          #   @param filters [Array<Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Minimum::Filter>] The filters that determine which prices to apply this adjustment to.
+          #
           #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
           #
           #   @param item_id [String] The item ID that revenue from this minimum will be attributed to.
@@ -485,6 +703,64 @@ module Orb
           #   @param reason [String, nil] The reason for the adjustment.
           #
           #   @param adjustment_type [Symbol, :minimum]
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Minimum::Filter::Field]
+            required :field,
+                     enum: -> { Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Minimum::Filter::Operator]
+            required :operator,
+                     enum: -> { Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Minimum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         class Maximum < Orb::Internal::Type::BaseModel
@@ -505,10 +781,19 @@ module Orb
           required :amount, String
 
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   The price IDs that this adjustment applies to.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this adjustment to.
+          #
+          #   @return [Array<Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Maximum::Filter>]
+          required :filters,
+                   -> { Orb::Internal::Type::ArrayOf[Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Maximum::Filter] }
 
           # @!attribute is_invoice_level
           #   True for adjustments that apply to an entire invocice, false for adjustments
@@ -530,7 +815,7 @@ module Orb
           #   @return [String, nil]
           required :reason, String, nil?: true
 
-          # @!method initialize(id:, amount:, applies_to_price_ids:, is_invoice_level:, maximum_amount:, reason:, adjustment_type: :maximum)
+          # @!method initialize(id:, amount:, applies_to_price_ids:, filters:, is_invoice_level:, maximum_amount:, reason:, adjustment_type: :maximum)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Maximum} for more
           #   details.
@@ -541,6 +826,8 @@ module Orb
           #
           #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
           #
+          #   @param filters [Array<Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Maximum::Filter>] The filters that determine which prices to apply this adjustment to.
+          #
           #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
           #
           #   @param maximum_amount [String] The maximum amount to charge in a given billing period for the prices this adjus
@@ -548,6 +835,64 @@ module Orb
           #   @param reason [String, nil] The reason for the adjustment.
           #
           #   @param adjustment_type [Symbol, :maximum]
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Maximum::Filter::Field]
+            required :field,
+                     enum: -> { Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Maximum::Filter::Operator]
+            required :operator,
+                     enum: -> { Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Maximum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::InvoiceLineItemCreateResponse::Adjustment::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @!method self.variants
@@ -559,11 +904,20 @@ module Orb
       # @see Orb::Models::InvoiceLineItemCreateResponse#maximum
       class Maximum < Orb::Internal::Type::BaseModel
         # @!attribute applies_to_price_ids
+        #   @deprecated
+        #
         #   List of price_ids that this maximum amount applies to. For plan/plan phase
         #   maximums, this can be a subset of prices.
         #
         #   @return [Array<String>]
         required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+        # @!attribute filters
+        #   The filters that determine which prices to apply this maximum to.
+        #
+        #   @return [Array<Orb::Models::InvoiceLineItemCreateResponse::Maximum::Filter>]
+        required :filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Models::InvoiceLineItemCreateResponse::Maximum::Filter] }
 
         # @!attribute maximum_amount
         #   Maximum amount applied
@@ -571,7 +925,7 @@ module Orb
         #   @return [String]
         required :maximum_amount, String
 
-        # @!method initialize(applies_to_price_ids:, maximum_amount:)
+        # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::InvoiceLineItemCreateResponse::Maximum} for more details.
         #
@@ -579,7 +933,65 @@ module Orb
         #
         #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
         #
+        #   @param filters [Array<Orb::Models::InvoiceLineItemCreateResponse::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+        #
         #   @param maximum_amount [String] Maximum amount applied
+
+        class Filter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Maximum::Filter::Field]
+          required :field, enum: -> { Orb::Models::InvoiceLineItemCreateResponse::Maximum::Filter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Maximum::Filter::Operator]
+          required :operator, enum: -> { Orb::Models::InvoiceLineItemCreateResponse::Maximum::Filter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Maximum::Filter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::InvoiceLineItemCreateResponse::Maximum::Filter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::InvoiceLineItemCreateResponse::Maximum::Filter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
       end
 
       # @deprecated
@@ -587,11 +999,20 @@ module Orb
       # @see Orb::Models::InvoiceLineItemCreateResponse#minimum
       class Minimum < Orb::Internal::Type::BaseModel
         # @!attribute applies_to_price_ids
+        #   @deprecated
+        #
         #   List of price_ids that this minimum amount applies to. For plan/plan phase
         #   minimums, this can be a subset of prices.
         #
         #   @return [Array<String>]
         required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+        # @!attribute filters
+        #   The filters that determine which prices to apply this minimum to.
+        #
+        #   @return [Array<Orb::Models::InvoiceLineItemCreateResponse::Minimum::Filter>]
+        required :filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Models::InvoiceLineItemCreateResponse::Minimum::Filter] }
 
         # @!attribute minimum_amount
         #   Minimum amount applied
@@ -599,7 +1020,7 @@ module Orb
         #   @return [String]
         required :minimum_amount, String
 
-        # @!method initialize(applies_to_price_ids:, minimum_amount:)
+        # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::InvoiceLineItemCreateResponse::Minimum} for more details.
         #
@@ -607,7 +1028,65 @@ module Orb
         #
         #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
         #
+        #   @param filters [Array<Orb::Models::InvoiceLineItemCreateResponse::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+        #
         #   @param minimum_amount [String] Minimum amount applied
+
+        class Filter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Minimum::Filter::Field]
+          required :field, enum: -> { Orb::Models::InvoiceLineItemCreateResponse::Minimum::Filter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Minimum::Filter::Operator]
+          required :operator, enum: -> { Orb::Models::InvoiceLineItemCreateResponse::Minimum::Filter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Minimum::Filter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::InvoiceLineItemCreateResponse::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::InvoiceLineItemCreateResponse::Minimum::Filter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::InvoiceLineItemCreateResponse::Minimum::Filter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
       end
 
       module SubLineItem

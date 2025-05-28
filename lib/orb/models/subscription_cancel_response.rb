@@ -99,6 +99,8 @@ module Orb
       required :default_invoice_memo, String, nil?: true
 
       # @!attribute discount_intervals
+      #   @deprecated
+      #
       #   The discount intervals for this subscription sorted by the start_date.
       #
       #   @return [Array<Orb::Models::SubscriptionCancelResponse::DiscountInterval::Amount, Orb::Models::SubscriptionCancelResponse::DiscountInterval::Percentage, Orb::Models::SubscriptionCancelResponse::DiscountInterval::Usage>]
@@ -123,6 +125,8 @@ module Orb
       required :invoicing_threshold, String, nil?: true
 
       # @!attribute maximum_intervals
+      #   @deprecated
+      #
       #   The maximum intervals for this subscription sorted by the start_date.
       #
       #   @return [Array<Orb::Models::SubscriptionCancelResponse::MaximumInterval>]
@@ -139,11 +143,19 @@ module Orb
       required :metadata, Orb::Internal::Type::HashOf[String]
 
       # @!attribute minimum_intervals
+      #   @deprecated
+      #
       #   The minimum intervals for this subscription sorted by the start_date.
       #
       #   @return [Array<Orb::Models::SubscriptionCancelResponse::MinimumInterval>]
       required :minimum_intervals,
                -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionCancelResponse::MinimumInterval] }
+
+      # @!attribute name
+      #   The name of the subscription.
+      #
+      #   @return [String]
+      required :name, String
 
       # @!attribute net_terms
       #   Determines the difference between the invoice issue date for subscription
@@ -168,8 +180,8 @@ module Orb
       #   subscription. You can see more about how to configure prices in the
       #   [Price resource](/reference/price).
       #
-      #   @return [Orb::Models::Plan]
-      required :plan, -> { Orb::Plan }
+      #   @return [Orb::Models::Plan, nil]
+      required :plan, -> { Orb::Plan }, nil?: true
 
       # @!attribute price_intervals
       #   The price intervals for this subscription.
@@ -207,7 +219,7 @@ module Orb
       #   @return [Orb::Models::SubscriptionCancelResponse::ChangedResources, nil]
       optional :changed_resources, -> { Orb::Models::SubscriptionCancelResponse::ChangedResources }, nil?: true
 
-      # @!method initialize(id:, active_plan_phase_order:, adjustment_intervals:, auto_collection:, billing_cycle_anchor_configuration:, billing_cycle_day:, created_at:, current_billing_period_end_date:, current_billing_period_start_date:, customer:, default_invoice_memo:, discount_intervals:, end_date:, fixed_fee_quantity_schedule:, invoicing_threshold:, maximum_intervals:, metadata:, minimum_intervals:, net_terms:, pending_subscription_change:, plan:, price_intervals:, redeemed_coupon:, start_date:, status:, trial_info:, changed_resources: nil)
+      # @!method initialize(id:, active_plan_phase_order:, adjustment_intervals:, auto_collection:, billing_cycle_anchor_configuration:, billing_cycle_day:, created_at:, current_billing_period_end_date:, current_billing_period_start_date:, customer:, default_invoice_memo:, discount_intervals:, end_date:, fixed_fee_quantity_schedule:, invoicing_threshold:, maximum_intervals:, metadata:, minimum_intervals:, name:, net_terms:, pending_subscription_change:, plan:, price_intervals:, redeemed_coupon:, start_date:, status:, trial_info:, changed_resources: nil)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::SubscriptionCancelResponse} for more details.
       #
@@ -247,11 +259,13 @@ module Orb
       #
       #   @param minimum_intervals [Array<Orb::Models::SubscriptionCancelResponse::MinimumInterval>] The minimum intervals for this subscription sorted by the start_date.
       #
+      #   @param name [String] The name of the subscription.
+      #
       #   @param net_terms [Integer] Determines the difference between the invoice issue date for subscription invoic
       #
       #   @param pending_subscription_change [Orb::Models::SubscriptionCancelResponse::PendingSubscriptionChange, nil] A pending subscription change if one exists on this subscription.
       #
-      #   @param plan [Orb::Models::Plan] The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be
+      #   @param plan [Orb::Models::Plan, nil] The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be
       #
       #   @param price_intervals [Array<Orb::Models::SubscriptionCancelResponse::PriceInterval>] The price intervals for this subscription.
       #
@@ -337,10 +351,19 @@ module Orb
             required :adjustment_type, const: :usage_discount
 
             # @!attribute applies_to_price_ids
+            #   @deprecated
+            #
             #   The price IDs that this adjustment applies to.
             #
             #   @return [Array<String>]
             required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+            # @!attribute filters
+            #   The filters that determine which prices to apply this adjustment to.
+            #
+            #   @return [Array<Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::UsageDiscount::Filter>]
+            required :filters,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::UsageDiscount::Filter] }
 
             # @!attribute is_invoice_level
             #   True for adjustments that apply to an entire invocice, false for adjustments
@@ -368,7 +391,7 @@ module Orb
             #   @return [Float]
             required :usage_discount, Float
 
-            # @!method initialize(id:, applies_to_price_ids:, is_invoice_level:, plan_phase_order:, reason:, usage_discount:, adjustment_type: :usage_discount)
+            # @!method initialize(id:, applies_to_price_ids:, filters:, is_invoice_level:, plan_phase_order:, reason:, usage_discount:, adjustment_type: :usage_discount)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::UsageDiscount}
             #   for more details.
@@ -376,6 +399,8 @@ module Orb
             #   @param id [String]
             #
             #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
+            #
+            #   @param filters [Array<Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::UsageDiscount::Filter>] The filters that determine which prices to apply this adjustment to.
             #
             #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
             #
@@ -386,6 +411,64 @@ module Orb
             #   @param usage_discount [Float] The number of usage units by which to discount the price this adjustment applies
             #
             #   @param adjustment_type [Symbol, :usage_discount]
+
+            class Filter < Orb::Internal::Type::BaseModel
+              # @!attribute field
+              #   The property of the price to filter on.
+              #
+              #   @return [Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::UsageDiscount::Filter::Field]
+              required :field,
+                       enum: -> { Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::UsageDiscount::Filter::Field }
+
+              # @!attribute operator
+              #   Should prices that match the filter be included or excluded.
+              #
+              #   @return [Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::UsageDiscount::Filter::Operator]
+              required :operator,
+                       enum: -> { Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::UsageDiscount::Filter::Operator }
+
+              # @!attribute values
+              #   The IDs or values that match this filter.
+              #
+              #   @return [Array<String>]
+              required :values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!method initialize(field:, operator:, values:)
+              #   @param field [Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::UsageDiscount::Filter::Field] The property of the price to filter on.
+              #
+              #   @param operator [Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::UsageDiscount::Filter::Operator] Should prices that match the filter be included or excluded.
+              #
+              #   @param values [Array<String>] The IDs or values that match this filter.
+
+              # The property of the price to filter on.
+              #
+              # @see Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::UsageDiscount::Filter#field
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                PRICE_ID = :price_id
+                ITEM_ID = :item_id
+                PRICE_TYPE = :price_type
+                CURRENCY = :currency
+                PRICING_UNIT_ID = :pricing_unit_id
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+
+              # Should prices that match the filter be included or excluded.
+              #
+              # @see Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::UsageDiscount::Filter#operator
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                INCLUDES = :includes
+                EXCLUDES = :excludes
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+            end
           end
 
           class AmountDiscount < Orb::Internal::Type::BaseModel
@@ -407,10 +490,19 @@ module Orb
             required :amount_discount, String
 
             # @!attribute applies_to_price_ids
+            #   @deprecated
+            #
             #   The price IDs that this adjustment applies to.
             #
             #   @return [Array<String>]
             required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+            # @!attribute filters
+            #   The filters that determine which prices to apply this adjustment to.
+            #
+            #   @return [Array<Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::AmountDiscount::Filter>]
+            required :filters,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::AmountDiscount::Filter] }
 
             # @!attribute is_invoice_level
             #   True for adjustments that apply to an entire invocice, false for adjustments
@@ -431,7 +523,7 @@ module Orb
             #   @return [String, nil]
             required :reason, String, nil?: true
 
-            # @!method initialize(id:, amount_discount:, applies_to_price_ids:, is_invoice_level:, plan_phase_order:, reason:, adjustment_type: :amount_discount)
+            # @!method initialize(id:, amount_discount:, applies_to_price_ids:, filters:, is_invoice_level:, plan_phase_order:, reason:, adjustment_type: :amount_discount)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::AmountDiscount}
             #   for more details.
@@ -442,6 +534,8 @@ module Orb
             #
             #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
             #
+            #   @param filters [Array<Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::AmountDiscount::Filter>] The filters that determine which prices to apply this adjustment to.
+            #
             #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
             #
             #   @param plan_phase_order [Integer, nil] The plan phase in which this adjustment is active.
@@ -449,6 +543,64 @@ module Orb
             #   @param reason [String, nil] The reason for the adjustment.
             #
             #   @param adjustment_type [Symbol, :amount_discount]
+
+            class Filter < Orb::Internal::Type::BaseModel
+              # @!attribute field
+              #   The property of the price to filter on.
+              #
+              #   @return [Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::AmountDiscount::Filter::Field]
+              required :field,
+                       enum: -> { Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::AmountDiscount::Filter::Field }
+
+              # @!attribute operator
+              #   Should prices that match the filter be included or excluded.
+              #
+              #   @return [Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::AmountDiscount::Filter::Operator]
+              required :operator,
+                       enum: -> { Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::AmountDiscount::Filter::Operator }
+
+              # @!attribute values
+              #   The IDs or values that match this filter.
+              #
+              #   @return [Array<String>]
+              required :values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!method initialize(field:, operator:, values:)
+              #   @param field [Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::AmountDiscount::Filter::Field] The property of the price to filter on.
+              #
+              #   @param operator [Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::AmountDiscount::Filter::Operator] Should prices that match the filter be included or excluded.
+              #
+              #   @param values [Array<String>] The IDs or values that match this filter.
+
+              # The property of the price to filter on.
+              #
+              # @see Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::AmountDiscount::Filter#field
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                PRICE_ID = :price_id
+                ITEM_ID = :item_id
+                PRICE_TYPE = :price_type
+                CURRENCY = :currency
+                PRICING_UNIT_ID = :pricing_unit_id
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+
+              # Should prices that match the filter be included or excluded.
+              #
+              # @see Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::AmountDiscount::Filter#operator
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                INCLUDES = :includes
+                EXCLUDES = :excludes
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+            end
           end
 
           class PercentageDiscount < Orb::Internal::Type::BaseModel
@@ -463,10 +615,19 @@ module Orb
             required :adjustment_type, const: :percentage_discount
 
             # @!attribute applies_to_price_ids
+            #   @deprecated
+            #
             #   The price IDs that this adjustment applies to.
             #
             #   @return [Array<String>]
             required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+            # @!attribute filters
+            #   The filters that determine which prices to apply this adjustment to.
+            #
+            #   @return [Array<Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PercentageDiscount::Filter>]
+            required :filters,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PercentageDiscount::Filter] }
 
             # @!attribute is_invoice_level
             #   True for adjustments that apply to an entire invocice, false for adjustments
@@ -494,7 +655,7 @@ module Orb
             #   @return [String, nil]
             required :reason, String, nil?: true
 
-            # @!method initialize(id:, applies_to_price_ids:, is_invoice_level:, percentage_discount:, plan_phase_order:, reason:, adjustment_type: :percentage_discount)
+            # @!method initialize(id:, applies_to_price_ids:, filters:, is_invoice_level:, percentage_discount:, plan_phase_order:, reason:, adjustment_type: :percentage_discount)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PercentageDiscount}
             #   for more details.
@@ -502,6 +663,8 @@ module Orb
             #   @param id [String]
             #
             #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
+            #
+            #   @param filters [Array<Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PercentageDiscount::Filter>] The filters that determine which prices to apply this adjustment to.
             #
             #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
             #
@@ -512,6 +675,64 @@ module Orb
             #   @param reason [String, nil] The reason for the adjustment.
             #
             #   @param adjustment_type [Symbol, :percentage_discount]
+
+            class Filter < Orb::Internal::Type::BaseModel
+              # @!attribute field
+              #   The property of the price to filter on.
+              #
+              #   @return [Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PercentageDiscount::Filter::Field]
+              required :field,
+                       enum: -> { Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PercentageDiscount::Filter::Field }
+
+              # @!attribute operator
+              #   Should prices that match the filter be included or excluded.
+              #
+              #   @return [Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PercentageDiscount::Filter::Operator]
+              required :operator,
+                       enum: -> { Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PercentageDiscount::Filter::Operator }
+
+              # @!attribute values
+              #   The IDs or values that match this filter.
+              #
+              #   @return [Array<String>]
+              required :values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!method initialize(field:, operator:, values:)
+              #   @param field [Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PercentageDiscount::Filter::Field] The property of the price to filter on.
+              #
+              #   @param operator [Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PercentageDiscount::Filter::Operator] Should prices that match the filter be included or excluded.
+              #
+              #   @param values [Array<String>] The IDs or values that match this filter.
+
+              # The property of the price to filter on.
+              #
+              # @see Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PercentageDiscount::Filter#field
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                PRICE_ID = :price_id
+                ITEM_ID = :item_id
+                PRICE_TYPE = :price_type
+                CURRENCY = :currency
+                PRICING_UNIT_ID = :pricing_unit_id
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+
+              # Should prices that match the filter be included or excluded.
+              #
+              # @see Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::PercentageDiscount::Filter#operator
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                INCLUDES = :includes
+                EXCLUDES = :excludes
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+            end
           end
 
           class Minimum < Orb::Internal::Type::BaseModel
@@ -526,10 +747,19 @@ module Orb
             required :adjustment_type, const: :minimum
 
             # @!attribute applies_to_price_ids
+            #   @deprecated
+            #
             #   The price IDs that this adjustment applies to.
             #
             #   @return [Array<String>]
             required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+            # @!attribute filters
+            #   The filters that determine which prices to apply this adjustment to.
+            #
+            #   @return [Array<Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::Minimum::Filter>]
+            required :filters,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::Minimum::Filter] }
 
             # @!attribute is_invoice_level
             #   True for adjustments that apply to an entire invocice, false for adjustments
@@ -563,7 +793,7 @@ module Orb
             #   @return [String, nil]
             required :reason, String, nil?: true
 
-            # @!method initialize(id:, applies_to_price_ids:, is_invoice_level:, item_id:, minimum_amount:, plan_phase_order:, reason:, adjustment_type: :minimum)
+            # @!method initialize(id:, applies_to_price_ids:, filters:, is_invoice_level:, item_id:, minimum_amount:, plan_phase_order:, reason:, adjustment_type: :minimum)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::Minimum}
             #   for more details.
@@ -571,6 +801,8 @@ module Orb
             #   @param id [String]
             #
             #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
+            #
+            #   @param filters [Array<Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::Minimum::Filter>] The filters that determine which prices to apply this adjustment to.
             #
             #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
             #
@@ -583,6 +815,64 @@ module Orb
             #   @param reason [String, nil] The reason for the adjustment.
             #
             #   @param adjustment_type [Symbol, :minimum]
+
+            class Filter < Orb::Internal::Type::BaseModel
+              # @!attribute field
+              #   The property of the price to filter on.
+              #
+              #   @return [Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::Minimum::Filter::Field]
+              required :field,
+                       enum: -> { Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::Minimum::Filter::Field }
+
+              # @!attribute operator
+              #   Should prices that match the filter be included or excluded.
+              #
+              #   @return [Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::Minimum::Filter::Operator]
+              required :operator,
+                       enum: -> { Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::Minimum::Filter::Operator }
+
+              # @!attribute values
+              #   The IDs or values that match this filter.
+              #
+              #   @return [Array<String>]
+              required :values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!method initialize(field:, operator:, values:)
+              #   @param field [Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::Minimum::Filter::Field] The property of the price to filter on.
+              #
+              #   @param operator [Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+              #
+              #   @param values [Array<String>] The IDs or values that match this filter.
+
+              # The property of the price to filter on.
+              #
+              # @see Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::Minimum::Filter#field
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                PRICE_ID = :price_id
+                ITEM_ID = :item_id
+                PRICE_TYPE = :price_type
+                CURRENCY = :currency
+                PRICING_UNIT_ID = :pricing_unit_id
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+
+              # Should prices that match the filter be included or excluded.
+              #
+              # @see Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::Minimum::Filter#operator
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                INCLUDES = :includes
+                EXCLUDES = :excludes
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+            end
           end
 
           class Maximum < Orb::Internal::Type::BaseModel
@@ -597,10 +887,19 @@ module Orb
             required :adjustment_type, const: :maximum
 
             # @!attribute applies_to_price_ids
+            #   @deprecated
+            #
             #   The price IDs that this adjustment applies to.
             #
             #   @return [Array<String>]
             required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+            # @!attribute filters
+            #   The filters that determine which prices to apply this adjustment to.
+            #
+            #   @return [Array<Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::Maximum::Filter>]
+            required :filters,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::Maximum::Filter] }
 
             # @!attribute is_invoice_level
             #   True for adjustments that apply to an entire invocice, false for adjustments
@@ -628,7 +927,7 @@ module Orb
             #   @return [String, nil]
             required :reason, String, nil?: true
 
-            # @!method initialize(id:, applies_to_price_ids:, is_invoice_level:, maximum_amount:, plan_phase_order:, reason:, adjustment_type: :maximum)
+            # @!method initialize(id:, applies_to_price_ids:, filters:, is_invoice_level:, maximum_amount:, plan_phase_order:, reason:, adjustment_type: :maximum)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::Maximum}
             #   for more details.
@@ -636,6 +935,8 @@ module Orb
             #   @param id [String]
             #
             #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
+            #
+            #   @param filters [Array<Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::Maximum::Filter>] The filters that determine which prices to apply this adjustment to.
             #
             #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
             #
@@ -646,6 +947,64 @@ module Orb
             #   @param reason [String, nil] The reason for the adjustment.
             #
             #   @param adjustment_type [Symbol, :maximum]
+
+            class Filter < Orb::Internal::Type::BaseModel
+              # @!attribute field
+              #   The property of the price to filter on.
+              #
+              #   @return [Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::Maximum::Filter::Field]
+              required :field,
+                       enum: -> { Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::Maximum::Filter::Field }
+
+              # @!attribute operator
+              #   Should prices that match the filter be included or excluded.
+              #
+              #   @return [Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::Maximum::Filter::Operator]
+              required :operator,
+                       enum: -> { Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::Maximum::Filter::Operator }
+
+              # @!attribute values
+              #   The IDs or values that match this filter.
+              #
+              #   @return [Array<String>]
+              required :values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!method initialize(field:, operator:, values:)
+              #   @param field [Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::Maximum::Filter::Field] The property of the price to filter on.
+              #
+              #   @param operator [Symbol, Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+              #
+              #   @param values [Array<String>] The IDs or values that match this filter.
+
+              # The property of the price to filter on.
+              #
+              # @see Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::Maximum::Filter#field
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                PRICE_ID = :price_id
+                ITEM_ID = :item_id
+                PRICE_TYPE = :price_type
+                CURRENCY = :currency
+                PRICING_UNIT_ID = :pricing_unit_id
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+
+              # Should prices that match the filter be included or excluded.
+              #
+              # @see Orb::Models::SubscriptionCancelResponse::AdjustmentInterval::Adjustment::Maximum::Filter#operator
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                INCLUDES = :includes
+                EXCLUDES = :excludes
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+            end
           end
 
           # @!method self.variants
@@ -709,12 +1068,6 @@ module Orb
           #   @return [String]
           required :amount_discount, String
 
-          # @!attribute applies_to_price_ids
-          #   The price ids that this discount interval applies to.
-          #
-          #   @return [Array<String>]
-          required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
-
           # @!attribute applies_to_price_interval_ids
           #   The price interval ids that this discount interval applies to.
           #
@@ -732,33 +1085,92 @@ module Orb
           #   @return [Time, nil]
           required :end_date, Time, nil?: true
 
+          # @!attribute filters
+          #   The filters that determine which prices this discount interval applies to.
+          #
+          #   @return [Array<Orb::Models::SubscriptionCancelResponse::DiscountInterval::Amount::Filter>]
+          required :filters,
+                   -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionCancelResponse::DiscountInterval::Amount::Filter] }
+
           # @!attribute start_date
           #   The start date of the discount interval.
           #
           #   @return [Time]
           required :start_date, Time
 
-          # @!method initialize(amount_discount:, applies_to_price_ids:, applies_to_price_interval_ids:, end_date:, start_date:, discount_type: :amount)
+          # @!method initialize(amount_discount:, applies_to_price_interval_ids:, end_date:, filters:, start_date:, discount_type: :amount)
           #   @param amount_discount [String] Only available if discount_type is `amount`.
-          #
-          #   @param applies_to_price_ids [Array<String>] The price ids that this discount interval applies to.
           #
           #   @param applies_to_price_interval_ids [Array<String>] The price interval ids that this discount interval applies to.
           #
           #   @param end_date [Time, nil] The end date of the discount interval.
           #
+          #   @param filters [Array<Orb::Models::SubscriptionCancelResponse::DiscountInterval::Amount::Filter>] The filters that determine which prices this discount interval applies to.
+          #
           #   @param start_date [Time] The start date of the discount interval.
           #
           #   @param discount_type [Symbol, :amount]
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::SubscriptionCancelResponse::DiscountInterval::Amount::Filter::Field]
+            required :field,
+                     enum: -> { Orb::Models::SubscriptionCancelResponse::DiscountInterval::Amount::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::SubscriptionCancelResponse::DiscountInterval::Amount::Filter::Operator]
+            required :operator,
+                     enum: -> { Orb::Models::SubscriptionCancelResponse::DiscountInterval::Amount::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::SubscriptionCancelResponse::DiscountInterval::Amount::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::SubscriptionCancelResponse::DiscountInterval::Amount::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::SubscriptionCancelResponse::DiscountInterval::Amount::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::SubscriptionCancelResponse::DiscountInterval::Amount::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         class Percentage < Orb::Internal::Type::BaseModel
-          # @!attribute applies_to_price_ids
-          #   The price ids that this discount interval applies to.
-          #
-          #   @return [Array<String>]
-          required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
-
           # @!attribute applies_to_price_interval_ids
           #   The price interval ids that this discount interval applies to.
           #
@@ -776,6 +1188,13 @@ module Orb
           #   @return [Time, nil]
           required :end_date, Time, nil?: true
 
+          # @!attribute filters
+          #   The filters that determine which prices this discount interval applies to.
+          #
+          #   @return [Array<Orb::Models::SubscriptionCancelResponse::DiscountInterval::Percentage::Filter>]
+          required :filters,
+                   -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionCancelResponse::DiscountInterval::Percentage::Filter] }
+
           # @!attribute percentage_discount
           #   Only available if discount_type is `percentage`.This is a number between 0
           #   and 1.
@@ -789,31 +1208,83 @@ module Orb
           #   @return [Time]
           required :start_date, Time
 
-          # @!method initialize(applies_to_price_ids:, applies_to_price_interval_ids:, end_date:, percentage_discount:, start_date:, discount_type: :percentage)
+          # @!method initialize(applies_to_price_interval_ids:, end_date:, filters:, percentage_discount:, start_date:, discount_type: :percentage)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::SubscriptionCancelResponse::DiscountInterval::Percentage} for more
           #   details.
           #
-          #   @param applies_to_price_ids [Array<String>] The price ids that this discount interval applies to.
-          #
           #   @param applies_to_price_interval_ids [Array<String>] The price interval ids that this discount interval applies to.
           #
           #   @param end_date [Time, nil] The end date of the discount interval.
+          #
+          #   @param filters [Array<Orb::Models::SubscriptionCancelResponse::DiscountInterval::Percentage::Filter>] The filters that determine which prices this discount interval applies to.
           #
           #   @param percentage_discount [Float] Only available if discount_type is `percentage`.This is a number between 0 and 1
           #
           #   @param start_date [Time] The start date of the discount interval.
           #
           #   @param discount_type [Symbol, :percentage]
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::SubscriptionCancelResponse::DiscountInterval::Percentage::Filter::Field]
+            required :field,
+                     enum: -> { Orb::Models::SubscriptionCancelResponse::DiscountInterval::Percentage::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::SubscriptionCancelResponse::DiscountInterval::Percentage::Filter::Operator]
+            required :operator,
+                     enum: -> { Orb::Models::SubscriptionCancelResponse::DiscountInterval::Percentage::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::SubscriptionCancelResponse::DiscountInterval::Percentage::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::SubscriptionCancelResponse::DiscountInterval::Percentage::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::SubscriptionCancelResponse::DiscountInterval::Percentage::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::SubscriptionCancelResponse::DiscountInterval::Percentage::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         class Usage < Orb::Internal::Type::BaseModel
-          # @!attribute applies_to_price_ids
-          #   The price ids that this discount interval applies to.
-          #
-          #   @return [Array<String>]
-          required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
-
           # @!attribute applies_to_price_interval_ids
           #   The price interval ids that this discount interval applies to.
           #
@@ -831,6 +1302,13 @@ module Orb
           #   @return [Time, nil]
           required :end_date, Time, nil?: true
 
+          # @!attribute filters
+          #   The filters that determine which prices this discount interval applies to.
+          #
+          #   @return [Array<Orb::Models::SubscriptionCancelResponse::DiscountInterval::Usage::Filter>]
+          required :filters,
+                   -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionCancelResponse::DiscountInterval::Usage::Filter] }
+
           # @!attribute start_date
           #   The start date of the discount interval.
           #
@@ -844,22 +1322,80 @@ module Orb
           #   @return [Float]
           required :usage_discount, Float
 
-          # @!method initialize(applies_to_price_ids:, applies_to_price_interval_ids:, end_date:, start_date:, usage_discount:, discount_type: :usage)
+          # @!method initialize(applies_to_price_interval_ids:, end_date:, filters:, start_date:, usage_discount:, discount_type: :usage)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::SubscriptionCancelResponse::DiscountInterval::Usage} for more
           #   details.
           #
-          #   @param applies_to_price_ids [Array<String>] The price ids that this discount interval applies to.
-          #
           #   @param applies_to_price_interval_ids [Array<String>] The price interval ids that this discount interval applies to.
           #
           #   @param end_date [Time, nil] The end date of the discount interval.
+          #
+          #   @param filters [Array<Orb::Models::SubscriptionCancelResponse::DiscountInterval::Usage::Filter>] The filters that determine which prices this discount interval applies to.
           #
           #   @param start_date [Time] The start date of the discount interval.
           #
           #   @param usage_discount [Float] Only available if discount_type is `usage`. Number of usage units that this disc
           #
           #   @param discount_type [Symbol, :usage]
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::SubscriptionCancelResponse::DiscountInterval::Usage::Filter::Field]
+            required :field,
+                     enum: -> { Orb::Models::SubscriptionCancelResponse::DiscountInterval::Usage::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::SubscriptionCancelResponse::DiscountInterval::Usage::Filter::Operator]
+            required :operator,
+                     enum: -> { Orb::Models::SubscriptionCancelResponse::DiscountInterval::Usage::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::SubscriptionCancelResponse::DiscountInterval::Usage::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::SubscriptionCancelResponse::DiscountInterval::Usage::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::SubscriptionCancelResponse::DiscountInterval::Usage::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::SubscriptionCancelResponse::DiscountInterval::Usage::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @!method self.variants
@@ -895,12 +1431,6 @@ module Orb
       end
 
       class MaximumInterval < Orb::Internal::Type::BaseModel
-        # @!attribute applies_to_price_ids
-        #   The price ids that this maximum interval applies to.
-        #
-        #   @return [Array<String>]
-        required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
-
         # @!attribute applies_to_price_interval_ids
         #   The price interval ids that this maximum interval applies to.
         #
@@ -912,6 +1442,13 @@ module Orb
         #
         #   @return [Time, nil]
         required :end_date, Time, nil?: true
+
+        # @!attribute filters
+        #   The filters that determine which prices this maximum interval applies to.
+        #
+        #   @return [Array<Orb::Models::SubscriptionCancelResponse::MaximumInterval::Filter>]
+        required :filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionCancelResponse::MaximumInterval::Filter] }
 
         # @!attribute maximum_amount
         #   The maximum amount to charge in a given billing period for the price intervals
@@ -926,28 +1463,79 @@ module Orb
         #   @return [Time]
         required :start_date, Time
 
-        # @!method initialize(applies_to_price_ids:, applies_to_price_interval_ids:, end_date:, maximum_amount:, start_date:)
+        # @!method initialize(applies_to_price_interval_ids:, end_date:, filters:, maximum_amount:, start_date:)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::SubscriptionCancelResponse::MaximumInterval} for more details.
-        #
-        #   @param applies_to_price_ids [Array<String>] The price ids that this maximum interval applies to.
         #
         #   @param applies_to_price_interval_ids [Array<String>] The price interval ids that this maximum interval applies to.
         #
         #   @param end_date [Time, nil] The end date of the maximum interval.
         #
+        #   @param filters [Array<Orb::Models::SubscriptionCancelResponse::MaximumInterval::Filter>] The filters that determine which prices this maximum interval applies to.
+        #
         #   @param maximum_amount [String] The maximum amount to charge in a given billing period for the price intervals t
         #
         #   @param start_date [Time] The start date of the maximum interval.
+
+        class Filter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::SubscriptionCancelResponse::MaximumInterval::Filter::Field]
+          required :field, enum: -> { Orb::Models::SubscriptionCancelResponse::MaximumInterval::Filter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::SubscriptionCancelResponse::MaximumInterval::Filter::Operator]
+          required :operator,
+                   enum: -> { Orb::Models::SubscriptionCancelResponse::MaximumInterval::Filter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::SubscriptionCancelResponse::MaximumInterval::Filter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::SubscriptionCancelResponse::MaximumInterval::Filter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::SubscriptionCancelResponse::MaximumInterval::Filter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::SubscriptionCancelResponse::MaximumInterval::Filter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
       end
 
       class MinimumInterval < Orb::Internal::Type::BaseModel
-        # @!attribute applies_to_price_ids
-        #   The price ids that this minimum interval applies to.
-        #
-        #   @return [Array<String>]
-        required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
-
         # @!attribute applies_to_price_interval_ids
         #   The price interval ids that this minimum interval applies to.
         #
@@ -959,6 +1547,13 @@ module Orb
         #
         #   @return [Time, nil]
         required :end_date, Time, nil?: true
+
+        # @!attribute filters
+        #   The filters that determine which prices this minimum interval applies to.
+        #
+        #   @return [Array<Orb::Models::SubscriptionCancelResponse::MinimumInterval::Filter>]
+        required :filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Models::SubscriptionCancelResponse::MinimumInterval::Filter] }
 
         # @!attribute minimum_amount
         #   The minimum amount to charge in a given billing period for the price intervals
@@ -973,19 +1568,76 @@ module Orb
         #   @return [Time]
         required :start_date, Time
 
-        # @!method initialize(applies_to_price_ids:, applies_to_price_interval_ids:, end_date:, minimum_amount:, start_date:)
+        # @!method initialize(applies_to_price_interval_ids:, end_date:, filters:, minimum_amount:, start_date:)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::SubscriptionCancelResponse::MinimumInterval} for more details.
-        #
-        #   @param applies_to_price_ids [Array<String>] The price ids that this minimum interval applies to.
         #
         #   @param applies_to_price_interval_ids [Array<String>] The price interval ids that this minimum interval applies to.
         #
         #   @param end_date [Time, nil] The end date of the minimum interval.
         #
+        #   @param filters [Array<Orb::Models::SubscriptionCancelResponse::MinimumInterval::Filter>] The filters that determine which prices this minimum interval applies to.
+        #
         #   @param minimum_amount [String] The minimum amount to charge in a given billing period for the price intervals t
         #
         #   @param start_date [Time] The start date of the minimum interval.
+
+        class Filter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::SubscriptionCancelResponse::MinimumInterval::Filter::Field]
+          required :field, enum: -> { Orb::Models::SubscriptionCancelResponse::MinimumInterval::Filter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::SubscriptionCancelResponse::MinimumInterval::Filter::Operator]
+          required :operator,
+                   enum: -> { Orb::Models::SubscriptionCancelResponse::MinimumInterval::Filter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::SubscriptionCancelResponse::MinimumInterval::Filter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::SubscriptionCancelResponse::MinimumInterval::Filter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::SubscriptionCancelResponse::MinimumInterval::Filter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::SubscriptionCancelResponse::MinimumInterval::Filter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
       end
 
       # @see Orb::Models::SubscriptionCancelResponse#pending_subscription_change

@@ -46,7 +46,7 @@ module Orb
 
           # @!attribute active_from
           #   The date from which the top-up is active. If unspecified, the top-up is active
-          #   immediately.
+          #   immediately. This should not be more than 10 days in the past.
           #
           #   @return [Time, nil]
           optional :active_from, Time, nil?: true

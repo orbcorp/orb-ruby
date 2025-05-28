@@ -3,11 +3,16 @@
 module Orb
   module Resources
     class Items
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::ItemCreateParams} for more details.
+      #
       # This endpoint is used to create an [Item](/core-concepts#item).
       #
-      # @overload create(name:, request_options: {})
+      # @overload create(name:, metadata: nil, request_options: {})
       #
       # @param name [String] The name of the item.
+      #
+      # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -19,13 +24,21 @@ module Orb
         @client.request(method: :post, path: "items", body: parsed, model: Orb::Item, options: options)
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::ItemUpdateParams} for more details.
+      #
       # This endpoint can be used to update properties on the Item.
       #
-      # @overload update(item_id, external_connections: nil, name: nil, request_options: {})
+      # @overload update(item_id, external_connections: nil, metadata: nil, name: nil, request_options: {})
       #
       # @param item_id [String]
+      #
       # @param external_connections [Array<Orb::Models::ItemUpdateParams::ExternalConnection>, nil]
+      #
+      # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+      #
       # @param name [String, nil]
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::Item]
@@ -68,6 +81,25 @@ module Orb
           page: Orb::Internal::Page,
           model: Orb::Item,
           options: options
+        )
+      end
+
+      # Archive item
+      #
+      # @overload archive(item_id, request_options: {})
+      #
+      # @param item_id [String]
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Orb::Models::Item]
+      #
+      # @see Orb::Models::ItemArchiveParams
+      def archive(item_id, params = {})
+        @client.request(
+          method: :post,
+          path: ["items/%1$s/archive", item_id],
+          model: Orb::Item,
+          options: params[:request_options]
         )
       end
 

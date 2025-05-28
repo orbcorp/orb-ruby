@@ -117,6 +117,8 @@ module Orb
 
   class Item = Orb::Models::Item
 
+  class ItemArchiveParams = Orb::Models::ItemArchiveParams
+
   class ItemCreateParams = Orb::Models::ItemCreateParams
 
   class ItemFetchParams = Orb::Models::ItemFetchParams
@@ -146,6 +148,8 @@ module Orb
   class PlanListParams = Orb::Models::PlanListParams
 
   module Plans = Orb::Models::Plans
+
+  class PlanSetDefaultVersionParams = Orb::Models::PlanSetDefaultVersionParams
 
   class PlanUpdateParams = Orb::Models::PlanUpdateParams
 

@@ -11,7 +11,8 @@ module Orb
         plan: Orb::Alert::Plan?,
         subscription: Orb::Alert::Subscription?,
         thresholds: ::Array[Orb::Alert::Threshold]?,
-        type: Orb::Models::Alert::type_
+        type: Orb::Models::Alert::type_,
+        balance_alert_status: ::Array[Orb::Alert::BalanceAlertStatus]?
       }
 
     class Alert < Orb::Internal::Type::BaseModel
@@ -35,6 +36,8 @@ module Orb
 
       attr_accessor type: Orb::Models::Alert::type_
 
+      attr_accessor balance_alert_status: ::Array[Orb::Alert::BalanceAlertStatus]?
+
       def initialize: (
         id: String,
         created_at: Time,
@@ -45,7 +48,8 @@ module Orb
         plan: Orb::Alert::Plan?,
         subscription: Orb::Alert::Subscription?,
         thresholds: ::Array[Orb::Alert::Threshold]?,
-        type: Orb::Models::Alert::type_
+        type: Orb::Models::Alert::type_,
+        ?balance_alert_status: ::Array[Orb::Alert::BalanceAlertStatus]?
       ) -> void
 
       def to_hash: -> {
@@ -58,7 +62,8 @@ module Orb
         plan: Orb::Alert::Plan?,
         subscription: Orb::Alert::Subscription?,
         thresholds: ::Array[Orb::Alert::Threshold]?,
-        type: Orb::Models::Alert::type_
+        type: Orb::Models::Alert::type_,
+        balance_alert_status: ::Array[Orb::Alert::BalanceAlertStatus]?
       }
 
       type customer = { id: String, external_customer_id: String? }
@@ -152,6 +157,18 @@ module Orb
         COST_EXCEEDED: :cost_exceeded
 
         def self?.values: -> ::Array[Orb::Models::Alert::type_]
+      end
+
+      type balance_alert_status = { in_alert: bool, threshold_value: Float }
+
+      class BalanceAlertStatus < Orb::Internal::Type::BaseModel
+        attr_accessor in_alert: bool
+
+        attr_accessor threshold_value: Float
+
+        def initialize: (in_alert: bool, threshold_value: Float) -> void
+
+        def to_hash: -> { in_alert: bool, threshold_value: Float }
       end
     end
   end

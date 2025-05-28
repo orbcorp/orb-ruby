@@ -4,13 +4,16 @@ module Orb
   module Resources
     class Plans
       class ExternalPlanID
+        # @return [Orb::Resources::Plans::ExternalPlanID::Versions]
+        attr_reader :versions
+
         # Some parameter documentations has been truncated, see
         # {Orb::Models::Plans::ExternalPlanIDUpdateParams} for more details.
         #
         # This endpoint can be used to update the `external_plan_id`, and `metadata` of an
         # existing plan.
         #
-        # Other fields on a customer are currently immutable.
+        # Other fields on a plan are currently immutable.
         #
         # @overload update(other_external_plan_id, external_plan_id: nil, metadata: nil, request_options: {})
         #
@@ -70,11 +73,39 @@ module Orb
           )
         end
 
+        # This API endpoint is in beta and its interface may change. It is recommended for
+        # use only in test mode.
+        #
+        # This endpoint allows setting the default version of a plan.
+        #
+        # @overload set_default_version(external_plan_id, version:, request_options: {})
+        #
+        # @param external_plan_id [String]
+        #
+        # @param version [Integer] Plan version to set as the default.
+        #
+        # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Orb::Models::Plan]
+        #
+        # @see Orb::Models::Plans::ExternalPlanIDSetDefaultVersionParams
+        def set_default_version(external_plan_id, params)
+          parsed, options = Orb::Plans::ExternalPlanIDSetDefaultVersionParams.dump_request(params)
+          @client.request(
+            method: :post,
+            path: ["plans/external_plan_id/%1$s/set_default_version", external_plan_id],
+            body: parsed,
+            model: Orb::Plan,
+            options: options
+          )
+        end
+
         # @api private
         #
         # @param client [Orb::Client]
         def initialize(client:)
           @client = client
+          @versions = Orb::Resources::Plans::ExternalPlanID::Versions.new(client: client)
         end
       end
     end

@@ -3,8 +3,8 @@ module Orb
     class CreditNotes
       def create: (
         line_items: ::Array[Orb::CreditNoteCreateParams::LineItem],
+        reason: Orb::Models::CreditNoteCreateParams::reason,
         ?memo: String?,
-        ?reason: Orb::Models::CreditNoteCreateParams::reason?,
         ?request_options: Orb::request_opts
       ) -> Orb::CreditNote
 

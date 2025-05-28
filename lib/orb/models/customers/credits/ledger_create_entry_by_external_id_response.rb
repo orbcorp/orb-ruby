@@ -106,7 +106,13 @@ module Orb
             #   @return [Float]
             required :starting_balance, Float
 
-            # @!method initialize(id:, amount:, created_at:, credit_block:, currency:, customer:, description:, ending_balance:, entry_status:, ledger_sequence_number:, metadata:, starting_balance:, entry_type: :increment)
+            # @!attribute created_invoices
+            #   If the increment resulted in invoice creation, the list of created invoices
+            #
+            #   @return [Array<Orb::Models::Invoice>, nil]
+            optional :created_invoices, -> { Orb::Internal::Type::ArrayOf[Orb::Invoice] }, nil?: true
+
+            # @!method initialize(id:, amount:, created_at:, credit_block:, currency:, customer:, description:, ending_balance:, entry_status:, ledger_sequence_number:, metadata:, starting_balance:, created_invoices: nil, entry_type: :increment)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment}
             #   for more details.
@@ -134,6 +140,8 @@ module Orb
             #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
             #
             #   @param starting_balance [Float]
+            #
+            #   @param created_invoices [Array<Orb::Models::Invoice>, nil] If the increment resulted in invoice creation, the list of created invoices
             #
             #   @param entry_type [Symbol, :increment]
 

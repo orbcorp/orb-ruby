@@ -49,7 +49,7 @@ module Orb
           attr_accessor :threshold
 
           # The date from which the top-up is active. If unspecified, the top-up is active
-          # immediately.
+          # immediately. This should not be more than 10 days in the past.
           sig { returns(T.nilable(Time)) }
           attr_accessor :active_from
 
@@ -99,7 +99,7 @@ module Orb
             # threshold, the top-up will be triggered.
             threshold:,
             # The date from which the top-up is active. If unspecified, the top-up is active
-            # immediately.
+            # immediately. This should not be more than 10 days in the past.
             active_from: nil,
             # The number of days or months after which the top-up expires. If unspecified, it
             # does not expire.

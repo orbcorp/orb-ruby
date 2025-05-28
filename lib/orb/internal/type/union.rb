@@ -9,9 +9,9 @@ module Orb
       #   # `discount` is a `Orb::Discount`
       #   case discount
       #   when Orb::PercentageDiscount
-      #     puts(discount.applies_to_price_ids)
-      #   when Orb::TrialDiscount
       #     puts(discount.discount_type)
+      #   when Orb::TrialDiscount
+      #     puts(discount.applies_to_price_ids)
       #   when Orb::UsageDiscount
       #     puts(discount.usage_discount)
       #   else
@@ -22,22 +22,22 @@ module Orb
       #   case discount
       #   in {
       #     discount_type: :percentage,
-      #     applies_to_price_ids: applies_to_price_ids,
       #     percentage_discount: percentage_discount,
+      #     applies_to_price_ids: applies_to_price_ids,
       #     reason: reason
       #   }
-      #     puts(applies_to_price_ids)
+      #     puts(percentage_discount)
       #   in {
       #     discount_type: :trial,
       #     applies_to_price_ids: applies_to_price_ids,
       #     reason: reason,
       #     trial_amount_discount: trial_amount_discount
       #   }
-      #     puts(reason)
+      #     puts(applies_to_price_ids)
       #   in {
       #     discount_type: :usage,
-      #     applies_to_price_ids: applies_to_price_ids,
       #     usage_discount: usage_discount,
+      #     applies_to_price_ids: applies_to_price_ids,
       #     reason: reason
       #   }
       #     puts(usage_discount)

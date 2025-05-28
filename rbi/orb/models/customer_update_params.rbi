@@ -134,7 +134,8 @@ module Orb
           T.nilable(
             T.any(
               Orb::CustomerUpdateParams::TaxConfiguration::Avalara,
-              Orb::CustomerUpdateParams::TaxConfiguration::Taxjar
+              Orb::CustomerUpdateParams::TaxConfiguration::Taxjar,
+              Orb::CustomerUpdateParams::TaxConfiguration::Sphere
             )
           )
         )
@@ -284,7 +285,8 @@ module Orb
             T.nilable(
               T.any(
                 Orb::CustomerUpdateParams::TaxConfiguration::Avalara::OrHash,
-                Orb::CustomerUpdateParams::TaxConfiguration::Taxjar::OrHash
+                Orb::CustomerUpdateParams::TaxConfiguration::Taxjar::OrHash,
+                Orb::CustomerUpdateParams::TaxConfiguration::Sphere::OrHash
               )
             ),
           tax_id: T.nilable(Orb::CustomerUpdateParams::TaxID::OrHash),
@@ -469,7 +471,8 @@ module Orb
               T.nilable(
                 T.any(
                   Orb::CustomerUpdateParams::TaxConfiguration::Avalara,
-                  Orb::CustomerUpdateParams::TaxConfiguration::Taxjar
+                  Orb::CustomerUpdateParams::TaxConfiguration::Taxjar,
+                  Orb::CustomerUpdateParams::TaxConfiguration::Sphere
                 )
               ),
             tax_id: T.nilable(Orb::CustomerUpdateParams::TaxID),
@@ -819,7 +822,8 @@ module Orb
           T.type_alias do
             T.any(
               Orb::CustomerUpdateParams::TaxConfiguration::Avalara,
-              Orb::CustomerUpdateParams::TaxConfiguration::Taxjar
+              Orb::CustomerUpdateParams::TaxConfiguration::Taxjar,
+              Orb::CustomerUpdateParams::TaxConfiguration::Sphere
             )
           end
 
@@ -889,6 +893,36 @@ module Orb
             )
           end
           def self.new(tax_exempt:, tax_provider: :taxjar)
+          end
+
+          sig do
+            override.returns({ tax_exempt: T::Boolean, tax_provider: Symbol })
+          end
+          def to_hash
+          end
+        end
+
+        class Sphere < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::CustomerUpdateParams::TaxConfiguration::Sphere,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          sig { returns(T::Boolean) }
+          attr_accessor :tax_exempt
+
+          sig { returns(Symbol) }
+          attr_accessor :tax_provider
+
+          sig do
+            params(tax_exempt: T::Boolean, tax_provider: Symbol).returns(
+              T.attached_class
+            )
+          end
+          def self.new(tax_exempt:, tax_provider: :sphere)
           end
 
           sig do

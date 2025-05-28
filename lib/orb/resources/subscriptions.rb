@@ -263,7 +263,7 @@ module Orb
       # subscription. E.g. pass in `10.00` to issue an invoice when usage amounts hit
       # $10.00 for a subscription that invoices in USD.
       #
-      # @overload create(add_adjustments: nil, add_prices: nil, align_billing_with_subscription_start_date: nil, auto_collection: nil, aws_region: nil, billing_cycle_anchor_configuration: nil, coupon_redemption_code: nil, credits_overage_rate: nil, customer_id: nil, default_invoice_memo: nil, end_date: nil, external_customer_id: nil, external_marketplace: nil, external_marketplace_reporting_id: nil, external_plan_id: nil, filter: nil, initial_phase_order: nil, invoicing_threshold: nil, metadata: nil, net_terms: nil, per_credit_overage_amount: nil, plan_id: nil, plan_version_number: nil, price_overrides: nil, remove_adjustments: nil, remove_prices: nil, replace_adjustments: nil, replace_prices: nil, start_date: nil, trial_duration_days: nil, usage_customer_ids: nil, request_options: {})
+      # @overload create(add_adjustments: nil, add_prices: nil, align_billing_with_subscription_start_date: nil, auto_collection: nil, aws_region: nil, billing_cycle_anchor_configuration: nil, coupon_redemption_code: nil, credits_overage_rate: nil, currency: nil, customer_id: nil, default_invoice_memo: nil, end_date: nil, external_customer_id: nil, external_marketplace: nil, external_marketplace_reporting_id: nil, external_plan_id: nil, filter: nil, initial_phase_order: nil, invoicing_threshold: nil, metadata: nil, name: nil, net_terms: nil, per_credit_overage_amount: nil, plan_id: nil, plan_version_number: nil, price_overrides: nil, remove_adjustments: nil, remove_prices: nil, replace_adjustments: nil, replace_prices: nil, start_date: nil, trial_duration_days: nil, usage_customer_ids: nil, request_options: {})
       #
       # @param add_adjustments [Array<Orb::Models::SubscriptionCreateParams::AddAdjustment>, nil] Additional adjustments to be added to the subscription. (Only available for acco
       #
@@ -280,6 +280,8 @@ module Orb
       # @param coupon_redemption_code [String, nil] Redemption code to be used for this subscription. If the coupon cannot be found
       #
       # @param credits_overage_rate [Float, nil]
+      #
+      # @param currency [String, nil] The currency to use for the subscription. If not specified, the invoicing curren
       #
       # @param customer_id [String, nil]
       #
@@ -302,6 +304,8 @@ module Orb
       # @param invoicing_threshold [String, nil] When this subscription's accrued usage reaches this threshold, an invoice will b
       #
       # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+      #
+      # @param name [String, nil] The name to use for the subscription. If not specified, the plan name will be us
       #
       # @param net_terms [Integer, nil] The net terms determines the difference between the invoice date and the issue d
       #

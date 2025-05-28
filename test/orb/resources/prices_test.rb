@@ -2343,7 +2343,6 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
   def test_evaluate_required_params
     response =
       @orb.prices.evaluate(
-        "price_id",
         timeframe_end: "2019-12-27T18:11:19.117Z",
         timeframe_start: "2019-12-27T18:11:19.117Z"
       )
@@ -2354,7 +2353,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: ^(Orb::Internal::Type::ArrayOf[Orb::EvaluatePriceGroup])
+        data: ^(Orb::Internal::Type::ArrayOf[Orb::Models::PriceEvaluateResponse::Data])
       }
     end
   end

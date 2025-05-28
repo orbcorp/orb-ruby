@@ -48,7 +48,7 @@ module Orb
       attr_writer :change_option
 
       # The date that the quantity change should take effect, localized to the
-      # customer's timezone. Ifthis parameter is not passed in, the quantity change is
+      # customer's timezone. If this parameter is not passed in, the quantity change is
       # effective according to `change_option`.
       sig { returns(T.nilable(Date)) }
       attr_accessor :effective_date
@@ -77,7 +77,7 @@ module Orb
         # `immediate` unless it's explicitly set to `upcoming_invoice`.
         change_option: nil,
         # The date that the quantity change should take effect, localized to the
-        # customer's timezone. Ifthis parameter is not passed in, the quantity change is
+        # customer's timezone. If this parameter is not passed in, the quantity change is
         # effective according to `change_option`.
         effective_date: nil,
         request_options: {}
