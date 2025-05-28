@@ -6,13 +6,13 @@ module Orb
       # This endpoint is used to create a single
       # [`Credit Note`](/invoicing/credit-notes).
       #
-      # @overload create(line_items:, memo: nil, reason: nil, request_options: {})
+      # @overload create(line_items:, reason:, memo: nil, request_options: {})
       #
       # @param line_items [Array<Orb::Models::CreditNoteCreateParams::LineItem>]
       #
-      # @param memo [String, nil] An optional memo to attach to the credit note.
+      # @param reason [Symbol, Orb::Models::CreditNoteCreateParams::Reason] An optional reason for the credit note.
       #
-      # @param reason [Symbol, Orb::Models::CreditNoteCreateParams::Reason, nil] An optional reason for the credit note.
+      # @param memo [String, nil] An optional memo to attach to the credit note.
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #

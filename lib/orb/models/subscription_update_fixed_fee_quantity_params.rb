@@ -36,7 +36,7 @@ module Orb
 
       # @!attribute effective_date
       #   The date that the quantity change should take effect, localized to the
-      #   customer's timezone. Ifthis parameter is not passed in, the quantity change is
+      #   customer's timezone. If this parameter is not passed in, the quantity change is
       #   effective according to `change_option`.
       #
       #   @return [Date, nil]

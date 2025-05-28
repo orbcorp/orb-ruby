@@ -20,7 +20,12 @@ module Orb
       module Events
       end
 
+      module ExternalPlanID
+      end
+
       module Plans
+        module ExternalPlanID
+        end
       end
 
       module Prices

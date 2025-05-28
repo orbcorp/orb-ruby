@@ -281,41 +281,163 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Unit::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::Unit::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Unit::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Unit::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::Unit::Maximum::Filter::field,
+              operator: Orb::Models::Price::Unit::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::Unit::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::Unit::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::Unit::Maximum::Filter::field,
+              operator: Orb::Models::Price::Unit::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::Unit::Maximum::Filter::field,
+              operator: Orb::Models::Price::Unit::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::Unit::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::Unit::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Unit::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::Unit::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Unit::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Unit::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::Unit::Minimum::Filter::field,
+              operator: Orb::Models::Price::Unit::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::Unit::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::Unit::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::Unit::Minimum::Filter::field,
+              operator: Orb::Models::Price::Unit::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::Unit::Minimum::Filter::field,
+              operator: Orb::Models::Price::Unit::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::Unit::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::Unit::Minimum::Filter::operator]
+            end
+          end
         end
 
         type price_type = :usage_price | :fixed_price
@@ -610,41 +732,163 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Package::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::Package::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Package::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Package::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::Package::Maximum::Filter::field,
+              operator: Orb::Models::Price::Package::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::Package::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::Package::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::Package::Maximum::Filter::field,
+              operator: Orb::Models::Price::Package::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::Package::Maximum::Filter::field,
+              operator: Orb::Models::Price::Package::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::Package::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::Package::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Package::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::Package::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Package::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Package::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::Package::Minimum::Filter::field,
+              operator: Orb::Models::Price::Package::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::Package::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::Package::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::Package::Minimum::Filter::field,
+              operator: Orb::Models::Price::Package::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::Package::Minimum::Filter::field,
+              operator: Orb::Models::Price::Package::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::Package::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::Package::Minimum::Filter::operator]
+            end
+          end
         end
 
         type package_config = { package_amount: String, package_size: Integer }
@@ -990,41 +1234,163 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Matrix::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::Matrix::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Matrix::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Matrix::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::Matrix::Maximum::Filter::field,
+              operator: Orb::Models::Price::Matrix::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::Matrix::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::Matrix::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::Matrix::Maximum::Filter::field,
+              operator: Orb::Models::Price::Matrix::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::Matrix::Maximum::Filter::field,
+              operator: Orb::Models::Price::Matrix::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::Matrix::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::Matrix::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Matrix::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::Matrix::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Matrix::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Matrix::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::Matrix::Minimum::Filter::field,
+              operator: Orb::Models::Price::Matrix::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::Matrix::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::Matrix::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::Matrix::Minimum::Filter::field,
+              operator: Orb::Models::Price::Matrix::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::Matrix::Minimum::Filter::field,
+              operator: Orb::Models::Price::Matrix::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::Matrix::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::Matrix::Minimum::Filter::operator]
+            end
+          end
         end
 
         type price_type = :usage_price | :fixed_price
@@ -1309,41 +1675,163 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Tiered::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::Tiered::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Tiered::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Tiered::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::Tiered::Maximum::Filter::field,
+              operator: Orb::Models::Price::Tiered::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::Tiered::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::Tiered::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::Tiered::Maximum::Filter::field,
+              operator: Orb::Models::Price::Tiered::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::Tiered::Maximum::Filter::field,
+              operator: Orb::Models::Price::Tiered::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::Tiered::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::Tiered::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Tiered::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::Tiered::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Tiered::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Tiered::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::Tiered::Minimum::Filter::field,
+              operator: Orb::Models::Price::Tiered::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::Tiered::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::Tiered::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::Tiered::Minimum::Filter::field,
+              operator: Orb::Models::Price::Tiered::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::Tiered::Minimum::Filter::field,
+              operator: Orb::Models::Price::Tiered::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::Tiered::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::Tiered::Minimum::Filter::operator]
+            end
+          end
         end
 
         type price_type = :usage_price | :fixed_price
@@ -1666,41 +2154,163 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredBps::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::TieredBps::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredBps::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredBps::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::TieredBps::Maximum::Filter::field,
+              operator: Orb::Models::Price::TieredBps::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::TieredBps::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::TieredBps::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::TieredBps::Maximum::Filter::field,
+              operator: Orb::Models::Price::TieredBps::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::TieredBps::Maximum::Filter::field,
+              operator: Orb::Models::Price::TieredBps::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::TieredBps::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::TieredBps::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredBps::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::TieredBps::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredBps::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredBps::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::TieredBps::Minimum::Filter::field,
+              operator: Orb::Models::Price::TieredBps::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::TieredBps::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::TieredBps::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::TieredBps::Minimum::Filter::field,
+              operator: Orb::Models::Price::TieredBps::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::TieredBps::Minimum::Filter::field,
+              operator: Orb::Models::Price::TieredBps::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::TieredBps::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::TieredBps::Minimum::Filter::operator]
+            end
+          end
         end
 
         type price_type = :usage_price | :fixed_price
@@ -2044,41 +2654,163 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Bps::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::Bps::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Bps::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Bps::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::Bps::Maximum::Filter::field,
+              operator: Orb::Models::Price::Bps::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::Bps::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::Bps::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::Bps::Maximum::Filter::field,
+              operator: Orb::Models::Price::Bps::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::Bps::Maximum::Filter::field,
+              operator: Orb::Models::Price::Bps::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::Bps::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::Bps::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Bps::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::Bps::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Bps::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Bps::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::Bps::Minimum::Filter::field,
+              operator: Orb::Models::Price::Bps::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::Bps::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::Bps::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::Bps::Minimum::Filter::field,
+              operator: Orb::Models::Price::Bps::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::Bps::Minimum::Filter::field,
+              operator: Orb::Models::Price::Bps::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::Bps::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::Bps::Minimum::Filter::operator]
+            end
+          end
         end
 
         type price_type = :usage_price | :fixed_price
@@ -2401,41 +3133,163 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::BulkBps::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::BulkBps::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::BulkBps::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::BulkBps::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::BulkBps::Maximum::Filter::field,
+              operator: Orb::Models::Price::BulkBps::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::BulkBps::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::BulkBps::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::BulkBps::Maximum::Filter::field,
+              operator: Orb::Models::Price::BulkBps::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::BulkBps::Maximum::Filter::field,
+              operator: Orb::Models::Price::BulkBps::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::BulkBps::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::BulkBps::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::BulkBps::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::BulkBps::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::BulkBps::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::BulkBps::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::BulkBps::Minimum::Filter::field,
+              operator: Orb::Models::Price::BulkBps::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::BulkBps::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::BulkBps::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::BulkBps::Minimum::Filter::field,
+              operator: Orb::Models::Price::BulkBps::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::BulkBps::Minimum::Filter::field,
+              operator: Orb::Models::Price::BulkBps::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::BulkBps::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::BulkBps::Minimum::Filter::operator]
+            end
+          end
         end
 
         type price_type = :usage_price | :fixed_price
@@ -2748,41 +3602,163 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Bulk::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::Bulk::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Bulk::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Bulk::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::Bulk::Maximum::Filter::field,
+              operator: Orb::Models::Price::Bulk::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::Bulk::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::Bulk::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::Bulk::Maximum::Filter::field,
+              operator: Orb::Models::Price::Bulk::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::Bulk::Maximum::Filter::field,
+              operator: Orb::Models::Price::Bulk::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::Bulk::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::Bulk::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Bulk::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::Bulk::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Bulk::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::Bulk::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::Bulk::Minimum::Filter::field,
+              operator: Orb::Models::Price::Bulk::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::Bulk::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::Bulk::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::Bulk::Minimum::Filter::field,
+              operator: Orb::Models::Price::Bulk::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::Bulk::Minimum::Filter::field,
+              operator: Orb::Models::Price::Bulk::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::Bulk::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::Bulk::Minimum::Filter::operator]
+            end
+          end
         end
 
         type price_type = :usage_price | :fixed_price
@@ -3067,41 +4043,163 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::ThresholdTotalAmount::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::ThresholdTotalAmount::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::ThresholdTotalAmount::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::ThresholdTotalAmount::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::ThresholdTotalAmount::Maximum::Filter::field,
+              operator: Orb::Models::Price::ThresholdTotalAmount::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::ThresholdTotalAmount::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::ThresholdTotalAmount::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::ThresholdTotalAmount::Maximum::Filter::field,
+              operator: Orb::Models::Price::ThresholdTotalAmount::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::ThresholdTotalAmount::Maximum::Filter::field,
+              operator: Orb::Models::Price::ThresholdTotalAmount::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::ThresholdTotalAmount::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::ThresholdTotalAmount::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::ThresholdTotalAmount::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::ThresholdTotalAmount::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::ThresholdTotalAmount::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::ThresholdTotalAmount::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::ThresholdTotalAmount::Minimum::Filter::field,
+              operator: Orb::Models::Price::ThresholdTotalAmount::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::ThresholdTotalAmount::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::ThresholdTotalAmount::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::ThresholdTotalAmount::Minimum::Filter::field,
+              operator: Orb::Models::Price::ThresholdTotalAmount::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::ThresholdTotalAmount::Minimum::Filter::field,
+              operator: Orb::Models::Price::ThresholdTotalAmount::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::ThresholdTotalAmount::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::ThresholdTotalAmount::Minimum::Filter::operator]
+            end
+          end
         end
 
         type price_type = :usage_price | :fixed_price
@@ -3386,41 +4484,163 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredPackage::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::TieredPackage::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredPackage::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredPackage::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::TieredPackage::Maximum::Filter::field,
+              operator: Orb::Models::Price::TieredPackage::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::TieredPackage::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::TieredPackage::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::TieredPackage::Maximum::Filter::field,
+              operator: Orb::Models::Price::TieredPackage::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::TieredPackage::Maximum::Filter::field,
+              operator: Orb::Models::Price::TieredPackage::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::TieredPackage::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::TieredPackage::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredPackage::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::TieredPackage::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredPackage::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredPackage::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::TieredPackage::Minimum::Filter::field,
+              operator: Orb::Models::Price::TieredPackage::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::TieredPackage::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::TieredPackage::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::TieredPackage::Minimum::Filter::field,
+              operator: Orb::Models::Price::TieredPackage::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::TieredPackage::Minimum::Filter::field,
+              operator: Orb::Models::Price::TieredPackage::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::TieredPackage::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::TieredPackage::Minimum::Filter::operator]
+            end
+          end
         end
 
         type price_type = :usage_price | :fixed_price
@@ -3705,41 +4925,163 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedTiered::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::GroupedTiered::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedTiered::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedTiered::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::GroupedTiered::Maximum::Filter::field,
+              operator: Orb::Models::Price::GroupedTiered::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::GroupedTiered::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::GroupedTiered::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::GroupedTiered::Maximum::Filter::field,
+              operator: Orb::Models::Price::GroupedTiered::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::GroupedTiered::Maximum::Filter::field,
+              operator: Orb::Models::Price::GroupedTiered::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::GroupedTiered::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::GroupedTiered::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedTiered::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::GroupedTiered::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedTiered::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedTiered::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::GroupedTiered::Minimum::Filter::field,
+              operator: Orb::Models::Price::GroupedTiered::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::GroupedTiered::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::GroupedTiered::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::GroupedTiered::Minimum::Filter::field,
+              operator: Orb::Models::Price::GroupedTiered::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::GroupedTiered::Minimum::Filter::field,
+              operator: Orb::Models::Price::GroupedTiered::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::GroupedTiered::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::GroupedTiered::Minimum::Filter::operator]
+            end
+          end
         end
 
         type price_type = :usage_price | :fixed_price
@@ -4024,41 +5366,163 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredWithMinimum::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::TieredWithMinimum::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredWithMinimum::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredWithMinimum::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::TieredWithMinimum::Maximum::Filter::field,
+              operator: Orb::Models::Price::TieredWithMinimum::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::TieredWithMinimum::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::TieredWithMinimum::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::TieredWithMinimum::Maximum::Filter::field,
+              operator: Orb::Models::Price::TieredWithMinimum::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::TieredWithMinimum::Maximum::Filter::field,
+              operator: Orb::Models::Price::TieredWithMinimum::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::TieredWithMinimum::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::TieredWithMinimum::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredWithMinimum::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::TieredWithMinimum::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredWithMinimum::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredWithMinimum::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::TieredWithMinimum::Minimum::Filter::field,
+              operator: Orb::Models::Price::TieredWithMinimum::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::TieredWithMinimum::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::TieredWithMinimum::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::TieredWithMinimum::Minimum::Filter::field,
+              operator: Orb::Models::Price::TieredWithMinimum::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::TieredWithMinimum::Minimum::Filter::field,
+              operator: Orb::Models::Price::TieredWithMinimum::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::TieredWithMinimum::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::TieredWithMinimum::Minimum::Filter::operator]
+            end
+          end
         end
 
         type price_type = :usage_price | :fixed_price
@@ -4343,41 +5807,163 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredPackageWithMinimum::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::TieredPackageWithMinimum::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredPackageWithMinimum::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredPackageWithMinimum::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::TieredPackageWithMinimum::Maximum::Filter::field,
+              operator: Orb::Models::Price::TieredPackageWithMinimum::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::TieredPackageWithMinimum::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::TieredPackageWithMinimum::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::TieredPackageWithMinimum::Maximum::Filter::field,
+              operator: Orb::Models::Price::TieredPackageWithMinimum::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::TieredPackageWithMinimum::Maximum::Filter::field,
+              operator: Orb::Models::Price::TieredPackageWithMinimum::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::TieredPackageWithMinimum::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::TieredPackageWithMinimum::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredPackageWithMinimum::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::TieredPackageWithMinimum::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredPackageWithMinimum::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredPackageWithMinimum::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::TieredPackageWithMinimum::Minimum::Filter::field,
+              operator: Orb::Models::Price::TieredPackageWithMinimum::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::TieredPackageWithMinimum::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::TieredPackageWithMinimum::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::TieredPackageWithMinimum::Minimum::Filter::field,
+              operator: Orb::Models::Price::TieredPackageWithMinimum::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::TieredPackageWithMinimum::Minimum::Filter::field,
+              operator: Orb::Models::Price::TieredPackageWithMinimum::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::TieredPackageWithMinimum::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::TieredPackageWithMinimum::Minimum::Filter::operator]
+            end
+          end
         end
 
         type price_type = :usage_price | :fixed_price
@@ -4662,41 +6248,163 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::PackageWithAllocation::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::PackageWithAllocation::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::PackageWithAllocation::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::PackageWithAllocation::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::PackageWithAllocation::Maximum::Filter::field,
+              operator: Orb::Models::Price::PackageWithAllocation::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::PackageWithAllocation::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::PackageWithAllocation::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::PackageWithAllocation::Maximum::Filter::field,
+              operator: Orb::Models::Price::PackageWithAllocation::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::PackageWithAllocation::Maximum::Filter::field,
+              operator: Orb::Models::Price::PackageWithAllocation::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::PackageWithAllocation::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::PackageWithAllocation::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::PackageWithAllocation::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::PackageWithAllocation::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::PackageWithAllocation::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::PackageWithAllocation::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::PackageWithAllocation::Minimum::Filter::field,
+              operator: Orb::Models::Price::PackageWithAllocation::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::PackageWithAllocation::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::PackageWithAllocation::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::PackageWithAllocation::Minimum::Filter::field,
+              operator: Orb::Models::Price::PackageWithAllocation::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::PackageWithAllocation::Minimum::Filter::field,
+              operator: Orb::Models::Price::PackageWithAllocation::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::PackageWithAllocation::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::PackageWithAllocation::Minimum::Filter::operator]
+            end
+          end
         end
 
         type price_type = :usage_price | :fixed_price
@@ -4981,41 +6689,163 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::UnitWithPercent::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::UnitWithPercent::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::UnitWithPercent::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::UnitWithPercent::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::UnitWithPercent::Maximum::Filter::field,
+              operator: Orb::Models::Price::UnitWithPercent::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::UnitWithPercent::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::UnitWithPercent::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::UnitWithPercent::Maximum::Filter::field,
+              operator: Orb::Models::Price::UnitWithPercent::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::UnitWithPercent::Maximum::Filter::field,
+              operator: Orb::Models::Price::UnitWithPercent::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::UnitWithPercent::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::UnitWithPercent::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::UnitWithPercent::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::UnitWithPercent::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::UnitWithPercent::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::UnitWithPercent::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::UnitWithPercent::Minimum::Filter::field,
+              operator: Orb::Models::Price::UnitWithPercent::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::UnitWithPercent::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::UnitWithPercent::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::UnitWithPercent::Minimum::Filter::field,
+              operator: Orb::Models::Price::UnitWithPercent::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::UnitWithPercent::Minimum::Filter::field,
+              operator: Orb::Models::Price::UnitWithPercent::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::UnitWithPercent::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::UnitWithPercent::Minimum::Filter::operator]
+            end
+          end
         end
 
         type price_type = :usage_price | :fixed_price
@@ -5351,41 +7181,163 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::MatrixWithAllocation::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::MatrixWithAllocation::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::MatrixWithAllocation::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::MatrixWithAllocation::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::MatrixWithAllocation::Maximum::Filter::field,
+              operator: Orb::Models::Price::MatrixWithAllocation::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::MatrixWithAllocation::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::MatrixWithAllocation::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::MatrixWithAllocation::Maximum::Filter::field,
+              operator: Orb::Models::Price::MatrixWithAllocation::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::MatrixWithAllocation::Maximum::Filter::field,
+              operator: Orb::Models::Price::MatrixWithAllocation::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::MatrixWithAllocation::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::MatrixWithAllocation::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::MatrixWithAllocation::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::MatrixWithAllocation::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::MatrixWithAllocation::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::MatrixWithAllocation::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::MatrixWithAllocation::Minimum::Filter::field,
+              operator: Orb::Models::Price::MatrixWithAllocation::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::MatrixWithAllocation::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::MatrixWithAllocation::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::MatrixWithAllocation::Minimum::Filter::field,
+              operator: Orb::Models::Price::MatrixWithAllocation::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::MatrixWithAllocation::Minimum::Filter::field,
+              operator: Orb::Models::Price::MatrixWithAllocation::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::MatrixWithAllocation::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::MatrixWithAllocation::Minimum::Filter::operator]
+            end
+          end
         end
 
         type price_type = :usage_price | :fixed_price
@@ -5670,41 +7622,163 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredWithProration::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::TieredWithProration::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredWithProration::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredWithProration::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::TieredWithProration::Maximum::Filter::field,
+              operator: Orb::Models::Price::TieredWithProration::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::TieredWithProration::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::TieredWithProration::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::TieredWithProration::Maximum::Filter::field,
+              operator: Orb::Models::Price::TieredWithProration::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::TieredWithProration::Maximum::Filter::field,
+              operator: Orb::Models::Price::TieredWithProration::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::TieredWithProration::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::TieredWithProration::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredWithProration::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::TieredWithProration::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredWithProration::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::TieredWithProration::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::TieredWithProration::Minimum::Filter::field,
+              operator: Orb::Models::Price::TieredWithProration::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::TieredWithProration::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::TieredWithProration::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::TieredWithProration::Minimum::Filter::field,
+              operator: Orb::Models::Price::TieredWithProration::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::TieredWithProration::Minimum::Filter::field,
+              operator: Orb::Models::Price::TieredWithProration::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::TieredWithProration::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::TieredWithProration::Minimum::Filter::operator]
+            end
+          end
         end
 
         type price_type = :usage_price | :fixed_price
@@ -5989,41 +8063,163 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::UnitWithProration::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::UnitWithProration::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::UnitWithProration::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::UnitWithProration::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::UnitWithProration::Maximum::Filter::field,
+              operator: Orb::Models::Price::UnitWithProration::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::UnitWithProration::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::UnitWithProration::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::UnitWithProration::Maximum::Filter::field,
+              operator: Orb::Models::Price::UnitWithProration::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::UnitWithProration::Maximum::Filter::field,
+              operator: Orb::Models::Price::UnitWithProration::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::UnitWithProration::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::UnitWithProration::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::UnitWithProration::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::UnitWithProration::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::UnitWithProration::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::UnitWithProration::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::UnitWithProration::Minimum::Filter::field,
+              operator: Orb::Models::Price::UnitWithProration::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::UnitWithProration::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::UnitWithProration::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::UnitWithProration::Minimum::Filter::field,
+              operator: Orb::Models::Price::UnitWithProration::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::UnitWithProration::Minimum::Filter::field,
+              operator: Orb::Models::Price::UnitWithProration::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::UnitWithProration::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::UnitWithProration::Minimum::Filter::operator]
+            end
+          end
         end
 
         type price_type = :usage_price | :fixed_price
@@ -6308,41 +8504,163 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedAllocation::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::GroupedAllocation::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedAllocation::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedAllocation::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::GroupedAllocation::Maximum::Filter::field,
+              operator: Orb::Models::Price::GroupedAllocation::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::GroupedAllocation::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::GroupedAllocation::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::GroupedAllocation::Maximum::Filter::field,
+              operator: Orb::Models::Price::GroupedAllocation::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::GroupedAllocation::Maximum::Filter::field,
+              operator: Orb::Models::Price::GroupedAllocation::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::GroupedAllocation::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::GroupedAllocation::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedAllocation::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::GroupedAllocation::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedAllocation::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedAllocation::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::GroupedAllocation::Minimum::Filter::field,
+              operator: Orb::Models::Price::GroupedAllocation::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::GroupedAllocation::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::GroupedAllocation::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::GroupedAllocation::Minimum::Filter::field,
+              operator: Orb::Models::Price::GroupedAllocation::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::GroupedAllocation::Minimum::Filter::field,
+              operator: Orb::Models::Price::GroupedAllocation::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::GroupedAllocation::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::GroupedAllocation::Minimum::Filter::operator]
+            end
+          end
         end
 
         type price_type = :usage_price | :fixed_price
@@ -6627,41 +8945,163 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedWithProratedMinimum::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::GroupedWithProratedMinimum::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedWithProratedMinimum::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedWithProratedMinimum::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::GroupedWithProratedMinimum::Maximum::Filter::field,
+              operator: Orb::Models::Price::GroupedWithProratedMinimum::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::GroupedWithProratedMinimum::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::GroupedWithProratedMinimum::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::GroupedWithProratedMinimum::Maximum::Filter::field,
+              operator: Orb::Models::Price::GroupedWithProratedMinimum::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::GroupedWithProratedMinimum::Maximum::Filter::field,
+              operator: Orb::Models::Price::GroupedWithProratedMinimum::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::GroupedWithProratedMinimum::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::GroupedWithProratedMinimum::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedWithProratedMinimum::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::GroupedWithProratedMinimum::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedWithProratedMinimum::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedWithProratedMinimum::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::GroupedWithProratedMinimum::Minimum::Filter::field,
+              operator: Orb::Models::Price::GroupedWithProratedMinimum::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::GroupedWithProratedMinimum::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::GroupedWithProratedMinimum::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::GroupedWithProratedMinimum::Minimum::Filter::field,
+              operator: Orb::Models::Price::GroupedWithProratedMinimum::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::GroupedWithProratedMinimum::Minimum::Filter::field,
+              operator: Orb::Models::Price::GroupedWithProratedMinimum::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::GroupedWithProratedMinimum::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::GroupedWithProratedMinimum::Minimum::Filter::operator]
+            end
+          end
         end
 
         type price_type = :usage_price | :fixed_price
@@ -6946,41 +9386,163 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedWithMeteredMinimum::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::GroupedWithMeteredMinimum::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedWithMeteredMinimum::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedWithMeteredMinimum::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::GroupedWithMeteredMinimum::Maximum::Filter::field,
+              operator: Orb::Models::Price::GroupedWithMeteredMinimum::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::GroupedWithMeteredMinimum::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::GroupedWithMeteredMinimum::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::GroupedWithMeteredMinimum::Maximum::Filter::field,
+              operator: Orb::Models::Price::GroupedWithMeteredMinimum::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::GroupedWithMeteredMinimum::Maximum::Filter::field,
+              operator: Orb::Models::Price::GroupedWithMeteredMinimum::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::GroupedWithMeteredMinimum::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::GroupedWithMeteredMinimum::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedWithMeteredMinimum::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::GroupedWithMeteredMinimum::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedWithMeteredMinimum::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedWithMeteredMinimum::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::GroupedWithMeteredMinimum::Minimum::Filter::field,
+              operator: Orb::Models::Price::GroupedWithMeteredMinimum::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::GroupedWithMeteredMinimum::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::GroupedWithMeteredMinimum::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::GroupedWithMeteredMinimum::Minimum::Filter::field,
+              operator: Orb::Models::Price::GroupedWithMeteredMinimum::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::GroupedWithMeteredMinimum::Minimum::Filter::field,
+              operator: Orb::Models::Price::GroupedWithMeteredMinimum::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::GroupedWithMeteredMinimum::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::GroupedWithMeteredMinimum::Minimum::Filter::operator]
+            end
+          end
         end
 
         type price_type = :usage_price | :fixed_price
@@ -7265,41 +9827,163 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::MatrixWithDisplayName::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::MatrixWithDisplayName::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::MatrixWithDisplayName::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::MatrixWithDisplayName::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::MatrixWithDisplayName::Maximum::Filter::field,
+              operator: Orb::Models::Price::MatrixWithDisplayName::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::MatrixWithDisplayName::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::MatrixWithDisplayName::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::MatrixWithDisplayName::Maximum::Filter::field,
+              operator: Orb::Models::Price::MatrixWithDisplayName::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::MatrixWithDisplayName::Maximum::Filter::field,
+              operator: Orb::Models::Price::MatrixWithDisplayName::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::MatrixWithDisplayName::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::MatrixWithDisplayName::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::MatrixWithDisplayName::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::MatrixWithDisplayName::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::MatrixWithDisplayName::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::MatrixWithDisplayName::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::MatrixWithDisplayName::Minimum::Filter::field,
+              operator: Orb::Models::Price::MatrixWithDisplayName::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::MatrixWithDisplayName::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::MatrixWithDisplayName::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::MatrixWithDisplayName::Minimum::Filter::field,
+              operator: Orb::Models::Price::MatrixWithDisplayName::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::MatrixWithDisplayName::Minimum::Filter::field,
+              operator: Orb::Models::Price::MatrixWithDisplayName::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::MatrixWithDisplayName::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::MatrixWithDisplayName::Minimum::Filter::operator]
+            end
+          end
         end
 
         type price_type = :usage_price | :fixed_price
@@ -7584,41 +10268,163 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::BulkWithProration::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::BulkWithProration::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::BulkWithProration::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::BulkWithProration::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::BulkWithProration::Maximum::Filter::field,
+              operator: Orb::Models::Price::BulkWithProration::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::BulkWithProration::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::BulkWithProration::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::BulkWithProration::Maximum::Filter::field,
+              operator: Orb::Models::Price::BulkWithProration::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::BulkWithProration::Maximum::Filter::field,
+              operator: Orb::Models::Price::BulkWithProration::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::BulkWithProration::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::BulkWithProration::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::BulkWithProration::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::BulkWithProration::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::BulkWithProration::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::BulkWithProration::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::BulkWithProration::Minimum::Filter::field,
+              operator: Orb::Models::Price::BulkWithProration::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::BulkWithProration::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::BulkWithProration::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::BulkWithProration::Minimum::Filter::field,
+              operator: Orb::Models::Price::BulkWithProration::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::BulkWithProration::Minimum::Filter::field,
+              operator: Orb::Models::Price::BulkWithProration::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::BulkWithProration::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::BulkWithProration::Minimum::Filter::operator]
+            end
+          end
         end
 
         type price_type = :usage_price | :fixed_price
@@ -7903,41 +10709,163 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedTieredPackage::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::GroupedTieredPackage::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedTieredPackage::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedTieredPackage::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::GroupedTieredPackage::Maximum::Filter::field,
+              operator: Orb::Models::Price::GroupedTieredPackage::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::GroupedTieredPackage::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::GroupedTieredPackage::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::GroupedTieredPackage::Maximum::Filter::field,
+              operator: Orb::Models::Price::GroupedTieredPackage::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::GroupedTieredPackage::Maximum::Filter::field,
+              operator: Orb::Models::Price::GroupedTieredPackage::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::GroupedTieredPackage::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::GroupedTieredPackage::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedTieredPackage::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::GroupedTieredPackage::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedTieredPackage::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::GroupedTieredPackage::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::GroupedTieredPackage::Minimum::Filter::field,
+              operator: Orb::Models::Price::GroupedTieredPackage::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::GroupedTieredPackage::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::GroupedTieredPackage::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::GroupedTieredPackage::Minimum::Filter::field,
+              operator: Orb::Models::Price::GroupedTieredPackage::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::GroupedTieredPackage::Minimum::Filter::field,
+              operator: Orb::Models::Price::GroupedTieredPackage::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::GroupedTieredPackage::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::GroupedTieredPackage::Minimum::Filter::operator]
+            end
+          end
         end
 
         type price_type = :usage_price | :fixed_price
@@ -8222,41 +11150,163 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::MaxGroupTieredPackage::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::MaxGroupTieredPackage::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::MaxGroupTieredPackage::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::MaxGroupTieredPackage::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::MaxGroupTieredPackage::Maximum::Filter::field,
+              operator: Orb::Models::Price::MaxGroupTieredPackage::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::MaxGroupTieredPackage::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::MaxGroupTieredPackage::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::MaxGroupTieredPackage::Maximum::Filter::field,
+              operator: Orb::Models::Price::MaxGroupTieredPackage::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::MaxGroupTieredPackage::Maximum::Filter::field,
+              operator: Orb::Models::Price::MaxGroupTieredPackage::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::MaxGroupTieredPackage::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::MaxGroupTieredPackage::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::MaxGroupTieredPackage::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::MaxGroupTieredPackage::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::MaxGroupTieredPackage::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::MaxGroupTieredPackage::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::MaxGroupTieredPackage::Minimum::Filter::field,
+              operator: Orb::Models::Price::MaxGroupTieredPackage::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::MaxGroupTieredPackage::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::MaxGroupTieredPackage::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::MaxGroupTieredPackage::Minimum::Filter::field,
+              operator: Orb::Models::Price::MaxGroupTieredPackage::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::MaxGroupTieredPackage::Minimum::Filter::field,
+              operator: Orb::Models::Price::MaxGroupTieredPackage::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::MaxGroupTieredPackage::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::MaxGroupTieredPackage::Minimum::Filter::operator]
+            end
+          end
         end
 
         type price_type = :usage_price | :fixed_price
@@ -8541,41 +11591,163 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::ScalableMatrixWithUnitPricing::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::ScalableMatrixWithUnitPricing::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::ScalableMatrixWithUnitPricing::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::ScalableMatrixWithUnitPricing::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::ScalableMatrixWithUnitPricing::Maximum::Filter::field,
+              operator: Orb::Models::Price::ScalableMatrixWithUnitPricing::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::ScalableMatrixWithUnitPricing::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::ScalableMatrixWithUnitPricing::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::ScalableMatrixWithUnitPricing::Maximum::Filter::field,
+              operator: Orb::Models::Price::ScalableMatrixWithUnitPricing::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::ScalableMatrixWithUnitPricing::Maximum::Filter::field,
+              operator: Orb::Models::Price::ScalableMatrixWithUnitPricing::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithUnitPricing::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithUnitPricing::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::ScalableMatrixWithUnitPricing::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::ScalableMatrixWithUnitPricing::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::ScalableMatrixWithUnitPricing::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::ScalableMatrixWithUnitPricing::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::ScalableMatrixWithUnitPricing::Minimum::Filter::field,
+              operator: Orb::Models::Price::ScalableMatrixWithUnitPricing::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::ScalableMatrixWithUnitPricing::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::ScalableMatrixWithUnitPricing::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::ScalableMatrixWithUnitPricing::Minimum::Filter::field,
+              operator: Orb::Models::Price::ScalableMatrixWithUnitPricing::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::ScalableMatrixWithUnitPricing::Minimum::Filter::field,
+              operator: Orb::Models::Price::ScalableMatrixWithUnitPricing::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithUnitPricing::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithUnitPricing::Minimum::Filter::operator]
+            end
+          end
         end
 
         type price_type = :usage_price | :fixed_price
@@ -8860,41 +12032,163 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::ScalableMatrixWithTieredPricing::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::ScalableMatrixWithTieredPricing::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::ScalableMatrixWithTieredPricing::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::ScalableMatrixWithTieredPricing::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::ScalableMatrixWithTieredPricing::Maximum::Filter::field,
+              operator: Orb::Models::Price::ScalableMatrixWithTieredPricing::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::ScalableMatrixWithTieredPricing::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::ScalableMatrixWithTieredPricing::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::ScalableMatrixWithTieredPricing::Maximum::Filter::field,
+              operator: Orb::Models::Price::ScalableMatrixWithTieredPricing::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::ScalableMatrixWithTieredPricing::Maximum::Filter::field,
+              operator: Orb::Models::Price::ScalableMatrixWithTieredPricing::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithTieredPricing::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithTieredPricing::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::ScalableMatrixWithTieredPricing::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::ScalableMatrixWithTieredPricing::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::ScalableMatrixWithTieredPricing::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::ScalableMatrixWithTieredPricing::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::ScalableMatrixWithTieredPricing::Minimum::Filter::field,
+              operator: Orb::Models::Price::ScalableMatrixWithTieredPricing::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::ScalableMatrixWithTieredPricing::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::ScalableMatrixWithTieredPricing::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::ScalableMatrixWithTieredPricing::Minimum::Filter::field,
+              operator: Orb::Models::Price::ScalableMatrixWithTieredPricing::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::ScalableMatrixWithTieredPricing::Minimum::Filter::field,
+              operator: Orb::Models::Price::ScalableMatrixWithTieredPricing::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithTieredPricing::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithTieredPricing::Minimum::Filter::operator]
+            end
+          end
         end
 
         type price_type = :usage_price | :fixed_price
@@ -9179,41 +12473,163 @@ module Orb
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::CumulativeGroupedBulk::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::CumulativeGroupedBulk::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::CumulativeGroupedBulk::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::CumulativeGroupedBulk::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::CumulativeGroupedBulk::Maximum::Filter::field,
+              operator: Orb::Models::Price::CumulativeGroupedBulk::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::CumulativeGroupedBulk::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::CumulativeGroupedBulk::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::CumulativeGroupedBulk::Maximum::Filter::field,
+              operator: Orb::Models::Price::CumulativeGroupedBulk::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::CumulativeGroupedBulk::Maximum::Filter::field,
+              operator: Orb::Models::Price::CumulativeGroupedBulk::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::CumulativeGroupedBulk::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::CumulativeGroupedBulk::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::CumulativeGroupedBulk::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Price::CumulativeGroupedBulk::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::CumulativeGroupedBulk::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Price::CumulativeGroupedBulk::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::Price::CumulativeGroupedBulk::Minimum::Filter::field,
+              operator: Orb::Models::Price::CumulativeGroupedBulk::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Price::CumulativeGroupedBulk::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::Price::CumulativeGroupedBulk::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Price::CumulativeGroupedBulk::Minimum::Filter::field,
+              operator: Orb::Models::Price::CumulativeGroupedBulk::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Price::CumulativeGroupedBulk::Minimum::Filter::field,
+              operator: Orb::Models::Price::CumulativeGroupedBulk::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::Price::CumulativeGroupedBulk::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Price::CumulativeGroupedBulk::Minimum::Filter::operator]
+            end
+          end
         end
 
         type price_type = :usage_price | :fixed_price

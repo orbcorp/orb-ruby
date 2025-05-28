@@ -54,7 +54,8 @@ module Orb
             T.nilable(
               T.any(
                 Orb::CustomerCreateParams::TaxConfiguration::Avalara::OrHash,
-                Orb::CustomerCreateParams::TaxConfiguration::Taxjar::OrHash
+                Orb::CustomerCreateParams::TaxConfiguration::Taxjar::OrHash,
+                Orb::CustomerCreateParams::TaxConfiguration::Sphere::OrHash
               )
             ),
           tax_id: T.nilable(Orb::CustomerCreateParams::TaxID::OrHash),
@@ -252,7 +253,8 @@ module Orb
             T.nilable(
               T.any(
                 Orb::CustomerUpdateParams::TaxConfiguration::Avalara::OrHash,
-                Orb::CustomerUpdateParams::TaxConfiguration::Taxjar::OrHash
+                Orb::CustomerUpdateParams::TaxConfiguration::Taxjar::OrHash,
+                Orb::CustomerUpdateParams::TaxConfiguration::Sphere::OrHash
               )
             ),
           tax_id: T.nilable(Orb::CustomerUpdateParams::TaxID::OrHash),
@@ -453,10 +455,7 @@ module Orb
       # **Note**: This operation happens asynchronously and can be expected to take a
       # few minutes to propagate to related resources. However, querying for the
       # customer on subsequent GET requests while deletion is in process will reflect
-      # its deletion with a `deleted: true` property. Once the customer deletion has
-      # been fully processed, the customer will not be returned in the API.
-      #
-      # On successful processing, this returns an empty dictionary (`{}`) in the API.
+      # its deletion.
       sig do
         params(
           customer_id: String,
@@ -570,7 +569,8 @@ module Orb
             T.nilable(
               T.any(
                 Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Avalara::OrHash,
-                Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Taxjar::OrHash
+                Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Taxjar::OrHash,
+                Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Sphere::OrHash
               )
             ),
           tax_id:

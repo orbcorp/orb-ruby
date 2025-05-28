@@ -65,7 +65,16 @@ module Orb
       #   @return [Symbol, Orb::Models::Alert::Type]
       required :type, enum: -> { Orb::Alert::Type }
 
-      # @!method initialize(id:, created_at:, currency:, customer:, enabled:, metric:, plan:, subscription:, thresholds:, type:)
+      # @!attribute balance_alert_status
+      #   The current status of the alert. This field is only present for credit balance
+      #   alerts.
+      #
+      #   @return [Array<Orb::Models::Alert::BalanceAlertStatus>, nil]
+      optional :balance_alert_status,
+               -> { Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus] },
+               nil?: true
+
+      # @!method initialize(id:, created_at:, currency:, customer:, enabled:, metric:, plan:, subscription:, thresholds:, type:, balance_alert_status: nil)
       #   Some parameter documentations has been truncated, see {Orb::Models::Alert} for
       #   more details.
       #
@@ -94,6 +103,8 @@ module Orb
       #   @param thresholds [Array<Orb::Models::Alert::Threshold>, nil] The thresholds that define the conditions under which the alert will be triggere
       #
       #   @param type [Symbol, Orb::Models::Alert::Type] The type of alert. This must be a valid alert type.
+      #
+      #   @param balance_alert_status [Array<Orb::Models::Alert::BalanceAlertStatus>, nil] The current status of the alert. This field is only present for credit balance a
 
       # @see Orb::Models::Alert#customer
       class Customer < Orb::Internal::Type::BaseModel
@@ -213,6 +224,27 @@ module Orb
 
         # @!method self.values
         #   @return [Array<Symbol>]
+      end
+
+      class BalanceAlertStatus < Orb::Internal::Type::BaseModel
+        # @!attribute in_alert
+        #   Whether the alert is currently in-alert or not.
+        #
+        #   @return [Boolean]
+        required :in_alert, Orb::Internal::Type::Boolean
+
+        # @!attribute threshold_value
+        #   The value of the threshold that defines the alert status.
+        #
+        #   @return [Float]
+        required :threshold_value, Float
+
+        # @!method initialize(in_alert:, threshold_value:)
+        #   Alert status is used to determine if an alert is currently in-alert or not.
+        #
+        #   @param in_alert [Boolean] Whether the alert is currently in-alert or not.
+        #
+        #   @param threshold_value [Float] The value of the threshold that defines the alert status.
       end
     end
   end

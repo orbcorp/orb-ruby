@@ -5,7 +5,10 @@ require_relative "../test_helper"
 class Orb::Test::Resources::CreditNotesTest < Orb::Test::ResourceTest
   def test_create_required_params
     response =
-      @orb.credit_notes.create(line_items: [{amount: "amount", invoice_line_item_id: "4khy3nwzktxv7"}])
+      @orb.credit_notes.create(
+        line_items: [{amount: "amount", invoice_line_item_id: "4khy3nwzktxv7"}],
+        reason: :duplicate
+      )
 
     assert_pattern do
       response => Orb::CreditNote

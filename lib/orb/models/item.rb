@@ -19,19 +19,36 @@ module Orb
       #   @return [Array<Orb::Models::Item::ExternalConnection>]
       required :external_connections, -> { Orb::Internal::Type::ArrayOf[Orb::Item::ExternalConnection] }
 
+      # @!attribute metadata
+      #   User specified key-value pairs for the resource. If not present, this defaults
+      #   to an empty dictionary. Individual keys can be removed by setting the value to
+      #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+      #   `null`.
+      #
+      #   @return [Hash{Symbol=>String}]
+      required :metadata, Orb::Internal::Type::HashOf[String]
+
       # @!attribute name
       #
       #   @return [String]
       required :name, String
 
-      # @!method initialize(id:, created_at:, external_connections:, name:)
+      # @!method initialize(id:, created_at:, external_connections:, metadata:, name:)
+      #   Some parameter documentations has been truncated, see {Orb::Models::Item} for
+      #   more details.
+      #
       #   The Item resource represents a sellable product or good. Items are associated
       #   with all line items, billable metrics, and prices and are used for defining
       #   external sync behavior for invoices and tax calculation purposes.
       #
       #   @param id [String]
+      #
       #   @param created_at [Time]
+      #
       #   @param external_connections [Array<Orb::Models::Item::ExternalConnection>]
+      #
+      #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+      #
       #   @param name [String]
 
       class ExternalConnection < Orb::Internal::Type::BaseModel

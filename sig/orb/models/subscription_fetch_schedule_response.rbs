@@ -4,7 +4,7 @@ module Orb
       {
         created_at: Time,
         end_date: Time?,
-        plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan,
+        plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan?,
         start_date: Time
       }
 
@@ -13,21 +13,21 @@ module Orb
 
       attr_accessor end_date: Time?
 
-      attr_accessor plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan
+      attr_accessor plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan?
 
       attr_accessor start_date: Time
 
       def initialize: (
         created_at: Time,
         end_date: Time?,
-        plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan,
+        plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan?,
         start_date: Time
       ) -> void
 
       def to_hash: -> {
         created_at: Time,
         end_date: Time?,
-        plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan,
+        plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan?,
         start_date: Time
       }
 

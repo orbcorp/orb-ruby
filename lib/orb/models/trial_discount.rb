@@ -3,17 +3,17 @@
 module Orb
   module Models
     class TrialDiscount < Orb::Internal::Type::BaseModel
-      # @!attribute applies_to_price_ids
-      #   List of price_ids that this discount applies to. For plan/plan phase discounts,
-      #   this can be a subset of prices.
-      #
-      #   @return [Array<String>]
-      required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
-
       # @!attribute discount_type
       #
       #   @return [Symbol, Orb::Models::TrialDiscount::DiscountType]
       required :discount_type, enum: -> { Orb::TrialDiscount::DiscountType }
+
+      # @!attribute applies_to_price_ids
+      #   List of price_ids that this discount applies to. For plan/plan phase discounts,
+      #   this can be a subset of prices.
+      #
+      #   @return [Array<String>, nil]
+      optional :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
 
       # @!attribute reason
       #
@@ -32,13 +32,13 @@ module Orb
       #   @return [Float, nil]
       optional :trial_percentage_discount, Float, nil?: true
 
-      # @!method initialize(applies_to_price_ids:, discount_type:, reason: nil, trial_amount_discount: nil, trial_percentage_discount: nil)
+      # @!method initialize(discount_type:, applies_to_price_ids: nil, reason: nil, trial_amount_discount: nil, trial_percentage_discount: nil)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::TrialDiscount} for more details.
       #
-      #   @param applies_to_price_ids [Array<String>] List of price_ids that this discount applies to. For plan/plan phase discounts,
-      #
       #   @param discount_type [Symbol, Orb::Models::TrialDiscount::DiscountType]
+      #
+      #   @param applies_to_price_ids [Array<String>, nil] List of price_ids that this discount applies to. For plan/plan phase discounts,
       #
       #   @param reason [String, nil]
       #

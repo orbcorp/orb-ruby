@@ -102,6 +102,10 @@ module Orb
             sig { returns(Float) }
             attr_accessor :starting_balance
 
+            # If the increment resulted in invoice creation, the list of created invoices
+            sig { returns(T.nilable(T::Array[Orb::Invoice])) }
+            attr_accessor :created_invoices
+
             sig do
               params(
                 id: String,
@@ -119,6 +123,7 @@ module Orb
                 ledger_sequence_number: Integer,
                 metadata: T::Hash[Symbol, String],
                 starting_balance: Float,
+                created_invoices: T.nilable(T::Array[Orb::Invoice::OrHash]),
                 entry_type: Symbol
               ).returns(T.attached_class)
             end
@@ -139,6 +144,8 @@ module Orb
               # `null`.
               metadata:,
               starting_balance:,
+              # If the increment resulted in invoice creation, the list of created invoices
+              created_invoices: nil,
               entry_type: :increment
             )
             end
@@ -161,7 +168,8 @@ module Orb
                   entry_type: Symbol,
                   ledger_sequence_number: Integer,
                   metadata: T::Hash[Symbol, String],
-                  starting_balance: Float
+                  starting_balance: Float,
+                  created_invoices: T.nilable(T::Array[Orb::Invoice])
                 }
               )
             end

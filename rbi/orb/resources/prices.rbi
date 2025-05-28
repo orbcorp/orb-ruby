@@ -7,7 +7,7 @@ module Orb
       attr_reader :external_price_id
 
       # This endpoint is used to create a [price](/product-catalog/price-configuration).
-      # A price created using this endpoint is always an add-on, meaning that it’s not
+      # A price created using this endpoint is always an add-on, meaning that it's not
       # associated with a specific plan and can instead be individually added to
       # subscriptions, including subscriptions on different plans.
       #
@@ -60,6 +60,10 @@ module Orb
               Orb::PriceCreateParams::BillingCycleConfiguration::OrHash
             ),
           conversion_rate: T.nilable(Float),
+          dimensional_price_configuration:
+            T.nilable(
+              Orb::PriceCreateParams::DimensionalPriceConfiguration::OrHash
+            ),
           external_price_id: T.nilable(String),
           fixed_price_quantity: T.nilable(Float),
           invoice_grouping_key: T.nilable(String),
@@ -120,6 +124,8 @@ module Orb
         billing_cycle_configuration: nil,
         # The per unit conversion rate of the price currency to the invoicing currency.
         conversion_rate: nil,
+        # For dimensional price: specifies a price group and dimension values
+        dimensional_price_configuration: nil,
         # An alias for the price.
         external_price_id: nil,
         # If the Price represents a fixed cost, this represents the quantity of units
@@ -177,13 +183,23 @@ module Orb
       )
       end
 
-      # This endpoint is used to evaluate the output of a price for a given customer and
-      # time range. It enables filtering and grouping the output using
+      # This endpoint is used to evaluate the output of price(s) for a given customer
+      # and time range over either ingested events or preview events. It enables
+      # filtering and grouping the output using
       # [computed properties](/extensibility/advanced-metrics#computed-properties),
       # supporting the following workflows:
       #
       # 1. Showing detailed usage and costs to the end customer.
       # 2. Auditing subtotals on invoice line items.
+      #
+      # Prices may either reference existing prices in your Orb account or be defined
+      # inline in the request body. Up to 100 prices can be evaluated in a single
+      # request.
+      #
+      # Price evaluation by default uses ingested events, but you can also provide a
+      # list of preview events to use instead. Up to 500 preview events can be provided
+      # in a single request. When using ingested events, the start of the time range
+      # must be no more than 100 days ago.
       #
       # For these workflows, the expressiveness of computed properties in both the
       # filters and grouping is critical. For example, if you'd like to show your
@@ -194,40 +210,34 @@ module Orb
       # with the following `filter`:
       # `my_property = 'foo' AND my_other_property = 'bar'`.
       #
-      # By default, the start of the time range must be no more than 100 days ago and
-      # the length of the results must be no greater than 1000. Note that this is a POST
+      # The length of the results must be no greater than 1000. Note that this is a POST
       # endpoint rather than a GET endpoint because it employs a JSON body rather than
       # query parameters.
       sig do
         params(
-          price_id: String,
           timeframe_end: Time,
           timeframe_start: Time,
           customer_id: T.nilable(String),
+          events: T.nilable(T::Array[Orb::PriceEvaluateParams::Event::OrHash]),
           external_customer_id: T.nilable(String),
-          filter: T.nilable(String),
-          grouping_keys: T::Array[String],
+          price_evaluations:
+            T::Array[Orb::PriceEvaluateParams::PriceEvaluation::OrHash],
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Models::PriceEvaluateResponse)
       end
       def evaluate(
-        price_id,
         # The exclusive upper bound for event timestamps
         timeframe_end:,
         # The inclusive lower bound for event timestamps
         timeframe_start:,
         # The ID of the customer to which this evaluation is scoped.
         customer_id: nil,
+        # Optional list of preview events to use instead of actual usage data (max 500)
+        events: nil,
         # The external customer ID of the customer to which this evaluation is scoped.
         external_customer_id: nil,
-        # A boolean
-        # [computed property](/extensibility/advanced-metrics#computed-properties) used to
-        # filter the underlying billable metric
-        filter: nil,
-        # Properties (or
-        # [computed properties](/extensibility/advanced-metrics#computed-properties)) used
-        # to group the underlying billable metric
-        grouping_keys: nil,
+        # List of prices to evaluate (max 100)
+        price_evaluations: nil,
         request_options: {}
       )
       end

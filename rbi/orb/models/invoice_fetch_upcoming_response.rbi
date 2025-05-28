@@ -2700,6 +2700,16 @@ module Orb
             sig { returns(T::Array[String]) }
             attr_accessor :applies_to_price_ids
 
+            # The filters that determine which prices to apply this adjustment to.
+            sig do
+              returns(
+                T::Array[
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter
+                ]
+              )
+            end
+            attr_accessor :filters
+
             # True for adjustments that apply to an entire invocice, false for adjustments
             # that apply to only one price.
             sig { returns(T::Boolean) }
@@ -2719,6 +2729,10 @@ module Orb
                 id: String,
                 amount: String,
                 applies_to_price_ids: T::Array[String],
+                filters:
+                  T::Array[
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::OrHash
+                  ],
                 is_invoice_level: T::Boolean,
                 reason: T.nilable(String),
                 usage_discount: Float,
@@ -2731,6 +2745,8 @@ module Orb
               amount:,
               # The price IDs that this adjustment applies to.
               applies_to_price_ids:,
+              # The filters that determine which prices to apply this adjustment to.
+              filters:,
               # True for adjustments that apply to an entire invocice, false for adjustments
               # that apply to only one price.
               is_invoice_level:,
@@ -2750,6 +2766,10 @@ module Orb
                   adjustment_type: Symbol,
                   amount: String,
                   applies_to_price_ids: T::Array[String],
+                  filters:
+                    T::Array[
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter
+                    ],
                   is_invoice_level: T::Boolean,
                   reason: T.nilable(String),
                   usage_discount: Float
@@ -2757,6 +2777,154 @@ module Orb
               )
             end
             def to_hash
+            end
+
+            class Filter < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The property of the price to filter on.
+              sig do
+                returns(
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::Field::TaggedSymbol
+                )
+              end
+              attr_accessor :field
+
+              # Should prices that match the filter be included or excluded.
+              sig do
+                returns(
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::Operator::TaggedSymbol
+                )
+              end
+              attr_accessor :operator
+
+              # The IDs or values that match this filter.
+              sig { returns(T::Array[String]) }
+              attr_accessor :values
+
+              sig do
+                params(
+                  field:
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::Field::OrSymbol,
+                  operator:
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::Operator::OrSymbol,
+                  values: T::Array[String]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The property of the price to filter on.
+                field:,
+                # Should prices that match the filter be included or excluded.
+                operator:,
+                # The IDs or values that match this filter.
+                values:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    field:
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::Field::TaggedSymbol,
+                    operator:
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::Operator::TaggedSymbol,
+                    values: T::Array[String]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The property of the price to filter on.
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::Field
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                PRICE_ID =
+                  T.let(
+                    :price_id,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::Field::TaggedSymbol
+                  )
+                ITEM_ID =
+                  T.let(
+                    :item_id,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::Field::TaggedSymbol
+                  )
+                PRICE_TYPE =
+                  T.let(
+                    :price_type,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::Field::TaggedSymbol
+                  )
+                CURRENCY =
+                  T.let(
+                    :currency,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::Field::TaggedSymbol
+                  )
+                PRICING_UNIT_ID =
+                  T.let(
+                    :pricing_unit_id,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::Field::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::Field::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Should prices that match the filter be included or excluded.
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::Operator
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                INCLUDES =
+                  T.let(
+                    :includes,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::Operator::TaggedSymbol
+                  )
+                EXCLUDES =
+                  T.let(
+                    :excludes,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::Operator::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::Operator::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
             end
           end
 
@@ -2788,6 +2956,16 @@ module Orb
             sig { returns(T::Array[String]) }
             attr_accessor :applies_to_price_ids
 
+            # The filters that determine which prices to apply this adjustment to.
+            sig do
+              returns(
+                T::Array[
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter
+                ]
+              )
+            end
+            attr_accessor :filters
+
             # True for adjustments that apply to an entire invocice, false for adjustments
             # that apply to only one price.
             sig { returns(T::Boolean) }
@@ -2803,6 +2981,10 @@ module Orb
                 amount: String,
                 amount_discount: String,
                 applies_to_price_ids: T::Array[String],
+                filters:
+                  T::Array[
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::OrHash
+                  ],
                 is_invoice_level: T::Boolean,
                 reason: T.nilable(String),
                 adjustment_type: Symbol
@@ -2817,6 +2999,8 @@ module Orb
               amount_discount:,
               # The price IDs that this adjustment applies to.
               applies_to_price_ids:,
+              # The filters that determine which prices to apply this adjustment to.
+              filters:,
               # True for adjustments that apply to an entire invocice, false for adjustments
               # that apply to only one price.
               is_invoice_level:,
@@ -2834,12 +3018,164 @@ module Orb
                   amount: String,
                   amount_discount: String,
                   applies_to_price_ids: T::Array[String],
+                  filters:
+                    T::Array[
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter
+                    ],
                   is_invoice_level: T::Boolean,
                   reason: T.nilable(String)
                 }
               )
             end
             def to_hash
+            end
+
+            class Filter < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The property of the price to filter on.
+              sig do
+                returns(
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::Field::TaggedSymbol
+                )
+              end
+              attr_accessor :field
+
+              # Should prices that match the filter be included or excluded.
+              sig do
+                returns(
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::Operator::TaggedSymbol
+                )
+              end
+              attr_accessor :operator
+
+              # The IDs or values that match this filter.
+              sig { returns(T::Array[String]) }
+              attr_accessor :values
+
+              sig do
+                params(
+                  field:
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::Field::OrSymbol,
+                  operator:
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::Operator::OrSymbol,
+                  values: T::Array[String]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The property of the price to filter on.
+                field:,
+                # Should prices that match the filter be included or excluded.
+                operator:,
+                # The IDs or values that match this filter.
+                values:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    field:
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::Field::TaggedSymbol,
+                    operator:
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::Operator::TaggedSymbol,
+                    values: T::Array[String]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The property of the price to filter on.
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::Field
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                PRICE_ID =
+                  T.let(
+                    :price_id,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::Field::TaggedSymbol
+                  )
+                ITEM_ID =
+                  T.let(
+                    :item_id,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::Field::TaggedSymbol
+                  )
+                PRICE_TYPE =
+                  T.let(
+                    :price_type,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::Field::TaggedSymbol
+                  )
+                CURRENCY =
+                  T.let(
+                    :currency,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::Field::TaggedSymbol
+                  )
+                PRICING_UNIT_ID =
+                  T.let(
+                    :pricing_unit_id,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::Field::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::Field::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Should prices that match the filter be included or excluded.
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::Operator
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                INCLUDES =
+                  T.let(
+                    :includes,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::Operator::TaggedSymbol
+                  )
+                EXCLUDES =
+                  T.let(
+                    :excludes,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::Operator::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::Operator::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
             end
           end
 
@@ -2866,6 +3202,16 @@ module Orb
             sig { returns(T::Array[String]) }
             attr_accessor :applies_to_price_ids
 
+            # The filters that determine which prices to apply this adjustment to.
+            sig do
+              returns(
+                T::Array[
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter
+                ]
+              )
+            end
+            attr_accessor :filters
+
             # True for adjustments that apply to an entire invocice, false for adjustments
             # that apply to only one price.
             sig { returns(T::Boolean) }
@@ -2885,6 +3231,10 @@ module Orb
                 id: String,
                 amount: String,
                 applies_to_price_ids: T::Array[String],
+                filters:
+                  T::Array[
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::OrHash
+                  ],
                 is_invoice_level: T::Boolean,
                 percentage_discount: Float,
                 reason: T.nilable(String),
@@ -2897,6 +3247,8 @@ module Orb
               amount:,
               # The price IDs that this adjustment applies to.
               applies_to_price_ids:,
+              # The filters that determine which prices to apply this adjustment to.
+              filters:,
               # True for adjustments that apply to an entire invocice, false for adjustments
               # that apply to only one price.
               is_invoice_level:,
@@ -2916,6 +3268,10 @@ module Orb
                   adjustment_type: Symbol,
                   amount: String,
                   applies_to_price_ids: T::Array[String],
+                  filters:
+                    T::Array[
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter
+                    ],
                   is_invoice_level: T::Boolean,
                   percentage_discount: Float,
                   reason: T.nilable(String)
@@ -2923,6 +3279,154 @@ module Orb
               )
             end
             def to_hash
+            end
+
+            class Filter < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The property of the price to filter on.
+              sig do
+                returns(
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::Field::TaggedSymbol
+                )
+              end
+              attr_accessor :field
+
+              # Should prices that match the filter be included or excluded.
+              sig do
+                returns(
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::Operator::TaggedSymbol
+                )
+              end
+              attr_accessor :operator
+
+              # The IDs or values that match this filter.
+              sig { returns(T::Array[String]) }
+              attr_accessor :values
+
+              sig do
+                params(
+                  field:
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::Field::OrSymbol,
+                  operator:
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::Operator::OrSymbol,
+                  values: T::Array[String]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The property of the price to filter on.
+                field:,
+                # Should prices that match the filter be included or excluded.
+                operator:,
+                # The IDs or values that match this filter.
+                values:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    field:
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::Field::TaggedSymbol,
+                    operator:
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::Operator::TaggedSymbol,
+                    values: T::Array[String]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The property of the price to filter on.
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::Field
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                PRICE_ID =
+                  T.let(
+                    :price_id,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::Field::TaggedSymbol
+                  )
+                ITEM_ID =
+                  T.let(
+                    :item_id,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::Field::TaggedSymbol
+                  )
+                PRICE_TYPE =
+                  T.let(
+                    :price_type,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::Field::TaggedSymbol
+                  )
+                CURRENCY =
+                  T.let(
+                    :currency,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::Field::TaggedSymbol
+                  )
+                PRICING_UNIT_ID =
+                  T.let(
+                    :pricing_unit_id,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::Field::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::Field::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Should prices that match the filter be included or excluded.
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::Operator
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                INCLUDES =
+                  T.let(
+                    :includes,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::Operator::TaggedSymbol
+                  )
+                EXCLUDES =
+                  T.let(
+                    :excludes,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::Operator::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::Operator::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
             end
           end
 
@@ -2949,6 +3453,16 @@ module Orb
             sig { returns(T::Array[String]) }
             attr_accessor :applies_to_price_ids
 
+            # The filters that determine which prices to apply this adjustment to.
+            sig do
+              returns(
+                T::Array[
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter
+                ]
+              )
+            end
+            attr_accessor :filters
+
             # True for adjustments that apply to an entire invocice, false for adjustments
             # that apply to only one price.
             sig { returns(T::Boolean) }
@@ -2972,6 +3486,10 @@ module Orb
                 id: String,
                 amount: String,
                 applies_to_price_ids: T::Array[String],
+                filters:
+                  T::Array[
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::OrHash
+                  ],
                 is_invoice_level: T::Boolean,
                 item_id: String,
                 minimum_amount: String,
@@ -2985,6 +3503,8 @@ module Orb
               amount:,
               # The price IDs that this adjustment applies to.
               applies_to_price_ids:,
+              # The filters that determine which prices to apply this adjustment to.
+              filters:,
               # True for adjustments that apply to an entire invocice, false for adjustments
               # that apply to only one price.
               is_invoice_level:,
@@ -3006,6 +3526,10 @@ module Orb
                   adjustment_type: Symbol,
                   amount: String,
                   applies_to_price_ids: T::Array[String],
+                  filters:
+                    T::Array[
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter
+                    ],
                   is_invoice_level: T::Boolean,
                   item_id: String,
                   minimum_amount: String,
@@ -3014,6 +3538,154 @@ module Orb
               )
             end
             def to_hash
+            end
+
+            class Filter < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The property of the price to filter on.
+              sig do
+                returns(
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::Field::TaggedSymbol
+                )
+              end
+              attr_accessor :field
+
+              # Should prices that match the filter be included or excluded.
+              sig do
+                returns(
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::Operator::TaggedSymbol
+                )
+              end
+              attr_accessor :operator
+
+              # The IDs or values that match this filter.
+              sig { returns(T::Array[String]) }
+              attr_accessor :values
+
+              sig do
+                params(
+                  field:
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::Field::OrSymbol,
+                  operator:
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::Operator::OrSymbol,
+                  values: T::Array[String]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The property of the price to filter on.
+                field:,
+                # Should prices that match the filter be included or excluded.
+                operator:,
+                # The IDs or values that match this filter.
+                values:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    field:
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::Field::TaggedSymbol,
+                    operator:
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::Operator::TaggedSymbol,
+                    values: T::Array[String]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The property of the price to filter on.
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::Field
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                PRICE_ID =
+                  T.let(
+                    :price_id,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::Field::TaggedSymbol
+                  )
+                ITEM_ID =
+                  T.let(
+                    :item_id,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::Field::TaggedSymbol
+                  )
+                PRICE_TYPE =
+                  T.let(
+                    :price_type,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::Field::TaggedSymbol
+                  )
+                CURRENCY =
+                  T.let(
+                    :currency,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::Field::TaggedSymbol
+                  )
+                PRICING_UNIT_ID =
+                  T.let(
+                    :pricing_unit_id,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::Field::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::Field::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Should prices that match the filter be included or excluded.
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::Operator
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                INCLUDES =
+                  T.let(
+                    :includes,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::Operator::TaggedSymbol
+                  )
+                EXCLUDES =
+                  T.let(
+                    :excludes,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::Operator::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::Operator::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
             end
           end
 
@@ -3040,6 +3712,16 @@ module Orb
             sig { returns(T::Array[String]) }
             attr_accessor :applies_to_price_ids
 
+            # The filters that determine which prices to apply this adjustment to.
+            sig do
+              returns(
+                T::Array[
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter
+                ]
+              )
+            end
+            attr_accessor :filters
+
             # True for adjustments that apply to an entire invocice, false for adjustments
             # that apply to only one price.
             sig { returns(T::Boolean) }
@@ -3059,6 +3741,10 @@ module Orb
                 id: String,
                 amount: String,
                 applies_to_price_ids: T::Array[String],
+                filters:
+                  T::Array[
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::OrHash
+                  ],
                 is_invoice_level: T::Boolean,
                 maximum_amount: String,
                 reason: T.nilable(String),
@@ -3071,6 +3757,8 @@ module Orb
               amount:,
               # The price IDs that this adjustment applies to.
               applies_to_price_ids:,
+              # The filters that determine which prices to apply this adjustment to.
+              filters:,
               # True for adjustments that apply to an entire invocice, false for adjustments
               # that apply to only one price.
               is_invoice_level:,
@@ -3090,6 +3778,10 @@ module Orb
                   adjustment_type: Symbol,
                   amount: String,
                   applies_to_price_ids: T::Array[String],
+                  filters:
+                    T::Array[
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter
+                    ],
                   is_invoice_level: T::Boolean,
                   maximum_amount: String,
                   reason: T.nilable(String)
@@ -3097,6 +3789,154 @@ module Orb
               )
             end
             def to_hash
+            end
+
+            class Filter < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The property of the price to filter on.
+              sig do
+                returns(
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::Field::TaggedSymbol
+                )
+              end
+              attr_accessor :field
+
+              # Should prices that match the filter be included or excluded.
+              sig do
+                returns(
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::Operator::TaggedSymbol
+                )
+              end
+              attr_accessor :operator
+
+              # The IDs or values that match this filter.
+              sig { returns(T::Array[String]) }
+              attr_accessor :values
+
+              sig do
+                params(
+                  field:
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::Field::OrSymbol,
+                  operator:
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::Operator::OrSymbol,
+                  values: T::Array[String]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The property of the price to filter on.
+                field:,
+                # Should prices that match the filter be included or excluded.
+                operator:,
+                # The IDs or values that match this filter.
+                values:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    field:
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::Field::TaggedSymbol,
+                    operator:
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::Operator::TaggedSymbol,
+                    values: T::Array[String]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The property of the price to filter on.
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::Field
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                PRICE_ID =
+                  T.let(
+                    :price_id,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::Field::TaggedSymbol
+                  )
+                ITEM_ID =
+                  T.let(
+                    :item_id,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::Field::TaggedSymbol
+                  )
+                PRICE_TYPE =
+                  T.let(
+                    :price_type,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::Field::TaggedSymbol
+                  )
+                CURRENCY =
+                  T.let(
+                    :currency,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::Field::TaggedSymbol
+                  )
+                PRICING_UNIT_ID =
+                  T.let(
+                    :pricing_unit_id,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::Field::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::Field::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Should prices that match the filter be included or excluded.
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::Operator
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                INCLUDES =
+                  T.let(
+                    :includes,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::Operator::TaggedSymbol
+                  )
+                EXCLUDES =
+                  T.let(
+                    :excludes,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::Operator::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::Operator::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
             end
           end
 
@@ -3125,6 +3965,16 @@ module Orb
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
+          # The filters that determine which prices to apply this maximum to.
+          sig do
+            returns(
+              T::Array[
+                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter
+              ]
+            )
+          end
+          attr_accessor :filters
+
           # Maximum amount applied
           sig { returns(String) }
           attr_accessor :maximum_amount
@@ -3133,6 +3983,10 @@ module Orb
           sig do
             params(
               applies_to_price_ids: T::Array[String],
+              filters:
+                T::Array[
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::OrHash
+                ],
               maximum_amount: String
             ).returns(T.attached_class)
           end
@@ -3140,6 +3994,8 @@ module Orb
             # List of price_ids that this maximum amount applies to. For plan/plan phase
             # maximums, this can be a subset of prices.
             applies_to_price_ids:,
+            # The filters that determine which prices to apply this maximum to.
+            filters:,
             # Maximum amount applied
             maximum_amount:
           )
@@ -3147,10 +4003,165 @@ module Orb
 
           sig do
             override.returns(
-              { applies_to_price_ids: T::Array[String], maximum_amount: String }
+              {
+                applies_to_price_ids: T::Array[String],
+                filters:
+                  T::Array[
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter
+                  ],
+                maximum_amount: String
+              }
             )
           end
           def to_hash
+          end
+
+          class Filter < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            # The property of the price to filter on.
+            sig do
+              returns(
+                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::Field::TaggedSymbol
+              )
+            end
+            attr_accessor :field
+
+            # Should prices that match the filter be included or excluded.
+            sig do
+              returns(
+                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::Operator::TaggedSymbol
+              )
+            end
+            attr_accessor :operator
+
+            # The IDs or values that match this filter.
+            sig { returns(T::Array[String]) }
+            attr_accessor :values
+
+            sig do
+              params(
+                field:
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::Field::OrSymbol,
+                operator:
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::Operator::OrSymbol,
+                values: T::Array[String]
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # The property of the price to filter on.
+              field:,
+              # Should prices that match the filter be included or excluded.
+              operator:,
+              # The IDs or values that match this filter.
+              values:
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  field:
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::Field::TaggedSymbol,
+                  operator:
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::Operator::TaggedSymbol,
+                  values: T::Array[String]
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # The property of the price to filter on.
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::Field
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              PRICE_ID =
+                T.let(
+                  :price_id,
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::Field::TaggedSymbol
+                )
+              ITEM_ID =
+                T.let(
+                  :item_id,
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::Field::TaggedSymbol
+                )
+              PRICE_TYPE =
+                T.let(
+                  :price_type,
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::Field::TaggedSymbol
+                )
+              CURRENCY =
+                T.let(
+                  :currency,
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::Field::TaggedSymbol
+                )
+              PRICING_UNIT_ID =
+                T.let(
+                  :pricing_unit_id,
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::Field::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::Field::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            # Should prices that match the filter be included or excluded.
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::Operator
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              INCLUDES =
+                T.let(
+                  :includes,
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::Operator::TaggedSymbol
+                )
+              EXCLUDES =
+                T.let(
+                  :excludes,
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::Operator::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::Operator::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -3168,6 +4179,16 @@ module Orb
           sig { returns(T::Array[String]) }
           attr_accessor :applies_to_price_ids
 
+          # The filters that determine which prices to apply this minimum to.
+          sig do
+            returns(
+              T::Array[
+                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter
+              ]
+            )
+          end
+          attr_accessor :filters
+
           # Minimum amount applied
           sig { returns(String) }
           attr_accessor :minimum_amount
@@ -3176,6 +4197,10 @@ module Orb
           sig do
             params(
               applies_to_price_ids: T::Array[String],
+              filters:
+                T::Array[
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::OrHash
+                ],
               minimum_amount: String
             ).returns(T.attached_class)
           end
@@ -3183,6 +4208,8 @@ module Orb
             # List of price_ids that this minimum amount applies to. For plan/plan phase
             # minimums, this can be a subset of prices.
             applies_to_price_ids:,
+            # The filters that determine which prices to apply this minimum to.
+            filters:,
             # Minimum amount applied
             minimum_amount:
           )
@@ -3190,10 +4217,165 @@ module Orb
 
           sig do
             override.returns(
-              { applies_to_price_ids: T::Array[String], minimum_amount: String }
+              {
+                applies_to_price_ids: T::Array[String],
+                filters:
+                  T::Array[
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter
+                  ],
+                minimum_amount: String
+              }
             )
           end
           def to_hash
+          end
+
+          class Filter < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            # The property of the price to filter on.
+            sig do
+              returns(
+                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::Field::TaggedSymbol
+              )
+            end
+            attr_accessor :field
+
+            # Should prices that match the filter be included or excluded.
+            sig do
+              returns(
+                Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::Operator::TaggedSymbol
+              )
+            end
+            attr_accessor :operator
+
+            # The IDs or values that match this filter.
+            sig { returns(T::Array[String]) }
+            attr_accessor :values
+
+            sig do
+              params(
+                field:
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::Field::OrSymbol,
+                operator:
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::Operator::OrSymbol,
+                values: T::Array[String]
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # The property of the price to filter on.
+              field:,
+              # Should prices that match the filter be included or excluded.
+              operator:,
+              # The IDs or values that match this filter.
+              values:
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  field:
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::Field::TaggedSymbol,
+                  operator:
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::Operator::TaggedSymbol,
+                  values: T::Array[String]
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # The property of the price to filter on.
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::Field
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              PRICE_ID =
+                T.let(
+                  :price_id,
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::Field::TaggedSymbol
+                )
+              ITEM_ID =
+                T.let(
+                  :item_id,
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::Field::TaggedSymbol
+                )
+              PRICE_TYPE =
+                T.let(
+                  :price_type,
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::Field::TaggedSymbol
+                )
+              CURRENCY =
+                T.let(
+                  :currency,
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::Field::TaggedSymbol
+                )
+              PRICING_UNIT_ID =
+                T.let(
+                  :pricing_unit_id,
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::Field::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::Field::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            # Should prices that match the filter be included or excluded.
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::Operator
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              INCLUDES =
+                T.let(
+                  :includes,
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::Operator::TaggedSymbol
+                )
+              EXCLUDES =
+                T.let(
+                  :excludes,
+                  Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::Operator::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::Operator::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -3748,6 +4930,14 @@ module Orb
         sig { returns(T::Array[String]) }
         attr_accessor :applies_to_price_ids
 
+        # The filters that determine which prices to apply this maximum to.
+        sig do
+          returns(
+            T::Array[Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter]
+          )
+        end
+        attr_accessor :filters
+
         # Maximum amount applied
         sig { returns(String) }
         attr_accessor :maximum_amount
@@ -3755,6 +4945,10 @@ module Orb
         sig do
           params(
             applies_to_price_ids: T::Array[String],
+            filters:
+              T::Array[
+                Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::OrHash
+              ],
             maximum_amount: String
           ).returns(T.attached_class)
         end
@@ -3762,6 +4956,8 @@ module Orb
           # List of price_ids that this maximum amount applies to. For plan/plan phase
           # maximums, this can be a subset of prices.
           applies_to_price_ids:,
+          # The filters that determine which prices to apply this maximum to.
+          filters:,
           # Maximum amount applied
           maximum_amount:
         )
@@ -3769,10 +4965,165 @@ module Orb
 
         sig do
           override.returns(
-            { applies_to_price_ids: T::Array[String], maximum_amount: String }
+            {
+              applies_to_price_ids: T::Array[String],
+              filters:
+                T::Array[
+                  Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter
+                ],
+              maximum_amount: String
+            }
           )
         end
         def to_hash
+        end
+
+        class Filter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field:
+                Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::Field::OrSymbol,
+              operator:
+                Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::Field::TaggedSymbol,
+                operator:
+                  Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::Field
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
         end
       end
 
@@ -3790,6 +5141,14 @@ module Orb
         sig { returns(T::Array[String]) }
         attr_accessor :applies_to_price_ids
 
+        # The filters that determine which prices to apply this minimum to.
+        sig do
+          returns(
+            T::Array[Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter]
+          )
+        end
+        attr_accessor :filters
+
         # Minimum amount applied
         sig { returns(String) }
         attr_accessor :minimum_amount
@@ -3797,6 +5156,10 @@ module Orb
         sig do
           params(
             applies_to_price_ids: T::Array[String],
+            filters:
+              T::Array[
+                Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::OrHash
+              ],
             minimum_amount: String
           ).returns(T.attached_class)
         end
@@ -3804,6 +5167,8 @@ module Orb
           # List of price_ids that this minimum amount applies to. For plan/plan phase
           # minimums, this can be a subset of prices.
           applies_to_price_ids:,
+          # The filters that determine which prices to apply this minimum to.
+          filters:,
           # Minimum amount applied
           minimum_amount:
         )
@@ -3811,10 +5176,165 @@ module Orb
 
         sig do
           override.returns(
-            { applies_to_price_ids: T::Array[String], minimum_amount: String }
+            {
+              applies_to_price_ids: T::Array[String],
+              filters:
+                T::Array[
+                  Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter
+                ],
+              minimum_amount: String
+            }
           )
         end
         def to_hash
+        end
+
+        class Filter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field:
+                Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::Field::OrSymbol,
+              operator:
+                Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::Field::TaggedSymbol,
+                operator:
+                  Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::Field
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
         end
       end
 

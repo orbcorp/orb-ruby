@@ -5,6 +5,7 @@ module Orb
         id: String,
         created_at: Time,
         external_connections: ::Array[Orb::Item::ExternalConnection],
+        metadata: ::Hash[Symbol, String],
         name: String
       }
 
@@ -15,12 +16,15 @@ module Orb
 
       attr_accessor external_connections: ::Array[Orb::Item::ExternalConnection]
 
+      attr_accessor metadata: ::Hash[Symbol, String]
+
       attr_accessor name: String
 
       def initialize: (
         id: String,
         created_at: Time,
         external_connections: ::Array[Orb::Item::ExternalConnection],
+        metadata: ::Hash[Symbol, String],
         name: String
       ) -> void
 
@@ -28,6 +32,7 @@ module Orb
         id: String,
         created_at: Time,
         external_connections: ::Array[Orb::Item::ExternalConnection],
+        metadata: ::Hash[Symbol, String],
         name: String
       }
 

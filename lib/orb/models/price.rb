@@ -117,6 +117,7 @@ module Orb
         required :currency, String
 
         # @!attribute discount
+        #   @deprecated
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -146,11 +147,13 @@ module Orb
         required :item, -> { Orb::Price::Unit::Item }
 
         # @!attribute maximum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::Unit::Maximum, nil]
         required :maximum, -> { Orb::Price::Unit::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
@@ -165,11 +168,13 @@ module Orb
         required :metadata, Orb::Internal::Type::HashOf[String]
 
         # @!attribute minimum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::Unit::Minimum, nil]
         required :minimum, -> { Orb::Price::Unit::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :minimum_amount, String, nil?: true
@@ -374,14 +379,24 @@ module Orb
           #   @param name [String]
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::Unit#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this maximum to.
+          #
+          #   @return [Array<Orb::Models::Price::Unit::Maximum::Filter>]
+          required :filters, -> { Orb::Internal::Type::ArrayOf[Orb::Price::Unit::Maximum::Filter] }
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -389,23 +404,91 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::Unit::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
+          #   @param filters [Array<Orb::Models::Price::Unit::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+          #
           #   @param maximum_amount [String] Maximum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::Unit::Maximum::Filter::Field]
+            required :field, enum: -> { Orb::Price::Unit::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::Unit::Maximum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::Unit::Maximum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::Unit::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::Unit::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::Unit::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::Unit::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::Unit#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this minimum to.
+          #
+          #   @return [Array<Orb::Models::Price::Unit::Minimum::Filter>]
+          required :filters, -> { Orb::Internal::Type::ArrayOf[Orb::Price::Unit::Minimum::Filter] }
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -413,13 +496,71 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::Unit::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
+          #   @param filters [Array<Orb::Models::Price::Unit::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+          #
           #   @param minimum_amount [String] Minimum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::Unit::Minimum::Filter::Field]
+            required :field, enum: -> { Orb::Price::Unit::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::Unit::Minimum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::Unit::Minimum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::Unit::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::Unit::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::Unit::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::Unit::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::Unit#price_type
@@ -505,6 +646,7 @@ module Orb
         required :currency, String
 
         # @!attribute discount
+        #   @deprecated
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -532,11 +674,13 @@ module Orb
         required :item, -> { Orb::Price::Package::Item }
 
         # @!attribute maximum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::Package::Maximum, nil]
         required :maximum, -> { Orb::Price::Package::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
@@ -551,11 +695,13 @@ module Orb
         required :metadata, Orb::Internal::Type::HashOf[String]
 
         # @!attribute minimum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::Package::Minimum, nil]
         required :minimum, -> { Orb::Price::Package::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :minimum_amount, String, nil?: true
@@ -760,14 +906,24 @@ module Orb
           #   @param name [String]
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::Package#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this maximum to.
+          #
+          #   @return [Array<Orb::Models::Price::Package::Maximum::Filter>]
+          required :filters, -> { Orb::Internal::Type::ArrayOf[Orb::Price::Package::Maximum::Filter] }
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -775,23 +931,91 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::Package::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
+          #   @param filters [Array<Orb::Models::Price::Package::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+          #
           #   @param maximum_amount [String] Maximum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::Package::Maximum::Filter::Field]
+            required :field, enum: -> { Orb::Price::Package::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::Package::Maximum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::Package::Maximum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::Package::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::Package::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::Package::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::Package::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::Package#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this minimum to.
+          #
+          #   @return [Array<Orb::Models::Price::Package::Minimum::Filter>]
+          required :filters, -> { Orb::Internal::Type::ArrayOf[Orb::Price::Package::Minimum::Filter] }
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -799,13 +1023,71 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::Package::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
+          #   @param filters [Array<Orb::Models::Price::Package::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+          #
           #   @param minimum_amount [String] Minimum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::Package::Minimum::Filter::Field]
+            required :field, enum: -> { Orb::Price::Package::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::Package::Minimum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::Package::Minimum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::Package::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::Package::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::Package::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::Package::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::Package#package_config
@@ -903,6 +1185,7 @@ module Orb
         required :currency, String
 
         # @!attribute discount
+        #   @deprecated
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -935,11 +1218,13 @@ module Orb
         required :matrix_config, -> { Orb::Price::Matrix::MatrixConfig }
 
         # @!attribute maximum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::Matrix::Maximum, nil]
         required :maximum, -> { Orb::Price::Matrix::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
@@ -954,11 +1239,13 @@ module Orb
         required :metadata, Orb::Internal::Type::HashOf[String]
 
         # @!attribute minimum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::Matrix::Minimum, nil]
         required :minimum, -> { Orb::Price::Matrix::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :minimum_amount, String, nil?: true
@@ -1211,14 +1498,24 @@ module Orb
           end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::Matrix#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this maximum to.
+          #
+          #   @return [Array<Orb::Models::Price::Matrix::Maximum::Filter>]
+          required :filters, -> { Orb::Internal::Type::ArrayOf[Orb::Price::Matrix::Maximum::Filter] }
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -1226,23 +1523,91 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::Matrix::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
+          #   @param filters [Array<Orb::Models::Price::Matrix::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+          #
           #   @param maximum_amount [String] Maximum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::Matrix::Maximum::Filter::Field]
+            required :field, enum: -> { Orb::Price::Matrix::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::Matrix::Maximum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::Matrix::Maximum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::Matrix::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::Matrix::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::Matrix::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::Matrix::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::Matrix#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this minimum to.
+          #
+          #   @return [Array<Orb::Models::Price::Matrix::Minimum::Filter>]
+          required :filters, -> { Orb::Internal::Type::ArrayOf[Orb::Price::Matrix::Minimum::Filter] }
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -1250,13 +1615,71 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::Matrix::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
+          #   @param filters [Array<Orb::Models::Price::Matrix::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+          #
           #   @param minimum_amount [String] Minimum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::Matrix::Minimum::Filter::Field]
+            required :field, enum: -> { Orb::Price::Matrix::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::Matrix::Minimum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::Matrix::Minimum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::Matrix::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::Matrix::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::Matrix::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::Matrix::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::Matrix#price_type
@@ -1330,6 +1753,7 @@ module Orb
         required :currency, String
 
         # @!attribute discount
+        #   @deprecated
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -1357,11 +1781,13 @@ module Orb
         required :item, -> { Orb::Price::Tiered::Item }
 
         # @!attribute maximum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::Tiered::Maximum, nil]
         required :maximum, -> { Orb::Price::Tiered::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
@@ -1376,11 +1802,13 @@ module Orb
         required :metadata, Orb::Internal::Type::HashOf[String]
 
         # @!attribute minimum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::Tiered::Minimum, nil]
         required :minimum, -> { Orb::Price::Tiered::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :minimum_amount, String, nil?: true
@@ -1585,14 +2013,24 @@ module Orb
           #   @param name [String]
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::Tiered#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this maximum to.
+          #
+          #   @return [Array<Orb::Models::Price::Tiered::Maximum::Filter>]
+          required :filters, -> { Orb::Internal::Type::ArrayOf[Orb::Price::Tiered::Maximum::Filter] }
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -1600,23 +2038,91 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::Tiered::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
+          #   @param filters [Array<Orb::Models::Price::Tiered::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+          #
           #   @param maximum_amount [String] Maximum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::Tiered::Maximum::Filter::Field]
+            required :field, enum: -> { Orb::Price::Tiered::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::Tiered::Maximum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::Tiered::Maximum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::Tiered::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::Tiered::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::Tiered::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::Tiered::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::Tiered#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this minimum to.
+          #
+          #   @return [Array<Orb::Models::Price::Tiered::Minimum::Filter>]
+          required :filters, -> { Orb::Internal::Type::ArrayOf[Orb::Price::Tiered::Minimum::Filter] }
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -1624,13 +2130,71 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::Tiered::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
+          #   @param filters [Array<Orb::Models::Price::Tiered::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+          #
           #   @param minimum_amount [String] Minimum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::Tiered::Minimum::Filter::Field]
+            required :field, enum: -> { Orb::Price::Tiered::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::Tiered::Minimum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::Tiered::Minimum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::Tiered::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::Tiered::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::Tiered::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::Tiered::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::Tiered#price_type
@@ -1743,6 +2307,7 @@ module Orb
         required :currency, String
 
         # @!attribute discount
+        #   @deprecated
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -1770,11 +2335,13 @@ module Orb
         required :item, -> { Orb::Price::TieredBps::Item }
 
         # @!attribute maximum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::TieredBps::Maximum, nil]
         required :maximum, -> { Orb::Price::TieredBps::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
@@ -1789,11 +2356,13 @@ module Orb
         required :metadata, Orb::Internal::Type::HashOf[String]
 
         # @!attribute minimum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::TieredBps::Minimum, nil]
         required :minimum, -> { Orb::Price::TieredBps::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :minimum_amount, String, nil?: true
@@ -2001,14 +2570,24 @@ module Orb
           #   @param name [String]
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::TieredBps#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this maximum to.
+          #
+          #   @return [Array<Orb::Models::Price::TieredBps::Maximum::Filter>]
+          required :filters, -> { Orb::Internal::Type::ArrayOf[Orb::Price::TieredBps::Maximum::Filter] }
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -2016,23 +2595,91 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::TieredBps::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
+          #   @param filters [Array<Orb::Models::Price::TieredBps::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+          #
           #   @param maximum_amount [String] Maximum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::TieredBps::Maximum::Filter::Field]
+            required :field, enum: -> { Orb::Price::TieredBps::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::TieredBps::Maximum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::TieredBps::Maximum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::TieredBps::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::TieredBps::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::TieredBps::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::TieredBps::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::TieredBps#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this minimum to.
+          #
+          #   @return [Array<Orb::Models::Price::TieredBps::Minimum::Filter>]
+          required :filters, -> { Orb::Internal::Type::ArrayOf[Orb::Price::TieredBps::Minimum::Filter] }
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -2040,13 +2687,71 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::TieredBps::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
+          #   @param filters [Array<Orb::Models::Price::TieredBps::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+          #
           #   @param minimum_amount [String] Minimum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::TieredBps::Minimum::Filter::Field]
+            required :field, enum: -> { Orb::Price::TieredBps::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::TieredBps::Minimum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::TieredBps::Minimum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::TieredBps::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::TieredBps::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::TieredBps::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::TieredBps::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::TieredBps#price_type
@@ -2176,6 +2881,7 @@ module Orb
         required :currency, String
 
         # @!attribute discount
+        #   @deprecated
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -2205,11 +2911,13 @@ module Orb
         required :item, -> { Orb::Price::Bps::Item }
 
         # @!attribute maximum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::Bps::Maximum, nil]
         required :maximum, -> { Orb::Price::Bps::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
@@ -2224,11 +2932,13 @@ module Orb
         required :metadata, Orb::Internal::Type::HashOf[String]
 
         # @!attribute minimum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::Bps::Minimum, nil]
         required :minimum, -> { Orb::Price::Bps::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :minimum_amount, String, nil?: true
@@ -2448,14 +3158,24 @@ module Orb
           #   @param name [String]
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::Bps#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this maximum to.
+          #
+          #   @return [Array<Orb::Models::Price::Bps::Maximum::Filter>]
+          required :filters, -> { Orb::Internal::Type::ArrayOf[Orb::Price::Bps::Maximum::Filter] }
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -2463,23 +3183,91 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::Bps::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
+          #   @param filters [Array<Orb::Models::Price::Bps::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+          #
           #   @param maximum_amount [String] Maximum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::Bps::Maximum::Filter::Field]
+            required :field, enum: -> { Orb::Price::Bps::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::Bps::Maximum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::Bps::Maximum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::Bps::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::Bps::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::Bps::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::Bps::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::Bps#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this minimum to.
+          #
+          #   @return [Array<Orb::Models::Price::Bps::Minimum::Filter>]
+          required :filters, -> { Orb::Internal::Type::ArrayOf[Orb::Price::Bps::Minimum::Filter] }
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -2487,13 +3275,71 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::Bps::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
+          #   @param filters [Array<Orb::Models::Price::Bps::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+          #
           #   @param minimum_amount [String] Minimum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::Bps::Minimum::Filter::Field]
+            required :field, enum: -> { Orb::Price::Bps::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::Bps::Minimum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::Bps::Minimum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::Bps::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::Bps::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::Bps::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::Bps::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::Bps#price_type
@@ -2572,6 +3418,7 @@ module Orb
         required :currency, String
 
         # @!attribute discount
+        #   @deprecated
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -2599,11 +3446,13 @@ module Orb
         required :item, -> { Orb::Price::BulkBps::Item }
 
         # @!attribute maximum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::BulkBps::Maximum, nil]
         required :maximum, -> { Orb::Price::BulkBps::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
@@ -2618,11 +3467,13 @@ module Orb
         required :metadata, Orb::Internal::Type::HashOf[String]
 
         # @!attribute minimum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::BulkBps::Minimum, nil]
         required :minimum, -> { Orb::Price::BulkBps::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :minimum_amount, String, nil?: true
@@ -2865,14 +3716,24 @@ module Orb
           #   @param name [String]
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::BulkBps#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this maximum to.
+          #
+          #   @return [Array<Orb::Models::Price::BulkBps::Maximum::Filter>]
+          required :filters, -> { Orb::Internal::Type::ArrayOf[Orb::Price::BulkBps::Maximum::Filter] }
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -2880,23 +3741,91 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::BulkBps::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
+          #   @param filters [Array<Orb::Models::Price::BulkBps::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+          #
           #   @param maximum_amount [String] Maximum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::BulkBps::Maximum::Filter::Field]
+            required :field, enum: -> { Orb::Price::BulkBps::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::BulkBps::Maximum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::BulkBps::Maximum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::BulkBps::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::BulkBps::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::BulkBps::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::BulkBps::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::BulkBps#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this minimum to.
+          #
+          #   @return [Array<Orb::Models::Price::BulkBps::Minimum::Filter>]
+          required :filters, -> { Orb::Internal::Type::ArrayOf[Orb::Price::BulkBps::Minimum::Filter] }
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -2904,13 +3833,71 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::BulkBps::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
+          #   @param filters [Array<Orb::Models::Price::BulkBps::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+          #
           #   @param minimum_amount [String] Minimum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::BulkBps::Minimum::Filter::Field]
+            required :field, enum: -> { Orb::Price::BulkBps::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::BulkBps::Minimum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::BulkBps::Minimum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::BulkBps::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::BulkBps::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::BulkBps::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::BulkBps::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::BulkBps#price_type
@@ -2989,6 +3976,7 @@ module Orb
         required :currency, String
 
         # @!attribute discount
+        #   @deprecated
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -3018,11 +4006,13 @@ module Orb
         required :item, -> { Orb::Price::Bulk::Item }
 
         # @!attribute maximum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::Bulk::Maximum, nil]
         required :maximum, -> { Orb::Price::Bulk::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
@@ -3037,11 +4027,13 @@ module Orb
         required :metadata, Orb::Internal::Type::HashOf[String]
 
         # @!attribute minimum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::Bulk::Minimum, nil]
         required :minimum, -> { Orb::Price::Bulk::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :minimum_amount, String, nil?: true
@@ -3272,14 +4264,24 @@ module Orb
           #   @param name [String]
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::Bulk#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this maximum to.
+          #
+          #   @return [Array<Orb::Models::Price::Bulk::Maximum::Filter>]
+          required :filters, -> { Orb::Internal::Type::ArrayOf[Orb::Price::Bulk::Maximum::Filter] }
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -3287,23 +4289,91 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::Bulk::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
+          #   @param filters [Array<Orb::Models::Price::Bulk::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+          #
           #   @param maximum_amount [String] Maximum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::Bulk::Maximum::Filter::Field]
+            required :field, enum: -> { Orb::Price::Bulk::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::Bulk::Maximum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::Bulk::Maximum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::Bulk::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::Bulk::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::Bulk::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::Bulk::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::Bulk#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this minimum to.
+          #
+          #   @return [Array<Orb::Models::Price::Bulk::Minimum::Filter>]
+          required :filters, -> { Orb::Internal::Type::ArrayOf[Orb::Price::Bulk::Minimum::Filter] }
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -3311,13 +4381,71 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::Bulk::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
+          #   @param filters [Array<Orb::Models::Price::Bulk::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+          #
           #   @param minimum_amount [String] Minimum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::Bulk::Minimum::Filter::Field]
+            required :field, enum: -> { Orb::Price::Bulk::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::Bulk::Minimum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::Bulk::Minimum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::Bulk::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::Bulk::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::Bulk::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::Bulk::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::Bulk#price_type
@@ -3394,6 +4522,7 @@ module Orb
         required :currency, String
 
         # @!attribute discount
+        #   @deprecated
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -3421,11 +4550,13 @@ module Orb
         required :item, -> { Orb::Price::ThresholdTotalAmount::Item }
 
         # @!attribute maximum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::ThresholdTotalAmount::Maximum, nil]
         required :maximum, -> { Orb::Price::ThresholdTotalAmount::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
@@ -3440,11 +4571,13 @@ module Orb
         required :metadata, Orb::Internal::Type::HashOf[String]
 
         # @!attribute minimum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::ThresholdTotalAmount::Minimum, nil]
         required :minimum, -> { Orb::Price::ThresholdTotalAmount::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :minimum_amount, String, nil?: true
@@ -3651,14 +4784,27 @@ module Orb
           #   @param name [String]
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::ThresholdTotalAmount#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this maximum to.
+          #
+          #   @return [Array<Orb::Models::Price::ThresholdTotalAmount::Maximum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::ThresholdTotalAmount::Maximum::Filter]
+                   }
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -3666,23 +4812,94 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::ThresholdTotalAmount::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
+          #   @param filters [Array<Orb::Models::Price::ThresholdTotalAmount::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+          #
           #   @param maximum_amount [String] Maximum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::ThresholdTotalAmount::Maximum::Filter::Field]
+            required :field, enum: -> { Orb::Price::ThresholdTotalAmount::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::ThresholdTotalAmount::Maximum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::ThresholdTotalAmount::Maximum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::ThresholdTotalAmount::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::ThresholdTotalAmount::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::ThresholdTotalAmount::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::ThresholdTotalAmount::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::ThresholdTotalAmount#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this minimum to.
+          #
+          #   @return [Array<Orb::Models::Price::ThresholdTotalAmount::Minimum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::ThresholdTotalAmount::Minimum::Filter]
+                   }
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -3690,13 +4907,71 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::ThresholdTotalAmount::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
+          #   @param filters [Array<Orb::Models::Price::ThresholdTotalAmount::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+          #
           #   @param minimum_amount [String] Minimum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::ThresholdTotalAmount::Minimum::Filter::Field]
+            required :field, enum: -> { Orb::Price::ThresholdTotalAmount::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::ThresholdTotalAmount::Minimum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::ThresholdTotalAmount::Minimum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::ThresholdTotalAmount::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::ThresholdTotalAmount::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::ThresholdTotalAmount::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::ThresholdTotalAmount::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::ThresholdTotalAmount#price_type
@@ -3770,6 +5045,7 @@ module Orb
         required :currency, String
 
         # @!attribute discount
+        #   @deprecated
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -3797,11 +5073,13 @@ module Orb
         required :item, -> { Orb::Price::TieredPackage::Item }
 
         # @!attribute maximum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::TieredPackage::Maximum, nil]
         required :maximum, -> { Orb::Price::TieredPackage::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
@@ -3816,11 +5094,13 @@ module Orb
         required :metadata, Orb::Internal::Type::HashOf[String]
 
         # @!attribute minimum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::TieredPackage::Minimum, nil]
         required :minimum, -> { Orb::Price::TieredPackage::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :minimum_amount, String, nil?: true
@@ -4031,14 +5311,24 @@ module Orb
           #   @param name [String]
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::TieredPackage#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this maximum to.
+          #
+          #   @return [Array<Orb::Models::Price::TieredPackage::Maximum::Filter>]
+          required :filters, -> { Orb::Internal::Type::ArrayOf[Orb::Price::TieredPackage::Maximum::Filter] }
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -4046,23 +5336,91 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::TieredPackage::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
+          #   @param filters [Array<Orb::Models::Price::TieredPackage::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+          #
           #   @param maximum_amount [String] Maximum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::TieredPackage::Maximum::Filter::Field]
+            required :field, enum: -> { Orb::Price::TieredPackage::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::TieredPackage::Maximum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::TieredPackage::Maximum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::TieredPackage::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::TieredPackage::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::TieredPackage::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::TieredPackage::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::TieredPackage#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this minimum to.
+          #
+          #   @return [Array<Orb::Models::Price::TieredPackage::Minimum::Filter>]
+          required :filters, -> { Orb::Internal::Type::ArrayOf[Orb::Price::TieredPackage::Minimum::Filter] }
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -4070,13 +5428,71 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::TieredPackage::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
+          #   @param filters [Array<Orb::Models::Price::TieredPackage::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+          #
           #   @param minimum_amount [String] Minimum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::TieredPackage::Minimum::Filter::Field]
+            required :field, enum: -> { Orb::Price::TieredPackage::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::TieredPackage::Minimum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::TieredPackage::Minimum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::TieredPackage::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::TieredPackage::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::TieredPackage::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::TieredPackage::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::TieredPackage#price_type
@@ -4150,6 +5566,7 @@ module Orb
         required :currency, String
 
         # @!attribute discount
+        #   @deprecated
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -4182,11 +5599,13 @@ module Orb
         required :item, -> { Orb::Price::GroupedTiered::Item }
 
         # @!attribute maximum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::GroupedTiered::Maximum, nil]
         required :maximum, -> { Orb::Price::GroupedTiered::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
@@ -4201,11 +5620,13 @@ module Orb
         required :metadata, Orb::Internal::Type::HashOf[String]
 
         # @!attribute minimum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::GroupedTiered::Minimum, nil]
         required :minimum, -> { Orb::Price::GroupedTiered::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :minimum_amount, String, nil?: true
@@ -4411,14 +5832,24 @@ module Orb
           #   @param name [String]
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::GroupedTiered#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this maximum to.
+          #
+          #   @return [Array<Orb::Models::Price::GroupedTiered::Maximum::Filter>]
+          required :filters, -> { Orb::Internal::Type::ArrayOf[Orb::Price::GroupedTiered::Maximum::Filter] }
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -4426,23 +5857,91 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::GroupedTiered::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
+          #   @param filters [Array<Orb::Models::Price::GroupedTiered::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+          #
           #   @param maximum_amount [String] Maximum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::GroupedTiered::Maximum::Filter::Field]
+            required :field, enum: -> { Orb::Price::GroupedTiered::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::GroupedTiered::Maximum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::GroupedTiered::Maximum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::GroupedTiered::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::GroupedTiered::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::GroupedTiered::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::GroupedTiered::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::GroupedTiered#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this minimum to.
+          #
+          #   @return [Array<Orb::Models::Price::GroupedTiered::Minimum::Filter>]
+          required :filters, -> { Orb::Internal::Type::ArrayOf[Orb::Price::GroupedTiered::Minimum::Filter] }
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -4450,13 +5949,71 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::GroupedTiered::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
+          #   @param filters [Array<Orb::Models::Price::GroupedTiered::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+          #
           #   @param minimum_amount [String] Minimum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::GroupedTiered::Minimum::Filter::Field]
+            required :field, enum: -> { Orb::Price::GroupedTiered::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::GroupedTiered::Minimum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::GroupedTiered::Minimum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::GroupedTiered::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::GroupedTiered::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::GroupedTiered::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::GroupedTiered::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::GroupedTiered#price_type
@@ -4530,6 +6087,7 @@ module Orb
         required :currency, String
 
         # @!attribute discount
+        #   @deprecated
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -4557,11 +6115,13 @@ module Orb
         required :item, -> { Orb::Price::TieredWithMinimum::Item }
 
         # @!attribute maximum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::TieredWithMinimum::Maximum, nil]
         required :maximum, -> { Orb::Price::TieredWithMinimum::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
@@ -4576,11 +6136,13 @@ module Orb
         required :metadata, Orb::Internal::Type::HashOf[String]
 
         # @!attribute minimum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::TieredWithMinimum::Minimum, nil]
         required :minimum, -> { Orb::Price::TieredWithMinimum::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :minimum_amount, String, nil?: true
@@ -4787,14 +6349,27 @@ module Orb
           #   @param name [String]
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::TieredWithMinimum#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this maximum to.
+          #
+          #   @return [Array<Orb::Models::Price::TieredWithMinimum::Maximum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::TieredWithMinimum::Maximum::Filter]
+                   }
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -4802,23 +6377,94 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::TieredWithMinimum::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
+          #   @param filters [Array<Orb::Models::Price::TieredWithMinimum::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+          #
           #   @param maximum_amount [String] Maximum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::TieredWithMinimum::Maximum::Filter::Field]
+            required :field, enum: -> { Orb::Price::TieredWithMinimum::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::TieredWithMinimum::Maximum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::TieredWithMinimum::Maximum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::TieredWithMinimum::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::TieredWithMinimum::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::TieredWithMinimum::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::TieredWithMinimum::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::TieredWithMinimum#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this minimum to.
+          #
+          #   @return [Array<Orb::Models::Price::TieredWithMinimum::Minimum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::TieredWithMinimum::Minimum::Filter]
+                   }
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -4826,13 +6472,71 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::TieredWithMinimum::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
+          #   @param filters [Array<Orb::Models::Price::TieredWithMinimum::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+          #
           #   @param minimum_amount [String] Minimum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::TieredWithMinimum::Minimum::Filter::Field]
+            required :field, enum: -> { Orb::Price::TieredWithMinimum::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::TieredWithMinimum::Minimum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::TieredWithMinimum::Minimum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::TieredWithMinimum::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::TieredWithMinimum::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::TieredWithMinimum::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::TieredWithMinimum::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::TieredWithMinimum#price_type
@@ -4907,6 +6611,7 @@ module Orb
         required :currency, String
 
         # @!attribute discount
+        #   @deprecated
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -4934,11 +6639,13 @@ module Orb
         required :item, -> { Orb::Price::TieredPackageWithMinimum::Item }
 
         # @!attribute maximum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::TieredPackageWithMinimum::Maximum, nil]
         required :maximum, -> { Orb::Price::TieredPackageWithMinimum::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
@@ -4953,11 +6660,13 @@ module Orb
         required :metadata, Orb::Internal::Type::HashOf[String]
 
         # @!attribute minimum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::TieredPackageWithMinimum::Minimum, nil]
         required :minimum, -> { Orb::Price::TieredPackageWithMinimum::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :minimum_amount, String, nil?: true
@@ -5167,14 +6876,25 @@ module Orb
           #   @param name [String]
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::TieredPackageWithMinimum#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this maximum to.
+          #
+          #   @return [Array<Orb::Models::Price::TieredPackageWithMinimum::Maximum::Filter>]
+          required :filters,
+                   -> { Orb::Internal::Type::ArrayOf[Orb::Price::TieredPackageWithMinimum::Maximum::Filter] }
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -5182,23 +6902,92 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::TieredPackageWithMinimum::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
+          #   @param filters [Array<Orb::Models::Price::TieredPackageWithMinimum::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+          #
           #   @param maximum_amount [String] Maximum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::TieredPackageWithMinimum::Maximum::Filter::Field]
+            required :field, enum: -> { Orb::Price::TieredPackageWithMinimum::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::TieredPackageWithMinimum::Maximum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::TieredPackageWithMinimum::Maximum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::TieredPackageWithMinimum::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::TieredPackageWithMinimum::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::TieredPackageWithMinimum::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::TieredPackageWithMinimum::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::TieredPackageWithMinimum#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this minimum to.
+          #
+          #   @return [Array<Orb::Models::Price::TieredPackageWithMinimum::Minimum::Filter>]
+          required :filters,
+                   -> { Orb::Internal::Type::ArrayOf[Orb::Price::TieredPackageWithMinimum::Minimum::Filter] }
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -5206,13 +6995,71 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::TieredPackageWithMinimum::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
+          #   @param filters [Array<Orb::Models::Price::TieredPackageWithMinimum::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+          #
           #   @param minimum_amount [String] Minimum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::TieredPackageWithMinimum::Minimum::Filter::Field]
+            required :field, enum: -> { Orb::Price::TieredPackageWithMinimum::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::TieredPackageWithMinimum::Minimum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::TieredPackageWithMinimum::Minimum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::TieredPackageWithMinimum::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::TieredPackageWithMinimum::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::TieredPackageWithMinimum::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::TieredPackageWithMinimum::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::TieredPackageWithMinimum#price_type
@@ -5289,6 +7136,7 @@ module Orb
         required :currency, String
 
         # @!attribute discount
+        #   @deprecated
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -5316,11 +7164,13 @@ module Orb
         required :item, -> { Orb::Price::PackageWithAllocation::Item }
 
         # @!attribute maximum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::PackageWithAllocation::Maximum, nil]
         required :maximum, -> { Orb::Price::PackageWithAllocation::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
@@ -5335,11 +7185,13 @@ module Orb
         required :metadata, Orb::Internal::Type::HashOf[String]
 
         # @!attribute minimum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::PackageWithAllocation::Minimum, nil]
         required :minimum, -> { Orb::Price::PackageWithAllocation::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :minimum_amount, String, nil?: true
@@ -5546,14 +7398,27 @@ module Orb
           #   @param name [String]
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::PackageWithAllocation#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this maximum to.
+          #
+          #   @return [Array<Orb::Models::Price::PackageWithAllocation::Maximum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::PackageWithAllocation::Maximum::Filter]
+                   }
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -5561,23 +7426,94 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::PackageWithAllocation::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
+          #   @param filters [Array<Orb::Models::Price::PackageWithAllocation::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+          #
           #   @param maximum_amount [String] Maximum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::PackageWithAllocation::Maximum::Filter::Field]
+            required :field, enum: -> { Orb::Price::PackageWithAllocation::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::PackageWithAllocation::Maximum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::PackageWithAllocation::Maximum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::PackageWithAllocation::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::PackageWithAllocation::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::PackageWithAllocation::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::PackageWithAllocation::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::PackageWithAllocation#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this minimum to.
+          #
+          #   @return [Array<Orb::Models::Price::PackageWithAllocation::Minimum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::PackageWithAllocation::Minimum::Filter]
+                   }
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -5585,13 +7521,71 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::PackageWithAllocation::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
+          #   @param filters [Array<Orb::Models::Price::PackageWithAllocation::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+          #
           #   @param minimum_amount [String] Minimum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::PackageWithAllocation::Minimum::Filter::Field]
+            required :field, enum: -> { Orb::Price::PackageWithAllocation::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::PackageWithAllocation::Minimum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::PackageWithAllocation::Minimum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::PackageWithAllocation::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::PackageWithAllocation::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::PackageWithAllocation::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::PackageWithAllocation::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::PackageWithAllocation#price_type
@@ -5665,6 +7659,7 @@ module Orb
         required :currency, String
 
         # @!attribute discount
+        #   @deprecated
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -5692,11 +7687,13 @@ module Orb
         required :item, -> { Orb::Price::UnitWithPercent::Item }
 
         # @!attribute maximum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::UnitWithPercent::Maximum, nil]
         required :maximum, -> { Orb::Price::UnitWithPercent::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
@@ -5711,11 +7708,13 @@ module Orb
         required :metadata, Orb::Internal::Type::HashOf[String]
 
         # @!attribute minimum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::UnitWithPercent::Minimum, nil]
         required :minimum, -> { Orb::Price::UnitWithPercent::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :minimum_amount, String, nil?: true
@@ -5924,14 +7923,24 @@ module Orb
           #   @param name [String]
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::UnitWithPercent#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this maximum to.
+          #
+          #   @return [Array<Orb::Models::Price::UnitWithPercent::Maximum::Filter>]
+          required :filters, -> { Orb::Internal::Type::ArrayOf[Orb::Price::UnitWithPercent::Maximum::Filter] }
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -5939,23 +7948,91 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::UnitWithPercent::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
+          #   @param filters [Array<Orb::Models::Price::UnitWithPercent::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+          #
           #   @param maximum_amount [String] Maximum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::UnitWithPercent::Maximum::Filter::Field]
+            required :field, enum: -> { Orb::Price::UnitWithPercent::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::UnitWithPercent::Maximum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::UnitWithPercent::Maximum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::UnitWithPercent::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::UnitWithPercent::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::UnitWithPercent::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::UnitWithPercent::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::UnitWithPercent#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this minimum to.
+          #
+          #   @return [Array<Orb::Models::Price::UnitWithPercent::Minimum::Filter>]
+          required :filters, -> { Orb::Internal::Type::ArrayOf[Orb::Price::UnitWithPercent::Minimum::Filter] }
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -5963,13 +8040,71 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::UnitWithPercent::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
+          #   @param filters [Array<Orb::Models::Price::UnitWithPercent::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+          #
           #   @param minimum_amount [String] Minimum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::UnitWithPercent::Minimum::Filter::Field]
+            required :field, enum: -> { Orb::Price::UnitWithPercent::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::UnitWithPercent::Minimum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::UnitWithPercent::Minimum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::UnitWithPercent::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::UnitWithPercent::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::UnitWithPercent::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::UnitWithPercent::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::UnitWithPercent#price_type
@@ -6046,6 +8181,7 @@ module Orb
         required :currency, String
 
         # @!attribute discount
+        #   @deprecated
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -6079,11 +8215,13 @@ module Orb
                  -> { Orb::Price::MatrixWithAllocation::MatrixWithAllocationConfig }
 
         # @!attribute maximum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::MatrixWithAllocation::Maximum, nil]
         required :maximum, -> { Orb::Price::MatrixWithAllocation::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
@@ -6098,11 +8236,13 @@ module Orb
         required :metadata, Orb::Internal::Type::HashOf[String]
 
         # @!attribute minimum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::MatrixWithAllocation::Minimum, nil]
         required :minimum, -> { Orb::Price::MatrixWithAllocation::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :minimum_amount, String, nil?: true
@@ -6368,14 +8508,27 @@ module Orb
           end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::MatrixWithAllocation#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this maximum to.
+          #
+          #   @return [Array<Orb::Models::Price::MatrixWithAllocation::Maximum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::MatrixWithAllocation::Maximum::Filter]
+                   }
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -6383,23 +8536,94 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::MatrixWithAllocation::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
+          #   @param filters [Array<Orb::Models::Price::MatrixWithAllocation::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+          #
           #   @param maximum_amount [String] Maximum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::MatrixWithAllocation::Maximum::Filter::Field]
+            required :field, enum: -> { Orb::Price::MatrixWithAllocation::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::MatrixWithAllocation::Maximum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::MatrixWithAllocation::Maximum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::MatrixWithAllocation::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::MatrixWithAllocation::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::MatrixWithAllocation::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::MatrixWithAllocation::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::MatrixWithAllocation#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this minimum to.
+          #
+          #   @return [Array<Orb::Models::Price::MatrixWithAllocation::Minimum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::MatrixWithAllocation::Minimum::Filter]
+                   }
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -6407,13 +8631,71 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::MatrixWithAllocation::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
+          #   @param filters [Array<Orb::Models::Price::MatrixWithAllocation::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+          #
           #   @param minimum_amount [String] Minimum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::MatrixWithAllocation::Minimum::Filter::Field]
+            required :field, enum: -> { Orb::Price::MatrixWithAllocation::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::MatrixWithAllocation::Minimum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::MatrixWithAllocation::Minimum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::MatrixWithAllocation::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::MatrixWithAllocation::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::MatrixWithAllocation::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::MatrixWithAllocation::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::MatrixWithAllocation#price_type
@@ -6490,6 +8772,7 @@ module Orb
         required :currency, String
 
         # @!attribute discount
+        #   @deprecated
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -6517,11 +8800,13 @@ module Orb
         required :item, -> { Orb::Price::TieredWithProration::Item }
 
         # @!attribute maximum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::TieredWithProration::Maximum, nil]
         required :maximum, -> { Orb::Price::TieredWithProration::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
@@ -6536,11 +8821,13 @@ module Orb
         required :metadata, Orb::Internal::Type::HashOf[String]
 
         # @!attribute minimum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::TieredWithProration::Minimum, nil]
         required :minimum, -> { Orb::Price::TieredWithProration::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :minimum_amount, String, nil?: true
@@ -6747,14 +9034,27 @@ module Orb
           #   @param name [String]
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::TieredWithProration#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this maximum to.
+          #
+          #   @return [Array<Orb::Models::Price::TieredWithProration::Maximum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::TieredWithProration::Maximum::Filter]
+                   }
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -6762,23 +9062,94 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::TieredWithProration::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
+          #   @param filters [Array<Orb::Models::Price::TieredWithProration::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+          #
           #   @param maximum_amount [String] Maximum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::TieredWithProration::Maximum::Filter::Field]
+            required :field, enum: -> { Orb::Price::TieredWithProration::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::TieredWithProration::Maximum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::TieredWithProration::Maximum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::TieredWithProration::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::TieredWithProration::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::TieredWithProration::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::TieredWithProration::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::TieredWithProration#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this minimum to.
+          #
+          #   @return [Array<Orb::Models::Price::TieredWithProration::Minimum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::TieredWithProration::Minimum::Filter]
+                   }
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -6786,13 +9157,71 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::TieredWithProration::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
+          #   @param filters [Array<Orb::Models::Price::TieredWithProration::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+          #
           #   @param minimum_amount [String] Minimum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::TieredWithProration::Minimum::Filter::Field]
+            required :field, enum: -> { Orb::Price::TieredWithProration::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::TieredWithProration::Minimum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::TieredWithProration::Minimum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::TieredWithProration::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::TieredWithProration::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::TieredWithProration::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::TieredWithProration::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::TieredWithProration#price_type
@@ -6866,6 +9295,7 @@ module Orb
         required :currency, String
 
         # @!attribute discount
+        #   @deprecated
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -6893,11 +9323,13 @@ module Orb
         required :item, -> { Orb::Price::UnitWithProration::Item }
 
         # @!attribute maximum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::UnitWithProration::Maximum, nil]
         required :maximum, -> { Orb::Price::UnitWithProration::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
@@ -6912,11 +9344,13 @@ module Orb
         required :metadata, Orb::Internal::Type::HashOf[String]
 
         # @!attribute minimum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::UnitWithProration::Minimum, nil]
         required :minimum, -> { Orb::Price::UnitWithProration::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :minimum_amount, String, nil?: true
@@ -7123,14 +9557,27 @@ module Orb
           #   @param name [String]
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::UnitWithProration#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this maximum to.
+          #
+          #   @return [Array<Orb::Models::Price::UnitWithProration::Maximum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::UnitWithProration::Maximum::Filter]
+                   }
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -7138,23 +9585,94 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::UnitWithProration::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
+          #   @param filters [Array<Orb::Models::Price::UnitWithProration::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+          #
           #   @param maximum_amount [String] Maximum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::UnitWithProration::Maximum::Filter::Field]
+            required :field, enum: -> { Orb::Price::UnitWithProration::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::UnitWithProration::Maximum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::UnitWithProration::Maximum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::UnitWithProration::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::UnitWithProration::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::UnitWithProration::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::UnitWithProration::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::UnitWithProration#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this minimum to.
+          #
+          #   @return [Array<Orb::Models::Price::UnitWithProration::Minimum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::UnitWithProration::Minimum::Filter]
+                   }
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -7162,13 +9680,71 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::UnitWithProration::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
+          #   @param filters [Array<Orb::Models::Price::UnitWithProration::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+          #
           #   @param minimum_amount [String] Minimum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::UnitWithProration::Minimum::Filter::Field]
+            required :field, enum: -> { Orb::Price::UnitWithProration::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::UnitWithProration::Minimum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::UnitWithProration::Minimum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::UnitWithProration::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::UnitWithProration::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::UnitWithProration::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::UnitWithProration::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::UnitWithProration#price_type
@@ -7242,6 +9818,7 @@ module Orb
         required :currency, String
 
         # @!attribute discount
+        #   @deprecated
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -7274,11 +9851,13 @@ module Orb
         required :item, -> { Orb::Price::GroupedAllocation::Item }
 
         # @!attribute maximum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::GroupedAllocation::Maximum, nil]
         required :maximum, -> { Orb::Price::GroupedAllocation::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
@@ -7293,11 +9872,13 @@ module Orb
         required :metadata, Orb::Internal::Type::HashOf[String]
 
         # @!attribute minimum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::GroupedAllocation::Minimum, nil]
         required :minimum, -> { Orb::Price::GroupedAllocation::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :minimum_amount, String, nil?: true
@@ -7499,14 +10080,27 @@ module Orb
           #   @param name [String]
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::GroupedAllocation#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this maximum to.
+          #
+          #   @return [Array<Orb::Models::Price::GroupedAllocation::Maximum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::GroupedAllocation::Maximum::Filter]
+                   }
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -7514,23 +10108,94 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::GroupedAllocation::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
+          #   @param filters [Array<Orb::Models::Price::GroupedAllocation::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+          #
           #   @param maximum_amount [String] Maximum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::GroupedAllocation::Maximum::Filter::Field]
+            required :field, enum: -> { Orb::Price::GroupedAllocation::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::GroupedAllocation::Maximum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::GroupedAllocation::Maximum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::GroupedAllocation::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::GroupedAllocation::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::GroupedAllocation::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::GroupedAllocation::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::GroupedAllocation#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this minimum to.
+          #
+          #   @return [Array<Orb::Models::Price::GroupedAllocation::Minimum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::GroupedAllocation::Minimum::Filter]
+                   }
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -7538,13 +10203,71 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::GroupedAllocation::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
+          #   @param filters [Array<Orb::Models::Price::GroupedAllocation::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+          #
           #   @param minimum_amount [String] Minimum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::GroupedAllocation::Minimum::Filter::Field]
+            required :field, enum: -> { Orb::Price::GroupedAllocation::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::GroupedAllocation::Minimum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::GroupedAllocation::Minimum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::GroupedAllocation::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::GroupedAllocation::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::GroupedAllocation::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::GroupedAllocation::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::GroupedAllocation#price_type
@@ -7623,6 +10346,7 @@ module Orb
         required :currency, String
 
         # @!attribute discount
+        #   @deprecated
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -7656,11 +10380,13 @@ module Orb
         required :item, -> { Orb::Price::GroupedWithProratedMinimum::Item }
 
         # @!attribute maximum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::GroupedWithProratedMinimum::Maximum, nil]
         required :maximum, -> { Orb::Price::GroupedWithProratedMinimum::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
@@ -7675,11 +10401,13 @@ module Orb
         required :metadata, Orb::Internal::Type::HashOf[String]
 
         # @!attribute minimum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::GroupedWithProratedMinimum::Minimum, nil]
         required :minimum, -> { Orb::Price::GroupedWithProratedMinimum::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :minimum_amount, String, nil?: true
@@ -7885,14 +10613,27 @@ module Orb
           #   @param name [String]
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::GroupedWithProratedMinimum#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this maximum to.
+          #
+          #   @return [Array<Orb::Models::Price::GroupedWithProratedMinimum::Maximum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::GroupedWithProratedMinimum::Maximum::Filter]
+                   }
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -7900,23 +10641,94 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::GroupedWithProratedMinimum::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
+          #   @param filters [Array<Orb::Models::Price::GroupedWithProratedMinimum::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+          #
           #   @param maximum_amount [String] Maximum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::GroupedWithProratedMinimum::Maximum::Filter::Field]
+            required :field, enum: -> { Orb::Price::GroupedWithProratedMinimum::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::GroupedWithProratedMinimum::Maximum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::GroupedWithProratedMinimum::Maximum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::GroupedWithProratedMinimum::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::GroupedWithProratedMinimum::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::GroupedWithProratedMinimum::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::GroupedWithProratedMinimum::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::GroupedWithProratedMinimum#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this minimum to.
+          #
+          #   @return [Array<Orb::Models::Price::GroupedWithProratedMinimum::Minimum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::GroupedWithProratedMinimum::Minimum::Filter]
+                   }
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -7924,13 +10736,71 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::GroupedWithProratedMinimum::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
+          #   @param filters [Array<Orb::Models::Price::GroupedWithProratedMinimum::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+          #
           #   @param minimum_amount [String] Minimum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::GroupedWithProratedMinimum::Minimum::Filter::Field]
+            required :field, enum: -> { Orb::Price::GroupedWithProratedMinimum::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::GroupedWithProratedMinimum::Minimum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::GroupedWithProratedMinimum::Minimum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::GroupedWithProratedMinimum::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::GroupedWithProratedMinimum::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::GroupedWithProratedMinimum::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::GroupedWithProratedMinimum::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::GroupedWithProratedMinimum#price_type
@@ -8009,6 +10879,7 @@ module Orb
         required :currency, String
 
         # @!attribute discount
+        #   @deprecated
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -8042,11 +10913,13 @@ module Orb
         required :item, -> { Orb::Price::GroupedWithMeteredMinimum::Item }
 
         # @!attribute maximum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::GroupedWithMeteredMinimum::Maximum, nil]
         required :maximum, -> { Orb::Price::GroupedWithMeteredMinimum::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
@@ -8061,11 +10934,13 @@ module Orb
         required :metadata, Orb::Internal::Type::HashOf[String]
 
         # @!attribute minimum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::GroupedWithMeteredMinimum::Minimum, nil]
         required :minimum, -> { Orb::Price::GroupedWithMeteredMinimum::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :minimum_amount, String, nil?: true
@@ -8269,14 +11144,25 @@ module Orb
           #   @param name [String]
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::GroupedWithMeteredMinimum#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this maximum to.
+          #
+          #   @return [Array<Orb::Models::Price::GroupedWithMeteredMinimum::Maximum::Filter>]
+          required :filters,
+                   -> { Orb::Internal::Type::ArrayOf[Orb::Price::GroupedWithMeteredMinimum::Maximum::Filter] }
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -8284,23 +11170,92 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::GroupedWithMeteredMinimum::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
+          #   @param filters [Array<Orb::Models::Price::GroupedWithMeteredMinimum::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+          #
           #   @param maximum_amount [String] Maximum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::GroupedWithMeteredMinimum::Maximum::Filter::Field]
+            required :field, enum: -> { Orb::Price::GroupedWithMeteredMinimum::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::GroupedWithMeteredMinimum::Maximum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::GroupedWithMeteredMinimum::Maximum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::GroupedWithMeteredMinimum::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::GroupedWithMeteredMinimum::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::GroupedWithMeteredMinimum::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::GroupedWithMeteredMinimum::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::GroupedWithMeteredMinimum#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this minimum to.
+          #
+          #   @return [Array<Orb::Models::Price::GroupedWithMeteredMinimum::Minimum::Filter>]
+          required :filters,
+                   -> { Orb::Internal::Type::ArrayOf[Orb::Price::GroupedWithMeteredMinimum::Minimum::Filter] }
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -8308,13 +11263,71 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::GroupedWithMeteredMinimum::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
+          #   @param filters [Array<Orb::Models::Price::GroupedWithMeteredMinimum::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+          #
           #   @param minimum_amount [String] Minimum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::GroupedWithMeteredMinimum::Minimum::Filter::Field]
+            required :field, enum: -> { Orb::Price::GroupedWithMeteredMinimum::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::GroupedWithMeteredMinimum::Minimum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::GroupedWithMeteredMinimum::Minimum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::GroupedWithMeteredMinimum::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::GroupedWithMeteredMinimum::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::GroupedWithMeteredMinimum::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::GroupedWithMeteredMinimum::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::GroupedWithMeteredMinimum#price_type
@@ -8391,6 +11404,7 @@ module Orb
         required :currency, String
 
         # @!attribute discount
+        #   @deprecated
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -8423,11 +11437,13 @@ module Orb
         required :matrix_with_display_name_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
         # @!attribute maximum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::MatrixWithDisplayName::Maximum, nil]
         required :maximum, -> { Orb::Price::MatrixWithDisplayName::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
@@ -8442,11 +11458,13 @@ module Orb
         required :metadata, Orb::Internal::Type::HashOf[String]
 
         # @!attribute minimum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::MatrixWithDisplayName::Minimum, nil]
         required :minimum, -> { Orb::Price::MatrixWithDisplayName::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :minimum_amount, String, nil?: true
@@ -8648,14 +11666,27 @@ module Orb
           #   @param name [String]
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::MatrixWithDisplayName#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this maximum to.
+          #
+          #   @return [Array<Orb::Models::Price::MatrixWithDisplayName::Maximum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::MatrixWithDisplayName::Maximum::Filter]
+                   }
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -8663,23 +11694,94 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::MatrixWithDisplayName::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
+          #   @param filters [Array<Orb::Models::Price::MatrixWithDisplayName::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+          #
           #   @param maximum_amount [String] Maximum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::MatrixWithDisplayName::Maximum::Filter::Field]
+            required :field, enum: -> { Orb::Price::MatrixWithDisplayName::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::MatrixWithDisplayName::Maximum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::MatrixWithDisplayName::Maximum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::MatrixWithDisplayName::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::MatrixWithDisplayName::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::MatrixWithDisplayName::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::MatrixWithDisplayName::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::MatrixWithDisplayName#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this minimum to.
+          #
+          #   @return [Array<Orb::Models::Price::MatrixWithDisplayName::Minimum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::MatrixWithDisplayName::Minimum::Filter]
+                   }
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -8687,13 +11789,71 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::MatrixWithDisplayName::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
+          #   @param filters [Array<Orb::Models::Price::MatrixWithDisplayName::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+          #
           #   @param minimum_amount [String] Minimum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::MatrixWithDisplayName::Minimum::Filter::Field]
+            required :field, enum: -> { Orb::Price::MatrixWithDisplayName::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::MatrixWithDisplayName::Minimum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::MatrixWithDisplayName::Minimum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::MatrixWithDisplayName::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::MatrixWithDisplayName::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::MatrixWithDisplayName::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::MatrixWithDisplayName::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::MatrixWithDisplayName#price_type
@@ -8772,6 +11932,7 @@ module Orb
         required :currency, String
 
         # @!attribute discount
+        #   @deprecated
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -8799,11 +11960,13 @@ module Orb
         required :item, -> { Orb::Price::BulkWithProration::Item }
 
         # @!attribute maximum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::BulkWithProration::Maximum, nil]
         required :maximum, -> { Orb::Price::BulkWithProration::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
@@ -8818,11 +11981,13 @@ module Orb
         required :metadata, Orb::Internal::Type::HashOf[String]
 
         # @!attribute minimum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::BulkWithProration::Minimum, nil]
         required :minimum, -> { Orb::Price::BulkWithProration::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :minimum_amount, String, nil?: true
@@ -9024,14 +12189,27 @@ module Orb
           #   @param name [String]
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::BulkWithProration#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this maximum to.
+          #
+          #   @return [Array<Orb::Models::Price::BulkWithProration::Maximum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::BulkWithProration::Maximum::Filter]
+                   }
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -9039,23 +12217,94 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::BulkWithProration::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
+          #   @param filters [Array<Orb::Models::Price::BulkWithProration::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+          #
           #   @param maximum_amount [String] Maximum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::BulkWithProration::Maximum::Filter::Field]
+            required :field, enum: -> { Orb::Price::BulkWithProration::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::BulkWithProration::Maximum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::BulkWithProration::Maximum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::BulkWithProration::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::BulkWithProration::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::BulkWithProration::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::BulkWithProration::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::BulkWithProration#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this minimum to.
+          #
+          #   @return [Array<Orb::Models::Price::BulkWithProration::Minimum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::BulkWithProration::Minimum::Filter]
+                   }
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -9063,13 +12312,71 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::BulkWithProration::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
+          #   @param filters [Array<Orb::Models::Price::BulkWithProration::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+          #
           #   @param minimum_amount [String] Minimum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::BulkWithProration::Minimum::Filter::Field]
+            required :field, enum: -> { Orb::Price::BulkWithProration::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::BulkWithProration::Minimum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::BulkWithProration::Minimum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::BulkWithProration::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::BulkWithProration::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::BulkWithProration::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::BulkWithProration::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::BulkWithProration#price_type
@@ -9146,6 +12453,7 @@ module Orb
         required :currency, String
 
         # @!attribute discount
+        #   @deprecated
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -9178,11 +12486,13 @@ module Orb
         required :item, -> { Orb::Price::GroupedTieredPackage::Item }
 
         # @!attribute maximum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::GroupedTieredPackage::Maximum, nil]
         required :maximum, -> { Orb::Price::GroupedTieredPackage::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
@@ -9197,11 +12507,13 @@ module Orb
         required :metadata, Orb::Internal::Type::HashOf[String]
 
         # @!attribute minimum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::GroupedTieredPackage::Minimum, nil]
         required :minimum, -> { Orb::Price::GroupedTieredPackage::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :minimum_amount, String, nil?: true
@@ -9403,14 +12715,27 @@ module Orb
           #   @param name [String]
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::GroupedTieredPackage#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this maximum to.
+          #
+          #   @return [Array<Orb::Models::Price::GroupedTieredPackage::Maximum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::GroupedTieredPackage::Maximum::Filter]
+                   }
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -9418,23 +12743,94 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::GroupedTieredPackage::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
+          #   @param filters [Array<Orb::Models::Price::GroupedTieredPackage::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+          #
           #   @param maximum_amount [String] Maximum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::GroupedTieredPackage::Maximum::Filter::Field]
+            required :field, enum: -> { Orb::Price::GroupedTieredPackage::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::GroupedTieredPackage::Maximum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::GroupedTieredPackage::Maximum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::GroupedTieredPackage::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::GroupedTieredPackage::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::GroupedTieredPackage::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::GroupedTieredPackage::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::GroupedTieredPackage#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this minimum to.
+          #
+          #   @return [Array<Orb::Models::Price::GroupedTieredPackage::Minimum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::GroupedTieredPackage::Minimum::Filter]
+                   }
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -9442,13 +12838,71 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::GroupedTieredPackage::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
+          #   @param filters [Array<Orb::Models::Price::GroupedTieredPackage::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+          #
           #   @param minimum_amount [String] Minimum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::GroupedTieredPackage::Minimum::Filter::Field]
+            required :field, enum: -> { Orb::Price::GroupedTieredPackage::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::GroupedTieredPackage::Minimum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::GroupedTieredPackage::Minimum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::GroupedTieredPackage::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::GroupedTieredPackage::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::GroupedTieredPackage::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::GroupedTieredPackage::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::GroupedTieredPackage#price_type
@@ -9525,6 +12979,7 @@ module Orb
         required :currency, String
 
         # @!attribute discount
+        #   @deprecated
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -9557,11 +13012,13 @@ module Orb
         required :max_group_tiered_package_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
         # @!attribute maximum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::MaxGroupTieredPackage::Maximum, nil]
         required :maximum, -> { Orb::Price::MaxGroupTieredPackage::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
@@ -9576,11 +13033,13 @@ module Orb
         required :metadata, Orb::Internal::Type::HashOf[String]
 
         # @!attribute minimum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::MaxGroupTieredPackage::Minimum, nil]
         required :minimum, -> { Orb::Price::MaxGroupTieredPackage::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :minimum_amount, String, nil?: true
@@ -9782,14 +13241,27 @@ module Orb
           #   @param name [String]
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::MaxGroupTieredPackage#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this maximum to.
+          #
+          #   @return [Array<Orb::Models::Price::MaxGroupTieredPackage::Maximum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::MaxGroupTieredPackage::Maximum::Filter]
+                   }
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -9797,23 +13269,94 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::MaxGroupTieredPackage::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
+          #   @param filters [Array<Orb::Models::Price::MaxGroupTieredPackage::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+          #
           #   @param maximum_amount [String] Maximum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::MaxGroupTieredPackage::Maximum::Filter::Field]
+            required :field, enum: -> { Orb::Price::MaxGroupTieredPackage::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::MaxGroupTieredPackage::Maximum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::MaxGroupTieredPackage::Maximum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::MaxGroupTieredPackage::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::MaxGroupTieredPackage::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::MaxGroupTieredPackage::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::MaxGroupTieredPackage::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::MaxGroupTieredPackage#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this minimum to.
+          #
+          #   @return [Array<Orb::Models::Price::MaxGroupTieredPackage::Minimum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::MaxGroupTieredPackage::Minimum::Filter]
+                   }
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -9821,13 +13364,71 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::MaxGroupTieredPackage::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
+          #   @param filters [Array<Orb::Models::Price::MaxGroupTieredPackage::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+          #
           #   @param minimum_amount [String] Minimum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::MaxGroupTieredPackage::Minimum::Filter::Field]
+            required :field, enum: -> { Orb::Price::MaxGroupTieredPackage::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::MaxGroupTieredPackage::Minimum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::MaxGroupTieredPackage::Minimum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::MaxGroupTieredPackage::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::MaxGroupTieredPackage::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::MaxGroupTieredPackage::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::MaxGroupTieredPackage::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::MaxGroupTieredPackage#price_type
@@ -9908,6 +13509,7 @@ module Orb
         required :currency, String
 
         # @!attribute discount
+        #   @deprecated
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -9935,11 +13537,13 @@ module Orb
         required :item, -> { Orb::Price::ScalableMatrixWithUnitPricing::Item }
 
         # @!attribute maximum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::ScalableMatrixWithUnitPricing::Maximum, nil]
         required :maximum, -> { Orb::Price::ScalableMatrixWithUnitPricing::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
@@ -9954,11 +13558,13 @@ module Orb
         required :metadata, Orb::Internal::Type::HashOf[String]
 
         # @!attribute minimum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::ScalableMatrixWithUnitPricing::Minimum, nil]
         required :minimum, -> { Orb::Price::ScalableMatrixWithUnitPricing::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :minimum_amount, String, nil?: true
@@ -10170,14 +13776,27 @@ module Orb
           #   @param name [String]
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::ScalableMatrixWithUnitPricing#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this maximum to.
+          #
+          #   @return [Array<Orb::Models::Price::ScalableMatrixWithUnitPricing::Maximum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::ScalableMatrixWithUnitPricing::Maximum::Filter]
+                   }
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -10185,23 +13804,97 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::ScalableMatrixWithUnitPricing::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
+          #   @param filters [Array<Orb::Models::Price::ScalableMatrixWithUnitPricing::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+          #
           #   @param maximum_amount [String] Maximum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricing::Maximum::Filter::Field]
+            required :field, enum: -> { Orb::Price::ScalableMatrixWithUnitPricing::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricing::Maximum::Filter::Operator]
+            required :operator,
+                     enum: -> {
+                       Orb::Price::ScalableMatrixWithUnitPricing::Maximum::Filter::Operator
+                     }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricing::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricing::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::ScalableMatrixWithUnitPricing::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::ScalableMatrixWithUnitPricing::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::ScalableMatrixWithUnitPricing#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this minimum to.
+          #
+          #   @return [Array<Orb::Models::Price::ScalableMatrixWithUnitPricing::Minimum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::ScalableMatrixWithUnitPricing::Minimum::Filter]
+                   }
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -10209,13 +13902,74 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::ScalableMatrixWithUnitPricing::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
+          #   @param filters [Array<Orb::Models::Price::ScalableMatrixWithUnitPricing::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+          #
           #   @param minimum_amount [String] Minimum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricing::Minimum::Filter::Field]
+            required :field, enum: -> { Orb::Price::ScalableMatrixWithUnitPricing::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricing::Minimum::Filter::Operator]
+            required :operator,
+                     enum: -> {
+                       Orb::Price::ScalableMatrixWithUnitPricing::Minimum::Filter::Operator
+                     }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricing::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricing::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::ScalableMatrixWithUnitPricing::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::ScalableMatrixWithUnitPricing::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::ScalableMatrixWithUnitPricing#price_type
@@ -10296,6 +14050,7 @@ module Orb
         required :currency, String
 
         # @!attribute discount
+        #   @deprecated
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -10323,11 +14078,13 @@ module Orb
         required :item, -> { Orb::Price::ScalableMatrixWithTieredPricing::Item }
 
         # @!attribute maximum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::ScalableMatrixWithTieredPricing::Maximum, nil]
         required :maximum, -> { Orb::Price::ScalableMatrixWithTieredPricing::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
@@ -10342,11 +14099,13 @@ module Orb
         required :metadata, Orb::Internal::Type::HashOf[String]
 
         # @!attribute minimum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::ScalableMatrixWithTieredPricing::Minimum, nil]
         required :minimum, -> { Orb::Price::ScalableMatrixWithTieredPricing::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :minimum_amount, String, nil?: true
@@ -10558,14 +14317,27 @@ module Orb
           #   @param name [String]
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::ScalableMatrixWithTieredPricing#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this maximum to.
+          #
+          #   @return [Array<Orb::Models::Price::ScalableMatrixWithTieredPricing::Maximum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::ScalableMatrixWithTieredPricing::Maximum::Filter]
+                   }
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -10573,23 +14345,97 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::ScalableMatrixWithTieredPricing::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
+          #   @param filters [Array<Orb::Models::Price::ScalableMatrixWithTieredPricing::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+          #
           #   @param maximum_amount [String] Maximum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricing::Maximum::Filter::Field]
+            required :field, enum: -> { Orb::Price::ScalableMatrixWithTieredPricing::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricing::Maximum::Filter::Operator]
+            required :operator,
+                     enum: -> {
+                       Orb::Price::ScalableMatrixWithTieredPricing::Maximum::Filter::Operator
+                     }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricing::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricing::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::ScalableMatrixWithTieredPricing::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::ScalableMatrixWithTieredPricing::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::ScalableMatrixWithTieredPricing#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this minimum to.
+          #
+          #   @return [Array<Orb::Models::Price::ScalableMatrixWithTieredPricing::Minimum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::ScalableMatrixWithTieredPricing::Minimum::Filter]
+                   }
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -10597,13 +14443,74 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::ScalableMatrixWithTieredPricing::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
+          #   @param filters [Array<Orb::Models::Price::ScalableMatrixWithTieredPricing::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+          #
           #   @param minimum_amount [String] Minimum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricing::Minimum::Filter::Field]
+            required :field, enum: -> { Orb::Price::ScalableMatrixWithTieredPricing::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricing::Minimum::Filter::Operator]
+            required :operator,
+                     enum: -> {
+                       Orb::Price::ScalableMatrixWithTieredPricing::Minimum::Filter::Operator
+                     }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricing::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricing::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::ScalableMatrixWithTieredPricing::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::ScalableMatrixWithTieredPricing::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::ScalableMatrixWithTieredPricing#price_type
@@ -10685,6 +14592,7 @@ module Orb
         required :currency, String
 
         # @!attribute discount
+        #   @deprecated
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -10712,11 +14620,13 @@ module Orb
         required :item, -> { Orb::Price::CumulativeGroupedBulk::Item }
 
         # @!attribute maximum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::CumulativeGroupedBulk::Maximum, nil]
         required :maximum, -> { Orb::Price::CumulativeGroupedBulk::Maximum }, nil?: true
 
         # @!attribute maximum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :maximum_amount, String, nil?: true
@@ -10731,11 +14641,13 @@ module Orb
         required :metadata, Orb::Internal::Type::HashOf[String]
 
         # @!attribute minimum
+        #   @deprecated
         #
         #   @return [Orb::Models::Price::CumulativeGroupedBulk::Minimum, nil]
         required :minimum, -> { Orb::Price::CumulativeGroupedBulk::Minimum }, nil?: true
 
         # @!attribute minimum_amount
+        #   @deprecated
         #
         #   @return [String, nil]
         required :minimum_amount, String, nil?: true
@@ -10937,14 +14849,27 @@ module Orb
           #   @param name [String]
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::CumulativeGroupedBulk#maximum
         class Maximum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this maximum amount applies to. For plan/plan phase
           #   maximums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this maximum to.
+          #
+          #   @return [Array<Orb::Models::Price::CumulativeGroupedBulk::Maximum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::CumulativeGroupedBulk::Maximum::Filter]
+                   }
 
           # @!attribute maximum_amount
           #   Maximum amount applied
@@ -10952,23 +14877,94 @@ module Orb
           #   @return [String]
           required :maximum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, maximum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::CumulativeGroupedBulk::Maximum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
           #
+          #   @param filters [Array<Orb::Models::Price::CumulativeGroupedBulk::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
+          #
           #   @param maximum_amount [String] Maximum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::CumulativeGroupedBulk::Maximum::Filter::Field]
+            required :field, enum: -> { Orb::Price::CumulativeGroupedBulk::Maximum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::CumulativeGroupedBulk::Maximum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::CumulativeGroupedBulk::Maximum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::CumulativeGroupedBulk::Maximum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::CumulativeGroupedBulk::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::CumulativeGroupedBulk::Maximum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::CumulativeGroupedBulk::Maximum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
+        # @deprecated
+        #
         # @see Orb::Models::Price::CumulativeGroupedBulk#minimum
         class Minimum < Orb::Internal::Type::BaseModel
           # @!attribute applies_to_price_ids
+          #   @deprecated
+          #
           #   List of price_ids that this minimum amount applies to. For plan/plan phase
           #   minimums, this can be a subset of prices.
           #
           #   @return [Array<String>]
           required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute filters
+          #   The filters that determine which prices to apply this minimum to.
+          #
+          #   @return [Array<Orb::Models::Price::CumulativeGroupedBulk::Minimum::Filter>]
+          required :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Price::CumulativeGroupedBulk::Minimum::Filter]
+                   }
 
           # @!attribute minimum_amount
           #   Minimum amount applied
@@ -10976,13 +14972,71 @@ module Orb
           #   @return [String]
           required :minimum_amount, String
 
-          # @!method initialize(applies_to_price_ids:, minimum_amount:)
+          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::CumulativeGroupedBulk::Minimum} for more details.
           #
           #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
           #
+          #   @param filters [Array<Orb::Models::Price::CumulativeGroupedBulk::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
+          #
           #   @param minimum_amount [String] Minimum amount applied
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Price::CumulativeGroupedBulk::Minimum::Filter::Field]
+            required :field, enum: -> { Orb::Price::CumulativeGroupedBulk::Minimum::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Price::CumulativeGroupedBulk::Minimum::Filter::Operator]
+            required :operator, enum: -> { Orb::Price::CumulativeGroupedBulk::Minimum::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Price::CumulativeGroupedBulk::Minimum::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Price::CumulativeGroupedBulk::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Price::CumulativeGroupedBulk::Minimum::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Price::CumulativeGroupedBulk::Minimum::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::CumulativeGroupedBulk#price_type

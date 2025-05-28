@@ -60,7 +60,7 @@ module Orb
       #
       # @param shipping_address [Orb::Models::CustomerCreateParams::ShippingAddress, nil]
       #
-      # @param tax_configuration [Orb::Models::CustomerCreateParams::TaxConfiguration::Avalara, Orb::Models::CustomerCreateParams::TaxConfiguration::Taxjar, nil]
+      # @param tax_configuration [Orb::Models::CustomerCreateParams::TaxConfiguration::Avalara, Orb::Models::CustomerCreateParams::TaxConfiguration::Taxjar, Orb::Models::CustomerCreateParams::TaxConfiguration::Sphere, nil]
       #
       # @param tax_id [Orb::Models::CustomerCreateParams::TaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
       #
@@ -125,7 +125,7 @@ module Orb
       #
       # @param shipping_address [Orb::Models::CustomerUpdateParams::ShippingAddress, nil]
       #
-      # @param tax_configuration [Orb::Models::CustomerUpdateParams::TaxConfiguration::Avalara, Orb::Models::CustomerUpdateParams::TaxConfiguration::Taxjar, nil]
+      # @param tax_configuration [Orb::Models::CustomerUpdateParams::TaxConfiguration::Avalara, Orb::Models::CustomerUpdateParams::TaxConfiguration::Taxjar, Orb::Models::CustomerUpdateParams::TaxConfiguration::Sphere, nil]
       #
       # @param tax_id [Orb::Models::CustomerUpdateParams::TaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
       #
@@ -202,10 +202,7 @@ module Orb
       # **Note**: This operation happens asynchronously and can be expected to take a
       # few minutes to propagate to related resources. However, querying for the
       # customer on subsequent GET requests while deletion is in process will reflect
-      # its deletion with a `deleted: true` property. Once the customer deletion has
-      # been fully processed, the customer will not be returned in the API.
-      #
-      # On successful processing, this returns an empty dictionary (`{}`) in the API.
+      # its deletion.
       #
       # @overload delete(customer_id, request_options: {})
       #
@@ -364,7 +361,7 @@ module Orb
       #
       # @param shipping_address [Orb::Models::CustomerUpdateByExternalIDParams::ShippingAddress, nil]
       #
-      # @param tax_configuration [Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Avalara, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Taxjar, nil]
+      # @param tax_configuration [Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Avalara, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Taxjar, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Sphere, nil]
       #
       # @param tax_id [Orb::Models::CustomerUpdateByExternalIDParams::TaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
       #

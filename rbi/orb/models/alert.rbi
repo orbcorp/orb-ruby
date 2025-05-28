@@ -60,6 +60,11 @@ module Orb
       sig { returns(Orb::Alert::Type::TaggedSymbol) }
       attr_accessor :type
 
+      # The current status of the alert. This field is only present for credit balance
+      # alerts.
+      sig { returns(T.nilable(T::Array[Orb::Alert::BalanceAlertStatus])) }
+      attr_accessor :balance_alert_status
+
       # [Alerts within Orb](/product-catalog/configuring-alerts) monitor spending,
       # usage, or credit balance and trigger webhooks when a threshold is exceeded.
       #
@@ -76,7 +81,9 @@ module Orb
           plan: T.nilable(Orb::Alert::Plan::OrHash),
           subscription: T.nilable(Orb::Alert::Subscription::OrHash),
           thresholds: T.nilable(T::Array[Orb::Alert::Threshold::OrHash]),
-          type: Orb::Alert::Type::OrSymbol
+          type: Orb::Alert::Type::OrSymbol,
+          balance_alert_status:
+            T.nilable(T::Array[Orb::Alert::BalanceAlertStatus::OrHash])
         ).returns(T.attached_class)
       end
       def self.new(
@@ -100,7 +107,10 @@ module Orb
         # triggered.
         thresholds:,
         # The type of alert. This must be a valid alert type.
-        type:
+        type:,
+        # The current status of the alert. This field is only present for credit balance
+        # alerts.
+        balance_alert_status: nil
       )
       end
 
@@ -116,7 +126,9 @@ module Orb
             plan: T.nilable(Orb::Alert::Plan),
             subscription: T.nilable(Orb::Alert::Subscription),
             thresholds: T.nilable(T::Array[Orb::Alert::Threshold]),
-            type: Orb::Alert::Type::TaggedSymbol
+            type: Orb::Alert::Type::TaggedSymbol,
+            balance_alert_status:
+              T.nilable(T::Array[Orb::Alert::BalanceAlertStatus])
           }
         )
       end
@@ -284,6 +296,41 @@ module Orb
 
         sig { override.returns(T::Array[Orb::Alert::Type::TaggedSymbol]) }
         def self.values
+        end
+      end
+
+      class BalanceAlertStatus < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Alert::BalanceAlertStatus, Orb::Internal::AnyHash)
+          end
+
+        # Whether the alert is currently in-alert or not.
+        sig { returns(T::Boolean) }
+        attr_accessor :in_alert
+
+        # The value of the threshold that defines the alert status.
+        sig { returns(Float) }
+        attr_accessor :threshold_value
+
+        # Alert status is used to determine if an alert is currently in-alert or not.
+        sig do
+          params(in_alert: T::Boolean, threshold_value: Float).returns(
+            T.attached_class
+          )
+        end
+        def self.new(
+          # Whether the alert is currently in-alert or not.
+          in_alert:,
+          # The value of the threshold that defines the alert status.
+          threshold_value:
+        )
+        end
+
+        sig do
+          override.returns({ in_alert: T::Boolean, threshold_value: Float })
+        end
+        def to_hash
         end
       end
     end

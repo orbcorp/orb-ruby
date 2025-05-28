@@ -529,6 +529,16 @@ module Orb
             #   @return [Float, nil]
             optional :conversion_rate, Float, nil?: true
 
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Unit::DimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::SubscriptionPriceIntervalsParams::Add::Price::Unit::DimensionalPriceConfiguration
+                     },
+                     nil?: true
+
             # @!attribute external_price_id
             #   An alias for the price.
             #
@@ -567,7 +577,7 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!method initialize(cadence:, currency:, item_id:, name:, unit_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :unit)
+            # @!method initialize(cadence:, currency:, item_id:, name:, unit_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :unit)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Unit} for more
             #   details.
@@ -589,6 +599,8 @@ module Orb
             #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Unit::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
             #
             #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param dimensional_price_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Unit::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
             #
             #   @param external_price_id [String, nil] An alias for the price.
             #
@@ -668,6 +680,41 @@ module Orb
                 # @!method self.values
                 #   @return [Array<Symbol>]
               end
+            end
+
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Unit#dimensional_price_configuration
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   The list of dimension values matching (in order) the dimensions of the price
+              #   group
+              #
+              #   @return [Array<String>]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!attribute dimensional_price_group_id
+              #   The id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :dimensional_price_group_id, String, nil?: true
+
+              # @!attribute external_dimensional_price_group_id
+              #   The external id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :external_dimensional_price_group_id, String, nil?: true
+
+              # @!method initialize(dimension_values:, dimensional_price_group_id: nil, external_dimensional_price_group_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Unit::DimensionalPriceConfiguration}
+              #   for more details.
+              #
+              #   For dimensional price: specifies a price group and dimension values
+              #
+              #   @param dimension_values [Array<String>] The list of dimension values matching (in order) the dimensions of the price gro
+              #
+              #   @param dimensional_price_group_id [String, nil] The id of the dimensional price group to include this price in
+              #
+              #   @param external_dimensional_price_group_id [String, nil] The external id of the dimensional price group to include this price in
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Unit#invoicing_cycle_configuration
@@ -782,6 +829,16 @@ module Orb
             #   @return [Float, nil]
             optional :conversion_rate, Float, nil?: true
 
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Package::DimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::SubscriptionPriceIntervalsParams::Add::Price::Package::DimensionalPriceConfiguration
+                     },
+                     nil?: true
+
             # @!attribute external_price_id
             #   An alias for the price.
             #
@@ -820,7 +877,7 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!method initialize(cadence:, currency:, item_id:, name:, package_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :package)
+            # @!method initialize(cadence:, currency:, item_id:, name:, package_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :package)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Package} for more
             #   details.
@@ -842,6 +899,8 @@ module Orb
             #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Package::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
             #
             #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param dimensional_price_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Package::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
             #
             #   @param external_price_id [String, nil] An alias for the price.
             #
@@ -934,6 +993,41 @@ module Orb
                 # @!method self.values
                 #   @return [Array<Symbol>]
               end
+            end
+
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Package#dimensional_price_configuration
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   The list of dimension values matching (in order) the dimensions of the price
+              #   group
+              #
+              #   @return [Array<String>]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!attribute dimensional_price_group_id
+              #   The id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :dimensional_price_group_id, String, nil?: true
+
+              # @!attribute external_dimensional_price_group_id
+              #   The external id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :external_dimensional_price_group_id, String, nil?: true
+
+              # @!method initialize(dimension_values:, dimensional_price_group_id: nil, external_dimensional_price_group_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Package::DimensionalPriceConfiguration}
+              #   for more details.
+              #
+              #   For dimensional price: specifies a price group and dimension values
+              #
+              #   @param dimension_values [Array<String>] The list of dimension values matching (in order) the dimensions of the price gro
+              #
+              #   @param dimensional_price_group_id [String, nil] The id of the dimensional price group to include this price in
+              #
+              #   @param external_dimensional_price_group_id [String, nil] The external id of the dimensional price group to include this price in
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Package#invoicing_cycle_configuration
@@ -1045,6 +1139,16 @@ module Orb
             #   @return [Float, nil]
             optional :conversion_rate, Float, nil?: true
 
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Matrix::DimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::SubscriptionPriceIntervalsParams::Add::Price::Matrix::DimensionalPriceConfiguration
+                     },
+                     nil?: true
+
             # @!attribute external_price_id
             #   An alias for the price.
             #
@@ -1083,7 +1187,7 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!method initialize(cadence:, currency:, item_id:, matrix_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :matrix)
+            # @!method initialize(cadence:, currency:, item_id:, matrix_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :matrix)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Matrix} for more
             #   details.
@@ -1105,6 +1209,8 @@ module Orb
             #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Matrix::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
             #
             #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param dimensional_price_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Matrix::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
             #
             #   @param external_price_id [String, nil] An alias for the price.
             #
@@ -1230,6 +1336,41 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Matrix#dimensional_price_configuration
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   The list of dimension values matching (in order) the dimensions of the price
+              #   group
+              #
+              #   @return [Array<String>]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!attribute dimensional_price_group_id
+              #   The id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :dimensional_price_group_id, String, nil?: true
+
+              # @!attribute external_dimensional_price_group_id
+              #   The external id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :external_dimensional_price_group_id, String, nil?: true
+
+              # @!method initialize(dimension_values:, dimensional_price_group_id: nil, external_dimensional_price_group_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Matrix::DimensionalPriceConfiguration}
+              #   for more details.
+              #
+              #   For dimensional price: specifies a price group and dimension values
+              #
+              #   @param dimension_values [Array<String>] The list of dimension values matching (in order) the dimensions of the price gro
+              #
+              #   @param dimensional_price_group_id [String, nil] The id of the dimensional price group to include this price in
+              #
+              #   @param external_dimensional_price_group_id [String, nil] The external id of the dimensional price group to include this price in
+            end
+
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Matrix#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
@@ -1342,6 +1483,16 @@ module Orb
             #   @return [Float, nil]
             optional :conversion_rate, Float, nil?: true
 
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithAllocation::DimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithAllocation::DimensionalPriceConfiguration
+                     },
+                     nil?: true
+
             # @!attribute external_price_id
             #   An alias for the price.
             #
@@ -1380,7 +1531,7 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!method initialize(cadence:, currency:, item_id:, matrix_with_allocation_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :matrix_with_allocation)
+            # @!method initialize(cadence:, currency:, item_id:, matrix_with_allocation_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :matrix_with_allocation)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithAllocation}
             #   for more details.
@@ -1402,6 +1553,8 @@ module Orb
             #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithAllocation::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
             #
             #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param dimensional_price_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithAllocation::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
             #
             #   @param external_price_id [String, nil] An alias for the price.
             #
@@ -1537,6 +1690,41 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithAllocation#dimensional_price_configuration
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   The list of dimension values matching (in order) the dimensions of the price
+              #   group
+              #
+              #   @return [Array<String>]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!attribute dimensional_price_group_id
+              #   The id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :dimensional_price_group_id, String, nil?: true
+
+              # @!attribute external_dimensional_price_group_id
+              #   The external id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :external_dimensional_price_group_id, String, nil?: true
+
+              # @!method initialize(dimension_values:, dimensional_price_group_id: nil, external_dimensional_price_group_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithAllocation::DimensionalPriceConfiguration}
+              #   for more details.
+              #
+              #   For dimensional price: specifies a price group and dimension values
+              #
+              #   @param dimension_values [Array<String>] The list of dimension values matching (in order) the dimensions of the price gro
+              #
+              #   @param dimensional_price_group_id [String, nil] The id of the dimensional price group to include this price in
+              #
+              #   @param external_dimensional_price_group_id [String, nil] The external id of the dimensional price group to include this price in
+            end
+
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithAllocation#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
@@ -1646,6 +1834,16 @@ module Orb
             #   @return [Float, nil]
             optional :conversion_rate, Float, nil?: true
 
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Tiered::DimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::SubscriptionPriceIntervalsParams::Add::Price::Tiered::DimensionalPriceConfiguration
+                     },
+                     nil?: true
+
             # @!attribute external_price_id
             #   An alias for the price.
             #
@@ -1684,7 +1882,7 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!method initialize(cadence:, currency:, item_id:, name:, tiered_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :tiered)
+            # @!method initialize(cadence:, currency:, item_id:, name:, tiered_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :tiered)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Tiered} for more
             #   details.
@@ -1706,6 +1904,8 @@ module Orb
             #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Tiered::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
             #
             #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param dimensional_price_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Tiered::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
             #
             #   @param external_price_id [String, nil] An alias for the price.
             #
@@ -1815,6 +2015,41 @@ module Orb
                 # @!method self.values
                 #   @return [Array<Symbol>]
               end
+            end
+
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Tiered#dimensional_price_configuration
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   The list of dimension values matching (in order) the dimensions of the price
+              #   group
+              #
+              #   @return [Array<String>]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!attribute dimensional_price_group_id
+              #   The id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :dimensional_price_group_id, String, nil?: true
+
+              # @!attribute external_dimensional_price_group_id
+              #   The external id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :external_dimensional_price_group_id, String, nil?: true
+
+              # @!method initialize(dimension_values:, dimensional_price_group_id: nil, external_dimensional_price_group_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Tiered::DimensionalPriceConfiguration}
+              #   for more details.
+              #
+              #   For dimensional price: specifies a price group and dimension values
+              #
+              #   @param dimension_values [Array<String>] The list of dimension values matching (in order) the dimensions of the price gro
+              #
+              #   @param dimensional_price_group_id [String, nil] The id of the dimensional price group to include this price in
+              #
+              #   @param external_dimensional_price_group_id [String, nil] The external id of the dimensional price group to include this price in
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Tiered#invoicing_cycle_configuration
@@ -1927,6 +2162,16 @@ module Orb
             #   @return [Float, nil]
             optional :conversion_rate, Float, nil?: true
 
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredBps::DimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredBps::DimensionalPriceConfiguration
+                     },
+                     nil?: true
+
             # @!attribute external_price_id
             #   An alias for the price.
             #
@@ -1965,7 +2210,7 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!method initialize(cadence:, currency:, item_id:, name:, tiered_bps_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :tiered_bps)
+            # @!method initialize(cadence:, currency:, item_id:, name:, tiered_bps_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :tiered_bps)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredBps} for more
             #   details.
@@ -1987,6 +2232,8 @@ module Orb
             #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredBps::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
             #
             #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param dimensional_price_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredBps::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
             #
             #   @param external_price_id [String, nil] An alias for the price.
             #
@@ -2111,6 +2358,41 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredBps#dimensional_price_configuration
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   The list of dimension values matching (in order) the dimensions of the price
+              #   group
+              #
+              #   @return [Array<String>]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!attribute dimensional_price_group_id
+              #   The id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :dimensional_price_group_id, String, nil?: true
+
+              # @!attribute external_dimensional_price_group_id
+              #   The external id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :external_dimensional_price_group_id, String, nil?: true
+
+              # @!method initialize(dimension_values:, dimensional_price_group_id: nil, external_dimensional_price_group_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredBps::DimensionalPriceConfiguration}
+              #   for more details.
+              #
+              #   For dimensional price: specifies a price group and dimension values
+              #
+              #   @param dimension_values [Array<String>] The list of dimension values matching (in order) the dimensions of the price gro
+              #
+              #   @param dimensional_price_group_id [String, nil] The id of the dimensional price group to include this price in
+              #
+              #   @param external_dimensional_price_group_id [String, nil] The external id of the dimensional price group to include this price in
+            end
+
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredBps#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
@@ -2215,6 +2497,16 @@ module Orb
             #   @return [Float, nil]
             optional :conversion_rate, Float, nil?: true
 
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Bps::DimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::SubscriptionPriceIntervalsParams::Add::Price::Bps::DimensionalPriceConfiguration
+                     },
+                     nil?: true
+
             # @!attribute external_price_id
             #   An alias for the price.
             #
@@ -2253,7 +2545,7 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!method initialize(bps_config:, cadence:, currency:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :bps)
+            # @!method initialize(bps_config:, cadence:, currency:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :bps)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Bps} for more
             #   details.
@@ -2275,6 +2567,8 @@ module Orb
             #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Bps::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
             #
             #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param dimensional_price_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Bps::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
             #
             #   @param external_price_id [String, nil] An alias for the price.
             #
@@ -2362,6 +2656,41 @@ module Orb
                 # @!method self.values
                 #   @return [Array<Symbol>]
               end
+            end
+
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Bps#dimensional_price_configuration
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   The list of dimension values matching (in order) the dimensions of the price
+              #   group
+              #
+              #   @return [Array<String>]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!attribute dimensional_price_group_id
+              #   The id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :dimensional_price_group_id, String, nil?: true
+
+              # @!attribute external_dimensional_price_group_id
+              #   The external id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :external_dimensional_price_group_id, String, nil?: true
+
+              # @!method initialize(dimension_values:, dimensional_price_group_id: nil, external_dimensional_price_group_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Bps::DimensionalPriceConfiguration}
+              #   for more details.
+              #
+              #   For dimensional price: specifies a price group and dimension values
+              #
+              #   @param dimension_values [Array<String>] The list of dimension values matching (in order) the dimensions of the price gro
+              #
+              #   @param dimensional_price_group_id [String, nil] The id of the dimensional price group to include this price in
+              #
+              #   @param external_dimensional_price_group_id [String, nil] The external id of the dimensional price group to include this price in
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Bps#invoicing_cycle_configuration
@@ -2474,6 +2803,16 @@ module Orb
             #   @return [Float, nil]
             optional :conversion_rate, Float, nil?: true
 
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::BulkBps::DimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::SubscriptionPriceIntervalsParams::Add::Price::BulkBps::DimensionalPriceConfiguration
+                     },
+                     nil?: true
+
             # @!attribute external_price_id
             #   An alias for the price.
             #
@@ -2512,7 +2851,7 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!method initialize(bulk_bps_config:, cadence:, currency:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :bulk_bps)
+            # @!method initialize(bulk_bps_config:, cadence:, currency:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :bulk_bps)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::BulkBps} for more
             #   details.
@@ -2534,6 +2873,8 @@ module Orb
             #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::BulkBps::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
             #
             #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param dimensional_price_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::BulkBps::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
             #
             #   @param external_price_id [String, nil] An alias for the price.
             #
@@ -2650,6 +2991,41 @@ module Orb
               end
             end
 
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::BulkBps#dimensional_price_configuration
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   The list of dimension values matching (in order) the dimensions of the price
+              #   group
+              #
+              #   @return [Array<String>]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!attribute dimensional_price_group_id
+              #   The id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :dimensional_price_group_id, String, nil?: true
+
+              # @!attribute external_dimensional_price_group_id
+              #   The external id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :external_dimensional_price_group_id, String, nil?: true
+
+              # @!method initialize(dimension_values:, dimensional_price_group_id: nil, external_dimensional_price_group_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::BulkBps::DimensionalPriceConfiguration}
+              #   for more details.
+              #
+              #   For dimensional price: specifies a price group and dimension values
+              #
+              #   @param dimension_values [Array<String>] The list of dimension values matching (in order) the dimensions of the price gro
+              #
+              #   @param dimensional_price_group_id [String, nil] The id of the dimensional price group to include this price in
+              #
+              #   @param external_dimensional_price_group_id [String, nil] The external id of the dimensional price group to include this price in
+            end
+
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::BulkBps#invoicing_cycle_configuration
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               # @!attribute duration
@@ -2756,6 +3132,16 @@ module Orb
             #   @return [Float, nil]
             optional :conversion_rate, Float, nil?: true
 
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Bulk::DimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::SubscriptionPriceIntervalsParams::Add::Price::Bulk::DimensionalPriceConfiguration
+                     },
+                     nil?: true
+
             # @!attribute external_price_id
             #   An alias for the price.
             #
@@ -2794,7 +3180,7 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!method initialize(bulk_config:, cadence:, currency:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :bulk)
+            # @!method initialize(bulk_config:, cadence:, currency:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :bulk)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Bulk} for more
             #   details.
@@ -2816,6 +3202,8 @@ module Orb
             #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Bulk::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
             #
             #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param dimensional_price_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Bulk::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
             #
             #   @param external_price_id [String, nil] An alias for the price.
             #
@@ -2917,6 +3305,41 @@ module Orb
                 # @!method self.values
                 #   @return [Array<Symbol>]
               end
+            end
+
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Bulk#dimensional_price_configuration
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   The list of dimension values matching (in order) the dimensions of the price
+              #   group
+              #
+              #   @return [Array<String>]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!attribute dimensional_price_group_id
+              #   The id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :dimensional_price_group_id, String, nil?: true
+
+              # @!attribute external_dimensional_price_group_id
+              #   The external id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :external_dimensional_price_group_id, String, nil?: true
+
+              # @!method initialize(dimension_values:, dimensional_price_group_id: nil, external_dimensional_price_group_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Bulk::DimensionalPriceConfiguration}
+              #   for more details.
+              #
+              #   For dimensional price: specifies a price group and dimension values
+              #
+              #   @param dimension_values [Array<String>] The list of dimension values matching (in order) the dimensions of the price gro
+              #
+              #   @param dimensional_price_group_id [String, nil] The id of the dimensional price group to include this price in
+              #
+              #   @param external_dimensional_price_group_id [String, nil] The external id of the dimensional price group to include this price in
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Bulk#invoicing_cycle_configuration
@@ -3028,6 +3451,16 @@ module Orb
             #   @return [Float, nil]
             optional :conversion_rate, Float, nil?: true
 
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::ThresholdTotalAmount::DimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::SubscriptionPriceIntervalsParams::Add::Price::ThresholdTotalAmount::DimensionalPriceConfiguration
+                     },
+                     nil?: true
+
             # @!attribute external_price_id
             #   An alias for the price.
             #
@@ -3066,7 +3499,7 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!method initialize(cadence:, currency:, item_id:, name:, threshold_total_amount_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :threshold_total_amount)
+            # @!method initialize(cadence:, currency:, item_id:, name:, threshold_total_amount_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :threshold_total_amount)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::ThresholdTotalAmount}
             #   for more details.
@@ -3088,6 +3521,8 @@ module Orb
             #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::ThresholdTotalAmount::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
             #
             #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param dimensional_price_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::ThresholdTotalAmount::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
             #
             #   @param external_price_id [String, nil] An alias for the price.
             #
@@ -3155,6 +3590,41 @@ module Orb
                 # @!method self.values
                 #   @return [Array<Symbol>]
               end
+            end
+
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::ThresholdTotalAmount#dimensional_price_configuration
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   The list of dimension values matching (in order) the dimensions of the price
+              #   group
+              #
+              #   @return [Array<String>]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!attribute dimensional_price_group_id
+              #   The id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :dimensional_price_group_id, String, nil?: true
+
+              # @!attribute external_dimensional_price_group_id
+              #   The external id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :external_dimensional_price_group_id, String, nil?: true
+
+              # @!method initialize(dimension_values:, dimensional_price_group_id: nil, external_dimensional_price_group_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::ThresholdTotalAmount::DimensionalPriceConfiguration}
+              #   for more details.
+              #
+              #   For dimensional price: specifies a price group and dimension values
+              #
+              #   @param dimension_values [Array<String>] The list of dimension values matching (in order) the dimensions of the price gro
+              #
+              #   @param dimensional_price_group_id [String, nil] The id of the dimensional price group to include this price in
+              #
+              #   @param external_dimensional_price_group_id [String, nil] The external id of the dimensional price group to include this price in
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::ThresholdTotalAmount#invoicing_cycle_configuration
@@ -3266,6 +3736,16 @@ module Orb
             #   @return [Float, nil]
             optional :conversion_rate, Float, nil?: true
 
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredPackage::DimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredPackage::DimensionalPriceConfiguration
+                     },
+                     nil?: true
+
             # @!attribute external_price_id
             #   An alias for the price.
             #
@@ -3304,7 +3784,7 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!method initialize(cadence:, currency:, item_id:, name:, tiered_package_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :tiered_package)
+            # @!method initialize(cadence:, currency:, item_id:, name:, tiered_package_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :tiered_package)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredPackage} for
             #   more details.
@@ -3326,6 +3806,8 @@ module Orb
             #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredPackage::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
             #
             #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param dimensional_price_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredPackage::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
             #
             #   @param external_price_id [String, nil] An alias for the price.
             #
@@ -3393,6 +3875,41 @@ module Orb
                 # @!method self.values
                 #   @return [Array<Symbol>]
               end
+            end
+
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredPackage#dimensional_price_configuration
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   The list of dimension values matching (in order) the dimensions of the price
+              #   group
+              #
+              #   @return [Array<String>]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!attribute dimensional_price_group_id
+              #   The id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :dimensional_price_group_id, String, nil?: true
+
+              # @!attribute external_dimensional_price_group_id
+              #   The external id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :external_dimensional_price_group_id, String, nil?: true
+
+              # @!method initialize(dimension_values:, dimensional_price_group_id: nil, external_dimensional_price_group_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredPackage::DimensionalPriceConfiguration}
+              #   for more details.
+              #
+              #   For dimensional price: specifies a price group and dimension values
+              #
+              #   @param dimension_values [Array<String>] The list of dimension values matching (in order) the dimensions of the price gro
+              #
+              #   @param dimensional_price_group_id [String, nil] The id of the dimensional price group to include this price in
+              #
+              #   @param external_dimensional_price_group_id [String, nil] The external id of the dimensional price group to include this price in
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredPackage#invoicing_cycle_configuration
@@ -3504,6 +4021,16 @@ module Orb
             #   @return [Float, nil]
             optional :conversion_rate, Float, nil?: true
 
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedTiered::DimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedTiered::DimensionalPriceConfiguration
+                     },
+                     nil?: true
+
             # @!attribute external_price_id
             #   An alias for the price.
             #
@@ -3542,7 +4069,7 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!method initialize(cadence:, currency:, grouped_tiered_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :grouped_tiered)
+            # @!method initialize(cadence:, currency:, grouped_tiered_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :grouped_tiered)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedTiered} for
             #   more details.
@@ -3564,6 +4091,8 @@ module Orb
             #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedTiered::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
             #
             #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param dimensional_price_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedTiered::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
             #
             #   @param external_price_id [String, nil] An alias for the price.
             #
@@ -3631,6 +4160,41 @@ module Orb
                 # @!method self.values
                 #   @return [Array<Symbol>]
               end
+            end
+
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedTiered#dimensional_price_configuration
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   The list of dimension values matching (in order) the dimensions of the price
+              #   group
+              #
+              #   @return [Array<String>]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!attribute dimensional_price_group_id
+              #   The id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :dimensional_price_group_id, String, nil?: true
+
+              # @!attribute external_dimensional_price_group_id
+              #   The external id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :external_dimensional_price_group_id, String, nil?: true
+
+              # @!method initialize(dimension_values:, dimensional_price_group_id: nil, external_dimensional_price_group_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedTiered::DimensionalPriceConfiguration}
+              #   for more details.
+              #
+              #   For dimensional price: specifies a price group and dimension values
+              #
+              #   @param dimension_values [Array<String>] The list of dimension values matching (in order) the dimensions of the price gro
+              #
+              #   @param dimensional_price_group_id [String, nil] The id of the dimensional price group to include this price in
+              #
+              #   @param external_dimensional_price_group_id [String, nil] The external id of the dimensional price group to include this price in
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedTiered#invoicing_cycle_configuration
@@ -3743,6 +4307,16 @@ module Orb
             #   @return [Float, nil]
             optional :conversion_rate, Float, nil?: true
 
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::SubscriptionPriceIntervalsParams::Add::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration
+                     },
+                     nil?: true
+
             # @!attribute external_price_id
             #   An alias for the price.
             #
@@ -3781,7 +4355,7 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!method initialize(cadence:, currency:, item_id:, max_group_tiered_package_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :max_group_tiered_package)
+            # @!method initialize(cadence:, currency:, item_id:, max_group_tiered_package_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :max_group_tiered_package)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MaxGroupTieredPackage}
             #   for more details.
@@ -3803,6 +4377,8 @@ module Orb
             #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MaxGroupTieredPackage::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
             #
             #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param dimensional_price_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
             #
             #   @param external_price_id [String, nil] An alias for the price.
             #
@@ -3870,6 +4446,41 @@ module Orb
                 # @!method self.values
                 #   @return [Array<Symbol>]
               end
+            end
+
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MaxGroupTieredPackage#dimensional_price_configuration
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   The list of dimension values matching (in order) the dimensions of the price
+              #   group
+              #
+              #   @return [Array<String>]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!attribute dimensional_price_group_id
+              #   The id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :dimensional_price_group_id, String, nil?: true
+
+              # @!attribute external_dimensional_price_group_id
+              #   The external id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :external_dimensional_price_group_id, String, nil?: true
+
+              # @!method initialize(dimension_values:, dimensional_price_group_id: nil, external_dimensional_price_group_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration}
+              #   for more details.
+              #
+              #   For dimensional price: specifies a price group and dimension values
+              #
+              #   @param dimension_values [Array<String>] The list of dimension values matching (in order) the dimensions of the price gro
+              #
+              #   @param dimensional_price_group_id [String, nil] The id of the dimensional price group to include this price in
+              #
+              #   @param external_dimensional_price_group_id [String, nil] The external id of the dimensional price group to include this price in
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MaxGroupTieredPackage#invoicing_cycle_configuration
@@ -3981,6 +4592,16 @@ module Orb
             #   @return [Float, nil]
             optional :conversion_rate, Float, nil?: true
 
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredWithMinimum::DimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredWithMinimum::DimensionalPriceConfiguration
+                     },
+                     nil?: true
+
             # @!attribute external_price_id
             #   An alias for the price.
             #
@@ -4019,7 +4640,7 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!method initialize(cadence:, currency:, item_id:, name:, tiered_with_minimum_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :tiered_with_minimum)
+            # @!method initialize(cadence:, currency:, item_id:, name:, tiered_with_minimum_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :tiered_with_minimum)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredWithMinimum}
             #   for more details.
@@ -4041,6 +4662,8 @@ module Orb
             #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredWithMinimum::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
             #
             #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param dimensional_price_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredWithMinimum::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
             #
             #   @param external_price_id [String, nil] An alias for the price.
             #
@@ -4108,6 +4731,41 @@ module Orb
                 # @!method self.values
                 #   @return [Array<Symbol>]
               end
+            end
+
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredWithMinimum#dimensional_price_configuration
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   The list of dimension values matching (in order) the dimensions of the price
+              #   group
+              #
+              #   @return [Array<String>]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!attribute dimensional_price_group_id
+              #   The id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :dimensional_price_group_id, String, nil?: true
+
+              # @!attribute external_dimensional_price_group_id
+              #   The external id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :external_dimensional_price_group_id, String, nil?: true
+
+              # @!method initialize(dimension_values:, dimensional_price_group_id: nil, external_dimensional_price_group_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredWithMinimum::DimensionalPriceConfiguration}
+              #   for more details.
+              #
+              #   For dimensional price: specifies a price group and dimension values
+              #
+              #   @param dimension_values [Array<String>] The list of dimension values matching (in order) the dimensions of the price gro
+              #
+              #   @param dimensional_price_group_id [String, nil] The id of the dimensional price group to include this price in
+              #
+              #   @param external_dimensional_price_group_id [String, nil] The external id of the dimensional price group to include this price in
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredWithMinimum#invoicing_cycle_configuration
@@ -4220,6 +4878,16 @@ module Orb
             #   @return [Float, nil]
             optional :conversion_rate, Float, nil?: true
 
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::PackageWithAllocation::DimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::SubscriptionPriceIntervalsParams::Add::Price::PackageWithAllocation::DimensionalPriceConfiguration
+                     },
+                     nil?: true
+
             # @!attribute external_price_id
             #   An alias for the price.
             #
@@ -4258,7 +4926,7 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!method initialize(cadence:, currency:, item_id:, name:, package_with_allocation_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :package_with_allocation)
+            # @!method initialize(cadence:, currency:, item_id:, name:, package_with_allocation_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :package_with_allocation)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::PackageWithAllocation}
             #   for more details.
@@ -4280,6 +4948,8 @@ module Orb
             #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::PackageWithAllocation::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
             #
             #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param dimensional_price_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::PackageWithAllocation::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
             #
             #   @param external_price_id [String, nil] An alias for the price.
             #
@@ -4347,6 +5017,41 @@ module Orb
                 # @!method self.values
                 #   @return [Array<Symbol>]
               end
+            end
+
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::PackageWithAllocation#dimensional_price_configuration
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   The list of dimension values matching (in order) the dimensions of the price
+              #   group
+              #
+              #   @return [Array<String>]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!attribute dimensional_price_group_id
+              #   The id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :dimensional_price_group_id, String, nil?: true
+
+              # @!attribute external_dimensional_price_group_id
+              #   The external id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :external_dimensional_price_group_id, String, nil?: true
+
+              # @!method initialize(dimension_values:, dimensional_price_group_id: nil, external_dimensional_price_group_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::PackageWithAllocation::DimensionalPriceConfiguration}
+              #   for more details.
+              #
+              #   For dimensional price: specifies a price group and dimension values
+              #
+              #   @param dimension_values [Array<String>] The list of dimension values matching (in order) the dimensions of the price gro
+              #
+              #   @param dimensional_price_group_id [String, nil] The id of the dimensional price group to include this price in
+              #
+              #   @param external_dimensional_price_group_id [String, nil] The external id of the dimensional price group to include this price in
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::PackageWithAllocation#invoicing_cycle_configuration
@@ -4459,6 +5164,16 @@ module Orb
             #   @return [Float, nil]
             optional :conversion_rate, Float, nil?: true
 
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration
+                     },
+                     nil?: true
+
             # @!attribute external_price_id
             #   An alias for the price.
             #
@@ -4497,7 +5212,7 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!method initialize(cadence:, currency:, item_id:, name:, tiered_package_with_minimum_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :tiered_package_with_minimum)
+            # @!method initialize(cadence:, currency:, item_id:, name:, tiered_package_with_minimum_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :tiered_package_with_minimum)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredPackageWithMinimum}
             #   for more details.
@@ -4519,6 +5234,8 @@ module Orb
             #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredPackageWithMinimum::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
             #
             #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param dimensional_price_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
             #
             #   @param external_price_id [String, nil] An alias for the price.
             #
@@ -4586,6 +5303,41 @@ module Orb
                 # @!method self.values
                 #   @return [Array<Symbol>]
               end
+            end
+
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredPackageWithMinimum#dimensional_price_configuration
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   The list of dimension values matching (in order) the dimensions of the price
+              #   group
+              #
+              #   @return [Array<String>]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!attribute dimensional_price_group_id
+              #   The id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :dimensional_price_group_id, String, nil?: true
+
+              # @!attribute external_dimensional_price_group_id
+              #   The external id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :external_dimensional_price_group_id, String, nil?: true
+
+              # @!method initialize(dimension_values:, dimensional_price_group_id: nil, external_dimensional_price_group_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration}
+              #   for more details.
+              #
+              #   For dimensional price: specifies a price group and dimension values
+              #
+              #   @param dimension_values [Array<String>] The list of dimension values matching (in order) the dimensions of the price gro
+              #
+              #   @param dimensional_price_group_id [String, nil] The id of the dimensional price group to include this price in
+              #
+              #   @param external_dimensional_price_group_id [String, nil] The external id of the dimensional price group to include this price in
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredPackageWithMinimum#invoicing_cycle_configuration
@@ -4695,6 +5447,16 @@ module Orb
             #   @return [Float, nil]
             optional :conversion_rate, Float, nil?: true
 
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::UnitWithPercent::DimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::SubscriptionPriceIntervalsParams::Add::Price::UnitWithPercent::DimensionalPriceConfiguration
+                     },
+                     nil?: true
+
             # @!attribute external_price_id
             #   An alias for the price.
             #
@@ -4733,7 +5495,7 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!method initialize(cadence:, currency:, item_id:, name:, unit_with_percent_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :unit_with_percent)
+            # @!method initialize(cadence:, currency:, item_id:, name:, unit_with_percent_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :unit_with_percent)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::UnitWithPercent} for
             #   more details.
@@ -4755,6 +5517,8 @@ module Orb
             #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::UnitWithPercent::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
             #
             #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param dimensional_price_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::UnitWithPercent::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
             #
             #   @param external_price_id [String, nil] An alias for the price.
             #
@@ -4822,6 +5586,41 @@ module Orb
                 # @!method self.values
                 #   @return [Array<Symbol>]
               end
+            end
+
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::UnitWithPercent#dimensional_price_configuration
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   The list of dimension values matching (in order) the dimensions of the price
+              #   group
+              #
+              #   @return [Array<String>]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!attribute dimensional_price_group_id
+              #   The id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :dimensional_price_group_id, String, nil?: true
+
+              # @!attribute external_dimensional_price_group_id
+              #   The external id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :external_dimensional_price_group_id, String, nil?: true
+
+              # @!method initialize(dimension_values:, dimensional_price_group_id: nil, external_dimensional_price_group_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::UnitWithPercent::DimensionalPriceConfiguration}
+              #   for more details.
+              #
+              #   For dimensional price: specifies a price group and dimension values
+              #
+              #   @param dimension_values [Array<String>] The list of dimension values matching (in order) the dimensions of the price gro
+              #
+              #   @param dimensional_price_group_id [String, nil] The id of the dimensional price group to include this price in
+              #
+              #   @param external_dimensional_price_group_id [String, nil] The external id of the dimensional price group to include this price in
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::UnitWithPercent#invoicing_cycle_configuration
@@ -4933,6 +5732,16 @@ module Orb
             #   @return [Float, nil]
             optional :conversion_rate, Float, nil?: true
 
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredWithProration::DimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredWithProration::DimensionalPriceConfiguration
+                     },
+                     nil?: true
+
             # @!attribute external_price_id
             #   An alias for the price.
             #
@@ -4971,7 +5780,7 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!method initialize(cadence:, currency:, item_id:, name:, tiered_with_proration_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :tiered_with_proration)
+            # @!method initialize(cadence:, currency:, item_id:, name:, tiered_with_proration_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :tiered_with_proration)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredWithProration}
             #   for more details.
@@ -4993,6 +5802,8 @@ module Orb
             #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredWithProration::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
             #
             #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param dimensional_price_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredWithProration::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
             #
             #   @param external_price_id [String, nil] An alias for the price.
             #
@@ -5060,6 +5871,41 @@ module Orb
                 # @!method self.values
                 #   @return [Array<Symbol>]
               end
+            end
+
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredWithProration#dimensional_price_configuration
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   The list of dimension values matching (in order) the dimensions of the price
+              #   group
+              #
+              #   @return [Array<String>]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!attribute dimensional_price_group_id
+              #   The id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :dimensional_price_group_id, String, nil?: true
+
+              # @!attribute external_dimensional_price_group_id
+              #   The external id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :external_dimensional_price_group_id, String, nil?: true
+
+              # @!method initialize(dimension_values:, dimensional_price_group_id: nil, external_dimensional_price_group_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredWithProration::DimensionalPriceConfiguration}
+              #   for more details.
+              #
+              #   For dimensional price: specifies a price group and dimension values
+              #
+              #   @param dimension_values [Array<String>] The list of dimension values matching (in order) the dimensions of the price gro
+              #
+              #   @param dimensional_price_group_id [String, nil] The id of the dimensional price group to include this price in
+              #
+              #   @param external_dimensional_price_group_id [String, nil] The external id of the dimensional price group to include this price in
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::TieredWithProration#invoicing_cycle_configuration
@@ -5171,6 +6017,16 @@ module Orb
             #   @return [Float, nil]
             optional :conversion_rate, Float, nil?: true
 
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::UnitWithProration::DimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::SubscriptionPriceIntervalsParams::Add::Price::UnitWithProration::DimensionalPriceConfiguration
+                     },
+                     nil?: true
+
             # @!attribute external_price_id
             #   An alias for the price.
             #
@@ -5209,7 +6065,7 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!method initialize(cadence:, currency:, item_id:, name:, unit_with_proration_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :unit_with_proration)
+            # @!method initialize(cadence:, currency:, item_id:, name:, unit_with_proration_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :unit_with_proration)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::UnitWithProration}
             #   for more details.
@@ -5231,6 +6087,8 @@ module Orb
             #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::UnitWithProration::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
             #
             #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param dimensional_price_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::UnitWithProration::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
             #
             #   @param external_price_id [String, nil] An alias for the price.
             #
@@ -5298,6 +6156,41 @@ module Orb
                 # @!method self.values
                 #   @return [Array<Symbol>]
               end
+            end
+
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::UnitWithProration#dimensional_price_configuration
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   The list of dimension values matching (in order) the dimensions of the price
+              #   group
+              #
+              #   @return [Array<String>]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!attribute dimensional_price_group_id
+              #   The id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :dimensional_price_group_id, String, nil?: true
+
+              # @!attribute external_dimensional_price_group_id
+              #   The external id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :external_dimensional_price_group_id, String, nil?: true
+
+              # @!method initialize(dimension_values:, dimensional_price_group_id: nil, external_dimensional_price_group_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::UnitWithProration::DimensionalPriceConfiguration}
+              #   for more details.
+              #
+              #   For dimensional price: specifies a price group and dimension values
+              #
+              #   @param dimension_values [Array<String>] The list of dimension values matching (in order) the dimensions of the price gro
+              #
+              #   @param dimensional_price_group_id [String, nil] The id of the dimensional price group to include this price in
+              #
+              #   @param external_dimensional_price_group_id [String, nil] The external id of the dimensional price group to include this price in
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::UnitWithProration#invoicing_cycle_configuration
@@ -5409,6 +6302,16 @@ module Orb
             #   @return [Float, nil]
             optional :conversion_rate, Float, nil?: true
 
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedAllocation::DimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedAllocation::DimensionalPriceConfiguration
+                     },
+                     nil?: true
+
             # @!attribute external_price_id
             #   An alias for the price.
             #
@@ -5447,7 +6350,7 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!method initialize(cadence:, currency:, grouped_allocation_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :grouped_allocation)
+            # @!method initialize(cadence:, currency:, grouped_allocation_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :grouped_allocation)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedAllocation}
             #   for more details.
@@ -5469,6 +6372,8 @@ module Orb
             #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedAllocation::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
             #
             #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param dimensional_price_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedAllocation::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
             #
             #   @param external_price_id [String, nil] An alias for the price.
             #
@@ -5536,6 +6441,41 @@ module Orb
                 # @!method self.values
                 #   @return [Array<Symbol>]
               end
+            end
+
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedAllocation#dimensional_price_configuration
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   The list of dimension values matching (in order) the dimensions of the price
+              #   group
+              #
+              #   @return [Array<String>]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!attribute dimensional_price_group_id
+              #   The id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :dimensional_price_group_id, String, nil?: true
+
+              # @!attribute external_dimensional_price_group_id
+              #   The external id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :external_dimensional_price_group_id, String, nil?: true
+
+              # @!method initialize(dimension_values:, dimensional_price_group_id: nil, external_dimensional_price_group_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedAllocation::DimensionalPriceConfiguration}
+              #   for more details.
+              #
+              #   For dimensional price: specifies a price group and dimension values
+              #
+              #   @param dimension_values [Array<String>] The list of dimension values matching (in order) the dimensions of the price gro
+              #
+              #   @param dimensional_price_group_id [String, nil] The id of the dimensional price group to include this price in
+              #
+              #   @param external_dimensional_price_group_id [String, nil] The external id of the dimensional price group to include this price in
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedAllocation#invoicing_cycle_configuration
@@ -5648,6 +6588,16 @@ module Orb
             #   @return [Float, nil]
             optional :conversion_rate, Float, nil?: true
 
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration
+                     },
+                     nil?: true
+
             # @!attribute external_price_id
             #   An alias for the price.
             #
@@ -5686,7 +6636,7 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!method initialize(cadence:, currency:, grouped_with_prorated_minimum_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :grouped_with_prorated_minimum)
+            # @!method initialize(cadence:, currency:, grouped_with_prorated_minimum_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :grouped_with_prorated_minimum)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithProratedMinimum}
             #   for more details.
@@ -5708,6 +6658,8 @@ module Orb
             #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithProratedMinimum::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
             #
             #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param dimensional_price_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
             #
             #   @param external_price_id [String, nil] An alias for the price.
             #
@@ -5775,6 +6727,41 @@ module Orb
                 # @!method self.values
                 #   @return [Array<Symbol>]
               end
+            end
+
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithProratedMinimum#dimensional_price_configuration
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   The list of dimension values matching (in order) the dimensions of the price
+              #   group
+              #
+              #   @return [Array<String>]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!attribute dimensional_price_group_id
+              #   The id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :dimensional_price_group_id, String, nil?: true
+
+              # @!attribute external_dimensional_price_group_id
+              #   The external id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :external_dimensional_price_group_id, String, nil?: true
+
+              # @!method initialize(dimension_values:, dimensional_price_group_id: nil, external_dimensional_price_group_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration}
+              #   for more details.
+              #
+              #   For dimensional price: specifies a price group and dimension values
+              #
+              #   @param dimension_values [Array<String>] The list of dimension values matching (in order) the dimensions of the price gro
+              #
+              #   @param dimensional_price_group_id [String, nil] The id of the dimensional price group to include this price in
+              #
+              #   @param external_dimensional_price_group_id [String, nil] The external id of the dimensional price group to include this price in
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithProratedMinimum#invoicing_cycle_configuration
@@ -5887,6 +6874,16 @@ module Orb
             #   @return [Float, nil]
             optional :conversion_rate, Float, nil?: true
 
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration
+                     },
+                     nil?: true
+
             # @!attribute external_price_id
             #   An alias for the price.
             #
@@ -5925,7 +6922,7 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!method initialize(cadence:, currency:, grouped_with_metered_minimum_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :grouped_with_metered_minimum)
+            # @!method initialize(cadence:, currency:, grouped_with_metered_minimum_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :grouped_with_metered_minimum)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMeteredMinimum}
             #   for more details.
@@ -5947,6 +6944,8 @@ module Orb
             #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
             #
             #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param dimensional_price_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
             #
             #   @param external_price_id [String, nil] An alias for the price.
             #
@@ -6014,6 +7013,41 @@ module Orb
                 # @!method self.values
                 #   @return [Array<Symbol>]
               end
+            end
+
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMeteredMinimum#dimensional_price_configuration
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   The list of dimension values matching (in order) the dimensions of the price
+              #   group
+              #
+              #   @return [Array<String>]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!attribute dimensional_price_group_id
+              #   The id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :dimensional_price_group_id, String, nil?: true
+
+              # @!attribute external_dimensional_price_group_id
+              #   The external id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :external_dimensional_price_group_id, String, nil?: true
+
+              # @!method initialize(dimension_values:, dimensional_price_group_id: nil, external_dimensional_price_group_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration}
+              #   for more details.
+              #
+              #   For dimensional price: specifies a price group and dimension values
+              #
+              #   @param dimension_values [Array<String>] The list of dimension values matching (in order) the dimensions of the price gro
+              #
+              #   @param dimensional_price_group_id [String, nil] The id of the dimensional price group to include this price in
+              #
+              #   @param external_dimensional_price_group_id [String, nil] The external id of the dimensional price group to include this price in
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMeteredMinimum#invoicing_cycle_configuration
@@ -6126,6 +7160,16 @@ module Orb
             #   @return [Float, nil]
             optional :conversion_rate, Float, nil?: true
 
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithDisplayName::DimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithDisplayName::DimensionalPriceConfiguration
+                     },
+                     nil?: true
+
             # @!attribute external_price_id
             #   An alias for the price.
             #
@@ -6164,7 +7208,7 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!method initialize(cadence:, currency:, item_id:, matrix_with_display_name_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :matrix_with_display_name)
+            # @!method initialize(cadence:, currency:, item_id:, matrix_with_display_name_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :matrix_with_display_name)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithDisplayName}
             #   for more details.
@@ -6186,6 +7230,8 @@ module Orb
             #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithDisplayName::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
             #
             #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param dimensional_price_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithDisplayName::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
             #
             #   @param external_price_id [String, nil] An alias for the price.
             #
@@ -6253,6 +7299,41 @@ module Orb
                 # @!method self.values
                 #   @return [Array<Symbol>]
               end
+            end
+
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithDisplayName#dimensional_price_configuration
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   The list of dimension values matching (in order) the dimensions of the price
+              #   group
+              #
+              #   @return [Array<String>]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!attribute dimensional_price_group_id
+              #   The id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :dimensional_price_group_id, String, nil?: true
+
+              # @!attribute external_dimensional_price_group_id
+              #   The external id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :external_dimensional_price_group_id, String, nil?: true
+
+              # @!method initialize(dimension_values:, dimensional_price_group_id: nil, external_dimensional_price_group_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithDisplayName::DimensionalPriceConfiguration}
+              #   for more details.
+              #
+              #   For dimensional price: specifies a price group and dimension values
+              #
+              #   @param dimension_values [Array<String>] The list of dimension values matching (in order) the dimensions of the price gro
+              #
+              #   @param dimensional_price_group_id [String, nil] The id of the dimensional price group to include this price in
+              #
+              #   @param external_dimensional_price_group_id [String, nil] The external id of the dimensional price group to include this price in
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithDisplayName#invoicing_cycle_configuration
@@ -6364,6 +7445,16 @@ module Orb
             #   @return [Float, nil]
             optional :conversion_rate, Float, nil?: true
 
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::BulkWithProration::DimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::SubscriptionPriceIntervalsParams::Add::Price::BulkWithProration::DimensionalPriceConfiguration
+                     },
+                     nil?: true
+
             # @!attribute external_price_id
             #   An alias for the price.
             #
@@ -6402,7 +7493,7 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!method initialize(bulk_with_proration_config:, cadence:, currency:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :bulk_with_proration)
+            # @!method initialize(bulk_with_proration_config:, cadence:, currency:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :bulk_with_proration)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::BulkWithProration}
             #   for more details.
@@ -6424,6 +7515,8 @@ module Orb
             #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::BulkWithProration::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
             #
             #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param dimensional_price_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::BulkWithProration::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
             #
             #   @param external_price_id [String, nil] An alias for the price.
             #
@@ -6491,6 +7584,41 @@ module Orb
                 # @!method self.values
                 #   @return [Array<Symbol>]
               end
+            end
+
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::BulkWithProration#dimensional_price_configuration
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   The list of dimension values matching (in order) the dimensions of the price
+              #   group
+              #
+              #   @return [Array<String>]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!attribute dimensional_price_group_id
+              #   The id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :dimensional_price_group_id, String, nil?: true
+
+              # @!attribute external_dimensional_price_group_id
+              #   The external id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :external_dimensional_price_group_id, String, nil?: true
+
+              # @!method initialize(dimension_values:, dimensional_price_group_id: nil, external_dimensional_price_group_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::BulkWithProration::DimensionalPriceConfiguration}
+              #   for more details.
+              #
+              #   For dimensional price: specifies a price group and dimension values
+              #
+              #   @param dimension_values [Array<String>] The list of dimension values matching (in order) the dimensions of the price gro
+              #
+              #   @param dimensional_price_group_id [String, nil] The id of the dimensional price group to include this price in
+              #
+              #   @param external_dimensional_price_group_id [String, nil] The external id of the dimensional price group to include this price in
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::BulkWithProration#invoicing_cycle_configuration
@@ -6602,6 +7730,16 @@ module Orb
             #   @return [Float, nil]
             optional :conversion_rate, Float, nil?: true
 
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedTieredPackage::DimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedTieredPackage::DimensionalPriceConfiguration
+                     },
+                     nil?: true
+
             # @!attribute external_price_id
             #   An alias for the price.
             #
@@ -6640,7 +7778,7 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!method initialize(cadence:, currency:, grouped_tiered_package_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :grouped_tiered_package)
+            # @!method initialize(cadence:, currency:, grouped_tiered_package_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :grouped_tiered_package)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedTieredPackage}
             #   for more details.
@@ -6662,6 +7800,8 @@ module Orb
             #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedTieredPackage::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
             #
             #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param dimensional_price_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedTieredPackage::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
             #
             #   @param external_price_id [String, nil] An alias for the price.
             #
@@ -6729,6 +7869,41 @@ module Orb
                 # @!method self.values
                 #   @return [Array<Symbol>]
               end
+            end
+
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedTieredPackage#dimensional_price_configuration
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   The list of dimension values matching (in order) the dimensions of the price
+              #   group
+              #
+              #   @return [Array<String>]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!attribute dimensional_price_group_id
+              #   The id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :dimensional_price_group_id, String, nil?: true
+
+              # @!attribute external_dimensional_price_group_id
+              #   The external id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :external_dimensional_price_group_id, String, nil?: true
+
+              # @!method initialize(dimension_values:, dimensional_price_group_id: nil, external_dimensional_price_group_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedTieredPackage::DimensionalPriceConfiguration}
+              #   for more details.
+              #
+              #   For dimensional price: specifies a price group and dimension values
+              #
+              #   @param dimension_values [Array<String>] The list of dimension values matching (in order) the dimensions of the price gro
+              #
+              #   @param dimensional_price_group_id [String, nil] The id of the dimensional price group to include this price in
+              #
+              #   @param external_dimensional_price_group_id [String, nil] The external id of the dimensional price group to include this price in
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedTieredPackage#invoicing_cycle_configuration
@@ -6841,6 +8016,16 @@ module Orb
             #   @return [Float, nil]
             optional :conversion_rate, Float, nil?: true
 
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration
+                     },
+                     nil?: true
+
             # @!attribute external_price_id
             #   An alias for the price.
             #
@@ -6879,7 +8064,7 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!method initialize(cadence:, currency:, item_id:, name:, scalable_matrix_with_unit_pricing_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :scalable_matrix_with_unit_pricing)
+            # @!method initialize(cadence:, currency:, item_id:, name:, scalable_matrix_with_unit_pricing_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :scalable_matrix_with_unit_pricing)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithUnitPricing}
             #   for more details.
@@ -6901,6 +8086,8 @@ module Orb
             #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
             #
             #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param dimensional_price_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
             #
             #   @param external_price_id [String, nil] An alias for the price.
             #
@@ -6968,6 +8155,41 @@ module Orb
                 # @!method self.values
                 #   @return [Array<Symbol>]
               end
+            end
+
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithUnitPricing#dimensional_price_configuration
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   The list of dimension values matching (in order) the dimensions of the price
+              #   group
+              #
+              #   @return [Array<String>]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!attribute dimensional_price_group_id
+              #   The id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :dimensional_price_group_id, String, nil?: true
+
+              # @!attribute external_dimensional_price_group_id
+              #   The external id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :external_dimensional_price_group_id, String, nil?: true
+
+              # @!method initialize(dimension_values:, dimensional_price_group_id: nil, external_dimensional_price_group_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration}
+              #   for more details.
+              #
+              #   For dimensional price: specifies a price group and dimension values
+              #
+              #   @param dimension_values [Array<String>] The list of dimension values matching (in order) the dimensions of the price gro
+              #
+              #   @param dimensional_price_group_id [String, nil] The id of the dimensional price group to include this price in
+              #
+              #   @param external_dimensional_price_group_id [String, nil] The external id of the dimensional price group to include this price in
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithUnitPricing#invoicing_cycle_configuration
@@ -7080,6 +8302,16 @@ module Orb
             #   @return [Float, nil]
             optional :conversion_rate, Float, nil?: true
 
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration
+                     },
+                     nil?: true
+
             # @!attribute external_price_id
             #   An alias for the price.
             #
@@ -7118,7 +8350,7 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!method initialize(cadence:, currency:, item_id:, name:, scalable_matrix_with_tiered_pricing_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :scalable_matrix_with_tiered_pricing)
+            # @!method initialize(cadence:, currency:, item_id:, name:, scalable_matrix_with_tiered_pricing_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :scalable_matrix_with_tiered_pricing)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithTieredPricing}
             #   for more details.
@@ -7140,6 +8372,8 @@ module Orb
             #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
             #
             #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param dimensional_price_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
             #
             #   @param external_price_id [String, nil] An alias for the price.
             #
@@ -7207,6 +8441,41 @@ module Orb
                 # @!method self.values
                 #   @return [Array<Symbol>]
               end
+            end
+
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithTieredPricing#dimensional_price_configuration
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   The list of dimension values matching (in order) the dimensions of the price
+              #   group
+              #
+              #   @return [Array<String>]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!attribute dimensional_price_group_id
+              #   The id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :dimensional_price_group_id, String, nil?: true
+
+              # @!attribute external_dimensional_price_group_id
+              #   The external id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :external_dimensional_price_group_id, String, nil?: true
+
+              # @!method initialize(dimension_values:, dimensional_price_group_id: nil, external_dimensional_price_group_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration}
+              #   for more details.
+              #
+              #   For dimensional price: specifies a price group and dimension values
+              #
+              #   @param dimension_values [Array<String>] The list of dimension values matching (in order) the dimensions of the price gro
+              #
+              #   @param dimensional_price_group_id [String, nil] The id of the dimensional price group to include this price in
+              #
+              #   @param external_dimensional_price_group_id [String, nil] The external id of the dimensional price group to include this price in
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithTieredPricing#invoicing_cycle_configuration
@@ -7319,6 +8588,16 @@ module Orb
             #   @return [Float, nil]
             optional :conversion_rate, Float, nil?: true
 
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::SubscriptionPriceIntervalsParams::Add::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration
+                     },
+                     nil?: true
+
             # @!attribute external_price_id
             #   An alias for the price.
             #
@@ -7357,7 +8636,7 @@ module Orb
             #   @return [Hash{Symbol=>String, nil}, nil]
             optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!method initialize(cadence:, cumulative_grouped_bulk_config:, currency:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :cumulative_grouped_bulk)
+            # @!method initialize(cadence:, cumulative_grouped_bulk_config:, currency:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :cumulative_grouped_bulk)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::CumulativeGroupedBulk}
             #   for more details.
@@ -7379,6 +8658,8 @@ module Orb
             #   @param billing_cycle_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::CumulativeGroupedBulk::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
             #
             #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param dimensional_price_configuration [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
             #
             #   @param external_price_id [String, nil] An alias for the price.
             #
@@ -7446,6 +8727,41 @@ module Orb
                 # @!method self.values
                 #   @return [Array<Symbol>]
               end
+            end
+
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::CumulativeGroupedBulk#dimensional_price_configuration
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   The list of dimension values matching (in order) the dimensions of the price
+              #   group
+              #
+              #   @return [Array<String>]
+              required :dimension_values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!attribute dimensional_price_group_id
+              #   The id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :dimensional_price_group_id, String, nil?: true
+
+              # @!attribute external_dimensional_price_group_id
+              #   The external id of the dimensional price group to include this price in
+              #
+              #   @return [String, nil]
+              optional :external_dimensional_price_group_id, String, nil?: true
+
+              # @!method initialize(dimension_values:, dimensional_price_group_id: nil, external_dimensional_price_group_id: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration}
+              #   for more details.
+              #
+              #   For dimensional price: specifies a price group and dimension values
+              #
+              #   @param dimension_values [Array<String>] The list of dimension values matching (in order) the dimensions of the price gro
+              #
+              #   @param dimensional_price_group_id [String, nil] The id of the dimensional price group to include this price in
+              #
+              #   @param external_dimensional_price_group_id [String, nil] The external id of the dimensional price group to include this price in
             end
 
             # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::CumulativeGroupedBulk#invoicing_cycle_configuration
@@ -7557,16 +8873,16 @@ module Orb
             #   @return [Symbol, :percentage_discount]
             required :adjustment_type, const: :percentage_discount
 
-            # @!attribute applies_to_price_ids
-            #   The set of price IDs to which this adjustment applies.
-            #
-            #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
-
             # @!attribute percentage_discount
             #
             #   @return [Float]
             required :percentage_discount, Float
+
+            # @!attribute applies_to_price_ids
+            #   The set of price IDs to which this adjustment applies.
+            #
+            #   @return [Array<String>, nil]
+            optional :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
 
             # @!attribute is_invoice_level
             #   When false, this adjustment will be applied to a single price. Otherwise, it
@@ -7575,14 +8891,14 @@ module Orb
             #   @return [Boolean, nil]
             optional :is_invoice_level, Orb::Internal::Type::Boolean
 
-            # @!method initialize(applies_to_price_ids:, percentage_discount:, is_invoice_level: nil, adjustment_type: :percentage_discount)
+            # @!method initialize(percentage_discount:, applies_to_price_ids: nil, is_invoice_level: nil, adjustment_type: :percentage_discount)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount}
             #   for more details.
             #
-            #   @param applies_to_price_ids [Array<String>] The set of price IDs to which this adjustment applies.
-            #
             #   @param percentage_discount [Float]
+            #
+            #   @param applies_to_price_ids [Array<String>, nil] The set of price IDs to which this adjustment applies.
             #
             #   @param is_invoice_level [Boolean] When false, this adjustment will be applied to a single price. Otherwise, it wil
             #
@@ -7595,16 +8911,16 @@ module Orb
             #   @return [Symbol, :usage_discount]
             required :adjustment_type, const: :usage_discount
 
-            # @!attribute applies_to_price_ids
-            #   The set of price IDs to which this adjustment applies.
-            #
-            #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
-
             # @!attribute usage_discount
             #
             #   @return [Float]
             required :usage_discount, Float
+
+            # @!attribute applies_to_price_ids
+            #   The set of price IDs to which this adjustment applies.
+            #
+            #   @return [Array<String>, nil]
+            optional :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
 
             # @!attribute is_invoice_level
             #   When false, this adjustment will be applied to a single price. Otherwise, it
@@ -7613,14 +8929,14 @@ module Orb
             #   @return [Boolean, nil]
             optional :is_invoice_level, Orb::Internal::Type::Boolean
 
-            # @!method initialize(applies_to_price_ids:, usage_discount:, is_invoice_level: nil, adjustment_type: :usage_discount)
+            # @!method initialize(usage_discount:, applies_to_price_ids: nil, is_invoice_level: nil, adjustment_type: :usage_discount)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount}
             #   for more details.
             #
-            #   @param applies_to_price_ids [Array<String>] The set of price IDs to which this adjustment applies.
-            #
             #   @param usage_discount [Float]
+            #
+            #   @param applies_to_price_ids [Array<String>, nil] The set of price IDs to which this adjustment applies.
             #
             #   @param is_invoice_level [Boolean] When false, this adjustment will be applied to a single price. Otherwise, it wil
             #
@@ -7641,8 +8957,8 @@ module Orb
             # @!attribute applies_to_price_ids
             #   The set of price IDs to which this adjustment applies.
             #
-            #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
+            #   @return [Array<String>, nil]
+            optional :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
 
             # @!attribute is_invoice_level
             #   When false, this adjustment will be applied to a single price. Otherwise, it
@@ -7651,14 +8967,14 @@ module Orb
             #   @return [Boolean, nil]
             optional :is_invoice_level, Orb::Internal::Type::Boolean
 
-            # @!method initialize(amount_discount:, applies_to_price_ids:, is_invoice_level: nil, adjustment_type: :amount_discount)
+            # @!method initialize(amount_discount:, applies_to_price_ids: nil, is_invoice_level: nil, adjustment_type: :amount_discount)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount}
             #   for more details.
             #
             #   @param amount_discount [String]
             #
-            #   @param applies_to_price_ids [Array<String>] The set of price IDs to which this adjustment applies.
+            #   @param applies_to_price_ids [Array<String>, nil] The set of price IDs to which this adjustment applies.
             #
             #   @param is_invoice_level [Boolean] When false, this adjustment will be applied to a single price. Otherwise, it wil
             #
@@ -7671,12 +8987,6 @@ module Orb
             #   @return [Symbol, :minimum]
             required :adjustment_type, const: :minimum
 
-            # @!attribute applies_to_price_ids
-            #   The set of price IDs to which this adjustment applies.
-            #
-            #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
-
             # @!attribute item_id
             #   The item ID that revenue from this minimum will be attributed to.
             #
@@ -7688,6 +8998,12 @@ module Orb
             #   @return [String]
             required :minimum_amount, String
 
+            # @!attribute applies_to_price_ids
+            #   The set of price IDs to which this adjustment applies.
+            #
+            #   @return [Array<String>, nil]
+            optional :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
+
             # @!attribute is_invoice_level
             #   When false, this adjustment will be applied to a single price. Otherwise, it
             #   will be applied at the invoice level, possibly to multiple prices.
@@ -7695,16 +9011,16 @@ module Orb
             #   @return [Boolean, nil]
             optional :is_invoice_level, Orb::Internal::Type::Boolean
 
-            # @!method initialize(applies_to_price_ids:, item_id:, minimum_amount:, is_invoice_level: nil, adjustment_type: :minimum)
+            # @!method initialize(item_id:, minimum_amount:, applies_to_price_ids: nil, is_invoice_level: nil, adjustment_type: :minimum)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum}
             #   for more details.
             #
-            #   @param applies_to_price_ids [Array<String>] The set of price IDs to which this adjustment applies.
-            #
             #   @param item_id [String] The item ID that revenue from this minimum will be attributed to.
             #
             #   @param minimum_amount [String]
+            #
+            #   @param applies_to_price_ids [Array<String>, nil] The set of price IDs to which this adjustment applies.
             #
             #   @param is_invoice_level [Boolean] When false, this adjustment will be applied to a single price. Otherwise, it wil
             #
@@ -7717,16 +9033,16 @@ module Orb
             #   @return [Symbol, :maximum]
             required :adjustment_type, const: :maximum
 
-            # @!attribute applies_to_price_ids
-            #   The set of price IDs to which this adjustment applies.
-            #
-            #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
-
             # @!attribute maximum_amount
             #
             #   @return [String]
             required :maximum_amount, String
+
+            # @!attribute applies_to_price_ids
+            #   The set of price IDs to which this adjustment applies.
+            #
+            #   @return [Array<String>, nil]
+            optional :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
 
             # @!attribute is_invoice_level
             #   When false, this adjustment will be applied to a single price. Otherwise, it
@@ -7735,14 +9051,14 @@ module Orb
             #   @return [Boolean, nil]
             optional :is_invoice_level, Orb::Internal::Type::Boolean
 
-            # @!method initialize(applies_to_price_ids:, maximum_amount:, is_invoice_level: nil, adjustment_type: :maximum)
+            # @!method initialize(maximum_amount:, applies_to_price_ids: nil, is_invoice_level: nil, adjustment_type: :maximum)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum}
             #   for more details.
             #
-            #   @param applies_to_price_ids [Array<String>] The set of price IDs to which this adjustment applies.
-            #
             #   @param maximum_amount [String]
+            #
+            #   @param applies_to_price_ids [Array<String>, nil] The set of price IDs to which this adjustment applies.
             #
             #   @param is_invoice_level [Boolean] When false, this adjustment will be applied to a single price. Otherwise, it wil
             #

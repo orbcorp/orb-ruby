@@ -17,12 +17,17 @@ module Orb
       sig { returns(T.nilable(Time)) }
       attr_accessor :end_date
 
-      sig { returns(Orb::Models::SubscriptionFetchScheduleResponse::Plan) }
+      sig do
+        returns(T.nilable(Orb::Models::SubscriptionFetchScheduleResponse::Plan))
+      end
       attr_reader :plan
 
       sig do
         params(
-          plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan::OrHash
+          plan:
+            T.nilable(
+              Orb::Models::SubscriptionFetchScheduleResponse::Plan::OrHash
+            )
         ).void
       end
       attr_writer :plan
@@ -34,7 +39,10 @@ module Orb
         params(
           created_at: Time,
           end_date: T.nilable(Time),
-          plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan::OrHash,
+          plan:
+            T.nilable(
+              Orb::Models::SubscriptionFetchScheduleResponse::Plan::OrHash
+            ),
           start_date: Time
         ).returns(T.attached_class)
       end
@@ -46,7 +54,8 @@ module Orb
           {
             created_at: Time,
             end_date: T.nilable(Time),
-            plan: Orb::Models::SubscriptionFetchScheduleResponse::Plan,
+            plan:
+              T.nilable(Orb::Models::SubscriptionFetchScheduleResponse::Plan),
             start_date: Time
           }
         )

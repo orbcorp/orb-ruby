@@ -961,6 +961,7 @@ module Orb
               adjustment_type: :usage_discount,
               amount: String,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter],
               is_invoice_level: bool,
               reason: String?,
               usage_discount: Float
@@ -975,6 +976,8 @@ module Orb
 
             attr_accessor applies_to_price_ids: ::Array[String]
 
+            attr_accessor filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter]
+
             attr_accessor is_invoice_level: bool
 
             attr_accessor reason: String?
@@ -985,6 +988,7 @@ module Orb
               id: String,
               amount: String,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter],
               is_invoice_level: bool,
               reason: String?,
               usage_discount: Float,
@@ -996,10 +1000,68 @@ module Orb
               adjustment_type: :usage_discount,
               amount: String,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter],
               is_invoice_level: bool,
               reason: String?,
               usage_discount: Float
             }
+
+            type filter =
+              {
+                field: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::field,
+                operator: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::operator,
+                values: ::Array[String]
+              }
+
+            class Filter < Orb::Internal::Type::BaseModel
+              attr_accessor field: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::field
+
+              attr_accessor operator: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::operator
+
+              attr_accessor values: ::Array[String]
+
+              def initialize: (
+                field: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::field,
+                operator: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::operator,
+                values: ::Array[String]
+              ) -> void
+
+              def to_hash: -> {
+                field: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::field,
+                operator: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::operator,
+                values: ::Array[String]
+              }
+
+              type field =
+                :price_id
+                | :item_id
+                | :price_type
+                | :currency
+                | :pricing_unit_id
+
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                PRICE_ID: :price_id
+                ITEM_ID: :item_id
+                PRICE_TYPE: :price_type
+                CURRENCY: :currency
+                PRICING_UNIT_ID: :pricing_unit_id
+
+                def self?.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::field]
+              end
+
+              type operator = :includes | :excludes
+
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                INCLUDES: :includes
+                EXCLUDES: :excludes
+
+                def self?.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::operator]
+              end
+            end
           end
 
           type amount_discount =
@@ -1009,6 +1071,7 @@ module Orb
               amount: String,
               amount_discount: String,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter],
               is_invoice_level: bool,
               reason: String?
             }
@@ -1024,6 +1087,8 @@ module Orb
 
             attr_accessor applies_to_price_ids: ::Array[String]
 
+            attr_accessor filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter]
+
             attr_accessor is_invoice_level: bool
 
             attr_accessor reason: String?
@@ -1033,6 +1098,7 @@ module Orb
               amount: String,
               amount_discount: String,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter],
               is_invoice_level: bool,
               reason: String?,
               ?adjustment_type: :amount_discount
@@ -1044,9 +1110,67 @@ module Orb
               amount: String,
               amount_discount: String,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter],
               is_invoice_level: bool,
               reason: String?
             }
+
+            type filter =
+              {
+                field: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::field,
+                operator: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::operator,
+                values: ::Array[String]
+              }
+
+            class Filter < Orb::Internal::Type::BaseModel
+              attr_accessor field: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::field
+
+              attr_accessor operator: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::operator
+
+              attr_accessor values: ::Array[String]
+
+              def initialize: (
+                field: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::field,
+                operator: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::operator,
+                values: ::Array[String]
+              ) -> void
+
+              def to_hash: -> {
+                field: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::field,
+                operator: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::operator,
+                values: ::Array[String]
+              }
+
+              type field =
+                :price_id
+                | :item_id
+                | :price_type
+                | :currency
+                | :pricing_unit_id
+
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                PRICE_ID: :price_id
+                ITEM_ID: :item_id
+                PRICE_TYPE: :price_type
+                CURRENCY: :currency
+                PRICING_UNIT_ID: :pricing_unit_id
+
+                def self?.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::field]
+              end
+
+              type operator = :includes | :excludes
+
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                INCLUDES: :includes
+                EXCLUDES: :excludes
+
+                def self?.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::operator]
+              end
+            end
           end
 
           type percentage_discount =
@@ -1055,6 +1179,7 @@ module Orb
               adjustment_type: :percentage_discount,
               amount: String,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter],
               is_invoice_level: bool,
               percentage_discount: Float,
               reason: String?
@@ -1069,6 +1194,8 @@ module Orb
 
             attr_accessor applies_to_price_ids: ::Array[String]
 
+            attr_accessor filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter]
+
             attr_accessor is_invoice_level: bool
 
             attr_accessor percentage_discount: Float
@@ -1079,6 +1206,7 @@ module Orb
               id: String,
               amount: String,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter],
               is_invoice_level: bool,
               percentage_discount: Float,
               reason: String?,
@@ -1090,10 +1218,68 @@ module Orb
               adjustment_type: :percentage_discount,
               amount: String,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter],
               is_invoice_level: bool,
               percentage_discount: Float,
               reason: String?
             }
+
+            type filter =
+              {
+                field: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::field,
+                operator: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::operator,
+                values: ::Array[String]
+              }
+
+            class Filter < Orb::Internal::Type::BaseModel
+              attr_accessor field: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::field
+
+              attr_accessor operator: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::operator
+
+              attr_accessor values: ::Array[String]
+
+              def initialize: (
+                field: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::field,
+                operator: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::operator,
+                values: ::Array[String]
+              ) -> void
+
+              def to_hash: -> {
+                field: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::field,
+                operator: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::operator,
+                values: ::Array[String]
+              }
+
+              type field =
+                :price_id
+                | :item_id
+                | :price_type
+                | :currency
+                | :pricing_unit_id
+
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                PRICE_ID: :price_id
+                ITEM_ID: :item_id
+                PRICE_TYPE: :price_type
+                CURRENCY: :currency
+                PRICING_UNIT_ID: :pricing_unit_id
+
+                def self?.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::field]
+              end
+
+              type operator = :includes | :excludes
+
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                INCLUDES: :includes
+                EXCLUDES: :excludes
+
+                def self?.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::operator]
+              end
+            end
           end
 
           type minimum =
@@ -1102,6 +1288,7 @@ module Orb
               adjustment_type: :minimum,
               amount: String,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter],
               is_invoice_level: bool,
               item_id: String,
               minimum_amount: String,
@@ -1117,6 +1304,8 @@ module Orb
 
             attr_accessor applies_to_price_ids: ::Array[String]
 
+            attr_accessor filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter]
+
             attr_accessor is_invoice_level: bool
 
             attr_accessor item_id: String
@@ -1129,6 +1318,7 @@ module Orb
               id: String,
               amount: String,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter],
               is_invoice_level: bool,
               item_id: String,
               minimum_amount: String,
@@ -1141,11 +1331,69 @@ module Orb
               adjustment_type: :minimum,
               amount: String,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter],
               is_invoice_level: bool,
               item_id: String,
               minimum_amount: String,
               reason: String?
             }
+
+            type filter =
+              {
+                field: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::field,
+                operator: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::operator,
+                values: ::Array[String]
+              }
+
+            class Filter < Orb::Internal::Type::BaseModel
+              attr_accessor field: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::field
+
+              attr_accessor operator: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::operator
+
+              attr_accessor values: ::Array[String]
+
+              def initialize: (
+                field: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::field,
+                operator: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::operator,
+                values: ::Array[String]
+              ) -> void
+
+              def to_hash: -> {
+                field: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::field,
+                operator: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::operator,
+                values: ::Array[String]
+              }
+
+              type field =
+                :price_id
+                | :item_id
+                | :price_type
+                | :currency
+                | :pricing_unit_id
+
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                PRICE_ID: :price_id
+                ITEM_ID: :item_id
+                PRICE_TYPE: :price_type
+                CURRENCY: :currency
+                PRICING_UNIT_ID: :pricing_unit_id
+
+                def self?.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::field]
+              end
+
+              type operator = :includes | :excludes
+
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                INCLUDES: :includes
+                EXCLUDES: :excludes
+
+                def self?.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::operator]
+              end
+            end
           end
 
           type maximum =
@@ -1154,6 +1402,7 @@ module Orb
               adjustment_type: :maximum,
               amount: String,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter],
               is_invoice_level: bool,
               maximum_amount: String,
               reason: String?
@@ -1168,6 +1417,8 @@ module Orb
 
             attr_accessor applies_to_price_ids: ::Array[String]
 
+            attr_accessor filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter]
+
             attr_accessor is_invoice_level: bool
 
             attr_accessor maximum_amount: String
@@ -1178,6 +1429,7 @@ module Orb
               id: String,
               amount: String,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter],
               is_invoice_level: bool,
               maximum_amount: String,
               reason: String?,
@@ -1189,51 +1441,231 @@ module Orb
               adjustment_type: :maximum,
               amount: String,
               applies_to_price_ids: ::Array[String],
+              filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter],
               is_invoice_level: bool,
               maximum_amount: String,
               reason: String?
             }
+
+            type filter =
+              {
+                field: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::field,
+                operator: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::operator,
+                values: ::Array[String]
+              }
+
+            class Filter < Orb::Internal::Type::BaseModel
+              attr_accessor field: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::field
+
+              attr_accessor operator: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::operator
+
+              attr_accessor values: ::Array[String]
+
+              def initialize: (
+                field: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::field,
+                operator: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::operator,
+                values: ::Array[String]
+              ) -> void
+
+              def to_hash: -> {
+                field: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::field,
+                operator: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::operator,
+                values: ::Array[String]
+              }
+
+              type field =
+                :price_id
+                | :item_id
+                | :price_type
+                | :currency
+                | :pricing_unit_id
+
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                PRICE_ID: :price_id
+                ITEM_ID: :item_id
+                PRICE_TYPE: :price_type
+                CURRENCY: :currency
+                PRICING_UNIT_ID: :pricing_unit_id
+
+                def self?.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::field]
+              end
+
+              type operator = :includes | :excludes
+
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                INCLUDES: :includes
+                EXCLUDES: :excludes
+
+                def self?.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::operator]
+              end
+            end
           end
 
           def self?.variants: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::adjustment]
         end
 
         type maximum =
-          { applies_to_price_ids: ::Array[String], maximum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter],
+            maximum_amount: String
+          }
 
         class Maximum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter]
 
           attr_accessor maximum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter],
             maximum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter],
             maximum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::field,
+              operator: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::field
+
+            attr_accessor operator: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::field,
+              operator: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::field,
+              operator: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::operator]
+            end
+          end
         end
 
         type minimum =
-          { applies_to_price_ids: ::Array[String], minimum_amount: String }
+          {
+            applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter],
+            minimum_amount: String
+          }
 
         class Minimum < Orb::Internal::Type::BaseModel
           attr_accessor applies_to_price_ids: ::Array[String]
+
+          attr_accessor filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter]
 
           attr_accessor minimum_amount: String
 
           def initialize: (
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter],
             minimum_amount: String
           ) -> void
 
           def to_hash: -> {
             applies_to_price_ids: ::Array[String],
+            filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter],
             minimum_amount: String
           }
+
+          type filter =
+            {
+              field: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::field,
+              operator: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::field
+
+            attr_accessor operator: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::field,
+              operator: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::field,
+              operator: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::operator]
+            end
+          end
         end
 
         type sub_line_item =
@@ -1466,41 +1898,163 @@ module Orb
       end
 
       type maximum =
-        { applies_to_price_ids: ::Array[String], maximum_amount: String }
+        {
+          applies_to_price_ids: ::Array[String],
+          filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter],
+          maximum_amount: String
+        }
 
       class Maximum < Orb::Internal::Type::BaseModel
         attr_accessor applies_to_price_ids: ::Array[String]
+
+        attr_accessor filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter]
 
         attr_accessor maximum_amount: String
 
         def initialize: (
           applies_to_price_ids: ::Array[String],
+          filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter],
           maximum_amount: String
         ) -> void
 
         def to_hash: -> {
           applies_to_price_ids: ::Array[String],
+          filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter],
           maximum_amount: String
         }
+
+        type filter =
+          {
+            field: Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::field,
+            operator: Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::operator,
+            values: ::Array[String]
+          }
+
+        class Filter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::field
+
+          attr_accessor operator: Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::field,
+            operator: Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::field,
+            operator: Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::operator]
+          end
+        end
       end
 
       type minimum =
-        { applies_to_price_ids: ::Array[String], minimum_amount: String }
+        {
+          applies_to_price_ids: ::Array[String],
+          filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter],
+          minimum_amount: String
+        }
 
       class Minimum < Orb::Internal::Type::BaseModel
         attr_accessor applies_to_price_ids: ::Array[String]
+
+        attr_accessor filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter]
 
         attr_accessor minimum_amount: String
 
         def initialize: (
           applies_to_price_ids: ::Array[String],
+          filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter],
           minimum_amount: String
         ) -> void
 
         def to_hash: -> {
           applies_to_price_ids: ::Array[String],
+          filters: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter],
           minimum_amount: String
         }
+
+        type filter =
+          {
+            field: Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::field,
+            operator: Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::operator,
+            values: ::Array[String]
+          }
+
+        class Filter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::field
+
+          attr_accessor operator: Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::field,
+            operator: Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::field,
+            operator: Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::operator]
+          end
+        end
       end
 
       type payment_attempt =

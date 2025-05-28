@@ -65,6 +65,24 @@ module Orb
       sig { returns(T.nilable(Float)) }
       attr_accessor :conversion_rate
 
+      # For dimensional price: specifies a price group and dimension values
+      sig do
+        returns(
+          T.nilable(Orb::PriceCreateParams::DimensionalPriceConfiguration)
+        )
+      end
+      attr_reader :dimensional_price_configuration
+
+      sig do
+        params(
+          dimensional_price_configuration:
+            T.nilable(
+              Orb::PriceCreateParams::DimensionalPriceConfiguration::OrHash
+            )
+        ).void
+      end
+      attr_writer :dimensional_price_configuration
+
       # An alias for the price.
       sig { returns(T.nilable(String)) }
       attr_accessor :external_price_id
@@ -273,6 +291,10 @@ module Orb
               Orb::PriceCreateParams::BillingCycleConfiguration::OrHash
             ),
           conversion_rate: T.nilable(Float),
+          dimensional_price_configuration:
+            T.nilable(
+              Orb::PriceCreateParams::DimensionalPriceConfiguration::OrHash
+            ),
           external_price_id: T.nilable(String),
           fixed_price_quantity: T.nilable(Float),
           invoice_grouping_key: T.nilable(String),
@@ -333,6 +355,8 @@ module Orb
         billing_cycle_configuration: nil,
         # The per unit conversion rate of the price currency to the invoicing currency.
         conversion_rate: nil,
+        # For dimensional price: specifies a price group and dimension values
+        dimensional_price_configuration: nil,
         # An alias for the price.
         external_price_id: nil,
         # If the Price represents a fixed cost, this represents the quantity of units
@@ -365,6 +389,8 @@ module Orb
             billing_cycle_configuration:
               T.nilable(Orb::PriceCreateParams::BillingCycleConfiguration),
             conversion_rate: T.nilable(Float),
+            dimensional_price_configuration:
+              T.nilable(Orb::PriceCreateParams::DimensionalPriceConfiguration),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
             invoice_grouping_key: T.nilable(String),
@@ -562,6 +588,60 @@ module Orb
           end
           def self.values
           end
+        end
+      end
+
+      class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::PriceCreateParams::DimensionalPriceConfiguration,
+              Orb::Internal::AnyHash
+            )
+          end
+
+        # The list of dimension values matching (in order) the dimensions of the price
+        # group
+        sig { returns(T::Array[String]) }
+        attr_accessor :dimension_values
+
+        # The id of the dimensional price group to include this price in
+        sig { returns(T.nilable(String)) }
+        attr_accessor :dimensional_price_group_id
+
+        # The external id of the dimensional price group to include this price in
+        sig { returns(T.nilable(String)) }
+        attr_accessor :external_dimensional_price_group_id
+
+        # For dimensional price: specifies a price group and dimension values
+        sig do
+          params(
+            dimension_values: T::Array[String],
+            dimensional_price_group_id: T.nilable(String),
+            external_dimensional_price_group_id: T.nilable(String)
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # The list of dimension values matching (in order) the dimensions of the price
+          # group
+          dimension_values:,
+          # The id of the dimensional price group to include this price in
+          dimensional_price_group_id: nil,
+          # The external id of the dimensional price group to include this price in
+          external_dimensional_price_group_id: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              dimension_values: T::Array[String],
+              dimensional_price_group_id: T.nilable(String),
+              external_dimensional_price_group_id: T.nilable(String)
+            }
+          )
+        end
+        def to_hash
         end
       end
 
