@@ -47,13 +47,6 @@ module Orb
         # This endpoint retrieves all customer balance transactions in reverse
         # chronological order for a single customer, providing a complete audit trail of
         # all adjustments and invoice applications.
-        #
-        # ## Eligibility
-        #
-        # The customer balance can only be applied to invoices or adjusted manually if
-        # invoices are not synced to a separate invoicing provider. If a payment gateway
-        # such as Stripe is used, the balance will be applied to the invoice before
-        # forwarding payment to the gateway.
         sig do
           params(
             customer_id: String,

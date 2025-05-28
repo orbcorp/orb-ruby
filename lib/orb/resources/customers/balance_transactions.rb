@@ -58,13 +58,6 @@ module Orb
         # chronological order for a single customer, providing a complete audit trail of
         # all adjustments and invoice applications.
         #
-        # ## Eligibility
-        #
-        # The customer balance can only be applied to invoices or adjusted manually if
-        # invoices are not synced to a separate invoicing provider. If a payment gateway
-        # such as Stripe is used, the balance will be applied to the invoice before
-        # forwarding payment to the gateway.
-        #
         # @overload list(customer_id, cursor: nil, limit: nil, operation_time_gt: nil, operation_time_gte: nil, operation_time_lt: nil, operation_time_lte: nil, request_options: {})
         #
         # @param customer_id [String]

@@ -8,17 +8,17 @@ module Orb
       sig do
         params(
           line_items: T::Array[Orb::CreditNoteCreateParams::LineItem::OrHash],
+          reason: Orb::CreditNoteCreateParams::Reason::OrSymbol,
           memo: T.nilable(String),
-          reason: T.nilable(Orb::CreditNoteCreateParams::Reason::OrSymbol),
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::CreditNote)
       end
       def create(
         line_items:,
+        # An optional reason for the credit note.
+        reason:,
         # An optional memo to attach to the credit note.
         memo: nil,
-        # An optional reason for the credit note.
-        reason: nil,
         request_options: {}
       )
       end

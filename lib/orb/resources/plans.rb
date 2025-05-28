@@ -6,6 +6,9 @@ module Orb
       # @return [Orb::Resources::Plans::ExternalPlanID]
       attr_reader :external_plan_id
 
+      # @return [Orb::Resources::Plans::Versions]
+      attr_reader :versions
+
       # Some parameter documentations has been truncated, see
       # {Orb::Models::PlanCreateParams} for more details.
       #
@@ -17,7 +20,7 @@ module Orb
       #
       # @param name [String]
       #
-      # @param prices [Array<Orb::Models::PlanCreateParams::Price::Unit, Orb::Models::PlanCreateParams::Price::Package, Orb::Models::PlanCreateParams::Price::Matrix, Orb::Models::PlanCreateParams::Price::Tiered, Orb::Models::PlanCreateParams::Price::TieredBps, Orb::Models::PlanCreateParams::Price::Bps, Orb::Models::PlanCreateParams::Price::BulkBps, Orb::Models::PlanCreateParams::Price::Bulk, Orb::Models::PlanCreateParams::Price::ThresholdTotalAmount, Orb::Models::PlanCreateParams::Price::TieredPackage, Orb::Models::PlanCreateParams::Price::TieredWithMinimum, Orb::Models::PlanCreateParams::Price::UnitWithPercent, Orb::Models::PlanCreateParams::Price::PackageWithAllocation, Orb::Models::PlanCreateParams::Price::TieredWithProration, Orb::Models::PlanCreateParams::Price::UnitWithProration, Orb::Models::PlanCreateParams::Price::GroupedAllocation, Orb::Models::PlanCreateParams::Price::GroupedWithProratedMinimum, Orb::Models::PlanCreateParams::Price::GroupedWithMeteredMinimum, Orb::Models::PlanCreateParams::Price::MatrixWithDisplayName, Orb::Models::PlanCreateParams::Price::BulkWithProration, Orb::Models::PlanCreateParams::Price::GroupedTieredPackage, Orb::Models::PlanCreateParams::Price::MaxGroupTieredPackage, Orb::Models::PlanCreateParams::Price::ScalableMatrixWithUnitPricing, Orb::Models::PlanCreateParams::Price::ScalableMatrixWithTieredPricing, Orb::Models::PlanCreateParams::Price::CumulativeGroupedBulk>] Prices for this plan. If the plan has phases, this includes prices across all ph
+      # @param prices [Array<Orb::Models::PlanCreateParams::Price::Unit, Orb::Models::PlanCreateParams::Price::Package, Orb::Models::PlanCreateParams::Price::Matrix, Orb::Models::PlanCreateParams::Price::Tiered, Orb::Models::PlanCreateParams::Price::TieredBps, Orb::Models::PlanCreateParams::Price::Bps, Orb::Models::PlanCreateParams::Price::BulkBps, Orb::Models::PlanCreateParams::Price::Bulk, Orb::Models::PlanCreateParams::Price::ThresholdTotalAmount, Orb::Models::PlanCreateParams::Price::TieredPackage, Orb::Models::PlanCreateParams::Price::TieredWithMinimum, Orb::Models::PlanCreateParams::Price::UnitWithPercent, Orb::Models::PlanCreateParams::Price::PackageWithAllocation, Orb::Models::PlanCreateParams::Price::TieredWithProration, Orb::Models::PlanCreateParams::Price::UnitWithProration, Orb::Models::PlanCreateParams::Price::GroupedAllocation, Orb::Models::PlanCreateParams::Price::GroupedWithProratedMinimum, Orb::Models::PlanCreateParams::Price::GroupedWithMeteredMinimum, Orb::Models::PlanCreateParams::Price::MatrixWithDisplayName, Orb::Models::PlanCreateParams::Price::BulkWithProration, Orb::Models::PlanCreateParams::Price::GroupedTieredPackage, Orb::Models::PlanCreateParams::Price::MaxGroupTieredPackage, Orb::Models::PlanCreateParams::Price::ScalableMatrixWithUnitPricing, Orb::Models::PlanCreateParams::Price::ScalableMatrixWithTieredPricing, Orb::Models::PlanCreateParams::Price::CumulativeGroupedBulk, Orb::Models::PlanCreateParams::Price::TieredPackageWithMinimum, Orb::Models::PlanCreateParams::Price::MatrixWithAllocation, Orb::Models::PlanCreateParams::Price::GroupedTiered>] Prices for this plan. If the plan has phases, this includes prices across all ph
       #
       # @param default_invoice_memo [String, nil] Free-form text which is available on the invoice PDF and the Orb invoice portal.
       #
@@ -45,7 +48,7 @@ module Orb
       # This endpoint can be used to update the `external_plan_id`, and `metadata` of an
       # existing plan.
       #
-      # Other fields on a customer are currently immutable.
+      # Other fields on a plan are currently immutable.
       #
       # @overload update(plan_id, external_plan_id: nil, metadata: nil, request_options: {})
       #
@@ -153,12 +156,40 @@ module Orb
         )
       end
 
+      # This API endpoint is in beta and its interface may change. It is recommended for
+      # use only in test mode.
+      #
+      # This endpoint allows setting the default version of a plan.
+      #
+      # @overload set_default_version(plan_id, version:, request_options: {})
+      #
+      # @param plan_id [String]
+      #
+      # @param version [Integer] Plan version to set as the default.
+      #
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Orb::Models::Plan]
+      #
+      # @see Orb::Models::PlanSetDefaultVersionParams
+      def set_default_version(plan_id, params)
+        parsed, options = Orb::PlanSetDefaultVersionParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["plans/%1$s/set_default_version", plan_id],
+          body: parsed,
+          model: Orb::Plan,
+          options: options
+        )
+      end
+
       # @api private
       #
       # @param client [Orb::Client]
       def initialize(client:)
         @client = client
         @external_plan_id = Orb::Resources::Plans::ExternalPlanID.new(client: client)
+        @versions = Orb::Resources::Plans::Versions.new(client: client)
       end
     end
   end

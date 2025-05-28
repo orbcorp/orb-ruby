@@ -3,6 +3,8 @@ module Orb
     class Plans
       attr_reader external_plan_id: Orb::Resources::Plans::ExternalPlanID
 
+      attr_reader versions: Orb::Resources::Plans::Versions
+
       def create: (
         currency: String,
         name: String,
@@ -35,6 +37,12 @@ module Orb
 
       def fetch: (
         String plan_id,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Plan
+
+      def set_default_version: (
+        String plan_id,
+        version: Integer,
         ?request_options: Orb::request_opts
       ) -> Orb::Plan
 

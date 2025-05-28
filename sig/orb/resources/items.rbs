@@ -3,12 +3,14 @@ module Orb
     class Items
       def create: (
         name: String,
+        ?metadata: ::Hash[Symbol, String?]?,
         ?request_options: Orb::request_opts
       ) -> Orb::Item
 
       def update: (
         String item_id,
         ?external_connections: ::Array[Orb::ItemUpdateParams::ExternalConnection]?,
+        ?metadata: ::Hash[Symbol, String?]?,
         ?name: String?,
         ?request_options: Orb::request_opts
       ) -> Orb::Item
@@ -18,6 +20,11 @@ module Orb
         ?limit: Integer,
         ?request_options: Orb::request_opts
       ) -> Orb::Internal::Page[Orb::Item]
+
+      def archive: (
+        String item_id,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Item
 
       def fetch: (
         String item_id,

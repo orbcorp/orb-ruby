@@ -87,6 +87,9 @@ module Orb
         | Orb::PlanCreateParams::Price::ScalableMatrixWithUnitPricing
         | Orb::PlanCreateParams::Price::ScalableMatrixWithTieredPricing
         | Orb::PlanCreateParams::Price::CumulativeGroupedBulk
+        | Orb::PlanCreateParams::Price::TieredPackageWithMinimum
+        | Orb::PlanCreateParams::Price::MatrixWithAllocation
+        | Orb::PlanCreateParams::Price::GroupedTiered
 
       module Price
         extend Orb::Internal::Type::Union
@@ -103,6 +106,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::Unit::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::Unit::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -131,6 +135,8 @@ module Orb
 
           attr_accessor currency: String?
 
+          attr_accessor dimensional_price_configuration: Orb::PlanCreateParams::Price::Unit::DimensionalPriceConfiguration?
+
           attr_accessor external_price_id: String?
 
           attr_accessor fixed_price_quantity: Float?
@@ -151,6 +157,7 @@ module Orb
             ?billing_cycle_configuration: Orb::PlanCreateParams::Price::Unit::BillingCycleConfiguration?,
             ?conversion_rate: Float?,
             ?currency: String?,
+            ?dimensional_price_configuration: Orb::PlanCreateParams::Price::Unit::DimensionalPriceConfiguration?,
             ?external_price_id: String?,
             ?fixed_price_quantity: Float?,
             ?invoice_grouping_key: String?,
@@ -170,6 +177,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::Unit::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::Unit::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -236,6 +244,33 @@ module Orb
             end
           end
 
+          type dimensional_price_configuration =
+            {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+
+          class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor dimension_values: ::Array[String]
+
+            attr_accessor dimensional_price_group_id: String?
+
+            attr_accessor external_dimensional_price_group_id: String?
+
+            def initialize: (
+              dimension_values: ::Array[String],
+              ?dimensional_price_group_id: String?,
+              ?external_dimensional_price_group_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+          end
+
           type invoicing_cycle_configuration =
             {
               duration: Integer,
@@ -282,6 +317,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::Package::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::Package::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -310,6 +346,8 @@ module Orb
 
           attr_accessor currency: String?
 
+          attr_accessor dimensional_price_configuration: Orb::PlanCreateParams::Price::Package::DimensionalPriceConfiguration?
+
           attr_accessor external_price_id: String?
 
           attr_accessor fixed_price_quantity: Float?
@@ -330,6 +368,7 @@ module Orb
             ?billing_cycle_configuration: Orb::PlanCreateParams::Price::Package::BillingCycleConfiguration?,
             ?conversion_rate: Float?,
             ?currency: String?,
+            ?dimensional_price_configuration: Orb::PlanCreateParams::Price::Package::DimensionalPriceConfiguration?,
             ?external_price_id: String?,
             ?fixed_price_quantity: Float?,
             ?invoice_grouping_key: String?,
@@ -349,6 +388,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::Package::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::Package::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -421,6 +461,33 @@ module Orb
             end
           end
 
+          type dimensional_price_configuration =
+            {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+
+          class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor dimension_values: ::Array[String]
+
+            attr_accessor dimensional_price_group_id: String?
+
+            attr_accessor external_dimensional_price_group_id: String?
+
+            def initialize: (
+              dimension_values: ::Array[String],
+              ?dimensional_price_group_id: String?,
+              ?external_dimensional_price_group_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+          end
+
           type invoicing_cycle_configuration =
             {
               duration: Integer,
@@ -467,6 +534,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::Matrix::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::Matrix::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -495,6 +563,8 @@ module Orb
 
           attr_accessor currency: String?
 
+          attr_accessor dimensional_price_configuration: Orb::PlanCreateParams::Price::Matrix::DimensionalPriceConfiguration?
+
           attr_accessor external_price_id: String?
 
           attr_accessor fixed_price_quantity: Float?
@@ -515,6 +585,7 @@ module Orb
             ?billing_cycle_configuration: Orb::PlanCreateParams::Price::Matrix::BillingCycleConfiguration?,
             ?conversion_rate: Float?,
             ?currency: String?,
+            ?dimensional_price_configuration: Orb::PlanCreateParams::Price::Matrix::DimensionalPriceConfiguration?,
             ?external_price_id: String?,
             ?fixed_price_quantity: Float?,
             ?invoice_grouping_key: String?,
@@ -534,6 +605,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::Matrix::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::Matrix::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -636,6 +708,33 @@ module Orb
             end
           end
 
+          type dimensional_price_configuration =
+            {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+
+          class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor dimension_values: ::Array[String]
+
+            attr_accessor dimensional_price_group_id: String?
+
+            attr_accessor external_dimensional_price_group_id: String?
+
+            def initialize: (
+              dimension_values: ::Array[String],
+              ?dimensional_price_group_id: String?,
+              ?external_dimensional_price_group_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+          end
+
           type invoicing_cycle_configuration =
             {
               duration: Integer,
@@ -682,6 +781,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::Tiered::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::Tiered::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -710,6 +810,8 @@ module Orb
 
           attr_accessor currency: String?
 
+          attr_accessor dimensional_price_configuration: Orb::PlanCreateParams::Price::Tiered::DimensionalPriceConfiguration?
+
           attr_accessor external_price_id: String?
 
           attr_accessor fixed_price_quantity: Float?
@@ -730,6 +832,7 @@ module Orb
             ?billing_cycle_configuration: Orb::PlanCreateParams::Price::Tiered::BillingCycleConfiguration?,
             ?conversion_rate: Float?,
             ?currency: String?,
+            ?dimensional_price_configuration: Orb::PlanCreateParams::Price::Tiered::DimensionalPriceConfiguration?,
             ?external_price_id: String?,
             ?fixed_price_quantity: Float?,
             ?invoice_grouping_key: String?,
@@ -749,6 +852,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::Tiered::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::Tiered::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -845,6 +949,33 @@ module Orb
             end
           end
 
+          type dimensional_price_configuration =
+            {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+
+          class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor dimension_values: ::Array[String]
+
+            attr_accessor dimensional_price_group_id: String?
+
+            attr_accessor external_dimensional_price_group_id: String?
+
+            def initialize: (
+              dimension_values: ::Array[String],
+              ?dimensional_price_group_id: String?,
+              ?external_dimensional_price_group_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+          end
+
           type invoicing_cycle_configuration =
             {
               duration: Integer,
@@ -891,6 +1022,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::TieredBps::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::TieredBps::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -919,6 +1051,8 @@ module Orb
 
           attr_accessor currency: String?
 
+          attr_accessor dimensional_price_configuration: Orb::PlanCreateParams::Price::TieredBps::DimensionalPriceConfiguration?
+
           attr_accessor external_price_id: String?
 
           attr_accessor fixed_price_quantity: Float?
@@ -939,6 +1073,7 @@ module Orb
             ?billing_cycle_configuration: Orb::PlanCreateParams::Price::TieredBps::BillingCycleConfiguration?,
             ?conversion_rate: Float?,
             ?currency: String?,
+            ?dimensional_price_configuration: Orb::PlanCreateParams::Price::TieredBps::DimensionalPriceConfiguration?,
             ?external_price_id: String?,
             ?fixed_price_quantity: Float?,
             ?invoice_grouping_key: String?,
@@ -958,6 +1093,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::TieredBps::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::TieredBps::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -1063,6 +1199,33 @@ module Orb
             end
           end
 
+          type dimensional_price_configuration =
+            {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+
+          class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor dimension_values: ::Array[String]
+
+            attr_accessor dimensional_price_group_id: String?
+
+            attr_accessor external_dimensional_price_group_id: String?
+
+            def initialize: (
+              dimension_values: ::Array[String],
+              ?dimensional_price_group_id: String?,
+              ?external_dimensional_price_group_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+          end
+
           type invoicing_cycle_configuration =
             {
               duration: Integer,
@@ -1109,6 +1272,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::Bps::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::Bps::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -1137,6 +1301,8 @@ module Orb
 
           attr_accessor currency: String?
 
+          attr_accessor dimensional_price_configuration: Orb::PlanCreateParams::Price::Bps::DimensionalPriceConfiguration?
+
           attr_accessor external_price_id: String?
 
           attr_accessor fixed_price_quantity: Float?
@@ -1157,6 +1323,7 @@ module Orb
             ?billing_cycle_configuration: Orb::PlanCreateParams::Price::Bps::BillingCycleConfiguration?,
             ?conversion_rate: Float?,
             ?currency: String?,
+            ?dimensional_price_configuration: Orb::PlanCreateParams::Price::Bps::DimensionalPriceConfiguration?,
             ?external_price_id: String?,
             ?fixed_price_quantity: Float?,
             ?invoice_grouping_key: String?,
@@ -1176,6 +1343,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::Bps::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::Bps::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -1244,6 +1412,33 @@ module Orb
             end
           end
 
+          type dimensional_price_configuration =
+            {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+
+          class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor dimension_values: ::Array[String]
+
+            attr_accessor dimensional_price_group_id: String?
+
+            attr_accessor external_dimensional_price_group_id: String?
+
+            def initialize: (
+              dimension_values: ::Array[String],
+              ?dimensional_price_group_id: String?,
+              ?external_dimensional_price_group_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+          end
+
           type invoicing_cycle_configuration =
             {
               duration: Integer,
@@ -1290,6 +1485,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::BulkBps::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::BulkBps::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -1318,6 +1514,8 @@ module Orb
 
           attr_accessor currency: String?
 
+          attr_accessor dimensional_price_configuration: Orb::PlanCreateParams::Price::BulkBps::DimensionalPriceConfiguration?
+
           attr_accessor external_price_id: String?
 
           attr_accessor fixed_price_quantity: Float?
@@ -1338,6 +1536,7 @@ module Orb
             ?billing_cycle_configuration: Orb::PlanCreateParams::Price::BulkBps::BillingCycleConfiguration?,
             ?conversion_rate: Float?,
             ?currency: String?,
+            ?dimensional_price_configuration: Orb::PlanCreateParams::Price::BulkBps::DimensionalPriceConfiguration?,
             ?external_price_id: String?,
             ?fixed_price_quantity: Float?,
             ?invoice_grouping_key: String?,
@@ -1357,6 +1556,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::BulkBps::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::BulkBps::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -1453,6 +1653,33 @@ module Orb
             end
           end
 
+          type dimensional_price_configuration =
+            {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+
+          class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor dimension_values: ::Array[String]
+
+            attr_accessor dimensional_price_group_id: String?
+
+            attr_accessor external_dimensional_price_group_id: String?
+
+            def initialize: (
+              dimension_values: ::Array[String],
+              ?dimensional_price_group_id: String?,
+              ?external_dimensional_price_group_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+          end
+
           type invoicing_cycle_configuration =
             {
               duration: Integer,
@@ -1499,6 +1726,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::Bulk::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::Bulk::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -1527,6 +1755,8 @@ module Orb
 
           attr_accessor currency: String?
 
+          attr_accessor dimensional_price_configuration: Orb::PlanCreateParams::Price::Bulk::DimensionalPriceConfiguration?
+
           attr_accessor external_price_id: String?
 
           attr_accessor fixed_price_quantity: Float?
@@ -1547,6 +1777,7 @@ module Orb
             ?billing_cycle_configuration: Orb::PlanCreateParams::Price::Bulk::BillingCycleConfiguration?,
             ?conversion_rate: Float?,
             ?currency: String?,
+            ?dimensional_price_configuration: Orb::PlanCreateParams::Price::Bulk::DimensionalPriceConfiguration?,
             ?external_price_id: String?,
             ?fixed_price_quantity: Float?,
             ?invoice_grouping_key: String?,
@@ -1566,6 +1797,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::Bulk::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::Bulk::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -1654,6 +1886,33 @@ module Orb
             end
           end
 
+          type dimensional_price_configuration =
+            {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+
+          class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor dimension_values: ::Array[String]
+
+            attr_accessor dimensional_price_group_id: String?
+
+            attr_accessor external_dimensional_price_group_id: String?
+
+            def initialize: (
+              dimension_values: ::Array[String],
+              ?dimensional_price_group_id: String?,
+              ?external_dimensional_price_group_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+          end
+
           type invoicing_cycle_configuration =
             {
               duration: Integer,
@@ -1700,6 +1959,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::ThresholdTotalAmount::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::ThresholdTotalAmount::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -1728,6 +1988,8 @@ module Orb
 
           attr_accessor currency: String?
 
+          attr_accessor dimensional_price_configuration: Orb::PlanCreateParams::Price::ThresholdTotalAmount::DimensionalPriceConfiguration?
+
           attr_accessor external_price_id: String?
 
           attr_accessor fixed_price_quantity: Float?
@@ -1748,6 +2010,7 @@ module Orb
             ?billing_cycle_configuration: Orb::PlanCreateParams::Price::ThresholdTotalAmount::BillingCycleConfiguration?,
             ?conversion_rate: Float?,
             ?currency: String?,
+            ?dimensional_price_configuration: Orb::PlanCreateParams::Price::ThresholdTotalAmount::DimensionalPriceConfiguration?,
             ?external_price_id: String?,
             ?fixed_price_quantity: Float?,
             ?invoice_grouping_key: String?,
@@ -1767,6 +2030,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::ThresholdTotalAmount::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::ThresholdTotalAmount::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -1823,6 +2087,33 @@ module Orb
             end
           end
 
+          type dimensional_price_configuration =
+            {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+
+          class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor dimension_values: ::Array[String]
+
+            attr_accessor dimensional_price_group_id: String?
+
+            attr_accessor external_dimensional_price_group_id: String?
+
+            def initialize: (
+              dimension_values: ::Array[String],
+              ?dimensional_price_group_id: String?,
+              ?external_dimensional_price_group_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+          end
+
           type invoicing_cycle_configuration =
             {
               duration: Integer,
@@ -1869,6 +2160,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::TieredPackage::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::TieredPackage::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -1897,6 +2189,8 @@ module Orb
 
           attr_accessor currency: String?
 
+          attr_accessor dimensional_price_configuration: Orb::PlanCreateParams::Price::TieredPackage::DimensionalPriceConfiguration?
+
           attr_accessor external_price_id: String?
 
           attr_accessor fixed_price_quantity: Float?
@@ -1917,6 +2211,7 @@ module Orb
             ?billing_cycle_configuration: Orb::PlanCreateParams::Price::TieredPackage::BillingCycleConfiguration?,
             ?conversion_rate: Float?,
             ?currency: String?,
+            ?dimensional_price_configuration: Orb::PlanCreateParams::Price::TieredPackage::DimensionalPriceConfiguration?,
             ?external_price_id: String?,
             ?fixed_price_quantity: Float?,
             ?invoice_grouping_key: String?,
@@ -1936,6 +2231,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::TieredPackage::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::TieredPackage::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -1992,6 +2288,33 @@ module Orb
             end
           end
 
+          type dimensional_price_configuration =
+            {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+
+          class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor dimension_values: ::Array[String]
+
+            attr_accessor dimensional_price_group_id: String?
+
+            attr_accessor external_dimensional_price_group_id: String?
+
+            def initialize: (
+              dimension_values: ::Array[String],
+              ?dimensional_price_group_id: String?,
+              ?external_dimensional_price_group_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+          end
+
           type invoicing_cycle_configuration =
             {
               duration: Integer,
@@ -2038,6 +2361,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::TieredWithMinimum::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::TieredWithMinimum::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -2066,6 +2390,8 @@ module Orb
 
           attr_accessor currency: String?
 
+          attr_accessor dimensional_price_configuration: Orb::PlanCreateParams::Price::TieredWithMinimum::DimensionalPriceConfiguration?
+
           attr_accessor external_price_id: String?
 
           attr_accessor fixed_price_quantity: Float?
@@ -2086,6 +2412,7 @@ module Orb
             ?billing_cycle_configuration: Orb::PlanCreateParams::Price::TieredWithMinimum::BillingCycleConfiguration?,
             ?conversion_rate: Float?,
             ?currency: String?,
+            ?dimensional_price_configuration: Orb::PlanCreateParams::Price::TieredWithMinimum::DimensionalPriceConfiguration?,
             ?external_price_id: String?,
             ?fixed_price_quantity: Float?,
             ?invoice_grouping_key: String?,
@@ -2105,6 +2432,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::TieredWithMinimum::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::TieredWithMinimum::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -2161,6 +2489,33 @@ module Orb
             end
           end
 
+          type dimensional_price_configuration =
+            {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+
+          class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor dimension_values: ::Array[String]
+
+            attr_accessor dimensional_price_group_id: String?
+
+            attr_accessor external_dimensional_price_group_id: String?
+
+            def initialize: (
+              dimension_values: ::Array[String],
+              ?dimensional_price_group_id: String?,
+              ?external_dimensional_price_group_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+          end
+
           type invoicing_cycle_configuration =
             {
               duration: Integer,
@@ -2207,6 +2562,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::UnitWithPercent::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::UnitWithPercent::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -2235,6 +2591,8 @@ module Orb
 
           attr_accessor currency: String?
 
+          attr_accessor dimensional_price_configuration: Orb::PlanCreateParams::Price::UnitWithPercent::DimensionalPriceConfiguration?
+
           attr_accessor external_price_id: String?
 
           attr_accessor fixed_price_quantity: Float?
@@ -2255,6 +2613,7 @@ module Orb
             ?billing_cycle_configuration: Orb::PlanCreateParams::Price::UnitWithPercent::BillingCycleConfiguration?,
             ?conversion_rate: Float?,
             ?currency: String?,
+            ?dimensional_price_configuration: Orb::PlanCreateParams::Price::UnitWithPercent::DimensionalPriceConfiguration?,
             ?external_price_id: String?,
             ?fixed_price_quantity: Float?,
             ?invoice_grouping_key: String?,
@@ -2274,6 +2633,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::UnitWithPercent::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::UnitWithPercent::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -2330,6 +2690,33 @@ module Orb
             end
           end
 
+          type dimensional_price_configuration =
+            {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+
+          class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor dimension_values: ::Array[String]
+
+            attr_accessor dimensional_price_group_id: String?
+
+            attr_accessor external_dimensional_price_group_id: String?
+
+            def initialize: (
+              dimension_values: ::Array[String],
+              ?dimensional_price_group_id: String?,
+              ?external_dimensional_price_group_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+          end
+
           type invoicing_cycle_configuration =
             {
               duration: Integer,
@@ -2376,6 +2763,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::PackageWithAllocation::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::PackageWithAllocation::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -2404,6 +2792,8 @@ module Orb
 
           attr_accessor currency: String?
 
+          attr_accessor dimensional_price_configuration: Orb::PlanCreateParams::Price::PackageWithAllocation::DimensionalPriceConfiguration?
+
           attr_accessor external_price_id: String?
 
           attr_accessor fixed_price_quantity: Float?
@@ -2424,6 +2814,7 @@ module Orb
             ?billing_cycle_configuration: Orb::PlanCreateParams::Price::PackageWithAllocation::BillingCycleConfiguration?,
             ?conversion_rate: Float?,
             ?currency: String?,
+            ?dimensional_price_configuration: Orb::PlanCreateParams::Price::PackageWithAllocation::DimensionalPriceConfiguration?,
             ?external_price_id: String?,
             ?fixed_price_quantity: Float?,
             ?invoice_grouping_key: String?,
@@ -2443,6 +2834,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::PackageWithAllocation::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::PackageWithAllocation::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -2499,6 +2891,33 @@ module Orb
             end
           end
 
+          type dimensional_price_configuration =
+            {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+
+          class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor dimension_values: ::Array[String]
+
+            attr_accessor dimensional_price_group_id: String?
+
+            attr_accessor external_dimensional_price_group_id: String?
+
+            def initialize: (
+              dimension_values: ::Array[String],
+              ?dimensional_price_group_id: String?,
+              ?external_dimensional_price_group_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+          end
+
           type invoicing_cycle_configuration =
             {
               duration: Integer,
@@ -2545,6 +2964,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::TieredWithProration::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::TieredWithProration::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -2573,6 +2993,8 @@ module Orb
 
           attr_accessor currency: String?
 
+          attr_accessor dimensional_price_configuration: Orb::PlanCreateParams::Price::TieredWithProration::DimensionalPriceConfiguration?
+
           attr_accessor external_price_id: String?
 
           attr_accessor fixed_price_quantity: Float?
@@ -2593,6 +3015,7 @@ module Orb
             ?billing_cycle_configuration: Orb::PlanCreateParams::Price::TieredWithProration::BillingCycleConfiguration?,
             ?conversion_rate: Float?,
             ?currency: String?,
+            ?dimensional_price_configuration: Orb::PlanCreateParams::Price::TieredWithProration::DimensionalPriceConfiguration?,
             ?external_price_id: String?,
             ?fixed_price_quantity: Float?,
             ?invoice_grouping_key: String?,
@@ -2612,6 +3035,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::TieredWithProration::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::TieredWithProration::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -2668,6 +3092,33 @@ module Orb
             end
           end
 
+          type dimensional_price_configuration =
+            {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+
+          class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor dimension_values: ::Array[String]
+
+            attr_accessor dimensional_price_group_id: String?
+
+            attr_accessor external_dimensional_price_group_id: String?
+
+            def initialize: (
+              dimension_values: ::Array[String],
+              ?dimensional_price_group_id: String?,
+              ?external_dimensional_price_group_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+          end
+
           type invoicing_cycle_configuration =
             {
               duration: Integer,
@@ -2714,6 +3165,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::UnitWithProration::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::UnitWithProration::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -2742,6 +3194,8 @@ module Orb
 
           attr_accessor currency: String?
 
+          attr_accessor dimensional_price_configuration: Orb::PlanCreateParams::Price::UnitWithProration::DimensionalPriceConfiguration?
+
           attr_accessor external_price_id: String?
 
           attr_accessor fixed_price_quantity: Float?
@@ -2762,6 +3216,7 @@ module Orb
             ?billing_cycle_configuration: Orb::PlanCreateParams::Price::UnitWithProration::BillingCycleConfiguration?,
             ?conversion_rate: Float?,
             ?currency: String?,
+            ?dimensional_price_configuration: Orb::PlanCreateParams::Price::UnitWithProration::DimensionalPriceConfiguration?,
             ?external_price_id: String?,
             ?fixed_price_quantity: Float?,
             ?invoice_grouping_key: String?,
@@ -2781,6 +3236,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::UnitWithProration::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::UnitWithProration::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -2837,6 +3293,33 @@ module Orb
             end
           end
 
+          type dimensional_price_configuration =
+            {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+
+          class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor dimension_values: ::Array[String]
+
+            attr_accessor dimensional_price_group_id: String?
+
+            attr_accessor external_dimensional_price_group_id: String?
+
+            def initialize: (
+              dimension_values: ::Array[String],
+              ?dimensional_price_group_id: String?,
+              ?external_dimensional_price_group_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+          end
+
           type invoicing_cycle_configuration =
             {
               duration: Integer,
@@ -2883,6 +3366,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::GroupedAllocation::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::GroupedAllocation::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -2911,6 +3395,8 @@ module Orb
 
           attr_accessor currency: String?
 
+          attr_accessor dimensional_price_configuration: Orb::PlanCreateParams::Price::GroupedAllocation::DimensionalPriceConfiguration?
+
           attr_accessor external_price_id: String?
 
           attr_accessor fixed_price_quantity: Float?
@@ -2931,6 +3417,7 @@ module Orb
             ?billing_cycle_configuration: Orb::PlanCreateParams::Price::GroupedAllocation::BillingCycleConfiguration?,
             ?conversion_rate: Float?,
             ?currency: String?,
+            ?dimensional_price_configuration: Orb::PlanCreateParams::Price::GroupedAllocation::DimensionalPriceConfiguration?,
             ?external_price_id: String?,
             ?fixed_price_quantity: Float?,
             ?invoice_grouping_key: String?,
@@ -2950,6 +3437,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::GroupedAllocation::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::GroupedAllocation::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -3006,6 +3494,33 @@ module Orb
             end
           end
 
+          type dimensional_price_configuration =
+            {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+
+          class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor dimension_values: ::Array[String]
+
+            attr_accessor dimensional_price_group_id: String?
+
+            attr_accessor external_dimensional_price_group_id: String?
+
+            def initialize: (
+              dimension_values: ::Array[String],
+              ?dimensional_price_group_id: String?,
+              ?external_dimensional_price_group_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+          end
+
           type invoicing_cycle_configuration =
             {
               duration: Integer,
@@ -3052,6 +3567,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::GroupedWithProratedMinimum::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -3080,6 +3596,8 @@ module Orb
 
           attr_accessor currency: String?
 
+          attr_accessor dimensional_price_configuration: Orb::PlanCreateParams::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration?
+
           attr_accessor external_price_id: String?
 
           attr_accessor fixed_price_quantity: Float?
@@ -3100,6 +3618,7 @@ module Orb
             ?billing_cycle_configuration: Orb::PlanCreateParams::Price::GroupedWithProratedMinimum::BillingCycleConfiguration?,
             ?conversion_rate: Float?,
             ?currency: String?,
+            ?dimensional_price_configuration: Orb::PlanCreateParams::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration?,
             ?external_price_id: String?,
             ?fixed_price_quantity: Float?,
             ?invoice_grouping_key: String?,
@@ -3119,6 +3638,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::GroupedWithProratedMinimum::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -3175,6 +3695,33 @@ module Orb
             end
           end
 
+          type dimensional_price_configuration =
+            {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+
+          class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor dimension_values: ::Array[String]
+
+            attr_accessor dimensional_price_group_id: String?
+
+            attr_accessor external_dimensional_price_group_id: String?
+
+            def initialize: (
+              dimension_values: ::Array[String],
+              ?dimensional_price_group_id: String?,
+              ?external_dimensional_price_group_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+          end
+
           type invoicing_cycle_configuration =
             {
               duration: Integer,
@@ -3221,6 +3768,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -3249,6 +3797,8 @@ module Orb
 
           attr_accessor currency: String?
 
+          attr_accessor dimensional_price_configuration: Orb::PlanCreateParams::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration?
+
           attr_accessor external_price_id: String?
 
           attr_accessor fixed_price_quantity: Float?
@@ -3269,6 +3819,7 @@ module Orb
             ?billing_cycle_configuration: Orb::PlanCreateParams::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration?,
             ?conversion_rate: Float?,
             ?currency: String?,
+            ?dimensional_price_configuration: Orb::PlanCreateParams::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration?,
             ?external_price_id: String?,
             ?fixed_price_quantity: Float?,
             ?invoice_grouping_key: String?,
@@ -3288,6 +3839,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -3344,6 +3896,33 @@ module Orb
             end
           end
 
+          type dimensional_price_configuration =
+            {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+
+          class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor dimension_values: ::Array[String]
+
+            attr_accessor dimensional_price_group_id: String?
+
+            attr_accessor external_dimensional_price_group_id: String?
+
+            def initialize: (
+              dimension_values: ::Array[String],
+              ?dimensional_price_group_id: String?,
+              ?external_dimensional_price_group_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+          end
+
           type invoicing_cycle_configuration =
             {
               duration: Integer,
@@ -3390,6 +3969,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::MatrixWithDisplayName::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::MatrixWithDisplayName::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -3418,6 +3998,8 @@ module Orb
 
           attr_accessor currency: String?
 
+          attr_accessor dimensional_price_configuration: Orb::PlanCreateParams::Price::MatrixWithDisplayName::DimensionalPriceConfiguration?
+
           attr_accessor external_price_id: String?
 
           attr_accessor fixed_price_quantity: Float?
@@ -3438,6 +4020,7 @@ module Orb
             ?billing_cycle_configuration: Orb::PlanCreateParams::Price::MatrixWithDisplayName::BillingCycleConfiguration?,
             ?conversion_rate: Float?,
             ?currency: String?,
+            ?dimensional_price_configuration: Orb::PlanCreateParams::Price::MatrixWithDisplayName::DimensionalPriceConfiguration?,
             ?external_price_id: String?,
             ?fixed_price_quantity: Float?,
             ?invoice_grouping_key: String?,
@@ -3457,6 +4040,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::MatrixWithDisplayName::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::MatrixWithDisplayName::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -3513,6 +4097,33 @@ module Orb
             end
           end
 
+          type dimensional_price_configuration =
+            {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+
+          class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor dimension_values: ::Array[String]
+
+            attr_accessor dimensional_price_group_id: String?
+
+            attr_accessor external_dimensional_price_group_id: String?
+
+            def initialize: (
+              dimension_values: ::Array[String],
+              ?dimensional_price_group_id: String?,
+              ?external_dimensional_price_group_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+          end
+
           type invoicing_cycle_configuration =
             {
               duration: Integer,
@@ -3559,6 +4170,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::BulkWithProration::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::BulkWithProration::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -3587,6 +4199,8 @@ module Orb
 
           attr_accessor currency: String?
 
+          attr_accessor dimensional_price_configuration: Orb::PlanCreateParams::Price::BulkWithProration::DimensionalPriceConfiguration?
+
           attr_accessor external_price_id: String?
 
           attr_accessor fixed_price_quantity: Float?
@@ -3607,6 +4221,7 @@ module Orb
             ?billing_cycle_configuration: Orb::PlanCreateParams::Price::BulkWithProration::BillingCycleConfiguration?,
             ?conversion_rate: Float?,
             ?currency: String?,
+            ?dimensional_price_configuration: Orb::PlanCreateParams::Price::BulkWithProration::DimensionalPriceConfiguration?,
             ?external_price_id: String?,
             ?fixed_price_quantity: Float?,
             ?invoice_grouping_key: String?,
@@ -3626,6 +4241,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::BulkWithProration::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::BulkWithProration::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -3682,6 +4298,33 @@ module Orb
             end
           end
 
+          type dimensional_price_configuration =
+            {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+
+          class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor dimension_values: ::Array[String]
+
+            attr_accessor dimensional_price_group_id: String?
+
+            attr_accessor external_dimensional_price_group_id: String?
+
+            def initialize: (
+              dimension_values: ::Array[String],
+              ?dimensional_price_group_id: String?,
+              ?external_dimensional_price_group_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+          end
+
           type invoicing_cycle_configuration =
             {
               duration: Integer,
@@ -3728,6 +4371,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::GroupedTieredPackage::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::GroupedTieredPackage::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -3756,6 +4400,8 @@ module Orb
 
           attr_accessor currency: String?
 
+          attr_accessor dimensional_price_configuration: Orb::PlanCreateParams::Price::GroupedTieredPackage::DimensionalPriceConfiguration?
+
           attr_accessor external_price_id: String?
 
           attr_accessor fixed_price_quantity: Float?
@@ -3776,6 +4422,7 @@ module Orb
             ?billing_cycle_configuration: Orb::PlanCreateParams::Price::GroupedTieredPackage::BillingCycleConfiguration?,
             ?conversion_rate: Float?,
             ?currency: String?,
+            ?dimensional_price_configuration: Orb::PlanCreateParams::Price::GroupedTieredPackage::DimensionalPriceConfiguration?,
             ?external_price_id: String?,
             ?fixed_price_quantity: Float?,
             ?invoice_grouping_key: String?,
@@ -3795,6 +4442,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::GroupedTieredPackage::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::GroupedTieredPackage::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -3851,6 +4499,33 @@ module Orb
             end
           end
 
+          type dimensional_price_configuration =
+            {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+
+          class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor dimension_values: ::Array[String]
+
+            attr_accessor dimensional_price_group_id: String?
+
+            attr_accessor external_dimensional_price_group_id: String?
+
+            def initialize: (
+              dimension_values: ::Array[String],
+              ?dimensional_price_group_id: String?,
+              ?external_dimensional_price_group_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+          end
+
           type invoicing_cycle_configuration =
             {
               duration: Integer,
@@ -3897,6 +4572,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::MaxGroupTieredPackage::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -3925,6 +4601,8 @@ module Orb
 
           attr_accessor currency: String?
 
+          attr_accessor dimensional_price_configuration: Orb::PlanCreateParams::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration?
+
           attr_accessor external_price_id: String?
 
           attr_accessor fixed_price_quantity: Float?
@@ -3945,6 +4623,7 @@ module Orb
             ?billing_cycle_configuration: Orb::PlanCreateParams::Price::MaxGroupTieredPackage::BillingCycleConfiguration?,
             ?conversion_rate: Float?,
             ?currency: String?,
+            ?dimensional_price_configuration: Orb::PlanCreateParams::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration?,
             ?external_price_id: String?,
             ?fixed_price_quantity: Float?,
             ?invoice_grouping_key: String?,
@@ -3964,6 +4643,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::MaxGroupTieredPackage::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -4020,6 +4700,33 @@ module Orb
             end
           end
 
+          type dimensional_price_configuration =
+            {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+
+          class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor dimension_values: ::Array[String]
+
+            attr_accessor dimensional_price_group_id: String?
+
+            attr_accessor external_dimensional_price_group_id: String?
+
+            def initialize: (
+              dimension_values: ::Array[String],
+              ?dimensional_price_group_id: String?,
+              ?external_dimensional_price_group_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+          end
+
           type invoicing_cycle_configuration =
             {
               duration: Integer,
@@ -4066,6 +4773,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -4094,6 +4802,8 @@ module Orb
 
           attr_accessor currency: String?
 
+          attr_accessor dimensional_price_configuration: Orb::PlanCreateParams::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration?
+
           attr_accessor external_price_id: String?
 
           attr_accessor fixed_price_quantity: Float?
@@ -4114,6 +4824,7 @@ module Orb
             ?billing_cycle_configuration: Orb::PlanCreateParams::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration?,
             ?conversion_rate: Float?,
             ?currency: String?,
+            ?dimensional_price_configuration: Orb::PlanCreateParams::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration?,
             ?external_price_id: String?,
             ?fixed_price_quantity: Float?,
             ?invoice_grouping_key: String?,
@@ -4133,6 +4844,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -4189,6 +4901,33 @@ module Orb
             end
           end
 
+          type dimensional_price_configuration =
+            {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+
+          class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor dimension_values: ::Array[String]
+
+            attr_accessor dimensional_price_group_id: String?
+
+            attr_accessor external_dimensional_price_group_id: String?
+
+            def initialize: (
+              dimension_values: ::Array[String],
+              ?dimensional_price_group_id: String?,
+              ?external_dimensional_price_group_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+          end
+
           type invoicing_cycle_configuration =
             {
               duration: Integer,
@@ -4235,6 +4974,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -4263,6 +5003,8 @@ module Orb
 
           attr_accessor currency: String?
 
+          attr_accessor dimensional_price_configuration: Orb::PlanCreateParams::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration?
+
           attr_accessor external_price_id: String?
 
           attr_accessor fixed_price_quantity: Float?
@@ -4283,6 +5025,7 @@ module Orb
             ?billing_cycle_configuration: Orb::PlanCreateParams::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration?,
             ?conversion_rate: Float?,
             ?currency: String?,
+            ?dimensional_price_configuration: Orb::PlanCreateParams::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration?,
             ?external_price_id: String?,
             ?fixed_price_quantity: Float?,
             ?invoice_grouping_key: String?,
@@ -4302,6 +5045,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -4358,6 +5102,33 @@ module Orb
             end
           end
 
+          type dimensional_price_configuration =
+            {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+
+          class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor dimension_values: ::Array[String]
+
+            attr_accessor dimensional_price_group_id: String?
+
+            attr_accessor external_dimensional_price_group_id: String?
+
+            def initialize: (
+              dimension_values: ::Array[String],
+              ?dimensional_price_group_id: String?,
+              ?external_dimensional_price_group_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+          end
+
           type invoicing_cycle_configuration =
             {
               duration: Integer,
@@ -4404,6 +5175,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::CumulativeGroupedBulk::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -4432,6 +5204,8 @@ module Orb
 
           attr_accessor currency: String?
 
+          attr_accessor dimensional_price_configuration: Orb::PlanCreateParams::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration?
+
           attr_accessor external_price_id: String?
 
           attr_accessor fixed_price_quantity: Float?
@@ -4452,6 +5226,7 @@ module Orb
             ?billing_cycle_configuration: Orb::PlanCreateParams::Price::CumulativeGroupedBulk::BillingCycleConfiguration?,
             ?conversion_rate: Float?,
             ?currency: String?,
+            ?dimensional_price_configuration: Orb::PlanCreateParams::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration?,
             ?external_price_id: String?,
             ?fixed_price_quantity: Float?,
             ?invoice_grouping_key: String?,
@@ -4471,6 +5246,7 @@ module Orb
             billing_cycle_configuration: Orb::PlanCreateParams::Price::CumulativeGroupedBulk::BillingCycleConfiguration?,
             conversion_rate: Float?,
             currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration?,
             external_price_id: String?,
             fixed_price_quantity: Float?,
             invoice_grouping_key: String?,
@@ -4527,6 +5303,33 @@ module Orb
             end
           end
 
+          type dimensional_price_configuration =
+            {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+
+          class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor dimension_values: ::Array[String]
+
+            attr_accessor dimensional_price_group_id: String?
+
+            attr_accessor external_dimensional_price_group_id: String?
+
+            def initialize: (
+              dimension_values: ::Array[String],
+              ?dimensional_price_group_id: String?,
+              ?external_dimensional_price_group_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+          end
+
           type invoicing_cycle_configuration =
             {
               duration: Integer,
@@ -4557,6 +5360,660 @@ module Orb
               MONTH: :month
 
               def self?.values: -> ::Array[Orb::Models::PlanCreateParams::Price::CumulativeGroupedBulk::InvoicingCycleConfiguration::duration_unit]
+            end
+          end
+        end
+
+        type tiered_package_with_minimum =
+          {
+            cadence: Orb::Models::PlanCreateParams::Price::TieredPackageWithMinimum::cadence,
+            item_id: String,
+            model_type: :tiered_package_with_minimum,
+            name: String,
+            tiered_package_with_minimum_config: ::Hash[Symbol, top],
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::PlanCreateParams::Price::TieredPackageWithMinimum::BillingCycleConfiguration?,
+            conversion_rate: Float?,
+            currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::PlanCreateParams::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration?,
+            metadata: ::Hash[Symbol, String?]?
+          }
+
+        class TieredPackageWithMinimum < Orb::Internal::Type::BaseModel
+          attr_accessor cadence: Orb::Models::PlanCreateParams::Price::TieredPackageWithMinimum::cadence
+
+          attr_accessor item_id: String
+
+          attr_accessor model_type: :tiered_package_with_minimum
+
+          attr_accessor name: String
+
+          attr_accessor tiered_package_with_minimum_config: ::Hash[Symbol, top]
+
+          attr_accessor billable_metric_id: String?
+
+          attr_accessor billed_in_advance: bool?
+
+          attr_accessor billing_cycle_configuration: Orb::PlanCreateParams::Price::TieredPackageWithMinimum::BillingCycleConfiguration?
+
+          attr_accessor conversion_rate: Float?
+
+          attr_accessor currency: String?
+
+          attr_accessor dimensional_price_configuration: Orb::PlanCreateParams::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration?
+
+          attr_accessor external_price_id: String?
+
+          attr_accessor fixed_price_quantity: Float?
+
+          attr_accessor invoice_grouping_key: String?
+
+          attr_accessor invoicing_cycle_configuration: Orb::PlanCreateParams::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration?
+
+          attr_accessor metadata: ::Hash[Symbol, String?]?
+
+          def initialize: (
+            cadence: Orb::Models::PlanCreateParams::Price::TieredPackageWithMinimum::cadence,
+            item_id: String,
+            name: String,
+            tiered_package_with_minimum_config: ::Hash[Symbol, top],
+            ?billable_metric_id: String?,
+            ?billed_in_advance: bool?,
+            ?billing_cycle_configuration: Orb::PlanCreateParams::Price::TieredPackageWithMinimum::BillingCycleConfiguration?,
+            ?conversion_rate: Float?,
+            ?currency: String?,
+            ?dimensional_price_configuration: Orb::PlanCreateParams::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration?,
+            ?external_price_id: String?,
+            ?fixed_price_quantity: Float?,
+            ?invoice_grouping_key: String?,
+            ?invoicing_cycle_configuration: Orb::PlanCreateParams::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration?,
+            ?metadata: ::Hash[Symbol, String?]?,
+            ?model_type: :tiered_package_with_minimum
+          ) -> void
+
+          def to_hash: -> {
+            cadence: Orb::Models::PlanCreateParams::Price::TieredPackageWithMinimum::cadence,
+            item_id: String,
+            model_type: :tiered_package_with_minimum,
+            name: String,
+            tiered_package_with_minimum_config: ::Hash[Symbol, top],
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::PlanCreateParams::Price::TieredPackageWithMinimum::BillingCycleConfiguration?,
+            conversion_rate: Float?,
+            currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::PlanCreateParams::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration?,
+            metadata: ::Hash[Symbol, String?]?
+          }
+
+          type cadence =
+            :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+          module Cadence
+            extend Orb::Internal::Type::Enum
+
+            ANNUAL: :annual
+            SEMI_ANNUAL: :semi_annual
+            MONTHLY: :monthly
+            QUARTERLY: :quarterly
+            ONE_TIME: :one_time
+            CUSTOM: :custom
+
+            def self?.values: -> ::Array[Orb::Models::PlanCreateParams::Price::TieredPackageWithMinimum::cadence]
+          end
+
+          type billing_cycle_configuration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::PlanCreateParams::Price::TieredPackageWithMinimum::BillingCycleConfiguration::duration_unit
+            }
+
+          class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::TieredPackageWithMinimum::BillingCycleConfiguration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::PlanCreateParams::Price::TieredPackageWithMinimum::BillingCycleConfiguration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::PlanCreateParams::Price::TieredPackageWithMinimum::BillingCycleConfiguration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::PlanCreateParams::Price::TieredPackageWithMinimum::BillingCycleConfiguration::duration_unit]
+            end
+          end
+
+          type dimensional_price_configuration =
+            {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+
+          class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor dimension_values: ::Array[String]
+
+            attr_accessor dimensional_price_group_id: String?
+
+            attr_accessor external_dimensional_price_group_id: String?
+
+            def initialize: (
+              dimension_values: ::Array[String],
+              ?dimensional_price_group_id: String?,
+              ?external_dimensional_price_group_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+          end
+
+          type invoicing_cycle_configuration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::PlanCreateParams::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::duration_unit
+            }
+
+          class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::PlanCreateParams::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::PlanCreateParams::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::PlanCreateParams::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::duration_unit]
+            end
+          end
+        end
+
+        type matrix_with_allocation =
+          {
+            cadence: Orb::Models::PlanCreateParams::Price::MatrixWithAllocation::cadence,
+            item_id: String,
+            matrix_with_allocation_config: Orb::PlanCreateParams::Price::MatrixWithAllocation::MatrixWithAllocationConfig,
+            model_type: :matrix_with_allocation,
+            name: String,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::PlanCreateParams::Price::MatrixWithAllocation::BillingCycleConfiguration?,
+            conversion_rate: Float?,
+            currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::MatrixWithAllocation::DimensionalPriceConfiguration?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::PlanCreateParams::Price::MatrixWithAllocation::InvoicingCycleConfiguration?,
+            metadata: ::Hash[Symbol, String?]?
+          }
+
+        class MatrixWithAllocation < Orb::Internal::Type::BaseModel
+          attr_accessor cadence: Orb::Models::PlanCreateParams::Price::MatrixWithAllocation::cadence
+
+          attr_accessor item_id: String
+
+          attr_accessor matrix_with_allocation_config: Orb::PlanCreateParams::Price::MatrixWithAllocation::MatrixWithAllocationConfig
+
+          attr_accessor model_type: :matrix_with_allocation
+
+          attr_accessor name: String
+
+          attr_accessor billable_metric_id: String?
+
+          attr_accessor billed_in_advance: bool?
+
+          attr_accessor billing_cycle_configuration: Orb::PlanCreateParams::Price::MatrixWithAllocation::BillingCycleConfiguration?
+
+          attr_accessor conversion_rate: Float?
+
+          attr_accessor currency: String?
+
+          attr_accessor dimensional_price_configuration: Orb::PlanCreateParams::Price::MatrixWithAllocation::DimensionalPriceConfiguration?
+
+          attr_accessor external_price_id: String?
+
+          attr_accessor fixed_price_quantity: Float?
+
+          attr_accessor invoice_grouping_key: String?
+
+          attr_accessor invoicing_cycle_configuration: Orb::PlanCreateParams::Price::MatrixWithAllocation::InvoicingCycleConfiguration?
+
+          attr_accessor metadata: ::Hash[Symbol, String?]?
+
+          def initialize: (
+            cadence: Orb::Models::PlanCreateParams::Price::MatrixWithAllocation::cadence,
+            item_id: String,
+            matrix_with_allocation_config: Orb::PlanCreateParams::Price::MatrixWithAllocation::MatrixWithAllocationConfig,
+            name: String,
+            ?billable_metric_id: String?,
+            ?billed_in_advance: bool?,
+            ?billing_cycle_configuration: Orb::PlanCreateParams::Price::MatrixWithAllocation::BillingCycleConfiguration?,
+            ?conversion_rate: Float?,
+            ?currency: String?,
+            ?dimensional_price_configuration: Orb::PlanCreateParams::Price::MatrixWithAllocation::DimensionalPriceConfiguration?,
+            ?external_price_id: String?,
+            ?fixed_price_quantity: Float?,
+            ?invoice_grouping_key: String?,
+            ?invoicing_cycle_configuration: Orb::PlanCreateParams::Price::MatrixWithAllocation::InvoicingCycleConfiguration?,
+            ?metadata: ::Hash[Symbol, String?]?,
+            ?model_type: :matrix_with_allocation
+          ) -> void
+
+          def to_hash: -> {
+            cadence: Orb::Models::PlanCreateParams::Price::MatrixWithAllocation::cadence,
+            item_id: String,
+            matrix_with_allocation_config: Orb::PlanCreateParams::Price::MatrixWithAllocation::MatrixWithAllocationConfig,
+            model_type: :matrix_with_allocation,
+            name: String,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::PlanCreateParams::Price::MatrixWithAllocation::BillingCycleConfiguration?,
+            conversion_rate: Float?,
+            currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::MatrixWithAllocation::DimensionalPriceConfiguration?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::PlanCreateParams::Price::MatrixWithAllocation::InvoicingCycleConfiguration?,
+            metadata: ::Hash[Symbol, String?]?
+          }
+
+          type cadence =
+            :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+          module Cadence
+            extend Orb::Internal::Type::Enum
+
+            ANNUAL: :annual
+            SEMI_ANNUAL: :semi_annual
+            MONTHLY: :monthly
+            QUARTERLY: :quarterly
+            ONE_TIME: :one_time
+            CUSTOM: :custom
+
+            def self?.values: -> ::Array[Orb::Models::PlanCreateParams::Price::MatrixWithAllocation::cadence]
+          end
+
+          type matrix_with_allocation_config =
+            {
+              allocation: Float,
+              default_unit_amount: String,
+              dimensions: ::Array[String?],
+              matrix_values: ::Array[Orb::PlanCreateParams::Price::MatrixWithAllocation::MatrixWithAllocationConfig::MatrixValue]
+            }
+
+          class MatrixWithAllocationConfig < Orb::Internal::Type::BaseModel
+            attr_accessor allocation: Float
+
+            attr_accessor default_unit_amount: String
+
+            attr_accessor dimensions: ::Array[String?]
+
+            attr_accessor matrix_values: ::Array[Orb::PlanCreateParams::Price::MatrixWithAllocation::MatrixWithAllocationConfig::MatrixValue]
+
+            def initialize: (
+              allocation: Float,
+              default_unit_amount: String,
+              dimensions: ::Array[String?],
+              matrix_values: ::Array[Orb::PlanCreateParams::Price::MatrixWithAllocation::MatrixWithAllocationConfig::MatrixValue]
+            ) -> void
+
+            def to_hash: -> {
+              allocation: Float,
+              default_unit_amount: String,
+              dimensions: ::Array[String?],
+              matrix_values: ::Array[Orb::PlanCreateParams::Price::MatrixWithAllocation::MatrixWithAllocationConfig::MatrixValue]
+            }
+
+            type matrix_value =
+              { dimension_values: ::Array[String?], unit_amount: String }
+
+            class MatrixValue < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String?]
+
+              attr_accessor unit_amount: String
+
+              def initialize: (
+                dimension_values: ::Array[String?],
+                unit_amount: String
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String?],
+                unit_amount: String
+              }
+            end
+          end
+
+          type billing_cycle_configuration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::PlanCreateParams::Price::MatrixWithAllocation::BillingCycleConfiguration::duration_unit
+            }
+
+          class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::MatrixWithAllocation::BillingCycleConfiguration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::PlanCreateParams::Price::MatrixWithAllocation::BillingCycleConfiguration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::PlanCreateParams::Price::MatrixWithAllocation::BillingCycleConfiguration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::PlanCreateParams::Price::MatrixWithAllocation::BillingCycleConfiguration::duration_unit]
+            end
+          end
+
+          type dimensional_price_configuration =
+            {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+
+          class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor dimension_values: ::Array[String]
+
+            attr_accessor dimensional_price_group_id: String?
+
+            attr_accessor external_dimensional_price_group_id: String?
+
+            def initialize: (
+              dimension_values: ::Array[String],
+              ?dimensional_price_group_id: String?,
+              ?external_dimensional_price_group_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+          end
+
+          type invoicing_cycle_configuration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::PlanCreateParams::Price::MatrixWithAllocation::InvoicingCycleConfiguration::duration_unit
+            }
+
+          class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::MatrixWithAllocation::InvoicingCycleConfiguration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::PlanCreateParams::Price::MatrixWithAllocation::InvoicingCycleConfiguration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::PlanCreateParams::Price::MatrixWithAllocation::InvoicingCycleConfiguration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::PlanCreateParams::Price::MatrixWithAllocation::InvoicingCycleConfiguration::duration_unit]
+            end
+          end
+        end
+
+        type grouped_tiered =
+          {
+            cadence: Orb::Models::PlanCreateParams::Price::GroupedTiered::cadence,
+            grouped_tiered_config: ::Hash[Symbol, top],
+            item_id: String,
+            model_type: :grouped_tiered,
+            name: String,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::PlanCreateParams::Price::GroupedTiered::BillingCycleConfiguration?,
+            conversion_rate: Float?,
+            currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::GroupedTiered::DimensionalPriceConfiguration?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::PlanCreateParams::Price::GroupedTiered::InvoicingCycleConfiguration?,
+            metadata: ::Hash[Symbol, String?]?
+          }
+
+        class GroupedTiered < Orb::Internal::Type::BaseModel
+          attr_accessor cadence: Orb::Models::PlanCreateParams::Price::GroupedTiered::cadence
+
+          attr_accessor grouped_tiered_config: ::Hash[Symbol, top]
+
+          attr_accessor item_id: String
+
+          attr_accessor model_type: :grouped_tiered
+
+          attr_accessor name: String
+
+          attr_accessor billable_metric_id: String?
+
+          attr_accessor billed_in_advance: bool?
+
+          attr_accessor billing_cycle_configuration: Orb::PlanCreateParams::Price::GroupedTiered::BillingCycleConfiguration?
+
+          attr_accessor conversion_rate: Float?
+
+          attr_accessor currency: String?
+
+          attr_accessor dimensional_price_configuration: Orb::PlanCreateParams::Price::GroupedTiered::DimensionalPriceConfiguration?
+
+          attr_accessor external_price_id: String?
+
+          attr_accessor fixed_price_quantity: Float?
+
+          attr_accessor invoice_grouping_key: String?
+
+          attr_accessor invoicing_cycle_configuration: Orb::PlanCreateParams::Price::GroupedTiered::InvoicingCycleConfiguration?
+
+          attr_accessor metadata: ::Hash[Symbol, String?]?
+
+          def initialize: (
+            cadence: Orb::Models::PlanCreateParams::Price::GroupedTiered::cadence,
+            grouped_tiered_config: ::Hash[Symbol, top],
+            item_id: String,
+            name: String,
+            ?billable_metric_id: String?,
+            ?billed_in_advance: bool?,
+            ?billing_cycle_configuration: Orb::PlanCreateParams::Price::GroupedTiered::BillingCycleConfiguration?,
+            ?conversion_rate: Float?,
+            ?currency: String?,
+            ?dimensional_price_configuration: Orb::PlanCreateParams::Price::GroupedTiered::DimensionalPriceConfiguration?,
+            ?external_price_id: String?,
+            ?fixed_price_quantity: Float?,
+            ?invoice_grouping_key: String?,
+            ?invoicing_cycle_configuration: Orb::PlanCreateParams::Price::GroupedTiered::InvoicingCycleConfiguration?,
+            ?metadata: ::Hash[Symbol, String?]?,
+            ?model_type: :grouped_tiered
+          ) -> void
+
+          def to_hash: -> {
+            cadence: Orb::Models::PlanCreateParams::Price::GroupedTiered::cadence,
+            grouped_tiered_config: ::Hash[Symbol, top],
+            item_id: String,
+            model_type: :grouped_tiered,
+            name: String,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::PlanCreateParams::Price::GroupedTiered::BillingCycleConfiguration?,
+            conversion_rate: Float?,
+            currency: String?,
+            dimensional_price_configuration: Orb::PlanCreateParams::Price::GroupedTiered::DimensionalPriceConfiguration?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::PlanCreateParams::Price::GroupedTiered::InvoicingCycleConfiguration?,
+            metadata: ::Hash[Symbol, String?]?
+          }
+
+          type cadence =
+            :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+          module Cadence
+            extend Orb::Internal::Type::Enum
+
+            ANNUAL: :annual
+            SEMI_ANNUAL: :semi_annual
+            MONTHLY: :monthly
+            QUARTERLY: :quarterly
+            ONE_TIME: :one_time
+            CUSTOM: :custom
+
+            def self?.values: -> ::Array[Orb::Models::PlanCreateParams::Price::GroupedTiered::cadence]
+          end
+
+          type billing_cycle_configuration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::PlanCreateParams::Price::GroupedTiered::BillingCycleConfiguration::duration_unit
+            }
+
+          class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::GroupedTiered::BillingCycleConfiguration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::PlanCreateParams::Price::GroupedTiered::BillingCycleConfiguration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::PlanCreateParams::Price::GroupedTiered::BillingCycleConfiguration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::PlanCreateParams::Price::GroupedTiered::BillingCycleConfiguration::duration_unit]
+            end
+          end
+
+          type dimensional_price_configuration =
+            {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+
+          class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor dimension_values: ::Array[String]
+
+            attr_accessor dimensional_price_group_id: String?
+
+            attr_accessor external_dimensional_price_group_id: String?
+
+            def initialize: (
+              dimension_values: ::Array[String],
+              ?dimensional_price_group_id: String?,
+              ?external_dimensional_price_group_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              dimension_values: ::Array[String],
+              dimensional_price_group_id: String?,
+              external_dimensional_price_group_id: String?
+            }
+          end
+
+          type invoicing_cycle_configuration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::PlanCreateParams::Price::GroupedTiered::InvoicingCycleConfiguration::duration_unit
+            }
+
+          class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::PlanCreateParams::Price::GroupedTiered::InvoicingCycleConfiguration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::PlanCreateParams::Price::GroupedTiered::InvoicingCycleConfiguration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::PlanCreateParams::Price::GroupedTiered::InvoicingCycleConfiguration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::PlanCreateParams::Price::GroupedTiered::InvoicingCycleConfiguration::duration_unit]
             end
           end
         end

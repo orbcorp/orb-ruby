@@ -12,24 +12,24 @@ module Orb
       #   @return [Array<Orb::Models::CreditNoteCreateParams::LineItem>]
       required :line_items, -> { Orb::Internal::Type::ArrayOf[Orb::CreditNoteCreateParams::LineItem] }
 
+      # @!attribute reason
+      #   An optional reason for the credit note.
+      #
+      #   @return [Symbol, Orb::Models::CreditNoteCreateParams::Reason]
+      required :reason, enum: -> { Orb::CreditNoteCreateParams::Reason }
+
       # @!attribute memo
       #   An optional memo to attach to the credit note.
       #
       #   @return [String, nil]
       optional :memo, String, nil?: true
 
-      # @!attribute reason
-      #   An optional reason for the credit note.
-      #
-      #   @return [Symbol, Orb::Models::CreditNoteCreateParams::Reason, nil]
-      optional :reason, enum: -> { Orb::CreditNoteCreateParams::Reason }, nil?: true
-
-      # @!method initialize(line_items:, memo: nil, reason: nil, request_options: {})
+      # @!method initialize(line_items:, reason:, memo: nil, request_options: {})
       #   @param line_items [Array<Orb::Models::CreditNoteCreateParams::LineItem>]
       #
-      #   @param memo [String, nil] An optional memo to attach to the credit note.
+      #   @param reason [Symbol, Orb::Models::CreditNoteCreateParams::Reason] An optional reason for the credit note.
       #
-      #   @param reason [Symbol, Orb::Models::CreditNoteCreateParams::Reason, nil] An optional reason for the credit note.
+      #   @param memo [String, nil] An optional memo to attach to the credit note.
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 

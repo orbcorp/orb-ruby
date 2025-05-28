@@ -14,28 +14,28 @@ module Orb
       sig { returns(T::Array[Orb::CreditNoteCreateParams::LineItem]) }
       attr_accessor :line_items
 
+      # An optional reason for the credit note.
+      sig { returns(Orb::CreditNoteCreateParams::Reason::OrSymbol) }
+      attr_accessor :reason
+
       # An optional memo to attach to the credit note.
       sig { returns(T.nilable(String)) }
       attr_accessor :memo
 
-      # An optional reason for the credit note.
-      sig { returns(T.nilable(Orb::CreditNoteCreateParams::Reason::OrSymbol)) }
-      attr_accessor :reason
-
       sig do
         params(
           line_items: T::Array[Orb::CreditNoteCreateParams::LineItem::OrHash],
+          reason: Orb::CreditNoteCreateParams::Reason::OrSymbol,
           memo: T.nilable(String),
-          reason: T.nilable(Orb::CreditNoteCreateParams::Reason::OrSymbol),
           request_options: Orb::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
         line_items:,
+        # An optional reason for the credit note.
+        reason:,
         # An optional memo to attach to the credit note.
         memo: nil,
-        # An optional reason for the credit note.
-        reason: nil,
         request_options: {}
       )
       end
@@ -44,8 +44,8 @@ module Orb
         override.returns(
           {
             line_items: T::Array[Orb::CreditNoteCreateParams::LineItem],
+            reason: Orb::CreditNoteCreateParams::Reason::OrSymbol,
             memo: T.nilable(String),
-            reason: T.nilable(Orb::CreditNoteCreateParams::Reason::OrSymbol),
             request_options: Orb::RequestOptions
           }
         )

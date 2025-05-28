@@ -592,12 +592,12 @@ module Orb
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
 
-            # The set of price IDs to which this adjustment applies.
-            sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
-
             sig { returns(Float) }
             attr_accessor :percentage_discount
+
+            # The set of price IDs to which this adjustment applies.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_accessor :applies_to_price_ids
 
             # When false, this adjustment will be applied to a single price. Otherwise, it
             # will be applied at the invoice level, possibly to multiple prices.
@@ -609,16 +609,16 @@ module Orb
 
             sig do
               params(
-                applies_to_price_ids: T::Array[String],
                 percentage_discount: Float,
+                applies_to_price_ids: T.nilable(T::Array[String]),
                 is_invoice_level: T::Boolean,
                 adjustment_type: Symbol
               ).returns(T.attached_class)
             end
             def self.new(
-              # The set of price IDs to which this adjustment applies.
-              applies_to_price_ids:,
               percentage_discount:,
+              # The set of price IDs to which this adjustment applies.
+              applies_to_price_ids: nil,
               # When false, this adjustment will be applied to a single price. Otherwise, it
               # will be applied at the invoice level, possibly to multiple prices.
               is_invoice_level: nil,
@@ -630,8 +630,8 @@ module Orb
               override.returns(
                 {
                   adjustment_type: Symbol,
-                  applies_to_price_ids: T::Array[String],
                   percentage_discount: Float,
+                  applies_to_price_ids: T.nilable(T::Array[String]),
                   is_invoice_level: T::Boolean
                 }
               )
@@ -652,12 +652,12 @@ module Orb
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
 
-            # The set of price IDs to which this adjustment applies.
-            sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
-
             sig { returns(Float) }
             attr_accessor :usage_discount
+
+            # The set of price IDs to which this adjustment applies.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_accessor :applies_to_price_ids
 
             # When false, this adjustment will be applied to a single price. Otherwise, it
             # will be applied at the invoice level, possibly to multiple prices.
@@ -669,16 +669,16 @@ module Orb
 
             sig do
               params(
-                applies_to_price_ids: T::Array[String],
                 usage_discount: Float,
+                applies_to_price_ids: T.nilable(T::Array[String]),
                 is_invoice_level: T::Boolean,
                 adjustment_type: Symbol
               ).returns(T.attached_class)
             end
             def self.new(
-              # The set of price IDs to which this adjustment applies.
-              applies_to_price_ids:,
               usage_discount:,
+              # The set of price IDs to which this adjustment applies.
+              applies_to_price_ids: nil,
               # When false, this adjustment will be applied to a single price. Otherwise, it
               # will be applied at the invoice level, possibly to multiple prices.
               is_invoice_level: nil,
@@ -690,8 +690,8 @@ module Orb
               override.returns(
                 {
                   adjustment_type: Symbol,
-                  applies_to_price_ids: T::Array[String],
                   usage_discount: Float,
+                  applies_to_price_ids: T.nilable(T::Array[String]),
                   is_invoice_level: T::Boolean
                 }
               )
@@ -716,7 +716,7 @@ module Orb
             attr_accessor :amount_discount
 
             # The set of price IDs to which this adjustment applies.
-            sig { returns(T::Array[String]) }
+            sig { returns(T.nilable(T::Array[String])) }
             attr_accessor :applies_to_price_ids
 
             # When false, this adjustment will be applied to a single price. Otherwise, it
@@ -730,7 +730,7 @@ module Orb
             sig do
               params(
                 amount_discount: String,
-                applies_to_price_ids: T::Array[String],
+                applies_to_price_ids: T.nilable(T::Array[String]),
                 is_invoice_level: T::Boolean,
                 adjustment_type: Symbol
               ).returns(T.attached_class)
@@ -738,7 +738,7 @@ module Orb
             def self.new(
               amount_discount:,
               # The set of price IDs to which this adjustment applies.
-              applies_to_price_ids:,
+              applies_to_price_ids: nil,
               # When false, this adjustment will be applied to a single price. Otherwise, it
               # will be applied at the invoice level, possibly to multiple prices.
               is_invoice_level: nil,
@@ -751,7 +751,7 @@ module Orb
                 {
                   adjustment_type: Symbol,
                   amount_discount: String,
-                  applies_to_price_ids: T::Array[String],
+                  applies_to_price_ids: T.nilable(T::Array[String]),
                   is_invoice_level: T::Boolean
                 }
               )
@@ -772,16 +772,16 @@ module Orb
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
 
-            # The set of price IDs to which this adjustment applies.
-            sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
-
             # The item ID that revenue from this minimum will be attributed to.
             sig { returns(String) }
             attr_accessor :item_id
 
             sig { returns(String) }
             attr_accessor :minimum_amount
+
+            # The set of price IDs to which this adjustment applies.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_accessor :applies_to_price_ids
 
             # When false, this adjustment will be applied to a single price. Otherwise, it
             # will be applied at the invoice level, possibly to multiple prices.
@@ -793,19 +793,19 @@ module Orb
 
             sig do
               params(
-                applies_to_price_ids: T::Array[String],
                 item_id: String,
                 minimum_amount: String,
+                applies_to_price_ids: T.nilable(T::Array[String]),
                 is_invoice_level: T::Boolean,
                 adjustment_type: Symbol
               ).returns(T.attached_class)
             end
             def self.new(
-              # The set of price IDs to which this adjustment applies.
-              applies_to_price_ids:,
               # The item ID that revenue from this minimum will be attributed to.
               item_id:,
               minimum_amount:,
+              # The set of price IDs to which this adjustment applies.
+              applies_to_price_ids: nil,
               # When false, this adjustment will be applied to a single price. Otherwise, it
               # will be applied at the invoice level, possibly to multiple prices.
               is_invoice_level: nil,
@@ -817,9 +817,9 @@ module Orb
               override.returns(
                 {
                   adjustment_type: Symbol,
-                  applies_to_price_ids: T::Array[String],
                   item_id: String,
                   minimum_amount: String,
+                  applies_to_price_ids: T.nilable(T::Array[String]),
                   is_invoice_level: T::Boolean
                 }
               )
@@ -840,12 +840,12 @@ module Orb
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
 
-            # The set of price IDs to which this adjustment applies.
-            sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
-
             sig { returns(String) }
             attr_accessor :maximum_amount
+
+            # The set of price IDs to which this adjustment applies.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_accessor :applies_to_price_ids
 
             # When false, this adjustment will be applied to a single price. Otherwise, it
             # will be applied at the invoice level, possibly to multiple prices.
@@ -857,16 +857,16 @@ module Orb
 
             sig do
               params(
-                applies_to_price_ids: T::Array[String],
                 maximum_amount: String,
+                applies_to_price_ids: T.nilable(T::Array[String]),
                 is_invoice_level: T::Boolean,
                 adjustment_type: Symbol
               ).returns(T.attached_class)
             end
             def self.new(
-              # The set of price IDs to which this adjustment applies.
-              applies_to_price_ids:,
               maximum_amount:,
+              # The set of price IDs to which this adjustment applies.
+              applies_to_price_ids: nil,
               # When false, this adjustment will be applied to a single price. Otherwise, it
               # will be applied at the invoice level, possibly to multiple prices.
               is_invoice_level: nil,
@@ -878,8 +878,8 @@ module Orb
               override.returns(
                 {
                   adjustment_type: Symbol,
-                  applies_to_price_ids: T::Array[String],
                   maximum_amount: String,
+                  applies_to_price_ids: T.nilable(T::Array[String]),
                   is_invoice_level: T::Boolean
                 }
               )
@@ -995,7 +995,10 @@ module Orb
                 Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage,
                 Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum,
                 Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName,
-                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage
+                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage,
+                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation,
+                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum,
+                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered
               )
             )
           )
@@ -1056,7 +1059,10 @@ module Orb
                   Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::OrHash,
                   Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::OrHash,
                   Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::OrHash,
-                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::OrHash
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::OrHash,
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::OrHash,
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::OrHash,
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::OrHash
                 )
               ),
             price_id: T.nilable(String),
@@ -1139,7 +1145,10 @@ module Orb
                     Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage,
                     Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum,
                     Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName,
-                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage,
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation,
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum,
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered
                   )
                 ),
               price_id: T.nilable(String),
@@ -1412,7 +1421,10 @@ module Orb
                 Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage,
                 Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum,
                 Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName,
-                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage
+                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage,
+                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation,
+                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum,
+                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered
               )
             end
 
@@ -1499,6 +1511,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -1560,6 +1592,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -1594,6 +1630,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -1633,6 +1671,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -1814,6 +1856,60 @@ module Orb
               end
             end
 
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Unit::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
@@ -1984,6 +2080,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -2045,6 +2161,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -2079,6 +2199,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -2118,6 +2240,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -2315,6 +2441,60 @@ module Orb
               end
             end
 
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Package::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
@@ -2485,6 +2665,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -2546,6 +2746,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -2580,6 +2784,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -2619,6 +2825,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -2885,6 +3095,60 @@ module Orb
               end
             end
 
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Matrix::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
@@ -3055,6 +3319,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -3116,6 +3400,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -3150,6 +3438,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -3189,6 +3479,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -3443,6 +3737,60 @@ module Orb
               end
             end
 
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Tiered::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
@@ -3613,6 +3961,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -3674,6 +4042,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -3708,6 +4080,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -3747,6 +4121,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -4011,6 +4389,60 @@ module Orb
               end
             end
 
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredBps::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
@@ -4181,6 +4613,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -4242,6 +4694,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -4276,6 +4732,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -4315,6 +4773,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -4510,6 +4972,60 @@ module Orb
               end
             end
 
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bps::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
@@ -4680,6 +5196,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -4741,6 +5277,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -4775,6 +5315,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -4814,6 +5356,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -5070,6 +5616,60 @@ module Orb
               end
             end
 
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkBps::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
@@ -5240,6 +5840,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -5301,6 +5921,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -5335,6 +5959,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -5374,6 +6000,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -5617,6 +6247,60 @@ module Orb
               end
             end
 
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Bulk::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
@@ -5775,6 +6459,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -5835,6 +6539,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -5869,6 +6577,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -5907,6 +6617,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -6060,6 +6774,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ThresholdTotalAmount::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -6221,6 +6989,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -6281,6 +7069,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -6315,6 +7107,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -6353,6 +7147,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -6506,6 +7304,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackage::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -6667,6 +7519,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -6727,6 +7599,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -6761,6 +7637,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -6799,6 +7677,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -6952,6 +7834,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithMinimum::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -7113,6 +8049,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -7173,6 +8129,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -7207,6 +8167,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -7245,6 +8207,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -7398,6 +8364,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithPercent::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -7559,6 +8579,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -7619,6 +8659,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -7653,6 +8697,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -7691,6 +8737,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -7844,6 +8894,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::PackageWithAllocation::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -8005,6 +9109,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -8065,6 +9189,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -8099,6 +9227,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -8137,6 +9267,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -8290,6 +9424,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -8451,6 +9639,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -8511,6 +9719,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -8545,6 +9757,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -8583,6 +9797,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -8736,6 +9954,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::UnitWithProration::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -8897,6 +10169,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -8957,6 +10249,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -8991,6 +10287,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -9029,6 +10327,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -9182,6 +10484,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedAllocation::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -9343,6 +10699,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -9404,6 +10780,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -9438,6 +10818,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -9477,6 +10859,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -9630,6 +11016,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -9791,6 +11231,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -9851,6 +11311,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -9885,6 +11349,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -9923,6 +11389,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -10076,6 +11546,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithProration::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -10237,6 +11761,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -10298,6 +11842,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -10332,6 +11880,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -10371,6 +11921,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -10524,6 +12078,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -10685,6 +12293,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -10746,6 +12374,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -10780,6 +12412,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -10819,6 +12453,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -10972,6 +12610,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -11133,6 +12825,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -11193,6 +12905,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -11227,6 +12943,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -11265,6 +12983,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -11418,6 +13140,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -11579,6 +13355,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -11639,6 +13435,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -11673,6 +13473,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -11711,6 +13513,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -11864,6 +13670,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -12025,6 +13885,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -12086,6 +13966,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -12120,6 +14004,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -12159,6 +14045,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -12312,6 +14202,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -12473,6 +14417,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -12533,6 +14497,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -12567,6 +14535,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -12605,6 +14575,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -12758,6 +14732,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithDisplayName::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -12919,6 +14947,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -12979,6 +15027,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -13013,6 +15065,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -13051,6 +15105,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -13207,6 +15265,60 @@ module Orb
               end
             end
 
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
@@ -13285,6 +15397,1729 @@ module Orb
                   override.returns(
                     T::Array[
                       Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+          end
+
+          class MatrixWithAllocation < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            # The cadence to bill for this price on.
+            sig do
+              returns(
+                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::Cadence::OrSymbol
+              )
+            end
+            attr_accessor :cadence
+
+            # The id of the item the price will be associated with.
+            sig { returns(String) }
+            attr_accessor :item_id
+
+            sig do
+              returns(
+                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::MatrixWithAllocationConfig
+              )
+            end
+            attr_reader :matrix_with_allocation_config
+
+            sig do
+              params(
+                matrix_with_allocation_config:
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::MatrixWithAllocationConfig::OrHash
+              ).void
+            end
+            attr_writer :matrix_with_allocation_config
+
+            sig { returns(Symbol) }
+            attr_accessor :model_type
+
+            # The name of the price.
+            sig { returns(String) }
+            attr_accessor :name
+
+            # The id of the billable metric for the price. Only needed if the price is
+            # usage-based.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :billable_metric_id
+
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            # this is true, and in-arrears if this is false.
+            sig { returns(T.nilable(T::Boolean)) }
+            attr_accessor :billed_in_advance
+
+            # For custom cadence: specifies the duration of the billing period in days or
+            # months.
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::BillingCycleConfiguration
+                )
+              )
+            end
+            attr_reader :billing_cycle_configuration
+
+            sig do
+              params(
+                billing_cycle_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::BillingCycleConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :billing_cycle_configuration
+
+            # The per unit conversion rate of the price currency to the invoicing currency.
+            sig { returns(T.nilable(Float)) }
+            attr_accessor :conversion_rate
+
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            # price is billed.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :currency
+
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
+            # An alias for the price.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :external_price_id
+
+            # If the Price represents a fixed cost, this represents the quantity of units
+            # applied.
+            sig { returns(T.nilable(Float)) }
+            attr_accessor :fixed_price_quantity
+
+            # The property used to group this price on an invoice
+            sig { returns(T.nilable(String)) }
+            attr_accessor :invoice_grouping_key
+
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            # If unspecified, a single invoice is produced per billing cycle.
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::InvoicingCycleConfiguration
+                )
+              )
+            end
+            attr_reader :invoicing_cycle_configuration
+
+            sig do
+              params(
+                invoicing_cycle_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::InvoicingCycleConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :invoicing_cycle_configuration
+
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
+            sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
+            attr_accessor :metadata
+
+            # A transient ID that can be used to reference this price when adding adjustments
+            # in the same API call.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :reference_id
+
+            sig do
+              params(
+                cadence:
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::Cadence::OrSymbol,
+                item_id: String,
+                matrix_with_allocation_config:
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::MatrixWithAllocationConfig::OrHash,
+                name: String,
+                billable_metric_id: T.nilable(String),
+                billed_in_advance: T.nilable(T::Boolean),
+                billing_cycle_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::BillingCycleConfiguration::OrHash
+                  ),
+                conversion_rate: T.nilable(Float),
+                currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::DimensionalPriceConfiguration::OrHash
+                  ),
+                external_price_id: T.nilable(String),
+                fixed_price_quantity: T.nilable(Float),
+                invoice_grouping_key: T.nilable(String),
+                invoicing_cycle_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::InvoicingCycleConfiguration::OrHash
+                  ),
+                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                reference_id: T.nilable(String),
+                model_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # The cadence to bill for this price on.
+              cadence:,
+              # The id of the item the price will be associated with.
+              item_id:,
+              matrix_with_allocation_config:,
+              # The name of the price.
+              name:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
+              billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
+              billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
+              billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
+              conversion_rate: nil,
+              # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+              # price is billed.
+              currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
+              # An alias for the price.
+              external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
+              fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
+              invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
+              invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
+              metadata: nil,
+              # A transient ID that can be used to reference this price when adding adjustments
+              # in the same API call.
+              reference_id: nil,
+              model_type: :matrix_with_allocation
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  cadence:
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::Cadence::OrSymbol,
+                  item_id: String,
+                  matrix_with_allocation_config:
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::MatrixWithAllocationConfig,
+                  model_type: Symbol,
+                  name: String,
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::BillingCycleConfiguration
+                    ),
+                  conversion_rate: T.nilable(Float),
+                  currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::DimensionalPriceConfiguration
+                    ),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::InvoicingCycleConfiguration
+                    ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  reference_id: T.nilable(String)
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # The cadence to bill for this price on.
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::Cadence
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              ANNUAL =
+                T.let(
+                  :annual,
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::Cadence::TaggedSymbol
+                )
+              SEMI_ANNUAL =
+                T.let(
+                  :semi_annual,
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::Cadence::TaggedSymbol
+                )
+              MONTHLY =
+                T.let(
+                  :monthly,
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::Cadence::TaggedSymbol
+                )
+              QUARTERLY =
+                T.let(
+                  :quarterly,
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::Cadence::TaggedSymbol
+                )
+              ONE_TIME =
+                T.let(
+                  :one_time,
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::Cadence::TaggedSymbol
+                )
+              CUSTOM =
+                T.let(
+                  :custom,
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::Cadence::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::Cadence::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            class MatrixWithAllocationConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::MatrixWithAllocationConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Allocation to be used to calculate the price
+              sig { returns(Float) }
+              attr_accessor :allocation
+
+              # Default per unit rate for any usage not bucketed into a specified matrix_value
+              sig { returns(String) }
+              attr_accessor :default_unit_amount
+
+              # One or two event property values to evaluate matrix groups by
+              sig { returns(T::Array[T.nilable(String)]) }
+              attr_accessor :dimensions
+
+              # Matrix values for specified matrix grouping keys
+              sig do
+                returns(
+                  T::Array[
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::MatrixWithAllocationConfig::MatrixValue
+                  ]
+                )
+              end
+              attr_accessor :matrix_values
+
+              sig do
+                params(
+                  allocation: Float,
+                  default_unit_amount: String,
+                  dimensions: T::Array[T.nilable(String)],
+                  matrix_values:
+                    T::Array[
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::MatrixWithAllocationConfig::MatrixValue::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Allocation to be used to calculate the price
+                allocation:,
+                # Default per unit rate for any usage not bucketed into a specified matrix_value
+                default_unit_amount:,
+                # One or two event property values to evaluate matrix groups by
+                dimensions:,
+                # Matrix values for specified matrix grouping keys
+                matrix_values:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    allocation: Float,
+                    default_unit_amount: String,
+                    dimensions: T::Array[T.nilable(String)],
+                    matrix_values:
+                      T::Array[
+                        Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::MatrixWithAllocationConfig::MatrixValue
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class MatrixValue < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::MatrixWithAllocationConfig::MatrixValue,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # One or two matrix keys to filter usage to this Matrix value by. For example,
+                # ["region", "tier"] could be used to filter cloud usage by a cloud region and an
+                # instance tier.
+                sig { returns(T::Array[T.nilable(String)]) }
+                attr_accessor :dimension_values
+
+                # Unit price for the specified dimension_values
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                sig do
+                  params(
+                    dimension_values: T::Array[T.nilable(String)],
+                    unit_amount: String
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # One or two matrix keys to filter usage to this Matrix value by. For example,
+                  # ["region", "tier"] could be used to filter cloud usage by a cloud region and an
+                  # instance tier.
+                  dimension_values:,
+                  # Unit price for the specified dimension_values
+                  unit_amount:
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      dimension_values: T::Array[T.nilable(String)],
+                      unit_amount: String
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The duration of the billing period.
+              sig { returns(Integer) }
+              attr_accessor :duration
+
+              # The unit of billing period duration.
+              sig do
+                returns(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::BillingCycleConfiguration::DurationUnit::OrSymbol
+                )
+              end
+              attr_accessor :duration_unit
+
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
+              sig do
+                params(
+                  duration: Integer,
+                  duration_unit:
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::BillingCycleConfiguration::DurationUnit::OrSymbol
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    duration: Integer,
+                    duration_unit:
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The unit of billing period duration.
+              module DurationUnit
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::BillingCycleConfiguration::DurationUnit
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                DAY =
+                  T.let(
+                    :day,
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                  )
+                MONTH =
+                  T.let(
+                    :month,
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The duration of the billing period.
+              sig { returns(Integer) }
+              attr_accessor :duration
+
+              # The unit of billing period duration.
+              sig do
+                returns(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                )
+              end
+              attr_accessor :duration_unit
+
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
+              sig do
+                params(
+                  duration: Integer,
+                  duration_unit:
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    duration: Integer,
+                    duration_unit:
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The unit of billing period duration.
+              module DurationUnit
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::InvoicingCycleConfiguration::DurationUnit
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                DAY =
+                  T.let(
+                    :day,
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                  )
+                MONTH =
+                  T.let(
+                    :month,
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+          end
+
+          class TieredPackageWithMinimum < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            # The cadence to bill for this price on.
+            sig do
+              returns(
+                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::Cadence::OrSymbol
+              )
+            end
+            attr_accessor :cadence
+
+            # The id of the item the price will be associated with.
+            sig { returns(String) }
+            attr_accessor :item_id
+
+            sig { returns(Symbol) }
+            attr_accessor :model_type
+
+            # The name of the price.
+            sig { returns(String) }
+            attr_accessor :name
+
+            sig { returns(T::Hash[Symbol, T.anything]) }
+            attr_accessor :tiered_package_with_minimum_config
+
+            # The id of the billable metric for the price. Only needed if the price is
+            # usage-based.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :billable_metric_id
+
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            # this is true, and in-arrears if this is false.
+            sig { returns(T.nilable(T::Boolean)) }
+            attr_accessor :billed_in_advance
+
+            # For custom cadence: specifies the duration of the billing period in days or
+            # months.
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::BillingCycleConfiguration
+                )
+              )
+            end
+            attr_reader :billing_cycle_configuration
+
+            sig do
+              params(
+                billing_cycle_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::BillingCycleConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :billing_cycle_configuration
+
+            # The per unit conversion rate of the price currency to the invoicing currency.
+            sig { returns(T.nilable(Float)) }
+            attr_accessor :conversion_rate
+
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            # price is billed.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :currency
+
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
+            # An alias for the price.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :external_price_id
+
+            # If the Price represents a fixed cost, this represents the quantity of units
+            # applied.
+            sig { returns(T.nilable(Float)) }
+            attr_accessor :fixed_price_quantity
+
+            # The property used to group this price on an invoice
+            sig { returns(T.nilable(String)) }
+            attr_accessor :invoice_grouping_key
+
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            # If unspecified, a single invoice is produced per billing cycle.
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration
+                )
+              )
+            end
+            attr_reader :invoicing_cycle_configuration
+
+            sig do
+              params(
+                invoicing_cycle_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :invoicing_cycle_configuration
+
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
+            sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
+            attr_accessor :metadata
+
+            # A transient ID that can be used to reference this price when adding adjustments
+            # in the same API call.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :reference_id
+
+            sig do
+              params(
+                cadence:
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::Cadence::OrSymbol,
+                item_id: String,
+                name: String,
+                tiered_package_with_minimum_config: T::Hash[Symbol, T.anything],
+                billable_metric_id: T.nilable(String),
+                billed_in_advance: T.nilable(T::Boolean),
+                billing_cycle_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::BillingCycleConfiguration::OrHash
+                  ),
+                conversion_rate: T.nilable(Float),
+                currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration::OrHash
+                  ),
+                external_price_id: T.nilable(String),
+                fixed_price_quantity: T.nilable(Float),
+                invoice_grouping_key: T.nilable(String),
+                invoicing_cycle_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::OrHash
+                  ),
+                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                reference_id: T.nilable(String),
+                model_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # The cadence to bill for this price on.
+              cadence:,
+              # The id of the item the price will be associated with.
+              item_id:,
+              # The name of the price.
+              name:,
+              tiered_package_with_minimum_config:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
+              billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
+              billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
+              billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
+              conversion_rate: nil,
+              # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+              # price is billed.
+              currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
+              # An alias for the price.
+              external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
+              fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
+              invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
+              invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
+              metadata: nil,
+              # A transient ID that can be used to reference this price when adding adjustments
+              # in the same API call.
+              reference_id: nil,
+              model_type: :tiered_package_with_minimum
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  cadence:
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::Cadence::OrSymbol,
+                  item_id: String,
+                  model_type: Symbol,
+                  name: String,
+                  tiered_package_with_minimum_config:
+                    T::Hash[Symbol, T.anything],
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::BillingCycleConfiguration
+                    ),
+                  conversion_rate: T.nilable(Float),
+                  currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration
+                    ),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration
+                    ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  reference_id: T.nilable(String)
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # The cadence to bill for this price on.
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::Cadence
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              ANNUAL =
+                T.let(
+                  :annual,
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol
+                )
+              SEMI_ANNUAL =
+                T.let(
+                  :semi_annual,
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol
+                )
+              MONTHLY =
+                T.let(
+                  :monthly,
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol
+                )
+              QUARTERLY =
+                T.let(
+                  :quarterly,
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol
+                )
+              ONE_TIME =
+                T.let(
+                  :one_time,
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol
+                )
+              CUSTOM =
+                T.let(
+                  :custom,
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The duration of the billing period.
+              sig { returns(Integer) }
+              attr_accessor :duration
+
+              # The unit of billing period duration.
+              sig do
+                returns(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
+                )
+              end
+              attr_accessor :duration_unit
+
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
+              sig do
+                params(
+                  duration: Integer,
+                  duration_unit:
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    duration: Integer,
+                    duration_unit:
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The unit of billing period duration.
+              module DurationUnit
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::BillingCycleConfiguration::DurationUnit
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                DAY =
+                  T.let(
+                    :day,
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                  )
+                MONTH =
+                  T.let(
+                    :month,
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The duration of the billing period.
+              sig { returns(Integer) }
+              attr_accessor :duration
+
+              # The unit of billing period duration.
+              sig do
+                returns(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                )
+              end
+              attr_accessor :duration_unit
+
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
+              sig do
+                params(
+                  duration: Integer,
+                  duration_unit:
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    duration: Integer,
+                    duration_unit:
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The unit of billing period duration.
+              module DurationUnit
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::DurationUnit
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                DAY =
+                  T.let(
+                    :day,
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                  )
+                MONTH =
+                  T.let(
+                    :month,
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+          end
+
+          class GroupedTiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            # The cadence to bill for this price on.
+            sig do
+              returns(
+                Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::Cadence::OrSymbol
+              )
+            end
+            attr_accessor :cadence
+
+            sig { returns(T::Hash[Symbol, T.anything]) }
+            attr_accessor :grouped_tiered_config
+
+            # The id of the item the price will be associated with.
+            sig { returns(String) }
+            attr_accessor :item_id
+
+            sig { returns(Symbol) }
+            attr_accessor :model_type
+
+            # The name of the price.
+            sig { returns(String) }
+            attr_accessor :name
+
+            # The id of the billable metric for the price. Only needed if the price is
+            # usage-based.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :billable_metric_id
+
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            # this is true, and in-arrears if this is false.
+            sig { returns(T.nilable(T::Boolean)) }
+            attr_accessor :billed_in_advance
+
+            # For custom cadence: specifies the duration of the billing period in days or
+            # months.
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::BillingCycleConfiguration
+                )
+              )
+            end
+            attr_reader :billing_cycle_configuration
+
+            sig do
+              params(
+                billing_cycle_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::BillingCycleConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :billing_cycle_configuration
+
+            # The per unit conversion rate of the price currency to the invoicing currency.
+            sig { returns(T.nilable(Float)) }
+            attr_accessor :conversion_rate
+
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            # price is billed.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :currency
+
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
+            # An alias for the price.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :external_price_id
+
+            # If the Price represents a fixed cost, this represents the quantity of units
+            # applied.
+            sig { returns(T.nilable(Float)) }
+            attr_accessor :fixed_price_quantity
+
+            # The property used to group this price on an invoice
+            sig { returns(T.nilable(String)) }
+            attr_accessor :invoice_grouping_key
+
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            # If unspecified, a single invoice is produced per billing cycle.
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::InvoicingCycleConfiguration
+                )
+              )
+            end
+            attr_reader :invoicing_cycle_configuration
+
+            sig do
+              params(
+                invoicing_cycle_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::InvoicingCycleConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :invoicing_cycle_configuration
+
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
+            sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
+            attr_accessor :metadata
+
+            # A transient ID that can be used to reference this price when adding adjustments
+            # in the same API call.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :reference_id
+
+            sig do
+              params(
+                cadence:
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::Cadence::OrSymbol,
+                grouped_tiered_config: T::Hash[Symbol, T.anything],
+                item_id: String,
+                name: String,
+                billable_metric_id: T.nilable(String),
+                billed_in_advance: T.nilable(T::Boolean),
+                billing_cycle_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::BillingCycleConfiguration::OrHash
+                  ),
+                conversion_rate: T.nilable(Float),
+                currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::DimensionalPriceConfiguration::OrHash
+                  ),
+                external_price_id: T.nilable(String),
+                fixed_price_quantity: T.nilable(Float),
+                invoice_grouping_key: T.nilable(String),
+                invoicing_cycle_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::InvoicingCycleConfiguration::OrHash
+                  ),
+                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                reference_id: T.nilable(String),
+                model_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # The cadence to bill for this price on.
+              cadence:,
+              grouped_tiered_config:,
+              # The id of the item the price will be associated with.
+              item_id:,
+              # The name of the price.
+              name:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
+              billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
+              billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
+              billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
+              conversion_rate: nil,
+              # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+              # price is billed.
+              currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
+              # An alias for the price.
+              external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
+              fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
+              invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
+              invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
+              metadata: nil,
+              # A transient ID that can be used to reference this price when adding adjustments
+              # in the same API call.
+              reference_id: nil,
+              model_type: :grouped_tiered
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  cadence:
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::Cadence::OrSymbol,
+                  grouped_tiered_config: T::Hash[Symbol, T.anything],
+                  item_id: String,
+                  model_type: Symbol,
+                  name: String,
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::BillingCycleConfiguration
+                    ),
+                  conversion_rate: T.nilable(Float),
+                  currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::DimensionalPriceConfiguration
+                    ),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::InvoicingCycleConfiguration
+                    ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  reference_id: T.nilable(String)
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # The cadence to bill for this price on.
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::Cadence
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              ANNUAL =
+                T.let(
+                  :annual,
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::Cadence::TaggedSymbol
+                )
+              SEMI_ANNUAL =
+                T.let(
+                  :semi_annual,
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::Cadence::TaggedSymbol
+                )
+              MONTHLY =
+                T.let(
+                  :monthly,
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::Cadence::TaggedSymbol
+                )
+              QUARTERLY =
+                T.let(
+                  :quarterly,
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::Cadence::TaggedSymbol
+                )
+              ONE_TIME =
+                T.let(
+                  :one_time,
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::Cadence::TaggedSymbol
+                )
+              CUSTOM =
+                T.let(
+                  :custom,
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::Cadence::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::Cadence::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The duration of the billing period.
+              sig { returns(Integer) }
+              attr_accessor :duration
+
+              # The unit of billing period duration.
+              sig do
+                returns(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::BillingCycleConfiguration::DurationUnit::OrSymbol
+                )
+              end
+              attr_accessor :duration_unit
+
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
+              sig do
+                params(
+                  duration: Integer,
+                  duration_unit:
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::BillingCycleConfiguration::DurationUnit::OrSymbol
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    duration: Integer,
+                    duration_unit:
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The unit of billing period duration.
+              module DurationUnit
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::BillingCycleConfiguration::DurationUnit
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                DAY =
+                  T.let(
+                    :day,
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                  )
+                MONTH =
+                  T.let(
+                    :month,
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The duration of the billing period.
+              sig { returns(Integer) }
+              attr_accessor :duration
+
+              # The unit of billing period duration.
+              sig do
+                returns(
+                  Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                )
+              end
+              attr_accessor :duration_unit
+
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
+              sig do
+                params(
+                  duration: Integer,
+                  duration_unit:
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    duration: Integer,
+                    duration_unit:
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The unit of billing period duration.
+              module DurationUnit
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::InvoicingCycleConfiguration::DurationUnit
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                DAY =
+                  T.let(
+                    :day,
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                  )
+                MONTH =
+                  T.let(
+                    :month,
+                    Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     ]
                   )
                 end
@@ -13572,12 +17407,12 @@ module Orb
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
 
-            # The set of price IDs to which this adjustment applies.
-            sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
-
             sig { returns(Float) }
             attr_accessor :percentage_discount
+
+            # The set of price IDs to which this adjustment applies.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_accessor :applies_to_price_ids
 
             # When false, this adjustment will be applied to a single price. Otherwise, it
             # will be applied at the invoice level, possibly to multiple prices.
@@ -13589,16 +17424,16 @@ module Orb
 
             sig do
               params(
-                applies_to_price_ids: T::Array[String],
                 percentage_discount: Float,
+                applies_to_price_ids: T.nilable(T::Array[String]),
                 is_invoice_level: T::Boolean,
                 adjustment_type: Symbol
               ).returns(T.attached_class)
             end
             def self.new(
-              # The set of price IDs to which this adjustment applies.
-              applies_to_price_ids:,
               percentage_discount:,
+              # The set of price IDs to which this adjustment applies.
+              applies_to_price_ids: nil,
               # When false, this adjustment will be applied to a single price. Otherwise, it
               # will be applied at the invoice level, possibly to multiple prices.
               is_invoice_level: nil,
@@ -13610,8 +17445,8 @@ module Orb
               override.returns(
                 {
                   adjustment_type: Symbol,
-                  applies_to_price_ids: T::Array[String],
                   percentage_discount: Float,
+                  applies_to_price_ids: T.nilable(T::Array[String]),
                   is_invoice_level: T::Boolean
                 }
               )
@@ -13632,12 +17467,12 @@ module Orb
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
 
-            # The set of price IDs to which this adjustment applies.
-            sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
-
             sig { returns(Float) }
             attr_accessor :usage_discount
+
+            # The set of price IDs to which this adjustment applies.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_accessor :applies_to_price_ids
 
             # When false, this adjustment will be applied to a single price. Otherwise, it
             # will be applied at the invoice level, possibly to multiple prices.
@@ -13649,16 +17484,16 @@ module Orb
 
             sig do
               params(
-                applies_to_price_ids: T::Array[String],
                 usage_discount: Float,
+                applies_to_price_ids: T.nilable(T::Array[String]),
                 is_invoice_level: T::Boolean,
                 adjustment_type: Symbol
               ).returns(T.attached_class)
             end
             def self.new(
-              # The set of price IDs to which this adjustment applies.
-              applies_to_price_ids:,
               usage_discount:,
+              # The set of price IDs to which this adjustment applies.
+              applies_to_price_ids: nil,
               # When false, this adjustment will be applied to a single price. Otherwise, it
               # will be applied at the invoice level, possibly to multiple prices.
               is_invoice_level: nil,
@@ -13670,8 +17505,8 @@ module Orb
               override.returns(
                 {
                   adjustment_type: Symbol,
-                  applies_to_price_ids: T::Array[String],
                   usage_discount: Float,
+                  applies_to_price_ids: T.nilable(T::Array[String]),
                   is_invoice_level: T::Boolean
                 }
               )
@@ -13696,7 +17531,7 @@ module Orb
             attr_accessor :amount_discount
 
             # The set of price IDs to which this adjustment applies.
-            sig { returns(T::Array[String]) }
+            sig { returns(T.nilable(T::Array[String])) }
             attr_accessor :applies_to_price_ids
 
             # When false, this adjustment will be applied to a single price. Otherwise, it
@@ -13710,7 +17545,7 @@ module Orb
             sig do
               params(
                 amount_discount: String,
-                applies_to_price_ids: T::Array[String],
+                applies_to_price_ids: T.nilable(T::Array[String]),
                 is_invoice_level: T::Boolean,
                 adjustment_type: Symbol
               ).returns(T.attached_class)
@@ -13718,7 +17553,7 @@ module Orb
             def self.new(
               amount_discount:,
               # The set of price IDs to which this adjustment applies.
-              applies_to_price_ids:,
+              applies_to_price_ids: nil,
               # When false, this adjustment will be applied to a single price. Otherwise, it
               # will be applied at the invoice level, possibly to multiple prices.
               is_invoice_level: nil,
@@ -13731,7 +17566,7 @@ module Orb
                 {
                   adjustment_type: Symbol,
                   amount_discount: String,
-                  applies_to_price_ids: T::Array[String],
+                  applies_to_price_ids: T.nilable(T::Array[String]),
                   is_invoice_level: T::Boolean
                 }
               )
@@ -13752,16 +17587,16 @@ module Orb
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
 
-            # The set of price IDs to which this adjustment applies.
-            sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
-
             # The item ID that revenue from this minimum will be attributed to.
             sig { returns(String) }
             attr_accessor :item_id
 
             sig { returns(String) }
             attr_accessor :minimum_amount
+
+            # The set of price IDs to which this adjustment applies.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_accessor :applies_to_price_ids
 
             # When false, this adjustment will be applied to a single price. Otherwise, it
             # will be applied at the invoice level, possibly to multiple prices.
@@ -13773,19 +17608,19 @@ module Orb
 
             sig do
               params(
-                applies_to_price_ids: T::Array[String],
                 item_id: String,
                 minimum_amount: String,
+                applies_to_price_ids: T.nilable(T::Array[String]),
                 is_invoice_level: T::Boolean,
                 adjustment_type: Symbol
               ).returns(T.attached_class)
             end
             def self.new(
-              # The set of price IDs to which this adjustment applies.
-              applies_to_price_ids:,
               # The item ID that revenue from this minimum will be attributed to.
               item_id:,
               minimum_amount:,
+              # The set of price IDs to which this adjustment applies.
+              applies_to_price_ids: nil,
               # When false, this adjustment will be applied to a single price. Otherwise, it
               # will be applied at the invoice level, possibly to multiple prices.
               is_invoice_level: nil,
@@ -13797,9 +17632,9 @@ module Orb
               override.returns(
                 {
                   adjustment_type: Symbol,
-                  applies_to_price_ids: T::Array[String],
                   item_id: String,
                   minimum_amount: String,
+                  applies_to_price_ids: T.nilable(T::Array[String]),
                   is_invoice_level: T::Boolean
                 }
               )
@@ -13820,12 +17655,12 @@ module Orb
             sig { returns(Symbol) }
             attr_accessor :adjustment_type
 
-            # The set of price IDs to which this adjustment applies.
-            sig { returns(T::Array[String]) }
-            attr_accessor :applies_to_price_ids
-
             sig { returns(String) }
             attr_accessor :maximum_amount
+
+            # The set of price IDs to which this adjustment applies.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_accessor :applies_to_price_ids
 
             # When false, this adjustment will be applied to a single price. Otherwise, it
             # will be applied at the invoice level, possibly to multiple prices.
@@ -13837,16 +17672,16 @@ module Orb
 
             sig do
               params(
-                applies_to_price_ids: T::Array[String],
                 maximum_amount: String,
+                applies_to_price_ids: T.nilable(T::Array[String]),
                 is_invoice_level: T::Boolean,
                 adjustment_type: Symbol
               ).returns(T.attached_class)
             end
             def self.new(
-              # The set of price IDs to which this adjustment applies.
-              applies_to_price_ids:,
               maximum_amount:,
+              # The set of price IDs to which this adjustment applies.
+              applies_to_price_ids: nil,
               # When false, this adjustment will be applied to a single price. Otherwise, it
               # will be applied at the invoice level, possibly to multiple prices.
               is_invoice_level: nil,
@@ -13858,8 +17693,8 @@ module Orb
               override.returns(
                 {
                   adjustment_type: Symbol,
-                  applies_to_price_ids: T::Array[String],
                   maximum_amount: String,
+                  applies_to_price_ids: T.nilable(T::Array[String]),
                   is_invoice_level: T::Boolean
                 }
               )
@@ -13973,7 +17808,10 @@ module Orb
                 Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage,
                 Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum,
                 Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage
+                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage,
+                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation,
+                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum,
+                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered
               )
             )
           )
@@ -14028,7 +17866,10 @@ module Orb
                   Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::OrHash,
                   Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::OrHash,
                   Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::OrHash,
-                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::OrHash
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::OrHash,
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::OrHash,
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::OrHash,
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::OrHash
                 )
               ),
             price_id: T.nilable(String)
@@ -14104,7 +17945,10 @@ module Orb
                     Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage,
                     Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum,
                     Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName,
-                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage,
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation,
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum,
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered
                   )
                 ),
               price_id: T.nilable(String)
@@ -14376,7 +18220,10 @@ module Orb
                 Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage,
                 Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum,
                 Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName,
-                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage
+                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage,
+                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation,
+                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum,
+                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered
               )
             end
 
@@ -14463,6 +18310,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -14524,6 +18391,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -14558,6 +18429,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -14597,6 +18470,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -14778,6 +18655,60 @@ module Orb
               end
             end
 
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Unit::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
@@ -14948,6 +18879,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -15009,6 +18960,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -15043,6 +18998,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -15082,6 +19039,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -15279,6 +19240,60 @@ module Orb
               end
             end
 
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Package::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
@@ -15449,6 +19464,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -15510,6 +19545,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -15544,6 +19583,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -15583,6 +19624,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -15849,6 +19894,60 @@ module Orb
               end
             end
 
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Matrix::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
@@ -16019,6 +20118,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -16080,6 +20199,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -16114,6 +20237,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -16153,6 +20278,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -16407,6 +20536,60 @@ module Orb
               end
             end
 
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Tiered::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
@@ -16577,6 +20760,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -16638,6 +20841,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -16672,6 +20879,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -16711,6 +20920,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -16975,6 +21188,60 @@ module Orb
               end
             end
 
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredBps::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
@@ -17145,6 +21412,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -17206,6 +21493,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -17240,6 +21531,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -17279,6 +21572,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -17474,6 +21771,60 @@ module Orb
               end
             end
 
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bps::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
@@ -17644,6 +21995,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -17705,6 +22076,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -17739,6 +22114,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -17778,6 +22155,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -18034,6 +22415,60 @@ module Orb
               end
             end
 
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkBps::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
@@ -18204,6 +22639,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -18265,6 +22720,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -18299,6 +22758,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -18338,6 +22799,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -18581,6 +23046,60 @@ module Orb
               end
             end
 
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Bulk::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
@@ -18739,6 +23258,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -18799,6 +23338,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -18833,6 +23376,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -18871,6 +23416,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -19024,6 +23573,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ThresholdTotalAmount::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -19185,6 +23788,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -19245,6 +23868,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -19279,6 +23906,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -19317,6 +23946,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -19470,6 +24103,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackage::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -19631,6 +24318,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -19691,6 +24398,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -19725,6 +24436,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -19763,6 +24476,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -19916,6 +24633,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithMinimum::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -20077,6 +24848,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -20137,6 +24928,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -20171,6 +24966,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -20209,6 +25006,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -20362,6 +25163,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithPercent::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -20523,6 +25378,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -20583,6 +25458,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -20617,6 +25496,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -20655,6 +25536,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -20808,6 +25693,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::PackageWithAllocation::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -20969,6 +25908,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -21029,6 +25988,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -21063,6 +26026,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -21101,6 +26066,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -21254,6 +26223,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -21415,6 +26438,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -21475,6 +26518,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -21509,6 +26556,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -21547,6 +26596,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -21700,6 +26753,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::UnitWithProration::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -21861,6 +26968,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -21921,6 +27048,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -21955,6 +27086,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -21993,6 +27126,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -22146,6 +27283,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedAllocation::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -22307,6 +27498,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -22368,6 +27579,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -22402,6 +27617,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -22441,6 +27658,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -22594,6 +27815,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -22755,6 +28030,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -22815,6 +28110,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -22849,6 +28148,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -22887,6 +28188,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -23040,6 +28345,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithProration::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -23201,6 +28560,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -23262,6 +28641,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -23296,6 +28679,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -23335,6 +28720,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -23488,6 +28877,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -23649,6 +29092,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -23710,6 +29173,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -23744,6 +29211,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -23783,6 +29252,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -23936,6 +29409,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -24097,6 +29624,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -24157,6 +29704,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -24191,6 +29742,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -24229,6 +29782,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -24382,6 +29939,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -24543,6 +30154,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -24603,6 +30234,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -24637,6 +30272,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -24675,6 +30312,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -24828,6 +30469,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -24989,6 +30684,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -25050,6 +30765,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -25084,6 +30803,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -25123,6 +30844,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -25276,6 +31001,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -25437,6 +31216,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -25497,6 +31296,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -25531,6 +31334,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -25569,6 +31374,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -25722,6 +31531,60 @@ module Orb
                 end
                 def self.values
                 end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithDisplayName::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -25883,6 +31746,26 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :currency
 
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
             # An alias for the price.
             sig { returns(T.nilable(String)) }
             attr_accessor :external_price_id
@@ -25943,6 +31826,10 @@ module Orb
                   ),
                 conversion_rate: T.nilable(Float),
                 currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::DimensionalPriceConfiguration::OrHash
+                  ),
                 external_price_id: T.nilable(String),
                 fixed_price_quantity: T.nilable(Float),
                 invoice_grouping_key: T.nilable(String),
@@ -25977,6 +31864,8 @@ module Orb
               # An ISO 4217 currency string, or custom pricing unit identifier, in which this
               # price is billed.
               currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
               # An alias for the price.
               external_price_id: nil,
               # If the Price represents a fixed cost, this represents the quantity of units
@@ -26015,6 +31904,10 @@ module Orb
                     ),
                   conversion_rate: T.nilable(Float),
                   currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::DimensionalPriceConfiguration
+                    ),
                   external_price_id: T.nilable(String),
                   fixed_price_quantity: T.nilable(Float),
                   invoice_grouping_key: T.nilable(String),
@@ -26171,6 +32064,60 @@ module Orb
               end
             end
 
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+
             class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
@@ -26249,6 +32196,1729 @@ module Orb
                   override.returns(
                     T::Array[
                       Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredPackage::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+          end
+
+          class MatrixWithAllocation < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            # The cadence to bill for this price on.
+            sig do
+              returns(
+                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::Cadence::OrSymbol
+              )
+            end
+            attr_accessor :cadence
+
+            # The id of the item the price will be associated with.
+            sig { returns(String) }
+            attr_accessor :item_id
+
+            sig do
+              returns(
+                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::MatrixWithAllocationConfig
+              )
+            end
+            attr_reader :matrix_with_allocation_config
+
+            sig do
+              params(
+                matrix_with_allocation_config:
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::MatrixWithAllocationConfig::OrHash
+              ).void
+            end
+            attr_writer :matrix_with_allocation_config
+
+            sig { returns(Symbol) }
+            attr_accessor :model_type
+
+            # The name of the price.
+            sig { returns(String) }
+            attr_accessor :name
+
+            # The id of the billable metric for the price. Only needed if the price is
+            # usage-based.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :billable_metric_id
+
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            # this is true, and in-arrears if this is false.
+            sig { returns(T.nilable(T::Boolean)) }
+            attr_accessor :billed_in_advance
+
+            # For custom cadence: specifies the duration of the billing period in days or
+            # months.
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::BillingCycleConfiguration
+                )
+              )
+            end
+            attr_reader :billing_cycle_configuration
+
+            sig do
+              params(
+                billing_cycle_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::BillingCycleConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :billing_cycle_configuration
+
+            # The per unit conversion rate of the price currency to the invoicing currency.
+            sig { returns(T.nilable(Float)) }
+            attr_accessor :conversion_rate
+
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            # price is billed.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :currency
+
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
+            # An alias for the price.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :external_price_id
+
+            # If the Price represents a fixed cost, this represents the quantity of units
+            # applied.
+            sig { returns(T.nilable(Float)) }
+            attr_accessor :fixed_price_quantity
+
+            # The property used to group this price on an invoice
+            sig { returns(T.nilable(String)) }
+            attr_accessor :invoice_grouping_key
+
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            # If unspecified, a single invoice is produced per billing cycle.
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::InvoicingCycleConfiguration
+                )
+              )
+            end
+            attr_reader :invoicing_cycle_configuration
+
+            sig do
+              params(
+                invoicing_cycle_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::InvoicingCycleConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :invoicing_cycle_configuration
+
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
+            sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
+            attr_accessor :metadata
+
+            # A transient ID that can be used to reference this price when adding adjustments
+            # in the same API call.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :reference_id
+
+            sig do
+              params(
+                cadence:
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::Cadence::OrSymbol,
+                item_id: String,
+                matrix_with_allocation_config:
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::MatrixWithAllocationConfig::OrHash,
+                name: String,
+                billable_metric_id: T.nilable(String),
+                billed_in_advance: T.nilable(T::Boolean),
+                billing_cycle_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::BillingCycleConfiguration::OrHash
+                  ),
+                conversion_rate: T.nilable(Float),
+                currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::DimensionalPriceConfiguration::OrHash
+                  ),
+                external_price_id: T.nilable(String),
+                fixed_price_quantity: T.nilable(Float),
+                invoice_grouping_key: T.nilable(String),
+                invoicing_cycle_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::InvoicingCycleConfiguration::OrHash
+                  ),
+                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                reference_id: T.nilable(String),
+                model_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # The cadence to bill for this price on.
+              cadence:,
+              # The id of the item the price will be associated with.
+              item_id:,
+              matrix_with_allocation_config:,
+              # The name of the price.
+              name:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
+              billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
+              billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
+              billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
+              conversion_rate: nil,
+              # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+              # price is billed.
+              currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
+              # An alias for the price.
+              external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
+              fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
+              invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
+              invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
+              metadata: nil,
+              # A transient ID that can be used to reference this price when adding adjustments
+              # in the same API call.
+              reference_id: nil,
+              model_type: :matrix_with_allocation
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  cadence:
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::Cadence::OrSymbol,
+                  item_id: String,
+                  matrix_with_allocation_config:
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::MatrixWithAllocationConfig,
+                  model_type: Symbol,
+                  name: String,
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::BillingCycleConfiguration
+                    ),
+                  conversion_rate: T.nilable(Float),
+                  currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::DimensionalPriceConfiguration
+                    ),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::InvoicingCycleConfiguration
+                    ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  reference_id: T.nilable(String)
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # The cadence to bill for this price on.
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::Cadence
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              ANNUAL =
+                T.let(
+                  :annual,
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::Cadence::TaggedSymbol
+                )
+              SEMI_ANNUAL =
+                T.let(
+                  :semi_annual,
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::Cadence::TaggedSymbol
+                )
+              MONTHLY =
+                T.let(
+                  :monthly,
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::Cadence::TaggedSymbol
+                )
+              QUARTERLY =
+                T.let(
+                  :quarterly,
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::Cadence::TaggedSymbol
+                )
+              ONE_TIME =
+                T.let(
+                  :one_time,
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::Cadence::TaggedSymbol
+                )
+              CUSTOM =
+                T.let(
+                  :custom,
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::Cadence::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::Cadence::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            class MatrixWithAllocationConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::MatrixWithAllocationConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Allocation to be used to calculate the price
+              sig { returns(Float) }
+              attr_accessor :allocation
+
+              # Default per unit rate for any usage not bucketed into a specified matrix_value
+              sig { returns(String) }
+              attr_accessor :default_unit_amount
+
+              # One or two event property values to evaluate matrix groups by
+              sig { returns(T::Array[T.nilable(String)]) }
+              attr_accessor :dimensions
+
+              # Matrix values for specified matrix grouping keys
+              sig do
+                returns(
+                  T::Array[
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::MatrixWithAllocationConfig::MatrixValue
+                  ]
+                )
+              end
+              attr_accessor :matrix_values
+
+              sig do
+                params(
+                  allocation: Float,
+                  default_unit_amount: String,
+                  dimensions: T::Array[T.nilable(String)],
+                  matrix_values:
+                    T::Array[
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::MatrixWithAllocationConfig::MatrixValue::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Allocation to be used to calculate the price
+                allocation:,
+                # Default per unit rate for any usage not bucketed into a specified matrix_value
+                default_unit_amount:,
+                # One or two event property values to evaluate matrix groups by
+                dimensions:,
+                # Matrix values for specified matrix grouping keys
+                matrix_values:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    allocation: Float,
+                    default_unit_amount: String,
+                    dimensions: T::Array[T.nilable(String)],
+                    matrix_values:
+                      T::Array[
+                        Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::MatrixWithAllocationConfig::MatrixValue
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class MatrixValue < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::MatrixWithAllocationConfig::MatrixValue,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # One or two matrix keys to filter usage to this Matrix value by. For example,
+                # ["region", "tier"] could be used to filter cloud usage by a cloud region and an
+                # instance tier.
+                sig { returns(T::Array[T.nilable(String)]) }
+                attr_accessor :dimension_values
+
+                # Unit price for the specified dimension_values
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                sig do
+                  params(
+                    dimension_values: T::Array[T.nilable(String)],
+                    unit_amount: String
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # One or two matrix keys to filter usage to this Matrix value by. For example,
+                  # ["region", "tier"] could be used to filter cloud usage by a cloud region and an
+                  # instance tier.
+                  dimension_values:,
+                  # Unit price for the specified dimension_values
+                  unit_amount:
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      dimension_values: T::Array[T.nilable(String)],
+                      unit_amount: String
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The duration of the billing period.
+              sig { returns(Integer) }
+              attr_accessor :duration
+
+              # The unit of billing period duration.
+              sig do
+                returns(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::BillingCycleConfiguration::DurationUnit::OrSymbol
+                )
+              end
+              attr_accessor :duration_unit
+
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
+              sig do
+                params(
+                  duration: Integer,
+                  duration_unit:
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::BillingCycleConfiguration::DurationUnit::OrSymbol
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    duration: Integer,
+                    duration_unit:
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The unit of billing period duration.
+              module DurationUnit
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::BillingCycleConfiguration::DurationUnit
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                DAY =
+                  T.let(
+                    :day,
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                  )
+                MONTH =
+                  T.let(
+                    :month,
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The duration of the billing period.
+              sig { returns(Integer) }
+              attr_accessor :duration
+
+              # The unit of billing period duration.
+              sig do
+                returns(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                )
+              end
+              attr_accessor :duration_unit
+
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
+              sig do
+                params(
+                  duration: Integer,
+                  duration_unit:
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    duration: Integer,
+                    duration_unit:
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The unit of billing period duration.
+              module DurationUnit
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::InvoicingCycleConfiguration::DurationUnit
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                DAY =
+                  T.let(
+                    :day,
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                  )
+                MONTH =
+                  T.let(
+                    :month,
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithAllocation::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+          end
+
+          class TieredPackageWithMinimum < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            # The cadence to bill for this price on.
+            sig do
+              returns(
+                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::Cadence::OrSymbol
+              )
+            end
+            attr_accessor :cadence
+
+            # The id of the item the price will be associated with.
+            sig { returns(String) }
+            attr_accessor :item_id
+
+            sig { returns(Symbol) }
+            attr_accessor :model_type
+
+            # The name of the price.
+            sig { returns(String) }
+            attr_accessor :name
+
+            sig { returns(T::Hash[Symbol, T.anything]) }
+            attr_accessor :tiered_package_with_minimum_config
+
+            # The id of the billable metric for the price. Only needed if the price is
+            # usage-based.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :billable_metric_id
+
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            # this is true, and in-arrears if this is false.
+            sig { returns(T.nilable(T::Boolean)) }
+            attr_accessor :billed_in_advance
+
+            # For custom cadence: specifies the duration of the billing period in days or
+            # months.
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::BillingCycleConfiguration
+                )
+              )
+            end
+            attr_reader :billing_cycle_configuration
+
+            sig do
+              params(
+                billing_cycle_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::BillingCycleConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :billing_cycle_configuration
+
+            # The per unit conversion rate of the price currency to the invoicing currency.
+            sig { returns(T.nilable(Float)) }
+            attr_accessor :conversion_rate
+
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            # price is billed.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :currency
+
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
+            # An alias for the price.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :external_price_id
+
+            # If the Price represents a fixed cost, this represents the quantity of units
+            # applied.
+            sig { returns(T.nilable(Float)) }
+            attr_accessor :fixed_price_quantity
+
+            # The property used to group this price on an invoice
+            sig { returns(T.nilable(String)) }
+            attr_accessor :invoice_grouping_key
+
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            # If unspecified, a single invoice is produced per billing cycle.
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration
+                )
+              )
+            end
+            attr_reader :invoicing_cycle_configuration
+
+            sig do
+              params(
+                invoicing_cycle_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :invoicing_cycle_configuration
+
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
+            sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
+            attr_accessor :metadata
+
+            # A transient ID that can be used to reference this price when adding adjustments
+            # in the same API call.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :reference_id
+
+            sig do
+              params(
+                cadence:
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::Cadence::OrSymbol,
+                item_id: String,
+                name: String,
+                tiered_package_with_minimum_config: T::Hash[Symbol, T.anything],
+                billable_metric_id: T.nilable(String),
+                billed_in_advance: T.nilable(T::Boolean),
+                billing_cycle_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::BillingCycleConfiguration::OrHash
+                  ),
+                conversion_rate: T.nilable(Float),
+                currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration::OrHash
+                  ),
+                external_price_id: T.nilable(String),
+                fixed_price_quantity: T.nilable(Float),
+                invoice_grouping_key: T.nilable(String),
+                invoicing_cycle_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::OrHash
+                  ),
+                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                reference_id: T.nilable(String),
+                model_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # The cadence to bill for this price on.
+              cadence:,
+              # The id of the item the price will be associated with.
+              item_id:,
+              # The name of the price.
+              name:,
+              tiered_package_with_minimum_config:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
+              billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
+              billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
+              billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
+              conversion_rate: nil,
+              # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+              # price is billed.
+              currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
+              # An alias for the price.
+              external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
+              fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
+              invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
+              invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
+              metadata: nil,
+              # A transient ID that can be used to reference this price when adding adjustments
+              # in the same API call.
+              reference_id: nil,
+              model_type: :tiered_package_with_minimum
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  cadence:
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::Cadence::OrSymbol,
+                  item_id: String,
+                  model_type: Symbol,
+                  name: String,
+                  tiered_package_with_minimum_config:
+                    T::Hash[Symbol, T.anything],
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::BillingCycleConfiguration
+                    ),
+                  conversion_rate: T.nilable(Float),
+                  currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration
+                    ),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration
+                    ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  reference_id: T.nilable(String)
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # The cadence to bill for this price on.
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::Cadence
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              ANNUAL =
+                T.let(
+                  :annual,
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol
+                )
+              SEMI_ANNUAL =
+                T.let(
+                  :semi_annual,
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol
+                )
+              MONTHLY =
+                T.let(
+                  :monthly,
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol
+                )
+              QUARTERLY =
+                T.let(
+                  :quarterly,
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol
+                )
+              ONE_TIME =
+                T.let(
+                  :one_time,
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol
+                )
+              CUSTOM =
+                T.let(
+                  :custom,
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The duration of the billing period.
+              sig { returns(Integer) }
+              attr_accessor :duration
+
+              # The unit of billing period duration.
+              sig do
+                returns(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
+                )
+              end
+              attr_accessor :duration_unit
+
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
+              sig do
+                params(
+                  duration: Integer,
+                  duration_unit:
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    duration: Integer,
+                    duration_unit:
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The unit of billing period duration.
+              module DurationUnit
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::BillingCycleConfiguration::DurationUnit
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                DAY =
+                  T.let(
+                    :day,
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                  )
+                MONTH =
+                  T.let(
+                    :month,
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The duration of the billing period.
+              sig { returns(Integer) }
+              attr_accessor :duration
+
+              # The unit of billing period duration.
+              sig do
+                returns(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                )
+              end
+              attr_accessor :duration_unit
+
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
+              sig do
+                params(
+                  duration: Integer,
+                  duration_unit:
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    duration: Integer,
+                    duration_unit:
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The unit of billing period duration.
+              module DurationUnit
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::DurationUnit
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                DAY =
+                  T.let(
+                    :day,
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                  )
+                MONTH =
+                  T.let(
+                    :month,
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredPackageWithMinimum::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+          end
+
+          class GroupedTiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            # The cadence to bill for this price on.
+            sig do
+              returns(
+                Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::Cadence::OrSymbol
+              )
+            end
+            attr_accessor :cadence
+
+            sig { returns(T::Hash[Symbol, T.anything]) }
+            attr_accessor :grouped_tiered_config
+
+            # The id of the item the price will be associated with.
+            sig { returns(String) }
+            attr_accessor :item_id
+
+            sig { returns(Symbol) }
+            attr_accessor :model_type
+
+            # The name of the price.
+            sig { returns(String) }
+            attr_accessor :name
+
+            # The id of the billable metric for the price. Only needed if the price is
+            # usage-based.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :billable_metric_id
+
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            # this is true, and in-arrears if this is false.
+            sig { returns(T.nilable(T::Boolean)) }
+            attr_accessor :billed_in_advance
+
+            # For custom cadence: specifies the duration of the billing period in days or
+            # months.
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::BillingCycleConfiguration
+                )
+              )
+            end
+            attr_reader :billing_cycle_configuration
+
+            sig do
+              params(
+                billing_cycle_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::BillingCycleConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :billing_cycle_configuration
+
+            # The per unit conversion rate of the price currency to the invoicing currency.
+            sig { returns(T.nilable(Float)) }
+            attr_accessor :conversion_rate
+
+            # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            # price is billed.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :currency
+
+            # For dimensional price: specifies a price group and dimension values
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::DimensionalPriceConfiguration
+                )
+              )
+            end
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::DimensionalPriceConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
+            # An alias for the price.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :external_price_id
+
+            # If the Price represents a fixed cost, this represents the quantity of units
+            # applied.
+            sig { returns(T.nilable(Float)) }
+            attr_accessor :fixed_price_quantity
+
+            # The property used to group this price on an invoice
+            sig { returns(T.nilable(String)) }
+            attr_accessor :invoice_grouping_key
+
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            # If unspecified, a single invoice is produced per billing cycle.
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::InvoicingCycleConfiguration
+                )
+              )
+            end
+            attr_reader :invoicing_cycle_configuration
+
+            sig do
+              params(
+                invoicing_cycle_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::InvoicingCycleConfiguration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :invoicing_cycle_configuration
+
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
+            sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
+            attr_accessor :metadata
+
+            # A transient ID that can be used to reference this price when adding adjustments
+            # in the same API call.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :reference_id
+
+            sig do
+              params(
+                cadence:
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::Cadence::OrSymbol,
+                grouped_tiered_config: T::Hash[Symbol, T.anything],
+                item_id: String,
+                name: String,
+                billable_metric_id: T.nilable(String),
+                billed_in_advance: T.nilable(T::Boolean),
+                billing_cycle_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::BillingCycleConfiguration::OrHash
+                  ),
+                conversion_rate: T.nilable(Float),
+                currency: T.nilable(String),
+                dimensional_price_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::DimensionalPriceConfiguration::OrHash
+                  ),
+                external_price_id: T.nilable(String),
+                fixed_price_quantity: T.nilable(Float),
+                invoice_grouping_key: T.nilable(String),
+                invoicing_cycle_configuration:
+                  T.nilable(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::InvoicingCycleConfiguration::OrHash
+                  ),
+                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                reference_id: T.nilable(String),
+                model_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # The cadence to bill for this price on.
+              cadence:,
+              grouped_tiered_config:,
+              # The id of the item the price will be associated with.
+              item_id:,
+              # The name of the price.
+              name:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
+              billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
+              billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
+              billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
+              conversion_rate: nil,
+              # An ISO 4217 currency string, or custom pricing unit identifier, in which this
+              # price is billed.
+              currency: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
+              # An alias for the price.
+              external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
+              fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
+              invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
+              invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
+              metadata: nil,
+              # A transient ID that can be used to reference this price when adding adjustments
+              # in the same API call.
+              reference_id: nil,
+              model_type: :grouped_tiered
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  cadence:
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::Cadence::OrSymbol,
+                  grouped_tiered_config: T::Hash[Symbol, T.anything],
+                  item_id: String,
+                  model_type: Symbol,
+                  name: String,
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::BillingCycleConfiguration
+                    ),
+                  conversion_rate: T.nilable(Float),
+                  currency: T.nilable(String),
+                  dimensional_price_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::DimensionalPriceConfiguration
+                    ),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration:
+                    T.nilable(
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::InvoicingCycleConfiguration
+                    ),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                  reference_id: T.nilable(String)
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # The cadence to bill for this price on.
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::Cadence
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              ANNUAL =
+                T.let(
+                  :annual,
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::Cadence::TaggedSymbol
+                )
+              SEMI_ANNUAL =
+                T.let(
+                  :semi_annual,
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::Cadence::TaggedSymbol
+                )
+              MONTHLY =
+                T.let(
+                  :monthly,
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::Cadence::TaggedSymbol
+                )
+              QUARTERLY =
+                T.let(
+                  :quarterly,
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::Cadence::TaggedSymbol
+                )
+              ONE_TIME =
+                T.let(
+                  :one_time,
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::Cadence::TaggedSymbol
+                )
+              CUSTOM =
+                T.let(
+                  :custom,
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::Cadence::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::Cadence::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::BillingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The duration of the billing period.
+              sig { returns(Integer) }
+              attr_accessor :duration
+
+              # The unit of billing period duration.
+              sig do
+                returns(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::BillingCycleConfiguration::DurationUnit::OrSymbol
+                )
+              end
+              attr_accessor :duration_unit
+
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
+              sig do
+                params(
+                  duration: Integer,
+                  duration_unit:
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::BillingCycleConfiguration::DurationUnit::OrSymbol
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    duration: Integer,
+                    duration_unit:
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::BillingCycleConfiguration::DurationUnit::OrSymbol
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The unit of billing period duration.
+              module DurationUnit
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::BillingCycleConfiguration::DurationUnit
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                DAY =
+                  T.let(
+                    :day,
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                  )
+                MONTH =
+                  T.let(
+                    :month,
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::BillingCycleConfiguration::DurationUnit::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::DimensionalPriceConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The list of dimension values matching (in order) the dimensions of the price
+              # group
+              sig { returns(T::Array[String]) }
+              attr_accessor :dimension_values
+
+              # The id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :dimensional_price_group_id
+
+              # The external id of the dimensional price group to include this price in
+              sig { returns(T.nilable(String)) }
+              attr_accessor :external_dimensional_price_group_id
+
+              # For dimensional price: specifies a price group and dimension values
+              sig do
+                params(
+                  dimension_values: T::Array[String],
+                  dimensional_price_group_id: T.nilable(String),
+                  external_dimensional_price_group_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The list of dimension values matching (in order) the dimensions of the price
+                # group
+                dimension_values:,
+                # The id of the dimensional price group to include this price in
+                dimensional_price_group_id: nil,
+                # The external id of the dimensional price group to include this price in
+                external_dimensional_price_group_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    dimension_values: T::Array[String],
+                    dimensional_price_group_id: T.nilable(String),
+                    external_dimensional_price_group_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+
+            class InvoicingCycleConfiguration < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::InvoicingCycleConfiguration,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The duration of the billing period.
+              sig { returns(Integer) }
+              attr_accessor :duration
+
+              # The unit of billing period duration.
+              sig do
+                returns(
+                  Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                )
+              end
+              attr_accessor :duration_unit
+
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
+              sig do
+                params(
+                  duration: Integer,
+                  duration_unit:
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The duration of the billing period.
+                duration:,
+                # The unit of billing period duration.
+                duration_unit:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    duration: Integer,
+                    duration_unit:
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::InvoicingCycleConfiguration::DurationUnit::OrSymbol
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The unit of billing period duration.
+              module DurationUnit
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::InvoicingCycleConfiguration::DurationUnit
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                DAY =
+                  T.let(
+                    :day,
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                  )
+                MONTH =
+                  T.let(
+                    :month,
+                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTiered::InvoicingCycleConfiguration::DurationUnit::TaggedSymbol
                     ]
                   )
                 end

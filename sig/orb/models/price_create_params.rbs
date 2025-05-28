@@ -12,6 +12,7 @@ module Orb
         billed_in_advance: bool?,
         billing_cycle_configuration: Orb::PriceCreateParams::BillingCycleConfiguration?,
         conversion_rate: Float?,
+        dimensional_price_configuration: Orb::PriceCreateParams::DimensionalPriceConfiguration?,
         external_price_id: String?,
         fixed_price_quantity: Float?,
         invoice_grouping_key: String?,
@@ -70,6 +71,8 @@ module Orb
       attr_accessor billing_cycle_configuration: Orb::PriceCreateParams::BillingCycleConfiguration?
 
       attr_accessor conversion_rate: Float?
+
+      attr_accessor dimensional_price_configuration: Orb::PriceCreateParams::DimensionalPriceConfiguration?
 
       attr_accessor external_price_id: String?
 
@@ -173,6 +176,7 @@ module Orb
         ?billed_in_advance: bool?,
         ?billing_cycle_configuration: Orb::PriceCreateParams::BillingCycleConfiguration?,
         ?conversion_rate: Float?,
+        ?dimensional_price_configuration: Orb::PriceCreateParams::DimensionalPriceConfiguration?,
         ?external_price_id: String?,
         ?fixed_price_quantity: Float?,
         ?invoice_grouping_key: String?,
@@ -192,6 +196,7 @@ module Orb
         billed_in_advance: bool?,
         billing_cycle_configuration: Orb::PriceCreateParams::BillingCycleConfiguration?,
         conversion_rate: Float?,
+        dimensional_price_configuration: Orb::PriceCreateParams::DimensionalPriceConfiguration?,
         external_price_id: String?,
         fixed_price_quantity: Float?,
         invoice_grouping_key: String?,
@@ -294,6 +299,33 @@ module Orb
 
           def self?.values: -> ::Array[Orb::Models::PriceCreateParams::BillingCycleConfiguration::duration_unit]
         end
+      end
+
+      type dimensional_price_configuration =
+        {
+          dimension_values: ::Array[String],
+          dimensional_price_group_id: String?,
+          external_dimensional_price_group_id: String?
+        }
+
+      class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+        attr_accessor dimension_values: ::Array[String]
+
+        attr_accessor dimensional_price_group_id: String?
+
+        attr_accessor external_dimensional_price_group_id: String?
+
+        def initialize: (
+          dimension_values: ::Array[String],
+          ?dimensional_price_group_id: String?,
+          ?external_dimensional_price_group_id: String?
+        ) -> void
+
+        def to_hash: -> {
+          dimension_values: ::Array[String],
+          dimensional_price_group_id: String?,
+          external_dimensional_price_group_id: String?
+        }
       end
 
       type invoicing_cycle_configuration =

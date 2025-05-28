@@ -311,6 +311,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Unit::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Unit::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -339,6 +340,8 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
+            attr_accessor dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Unit::DimensionalPriceConfiguration?
+
             attr_accessor external_price_id: String?
 
             attr_accessor fixed_price_quantity: Float?
@@ -359,6 +362,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Unit::BillingCycleConfiguration?,
               ?conversion_rate: Float?,
+              ?dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Unit::DimensionalPriceConfiguration?,
               ?external_price_id: String?,
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
@@ -378,6 +382,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Unit::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Unit::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -449,6 +454,33 @@ module Orb
               end
             end
 
+            type dimensional_price_configuration =
+              {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String]
+
+              attr_accessor dimensional_price_group_id: String?
+
+              attr_accessor external_dimensional_price_group_id: String?
+
+              def initialize: (
+                dimension_values: ::Array[String],
+                ?dimensional_price_group_id: String?,
+                ?external_dimensional_price_group_id: String?
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+            end
+
             type invoicing_cycle_configuration =
               {
                 duration: Integer,
@@ -495,6 +527,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Package::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Package::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -523,6 +556,8 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
+            attr_accessor dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Package::DimensionalPriceConfiguration?
+
             attr_accessor external_price_id: String?
 
             attr_accessor fixed_price_quantity: Float?
@@ -543,6 +578,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Package::BillingCycleConfiguration?,
               ?conversion_rate: Float?,
+              ?dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Package::DimensionalPriceConfiguration?,
               ?external_price_id: String?,
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
@@ -562,6 +598,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Package::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Package::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -639,6 +676,33 @@ module Orb
               end
             end
 
+            type dimensional_price_configuration =
+              {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String]
+
+              attr_accessor dimensional_price_group_id: String?
+
+              attr_accessor external_dimensional_price_group_id: String?
+
+              def initialize: (
+                dimension_values: ::Array[String],
+                ?dimensional_price_group_id: String?,
+                ?external_dimensional_price_group_id: String?
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+            end
+
             type invoicing_cycle_configuration =
               {
                 duration: Integer,
@@ -685,6 +749,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Matrix::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Matrix::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -713,6 +778,8 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
+            attr_accessor dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Matrix::DimensionalPriceConfiguration?
+
             attr_accessor external_price_id: String?
 
             attr_accessor fixed_price_quantity: Float?
@@ -733,6 +800,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Matrix::BillingCycleConfiguration?,
               ?conversion_rate: Float?,
+              ?dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Matrix::DimensionalPriceConfiguration?,
               ?external_price_id: String?,
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
@@ -752,6 +820,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Matrix::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Matrix::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -859,6 +928,33 @@ module Orb
               end
             end
 
+            type dimensional_price_configuration =
+              {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String]
+
+              attr_accessor dimensional_price_group_id: String?
+
+              attr_accessor external_dimensional_price_group_id: String?
+
+              def initialize: (
+                dimension_values: ::Array[String],
+                ?dimensional_price_group_id: String?,
+                ?external_dimensional_price_group_id: String?
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+            end
+
             type invoicing_cycle_configuration =
               {
                 duration: Integer,
@@ -905,6 +1001,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithAllocation::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithAllocation::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -933,6 +1030,8 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
+            attr_accessor dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithAllocation::DimensionalPriceConfiguration?
+
             attr_accessor external_price_id: String?
 
             attr_accessor fixed_price_quantity: Float?
@@ -953,6 +1052,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithAllocation::BillingCycleConfiguration?,
               ?conversion_rate: Float?,
+              ?dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithAllocation::DimensionalPriceConfiguration?,
               ?external_price_id: String?,
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
@@ -972,6 +1072,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithAllocation::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithAllocation::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -1084,6 +1185,33 @@ module Orb
               end
             end
 
+            type dimensional_price_configuration =
+              {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String]
+
+              attr_accessor dimensional_price_group_id: String?
+
+              attr_accessor external_dimensional_price_group_id: String?
+
+              def initialize: (
+                dimension_values: ::Array[String],
+                ?dimensional_price_group_id: String?,
+                ?external_dimensional_price_group_id: String?
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+            end
+
             type invoicing_cycle_configuration =
               {
                 duration: Integer,
@@ -1130,6 +1258,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Tiered::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Tiered::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -1158,6 +1287,8 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
+            attr_accessor dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Tiered::DimensionalPriceConfiguration?
+
             attr_accessor external_price_id: String?
 
             attr_accessor fixed_price_quantity: Float?
@@ -1178,6 +1309,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Tiered::BillingCycleConfiguration?,
               ?conversion_rate: Float?,
+              ?dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Tiered::DimensionalPriceConfiguration?,
               ?external_price_id: String?,
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
@@ -1197,6 +1329,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Tiered::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Tiered::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -1298,6 +1431,33 @@ module Orb
               end
             end
 
+            type dimensional_price_configuration =
+              {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String]
+
+              attr_accessor dimensional_price_group_id: String?
+
+              attr_accessor external_dimensional_price_group_id: String?
+
+              def initialize: (
+                dimension_values: ::Array[String],
+                ?dimensional_price_group_id: String?,
+                ?external_dimensional_price_group_id: String?
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+            end
+
             type invoicing_cycle_configuration =
               {
                 duration: Integer,
@@ -1344,6 +1504,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredBps::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredBps::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -1372,6 +1533,8 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
+            attr_accessor dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredBps::DimensionalPriceConfiguration?
+
             attr_accessor external_price_id: String?
 
             attr_accessor fixed_price_quantity: Float?
@@ -1392,6 +1555,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredBps::BillingCycleConfiguration?,
               ?conversion_rate: Float?,
+              ?dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredBps::DimensionalPriceConfiguration?,
               ?external_price_id: String?,
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
@@ -1411,6 +1575,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredBps::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredBps::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -1521,6 +1686,33 @@ module Orb
               end
             end
 
+            type dimensional_price_configuration =
+              {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String]
+
+              attr_accessor dimensional_price_group_id: String?
+
+              attr_accessor external_dimensional_price_group_id: String?
+
+              def initialize: (
+                dimension_values: ::Array[String],
+                ?dimensional_price_group_id: String?,
+                ?external_dimensional_price_group_id: String?
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+            end
+
             type invoicing_cycle_configuration =
               {
                 duration: Integer,
@@ -1567,6 +1759,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Bps::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Bps::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -1595,6 +1788,8 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
+            attr_accessor dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Bps::DimensionalPriceConfiguration?
+
             attr_accessor external_price_id: String?
 
             attr_accessor fixed_price_quantity: Float?
@@ -1615,6 +1810,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Bps::BillingCycleConfiguration?,
               ?conversion_rate: Float?,
+              ?dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Bps::DimensionalPriceConfiguration?,
               ?external_price_id: String?,
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
@@ -1634,6 +1830,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Bps::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Bps::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -1707,6 +1904,33 @@ module Orb
               end
             end
 
+            type dimensional_price_configuration =
+              {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String]
+
+              attr_accessor dimensional_price_group_id: String?
+
+              attr_accessor external_dimensional_price_group_id: String?
+
+              def initialize: (
+                dimension_values: ::Array[String],
+                ?dimensional_price_group_id: String?,
+                ?external_dimensional_price_group_id: String?
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+            end
+
             type invoicing_cycle_configuration =
               {
                 duration: Integer,
@@ -1753,6 +1977,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::BulkBps::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::BulkBps::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -1781,6 +2006,8 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
+            attr_accessor dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::BulkBps::DimensionalPriceConfiguration?
+
             attr_accessor external_price_id: String?
 
             attr_accessor fixed_price_quantity: Float?
@@ -1801,6 +2028,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::BulkBps::BillingCycleConfiguration?,
               ?conversion_rate: Float?,
+              ?dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::BulkBps::DimensionalPriceConfiguration?,
               ?external_price_id: String?,
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
@@ -1820,6 +2048,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::BulkBps::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::BulkBps::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -1925,6 +2154,33 @@ module Orb
               end
             end
 
+            type dimensional_price_configuration =
+              {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String]
+
+              attr_accessor dimensional_price_group_id: String?
+
+              attr_accessor external_dimensional_price_group_id: String?
+
+              def initialize: (
+                dimension_values: ::Array[String],
+                ?dimensional_price_group_id: String?,
+                ?external_dimensional_price_group_id: String?
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+            end
+
             type invoicing_cycle_configuration =
               {
                 duration: Integer,
@@ -1971,6 +2227,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Bulk::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Bulk::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -1999,6 +2256,8 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
+            attr_accessor dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Bulk::DimensionalPriceConfiguration?
+
             attr_accessor external_price_id: String?
 
             attr_accessor fixed_price_quantity: Float?
@@ -2019,6 +2278,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Bulk::BillingCycleConfiguration?,
               ?conversion_rate: Float?,
+              ?dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Bulk::DimensionalPriceConfiguration?,
               ?external_price_id: String?,
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
@@ -2038,6 +2298,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Bulk::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::Bulk::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -2131,6 +2392,33 @@ module Orb
               end
             end
 
+            type dimensional_price_configuration =
+              {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String]
+
+              attr_accessor dimensional_price_group_id: String?
+
+              attr_accessor external_dimensional_price_group_id: String?
+
+              def initialize: (
+                dimension_values: ::Array[String],
+                ?dimensional_price_group_id: String?,
+                ?external_dimensional_price_group_id: String?
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+            end
+
             type invoicing_cycle_configuration =
               {
                 duration: Integer,
@@ -2177,6 +2465,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::ThresholdTotalAmount::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::ThresholdTotalAmount::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -2205,6 +2494,8 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
+            attr_accessor dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::ThresholdTotalAmount::DimensionalPriceConfiguration?
+
             attr_accessor external_price_id: String?
 
             attr_accessor fixed_price_quantity: Float?
@@ -2225,6 +2516,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::ThresholdTotalAmount::BillingCycleConfiguration?,
               ?conversion_rate: Float?,
+              ?dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::ThresholdTotalAmount::DimensionalPriceConfiguration?,
               ?external_price_id: String?,
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
@@ -2244,6 +2536,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::ThresholdTotalAmount::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::ThresholdTotalAmount::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -2305,6 +2598,33 @@ module Orb
               end
             end
 
+            type dimensional_price_configuration =
+              {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String]
+
+              attr_accessor dimensional_price_group_id: String?
+
+              attr_accessor external_dimensional_price_group_id: String?
+
+              def initialize: (
+                dimension_values: ::Array[String],
+                ?dimensional_price_group_id: String?,
+                ?external_dimensional_price_group_id: String?
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+            end
+
             type invoicing_cycle_configuration =
               {
                 duration: Integer,
@@ -2351,6 +2671,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredPackage::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredPackage::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -2379,6 +2700,8 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
+            attr_accessor dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredPackage::DimensionalPriceConfiguration?
+
             attr_accessor external_price_id: String?
 
             attr_accessor fixed_price_quantity: Float?
@@ -2399,6 +2722,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredPackage::BillingCycleConfiguration?,
               ?conversion_rate: Float?,
+              ?dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredPackage::DimensionalPriceConfiguration?,
               ?external_price_id: String?,
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
@@ -2418,6 +2742,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredPackage::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredPackage::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -2479,6 +2804,33 @@ module Orb
               end
             end
 
+            type dimensional_price_configuration =
+              {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String]
+
+              attr_accessor dimensional_price_group_id: String?
+
+              attr_accessor external_dimensional_price_group_id: String?
+
+              def initialize: (
+                dimension_values: ::Array[String],
+                ?dimensional_price_group_id: String?,
+                ?external_dimensional_price_group_id: String?
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+            end
+
             type invoicing_cycle_configuration =
               {
                 duration: Integer,
@@ -2525,6 +2877,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedTiered::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedTiered::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -2553,6 +2906,8 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
+            attr_accessor dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedTiered::DimensionalPriceConfiguration?
+
             attr_accessor external_price_id: String?
 
             attr_accessor fixed_price_quantity: Float?
@@ -2573,6 +2928,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedTiered::BillingCycleConfiguration?,
               ?conversion_rate: Float?,
+              ?dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedTiered::DimensionalPriceConfiguration?,
               ?external_price_id: String?,
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
@@ -2592,6 +2948,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedTiered::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedTiered::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -2653,6 +3010,33 @@ module Orb
               end
             end
 
+            type dimensional_price_configuration =
+              {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String]
+
+              attr_accessor dimensional_price_group_id: String?
+
+              attr_accessor external_dimensional_price_group_id: String?
+
+              def initialize: (
+                dimension_values: ::Array[String],
+                ?dimensional_price_group_id: String?,
+                ?external_dimensional_price_group_id: String?
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+            end
+
             type invoicing_cycle_configuration =
               {
                 duration: Integer,
@@ -2699,6 +3083,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::MaxGroupTieredPackage::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -2727,6 +3112,8 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
+            attr_accessor dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration?
+
             attr_accessor external_price_id: String?
 
             attr_accessor fixed_price_quantity: Float?
@@ -2747,6 +3134,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::MaxGroupTieredPackage::BillingCycleConfiguration?,
               ?conversion_rate: Float?,
+              ?dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration?,
               ?external_price_id: String?,
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
@@ -2766,6 +3154,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::MaxGroupTieredPackage::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::MaxGroupTieredPackage::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -2827,6 +3216,33 @@ module Orb
               end
             end
 
+            type dimensional_price_configuration =
+              {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String]
+
+              attr_accessor dimensional_price_group_id: String?
+
+              attr_accessor external_dimensional_price_group_id: String?
+
+              def initialize: (
+                dimension_values: ::Array[String],
+                ?dimensional_price_group_id: String?,
+                ?external_dimensional_price_group_id: String?
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+            end
+
             type invoicing_cycle_configuration =
               {
                 duration: Integer,
@@ -2873,6 +3289,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredWithMinimum::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredWithMinimum::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -2901,6 +3318,8 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
+            attr_accessor dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredWithMinimum::DimensionalPriceConfiguration?
+
             attr_accessor external_price_id: String?
 
             attr_accessor fixed_price_quantity: Float?
@@ -2921,6 +3340,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredWithMinimum::BillingCycleConfiguration?,
               ?conversion_rate: Float?,
+              ?dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredWithMinimum::DimensionalPriceConfiguration?,
               ?external_price_id: String?,
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
@@ -2940,6 +3360,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredWithMinimum::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredWithMinimum::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -3001,6 +3422,33 @@ module Orb
               end
             end
 
+            type dimensional_price_configuration =
+              {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String]
+
+              attr_accessor dimensional_price_group_id: String?
+
+              attr_accessor external_dimensional_price_group_id: String?
+
+              def initialize: (
+                dimension_values: ::Array[String],
+                ?dimensional_price_group_id: String?,
+                ?external_dimensional_price_group_id: String?
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+            end
+
             type invoicing_cycle_configuration =
               {
                 duration: Integer,
@@ -3047,6 +3495,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::PackageWithAllocation::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::PackageWithAllocation::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -3075,6 +3524,8 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
+            attr_accessor dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::PackageWithAllocation::DimensionalPriceConfiguration?
+
             attr_accessor external_price_id: String?
 
             attr_accessor fixed_price_quantity: Float?
@@ -3095,6 +3546,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::PackageWithAllocation::BillingCycleConfiguration?,
               ?conversion_rate: Float?,
+              ?dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::PackageWithAllocation::DimensionalPriceConfiguration?,
               ?external_price_id: String?,
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
@@ -3114,6 +3566,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::PackageWithAllocation::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::PackageWithAllocation::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -3175,6 +3628,33 @@ module Orb
               end
             end
 
+            type dimensional_price_configuration =
+              {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String]
+
+              attr_accessor dimensional_price_group_id: String?
+
+              attr_accessor external_dimensional_price_group_id: String?
+
+              def initialize: (
+                dimension_values: ::Array[String],
+                ?dimensional_price_group_id: String?,
+                ?external_dimensional_price_group_id: String?
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+            end
+
             type invoicing_cycle_configuration =
               {
                 duration: Integer,
@@ -3221,6 +3701,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredPackageWithMinimum::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -3249,6 +3730,8 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
+            attr_accessor dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration?
+
             attr_accessor external_price_id: String?
 
             attr_accessor fixed_price_quantity: Float?
@@ -3269,6 +3752,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredPackageWithMinimum::BillingCycleConfiguration?,
               ?conversion_rate: Float?,
+              ?dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration?,
               ?external_price_id: String?,
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
@@ -3288,6 +3772,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredPackageWithMinimum::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredPackageWithMinimum::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -3349,6 +3834,33 @@ module Orb
               end
             end
 
+            type dimensional_price_configuration =
+              {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String]
+
+              attr_accessor dimensional_price_group_id: String?
+
+              attr_accessor external_dimensional_price_group_id: String?
+
+              def initialize: (
+                dimension_values: ::Array[String],
+                ?dimensional_price_group_id: String?,
+                ?external_dimensional_price_group_id: String?
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+            end
+
             type invoicing_cycle_configuration =
               {
                 duration: Integer,
@@ -3395,6 +3907,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::UnitWithPercent::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::UnitWithPercent::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -3423,6 +3936,8 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
+            attr_accessor dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::UnitWithPercent::DimensionalPriceConfiguration?
+
             attr_accessor external_price_id: String?
 
             attr_accessor fixed_price_quantity: Float?
@@ -3443,6 +3958,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::UnitWithPercent::BillingCycleConfiguration?,
               ?conversion_rate: Float?,
+              ?dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::UnitWithPercent::DimensionalPriceConfiguration?,
               ?external_price_id: String?,
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
@@ -3462,6 +3978,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::UnitWithPercent::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::UnitWithPercent::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -3523,6 +4040,33 @@ module Orb
               end
             end
 
+            type dimensional_price_configuration =
+              {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String]
+
+              attr_accessor dimensional_price_group_id: String?
+
+              attr_accessor external_dimensional_price_group_id: String?
+
+              def initialize: (
+                dimension_values: ::Array[String],
+                ?dimensional_price_group_id: String?,
+                ?external_dimensional_price_group_id: String?
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+            end
+
             type invoicing_cycle_configuration =
               {
                 duration: Integer,
@@ -3569,6 +4113,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredWithProration::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredWithProration::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -3597,6 +4142,8 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
+            attr_accessor dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredWithProration::DimensionalPriceConfiguration?
+
             attr_accessor external_price_id: String?
 
             attr_accessor fixed_price_quantity: Float?
@@ -3617,6 +4164,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredWithProration::BillingCycleConfiguration?,
               ?conversion_rate: Float?,
+              ?dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredWithProration::DimensionalPriceConfiguration?,
               ?external_price_id: String?,
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
@@ -3636,6 +4184,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredWithProration::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::TieredWithProration::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -3697,6 +4246,33 @@ module Orb
               end
             end
 
+            type dimensional_price_configuration =
+              {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String]
+
+              attr_accessor dimensional_price_group_id: String?
+
+              attr_accessor external_dimensional_price_group_id: String?
+
+              def initialize: (
+                dimension_values: ::Array[String],
+                ?dimensional_price_group_id: String?,
+                ?external_dimensional_price_group_id: String?
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+            end
+
             type invoicing_cycle_configuration =
               {
                 duration: Integer,
@@ -3743,6 +4319,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::UnitWithProration::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::UnitWithProration::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -3771,6 +4348,8 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
+            attr_accessor dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::UnitWithProration::DimensionalPriceConfiguration?
+
             attr_accessor external_price_id: String?
 
             attr_accessor fixed_price_quantity: Float?
@@ -3791,6 +4370,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::UnitWithProration::BillingCycleConfiguration?,
               ?conversion_rate: Float?,
+              ?dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::UnitWithProration::DimensionalPriceConfiguration?,
               ?external_price_id: String?,
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
@@ -3810,6 +4390,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::UnitWithProration::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::UnitWithProration::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -3871,6 +4452,33 @@ module Orb
               end
             end
 
+            type dimensional_price_configuration =
+              {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String]
+
+              attr_accessor dimensional_price_group_id: String?
+
+              attr_accessor external_dimensional_price_group_id: String?
+
+              def initialize: (
+                dimension_values: ::Array[String],
+                ?dimensional_price_group_id: String?,
+                ?external_dimensional_price_group_id: String?
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+            end
+
             type invoicing_cycle_configuration =
               {
                 duration: Integer,
@@ -3917,6 +4525,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedAllocation::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedAllocation::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -3945,6 +4554,8 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
+            attr_accessor dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedAllocation::DimensionalPriceConfiguration?
+
             attr_accessor external_price_id: String?
 
             attr_accessor fixed_price_quantity: Float?
@@ -3965,6 +4576,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedAllocation::BillingCycleConfiguration?,
               ?conversion_rate: Float?,
+              ?dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedAllocation::DimensionalPriceConfiguration?,
               ?external_price_id: String?,
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
@@ -3984,6 +4596,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedAllocation::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedAllocation::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -4045,6 +4658,33 @@ module Orb
               end
             end
 
+            type dimensional_price_configuration =
+              {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String]
+
+              attr_accessor dimensional_price_group_id: String?
+
+              attr_accessor external_dimensional_price_group_id: String?
+
+              def initialize: (
+                dimension_values: ::Array[String],
+                ?dimensional_price_group_id: String?,
+                ?external_dimensional_price_group_id: String?
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+            end
+
             type invoicing_cycle_configuration =
               {
                 duration: Integer,
@@ -4091,6 +4731,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithProratedMinimum::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -4119,6 +4760,8 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
+            attr_accessor dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration?
+
             attr_accessor external_price_id: String?
 
             attr_accessor fixed_price_quantity: Float?
@@ -4139,6 +4782,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithProratedMinimum::BillingCycleConfiguration?,
               ?conversion_rate: Float?,
+              ?dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration?,
               ?external_price_id: String?,
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
@@ -4158,6 +4802,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithProratedMinimum::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithProratedMinimum::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -4219,6 +4864,33 @@ module Orb
               end
             end
 
+            type dimensional_price_configuration =
+              {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String]
+
+              attr_accessor dimensional_price_group_id: String?
+
+              attr_accessor external_dimensional_price_group_id: String?
+
+              def initialize: (
+                dimension_values: ::Array[String],
+                ?dimensional_price_group_id: String?,
+                ?external_dimensional_price_group_id: String?
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+            end
+
             type invoicing_cycle_configuration =
               {
                 duration: Integer,
@@ -4265,6 +4937,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -4293,6 +4966,8 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
+            attr_accessor dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration?
+
             attr_accessor external_price_id: String?
 
             attr_accessor fixed_price_quantity: Float?
@@ -4313,6 +4988,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration?,
               ?conversion_rate: Float?,
+              ?dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration?,
               ?external_price_id: String?,
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
@@ -4332,6 +5008,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMeteredMinimum::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMeteredMinimum::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -4393,6 +5070,33 @@ module Orb
               end
             end
 
+            type dimensional_price_configuration =
+              {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String]
+
+              attr_accessor dimensional_price_group_id: String?
+
+              attr_accessor external_dimensional_price_group_id: String?
+
+              def initialize: (
+                dimension_values: ::Array[String],
+                ?dimensional_price_group_id: String?,
+                ?external_dimensional_price_group_id: String?
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+            end
+
             type invoicing_cycle_configuration =
               {
                 duration: Integer,
@@ -4439,6 +5143,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithDisplayName::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithDisplayName::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -4467,6 +5172,8 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
+            attr_accessor dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithDisplayName::DimensionalPriceConfiguration?
+
             attr_accessor external_price_id: String?
 
             attr_accessor fixed_price_quantity: Float?
@@ -4487,6 +5194,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithDisplayName::BillingCycleConfiguration?,
               ?conversion_rate: Float?,
+              ?dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithDisplayName::DimensionalPriceConfiguration?,
               ?external_price_id: String?,
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
@@ -4506,6 +5214,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithDisplayName::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithDisplayName::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -4567,6 +5276,33 @@ module Orb
               end
             end
 
+            type dimensional_price_configuration =
+              {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String]
+
+              attr_accessor dimensional_price_group_id: String?
+
+              attr_accessor external_dimensional_price_group_id: String?
+
+              def initialize: (
+                dimension_values: ::Array[String],
+                ?dimensional_price_group_id: String?,
+                ?external_dimensional_price_group_id: String?
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+            end
+
             type invoicing_cycle_configuration =
               {
                 duration: Integer,
@@ -4613,6 +5349,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::BulkWithProration::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::BulkWithProration::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -4641,6 +5378,8 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
+            attr_accessor dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::BulkWithProration::DimensionalPriceConfiguration?
+
             attr_accessor external_price_id: String?
 
             attr_accessor fixed_price_quantity: Float?
@@ -4661,6 +5400,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::BulkWithProration::BillingCycleConfiguration?,
               ?conversion_rate: Float?,
+              ?dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::BulkWithProration::DimensionalPriceConfiguration?,
               ?external_price_id: String?,
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
@@ -4680,6 +5420,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::BulkWithProration::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::BulkWithProration::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -4741,6 +5482,33 @@ module Orb
               end
             end
 
+            type dimensional_price_configuration =
+              {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String]
+
+              attr_accessor dimensional_price_group_id: String?
+
+              attr_accessor external_dimensional_price_group_id: String?
+
+              def initialize: (
+                dimension_values: ::Array[String],
+                ?dimensional_price_group_id: String?,
+                ?external_dimensional_price_group_id: String?
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+            end
+
             type invoicing_cycle_configuration =
               {
                 duration: Integer,
@@ -4787,6 +5555,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedTieredPackage::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedTieredPackage::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -4815,6 +5584,8 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
+            attr_accessor dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedTieredPackage::DimensionalPriceConfiguration?
+
             attr_accessor external_price_id: String?
 
             attr_accessor fixed_price_quantity: Float?
@@ -4835,6 +5606,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedTieredPackage::BillingCycleConfiguration?,
               ?conversion_rate: Float?,
+              ?dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedTieredPackage::DimensionalPriceConfiguration?,
               ?external_price_id: String?,
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
@@ -4854,6 +5626,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedTieredPackage::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedTieredPackage::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -4915,6 +5688,33 @@ module Orb
               end
             end
 
+            type dimensional_price_configuration =
+              {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String]
+
+              attr_accessor dimensional_price_group_id: String?
+
+              attr_accessor external_dimensional_price_group_id: String?
+
+              def initialize: (
+                dimension_values: ::Array[String],
+                ?dimensional_price_group_id: String?,
+                ?external_dimensional_price_group_id: String?
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+            end
+
             type invoicing_cycle_configuration =
               {
                 duration: Integer,
@@ -4961,6 +5761,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -4989,6 +5790,8 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
+            attr_accessor dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration?
+
             attr_accessor external_price_id: String?
 
             attr_accessor fixed_price_quantity: Float?
@@ -5009,6 +5812,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration?,
               ?conversion_rate: Float?,
+              ?dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration?,
               ?external_price_id: String?,
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
@@ -5028,6 +5832,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithUnitPricing::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithUnitPricing::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -5089,6 +5894,33 @@ module Orb
               end
             end
 
+            type dimensional_price_configuration =
+              {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String]
+
+              attr_accessor dimensional_price_group_id: String?
+
+              attr_accessor external_dimensional_price_group_id: String?
+
+              def initialize: (
+                dimension_values: ::Array[String],
+                ?dimensional_price_group_id: String?,
+                ?external_dimensional_price_group_id: String?
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+            end
+
             type invoicing_cycle_configuration =
               {
                 duration: Integer,
@@ -5135,6 +5967,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -5163,6 +5996,8 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
+            attr_accessor dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration?
+
             attr_accessor external_price_id: String?
 
             attr_accessor fixed_price_quantity: Float?
@@ -5183,6 +6018,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration?,
               ?conversion_rate: Float?,
+              ?dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration?,
               ?external_price_id: String?,
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
@@ -5202,6 +6038,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithTieredPricing::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::ScalableMatrixWithTieredPricing::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -5263,6 +6100,33 @@ module Orb
               end
             end
 
+            type dimensional_price_configuration =
+              {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String]
+
+              attr_accessor dimensional_price_group_id: String?
+
+              attr_accessor external_dimensional_price_group_id: String?
+
+              def initialize: (
+                dimension_values: ::Array[String],
+                ?dimensional_price_group_id: String?,
+                ?external_dimensional_price_group_id: String?
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+            end
+
             type invoicing_cycle_configuration =
               {
                 duration: Integer,
@@ -5309,6 +6173,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::CumulativeGroupedBulk::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -5337,6 +6202,8 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
+            attr_accessor dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration?
+
             attr_accessor external_price_id: String?
 
             attr_accessor fixed_price_quantity: Float?
@@ -5357,6 +6224,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::CumulativeGroupedBulk::BillingCycleConfiguration?,
               ?conversion_rate: Float?,
+              ?dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration?,
               ?external_price_id: String?,
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
@@ -5376,6 +6244,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::CumulativeGroupedBulk::BillingCycleConfiguration?,
               conversion_rate: Float?,
+              dimensional_price_configuration: Orb::SubscriptionPriceIntervalsParams::Add::Price::CumulativeGroupedBulk::DimensionalPriceConfiguration?,
               external_price_id: String?,
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
@@ -5435,6 +6304,33 @@ module Orb
 
                 def self?.values: -> ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::CumulativeGroupedBulk::BillingCycleConfiguration::duration_unit]
               end
+            end
+
+            type dimensional_price_configuration =
+              {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
+
+            class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+              attr_accessor dimension_values: ::Array[String]
+
+              attr_accessor dimensional_price_group_id: String?
+
+              attr_accessor external_dimensional_price_group_id: String?
+
+              def initialize: (
+                dimension_values: ::Array[String],
+                ?dimensional_price_group_id: String?,
+                ?external_dimensional_price_group_id: String?
+              ) -> void
+
+              def to_hash: -> {
+                dimension_values: ::Array[String],
+                dimensional_price_group_id: String?,
+                external_dimensional_price_group_id: String?
+              }
             end
 
             type invoicing_cycle_configuration =
@@ -5514,33 +6410,33 @@ module Orb
           type percentage_discount =
             {
               adjustment_type: :percentage_discount,
-              applies_to_price_ids: ::Array[String],
               percentage_discount: Float,
+              applies_to_price_ids: ::Array[String]?,
               is_invoice_level: bool
             }
 
           class PercentageDiscount < Orb::Internal::Type::BaseModel
             attr_accessor adjustment_type: :percentage_discount
 
-            attr_accessor applies_to_price_ids: ::Array[String]
-
             attr_accessor percentage_discount: Float
+
+            attr_accessor applies_to_price_ids: ::Array[String]?
 
             attr_reader is_invoice_level: bool?
 
             def is_invoice_level=: (bool) -> bool
 
             def initialize: (
-              applies_to_price_ids: ::Array[String],
               percentage_discount: Float,
+              ?applies_to_price_ids: ::Array[String]?,
               ?is_invoice_level: bool,
               ?adjustment_type: :percentage_discount
             ) -> void
 
             def to_hash: -> {
               adjustment_type: :percentage_discount,
-              applies_to_price_ids: ::Array[String],
               percentage_discount: Float,
+              applies_to_price_ids: ::Array[String]?,
               is_invoice_level: bool
             }
           end
@@ -5548,33 +6444,33 @@ module Orb
           type usage_discount =
             {
               adjustment_type: :usage_discount,
-              applies_to_price_ids: ::Array[String],
               usage_discount: Float,
+              applies_to_price_ids: ::Array[String]?,
               is_invoice_level: bool
             }
 
           class UsageDiscount < Orb::Internal::Type::BaseModel
             attr_accessor adjustment_type: :usage_discount
 
-            attr_accessor applies_to_price_ids: ::Array[String]
-
             attr_accessor usage_discount: Float
+
+            attr_accessor applies_to_price_ids: ::Array[String]?
 
             attr_reader is_invoice_level: bool?
 
             def is_invoice_level=: (bool) -> bool
 
             def initialize: (
-              applies_to_price_ids: ::Array[String],
               usage_discount: Float,
+              ?applies_to_price_ids: ::Array[String]?,
               ?is_invoice_level: bool,
               ?adjustment_type: :usage_discount
             ) -> void
 
             def to_hash: -> {
               adjustment_type: :usage_discount,
-              applies_to_price_ids: ::Array[String],
               usage_discount: Float,
+              applies_to_price_ids: ::Array[String]?,
               is_invoice_level: bool
             }
           end
@@ -5583,7 +6479,7 @@ module Orb
             {
               adjustment_type: :amount_discount,
               amount_discount: String,
-              applies_to_price_ids: ::Array[String],
+              applies_to_price_ids: ::Array[String]?,
               is_invoice_level: bool
             }
 
@@ -5592,7 +6488,7 @@ module Orb
 
             attr_accessor amount_discount: String
 
-            attr_accessor applies_to_price_ids: ::Array[String]
+            attr_accessor applies_to_price_ids: ::Array[String]?
 
             attr_reader is_invoice_level: bool?
 
@@ -5600,7 +6496,7 @@ module Orb
 
             def initialize: (
               amount_discount: String,
-              applies_to_price_ids: ::Array[String],
+              ?applies_to_price_ids: ::Array[String]?,
               ?is_invoice_level: bool,
               ?adjustment_type: :amount_discount
             ) -> void
@@ -5608,7 +6504,7 @@ module Orb
             def to_hash: -> {
               adjustment_type: :amount_discount,
               amount_discount: String,
-              applies_to_price_ids: ::Array[String],
+              applies_to_price_ids: ::Array[String]?,
               is_invoice_level: bool
             }
           end
@@ -5616,38 +6512,38 @@ module Orb
           type minimum =
             {
               adjustment_type: :minimum,
-              applies_to_price_ids: ::Array[String],
               item_id: String,
               minimum_amount: String,
+              applies_to_price_ids: ::Array[String]?,
               is_invoice_level: bool
             }
 
           class Minimum < Orb::Internal::Type::BaseModel
             attr_accessor adjustment_type: :minimum
 
-            attr_accessor applies_to_price_ids: ::Array[String]
-
             attr_accessor item_id: String
 
             attr_accessor minimum_amount: String
+
+            attr_accessor applies_to_price_ids: ::Array[String]?
 
             attr_reader is_invoice_level: bool?
 
             def is_invoice_level=: (bool) -> bool
 
             def initialize: (
-              applies_to_price_ids: ::Array[String],
               item_id: String,
               minimum_amount: String,
+              ?applies_to_price_ids: ::Array[String]?,
               ?is_invoice_level: bool,
               ?adjustment_type: :minimum
             ) -> void
 
             def to_hash: -> {
               adjustment_type: :minimum,
-              applies_to_price_ids: ::Array[String],
               item_id: String,
               minimum_amount: String,
+              applies_to_price_ids: ::Array[String]?,
               is_invoice_level: bool
             }
           end
@@ -5655,33 +6551,33 @@ module Orb
           type maximum =
             {
               adjustment_type: :maximum,
-              applies_to_price_ids: ::Array[String],
               maximum_amount: String,
+              applies_to_price_ids: ::Array[String]?,
               is_invoice_level: bool
             }
 
           class Maximum < Orb::Internal::Type::BaseModel
             attr_accessor adjustment_type: :maximum
 
-            attr_accessor applies_to_price_ids: ::Array[String]
-
             attr_accessor maximum_amount: String
+
+            attr_accessor applies_to_price_ids: ::Array[String]?
 
             attr_reader is_invoice_level: bool?
 
             def is_invoice_level=: (bool) -> bool
 
             def initialize: (
-              applies_to_price_ids: ::Array[String],
               maximum_amount: String,
+              ?applies_to_price_ids: ::Array[String]?,
               ?is_invoice_level: bool,
               ?adjustment_type: :maximum
             ) -> void
 
             def to_hash: -> {
               adjustment_type: :maximum,
-              applies_to_price_ids: ::Array[String],
               maximum_amount: String,
+              applies_to_price_ids: ::Array[String]?,
               is_invoice_level: bool
             }
           end

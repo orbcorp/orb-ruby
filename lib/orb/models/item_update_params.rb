@@ -14,14 +14,29 @@ module Orb
                -> { Orb::Internal::Type::ArrayOf[Orb::ItemUpdateParams::ExternalConnection] },
                nil?: true
 
+      # @!attribute metadata
+      #   User-specified key/value pairs for the resource. Individual keys can be removed
+      #   by setting the value to `null`, and the entire metadata mapping can be cleared
+      #   by setting `metadata` to `null`.
+      #
+      #   @return [Hash{Symbol=>String, nil}, nil]
+      optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
       # @!attribute name
       #
       #   @return [String, nil]
       optional :name, String, nil?: true
 
-      # @!method initialize(external_connections: nil, name: nil, request_options: {})
+      # @!method initialize(external_connections: nil, metadata: nil, name: nil, request_options: {})
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::ItemUpdateParams} for more details.
+      #
       #   @param external_connections [Array<Orb::Models::ItemUpdateParams::ExternalConnection>, nil]
+      #
+      #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+      #
       #   @param name [String, nil]
+      #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
       class ExternalConnection < Orb::Internal::Type::BaseModel

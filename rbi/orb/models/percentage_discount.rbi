@@ -6,11 +6,6 @@ module Orb
       OrHash =
         T.type_alias { T.any(Orb::PercentageDiscount, Orb::Internal::AnyHash) }
 
-      # List of price_ids that this discount applies to. For plan/plan phase discounts,
-      # this can be a subset of prices.
-      sig { returns(T::Array[String]) }
-      attr_accessor :applies_to_price_ids
-
       sig { returns(Orb::PercentageDiscount::DiscountType::OrSymbol) }
       attr_accessor :discount_type
 
@@ -19,25 +14,30 @@ module Orb
       sig { returns(Float) }
       attr_accessor :percentage_discount
 
+      # List of price_ids that this discount applies to. For plan/plan phase discounts,
+      # this can be a subset of prices.
+      sig { returns(T.nilable(T::Array[String])) }
+      attr_accessor :applies_to_price_ids
+
       sig { returns(T.nilable(String)) }
       attr_accessor :reason
 
       sig do
         params(
-          applies_to_price_ids: T::Array[String],
           discount_type: Orb::PercentageDiscount::DiscountType::OrSymbol,
           percentage_discount: Float,
+          applies_to_price_ids: T.nilable(T::Array[String]),
           reason: T.nilable(String)
         ).returns(T.attached_class)
       end
       def self.new(
-        # List of price_ids that this discount applies to. For plan/plan phase discounts,
-        # this can be a subset of prices.
-        applies_to_price_ids:,
         discount_type:,
         # Only available if discount_type is `percentage`. This is a number between 0
         # and 1.
         percentage_discount:,
+        # List of price_ids that this discount applies to. For plan/plan phase discounts,
+        # this can be a subset of prices.
+        applies_to_price_ids: nil,
         reason: nil
       )
       end
@@ -45,9 +45,9 @@ module Orb
       sig do
         override.returns(
           {
-            applies_to_price_ids: T::Array[String],
             discount_type: Orb::PercentageDiscount::DiscountType::OrSymbol,
             percentage_discount: Float,
+            applies_to_price_ids: T.nilable(T::Array[String]),
             reason: T.nilable(String)
           }
         )

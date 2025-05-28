@@ -7,12 +7,17 @@ module Orb
       sig do
         params(
           name: String,
+          metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Item)
       end
       def create(
         # The name of the item.
         name:,
+        # User-specified key/value pairs for the resource. Individual keys can be removed
+        # by setting the value to `null`, and the entire metadata mapping can be cleared
+        # by setting `metadata` to `null`.
+        metadata: nil,
         request_options: {}
       )
       end
@@ -25,6 +30,7 @@ module Orb
             T.nilable(
               T::Array[Orb::ItemUpdateParams::ExternalConnection::OrHash]
             ),
+          metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           name: T.nilable(String),
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Item)
@@ -32,6 +38,10 @@ module Orb
       def update(
         item_id,
         external_connections: nil,
+        # User-specified key/value pairs for the resource. Individual keys can be removed
+        # by setting the value to `null`, and the entire metadata mapping can be cleared
+        # by setting `metadata` to `null`.
+        metadata: nil,
         name: nil,
         request_options: {}
       )
@@ -54,6 +64,16 @@ module Orb
         limit: nil,
         request_options: {}
       )
+      end
+
+      # Archive item
+      sig do
+        params(
+          item_id: String,
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Item)
+      end
+      def archive(item_id, request_options: {})
       end
 
       # This endpoint returns an item identified by its item_id.

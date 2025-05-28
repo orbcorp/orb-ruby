@@ -14,6 +14,13 @@ module Orb
       sig { returns(T::Array[Orb::Item::ExternalConnection]) }
       attr_accessor :external_connections
 
+      # User specified key-value pairs for the resource. If not present, this defaults
+      # to an empty dictionary. Individual keys can be removed by setting the value to
+      # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+      # `null`.
+      sig { returns(T::Hash[Symbol, String]) }
+      attr_accessor :metadata
+
       sig { returns(String) }
       attr_accessor :name
 
@@ -25,10 +32,21 @@ module Orb
           id: String,
           created_at: Time,
           external_connections: T::Array[Orb::Item::ExternalConnection::OrHash],
+          metadata: T::Hash[Symbol, String],
           name: String
         ).returns(T.attached_class)
       end
-      def self.new(id:, created_at:, external_connections:, name:)
+      def self.new(
+        id:,
+        created_at:,
+        external_connections:,
+        # User specified key-value pairs for the resource. If not present, this defaults
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
+        metadata:,
+        name:
+      )
       end
 
       sig do
@@ -37,6 +55,7 @@ module Orb
             id: String,
             created_at: Time,
             external_connections: T::Array[Orb::Item::ExternalConnection],
+            metadata: T::Hash[Symbol, String],
             name: String
           }
         )

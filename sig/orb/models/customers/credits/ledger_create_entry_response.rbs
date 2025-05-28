@@ -28,7 +28,8 @@ module Orb
               entry_type: :increment,
               ledger_sequence_number: Integer,
               metadata: ::Hash[Symbol, String],
-              starting_balance: Float
+              starting_balance: Float,
+              created_invoices: ::Array[Orb::Invoice]?
             }
 
           class Increment < Orb::Internal::Type::BaseModel
@@ -58,6 +59,8 @@ module Orb
 
             attr_accessor starting_balance: Float
 
+            attr_accessor created_invoices: ::Array[Orb::Invoice]?
+
             def initialize: (
               id: String,
               amount: Float,
@@ -71,6 +74,7 @@ module Orb
               ledger_sequence_number: Integer,
               metadata: ::Hash[Symbol, String],
               starting_balance: Float,
+              ?created_invoices: ::Array[Orb::Invoice]?,
               ?entry_type: :increment
             ) -> void
 
@@ -87,7 +91,8 @@ module Orb
               entry_type: :increment,
               ledger_sequence_number: Integer,
               metadata: ::Hash[Symbol, String],
-              starting_balance: Float
+              starting_balance: Float,
+              created_invoices: ::Array[Orb::Invoice]?
             }
 
             type credit_block =

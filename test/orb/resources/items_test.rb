@@ -15,6 +15,7 @@ class Orb::Test::Resources::ItemsTest < Orb::Test::ResourceTest
         id: String,
         created_at: Time,
         external_connections: ^(Orb::Internal::Type::ArrayOf[Orb::Item::ExternalConnection]),
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
         name: String
       }
     end
@@ -32,6 +33,7 @@ class Orb::Test::Resources::ItemsTest < Orb::Test::ResourceTest
         id: String,
         created_at: Time,
         external_connections: ^(Orb::Internal::Type::ArrayOf[Orb::Item::ExternalConnection]),
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
         name: String
       }
     end
@@ -56,6 +58,25 @@ class Orb::Test::Resources::ItemsTest < Orb::Test::ResourceTest
         id: String,
         created_at: Time,
         external_connections: ^(Orb::Internal::Type::ArrayOf[Orb::Item::ExternalConnection]),
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
+        name: String
+      }
+    end
+  end
+
+  def test_archive
+    response = @orb.items.archive("item_id")
+
+    assert_pattern do
+      response => Orb::Item
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        created_at: Time,
+        external_connections: ^(Orb::Internal::Type::ArrayOf[Orb::Item::ExternalConnection]),
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
         name: String
       }
     end
@@ -73,6 +94,7 @@ class Orb::Test::Resources::ItemsTest < Orb::Test::ResourceTest
         id: String,
         created_at: Time,
         external_connections: ^(Orb::Internal::Type::ArrayOf[Orb::Item::ExternalConnection]),
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
         name: String
       }
     end

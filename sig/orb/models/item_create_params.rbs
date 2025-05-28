@@ -1,7 +1,8 @@
 module Orb
   module Models
     type item_create_params =
-      { name: String } & Orb::Internal::Type::request_parameters
+      { name: String, metadata: ::Hash[Symbol, String?]? }
+      & Orb::Internal::Type::request_parameters
 
     class ItemCreateParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
@@ -9,12 +10,19 @@ module Orb
 
       attr_accessor name: String
 
+      attr_accessor metadata: ::Hash[Symbol, String?]?
+
       def initialize: (
         name: String,
+        ?metadata: ::Hash[Symbol, String?]?,
         ?request_options: Orb::request_opts
       ) -> void
 
-      def to_hash: -> { name: String, request_options: Orb::RequestOptions }
+      def to_hash: -> {
+        name: String,
+        metadata: ::Hash[Symbol, String?]?,
+        request_options: Orb::RequestOptions
+      }
     end
   end
 end

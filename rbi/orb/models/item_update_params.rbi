@@ -14,6 +14,12 @@ module Orb
       end
       attr_accessor :external_connections
 
+      # User-specified key/value pairs for the resource. Individual keys can be removed
+      # by setting the value to `null`, and the entire metadata mapping can be cleared
+      # by setting `metadata` to `null`.
+      sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
+      attr_accessor :metadata
+
       sig { returns(T.nilable(String)) }
       attr_accessor :name
 
@@ -23,11 +29,20 @@ module Orb
             T.nilable(
               T::Array[Orb::ItemUpdateParams::ExternalConnection::OrHash]
             ),
+          metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           name: T.nilable(String),
           request_options: Orb::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
-      def self.new(external_connections: nil, name: nil, request_options: {})
+      def self.new(
+        external_connections: nil,
+        # User-specified key/value pairs for the resource. Individual keys can be removed
+        # by setting the value to `null`, and the entire metadata mapping can be cleared
+        # by setting `metadata` to `null`.
+        metadata: nil,
+        name: nil,
+        request_options: {}
+      )
       end
 
       sig do
@@ -35,6 +50,7 @@ module Orb
           {
             external_connections:
               T.nilable(T::Array[Orb::ItemUpdateParams::ExternalConnection]),
+            metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
             name: T.nilable(String),
             request_options: Orb::RequestOptions
           }

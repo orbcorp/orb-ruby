@@ -2,6 +2,8 @@ module Orb
   module Resources
     class Plans
       class ExternalPlanID
+        attr_reader versions: Orb::Resources::Plans::ExternalPlanID::Versions
+
         def update: (
           String other_external_plan_id,
           ?external_plan_id: String?,
@@ -11,6 +13,12 @@ module Orb
 
         def fetch: (
           String external_plan_id,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Plan
+
+        def set_default_version: (
+          String external_plan_id,
+          version: Integer,
           ?request_options: Orb::request_opts
         ) -> Orb::Plan
 

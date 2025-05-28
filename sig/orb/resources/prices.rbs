@@ -41,6 +41,7 @@ module Orb
         ?billed_in_advance: bool?,
         ?billing_cycle_configuration: Orb::PriceCreateParams::BillingCycleConfiguration?,
         ?conversion_rate: Float?,
+        ?dimensional_price_configuration: Orb::PriceCreateParams::DimensionalPriceConfiguration?,
         ?external_price_id: String?,
         ?fixed_price_quantity: Float?,
         ?invoice_grouping_key: String?,
@@ -62,13 +63,12 @@ module Orb
       ) -> Orb::Internal::Page[Orb::Models::price]
 
       def evaluate: (
-        String price_id,
         timeframe_end: Time,
         timeframe_start: Time,
         ?customer_id: String?,
+        ?events: ::Array[Orb::PriceEvaluateParams::Event]?,
         ?external_customer_id: String?,
-        ?filter: String?,
-        ?grouping_keys: ::Array[String],
+        ?price_evaluations: ::Array[Orb::PriceEvaluateParams::PriceEvaluation],
         ?request_options: Orb::request_opts
       ) -> Orb::Models::PriceEvaluateResponse
 
