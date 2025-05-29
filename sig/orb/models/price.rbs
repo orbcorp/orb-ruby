@@ -223,16 +223,64 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::Unit::cadence]
         end
 
-        type credit_allocation = { allows_rollover: bool, currency: String }
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::Unit::CreditAllocation::CustomExpiration?
+          }
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
           attr_accessor allows_rollover: bool
 
           attr_accessor currency: String
 
-          def initialize: (allows_rollover: bool, currency: String) -> void
+          attr_accessor custom_expiration: Orb::Price::Unit::CreditAllocation::CustomExpiration?
 
-          def to_hash: -> { allows_rollover: bool, currency: String }
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::Unit::CreditAllocation::CustomExpiration?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::Unit::CreditAllocation::CustomExpiration?
+          }
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::Unit::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::Price::Unit::CreditAllocation::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::Price::Unit::CreditAllocation::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::Unit::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::Price::Unit::CreditAllocation::CustomExpiration::duration_unit]
+            end
+          end
         end
 
         type invoicing_cycle_configuration =
@@ -674,16 +722,64 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::Package::cadence]
         end
 
-        type credit_allocation = { allows_rollover: bool, currency: String }
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::Package::CreditAllocation::CustomExpiration?
+          }
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
           attr_accessor allows_rollover: bool
 
           attr_accessor currency: String
 
-          def initialize: (allows_rollover: bool, currency: String) -> void
+          attr_accessor custom_expiration: Orb::Price::Package::CreditAllocation::CustomExpiration?
 
-          def to_hash: -> { allows_rollover: bool, currency: String }
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::Package::CreditAllocation::CustomExpiration?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::Package::CreditAllocation::CustomExpiration?
+          }
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::Package::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::Price::Package::CreditAllocation::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::Price::Package::CreditAllocation::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::Package::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::Price::Package::CreditAllocation::CustomExpiration::duration_unit]
+            end
+          end
         end
 
         type invoicing_cycle_configuration =
@@ -1130,16 +1226,64 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::Matrix::cadence]
         end
 
-        type credit_allocation = { allows_rollover: bool, currency: String }
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::Matrix::CreditAllocation::CustomExpiration?
+          }
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
           attr_accessor allows_rollover: bool
 
           attr_accessor currency: String
 
-          def initialize: (allows_rollover: bool, currency: String) -> void
+          attr_accessor custom_expiration: Orb::Price::Matrix::CreditAllocation::CustomExpiration?
 
-          def to_hash: -> { allows_rollover: bool, currency: String }
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::Matrix::CreditAllocation::CustomExpiration?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::Matrix::CreditAllocation::CustomExpiration?
+          }
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::Matrix::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::Price::Matrix::CreditAllocation::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::Price::Matrix::CreditAllocation::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::Matrix::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::Price::Matrix::CreditAllocation::CustomExpiration::duration_unit]
+            end
+          end
         end
 
         type invoicing_cycle_configuration =
@@ -1617,16 +1761,64 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::Tiered::cadence]
         end
 
-        type credit_allocation = { allows_rollover: bool, currency: String }
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::Tiered::CreditAllocation::CustomExpiration?
+          }
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
           attr_accessor allows_rollover: bool
 
           attr_accessor currency: String
 
-          def initialize: (allows_rollover: bool, currency: String) -> void
+          attr_accessor custom_expiration: Orb::Price::Tiered::CreditAllocation::CustomExpiration?
 
-          def to_hash: -> { allows_rollover: bool, currency: String }
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::Tiered::CreditAllocation::CustomExpiration?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::Tiered::CreditAllocation::CustomExpiration?
+          }
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::Tiered::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::Price::Tiered::CreditAllocation::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::Price::Tiered::CreditAllocation::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::Tiered::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::Price::Tiered::CreditAllocation::CustomExpiration::duration_unit]
+            end
+          end
         end
 
         type invoicing_cycle_configuration =
@@ -2096,16 +2288,64 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::TieredBps::cadence]
         end
 
-        type credit_allocation = { allows_rollover: bool, currency: String }
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::TieredBps::CreditAllocation::CustomExpiration?
+          }
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
           attr_accessor allows_rollover: bool
 
           attr_accessor currency: String
 
-          def initialize: (allows_rollover: bool, currency: String) -> void
+          attr_accessor custom_expiration: Orb::Price::TieredBps::CreditAllocation::CustomExpiration?
 
-          def to_hash: -> { allows_rollover: bool, currency: String }
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::TieredBps::CreditAllocation::CustomExpiration?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::TieredBps::CreditAllocation::CustomExpiration?
+          }
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::TieredBps::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::Price::TieredBps::CreditAllocation::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::Price::TieredBps::CreditAllocation::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::TieredBps::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::Price::TieredBps::CreditAllocation::CustomExpiration::duration_unit]
+            end
+          end
         end
 
         type invoicing_cycle_configuration =
@@ -2596,16 +2836,64 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::Bps::cadence]
         end
 
-        type credit_allocation = { allows_rollover: bool, currency: String }
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::Bps::CreditAllocation::CustomExpiration?
+          }
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
           attr_accessor allows_rollover: bool
 
           attr_accessor currency: String
 
-          def initialize: (allows_rollover: bool, currency: String) -> void
+          attr_accessor custom_expiration: Orb::Price::Bps::CreditAllocation::CustomExpiration?
 
-          def to_hash: -> { allows_rollover: bool, currency: String }
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::Bps::CreditAllocation::CustomExpiration?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::Bps::CreditAllocation::CustomExpiration?
+          }
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::Bps::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::Price::Bps::CreditAllocation::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::Price::Bps::CreditAllocation::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::Bps::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::Price::Bps::CreditAllocation::CustomExpiration::duration_unit]
+            end
+          end
         end
 
         type invoicing_cycle_configuration =
@@ -3075,16 +3363,64 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::BulkBps::cadence]
         end
 
-        type credit_allocation = { allows_rollover: bool, currency: String }
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::BulkBps::CreditAllocation::CustomExpiration?
+          }
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
           attr_accessor allows_rollover: bool
 
           attr_accessor currency: String
 
-          def initialize: (allows_rollover: bool, currency: String) -> void
+          attr_accessor custom_expiration: Orb::Price::BulkBps::CreditAllocation::CustomExpiration?
 
-          def to_hash: -> { allows_rollover: bool, currency: String }
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::BulkBps::CreditAllocation::CustomExpiration?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::BulkBps::CreditAllocation::CustomExpiration?
+          }
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::BulkBps::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::Price::BulkBps::CreditAllocation::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::Price::BulkBps::CreditAllocation::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::BulkBps::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::Price::BulkBps::CreditAllocation::CustomExpiration::duration_unit]
+            end
+          end
         end
 
         type invoicing_cycle_configuration =
@@ -3544,16 +3880,64 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::Bulk::cadence]
         end
 
-        type credit_allocation = { allows_rollover: bool, currency: String }
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::Bulk::CreditAllocation::CustomExpiration?
+          }
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
           attr_accessor allows_rollover: bool
 
           attr_accessor currency: String
 
-          def initialize: (allows_rollover: bool, currency: String) -> void
+          attr_accessor custom_expiration: Orb::Price::Bulk::CreditAllocation::CustomExpiration?
 
-          def to_hash: -> { allows_rollover: bool, currency: String }
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::Bulk::CreditAllocation::CustomExpiration?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::Bulk::CreditAllocation::CustomExpiration?
+          }
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::Bulk::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::Price::Bulk::CreditAllocation::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::Price::Bulk::CreditAllocation::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::Bulk::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::Price::Bulk::CreditAllocation::CustomExpiration::duration_unit]
+            end
+          end
         end
 
         type invoicing_cycle_configuration =
@@ -3985,16 +4369,64 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::ThresholdTotalAmount::cadence]
         end
 
-        type credit_allocation = { allows_rollover: bool, currency: String }
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::ThresholdTotalAmount::CreditAllocation::CustomExpiration?
+          }
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
           attr_accessor allows_rollover: bool
 
           attr_accessor currency: String
 
-          def initialize: (allows_rollover: bool, currency: String) -> void
+          attr_accessor custom_expiration: Orb::Price::ThresholdTotalAmount::CreditAllocation::CustomExpiration?
 
-          def to_hash: -> { allows_rollover: bool, currency: String }
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::ThresholdTotalAmount::CreditAllocation::CustomExpiration?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::ThresholdTotalAmount::CreditAllocation::CustomExpiration?
+          }
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::ThresholdTotalAmount::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::Price::ThresholdTotalAmount::CreditAllocation::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::Price::ThresholdTotalAmount::CreditAllocation::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::ThresholdTotalAmount::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::Price::ThresholdTotalAmount::CreditAllocation::CustomExpiration::duration_unit]
+            end
+          end
         end
 
         type invoicing_cycle_configuration =
@@ -4426,16 +4858,64 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::TieredPackage::cadence]
         end
 
-        type credit_allocation = { allows_rollover: bool, currency: String }
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::TieredPackage::CreditAllocation::CustomExpiration?
+          }
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
           attr_accessor allows_rollover: bool
 
           attr_accessor currency: String
 
-          def initialize: (allows_rollover: bool, currency: String) -> void
+          attr_accessor custom_expiration: Orb::Price::TieredPackage::CreditAllocation::CustomExpiration?
 
-          def to_hash: -> { allows_rollover: bool, currency: String }
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::TieredPackage::CreditAllocation::CustomExpiration?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::TieredPackage::CreditAllocation::CustomExpiration?
+          }
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::TieredPackage::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::Price::TieredPackage::CreditAllocation::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::Price::TieredPackage::CreditAllocation::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::TieredPackage::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::Price::TieredPackage::CreditAllocation::CustomExpiration::duration_unit]
+            end
+          end
         end
 
         type invoicing_cycle_configuration =
@@ -4867,16 +5347,64 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::GroupedTiered::cadence]
         end
 
-        type credit_allocation = { allows_rollover: bool, currency: String }
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::GroupedTiered::CreditAllocation::CustomExpiration?
+          }
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
           attr_accessor allows_rollover: bool
 
           attr_accessor currency: String
 
-          def initialize: (allows_rollover: bool, currency: String) -> void
+          attr_accessor custom_expiration: Orb::Price::GroupedTiered::CreditAllocation::CustomExpiration?
 
-          def to_hash: -> { allows_rollover: bool, currency: String }
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::GroupedTiered::CreditAllocation::CustomExpiration?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::GroupedTiered::CreditAllocation::CustomExpiration?
+          }
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::GroupedTiered::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::Price::GroupedTiered::CreditAllocation::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::Price::GroupedTiered::CreditAllocation::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::GroupedTiered::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::Price::GroupedTiered::CreditAllocation::CustomExpiration::duration_unit]
+            end
+          end
         end
 
         type invoicing_cycle_configuration =
@@ -5308,16 +5836,64 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::TieredWithMinimum::cadence]
         end
 
-        type credit_allocation = { allows_rollover: bool, currency: String }
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::TieredWithMinimum::CreditAllocation::CustomExpiration?
+          }
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
           attr_accessor allows_rollover: bool
 
           attr_accessor currency: String
 
-          def initialize: (allows_rollover: bool, currency: String) -> void
+          attr_accessor custom_expiration: Orb::Price::TieredWithMinimum::CreditAllocation::CustomExpiration?
 
-          def to_hash: -> { allows_rollover: bool, currency: String }
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::TieredWithMinimum::CreditAllocation::CustomExpiration?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::TieredWithMinimum::CreditAllocation::CustomExpiration?
+          }
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::TieredWithMinimum::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::Price::TieredWithMinimum::CreditAllocation::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::Price::TieredWithMinimum::CreditAllocation::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::TieredWithMinimum::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::Price::TieredWithMinimum::CreditAllocation::CustomExpiration::duration_unit]
+            end
+          end
         end
 
         type invoicing_cycle_configuration =
@@ -5749,16 +6325,64 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::TieredPackageWithMinimum::cadence]
         end
 
-        type credit_allocation = { allows_rollover: bool, currency: String }
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::TieredPackageWithMinimum::CreditAllocation::CustomExpiration?
+          }
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
           attr_accessor allows_rollover: bool
 
           attr_accessor currency: String
 
-          def initialize: (allows_rollover: bool, currency: String) -> void
+          attr_accessor custom_expiration: Orb::Price::TieredPackageWithMinimum::CreditAllocation::CustomExpiration?
 
-          def to_hash: -> { allows_rollover: bool, currency: String }
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::TieredPackageWithMinimum::CreditAllocation::CustomExpiration?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::TieredPackageWithMinimum::CreditAllocation::CustomExpiration?
+          }
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::TieredPackageWithMinimum::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::Price::TieredPackageWithMinimum::CreditAllocation::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::Price::TieredPackageWithMinimum::CreditAllocation::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::TieredPackageWithMinimum::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::Price::TieredPackageWithMinimum::CreditAllocation::CustomExpiration::duration_unit]
+            end
+          end
         end
 
         type invoicing_cycle_configuration =
@@ -6190,16 +6814,64 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::PackageWithAllocation::cadence]
         end
 
-        type credit_allocation = { allows_rollover: bool, currency: String }
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::PackageWithAllocation::CreditAllocation::CustomExpiration?
+          }
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
           attr_accessor allows_rollover: bool
 
           attr_accessor currency: String
 
-          def initialize: (allows_rollover: bool, currency: String) -> void
+          attr_accessor custom_expiration: Orb::Price::PackageWithAllocation::CreditAllocation::CustomExpiration?
 
-          def to_hash: -> { allows_rollover: bool, currency: String }
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::PackageWithAllocation::CreditAllocation::CustomExpiration?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::PackageWithAllocation::CreditAllocation::CustomExpiration?
+          }
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::PackageWithAllocation::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::Price::PackageWithAllocation::CreditAllocation::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::Price::PackageWithAllocation::CreditAllocation::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::PackageWithAllocation::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::Price::PackageWithAllocation::CreditAllocation::CustomExpiration::duration_unit]
+            end
+          end
         end
 
         type invoicing_cycle_configuration =
@@ -6631,16 +7303,64 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::UnitWithPercent::cadence]
         end
 
-        type credit_allocation = { allows_rollover: bool, currency: String }
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::UnitWithPercent::CreditAllocation::CustomExpiration?
+          }
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
           attr_accessor allows_rollover: bool
 
           attr_accessor currency: String
 
-          def initialize: (allows_rollover: bool, currency: String) -> void
+          attr_accessor custom_expiration: Orb::Price::UnitWithPercent::CreditAllocation::CustomExpiration?
 
-          def to_hash: -> { allows_rollover: bool, currency: String }
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::UnitWithPercent::CreditAllocation::CustomExpiration?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::UnitWithPercent::CreditAllocation::CustomExpiration?
+          }
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::UnitWithPercent::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::Price::UnitWithPercent::CreditAllocation::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::Price::UnitWithPercent::CreditAllocation::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::UnitWithPercent::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::Price::UnitWithPercent::CreditAllocation::CustomExpiration::duration_unit]
+            end
+          end
         end
 
         type invoicing_cycle_configuration =
@@ -7072,16 +7792,64 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::MatrixWithAllocation::cadence]
         end
 
-        type credit_allocation = { allows_rollover: bool, currency: String }
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::MatrixWithAllocation::CreditAllocation::CustomExpiration?
+          }
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
           attr_accessor allows_rollover: bool
 
           attr_accessor currency: String
 
-          def initialize: (allows_rollover: bool, currency: String) -> void
+          attr_accessor custom_expiration: Orb::Price::MatrixWithAllocation::CreditAllocation::CustomExpiration?
 
-          def to_hash: -> { allows_rollover: bool, currency: String }
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::MatrixWithAllocation::CreditAllocation::CustomExpiration?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::MatrixWithAllocation::CreditAllocation::CustomExpiration?
+          }
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::MatrixWithAllocation::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::Price::MatrixWithAllocation::CreditAllocation::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::Price::MatrixWithAllocation::CreditAllocation::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::MatrixWithAllocation::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::Price::MatrixWithAllocation::CreditAllocation::CustomExpiration::duration_unit]
+            end
+          end
         end
 
         type invoicing_cycle_configuration =
@@ -7564,16 +8332,64 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::TieredWithProration::cadence]
         end
 
-        type credit_allocation = { allows_rollover: bool, currency: String }
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::TieredWithProration::CreditAllocation::CustomExpiration?
+          }
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
           attr_accessor allows_rollover: bool
 
           attr_accessor currency: String
 
-          def initialize: (allows_rollover: bool, currency: String) -> void
+          attr_accessor custom_expiration: Orb::Price::TieredWithProration::CreditAllocation::CustomExpiration?
 
-          def to_hash: -> { allows_rollover: bool, currency: String }
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::TieredWithProration::CreditAllocation::CustomExpiration?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::TieredWithProration::CreditAllocation::CustomExpiration?
+          }
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::TieredWithProration::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::Price::TieredWithProration::CreditAllocation::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::Price::TieredWithProration::CreditAllocation::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::TieredWithProration::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::Price::TieredWithProration::CreditAllocation::CustomExpiration::duration_unit]
+            end
+          end
         end
 
         type invoicing_cycle_configuration =
@@ -8005,16 +8821,64 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::UnitWithProration::cadence]
         end
 
-        type credit_allocation = { allows_rollover: bool, currency: String }
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::UnitWithProration::CreditAllocation::CustomExpiration?
+          }
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
           attr_accessor allows_rollover: bool
 
           attr_accessor currency: String
 
-          def initialize: (allows_rollover: bool, currency: String) -> void
+          attr_accessor custom_expiration: Orb::Price::UnitWithProration::CreditAllocation::CustomExpiration?
 
-          def to_hash: -> { allows_rollover: bool, currency: String }
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::UnitWithProration::CreditAllocation::CustomExpiration?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::UnitWithProration::CreditAllocation::CustomExpiration?
+          }
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::UnitWithProration::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::Price::UnitWithProration::CreditAllocation::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::Price::UnitWithProration::CreditAllocation::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::UnitWithProration::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::Price::UnitWithProration::CreditAllocation::CustomExpiration::duration_unit]
+            end
+          end
         end
 
         type invoicing_cycle_configuration =
@@ -8446,16 +9310,64 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::GroupedAllocation::cadence]
         end
 
-        type credit_allocation = { allows_rollover: bool, currency: String }
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::GroupedAllocation::CreditAllocation::CustomExpiration?
+          }
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
           attr_accessor allows_rollover: bool
 
           attr_accessor currency: String
 
-          def initialize: (allows_rollover: bool, currency: String) -> void
+          attr_accessor custom_expiration: Orb::Price::GroupedAllocation::CreditAllocation::CustomExpiration?
 
-          def to_hash: -> { allows_rollover: bool, currency: String }
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::GroupedAllocation::CreditAllocation::CustomExpiration?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::GroupedAllocation::CreditAllocation::CustomExpiration?
+          }
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::GroupedAllocation::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::Price::GroupedAllocation::CreditAllocation::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::Price::GroupedAllocation::CreditAllocation::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::GroupedAllocation::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::Price::GroupedAllocation::CreditAllocation::CustomExpiration::duration_unit]
+            end
+          end
         end
 
         type invoicing_cycle_configuration =
@@ -8887,16 +9799,64 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::GroupedWithProratedMinimum::cadence]
         end
 
-        type credit_allocation = { allows_rollover: bool, currency: String }
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::GroupedWithProratedMinimum::CreditAllocation::CustomExpiration?
+          }
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
           attr_accessor allows_rollover: bool
 
           attr_accessor currency: String
 
-          def initialize: (allows_rollover: bool, currency: String) -> void
+          attr_accessor custom_expiration: Orb::Price::GroupedWithProratedMinimum::CreditAllocation::CustomExpiration?
 
-          def to_hash: -> { allows_rollover: bool, currency: String }
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::GroupedWithProratedMinimum::CreditAllocation::CustomExpiration?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::GroupedWithProratedMinimum::CreditAllocation::CustomExpiration?
+          }
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::GroupedWithProratedMinimum::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::Price::GroupedWithProratedMinimum::CreditAllocation::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::Price::GroupedWithProratedMinimum::CreditAllocation::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::GroupedWithProratedMinimum::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::Price::GroupedWithProratedMinimum::CreditAllocation::CustomExpiration::duration_unit]
+            end
+          end
         end
 
         type invoicing_cycle_configuration =
@@ -9328,16 +10288,64 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::GroupedWithMeteredMinimum::cadence]
         end
 
-        type credit_allocation = { allows_rollover: bool, currency: String }
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::GroupedWithMeteredMinimum::CreditAllocation::CustomExpiration?
+          }
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
           attr_accessor allows_rollover: bool
 
           attr_accessor currency: String
 
-          def initialize: (allows_rollover: bool, currency: String) -> void
+          attr_accessor custom_expiration: Orb::Price::GroupedWithMeteredMinimum::CreditAllocation::CustomExpiration?
 
-          def to_hash: -> { allows_rollover: bool, currency: String }
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::GroupedWithMeteredMinimum::CreditAllocation::CustomExpiration?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::GroupedWithMeteredMinimum::CreditAllocation::CustomExpiration?
+          }
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::GroupedWithMeteredMinimum::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::Price::GroupedWithMeteredMinimum::CreditAllocation::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::Price::GroupedWithMeteredMinimum::CreditAllocation::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::GroupedWithMeteredMinimum::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::Price::GroupedWithMeteredMinimum::CreditAllocation::CustomExpiration::duration_unit]
+            end
+          end
         end
 
         type invoicing_cycle_configuration =
@@ -9769,16 +10777,64 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::MatrixWithDisplayName::cadence]
         end
 
-        type credit_allocation = { allows_rollover: bool, currency: String }
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::MatrixWithDisplayName::CreditAllocation::CustomExpiration?
+          }
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
           attr_accessor allows_rollover: bool
 
           attr_accessor currency: String
 
-          def initialize: (allows_rollover: bool, currency: String) -> void
+          attr_accessor custom_expiration: Orb::Price::MatrixWithDisplayName::CreditAllocation::CustomExpiration?
 
-          def to_hash: -> { allows_rollover: bool, currency: String }
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::MatrixWithDisplayName::CreditAllocation::CustomExpiration?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::MatrixWithDisplayName::CreditAllocation::CustomExpiration?
+          }
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::MatrixWithDisplayName::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::Price::MatrixWithDisplayName::CreditAllocation::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::Price::MatrixWithDisplayName::CreditAllocation::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::MatrixWithDisplayName::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::Price::MatrixWithDisplayName::CreditAllocation::CustomExpiration::duration_unit]
+            end
+          end
         end
 
         type invoicing_cycle_configuration =
@@ -10210,16 +11266,64 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::BulkWithProration::cadence]
         end
 
-        type credit_allocation = { allows_rollover: bool, currency: String }
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::BulkWithProration::CreditAllocation::CustomExpiration?
+          }
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
           attr_accessor allows_rollover: bool
 
           attr_accessor currency: String
 
-          def initialize: (allows_rollover: bool, currency: String) -> void
+          attr_accessor custom_expiration: Orb::Price::BulkWithProration::CreditAllocation::CustomExpiration?
 
-          def to_hash: -> { allows_rollover: bool, currency: String }
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::BulkWithProration::CreditAllocation::CustomExpiration?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::BulkWithProration::CreditAllocation::CustomExpiration?
+          }
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::BulkWithProration::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::Price::BulkWithProration::CreditAllocation::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::Price::BulkWithProration::CreditAllocation::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::BulkWithProration::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::Price::BulkWithProration::CreditAllocation::CustomExpiration::duration_unit]
+            end
+          end
         end
 
         type invoicing_cycle_configuration =
@@ -10651,16 +11755,64 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::GroupedTieredPackage::cadence]
         end
 
-        type credit_allocation = { allows_rollover: bool, currency: String }
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::GroupedTieredPackage::CreditAllocation::CustomExpiration?
+          }
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
           attr_accessor allows_rollover: bool
 
           attr_accessor currency: String
 
-          def initialize: (allows_rollover: bool, currency: String) -> void
+          attr_accessor custom_expiration: Orb::Price::GroupedTieredPackage::CreditAllocation::CustomExpiration?
 
-          def to_hash: -> { allows_rollover: bool, currency: String }
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::GroupedTieredPackage::CreditAllocation::CustomExpiration?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::GroupedTieredPackage::CreditAllocation::CustomExpiration?
+          }
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::GroupedTieredPackage::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::Price::GroupedTieredPackage::CreditAllocation::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::Price::GroupedTieredPackage::CreditAllocation::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::GroupedTieredPackage::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::Price::GroupedTieredPackage::CreditAllocation::CustomExpiration::duration_unit]
+            end
+          end
         end
 
         type invoicing_cycle_configuration =
@@ -11092,16 +12244,64 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::MaxGroupTieredPackage::cadence]
         end
 
-        type credit_allocation = { allows_rollover: bool, currency: String }
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::MaxGroupTieredPackage::CreditAllocation::CustomExpiration?
+          }
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
           attr_accessor allows_rollover: bool
 
           attr_accessor currency: String
 
-          def initialize: (allows_rollover: bool, currency: String) -> void
+          attr_accessor custom_expiration: Orb::Price::MaxGroupTieredPackage::CreditAllocation::CustomExpiration?
 
-          def to_hash: -> { allows_rollover: bool, currency: String }
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::MaxGroupTieredPackage::CreditAllocation::CustomExpiration?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::MaxGroupTieredPackage::CreditAllocation::CustomExpiration?
+          }
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::MaxGroupTieredPackage::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::Price::MaxGroupTieredPackage::CreditAllocation::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::Price::MaxGroupTieredPackage::CreditAllocation::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::MaxGroupTieredPackage::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::Price::MaxGroupTieredPackage::CreditAllocation::CustomExpiration::duration_unit]
+            end
+          end
         end
 
         type invoicing_cycle_configuration =
@@ -11533,16 +12733,64 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithUnitPricing::cadence]
         end
 
-        type credit_allocation = { allows_rollover: bool, currency: String }
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::ScalableMatrixWithUnitPricing::CreditAllocation::CustomExpiration?
+          }
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
           attr_accessor allows_rollover: bool
 
           attr_accessor currency: String
 
-          def initialize: (allows_rollover: bool, currency: String) -> void
+          attr_accessor custom_expiration: Orb::Price::ScalableMatrixWithUnitPricing::CreditAllocation::CustomExpiration?
 
-          def to_hash: -> { allows_rollover: bool, currency: String }
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::ScalableMatrixWithUnitPricing::CreditAllocation::CustomExpiration?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::ScalableMatrixWithUnitPricing::CreditAllocation::CustomExpiration?
+          }
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::ScalableMatrixWithUnitPricing::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::Price::ScalableMatrixWithUnitPricing::CreditAllocation::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::Price::ScalableMatrixWithUnitPricing::CreditAllocation::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::ScalableMatrixWithUnitPricing::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithUnitPricing::CreditAllocation::CustomExpiration::duration_unit]
+            end
+          end
         end
 
         type invoicing_cycle_configuration =
@@ -11974,16 +13222,64 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithTieredPricing::cadence]
         end
 
-        type credit_allocation = { allows_rollover: bool, currency: String }
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::ScalableMatrixWithTieredPricing::CreditAllocation::CustomExpiration?
+          }
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
           attr_accessor allows_rollover: bool
 
           attr_accessor currency: String
 
-          def initialize: (allows_rollover: bool, currency: String) -> void
+          attr_accessor custom_expiration: Orb::Price::ScalableMatrixWithTieredPricing::CreditAllocation::CustomExpiration?
 
-          def to_hash: -> { allows_rollover: bool, currency: String }
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::ScalableMatrixWithTieredPricing::CreditAllocation::CustomExpiration?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::ScalableMatrixWithTieredPricing::CreditAllocation::CustomExpiration?
+          }
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::ScalableMatrixWithTieredPricing::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::Price::ScalableMatrixWithTieredPricing::CreditAllocation::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::Price::ScalableMatrixWithTieredPricing::CreditAllocation::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::ScalableMatrixWithTieredPricing::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithTieredPricing::CreditAllocation::CustomExpiration::duration_unit]
+            end
+          end
         end
 
         type invoicing_cycle_configuration =
@@ -12415,16 +13711,64 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::CumulativeGroupedBulk::cadence]
         end
 
-        type credit_allocation = { allows_rollover: bool, currency: String }
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::CumulativeGroupedBulk::CreditAllocation::CustomExpiration?
+          }
 
         class CreditAllocation < Orb::Internal::Type::BaseModel
           attr_accessor allows_rollover: bool
 
           attr_accessor currency: String
 
-          def initialize: (allows_rollover: bool, currency: String) -> void
+          attr_accessor custom_expiration: Orb::Price::CumulativeGroupedBulk::CreditAllocation::CustomExpiration?
 
-          def to_hash: -> { allows_rollover: bool, currency: String }
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::CumulativeGroupedBulk::CreditAllocation::CustomExpiration?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::Price::CumulativeGroupedBulk::CreditAllocation::CustomExpiration?
+          }
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::CumulativeGroupedBulk::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::Price::CumulativeGroupedBulk::CreditAllocation::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::Price::CumulativeGroupedBulk::CreditAllocation::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::Price::CumulativeGroupedBulk::CreditAllocation::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::Price::CumulativeGroupedBulk::CreditAllocation::CustomExpiration::duration_unit]
+            end
+          end
         end
 
         type invoicing_cycle_configuration =

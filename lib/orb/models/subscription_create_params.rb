@@ -715,14 +715,22 @@ module Orb
           #   @return [String]
           required :currency, String
 
+          # @!attribute custom_expiration
+          #   The custom expiration for the allocation.
+          #
+          #   @return [Orb::Models::SubscriptionCreateParams::AddPrice::AllocationPrice::CustomExpiration, nil]
+          optional :custom_expiration,
+                   -> { Orb::SubscriptionCreateParams::AddPrice::AllocationPrice::CustomExpiration },
+                   nil?: true
+
           # @!attribute expires_at_end_of_cadence
           #   Whether the allocated amount should expire at the end of the cadence or roll
-          #   over to the next period.
+          #   over to the next period. Set to null if using custom_expiration.
           #
-          #   @return [Boolean]
-          required :expires_at_end_of_cadence, Orb::Internal::Type::Boolean
+          #   @return [Boolean, nil]
+          optional :expires_at_end_of_cadence, Orb::Internal::Type::Boolean, nil?: true
 
-          # @!method initialize(amount:, cadence:, currency:, expires_at_end_of_cadence:)
+          # @!method initialize(amount:, cadence:, currency:, custom_expiration: nil, expires_at_end_of_cadence: nil)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::SubscriptionCreateParams::AddPrice::AllocationPrice} for more
           #   details.
@@ -735,7 +743,9 @@ module Orb
           #
           #   @param currency [String] An ISO 4217 currency string or a custom pricing unit identifier in which to bill
           #
-          #   @param expires_at_end_of_cadence [Boolean] Whether the allocated amount should expire at the end of the cadence or roll ove
+          #   @param custom_expiration [Orb::Models::SubscriptionCreateParams::AddPrice::AllocationPrice::CustomExpiration, nil] The custom expiration for the allocation.
+          #
+          #   @param expires_at_end_of_cadence [Boolean, nil] Whether the allocated amount should expire at the end of the cadence or roll ove
 
           # The cadence at which to allocate the amount to the customer.
           #
@@ -752,6 +762,39 @@ module Orb
 
             # @!method self.values
             #   @return [Array<Symbol>]
+          end
+
+          # @see Orb::Models::SubscriptionCreateParams::AddPrice::AllocationPrice#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::SubscriptionCreateParams::AddPrice::AllocationPrice::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> {
+                       Orb::SubscriptionCreateParams::AddPrice::AllocationPrice::CustomExpiration::DurationUnit
+                     }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   The custom expiration for the allocation.
+            #
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::SubscriptionCreateParams::AddPrice::AllocationPrice::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::SubscriptionCreateParams::AddPrice::AllocationPrice::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
           end
         end
 
@@ -9937,14 +9980,22 @@ module Orb
           #   @return [String]
           required :currency, String
 
+          # @!attribute custom_expiration
+          #   The custom expiration for the allocation.
+          #
+          #   @return [Orb::Models::SubscriptionCreateParams::ReplacePrice::AllocationPrice::CustomExpiration, nil]
+          optional :custom_expiration,
+                   -> { Orb::SubscriptionCreateParams::ReplacePrice::AllocationPrice::CustomExpiration },
+                   nil?: true
+
           # @!attribute expires_at_end_of_cadence
           #   Whether the allocated amount should expire at the end of the cadence or roll
-          #   over to the next period.
+          #   over to the next period. Set to null if using custom_expiration.
           #
-          #   @return [Boolean]
-          required :expires_at_end_of_cadence, Orb::Internal::Type::Boolean
+          #   @return [Boolean, nil]
+          optional :expires_at_end_of_cadence, Orb::Internal::Type::Boolean, nil?: true
 
-          # @!method initialize(amount:, cadence:, currency:, expires_at_end_of_cadence:)
+          # @!method initialize(amount:, cadence:, currency:, custom_expiration: nil, expires_at_end_of_cadence: nil)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::SubscriptionCreateParams::ReplacePrice::AllocationPrice} for more
           #   details.
@@ -9957,7 +10008,9 @@ module Orb
           #
           #   @param currency [String] An ISO 4217 currency string or a custom pricing unit identifier in which to bill
           #
-          #   @param expires_at_end_of_cadence [Boolean] Whether the allocated amount should expire at the end of the cadence or roll ove
+          #   @param custom_expiration [Orb::Models::SubscriptionCreateParams::ReplacePrice::AllocationPrice::CustomExpiration, nil] The custom expiration for the allocation.
+          #
+          #   @param expires_at_end_of_cadence [Boolean, nil] Whether the allocated amount should expire at the end of the cadence or roll ove
 
           # The cadence at which to allocate the amount to the customer.
           #
@@ -9974,6 +10027,39 @@ module Orb
 
             # @!method self.values
             #   @return [Array<Symbol>]
+          end
+
+          # @see Orb::Models::SubscriptionCreateParams::ReplacePrice::AllocationPrice#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::SubscriptionCreateParams::ReplacePrice::AllocationPrice::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> {
+                       Orb::SubscriptionCreateParams::ReplacePrice::AllocationPrice::CustomExpiration::DurationUnit
+                     }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   The custom expiration for the allocation.
+            #
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::SubscriptionCreateParams::ReplacePrice::AllocationPrice::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::SubscriptionCreateParams::ReplacePrice::AllocationPrice::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
           end
         end
 
