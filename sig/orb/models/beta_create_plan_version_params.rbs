@@ -298,7 +298,8 @@ module Orb
             amount: String,
             cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::AllocationPrice::cadence,
             currency: String,
-            expires_at_end_of_cadence: bool
+            custom_expiration: Orb::BetaCreatePlanVersionParams::AddPrice::AllocationPrice::CustomExpiration?,
+            expires_at_end_of_cadence: bool?
           }
 
         class AllocationPrice < Orb::Internal::Type::BaseModel
@@ -308,20 +309,24 @@ module Orb
 
           attr_accessor currency: String
 
-          attr_accessor expires_at_end_of_cadence: bool
+          attr_accessor custom_expiration: Orb::BetaCreatePlanVersionParams::AddPrice::AllocationPrice::CustomExpiration?
+
+          attr_accessor expires_at_end_of_cadence: bool?
 
           def initialize: (
             amount: String,
             cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::AllocationPrice::cadence,
             currency: String,
-            expires_at_end_of_cadence: bool
+            ?custom_expiration: Orb::BetaCreatePlanVersionParams::AddPrice::AllocationPrice::CustomExpiration?,
+            ?expires_at_end_of_cadence: bool?
           ) -> void
 
           def to_hash: -> {
             amount: String,
             cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::AllocationPrice::cadence,
             currency: String,
-            expires_at_end_of_cadence: bool
+            custom_expiration: Orb::BetaCreatePlanVersionParams::AddPrice::AllocationPrice::CustomExpiration?,
+            expires_at_end_of_cadence: bool?
           }
 
           type cadence =
@@ -338,6 +343,39 @@ module Orb
             CUSTOM: :custom
 
             def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::AddPrice::AllocationPrice::cadence]
+          end
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::BetaCreatePlanVersionParams::AddPrice::AllocationPrice::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::BetaCreatePlanVersionParams::AddPrice::AllocationPrice::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::BetaCreatePlanVersionParams::AddPrice::AllocationPrice::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::BetaCreatePlanVersionParams::AddPrice::AllocationPrice::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::AddPrice::AllocationPrice::CustomExpiration::duration_unit]
+            end
           end
         end
 
@@ -6725,7 +6763,8 @@ module Orb
             amount: String,
             cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::AllocationPrice::cadence,
             currency: String,
-            expires_at_end_of_cadence: bool
+            custom_expiration: Orb::BetaCreatePlanVersionParams::ReplacePrice::AllocationPrice::CustomExpiration?,
+            expires_at_end_of_cadence: bool?
           }
 
         class AllocationPrice < Orb::Internal::Type::BaseModel
@@ -6735,20 +6774,24 @@ module Orb
 
           attr_accessor currency: String
 
-          attr_accessor expires_at_end_of_cadence: bool
+          attr_accessor custom_expiration: Orb::BetaCreatePlanVersionParams::ReplacePrice::AllocationPrice::CustomExpiration?
+
+          attr_accessor expires_at_end_of_cadence: bool?
 
           def initialize: (
             amount: String,
             cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::AllocationPrice::cadence,
             currency: String,
-            expires_at_end_of_cadence: bool
+            ?custom_expiration: Orb::BetaCreatePlanVersionParams::ReplacePrice::AllocationPrice::CustomExpiration?,
+            ?expires_at_end_of_cadence: bool?
           ) -> void
 
           def to_hash: -> {
             amount: String,
             cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::AllocationPrice::cadence,
             currency: String,
-            expires_at_end_of_cadence: bool
+            custom_expiration: Orb::BetaCreatePlanVersionParams::ReplacePrice::AllocationPrice::CustomExpiration?,
+            expires_at_end_of_cadence: bool?
           }
 
           type cadence =
@@ -6765,6 +6808,39 @@ module Orb
             CUSTOM: :custom
 
             def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::AllocationPrice::cadence]
+          end
+
+          type custom_expiration =
+            {
+              duration: Integer,
+              duration_unit: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::AllocationPrice::CustomExpiration::duration_unit
+            }
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            attr_accessor duration: Integer
+
+            attr_accessor duration_unit: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::AllocationPrice::CustomExpiration::duration_unit
+
+            def initialize: (
+              duration: Integer,
+              duration_unit: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::AllocationPrice::CustomExpiration::duration_unit
+            ) -> void
+
+            def to_hash: -> {
+              duration: Integer,
+              duration_unit: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::AllocationPrice::CustomExpiration::duration_unit
+            }
+
+            type duration_unit = :day | :month
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY: :day
+              MONTH: :month
+
+              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::AllocationPrice::CustomExpiration::duration_unit]
+            end
           end
         end
 

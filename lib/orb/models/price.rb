@@ -329,9 +329,46 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!method initialize(allows_rollover:, currency:)
+          # @!attribute custom_expiration
+          #
+          #   @return [Orb::Models::Price::Unit::CreditAllocation::CustomExpiration, nil]
+          required :custom_expiration, -> { Orb::Price::Unit::CreditAllocation::CustomExpiration }, nil?: true
+
+          # @!method initialize(allows_rollover:, currency:, custom_expiration:)
           #   @param allows_rollover [Boolean]
           #   @param currency [String]
+          #   @param custom_expiration [Orb::Models::Price::Unit::CreditAllocation::CustomExpiration, nil]
+
+          # @see Orb::Models::Price::Unit::CreditAllocation#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::Price::Unit::CreditAllocation::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> {
+                       Orb::Price::Unit::CreditAllocation::CustomExpiration::DurationUnit
+                     }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::Price::Unit::CreditAllocation::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::Price::Unit::CreditAllocation::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::Unit#invoicing_cycle_configuration
@@ -856,9 +893,48 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!method initialize(allows_rollover:, currency:)
+          # @!attribute custom_expiration
+          #
+          #   @return [Orb::Models::Price::Package::CreditAllocation::CustomExpiration, nil]
+          required :custom_expiration,
+                   -> {
+                     Orb::Price::Package::CreditAllocation::CustomExpiration
+                   },
+                   nil?: true
+
+          # @!method initialize(allows_rollover:, currency:, custom_expiration:)
           #   @param allows_rollover [Boolean]
           #   @param currency [String]
+          #   @param custom_expiration [Orb::Models::Price::Package::CreditAllocation::CustomExpiration, nil]
+
+          # @see Orb::Models::Price::Package::CreditAllocation#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::Price::Package::CreditAllocation::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> { Orb::Price::Package::CreditAllocation::CustomExpiration::DurationUnit }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::Price::Package::CreditAllocation::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::Price::Package::CreditAllocation::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::Package#invoicing_cycle_configuration
@@ -1395,9 +1471,50 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!method initialize(allows_rollover:, currency:)
+          # @!attribute custom_expiration
+          #
+          #   @return [Orb::Models::Price::Matrix::CreditAllocation::CustomExpiration, nil]
+          required :custom_expiration,
+                   -> {
+                     Orb::Price::Matrix::CreditAllocation::CustomExpiration
+                   },
+                   nil?: true
+
+          # @!method initialize(allows_rollover:, currency:, custom_expiration:)
           #   @param allows_rollover [Boolean]
           #   @param currency [String]
+          #   @param custom_expiration [Orb::Models::Price::Matrix::CreditAllocation::CustomExpiration, nil]
+
+          # @see Orb::Models::Price::Matrix::CreditAllocation#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::Price::Matrix::CreditAllocation::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> {
+                       Orb::Price::Matrix::CreditAllocation::CustomExpiration::DurationUnit
+                     }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::Price::Matrix::CreditAllocation::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::Price::Matrix::CreditAllocation::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::Matrix#invoicing_cycle_configuration
@@ -1963,9 +2080,50 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!method initialize(allows_rollover:, currency:)
+          # @!attribute custom_expiration
+          #
+          #   @return [Orb::Models::Price::Tiered::CreditAllocation::CustomExpiration, nil]
+          required :custom_expiration,
+                   -> {
+                     Orb::Price::Tiered::CreditAllocation::CustomExpiration
+                   },
+                   nil?: true
+
+          # @!method initialize(allows_rollover:, currency:, custom_expiration:)
           #   @param allows_rollover [Boolean]
           #   @param currency [String]
+          #   @param custom_expiration [Orb::Models::Price::Tiered::CreditAllocation::CustomExpiration, nil]
+
+          # @see Orb::Models::Price::Tiered::CreditAllocation#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::Price::Tiered::CreditAllocation::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> {
+                       Orb::Price::Tiered::CreditAllocation::CustomExpiration::DurationUnit
+                     }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::Price::Tiered::CreditAllocation::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::Price::Tiered::CreditAllocation::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::Tiered#invoicing_cycle_configuration
@@ -2517,9 +2675,48 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!method initialize(allows_rollover:, currency:)
+          # @!attribute custom_expiration
+          #
+          #   @return [Orb::Models::Price::TieredBps::CreditAllocation::CustomExpiration, nil]
+          required :custom_expiration,
+                   -> {
+                     Orb::Price::TieredBps::CreditAllocation::CustomExpiration
+                   },
+                   nil?: true
+
+          # @!method initialize(allows_rollover:, currency:, custom_expiration:)
           #   @param allows_rollover [Boolean]
           #   @param currency [String]
+          #   @param custom_expiration [Orb::Models::Price::TieredBps::CreditAllocation::CustomExpiration, nil]
+
+          # @see Orb::Models::Price::TieredBps::CreditAllocation#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::Price::TieredBps::CreditAllocation::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> { Orb::Price::TieredBps::CreditAllocation::CustomExpiration::DurationUnit }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::Price::TieredBps::CreditAllocation::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::Price::TieredBps::CreditAllocation::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::TieredBps#invoicing_cycle_configuration
@@ -3108,9 +3305,46 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!method initialize(allows_rollover:, currency:)
+          # @!attribute custom_expiration
+          #
+          #   @return [Orb::Models::Price::Bps::CreditAllocation::CustomExpiration, nil]
+          required :custom_expiration, -> { Orb::Price::Bps::CreditAllocation::CustomExpiration }, nil?: true
+
+          # @!method initialize(allows_rollover:, currency:, custom_expiration:)
           #   @param allows_rollover [Boolean]
           #   @param currency [String]
+          #   @param custom_expiration [Orb::Models::Price::Bps::CreditAllocation::CustomExpiration, nil]
+
+          # @see Orb::Models::Price::Bps::CreditAllocation#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::Price::Bps::CreditAllocation::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> {
+                       Orb::Price::Bps::CreditAllocation::CustomExpiration::DurationUnit
+                     }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::Price::Bps::CreditAllocation::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::Price::Bps::CreditAllocation::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::Bps#invoicing_cycle_configuration
@@ -3666,9 +3900,48 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!method initialize(allows_rollover:, currency:)
+          # @!attribute custom_expiration
+          #
+          #   @return [Orb::Models::Price::BulkBps::CreditAllocation::CustomExpiration, nil]
+          required :custom_expiration,
+                   -> {
+                     Orb::Price::BulkBps::CreditAllocation::CustomExpiration
+                   },
+                   nil?: true
+
+          # @!method initialize(allows_rollover:, currency:, custom_expiration:)
           #   @param allows_rollover [Boolean]
           #   @param currency [String]
+          #   @param custom_expiration [Orb::Models::Price::BulkBps::CreditAllocation::CustomExpiration, nil]
+
+          # @see Orb::Models::Price::BulkBps::CreditAllocation#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::Price::BulkBps::CreditAllocation::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> { Orb::Price::BulkBps::CreditAllocation::CustomExpiration::DurationUnit }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::Price::BulkBps::CreditAllocation::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::Price::BulkBps::CreditAllocation::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::BulkBps#invoicing_cycle_configuration
@@ -4214,9 +4487,46 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!method initialize(allows_rollover:, currency:)
+          # @!attribute custom_expiration
+          #
+          #   @return [Orb::Models::Price::Bulk::CreditAllocation::CustomExpiration, nil]
+          required :custom_expiration, -> { Orb::Price::Bulk::CreditAllocation::CustomExpiration }, nil?: true
+
+          # @!method initialize(allows_rollover:, currency:, custom_expiration:)
           #   @param allows_rollover [Boolean]
           #   @param currency [String]
+          #   @param custom_expiration [Orb::Models::Price::Bulk::CreditAllocation::CustomExpiration, nil]
+
+          # @see Orb::Models::Price::Bulk::CreditAllocation#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::Price::Bulk::CreditAllocation::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> {
+                       Orb::Price::Bulk::CreditAllocation::CustomExpiration::DurationUnit
+                     }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::Price::Bulk::CreditAllocation::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::Price::Bulk::CreditAllocation::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::Bulk#invoicing_cycle_configuration
@@ -4733,9 +5043,48 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!method initialize(allows_rollover:, currency:)
+          # @!attribute custom_expiration
+          #
+          #   @return [Orb::Models::Price::ThresholdTotalAmount::CreditAllocation::CustomExpiration, nil]
+          required :custom_expiration,
+                   -> { Orb::Price::ThresholdTotalAmount::CreditAllocation::CustomExpiration },
+                   nil?: true
+
+          # @!method initialize(allows_rollover:, currency:, custom_expiration:)
           #   @param allows_rollover [Boolean]
           #   @param currency [String]
+          #   @param custom_expiration [Orb::Models::Price::ThresholdTotalAmount::CreditAllocation::CustomExpiration, nil]
+
+          # @see Orb::Models::Price::ThresholdTotalAmount::CreditAllocation#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::Price::ThresholdTotalAmount::CreditAllocation::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> {
+                       Orb::Price::ThresholdTotalAmount::CreditAllocation::CustomExpiration::DurationUnit
+                     }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::Price::ThresholdTotalAmount::CreditAllocation::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::Price::ThresholdTotalAmount::CreditAllocation::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::ThresholdTotalAmount#invoicing_cycle_configuration
@@ -5258,9 +5607,46 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!method initialize(allows_rollover:, currency:)
+          # @!attribute custom_expiration
+          #
+          #   @return [Orb::Models::Price::TieredPackage::CreditAllocation::CustomExpiration, nil]
+          required :custom_expiration,
+                   -> { Orb::Price::TieredPackage::CreditAllocation::CustomExpiration },
+                   nil?: true
+
+          # @!method initialize(allows_rollover:, currency:, custom_expiration:)
           #   @param allows_rollover [Boolean]
           #   @param currency [String]
+          #   @param custom_expiration [Orb::Models::Price::TieredPackage::CreditAllocation::CustomExpiration, nil]
+
+          # @see Orb::Models::Price::TieredPackage::CreditAllocation#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::Price::TieredPackage::CreditAllocation::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> { Orb::Price::TieredPackage::CreditAllocation::CustomExpiration::DurationUnit }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::Price::TieredPackage::CreditAllocation::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::Price::TieredPackage::CreditAllocation::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::TieredPackage#invoicing_cycle_configuration
@@ -5779,9 +6165,46 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!method initialize(allows_rollover:, currency:)
+          # @!attribute custom_expiration
+          #
+          #   @return [Orb::Models::Price::GroupedTiered::CreditAllocation::CustomExpiration, nil]
+          required :custom_expiration,
+                   -> { Orb::Price::GroupedTiered::CreditAllocation::CustomExpiration },
+                   nil?: true
+
+          # @!method initialize(allows_rollover:, currency:, custom_expiration:)
           #   @param allows_rollover [Boolean]
           #   @param currency [String]
+          #   @param custom_expiration [Orb::Models::Price::GroupedTiered::CreditAllocation::CustomExpiration, nil]
+
+          # @see Orb::Models::Price::GroupedTiered::CreditAllocation#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::Price::GroupedTiered::CreditAllocation::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> { Orb::Price::GroupedTiered::CreditAllocation::CustomExpiration::DurationUnit }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::Price::GroupedTiered::CreditAllocation::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::Price::GroupedTiered::CreditAllocation::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::GroupedTiered#invoicing_cycle_configuration
@@ -6298,9 +6721,48 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!method initialize(allows_rollover:, currency:)
+          # @!attribute custom_expiration
+          #
+          #   @return [Orb::Models::Price::TieredWithMinimum::CreditAllocation::CustomExpiration, nil]
+          required :custom_expiration,
+                   -> { Orb::Price::TieredWithMinimum::CreditAllocation::CustomExpiration },
+                   nil?: true
+
+          # @!method initialize(allows_rollover:, currency:, custom_expiration:)
           #   @param allows_rollover [Boolean]
           #   @param currency [String]
+          #   @param custom_expiration [Orb::Models::Price::TieredWithMinimum::CreditAllocation::CustomExpiration, nil]
+
+          # @see Orb::Models::Price::TieredWithMinimum::CreditAllocation#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::Price::TieredWithMinimum::CreditAllocation::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> {
+                       Orb::Price::TieredWithMinimum::CreditAllocation::CustomExpiration::DurationUnit
+                     }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::Price::TieredWithMinimum::CreditAllocation::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::Price::TieredWithMinimum::CreditAllocation::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::TieredWithMinimum#invoicing_cycle_configuration
@@ -6823,9 +7285,48 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!method initialize(allows_rollover:, currency:)
+          # @!attribute custom_expiration
+          #
+          #   @return [Orb::Models::Price::TieredPackageWithMinimum::CreditAllocation::CustomExpiration, nil]
+          required :custom_expiration,
+                   -> { Orb::Price::TieredPackageWithMinimum::CreditAllocation::CustomExpiration },
+                   nil?: true
+
+          # @!method initialize(allows_rollover:, currency:, custom_expiration:)
           #   @param allows_rollover [Boolean]
           #   @param currency [String]
+          #   @param custom_expiration [Orb::Models::Price::TieredPackageWithMinimum::CreditAllocation::CustomExpiration, nil]
+
+          # @see Orb::Models::Price::TieredPackageWithMinimum::CreditAllocation#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::Price::TieredPackageWithMinimum::CreditAllocation::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> {
+                       Orb::Price::TieredPackageWithMinimum::CreditAllocation::CustomExpiration::DurationUnit
+                     }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::Price::TieredPackageWithMinimum::CreditAllocation::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::Price::TieredPackageWithMinimum::CreditAllocation::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::TieredPackageWithMinimum#invoicing_cycle_configuration
@@ -7347,9 +7848,48 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!method initialize(allows_rollover:, currency:)
+          # @!attribute custom_expiration
+          #
+          #   @return [Orb::Models::Price::PackageWithAllocation::CreditAllocation::CustomExpiration, nil]
+          required :custom_expiration,
+                   -> { Orb::Price::PackageWithAllocation::CreditAllocation::CustomExpiration },
+                   nil?: true
+
+          # @!method initialize(allows_rollover:, currency:, custom_expiration:)
           #   @param allows_rollover [Boolean]
           #   @param currency [String]
+          #   @param custom_expiration [Orb::Models::Price::PackageWithAllocation::CreditAllocation::CustomExpiration, nil]
+
+          # @see Orb::Models::Price::PackageWithAllocation::CreditAllocation#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::Price::PackageWithAllocation::CreditAllocation::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> {
+                       Orb::Price::PackageWithAllocation::CreditAllocation::CustomExpiration::DurationUnit
+                     }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::Price::PackageWithAllocation::CreditAllocation::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::Price::PackageWithAllocation::CreditAllocation::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::PackageWithAllocation#invoicing_cycle_configuration
@@ -7872,9 +8412,48 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!method initialize(allows_rollover:, currency:)
+          # @!attribute custom_expiration
+          #
+          #   @return [Orb::Models::Price::UnitWithPercent::CreditAllocation::CustomExpiration, nil]
+          required :custom_expiration,
+                   -> { Orb::Price::UnitWithPercent::CreditAllocation::CustomExpiration },
+                   nil?: true
+
+          # @!method initialize(allows_rollover:, currency:, custom_expiration:)
           #   @param allows_rollover [Boolean]
           #   @param currency [String]
+          #   @param custom_expiration [Orb::Models::Price::UnitWithPercent::CreditAllocation::CustomExpiration, nil]
+
+          # @see Orb::Models::Price::UnitWithPercent::CreditAllocation#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::Price::UnitWithPercent::CreditAllocation::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> {
+                       Orb::Price::UnitWithPercent::CreditAllocation::CustomExpiration::DurationUnit
+                     }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::Price::UnitWithPercent::CreditAllocation::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::Price::UnitWithPercent::CreditAllocation::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::UnitWithPercent#invoicing_cycle_configuration
@@ -8393,9 +8972,48 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!method initialize(allows_rollover:, currency:)
+          # @!attribute custom_expiration
+          #
+          #   @return [Orb::Models::Price::MatrixWithAllocation::CreditAllocation::CustomExpiration, nil]
+          required :custom_expiration,
+                   -> { Orb::Price::MatrixWithAllocation::CreditAllocation::CustomExpiration },
+                   nil?: true
+
+          # @!method initialize(allows_rollover:, currency:, custom_expiration:)
           #   @param allows_rollover [Boolean]
           #   @param currency [String]
+          #   @param custom_expiration [Orb::Models::Price::MatrixWithAllocation::CreditAllocation::CustomExpiration, nil]
+
+          # @see Orb::Models::Price::MatrixWithAllocation::CreditAllocation#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::Price::MatrixWithAllocation::CreditAllocation::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> {
+                       Orb::Price::MatrixWithAllocation::CreditAllocation::CustomExpiration::DurationUnit
+                     }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::Price::MatrixWithAllocation::CreditAllocation::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::Price::MatrixWithAllocation::CreditAllocation::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::MatrixWithAllocation#invoicing_cycle_configuration
@@ -8983,9 +9601,48 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!method initialize(allows_rollover:, currency:)
+          # @!attribute custom_expiration
+          #
+          #   @return [Orb::Models::Price::TieredWithProration::CreditAllocation::CustomExpiration, nil]
+          required :custom_expiration,
+                   -> { Orb::Price::TieredWithProration::CreditAllocation::CustomExpiration },
+                   nil?: true
+
+          # @!method initialize(allows_rollover:, currency:, custom_expiration:)
           #   @param allows_rollover [Boolean]
           #   @param currency [String]
+          #   @param custom_expiration [Orb::Models::Price::TieredWithProration::CreditAllocation::CustomExpiration, nil]
+
+          # @see Orb::Models::Price::TieredWithProration::CreditAllocation#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::Price::TieredWithProration::CreditAllocation::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> {
+                       Orb::Price::TieredWithProration::CreditAllocation::CustomExpiration::DurationUnit
+                     }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::Price::TieredWithProration::CreditAllocation::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::Price::TieredWithProration::CreditAllocation::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::TieredWithProration#invoicing_cycle_configuration
@@ -9506,9 +10163,48 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!method initialize(allows_rollover:, currency:)
+          # @!attribute custom_expiration
+          #
+          #   @return [Orb::Models::Price::UnitWithProration::CreditAllocation::CustomExpiration, nil]
+          required :custom_expiration,
+                   -> { Orb::Price::UnitWithProration::CreditAllocation::CustomExpiration },
+                   nil?: true
+
+          # @!method initialize(allows_rollover:, currency:, custom_expiration:)
           #   @param allows_rollover [Boolean]
           #   @param currency [String]
+          #   @param custom_expiration [Orb::Models::Price::UnitWithProration::CreditAllocation::CustomExpiration, nil]
+
+          # @see Orb::Models::Price::UnitWithProration::CreditAllocation#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::Price::UnitWithProration::CreditAllocation::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> {
+                       Orb::Price::UnitWithProration::CreditAllocation::CustomExpiration::DurationUnit
+                     }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::Price::UnitWithProration::CreditAllocation::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::Price::UnitWithProration::CreditAllocation::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::UnitWithProration#invoicing_cycle_configuration
@@ -10029,9 +10725,48 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!method initialize(allows_rollover:, currency:)
+          # @!attribute custom_expiration
+          #
+          #   @return [Orb::Models::Price::GroupedAllocation::CreditAllocation::CustomExpiration, nil]
+          required :custom_expiration,
+                   -> { Orb::Price::GroupedAllocation::CreditAllocation::CustomExpiration },
+                   nil?: true
+
+          # @!method initialize(allows_rollover:, currency:, custom_expiration:)
           #   @param allows_rollover [Boolean]
           #   @param currency [String]
+          #   @param custom_expiration [Orb::Models::Price::GroupedAllocation::CreditAllocation::CustomExpiration, nil]
+
+          # @see Orb::Models::Price::GroupedAllocation::CreditAllocation#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::Price::GroupedAllocation::CreditAllocation::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> {
+                       Orb::Price::GroupedAllocation::CreditAllocation::CustomExpiration::DurationUnit
+                     }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::Price::GroupedAllocation::CreditAllocation::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::Price::GroupedAllocation::CreditAllocation::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::GroupedAllocation#invoicing_cycle_configuration
@@ -10560,9 +11295,48 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!method initialize(allows_rollover:, currency:)
+          # @!attribute custom_expiration
+          #
+          #   @return [Orb::Models::Price::GroupedWithProratedMinimum::CreditAllocation::CustomExpiration, nil]
+          required :custom_expiration,
+                   -> { Orb::Price::GroupedWithProratedMinimum::CreditAllocation::CustomExpiration },
+                   nil?: true
+
+          # @!method initialize(allows_rollover:, currency:, custom_expiration:)
           #   @param allows_rollover [Boolean]
           #   @param currency [String]
+          #   @param custom_expiration [Orb::Models::Price::GroupedWithProratedMinimum::CreditAllocation::CustomExpiration, nil]
+
+          # @see Orb::Models::Price::GroupedWithProratedMinimum::CreditAllocation#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::Price::GroupedWithProratedMinimum::CreditAllocation::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> {
+                       Orb::Price::GroupedWithProratedMinimum::CreditAllocation::CustomExpiration::DurationUnit
+                     }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::Price::GroupedWithProratedMinimum::CreditAllocation::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::Price::GroupedWithProratedMinimum::CreditAllocation::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::GroupedWithProratedMinimum#invoicing_cycle_configuration
@@ -11091,9 +11865,48 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!method initialize(allows_rollover:, currency:)
+          # @!attribute custom_expiration
+          #
+          #   @return [Orb::Models::Price::GroupedWithMeteredMinimum::CreditAllocation::CustomExpiration, nil]
+          required :custom_expiration,
+                   -> { Orb::Price::GroupedWithMeteredMinimum::CreditAllocation::CustomExpiration },
+                   nil?: true
+
+          # @!method initialize(allows_rollover:, currency:, custom_expiration:)
           #   @param allows_rollover [Boolean]
           #   @param currency [String]
+          #   @param custom_expiration [Orb::Models::Price::GroupedWithMeteredMinimum::CreditAllocation::CustomExpiration, nil]
+
+          # @see Orb::Models::Price::GroupedWithMeteredMinimum::CreditAllocation#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::Price::GroupedWithMeteredMinimum::CreditAllocation::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> {
+                       Orb::Price::GroupedWithMeteredMinimum::CreditAllocation::CustomExpiration::DurationUnit
+                     }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::Price::GroupedWithMeteredMinimum::CreditAllocation::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::Price::GroupedWithMeteredMinimum::CreditAllocation::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::GroupedWithMeteredMinimum#invoicing_cycle_configuration
@@ -11615,9 +12428,48 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!method initialize(allows_rollover:, currency:)
+          # @!attribute custom_expiration
+          #
+          #   @return [Orb::Models::Price::MatrixWithDisplayName::CreditAllocation::CustomExpiration, nil]
+          required :custom_expiration,
+                   -> { Orb::Price::MatrixWithDisplayName::CreditAllocation::CustomExpiration },
+                   nil?: true
+
+          # @!method initialize(allows_rollover:, currency:, custom_expiration:)
           #   @param allows_rollover [Boolean]
           #   @param currency [String]
+          #   @param custom_expiration [Orb::Models::Price::MatrixWithDisplayName::CreditAllocation::CustomExpiration, nil]
+
+          # @see Orb::Models::Price::MatrixWithDisplayName::CreditAllocation#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::Price::MatrixWithDisplayName::CreditAllocation::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> {
+                       Orb::Price::MatrixWithDisplayName::CreditAllocation::CustomExpiration::DurationUnit
+                     }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::Price::MatrixWithDisplayName::CreditAllocation::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::Price::MatrixWithDisplayName::CreditAllocation::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::MatrixWithDisplayName#invoicing_cycle_configuration
@@ -12138,9 +12990,48 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!method initialize(allows_rollover:, currency:)
+          # @!attribute custom_expiration
+          #
+          #   @return [Orb::Models::Price::BulkWithProration::CreditAllocation::CustomExpiration, nil]
+          required :custom_expiration,
+                   -> { Orb::Price::BulkWithProration::CreditAllocation::CustomExpiration },
+                   nil?: true
+
+          # @!method initialize(allows_rollover:, currency:, custom_expiration:)
           #   @param allows_rollover [Boolean]
           #   @param currency [String]
+          #   @param custom_expiration [Orb::Models::Price::BulkWithProration::CreditAllocation::CustomExpiration, nil]
+
+          # @see Orb::Models::Price::BulkWithProration::CreditAllocation#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::Price::BulkWithProration::CreditAllocation::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> {
+                       Orb::Price::BulkWithProration::CreditAllocation::CustomExpiration::DurationUnit
+                     }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::Price::BulkWithProration::CreditAllocation::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::Price::BulkWithProration::CreditAllocation::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::BulkWithProration#invoicing_cycle_configuration
@@ -12664,9 +13555,48 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!method initialize(allows_rollover:, currency:)
+          # @!attribute custom_expiration
+          #
+          #   @return [Orb::Models::Price::GroupedTieredPackage::CreditAllocation::CustomExpiration, nil]
+          required :custom_expiration,
+                   -> { Orb::Price::GroupedTieredPackage::CreditAllocation::CustomExpiration },
+                   nil?: true
+
+          # @!method initialize(allows_rollover:, currency:, custom_expiration:)
           #   @param allows_rollover [Boolean]
           #   @param currency [String]
+          #   @param custom_expiration [Orb::Models::Price::GroupedTieredPackage::CreditAllocation::CustomExpiration, nil]
+
+          # @see Orb::Models::Price::GroupedTieredPackage::CreditAllocation#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::Price::GroupedTieredPackage::CreditAllocation::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> {
+                       Orb::Price::GroupedTieredPackage::CreditAllocation::CustomExpiration::DurationUnit
+                     }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::Price::GroupedTieredPackage::CreditAllocation::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::Price::GroupedTieredPackage::CreditAllocation::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::GroupedTieredPackage#invoicing_cycle_configuration
@@ -13190,9 +14120,48 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!method initialize(allows_rollover:, currency:)
+          # @!attribute custom_expiration
+          #
+          #   @return [Orb::Models::Price::MaxGroupTieredPackage::CreditAllocation::CustomExpiration, nil]
+          required :custom_expiration,
+                   -> { Orb::Price::MaxGroupTieredPackage::CreditAllocation::CustomExpiration },
+                   nil?: true
+
+          # @!method initialize(allows_rollover:, currency:, custom_expiration:)
           #   @param allows_rollover [Boolean]
           #   @param currency [String]
+          #   @param custom_expiration [Orb::Models::Price::MaxGroupTieredPackage::CreditAllocation::CustomExpiration, nil]
+
+          # @see Orb::Models::Price::MaxGroupTieredPackage::CreditAllocation#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::Price::MaxGroupTieredPackage::CreditAllocation::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> {
+                       Orb::Price::MaxGroupTieredPackage::CreditAllocation::CustomExpiration::DurationUnit
+                     }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::Price::MaxGroupTieredPackage::CreditAllocation::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::Price::MaxGroupTieredPackage::CreditAllocation::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::MaxGroupTieredPackage#invoicing_cycle_configuration
@@ -13723,9 +14692,48 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!method initialize(allows_rollover:, currency:)
+          # @!attribute custom_expiration
+          #
+          #   @return [Orb::Models::Price::ScalableMatrixWithUnitPricing::CreditAllocation::CustomExpiration, nil]
+          required :custom_expiration,
+                   -> { Orb::Price::ScalableMatrixWithUnitPricing::CreditAllocation::CustomExpiration },
+                   nil?: true
+
+          # @!method initialize(allows_rollover:, currency:, custom_expiration:)
           #   @param allows_rollover [Boolean]
           #   @param currency [String]
+          #   @param custom_expiration [Orb::Models::Price::ScalableMatrixWithUnitPricing::CreditAllocation::CustomExpiration, nil]
+
+          # @see Orb::Models::Price::ScalableMatrixWithUnitPricing::CreditAllocation#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricing::CreditAllocation::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> {
+                       Orb::Price::ScalableMatrixWithUnitPricing::CreditAllocation::CustomExpiration::DurationUnit
+                     }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricing::CreditAllocation::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::Price::ScalableMatrixWithUnitPricing::CreditAllocation::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::ScalableMatrixWithUnitPricing#invoicing_cycle_configuration
@@ -14264,9 +15272,48 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!method initialize(allows_rollover:, currency:)
+          # @!attribute custom_expiration
+          #
+          #   @return [Orb::Models::Price::ScalableMatrixWithTieredPricing::CreditAllocation::CustomExpiration, nil]
+          required :custom_expiration,
+                   -> { Orb::Price::ScalableMatrixWithTieredPricing::CreditAllocation::CustomExpiration },
+                   nil?: true
+
+          # @!method initialize(allows_rollover:, currency:, custom_expiration:)
           #   @param allows_rollover [Boolean]
           #   @param currency [String]
+          #   @param custom_expiration [Orb::Models::Price::ScalableMatrixWithTieredPricing::CreditAllocation::CustomExpiration, nil]
+
+          # @see Orb::Models::Price::ScalableMatrixWithTieredPricing::CreditAllocation#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricing::CreditAllocation::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> {
+                       Orb::Price::ScalableMatrixWithTieredPricing::CreditAllocation::CustomExpiration::DurationUnit
+                     }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricing::CreditAllocation::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::Price::ScalableMatrixWithTieredPricing::CreditAllocation::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::ScalableMatrixWithTieredPricing#invoicing_cycle_configuration
@@ -14798,9 +15845,48 @@ module Orb
           #   @return [String]
           required :currency, String
 
-          # @!method initialize(allows_rollover:, currency:)
+          # @!attribute custom_expiration
+          #
+          #   @return [Orb::Models::Price::CumulativeGroupedBulk::CreditAllocation::CustomExpiration, nil]
+          required :custom_expiration,
+                   -> { Orb::Price::CumulativeGroupedBulk::CreditAllocation::CustomExpiration },
+                   nil?: true
+
+          # @!method initialize(allows_rollover:, currency:, custom_expiration:)
           #   @param allows_rollover [Boolean]
           #   @param currency [String]
+          #   @param custom_expiration [Orb::Models::Price::CumulativeGroupedBulk::CreditAllocation::CustomExpiration, nil]
+
+          # @see Orb::Models::Price::CumulativeGroupedBulk::CreditAllocation#custom_expiration
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            # @!attribute duration
+            #
+            #   @return [Integer]
+            required :duration, Integer
+
+            # @!attribute duration_unit
+            #
+            #   @return [Symbol, Orb::Models::Price::CumulativeGroupedBulk::CreditAllocation::CustomExpiration::DurationUnit]
+            required :duration_unit,
+                     enum: -> {
+                       Orb::Price::CumulativeGroupedBulk::CreditAllocation::CustomExpiration::DurationUnit
+                     }
+
+            # @!method initialize(duration:, duration_unit:)
+            #   @param duration [Integer]
+            #   @param duration_unit [Symbol, Orb::Models::Price::CumulativeGroupedBulk::CreditAllocation::CustomExpiration::DurationUnit]
+
+            # @see Orb::Models::Price::CumulativeGroupedBulk::CreditAllocation::CustomExpiration#duration_unit
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              DAY = :day
+              MONTH = :month
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @see Orb::Models::Price::CumulativeGroupedBulk#invoicing_cycle_configuration
