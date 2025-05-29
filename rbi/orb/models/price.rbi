@@ -428,17 +428,124 @@ module Orb
           attr_accessor :currency
 
           sig do
-            params(allows_rollover: T::Boolean, currency: String).returns(
-              T.attached_class
+            returns(
+              T.nilable(Orb::Price::Unit::CreditAllocation::CustomExpiration)
             )
           end
-          def self.new(allows_rollover:, currency:)
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::Unit::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
+          sig do
+            params(
+              allows_rollover: T::Boolean,
+              currency: String,
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::Unit::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).returns(T.attached_class)
+          end
+          def self.new(allows_rollover:, currency:, custom_expiration:)
           end
 
           sig do
-            override.returns({ allows_rollover: T::Boolean, currency: String })
+            override.returns(
+              {
+                allows_rollover: T::Boolean,
+                currency: String,
+                custom_expiration:
+                  T.nilable(
+                    Orb::Price::Unit::CreditAllocation::CustomExpiration
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::Unit::CreditAllocation::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::Price::Unit::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::Unit::CreditAllocation::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::Price::Unit::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Price::Unit::CreditAllocation::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::Price::Unit::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::Price::Unit::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Price::Unit::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -1381,17 +1488,124 @@ module Orb
           attr_accessor :currency
 
           sig do
-            params(allows_rollover: T::Boolean, currency: String).returns(
-              T.attached_class
+            returns(
+              T.nilable(Orb::Price::Package::CreditAllocation::CustomExpiration)
             )
           end
-          def self.new(allows_rollover:, currency:)
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::Package::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
+          sig do
+            params(
+              allows_rollover: T::Boolean,
+              currency: String,
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::Package::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).returns(T.attached_class)
+          end
+          def self.new(allows_rollover:, currency:, custom_expiration:)
           end
 
           sig do
-            override.returns({ allows_rollover: T::Boolean, currency: String })
+            override.returns(
+              {
+                allows_rollover: T::Boolean,
+                currency: String,
+                custom_expiration:
+                  T.nilable(
+                    Orb::Price::Package::CreditAllocation::CustomExpiration
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::Package::CreditAllocation::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::Price::Package::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::Package::CreditAllocation::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::Price::Package::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Price::Package::CreditAllocation::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::Price::Package::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::Price::Package::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Price::Package::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -2357,17 +2571,124 @@ module Orb
           attr_accessor :currency
 
           sig do
-            params(allows_rollover: T::Boolean, currency: String).returns(
-              T.attached_class
+            returns(
+              T.nilable(Orb::Price::Matrix::CreditAllocation::CustomExpiration)
             )
           end
-          def self.new(allows_rollover:, currency:)
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::Matrix::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
+          sig do
+            params(
+              allows_rollover: T::Boolean,
+              currency: String,
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::Matrix::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).returns(T.attached_class)
+          end
+          def self.new(allows_rollover:, currency:, custom_expiration:)
           end
 
           sig do
-            override.returns({ allows_rollover: T::Boolean, currency: String })
+            override.returns(
+              {
+                allows_rollover: T::Boolean,
+                currency: String,
+                custom_expiration:
+                  T.nilable(
+                    Orb::Price::Matrix::CreditAllocation::CustomExpiration
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::Matrix::CreditAllocation::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::Price::Matrix::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::Matrix::CreditAllocation::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::Price::Matrix::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Price::Matrix::CreditAllocation::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::Price::Matrix::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::Price::Matrix::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Price::Matrix::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -3396,17 +3717,124 @@ module Orb
           attr_accessor :currency
 
           sig do
-            params(allows_rollover: T::Boolean, currency: String).returns(
-              T.attached_class
+            returns(
+              T.nilable(Orb::Price::Tiered::CreditAllocation::CustomExpiration)
             )
           end
-          def self.new(allows_rollover:, currency:)
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::Tiered::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
+          sig do
+            params(
+              allows_rollover: T::Boolean,
+              currency: String,
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::Tiered::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).returns(T.attached_class)
+          end
+          def self.new(allows_rollover:, currency:, custom_expiration:)
           end
 
           sig do
-            override.returns({ allows_rollover: T::Boolean, currency: String })
+            override.returns(
+              {
+                allows_rollover: T::Boolean,
+                currency: String,
+                custom_expiration:
+                  T.nilable(
+                    Orb::Price::Tiered::CreditAllocation::CustomExpiration
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::Tiered::CreditAllocation::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::Price::Tiered::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::Tiered::CreditAllocation::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::Price::Tiered::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Price::Tiered::CreditAllocation::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::Price::Tiered::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::Price::Tiered::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Price::Tiered::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -4432,17 +4860,126 @@ module Orb
           attr_accessor :currency
 
           sig do
-            params(allows_rollover: T::Boolean, currency: String).returns(
-              T.attached_class
+            returns(
+              T.nilable(
+                Orb::Price::TieredBps::CreditAllocation::CustomExpiration
+              )
             )
           end
-          def self.new(allows_rollover:, currency:)
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::TieredBps::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
+          sig do
+            params(
+              allows_rollover: T::Boolean,
+              currency: String,
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::TieredBps::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).returns(T.attached_class)
+          end
+          def self.new(allows_rollover:, currency:, custom_expiration:)
           end
 
           sig do
-            override.returns({ allows_rollover: T::Boolean, currency: String })
+            override.returns(
+              {
+                allows_rollover: T::Boolean,
+                currency: String,
+                custom_expiration:
+                  T.nilable(
+                    Orb::Price::TieredBps::CreditAllocation::CustomExpiration
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::TieredBps::CreditAllocation::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::Price::TieredBps::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::TieredBps::CreditAllocation::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::Price::TieredBps::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Price::TieredBps::CreditAllocation::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::Price::TieredBps::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::Price::TieredBps::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Price::TieredBps::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -5495,17 +6032,122 @@ module Orb
           attr_accessor :currency
 
           sig do
-            params(allows_rollover: T::Boolean, currency: String).returns(
-              T.attached_class
+            returns(
+              T.nilable(Orb::Price::Bps::CreditAllocation::CustomExpiration)
             )
           end
-          def self.new(allows_rollover:, currency:)
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::Bps::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
+          sig do
+            params(
+              allows_rollover: T::Boolean,
+              currency: String,
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::Bps::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).returns(T.attached_class)
+          end
+          def self.new(allows_rollover:, currency:, custom_expiration:)
           end
 
           sig do
-            override.returns({ allows_rollover: T::Boolean, currency: String })
+            override.returns(
+              {
+                allows_rollover: T::Boolean,
+                currency: String,
+                custom_expiration:
+                  T.nilable(Orb::Price::Bps::CreditAllocation::CustomExpiration)
+              }
+            )
           end
           def to_hash
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::Bps::CreditAllocation::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::Price::Bps::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::Bps::CreditAllocation::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::Price::Bps::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Price::Bps::CreditAllocation::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::Price::Bps::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::Price::Bps::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Price::Bps::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -6507,17 +7149,124 @@ module Orb
           attr_accessor :currency
 
           sig do
-            params(allows_rollover: T::Boolean, currency: String).returns(
-              T.attached_class
+            returns(
+              T.nilable(Orb::Price::BulkBps::CreditAllocation::CustomExpiration)
             )
           end
-          def self.new(allows_rollover:, currency:)
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::BulkBps::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
+          sig do
+            params(
+              allows_rollover: T::Boolean,
+              currency: String,
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::BulkBps::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).returns(T.attached_class)
+          end
+          def self.new(allows_rollover:, currency:, custom_expiration:)
           end
 
           sig do
-            override.returns({ allows_rollover: T::Boolean, currency: String })
+            override.returns(
+              {
+                allows_rollover: T::Boolean,
+                currency: String,
+                custom_expiration:
+                  T.nilable(
+                    Orb::Price::BulkBps::CreditAllocation::CustomExpiration
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::BulkBps::CreditAllocation::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::Price::BulkBps::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::BulkBps::CreditAllocation::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::Price::BulkBps::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Price::BulkBps::CreditAllocation::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::Price::BulkBps::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::Price::BulkBps::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Price::BulkBps::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -7503,17 +8252,124 @@ module Orb
           attr_accessor :currency
 
           sig do
-            params(allows_rollover: T::Boolean, currency: String).returns(
-              T.attached_class
+            returns(
+              T.nilable(Orb::Price::Bulk::CreditAllocation::CustomExpiration)
             )
           end
-          def self.new(allows_rollover:, currency:)
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::Bulk::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
+          sig do
+            params(
+              allows_rollover: T::Boolean,
+              currency: String,
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::Bulk::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).returns(T.attached_class)
+          end
+          def self.new(allows_rollover:, currency:, custom_expiration:)
           end
 
           sig do
-            override.returns({ allows_rollover: T::Boolean, currency: String })
+            override.returns(
+              {
+                allows_rollover: T::Boolean,
+                currency: String,
+                custom_expiration:
+                  T.nilable(
+                    Orb::Price::Bulk::CreditAllocation::CustomExpiration
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::Bulk::CreditAllocation::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::Price::Bulk::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::Bulk::CreditAllocation::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::Price::Bulk::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Price::Bulk::CreditAllocation::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::Price::Bulk::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::Price::Bulk::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Price::Bulk::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -8495,17 +9351,126 @@ module Orb
           attr_accessor :currency
 
           sig do
-            params(allows_rollover: T::Boolean, currency: String).returns(
-              T.attached_class
+            returns(
+              T.nilable(
+                Orb::Price::ThresholdTotalAmount::CreditAllocation::CustomExpiration
+              )
             )
           end
-          def self.new(allows_rollover:, currency:)
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::ThresholdTotalAmount::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
+          sig do
+            params(
+              allows_rollover: T::Boolean,
+              currency: String,
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::ThresholdTotalAmount::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).returns(T.attached_class)
+          end
+          def self.new(allows_rollover:, currency:, custom_expiration:)
           end
 
           sig do
-            override.returns({ allows_rollover: T::Boolean, currency: String })
+            override.returns(
+              {
+                allows_rollover: T::Boolean,
+                currency: String,
+                custom_expiration:
+                  T.nilable(
+                    Orb::Price::ThresholdTotalAmount::CreditAllocation::CustomExpiration
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::ThresholdTotalAmount::CreditAllocation::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::Price::ThresholdTotalAmount::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::ThresholdTotalAmount::CreditAllocation::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::Price::ThresholdTotalAmount::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Price::ThresholdTotalAmount::CreditAllocation::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::Price::ThresholdTotalAmount::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::Price::ThresholdTotalAmount::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Price::ThresholdTotalAmount::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -9506,17 +10471,126 @@ module Orb
           attr_accessor :currency
 
           sig do
-            params(allows_rollover: T::Boolean, currency: String).returns(
-              T.attached_class
+            returns(
+              T.nilable(
+                Orb::Price::TieredPackage::CreditAllocation::CustomExpiration
+              )
             )
           end
-          def self.new(allows_rollover:, currency:)
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::TieredPackage::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
+          sig do
+            params(
+              allows_rollover: T::Boolean,
+              currency: String,
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::TieredPackage::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).returns(T.attached_class)
+          end
+          def self.new(allows_rollover:, currency:, custom_expiration:)
           end
 
           sig do
-            override.returns({ allows_rollover: T::Boolean, currency: String })
+            override.returns(
+              {
+                allows_rollover: T::Boolean,
+                currency: String,
+                custom_expiration:
+                  T.nilable(
+                    Orb::Price::TieredPackage::CreditAllocation::CustomExpiration
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::TieredPackage::CreditAllocation::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::Price::TieredPackage::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::TieredPackage::CreditAllocation::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::Price::TieredPackage::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Price::TieredPackage::CreditAllocation::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::Price::TieredPackage::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::Price::TieredPackage::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Price::TieredPackage::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -10494,17 +11568,126 @@ module Orb
           attr_accessor :currency
 
           sig do
-            params(allows_rollover: T::Boolean, currency: String).returns(
-              T.attached_class
+            returns(
+              T.nilable(
+                Orb::Price::GroupedTiered::CreditAllocation::CustomExpiration
+              )
             )
           end
-          def self.new(allows_rollover:, currency:)
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::GroupedTiered::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
+          sig do
+            params(
+              allows_rollover: T::Boolean,
+              currency: String,
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::GroupedTiered::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).returns(T.attached_class)
+          end
+          def self.new(allows_rollover:, currency:, custom_expiration:)
           end
 
           sig do
-            override.returns({ allows_rollover: T::Boolean, currency: String })
+            override.returns(
+              {
+                allows_rollover: T::Boolean,
+                currency: String,
+                custom_expiration:
+                  T.nilable(
+                    Orb::Price::GroupedTiered::CreditAllocation::CustomExpiration
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::GroupedTiered::CreditAllocation::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::Price::GroupedTiered::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::GroupedTiered::CreditAllocation::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::Price::GroupedTiered::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Price::GroupedTiered::CreditAllocation::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::Price::GroupedTiered::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::Price::GroupedTiered::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Price::GroupedTiered::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -11506,17 +12689,126 @@ module Orb
           attr_accessor :currency
 
           sig do
-            params(allows_rollover: T::Boolean, currency: String).returns(
-              T.attached_class
+            returns(
+              T.nilable(
+                Orb::Price::TieredWithMinimum::CreditAllocation::CustomExpiration
+              )
             )
           end
-          def self.new(allows_rollover:, currency:)
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::TieredWithMinimum::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
+          sig do
+            params(
+              allows_rollover: T::Boolean,
+              currency: String,
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::TieredWithMinimum::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).returns(T.attached_class)
+          end
+          def self.new(allows_rollover:, currency:, custom_expiration:)
           end
 
           sig do
-            override.returns({ allows_rollover: T::Boolean, currency: String })
+            override.returns(
+              {
+                allows_rollover: T::Boolean,
+                currency: String,
+                custom_expiration:
+                  T.nilable(
+                    Orb::Price::TieredWithMinimum::CreditAllocation::CustomExpiration
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::TieredWithMinimum::CreditAllocation::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::Price::TieredWithMinimum::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::TieredWithMinimum::CreditAllocation::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::Price::TieredWithMinimum::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Price::TieredWithMinimum::CreditAllocation::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::Price::TieredWithMinimum::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::Price::TieredWithMinimum::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Price::TieredWithMinimum::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -12574,17 +13866,126 @@ module Orb
           attr_accessor :currency
 
           sig do
-            params(allows_rollover: T::Boolean, currency: String).returns(
-              T.attached_class
+            returns(
+              T.nilable(
+                Orb::Price::TieredPackageWithMinimum::CreditAllocation::CustomExpiration
+              )
             )
           end
-          def self.new(allows_rollover:, currency:)
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::TieredPackageWithMinimum::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
+          sig do
+            params(
+              allows_rollover: T::Boolean,
+              currency: String,
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::TieredPackageWithMinimum::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).returns(T.attached_class)
+          end
+          def self.new(allows_rollover:, currency:, custom_expiration:)
           end
 
           sig do
-            override.returns({ allows_rollover: T::Boolean, currency: String })
+            override.returns(
+              {
+                allows_rollover: T::Boolean,
+                currency: String,
+                custom_expiration:
+                  T.nilable(
+                    Orb::Price::TieredPackageWithMinimum::CreditAllocation::CustomExpiration
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::TieredPackageWithMinimum::CreditAllocation::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::Price::TieredPackageWithMinimum::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::TieredPackageWithMinimum::CreditAllocation::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::Price::TieredPackageWithMinimum::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Price::TieredPackageWithMinimum::CreditAllocation::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::Price::TieredPackageWithMinimum::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::Price::TieredPackageWithMinimum::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Price::TieredPackageWithMinimum::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -13641,17 +15042,126 @@ module Orb
           attr_accessor :currency
 
           sig do
-            params(allows_rollover: T::Boolean, currency: String).returns(
-              T.attached_class
+            returns(
+              T.nilable(
+                Orb::Price::PackageWithAllocation::CreditAllocation::CustomExpiration
+              )
             )
           end
-          def self.new(allows_rollover:, currency:)
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::PackageWithAllocation::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
+          sig do
+            params(
+              allows_rollover: T::Boolean,
+              currency: String,
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::PackageWithAllocation::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).returns(T.attached_class)
+          end
+          def self.new(allows_rollover:, currency:, custom_expiration:)
           end
 
           sig do
-            override.returns({ allows_rollover: T::Boolean, currency: String })
+            override.returns(
+              {
+                allows_rollover: T::Boolean,
+                currency: String,
+                custom_expiration:
+                  T.nilable(
+                    Orb::Price::PackageWithAllocation::CreditAllocation::CustomExpiration
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::PackageWithAllocation::CreditAllocation::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::Price::PackageWithAllocation::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::PackageWithAllocation::CreditAllocation::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::Price::PackageWithAllocation::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Price::PackageWithAllocation::CreditAllocation::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::Price::PackageWithAllocation::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::Price::PackageWithAllocation::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Price::PackageWithAllocation::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -14663,17 +16173,126 @@ module Orb
           attr_accessor :currency
 
           sig do
-            params(allows_rollover: T::Boolean, currency: String).returns(
-              T.attached_class
+            returns(
+              T.nilable(
+                Orb::Price::UnitWithPercent::CreditAllocation::CustomExpiration
+              )
             )
           end
-          def self.new(allows_rollover:, currency:)
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::UnitWithPercent::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
+          sig do
+            params(
+              allows_rollover: T::Boolean,
+              currency: String,
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::UnitWithPercent::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).returns(T.attached_class)
+          end
+          def self.new(allows_rollover:, currency:, custom_expiration:)
           end
 
           sig do
-            override.returns({ allows_rollover: T::Boolean, currency: String })
+            override.returns(
+              {
+                allows_rollover: T::Boolean,
+                currency: String,
+                custom_expiration:
+                  T.nilable(
+                    Orb::Price::UnitWithPercent::CreditAllocation::CustomExpiration
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::UnitWithPercent::CreditAllocation::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::Price::UnitWithPercent::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::UnitWithPercent::CreditAllocation::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::Price::UnitWithPercent::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Price::UnitWithPercent::CreditAllocation::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::Price::UnitWithPercent::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::Price::UnitWithPercent::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Price::UnitWithPercent::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -15719,17 +17338,126 @@ module Orb
           attr_accessor :currency
 
           sig do
-            params(allows_rollover: T::Boolean, currency: String).returns(
-              T.attached_class
+            returns(
+              T.nilable(
+                Orb::Price::MatrixWithAllocation::CreditAllocation::CustomExpiration
+              )
             )
           end
-          def self.new(allows_rollover:, currency:)
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::MatrixWithAllocation::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
+          sig do
+            params(
+              allows_rollover: T::Boolean,
+              currency: String,
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::MatrixWithAllocation::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).returns(T.attached_class)
+          end
+          def self.new(allows_rollover:, currency:, custom_expiration:)
           end
 
           sig do
-            override.returns({ allows_rollover: T::Boolean, currency: String })
+            override.returns(
+              {
+                allows_rollover: T::Boolean,
+                currency: String,
+                custom_expiration:
+                  T.nilable(
+                    Orb::Price::MatrixWithAllocation::CreditAllocation::CustomExpiration
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::MatrixWithAllocation::CreditAllocation::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::Price::MatrixWithAllocation::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::MatrixWithAllocation::CreditAllocation::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::Price::MatrixWithAllocation::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Price::MatrixWithAllocation::CreditAllocation::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::Price::MatrixWithAllocation::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::Price::MatrixWithAllocation::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Price::MatrixWithAllocation::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -16886,17 +18614,126 @@ module Orb
           attr_accessor :currency
 
           sig do
-            params(allows_rollover: T::Boolean, currency: String).returns(
-              T.attached_class
+            returns(
+              T.nilable(
+                Orb::Price::TieredWithProration::CreditAllocation::CustomExpiration
+              )
             )
           end
-          def self.new(allows_rollover:, currency:)
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::TieredWithProration::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
+          sig do
+            params(
+              allows_rollover: T::Boolean,
+              currency: String,
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::TieredWithProration::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).returns(T.attached_class)
+          end
+          def self.new(allows_rollover:, currency:, custom_expiration:)
           end
 
           sig do
-            override.returns({ allows_rollover: T::Boolean, currency: String })
+            override.returns(
+              {
+                allows_rollover: T::Boolean,
+                currency: String,
+                custom_expiration:
+                  T.nilable(
+                    Orb::Price::TieredWithProration::CreditAllocation::CustomExpiration
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::TieredWithProration::CreditAllocation::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::Price::TieredWithProration::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::TieredWithProration::CreditAllocation::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::Price::TieredWithProration::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Price::TieredWithProration::CreditAllocation::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::Price::TieredWithProration::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::Price::TieredWithProration::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Price::TieredWithProration::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -17919,17 +19756,126 @@ module Orb
           attr_accessor :currency
 
           sig do
-            params(allows_rollover: T::Boolean, currency: String).returns(
-              T.attached_class
+            returns(
+              T.nilable(
+                Orb::Price::UnitWithProration::CreditAllocation::CustomExpiration
+              )
             )
           end
-          def self.new(allows_rollover:, currency:)
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::UnitWithProration::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
+          sig do
+            params(
+              allows_rollover: T::Boolean,
+              currency: String,
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::UnitWithProration::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).returns(T.attached_class)
+          end
+          def self.new(allows_rollover:, currency:, custom_expiration:)
           end
 
           sig do
-            override.returns({ allows_rollover: T::Boolean, currency: String })
+            override.returns(
+              {
+                allows_rollover: T::Boolean,
+                currency: String,
+                custom_expiration:
+                  T.nilable(
+                    Orb::Price::UnitWithProration::CreditAllocation::CustomExpiration
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::UnitWithProration::CreditAllocation::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::Price::UnitWithProration::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::UnitWithProration::CreditAllocation::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::Price::UnitWithProration::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Price::UnitWithProration::CreditAllocation::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::Price::UnitWithProration::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::Price::UnitWithProration::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Price::UnitWithProration::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -18949,17 +20895,126 @@ module Orb
           attr_accessor :currency
 
           sig do
-            params(allows_rollover: T::Boolean, currency: String).returns(
-              T.attached_class
+            returns(
+              T.nilable(
+                Orb::Price::GroupedAllocation::CreditAllocation::CustomExpiration
+              )
             )
           end
-          def self.new(allows_rollover:, currency:)
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::GroupedAllocation::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
+          sig do
+            params(
+              allows_rollover: T::Boolean,
+              currency: String,
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::GroupedAllocation::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).returns(T.attached_class)
+          end
+          def self.new(allows_rollover:, currency:, custom_expiration:)
           end
 
           sig do
-            override.returns({ allows_rollover: T::Boolean, currency: String })
+            override.returns(
+              {
+                allows_rollover: T::Boolean,
+                currency: String,
+                custom_expiration:
+                  T.nilable(
+                    Orb::Price::GroupedAllocation::CreditAllocation::CustomExpiration
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::GroupedAllocation::CreditAllocation::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::Price::GroupedAllocation::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::GroupedAllocation::CreditAllocation::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::Price::GroupedAllocation::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Price::GroupedAllocation::CreditAllocation::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::Price::GroupedAllocation::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::Price::GroupedAllocation::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Price::GroupedAllocation::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -20032,17 +22087,126 @@ module Orb
           attr_accessor :currency
 
           sig do
-            params(allows_rollover: T::Boolean, currency: String).returns(
-              T.attached_class
+            returns(
+              T.nilable(
+                Orb::Price::GroupedWithProratedMinimum::CreditAllocation::CustomExpiration
+              )
             )
           end
-          def self.new(allows_rollover:, currency:)
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::GroupedWithProratedMinimum::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
+          sig do
+            params(
+              allows_rollover: T::Boolean,
+              currency: String,
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::GroupedWithProratedMinimum::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).returns(T.attached_class)
+          end
+          def self.new(allows_rollover:, currency:, custom_expiration:)
           end
 
           sig do
-            override.returns({ allows_rollover: T::Boolean, currency: String })
+            override.returns(
+              {
+                allows_rollover: T::Boolean,
+                currency: String,
+                custom_expiration:
+                  T.nilable(
+                    Orb::Price::GroupedWithProratedMinimum::CreditAllocation::CustomExpiration
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::GroupedWithProratedMinimum::CreditAllocation::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::Price::GroupedWithProratedMinimum::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::GroupedWithProratedMinimum::CreditAllocation::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::Price::GroupedWithProratedMinimum::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Price::GroupedWithProratedMinimum::CreditAllocation::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::Price::GroupedWithProratedMinimum::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::Price::GroupedWithProratedMinimum::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Price::GroupedWithProratedMinimum::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -21119,17 +23283,126 @@ module Orb
           attr_accessor :currency
 
           sig do
-            params(allows_rollover: T::Boolean, currency: String).returns(
-              T.attached_class
+            returns(
+              T.nilable(
+                Orb::Price::GroupedWithMeteredMinimum::CreditAllocation::CustomExpiration
+              )
             )
           end
-          def self.new(allows_rollover:, currency:)
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::GroupedWithMeteredMinimum::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
+          sig do
+            params(
+              allows_rollover: T::Boolean,
+              currency: String,
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::GroupedWithMeteredMinimum::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).returns(T.attached_class)
+          end
+          def self.new(allows_rollover:, currency:, custom_expiration:)
           end
 
           sig do
-            override.returns({ allows_rollover: T::Boolean, currency: String })
+            override.returns(
+              {
+                allows_rollover: T::Boolean,
+                currency: String,
+                custom_expiration:
+                  T.nilable(
+                    Orb::Price::GroupedWithMeteredMinimum::CreditAllocation::CustomExpiration
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::GroupedWithMeteredMinimum::CreditAllocation::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::Price::GroupedWithMeteredMinimum::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::GroupedWithMeteredMinimum::CreditAllocation::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::Price::GroupedWithMeteredMinimum::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Price::GroupedWithMeteredMinimum::CreditAllocation::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::Price::GroupedWithMeteredMinimum::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::Price::GroupedWithMeteredMinimum::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Price::GroupedWithMeteredMinimum::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -22186,17 +24459,126 @@ module Orb
           attr_accessor :currency
 
           sig do
-            params(allows_rollover: T::Boolean, currency: String).returns(
-              T.attached_class
+            returns(
+              T.nilable(
+                Orb::Price::MatrixWithDisplayName::CreditAllocation::CustomExpiration
+              )
             )
           end
-          def self.new(allows_rollover:, currency:)
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::MatrixWithDisplayName::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
+          sig do
+            params(
+              allows_rollover: T::Boolean,
+              currency: String,
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::MatrixWithDisplayName::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).returns(T.attached_class)
+          end
+          def self.new(allows_rollover:, currency:, custom_expiration:)
           end
 
           sig do
-            override.returns({ allows_rollover: T::Boolean, currency: String })
+            override.returns(
+              {
+                allows_rollover: T::Boolean,
+                currency: String,
+                custom_expiration:
+                  T.nilable(
+                    Orb::Price::MatrixWithDisplayName::CreditAllocation::CustomExpiration
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::MatrixWithDisplayName::CreditAllocation::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::Price::MatrixWithDisplayName::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::MatrixWithDisplayName::CreditAllocation::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::Price::MatrixWithDisplayName::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Price::MatrixWithDisplayName::CreditAllocation::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::Price::MatrixWithDisplayName::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::Price::MatrixWithDisplayName::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Price::MatrixWithDisplayName::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -23225,17 +25607,126 @@ module Orb
           attr_accessor :currency
 
           sig do
-            params(allows_rollover: T::Boolean, currency: String).returns(
-              T.attached_class
+            returns(
+              T.nilable(
+                Orb::Price::BulkWithProration::CreditAllocation::CustomExpiration
+              )
             )
           end
-          def self.new(allows_rollover:, currency:)
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::BulkWithProration::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
+          sig do
+            params(
+              allows_rollover: T::Boolean,
+              currency: String,
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::BulkWithProration::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).returns(T.attached_class)
+          end
+          def self.new(allows_rollover:, currency:, custom_expiration:)
           end
 
           sig do
-            override.returns({ allows_rollover: T::Boolean, currency: String })
+            override.returns(
+              {
+                allows_rollover: T::Boolean,
+                currency: String,
+                custom_expiration:
+                  T.nilable(
+                    Orb::Price::BulkWithProration::CreditAllocation::CustomExpiration
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::BulkWithProration::CreditAllocation::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::Price::BulkWithProration::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::BulkWithProration::CreditAllocation::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::Price::BulkWithProration::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Price::BulkWithProration::CreditAllocation::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::Price::BulkWithProration::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::Price::BulkWithProration::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Price::BulkWithProration::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -24275,17 +26766,126 @@ module Orb
           attr_accessor :currency
 
           sig do
-            params(allows_rollover: T::Boolean, currency: String).returns(
-              T.attached_class
+            returns(
+              T.nilable(
+                Orb::Price::GroupedTieredPackage::CreditAllocation::CustomExpiration
+              )
             )
           end
-          def self.new(allows_rollover:, currency:)
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::GroupedTieredPackage::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
+          sig do
+            params(
+              allows_rollover: T::Boolean,
+              currency: String,
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::GroupedTieredPackage::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).returns(T.attached_class)
+          end
+          def self.new(allows_rollover:, currency:, custom_expiration:)
           end
 
           sig do
-            override.returns({ allows_rollover: T::Boolean, currency: String })
+            override.returns(
+              {
+                allows_rollover: T::Boolean,
+                currency: String,
+                custom_expiration:
+                  T.nilable(
+                    Orb::Price::GroupedTieredPackage::CreditAllocation::CustomExpiration
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::GroupedTieredPackage::CreditAllocation::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::Price::GroupedTieredPackage::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::GroupedTieredPackage::CreditAllocation::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::Price::GroupedTieredPackage::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Price::GroupedTieredPackage::CreditAllocation::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::Price::GroupedTieredPackage::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::Price::GroupedTieredPackage::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Price::GroupedTieredPackage::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -25334,17 +27934,126 @@ module Orb
           attr_accessor :currency
 
           sig do
-            params(allows_rollover: T::Boolean, currency: String).returns(
-              T.attached_class
+            returns(
+              T.nilable(
+                Orb::Price::MaxGroupTieredPackage::CreditAllocation::CustomExpiration
+              )
             )
           end
-          def self.new(allows_rollover:, currency:)
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::MaxGroupTieredPackage::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
+          sig do
+            params(
+              allows_rollover: T::Boolean,
+              currency: String,
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::MaxGroupTieredPackage::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).returns(T.attached_class)
+          end
+          def self.new(allows_rollover:, currency:, custom_expiration:)
           end
 
           sig do
-            override.returns({ allows_rollover: T::Boolean, currency: String })
+            override.returns(
+              {
+                allows_rollover: T::Boolean,
+                currency: String,
+                custom_expiration:
+                  T.nilable(
+                    Orb::Price::MaxGroupTieredPackage::CreditAllocation::CustomExpiration
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::MaxGroupTieredPackage::CreditAllocation::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::Price::MaxGroupTieredPackage::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::MaxGroupTieredPackage::CreditAllocation::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::Price::MaxGroupTieredPackage::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Price::MaxGroupTieredPackage::CreditAllocation::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::Price::MaxGroupTieredPackage::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::Price::MaxGroupTieredPackage::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Price::MaxGroupTieredPackage::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -26437,17 +29146,126 @@ module Orb
           attr_accessor :currency
 
           sig do
-            params(allows_rollover: T::Boolean, currency: String).returns(
-              T.attached_class
+            returns(
+              T.nilable(
+                Orb::Price::ScalableMatrixWithUnitPricing::CreditAllocation::CustomExpiration
+              )
             )
           end
-          def self.new(allows_rollover:, currency:)
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::ScalableMatrixWithUnitPricing::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
+          sig do
+            params(
+              allows_rollover: T::Boolean,
+              currency: String,
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::ScalableMatrixWithUnitPricing::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).returns(T.attached_class)
+          end
+          def self.new(allows_rollover:, currency:, custom_expiration:)
           end
 
           sig do
-            override.returns({ allows_rollover: T::Boolean, currency: String })
+            override.returns(
+              {
+                allows_rollover: T::Boolean,
+                currency: String,
+                custom_expiration:
+                  T.nilable(
+                    Orb::Price::ScalableMatrixWithUnitPricing::CreditAllocation::CustomExpiration
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::ScalableMatrixWithUnitPricing::CreditAllocation::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::Price::ScalableMatrixWithUnitPricing::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::ScalableMatrixWithUnitPricing::CreditAllocation::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::Price::ScalableMatrixWithUnitPricing::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Price::ScalableMatrixWithUnitPricing::CreditAllocation::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::Price::ScalableMatrixWithUnitPricing::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::Price::ScalableMatrixWithUnitPricing::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Price::ScalableMatrixWithUnitPricing::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -27560,17 +30378,126 @@ module Orb
           attr_accessor :currency
 
           sig do
-            params(allows_rollover: T::Boolean, currency: String).returns(
-              T.attached_class
+            returns(
+              T.nilable(
+                Orb::Price::ScalableMatrixWithTieredPricing::CreditAllocation::CustomExpiration
+              )
             )
           end
-          def self.new(allows_rollover:, currency:)
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::ScalableMatrixWithTieredPricing::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
+          sig do
+            params(
+              allows_rollover: T::Boolean,
+              currency: String,
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::ScalableMatrixWithTieredPricing::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).returns(T.attached_class)
+          end
+          def self.new(allows_rollover:, currency:, custom_expiration:)
           end
 
           sig do
-            override.returns({ allows_rollover: T::Boolean, currency: String })
+            override.returns(
+              {
+                allows_rollover: T::Boolean,
+                currency: String,
+                custom_expiration:
+                  T.nilable(
+                    Orb::Price::ScalableMatrixWithTieredPricing::CreditAllocation::CustomExpiration
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::ScalableMatrixWithTieredPricing::CreditAllocation::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::Price::ScalableMatrixWithTieredPricing::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::ScalableMatrixWithTieredPricing::CreditAllocation::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::Price::ScalableMatrixWithTieredPricing::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Price::ScalableMatrixWithTieredPricing::CreditAllocation::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::Price::ScalableMatrixWithTieredPricing::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::Price::ScalableMatrixWithTieredPricing::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Price::ScalableMatrixWithTieredPricing::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 
@@ -28634,17 +31561,126 @@ module Orb
           attr_accessor :currency
 
           sig do
-            params(allows_rollover: T::Boolean, currency: String).returns(
-              T.attached_class
+            returns(
+              T.nilable(
+                Orb::Price::CumulativeGroupedBulk::CreditAllocation::CustomExpiration
+              )
             )
           end
-          def self.new(allows_rollover:, currency:)
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::CumulativeGroupedBulk::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
+          sig do
+            params(
+              allows_rollover: T::Boolean,
+              currency: String,
+              custom_expiration:
+                T.nilable(
+                  Orb::Price::CumulativeGroupedBulk::CreditAllocation::CustomExpiration::OrHash
+                )
+            ).returns(T.attached_class)
+          end
+          def self.new(allows_rollover:, currency:, custom_expiration:)
           end
 
           sig do
-            override.returns({ allows_rollover: T::Boolean, currency: String })
+            override.returns(
+              {
+                allows_rollover: T::Boolean,
+                currency: String,
+                custom_expiration:
+                  T.nilable(
+                    Orb::Price::CumulativeGroupedBulk::CreditAllocation::CustomExpiration
+                  )
+              }
+            )
           end
           def to_hash
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::CumulativeGroupedBulk::CreditAllocation::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::Price::CumulativeGroupedBulk::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::Price::CumulativeGroupedBulk::CreditAllocation::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::Price::CumulativeGroupedBulk::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Price::CumulativeGroupedBulk::CreditAllocation::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::Price::CumulativeGroupedBulk::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::Price::CumulativeGroupedBulk::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Price::CumulativeGroupedBulk::CreditAllocation::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
 

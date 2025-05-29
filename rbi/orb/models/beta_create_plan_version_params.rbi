@@ -757,9 +757,29 @@ module Orb
           sig { returns(String) }
           attr_accessor :currency
 
+          # The custom expiration for the allocation.
+          sig do
+            returns(
+              T.nilable(
+                Orb::BetaCreatePlanVersionParams::AddPrice::AllocationPrice::CustomExpiration
+              )
+            )
+          end
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::BetaCreatePlanVersionParams::AddPrice::AllocationPrice::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
           # Whether the allocated amount should expire at the end of the cadence or roll
-          # over to the next period.
-          sig { returns(T::Boolean) }
+          # over to the next period. Set to null if using custom_expiration.
+          sig { returns(T.nilable(T::Boolean)) }
           attr_accessor :expires_at_end_of_cadence
 
           # The allocation price to add to the plan.
@@ -769,7 +789,11 @@ module Orb
               cadence:
                 Orb::BetaCreatePlanVersionParams::AddPrice::AllocationPrice::Cadence::OrSymbol,
               currency: String,
-              expires_at_end_of_cadence: T::Boolean
+              custom_expiration:
+                T.nilable(
+                  Orb::BetaCreatePlanVersionParams::AddPrice::AllocationPrice::CustomExpiration::OrHash
+                ),
+              expires_at_end_of_cadence: T.nilable(T::Boolean)
             ).returns(T.attached_class)
           end
           def self.new(
@@ -780,9 +804,11 @@ module Orb
             # An ISO 4217 currency string or a custom pricing unit identifier in which to bill
             # this price.
             currency:,
+            # The custom expiration for the allocation.
+            custom_expiration: nil,
             # Whether the allocated amount should expire at the end of the cadence or roll
-            # over to the next period.
-            expires_at_end_of_cadence:
+            # over to the next period. Set to null if using custom_expiration.
+            expires_at_end_of_cadence: nil
           )
           end
 
@@ -793,7 +819,11 @@ module Orb
                 cadence:
                   Orb::BetaCreatePlanVersionParams::AddPrice::AllocationPrice::Cadence::OrSymbol,
                 currency: String,
-                expires_at_end_of_cadence: T::Boolean
+                custom_expiration:
+                  T.nilable(
+                    Orb::BetaCreatePlanVersionParams::AddPrice::AllocationPrice::CustomExpiration
+                  ),
+                expires_at_end_of_cadence: T.nilable(T::Boolean)
               }
             )
           end
@@ -852,6 +882,83 @@ module Orb
               )
             end
             def self.values
+            end
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::BetaCreatePlanVersionParams::AddPrice::AllocationPrice::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::BetaCreatePlanVersionParams::AddPrice::AllocationPrice::CustomExpiration::DurationUnit::OrSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            # The custom expiration for the allocation.
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::BetaCreatePlanVersionParams::AddPrice::AllocationPrice::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::BetaCreatePlanVersionParams::AddPrice::AllocationPrice::CustomExpiration::DurationUnit::OrSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::BetaCreatePlanVersionParams::AddPrice::AllocationPrice::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::BetaCreatePlanVersionParams::AddPrice::AllocationPrice::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::BetaCreatePlanVersionParams::AddPrice::AllocationPrice::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::BetaCreatePlanVersionParams::AddPrice::AllocationPrice::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
             end
           end
         end
@@ -17021,9 +17128,29 @@ module Orb
           sig { returns(String) }
           attr_accessor :currency
 
+          # The custom expiration for the allocation.
+          sig do
+            returns(
+              T.nilable(
+                Orb::BetaCreatePlanVersionParams::ReplacePrice::AllocationPrice::CustomExpiration
+              )
+            )
+          end
+          attr_reader :custom_expiration
+
+          sig do
+            params(
+              custom_expiration:
+                T.nilable(
+                  Orb::BetaCreatePlanVersionParams::ReplacePrice::AllocationPrice::CustomExpiration::OrHash
+                )
+            ).void
+          end
+          attr_writer :custom_expiration
+
           # Whether the allocated amount should expire at the end of the cadence or roll
-          # over to the next period.
-          sig { returns(T::Boolean) }
+          # over to the next period. Set to null if using custom_expiration.
+          sig { returns(T.nilable(T::Boolean)) }
           attr_accessor :expires_at_end_of_cadence
 
           # The allocation price to add to the plan.
@@ -17033,7 +17160,11 @@ module Orb
               cadence:
                 Orb::BetaCreatePlanVersionParams::ReplacePrice::AllocationPrice::Cadence::OrSymbol,
               currency: String,
-              expires_at_end_of_cadence: T::Boolean
+              custom_expiration:
+                T.nilable(
+                  Orb::BetaCreatePlanVersionParams::ReplacePrice::AllocationPrice::CustomExpiration::OrHash
+                ),
+              expires_at_end_of_cadence: T.nilable(T::Boolean)
             ).returns(T.attached_class)
           end
           def self.new(
@@ -17044,9 +17175,11 @@ module Orb
             # An ISO 4217 currency string or a custom pricing unit identifier in which to bill
             # this price.
             currency:,
+            # The custom expiration for the allocation.
+            custom_expiration: nil,
             # Whether the allocated amount should expire at the end of the cadence or roll
-            # over to the next period.
-            expires_at_end_of_cadence:
+            # over to the next period. Set to null if using custom_expiration.
+            expires_at_end_of_cadence: nil
           )
           end
 
@@ -17057,7 +17190,11 @@ module Orb
                 cadence:
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::AllocationPrice::Cadence::OrSymbol,
                 currency: String,
-                expires_at_end_of_cadence: T::Boolean
+                custom_expiration:
+                  T.nilable(
+                    Orb::BetaCreatePlanVersionParams::ReplacePrice::AllocationPrice::CustomExpiration
+                  ),
+                expires_at_end_of_cadence: T.nilable(T::Boolean)
               }
             )
           end
@@ -17116,6 +17253,83 @@ module Orb
               )
             end
             def self.values
+            end
+          end
+
+          class CustomExpiration < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::BetaCreatePlanVersionParams::ReplacePrice::AllocationPrice::CustomExpiration,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Integer) }
+            attr_accessor :duration
+
+            sig do
+              returns(
+                Orb::BetaCreatePlanVersionParams::ReplacePrice::AllocationPrice::CustomExpiration::DurationUnit::OrSymbol
+              )
+            end
+            attr_accessor :duration_unit
+
+            # The custom expiration for the allocation.
+            sig do
+              params(
+                duration: Integer,
+                duration_unit:
+                  Orb::BetaCreatePlanVersionParams::ReplacePrice::AllocationPrice::CustomExpiration::DurationUnit::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(duration:, duration_unit:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  duration: Integer,
+                  duration_unit:
+                    Orb::BetaCreatePlanVersionParams::ReplacePrice::AllocationPrice::CustomExpiration::DurationUnit::OrSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DurationUnit
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::BetaCreatePlanVersionParams::ReplacePrice::AllocationPrice::CustomExpiration::DurationUnit
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DAY =
+                T.let(
+                  :day,
+                  Orb::BetaCreatePlanVersionParams::ReplacePrice::AllocationPrice::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+              MONTH =
+                T.let(
+                  :month,
+                  Orb::BetaCreatePlanVersionParams::ReplacePrice::AllocationPrice::CustomExpiration::DurationUnit::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::BetaCreatePlanVersionParams::ReplacePrice::AllocationPrice::CustomExpiration::DurationUnit::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
             end
           end
         end
