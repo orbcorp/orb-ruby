@@ -64,7 +64,7 @@ module Orb
       #
       # @param event_name [String] A name to meaningfully identify the action or event type.
       #
-      # @param properties [Object] A dictionary of custom properties. Values in this dictionary must be numeric, bo
+      # @param properties [Hash{Symbol=>Object}] A dictionary of custom properties. Values in this dictionary must be numeric, bo
       #
       # @param timestamp [Time] An ISO 8601 format date with no timezone offset (i.e. UTC). This should represen
       #
