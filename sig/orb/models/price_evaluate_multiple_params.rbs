@@ -54,7 +54,7 @@ module Orb
       type event =
         {
           event_name: String,
-          properties: top,
+          properties: ::Hash[Symbol, top],
           timestamp: Time,
           customer_id: String?,
           external_customer_id: String?
@@ -63,7 +63,7 @@ module Orb
       class Event < Orb::Internal::Type::BaseModel
         attr_accessor event_name: String
 
-        attr_accessor properties: top
+        attr_accessor properties: ::Hash[Symbol, top]
 
         attr_accessor timestamp: Time
 
@@ -73,7 +73,7 @@ module Orb
 
         def initialize: (
           event_name: String,
-          properties: top,
+          properties: ::Hash[Symbol, top],
           timestamp: Time,
           ?customer_id: String?,
           ?external_customer_id: String?
@@ -81,7 +81,7 @@ module Orb
 
         def to_hash: -> {
           event_name: String,
-          properties: top,
+          properties: ::Hash[Symbol, top],
           timestamp: Time,
           customer_id: String?,
           external_customer_id: String?

@@ -50,8 +50,8 @@ module Orb
         #   A dictionary of custom properties. Values in this dictionary must be numeric,
         #   boolean, or strings. Nested dictionaries are disallowed.
         #
-        #   @return [Object]
-        required :properties, Orb::Internal::Type::Unknown
+        #   @return [Hash{Symbol=>Object}]
+        required :properties, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
         # @!attribute timestamp
         #   An ISO 8601 format date with no timezone offset (i.e. UTC). This should
@@ -79,7 +79,7 @@ module Orb
         #
         #   @param external_customer_id [String, nil] An alias for the Orb customer, whose mapping is specified when creating the cust
         #
-        #   @param properties [Object] A dictionary of custom properties. Values in this dictionary must be numeric, bo
+        #   @param properties [Hash{Symbol=>Object}] A dictionary of custom properties. Values in this dictionary must be numeric, bo
         #
         #   @param timestamp [Time] An ISO 8601 format date with no timezone offset (i.e. UTC). This should represen
       end

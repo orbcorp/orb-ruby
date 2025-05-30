@@ -8,7 +8,7 @@ module Orb
       def update: (
         String event_id,
         event_name: String,
-        properties: top,
+        properties: ::Hash[Symbol, top],
         timestamp: Time,
         ?customer_id: String?,
         ?external_customer_id: String?,
