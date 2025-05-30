@@ -8,7 +8,7 @@ class Orb::Test::Resources::EventsTest < Orb::Test::ResourceTest
       @orb.events.update(
         "event_id",
         event_name: "event_name",
-        properties: {},
+        properties: {foo: "bar"},
         timestamp: "2020-12-09T16:09:53Z"
       )
 
@@ -44,7 +44,7 @@ class Orb::Test::Resources::EventsTest < Orb::Test::ResourceTest
           {
             event_name: "event_name",
             idempotency_key: "idempotency_key",
-            properties: {},
+            properties: {foo: "bar"},
             timestamp: "2020-12-09T16:09:53Z"
           }
         ]

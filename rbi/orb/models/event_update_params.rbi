@@ -15,7 +15,7 @@ module Orb
 
       # A dictionary of custom properties. Values in this dictionary must be numeric,
       # boolean, or strings. Nested dictionaries are disallowed.
-      sig { returns(T.anything) }
+      sig { returns(T::Hash[Symbol, T.anything]) }
       attr_accessor :properties
 
       # An ISO 8601 format date with no timezone offset (i.e. UTC). This should
@@ -36,7 +36,7 @@ module Orb
       sig do
         params(
           event_name: String,
-          properties: T.anything,
+          properties: T::Hash[Symbol, T.anything],
           timestamp: Time,
           customer_id: T.nilable(String),
           external_customer_id: T.nilable(String),
@@ -66,7 +66,7 @@ module Orb
         override.returns(
           {
             event_name: String,
-            properties: T.anything,
+            properties: T::Hash[Symbol, T.anything],
             timestamp: Time,
             customer_id: T.nilable(String),
             external_customer_id: T.nilable(String),

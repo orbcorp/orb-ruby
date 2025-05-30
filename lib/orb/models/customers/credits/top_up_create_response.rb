@@ -102,8 +102,10 @@ module Orb
             optional :memo, String, nil?: true
 
             # @!attribute require_successful_payment
-            #   If true, new credit blocks created by this top-up will require that the
-            #   corresponding invoice is paid before they can be drawn down from.
+            #   When true, credit blocks created by this top-up will require that the
+            #   corresponding invoice is paid before they are drawn down from. If any topup
+            #   block is pending payment, further automatic top-ups will be paused until the
+            #   invoice is paid or voided.
             #
             #   @return [Boolean, nil]
             optional :require_successful_payment, Orb::Internal::Type::Boolean
@@ -121,7 +123,7 @@ module Orb
             #
             #   @param memo [String, nil] An optional memo to display on the invoice.
             #
-            #   @param require_successful_payment [Boolean] If true, new credit blocks created by this top-up will require that the correspo
+            #   @param require_successful_payment [Boolean] When true, credit blocks created by this top-up will require that the correspond
           end
 
           # The unit of expires_after.

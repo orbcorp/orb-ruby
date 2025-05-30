@@ -58,7 +58,7 @@ module Orb
         params(
           event_id: String,
           event_name: String,
-          properties: T.anything,
+          properties: T::Hash[Symbol, T.anything],
           timestamp: Time,
           customer_id: T.nilable(String),
           external_customer_id: T.nilable(String),
