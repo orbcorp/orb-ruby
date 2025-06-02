@@ -983,6 +983,39 @@ module Orb
       end
 
       # Some parameter documentations has been truncated, see
+      # {Orb::Models::SubscriptionRedeemCouponParams} for more details.
+      #
+      # Redeem a coupon effective at a given time.
+      #
+      # @overload redeem_coupon(subscription_id, change_option:, coupon_id:, allow_invoice_credit_or_void: nil, change_date: nil, request_options: {})
+      #
+      # @param subscription_id [String]
+      #
+      # @param change_option [Symbol, Orb::Models::SubscriptionRedeemCouponParams::ChangeOption]
+      #
+      # @param coupon_id [String] Coupon ID to be redeemed for this subscription.
+      #
+      # @param allow_invoice_credit_or_void [Boolean, nil] If false, this request will fail if it would void an issued invoice or create a
+      #
+      # @param change_date [Time, nil] The date that the coupon discount should take effect. This parameter can only be
+      #
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Orb::Models::SubscriptionRedeemCouponResponse]
+      #
+      # @see Orb::Models::SubscriptionRedeemCouponParams
+      def redeem_coupon(subscription_id, params)
+        parsed, options = Orb::SubscriptionRedeemCouponParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["subscriptions/%1$s/redeem_coupon", subscription_id],
+          body: parsed,
+          model: Orb::Models::SubscriptionRedeemCouponResponse,
+          options: options
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
       # {Orb::Models::SubscriptionSchedulePlanChangeParams} for more details.
       #
       # This endpoint can be used to change an existing subscription's plan. It returns

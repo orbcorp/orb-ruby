@@ -203,6 +203,8 @@ module Orb
 
   class SubscriptionPriceIntervalsParams = Orb::Models::SubscriptionPriceIntervalsParams
 
+  class SubscriptionRedeemCouponParams = Orb::Models::SubscriptionRedeemCouponParams
+
   class SubscriptionsAPI = Orb::Models::SubscriptionsAPI
 
   class SubscriptionSchedulePlanChangeParams = Orb::Models::SubscriptionSchedulePlanChangeParams

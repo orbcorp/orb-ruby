@@ -1,0 +1,54 @@
+module Orb
+  module Models
+    type subscription_redeem_coupon_params =
+      {
+        change_option: Orb::Models::SubscriptionRedeemCouponParams::change_option,
+        coupon_id: String,
+        allow_invoice_credit_or_void: bool?,
+        change_date: Time?
+      }
+      & Orb::Internal::Type::request_parameters
+
+    class SubscriptionRedeemCouponParams < Orb::Internal::Type::BaseModel
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
+
+      attr_accessor change_option: Orb::Models::SubscriptionRedeemCouponParams::change_option
+
+      attr_accessor coupon_id: String
+
+      attr_accessor allow_invoice_credit_or_void: bool?
+
+      attr_accessor change_date: Time?
+
+      def initialize: (
+        change_option: Orb::Models::SubscriptionRedeemCouponParams::change_option,
+        coupon_id: String,
+        ?allow_invoice_credit_or_void: bool?,
+        ?change_date: Time?,
+        ?request_options: Orb::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        change_option: Orb::Models::SubscriptionRedeemCouponParams::change_option,
+        coupon_id: String,
+        allow_invoice_credit_or_void: bool?,
+        change_date: Time?,
+        request_options: Orb::RequestOptions
+      }
+
+      type change_option =
+        :requested_date | :end_of_subscription_term | :immediate
+
+      module ChangeOption
+        extend Orb::Internal::Type::Enum
+
+        REQUESTED_DATE: :requested_date
+        END_OF_SUBSCRIPTION_TERM: :end_of_subscription_term
+        IMMEDIATE: :immediate
+
+        def self?.values: -> ::Array[Orb::Models::SubscriptionRedeemCouponParams::change_option]
+      end
+    end
+  end
+end

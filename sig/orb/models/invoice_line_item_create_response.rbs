@@ -17,7 +17,7 @@ module Orb
         minimum_amount: String?,
         name: String,
         partially_invoiced_amount: String,
-        price: Orb::Models::price?,
+        price: Orb::Models::price,
         quantity: Float,
         start_date: Time,
         sub_line_items: ::Array[Orb::Models::InvoiceLineItemCreateResponse::sub_line_item],
@@ -57,7 +57,7 @@ module Orb
 
       attr_accessor partially_invoiced_amount: String
 
-      attr_accessor price: Orb::Models::price?
+      attr_accessor price: Orb::Models::price
 
       attr_accessor quantity: Float
 
@@ -87,7 +87,7 @@ module Orb
         minimum_amount: String?,
         name: String,
         partially_invoiced_amount: String,
-        price: Orb::Models::price?,
+        price: Orb::Models::price,
         quantity: Float,
         start_date: Time,
         sub_line_items: ::Array[Orb::Models::InvoiceLineItemCreateResponse::sub_line_item],
@@ -112,7 +112,7 @@ module Orb
         minimum_amount: String?,
         name: String,
         partially_invoiced_amount: String,
-        price: Orb::Models::price?,
+        price: Orb::Models::price,
         quantity: Float,
         start_date: Time,
         sub_line_items: ::Array[Orb::Models::InvoiceLineItemCreateResponse::sub_line_item],
