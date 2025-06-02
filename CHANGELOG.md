@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.9.1 (2025-06-02)
+
+Full Changelog: [v0.9.0...v0.9.1](https://github.com/orbcorp/orb-ruby/compare/v0.9.0...v0.9.1)
+
+### Bug Fixes
+
+* `to_sorbet_type` should not return branded types ([14c7e56](https://github.com/orbcorp/orb-ruby/commit/14c7e5619ef77352b5f86d1c7fa70648c403849a))
+
+
+### Chores
+
+* **internal:** version bump ([0369cd3](https://github.com/orbcorp/orb-ruby/commit/0369cd3adb7733d10c0fabf71ee4d211685d4c5a))
+
 ## 0.9.0 (2025-05-30)
 
 Full Changelog: [v0.8.0...v0.9.0](https://github.com/orbcorp/orb-ruby/compare/v0.8.0...v0.9.0)
