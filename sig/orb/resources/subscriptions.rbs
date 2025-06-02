@@ -119,6 +119,15 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> Orb::Models::SubscriptionPriceIntervalsResponse
 
+      def redeem_coupon: (
+        String subscription_id,
+        change_option: Orb::Models::SubscriptionRedeemCouponParams::change_option,
+        coupon_id: String,
+        ?allow_invoice_credit_or_void: bool?,
+        ?change_date: Time?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::SubscriptionRedeemCouponResponse
+
       def schedule_plan_change: (
         String subscription_id,
         change_option: Orb::Models::SubscriptionSchedulePlanChangeParams::change_option,

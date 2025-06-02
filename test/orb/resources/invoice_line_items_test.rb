@@ -35,7 +35,7 @@ class Orb::Test::Resources::InvoiceLineItemsTest < Orb::Test::ResourceTest
         minimum_amount: String | nil,
         name: String,
         partially_invoiced_amount: String,
-        price: Orb::Price | nil,
+        price: Orb::Price,
         quantity: Float,
         start_date: Time,
         sub_line_items: ^(Orb::Internal::Type::ArrayOf[union: Orb::Models::InvoiceLineItemCreateResponse::SubLineItem]),

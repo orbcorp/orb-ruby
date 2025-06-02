@@ -116,7 +116,7 @@ module Orb
       #
       # For more on the types of prices, see
       # [the core concepts documentation](/core-concepts#plan-and-price)
-      sig { returns(T.nilable(Orb::Price::Variants)) }
+      sig { returns(Orb::Price::Variants) }
       attr_accessor :price
 
       # Either the fixed fee quantity or the usage during the service period.
@@ -194,37 +194,35 @@ module Orb
           name: String,
           partially_invoiced_amount: String,
           price:
-            T.nilable(
-              T.any(
-                Orb::Price::Unit::OrHash,
-                Orb::Price::Package::OrHash,
-                Orb::Price::Matrix::OrHash,
-                Orb::Price::Tiered::OrHash,
-                Orb::Price::TieredBps::OrHash,
-                Orb::Price::Bps::OrHash,
-                Orb::Price::BulkBps::OrHash,
-                Orb::Price::Bulk::OrHash,
-                Orb::Price::ThresholdTotalAmount::OrHash,
-                Orb::Price::TieredPackage::OrHash,
-                Orb::Price::GroupedTiered::OrHash,
-                Orb::Price::TieredWithMinimum::OrHash,
-                Orb::Price::TieredPackageWithMinimum::OrHash,
-                Orb::Price::PackageWithAllocation::OrHash,
-                Orb::Price::UnitWithPercent::OrHash,
-                Orb::Price::MatrixWithAllocation::OrHash,
-                Orb::Price::TieredWithProration::OrHash,
-                Orb::Price::UnitWithProration::OrHash,
-                Orb::Price::GroupedAllocation::OrHash,
-                Orb::Price::GroupedWithProratedMinimum::OrHash,
-                Orb::Price::GroupedWithMeteredMinimum::OrHash,
-                Orb::Price::MatrixWithDisplayName::OrHash,
-                Orb::Price::BulkWithProration::OrHash,
-                Orb::Price::GroupedTieredPackage::OrHash,
-                Orb::Price::MaxGroupTieredPackage::OrHash,
-                Orb::Price::ScalableMatrixWithUnitPricing::OrHash,
-                Orb::Price::ScalableMatrixWithTieredPricing::OrHash,
-                Orb::Price::CumulativeGroupedBulk::OrHash
-              )
+            T.any(
+              Orb::Price::Unit::OrHash,
+              Orb::Price::Package::OrHash,
+              Orb::Price::Matrix::OrHash,
+              Orb::Price::Tiered::OrHash,
+              Orb::Price::TieredBps::OrHash,
+              Orb::Price::Bps::OrHash,
+              Orb::Price::BulkBps::OrHash,
+              Orb::Price::Bulk::OrHash,
+              Orb::Price::ThresholdTotalAmount::OrHash,
+              Orb::Price::TieredPackage::OrHash,
+              Orb::Price::GroupedTiered::OrHash,
+              Orb::Price::TieredWithMinimum::OrHash,
+              Orb::Price::TieredPackageWithMinimum::OrHash,
+              Orb::Price::PackageWithAllocation::OrHash,
+              Orb::Price::UnitWithPercent::OrHash,
+              Orb::Price::MatrixWithAllocation::OrHash,
+              Orb::Price::TieredWithProration::OrHash,
+              Orb::Price::UnitWithProration::OrHash,
+              Orb::Price::GroupedAllocation::OrHash,
+              Orb::Price::GroupedWithProratedMinimum::OrHash,
+              Orb::Price::GroupedWithMeteredMinimum::OrHash,
+              Orb::Price::MatrixWithDisplayName::OrHash,
+              Orb::Price::BulkWithProration::OrHash,
+              Orb::Price::GroupedTieredPackage::OrHash,
+              Orb::Price::MaxGroupTieredPackage::OrHash,
+              Orb::Price::ScalableMatrixWithUnitPricing::OrHash,
+              Orb::Price::ScalableMatrixWithTieredPricing::OrHash,
+              Orb::Price::CumulativeGroupedBulk::OrHash
             ),
           quantity: Float,
           start_date: Time,
@@ -331,7 +329,7 @@ module Orb
             minimum_amount: T.nilable(String),
             name: String,
             partially_invoiced_amount: String,
-            price: T.nilable(Orb::Price::Variants),
+            price: Orb::Price::Variants,
             quantity: Float,
             start_date: Time,
             sub_line_items:
