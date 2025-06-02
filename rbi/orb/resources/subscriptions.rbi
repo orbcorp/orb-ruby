@@ -1007,6 +1007,34 @@ module Orb
       )
       end
 
+      # Redeem a coupon effective at a given time.
+      sig do
+        params(
+          subscription_id: String,
+          change_option:
+            Orb::SubscriptionRedeemCouponParams::ChangeOption::OrSymbol,
+          coupon_id: String,
+          allow_invoice_credit_or_void: T.nilable(T::Boolean),
+          change_date: T.nilable(Time),
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Models::SubscriptionRedeemCouponResponse)
+      end
+      def redeem_coupon(
+        subscription_id,
+        change_option:,
+        # Coupon ID to be redeemed for this subscription.
+        coupon_id:,
+        # If false, this request will fail if it would void an issued invoice or create a
+        # credit note. Consider using this as a safety mechanism if you do not expect
+        # existing invoices to be changed.
+        allow_invoice_credit_or_void: nil,
+        # The date that the coupon discount should take effect. This parameter can only be
+        # passed if the `change_option` is `requested_date`.
+        change_date: nil,
+        request_options: {}
+      )
+      end
+
       # This endpoint can be used to change an existing subscription's plan. It returns
       # the serialized updated subscription object.
       #
