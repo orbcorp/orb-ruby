@@ -1357,7 +1357,7 @@ module Orb
       end
 
       # This endpoint can be used to unschedule any pending plan changes on an existing
-      # subscription.
+      # subscription. When called, all upcoming plan changes will be unscheduled.
       #
       # @overload unschedule_pending_plan_changes(subscription_id, request_options: {})
       #
