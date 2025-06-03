@@ -1436,7 +1436,7 @@ module Orb
       end
 
       # This endpoint can be used to unschedule any pending plan changes on an existing
-      # subscription.
+      # subscription. When called, all upcoming plan changes will be unscheduled.
       sig do
         params(
           subscription_id: String,
