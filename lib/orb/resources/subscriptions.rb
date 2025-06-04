@@ -987,17 +987,19 @@ module Orb
       #
       # Redeem a coupon effective at a given time.
       #
-      # @overload redeem_coupon(subscription_id, change_option:, coupon_id:, allow_invoice_credit_or_void: nil, change_date: nil, request_options: {})
+      # @overload redeem_coupon(subscription_id, change_option:, allow_invoice_credit_or_void: nil, change_date: nil, coupon_id: nil, coupon_redemption_code: nil, request_options: {})
       #
       # @param subscription_id [String]
       #
       # @param change_option [Symbol, Orb::Models::SubscriptionRedeemCouponParams::ChangeOption]
       #
-      # @param coupon_id [String] Coupon ID to be redeemed for this subscription.
-      #
       # @param allow_invoice_credit_or_void [Boolean, nil] If false, this request will fail if it would void an issued invoice or create a
       #
       # @param change_date [Time, nil] The date that the coupon discount should take effect. This parameter can only be
+      #
+      # @param coupon_id [String, nil] Coupon ID to be redeemed for this subscription.
+      #
+      # @param coupon_redemption_code [String, nil] Redemption code of the coupon to be redeemed for this subscription.
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
