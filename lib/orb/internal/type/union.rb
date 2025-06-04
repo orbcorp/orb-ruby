@@ -24,21 +24,16 @@ module Orb
       #     discount_type: :percentage,
       #     percentage_discount: percentage_discount,
       #     applies_to_price_ids: applies_to_price_ids,
-      #     reason: reason
+      #     filters: filters
       #   }
       #     puts(percentage_discount)
-      #   in {
-      #     discount_type: :trial,
-      #     applies_to_price_ids: applies_to_price_ids,
-      #     reason: reason,
-      #     trial_amount_discount: trial_amount_discount
-      #   }
+      #   in {discount_type: :trial, applies_to_price_ids: applies_to_price_ids, filters: filters, reason: reason}
       #     puts(applies_to_price_ids)
       #   in {
       #     discount_type: :usage,
       #     usage_discount: usage_discount,
       #     applies_to_price_ids: applies_to_price_ids,
-      #     reason: reason
+      #     filters: filters
       #   }
       #     puts(usage_discount)
       #   else
