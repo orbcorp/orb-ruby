@@ -326,6 +326,8 @@ module Orb
         end
 
         # @api private
+        #
+        # https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.1.md#special-considerations-for-multipart-content
         sig do
           params(body: T.anything).returns([String, T::Enumerable[String]])
         end
