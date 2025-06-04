@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.12.0 (2025-06-04)
+
+Full Changelog: [v0.11.0...v0.12.0](https://github.com/orbcorp/orb-ruby/compare/v0.11.0...v0.12.0)
+
+### Features
+
+* **api:** api update ([b968df3](https://github.com/orbcorp/orb-ruby/commit/b968df3383cda68a45c14406a4c1194e9d9d6ceb))
+* **api:** api update ([5120730](https://github.com/orbcorp/orb-ruby/commit/5120730c192916f56c2d4cf867143ea58add104d))
+
+
+### Bug Fixes
+
+* default content-type for text in multi-part formdata uploads should be text/plain ([0095004](https://github.com/orbcorp/orb-ruby/commit/0095004d4fd8f0c26dff9e5a783110590ff510a9))
+
+
+### Chores
+
+* **internal:** version bump ([a6f9ef1](https://github.com/orbcorp/orb-ruby/commit/a6f9ef14e92c16e31e42246dca9edcb6eef741fd))
+
 ## 0.11.0 (2025-06-03)
 
 Full Changelog: [v0.10.0...v0.11.0](https://github.com/orbcorp/orb-ruby/compare/v0.10.0...v0.11.0)
