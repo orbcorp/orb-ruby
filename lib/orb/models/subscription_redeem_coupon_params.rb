@@ -12,12 +12,6 @@ module Orb
       #   @return [Symbol, Orb::Models::SubscriptionRedeemCouponParams::ChangeOption]
       required :change_option, enum: -> { Orb::SubscriptionRedeemCouponParams::ChangeOption }
 
-      # @!attribute coupon_id
-      #   Coupon ID to be redeemed for this subscription.
-      #
-      #   @return [String]
-      required :coupon_id, String
-
       # @!attribute allow_invoice_credit_or_void
       #   If false, this request will fail if it would void an issued invoice or create a
       #   credit note. Consider using this as a safety mechanism if you do not expect
@@ -33,17 +27,31 @@ module Orb
       #   @return [Time, nil]
       optional :change_date, Time, nil?: true
 
-      # @!method initialize(change_option:, coupon_id:, allow_invoice_credit_or_void: nil, change_date: nil, request_options: {})
+      # @!attribute coupon_id
+      #   Coupon ID to be redeemed for this subscription.
+      #
+      #   @return [String, nil]
+      optional :coupon_id, String, nil?: true
+
+      # @!attribute coupon_redemption_code
+      #   Redemption code of the coupon to be redeemed for this subscription.
+      #
+      #   @return [String, nil]
+      optional :coupon_redemption_code, String, nil?: true
+
+      # @!method initialize(change_option:, allow_invoice_credit_or_void: nil, change_date: nil, coupon_id: nil, coupon_redemption_code: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::SubscriptionRedeemCouponParams} for more details.
       #
       #   @param change_option [Symbol, Orb::Models::SubscriptionRedeemCouponParams::ChangeOption]
       #
-      #   @param coupon_id [String] Coupon ID to be redeemed for this subscription.
-      #
       #   @param allow_invoice_credit_or_void [Boolean, nil] If false, this request will fail if it would void an issued invoice or create a
       #
       #   @param change_date [Time, nil] The date that the coupon discount should take effect. This parameter can only be
+      #
+      #   @param coupon_id [String, nil] Coupon ID to be redeemed for this subscription.
+      #
+      #   @param coupon_redemption_code [String, nil] Redemption code of the coupon to be redeemed for this subscription.
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 

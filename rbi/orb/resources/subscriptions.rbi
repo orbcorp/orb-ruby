@@ -1013,17 +1013,16 @@ module Orb
           subscription_id: String,
           change_option:
             Orb::SubscriptionRedeemCouponParams::ChangeOption::OrSymbol,
-          coupon_id: String,
           allow_invoice_credit_or_void: T.nilable(T::Boolean),
           change_date: T.nilable(Time),
+          coupon_id: T.nilable(String),
+          coupon_redemption_code: T.nilable(String),
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Models::SubscriptionRedeemCouponResponse)
       end
       def redeem_coupon(
         subscription_id,
         change_option:,
-        # Coupon ID to be redeemed for this subscription.
-        coupon_id:,
         # If false, this request will fail if it would void an issued invoice or create a
         # credit note. Consider using this as a safety mechanism if you do not expect
         # existing invoices to be changed.
@@ -1031,6 +1030,10 @@ module Orb
         # The date that the coupon discount should take effect. This parameter can only be
         # passed if the `change_option` is `requested_date`.
         change_date: nil,
+        # Coupon ID to be redeemed for this subscription.
+        coupon_id: nil,
+        # Redemption code of the coupon to be redeemed for this subscription.
+        coupon_redemption_code: nil,
         request_options: {}
       )
       end
