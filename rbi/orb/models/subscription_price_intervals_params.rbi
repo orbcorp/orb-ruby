@@ -16438,9 +16438,39 @@ module Orb
             sig { returns(Float) }
             attr_accessor :percentage_discount
 
+            # If set, the adjustment will apply to every price on the subscription.
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::AppliesToAll::OrBoolean
+                )
+              )
+            end
+            attr_accessor :applies_to_all
+
+            # The set of item IDs to which this adjustment applies.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_accessor :applies_to_item_ids
+
             # The set of price IDs to which this adjustment applies.
             sig { returns(T.nilable(T::Array[String])) }
             attr_accessor :applies_to_price_ids
+
+            # If set, only prices in the specified currency will have the adjustment applied.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :currency
+
+            # A list of filters that determine which prices this adjustment will apply to.
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::Filter
+                  ]
+                )
+              )
+            end
+            attr_accessor :filters
 
             # When false, this adjustment will be applied to a single price. Otherwise, it
             # will be applied at the invoice level, possibly to multiple prices.
@@ -16450,21 +16480,57 @@ module Orb
             sig { params(is_invoice_level: T::Boolean).void }
             attr_writer :is_invoice_level
 
+            # If set, only prices of the specified type will have the adjustment applied.
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::PriceType::OrSymbol
+                )
+              )
+            end
+            attr_accessor :price_type
+
             sig do
               params(
                 percentage_discount: Float,
+                applies_to_all:
+                  T.nilable(
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::AppliesToAll::OrBoolean
+                  ),
+                applies_to_item_ids: T.nilable(T::Array[String]),
                 applies_to_price_ids: T.nilable(T::Array[String]),
+                currency: T.nilable(String),
+                filters:
+                  T.nilable(
+                    T::Array[
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::Filter::OrHash
+                    ]
+                  ),
                 is_invoice_level: T::Boolean,
+                price_type:
+                  T.nilable(
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::PriceType::OrSymbol
+                  ),
                 adjustment_type: Symbol
               ).returns(T.attached_class)
             end
             def self.new(
               percentage_discount:,
+              # If set, the adjustment will apply to every price on the subscription.
+              applies_to_all: nil,
+              # The set of item IDs to which this adjustment applies.
+              applies_to_item_ids: nil,
               # The set of price IDs to which this adjustment applies.
               applies_to_price_ids: nil,
+              # If set, only prices in the specified currency will have the adjustment applied.
+              currency: nil,
+              # A list of filters that determine which prices this adjustment will apply to.
+              filters: nil,
               # When false, this adjustment will be applied to a single price. Otherwise, it
               # will be applied at the invoice level, possibly to multiple prices.
               is_invoice_level: nil,
+              # If set, only prices of the specified type will have the adjustment applied.
+              price_type: nil,
               adjustment_type: :percentage_discount
             )
             end
@@ -16474,12 +16540,256 @@ module Orb
                 {
                   adjustment_type: Symbol,
                   percentage_discount: Float,
+                  applies_to_all:
+                    T.nilable(
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::AppliesToAll::OrBoolean
+                    ),
+                  applies_to_item_ids: T.nilable(T::Array[String]),
                   applies_to_price_ids: T.nilable(T::Array[String]),
-                  is_invoice_level: T::Boolean
+                  currency: T.nilable(String),
+                  filters:
+                    T.nilable(
+                      T::Array[
+                        Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::Filter
+                      ]
+                    ),
+                  is_invoice_level: T::Boolean,
+                  price_type:
+                    T.nilable(
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::PriceType::OrSymbol
+                    )
                 }
               )
             end
             def to_hash
+            end
+
+            # If set, the adjustment will apply to every price on the subscription.
+            module AppliesToAll
+              extend Orb::Internal::Type::Enum
+
+              TaggedBoolean =
+                T.type_alias do
+                  T.all(
+                    T::Boolean,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::AppliesToAll
+                  )
+                end
+              OrBoolean = T.type_alias { T::Boolean }
+
+              TRUE =
+                T.let(
+                  true,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::AppliesToAll::TaggedBoolean
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::AppliesToAll::TaggedBoolean
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            class Filter < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::Filter,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The property of the price to filter on.
+              sig do
+                returns(
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::Filter::Field::OrSymbol
+                )
+              end
+              attr_accessor :field
+
+              # Should prices that match the filter be included or excluded.
+              sig do
+                returns(
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::Filter::Operator::OrSymbol
+                )
+              end
+              attr_accessor :operator
+
+              # The IDs or values that match this filter.
+              sig { returns(T::Array[String]) }
+              attr_accessor :values
+
+              sig do
+                params(
+                  field:
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::Filter::Field::OrSymbol,
+                  operator:
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::Filter::Operator::OrSymbol,
+                  values: T::Array[String]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The property of the price to filter on.
+                field:,
+                # Should prices that match the filter be included or excluded.
+                operator:,
+                # The IDs or values that match this filter.
+                values:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    field:
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::Filter::Field::OrSymbol,
+                    operator:
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::Filter::Operator::OrSymbol,
+                    values: T::Array[String]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The property of the price to filter on.
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::Filter::Field
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                PRICE_ID =
+                  T.let(
+                    :price_id,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::Filter::Field::TaggedSymbol
+                  )
+                ITEM_ID =
+                  T.let(
+                    :item_id,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::Filter::Field::TaggedSymbol
+                  )
+                PRICE_TYPE =
+                  T.let(
+                    :price_type,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::Filter::Field::TaggedSymbol
+                  )
+                CURRENCY =
+                  T.let(
+                    :currency,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::Filter::Field::TaggedSymbol
+                  )
+                PRICING_UNIT_ID =
+                  T.let(
+                    :pricing_unit_id,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::Filter::Field::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::Filter::Field::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Should prices that match the filter be included or excluded.
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::Filter::Operator
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                INCLUDES =
+                  T.let(
+                    :includes,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::Filter::Operator::TaggedSymbol
+                  )
+                EXCLUDES =
+                  T.let(
+                    :excludes,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::Filter::Operator::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::Filter::Operator::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+
+            # If set, only prices of the specified type will have the adjustment applied.
+            module PriceType
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::PriceType
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              USAGE =
+                T.let(
+                  :usage,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::PriceType::TaggedSymbol
+                )
+              FIXED_IN_ADVANCE =
+                T.let(
+                  :fixed_in_advance,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::PriceType::TaggedSymbol
+                )
+              FIXED_IN_ARREARS =
+                T.let(
+                  :fixed_in_arrears,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::PriceType::TaggedSymbol
+                )
+              FIXED =
+                T.let(
+                  :fixed,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::PriceType::TaggedSymbol
+                )
+              IN_ARREARS =
+                T.let(
+                  :in_arrears,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::PriceType::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::PercentageDiscount::PriceType::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
             end
           end
 
@@ -16498,9 +16808,39 @@ module Orb
             sig { returns(Float) }
             attr_accessor :usage_discount
 
+            # If set, the adjustment will apply to every price on the subscription.
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::AppliesToAll::OrBoolean
+                )
+              )
+            end
+            attr_accessor :applies_to_all
+
+            # The set of item IDs to which this adjustment applies.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_accessor :applies_to_item_ids
+
             # The set of price IDs to which this adjustment applies.
             sig { returns(T.nilable(T::Array[String])) }
             attr_accessor :applies_to_price_ids
+
+            # If set, only prices in the specified currency will have the adjustment applied.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :currency
+
+            # A list of filters that determine which prices this adjustment will apply to.
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::Filter
+                  ]
+                )
+              )
+            end
+            attr_accessor :filters
 
             # When false, this adjustment will be applied to a single price. Otherwise, it
             # will be applied at the invoice level, possibly to multiple prices.
@@ -16510,21 +16850,57 @@ module Orb
             sig { params(is_invoice_level: T::Boolean).void }
             attr_writer :is_invoice_level
 
+            # If set, only prices of the specified type will have the adjustment applied.
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::PriceType::OrSymbol
+                )
+              )
+            end
+            attr_accessor :price_type
+
             sig do
               params(
                 usage_discount: Float,
+                applies_to_all:
+                  T.nilable(
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::AppliesToAll::OrBoolean
+                  ),
+                applies_to_item_ids: T.nilable(T::Array[String]),
                 applies_to_price_ids: T.nilable(T::Array[String]),
+                currency: T.nilable(String),
+                filters:
+                  T.nilable(
+                    T::Array[
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::Filter::OrHash
+                    ]
+                  ),
                 is_invoice_level: T::Boolean,
+                price_type:
+                  T.nilable(
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::PriceType::OrSymbol
+                  ),
                 adjustment_type: Symbol
               ).returns(T.attached_class)
             end
             def self.new(
               usage_discount:,
+              # If set, the adjustment will apply to every price on the subscription.
+              applies_to_all: nil,
+              # The set of item IDs to which this adjustment applies.
+              applies_to_item_ids: nil,
               # The set of price IDs to which this adjustment applies.
               applies_to_price_ids: nil,
+              # If set, only prices in the specified currency will have the adjustment applied.
+              currency: nil,
+              # A list of filters that determine which prices this adjustment will apply to.
+              filters: nil,
               # When false, this adjustment will be applied to a single price. Otherwise, it
               # will be applied at the invoice level, possibly to multiple prices.
               is_invoice_level: nil,
+              # If set, only prices of the specified type will have the adjustment applied.
+              price_type: nil,
               adjustment_type: :usage_discount
             )
             end
@@ -16534,12 +16910,256 @@ module Orb
                 {
                   adjustment_type: Symbol,
                   usage_discount: Float,
+                  applies_to_all:
+                    T.nilable(
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::AppliesToAll::OrBoolean
+                    ),
+                  applies_to_item_ids: T.nilable(T::Array[String]),
                   applies_to_price_ids: T.nilable(T::Array[String]),
-                  is_invoice_level: T::Boolean
+                  currency: T.nilable(String),
+                  filters:
+                    T.nilable(
+                      T::Array[
+                        Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::Filter
+                      ]
+                    ),
+                  is_invoice_level: T::Boolean,
+                  price_type:
+                    T.nilable(
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::PriceType::OrSymbol
+                    )
                 }
               )
             end
             def to_hash
+            end
+
+            # If set, the adjustment will apply to every price on the subscription.
+            module AppliesToAll
+              extend Orb::Internal::Type::Enum
+
+              TaggedBoolean =
+                T.type_alias do
+                  T.all(
+                    T::Boolean,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::AppliesToAll
+                  )
+                end
+              OrBoolean = T.type_alias { T::Boolean }
+
+              TRUE =
+                T.let(
+                  true,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::AppliesToAll::TaggedBoolean
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::AppliesToAll::TaggedBoolean
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            class Filter < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::Filter,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The property of the price to filter on.
+              sig do
+                returns(
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::Filter::Field::OrSymbol
+                )
+              end
+              attr_accessor :field
+
+              # Should prices that match the filter be included or excluded.
+              sig do
+                returns(
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::Filter::Operator::OrSymbol
+                )
+              end
+              attr_accessor :operator
+
+              # The IDs or values that match this filter.
+              sig { returns(T::Array[String]) }
+              attr_accessor :values
+
+              sig do
+                params(
+                  field:
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::Filter::Field::OrSymbol,
+                  operator:
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::Filter::Operator::OrSymbol,
+                  values: T::Array[String]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The property of the price to filter on.
+                field:,
+                # Should prices that match the filter be included or excluded.
+                operator:,
+                # The IDs or values that match this filter.
+                values:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    field:
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::Filter::Field::OrSymbol,
+                    operator:
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::Filter::Operator::OrSymbol,
+                    values: T::Array[String]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The property of the price to filter on.
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::Filter::Field
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                PRICE_ID =
+                  T.let(
+                    :price_id,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::Filter::Field::TaggedSymbol
+                  )
+                ITEM_ID =
+                  T.let(
+                    :item_id,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::Filter::Field::TaggedSymbol
+                  )
+                PRICE_TYPE =
+                  T.let(
+                    :price_type,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::Filter::Field::TaggedSymbol
+                  )
+                CURRENCY =
+                  T.let(
+                    :currency,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::Filter::Field::TaggedSymbol
+                  )
+                PRICING_UNIT_ID =
+                  T.let(
+                    :pricing_unit_id,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::Filter::Field::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::Filter::Field::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Should prices that match the filter be included or excluded.
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::Filter::Operator
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                INCLUDES =
+                  T.let(
+                    :includes,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::Filter::Operator::TaggedSymbol
+                  )
+                EXCLUDES =
+                  T.let(
+                    :excludes,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::Filter::Operator::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::Filter::Operator::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+
+            # If set, only prices of the specified type will have the adjustment applied.
+            module PriceType
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::PriceType
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              USAGE =
+                T.let(
+                  :usage,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::PriceType::TaggedSymbol
+                )
+              FIXED_IN_ADVANCE =
+                T.let(
+                  :fixed_in_advance,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::PriceType::TaggedSymbol
+                )
+              FIXED_IN_ARREARS =
+                T.let(
+                  :fixed_in_arrears,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::PriceType::TaggedSymbol
+                )
+              FIXED =
+                T.let(
+                  :fixed,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::PriceType::TaggedSymbol
+                )
+              IN_ARREARS =
+                T.let(
+                  :in_arrears,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::PriceType::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::UsageDiscount::PriceType::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
             end
           end
 
@@ -16558,9 +17178,39 @@ module Orb
             sig { returns(String) }
             attr_accessor :amount_discount
 
+            # If set, the adjustment will apply to every price on the subscription.
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::AppliesToAll::OrBoolean
+                )
+              )
+            end
+            attr_accessor :applies_to_all
+
+            # The set of item IDs to which this adjustment applies.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_accessor :applies_to_item_ids
+
             # The set of price IDs to which this adjustment applies.
             sig { returns(T.nilable(T::Array[String])) }
             attr_accessor :applies_to_price_ids
+
+            # If set, only prices in the specified currency will have the adjustment applied.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :currency
+
+            # A list of filters that determine which prices this adjustment will apply to.
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::Filter
+                  ]
+                )
+              )
+            end
+            attr_accessor :filters
 
             # When false, this adjustment will be applied to a single price. Otherwise, it
             # will be applied at the invoice level, possibly to multiple prices.
@@ -16570,21 +17220,57 @@ module Orb
             sig { params(is_invoice_level: T::Boolean).void }
             attr_writer :is_invoice_level
 
+            # If set, only prices of the specified type will have the adjustment applied.
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::PriceType::OrSymbol
+                )
+              )
+            end
+            attr_accessor :price_type
+
             sig do
               params(
                 amount_discount: String,
+                applies_to_all:
+                  T.nilable(
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::AppliesToAll::OrBoolean
+                  ),
+                applies_to_item_ids: T.nilable(T::Array[String]),
                 applies_to_price_ids: T.nilable(T::Array[String]),
+                currency: T.nilable(String),
+                filters:
+                  T.nilable(
+                    T::Array[
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::Filter::OrHash
+                    ]
+                  ),
                 is_invoice_level: T::Boolean,
+                price_type:
+                  T.nilable(
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::PriceType::OrSymbol
+                  ),
                 adjustment_type: Symbol
               ).returns(T.attached_class)
             end
             def self.new(
               amount_discount:,
+              # If set, the adjustment will apply to every price on the subscription.
+              applies_to_all: nil,
+              # The set of item IDs to which this adjustment applies.
+              applies_to_item_ids: nil,
               # The set of price IDs to which this adjustment applies.
               applies_to_price_ids: nil,
+              # If set, only prices in the specified currency will have the adjustment applied.
+              currency: nil,
+              # A list of filters that determine which prices this adjustment will apply to.
+              filters: nil,
               # When false, this adjustment will be applied to a single price. Otherwise, it
               # will be applied at the invoice level, possibly to multiple prices.
               is_invoice_level: nil,
+              # If set, only prices of the specified type will have the adjustment applied.
+              price_type: nil,
               adjustment_type: :amount_discount
             )
             end
@@ -16594,12 +17280,256 @@ module Orb
                 {
                   adjustment_type: Symbol,
                   amount_discount: String,
+                  applies_to_all:
+                    T.nilable(
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::AppliesToAll::OrBoolean
+                    ),
+                  applies_to_item_ids: T.nilable(T::Array[String]),
                   applies_to_price_ids: T.nilable(T::Array[String]),
-                  is_invoice_level: T::Boolean
+                  currency: T.nilable(String),
+                  filters:
+                    T.nilable(
+                      T::Array[
+                        Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::Filter
+                      ]
+                    ),
+                  is_invoice_level: T::Boolean,
+                  price_type:
+                    T.nilable(
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::PriceType::OrSymbol
+                    )
                 }
               )
             end
             def to_hash
+            end
+
+            # If set, the adjustment will apply to every price on the subscription.
+            module AppliesToAll
+              extend Orb::Internal::Type::Enum
+
+              TaggedBoolean =
+                T.type_alias do
+                  T.all(
+                    T::Boolean,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::AppliesToAll
+                  )
+                end
+              OrBoolean = T.type_alias { T::Boolean }
+
+              TRUE =
+                T.let(
+                  true,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::AppliesToAll::TaggedBoolean
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::AppliesToAll::TaggedBoolean
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            class Filter < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::Filter,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The property of the price to filter on.
+              sig do
+                returns(
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::Filter::Field::OrSymbol
+                )
+              end
+              attr_accessor :field
+
+              # Should prices that match the filter be included or excluded.
+              sig do
+                returns(
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::Filter::Operator::OrSymbol
+                )
+              end
+              attr_accessor :operator
+
+              # The IDs or values that match this filter.
+              sig { returns(T::Array[String]) }
+              attr_accessor :values
+
+              sig do
+                params(
+                  field:
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::Filter::Field::OrSymbol,
+                  operator:
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::Filter::Operator::OrSymbol,
+                  values: T::Array[String]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The property of the price to filter on.
+                field:,
+                # Should prices that match the filter be included or excluded.
+                operator:,
+                # The IDs or values that match this filter.
+                values:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    field:
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::Filter::Field::OrSymbol,
+                    operator:
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::Filter::Operator::OrSymbol,
+                    values: T::Array[String]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The property of the price to filter on.
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::Filter::Field
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                PRICE_ID =
+                  T.let(
+                    :price_id,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::Filter::Field::TaggedSymbol
+                  )
+                ITEM_ID =
+                  T.let(
+                    :item_id,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::Filter::Field::TaggedSymbol
+                  )
+                PRICE_TYPE =
+                  T.let(
+                    :price_type,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::Filter::Field::TaggedSymbol
+                  )
+                CURRENCY =
+                  T.let(
+                    :currency,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::Filter::Field::TaggedSymbol
+                  )
+                PRICING_UNIT_ID =
+                  T.let(
+                    :pricing_unit_id,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::Filter::Field::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::Filter::Field::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Should prices that match the filter be included or excluded.
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::Filter::Operator
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                INCLUDES =
+                  T.let(
+                    :includes,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::Filter::Operator::TaggedSymbol
+                  )
+                EXCLUDES =
+                  T.let(
+                    :excludes,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::Filter::Operator::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::Filter::Operator::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+
+            # If set, only prices of the specified type will have the adjustment applied.
+            module PriceType
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::PriceType
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              USAGE =
+                T.let(
+                  :usage,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::PriceType::TaggedSymbol
+                )
+              FIXED_IN_ADVANCE =
+                T.let(
+                  :fixed_in_advance,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::PriceType::TaggedSymbol
+                )
+              FIXED_IN_ARREARS =
+                T.let(
+                  :fixed_in_arrears,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::PriceType::TaggedSymbol
+                )
+              FIXED =
+                T.let(
+                  :fixed,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::PriceType::TaggedSymbol
+                )
+              IN_ARREARS =
+                T.let(
+                  :in_arrears,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::PriceType::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::AmountDiscount::PriceType::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
             end
           end
 
@@ -16622,9 +17552,39 @@ module Orb
             sig { returns(String) }
             attr_accessor :minimum_amount
 
+            # If set, the adjustment will apply to every price on the subscription.
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::AppliesToAll::OrBoolean
+                )
+              )
+            end
+            attr_accessor :applies_to_all
+
+            # The set of item IDs to which this adjustment applies.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_accessor :applies_to_item_ids
+
             # The set of price IDs to which this adjustment applies.
             sig { returns(T.nilable(T::Array[String])) }
             attr_accessor :applies_to_price_ids
+
+            # If set, only prices in the specified currency will have the adjustment applied.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :currency
+
+            # A list of filters that determine which prices this adjustment will apply to.
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::Filter
+                  ]
+                )
+              )
+            end
+            attr_accessor :filters
 
             # When false, this adjustment will be applied to a single price. Otherwise, it
             # will be applied at the invoice level, possibly to multiple prices.
@@ -16634,12 +17594,38 @@ module Orb
             sig { params(is_invoice_level: T::Boolean).void }
             attr_writer :is_invoice_level
 
+            # If set, only prices of the specified type will have the adjustment applied.
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::PriceType::OrSymbol
+                )
+              )
+            end
+            attr_accessor :price_type
+
             sig do
               params(
                 item_id: String,
                 minimum_amount: String,
+                applies_to_all:
+                  T.nilable(
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::AppliesToAll::OrBoolean
+                  ),
+                applies_to_item_ids: T.nilable(T::Array[String]),
                 applies_to_price_ids: T.nilable(T::Array[String]),
+                currency: T.nilable(String),
+                filters:
+                  T.nilable(
+                    T::Array[
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::Filter::OrHash
+                    ]
+                  ),
                 is_invoice_level: T::Boolean,
+                price_type:
+                  T.nilable(
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::PriceType::OrSymbol
+                  ),
                 adjustment_type: Symbol
               ).returns(T.attached_class)
             end
@@ -16647,11 +17633,21 @@ module Orb
               # The item ID that revenue from this minimum will be attributed to.
               item_id:,
               minimum_amount:,
+              # If set, the adjustment will apply to every price on the subscription.
+              applies_to_all: nil,
+              # The set of item IDs to which this adjustment applies.
+              applies_to_item_ids: nil,
               # The set of price IDs to which this adjustment applies.
               applies_to_price_ids: nil,
+              # If set, only prices in the specified currency will have the adjustment applied.
+              currency: nil,
+              # A list of filters that determine which prices this adjustment will apply to.
+              filters: nil,
               # When false, this adjustment will be applied to a single price. Otherwise, it
               # will be applied at the invoice level, possibly to multiple prices.
               is_invoice_level: nil,
+              # If set, only prices of the specified type will have the adjustment applied.
+              price_type: nil,
               adjustment_type: :minimum
             )
             end
@@ -16662,12 +17658,256 @@ module Orb
                   adjustment_type: Symbol,
                   item_id: String,
                   minimum_amount: String,
+                  applies_to_all:
+                    T.nilable(
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::AppliesToAll::OrBoolean
+                    ),
+                  applies_to_item_ids: T.nilable(T::Array[String]),
                   applies_to_price_ids: T.nilable(T::Array[String]),
-                  is_invoice_level: T::Boolean
+                  currency: T.nilable(String),
+                  filters:
+                    T.nilable(
+                      T::Array[
+                        Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::Filter
+                      ]
+                    ),
+                  is_invoice_level: T::Boolean,
+                  price_type:
+                    T.nilable(
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::PriceType::OrSymbol
+                    )
                 }
               )
             end
             def to_hash
+            end
+
+            # If set, the adjustment will apply to every price on the subscription.
+            module AppliesToAll
+              extend Orb::Internal::Type::Enum
+
+              TaggedBoolean =
+                T.type_alias do
+                  T.all(
+                    T::Boolean,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::AppliesToAll
+                  )
+                end
+              OrBoolean = T.type_alias { T::Boolean }
+
+              TRUE =
+                T.let(
+                  true,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::AppliesToAll::TaggedBoolean
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::AppliesToAll::TaggedBoolean
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            class Filter < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::Filter,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The property of the price to filter on.
+              sig do
+                returns(
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::Filter::Field::OrSymbol
+                )
+              end
+              attr_accessor :field
+
+              # Should prices that match the filter be included or excluded.
+              sig do
+                returns(
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::Filter::Operator::OrSymbol
+                )
+              end
+              attr_accessor :operator
+
+              # The IDs or values that match this filter.
+              sig { returns(T::Array[String]) }
+              attr_accessor :values
+
+              sig do
+                params(
+                  field:
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::Filter::Field::OrSymbol,
+                  operator:
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::Filter::Operator::OrSymbol,
+                  values: T::Array[String]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The property of the price to filter on.
+                field:,
+                # Should prices that match the filter be included or excluded.
+                operator:,
+                # The IDs or values that match this filter.
+                values:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    field:
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::Filter::Field::OrSymbol,
+                    operator:
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::Filter::Operator::OrSymbol,
+                    values: T::Array[String]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The property of the price to filter on.
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::Filter::Field
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                PRICE_ID =
+                  T.let(
+                    :price_id,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::Filter::Field::TaggedSymbol
+                  )
+                ITEM_ID =
+                  T.let(
+                    :item_id,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::Filter::Field::TaggedSymbol
+                  )
+                PRICE_TYPE =
+                  T.let(
+                    :price_type,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::Filter::Field::TaggedSymbol
+                  )
+                CURRENCY =
+                  T.let(
+                    :currency,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::Filter::Field::TaggedSymbol
+                  )
+                PRICING_UNIT_ID =
+                  T.let(
+                    :pricing_unit_id,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::Filter::Field::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::Filter::Field::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Should prices that match the filter be included or excluded.
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::Filter::Operator
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                INCLUDES =
+                  T.let(
+                    :includes,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::Filter::Operator::TaggedSymbol
+                  )
+                EXCLUDES =
+                  T.let(
+                    :excludes,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::Filter::Operator::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::Filter::Operator::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+
+            # If set, only prices of the specified type will have the adjustment applied.
+            module PriceType
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::PriceType
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              USAGE =
+                T.let(
+                  :usage,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::PriceType::TaggedSymbol
+                )
+              FIXED_IN_ADVANCE =
+                T.let(
+                  :fixed_in_advance,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::PriceType::TaggedSymbol
+                )
+              FIXED_IN_ARREARS =
+                T.let(
+                  :fixed_in_arrears,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::PriceType::TaggedSymbol
+                )
+              FIXED =
+                T.let(
+                  :fixed,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::PriceType::TaggedSymbol
+                )
+              IN_ARREARS =
+                T.let(
+                  :in_arrears,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::PriceType::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Minimum::PriceType::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
             end
           end
 
@@ -16686,9 +17926,39 @@ module Orb
             sig { returns(String) }
             attr_accessor :maximum_amount
 
+            # If set, the adjustment will apply to every price on the subscription.
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::AppliesToAll::OrBoolean
+                )
+              )
+            end
+            attr_accessor :applies_to_all
+
+            # The set of item IDs to which this adjustment applies.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_accessor :applies_to_item_ids
+
             # The set of price IDs to which this adjustment applies.
             sig { returns(T.nilable(T::Array[String])) }
             attr_accessor :applies_to_price_ids
+
+            # If set, only prices in the specified currency will have the adjustment applied.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :currency
+
+            # A list of filters that determine which prices this adjustment will apply to.
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::Filter
+                  ]
+                )
+              )
+            end
+            attr_accessor :filters
 
             # When false, this adjustment will be applied to a single price. Otherwise, it
             # will be applied at the invoice level, possibly to multiple prices.
@@ -16698,21 +17968,57 @@ module Orb
             sig { params(is_invoice_level: T::Boolean).void }
             attr_writer :is_invoice_level
 
+            # If set, only prices of the specified type will have the adjustment applied.
+            sig do
+              returns(
+                T.nilable(
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::PriceType::OrSymbol
+                )
+              )
+            end
+            attr_accessor :price_type
+
             sig do
               params(
                 maximum_amount: String,
+                applies_to_all:
+                  T.nilable(
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::AppliesToAll::OrBoolean
+                  ),
+                applies_to_item_ids: T.nilable(T::Array[String]),
                 applies_to_price_ids: T.nilable(T::Array[String]),
+                currency: T.nilable(String),
+                filters:
+                  T.nilable(
+                    T::Array[
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::Filter::OrHash
+                    ]
+                  ),
                 is_invoice_level: T::Boolean,
+                price_type:
+                  T.nilable(
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::PriceType::OrSymbol
+                  ),
                 adjustment_type: Symbol
               ).returns(T.attached_class)
             end
             def self.new(
               maximum_amount:,
+              # If set, the adjustment will apply to every price on the subscription.
+              applies_to_all: nil,
+              # The set of item IDs to which this adjustment applies.
+              applies_to_item_ids: nil,
               # The set of price IDs to which this adjustment applies.
               applies_to_price_ids: nil,
+              # If set, only prices in the specified currency will have the adjustment applied.
+              currency: nil,
+              # A list of filters that determine which prices this adjustment will apply to.
+              filters: nil,
               # When false, this adjustment will be applied to a single price. Otherwise, it
               # will be applied at the invoice level, possibly to multiple prices.
               is_invoice_level: nil,
+              # If set, only prices of the specified type will have the adjustment applied.
+              price_type: nil,
               adjustment_type: :maximum
             )
             end
@@ -16722,12 +18028,256 @@ module Orb
                 {
                   adjustment_type: Symbol,
                   maximum_amount: String,
+                  applies_to_all:
+                    T.nilable(
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::AppliesToAll::OrBoolean
+                    ),
+                  applies_to_item_ids: T.nilable(T::Array[String]),
                   applies_to_price_ids: T.nilable(T::Array[String]),
-                  is_invoice_level: T::Boolean
+                  currency: T.nilable(String),
+                  filters:
+                    T.nilable(
+                      T::Array[
+                        Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::Filter
+                      ]
+                    ),
+                  is_invoice_level: T::Boolean,
+                  price_type:
+                    T.nilable(
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::PriceType::OrSymbol
+                    )
                 }
               )
             end
             def to_hash
+            end
+
+            # If set, the adjustment will apply to every price on the subscription.
+            module AppliesToAll
+              extend Orb::Internal::Type::Enum
+
+              TaggedBoolean =
+                T.type_alias do
+                  T.all(
+                    T::Boolean,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::AppliesToAll
+                  )
+                end
+              OrBoolean = T.type_alias { T::Boolean }
+
+              TRUE =
+                T.let(
+                  true,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::AppliesToAll::TaggedBoolean
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::AppliesToAll::TaggedBoolean
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            class Filter < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::Filter,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The property of the price to filter on.
+              sig do
+                returns(
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::Filter::Field::OrSymbol
+                )
+              end
+              attr_accessor :field
+
+              # Should prices that match the filter be included or excluded.
+              sig do
+                returns(
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::Filter::Operator::OrSymbol
+                )
+              end
+              attr_accessor :operator
+
+              # The IDs or values that match this filter.
+              sig { returns(T::Array[String]) }
+              attr_accessor :values
+
+              sig do
+                params(
+                  field:
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::Filter::Field::OrSymbol,
+                  operator:
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::Filter::Operator::OrSymbol,
+                  values: T::Array[String]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The property of the price to filter on.
+                field:,
+                # Should prices that match the filter be included or excluded.
+                operator:,
+                # The IDs or values that match this filter.
+                values:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    field:
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::Filter::Field::OrSymbol,
+                    operator:
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::Filter::Operator::OrSymbol,
+                    values: T::Array[String]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The property of the price to filter on.
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::Filter::Field
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                PRICE_ID =
+                  T.let(
+                    :price_id,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::Filter::Field::TaggedSymbol
+                  )
+                ITEM_ID =
+                  T.let(
+                    :item_id,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::Filter::Field::TaggedSymbol
+                  )
+                PRICE_TYPE =
+                  T.let(
+                    :price_type,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::Filter::Field::TaggedSymbol
+                  )
+                CURRENCY =
+                  T.let(
+                    :currency,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::Filter::Field::TaggedSymbol
+                  )
+                PRICING_UNIT_ID =
+                  T.let(
+                    :pricing_unit_id,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::Filter::Field::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::Filter::Field::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Should prices that match the filter be included or excluded.
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::Filter::Operator
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                INCLUDES =
+                  T.let(
+                    :includes,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::Filter::Operator::TaggedSymbol
+                  )
+                EXCLUDES =
+                  T.let(
+                    :excludes,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::Filter::Operator::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::Filter::Operator::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+
+            # If set, only prices of the specified type will have the adjustment applied.
+            module PriceType
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::PriceType
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              USAGE =
+                T.let(
+                  :usage,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::PriceType::TaggedSymbol
+                )
+              FIXED_IN_ADVANCE =
+                T.let(
+                  :fixed_in_advance,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::PriceType::TaggedSymbol
+                )
+              FIXED_IN_ARREARS =
+                T.let(
+                  :fixed_in_arrears,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::PriceType::TaggedSymbol
+                )
+              FIXED =
+                T.let(
+                  :fixed,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::PriceType::TaggedSymbol
+                )
+              IN_ARREARS =
+                T.let(
+                  :in_arrears,
+                  Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::PriceType::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::Maximum::PriceType::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
             end
           end
 
