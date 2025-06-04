@@ -311,12 +311,7 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
   end
 
   def test_redeem_coupon_required_params
-    response =
-      @orb.subscriptions.redeem_coupon(
-        "subscription_id",
-        change_option: :requested_date,
-        coupon_id: "coupon_id"
-      )
+    response = @orb.subscriptions.redeem_coupon("subscription_id", change_option: :requested_date)
 
     assert_pattern do
       response => Orb::Models::SubscriptionRedeemCouponResponse
