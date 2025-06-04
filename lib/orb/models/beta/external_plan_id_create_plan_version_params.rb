@@ -162,11 +162,43 @@ module Orb
               #   @return [Float]
               required :percentage_discount, Float
 
+              # @!attribute applies_to_all
+              #   If set, the adjustment will apply to every price on the subscription.
+              #
+              #   @return [Boolean, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::PercentageDiscount::AppliesToAll, nil]
+              optional :applies_to_all,
+                       enum: -> {
+                         Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::PercentageDiscount::AppliesToAll
+                       },
+                       nil?: true
+
+              # @!attribute applies_to_item_ids
+              #   The set of item IDs to which this adjustment applies.
+              #
+              #   @return [Array<String>, nil]
+              optional :applies_to_item_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
+
               # @!attribute applies_to_price_ids
               #   The set of price IDs to which this adjustment applies.
               #
               #   @return [Array<String>, nil]
               optional :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
+
+              # @!attribute currency
+              #   If set, only prices in the specified currency will have the adjustment applied.
+              #
+              #   @return [String, nil]
+              optional :currency, String, nil?: true
+
+              # @!attribute filters
+              #   A list of filters that determine which prices this adjustment will apply to.
+              #
+              #   @return [Array<Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::PercentageDiscount::Filter>, nil]
+              optional :filters,
+                       -> {
+                         Orb::Internal::Type::ArrayOf[Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::PercentageDiscount::Filter]
+                       },
+                       nil?: true
 
               # @!attribute is_invoice_level
               #   When false, this adjustment will be applied to a single price. Otherwise, it
@@ -175,18 +207,128 @@ module Orb
               #   @return [Boolean, nil]
               optional :is_invoice_level, Orb::Internal::Type::Boolean
 
-              # @!method initialize(percentage_discount:, applies_to_price_ids: nil, is_invoice_level: nil, adjustment_type: :percentage_discount)
+              # @!attribute price_type
+              #   If set, only prices of the specified type will have the adjustment applied.
+              #
+              #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::PercentageDiscount::PriceType, nil]
+              optional :price_type,
+                       enum: -> {
+                         Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::PercentageDiscount::PriceType
+                       },
+                       nil?: true
+
+              # @!method initialize(percentage_discount:, applies_to_all: nil, applies_to_item_ids: nil, applies_to_price_ids: nil, currency: nil, filters: nil, is_invoice_level: nil, price_type: nil, adjustment_type: :percentage_discount)
               #   Some parameter documentations has been truncated, see
               #   {Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::PercentageDiscount}
               #   for more details.
               #
               #   @param percentage_discount [Float]
               #
+              #   @param applies_to_all [Boolean, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::PercentageDiscount::AppliesToAll, nil] If set, the adjustment will apply to every price on the subscription.
+              #
+              #   @param applies_to_item_ids [Array<String>, nil] The set of item IDs to which this adjustment applies.
+              #
               #   @param applies_to_price_ids [Array<String>, nil] The set of price IDs to which this adjustment applies.
+              #
+              #   @param currency [String, nil] If set, only prices in the specified currency will have the adjustment applied.
+              #
+              #   @param filters [Array<Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::PercentageDiscount::Filter>, nil] A list of filters that determine which prices this adjustment will apply to.
               #
               #   @param is_invoice_level [Boolean] When false, this adjustment will be applied to a single price. Otherwise, it wil
               #
+              #   @param price_type [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::PercentageDiscount::PriceType, nil] If set, only prices of the specified type will have the adjustment applied.
+              #
               #   @param adjustment_type [Symbol, :percentage_discount]
+
+              # If set, the adjustment will apply to every price on the subscription.
+              #
+              # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::PercentageDiscount#applies_to_all
+              module AppliesToAll
+                extend Orb::Internal::Type::Enum
+
+                TRUE = true
+
+                # @!method self.values
+                #   @return [Array<Boolean>]
+              end
+
+              class Filter < Orb::Internal::Type::BaseModel
+                # @!attribute field
+                #   The property of the price to filter on.
+                #
+                #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::PercentageDiscount::Filter::Field]
+                required :field,
+                         enum: -> {
+                           Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::PercentageDiscount::Filter::Field
+                         }
+
+                # @!attribute operator
+                #   Should prices that match the filter be included or excluded.
+                #
+                #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::PercentageDiscount::Filter::Operator]
+                required :operator,
+                         enum: -> {
+                           Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::PercentageDiscount::Filter::Operator
+                         }
+
+                # @!attribute values
+                #   The IDs or values that match this filter.
+                #
+                #   @return [Array<String>]
+                required :values, Orb::Internal::Type::ArrayOf[String]
+
+                # @!method initialize(field:, operator:, values:)
+                #   @param field [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::PercentageDiscount::Filter::Field] The property of the price to filter on.
+                #
+                #   @param operator [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::PercentageDiscount::Filter::Operator] Should prices that match the filter be included or excluded.
+                #
+                #   @param values [Array<String>] The IDs or values that match this filter.
+
+                # The property of the price to filter on.
+                #
+                # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::PercentageDiscount::Filter#field
+                module Field
+                  extend Orb::Internal::Type::Enum
+
+                  PRICE_ID = :price_id
+                  ITEM_ID = :item_id
+                  PRICE_TYPE = :price_type
+                  CURRENCY = :currency
+                  PRICING_UNIT_ID = :pricing_unit_id
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+
+                # Should prices that match the filter be included or excluded.
+                #
+                # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::PercentageDiscount::Filter#operator
+                module Operator
+                  extend Orb::Internal::Type::Enum
+
+                  INCLUDES = :includes
+                  EXCLUDES = :excludes
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+
+              # If set, only prices of the specified type will have the adjustment applied.
+              #
+              # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::PercentageDiscount#price_type
+              module PriceType
+                extend Orb::Internal::Type::Enum
+
+                USAGE = :usage
+                FIXED_IN_ADVANCE = :fixed_in_advance
+                FIXED_IN_ARREARS = :fixed_in_arrears
+                FIXED = :fixed
+                IN_ARREARS = :in_arrears
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
             end
 
             class UsageDiscount < Orb::Internal::Type::BaseModel
@@ -200,11 +342,43 @@ module Orb
               #   @return [Float]
               required :usage_discount, Float
 
+              # @!attribute applies_to_all
+              #   If set, the adjustment will apply to every price on the subscription.
+              #
+              #   @return [Boolean, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::UsageDiscount::AppliesToAll, nil]
+              optional :applies_to_all,
+                       enum: -> {
+                         Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::UsageDiscount::AppliesToAll
+                       },
+                       nil?: true
+
+              # @!attribute applies_to_item_ids
+              #   The set of item IDs to which this adjustment applies.
+              #
+              #   @return [Array<String>, nil]
+              optional :applies_to_item_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
+
               # @!attribute applies_to_price_ids
               #   The set of price IDs to which this adjustment applies.
               #
               #   @return [Array<String>, nil]
               optional :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
+
+              # @!attribute currency
+              #   If set, only prices in the specified currency will have the adjustment applied.
+              #
+              #   @return [String, nil]
+              optional :currency, String, nil?: true
+
+              # @!attribute filters
+              #   A list of filters that determine which prices this adjustment will apply to.
+              #
+              #   @return [Array<Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::UsageDiscount::Filter>, nil]
+              optional :filters,
+                       -> {
+                         Orb::Internal::Type::ArrayOf[Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::UsageDiscount::Filter]
+                       },
+                       nil?: true
 
               # @!attribute is_invoice_level
               #   When false, this adjustment will be applied to a single price. Otherwise, it
@@ -213,18 +387,128 @@ module Orb
               #   @return [Boolean, nil]
               optional :is_invoice_level, Orb::Internal::Type::Boolean
 
-              # @!method initialize(usage_discount:, applies_to_price_ids: nil, is_invoice_level: nil, adjustment_type: :usage_discount)
+              # @!attribute price_type
+              #   If set, only prices of the specified type will have the adjustment applied.
+              #
+              #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::UsageDiscount::PriceType, nil]
+              optional :price_type,
+                       enum: -> {
+                         Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::UsageDiscount::PriceType
+                       },
+                       nil?: true
+
+              # @!method initialize(usage_discount:, applies_to_all: nil, applies_to_item_ids: nil, applies_to_price_ids: nil, currency: nil, filters: nil, is_invoice_level: nil, price_type: nil, adjustment_type: :usage_discount)
               #   Some parameter documentations has been truncated, see
               #   {Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::UsageDiscount}
               #   for more details.
               #
               #   @param usage_discount [Float]
               #
+              #   @param applies_to_all [Boolean, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::UsageDiscount::AppliesToAll, nil] If set, the adjustment will apply to every price on the subscription.
+              #
+              #   @param applies_to_item_ids [Array<String>, nil] The set of item IDs to which this adjustment applies.
+              #
               #   @param applies_to_price_ids [Array<String>, nil] The set of price IDs to which this adjustment applies.
+              #
+              #   @param currency [String, nil] If set, only prices in the specified currency will have the adjustment applied.
+              #
+              #   @param filters [Array<Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::UsageDiscount::Filter>, nil] A list of filters that determine which prices this adjustment will apply to.
               #
               #   @param is_invoice_level [Boolean] When false, this adjustment will be applied to a single price. Otherwise, it wil
               #
+              #   @param price_type [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::UsageDiscount::PriceType, nil] If set, only prices of the specified type will have the adjustment applied.
+              #
               #   @param adjustment_type [Symbol, :usage_discount]
+
+              # If set, the adjustment will apply to every price on the subscription.
+              #
+              # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::UsageDiscount#applies_to_all
+              module AppliesToAll
+                extend Orb::Internal::Type::Enum
+
+                TRUE = true
+
+                # @!method self.values
+                #   @return [Array<Boolean>]
+              end
+
+              class Filter < Orb::Internal::Type::BaseModel
+                # @!attribute field
+                #   The property of the price to filter on.
+                #
+                #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::UsageDiscount::Filter::Field]
+                required :field,
+                         enum: -> {
+                           Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::UsageDiscount::Filter::Field
+                         }
+
+                # @!attribute operator
+                #   Should prices that match the filter be included or excluded.
+                #
+                #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::UsageDiscount::Filter::Operator]
+                required :operator,
+                         enum: -> {
+                           Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::UsageDiscount::Filter::Operator
+                         }
+
+                # @!attribute values
+                #   The IDs or values that match this filter.
+                #
+                #   @return [Array<String>]
+                required :values, Orb::Internal::Type::ArrayOf[String]
+
+                # @!method initialize(field:, operator:, values:)
+                #   @param field [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::UsageDiscount::Filter::Field] The property of the price to filter on.
+                #
+                #   @param operator [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::UsageDiscount::Filter::Operator] Should prices that match the filter be included or excluded.
+                #
+                #   @param values [Array<String>] The IDs or values that match this filter.
+
+                # The property of the price to filter on.
+                #
+                # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::UsageDiscount::Filter#field
+                module Field
+                  extend Orb::Internal::Type::Enum
+
+                  PRICE_ID = :price_id
+                  ITEM_ID = :item_id
+                  PRICE_TYPE = :price_type
+                  CURRENCY = :currency
+                  PRICING_UNIT_ID = :pricing_unit_id
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+
+                # Should prices that match the filter be included or excluded.
+                #
+                # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::UsageDiscount::Filter#operator
+                module Operator
+                  extend Orb::Internal::Type::Enum
+
+                  INCLUDES = :includes
+                  EXCLUDES = :excludes
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+
+              # If set, only prices of the specified type will have the adjustment applied.
+              #
+              # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::UsageDiscount#price_type
+              module PriceType
+                extend Orb::Internal::Type::Enum
+
+                USAGE = :usage
+                FIXED_IN_ADVANCE = :fixed_in_advance
+                FIXED_IN_ARREARS = :fixed_in_arrears
+                FIXED = :fixed
+                IN_ARREARS = :in_arrears
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
             end
 
             class AmountDiscount < Orb::Internal::Type::BaseModel
@@ -238,11 +522,43 @@ module Orb
               #   @return [String]
               required :amount_discount, String
 
+              # @!attribute applies_to_all
+              #   If set, the adjustment will apply to every price on the subscription.
+              #
+              #   @return [Boolean, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::AmountDiscount::AppliesToAll, nil]
+              optional :applies_to_all,
+                       enum: -> {
+                         Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::AmountDiscount::AppliesToAll
+                       },
+                       nil?: true
+
+              # @!attribute applies_to_item_ids
+              #   The set of item IDs to which this adjustment applies.
+              #
+              #   @return [Array<String>, nil]
+              optional :applies_to_item_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
+
               # @!attribute applies_to_price_ids
               #   The set of price IDs to which this adjustment applies.
               #
               #   @return [Array<String>, nil]
               optional :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
+
+              # @!attribute currency
+              #   If set, only prices in the specified currency will have the adjustment applied.
+              #
+              #   @return [String, nil]
+              optional :currency, String, nil?: true
+
+              # @!attribute filters
+              #   A list of filters that determine which prices this adjustment will apply to.
+              #
+              #   @return [Array<Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::AmountDiscount::Filter>, nil]
+              optional :filters,
+                       -> {
+                         Orb::Internal::Type::ArrayOf[Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::AmountDiscount::Filter]
+                       },
+                       nil?: true
 
               # @!attribute is_invoice_level
               #   When false, this adjustment will be applied to a single price. Otherwise, it
@@ -251,18 +567,128 @@ module Orb
               #   @return [Boolean, nil]
               optional :is_invoice_level, Orb::Internal::Type::Boolean
 
-              # @!method initialize(amount_discount:, applies_to_price_ids: nil, is_invoice_level: nil, adjustment_type: :amount_discount)
+              # @!attribute price_type
+              #   If set, only prices of the specified type will have the adjustment applied.
+              #
+              #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::AmountDiscount::PriceType, nil]
+              optional :price_type,
+                       enum: -> {
+                         Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::AmountDiscount::PriceType
+                       },
+                       nil?: true
+
+              # @!method initialize(amount_discount:, applies_to_all: nil, applies_to_item_ids: nil, applies_to_price_ids: nil, currency: nil, filters: nil, is_invoice_level: nil, price_type: nil, adjustment_type: :amount_discount)
               #   Some parameter documentations has been truncated, see
               #   {Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::AmountDiscount}
               #   for more details.
               #
               #   @param amount_discount [String]
               #
+              #   @param applies_to_all [Boolean, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::AmountDiscount::AppliesToAll, nil] If set, the adjustment will apply to every price on the subscription.
+              #
+              #   @param applies_to_item_ids [Array<String>, nil] The set of item IDs to which this adjustment applies.
+              #
               #   @param applies_to_price_ids [Array<String>, nil] The set of price IDs to which this adjustment applies.
+              #
+              #   @param currency [String, nil] If set, only prices in the specified currency will have the adjustment applied.
+              #
+              #   @param filters [Array<Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::AmountDiscount::Filter>, nil] A list of filters that determine which prices this adjustment will apply to.
               #
               #   @param is_invoice_level [Boolean] When false, this adjustment will be applied to a single price. Otherwise, it wil
               #
+              #   @param price_type [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::AmountDiscount::PriceType, nil] If set, only prices of the specified type will have the adjustment applied.
+              #
               #   @param adjustment_type [Symbol, :amount_discount]
+
+              # If set, the adjustment will apply to every price on the subscription.
+              #
+              # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::AmountDiscount#applies_to_all
+              module AppliesToAll
+                extend Orb::Internal::Type::Enum
+
+                TRUE = true
+
+                # @!method self.values
+                #   @return [Array<Boolean>]
+              end
+
+              class Filter < Orb::Internal::Type::BaseModel
+                # @!attribute field
+                #   The property of the price to filter on.
+                #
+                #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::AmountDiscount::Filter::Field]
+                required :field,
+                         enum: -> {
+                           Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::AmountDiscount::Filter::Field
+                         }
+
+                # @!attribute operator
+                #   Should prices that match the filter be included or excluded.
+                #
+                #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::AmountDiscount::Filter::Operator]
+                required :operator,
+                         enum: -> {
+                           Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::AmountDiscount::Filter::Operator
+                         }
+
+                # @!attribute values
+                #   The IDs or values that match this filter.
+                #
+                #   @return [Array<String>]
+                required :values, Orb::Internal::Type::ArrayOf[String]
+
+                # @!method initialize(field:, operator:, values:)
+                #   @param field [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::AmountDiscount::Filter::Field] The property of the price to filter on.
+                #
+                #   @param operator [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::AmountDiscount::Filter::Operator] Should prices that match the filter be included or excluded.
+                #
+                #   @param values [Array<String>] The IDs or values that match this filter.
+
+                # The property of the price to filter on.
+                #
+                # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::AmountDiscount::Filter#field
+                module Field
+                  extend Orb::Internal::Type::Enum
+
+                  PRICE_ID = :price_id
+                  ITEM_ID = :item_id
+                  PRICE_TYPE = :price_type
+                  CURRENCY = :currency
+                  PRICING_UNIT_ID = :pricing_unit_id
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+
+                # Should prices that match the filter be included or excluded.
+                #
+                # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::AmountDiscount::Filter#operator
+                module Operator
+                  extend Orb::Internal::Type::Enum
+
+                  INCLUDES = :includes
+                  EXCLUDES = :excludes
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+
+              # If set, only prices of the specified type will have the adjustment applied.
+              #
+              # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::AmountDiscount#price_type
+              module PriceType
+                extend Orb::Internal::Type::Enum
+
+                USAGE = :usage
+                FIXED_IN_ADVANCE = :fixed_in_advance
+                FIXED_IN_ARREARS = :fixed_in_arrears
+                FIXED = :fixed
+                IN_ARREARS = :in_arrears
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
             end
 
             class Minimum < Orb::Internal::Type::BaseModel
@@ -282,11 +708,43 @@ module Orb
               #   @return [String]
               required :minimum_amount, String
 
+              # @!attribute applies_to_all
+              #   If set, the adjustment will apply to every price on the subscription.
+              #
+              #   @return [Boolean, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Minimum::AppliesToAll, nil]
+              optional :applies_to_all,
+                       enum: -> {
+                         Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Minimum::AppliesToAll
+                       },
+                       nil?: true
+
+              # @!attribute applies_to_item_ids
+              #   The set of item IDs to which this adjustment applies.
+              #
+              #   @return [Array<String>, nil]
+              optional :applies_to_item_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
+
               # @!attribute applies_to_price_ids
               #   The set of price IDs to which this adjustment applies.
               #
               #   @return [Array<String>, nil]
               optional :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
+
+              # @!attribute currency
+              #   If set, only prices in the specified currency will have the adjustment applied.
+              #
+              #   @return [String, nil]
+              optional :currency, String, nil?: true
+
+              # @!attribute filters
+              #   A list of filters that determine which prices this adjustment will apply to.
+              #
+              #   @return [Array<Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Minimum::Filter>, nil]
+              optional :filters,
+                       -> {
+                         Orb::Internal::Type::ArrayOf[Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Minimum::Filter]
+                       },
+                       nil?: true
 
               # @!attribute is_invoice_level
               #   When false, this adjustment will be applied to a single price. Otherwise, it
@@ -295,7 +753,17 @@ module Orb
               #   @return [Boolean, nil]
               optional :is_invoice_level, Orb::Internal::Type::Boolean
 
-              # @!method initialize(item_id:, minimum_amount:, applies_to_price_ids: nil, is_invoice_level: nil, adjustment_type: :minimum)
+              # @!attribute price_type
+              #   If set, only prices of the specified type will have the adjustment applied.
+              #
+              #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Minimum::PriceType, nil]
+              optional :price_type,
+                       enum: -> {
+                         Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Minimum::PriceType
+                       },
+                       nil?: true
+
+              # @!method initialize(item_id:, minimum_amount:, applies_to_all: nil, applies_to_item_ids: nil, applies_to_price_ids: nil, currency: nil, filters: nil, is_invoice_level: nil, price_type: nil, adjustment_type: :minimum)
               #   Some parameter documentations has been truncated, see
               #   {Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Minimum}
               #   for more details.
@@ -304,11 +772,111 @@ module Orb
               #
               #   @param minimum_amount [String]
               #
+              #   @param applies_to_all [Boolean, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Minimum::AppliesToAll, nil] If set, the adjustment will apply to every price on the subscription.
+              #
+              #   @param applies_to_item_ids [Array<String>, nil] The set of item IDs to which this adjustment applies.
+              #
               #   @param applies_to_price_ids [Array<String>, nil] The set of price IDs to which this adjustment applies.
+              #
+              #   @param currency [String, nil] If set, only prices in the specified currency will have the adjustment applied.
+              #
+              #   @param filters [Array<Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Minimum::Filter>, nil] A list of filters that determine which prices this adjustment will apply to.
               #
               #   @param is_invoice_level [Boolean] When false, this adjustment will be applied to a single price. Otherwise, it wil
               #
+              #   @param price_type [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Minimum::PriceType, nil] If set, only prices of the specified type will have the adjustment applied.
+              #
               #   @param adjustment_type [Symbol, :minimum]
+
+              # If set, the adjustment will apply to every price on the subscription.
+              #
+              # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Minimum#applies_to_all
+              module AppliesToAll
+                extend Orb::Internal::Type::Enum
+
+                TRUE = true
+
+                # @!method self.values
+                #   @return [Array<Boolean>]
+              end
+
+              class Filter < Orb::Internal::Type::BaseModel
+                # @!attribute field
+                #   The property of the price to filter on.
+                #
+                #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Minimum::Filter::Field]
+                required :field,
+                         enum: -> {
+                           Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Minimum::Filter::Field
+                         }
+
+                # @!attribute operator
+                #   Should prices that match the filter be included or excluded.
+                #
+                #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Minimum::Filter::Operator]
+                required :operator,
+                         enum: -> {
+                           Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Minimum::Filter::Operator
+                         }
+
+                # @!attribute values
+                #   The IDs or values that match this filter.
+                #
+                #   @return [Array<String>]
+                required :values, Orb::Internal::Type::ArrayOf[String]
+
+                # @!method initialize(field:, operator:, values:)
+                #   @param field [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Minimum::Filter::Field] The property of the price to filter on.
+                #
+                #   @param operator [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+                #
+                #   @param values [Array<String>] The IDs or values that match this filter.
+
+                # The property of the price to filter on.
+                #
+                # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Minimum::Filter#field
+                module Field
+                  extend Orb::Internal::Type::Enum
+
+                  PRICE_ID = :price_id
+                  ITEM_ID = :item_id
+                  PRICE_TYPE = :price_type
+                  CURRENCY = :currency
+                  PRICING_UNIT_ID = :pricing_unit_id
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+
+                # Should prices that match the filter be included or excluded.
+                #
+                # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Minimum::Filter#operator
+                module Operator
+                  extend Orb::Internal::Type::Enum
+
+                  INCLUDES = :includes
+                  EXCLUDES = :excludes
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+
+              # If set, only prices of the specified type will have the adjustment applied.
+              #
+              # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Minimum#price_type
+              module PriceType
+                extend Orb::Internal::Type::Enum
+
+                USAGE = :usage
+                FIXED_IN_ADVANCE = :fixed_in_advance
+                FIXED_IN_ARREARS = :fixed_in_arrears
+                FIXED = :fixed
+                IN_ARREARS = :in_arrears
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
             end
 
             class Maximum < Orb::Internal::Type::BaseModel
@@ -322,11 +890,43 @@ module Orb
               #   @return [String]
               required :maximum_amount, String
 
+              # @!attribute applies_to_all
+              #   If set, the adjustment will apply to every price on the subscription.
+              #
+              #   @return [Boolean, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Maximum::AppliesToAll, nil]
+              optional :applies_to_all,
+                       enum: -> {
+                         Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Maximum::AppliesToAll
+                       },
+                       nil?: true
+
+              # @!attribute applies_to_item_ids
+              #   The set of item IDs to which this adjustment applies.
+              #
+              #   @return [Array<String>, nil]
+              optional :applies_to_item_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
+
               # @!attribute applies_to_price_ids
               #   The set of price IDs to which this adjustment applies.
               #
               #   @return [Array<String>, nil]
               optional :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
+
+              # @!attribute currency
+              #   If set, only prices in the specified currency will have the adjustment applied.
+              #
+              #   @return [String, nil]
+              optional :currency, String, nil?: true
+
+              # @!attribute filters
+              #   A list of filters that determine which prices this adjustment will apply to.
+              #
+              #   @return [Array<Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Maximum::Filter>, nil]
+              optional :filters,
+                       -> {
+                         Orb::Internal::Type::ArrayOf[Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Maximum::Filter]
+                       },
+                       nil?: true
 
               # @!attribute is_invoice_level
               #   When false, this adjustment will be applied to a single price. Otherwise, it
@@ -335,18 +935,128 @@ module Orb
               #   @return [Boolean, nil]
               optional :is_invoice_level, Orb::Internal::Type::Boolean
 
-              # @!method initialize(maximum_amount:, applies_to_price_ids: nil, is_invoice_level: nil, adjustment_type: :maximum)
+              # @!attribute price_type
+              #   If set, only prices of the specified type will have the adjustment applied.
+              #
+              #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Maximum::PriceType, nil]
+              optional :price_type,
+                       enum: -> {
+                         Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Maximum::PriceType
+                       },
+                       nil?: true
+
+              # @!method initialize(maximum_amount:, applies_to_all: nil, applies_to_item_ids: nil, applies_to_price_ids: nil, currency: nil, filters: nil, is_invoice_level: nil, price_type: nil, adjustment_type: :maximum)
               #   Some parameter documentations has been truncated, see
               #   {Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Maximum}
               #   for more details.
               #
               #   @param maximum_amount [String]
               #
+              #   @param applies_to_all [Boolean, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Maximum::AppliesToAll, nil] If set, the adjustment will apply to every price on the subscription.
+              #
+              #   @param applies_to_item_ids [Array<String>, nil] The set of item IDs to which this adjustment applies.
+              #
               #   @param applies_to_price_ids [Array<String>, nil] The set of price IDs to which this adjustment applies.
+              #
+              #   @param currency [String, nil] If set, only prices in the specified currency will have the adjustment applied.
+              #
+              #   @param filters [Array<Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Maximum::Filter>, nil] A list of filters that determine which prices this adjustment will apply to.
               #
               #   @param is_invoice_level [Boolean] When false, this adjustment will be applied to a single price. Otherwise, it wil
               #
+              #   @param price_type [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Maximum::PriceType, nil] If set, only prices of the specified type will have the adjustment applied.
+              #
               #   @param adjustment_type [Symbol, :maximum]
+
+              # If set, the adjustment will apply to every price on the subscription.
+              #
+              # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Maximum#applies_to_all
+              module AppliesToAll
+                extend Orb::Internal::Type::Enum
+
+                TRUE = true
+
+                # @!method self.values
+                #   @return [Array<Boolean>]
+              end
+
+              class Filter < Orb::Internal::Type::BaseModel
+                # @!attribute field
+                #   The property of the price to filter on.
+                #
+                #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Maximum::Filter::Field]
+                required :field,
+                         enum: -> {
+                           Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Maximum::Filter::Field
+                         }
+
+                # @!attribute operator
+                #   Should prices that match the filter be included or excluded.
+                #
+                #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Maximum::Filter::Operator]
+                required :operator,
+                         enum: -> {
+                           Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Maximum::Filter::Operator
+                         }
+
+                # @!attribute values
+                #   The IDs or values that match this filter.
+                #
+                #   @return [Array<String>]
+                required :values, Orb::Internal::Type::ArrayOf[String]
+
+                # @!method initialize(field:, operator:, values:)
+                #   @param field [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Maximum::Filter::Field] The property of the price to filter on.
+                #
+                #   @param operator [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+                #
+                #   @param values [Array<String>] The IDs or values that match this filter.
+
+                # The property of the price to filter on.
+                #
+                # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Maximum::Filter#field
+                module Field
+                  extend Orb::Internal::Type::Enum
+
+                  PRICE_ID = :price_id
+                  ITEM_ID = :item_id
+                  PRICE_TYPE = :price_type
+                  CURRENCY = :currency
+                  PRICING_UNIT_ID = :pricing_unit_id
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+
+                # Should prices that match the filter be included or excluded.
+                #
+                # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Maximum::Filter#operator
+                module Operator
+                  extend Orb::Internal::Type::Enum
+
+                  INCLUDES = :includes
+                  EXCLUDES = :excludes
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+
+              # If set, only prices of the specified type will have the adjustment applied.
+              #
+              # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Maximum#price_type
+              module PriceType
+                extend Orb::Internal::Type::Enum
+
+                USAGE = :usage
+                FIXED_IN_ADVANCE = :fixed_in_advance
+                FIXED_IN_ARREARS = :fixed_in_arrears
+                FIXED = :fixed
+                IN_ARREARS = :in_arrears
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
             end
 
             # @!method self.variants
@@ -9140,11 +9850,45 @@ module Orb
               #   @return [Float]
               required :percentage_discount, Float
 
+              # @!attribute applies_to_all
+              #   If set, the adjustment will apply to every price on the subscription.
+              #
+              #   @return [Boolean, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::PercentageDiscount::AppliesToAll, nil]
+              optional :applies_to_all,
+                       enum: -> {
+                         Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::PercentageDiscount::AppliesToAll
+                       },
+                       nil?: true
+
+              # @!attribute applies_to_item_ids
+              #   The set of item IDs to which this adjustment applies.
+              #
+              #   @return [Array<String>, nil]
+              optional :applies_to_item_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
+
               # @!attribute applies_to_price_ids
               #   The set of price IDs to which this adjustment applies.
               #
               #   @return [Array<String>, nil]
               optional :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
+
+              # @!attribute currency
+              #   If set, only prices in the specified currency will have the adjustment applied.
+              #
+              #   @return [String, nil]
+              optional :currency, String, nil?: true
+
+              # @!attribute filters
+              #   A list of filters that determine which prices this adjustment will apply to.
+              #
+              #   @return [Array<Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::PercentageDiscount::Filter>, nil]
+              optional :filters,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::PercentageDiscount::Filter
+                         ]
+                       end,
+                       nil?: true
 
               # @!attribute is_invoice_level
               #   When false, this adjustment will be applied to a single price. Otherwise, it
@@ -9153,18 +9897,128 @@ module Orb
               #   @return [Boolean, nil]
               optional :is_invoice_level, Orb::Internal::Type::Boolean
 
-              # @!method initialize(percentage_discount:, applies_to_price_ids: nil, is_invoice_level: nil, adjustment_type: :percentage_discount)
+              # @!attribute price_type
+              #   If set, only prices of the specified type will have the adjustment applied.
+              #
+              #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::PercentageDiscount::PriceType, nil]
+              optional :price_type,
+                       enum: -> {
+                         Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::PercentageDiscount::PriceType
+                       },
+                       nil?: true
+
+              # @!method initialize(percentage_discount:, applies_to_all: nil, applies_to_item_ids: nil, applies_to_price_ids: nil, currency: nil, filters: nil, is_invoice_level: nil, price_type: nil, adjustment_type: :percentage_discount)
               #   Some parameter documentations has been truncated, see
               #   {Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::PercentageDiscount}
               #   for more details.
               #
               #   @param percentage_discount [Float]
               #
+              #   @param applies_to_all [Boolean, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::PercentageDiscount::AppliesToAll, nil] If set, the adjustment will apply to every price on the subscription.
+              #
+              #   @param applies_to_item_ids [Array<String>, nil] The set of item IDs to which this adjustment applies.
+              #
               #   @param applies_to_price_ids [Array<String>, nil] The set of price IDs to which this adjustment applies.
+              #
+              #   @param currency [String, nil] If set, only prices in the specified currency will have the adjustment applied.
+              #
+              #   @param filters [Array<Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::PercentageDiscount::Filter>, nil] A list of filters that determine which prices this adjustment will apply to.
               #
               #   @param is_invoice_level [Boolean] When false, this adjustment will be applied to a single price. Otherwise, it wil
               #
+              #   @param price_type [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::PercentageDiscount::PriceType, nil] If set, only prices of the specified type will have the adjustment applied.
+              #
               #   @param adjustment_type [Symbol, :percentage_discount]
+
+              # If set, the adjustment will apply to every price on the subscription.
+              #
+              # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::PercentageDiscount#applies_to_all
+              module AppliesToAll
+                extend Orb::Internal::Type::Enum
+
+                TRUE = true
+
+                # @!method self.values
+                #   @return [Array<Boolean>]
+              end
+
+              class Filter < Orb::Internal::Type::BaseModel
+                # @!attribute field
+                #   The property of the price to filter on.
+                #
+                #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::PercentageDiscount::Filter::Field]
+                required :field,
+                         enum: -> {
+                           Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::PercentageDiscount::Filter::Field
+                         }
+
+                # @!attribute operator
+                #   Should prices that match the filter be included or excluded.
+                #
+                #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::PercentageDiscount::Filter::Operator]
+                required :operator,
+                         enum: -> {
+                           Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::PercentageDiscount::Filter::Operator
+                         }
+
+                # @!attribute values
+                #   The IDs or values that match this filter.
+                #
+                #   @return [Array<String>]
+                required :values, Orb::Internal::Type::ArrayOf[String]
+
+                # @!method initialize(field:, operator:, values:)
+                #   @param field [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::PercentageDiscount::Filter::Field] The property of the price to filter on.
+                #
+                #   @param operator [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::PercentageDiscount::Filter::Operator] Should prices that match the filter be included or excluded.
+                #
+                #   @param values [Array<String>] The IDs or values that match this filter.
+
+                # The property of the price to filter on.
+                #
+                # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::PercentageDiscount::Filter#field
+                module Field
+                  extend Orb::Internal::Type::Enum
+
+                  PRICE_ID = :price_id
+                  ITEM_ID = :item_id
+                  PRICE_TYPE = :price_type
+                  CURRENCY = :currency
+                  PRICING_UNIT_ID = :pricing_unit_id
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+
+                # Should prices that match the filter be included or excluded.
+                #
+                # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::PercentageDiscount::Filter#operator
+                module Operator
+                  extend Orb::Internal::Type::Enum
+
+                  INCLUDES = :includes
+                  EXCLUDES = :excludes
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+
+              # If set, only prices of the specified type will have the adjustment applied.
+              #
+              # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::PercentageDiscount#price_type
+              module PriceType
+                extend Orb::Internal::Type::Enum
+
+                USAGE = :usage
+                FIXED_IN_ADVANCE = :fixed_in_advance
+                FIXED_IN_ARREARS = :fixed_in_arrears
+                FIXED = :fixed
+                IN_ARREARS = :in_arrears
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
             end
 
             class UsageDiscount < Orb::Internal::Type::BaseModel
@@ -9178,11 +10032,43 @@ module Orb
               #   @return [Float]
               required :usage_discount, Float
 
+              # @!attribute applies_to_all
+              #   If set, the adjustment will apply to every price on the subscription.
+              #
+              #   @return [Boolean, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::UsageDiscount::AppliesToAll, nil]
+              optional :applies_to_all,
+                       enum: -> {
+                         Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::UsageDiscount::AppliesToAll
+                       },
+                       nil?: true
+
+              # @!attribute applies_to_item_ids
+              #   The set of item IDs to which this adjustment applies.
+              #
+              #   @return [Array<String>, nil]
+              optional :applies_to_item_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
+
               # @!attribute applies_to_price_ids
               #   The set of price IDs to which this adjustment applies.
               #
               #   @return [Array<String>, nil]
               optional :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
+
+              # @!attribute currency
+              #   If set, only prices in the specified currency will have the adjustment applied.
+              #
+              #   @return [String, nil]
+              optional :currency, String, nil?: true
+
+              # @!attribute filters
+              #   A list of filters that determine which prices this adjustment will apply to.
+              #
+              #   @return [Array<Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::UsageDiscount::Filter>, nil]
+              optional :filters,
+                       -> {
+                         Orb::Internal::Type::ArrayOf[Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::UsageDiscount::Filter]
+                       },
+                       nil?: true
 
               # @!attribute is_invoice_level
               #   When false, this adjustment will be applied to a single price. Otherwise, it
@@ -9191,18 +10077,128 @@ module Orb
               #   @return [Boolean, nil]
               optional :is_invoice_level, Orb::Internal::Type::Boolean
 
-              # @!method initialize(usage_discount:, applies_to_price_ids: nil, is_invoice_level: nil, adjustment_type: :usage_discount)
+              # @!attribute price_type
+              #   If set, only prices of the specified type will have the adjustment applied.
+              #
+              #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::UsageDiscount::PriceType, nil]
+              optional :price_type,
+                       enum: -> {
+                         Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::UsageDiscount::PriceType
+                       },
+                       nil?: true
+
+              # @!method initialize(usage_discount:, applies_to_all: nil, applies_to_item_ids: nil, applies_to_price_ids: nil, currency: nil, filters: nil, is_invoice_level: nil, price_type: nil, adjustment_type: :usage_discount)
               #   Some parameter documentations has been truncated, see
               #   {Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::UsageDiscount}
               #   for more details.
               #
               #   @param usage_discount [Float]
               #
+              #   @param applies_to_all [Boolean, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::UsageDiscount::AppliesToAll, nil] If set, the adjustment will apply to every price on the subscription.
+              #
+              #   @param applies_to_item_ids [Array<String>, nil] The set of item IDs to which this adjustment applies.
+              #
               #   @param applies_to_price_ids [Array<String>, nil] The set of price IDs to which this adjustment applies.
+              #
+              #   @param currency [String, nil] If set, only prices in the specified currency will have the adjustment applied.
+              #
+              #   @param filters [Array<Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::UsageDiscount::Filter>, nil] A list of filters that determine which prices this adjustment will apply to.
               #
               #   @param is_invoice_level [Boolean] When false, this adjustment will be applied to a single price. Otherwise, it wil
               #
+              #   @param price_type [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::UsageDiscount::PriceType, nil] If set, only prices of the specified type will have the adjustment applied.
+              #
               #   @param adjustment_type [Symbol, :usage_discount]
+
+              # If set, the adjustment will apply to every price on the subscription.
+              #
+              # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::UsageDiscount#applies_to_all
+              module AppliesToAll
+                extend Orb::Internal::Type::Enum
+
+                TRUE = true
+
+                # @!method self.values
+                #   @return [Array<Boolean>]
+              end
+
+              class Filter < Orb::Internal::Type::BaseModel
+                # @!attribute field
+                #   The property of the price to filter on.
+                #
+                #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::UsageDiscount::Filter::Field]
+                required :field,
+                         enum: -> {
+                           Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::UsageDiscount::Filter::Field
+                         }
+
+                # @!attribute operator
+                #   Should prices that match the filter be included or excluded.
+                #
+                #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::UsageDiscount::Filter::Operator]
+                required :operator,
+                         enum: -> {
+                           Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::UsageDiscount::Filter::Operator
+                         }
+
+                # @!attribute values
+                #   The IDs or values that match this filter.
+                #
+                #   @return [Array<String>]
+                required :values, Orb::Internal::Type::ArrayOf[String]
+
+                # @!method initialize(field:, operator:, values:)
+                #   @param field [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::UsageDiscount::Filter::Field] The property of the price to filter on.
+                #
+                #   @param operator [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::UsageDiscount::Filter::Operator] Should prices that match the filter be included or excluded.
+                #
+                #   @param values [Array<String>] The IDs or values that match this filter.
+
+                # The property of the price to filter on.
+                #
+                # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::UsageDiscount::Filter#field
+                module Field
+                  extend Orb::Internal::Type::Enum
+
+                  PRICE_ID = :price_id
+                  ITEM_ID = :item_id
+                  PRICE_TYPE = :price_type
+                  CURRENCY = :currency
+                  PRICING_UNIT_ID = :pricing_unit_id
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+
+                # Should prices that match the filter be included or excluded.
+                #
+                # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::UsageDiscount::Filter#operator
+                module Operator
+                  extend Orb::Internal::Type::Enum
+
+                  INCLUDES = :includes
+                  EXCLUDES = :excludes
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+
+              # If set, only prices of the specified type will have the adjustment applied.
+              #
+              # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::UsageDiscount#price_type
+              module PriceType
+                extend Orb::Internal::Type::Enum
+
+                USAGE = :usage
+                FIXED_IN_ADVANCE = :fixed_in_advance
+                FIXED_IN_ARREARS = :fixed_in_arrears
+                FIXED = :fixed
+                IN_ARREARS = :in_arrears
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
             end
 
             class AmountDiscount < Orb::Internal::Type::BaseModel
@@ -9216,11 +10212,43 @@ module Orb
               #   @return [String]
               required :amount_discount, String
 
+              # @!attribute applies_to_all
+              #   If set, the adjustment will apply to every price on the subscription.
+              #
+              #   @return [Boolean, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::AmountDiscount::AppliesToAll, nil]
+              optional :applies_to_all,
+                       enum: -> {
+                         Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::AmountDiscount::AppliesToAll
+                       },
+                       nil?: true
+
+              # @!attribute applies_to_item_ids
+              #   The set of item IDs to which this adjustment applies.
+              #
+              #   @return [Array<String>, nil]
+              optional :applies_to_item_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
+
               # @!attribute applies_to_price_ids
               #   The set of price IDs to which this adjustment applies.
               #
               #   @return [Array<String>, nil]
               optional :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
+
+              # @!attribute currency
+              #   If set, only prices in the specified currency will have the adjustment applied.
+              #
+              #   @return [String, nil]
+              optional :currency, String, nil?: true
+
+              # @!attribute filters
+              #   A list of filters that determine which prices this adjustment will apply to.
+              #
+              #   @return [Array<Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::AmountDiscount::Filter>, nil]
+              optional :filters,
+                       -> {
+                         Orb::Internal::Type::ArrayOf[Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::AmountDiscount::Filter]
+                       },
+                       nil?: true
 
               # @!attribute is_invoice_level
               #   When false, this adjustment will be applied to a single price. Otherwise, it
@@ -9229,18 +10257,128 @@ module Orb
               #   @return [Boolean, nil]
               optional :is_invoice_level, Orb::Internal::Type::Boolean
 
-              # @!method initialize(amount_discount:, applies_to_price_ids: nil, is_invoice_level: nil, adjustment_type: :amount_discount)
+              # @!attribute price_type
+              #   If set, only prices of the specified type will have the adjustment applied.
+              #
+              #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::AmountDiscount::PriceType, nil]
+              optional :price_type,
+                       enum: -> {
+                         Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::AmountDiscount::PriceType
+                       },
+                       nil?: true
+
+              # @!method initialize(amount_discount:, applies_to_all: nil, applies_to_item_ids: nil, applies_to_price_ids: nil, currency: nil, filters: nil, is_invoice_level: nil, price_type: nil, adjustment_type: :amount_discount)
               #   Some parameter documentations has been truncated, see
               #   {Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::AmountDiscount}
               #   for more details.
               #
               #   @param amount_discount [String]
               #
+              #   @param applies_to_all [Boolean, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::AmountDiscount::AppliesToAll, nil] If set, the adjustment will apply to every price on the subscription.
+              #
+              #   @param applies_to_item_ids [Array<String>, nil] The set of item IDs to which this adjustment applies.
+              #
               #   @param applies_to_price_ids [Array<String>, nil] The set of price IDs to which this adjustment applies.
+              #
+              #   @param currency [String, nil] If set, only prices in the specified currency will have the adjustment applied.
+              #
+              #   @param filters [Array<Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::AmountDiscount::Filter>, nil] A list of filters that determine which prices this adjustment will apply to.
               #
               #   @param is_invoice_level [Boolean] When false, this adjustment will be applied to a single price. Otherwise, it wil
               #
+              #   @param price_type [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::AmountDiscount::PriceType, nil] If set, only prices of the specified type will have the adjustment applied.
+              #
               #   @param adjustment_type [Symbol, :amount_discount]
+
+              # If set, the adjustment will apply to every price on the subscription.
+              #
+              # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::AmountDiscount#applies_to_all
+              module AppliesToAll
+                extend Orb::Internal::Type::Enum
+
+                TRUE = true
+
+                # @!method self.values
+                #   @return [Array<Boolean>]
+              end
+
+              class Filter < Orb::Internal::Type::BaseModel
+                # @!attribute field
+                #   The property of the price to filter on.
+                #
+                #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::AmountDiscount::Filter::Field]
+                required :field,
+                         enum: -> {
+                           Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::AmountDiscount::Filter::Field
+                         }
+
+                # @!attribute operator
+                #   Should prices that match the filter be included or excluded.
+                #
+                #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::AmountDiscount::Filter::Operator]
+                required :operator,
+                         enum: -> {
+                           Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::AmountDiscount::Filter::Operator
+                         }
+
+                # @!attribute values
+                #   The IDs or values that match this filter.
+                #
+                #   @return [Array<String>]
+                required :values, Orb::Internal::Type::ArrayOf[String]
+
+                # @!method initialize(field:, operator:, values:)
+                #   @param field [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::AmountDiscount::Filter::Field] The property of the price to filter on.
+                #
+                #   @param operator [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::AmountDiscount::Filter::Operator] Should prices that match the filter be included or excluded.
+                #
+                #   @param values [Array<String>] The IDs or values that match this filter.
+
+                # The property of the price to filter on.
+                #
+                # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::AmountDiscount::Filter#field
+                module Field
+                  extend Orb::Internal::Type::Enum
+
+                  PRICE_ID = :price_id
+                  ITEM_ID = :item_id
+                  PRICE_TYPE = :price_type
+                  CURRENCY = :currency
+                  PRICING_UNIT_ID = :pricing_unit_id
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+
+                # Should prices that match the filter be included or excluded.
+                #
+                # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::AmountDiscount::Filter#operator
+                module Operator
+                  extend Orb::Internal::Type::Enum
+
+                  INCLUDES = :includes
+                  EXCLUDES = :excludes
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+
+              # If set, only prices of the specified type will have the adjustment applied.
+              #
+              # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::AmountDiscount#price_type
+              module PriceType
+                extend Orb::Internal::Type::Enum
+
+                USAGE = :usage
+                FIXED_IN_ADVANCE = :fixed_in_advance
+                FIXED_IN_ARREARS = :fixed_in_arrears
+                FIXED = :fixed
+                IN_ARREARS = :in_arrears
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
             end
 
             class Minimum < Orb::Internal::Type::BaseModel
@@ -9260,11 +10398,43 @@ module Orb
               #   @return [String]
               required :minimum_amount, String
 
+              # @!attribute applies_to_all
+              #   If set, the adjustment will apply to every price on the subscription.
+              #
+              #   @return [Boolean, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Minimum::AppliesToAll, nil]
+              optional :applies_to_all,
+                       enum: -> {
+                         Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Minimum::AppliesToAll
+                       },
+                       nil?: true
+
+              # @!attribute applies_to_item_ids
+              #   The set of item IDs to which this adjustment applies.
+              #
+              #   @return [Array<String>, nil]
+              optional :applies_to_item_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
+
               # @!attribute applies_to_price_ids
               #   The set of price IDs to which this adjustment applies.
               #
               #   @return [Array<String>, nil]
               optional :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
+
+              # @!attribute currency
+              #   If set, only prices in the specified currency will have the adjustment applied.
+              #
+              #   @return [String, nil]
+              optional :currency, String, nil?: true
+
+              # @!attribute filters
+              #   A list of filters that determine which prices this adjustment will apply to.
+              #
+              #   @return [Array<Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Minimum::Filter>, nil]
+              optional :filters,
+                       -> {
+                         Orb::Internal::Type::ArrayOf[Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Minimum::Filter]
+                       },
+                       nil?: true
 
               # @!attribute is_invoice_level
               #   When false, this adjustment will be applied to a single price. Otherwise, it
@@ -9273,7 +10443,17 @@ module Orb
               #   @return [Boolean, nil]
               optional :is_invoice_level, Orb::Internal::Type::Boolean
 
-              # @!method initialize(item_id:, minimum_amount:, applies_to_price_ids: nil, is_invoice_level: nil, adjustment_type: :minimum)
+              # @!attribute price_type
+              #   If set, only prices of the specified type will have the adjustment applied.
+              #
+              #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Minimum::PriceType, nil]
+              optional :price_type,
+                       enum: -> {
+                         Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Minimum::PriceType
+                       },
+                       nil?: true
+
+              # @!method initialize(item_id:, minimum_amount:, applies_to_all: nil, applies_to_item_ids: nil, applies_to_price_ids: nil, currency: nil, filters: nil, is_invoice_level: nil, price_type: nil, adjustment_type: :minimum)
               #   Some parameter documentations has been truncated, see
               #   {Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Minimum}
               #   for more details.
@@ -9282,11 +10462,111 @@ module Orb
               #
               #   @param minimum_amount [String]
               #
+              #   @param applies_to_all [Boolean, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Minimum::AppliesToAll, nil] If set, the adjustment will apply to every price on the subscription.
+              #
+              #   @param applies_to_item_ids [Array<String>, nil] The set of item IDs to which this adjustment applies.
+              #
               #   @param applies_to_price_ids [Array<String>, nil] The set of price IDs to which this adjustment applies.
+              #
+              #   @param currency [String, nil] If set, only prices in the specified currency will have the adjustment applied.
+              #
+              #   @param filters [Array<Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Minimum::Filter>, nil] A list of filters that determine which prices this adjustment will apply to.
               #
               #   @param is_invoice_level [Boolean] When false, this adjustment will be applied to a single price. Otherwise, it wil
               #
+              #   @param price_type [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Minimum::PriceType, nil] If set, only prices of the specified type will have the adjustment applied.
+              #
               #   @param adjustment_type [Symbol, :minimum]
+
+              # If set, the adjustment will apply to every price on the subscription.
+              #
+              # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Minimum#applies_to_all
+              module AppliesToAll
+                extend Orb::Internal::Type::Enum
+
+                TRUE = true
+
+                # @!method self.values
+                #   @return [Array<Boolean>]
+              end
+
+              class Filter < Orb::Internal::Type::BaseModel
+                # @!attribute field
+                #   The property of the price to filter on.
+                #
+                #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Minimum::Filter::Field]
+                required :field,
+                         enum: -> {
+                           Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Minimum::Filter::Field
+                         }
+
+                # @!attribute operator
+                #   Should prices that match the filter be included or excluded.
+                #
+                #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Minimum::Filter::Operator]
+                required :operator,
+                         enum: -> {
+                           Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Minimum::Filter::Operator
+                         }
+
+                # @!attribute values
+                #   The IDs or values that match this filter.
+                #
+                #   @return [Array<String>]
+                required :values, Orb::Internal::Type::ArrayOf[String]
+
+                # @!method initialize(field:, operator:, values:)
+                #   @param field [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Minimum::Filter::Field] The property of the price to filter on.
+                #
+                #   @param operator [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
+                #
+                #   @param values [Array<String>] The IDs or values that match this filter.
+
+                # The property of the price to filter on.
+                #
+                # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Minimum::Filter#field
+                module Field
+                  extend Orb::Internal::Type::Enum
+
+                  PRICE_ID = :price_id
+                  ITEM_ID = :item_id
+                  PRICE_TYPE = :price_type
+                  CURRENCY = :currency
+                  PRICING_UNIT_ID = :pricing_unit_id
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+
+                # Should prices that match the filter be included or excluded.
+                #
+                # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Minimum::Filter#operator
+                module Operator
+                  extend Orb::Internal::Type::Enum
+
+                  INCLUDES = :includes
+                  EXCLUDES = :excludes
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+
+              # If set, only prices of the specified type will have the adjustment applied.
+              #
+              # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Minimum#price_type
+              module PriceType
+                extend Orb::Internal::Type::Enum
+
+                USAGE = :usage
+                FIXED_IN_ADVANCE = :fixed_in_advance
+                FIXED_IN_ARREARS = :fixed_in_arrears
+                FIXED = :fixed
+                IN_ARREARS = :in_arrears
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
             end
 
             class Maximum < Orb::Internal::Type::BaseModel
@@ -9300,11 +10580,43 @@ module Orb
               #   @return [String]
               required :maximum_amount, String
 
+              # @!attribute applies_to_all
+              #   If set, the adjustment will apply to every price on the subscription.
+              #
+              #   @return [Boolean, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Maximum::AppliesToAll, nil]
+              optional :applies_to_all,
+                       enum: -> {
+                         Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Maximum::AppliesToAll
+                       },
+                       nil?: true
+
+              # @!attribute applies_to_item_ids
+              #   The set of item IDs to which this adjustment applies.
+              #
+              #   @return [Array<String>, nil]
+              optional :applies_to_item_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
+
               # @!attribute applies_to_price_ids
               #   The set of price IDs to which this adjustment applies.
               #
               #   @return [Array<String>, nil]
               optional :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
+
+              # @!attribute currency
+              #   If set, only prices in the specified currency will have the adjustment applied.
+              #
+              #   @return [String, nil]
+              optional :currency, String, nil?: true
+
+              # @!attribute filters
+              #   A list of filters that determine which prices this adjustment will apply to.
+              #
+              #   @return [Array<Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Maximum::Filter>, nil]
+              optional :filters,
+                       -> {
+                         Orb::Internal::Type::ArrayOf[Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Maximum::Filter]
+                       },
+                       nil?: true
 
               # @!attribute is_invoice_level
               #   When false, this adjustment will be applied to a single price. Otherwise, it
@@ -9313,18 +10625,128 @@ module Orb
               #   @return [Boolean, nil]
               optional :is_invoice_level, Orb::Internal::Type::Boolean
 
-              # @!method initialize(maximum_amount:, applies_to_price_ids: nil, is_invoice_level: nil, adjustment_type: :maximum)
+              # @!attribute price_type
+              #   If set, only prices of the specified type will have the adjustment applied.
+              #
+              #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Maximum::PriceType, nil]
+              optional :price_type,
+                       enum: -> {
+                         Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Maximum::PriceType
+                       },
+                       nil?: true
+
+              # @!method initialize(maximum_amount:, applies_to_all: nil, applies_to_item_ids: nil, applies_to_price_ids: nil, currency: nil, filters: nil, is_invoice_level: nil, price_type: nil, adjustment_type: :maximum)
               #   Some parameter documentations has been truncated, see
               #   {Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Maximum}
               #   for more details.
               #
               #   @param maximum_amount [String]
               #
+              #   @param applies_to_all [Boolean, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Maximum::AppliesToAll, nil] If set, the adjustment will apply to every price on the subscription.
+              #
+              #   @param applies_to_item_ids [Array<String>, nil] The set of item IDs to which this adjustment applies.
+              #
               #   @param applies_to_price_ids [Array<String>, nil] The set of price IDs to which this adjustment applies.
+              #
+              #   @param currency [String, nil] If set, only prices in the specified currency will have the adjustment applied.
+              #
+              #   @param filters [Array<Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Maximum::Filter>, nil] A list of filters that determine which prices this adjustment will apply to.
               #
               #   @param is_invoice_level [Boolean] When false, this adjustment will be applied to a single price. Otherwise, it wil
               #
+              #   @param price_type [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Maximum::PriceType, nil] If set, only prices of the specified type will have the adjustment applied.
+              #
               #   @param adjustment_type [Symbol, :maximum]
+
+              # If set, the adjustment will apply to every price on the subscription.
+              #
+              # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Maximum#applies_to_all
+              module AppliesToAll
+                extend Orb::Internal::Type::Enum
+
+                TRUE = true
+
+                # @!method self.values
+                #   @return [Array<Boolean>]
+              end
+
+              class Filter < Orb::Internal::Type::BaseModel
+                # @!attribute field
+                #   The property of the price to filter on.
+                #
+                #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Maximum::Filter::Field]
+                required :field,
+                         enum: -> {
+                           Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Maximum::Filter::Field
+                         }
+
+                # @!attribute operator
+                #   Should prices that match the filter be included or excluded.
+                #
+                #   @return [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Maximum::Filter::Operator]
+                required :operator,
+                         enum: -> {
+                           Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Maximum::Filter::Operator
+                         }
+
+                # @!attribute values
+                #   The IDs or values that match this filter.
+                #
+                #   @return [Array<String>]
+                required :values, Orb::Internal::Type::ArrayOf[String]
+
+                # @!method initialize(field:, operator:, values:)
+                #   @param field [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Maximum::Filter::Field] The property of the price to filter on.
+                #
+                #   @param operator [Symbol, Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
+                #
+                #   @param values [Array<String>] The IDs or values that match this filter.
+
+                # The property of the price to filter on.
+                #
+                # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Maximum::Filter#field
+                module Field
+                  extend Orb::Internal::Type::Enum
+
+                  PRICE_ID = :price_id
+                  ITEM_ID = :item_id
+                  PRICE_TYPE = :price_type
+                  CURRENCY = :currency
+                  PRICING_UNIT_ID = :pricing_unit_id
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+
+                # Should prices that match the filter be included or excluded.
+                #
+                # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Maximum::Filter#operator
+                module Operator
+                  extend Orb::Internal::Type::Enum
+
+                  INCLUDES = :includes
+                  EXCLUDES = :excludes
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+
+              # If set, only prices of the specified type will have the adjustment applied.
+              #
+              # @see Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Maximum#price_type
+              module PriceType
+                extend Orb::Internal::Type::Enum
+
+                USAGE = :usage
+                FIXED_IN_ADVANCE = :fixed_in_advance
+                FIXED_IN_ARREARS = :fixed_in_arrears
+                FIXED = :fixed
+                IN_ARREARS = :in_arrears
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
             end
 
             # @!method self.variants
