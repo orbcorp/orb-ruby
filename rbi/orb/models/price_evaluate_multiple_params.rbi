@@ -23,12 +23,6 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :customer_id
 
-      # Optional list of preview events to use instead of actual usage data (max 500)
-      sig do
-        returns(T.nilable(T::Array[Orb::PriceEvaluateMultipleParams::Event]))
-      end
-      attr_accessor :events
-
       # The external customer ID of the customer to which this evaluation is scoped.
       sig { returns(T.nilable(String)) }
       attr_accessor :external_customer_id
@@ -54,10 +48,6 @@ module Orb
           timeframe_end: Time,
           timeframe_start: Time,
           customer_id: T.nilable(String),
-          events:
-            T.nilable(
-              T::Array[Orb::PriceEvaluateMultipleParams::Event::OrHash]
-            ),
           external_customer_id: T.nilable(String),
           price_evaluations:
             T::Array[Orb::PriceEvaluateMultipleParams::PriceEvaluation::OrHash],
@@ -71,8 +61,6 @@ module Orb
         timeframe_start:,
         # The ID of the customer to which this evaluation is scoped.
         customer_id: nil,
-        # Optional list of preview events to use instead of actual usage data (max 500)
-        events: nil,
         # The external customer ID of the customer to which this evaluation is scoped.
         external_customer_id: nil,
         # List of prices to evaluate (max 100)
@@ -87,8 +75,6 @@ module Orb
             timeframe_end: Time,
             timeframe_start: Time,
             customer_id: T.nilable(String),
-            events:
-              T.nilable(T::Array[Orb::PriceEvaluateMultipleParams::Event]),
             external_customer_id: T.nilable(String),
             price_evaluations:
               T::Array[Orb::PriceEvaluateMultipleParams::PriceEvaluation],
@@ -97,81 +83,6 @@ module Orb
         )
       end
       def to_hash
-      end
-
-      class Event < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Orb::PriceEvaluateMultipleParams::Event,
-              Orb::Internal::AnyHash
-            )
-          end
-
-        # A name to meaningfully identify the action or event type.
-        sig { returns(String) }
-        attr_accessor :event_name
-
-        # A dictionary of custom properties. Values in this dictionary must be numeric,
-        # boolean, or strings. Nested dictionaries are disallowed.
-        sig { returns(T::Hash[Symbol, T.anything]) }
-        attr_accessor :properties
-
-        # An ISO 8601 format date with no timezone offset (i.e. UTC). This should
-        # represent the time that usage was recorded, and is particularly important to
-        # attribute usage to a given billing period.
-        sig { returns(Time) }
-        attr_accessor :timestamp
-
-        # The Orb Customer identifier
-        sig { returns(T.nilable(String)) }
-        attr_accessor :customer_id
-
-        # An alias for the Orb customer, whose mapping is specified when creating the
-        # customer
-        sig { returns(T.nilable(String)) }
-        attr_accessor :external_customer_id
-
-        sig do
-          params(
-            event_name: String,
-            properties: T::Hash[Symbol, T.anything],
-            timestamp: Time,
-            customer_id: T.nilable(String),
-            external_customer_id: T.nilable(String)
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # A name to meaningfully identify the action or event type.
-          event_name:,
-          # A dictionary of custom properties. Values in this dictionary must be numeric,
-          # boolean, or strings. Nested dictionaries are disallowed.
-          properties:,
-          # An ISO 8601 format date with no timezone offset (i.e. UTC). This should
-          # represent the time that usage was recorded, and is particularly important to
-          # attribute usage to a given billing period.
-          timestamp:,
-          # The Orb Customer identifier
-          customer_id: nil,
-          # An alias for the Orb customer, whose mapping is specified when creating the
-          # customer
-          external_customer_id: nil
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              event_name: String,
-              properties: T::Hash[Symbol, T.anything],
-              timestamp: Time,
-              customer_id: T.nilable(String),
-              external_customer_id: T.nilable(String)
-            }
-          )
-        end
-        def to_hash
-        end
       end
 
       class PriceEvaluation < Orb::Internal::Type::BaseModel

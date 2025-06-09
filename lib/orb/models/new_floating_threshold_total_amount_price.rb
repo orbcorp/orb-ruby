@@ -64,6 +64,14 @@ module Orb
       #   @return [Float, nil]
       optional :conversion_rate, Float, nil?: true
 
+      # @!attribute conversion_rate_config
+      #   The configuration for the rate of the price currency to the invoicing currency.
+      #
+      #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+      optional :conversion_rate_config,
+               union: -> { Orb::NewFloatingThresholdTotalAmountPrice::ConversionRateConfig },
+               nil?: true
+
       # @!attribute dimensional_price_configuration
       #   For dimensional price: specifies a price group and dimension values
       #
@@ -104,7 +112,7 @@ module Orb
       #   @return [Hash{Symbol=>String, nil}, nil]
       optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-      # @!method initialize(cadence:, currency:, item_id:, model_type:, name:, threshold_total_amount_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil)
+      # @!method initialize(cadence:, currency:, item_id:, model_type:, name:, threshold_total_amount_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::NewFloatingThresholdTotalAmountPrice} for more details.
       #
@@ -127,6 +135,8 @@ module Orb
       #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
       #
       #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+      #
+      #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
       #
       #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
       #
@@ -165,6 +175,22 @@ module Orb
 
         # @!method self.values
         #   @return [Array<Symbol>]
+      end
+
+      # The configuration for the rate of the price currency to the invoicing currency.
+      #
+      # @see Orb::Models::NewFloatingThresholdTotalAmountPrice#conversion_rate_config
+      module ConversionRateConfig
+        extend Orb::Internal::Type::Union
+
+        discriminator :conversion_rate_type
+
+        variant :unit, -> { Orb::UnitConversionRateConfig }
+
+        variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+        # @!method self.variants
+        #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
       end
     end
   end

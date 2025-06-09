@@ -58,6 +58,14 @@ module Orb
       #   @return [Float, nil]
       optional :conversion_rate, Float, nil?: true
 
+      # @!attribute conversion_rate_config
+      #   The configuration for the rate of the price currency to the invoicing currency.
+      #
+      #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+      optional :conversion_rate_config,
+               union: -> { Orb::NewSubscriptionBulkWithProrationPrice::ConversionRateConfig },
+               nil?: true
+
       # @!attribute currency
       #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
       #   price is billed.
@@ -112,7 +120,7 @@ module Orb
       #   @return [String, nil]
       optional :reference_id, String, nil?: true
 
-      # @!method initialize(bulk_with_proration_config:, cadence:, item_id:, model_type:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil)
+      # @!method initialize(bulk_with_proration_config:, cadence:, item_id:, model_type:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::NewSubscriptionBulkWithProrationPrice} for more details.
       #
@@ -133,6 +141,8 @@ module Orb
       #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
       #
       #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+      #
+      #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
       #
       #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
       #
@@ -175,6 +185,22 @@ module Orb
 
         # @!method self.values
         #   @return [Array<Symbol>]
+      end
+
+      # The configuration for the rate of the price currency to the invoicing currency.
+      #
+      # @see Orb::Models::NewSubscriptionBulkWithProrationPrice#conversion_rate_config
+      module ConversionRateConfig
+        extend Orb::Internal::Type::Union
+
+        discriminator :conversion_rate_type
+
+        variant :unit, -> { Orb::UnitConversionRateConfig }
+
+        variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+        # @!method self.variants
+        #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
       end
     end
   end

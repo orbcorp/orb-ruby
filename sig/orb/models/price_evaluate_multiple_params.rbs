@@ -5,7 +5,6 @@ module Orb
         timeframe_end: Time,
         timeframe_start: Time,
         customer_id: String?,
-        events: ::Array[Orb::PriceEvaluateMultipleParams::Event]?,
         external_customer_id: String?,
         price_evaluations: ::Array[Orb::PriceEvaluateMultipleParams::PriceEvaluation]
       }
@@ -21,8 +20,6 @@ module Orb
 
       attr_accessor customer_id: String?
 
-      attr_accessor events: ::Array[Orb::PriceEvaluateMultipleParams::Event]?
-
       attr_accessor external_customer_id: String?
 
       attr_reader price_evaluations: ::Array[Orb::PriceEvaluateMultipleParams::PriceEvaluation]?
@@ -35,7 +32,6 @@ module Orb
         timeframe_end: Time,
         timeframe_start: Time,
         ?customer_id: String?,
-        ?events: ::Array[Orb::PriceEvaluateMultipleParams::Event]?,
         ?external_customer_id: String?,
         ?price_evaluations: ::Array[Orb::PriceEvaluateMultipleParams::PriceEvaluation],
         ?request_options: Orb::request_opts
@@ -45,48 +41,10 @@ module Orb
         timeframe_end: Time,
         timeframe_start: Time,
         customer_id: String?,
-        events: ::Array[Orb::PriceEvaluateMultipleParams::Event]?,
         external_customer_id: String?,
         price_evaluations: ::Array[Orb::PriceEvaluateMultipleParams::PriceEvaluation],
         request_options: Orb::RequestOptions
       }
-
-      type event =
-        {
-          event_name: String,
-          properties: ::Hash[Symbol, top],
-          timestamp: Time,
-          customer_id: String?,
-          external_customer_id: String?
-        }
-
-      class Event < Orb::Internal::Type::BaseModel
-        attr_accessor event_name: String
-
-        attr_accessor properties: ::Hash[Symbol, top]
-
-        attr_accessor timestamp: Time
-
-        attr_accessor customer_id: String?
-
-        attr_accessor external_customer_id: String?
-
-        def initialize: (
-          event_name: String,
-          properties: ::Hash[Symbol, top],
-          timestamp: Time,
-          ?customer_id: String?,
-          ?external_customer_id: String?
-        ) -> void
-
-        def to_hash: -> {
-          event_name: String,
-          properties: ::Hash[Symbol, top],
-          timestamp: Time,
-          customer_id: String?,
-          external_customer_id: String?
-        }
-      end
 
       type price_evaluation =
         {
