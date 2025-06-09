@@ -1,0 +1,35 @@
+module Orb
+  module Models
+    type unit_conversion_rate_config =
+      {
+        conversion_rate_type: Orb::Models::UnitConversionRateConfig::conversion_rate_type,
+        unit_config: Orb::ConversionRateUnitConfig
+      }
+
+    class UnitConversionRateConfig < Orb::Internal::Type::BaseModel
+      attr_accessor conversion_rate_type: Orb::Models::UnitConversionRateConfig::conversion_rate_type
+
+      attr_accessor unit_config: Orb::ConversionRateUnitConfig
+
+      def initialize: (
+        conversion_rate_type: Orb::Models::UnitConversionRateConfig::conversion_rate_type,
+        unit_config: Orb::ConversionRateUnitConfig
+      ) -> void
+
+      def to_hash: -> {
+        conversion_rate_type: Orb::Models::UnitConversionRateConfig::conversion_rate_type,
+        unit_config: Orb::ConversionRateUnitConfig
+      }
+
+      type conversion_rate_type = :unit
+
+      module ConversionRateType
+        extend Orb::Internal::Type::Enum
+
+        UNIT: :unit
+
+        def self?.values: -> ::Array[Orb::Models::UnitConversionRateConfig::conversion_rate_type]
+      end
+    end
+  end
+end

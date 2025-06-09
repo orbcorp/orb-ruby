@@ -12,7 +12,6 @@ module Orb
         billed_in_advance: bool?,
         billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
         conversion_rate: Float?,
-        conversion_rate_config: Orb::Models::NewFloatingThresholdTotalAmountPrice::conversion_rate_config?,
         dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
         external_price_id: String?,
         fixed_price_quantity: Float?,
@@ -42,8 +41,6 @@ module Orb
 
       attr_accessor conversion_rate: Float?
 
-      attr_accessor conversion_rate_config: Orb::Models::NewFloatingThresholdTotalAmountPrice::conversion_rate_config?
-
       attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
 
       attr_accessor external_price_id: String?
@@ -67,7 +64,6 @@ module Orb
         ?billed_in_advance: bool?,
         ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
         ?conversion_rate: Float?,
-        ?conversion_rate_config: Orb::Models::NewFloatingThresholdTotalAmountPrice::conversion_rate_config?,
         ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
         ?external_price_id: String?,
         ?fixed_price_quantity: Float?,
@@ -87,7 +83,6 @@ module Orb
         billed_in_advance: bool?,
         billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
         conversion_rate: Float?,
-        conversion_rate_config: Orb::Models::NewFloatingThresholdTotalAmountPrice::conversion_rate_config?,
         dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
         external_price_id: String?,
         fixed_price_quantity: Float?,
@@ -120,110 +115,6 @@ module Orb
         THRESHOLD_TOTAL_AMOUNT: :threshold_total_amount
 
         def self?.values: -> ::Array[Orb::Models::NewFloatingThresholdTotalAmountPrice::model_type]
-      end
-
-      type conversion_rate_config =
-        Orb::NewFloatingThresholdTotalAmountPrice::ConversionRateConfig::Unit
-        | Orb::NewFloatingThresholdTotalAmountPrice::ConversionRateConfig::Tiered
-
-      module ConversionRateConfig
-        extend Orb::Internal::Type::Union
-
-        type unit =
-          {
-            conversion_rate_type: :unit,
-            unit_config: Orb::NewFloatingThresholdTotalAmountPrice::ConversionRateConfig::Unit::UnitConfig
-          }
-
-        class Unit < Orb::Internal::Type::BaseModel
-          attr_accessor conversion_rate_type: :unit
-
-          attr_accessor unit_config: Orb::NewFloatingThresholdTotalAmountPrice::ConversionRateConfig::Unit::UnitConfig
-
-          def initialize: (
-            unit_config: Orb::NewFloatingThresholdTotalAmountPrice::ConversionRateConfig::Unit::UnitConfig,
-            ?conversion_rate_type: :unit
-          ) -> void
-
-          def to_hash: -> {
-            conversion_rate_type: :unit,
-            unit_config: Orb::NewFloatingThresholdTotalAmountPrice::ConversionRateConfig::Unit::UnitConfig
-          }
-
-          type unit_config = { unit_amount: String }
-
-          class UnitConfig < Orb::Internal::Type::BaseModel
-            attr_accessor unit_amount: String
-
-            def initialize: (unit_amount: String) -> void
-
-            def to_hash: -> { unit_amount: String }
-          end
-        end
-
-        type tiered =
-          {
-            conversion_rate_type: :tiered,
-            tiered_config: Orb::NewFloatingThresholdTotalAmountPrice::ConversionRateConfig::Tiered::TieredConfig
-          }
-
-        class Tiered < Orb::Internal::Type::BaseModel
-          attr_accessor conversion_rate_type: :tiered
-
-          attr_accessor tiered_config: Orb::NewFloatingThresholdTotalAmountPrice::ConversionRateConfig::Tiered::TieredConfig
-
-          def initialize: (
-            tiered_config: Orb::NewFloatingThresholdTotalAmountPrice::ConversionRateConfig::Tiered::TieredConfig,
-            ?conversion_rate_type: :tiered
-          ) -> void
-
-          def to_hash: -> {
-            conversion_rate_type: :tiered,
-            tiered_config: Orb::NewFloatingThresholdTotalAmountPrice::ConversionRateConfig::Tiered::TieredConfig
-          }
-
-          type tiered_config =
-            {
-              tiers: ::Array[Orb::NewFloatingThresholdTotalAmountPrice::ConversionRateConfig::Tiered::TieredConfig::Tier]
-            }
-
-          class TieredConfig < Orb::Internal::Type::BaseModel
-            attr_accessor tiers: ::Array[Orb::NewFloatingThresholdTotalAmountPrice::ConversionRateConfig::Tiered::TieredConfig::Tier]
-
-            def initialize: (
-              tiers: ::Array[Orb::NewFloatingThresholdTotalAmountPrice::ConversionRateConfig::Tiered::TieredConfig::Tier]
-            ) -> void
-
-            def to_hash: -> {
-              tiers: ::Array[Orb::NewFloatingThresholdTotalAmountPrice::ConversionRateConfig::Tiered::TieredConfig::Tier]
-            }
-
-            type tier =
-              { first_unit: Float, unit_amount: String, last_unit: Float? }
-
-            class Tier < Orb::Internal::Type::BaseModel
-              attr_accessor first_unit: Float
-
-              attr_accessor unit_amount: String
-
-              attr_accessor last_unit: Float?
-
-              def initialize: (
-                first_unit: Float,
-                unit_amount: String,
-                ?last_unit: Float?
-              ) -> void
-
-              def to_hash: -> {
-                first_unit: Float,
-                unit_amount: String,
-                last_unit: Float?
-              }
-            end
-          end
-        end
-
-        def self?.variants: -> ::Array[Orb::Models::NewFloatingThresholdTotalAmountPrice::conversion_rate_config]
       end
     end
   end

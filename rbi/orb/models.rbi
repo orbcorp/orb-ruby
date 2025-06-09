@@ -69,6 +69,12 @@ module Orb
 
   ChangedSubscriptionResources = Orb::Models::ChangedSubscriptionResources
 
+  ConversionRateTier = Orb::Models::ConversionRateTier
+
+  ConversionRateTieredConfig = Orb::Models::ConversionRateTieredConfig
+
+  ConversionRateUnitConfig = Orb::Models::ConversionRateUnitConfig
+
   Coupon = Orb::Models::Coupon
 
   CouponArchiveParams = Orb::Models::CouponArchiveParams
@@ -533,9 +539,6 @@ module Orb
 
   PriceEvaluateParams = Orb::Models::PriceEvaluateParams
 
-  PriceEvaluatePreviewEventsParams =
-    Orb::Models::PriceEvaluatePreviewEventsParams
-
   PriceFetchParams = Orb::Models::PriceFetchParams
 
   PriceInterval = Orb::Models::PriceInterval
@@ -621,6 +624,8 @@ module Orb
 
   TieredConfig = Orb::Models::TieredConfig
 
+  TieredConversionRateConfig = Orb::Models::TieredConversionRateConfig
+
   TierSubLineItem = Orb::Models::TierSubLineItem
 
   TopLevelPingParams = Orb::Models::TopLevelPingParams
@@ -630,6 +635,8 @@ module Orb
   TrialDiscount = Orb::Models::TrialDiscount
 
   UnitConfig = Orb::Models::UnitConfig
+
+  UnitConversionRateConfig = Orb::Models::UnitConversionRateConfig
 
   UsageDiscount = Orb::Models::UsageDiscount
 
