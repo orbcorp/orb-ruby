@@ -21,9 +21,9 @@ class Orb::Test::Resources::Coupons::SubscriptionsTest < Orb::Test::ResourceTest
       row => {
         id: String,
         active_plan_phase_order: Integer | nil,
-        adjustment_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Subscription::AdjustmentInterval]),
+        adjustment_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::AdjustmentInterval]),
         auto_collection: Orb::Internal::Type::Boolean | nil,
-        billing_cycle_anchor_configuration: Orb::Subscription::BillingCycleAnchorConfiguration,
+        billing_cycle_anchor_configuration: Orb::BillingCycleAnchorConfiguration,
         billing_cycle_day: Integer,
         created_at: Time,
         current_billing_period_end_date: Time | nil,
@@ -32,20 +32,20 @@ class Orb::Test::Resources::Coupons::SubscriptionsTest < Orb::Test::ResourceTest
         default_invoice_memo: String | nil,
         discount_intervals: ^(Orb::Internal::Type::ArrayOf[union: Orb::Subscription::DiscountInterval]),
         end_date: Time | nil,
-        fixed_fee_quantity_schedule: ^(Orb::Internal::Type::ArrayOf[Orb::Subscription::FixedFeeQuantitySchedule]),
+        fixed_fee_quantity_schedule: ^(Orb::Internal::Type::ArrayOf[Orb::FixedFeeQuantityScheduleEntry]),
         invoicing_threshold: String | nil,
-        maximum_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Subscription::MaximumInterval]),
+        maximum_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::MaximumInterval]),
         metadata: ^(Orb::Internal::Type::HashOf[String]),
-        minimum_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Subscription::MinimumInterval]),
+        minimum_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::MinimumInterval]),
         name: String,
         net_terms: Integer,
-        pending_subscription_change: Orb::Subscription::PendingSubscriptionChange | nil,
+        pending_subscription_change: Orb::SubscriptionChangeMinified | nil,
         plan: Orb::Plan | nil,
-        price_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::Subscription::PriceInterval]),
-        redeemed_coupon: Orb::Subscription::RedeemedCoupon | nil,
+        price_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::PriceInterval]),
+        redeemed_coupon: Orb::CouponRedemption | nil,
         start_date: Time,
         status: Orb::Subscription::Status,
-        trial_info: Orb::Subscription::TrialInfo
+        trial_info: Orb::SubscriptionTrialInfo
       }
     end
   end

@@ -1,0 +1,13 @@
+module Orb
+  module Models
+    type tiered_bps_config = { tiers: ::Array[Orb::BPSTier] }
+
+    class TieredBPSConfig < Orb::Internal::Type::BaseModel
+      attr_accessor tiers: ::Array[Orb::BPSTier]
+
+      def initialize: (tiers: ::Array[Orb::BPSTier]) -> void
+
+      def to_hash: -> { tiers: ::Array[Orb::BPSTier] }
+    end
+  end
+end

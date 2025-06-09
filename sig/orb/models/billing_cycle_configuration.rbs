@@ -1,0 +1,36 @@
+module Orb
+  module Models
+    type billing_cycle_configuration =
+      {
+        duration: Integer,
+        duration_unit: Orb::Models::BillingCycleConfiguration::duration_unit
+      }
+
+    class BillingCycleConfiguration < Orb::Internal::Type::BaseModel
+      attr_accessor duration: Integer
+
+      attr_accessor duration_unit: Orb::Models::BillingCycleConfiguration::duration_unit
+
+      def initialize: (
+        duration: Integer,
+        duration_unit: Orb::Models::BillingCycleConfiguration::duration_unit
+      ) -> void
+
+      def to_hash: -> {
+        duration: Integer,
+        duration_unit: Orb::Models::BillingCycleConfiguration::duration_unit
+      }
+
+      type duration_unit = :day | :month
+
+      module DurationUnit
+        extend Orb::Internal::Type::Enum
+
+        DAY: :day
+        MONTH: :month
+
+        def self?.values: -> ::Array[Orb::Models::BillingCycleConfiguration::duration_unit]
+      end
+    end
+  end
+end

@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.0.0 (2025-06-09)
+
+Full Changelog: [v0.12.0...v1.0.0](https://github.com/orbcorp/orb-ruby/compare/v0.12.0...v1.0.0)
+
+### ⚠ BREAKING CHANGES
+
+* **client:** breaking change to re-use types
+
+### Features
+
+* **api:** api update ([a04f1e8](https://github.com/orbcorp/orb-ruby/commit/a04f1e89e9188912bf860fc0214f657c2d135b6e))
+* **api:** api update ([bd80319](https://github.com/orbcorp/orb-ruby/commit/bd8031945315e344ca53add3fb00d33ff6453bd0))
+* **api:** manual updates ([c72f634](https://github.com/orbcorp/orb-ruby/commit/c72f6346f566626bc15ee71e218f7aebdbf9f3ff))
+* **client:** breaking change to re-use types ([4988d1c](https://github.com/orbcorp/orb-ruby/commit/4988d1cf7cf2ebdbb78227c8fed3cc63647942a2))
+
+
+### Chores
+
+* **internal:** version bump ([46b439b](https://github.com/orbcorp/orb-ruby/commit/46b439b8d9cb1e7ea8fe97e2d81ec66d60f3aada))
+
 ## 0.12.0 (2025-06-04)
 
 Full Changelog: [v0.11.0...v0.12.0](https://github.com/orbcorp/orb-ruby/compare/v0.11.0...v0.12.0)

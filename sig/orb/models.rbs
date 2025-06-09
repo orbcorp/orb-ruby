@@ -1,4 +1,14 @@
 module Orb
+  class AccountingProviderConfig = Orb::Models::AccountingProviderConfig
+
+  class Address = Orb::Models::Address
+
+  class AddressInput = Orb::Models::AddressInput
+
+  class AdjustmentInterval = Orb::Models::AdjustmentInterval
+
+  class AggregatedCost = Orb::Models::AggregatedCost
+
   class Alert = Orb::Models::Alert
 
   class AlertCreateForCustomerParams = Orb::Models::AlertCreateForCustomerParams
@@ -17,7 +27,11 @@ module Orb
 
   class AlertUpdateParams = Orb::Models::AlertUpdateParams
 
+  class Allocation = Orb::Models::Allocation
+
   class AmountDiscount = Orb::Models::AmountDiscount
+
+  class AmountDiscountInterval = Orb::Models::AmountDiscountInterval
 
   module Beta = Orb::Models::Beta
 
@@ -29,7 +43,33 @@ module Orb
 
   class BillableMetric = Orb::Models::BillableMetric
 
+  class BillableMetricTiny = Orb::Models::BillableMetricTiny
+
+  class BillingCycleAnchorConfiguration = Orb::Models::BillingCycleAnchorConfiguration
+
+  class BillingCycleConfiguration = Orb::Models::BillingCycleConfiguration
+
   module BillingCycleRelativeDate = Orb::Models::BillingCycleRelativeDate
+
+  class BPSConfig = Orb::Models::BPSConfig
+
+  class BPSTier = Orb::Models::BPSTier
+
+  class BulkBPSConfig = Orb::Models::BulkBPSConfig
+
+  class BulkBPSTier = Orb::Models::BulkBPSTier
+
+  class BulkConfig = Orb::Models::BulkConfig
+
+  class BulkTier = Orb::Models::BulkTier
+
+  class ChangedSubscriptionResources = Orb::Models::ChangedSubscriptionResources
+
+  class ConversionRateTier = Orb::Models::ConversionRateTier
+
+  class ConversionRateTieredConfig = Orb::Models::ConversionRateTieredConfig
+
+  class ConversionRateUnitConfig = Orb::Models::ConversionRateUnitConfig
 
   class Coupon = Orb::Models::Coupon
 
@@ -41,6 +81,8 @@ module Orb
 
   class CouponListParams = Orb::Models::CouponListParams
 
+  class CouponRedemption = Orb::Models::CouponRedemption
+
   module Coupons = Orb::Models::Coupons
 
   class CreditNote = Orb::Models::CreditNote
@@ -50,6 +92,8 @@ module Orb
   class CreditNoteFetchParams = Orb::Models::CreditNoteFetchParams
 
   class CreditNoteListParams = Orb::Models::CreditNoteListParams
+
+  class CreditNoteTiny = Orb::Models::CreditNoteTiny
 
   class Customer = Orb::Models::Customer
 
@@ -61,7 +105,11 @@ module Orb
 
   class CustomerFetchParams = Orb::Models::CustomerFetchParams
 
+  class CustomerHierarchyConfig = Orb::Models::CustomerHierarchyConfig
+
   class CustomerListParams = Orb::Models::CustomerListParams
+
+  class CustomerMinified = Orb::Models::CustomerMinified
 
   module Customers = Orb::Models::Customers
 
@@ -69,9 +117,15 @@ module Orb
 
   class CustomerSyncPaymentMethodsFromGatewayParams = Orb::Models::CustomerSyncPaymentMethodsFromGatewayParams
 
+  class CustomerTaxID = Orb::Models::CustomerTaxID
+
   class CustomerUpdateByExternalIDParams = Orb::Models::CustomerUpdateByExternalIDParams
 
   class CustomerUpdateParams = Orb::Models::CustomerUpdateParams
+
+  class CustomExpiration = Orb::Models::CustomExpiration
+
+  class DimensionalPriceConfiguration = Orb::Models::DimensionalPriceConfiguration
 
   class DimensionalPriceGroup = Orb::Models::DimensionalPriceGroup
 
@@ -87,6 +141,8 @@ module Orb
 
   module Discount = Orb::Models::Discount
 
+  class DiscountOverride = Orb::Models::DiscountOverride
+
   class EvaluatePriceGroup = Orb::Models::EvaluatePriceGroup
 
   class EventDeprecateParams = Orb::Models::EventDeprecateParams
@@ -98,6 +154,10 @@ module Orb
   class EventSearchParams = Orb::Models::EventSearchParams
 
   class EventUpdateParams = Orb::Models::EventUpdateParams
+
+  class FixedFeeQuantityScheduleEntry = Orb::Models::FixedFeeQuantityScheduleEntry
+
+  class FixedFeeQuantityTransition = Orb::Models::FixedFeeQuantityTransition
 
   class Invoice = Orb::Models::Invoice
 
@@ -119,6 +179,8 @@ module Orb
 
   class InvoicePayParams = Orb::Models::InvoicePayParams
 
+  class InvoiceTiny = Orb::Models::InvoiceTiny
+
   class InvoiceUpdateParams = Orb::Models::InvoiceUpdateParams
 
   class InvoiceVoidParams = Orb::Models::InvoiceVoidParams
@@ -133,7 +195,21 @@ module Orb
 
   class ItemListParams = Orb::Models::ItemListParams
 
+  class ItemSlim = Orb::Models::ItemSlim
+
   class ItemUpdateParams = Orb::Models::ItemUpdateParams
+
+  class MatrixConfig = Orb::Models::MatrixConfig
+
+  class MatrixSubLineItem = Orb::Models::MatrixSubLineItem
+
+  class MatrixValue = Orb::Models::MatrixValue
+
+  class MatrixWithAllocationConfig = Orb::Models::MatrixWithAllocationConfig
+
+  class Maximum = Orb::Models::Maximum
+
+  class MaximumInterval = Orb::Models::MaximumInterval
 
   class MetricCreateParams = Orb::Models::MetricCreateParams
 
@@ -143,9 +219,227 @@ module Orb
 
   class MetricUpdateParams = Orb::Models::MetricUpdateParams
 
+  class Minimum = Orb::Models::Minimum
+
+  class MinimumInterval = Orb::Models::MinimumInterval
+
+  class MonetaryAmountDiscountAdjustment = Orb::Models::MonetaryAmountDiscountAdjustment
+
+  class MonetaryMaximumAdjustment = Orb::Models::MonetaryMaximumAdjustment
+
+  class MonetaryMinimumAdjustment = Orb::Models::MonetaryMinimumAdjustment
+
+  class MonetaryPercentageDiscountAdjustment = Orb::Models::MonetaryPercentageDiscountAdjustment
+
+  class MonetaryUsageDiscountAdjustment = Orb::Models::MonetaryUsageDiscountAdjustment
+
+  class MutatedSubscription = Orb::Models::MutatedSubscription
+
+  class NewAccountingSyncConfiguration = Orb::Models::NewAccountingSyncConfiguration
+
+  class NewAllocationPrice = Orb::Models::NewAllocationPrice
+
+  class NewAmountDiscount = Orb::Models::NewAmountDiscount
+
+  class NewAvalaraTaxConfiguration = Orb::Models::NewAvalaraTaxConfiguration
+
+  class NewBillingCycleConfiguration = Orb::Models::NewBillingCycleConfiguration
+
+  class NewDimensionalPriceConfiguration = Orb::Models::NewDimensionalPriceConfiguration
+
+  class NewFloatingBPSPrice = Orb::Models::NewFloatingBPSPrice
+
+  class NewFloatingBulkBPSPrice = Orb::Models::NewFloatingBulkBPSPrice
+
+  class NewFloatingBulkPrice = Orb::Models::NewFloatingBulkPrice
+
+  class NewFloatingBulkWithProrationPrice = Orb::Models::NewFloatingBulkWithProrationPrice
+
+  class NewFloatingCumulativeGroupedBulkPrice = Orb::Models::NewFloatingCumulativeGroupedBulkPrice
+
+  class NewFloatingGroupedAllocationPrice = Orb::Models::NewFloatingGroupedAllocationPrice
+
+  class NewFloatingGroupedTieredPackagePrice = Orb::Models::NewFloatingGroupedTieredPackagePrice
+
+  class NewFloatingGroupedTieredPrice = Orb::Models::NewFloatingGroupedTieredPrice
+
+  class NewFloatingGroupedWithMeteredMinimumPrice = Orb::Models::NewFloatingGroupedWithMeteredMinimumPrice
+
+  class NewFloatingGroupedWithProratedMinimumPrice = Orb::Models::NewFloatingGroupedWithProratedMinimumPrice
+
+  class NewFloatingMatrixPrice = Orb::Models::NewFloatingMatrixPrice
+
+  class NewFloatingMatrixWithAllocationPrice = Orb::Models::NewFloatingMatrixWithAllocationPrice
+
+  class NewFloatingMatrixWithDisplayNamePrice = Orb::Models::NewFloatingMatrixWithDisplayNamePrice
+
+  class NewFloatingMaxGroupTieredPackagePrice = Orb::Models::NewFloatingMaxGroupTieredPackagePrice
+
+  class NewFloatingPackagePrice = Orb::Models::NewFloatingPackagePrice
+
+  class NewFloatingPackageWithAllocationPrice = Orb::Models::NewFloatingPackageWithAllocationPrice
+
+  class NewFloatingScalableMatrixWithTieredPricingPrice = Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice
+
+  class NewFloatingScalableMatrixWithUnitPricingPrice = Orb::Models::NewFloatingScalableMatrixWithUnitPricingPrice
+
+  class NewFloatingThresholdTotalAmountPrice = Orb::Models::NewFloatingThresholdTotalAmountPrice
+
+  class NewFloatingTieredBPSPrice = Orb::Models::NewFloatingTieredBPSPrice
+
+  class NewFloatingTieredPackagePrice = Orb::Models::NewFloatingTieredPackagePrice
+
+  class NewFloatingTieredPackageWithMinimumPrice = Orb::Models::NewFloatingTieredPackageWithMinimumPrice
+
+  class NewFloatingTieredPrice = Orb::Models::NewFloatingTieredPrice
+
+  class NewFloatingTieredWithMinimumPrice = Orb::Models::NewFloatingTieredWithMinimumPrice
+
+  class NewFloatingTieredWithProrationPrice = Orb::Models::NewFloatingTieredWithProrationPrice
+
+  class NewFloatingUnitPrice = Orb::Models::NewFloatingUnitPrice
+
+  class NewFloatingUnitWithPercentPrice = Orb::Models::NewFloatingUnitWithPercentPrice
+
+  class NewFloatingUnitWithProrationPrice = Orb::Models::NewFloatingUnitWithProrationPrice
+
+  class NewMaximum = Orb::Models::NewMaximum
+
+  class NewMinimum = Orb::Models::NewMinimum
+
+  class NewPercentageDiscount = Orb::Models::NewPercentageDiscount
+
+  class NewPlanBPSPrice = Orb::Models::NewPlanBPSPrice
+
+  class NewPlanBulkBPSPrice = Orb::Models::NewPlanBulkBPSPrice
+
+  class NewPlanBulkPrice = Orb::Models::NewPlanBulkPrice
+
+  class NewPlanBulkWithProrationPrice = Orb::Models::NewPlanBulkWithProrationPrice
+
+  class NewPlanCumulativeGroupedBulkPrice = Orb::Models::NewPlanCumulativeGroupedBulkPrice
+
+  class NewPlanGroupedAllocationPrice = Orb::Models::NewPlanGroupedAllocationPrice
+
+  class NewPlanGroupedTieredPackagePrice = Orb::Models::NewPlanGroupedTieredPackagePrice
+
+  class NewPlanGroupedTieredPrice = Orb::Models::NewPlanGroupedTieredPrice
+
+  class NewPlanGroupedWithMeteredMinimumPrice = Orb::Models::NewPlanGroupedWithMeteredMinimumPrice
+
+  class NewPlanGroupedWithProratedMinimumPrice = Orb::Models::NewPlanGroupedWithProratedMinimumPrice
+
+  class NewPlanMatrixPrice = Orb::Models::NewPlanMatrixPrice
+
+  class NewPlanMatrixWithAllocationPrice = Orb::Models::NewPlanMatrixWithAllocationPrice
+
+  class NewPlanMatrixWithDisplayNamePrice = Orb::Models::NewPlanMatrixWithDisplayNamePrice
+
+  class NewPlanMaxGroupTieredPackagePrice = Orb::Models::NewPlanMaxGroupTieredPackagePrice
+
+  class NewPlanPackagePrice = Orb::Models::NewPlanPackagePrice
+
+  class NewPlanPackageWithAllocationPrice = Orb::Models::NewPlanPackageWithAllocationPrice
+
+  class NewPlanScalableMatrixWithTieredPricingPrice = Orb::Models::NewPlanScalableMatrixWithTieredPricingPrice
+
+  class NewPlanScalableMatrixWithUnitPricingPrice = Orb::Models::NewPlanScalableMatrixWithUnitPricingPrice
+
+  class NewPlanThresholdTotalAmountPrice = Orb::Models::NewPlanThresholdTotalAmountPrice
+
+  class NewPlanTieredBPSPrice = Orb::Models::NewPlanTieredBPSPrice
+
+  class NewPlanTieredPackagePrice = Orb::Models::NewPlanTieredPackagePrice
+
+  class NewPlanTieredPackageWithMinimumPrice = Orb::Models::NewPlanTieredPackageWithMinimumPrice
+
+  class NewPlanTieredPrice = Orb::Models::NewPlanTieredPrice
+
+  class NewPlanTieredWithMinimumPrice = Orb::Models::NewPlanTieredWithMinimumPrice
+
+  class NewPlanTierWithProrationPrice = Orb::Models::NewPlanTierWithProrationPrice
+
+  class NewPlanUnitPrice = Orb::Models::NewPlanUnitPrice
+
+  class NewPlanUnitWithPercentPrice = Orb::Models::NewPlanUnitWithPercentPrice
+
+  class NewPlanUnitWithProrationPrice = Orb::Models::NewPlanUnitWithProrationPrice
+
+  class NewReportingConfiguration = Orb::Models::NewReportingConfiguration
+
+  class NewSphereConfiguration = Orb::Models::NewSphereConfiguration
+
+  class NewSubscriptionBPSPrice = Orb::Models::NewSubscriptionBPSPrice
+
+  class NewSubscriptionBulkBPSPrice = Orb::Models::NewSubscriptionBulkBPSPrice
+
+  class NewSubscriptionBulkPrice = Orb::Models::NewSubscriptionBulkPrice
+
+  class NewSubscriptionBulkWithProrationPrice = Orb::Models::NewSubscriptionBulkWithProrationPrice
+
+  class NewSubscriptionCumulativeGroupedBulkPrice = Orb::Models::NewSubscriptionCumulativeGroupedBulkPrice
+
+  class NewSubscriptionGroupedAllocationPrice = Orb::Models::NewSubscriptionGroupedAllocationPrice
+
+  class NewSubscriptionGroupedTieredPackagePrice = Orb::Models::NewSubscriptionGroupedTieredPackagePrice
+
+  class NewSubscriptionGroupedTieredPrice = Orb::Models::NewSubscriptionGroupedTieredPrice
+
+  class NewSubscriptionGroupedWithMeteredMinimumPrice = Orb::Models::NewSubscriptionGroupedWithMeteredMinimumPrice
+
+  class NewSubscriptionGroupedWithProratedMinimumPrice = Orb::Models::NewSubscriptionGroupedWithProratedMinimumPrice
+
+  class NewSubscriptionMatrixPrice = Orb::Models::NewSubscriptionMatrixPrice
+
+  class NewSubscriptionMatrixWithAllocationPrice = Orb::Models::NewSubscriptionMatrixWithAllocationPrice
+
+  class NewSubscriptionMatrixWithDisplayNamePrice = Orb::Models::NewSubscriptionMatrixWithDisplayNamePrice
+
+  class NewSubscriptionMaxGroupTieredPackagePrice = Orb::Models::NewSubscriptionMaxGroupTieredPackagePrice
+
+  class NewSubscriptionPackagePrice = Orb::Models::NewSubscriptionPackagePrice
+
+  class NewSubscriptionPackageWithAllocationPrice = Orb::Models::NewSubscriptionPackageWithAllocationPrice
+
+  class NewSubscriptionScalableMatrixWithTieredPricingPrice = Orb::Models::NewSubscriptionScalableMatrixWithTieredPricingPrice
+
+  class NewSubscriptionScalableMatrixWithUnitPricingPrice = Orb::Models::NewSubscriptionScalableMatrixWithUnitPricingPrice
+
+  class NewSubscriptionThresholdTotalAmountPrice = Orb::Models::NewSubscriptionThresholdTotalAmountPrice
+
+  class NewSubscriptionTieredBPSPrice = Orb::Models::NewSubscriptionTieredBPSPrice
+
+  class NewSubscriptionTieredPackagePrice = Orb::Models::NewSubscriptionTieredPackagePrice
+
+  class NewSubscriptionTieredPackageWithMinimumPrice = Orb::Models::NewSubscriptionTieredPackageWithMinimumPrice
+
+  class NewSubscriptionTieredPrice = Orb::Models::NewSubscriptionTieredPrice
+
+  class NewSubscriptionTieredWithMinimumPrice = Orb::Models::NewSubscriptionTieredWithMinimumPrice
+
+  class NewSubscriptionTierWithProrationPrice = Orb::Models::NewSubscriptionTierWithProrationPrice
+
+  class NewSubscriptionUnitPrice = Orb::Models::NewSubscriptionUnitPrice
+
+  class NewSubscriptionUnitWithPercentPrice = Orb::Models::NewSubscriptionUnitWithPercentPrice
+
+  class NewSubscriptionUnitWithProrationPrice = Orb::Models::NewSubscriptionUnitWithProrationPrice
+
+  class NewTaxJarConfiguration = Orb::Models::NewTaxJarConfiguration
+
+  class NewUsageDiscount = Orb::Models::NewUsageDiscount
+
+  class OtherSubLineItem = Orb::Models::OtherSubLineItem
+
+  class PackageConfig = Orb::Models::PackageConfig
+
   class PaginationMetadata = Orb::Models::PaginationMetadata
 
   class PercentageDiscount = Orb::Models::PercentageDiscount
+
+  class PercentageDiscountInterval = Orb::Models::PercentageDiscountInterval
+
+  class PerPriceCost = Orb::Models::PerPriceCost
 
   class Plan = Orb::Models::Plan
 
@@ -154,6 +448,16 @@ module Orb
   class PlanFetchParams = Orb::Models::PlanFetchParams
 
   class PlanListParams = Orb::Models::PlanListParams
+
+  class PlanPhaseAmountDiscountAdjustment = Orb::Models::PlanPhaseAmountDiscountAdjustment
+
+  class PlanPhaseMaximumAdjustment = Orb::Models::PlanPhaseMaximumAdjustment
+
+  class PlanPhaseMinimumAdjustment = Orb::Models::PlanPhaseMinimumAdjustment
+
+  class PlanPhasePercentageDiscountAdjustment = Orb::Models::PlanPhasePercentageDiscountAdjustment
+
+  class PlanPhaseUsageDiscountAdjustment = Orb::Models::PlanPhaseUsageDiscountAdjustment
 
   module Plans = Orb::Models::Plans
 
@@ -171,13 +475,21 @@ module Orb
 
   class PriceEvaluateParams = Orb::Models::PriceEvaluateParams
 
+  class PriceEvaluatePreviewEventsParams = Orb::Models::PriceEvaluatePreviewEventsParams
+
   class PriceFetchParams = Orb::Models::PriceFetchParams
+
+  class PriceInterval = Orb::Models::PriceInterval
 
   class PriceListParams = Orb::Models::PriceListParams
 
   module Prices = Orb::Models::Prices
 
   class PriceUpdateParams = Orb::Models::PriceUpdateParams
+
+  class SubLineItemGrouping = Orb::Models::SubLineItemGrouping
+
+  class SubLineItemMatrixConfig = Orb::Models::SubLineItemMatrixConfig
 
   class Subscription = Orb::Models::Subscription
 
@@ -186,6 +498,8 @@ module Orb
   class SubscriptionChangeApplyParams = Orb::Models::SubscriptionChangeApplyParams
 
   class SubscriptionChangeCancelParams = Orb::Models::SubscriptionChangeCancelParams
+
+  class SubscriptionChangeMinified = Orb::Models::SubscriptionChangeMinified
 
   class SubscriptionChangeRetrieveParams = Orb::Models::SubscriptionChangeRetrieveParams
 
@@ -201,6 +515,8 @@ module Orb
 
   class SubscriptionListParams = Orb::Models::SubscriptionListParams
 
+  class SubscriptionMinified = Orb::Models::SubscriptionMinified
+
   class SubscriptionPriceIntervalsParams = Orb::Models::SubscriptionPriceIntervalsParams
 
   class SubscriptionRedeemCouponParams = Orb::Models::SubscriptionRedeemCouponParams
@@ -208,6 +524,8 @@ module Orb
   class SubscriptionsAPI = Orb::Models::SubscriptionsAPI
 
   class SubscriptionSchedulePlanChangeParams = Orb::Models::SubscriptionSchedulePlanChangeParams
+
+  class SubscriptionTrialInfo = Orb::Models::SubscriptionTrialInfo
 
   class SubscriptionTriggerPhaseParams = Orb::Models::SubscriptionTriggerPhaseParams
 
@@ -225,9 +543,33 @@ module Orb
 
   module SubscriptionUsage = Orb::Models::SubscriptionUsage
 
+  class TaxAmount = Orb::Models::TaxAmount
+
+  class Threshold = Orb::Models::Threshold
+
+  class Tier = Orb::Models::Tier
+
+  class TierConfig = Orb::Models::TierConfig
+
+  class TieredBPSConfig = Orb::Models::TieredBPSConfig
+
+  class TieredConfig = Orb::Models::TieredConfig
+
+  class TieredConversionRateConfig = Orb::Models::TieredConversionRateConfig
+
+  class TierSubLineItem = Orb::Models::TierSubLineItem
+
   class TopLevelPingParams = Orb::Models::TopLevelPingParams
+
+  class TransformPriceFilter = Orb::Models::TransformPriceFilter
 
   class TrialDiscount = Orb::Models::TrialDiscount
 
+  class UnitConfig = Orb::Models::UnitConfig
+
+  class UnitConversionRateConfig = Orb::Models::UnitConversionRateConfig
+
   class UsageDiscount = Orb::Models::UsageDiscount
+
+  class UsageDiscountInterval = Orb::Models::UsageDiscountInterval
 end

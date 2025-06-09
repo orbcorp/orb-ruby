@@ -1,0 +1,26 @@
+module Orb
+  module Models
+    type conversion_rate_tier =
+      { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+    class ConversionRateTier < Orb::Internal::Type::BaseModel
+      attr_accessor first_unit: Float
+
+      attr_accessor unit_amount: String
+
+      attr_accessor last_unit: Float?
+
+      def initialize: (
+        first_unit: Float,
+        unit_amount: String,
+        ?last_unit: Float?
+      ) -> void
+
+      def to_hash: -> {
+        first_unit: Float,
+        unit_amount: String,
+        last_unit: Float?
+      }
+    end
+  end
+end

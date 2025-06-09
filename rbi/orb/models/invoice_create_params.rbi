@@ -187,14 +187,10 @@ module Orb
         sig { returns(Date) }
         attr_accessor :start_date
 
-        sig { returns(Orb::InvoiceCreateParams::LineItem::UnitConfig) }
+        sig { returns(Orb::UnitConfig) }
         attr_reader :unit_config
 
-        sig do
-          params(
-            unit_config: Orb::InvoiceCreateParams::LineItem::UnitConfig::OrHash
-          ).void
-        end
+        sig { params(unit_config: Orb::UnitConfig::OrHash).void }
         attr_writer :unit_config
 
         sig do
@@ -205,7 +201,7 @@ module Orb
             name: String,
             quantity: Float,
             start_date: Date,
-            unit_config: Orb::InvoiceCreateParams::LineItem::UnitConfig::OrHash
+            unit_config: Orb::UnitConfig::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
@@ -233,7 +229,7 @@ module Orb
               name: String,
               quantity: Float,
               start_date: Date,
-              unit_config: Orb::InvoiceCreateParams::LineItem::UnitConfig
+              unit_config: Orb::UnitConfig
             }
           )
         end
@@ -263,31 +259,6 @@ module Orb
             )
           end
           def self.values
-          end
-        end
-
-        class UnitConfig < Orb::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Orb::InvoiceCreateParams::LineItem::UnitConfig,
-                Orb::Internal::AnyHash
-              )
-            end
-
-          # Rate per unit of usage
-          sig { returns(String) }
-          attr_accessor :unit_amount
-
-          sig { params(unit_amount: String).returns(T.attached_class) }
-          def self.new(
-            # Rate per unit of usage
-            unit_amount:
-          )
-          end
-
-          sig { override.returns({ unit_amount: String }) }
-          def to_hash
           end
         end
       end

@@ -18,10 +18,10 @@ module Orb
       attr_accessor :currency
 
       # The customer the alert applies to.
-      sig { returns(T.nilable(Orb::Alert::Customer)) }
+      sig { returns(T.nilable(Orb::CustomerMinified)) }
       attr_reader :customer
 
-      sig { params(customer: T.nilable(Orb::Alert::Customer::OrHash)).void }
+      sig { params(customer: T.nilable(Orb::CustomerMinified::OrHash)).void }
       attr_writer :customer
 
       # Whether the alert is enabled or disabled.
@@ -43,17 +43,17 @@ module Orb
       attr_writer :plan
 
       # The subscription the alert applies to.
-      sig { returns(T.nilable(Orb::Alert::Subscription)) }
+      sig { returns(T.nilable(Orb::SubscriptionMinified)) }
       attr_reader :subscription
 
       sig do
-        params(subscription: T.nilable(Orb::Alert::Subscription::OrHash)).void
+        params(subscription: T.nilable(Orb::SubscriptionMinified::OrHash)).void
       end
       attr_writer :subscription
 
       # The thresholds that define the conditions under which the alert will be
       # triggered.
-      sig { returns(T.nilable(T::Array[Orb::Alert::Threshold])) }
+      sig { returns(T.nilable(T::Array[Orb::Threshold])) }
       attr_accessor :thresholds
 
       # The type of alert. This must be a valid alert type.
@@ -75,12 +75,12 @@ module Orb
           id: String,
           created_at: Time,
           currency: T.nilable(String),
-          customer: T.nilable(Orb::Alert::Customer::OrHash),
+          customer: T.nilable(Orb::CustomerMinified::OrHash),
           enabled: T::Boolean,
           metric: T.nilable(Orb::Alert::Metric::OrHash),
           plan: T.nilable(Orb::Alert::Plan::OrHash),
-          subscription: T.nilable(Orb::Alert::Subscription::OrHash),
-          thresholds: T.nilable(T::Array[Orb::Alert::Threshold::OrHash]),
+          subscription: T.nilable(Orb::SubscriptionMinified::OrHash),
+          thresholds: T.nilable(T::Array[Orb::Threshold::OrHash]),
           type: Orb::Alert::Type::OrSymbol,
           balance_alert_status:
             T.nilable(T::Array[Orb::Alert::BalanceAlertStatus::OrHash])
@@ -120,12 +120,12 @@ module Orb
             id: String,
             created_at: Time,
             currency: T.nilable(String),
-            customer: T.nilable(Orb::Alert::Customer),
+            customer: T.nilable(Orb::CustomerMinified),
             enabled: T::Boolean,
             metric: T.nilable(Orb::Alert::Metric),
             plan: T.nilable(Orb::Alert::Plan),
-            subscription: T.nilable(Orb::Alert::Subscription),
-            thresholds: T.nilable(T::Array[Orb::Alert::Threshold]),
+            subscription: T.nilable(Orb::SubscriptionMinified),
+            thresholds: T.nilable(T::Array[Orb::Threshold]),
             type: Orb::Alert::Type::TaggedSymbol,
             balance_alert_status:
               T.nilable(T::Array[Orb::Alert::BalanceAlertStatus])
@@ -133,34 +133,6 @@ module Orb
         )
       end
       def to_hash
-      end
-
-      class Customer < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(Orb::Alert::Customer, Orb::Internal::AnyHash) }
-
-        sig { returns(String) }
-        attr_accessor :id
-
-        sig { returns(T.nilable(String)) }
-        attr_accessor :external_customer_id
-
-        # The customer the alert applies to.
-        sig do
-          params(id: String, external_customer_id: T.nilable(String)).returns(
-            T.attached_class
-          )
-        end
-        def self.new(id:, external_customer_id:)
-        end
-
-        sig do
-          override.returns(
-            { id: String, external_customer_id: T.nilable(String) }
-          )
-        end
-        def to_hash
-        end
       end
 
       class Metric < Orb::Internal::Type::BaseModel
@@ -229,51 +201,6 @@ module Orb
             }
           )
         end
-        def to_hash
-        end
-      end
-
-      class Subscription < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(Orb::Alert::Subscription, Orb::Internal::AnyHash)
-          end
-
-        sig { returns(String) }
-        attr_accessor :id
-
-        # The subscription the alert applies to.
-        sig { params(id: String).returns(T.attached_class) }
-        def self.new(id:)
-        end
-
-        sig { override.returns({ id: String }) }
-        def to_hash
-        end
-      end
-
-      class Threshold < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(Orb::Alert::Threshold, Orb::Internal::AnyHash) }
-
-        # The value at which an alert will fire. For credit balance alerts, the alert will
-        # fire at or below this value. For usage and cost alerts, the alert will fire at
-        # or above this value.
-        sig { returns(Float) }
-        attr_accessor :value
-
-        # Thresholds are used to define the conditions under which an alert will be
-        # triggered.
-        sig { params(value: Float).returns(T.attached_class) }
-        def self.new(
-          # The value at which an alert will fire. For credit balance alerts, the alert will
-          # fire at or below this value. For usage and cost alerts, the alert will fire at
-          # or above this value.
-          value:
-        )
-        end
-
-        sig { override.returns({ value: Float }) }
         def to_hash
         end
       end

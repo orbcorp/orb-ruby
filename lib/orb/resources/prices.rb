@@ -20,7 +20,7 @@ module Orb
       # See the [Price resource](/product-catalog/price-configuration) for the
       # specification of different price model configurations possible in this endpoint.
       #
-      # @overload create(cadence:, currency:, item_id:, model_type:, name:, unit_config:, package_config:, matrix_config:, matrix_with_allocation_config:, tiered_config:, tiered_bps_config:, bps_config:, bulk_bps_config:, bulk_config:, threshold_total_amount_config:, tiered_package_config:, grouped_tiered_config:, max_group_tiered_package_config:, tiered_with_minimum_config:, package_with_allocation_config:, tiered_package_with_minimum_config:, unit_with_percent_config:, tiered_with_proration_config:, unit_with_proration_config:, grouped_allocation_config:, grouped_with_prorated_minimum_config:, grouped_with_metered_minimum_config:, matrix_with_display_name_config:, bulk_with_proration_config:, grouped_tiered_package_config:, scalable_matrix_with_unit_pricing_config:, scalable_matrix_with_tiered_pricing_config:, cumulative_grouped_bulk_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, request_options: {})
+      # @overload create(cadence:, currency:, item_id:, model_type:, name:, unit_config:, package_config:, matrix_config:, matrix_with_allocation_config:, tiered_config:, tiered_bps_config:, bps_config:, bulk_bps_config:, bulk_config:, threshold_total_amount_config:, tiered_package_config:, grouped_tiered_config:, max_group_tiered_package_config:, tiered_with_minimum_config:, package_with_allocation_config:, tiered_package_with_minimum_config:, unit_with_percent_config:, tiered_with_proration_config:, unit_with_proration_config:, grouped_allocation_config:, grouped_with_prorated_minimum_config:, grouped_with_metered_minimum_config:, matrix_with_display_name_config:, bulk_with_proration_config:, grouped_tiered_package_config:, scalable_matrix_with_unit_pricing_config:, scalable_matrix_with_tiered_pricing_config:, cumulative_grouped_bulk_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, request_options: {})
       #
       # @param cadence [Symbol, Orb::Models::PriceCreateParams::Cadence] The cadence to bill for this price on.
       #
@@ -32,23 +32,23 @@ module Orb
       #
       # @param name [String] The name of the price.
       #
-      # @param unit_config [Orb::Models::PriceCreateParams::UnitConfig]
+      # @param unit_config [Orb::Models::UnitConfig]
       #
-      # @param package_config [Orb::Models::PriceCreateParams::PackageConfig]
+      # @param package_config [Orb::Models::PackageConfig]
       #
-      # @param matrix_config [Orb::Models::PriceCreateParams::MatrixConfig]
+      # @param matrix_config [Orb::Models::MatrixConfig]
       #
-      # @param matrix_with_allocation_config [Orb::Models::PriceCreateParams::MatrixWithAllocationConfig]
+      # @param matrix_with_allocation_config [Orb::Models::MatrixWithAllocationConfig]
       #
-      # @param tiered_config [Orb::Models::PriceCreateParams::TieredConfig]
+      # @param tiered_config [Orb::Models::TieredConfig]
       #
-      # @param tiered_bps_config [Orb::Models::PriceCreateParams::TieredBpsConfig]
+      # @param tiered_bps_config [Orb::Models::TieredBPSConfig]
       #
-      # @param bps_config [Orb::Models::PriceCreateParams::BpsConfig]
+      # @param bps_config [Orb::Models::BPSConfig]
       #
-      # @param bulk_bps_config [Orb::Models::PriceCreateParams::BulkBpsConfig]
+      # @param bulk_bps_config [Orb::Models::BulkBPSConfig]
       #
-      # @param bulk_config [Orb::Models::PriceCreateParams::BulkConfig]
+      # @param bulk_config [Orb::Models::BulkConfig]
       #
       # @param threshold_total_amount_config [Hash{Symbol=>Object}]
       #
@@ -92,11 +92,13 @@ module Orb
       #
       # @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
       #
-      # @param billing_cycle_configuration [Orb::Models::PriceCreateParams::BillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+      # @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
       #
       # @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
       #
-      # @param dimensional_price_configuration [Orb::Models::PriceCreateParams::DimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+      # @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+      #
+      # @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
       #
       # @param external_price_id [String, nil] An alias for the price.
       #
@@ -104,13 +106,13 @@ module Orb
       #
       # @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
       #
-      # @param invoicing_cycle_configuration [Orb::Models::PriceCreateParams::InvoicingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+      # @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
       #
       # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBps, Orb::Models::Price::Bps, Orb::Models::Price::BulkBps, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk]
+      # @return [Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBPS, Orb::Models::Price::BPS, Orb::Models::Price::BulkBPS, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk]
       #
       # @see Orb::Models::PriceCreateParams
       def create(params)
@@ -133,7 +135,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBps, Orb::Models::Price::Bps, Orb::Models::Price::BulkBps, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk]
+      # @return [Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBPS, Orb::Models::Price::BPS, Orb::Models::Price::BulkBPS, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk]
       #
       # @see Orb::Models::PriceUpdateParams
       def update(price_id, params = {})
@@ -161,7 +163,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Internal::Page<Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBps, Orb::Models::Price::Bps, Orb::Models::Price::BulkBps, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk>]
+      # @return [Orb::Internal::Page<Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBPS, Orb::Models::Price::BPS, Orb::Models::Price::BulkBPS, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk>]
       #
       # @see Orb::Models::PriceListParams
       def list(params = {})
@@ -238,22 +240,13 @@ module Orb
       end
 
       # This endpoint is used to evaluate the output of price(s) for a given customer
-      # and time range over either ingested events or preview events. It enables
-      # filtering and grouping the output using
+      # and time range over ingested events. It enables filtering and grouping the
+      # output using
       # [computed properties](/extensibility/advanced-metrics#computed-properties),
       # supporting the following workflows:
       #
       # 1. Showing detailed usage and costs to the end customer.
       # 2. Auditing subtotals on invoice line items.
-      #
-      # Prices may either reference existing prices in your Orb account or be defined
-      # inline in the request body. Up to 100 prices can be evaluated in a single
-      # request.
-      #
-      # Price evaluation by default uses ingested events, but you can also provide a
-      # list of preview events to use instead. Up to 500 preview events can be provided
-      # in a single request. When using ingested events, the start of the time range
-      # must be no more than 100 days ago.
       #
       # For these workflows, the expressiveness of computed properties in both the
       # filters and grouping is critical. For example, if you'd like to show your
@@ -264,19 +257,25 @@ module Orb
       # with the following `filter`:
       # `my_property = 'foo' AND my_other_property = 'bar'`.
       #
-      # The length of the results must be no greater than 1000. Note that this is a POST
-      # endpoint rather than a GET endpoint because it employs a JSON body rather than
-      # query parameters.
+      # Prices may either reference existing prices in your Orb account or be defined
+      # inline in the request body. Up to 100 prices can be evaluated in a single
+      # request.
       #
-      # @overload evaluate_multiple(timeframe_end:, timeframe_start:, customer_id: nil, events: nil, external_customer_id: nil, price_evaluations: nil, request_options: {})
+      # Prices are evaluated on ingested events and the start of the time range must be
+      # no more than 100 days ago. To evaluate based off a set of provided events, the
+      # [evaluate preview events](/api-reference/price/evaluate-preview-events) endpoint
+      # can be used instead.
+      #
+      # Note that this is a POST endpoint rather than a GET endpoint because it employs
+      # a JSON body rather than query parameters.
+      #
+      # @overload evaluate_multiple(timeframe_end:, timeframe_start:, customer_id: nil, external_customer_id: nil, price_evaluations: nil, request_options: {})
       #
       # @param timeframe_end [Time] The exclusive upper bound for event timestamps
       #
       # @param timeframe_start [Time] The inclusive lower bound for event timestamps
       #
       # @param customer_id [String, nil] The ID of the customer to which this evaluation is scoped.
-      #
-      # @param events [Array<Orb::Models::PriceEvaluateMultipleParams::Event>, nil] Optional list of preview events to use instead of actual usage data (max 500)
       #
       # @param external_customer_id [String, nil] The external customer ID of the customer to which this evaluation is scoped.
       #
@@ -298,6 +297,55 @@ module Orb
         )
       end
 
+      # This endpoint evaluates prices on preview events instead of actual usage, making
+      # it ideal for building price calculators and cost estimation tools. You can
+      # filter and group results using
+      # [computed properties](/extensibility/advanced-metrics#computed-properties) to
+      # analyze pricing across different dimensions.
+      #
+      # Prices may either reference existing prices in your Orb account or be defined
+      # inline in the request body. The endpoint has the following limitations:
+      #
+      # 1. Up to 100 prices can be evaluated in a single request.
+      # 2. Up to 500 preview events can be provided in a single request.
+      #
+      # A top-level customer_id is required to evaluate the preview events.
+      # Additionally, all events without a customer_id will have the top-level
+      # customer_id added.
+      #
+      # Note that this is a POST endpoint rather than a GET endpoint because it employs
+      # a JSON body rather than query parameters.
+      #
+      # @overload evaluate_preview_events(timeframe_end:, timeframe_start:, customer_id: nil, events: nil, external_customer_id: nil, price_evaluations: nil, request_options: {})
+      #
+      # @param timeframe_end [Time] The exclusive upper bound for event timestamps
+      #
+      # @param timeframe_start [Time] The inclusive lower bound for event timestamps
+      #
+      # @param customer_id [String, nil] The ID of the customer to which this evaluation is scoped.
+      #
+      # @param events [Array<Orb::Models::PriceEvaluatePreviewEventsParams::Event>] List of preview events to use instead of actual usage data
+      #
+      # @param external_customer_id [String, nil] The external customer ID of the customer to which this evaluation is scoped.
+      #
+      # @param price_evaluations [Array<Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation>] List of prices to evaluate (max 100)
+      #
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Orb::Models::PriceEvaluatePreviewEventsResponse]
+      #
+      # @see Orb::Models::PriceEvaluatePreviewEventsParams
+      def evaluate_preview_events(params)
+        parsed, options = Orb::PriceEvaluatePreviewEventsParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: "prices/evaluate_preview_events",
+          body: parsed,
+          model: Orb::Models::PriceEvaluatePreviewEventsResponse,
+          options: options
+        )
+      end
+
       # This endpoint returns a price given an identifier.
       #
       # @overload fetch(price_id, request_options: {})
@@ -305,7 +353,7 @@ module Orb
       # @param price_id [String]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBps, Orb::Models::Price::Bps, Orb::Models::Price::BulkBps, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk]
+      # @return [Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBPS, Orb::Models::Price::BPS, Orb::Models::Price::BulkBPS, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk]
       #
       # @see Orb::Models::PriceFetchParams
       def fetch(price_id, params = {})

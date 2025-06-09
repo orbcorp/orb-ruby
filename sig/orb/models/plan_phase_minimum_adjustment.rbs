@@ -1,0 +1,70 @@
+module Orb
+  module Models
+    type plan_phase_minimum_adjustment =
+      {
+        id: String,
+        adjustment_type: Orb::Models::PlanPhaseMinimumAdjustment::adjustment_type,
+        applies_to_price_ids: ::Array[String],
+        filters: ::Array[Orb::TransformPriceFilter],
+        is_invoice_level: bool,
+        item_id: String,
+        minimum_amount: String,
+        plan_phase_order: Integer?,
+        reason: String?
+      }
+
+    class PlanPhaseMinimumAdjustment < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor adjustment_type: Orb::Models::PlanPhaseMinimumAdjustment::adjustment_type
+
+      attr_accessor applies_to_price_ids: ::Array[String]
+
+      attr_accessor filters: ::Array[Orb::TransformPriceFilter]
+
+      attr_accessor is_invoice_level: bool
+
+      attr_accessor item_id: String
+
+      attr_accessor minimum_amount: String
+
+      attr_accessor plan_phase_order: Integer?
+
+      attr_accessor reason: String?
+
+      def initialize: (
+        id: String,
+        adjustment_type: Orb::Models::PlanPhaseMinimumAdjustment::adjustment_type,
+        applies_to_price_ids: ::Array[String],
+        filters: ::Array[Orb::TransformPriceFilter],
+        is_invoice_level: bool,
+        item_id: String,
+        minimum_amount: String,
+        plan_phase_order: Integer?,
+        reason: String?
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        adjustment_type: Orb::Models::PlanPhaseMinimumAdjustment::adjustment_type,
+        applies_to_price_ids: ::Array[String],
+        filters: ::Array[Orb::TransformPriceFilter],
+        is_invoice_level: bool,
+        item_id: String,
+        minimum_amount: String,
+        plan_phase_order: Integer?,
+        reason: String?
+      }
+
+      type adjustment_type = :minimum
+
+      module AdjustmentType
+        extend Orb::Internal::Type::Enum
+
+        MINIMUM: :minimum
+
+        def self?.values: -> ::Array[Orb::Models::PlanPhaseMinimumAdjustment::adjustment_type]
+      end
+    end
+  end
+end

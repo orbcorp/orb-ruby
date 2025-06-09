@@ -1,0 +1,30 @@
+module Orb
+  module Models
+    type allocation =
+      {
+        allows_rollover: bool,
+        currency: String,
+        custom_expiration: Orb::CustomExpiration?
+      }
+
+    class Allocation < Orb::Internal::Type::BaseModel
+      attr_accessor allows_rollover: bool
+
+      attr_accessor currency: String
+
+      attr_accessor custom_expiration: Orb::CustomExpiration?
+
+      def initialize: (
+        allows_rollover: bool,
+        currency: String,
+        custom_expiration: Orb::CustomExpiration?
+      ) -> void
+
+      def to_hash: -> {
+        allows_rollover: bool,
+        currency: String,
+        custom_expiration: Orb::CustomExpiration?
+      }
+    end
+  end
+end

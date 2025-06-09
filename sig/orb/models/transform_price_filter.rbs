@@ -1,0 +1,56 @@
+module Orb
+  module Models
+    type transform_price_filter =
+      {
+        field: Orb::Models::TransformPriceFilter::field,
+        operator: Orb::Models::TransformPriceFilter::operator,
+        values: ::Array[String]
+      }
+
+    class TransformPriceFilter < Orb::Internal::Type::BaseModel
+      attr_accessor field: Orb::Models::TransformPriceFilter::field
+
+      attr_accessor operator: Orb::Models::TransformPriceFilter::operator
+
+      attr_accessor values: ::Array[String]
+
+      def initialize: (
+        field: Orb::Models::TransformPriceFilter::field,
+        operator: Orb::Models::TransformPriceFilter::operator,
+        values: ::Array[String]
+      ) -> void
+
+      def to_hash: -> {
+        field: Orb::Models::TransformPriceFilter::field,
+        operator: Orb::Models::TransformPriceFilter::operator,
+        values: ::Array[String]
+      }
+
+      type field =
+        :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+      module Field
+        extend Orb::Internal::Type::Enum
+
+        PRICE_ID: :price_id
+        ITEM_ID: :item_id
+        PRICE_TYPE: :price_type
+        CURRENCY: :currency
+        PRICING_UNIT_ID: :pricing_unit_id
+
+        def self?.values: -> ::Array[Orb::Models::TransformPriceFilter::field]
+      end
+
+      type operator = :includes | :excludes
+
+      module Operator
+        extend Orb::Internal::Type::Enum
+
+        INCLUDES: :includes
+        EXCLUDES: :excludes
+
+        def self?.values: -> ::Array[Orb::Models::TransformPriceFilter::operator]
+      end
+    end
+  end
+end

@@ -1,0 +1,35 @@
+module Orb
+  module Models
+    type tiered_conversion_rate_config =
+      {
+        conversion_rate_type: Orb::Models::TieredConversionRateConfig::conversion_rate_type,
+        tiered_config: Orb::ConversionRateTieredConfig
+      }
+
+    class TieredConversionRateConfig < Orb::Internal::Type::BaseModel
+      attr_accessor conversion_rate_type: Orb::Models::TieredConversionRateConfig::conversion_rate_type
+
+      attr_accessor tiered_config: Orb::ConversionRateTieredConfig
+
+      def initialize: (
+        conversion_rate_type: Orb::Models::TieredConversionRateConfig::conversion_rate_type,
+        tiered_config: Orb::ConversionRateTieredConfig
+      ) -> void
+
+      def to_hash: -> {
+        conversion_rate_type: Orb::Models::TieredConversionRateConfig::conversion_rate_type,
+        tiered_config: Orb::ConversionRateTieredConfig
+      }
+
+      type conversion_rate_type = :tiered
+
+      module ConversionRateType
+        extend Orb::Internal::Type::Enum
+
+        TIERED: :tiered
+
+        def self?.values: -> ::Array[Orb::Models::TieredConversionRateConfig::conversion_rate_type]
+      end
+    end
+  end
+end

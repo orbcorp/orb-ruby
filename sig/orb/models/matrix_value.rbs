@@ -1,0 +1,22 @@
+module Orb
+  module Models
+    type matrix_value =
+      { dimension_values: ::Array[String?], unit_amount: String }
+
+    class MatrixValue < Orb::Internal::Type::BaseModel
+      attr_accessor dimension_values: ::Array[String?]
+
+      attr_accessor unit_amount: String
+
+      def initialize: (
+        dimension_values: ::Array[String?],
+        unit_amount: String
+      ) -> void
+
+      def to_hash: -> {
+        dimension_values: ::Array[String?],
+        unit_amount: String
+      }
+    end
+  end
+end

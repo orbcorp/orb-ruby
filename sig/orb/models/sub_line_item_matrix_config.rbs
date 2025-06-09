@@ -1,0 +1,13 @@
+module Orb
+  module Models
+    type sub_line_item_matrix_config = { dimension_values: ::Array[String?] }
+
+    class SubLineItemMatrixConfig < Orb::Internal::Type::BaseModel
+      attr_accessor dimension_values: ::Array[String?]
+
+      def initialize: (dimension_values: ::Array[String?]) -> void
+
+      def to_hash: -> { dimension_values: ::Array[String?] }
+    end
+  end
+end

@@ -1,0 +1,41 @@
+module Orb
+  module Models
+    module Customers
+      module Credits
+        type top_up_invoice_settings =
+          {
+            auto_collection: bool,
+            net_terms: Integer,
+            memo: String?,
+            require_successful_payment: bool
+          }
+
+        class TopUpInvoiceSettings < Orb::Internal::Type::BaseModel
+          attr_accessor auto_collection: bool
+
+          attr_accessor net_terms: Integer
+
+          attr_accessor memo: String?
+
+          attr_reader require_successful_payment: bool?
+
+          def require_successful_payment=: (bool) -> bool
+
+          def initialize: (
+            auto_collection: bool,
+            net_terms: Integer,
+            ?memo: String?,
+            ?require_successful_payment: bool
+          ) -> void
+
+          def to_hash: -> {
+            auto_collection: bool,
+            net_terms: Integer,
+            memo: String?,
+            require_successful_payment: bool
+          }
+        end
+      end
+    end
+  end
+end

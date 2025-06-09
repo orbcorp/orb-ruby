@@ -1,0 +1,22 @@
+module Orb
+  module Models
+    type dimensional_price_configuration =
+      { dimension_values: ::Array[String], dimensional_price_group_id: String }
+
+    class DimensionalPriceConfiguration < Orb::Internal::Type::BaseModel
+      attr_accessor dimension_values: ::Array[String]
+
+      attr_accessor dimensional_price_group_id: String
+
+      def initialize: (
+        dimension_values: ::Array[String],
+        dimensional_price_group_id: String
+      ) -> void
+
+      def to_hash: -> {
+        dimension_values: ::Array[String],
+        dimensional_price_group_id: String
+      }
+    end
+  end
+end

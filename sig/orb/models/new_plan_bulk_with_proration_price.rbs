@@ -1,0 +1,135 @@
+module Orb
+  module Models
+    type new_plan_bulk_with_proration_price =
+      {
+        bulk_with_proration_config: ::Hash[Symbol, top],
+        cadence: Orb::Models::NewPlanBulkWithProrationPrice::cadence,
+        item_id: String,
+        model_type: Orb::Models::NewPlanBulkWithProrationPrice::model_type,
+        name: String,
+        billable_metric_id: String?,
+        billed_in_advance: bool?,
+        billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+        conversion_rate: Float?,
+        conversion_rate_config: Orb::Models::NewPlanBulkWithProrationPrice::conversion_rate_config?,
+        currency: String?,
+        dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+        external_price_id: String?,
+        fixed_price_quantity: Float?,
+        invoice_grouping_key: String?,
+        invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+        metadata: ::Hash[Symbol, String?]?
+      }
+
+    class NewPlanBulkWithProrationPrice < Orb::Internal::Type::BaseModel
+      attr_accessor bulk_with_proration_config: ::Hash[Symbol, top]
+
+      attr_accessor cadence: Orb::Models::NewPlanBulkWithProrationPrice::cadence
+
+      attr_accessor item_id: String
+
+      attr_accessor model_type: Orb::Models::NewPlanBulkWithProrationPrice::model_type
+
+      attr_accessor name: String
+
+      attr_accessor billable_metric_id: String?
+
+      attr_accessor billed_in_advance: bool?
+
+      attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+      attr_accessor conversion_rate: Float?
+
+      attr_accessor conversion_rate_config: Orb::Models::NewPlanBulkWithProrationPrice::conversion_rate_config?
+
+      attr_accessor currency: String?
+
+      attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
+
+      attr_accessor external_price_id: String?
+
+      attr_accessor fixed_price_quantity: Float?
+
+      attr_accessor invoice_grouping_key: String?
+
+      attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+      attr_accessor metadata: ::Hash[Symbol, String?]?
+
+      def initialize: (
+        bulk_with_proration_config: ::Hash[Symbol, top],
+        cadence: Orb::Models::NewPlanBulkWithProrationPrice::cadence,
+        item_id: String,
+        model_type: Orb::Models::NewPlanBulkWithProrationPrice::model_type,
+        name: String,
+        ?billable_metric_id: String?,
+        ?billed_in_advance: bool?,
+        ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+        ?conversion_rate: Float?,
+        ?conversion_rate_config: Orb::Models::NewPlanBulkWithProrationPrice::conversion_rate_config?,
+        ?currency: String?,
+        ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+        ?external_price_id: String?,
+        ?fixed_price_quantity: Float?,
+        ?invoice_grouping_key: String?,
+        ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+        ?metadata: ::Hash[Symbol, String?]?
+      ) -> void
+
+      def to_hash: -> {
+        bulk_with_proration_config: ::Hash[Symbol, top],
+        cadence: Orb::Models::NewPlanBulkWithProrationPrice::cadence,
+        item_id: String,
+        model_type: Orb::Models::NewPlanBulkWithProrationPrice::model_type,
+        name: String,
+        billable_metric_id: String?,
+        billed_in_advance: bool?,
+        billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+        conversion_rate: Float?,
+        conversion_rate_config: Orb::Models::NewPlanBulkWithProrationPrice::conversion_rate_config?,
+        currency: String?,
+        dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+        external_price_id: String?,
+        fixed_price_quantity: Float?,
+        invoice_grouping_key: String?,
+        invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+        metadata: ::Hash[Symbol, String?]?
+      }
+
+      type cadence =
+        :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+      module Cadence
+        extend Orb::Internal::Type::Enum
+
+        ANNUAL: :annual
+        SEMI_ANNUAL: :semi_annual
+        MONTHLY: :monthly
+        QUARTERLY: :quarterly
+        ONE_TIME: :one_time
+        CUSTOM: :custom
+
+        def self?.values: -> ::Array[Orb::Models::NewPlanBulkWithProrationPrice::cadence]
+      end
+
+      type model_type = :bulk_with_proration
+
+      module ModelType
+        extend Orb::Internal::Type::Enum
+
+        BULK_WITH_PRORATION: :bulk_with_proration
+
+        def self?.values: -> ::Array[Orb::Models::NewPlanBulkWithProrationPrice::model_type]
+      end
+
+      type conversion_rate_config =
+        Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+      module ConversionRateConfig
+        extend Orb::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Orb::Models::NewPlanBulkWithProrationPrice::conversion_rate_config]
+      end
+    end
+  end
+end

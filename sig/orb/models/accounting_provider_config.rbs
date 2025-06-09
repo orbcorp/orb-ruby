@@ -1,0 +1,19 @@
+module Orb
+  module Models
+    type accounting_provider_config =
+      { external_provider_id: String, provider_type: String }
+
+    class AccountingProviderConfig < Orb::Internal::Type::BaseModel
+      attr_accessor external_provider_id: String
+
+      attr_accessor provider_type: String
+
+      def initialize: (
+        external_provider_id: String,
+        provider_type: String
+      ) -> void
+
+      def to_hash: -> { external_provider_id: String, provider_type: String }
+    end
+  end
+end

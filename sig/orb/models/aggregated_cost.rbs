@@ -1,0 +1,40 @@
+module Orb
+  module Models
+    type aggregated_cost =
+      {
+        per_price_costs: ::Array[Orb::PerPriceCost],
+        subtotal: String,
+        timeframe_end: Time,
+        timeframe_start: Time,
+        total: String
+      }
+
+    class AggregatedCost < Orb::Internal::Type::BaseModel
+      attr_accessor per_price_costs: ::Array[Orb::PerPriceCost]
+
+      attr_accessor subtotal: String
+
+      attr_accessor timeframe_end: Time
+
+      attr_accessor timeframe_start: Time
+
+      attr_accessor total: String
+
+      def initialize: (
+        per_price_costs: ::Array[Orb::PerPriceCost],
+        subtotal: String,
+        timeframe_end: Time,
+        timeframe_start: Time,
+        total: String
+      ) -> void
+
+      def to_hash: -> {
+        per_price_costs: ::Array[Orb::PerPriceCost],
+        subtotal: String,
+        timeframe_end: Time,
+        timeframe_start: Time,
+        total: String
+      }
+    end
+  end
+end

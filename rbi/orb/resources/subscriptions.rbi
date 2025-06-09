@@ -273,9 +273,7 @@ module Orb
           auto_collection: T.nilable(T::Boolean),
           aws_region: T.nilable(String),
           billing_cycle_anchor_configuration:
-            T.nilable(
-              Orb::SubscriptionCreateParams::BillingCycleAnchorConfiguration::OrHash
-            ),
+            T.nilable(Orb::BillingCycleAnchorConfiguration::OrHash),
           coupon_redemption_code: T.nilable(String),
           credits_overage_rate: T.nilable(Float),
           currency: T.nilable(String),
@@ -319,7 +317,7 @@ module Orb
           trial_duration_days: T.nilable(Integer),
           usage_customer_ids: T.nilable(T::Array[String]),
           request_options: Orb::RequestOptions::OrHash
-        ).returns(Orb::Models::SubscriptionCreateResponse)
+        ).returns(Orb::MutatedSubscription)
       end
       def create(
         # Additional adjustments to be added to the subscription. (Only available for
@@ -562,7 +560,7 @@ module Orb
           allow_invoice_credit_or_void: T.nilable(T::Boolean),
           cancellation_date: T.nilable(Time),
           request_options: Orb::RequestOptions::OrHash
-        ).returns(Orb::Models::SubscriptionCancelResponse)
+        ).returns(Orb::MutatedSubscription)
       end
       def cancel(
         subscription_id,
@@ -987,7 +985,7 @@ module Orb
               Orb::SubscriptionPriceIntervalsParams::EditAdjustment::OrHash
             ],
           request_options: Orb::RequestOptions::OrHash
-        ).returns(Orb::Models::SubscriptionPriceIntervalsResponse)
+        ).returns(Orb::MutatedSubscription)
       end
       def price_intervals(
         subscription_id,
@@ -1018,7 +1016,7 @@ module Orb
           coupon_id: T.nilable(String),
           coupon_redemption_code: T.nilable(String),
           request_options: Orb::RequestOptions::OrHash
-        ).returns(Orb::Models::SubscriptionRedeemCouponResponse)
+        ).returns(Orb::MutatedSubscription)
       end
       def redeem_coupon(
         subscription_id,
@@ -1245,9 +1243,7 @@ module Orb
               Orb::SubscriptionSchedulePlanChangeParams::BillingCycleAlignment::OrSymbol
             ),
           billing_cycle_anchor_configuration:
-            T.nilable(
-              Orb::SubscriptionSchedulePlanChangeParams::BillingCycleAnchorConfiguration::OrHash
-            ),
+            T.nilable(Orb::BillingCycleAnchorConfiguration::OrHash),
           change_date: T.nilable(Time),
           coupon_redemption_code: T.nilable(String),
           credits_overage_rate: T.nilable(Float),
@@ -1288,7 +1284,7 @@ module Orb
           trial_duration_days: T.nilable(Integer),
           usage_customer_ids: T.nilable(T::Array[String]),
           request_options: Orb::RequestOptions::OrHash
-        ).returns(Orb::Models::SubscriptionSchedulePlanChangeResponse)
+        ).returns(Orb::MutatedSubscription)
       end
       def schedule_plan_change(
         subscription_id,
@@ -1386,7 +1382,7 @@ module Orb
           allow_invoice_credit_or_void: T.nilable(T::Boolean),
           effective_date: T.nilable(Date),
           request_options: Orb::RequestOptions::OrHash
-        ).returns(Orb::Models::SubscriptionTriggerPhaseResponse)
+        ).returns(Orb::MutatedSubscription)
       end
       def trigger_phase(
         subscription_id,
@@ -1411,7 +1407,7 @@ module Orb
         params(
           subscription_id: String,
           request_options: Orb::RequestOptions::OrHash
-        ).returns(Orb::Models::SubscriptionUnscheduleCancellationResponse)
+        ).returns(Orb::MutatedSubscription)
       end
       def unschedule_cancellation(subscription_id, request_options: {})
       end
@@ -1426,9 +1422,7 @@ module Orb
           subscription_id: String,
           price_id: String,
           request_options: Orb::RequestOptions::OrHash
-        ).returns(
-          Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse
-        )
+        ).returns(Orb::MutatedSubscription)
       end
       def unschedule_fixed_fee_quantity_updates(
         subscription_id,
@@ -1444,7 +1438,7 @@ module Orb
         params(
           subscription_id: String,
           request_options: Orb::RequestOptions::OrHash
-        ).returns(Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse)
+        ).returns(Orb::MutatedSubscription)
       end
       def unschedule_pending_plan_changes(subscription_id, request_options: {})
       end
@@ -1473,7 +1467,7 @@ module Orb
             Orb::SubscriptionUpdateFixedFeeQuantityParams::ChangeOption::OrSymbol,
           effective_date: T.nilable(Date),
           request_options: Orb::RequestOptions::OrHash
-        ).returns(Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse)
+        ).returns(Orb::MutatedSubscription)
       end
       def update_fixed_fee_quantity(
         subscription_id,
@@ -1524,7 +1518,7 @@ module Orb
             ),
           shift: T::Boolean,
           request_options: Orb::RequestOptions::OrHash
-        ).returns(Orb::Models::SubscriptionUpdateTrialResponse)
+        ).returns(Orb::MutatedSubscription)
       end
       def update_trial(
         subscription_id,

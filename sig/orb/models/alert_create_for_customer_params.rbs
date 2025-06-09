@@ -4,7 +4,7 @@ module Orb
       {
         currency: String,
         type: Orb::Models::AlertCreateForCustomerParams::type_,
-        thresholds: ::Array[Orb::AlertCreateForCustomerParams::Threshold]?
+        thresholds: ::Array[Orb::Threshold]?
       }
       & Orb::Internal::Type::request_parameters
 
@@ -16,19 +16,19 @@ module Orb
 
       attr_accessor type: Orb::Models::AlertCreateForCustomerParams::type_
 
-      attr_accessor thresholds: ::Array[Orb::AlertCreateForCustomerParams::Threshold]?
+      attr_accessor thresholds: ::Array[Orb::Threshold]?
 
       def initialize: (
         currency: String,
         type: Orb::Models::AlertCreateForCustomerParams::type_,
-        ?thresholds: ::Array[Orb::AlertCreateForCustomerParams::Threshold]?,
+        ?thresholds: ::Array[Orb::Threshold]?,
         ?request_options: Orb::request_opts
       ) -> void
 
       def to_hash: -> {
         currency: String,
         type: Orb::Models::AlertCreateForCustomerParams::type_,
-        thresholds: ::Array[Orb::AlertCreateForCustomerParams::Threshold]?,
+        thresholds: ::Array[Orb::Threshold]?,
         request_options: Orb::RequestOptions
       }
 
@@ -45,16 +45,6 @@ module Orb
         CREDIT_BALANCE_RECOVERED: :credit_balance_recovered
 
         def self?.values: -> ::Array[Orb::Models::AlertCreateForCustomerParams::type_]
-      end
-
-      type threshold = { value: Float }
-
-      class Threshold < Orb::Internal::Type::BaseModel
-        attr_accessor value: Float
-
-        def initialize: (value: Float) -> void
-
-        def to_hash: -> { value: Float }
       end
     end
   end

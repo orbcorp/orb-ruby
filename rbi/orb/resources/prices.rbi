@@ -23,16 +23,16 @@ module Orb
           item_id: String,
           model_type: Orb::PriceCreateParams::ModelType::OrSymbol,
           name: String,
-          unit_config: Orb::PriceCreateParams::UnitConfig::OrHash,
-          package_config: Orb::PriceCreateParams::PackageConfig::OrHash,
-          matrix_config: Orb::PriceCreateParams::MatrixConfig::OrHash,
+          unit_config: Orb::UnitConfig::OrHash,
+          package_config: Orb::PackageConfig::OrHash,
+          matrix_config: Orb::MatrixConfig::OrHash,
           matrix_with_allocation_config:
-            Orb::PriceCreateParams::MatrixWithAllocationConfig::OrHash,
-          tiered_config: Orb::PriceCreateParams::TieredConfig::OrHash,
-          tiered_bps_config: Orb::PriceCreateParams::TieredBpsConfig::OrHash,
-          bps_config: Orb::PriceCreateParams::BpsConfig::OrHash,
-          bulk_bps_config: Orb::PriceCreateParams::BulkBpsConfig::OrHash,
-          bulk_config: Orb::PriceCreateParams::BulkConfig::OrHash,
+            Orb::MatrixWithAllocationConfig::OrHash,
+          tiered_config: Orb::TieredConfig::OrHash,
+          tiered_bps_config: Orb::TieredBPSConfig::OrHash,
+          bps_config: Orb::BPSConfig::OrHash,
+          bulk_bps_config: Orb::BulkBPSConfig::OrHash,
+          bulk_config: Orb::BulkConfig::OrHash,
           threshold_total_amount_config: T::Hash[Symbol, T.anything],
           tiered_package_config: T::Hash[Symbol, T.anything],
           grouped_tiered_config: T::Hash[Symbol, T.anything],
@@ -56,21 +56,22 @@ module Orb
           billable_metric_id: T.nilable(String),
           billed_in_advance: T.nilable(T::Boolean),
           billing_cycle_configuration:
-            T.nilable(
-              Orb::PriceCreateParams::BillingCycleConfiguration::OrHash
-            ),
+            T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
           conversion_rate: T.nilable(Float),
-          dimensional_price_configuration:
+          conversion_rate_config:
             T.nilable(
-              Orb::PriceCreateParams::DimensionalPriceConfiguration::OrHash
+              T.any(
+                Orb::UnitConversionRateConfig::OrHash,
+                Orb::TieredConversionRateConfig::OrHash
+              )
             ),
+          dimensional_price_configuration:
+            T.nilable(Orb::NewDimensionalPriceConfiguration::OrHash),
           external_price_id: T.nilable(String),
           fixed_price_quantity: T.nilable(Float),
           invoice_grouping_key: T.nilable(String),
           invoicing_cycle_configuration:
-            T.nilable(
-              Orb::PriceCreateParams::InvoicingCycleConfiguration::OrHash
-            ),
+            T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Price::Variants)
@@ -124,6 +125,8 @@ module Orb
         billing_cycle_configuration: nil,
         # The per unit conversion rate of the price currency to the invoicing currency.
         conversion_rate: nil,
+        # The configuration for the rate of the price currency to the invoicing currency.
+        conversion_rate_config: nil,
         # For dimensional price: specifies a price group and dimension values
         dimensional_price_configuration: nil,
         # An alias for the price.
@@ -243,22 +246,13 @@ module Orb
       end
 
       # This endpoint is used to evaluate the output of price(s) for a given customer
-      # and time range over either ingested events or preview events. It enables
-      # filtering and grouping the output using
+      # and time range over ingested events. It enables filtering and grouping the
+      # output using
       # [computed properties](/extensibility/advanced-metrics#computed-properties),
       # supporting the following workflows:
       #
       # 1. Showing detailed usage and costs to the end customer.
       # 2. Auditing subtotals on invoice line items.
-      #
-      # Prices may either reference existing prices in your Orb account or be defined
-      # inline in the request body. Up to 100 prices can be evaluated in a single
-      # request.
-      #
-      # Price evaluation by default uses ingested events, but you can also provide a
-      # list of preview events to use instead. Up to 500 preview events can be provided
-      # in a single request. When using ingested events, the start of the time range
-      # must be no more than 100 days ago.
       #
       # For these workflows, the expressiveness of computed properties in both the
       # filters and grouping is critical. For example, if you'd like to show your
@@ -269,18 +263,22 @@ module Orb
       # with the following `filter`:
       # `my_property = 'foo' AND my_other_property = 'bar'`.
       #
-      # The length of the results must be no greater than 1000. Note that this is a POST
-      # endpoint rather than a GET endpoint because it employs a JSON body rather than
-      # query parameters.
+      # Prices may either reference existing prices in your Orb account or be defined
+      # inline in the request body. Up to 100 prices can be evaluated in a single
+      # request.
+      #
+      # Prices are evaluated on ingested events and the start of the time range must be
+      # no more than 100 days ago. To evaluate based off a set of provided events, the
+      # [evaluate preview events](/api-reference/price/evaluate-preview-events) endpoint
+      # can be used instead.
+      #
+      # Note that this is a POST endpoint rather than a GET endpoint because it employs
+      # a JSON body rather than query parameters.
       sig do
         params(
           timeframe_end: Time,
           timeframe_start: Time,
           customer_id: T.nilable(String),
-          events:
-            T.nilable(
-              T::Array[Orb::PriceEvaluateMultipleParams::Event::OrHash]
-            ),
           external_customer_id: T.nilable(String),
           price_evaluations:
             T::Array[Orb::PriceEvaluateMultipleParams::PriceEvaluation::OrHash],
@@ -294,7 +292,55 @@ module Orb
         timeframe_start:,
         # The ID of the customer to which this evaluation is scoped.
         customer_id: nil,
-        # Optional list of preview events to use instead of actual usage data (max 500)
+        # The external customer ID of the customer to which this evaluation is scoped.
+        external_customer_id: nil,
+        # List of prices to evaluate (max 100)
+        price_evaluations: nil,
+        request_options: {}
+      )
+      end
+
+      # This endpoint evaluates prices on preview events instead of actual usage, making
+      # it ideal for building price calculators and cost estimation tools. You can
+      # filter and group results using
+      # [computed properties](/extensibility/advanced-metrics#computed-properties) to
+      # analyze pricing across different dimensions.
+      #
+      # Prices may either reference existing prices in your Orb account or be defined
+      # inline in the request body. The endpoint has the following limitations:
+      #
+      # 1. Up to 100 prices can be evaluated in a single request.
+      # 2. Up to 500 preview events can be provided in a single request.
+      #
+      # A top-level customer_id is required to evaluate the preview events.
+      # Additionally, all events without a customer_id will have the top-level
+      # customer_id added.
+      #
+      # Note that this is a POST endpoint rather than a GET endpoint because it employs
+      # a JSON body rather than query parameters.
+      sig do
+        params(
+          timeframe_end: Time,
+          timeframe_start: Time,
+          customer_id: T.nilable(String),
+          events:
+            T::Array[Orb::PriceEvaluatePreviewEventsParams::Event::OrHash],
+          external_customer_id: T.nilable(String),
+          price_evaluations:
+            T::Array[
+              Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::OrHash
+            ],
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Models::PriceEvaluatePreviewEventsResponse)
+      end
+      def evaluate_preview_events(
+        # The exclusive upper bound for event timestamps
+        timeframe_end:,
+        # The inclusive lower bound for event timestamps
+        timeframe_start:,
+        # The ID of the customer to which this evaluation is scoped.
+        customer_id: nil,
+        # List of preview events to use instead of actual usage data
         events: nil,
         # The external customer ID of the customer to which this evaluation is scoped.
         external_customer_id: nil,

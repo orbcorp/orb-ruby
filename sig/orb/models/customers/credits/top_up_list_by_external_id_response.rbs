@@ -7,7 +7,7 @@ module Orb
             id: String,
             amount: String,
             currency: String,
-            invoice_settings: Orb::Models::Customers::Credits::TopUpListByExternalIDResponse::InvoiceSettings,
+            invoice_settings: Orb::Customers::Credits::TopUpInvoiceSettings,
             per_unit_cost_basis: String,
             threshold: String,
             expires_after: Integer?,
@@ -21,7 +21,7 @@ module Orb
 
           attr_accessor currency: String
 
-          attr_accessor invoice_settings: Orb::Models::Customers::Credits::TopUpListByExternalIDResponse::InvoiceSettings
+          attr_accessor invoice_settings: Orb::Customers::Credits::TopUpInvoiceSettings
 
           attr_accessor per_unit_cost_basis: String
 
@@ -35,7 +35,7 @@ module Orb
             id: String,
             amount: String,
             currency: String,
-            invoice_settings: Orb::Models::Customers::Credits::TopUpListByExternalIDResponse::InvoiceSettings,
+            invoice_settings: Orb::Customers::Credits::TopUpInvoiceSettings,
             per_unit_cost_basis: String,
             threshold: String,
             ?expires_after: Integer?,
@@ -46,46 +46,12 @@ module Orb
             id: String,
             amount: String,
             currency: String,
-            invoice_settings: Orb::Models::Customers::Credits::TopUpListByExternalIDResponse::InvoiceSettings,
+            invoice_settings: Orb::Customers::Credits::TopUpInvoiceSettings,
             per_unit_cost_basis: String,
             threshold: String,
             expires_after: Integer?,
             expires_after_unit: Orb::Models::Customers::Credits::TopUpListByExternalIDResponse::expires_after_unit?
           }
-
-          type invoice_settings =
-            {
-              auto_collection: bool,
-              net_terms: Integer,
-              memo: String?,
-              require_successful_payment: bool
-            }
-
-          class InvoiceSettings < Orb::Internal::Type::BaseModel
-            attr_accessor auto_collection: bool
-
-            attr_accessor net_terms: Integer
-
-            attr_accessor memo: String?
-
-            attr_reader require_successful_payment: bool?
-
-            def require_successful_payment=: (bool) -> bool
-
-            def initialize: (
-              auto_collection: bool,
-              net_terms: Integer,
-              ?memo: String?,
-              ?require_successful_payment: bool
-            ) -> void
-
-            def to_hash: -> {
-              auto_collection: bool,
-              net_terms: Integer,
-              memo: String?,
-              require_successful_payment: bool
-            }
-          end
 
           type expires_after_unit = :day | :month
 

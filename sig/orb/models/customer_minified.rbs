@@ -1,0 +1,15 @@
+module Orb
+  module Models
+    type customer_minified = { id: String, external_customer_id: String? }
+
+    class CustomerMinified < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor external_customer_id: String?
+
+      def initialize: (id: String, external_customer_id: String?) -> void
+
+      def to_hash: -> { id: String, external_customer_id: String? }
+    end
+  end
+end

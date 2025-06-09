@@ -1,0 +1,35 @@
+module Orb
+  module Models
+    type matrix_with_allocation_config =
+      {
+        allocation: Float,
+        default_unit_amount: String,
+        dimensions: ::Array[String?],
+        matrix_values: ::Array[Orb::MatrixValue]
+      }
+
+    class MatrixWithAllocationConfig < Orb::Internal::Type::BaseModel
+      attr_accessor allocation: Float
+
+      attr_accessor default_unit_amount: String
+
+      attr_accessor dimensions: ::Array[String?]
+
+      attr_accessor matrix_values: ::Array[Orb::MatrixValue]
+
+      def initialize: (
+        allocation: Float,
+        default_unit_amount: String,
+        dimensions: ::Array[String?],
+        matrix_values: ::Array[Orb::MatrixValue]
+      ) -> void
+
+      def to_hash: -> {
+        allocation: Float,
+        default_unit_amount: String,
+        dimensions: ::Array[String?],
+        matrix_values: ::Array[Orb::MatrixValue]
+      }
+    end
+  end
+end

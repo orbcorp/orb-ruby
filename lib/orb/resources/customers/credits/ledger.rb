@@ -116,7 +116,7 @@ module Orb
           #
           # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Orb::Internal::Page<Orb::Models::Customers::Credits::LedgerListResponse::Increment, Orb::Models::Customers::Credits::LedgerListResponse::Decrement, Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChange, Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiry, Orb::Models::Customers::Credits::LedgerListResponse::Void, Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiated, Orb::Models::Customers::Credits::LedgerListResponse::Amendment>]
+          # @return [Orb::Internal::Page<Orb::Models::Customers::Credits::IncrementLedgerEntry, Orb::Models::Customers::Credits::DecrementLedgerEntry, Orb::Models::Customers::Credits::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::VoidLedgerEntry, Orb::Models::Customers::Credits::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::AmendmentLedgerEntry>]
           #
           # @see Orb::Models::Customers::Credits::LedgerListParams
           def list(customer_id, params = {})
@@ -280,7 +280,7 @@ module Orb
           #
           # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated, Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment]
+          # @return [Orb::Models::Customers::Credits::IncrementLedgerEntry, Orb::Models::Customers::Credits::DecrementLedgerEntry, Orb::Models::Customers::Credits::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::VoidLedgerEntry, Orb::Models::Customers::Credits::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::AmendmentLedgerEntry]
           #
           # @see Orb::Models::Customers::Credits::LedgerCreateEntryParams
           def create_entry(customer_id, params)
@@ -439,7 +439,7 @@ module Orb
           #
           # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Decrement, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChange, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiry, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Void, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiated, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Amendment]
+          # @return [Orb::Models::Customers::Credits::IncrementLedgerEntry, Orb::Models::Customers::Credits::DecrementLedgerEntry, Orb::Models::Customers::Credits::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::VoidLedgerEntry, Orb::Models::Customers::Credits::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::AmendmentLedgerEntry]
           #
           # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams
           def create_entry_by_external_id(external_customer_id, params)
@@ -565,7 +565,7 @@ module Orb
           #
           # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Orb::Internal::Page<Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Increment, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Decrement, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChange, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiry, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Void, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiated, Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Amendment>]
+          # @return [Orb::Internal::Page<Orb::Models::Customers::Credits::IncrementLedgerEntry, Orb::Models::Customers::Credits::DecrementLedgerEntry, Orb::Models::Customers::Credits::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::VoidLedgerEntry, Orb::Models::Customers::Credits::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::AmendmentLedgerEntry>]
           #
           # @see Orb::Models::Customers::Credits::LedgerListByExternalIDParams
           def list_by_external_id(external_customer_id, params = {})
