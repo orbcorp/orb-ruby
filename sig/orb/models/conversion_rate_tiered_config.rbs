@@ -1,0 +1,14 @@
+module Orb
+  module Models
+    type conversion_rate_tiered_config =
+      { tiers: ::Array[Orb::ConversionRateTier] }
+
+    class ConversionRateTieredConfig < Orb::Internal::Type::BaseModel
+      attr_accessor tiers: ::Array[Orb::ConversionRateTier]
+
+      def initialize: (tiers: ::Array[Orb::ConversionRateTier]) -> void
+
+      def to_hash: -> { tiers: ::Array[Orb::ConversionRateTier] }
+    end
+  end
+end

@@ -64,19 +64,6 @@ module Orb
       sig { returns(T.nilable(Float)) }
       attr_accessor :conversion_rate
 
-      # The configuration for the rate of the price currency to the invoicing currency.
-      sig do
-        returns(
-          T.nilable(
-            T.any(
-              Orb::NewFloatingPackageWithAllocationPrice::ConversionRateConfig::Unit,
-              Orb::NewFloatingPackageWithAllocationPrice::ConversionRateConfig::Tiered
-            )
-          )
-        )
-      end
-      attr_accessor :conversion_rate_config
-
       # For dimensional price: specifies a price group and dimension values
       sig { returns(T.nilable(Orb::NewDimensionalPriceConfiguration)) }
       attr_reader :dimensional_price_configuration
@@ -136,13 +123,6 @@ module Orb
           billing_cycle_configuration:
             T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
           conversion_rate: T.nilable(Float),
-          conversion_rate_config:
-            T.nilable(
-              T.any(
-                Orb::NewFloatingPackageWithAllocationPrice::ConversionRateConfig::Unit::OrHash,
-                Orb::NewFloatingPackageWithAllocationPrice::ConversionRateConfig::Tiered::OrHash
-              )
-            ),
           dimensional_price_configuration:
             T.nilable(Orb::NewDimensionalPriceConfiguration::OrHash),
           external_price_id: T.nilable(String),
@@ -175,8 +155,6 @@ module Orb
         billing_cycle_configuration: nil,
         # The per unit conversion rate of the price currency to the invoicing currency.
         conversion_rate: nil,
-        # The configuration for the rate of the price currency to the invoicing currency.
-        conversion_rate_config: nil,
         # For dimensional price: specifies a price group and dimension values
         dimensional_price_configuration: nil,
         # An alias for the price.
@@ -212,13 +190,6 @@ module Orb
             billing_cycle_configuration:
               T.nilable(Orb::NewBillingCycleConfiguration),
             conversion_rate: T.nilable(Float),
-            conversion_rate_config:
-              T.nilable(
-                T.any(
-                  Orb::NewFloatingPackageWithAllocationPrice::ConversionRateConfig::Unit,
-                  Orb::NewFloatingPackageWithAllocationPrice::ConversionRateConfig::Tiered
-                )
-              ),
             dimensional_price_configuration:
               T.nilable(Orb::NewDimensionalPriceConfiguration),
             external_price_id: T.nilable(String),
@@ -308,252 +279,6 @@ module Orb
           )
         end
         def self.values
-        end
-      end
-
-      # The configuration for the rate of the price currency to the invoicing currency.
-      module ConversionRateConfig
-        extend Orb::Internal::Type::Union
-
-        Variants =
-          T.type_alias do
-            T.any(
-              Orb::NewFloatingPackageWithAllocationPrice::ConversionRateConfig::Unit,
-              Orb::NewFloatingPackageWithAllocationPrice::ConversionRateConfig::Tiered
-            )
-          end
-
-        class Unit < Orb::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Orb::NewFloatingPackageWithAllocationPrice::ConversionRateConfig::Unit,
-                Orb::Internal::AnyHash
-              )
-            end
-
-          sig { returns(Symbol) }
-          attr_accessor :conversion_rate_type
-
-          sig do
-            returns(
-              Orb::NewFloatingPackageWithAllocationPrice::ConversionRateConfig::Unit::UnitConfig
-            )
-          end
-          attr_reader :unit_config
-
-          sig do
-            params(
-              unit_config:
-                Orb::NewFloatingPackageWithAllocationPrice::ConversionRateConfig::Unit::UnitConfig::OrHash
-            ).void
-          end
-          attr_writer :unit_config
-
-          sig do
-            params(
-              unit_config:
-                Orb::NewFloatingPackageWithAllocationPrice::ConversionRateConfig::Unit::UnitConfig::OrHash,
-              conversion_rate_type: Symbol
-            ).returns(T.attached_class)
-          end
-          def self.new(unit_config:, conversion_rate_type: :unit)
-          end
-
-          sig do
-            override.returns(
-              {
-                conversion_rate_type: Symbol,
-                unit_config:
-                  Orb::NewFloatingPackageWithAllocationPrice::ConversionRateConfig::Unit::UnitConfig
-              }
-            )
-          end
-          def to_hash
-          end
-
-          class UnitConfig < Orb::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Orb::NewFloatingPackageWithAllocationPrice::ConversionRateConfig::Unit::UnitConfig,
-                  Orb::Internal::AnyHash
-                )
-              end
-
-            # Amount per unit of overage
-            sig { returns(String) }
-            attr_accessor :unit_amount
-
-            sig { params(unit_amount: String).returns(T.attached_class) }
-            def self.new(
-              # Amount per unit of overage
-              unit_amount:
-            )
-            end
-
-            sig { override.returns({ unit_amount: String }) }
-            def to_hash
-            end
-          end
-        end
-
-        class Tiered < Orb::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Orb::NewFloatingPackageWithAllocationPrice::ConversionRateConfig::Tiered,
-                Orb::Internal::AnyHash
-              )
-            end
-
-          sig { returns(Symbol) }
-          attr_accessor :conversion_rate_type
-
-          sig do
-            returns(
-              Orb::NewFloatingPackageWithAllocationPrice::ConversionRateConfig::Tiered::TieredConfig
-            )
-          end
-          attr_reader :tiered_config
-
-          sig do
-            params(
-              tiered_config:
-                Orb::NewFloatingPackageWithAllocationPrice::ConversionRateConfig::Tiered::TieredConfig::OrHash
-            ).void
-          end
-          attr_writer :tiered_config
-
-          sig do
-            params(
-              tiered_config:
-                Orb::NewFloatingPackageWithAllocationPrice::ConversionRateConfig::Tiered::TieredConfig::OrHash,
-              conversion_rate_type: Symbol
-            ).returns(T.attached_class)
-          end
-          def self.new(tiered_config:, conversion_rate_type: :tiered)
-          end
-
-          sig do
-            override.returns(
-              {
-                conversion_rate_type: Symbol,
-                tiered_config:
-                  Orb::NewFloatingPackageWithAllocationPrice::ConversionRateConfig::Tiered::TieredConfig
-              }
-            )
-          end
-          def to_hash
-          end
-
-          class TieredConfig < Orb::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Orb::NewFloatingPackageWithAllocationPrice::ConversionRateConfig::Tiered::TieredConfig,
-                  Orb::Internal::AnyHash
-                )
-              end
-
-            # Tiers for rating based on total usage quantities into the specified tier
-            sig do
-              returns(
-                T::Array[
-                  Orb::NewFloatingPackageWithAllocationPrice::ConversionRateConfig::Tiered::TieredConfig::Tier
-                ]
-              )
-            end
-            attr_accessor :tiers
-
-            sig do
-              params(
-                tiers:
-                  T::Array[
-                    Orb::NewFloatingPackageWithAllocationPrice::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
-                  ]
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              # Tiers for rating based on total usage quantities into the specified tier
-              tiers:
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  tiers:
-                    T::Array[
-                      Orb::NewFloatingPackageWithAllocationPrice::ConversionRateConfig::Tiered::TieredConfig::Tier
-                    ]
-                }
-              )
-            end
-            def to_hash
-            end
-
-            class Tier < Orb::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias do
-                  T.any(
-                    Orb::NewFloatingPackageWithAllocationPrice::ConversionRateConfig::Tiered::TieredConfig::Tier,
-                    Orb::Internal::AnyHash
-                  )
-                end
-
-              # Exclusive tier starting value
-              sig { returns(Float) }
-              attr_accessor :first_unit
-
-              # Amount per unit of overage
-              sig { returns(String) }
-              attr_accessor :unit_amount
-
-              # Inclusive tier ending value. If null, this is treated as the last tier
-              sig { returns(T.nilable(Float)) }
-              attr_accessor :last_unit
-
-              sig do
-                params(
-                  first_unit: Float,
-                  unit_amount: String,
-                  last_unit: T.nilable(Float)
-                ).returns(T.attached_class)
-              end
-              def self.new(
-                # Exclusive tier starting value
-                first_unit:,
-                # Amount per unit of overage
-                unit_amount:,
-                # Inclusive tier ending value. If null, this is treated as the last tier
-                last_unit: nil
-              )
-              end
-
-              sig do
-                override.returns(
-                  {
-                    first_unit: Float,
-                    unit_amount: String,
-                    last_unit: T.nilable(Float)
-                  }
-                )
-              end
-              def to_hash
-              end
-            end
-          end
-        end
-
-        sig do
-          override.returns(
-            T::Array[
-              Orb::NewFloatingPackageWithAllocationPrice::ConversionRateConfig::Variants
-            ]
-          )
-        end
-        def self.variants
         end
       end
     end
