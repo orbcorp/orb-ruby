@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.1 (2025-06-09)
+
+Full Changelog: [v1.0.0...v1.0.1](https://github.com/orbcorp/orb-ruby/compare/v1.0.0...v1.0.1)
+
+### Chores
+
+* **internal:** version bump ([c8f2c89](https://github.com/orbcorp/orb-ruby/commit/c8f2c89c4cd20fba8ead7e483b25a4496b9064eb))
+
 ## 1.0.0 (2025-06-09)
 
 Full Changelog: [v0.12.0...v1.0.0](https://github.com/orbcorp/orb-ruby/compare/v0.12.0...v1.0.0)
