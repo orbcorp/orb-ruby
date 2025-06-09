@@ -23,7 +23,7 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :customer_id
 
-      # Optional list of preview events to use instead of actual usage data (max 500)
+      # Optional list of preview events to use instead of actual usage data
       sig do
         returns(T.nilable(T::Array[Orb::PriceEvaluateMultipleParams::Event]))
       end
@@ -71,7 +71,7 @@ module Orb
         timeframe_start:,
         # The ID of the customer to which this evaluation is scoped.
         customer_id: nil,
-        # Optional list of preview events to use instead of actual usage data (max 500)
+        # Optional list of preview events to use instead of actual usage data
         events: nil,
         # The external customer ID of the customer to which this evaluation is scoped.
         external_customer_id: nil,

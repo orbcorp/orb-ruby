@@ -82,6 +82,11 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
+        sig do
+          returns(T.nilable(Orb::Price::Unit::ConversionRateConfig::Variants))
+        end
+        attr_accessor :conversion_rate_config
+
         sig { returns(Time) }
         attr_accessor :created_at
 
@@ -183,6 +188,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::Unit::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::Price::Unit::ConversionRateConfig::Unit::OrHash,
+                  Orb::Price::Unit::ConversionRateConfig::Tiered::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -220,6 +232,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -254,6 +267,8 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::Unit::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(Orb::Price::Unit::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -300,6 +315,247 @@ module Orb
             override.returns(T::Array[Orb::Price::Unit::Cadence::TaggedSymbol])
           end
           def self.values
+          end
+        end
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Price::Unit::ConversionRateConfig::Unit,
+                Orb::Price::Unit::ConversionRateConfig::Tiered
+              )
+            end
+
+          class Unit < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::Unit::ConversionRateConfig::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(Orb::Price::Unit::ConversionRateConfig::Unit::UnitConfig)
+            end
+            attr_reader :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::Unit::ConversionRateConfig::Unit::UnitConfig::OrHash
+              ).void
+            end
+            attr_writer :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::Unit::ConversionRateConfig::Unit::UnitConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(unit_config:, conversion_rate_type: :unit)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  unit_config:
+                    Orb::Price::Unit::ConversionRateConfig::Unit::UnitConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::Unit::ConversionRateConfig::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit of overage
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              sig { params(unit_amount: String).returns(T.attached_class) }
+              def self.new(
+                # Amount per unit of overage
+                unit_amount:
+              )
+              end
+
+              sig { override.returns({ unit_amount: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::Unit::ConversionRateConfig::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::Unit::ConversionRateConfig::Tiered::TieredConfig
+              )
+            end
+            attr_reader :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::Unit::ConversionRateConfig::Tiered::TieredConfig::OrHash
+              ).void
+            end
+            attr_writer :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::Unit::ConversionRateConfig::Tiered::TieredConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(tiered_config:, conversion_rate_type: :tiered)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  tiered_config:
+                    Orb::Price::Unit::ConversionRateConfig::Tiered::TieredConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::Unit::ConversionRateConfig::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Tiers for rating based on total usage quantities into the specified tier
+              sig do
+                returns(
+                  T::Array[
+                    Orb::Price::Unit::ConversionRateConfig::Tiered::TieredConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      Orb::Price::Unit::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    tiers:
+                      T::Array[
+                        Orb::Price::Unit::ConversionRateConfig::Tiered::TieredConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::Price::Unit::ConversionRateConfig::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Exclusive tier starting value
+                sig { returns(Float) }
+                attr_accessor :first_unit
+
+                # Amount per unit of overage
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Inclusive tier ending value. If null, this is treated as the last tier
+                sig { returns(T.nilable(Float)) }
+                attr_accessor :last_unit
+
+                sig do
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit of overage
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      first_unit: Float,
+                      unit_amount: String,
+                      last_unit: T.nilable(Float)
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::Unit::ConversionRateConfig::Variants]
+            )
+          end
+          def self.variants
           end
         end
 
@@ -357,6 +613,13 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(Orb::Price::Package::ConversionRateConfig::Variants)
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -459,6 +722,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::Package::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::Price::Package::ConversionRateConfig::Unit::OrHash,
+                  Orb::Price::Package::ConversionRateConfig::Tiered::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -496,6 +766,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -530,6 +801,8 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::Package::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(Orb::Price::Package::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -580,6 +853,249 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Price::Package::ConversionRateConfig::Unit,
+                Orb::Price::Package::ConversionRateConfig::Tiered
+              )
+            end
+
+          class Unit < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::Package::ConversionRateConfig::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::Package::ConversionRateConfig::Unit::UnitConfig
+              )
+            end
+            attr_reader :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::Package::ConversionRateConfig::Unit::UnitConfig::OrHash
+              ).void
+            end
+            attr_writer :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::Package::ConversionRateConfig::Unit::UnitConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(unit_config:, conversion_rate_type: :unit)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  unit_config:
+                    Orb::Price::Package::ConversionRateConfig::Unit::UnitConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::Package::ConversionRateConfig::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit of overage
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              sig { params(unit_amount: String).returns(T.attached_class) }
+              def self.new(
+                # Amount per unit of overage
+                unit_amount:
+              )
+              end
+
+              sig { override.returns({ unit_amount: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::Package::ConversionRateConfig::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::Package::ConversionRateConfig::Tiered::TieredConfig
+              )
+            end
+            attr_reader :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::Package::ConversionRateConfig::Tiered::TieredConfig::OrHash
+              ).void
+            end
+            attr_writer :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::Package::ConversionRateConfig::Tiered::TieredConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(tiered_config:, conversion_rate_type: :tiered)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  tiered_config:
+                    Orb::Price::Package::ConversionRateConfig::Tiered::TieredConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::Package::ConversionRateConfig::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Tiers for rating based on total usage quantities into the specified tier
+              sig do
+                returns(
+                  T::Array[
+                    Orb::Price::Package::ConversionRateConfig::Tiered::TieredConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      Orb::Price::Package::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    tiers:
+                      T::Array[
+                        Orb::Price::Package::ConversionRateConfig::Tiered::TieredConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::Price::Package::ConversionRateConfig::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Exclusive tier starting value
+                sig { returns(Float) }
+                attr_accessor :first_unit
+
+                # Amount per unit of overage
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Inclusive tier ending value. If null, this is treated as the last tier
+                sig { returns(T.nilable(Float)) }
+                attr_accessor :last_unit
+
+                sig do
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit of overage
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      first_unit: Float,
+                      unit_amount: String,
+                      last_unit: T.nilable(Float)
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::Package::ConversionRateConfig::Variants]
+            )
+          end
+          def self.variants
           end
         end
 
@@ -637,6 +1153,11 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(T.nilable(Orb::Price::Matrix::ConversionRateConfig::Variants))
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -739,6 +1260,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::Matrix::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::Price::Matrix::ConversionRateConfig::Unit::OrHash,
+                  Orb::Price::Matrix::ConversionRateConfig::Tiered::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -776,6 +1304,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -810,6 +1339,8 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::Matrix::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(Orb::Price::Matrix::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -859,6 +1390,249 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Price::Matrix::ConversionRateConfig::Unit,
+                Orb::Price::Matrix::ConversionRateConfig::Tiered
+              )
+            end
+
+          class Unit < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::Matrix::ConversionRateConfig::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::Matrix::ConversionRateConfig::Unit::UnitConfig
+              )
+            end
+            attr_reader :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::Matrix::ConversionRateConfig::Unit::UnitConfig::OrHash
+              ).void
+            end
+            attr_writer :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::Matrix::ConversionRateConfig::Unit::UnitConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(unit_config:, conversion_rate_type: :unit)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  unit_config:
+                    Orb::Price::Matrix::ConversionRateConfig::Unit::UnitConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::Matrix::ConversionRateConfig::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit of overage
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              sig { params(unit_amount: String).returns(T.attached_class) }
+              def self.new(
+                # Amount per unit of overage
+                unit_amount:
+              )
+              end
+
+              sig { override.returns({ unit_amount: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::Matrix::ConversionRateConfig::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::Matrix::ConversionRateConfig::Tiered::TieredConfig
+              )
+            end
+            attr_reader :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::Matrix::ConversionRateConfig::Tiered::TieredConfig::OrHash
+              ).void
+            end
+            attr_writer :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::Matrix::ConversionRateConfig::Tiered::TieredConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(tiered_config:, conversion_rate_type: :tiered)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  tiered_config:
+                    Orb::Price::Matrix::ConversionRateConfig::Tiered::TieredConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::Matrix::ConversionRateConfig::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Tiers for rating based on total usage quantities into the specified tier
+              sig do
+                returns(
+                  T::Array[
+                    Orb::Price::Matrix::ConversionRateConfig::Tiered::TieredConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      Orb::Price::Matrix::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    tiers:
+                      T::Array[
+                        Orb::Price::Matrix::ConversionRateConfig::Tiered::TieredConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::Price::Matrix::ConversionRateConfig::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Exclusive tier starting value
+                sig { returns(Float) }
+                attr_accessor :first_unit
+
+                # Amount per unit of overage
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Inclusive tier ending value. If null, this is treated as the last tier
+                sig { returns(T.nilable(Float)) }
+                attr_accessor :last_unit
+
+                sig do
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit of overage
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      first_unit: Float,
+                      unit_amount: String,
+                      last_unit: T.nilable(Float)
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::Matrix::ConversionRateConfig::Variants]
+            )
+          end
+          def self.variants
           end
         end
 
@@ -916,6 +1690,11 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(T.nilable(Orb::Price::Tiered::ConversionRateConfig::Variants))
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -1018,6 +1797,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::Tiered::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::Price::Tiered::ConversionRateConfig::Unit::OrHash,
+                  Orb::Price::Tiered::ConversionRateConfig::Tiered::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -1055,6 +1841,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -1089,6 +1876,8 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::Tiered::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(Orb::Price::Tiered::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -1138,6 +1927,249 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Price::Tiered::ConversionRateConfig::Unit,
+                Orb::Price::Tiered::ConversionRateConfig::Tiered
+              )
+            end
+
+          class Unit < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::Tiered::ConversionRateConfig::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::Tiered::ConversionRateConfig::Unit::UnitConfig
+              )
+            end
+            attr_reader :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::Tiered::ConversionRateConfig::Unit::UnitConfig::OrHash
+              ).void
+            end
+            attr_writer :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::Tiered::ConversionRateConfig::Unit::UnitConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(unit_config:, conversion_rate_type: :unit)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  unit_config:
+                    Orb::Price::Tiered::ConversionRateConfig::Unit::UnitConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::Tiered::ConversionRateConfig::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit of overage
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              sig { params(unit_amount: String).returns(T.attached_class) }
+              def self.new(
+                # Amount per unit of overage
+                unit_amount:
+              )
+              end
+
+              sig { override.returns({ unit_amount: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::Tiered::ConversionRateConfig::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::Tiered::ConversionRateConfig::Tiered::TieredConfig
+              )
+            end
+            attr_reader :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::Tiered::ConversionRateConfig::Tiered::TieredConfig::OrHash
+              ).void
+            end
+            attr_writer :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::Tiered::ConversionRateConfig::Tiered::TieredConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(tiered_config:, conversion_rate_type: :tiered)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  tiered_config:
+                    Orb::Price::Tiered::ConversionRateConfig::Tiered::TieredConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::Tiered::ConversionRateConfig::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Tiers for rating based on total usage quantities into the specified tier
+              sig do
+                returns(
+                  T::Array[
+                    Orb::Price::Tiered::ConversionRateConfig::Tiered::TieredConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      Orb::Price::Tiered::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    tiers:
+                      T::Array[
+                        Orb::Price::Tiered::ConversionRateConfig::Tiered::TieredConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::Price::Tiered::ConversionRateConfig::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Exclusive tier starting value
+                sig { returns(Float) }
+                attr_accessor :first_unit
+
+                # Amount per unit of overage
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Inclusive tier ending value. If null, this is treated as the last tier
+                sig { returns(T.nilable(Float)) }
+                attr_accessor :last_unit
+
+                sig do
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit of overage
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      first_unit: Float,
+                      unit_amount: String,
+                      last_unit: T.nilable(Float)
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::Tiered::ConversionRateConfig::Variants]
+            )
+          end
+          def self.variants
           end
         end
 
@@ -1195,6 +2227,13 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(Orb::Price::TieredBPS::ConversionRateConfig::Variants)
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -1297,6 +2336,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::TieredBPS::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::Price::TieredBPS::ConversionRateConfig::Unit::OrHash,
+                  Orb::Price::TieredBPS::ConversionRateConfig::Tiered::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -1334,6 +2380,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -1368,6 +2415,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::TieredBPS::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::TieredBPS::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -1419,6 +2470,249 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredBPS::ConversionRateConfig::Unit,
+                Orb::Price::TieredBPS::ConversionRateConfig::Tiered
+              )
+            end
+
+          class Unit < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::TieredBPS::ConversionRateConfig::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::TieredBPS::ConversionRateConfig::Unit::UnitConfig
+              )
+            end
+            attr_reader :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::TieredBPS::ConversionRateConfig::Unit::UnitConfig::OrHash
+              ).void
+            end
+            attr_writer :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::TieredBPS::ConversionRateConfig::Unit::UnitConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(unit_config:, conversion_rate_type: :unit)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  unit_config:
+                    Orb::Price::TieredBPS::ConversionRateConfig::Unit::UnitConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::TieredBPS::ConversionRateConfig::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit of overage
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              sig { params(unit_amount: String).returns(T.attached_class) }
+              def self.new(
+                # Amount per unit of overage
+                unit_amount:
+              )
+              end
+
+              sig { override.returns({ unit_amount: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::TieredBPS::ConversionRateConfig::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::TieredBPS::ConversionRateConfig::Tiered::TieredConfig
+              )
+            end
+            attr_reader :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::TieredBPS::ConversionRateConfig::Tiered::TieredConfig::OrHash
+              ).void
+            end
+            attr_writer :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::TieredBPS::ConversionRateConfig::Tiered::TieredConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(tiered_config:, conversion_rate_type: :tiered)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  tiered_config:
+                    Orb::Price::TieredBPS::ConversionRateConfig::Tiered::TieredConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::TieredBPS::ConversionRateConfig::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Tiers for rating based on total usage quantities into the specified tier
+              sig do
+                returns(
+                  T::Array[
+                    Orb::Price::TieredBPS::ConversionRateConfig::Tiered::TieredConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      Orb::Price::TieredBPS::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    tiers:
+                      T::Array[
+                        Orb::Price::TieredBPS::ConversionRateConfig::Tiered::TieredConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::Price::TieredBPS::ConversionRateConfig::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Exclusive tier starting value
+                sig { returns(Float) }
+                attr_accessor :first_unit
+
+                # Amount per unit of overage
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Inclusive tier ending value. If null, this is treated as the last tier
+                sig { returns(T.nilable(Float)) }
+                attr_accessor :last_unit
+
+                sig do
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit of overage
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      first_unit: Float,
+                      unit_amount: String,
+                      last_unit: T.nilable(Float)
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::TieredBPS::ConversionRateConfig::Variants]
+            )
+          end
+          def self.variants
           end
         end
 
@@ -1481,6 +2775,11 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(T.nilable(Orb::Price::BPS::ConversionRateConfig::Variants))
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -1578,6 +2877,13 @@ module Orb
             bps_config: Orb::BPSConfig::OrHash,
             cadence: Orb::Price::BPS::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::Price::BPS::ConversionRateConfig::Unit::OrHash,
+                  Orb::Price::BPS::ConversionRateConfig::Tiered::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -1615,6 +2921,7 @@ module Orb
           bps_config:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -1649,6 +2956,8 @@ module Orb
               bps_config: Orb::BPSConfig,
               cadence: Orb::Price::BPS::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(Orb::Price::BPS::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -1694,6 +3003,247 @@ module Orb
             override.returns(T::Array[Orb::Price::BPS::Cadence::TaggedSymbol])
           end
           def self.values
+          end
+        end
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Price::BPS::ConversionRateConfig::Unit,
+                Orb::Price::BPS::ConversionRateConfig::Tiered
+              )
+            end
+
+          class Unit < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::BPS::ConversionRateConfig::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(Orb::Price::BPS::ConversionRateConfig::Unit::UnitConfig)
+            end
+            attr_reader :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::BPS::ConversionRateConfig::Unit::UnitConfig::OrHash
+              ).void
+            end
+            attr_writer :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::BPS::ConversionRateConfig::Unit::UnitConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(unit_config:, conversion_rate_type: :unit)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  unit_config:
+                    Orb::Price::BPS::ConversionRateConfig::Unit::UnitConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::BPS::ConversionRateConfig::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit of overage
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              sig { params(unit_amount: String).returns(T.attached_class) }
+              def self.new(
+                # Amount per unit of overage
+                unit_amount:
+              )
+              end
+
+              sig { override.returns({ unit_amount: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::BPS::ConversionRateConfig::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::BPS::ConversionRateConfig::Tiered::TieredConfig
+              )
+            end
+            attr_reader :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::BPS::ConversionRateConfig::Tiered::TieredConfig::OrHash
+              ).void
+            end
+            attr_writer :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::BPS::ConversionRateConfig::Tiered::TieredConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(tiered_config:, conversion_rate_type: :tiered)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  tiered_config:
+                    Orb::Price::BPS::ConversionRateConfig::Tiered::TieredConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::BPS::ConversionRateConfig::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Tiers for rating based on total usage quantities into the specified tier
+              sig do
+                returns(
+                  T::Array[
+                    Orb::Price::BPS::ConversionRateConfig::Tiered::TieredConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      Orb::Price::BPS::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    tiers:
+                      T::Array[
+                        Orb::Price::BPS::ConversionRateConfig::Tiered::TieredConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::Price::BPS::ConversionRateConfig::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Exclusive tier starting value
+                sig { returns(Float) }
+                attr_accessor :first_unit
+
+                # Amount per unit of overage
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Inclusive tier ending value. If null, this is treated as the last tier
+                sig { returns(T.nilable(Float)) }
+                attr_accessor :last_unit
+
+                sig do
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit of overage
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      first_unit: Float,
+                      unit_amount: String,
+                      last_unit: T.nilable(Float)
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::BPS::ConversionRateConfig::Variants]
+            )
+          end
+          def self.variants
           end
         end
 
@@ -1755,6 +3305,13 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(Orb::Price::BulkBPS::ConversionRateConfig::Variants)
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -1852,6 +3409,13 @@ module Orb
             bulk_bps_config: Orb::BulkBPSConfig::OrHash,
             cadence: Orb::Price::BulkBPS::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::Price::BulkBPS::ConversionRateConfig::Unit::OrHash,
+                  Orb::Price::BulkBPS::ConversionRateConfig::Tiered::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -1889,6 +3453,7 @@ module Orb
           bulk_bps_config:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -1923,6 +3488,8 @@ module Orb
               bulk_bps_config: Orb::BulkBPSConfig,
               cadence: Orb::Price::BulkBPS::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(Orb::Price::BulkBPS::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -1972,6 +3539,249 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Price::BulkBPS::ConversionRateConfig::Unit,
+                Orb::Price::BulkBPS::ConversionRateConfig::Tiered
+              )
+            end
+
+          class Unit < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::BulkBPS::ConversionRateConfig::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::BulkBPS::ConversionRateConfig::Unit::UnitConfig
+              )
+            end
+            attr_reader :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::BulkBPS::ConversionRateConfig::Unit::UnitConfig::OrHash
+              ).void
+            end
+            attr_writer :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::BulkBPS::ConversionRateConfig::Unit::UnitConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(unit_config:, conversion_rate_type: :unit)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  unit_config:
+                    Orb::Price::BulkBPS::ConversionRateConfig::Unit::UnitConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::BulkBPS::ConversionRateConfig::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit of overage
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              sig { params(unit_amount: String).returns(T.attached_class) }
+              def self.new(
+                # Amount per unit of overage
+                unit_amount:
+              )
+              end
+
+              sig { override.returns({ unit_amount: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::BulkBPS::ConversionRateConfig::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::BulkBPS::ConversionRateConfig::Tiered::TieredConfig
+              )
+            end
+            attr_reader :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::BulkBPS::ConversionRateConfig::Tiered::TieredConfig::OrHash
+              ).void
+            end
+            attr_writer :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::BulkBPS::ConversionRateConfig::Tiered::TieredConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(tiered_config:, conversion_rate_type: :tiered)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  tiered_config:
+                    Orb::Price::BulkBPS::ConversionRateConfig::Tiered::TieredConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::BulkBPS::ConversionRateConfig::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Tiers for rating based on total usage quantities into the specified tier
+              sig do
+                returns(
+                  T::Array[
+                    Orb::Price::BulkBPS::ConversionRateConfig::Tiered::TieredConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      Orb::Price::BulkBPS::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    tiers:
+                      T::Array[
+                        Orb::Price::BulkBPS::ConversionRateConfig::Tiered::TieredConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::Price::BulkBPS::ConversionRateConfig::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Exclusive tier starting value
+                sig { returns(Float) }
+                attr_accessor :first_unit
+
+                # Amount per unit of overage
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Inclusive tier ending value. If null, this is treated as the last tier
+                sig { returns(T.nilable(Float)) }
+                attr_accessor :last_unit
+
+                sig do
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit of overage
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      first_unit: Float,
+                      unit_amount: String,
+                      last_unit: T.nilable(Float)
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::BulkBPS::ConversionRateConfig::Variants]
+            )
+          end
+          def self.variants
           end
         end
 
@@ -2035,6 +3845,11 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(T.nilable(Orb::Price::Bulk::ConversionRateConfig::Variants))
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -2132,6 +3947,13 @@ module Orb
             bulk_config: Orb::BulkConfig::OrHash,
             cadence: Orb::Price::Bulk::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::Price::Bulk::ConversionRateConfig::Unit::OrHash,
+                  Orb::Price::Bulk::ConversionRateConfig::Tiered::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -2169,6 +3991,7 @@ module Orb
           bulk_config:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -2203,6 +4026,8 @@ module Orb
               bulk_config: Orb::BulkConfig,
               cadence: Orb::Price::Bulk::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(Orb::Price::Bulk::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -2248,6 +4073,247 @@ module Orb
             override.returns(T::Array[Orb::Price::Bulk::Cadence::TaggedSymbol])
           end
           def self.values
+          end
+        end
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Price::Bulk::ConversionRateConfig::Unit,
+                Orb::Price::Bulk::ConversionRateConfig::Tiered
+              )
+            end
+
+          class Unit < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::Bulk::ConversionRateConfig::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(Orb::Price::Bulk::ConversionRateConfig::Unit::UnitConfig)
+            end
+            attr_reader :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::Bulk::ConversionRateConfig::Unit::UnitConfig::OrHash
+              ).void
+            end
+            attr_writer :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::Bulk::ConversionRateConfig::Unit::UnitConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(unit_config:, conversion_rate_type: :unit)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  unit_config:
+                    Orb::Price::Bulk::ConversionRateConfig::Unit::UnitConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::Bulk::ConversionRateConfig::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit of overage
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              sig { params(unit_amount: String).returns(T.attached_class) }
+              def self.new(
+                # Amount per unit of overage
+                unit_amount:
+              )
+              end
+
+              sig { override.returns({ unit_amount: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::Bulk::ConversionRateConfig::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::Bulk::ConversionRateConfig::Tiered::TieredConfig
+              )
+            end
+            attr_reader :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::Bulk::ConversionRateConfig::Tiered::TieredConfig::OrHash
+              ).void
+            end
+            attr_writer :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::Bulk::ConversionRateConfig::Tiered::TieredConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(tiered_config:, conversion_rate_type: :tiered)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  tiered_config:
+                    Orb::Price::Bulk::ConversionRateConfig::Tiered::TieredConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::Bulk::ConversionRateConfig::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Tiers for rating based on total usage quantities into the specified tier
+              sig do
+                returns(
+                  T::Array[
+                    Orb::Price::Bulk::ConversionRateConfig::Tiered::TieredConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      Orb::Price::Bulk::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    tiers:
+                      T::Array[
+                        Orb::Price::Bulk::ConversionRateConfig::Tiered::TieredConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::Price::Bulk::ConversionRateConfig::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Exclusive tier starting value
+                sig { returns(Float) }
+                attr_accessor :first_unit
+
+                # Amount per unit of overage
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Inclusive tier ending value. If null, this is treated as the last tier
+                sig { returns(T.nilable(Float)) }
+                attr_accessor :last_unit
+
+                sig do
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit of overage
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      first_unit: Float,
+                      unit_amount: String,
+                      last_unit: T.nilable(Float)
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::Bulk::ConversionRateConfig::Variants]
+            )
+          end
+          def self.variants
           end
         end
 
@@ -2307,6 +4373,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -2408,6 +4483,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::ThresholdTotalAmount::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Unit::OrHash,
+                  Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Tiered::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -2445,6 +4527,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -2479,6 +4562,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::ThresholdTotalAmount::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -2556,6 +4643,251 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Unit,
+                Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Tiered
+              )
+            end
+
+          class Unit < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Unit::UnitConfig
+              )
+            end
+            attr_reader :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Unit::UnitConfig::OrHash
+              ).void
+            end
+            attr_writer :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Unit::UnitConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(unit_config:, conversion_rate_type: :unit)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  unit_config:
+                    Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Unit::UnitConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit of overage
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              sig { params(unit_amount: String).returns(T.attached_class) }
+              def self.new(
+                # Amount per unit of overage
+                unit_amount:
+              )
+              end
+
+              sig { override.returns({ unit_amount: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Tiered::TieredConfig
+              )
+            end
+            attr_reader :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Tiered::TieredConfig::OrHash
+              ).void
+            end
+            attr_writer :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Tiered::TieredConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(tiered_config:, conversion_rate_type: :tiered)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  tiered_config:
+                    Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Tiered::TieredConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Tiers for rating based on total usage quantities into the specified tier
+              sig do
+                returns(
+                  T::Array[
+                    Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Tiered::TieredConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    tiers:
+                      T::Array[
+                        Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Tiered::TieredConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Exclusive tier starting value
+                sig { returns(Float) }
+                attr_accessor :first_unit
+
+                # Amount per unit of overage
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Inclusive tier ending value. If null, this is treated as the last tier
+                sig { returns(T.nilable(Float)) }
+                attr_accessor :last_unit
+
+                sig do
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit of overage
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      first_unit: Float,
+                      unit_amount: String,
+                      last_unit: T.nilable(Float)
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -2622,6 +4954,13 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(Orb::Price::TieredPackage::ConversionRateConfig::Variants)
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -2721,6 +5060,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::TieredPackage::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::Price::TieredPackage::ConversionRateConfig::Unit::OrHash,
+                  Orb::Price::TieredPackage::ConversionRateConfig::Tiered::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -2758,6 +5104,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -2792,6 +5139,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::TieredPackage::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::TieredPackage::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -2848,6 +5199,251 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredPackage::ConversionRateConfig::Unit,
+                Orb::Price::TieredPackage::ConversionRateConfig::Tiered
+              )
+            end
+
+          class Unit < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::TieredPackage::ConversionRateConfig::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::TieredPackage::ConversionRateConfig::Unit::UnitConfig
+              )
+            end
+            attr_reader :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::TieredPackage::ConversionRateConfig::Unit::UnitConfig::OrHash
+              ).void
+            end
+            attr_writer :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::TieredPackage::ConversionRateConfig::Unit::UnitConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(unit_config:, conversion_rate_type: :unit)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  unit_config:
+                    Orb::Price::TieredPackage::ConversionRateConfig::Unit::UnitConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::TieredPackage::ConversionRateConfig::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit of overage
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              sig { params(unit_amount: String).returns(T.attached_class) }
+              def self.new(
+                # Amount per unit of overage
+                unit_amount:
+              )
+              end
+
+              sig { override.returns({ unit_amount: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::TieredPackage::ConversionRateConfig::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::TieredPackage::ConversionRateConfig::Tiered::TieredConfig
+              )
+            end
+            attr_reader :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::TieredPackage::ConversionRateConfig::Tiered::TieredConfig::OrHash
+              ).void
+            end
+            attr_writer :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::TieredPackage::ConversionRateConfig::Tiered::TieredConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(tiered_config:, conversion_rate_type: :tiered)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  tiered_config:
+                    Orb::Price::TieredPackage::ConversionRateConfig::Tiered::TieredConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::TieredPackage::ConversionRateConfig::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Tiers for rating based on total usage quantities into the specified tier
+              sig do
+                returns(
+                  T::Array[
+                    Orb::Price::TieredPackage::ConversionRateConfig::Tiered::TieredConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      Orb::Price::TieredPackage::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    tiers:
+                      T::Array[
+                        Orb::Price::TieredPackage::ConversionRateConfig::Tiered::TieredConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::Price::TieredPackage::ConversionRateConfig::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Exclusive tier starting value
+                sig { returns(Float) }
+                attr_accessor :first_unit
+
+                # Amount per unit of overage
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Inclusive tier ending value. If null, this is treated as the last tier
+                sig { returns(T.nilable(Float)) }
+                attr_accessor :last_unit
+
+                sig do
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit of overage
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      first_unit: Float,
+                      unit_amount: String,
+                      last_unit: T.nilable(Float)
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::TieredPackage::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
           end
         end
 
@@ -2913,6 +5509,13 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(Orb::Price::GroupedTiered::ConversionRateConfig::Variants)
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -3012,6 +5615,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::GroupedTiered::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::Price::GroupedTiered::ConversionRateConfig::Unit::OrHash,
+                  Orb::Price::GroupedTiered::ConversionRateConfig::Tiered::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -3049,6 +5659,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -3083,6 +5694,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::GroupedTiered::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::GroupedTiered::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -3139,6 +5754,251 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedTiered::ConversionRateConfig::Unit,
+                Orb::Price::GroupedTiered::ConversionRateConfig::Tiered
+              )
+            end
+
+          class Unit < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::GroupedTiered::ConversionRateConfig::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::GroupedTiered::ConversionRateConfig::Unit::UnitConfig
+              )
+            end
+            attr_reader :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::GroupedTiered::ConversionRateConfig::Unit::UnitConfig::OrHash
+              ).void
+            end
+            attr_writer :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::GroupedTiered::ConversionRateConfig::Unit::UnitConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(unit_config:, conversion_rate_type: :unit)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  unit_config:
+                    Orb::Price::GroupedTiered::ConversionRateConfig::Unit::UnitConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::GroupedTiered::ConversionRateConfig::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit of overage
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              sig { params(unit_amount: String).returns(T.attached_class) }
+              def self.new(
+                # Amount per unit of overage
+                unit_amount:
+              )
+              end
+
+              sig { override.returns({ unit_amount: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::GroupedTiered::ConversionRateConfig::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::GroupedTiered::ConversionRateConfig::Tiered::TieredConfig
+              )
+            end
+            attr_reader :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::GroupedTiered::ConversionRateConfig::Tiered::TieredConfig::OrHash
+              ).void
+            end
+            attr_writer :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::GroupedTiered::ConversionRateConfig::Tiered::TieredConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(tiered_config:, conversion_rate_type: :tiered)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  tiered_config:
+                    Orb::Price::GroupedTiered::ConversionRateConfig::Tiered::TieredConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::GroupedTiered::ConversionRateConfig::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Tiers for rating based on total usage quantities into the specified tier
+              sig do
+                returns(
+                  T::Array[
+                    Orb::Price::GroupedTiered::ConversionRateConfig::Tiered::TieredConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      Orb::Price::GroupedTiered::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    tiers:
+                      T::Array[
+                        Orb::Price::GroupedTiered::ConversionRateConfig::Tiered::TieredConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::Price::GroupedTiered::ConversionRateConfig::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Exclusive tier starting value
+                sig { returns(Float) }
+                attr_accessor :first_unit
+
+                # Amount per unit of overage
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Inclusive tier ending value. If null, this is treated as the last tier
+                sig { returns(T.nilable(Float)) }
+                attr_accessor :last_unit
+
+                sig do
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit of overage
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      first_unit: Float,
+                      unit_amount: String,
+                      last_unit: T.nilable(Float)
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::GroupedTiered::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
           end
         end
 
@@ -3204,6 +6064,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::TieredWithMinimum::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -3303,6 +6172,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::TieredWithMinimum::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::Price::TieredWithMinimum::ConversionRateConfig::Unit::OrHash,
+                  Orb::Price::TieredWithMinimum::ConversionRateConfig::Tiered::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -3340,6 +6216,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -3374,6 +6251,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::TieredWithMinimum::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::TieredWithMinimum::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -3445,6 +6326,251 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredWithMinimum::ConversionRateConfig::Unit,
+                Orb::Price::TieredWithMinimum::ConversionRateConfig::Tiered
+              )
+            end
+
+          class Unit < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::TieredWithMinimum::ConversionRateConfig::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::TieredWithMinimum::ConversionRateConfig::Unit::UnitConfig
+              )
+            end
+            attr_reader :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::TieredWithMinimum::ConversionRateConfig::Unit::UnitConfig::OrHash
+              ).void
+            end
+            attr_writer :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::TieredWithMinimum::ConversionRateConfig::Unit::UnitConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(unit_config:, conversion_rate_type: :unit)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  unit_config:
+                    Orb::Price::TieredWithMinimum::ConversionRateConfig::Unit::UnitConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::TieredWithMinimum::ConversionRateConfig::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit of overage
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              sig { params(unit_amount: String).returns(T.attached_class) }
+              def self.new(
+                # Amount per unit of overage
+                unit_amount:
+              )
+              end
+
+              sig { override.returns({ unit_amount: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::TieredWithMinimum::ConversionRateConfig::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::TieredWithMinimum::ConversionRateConfig::Tiered::TieredConfig
+              )
+            end
+            attr_reader :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::TieredWithMinimum::ConversionRateConfig::Tiered::TieredConfig::OrHash
+              ).void
+            end
+            attr_writer :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::TieredWithMinimum::ConversionRateConfig::Tiered::TieredConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(tiered_config:, conversion_rate_type: :tiered)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  tiered_config:
+                    Orb::Price::TieredWithMinimum::ConversionRateConfig::Tiered::TieredConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::TieredWithMinimum::ConversionRateConfig::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Tiers for rating based on total usage quantities into the specified tier
+              sig do
+                returns(
+                  T::Array[
+                    Orb::Price::TieredWithMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      Orb::Price::TieredWithMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    tiers:
+                      T::Array[
+                        Orb::Price::TieredWithMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::Price::TieredWithMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Exclusive tier starting value
+                sig { returns(Float) }
+                attr_accessor :first_unit
+
+                # Amount per unit of overage
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Inclusive tier ending value. If null, this is treated as the last tier
+                sig { returns(T.nilable(Float)) }
+                attr_accessor :last_unit
+
+                sig do
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit of overage
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      first_unit: Float,
+                      unit_amount: String,
+                      last_unit: T.nilable(Float)
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::TieredWithMinimum::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -3511,6 +6637,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -3612,6 +6747,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::TieredPackageWithMinimum::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Unit::OrHash,
+                  Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Tiered::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -3650,6 +6792,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -3685,6 +6828,10 @@ module Orb
               cadence:
                 Orb::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -3764,6 +6911,251 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Unit,
+                Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Tiered
+              )
+            end
+
+          class Unit < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Unit::UnitConfig
+              )
+            end
+            attr_reader :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Unit::UnitConfig::OrHash
+              ).void
+            end
+            attr_writer :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Unit::UnitConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(unit_config:, conversion_rate_type: :unit)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  unit_config:
+                    Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Unit::UnitConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit of overage
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              sig { params(unit_amount: String).returns(T.attached_class) }
+              def self.new(
+                # Amount per unit of overage
+                unit_amount:
+              )
+              end
+
+              sig { override.returns({ unit_amount: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Tiered::TieredConfig
+              )
+            end
+            attr_reader :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Tiered::TieredConfig::OrHash
+              ).void
+            end
+            attr_writer :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Tiered::TieredConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(tiered_config:, conversion_rate_type: :tiered)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  tiered_config:
+                    Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Tiered::TieredConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Tiers for rating based on total usage quantities into the specified tier
+              sig do
+                returns(
+                  T::Array[
+                    Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    tiers:
+                      T::Array[
+                        Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Exclusive tier starting value
+                sig { returns(Float) }
+                attr_accessor :first_unit
+
+                # Amount per unit of overage
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Inclusive tier ending value. If null, this is treated as the last tier
+                sig { returns(T.nilable(Float)) }
+                attr_accessor :last_unit
+
+                sig do
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit of overage
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      first_unit: Float,
+                      unit_amount: String,
+                      last_unit: T.nilable(Float)
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -3832,6 +7224,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::PackageWithAllocation::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -3933,6 +7334,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::PackageWithAllocation::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::Price::PackageWithAllocation::ConversionRateConfig::Unit::OrHash,
+                  Orb::Price::PackageWithAllocation::ConversionRateConfig::Tiered::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -3970,6 +7378,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -4004,6 +7413,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::PackageWithAllocation::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::PackageWithAllocation::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -4081,6 +7494,251 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Price::PackageWithAllocation::ConversionRateConfig::Unit,
+                Orb::Price::PackageWithAllocation::ConversionRateConfig::Tiered
+              )
+            end
+
+          class Unit < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::PackageWithAllocation::ConversionRateConfig::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::PackageWithAllocation::ConversionRateConfig::Unit::UnitConfig
+              )
+            end
+            attr_reader :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::PackageWithAllocation::ConversionRateConfig::Unit::UnitConfig::OrHash
+              ).void
+            end
+            attr_writer :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::PackageWithAllocation::ConversionRateConfig::Unit::UnitConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(unit_config:, conversion_rate_type: :unit)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  unit_config:
+                    Orb::Price::PackageWithAllocation::ConversionRateConfig::Unit::UnitConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::PackageWithAllocation::ConversionRateConfig::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit of overage
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              sig { params(unit_amount: String).returns(T.attached_class) }
+              def self.new(
+                # Amount per unit of overage
+                unit_amount:
+              )
+              end
+
+              sig { override.returns({ unit_amount: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::PackageWithAllocation::ConversionRateConfig::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::PackageWithAllocation::ConversionRateConfig::Tiered::TieredConfig
+              )
+            end
+            attr_reader :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::PackageWithAllocation::ConversionRateConfig::Tiered::TieredConfig::OrHash
+              ).void
+            end
+            attr_writer :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::PackageWithAllocation::ConversionRateConfig::Tiered::TieredConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(tiered_config:, conversion_rate_type: :tiered)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  tiered_config:
+                    Orb::Price::PackageWithAllocation::ConversionRateConfig::Tiered::TieredConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::PackageWithAllocation::ConversionRateConfig::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Tiers for rating based on total usage quantities into the specified tier
+              sig do
+                returns(
+                  T::Array[
+                    Orb::Price::PackageWithAllocation::ConversionRateConfig::Tiered::TieredConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      Orb::Price::PackageWithAllocation::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    tiers:
+                      T::Array[
+                        Orb::Price::PackageWithAllocation::ConversionRateConfig::Tiered::TieredConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::Price::PackageWithAllocation::ConversionRateConfig::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Exclusive tier starting value
+                sig { returns(Float) }
+                attr_accessor :first_unit
+
+                # Amount per unit of overage
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Inclusive tier ending value. If null, this is treated as the last tier
+                sig { returns(T.nilable(Float)) }
+                attr_accessor :last_unit
+
+                sig do
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit of overage
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      first_unit: Float,
+                      unit_amount: String,
+                      last_unit: T.nilable(Float)
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::PackageWithAllocation::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -4147,6 +7805,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::UnitWithPercent::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -4246,6 +7913,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::UnitWithPercent::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::Price::UnitWithPercent::ConversionRateConfig::Unit::OrHash,
+                  Orb::Price::UnitWithPercent::ConversionRateConfig::Tiered::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -4283,6 +7957,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -4317,6 +7992,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::UnitWithPercent::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::UnitWithPercent::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -4376,6 +8055,251 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Price::UnitWithPercent::ConversionRateConfig::Unit,
+                Orb::Price::UnitWithPercent::ConversionRateConfig::Tiered
+              )
+            end
+
+          class Unit < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::UnitWithPercent::ConversionRateConfig::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::UnitWithPercent::ConversionRateConfig::Unit::UnitConfig
+              )
+            end
+            attr_reader :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::UnitWithPercent::ConversionRateConfig::Unit::UnitConfig::OrHash
+              ).void
+            end
+            attr_writer :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::UnitWithPercent::ConversionRateConfig::Unit::UnitConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(unit_config:, conversion_rate_type: :unit)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  unit_config:
+                    Orb::Price::UnitWithPercent::ConversionRateConfig::Unit::UnitConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::UnitWithPercent::ConversionRateConfig::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit of overage
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              sig { params(unit_amount: String).returns(T.attached_class) }
+              def self.new(
+                # Amount per unit of overage
+                unit_amount:
+              )
+              end
+
+              sig { override.returns({ unit_amount: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::UnitWithPercent::ConversionRateConfig::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::UnitWithPercent::ConversionRateConfig::Tiered::TieredConfig
+              )
+            end
+            attr_reader :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::UnitWithPercent::ConversionRateConfig::Tiered::TieredConfig::OrHash
+              ).void
+            end
+            attr_writer :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::UnitWithPercent::ConversionRateConfig::Tiered::TieredConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(tiered_config:, conversion_rate_type: :tiered)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  tiered_config:
+                    Orb::Price::UnitWithPercent::ConversionRateConfig::Tiered::TieredConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::UnitWithPercent::ConversionRateConfig::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Tiers for rating based on total usage quantities into the specified tier
+              sig do
+                returns(
+                  T::Array[
+                    Orb::Price::UnitWithPercent::ConversionRateConfig::Tiered::TieredConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      Orb::Price::UnitWithPercent::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    tiers:
+                      T::Array[
+                        Orb::Price::UnitWithPercent::ConversionRateConfig::Tiered::TieredConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::Price::UnitWithPercent::ConversionRateConfig::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Exclusive tier starting value
+                sig { returns(Float) }
+                attr_accessor :first_unit
+
+                # Amount per unit of overage
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Inclusive tier ending value. If null, this is treated as the last tier
+                sig { returns(T.nilable(Float)) }
+                attr_accessor :last_unit
+
+                sig do
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit of overage
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      first_unit: Float,
+                      unit_amount: String,
+                      last_unit: T.nilable(Float)
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::UnitWithPercent::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
           end
         end
 
@@ -4443,6 +8367,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::MatrixWithAllocation::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -4552,6 +8485,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::MatrixWithAllocation::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::Price::MatrixWithAllocation::ConversionRateConfig::Unit::OrHash,
+                  Orb::Price::MatrixWithAllocation::ConversionRateConfig::Tiered::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -4590,6 +8530,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -4624,6 +8565,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::MatrixWithAllocation::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::MatrixWithAllocation::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -4701,6 +8646,251 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Price::MatrixWithAllocation::ConversionRateConfig::Unit,
+                Orb::Price::MatrixWithAllocation::ConversionRateConfig::Tiered
+              )
+            end
+
+          class Unit < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::MatrixWithAllocation::ConversionRateConfig::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::MatrixWithAllocation::ConversionRateConfig::Unit::UnitConfig
+              )
+            end
+            attr_reader :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::MatrixWithAllocation::ConversionRateConfig::Unit::UnitConfig::OrHash
+              ).void
+            end
+            attr_writer :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::MatrixWithAllocation::ConversionRateConfig::Unit::UnitConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(unit_config:, conversion_rate_type: :unit)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  unit_config:
+                    Orb::Price::MatrixWithAllocation::ConversionRateConfig::Unit::UnitConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::MatrixWithAllocation::ConversionRateConfig::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit of overage
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              sig { params(unit_amount: String).returns(T.attached_class) }
+              def self.new(
+                # Amount per unit of overage
+                unit_amount:
+              )
+              end
+
+              sig { override.returns({ unit_amount: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::MatrixWithAllocation::ConversionRateConfig::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::MatrixWithAllocation::ConversionRateConfig::Tiered::TieredConfig
+              )
+            end
+            attr_reader :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::MatrixWithAllocation::ConversionRateConfig::Tiered::TieredConfig::OrHash
+              ).void
+            end
+            attr_writer :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::MatrixWithAllocation::ConversionRateConfig::Tiered::TieredConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(tiered_config:, conversion_rate_type: :tiered)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  tiered_config:
+                    Orb::Price::MatrixWithAllocation::ConversionRateConfig::Tiered::TieredConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::MatrixWithAllocation::ConversionRateConfig::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Tiers for rating based on total usage quantities into the specified tier
+              sig do
+                returns(
+                  T::Array[
+                    Orb::Price::MatrixWithAllocation::ConversionRateConfig::Tiered::TieredConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      Orb::Price::MatrixWithAllocation::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    tiers:
+                      T::Array[
+                        Orb::Price::MatrixWithAllocation::ConversionRateConfig::Tiered::TieredConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::Price::MatrixWithAllocation::ConversionRateConfig::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Exclusive tier starting value
+                sig { returns(Float) }
+                attr_accessor :first_unit
+
+                # Amount per unit of overage
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Inclusive tier ending value. If null, this is treated as the last tier
+                sig { returns(T.nilable(Float)) }
+                attr_accessor :last_unit
+
+                sig do
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit of overage
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      first_unit: Float,
+                      unit_amount: String,
+                      last_unit: T.nilable(Float)
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::MatrixWithAllocation::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -4767,6 +8957,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::TieredWithProration::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -4868,6 +9067,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::TieredWithProration::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::Price::TieredWithProration::ConversionRateConfig::Unit::OrHash,
+                  Orb::Price::TieredWithProration::ConversionRateConfig::Tiered::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -4905,6 +9111,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -4939,6 +9146,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::TieredWithProration::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::TieredWithProration::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -5016,6 +9227,251 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredWithProration::ConversionRateConfig::Unit,
+                Orb::Price::TieredWithProration::ConversionRateConfig::Tiered
+              )
+            end
+
+          class Unit < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::TieredWithProration::ConversionRateConfig::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::TieredWithProration::ConversionRateConfig::Unit::UnitConfig
+              )
+            end
+            attr_reader :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::TieredWithProration::ConversionRateConfig::Unit::UnitConfig::OrHash
+              ).void
+            end
+            attr_writer :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::TieredWithProration::ConversionRateConfig::Unit::UnitConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(unit_config:, conversion_rate_type: :unit)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  unit_config:
+                    Orb::Price::TieredWithProration::ConversionRateConfig::Unit::UnitConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::TieredWithProration::ConversionRateConfig::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit of overage
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              sig { params(unit_amount: String).returns(T.attached_class) }
+              def self.new(
+                # Amount per unit of overage
+                unit_amount:
+              )
+              end
+
+              sig { override.returns({ unit_amount: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::TieredWithProration::ConversionRateConfig::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::TieredWithProration::ConversionRateConfig::Tiered::TieredConfig
+              )
+            end
+            attr_reader :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::TieredWithProration::ConversionRateConfig::Tiered::TieredConfig::OrHash
+              ).void
+            end
+            attr_writer :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::TieredWithProration::ConversionRateConfig::Tiered::TieredConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(tiered_config:, conversion_rate_type: :tiered)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  tiered_config:
+                    Orb::Price::TieredWithProration::ConversionRateConfig::Tiered::TieredConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::TieredWithProration::ConversionRateConfig::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Tiers for rating based on total usage quantities into the specified tier
+              sig do
+                returns(
+                  T::Array[
+                    Orb::Price::TieredWithProration::ConversionRateConfig::Tiered::TieredConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      Orb::Price::TieredWithProration::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    tiers:
+                      T::Array[
+                        Orb::Price::TieredWithProration::ConversionRateConfig::Tiered::TieredConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::Price::TieredWithProration::ConversionRateConfig::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Exclusive tier starting value
+                sig { returns(Float) }
+                attr_accessor :first_unit
+
+                # Amount per unit of overage
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Inclusive tier ending value. If null, this is treated as the last tier
+                sig { returns(T.nilable(Float)) }
+                attr_accessor :last_unit
+
+                sig do
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit of overage
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      first_unit: Float,
+                      unit_amount: String,
+                      last_unit: T.nilable(Float)
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::TieredWithProration::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -5080,6 +9536,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::UnitWithProration::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -5179,6 +9644,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::UnitWithProration::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::Price::UnitWithProration::ConversionRateConfig::Unit::OrHash,
+                  Orb::Price::UnitWithProration::ConversionRateConfig::Tiered::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -5216,6 +9688,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -5250,6 +9723,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::UnitWithProration::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::UnitWithProration::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -5321,6 +9798,251 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Price::UnitWithProration::ConversionRateConfig::Unit,
+                Orb::Price::UnitWithProration::ConversionRateConfig::Tiered
+              )
+            end
+
+          class Unit < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::UnitWithProration::ConversionRateConfig::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::UnitWithProration::ConversionRateConfig::Unit::UnitConfig
+              )
+            end
+            attr_reader :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::UnitWithProration::ConversionRateConfig::Unit::UnitConfig::OrHash
+              ).void
+            end
+            attr_writer :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::UnitWithProration::ConversionRateConfig::Unit::UnitConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(unit_config:, conversion_rate_type: :unit)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  unit_config:
+                    Orb::Price::UnitWithProration::ConversionRateConfig::Unit::UnitConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::UnitWithProration::ConversionRateConfig::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit of overage
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              sig { params(unit_amount: String).returns(T.attached_class) }
+              def self.new(
+                # Amount per unit of overage
+                unit_amount:
+              )
+              end
+
+              sig { override.returns({ unit_amount: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::UnitWithProration::ConversionRateConfig::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::UnitWithProration::ConversionRateConfig::Tiered::TieredConfig
+              )
+            end
+            attr_reader :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::UnitWithProration::ConversionRateConfig::Tiered::TieredConfig::OrHash
+              ).void
+            end
+            attr_writer :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::UnitWithProration::ConversionRateConfig::Tiered::TieredConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(tiered_config:, conversion_rate_type: :tiered)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  tiered_config:
+                    Orb::Price::UnitWithProration::ConversionRateConfig::Tiered::TieredConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::UnitWithProration::ConversionRateConfig::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Tiers for rating based on total usage quantities into the specified tier
+              sig do
+                returns(
+                  T::Array[
+                    Orb::Price::UnitWithProration::ConversionRateConfig::Tiered::TieredConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      Orb::Price::UnitWithProration::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    tiers:
+                      T::Array[
+                        Orb::Price::UnitWithProration::ConversionRateConfig::Tiered::TieredConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::Price::UnitWithProration::ConversionRateConfig::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Exclusive tier starting value
+                sig { returns(Float) }
+                attr_accessor :first_unit
+
+                # Amount per unit of overage
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Inclusive tier ending value. If null, this is treated as the last tier
+                sig { returns(T.nilable(Float)) }
+                attr_accessor :last_unit
+
+                sig do
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit of overage
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      first_unit: Float,
+                      unit_amount: String,
+                      last_unit: T.nilable(Float)
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::UnitWithProration::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -5385,6 +10107,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::GroupedAllocation::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -5484,6 +10215,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::GroupedAllocation::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::Price::GroupedAllocation::ConversionRateConfig::Unit::OrHash,
+                  Orb::Price::GroupedAllocation::ConversionRateConfig::Tiered::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -5521,6 +10259,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -5555,6 +10294,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::GroupedAllocation::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::GroupedAllocation::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -5623,6 +10366,251 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedAllocation::ConversionRateConfig::Unit,
+                Orb::Price::GroupedAllocation::ConversionRateConfig::Tiered
+              )
+            end
+
+          class Unit < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::GroupedAllocation::ConversionRateConfig::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::GroupedAllocation::ConversionRateConfig::Unit::UnitConfig
+              )
+            end
+            attr_reader :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::GroupedAllocation::ConversionRateConfig::Unit::UnitConfig::OrHash
+              ).void
+            end
+            attr_writer :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::GroupedAllocation::ConversionRateConfig::Unit::UnitConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(unit_config:, conversion_rate_type: :unit)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  unit_config:
+                    Orb::Price::GroupedAllocation::ConversionRateConfig::Unit::UnitConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::GroupedAllocation::ConversionRateConfig::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit of overage
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              sig { params(unit_amount: String).returns(T.attached_class) }
+              def self.new(
+                # Amount per unit of overage
+                unit_amount:
+              )
+              end
+
+              sig { override.returns({ unit_amount: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::GroupedAllocation::ConversionRateConfig::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::GroupedAllocation::ConversionRateConfig::Tiered::TieredConfig
+              )
+            end
+            attr_reader :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::GroupedAllocation::ConversionRateConfig::Tiered::TieredConfig::OrHash
+              ).void
+            end
+            attr_writer :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::GroupedAllocation::ConversionRateConfig::Tiered::TieredConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(tiered_config:, conversion_rate_type: :tiered)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  tiered_config:
+                    Orb::Price::GroupedAllocation::ConversionRateConfig::Tiered::TieredConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::GroupedAllocation::ConversionRateConfig::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Tiers for rating based on total usage quantities into the specified tier
+              sig do
+                returns(
+                  T::Array[
+                    Orb::Price::GroupedAllocation::ConversionRateConfig::Tiered::TieredConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      Orb::Price::GroupedAllocation::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    tiers:
+                      T::Array[
+                        Orb::Price::GroupedAllocation::ConversionRateConfig::Tiered::TieredConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::Price::GroupedAllocation::ConversionRateConfig::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Exclusive tier starting value
+                sig { returns(Float) }
+                attr_accessor :first_unit
+
+                # Amount per unit of overage
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Inclusive tier ending value. If null, this is treated as the last tier
+                sig { returns(T.nilable(Float)) }
+                attr_accessor :last_unit
+
+                sig do
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit of overage
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      first_unit: Float,
+                      unit_amount: String,
+                      last_unit: T.nilable(Float)
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::GroupedAllocation::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
           end
         end
 
@@ -5695,6 +10683,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -5798,6 +10795,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::GroupedWithProratedMinimum::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Unit::OrHash,
+                  Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Tiered::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -5836,6 +10840,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -5871,6 +10876,10 @@ module Orb
               cadence:
                 Orb::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -5950,6 +10959,251 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Unit,
+                Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Tiered
+              )
+            end
+
+          class Unit < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Unit::UnitConfig
+              )
+            end
+            attr_reader :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Unit::UnitConfig::OrHash
+              ).void
+            end
+            attr_writer :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Unit::UnitConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(unit_config:, conversion_rate_type: :unit)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  unit_config:
+                    Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Unit::UnitConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit of overage
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              sig { params(unit_amount: String).returns(T.attached_class) }
+              def self.new(
+                # Amount per unit of overage
+                unit_amount:
+              )
+              end
+
+              sig { override.returns({ unit_amount: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Tiered::TieredConfig
+              )
+            end
+            attr_reader :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Tiered::TieredConfig::OrHash
+              ).void
+            end
+            attr_writer :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Tiered::TieredConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(tiered_config:, conversion_rate_type: :tiered)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  tiered_config:
+                    Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Tiered::TieredConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Tiers for rating based on total usage quantities into the specified tier
+              sig do
+                returns(
+                  T::Array[
+                    Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    tiers:
+                      T::Array[
+                        Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Exclusive tier starting value
+                sig { returns(Float) }
+                attr_accessor :first_unit
+
+                # Amount per unit of overage
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Inclusive tier ending value. If null, this is treated as the last tier
+                sig { returns(T.nilable(Float)) }
+                attr_accessor :last_unit
+
+                sig do
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit of overage
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      first_unit: Float,
+                      unit_amount: String,
+                      last_unit: T.nilable(Float)
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -6018,6 +11272,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -6121,6 +11384,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::GroupedWithMeteredMinimum::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Unit::OrHash,
+                  Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Tiered::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -6159,6 +11429,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -6194,6 +11465,10 @@ module Orb
               cadence:
                 Orb::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -6273,6 +11548,251 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Unit,
+                Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Tiered
+              )
+            end
+
+          class Unit < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Unit::UnitConfig
+              )
+            end
+            attr_reader :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Unit::UnitConfig::OrHash
+              ).void
+            end
+            attr_writer :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Unit::UnitConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(unit_config:, conversion_rate_type: :unit)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  unit_config:
+                    Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Unit::UnitConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit of overage
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              sig { params(unit_amount: String).returns(T.attached_class) }
+              def self.new(
+                # Amount per unit of overage
+                unit_amount:
+              )
+              end
+
+              sig { override.returns({ unit_amount: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Tiered::TieredConfig
+              )
+            end
+            attr_reader :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Tiered::TieredConfig::OrHash
+              ).void
+            end
+            attr_writer :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Tiered::TieredConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(tiered_config:, conversion_rate_type: :tiered)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  tiered_config:
+                    Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Tiered::TieredConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Tiers for rating based on total usage quantities into the specified tier
+              sig do
+                returns(
+                  T::Array[
+                    Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    tiers:
+                      T::Array[
+                        Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Exclusive tier starting value
+                sig { returns(Float) }
+                attr_accessor :first_unit
+
+                # Amount per unit of overage
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Inclusive tier ending value. If null, this is treated as the last tier
+                sig { returns(T.nilable(Float)) }
+                attr_accessor :last_unit
+
+                sig do
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit of overage
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      first_unit: Float,
+                      unit_amount: String,
+                      last_unit: T.nilable(Float)
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -6341,6 +11861,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -6442,6 +11971,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::MatrixWithDisplayName::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Unit::OrHash,
+                  Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Tiered::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -6479,6 +12015,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -6513,6 +12050,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::MatrixWithDisplayName::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -6590,6 +12131,251 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Unit,
+                Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Tiered
+              )
+            end
+
+          class Unit < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Unit::UnitConfig
+              )
+            end
+            attr_reader :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Unit::UnitConfig::OrHash
+              ).void
+            end
+            attr_writer :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Unit::UnitConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(unit_config:, conversion_rate_type: :unit)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  unit_config:
+                    Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Unit::UnitConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit of overage
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              sig { params(unit_amount: String).returns(T.attached_class) }
+              def self.new(
+                # Amount per unit of overage
+                unit_amount:
+              )
+              end
+
+              sig { override.returns({ unit_amount: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Tiered::TieredConfig
+              )
+            end
+            attr_reader :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Tiered::TieredConfig::OrHash
+              ).void
+            end
+            attr_writer :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Tiered::TieredConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(tiered_config:, conversion_rate_type: :tiered)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  tiered_config:
+                    Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Tiered::TieredConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Tiers for rating based on total usage quantities into the specified tier
+              sig do
+                returns(
+                  T::Array[
+                    Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Tiered::TieredConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    tiers:
+                      T::Array[
+                        Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Tiered::TieredConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Exclusive tier starting value
+                sig { returns(Float) }
+                attr_accessor :first_unit
+
+                # Amount per unit of overage
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Inclusive tier ending value. If null, this is treated as the last tier
+                sig { returns(T.nilable(Float)) }
+                attr_accessor :last_unit
+
+                sig do
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit of overage
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      first_unit: Float,
+                      unit_amount: String,
+                      last_unit: T.nilable(Float)
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -6659,6 +12445,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::BulkWithProration::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -6756,6 +12551,13 @@ module Orb
             bulk_with_proration_config: T::Hash[Symbol, T.anything],
             cadence: Orb::Price::BulkWithProration::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::Price::BulkWithProration::ConversionRateConfig::Unit::OrHash,
+                  Orb::Price::BulkWithProration::ConversionRateConfig::Tiered::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -6793,6 +12595,7 @@ module Orb
           bulk_with_proration_config:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -6827,6 +12630,10 @@ module Orb
               bulk_with_proration_config: T::Hash[Symbol, T.anything],
               cadence: Orb::Price::BulkWithProration::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::BulkWithProration::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -6897,6 +12704,251 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Price::BulkWithProration::ConversionRateConfig::Unit,
+                Orb::Price::BulkWithProration::ConversionRateConfig::Tiered
+              )
+            end
+
+          class Unit < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::BulkWithProration::ConversionRateConfig::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::BulkWithProration::ConversionRateConfig::Unit::UnitConfig
+              )
+            end
+            attr_reader :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::BulkWithProration::ConversionRateConfig::Unit::UnitConfig::OrHash
+              ).void
+            end
+            attr_writer :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::BulkWithProration::ConversionRateConfig::Unit::UnitConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(unit_config:, conversion_rate_type: :unit)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  unit_config:
+                    Orb::Price::BulkWithProration::ConversionRateConfig::Unit::UnitConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::BulkWithProration::ConversionRateConfig::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit of overage
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              sig { params(unit_amount: String).returns(T.attached_class) }
+              def self.new(
+                # Amount per unit of overage
+                unit_amount:
+              )
+              end
+
+              sig { override.returns({ unit_amount: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::BulkWithProration::ConversionRateConfig::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::BulkWithProration::ConversionRateConfig::Tiered::TieredConfig
+              )
+            end
+            attr_reader :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::BulkWithProration::ConversionRateConfig::Tiered::TieredConfig::OrHash
+              ).void
+            end
+            attr_writer :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::BulkWithProration::ConversionRateConfig::Tiered::TieredConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(tiered_config:, conversion_rate_type: :tiered)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  tiered_config:
+                    Orb::Price::BulkWithProration::ConversionRateConfig::Tiered::TieredConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::BulkWithProration::ConversionRateConfig::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Tiers for rating based on total usage quantities into the specified tier
+              sig do
+                returns(
+                  T::Array[
+                    Orb::Price::BulkWithProration::ConversionRateConfig::Tiered::TieredConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      Orb::Price::BulkWithProration::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    tiers:
+                      T::Array[
+                        Orb::Price::BulkWithProration::ConversionRateConfig::Tiered::TieredConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::Price::BulkWithProration::ConversionRateConfig::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Exclusive tier starting value
+                sig { returns(Float) }
+                attr_accessor :first_unit
+
+                # Amount per unit of overage
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Inclusive tier ending value. If null, this is treated as the last tier
+                sig { returns(T.nilable(Float)) }
+                attr_accessor :last_unit
+
+                sig do
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit of overage
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      first_unit: Float,
+                      unit_amount: String,
+                      last_unit: T.nilable(Float)
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::BulkWithProration::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -6961,6 +13013,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::GroupedTieredPackage::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -7062,6 +13123,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::GroupedTieredPackage::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::Price::GroupedTieredPackage::ConversionRateConfig::Unit::OrHash,
+                  Orb::Price::GroupedTieredPackage::ConversionRateConfig::Tiered::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -7099,6 +13167,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -7133,6 +13202,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::GroupedTieredPackage::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::GroupedTieredPackage::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -7210,6 +13283,251 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedTieredPackage::ConversionRateConfig::Unit,
+                Orb::Price::GroupedTieredPackage::ConversionRateConfig::Tiered
+              )
+            end
+
+          class Unit < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::GroupedTieredPackage::ConversionRateConfig::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::GroupedTieredPackage::ConversionRateConfig::Unit::UnitConfig
+              )
+            end
+            attr_reader :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::GroupedTieredPackage::ConversionRateConfig::Unit::UnitConfig::OrHash
+              ).void
+            end
+            attr_writer :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::GroupedTieredPackage::ConversionRateConfig::Unit::UnitConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(unit_config:, conversion_rate_type: :unit)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  unit_config:
+                    Orb::Price::GroupedTieredPackage::ConversionRateConfig::Unit::UnitConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::GroupedTieredPackage::ConversionRateConfig::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit of overage
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              sig { params(unit_amount: String).returns(T.attached_class) }
+              def self.new(
+                # Amount per unit of overage
+                unit_amount:
+              )
+              end
+
+              sig { override.returns({ unit_amount: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::GroupedTieredPackage::ConversionRateConfig::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::GroupedTieredPackage::ConversionRateConfig::Tiered::TieredConfig
+              )
+            end
+            attr_reader :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::GroupedTieredPackage::ConversionRateConfig::Tiered::TieredConfig::OrHash
+              ).void
+            end
+            attr_writer :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::GroupedTieredPackage::ConversionRateConfig::Tiered::TieredConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(tiered_config:, conversion_rate_type: :tiered)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  tiered_config:
+                    Orb::Price::GroupedTieredPackage::ConversionRateConfig::Tiered::TieredConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::GroupedTieredPackage::ConversionRateConfig::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Tiers for rating based on total usage quantities into the specified tier
+              sig do
+                returns(
+                  T::Array[
+                    Orb::Price::GroupedTieredPackage::ConversionRateConfig::Tiered::TieredConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      Orb::Price::GroupedTieredPackage::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    tiers:
+                      T::Array[
+                        Orb::Price::GroupedTieredPackage::ConversionRateConfig::Tiered::TieredConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::Price::GroupedTieredPackage::ConversionRateConfig::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Exclusive tier starting value
+                sig { returns(Float) }
+                attr_accessor :first_unit
+
+                # Amount per unit of overage
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Inclusive tier ending value. If null, this is treated as the last tier
+                sig { returns(T.nilable(Float)) }
+                attr_accessor :last_unit
+
+                sig do
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit of overage
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      first_unit: Float,
+                      unit_amount: String,
+                      last_unit: T.nilable(Float)
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::GroupedTieredPackage::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -7278,6 +13596,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -7379,6 +13706,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::MaxGroupTieredPackage::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Unit::OrHash,
+                  Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Tiered::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -7416,6 +13750,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -7450,6 +13785,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -7527,6 +13866,251 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Unit,
+                Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Tiered
+              )
+            end
+
+          class Unit < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Unit::UnitConfig
+              )
+            end
+            attr_reader :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Unit::UnitConfig::OrHash
+              ).void
+            end
+            attr_writer :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Unit::UnitConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(unit_config:, conversion_rate_type: :unit)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  unit_config:
+                    Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Unit::UnitConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit of overage
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              sig { params(unit_amount: String).returns(T.attached_class) }
+              def self.new(
+                # Amount per unit of overage
+                unit_amount:
+              )
+              end
+
+              sig { override.returns({ unit_amount: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Tiered::TieredConfig
+              )
+            end
+            attr_reader :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Tiered::TieredConfig::OrHash
+              ).void
+            end
+            attr_writer :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Tiered::TieredConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(tiered_config:, conversion_rate_type: :tiered)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  tiered_config:
+                    Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Tiered::TieredConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Tiers for rating based on total usage quantities into the specified tier
+              sig do
+                returns(
+                  T::Array[
+                    Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Tiered::TieredConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    tiers:
+                      T::Array[
+                        Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Tiered::TieredConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Exclusive tier starting value
+                sig { returns(Float) }
+                attr_accessor :first_unit
+
+                # Amount per unit of overage
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Inclusive tier ending value. If null, this is treated as the last tier
+                sig { returns(T.nilable(Float)) }
+                attr_accessor :last_unit
+
+                sig do
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit of overage
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      first_unit: Float,
+                      unit_amount: String,
+                      last_unit: T.nilable(Float)
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -7600,6 +14184,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -7704,6 +14297,13 @@ module Orb
             cadence:
               Orb::Price::ScalableMatrixWithUnitPricing::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Unit::OrHash,
+                  Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Tiered::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -7743,6 +14343,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -7778,6 +14379,10 @@ module Orb
               cadence:
                 Orb::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -7858,6 +14463,251 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Unit,
+                Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Tiered
+              )
+            end
+
+          class Unit < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Unit::UnitConfig
+              )
+            end
+            attr_reader :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Unit::UnitConfig::OrHash
+              ).void
+            end
+            attr_writer :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Unit::UnitConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(unit_config:, conversion_rate_type: :unit)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  unit_config:
+                    Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Unit::UnitConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit of overage
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              sig { params(unit_amount: String).returns(T.attached_class) }
+              def self.new(
+                # Amount per unit of overage
+                unit_amount:
+              )
+              end
+
+              sig { override.returns({ unit_amount: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Tiered::TieredConfig
+              )
+            end
+            attr_reader :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Tiered::TieredConfig::OrHash
+              ).void
+            end
+            attr_writer :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Tiered::TieredConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(tiered_config:, conversion_rate_type: :tiered)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  tiered_config:
+                    Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Tiered::TieredConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Tiers for rating based on total usage quantities into the specified tier
+              sig do
+                returns(
+                  T::Array[
+                    Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Tiered::TieredConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    tiers:
+                      T::Array[
+                        Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Tiered::TieredConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Exclusive tier starting value
+                sig { returns(Float) }
+                attr_accessor :first_unit
+
+                # Amount per unit of overage
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Inclusive tier ending value. If null, this is treated as the last tier
+                sig { returns(T.nilable(Float)) }
+                attr_accessor :last_unit
+
+                sig do
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit of overage
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      first_unit: Float,
+                      unit_amount: String,
+                      last_unit: T.nilable(Float)
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -7934,6 +14784,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -8038,6 +14897,13 @@ module Orb
             cadence:
               Orb::Price::ScalableMatrixWithTieredPricing::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Unit::OrHash,
+                  Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Tiered::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -8077,6 +14943,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -8112,6 +14979,10 @@ module Orb
               cadence:
                 Orb::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -8195,6 +15066,251 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Unit,
+                Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Tiered
+              )
+            end
+
+          class Unit < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Unit::UnitConfig
+              )
+            end
+            attr_reader :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Unit::UnitConfig::OrHash
+              ).void
+            end
+            attr_writer :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Unit::UnitConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(unit_config:, conversion_rate_type: :unit)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  unit_config:
+                    Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Unit::UnitConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit of overage
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              sig { params(unit_amount: String).returns(T.attached_class) }
+              def self.new(
+                # Amount per unit of overage
+                unit_amount:
+              )
+              end
+
+              sig { override.returns({ unit_amount: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Tiered::TieredConfig
+              )
+            end
+            attr_reader :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Tiered::TieredConfig::OrHash
+              ).void
+            end
+            attr_writer :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Tiered::TieredConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(tiered_config:, conversion_rate_type: :tiered)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  tiered_config:
+                    Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Tiered::TieredConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Tiers for rating based on total usage quantities into the specified tier
+              sig do
+                returns(
+                  T::Array[
+                    Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Tiered::TieredConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    tiers:
+                      T::Array[
+                        Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Tiered::TieredConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Exclusive tier starting value
+                sig { returns(Float) }
+                attr_accessor :first_unit
+
+                # Amount per unit of overage
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Inclusive tier ending value. If null, this is treated as the last tier
+                sig { returns(T.nilable(Float)) }
+                attr_accessor :last_unit
+
+                sig do
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit of overage
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      first_unit: Float,
+                      unit_amount: String,
+                      last_unit: T.nilable(Float)
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -8266,6 +15382,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -8367,6 +15492,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::CumulativeGroupedBulk::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Unit::OrHash,
+                  Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Tiered::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
@@ -8404,6 +15536,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           cumulative_grouped_bulk_config:,
@@ -8438,6 +15571,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
@@ -8512,6 +15649,251 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Unit,
+                Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Tiered
+              )
+            end
+
+          class Unit < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Unit,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Unit::UnitConfig
+              )
+            end
+            attr_reader :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Unit::UnitConfig::OrHash
+              ).void
+            end
+            attr_writer :unit_config
+
+            sig do
+              params(
+                unit_config:
+                  Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Unit::UnitConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(unit_config:, conversion_rate_type: :unit)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  unit_config:
+                    Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Unit::UnitConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Unit::UnitConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit of overage
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              sig { params(unit_amount: String).returns(T.attached_class) }
+              def self.new(
+                # Amount per unit of overage
+                unit_amount:
+              )
+              end
+
+              sig { override.returns({ unit_amount: String }) }
+              def to_hash
+              end
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Tiered,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :conversion_rate_type
+
+            sig do
+              returns(
+                Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Tiered::TieredConfig
+              )
+            end
+            attr_reader :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Tiered::TieredConfig::OrHash
+              ).void
+            end
+            attr_writer :tiered_config
+
+            sig do
+              params(
+                tiered_config:
+                  Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Tiered::TieredConfig::OrHash,
+                conversion_rate_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(tiered_config:, conversion_rate_type: :tiered)
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_rate_type: Symbol,
+                  tiered_config:
+                    Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Tiered::TieredConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Tiered::TieredConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Tiers for rating based on total usage quantities into the specified tier
+              sig do
+                returns(
+                  T::Array[
+                    Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Tiered::TieredConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Tiered::TieredConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Tiers for rating based on total usage quantities into the specified tier
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    tiers:
+                      T::Array[
+                        Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Tiered::TieredConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Tiered::TieredConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Exclusive tier starting value
+                sig { returns(Float) }
+                attr_accessor :first_unit
+
+                # Amount per unit of overage
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Inclusive tier ending value. If null, this is treated as the last tier
+                sig { returns(T.nilable(Float)) }
+                attr_accessor :last_unit
+
+                sig do
+                  params(
+                    first_unit: Float,
+                    unit_amount: String,
+                    last_unit: T.nilable(Float)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Exclusive tier starting value
+                  first_unit:,
+                  # Amount per unit of overage
+                  unit_amount:,
+                  # Inclusive tier ending value. If null, this is treated as the last tier
+                  last_unit: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      first_unit: Float,
+                      unit_amount: String,
+                      last_unit: T.nilable(Float)
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
           end
         end
 

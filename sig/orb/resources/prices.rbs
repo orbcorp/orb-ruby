@@ -41,6 +41,7 @@ module Orb
         ?billed_in_advance: bool?,
         ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
         ?conversion_rate: Float?,
+        ?conversion_rate_config: Orb::Models::PriceCreateParams::conversion_rate_config?,
         ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
         ?external_price_id: String?,
         ?fixed_price_quantity: Float?,
@@ -82,6 +83,16 @@ module Orb
         ?price_evaluations: ::Array[Orb::PriceEvaluateMultipleParams::PriceEvaluation],
         ?request_options: Orb::request_opts
       ) -> Orb::Models::PriceEvaluateMultipleResponse
+
+      def evaluate_preview_events: (
+        timeframe_end: Time,
+        timeframe_start: Time,
+        ?customer_id: String?,
+        ?events: ::Array[Orb::PriceEvaluatePreviewEventsParams::Event],
+        ?external_customer_id: String?,
+        ?price_evaluations: ::Array[Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation],
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::PriceEvaluatePreviewEventsResponse
 
       def fetch: (
         String price_id,

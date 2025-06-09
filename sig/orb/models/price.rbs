@@ -40,6 +40,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Unit::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Unit::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -71,6 +72,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::Unit::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::Unit::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -116,6 +119,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Unit::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Unit::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -143,6 +147,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Unit::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Unit::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -180,6 +185,110 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::Unit::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::Price::Unit::ConversionRateConfig::Unit
+          | Orb::Price::Unit::ConversionRateConfig::Tiered
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          type unit =
+            {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::Unit::ConversionRateConfig::Unit::UnitConfig
+            }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :unit
+
+            attr_accessor unit_config: Orb::Price::Unit::ConversionRateConfig::Unit::UnitConfig
+
+            def initialize: (
+              unit_config: Orb::Price::Unit::ConversionRateConfig::Unit::UnitConfig,
+              ?conversion_rate_type: :unit
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::Unit::ConversionRateConfig::Unit::UnitConfig
+            }
+
+            type unit_config = { unit_amount: String }
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
+
+              def initialize: (unit_amount: String) -> void
+
+              def to_hash: -> { unit_amount: String }
+            end
+          end
+
+          type tiered =
+            {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::Unit::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :tiered
+
+            attr_accessor tiered_config: Orb::Price::Unit::ConversionRateConfig::Tiered::TieredConfig
+
+            def initialize: (
+              tiered_config: Orb::Price::Unit::ConversionRateConfig::Tiered::TieredConfig,
+              ?conversion_rate_type: :tiered
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::Unit::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+            type tiered_config =
+              {
+                tiers: ::Array[Orb::Price::Unit::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::Price::Unit::ConversionRateConfig::Tiered::TieredConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::Price::Unit::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::Price::Unit::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+              type tier =
+                { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor first_unit: Float
+
+                attr_accessor unit_amount: String
+
+                attr_accessor last_unit: Float?
+
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: Float?
+                }
+              end
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::Price::Unit::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -199,6 +308,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Package::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Package::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -230,6 +340,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::Package::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::Package::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -275,6 +387,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Package::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Package::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -302,6 +415,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Package::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Package::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -339,6 +453,110 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::Package::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::Price::Package::ConversionRateConfig::Unit
+          | Orb::Price::Package::ConversionRateConfig::Tiered
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          type unit =
+            {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::Package::ConversionRateConfig::Unit::UnitConfig
+            }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :unit
+
+            attr_accessor unit_config: Orb::Price::Package::ConversionRateConfig::Unit::UnitConfig
+
+            def initialize: (
+              unit_config: Orb::Price::Package::ConversionRateConfig::Unit::UnitConfig,
+              ?conversion_rate_type: :unit
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::Package::ConversionRateConfig::Unit::UnitConfig
+            }
+
+            type unit_config = { unit_amount: String }
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
+
+              def initialize: (unit_amount: String) -> void
+
+              def to_hash: -> { unit_amount: String }
+            end
+          end
+
+          type tiered =
+            {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::Package::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :tiered
+
+            attr_accessor tiered_config: Orb::Price::Package::ConversionRateConfig::Tiered::TieredConfig
+
+            def initialize: (
+              tiered_config: Orb::Price::Package::ConversionRateConfig::Tiered::TieredConfig,
+              ?conversion_rate_type: :tiered
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::Package::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+            type tiered_config =
+              {
+                tiers: ::Array[Orb::Price::Package::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::Price::Package::ConversionRateConfig::Tiered::TieredConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::Price::Package::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::Price::Package::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+              type tier =
+                { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor first_unit: Float
+
+                attr_accessor unit_amount: String
+
+                attr_accessor last_unit: Float?
+
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: Float?
+                }
+              end
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::Price::Package::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -358,6 +576,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Matrix::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Matrix::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -389,6 +608,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::Matrix::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::Matrix::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -434,6 +655,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Matrix::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Matrix::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -461,6 +683,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Matrix::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Matrix::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -498,6 +721,110 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::Matrix::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::Price::Matrix::ConversionRateConfig::Unit
+          | Orb::Price::Matrix::ConversionRateConfig::Tiered
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          type unit =
+            {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::Matrix::ConversionRateConfig::Unit::UnitConfig
+            }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :unit
+
+            attr_accessor unit_config: Orb::Price::Matrix::ConversionRateConfig::Unit::UnitConfig
+
+            def initialize: (
+              unit_config: Orb::Price::Matrix::ConversionRateConfig::Unit::UnitConfig,
+              ?conversion_rate_type: :unit
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::Matrix::ConversionRateConfig::Unit::UnitConfig
+            }
+
+            type unit_config = { unit_amount: String }
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
+
+              def initialize: (unit_amount: String) -> void
+
+              def to_hash: -> { unit_amount: String }
+            end
+          end
+
+          type tiered =
+            {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::Matrix::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :tiered
+
+            attr_accessor tiered_config: Orb::Price::Matrix::ConversionRateConfig::Tiered::TieredConfig
+
+            def initialize: (
+              tiered_config: Orb::Price::Matrix::ConversionRateConfig::Tiered::TieredConfig,
+              ?conversion_rate_type: :tiered
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::Matrix::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+            type tiered_config =
+              {
+                tiers: ::Array[Orb::Price::Matrix::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::Price::Matrix::ConversionRateConfig::Tiered::TieredConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::Price::Matrix::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::Price::Matrix::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+              type tier =
+                { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor first_unit: Float
+
+                attr_accessor unit_amount: String
+
+                attr_accessor last_unit: Float?
+
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: Float?
+                }
+              end
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::Price::Matrix::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -517,6 +844,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Tiered::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Tiered::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -548,6 +876,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::Tiered::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::Tiered::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -593,6 +923,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Tiered::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Tiered::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -620,6 +951,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Tiered::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Tiered::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -657,6 +989,110 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::Tiered::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::Price::Tiered::ConversionRateConfig::Unit
+          | Orb::Price::Tiered::ConversionRateConfig::Tiered
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          type unit =
+            {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::Tiered::ConversionRateConfig::Unit::UnitConfig
+            }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :unit
+
+            attr_accessor unit_config: Orb::Price::Tiered::ConversionRateConfig::Unit::UnitConfig
+
+            def initialize: (
+              unit_config: Orb::Price::Tiered::ConversionRateConfig::Unit::UnitConfig,
+              ?conversion_rate_type: :unit
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::Tiered::ConversionRateConfig::Unit::UnitConfig
+            }
+
+            type unit_config = { unit_amount: String }
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
+
+              def initialize: (unit_amount: String) -> void
+
+              def to_hash: -> { unit_amount: String }
+            end
+          end
+
+          type tiered =
+            {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::Tiered::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :tiered
+
+            attr_accessor tiered_config: Orb::Price::Tiered::ConversionRateConfig::Tiered::TieredConfig
+
+            def initialize: (
+              tiered_config: Orb::Price::Tiered::ConversionRateConfig::Tiered::TieredConfig,
+              ?conversion_rate_type: :tiered
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::Tiered::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+            type tiered_config =
+              {
+                tiers: ::Array[Orb::Price::Tiered::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::Price::Tiered::ConversionRateConfig::Tiered::TieredConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::Price::Tiered::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::Price::Tiered::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+              type tier =
+                { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor first_unit: Float
+
+                attr_accessor unit_amount: String
+
+                attr_accessor last_unit: Float?
+
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: Float?
+                }
+              end
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::Price::Tiered::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -676,6 +1112,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredBPS::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredBPS::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -707,6 +1144,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::TieredBPS::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::TieredBPS::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -752,6 +1191,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredBPS::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredBPS::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -779,6 +1219,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredBPS::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredBPS::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -816,6 +1257,110 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::TieredBPS::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::Price::TieredBPS::ConversionRateConfig::Unit
+          | Orb::Price::TieredBPS::ConversionRateConfig::Tiered
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          type unit =
+            {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::TieredBPS::ConversionRateConfig::Unit::UnitConfig
+            }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :unit
+
+            attr_accessor unit_config: Orb::Price::TieredBPS::ConversionRateConfig::Unit::UnitConfig
+
+            def initialize: (
+              unit_config: Orb::Price::TieredBPS::ConversionRateConfig::Unit::UnitConfig,
+              ?conversion_rate_type: :unit
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::TieredBPS::ConversionRateConfig::Unit::UnitConfig
+            }
+
+            type unit_config = { unit_amount: String }
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
+
+              def initialize: (unit_amount: String) -> void
+
+              def to_hash: -> { unit_amount: String }
+            end
+          end
+
+          type tiered =
+            {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::TieredBPS::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :tiered
+
+            attr_accessor tiered_config: Orb::Price::TieredBPS::ConversionRateConfig::Tiered::TieredConfig
+
+            def initialize: (
+              tiered_config: Orb::Price::TieredBPS::ConversionRateConfig::Tiered::TieredConfig,
+              ?conversion_rate_type: :tiered
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::TieredBPS::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+            type tiered_config =
+              {
+                tiers: ::Array[Orb::Price::TieredBPS::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::Price::TieredBPS::ConversionRateConfig::Tiered::TieredConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::Price::TieredBPS::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::Price::TieredBPS::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+              type tier =
+                { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor first_unit: Float
+
+                attr_accessor unit_amount: String
+
+                attr_accessor last_unit: Float?
+
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: Float?
+                }
+              end
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::Price::TieredBPS::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -836,6 +1381,7 @@ module Orb
           bps_config: Orb::BPSConfig,
           cadence: Orb::Models::Price::BPS::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::BPS::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -868,6 +1414,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::BPS::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::BPS::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -912,6 +1460,7 @@ module Orb
           bps_config: Orb::BPSConfig,
           cadence: Orb::Models::Price::BPS::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::BPS::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -939,6 +1488,7 @@ module Orb
           bps_config: Orb::BPSConfig,
           cadence: Orb::Models::Price::BPS::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::BPS::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -975,6 +1525,110 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::BPS::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::Price::BPS::ConversionRateConfig::Unit
+          | Orb::Price::BPS::ConversionRateConfig::Tiered
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          type unit =
+            {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::BPS::ConversionRateConfig::Unit::UnitConfig
+            }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :unit
+
+            attr_accessor unit_config: Orb::Price::BPS::ConversionRateConfig::Unit::UnitConfig
+
+            def initialize: (
+              unit_config: Orb::Price::BPS::ConversionRateConfig::Unit::UnitConfig,
+              ?conversion_rate_type: :unit
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::BPS::ConversionRateConfig::Unit::UnitConfig
+            }
+
+            type unit_config = { unit_amount: String }
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
+
+              def initialize: (unit_amount: String) -> void
+
+              def to_hash: -> { unit_amount: String }
+            end
+          end
+
+          type tiered =
+            {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::BPS::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :tiered
+
+            attr_accessor tiered_config: Orb::Price::BPS::ConversionRateConfig::Tiered::TieredConfig
+
+            def initialize: (
+              tiered_config: Orb::Price::BPS::ConversionRateConfig::Tiered::TieredConfig,
+              ?conversion_rate_type: :tiered
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::BPS::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+            type tiered_config =
+              {
+                tiers: ::Array[Orb::Price::BPS::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::Price::BPS::ConversionRateConfig::Tiered::TieredConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::Price::BPS::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::Price::BPS::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+              type tier =
+                { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor first_unit: Float
+
+                attr_accessor unit_amount: String
+
+                attr_accessor last_unit: Float?
+
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: Float?
+                }
+              end
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::Price::BPS::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -995,6 +1649,7 @@ module Orb
           bulk_bps_config: Orb::BulkBPSConfig,
           cadence: Orb::Models::Price::BulkBPS::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::BulkBPS::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1027,6 +1682,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::BulkBPS::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::BulkBPS::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -1071,6 +1728,7 @@ module Orb
           bulk_bps_config: Orb::BulkBPSConfig,
           cadence: Orb::Models::Price::BulkBPS::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::BulkBPS::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1098,6 +1756,7 @@ module Orb
           bulk_bps_config: Orb::BulkBPSConfig,
           cadence: Orb::Models::Price::BulkBPS::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::BulkBPS::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1134,6 +1793,110 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::BulkBPS::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::Price::BulkBPS::ConversionRateConfig::Unit
+          | Orb::Price::BulkBPS::ConversionRateConfig::Tiered
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          type unit =
+            {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::BulkBPS::ConversionRateConfig::Unit::UnitConfig
+            }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :unit
+
+            attr_accessor unit_config: Orb::Price::BulkBPS::ConversionRateConfig::Unit::UnitConfig
+
+            def initialize: (
+              unit_config: Orb::Price::BulkBPS::ConversionRateConfig::Unit::UnitConfig,
+              ?conversion_rate_type: :unit
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::BulkBPS::ConversionRateConfig::Unit::UnitConfig
+            }
+
+            type unit_config = { unit_amount: String }
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
+
+              def initialize: (unit_amount: String) -> void
+
+              def to_hash: -> { unit_amount: String }
+            end
+          end
+
+          type tiered =
+            {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::BulkBPS::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :tiered
+
+            attr_accessor tiered_config: Orb::Price::BulkBPS::ConversionRateConfig::Tiered::TieredConfig
+
+            def initialize: (
+              tiered_config: Orb::Price::BulkBPS::ConversionRateConfig::Tiered::TieredConfig,
+              ?conversion_rate_type: :tiered
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::BulkBPS::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+            type tiered_config =
+              {
+                tiers: ::Array[Orb::Price::BulkBPS::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::Price::BulkBPS::ConversionRateConfig::Tiered::TieredConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::Price::BulkBPS::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::Price::BulkBPS::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+              type tier =
+                { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor first_unit: Float
+
+                attr_accessor unit_amount: String
+
+                attr_accessor last_unit: Float?
+
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: Float?
+                }
+              end
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::Price::BulkBPS::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -1154,6 +1917,7 @@ module Orb
           bulk_config: Orb::BulkConfig,
           cadence: Orb::Models::Price::Bulk::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Bulk::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1186,6 +1950,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::Bulk::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::Bulk::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -1230,6 +1996,7 @@ module Orb
           bulk_config: Orb::BulkConfig,
           cadence: Orb::Models::Price::Bulk::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Bulk::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1257,6 +2024,7 @@ module Orb
           bulk_config: Orb::BulkConfig,
           cadence: Orb::Models::Price::Bulk::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Bulk::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1293,6 +2061,110 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::Bulk::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::Price::Bulk::ConversionRateConfig::Unit
+          | Orb::Price::Bulk::ConversionRateConfig::Tiered
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          type unit =
+            {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::Bulk::ConversionRateConfig::Unit::UnitConfig
+            }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :unit
+
+            attr_accessor unit_config: Orb::Price::Bulk::ConversionRateConfig::Unit::UnitConfig
+
+            def initialize: (
+              unit_config: Orb::Price::Bulk::ConversionRateConfig::Unit::UnitConfig,
+              ?conversion_rate_type: :unit
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::Bulk::ConversionRateConfig::Unit::UnitConfig
+            }
+
+            type unit_config = { unit_amount: String }
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
+
+              def initialize: (unit_amount: String) -> void
+
+              def to_hash: -> { unit_amount: String }
+            end
+          end
+
+          type tiered =
+            {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::Bulk::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :tiered
+
+            attr_accessor tiered_config: Orb::Price::Bulk::ConversionRateConfig::Tiered::TieredConfig
+
+            def initialize: (
+              tiered_config: Orb::Price::Bulk::ConversionRateConfig::Tiered::TieredConfig,
+              ?conversion_rate_type: :tiered
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::Bulk::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+            type tiered_config =
+              {
+                tiers: ::Array[Orb::Price::Bulk::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::Price::Bulk::ConversionRateConfig::Tiered::TieredConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::Price::Bulk::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::Price::Bulk::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+              type tier =
+                { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor first_unit: Float
+
+                attr_accessor unit_amount: String
+
+                attr_accessor last_unit: Float?
+
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: Float?
+                }
+              end
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::Price::Bulk::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -1312,6 +2184,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::ThresholdTotalAmount::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::ThresholdTotalAmount::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1343,6 +2216,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::ThresholdTotalAmount::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::ThresholdTotalAmount::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -1388,6 +2263,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::ThresholdTotalAmount::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::ThresholdTotalAmount::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1415,6 +2291,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::ThresholdTotalAmount::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::ThresholdTotalAmount::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1452,6 +2329,110 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::ThresholdTotalAmount::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Unit
+          | Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Tiered
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          type unit =
+            {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Unit::UnitConfig
+            }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :unit
+
+            attr_accessor unit_config: Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Unit::UnitConfig
+
+            def initialize: (
+              unit_config: Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Unit::UnitConfig,
+              ?conversion_rate_type: :unit
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Unit::UnitConfig
+            }
+
+            type unit_config = { unit_amount: String }
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
+
+              def initialize: (unit_amount: String) -> void
+
+              def to_hash: -> { unit_amount: String }
+            end
+          end
+
+          type tiered =
+            {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :tiered
+
+            attr_accessor tiered_config: Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Tiered::TieredConfig
+
+            def initialize: (
+              tiered_config: Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Tiered::TieredConfig,
+              ?conversion_rate_type: :tiered
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+            type tiered_config =
+              {
+                tiers: ::Array[Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Tiered::TieredConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+              type tier =
+                { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor first_unit: Float
+
+                attr_accessor unit_amount: String
+
+                attr_accessor last_unit: Float?
+
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: Float?
+                }
+              end
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::Price::ThresholdTotalAmount::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -1471,6 +2452,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredPackage::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredPackage::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1502,6 +2484,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::TieredPackage::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::TieredPackage::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -1547,6 +2531,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredPackage::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredPackage::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1574,6 +2559,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredPackage::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredPackage::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1611,6 +2597,110 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::TieredPackage::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::Price::TieredPackage::ConversionRateConfig::Unit
+          | Orb::Price::TieredPackage::ConversionRateConfig::Tiered
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          type unit =
+            {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::TieredPackage::ConversionRateConfig::Unit::UnitConfig
+            }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :unit
+
+            attr_accessor unit_config: Orb::Price::TieredPackage::ConversionRateConfig::Unit::UnitConfig
+
+            def initialize: (
+              unit_config: Orb::Price::TieredPackage::ConversionRateConfig::Unit::UnitConfig,
+              ?conversion_rate_type: :unit
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::TieredPackage::ConversionRateConfig::Unit::UnitConfig
+            }
+
+            type unit_config = { unit_amount: String }
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
+
+              def initialize: (unit_amount: String) -> void
+
+              def to_hash: -> { unit_amount: String }
+            end
+          end
+
+          type tiered =
+            {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::TieredPackage::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :tiered
+
+            attr_accessor tiered_config: Orb::Price::TieredPackage::ConversionRateConfig::Tiered::TieredConfig
+
+            def initialize: (
+              tiered_config: Orb::Price::TieredPackage::ConversionRateConfig::Tiered::TieredConfig,
+              ?conversion_rate_type: :tiered
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::TieredPackage::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+            type tiered_config =
+              {
+                tiers: ::Array[Orb::Price::TieredPackage::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::Price::TieredPackage::ConversionRateConfig::Tiered::TieredConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::Price::TieredPackage::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::Price::TieredPackage::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+              type tier =
+                { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor first_unit: Float
+
+                attr_accessor unit_amount: String
+
+                attr_accessor last_unit: Float?
+
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: Float?
+                }
+              end
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::Price::TieredPackage::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -1630,6 +2720,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedTiered::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedTiered::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1661,6 +2752,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::GroupedTiered::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedTiered::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -1706,6 +2799,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedTiered::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedTiered::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1733,6 +2827,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedTiered::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedTiered::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1770,6 +2865,110 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::GroupedTiered::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::Price::GroupedTiered::ConversionRateConfig::Unit
+          | Orb::Price::GroupedTiered::ConversionRateConfig::Tiered
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          type unit =
+            {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::GroupedTiered::ConversionRateConfig::Unit::UnitConfig
+            }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :unit
+
+            attr_accessor unit_config: Orb::Price::GroupedTiered::ConversionRateConfig::Unit::UnitConfig
+
+            def initialize: (
+              unit_config: Orb::Price::GroupedTiered::ConversionRateConfig::Unit::UnitConfig,
+              ?conversion_rate_type: :unit
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::GroupedTiered::ConversionRateConfig::Unit::UnitConfig
+            }
+
+            type unit_config = { unit_amount: String }
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
+
+              def initialize: (unit_amount: String) -> void
+
+              def to_hash: -> { unit_amount: String }
+            end
+          end
+
+          type tiered =
+            {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::GroupedTiered::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :tiered
+
+            attr_accessor tiered_config: Orb::Price::GroupedTiered::ConversionRateConfig::Tiered::TieredConfig
+
+            def initialize: (
+              tiered_config: Orb::Price::GroupedTiered::ConversionRateConfig::Tiered::TieredConfig,
+              ?conversion_rate_type: :tiered
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::GroupedTiered::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+            type tiered_config =
+              {
+                tiers: ::Array[Orb::Price::GroupedTiered::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::Price::GroupedTiered::ConversionRateConfig::Tiered::TieredConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::Price::GroupedTiered::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::Price::GroupedTiered::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+              type tier =
+                { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor first_unit: Float
+
+                attr_accessor unit_amount: String
+
+                attr_accessor last_unit: Float?
+
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: Float?
+                }
+              end
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::Price::GroupedTiered::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -1789,6 +2988,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredWithMinimum::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredWithMinimum::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1820,6 +3020,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::TieredWithMinimum::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::TieredWithMinimum::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -1865,6 +3067,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredWithMinimum::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredWithMinimum::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1892,6 +3095,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredWithMinimum::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredWithMinimum::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1929,6 +3133,110 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::TieredWithMinimum::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::Price::TieredWithMinimum::ConversionRateConfig::Unit
+          | Orb::Price::TieredWithMinimum::ConversionRateConfig::Tiered
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          type unit =
+            {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::TieredWithMinimum::ConversionRateConfig::Unit::UnitConfig
+            }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :unit
+
+            attr_accessor unit_config: Orb::Price::TieredWithMinimum::ConversionRateConfig::Unit::UnitConfig
+
+            def initialize: (
+              unit_config: Orb::Price::TieredWithMinimum::ConversionRateConfig::Unit::UnitConfig,
+              ?conversion_rate_type: :unit
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::TieredWithMinimum::ConversionRateConfig::Unit::UnitConfig
+            }
+
+            type unit_config = { unit_amount: String }
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
+
+              def initialize: (unit_amount: String) -> void
+
+              def to_hash: -> { unit_amount: String }
+            end
+          end
+
+          type tiered =
+            {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::TieredWithMinimum::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :tiered
+
+            attr_accessor tiered_config: Orb::Price::TieredWithMinimum::ConversionRateConfig::Tiered::TieredConfig
+
+            def initialize: (
+              tiered_config: Orb::Price::TieredWithMinimum::ConversionRateConfig::Tiered::TieredConfig,
+              ?conversion_rate_type: :tiered
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::TieredWithMinimum::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+            type tiered_config =
+              {
+                tiers: ::Array[Orb::Price::TieredWithMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::Price::TieredWithMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::Price::TieredWithMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::Price::TieredWithMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+              type tier =
+                { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor first_unit: Float
+
+                attr_accessor unit_amount: String
+
+                attr_accessor last_unit: Float?
+
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: Float?
+                }
+              end
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::Price::TieredWithMinimum::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -1948,6 +3256,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredPackageWithMinimum::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredPackageWithMinimum::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1979,6 +3288,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::TieredPackageWithMinimum::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::TieredPackageWithMinimum::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -2024,6 +3335,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredPackageWithMinimum::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredPackageWithMinimum::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2051,6 +3363,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredPackageWithMinimum::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredPackageWithMinimum::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2088,6 +3401,110 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::TieredPackageWithMinimum::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Unit
+          | Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Tiered
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          type unit =
+            {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Unit::UnitConfig
+            }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :unit
+
+            attr_accessor unit_config: Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Unit::UnitConfig
+
+            def initialize: (
+              unit_config: Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Unit::UnitConfig,
+              ?conversion_rate_type: :unit
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Unit::UnitConfig
+            }
+
+            type unit_config = { unit_amount: String }
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
+
+              def initialize: (unit_amount: String) -> void
+
+              def to_hash: -> { unit_amount: String }
+            end
+          end
+
+          type tiered =
+            {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :tiered
+
+            attr_accessor tiered_config: Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Tiered::TieredConfig
+
+            def initialize: (
+              tiered_config: Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Tiered::TieredConfig,
+              ?conversion_rate_type: :tiered
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+            type tiered_config =
+              {
+                tiers: ::Array[Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+              type tier =
+                { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor first_unit: Float
+
+                attr_accessor unit_amount: String
+
+                attr_accessor last_unit: Float?
+
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: Float?
+                }
+              end
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::Price::TieredPackageWithMinimum::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -2107,6 +3524,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::PackageWithAllocation::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::PackageWithAllocation::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2138,6 +3556,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::PackageWithAllocation::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::PackageWithAllocation::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -2183,6 +3603,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::PackageWithAllocation::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::PackageWithAllocation::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2210,6 +3631,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::PackageWithAllocation::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::PackageWithAllocation::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2247,6 +3669,110 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::PackageWithAllocation::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::Price::PackageWithAllocation::ConversionRateConfig::Unit
+          | Orb::Price::PackageWithAllocation::ConversionRateConfig::Tiered
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          type unit =
+            {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::PackageWithAllocation::ConversionRateConfig::Unit::UnitConfig
+            }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :unit
+
+            attr_accessor unit_config: Orb::Price::PackageWithAllocation::ConversionRateConfig::Unit::UnitConfig
+
+            def initialize: (
+              unit_config: Orb::Price::PackageWithAllocation::ConversionRateConfig::Unit::UnitConfig,
+              ?conversion_rate_type: :unit
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::PackageWithAllocation::ConversionRateConfig::Unit::UnitConfig
+            }
+
+            type unit_config = { unit_amount: String }
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
+
+              def initialize: (unit_amount: String) -> void
+
+              def to_hash: -> { unit_amount: String }
+            end
+          end
+
+          type tiered =
+            {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::PackageWithAllocation::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :tiered
+
+            attr_accessor tiered_config: Orb::Price::PackageWithAllocation::ConversionRateConfig::Tiered::TieredConfig
+
+            def initialize: (
+              tiered_config: Orb::Price::PackageWithAllocation::ConversionRateConfig::Tiered::TieredConfig,
+              ?conversion_rate_type: :tiered
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::PackageWithAllocation::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+            type tiered_config =
+              {
+                tiers: ::Array[Orb::Price::PackageWithAllocation::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::Price::PackageWithAllocation::ConversionRateConfig::Tiered::TieredConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::Price::PackageWithAllocation::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::Price::PackageWithAllocation::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+              type tier =
+                { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor first_unit: Float
+
+                attr_accessor unit_amount: String
+
+                attr_accessor last_unit: Float?
+
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: Float?
+                }
+              end
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::Price::PackageWithAllocation::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -2266,6 +3792,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::UnitWithPercent::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::UnitWithPercent::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2297,6 +3824,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::UnitWithPercent::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::UnitWithPercent::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -2342,6 +3871,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::UnitWithPercent::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::UnitWithPercent::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2369,6 +3899,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::UnitWithPercent::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::UnitWithPercent::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2406,6 +3937,110 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::UnitWithPercent::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::Price::UnitWithPercent::ConversionRateConfig::Unit
+          | Orb::Price::UnitWithPercent::ConversionRateConfig::Tiered
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          type unit =
+            {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::UnitWithPercent::ConversionRateConfig::Unit::UnitConfig
+            }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :unit
+
+            attr_accessor unit_config: Orb::Price::UnitWithPercent::ConversionRateConfig::Unit::UnitConfig
+
+            def initialize: (
+              unit_config: Orb::Price::UnitWithPercent::ConversionRateConfig::Unit::UnitConfig,
+              ?conversion_rate_type: :unit
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::UnitWithPercent::ConversionRateConfig::Unit::UnitConfig
+            }
+
+            type unit_config = { unit_amount: String }
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
+
+              def initialize: (unit_amount: String) -> void
+
+              def to_hash: -> { unit_amount: String }
+            end
+          end
+
+          type tiered =
+            {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::UnitWithPercent::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :tiered
+
+            attr_accessor tiered_config: Orb::Price::UnitWithPercent::ConversionRateConfig::Tiered::TieredConfig
+
+            def initialize: (
+              tiered_config: Orb::Price::UnitWithPercent::ConversionRateConfig::Tiered::TieredConfig,
+              ?conversion_rate_type: :tiered
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::UnitWithPercent::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+            type tiered_config =
+              {
+                tiers: ::Array[Orb::Price::UnitWithPercent::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::Price::UnitWithPercent::ConversionRateConfig::Tiered::TieredConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::Price::UnitWithPercent::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::Price::UnitWithPercent::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+              type tier =
+                { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor first_unit: Float
+
+                attr_accessor unit_amount: String
+
+                attr_accessor last_unit: Float?
+
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: Float?
+                }
+              end
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::Price::UnitWithPercent::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -2425,6 +4060,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::MatrixWithAllocation::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::MatrixWithAllocation::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2456,6 +4092,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::MatrixWithAllocation::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::MatrixWithAllocation::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -2501,6 +4139,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::MatrixWithAllocation::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::MatrixWithAllocation::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2528,6 +4167,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::MatrixWithAllocation::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::MatrixWithAllocation::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2565,6 +4205,110 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::MatrixWithAllocation::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::Price::MatrixWithAllocation::ConversionRateConfig::Unit
+          | Orb::Price::MatrixWithAllocation::ConversionRateConfig::Tiered
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          type unit =
+            {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::MatrixWithAllocation::ConversionRateConfig::Unit::UnitConfig
+            }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :unit
+
+            attr_accessor unit_config: Orb::Price::MatrixWithAllocation::ConversionRateConfig::Unit::UnitConfig
+
+            def initialize: (
+              unit_config: Orb::Price::MatrixWithAllocation::ConversionRateConfig::Unit::UnitConfig,
+              ?conversion_rate_type: :unit
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::MatrixWithAllocation::ConversionRateConfig::Unit::UnitConfig
+            }
+
+            type unit_config = { unit_amount: String }
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
+
+              def initialize: (unit_amount: String) -> void
+
+              def to_hash: -> { unit_amount: String }
+            end
+          end
+
+          type tiered =
+            {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::MatrixWithAllocation::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :tiered
+
+            attr_accessor tiered_config: Orb::Price::MatrixWithAllocation::ConversionRateConfig::Tiered::TieredConfig
+
+            def initialize: (
+              tiered_config: Orb::Price::MatrixWithAllocation::ConversionRateConfig::Tiered::TieredConfig,
+              ?conversion_rate_type: :tiered
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::MatrixWithAllocation::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+            type tiered_config =
+              {
+                tiers: ::Array[Orb::Price::MatrixWithAllocation::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::Price::MatrixWithAllocation::ConversionRateConfig::Tiered::TieredConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::Price::MatrixWithAllocation::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::Price::MatrixWithAllocation::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+              type tier =
+                { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor first_unit: Float
+
+                attr_accessor unit_amount: String
+
+                attr_accessor last_unit: Float?
+
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: Float?
+                }
+              end
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::Price::MatrixWithAllocation::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -2584,6 +4328,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredWithProration::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredWithProration::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2615,6 +4360,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::TieredWithProration::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::TieredWithProration::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -2660,6 +4407,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredWithProration::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredWithProration::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2687,6 +4435,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredWithProration::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredWithProration::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2724,6 +4473,110 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::TieredWithProration::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::Price::TieredWithProration::ConversionRateConfig::Unit
+          | Orb::Price::TieredWithProration::ConversionRateConfig::Tiered
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          type unit =
+            {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::TieredWithProration::ConversionRateConfig::Unit::UnitConfig
+            }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :unit
+
+            attr_accessor unit_config: Orb::Price::TieredWithProration::ConversionRateConfig::Unit::UnitConfig
+
+            def initialize: (
+              unit_config: Orb::Price::TieredWithProration::ConversionRateConfig::Unit::UnitConfig,
+              ?conversion_rate_type: :unit
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::TieredWithProration::ConversionRateConfig::Unit::UnitConfig
+            }
+
+            type unit_config = { unit_amount: String }
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
+
+              def initialize: (unit_amount: String) -> void
+
+              def to_hash: -> { unit_amount: String }
+            end
+          end
+
+          type tiered =
+            {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::TieredWithProration::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :tiered
+
+            attr_accessor tiered_config: Orb::Price::TieredWithProration::ConversionRateConfig::Tiered::TieredConfig
+
+            def initialize: (
+              tiered_config: Orb::Price::TieredWithProration::ConversionRateConfig::Tiered::TieredConfig,
+              ?conversion_rate_type: :tiered
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::TieredWithProration::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+            type tiered_config =
+              {
+                tiers: ::Array[Orb::Price::TieredWithProration::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::Price::TieredWithProration::ConversionRateConfig::Tiered::TieredConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::Price::TieredWithProration::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::Price::TieredWithProration::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+              type tier =
+                { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor first_unit: Float
+
+                attr_accessor unit_amount: String
+
+                attr_accessor last_unit: Float?
+
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: Float?
+                }
+              end
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::Price::TieredWithProration::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -2743,6 +4596,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::UnitWithProration::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::UnitWithProration::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2774,6 +4628,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::UnitWithProration::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::UnitWithProration::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -2819,6 +4675,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::UnitWithProration::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::UnitWithProration::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2846,6 +4703,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::UnitWithProration::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::UnitWithProration::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2883,6 +4741,110 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::UnitWithProration::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::Price::UnitWithProration::ConversionRateConfig::Unit
+          | Orb::Price::UnitWithProration::ConversionRateConfig::Tiered
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          type unit =
+            {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::UnitWithProration::ConversionRateConfig::Unit::UnitConfig
+            }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :unit
+
+            attr_accessor unit_config: Orb::Price::UnitWithProration::ConversionRateConfig::Unit::UnitConfig
+
+            def initialize: (
+              unit_config: Orb::Price::UnitWithProration::ConversionRateConfig::Unit::UnitConfig,
+              ?conversion_rate_type: :unit
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::UnitWithProration::ConversionRateConfig::Unit::UnitConfig
+            }
+
+            type unit_config = { unit_amount: String }
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
+
+              def initialize: (unit_amount: String) -> void
+
+              def to_hash: -> { unit_amount: String }
+            end
+          end
+
+          type tiered =
+            {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::UnitWithProration::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :tiered
+
+            attr_accessor tiered_config: Orb::Price::UnitWithProration::ConversionRateConfig::Tiered::TieredConfig
+
+            def initialize: (
+              tiered_config: Orb::Price::UnitWithProration::ConversionRateConfig::Tiered::TieredConfig,
+              ?conversion_rate_type: :tiered
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::UnitWithProration::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+            type tiered_config =
+              {
+                tiers: ::Array[Orb::Price::UnitWithProration::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::Price::UnitWithProration::ConversionRateConfig::Tiered::TieredConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::Price::UnitWithProration::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::Price::UnitWithProration::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+              type tier =
+                { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor first_unit: Float
+
+                attr_accessor unit_amount: String
+
+                attr_accessor last_unit: Float?
+
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: Float?
+                }
+              end
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::Price::UnitWithProration::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -2902,6 +4864,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedAllocation::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedAllocation::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2933,6 +4896,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::GroupedAllocation::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedAllocation::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -2978,6 +4943,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedAllocation::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedAllocation::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3005,6 +4971,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedAllocation::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedAllocation::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3042,6 +5009,110 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::GroupedAllocation::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::Price::GroupedAllocation::ConversionRateConfig::Unit
+          | Orb::Price::GroupedAllocation::ConversionRateConfig::Tiered
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          type unit =
+            {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::GroupedAllocation::ConversionRateConfig::Unit::UnitConfig
+            }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :unit
+
+            attr_accessor unit_config: Orb::Price::GroupedAllocation::ConversionRateConfig::Unit::UnitConfig
+
+            def initialize: (
+              unit_config: Orb::Price::GroupedAllocation::ConversionRateConfig::Unit::UnitConfig,
+              ?conversion_rate_type: :unit
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::GroupedAllocation::ConversionRateConfig::Unit::UnitConfig
+            }
+
+            type unit_config = { unit_amount: String }
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
+
+              def initialize: (unit_amount: String) -> void
+
+              def to_hash: -> { unit_amount: String }
+            end
+          end
+
+          type tiered =
+            {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::GroupedAllocation::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :tiered
+
+            attr_accessor tiered_config: Orb::Price::GroupedAllocation::ConversionRateConfig::Tiered::TieredConfig
+
+            def initialize: (
+              tiered_config: Orb::Price::GroupedAllocation::ConversionRateConfig::Tiered::TieredConfig,
+              ?conversion_rate_type: :tiered
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::GroupedAllocation::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+            type tiered_config =
+              {
+                tiers: ::Array[Orb::Price::GroupedAllocation::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::Price::GroupedAllocation::ConversionRateConfig::Tiered::TieredConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::Price::GroupedAllocation::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::Price::GroupedAllocation::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+              type tier =
+                { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor first_unit: Float
+
+                attr_accessor unit_amount: String
+
+                attr_accessor last_unit: Float?
+
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: Float?
+                }
+              end
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::Price::GroupedAllocation::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -3061,6 +5132,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedWithProratedMinimum::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithProratedMinimum::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3092,6 +5164,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::GroupedWithProratedMinimum::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedWithProratedMinimum::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -3137,6 +5211,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedWithProratedMinimum::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithProratedMinimum::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3164,6 +5239,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedWithProratedMinimum::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithProratedMinimum::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3201,6 +5277,110 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::GroupedWithProratedMinimum::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Unit
+          | Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Tiered
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          type unit =
+            {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Unit::UnitConfig
+            }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :unit
+
+            attr_accessor unit_config: Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Unit::UnitConfig
+
+            def initialize: (
+              unit_config: Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Unit::UnitConfig,
+              ?conversion_rate_type: :unit
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Unit::UnitConfig
+            }
+
+            type unit_config = { unit_amount: String }
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
+
+              def initialize: (unit_amount: String) -> void
+
+              def to_hash: -> { unit_amount: String }
+            end
+          end
+
+          type tiered =
+            {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :tiered
+
+            attr_accessor tiered_config: Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Tiered::TieredConfig
+
+            def initialize: (
+              tiered_config: Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Tiered::TieredConfig,
+              ?conversion_rate_type: :tiered
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+            type tiered_config =
+              {
+                tiers: ::Array[Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+              type tier =
+                { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor first_unit: Float
+
+                attr_accessor unit_amount: String
+
+                attr_accessor last_unit: Float?
+
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: Float?
+                }
+              end
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::Price::GroupedWithProratedMinimum::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -3220,6 +5400,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedWithMeteredMinimum::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithMeteredMinimum::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3251,6 +5432,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::GroupedWithMeteredMinimum::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedWithMeteredMinimum::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -3296,6 +5479,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedWithMeteredMinimum::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithMeteredMinimum::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3323,6 +5507,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedWithMeteredMinimum::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithMeteredMinimum::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3360,6 +5545,110 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::GroupedWithMeteredMinimum::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Unit
+          | Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Tiered
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          type unit =
+            {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Unit::UnitConfig
+            }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :unit
+
+            attr_accessor unit_config: Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Unit::UnitConfig
+
+            def initialize: (
+              unit_config: Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Unit::UnitConfig,
+              ?conversion_rate_type: :unit
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Unit::UnitConfig
+            }
+
+            type unit_config = { unit_amount: String }
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
+
+              def initialize: (unit_amount: String) -> void
+
+              def to_hash: -> { unit_amount: String }
+            end
+          end
+
+          type tiered =
+            {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :tiered
+
+            attr_accessor tiered_config: Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Tiered::TieredConfig
+
+            def initialize: (
+              tiered_config: Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Tiered::TieredConfig,
+              ?conversion_rate_type: :tiered
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+            type tiered_config =
+              {
+                tiers: ::Array[Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+              type tier =
+                { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor first_unit: Float
+
+                attr_accessor unit_amount: String
+
+                attr_accessor last_unit: Float?
+
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: Float?
+                }
+              end
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::Price::GroupedWithMeteredMinimum::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -3379,6 +5668,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::MatrixWithDisplayName::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::MatrixWithDisplayName::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3410,6 +5700,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::MatrixWithDisplayName::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::MatrixWithDisplayName::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -3455,6 +5747,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::MatrixWithDisplayName::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::MatrixWithDisplayName::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3482,6 +5775,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::MatrixWithDisplayName::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::MatrixWithDisplayName::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3519,6 +5813,110 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::MatrixWithDisplayName::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Unit
+          | Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Tiered
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          type unit =
+            {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Unit::UnitConfig
+            }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :unit
+
+            attr_accessor unit_config: Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Unit::UnitConfig
+
+            def initialize: (
+              unit_config: Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Unit::UnitConfig,
+              ?conversion_rate_type: :unit
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Unit::UnitConfig
+            }
+
+            type unit_config = { unit_amount: String }
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
+
+              def initialize: (unit_amount: String) -> void
+
+              def to_hash: -> { unit_amount: String }
+            end
+          end
+
+          type tiered =
+            {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :tiered
+
+            attr_accessor tiered_config: Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Tiered::TieredConfig
+
+            def initialize: (
+              tiered_config: Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Tiered::TieredConfig,
+              ?conversion_rate_type: :tiered
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+            type tiered_config =
+              {
+                tiers: ::Array[Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Tiered::TieredConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+              type tier =
+                { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor first_unit: Float
+
+                attr_accessor unit_amount: String
+
+                attr_accessor last_unit: Float?
+
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: Float?
+                }
+              end
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::Price::MatrixWithDisplayName::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -3539,6 +5937,7 @@ module Orb
           bulk_with_proration_config: ::Hash[Symbol, top],
           cadence: Orb::Models::Price::BulkWithProration::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::BulkWithProration::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3571,6 +5970,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::BulkWithProration::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::BulkWithProration::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -3615,6 +6016,7 @@ module Orb
           bulk_with_proration_config: ::Hash[Symbol, top],
           cadence: Orb::Models::Price::BulkWithProration::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::BulkWithProration::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3642,6 +6044,7 @@ module Orb
           bulk_with_proration_config: ::Hash[Symbol, top],
           cadence: Orb::Models::Price::BulkWithProration::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::BulkWithProration::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3678,6 +6081,110 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::BulkWithProration::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::Price::BulkWithProration::ConversionRateConfig::Unit
+          | Orb::Price::BulkWithProration::ConversionRateConfig::Tiered
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          type unit =
+            {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::BulkWithProration::ConversionRateConfig::Unit::UnitConfig
+            }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :unit
+
+            attr_accessor unit_config: Orb::Price::BulkWithProration::ConversionRateConfig::Unit::UnitConfig
+
+            def initialize: (
+              unit_config: Orb::Price::BulkWithProration::ConversionRateConfig::Unit::UnitConfig,
+              ?conversion_rate_type: :unit
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::BulkWithProration::ConversionRateConfig::Unit::UnitConfig
+            }
+
+            type unit_config = { unit_amount: String }
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
+
+              def initialize: (unit_amount: String) -> void
+
+              def to_hash: -> { unit_amount: String }
+            end
+          end
+
+          type tiered =
+            {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::BulkWithProration::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :tiered
+
+            attr_accessor tiered_config: Orb::Price::BulkWithProration::ConversionRateConfig::Tiered::TieredConfig
+
+            def initialize: (
+              tiered_config: Orb::Price::BulkWithProration::ConversionRateConfig::Tiered::TieredConfig,
+              ?conversion_rate_type: :tiered
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::BulkWithProration::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+            type tiered_config =
+              {
+                tiers: ::Array[Orb::Price::BulkWithProration::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::Price::BulkWithProration::ConversionRateConfig::Tiered::TieredConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::Price::BulkWithProration::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::Price::BulkWithProration::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+              type tier =
+                { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor first_unit: Float
+
+                attr_accessor unit_amount: String
+
+                attr_accessor last_unit: Float?
+
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: Float?
+                }
+              end
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::Price::BulkWithProration::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -3697,6 +6204,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedTieredPackage::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedTieredPackage::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3728,6 +6236,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::GroupedTieredPackage::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedTieredPackage::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -3773,6 +6283,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedTieredPackage::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedTieredPackage::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3800,6 +6311,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedTieredPackage::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedTieredPackage::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3837,6 +6349,110 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::GroupedTieredPackage::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::Price::GroupedTieredPackage::ConversionRateConfig::Unit
+          | Orb::Price::GroupedTieredPackage::ConversionRateConfig::Tiered
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          type unit =
+            {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::GroupedTieredPackage::ConversionRateConfig::Unit::UnitConfig
+            }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :unit
+
+            attr_accessor unit_config: Orb::Price::GroupedTieredPackage::ConversionRateConfig::Unit::UnitConfig
+
+            def initialize: (
+              unit_config: Orb::Price::GroupedTieredPackage::ConversionRateConfig::Unit::UnitConfig,
+              ?conversion_rate_type: :unit
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::GroupedTieredPackage::ConversionRateConfig::Unit::UnitConfig
+            }
+
+            type unit_config = { unit_amount: String }
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
+
+              def initialize: (unit_amount: String) -> void
+
+              def to_hash: -> { unit_amount: String }
+            end
+          end
+
+          type tiered =
+            {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::GroupedTieredPackage::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :tiered
+
+            attr_accessor tiered_config: Orb::Price::GroupedTieredPackage::ConversionRateConfig::Tiered::TieredConfig
+
+            def initialize: (
+              tiered_config: Orb::Price::GroupedTieredPackage::ConversionRateConfig::Tiered::TieredConfig,
+              ?conversion_rate_type: :tiered
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::GroupedTieredPackage::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+            type tiered_config =
+              {
+                tiers: ::Array[Orb::Price::GroupedTieredPackage::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::Price::GroupedTieredPackage::ConversionRateConfig::Tiered::TieredConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::Price::GroupedTieredPackage::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::Price::GroupedTieredPackage::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+              type tier =
+                { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor first_unit: Float
+
+                attr_accessor unit_amount: String
+
+                attr_accessor last_unit: Float?
+
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: Float?
+                }
+              end
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::Price::GroupedTieredPackage::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -3856,6 +6472,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::MaxGroupTieredPackage::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::MaxGroupTieredPackage::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3887,6 +6504,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::MaxGroupTieredPackage::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::MaxGroupTieredPackage::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -3932,6 +6551,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::MaxGroupTieredPackage::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::MaxGroupTieredPackage::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3959,6 +6579,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::MaxGroupTieredPackage::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::MaxGroupTieredPackage::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3996,6 +6617,110 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::MaxGroupTieredPackage::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Unit
+          | Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Tiered
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          type unit =
+            {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Unit::UnitConfig
+            }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :unit
+
+            attr_accessor unit_config: Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Unit::UnitConfig
+
+            def initialize: (
+              unit_config: Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Unit::UnitConfig,
+              ?conversion_rate_type: :unit
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Unit::UnitConfig
+            }
+
+            type unit_config = { unit_amount: String }
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
+
+              def initialize: (unit_amount: String) -> void
+
+              def to_hash: -> { unit_amount: String }
+            end
+          end
+
+          type tiered =
+            {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :tiered
+
+            attr_accessor tiered_config: Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Tiered::TieredConfig
+
+            def initialize: (
+              tiered_config: Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Tiered::TieredConfig,
+              ?conversion_rate_type: :tiered
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+            type tiered_config =
+              {
+                tiers: ::Array[Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Tiered::TieredConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+              type tier =
+                { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor first_unit: Float
+
+                attr_accessor unit_amount: String
+
+                attr_accessor last_unit: Float?
+
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: Float?
+                }
+              end
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::Price::MaxGroupTieredPackage::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -4015,6 +6740,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::ScalableMatrixWithUnitPricing::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithUnitPricing::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4046,6 +6772,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::ScalableMatrixWithUnitPricing::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::ScalableMatrixWithUnitPricing::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -4091,6 +6819,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::ScalableMatrixWithUnitPricing::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithUnitPricing::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4118,6 +6847,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::ScalableMatrixWithUnitPricing::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithUnitPricing::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4155,6 +6885,110 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithUnitPricing::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Unit
+          | Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Tiered
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          type unit =
+            {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Unit::UnitConfig
+            }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :unit
+
+            attr_accessor unit_config: Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Unit::UnitConfig
+
+            def initialize: (
+              unit_config: Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Unit::UnitConfig,
+              ?conversion_rate_type: :unit
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Unit::UnitConfig
+            }
+
+            type unit_config = { unit_amount: String }
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
+
+              def initialize: (unit_amount: String) -> void
+
+              def to_hash: -> { unit_amount: String }
+            end
+          end
+
+          type tiered =
+            {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :tiered
+
+            attr_accessor tiered_config: Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Tiered::TieredConfig
+
+            def initialize: (
+              tiered_config: Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Tiered::TieredConfig,
+              ?conversion_rate_type: :tiered
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+            type tiered_config =
+              {
+                tiers: ::Array[Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Tiered::TieredConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+              type tier =
+                { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor first_unit: Float
+
+                attr_accessor unit_amount: String
+
+                attr_accessor last_unit: Float?
+
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: Float?
+                }
+              end
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::Price::ScalableMatrixWithUnitPricing::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -4174,6 +7008,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::ScalableMatrixWithTieredPricing::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithTieredPricing::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4205,6 +7040,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::ScalableMatrixWithTieredPricing::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::ScalableMatrixWithTieredPricing::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -4250,6 +7087,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::ScalableMatrixWithTieredPricing::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithTieredPricing::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4277,6 +7115,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::ScalableMatrixWithTieredPricing::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithTieredPricing::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4314,6 +7153,110 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithTieredPricing::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Unit
+          | Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Tiered
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          type unit =
+            {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Unit::UnitConfig
+            }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :unit
+
+            attr_accessor unit_config: Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Unit::UnitConfig
+
+            def initialize: (
+              unit_config: Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Unit::UnitConfig,
+              ?conversion_rate_type: :unit
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Unit::UnitConfig
+            }
+
+            type unit_config = { unit_amount: String }
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
+
+              def initialize: (unit_amount: String) -> void
+
+              def to_hash: -> { unit_amount: String }
+            end
+          end
+
+          type tiered =
+            {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :tiered
+
+            attr_accessor tiered_config: Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Tiered::TieredConfig
+
+            def initialize: (
+              tiered_config: Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Tiered::TieredConfig,
+              ?conversion_rate_type: :tiered
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+            type tiered_config =
+              {
+                tiers: ::Array[Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Tiered::TieredConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+              type tier =
+                { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor first_unit: Float
+
+                attr_accessor unit_amount: String
+
+                attr_accessor last_unit: Float?
+
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: Float?
+                }
+              end
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::Price::ScalableMatrixWithTieredPricing::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -4333,6 +7276,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::CumulativeGroupedBulk::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::CumulativeGroupedBulk::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           cumulative_grouped_bulk_config: ::Hash[Symbol, top],
@@ -4364,6 +7308,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::CumulativeGroupedBulk::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::CumulativeGroupedBulk::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -4409,6 +7355,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::CumulativeGroupedBulk::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::CumulativeGroupedBulk::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           cumulative_grouped_bulk_config: ::Hash[Symbol, top],
@@ -4436,6 +7383,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::CumulativeGroupedBulk::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::CumulativeGroupedBulk::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           cumulative_grouped_bulk_config: ::Hash[Symbol, top],
@@ -4471,6 +7419,110 @@ module Orb
           CUSTOM: :custom
 
           def self?.values: -> ::Array[Orb::Models::Price::CumulativeGroupedBulk::cadence]
+        end
+
+        type conversion_rate_config =
+          Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Unit
+          | Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Tiered
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          type unit =
+            {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Unit::UnitConfig
+            }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :unit
+
+            attr_accessor unit_config: Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Unit::UnitConfig
+
+            def initialize: (
+              unit_config: Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Unit::UnitConfig,
+              ?conversion_rate_type: :unit
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :unit,
+              unit_config: Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Unit::UnitConfig
+            }
+
+            type unit_config = { unit_amount: String }
+
+            class UnitConfig < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
+
+              def initialize: (unit_amount: String) -> void
+
+              def to_hash: -> { unit_amount: String }
+            end
+          end
+
+          type tiered =
+            {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            attr_accessor conversion_rate_type: :tiered
+
+            attr_accessor tiered_config: Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Tiered::TieredConfig
+
+            def initialize: (
+              tiered_config: Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Tiered::TieredConfig,
+              ?conversion_rate_type: :tiered
+            ) -> void
+
+            def to_hash: -> {
+              conversion_rate_type: :tiered,
+              tiered_config: Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Tiered::TieredConfig
+            }
+
+            type tiered_config =
+              {
+                tiers: ::Array[Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+            class TieredConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Tiered::TieredConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Tiered::TieredConfig::Tier]
+              }
+
+              type tier =
+                { first_unit: Float, unit_amount: String, last_unit: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor first_unit: Float
+
+                attr_accessor unit_amount: String
+
+                attr_accessor last_unit: Float?
+
+                def initialize: (
+                  first_unit: Float,
+                  unit_amount: String,
+                  ?last_unit: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  first_unit: Float,
+                  unit_amount: String,
+                  last_unit: Float?
+                }
+              end
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::Price::CumulativeGroupedBulk::conversion_rate_config]
         end
 
         type price_type = :usage_price | :fixed_price

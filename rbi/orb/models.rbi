@@ -533,6 +533,9 @@ module Orb
 
   PriceEvaluateParams = Orb::Models::PriceEvaluateParams
 
+  PriceEvaluatePreviewEventsParams =
+    Orb::Models::PriceEvaluatePreviewEventsParams
+
   PriceFetchParams = Orb::Models::PriceFetchParams
 
   PriceInterval = Orb::Models::PriceInterval

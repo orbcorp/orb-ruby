@@ -26,7 +26,7 @@ module Orb
       optional :customer_id, String, nil?: true
 
       # @!attribute events
-      #   Optional list of preview events to use instead of actual usage data (max 500)
+      #   Optional list of preview events to use instead of actual usage data
       #
       #   @return [Array<Orb::Models::PriceEvaluateMultipleParams::Event>, nil]
       optional :events,
@@ -55,7 +55,7 @@ module Orb
       #
       #   @param customer_id [String, nil] The ID of the customer to which this evaluation is scoped.
       #
-      #   @param events [Array<Orb::Models::PriceEvaluateMultipleParams::Event>, nil] Optional list of preview events to use instead of actual usage data (max 500)
+      #   @param events [Array<Orb::Models::PriceEvaluateMultipleParams::Event>, nil] Optional list of preview events to use instead of actual usage data
       #
       #   @param external_customer_id [String, nil] The external customer ID of the customer to which this evaluation is scoped.
       #
