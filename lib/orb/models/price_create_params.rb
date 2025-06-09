@@ -68,6 +68,12 @@ module Orb
       #   @return [Float, nil]
       optional :conversion_rate, Float, nil?: true
 
+      # @!attribute conversion_rate_config
+      #   The configuration for the rate of the price currency to the invoicing currency.
+      #
+      #   @return [Orb::Models::PriceCreateParams::ConversionRateConfig::Unit, Orb::Models::PriceCreateParams::ConversionRateConfig::Tiered, nil]
+      optional :conversion_rate_config, union: -> { Orb::PriceCreateParams::ConversionRateConfig }, nil?: true
+
       # @!attribute dimensional_price_configuration
       #   For dimensional price: specifies a price group and dimension values
       #
@@ -246,7 +252,7 @@ module Orb
       #   @return [Hash{Symbol=>Object}]
       required :cumulative_grouped_bulk_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
-      # @!method initialize(cadence:, currency:, item_id:, model_type:, name:, unit_config:, package_config:, matrix_config:, matrix_with_allocation_config:, tiered_config:, tiered_bps_config:, bps_config:, bulk_bps_config:, bulk_config:, threshold_total_amount_config:, tiered_package_config:, grouped_tiered_config:, max_group_tiered_package_config:, tiered_with_minimum_config:, package_with_allocation_config:, tiered_package_with_minimum_config:, unit_with_percent_config:, tiered_with_proration_config:, unit_with_proration_config:, grouped_allocation_config:, grouped_with_prorated_minimum_config:, grouped_with_metered_minimum_config:, matrix_with_display_name_config:, bulk_with_proration_config:, grouped_tiered_package_config:, scalable_matrix_with_unit_pricing_config:, scalable_matrix_with_tiered_pricing_config:, cumulative_grouped_bulk_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, request_options: {})
+      # @!method initialize(cadence:, currency:, item_id:, model_type:, name:, unit_config:, package_config:, matrix_config:, matrix_with_allocation_config:, tiered_config:, tiered_bps_config:, bps_config:, bulk_bps_config:, bulk_config:, threshold_total_amount_config:, tiered_package_config:, grouped_tiered_config:, max_group_tiered_package_config:, tiered_with_minimum_config:, package_with_allocation_config:, tiered_package_with_minimum_config:, unit_with_percent_config:, tiered_with_proration_config:, unit_with_proration_config:, grouped_allocation_config:, grouped_with_prorated_minimum_config:, grouped_with_metered_minimum_config:, matrix_with_display_name_config:, bulk_with_proration_config:, grouped_tiered_package_config:, scalable_matrix_with_unit_pricing_config:, scalable_matrix_with_tiered_pricing_config:, cumulative_grouped_bulk_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::PriceCreateParams} for more details.
       #
@@ -324,6 +330,8 @@ module Orb
       #
       #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
       #
+      #   @param conversion_rate_config [Orb::Models::PriceCreateParams::ConversionRateConfig::Unit, Orb::Models::PriceCreateParams::ConversionRateConfig::Tiered, nil] The configuration for the rate of the price currency to the invoicing currency.
+      #
       #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
       #
       #   @param external_price_id [String, nil] An alias for the price.
@@ -360,6 +368,106 @@ module Orb
 
         # @!method self.values
         #   @return [Array<Symbol>]
+      end
+
+      # The configuration for the rate of the price currency to the invoicing currency.
+      module ConversionRateConfig
+        extend Orb::Internal::Type::Union
+
+        discriminator :conversion_rate_type
+
+        variant :unit, -> { Orb::PriceCreateParams::ConversionRateConfig::Unit }
+
+        variant :tiered, -> { Orb::PriceCreateParams::ConversionRateConfig::Tiered }
+
+        class Unit < Orb::Internal::Type::BaseModel
+          # @!attribute conversion_rate_type
+          #
+          #   @return [Symbol, :unit]
+          required :conversion_rate_type, const: :unit
+
+          # @!attribute unit_config
+          #
+          #   @return [Orb::Models::PriceCreateParams::ConversionRateConfig::Unit::UnitConfig]
+          required :unit_config, -> { Orb::PriceCreateParams::ConversionRateConfig::Unit::UnitConfig }
+
+          # @!method initialize(unit_config:, conversion_rate_type: :unit)
+          #   @param unit_config [Orb::Models::PriceCreateParams::ConversionRateConfig::Unit::UnitConfig]
+          #   @param conversion_rate_type [Symbol, :unit]
+
+          # @see Orb::Models::PriceCreateParams::ConversionRateConfig::Unit#unit_config
+          class UnitConfig < Orb::Internal::Type::BaseModel
+            # @!attribute unit_amount
+            #   Amount per unit of overage
+            #
+            #   @return [String]
+            required :unit_amount, String
+
+            # @!method initialize(unit_amount:)
+            #   @param unit_amount [String] Amount per unit of overage
+          end
+        end
+
+        class Tiered < Orb::Internal::Type::BaseModel
+          # @!attribute conversion_rate_type
+          #
+          #   @return [Symbol, :tiered]
+          required :conversion_rate_type, const: :tiered
+
+          # @!attribute tiered_config
+          #
+          #   @return [Orb::Models::PriceCreateParams::ConversionRateConfig::Tiered::TieredConfig]
+          required :tiered_config, -> { Orb::PriceCreateParams::ConversionRateConfig::Tiered::TieredConfig }
+
+          # @!method initialize(tiered_config:, conversion_rate_type: :tiered)
+          #   @param tiered_config [Orb::Models::PriceCreateParams::ConversionRateConfig::Tiered::TieredConfig]
+          #   @param conversion_rate_type [Symbol, :tiered]
+
+          # @see Orb::Models::PriceCreateParams::ConversionRateConfig::Tiered#tiered_config
+          class TieredConfig < Orb::Internal::Type::BaseModel
+            # @!attribute tiers
+            #   Tiers for rating based on total usage quantities into the specified tier
+            #
+            #   @return [Array<Orb::Models::PriceCreateParams::ConversionRateConfig::Tiered::TieredConfig::Tier>]
+            required :tiers,
+                     -> {
+                       Orb::Internal::Type::ArrayOf[Orb::PriceCreateParams::ConversionRateConfig::Tiered::TieredConfig::Tier]
+                     }
+
+            # @!method initialize(tiers:)
+            #   @param tiers [Array<Orb::Models::PriceCreateParams::ConversionRateConfig::Tiered::TieredConfig::Tier>] Tiers for rating based on total usage quantities into the specified tier
+
+            class Tier < Orb::Internal::Type::BaseModel
+              # @!attribute first_unit
+              #   Exclusive tier starting value
+              #
+              #   @return [Float]
+              required :first_unit, Float
+
+              # @!attribute unit_amount
+              #   Amount per unit of overage
+              #
+              #   @return [String]
+              required :unit_amount, String
+
+              # @!attribute last_unit
+              #   Inclusive tier ending value. If null, this is treated as the last tier
+              #
+              #   @return [Float, nil]
+              optional :last_unit, Float, nil?: true
+
+              # @!method initialize(first_unit:, unit_amount:, last_unit: nil)
+              #   @param first_unit [Float] Exclusive tier starting value
+              #
+              #   @param unit_amount [String] Amount per unit of overage
+              #
+              #   @param last_unit [Float, nil] Inclusive tier ending value. If null, this is treated as the last tier
+            end
+          end
+        end
+
+        # @!method self.variants
+        #   @return [Array(Orb::Models::PriceCreateParams::ConversionRateConfig::Unit, Orb::Models::PriceCreateParams::ConversionRateConfig::Tiered)]
       end
     end
   end

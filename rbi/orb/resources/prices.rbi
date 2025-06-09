@@ -58,6 +58,13 @@ module Orb
           billing_cycle_configuration:
             T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
           conversion_rate: T.nilable(Float),
+          conversion_rate_config:
+            T.nilable(
+              T.any(
+                Orb::PriceCreateParams::ConversionRateConfig::Unit::OrHash,
+                Orb::PriceCreateParams::ConversionRateConfig::Tiered::OrHash
+              )
+            ),
           dimensional_price_configuration:
             T.nilable(Orb::NewDimensionalPriceConfiguration::OrHash),
           external_price_id: T.nilable(String),
@@ -118,6 +125,8 @@ module Orb
         billing_cycle_configuration: nil,
         # The per unit conversion rate of the price currency to the invoicing currency.
         conversion_rate: nil,
+        # The configuration for the rate of the price currency to the invoicing currency.
+        conversion_rate_config: nil,
         # For dimensional price: specifies a price group and dimension values
         dimensional_price_configuration: nil,
         # An alias for the price.
@@ -263,9 +272,8 @@ module Orb
       # with the following `filter`:
       # `my_property = 'foo' AND my_other_property = 'bar'`.
       #
-      # The length of the results must be no greater than 1000. Note that this is a POST
-      # endpoint rather than a GET endpoint because it employs a JSON body rather than
-      # query parameters.
+      # Note that this is a POST endpoint rather than a GET endpoint because it employs
+      # a JSON body rather than query parameters.
       sig do
         params(
           timeframe_end: Time,
@@ -288,7 +296,60 @@ module Orb
         timeframe_start:,
         # The ID of the customer to which this evaluation is scoped.
         customer_id: nil,
-        # Optional list of preview events to use instead of actual usage data (max 500)
+        # Optional list of preview events to use instead of actual usage data
+        events: nil,
+        # The external customer ID of the customer to which this evaluation is scoped.
+        external_customer_id: nil,
+        # List of prices to evaluate (max 100)
+        price_evaluations: nil,
+        request_options: {}
+      )
+      end
+
+      # This endpoint is used to evaluate the output of price(s) for a given customer
+      # and time range over preview events. It enables filtering and grouping the output
+      # using
+      # [computed properties](/extensibility/advanced-metrics#computed-properties),
+      # supporting the following workflows:
+      #
+      # 1. Showing detailed usage and costs to the end customer.
+      # 2. Auditing subtotals on invoice line items.
+      #
+      # Prices may either reference existing prices in your Orb account or be defined
+      # inline in the request body. The endpoint has the following limitations:
+      #
+      # 1. Up to 100 prices can be evaluated in a single request.
+      # 2. Up to 500 preview events can be provided in a single request.
+      #
+      # A top-level customer_id is required to evaluate the preview events.
+      # Additionally, all events without a customer_id will have the top-level
+      # customer_id added.
+      #
+      # Note that this is a POST endpoint rather than a GET endpoint because it employs
+      # a JSON body rather than query parameters.
+      sig do
+        params(
+          timeframe_end: Time,
+          timeframe_start: Time,
+          customer_id: T.nilable(String),
+          events:
+            T::Array[Orb::PriceEvaluatePreviewEventsParams::Event::OrHash],
+          external_customer_id: T.nilable(String),
+          price_evaluations:
+            T::Array[
+              Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::OrHash
+            ],
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Models::PriceEvaluatePreviewEventsResponse)
+      end
+      def evaluate_preview_events(
+        # The exclusive upper bound for event timestamps
+        timeframe_end:,
+        # The inclusive lower bound for event timestamps
+        timeframe_start:,
+        # The ID of the customer to which this evaluation is scoped.
+        customer_id: nil,
+        # List of preview events to use instead of actual usage data
         events: nil,
         # The external customer ID of the customer to which this evaluation is scoped.
         external_customer_id: nil,
