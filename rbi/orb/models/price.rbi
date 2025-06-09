@@ -82,6 +82,11 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
+        sig do
+          returns(T.nilable(Orb::Price::Unit::ConversionRateConfig::Variants))
+        end
+        attr_accessor :conversion_rate_config
+
         sig { returns(Time) }
         attr_accessor :created_at
 
@@ -183,6 +188,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::Unit::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -220,6 +232,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -254,6 +267,8 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::Unit::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(Orb::Price::Unit::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -300,6 +315,26 @@ module Orb
             override.returns(T::Array[Orb::Price::Unit::Cadence::TaggedSymbol])
           end
           def self.values
+          end
+        end
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::Unit::ConversionRateConfig::Variants]
+            )
+          end
+          def self.variants
           end
         end
 
@@ -357,6 +392,13 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(Orb::Price::Package::ConversionRateConfig::Variants)
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -459,6 +501,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::Package::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -496,6 +545,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -530,6 +580,8 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::Package::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(Orb::Price::Package::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -580,6 +632,26 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::Package::ConversionRateConfig::Variants]
+            )
+          end
+          def self.variants
           end
         end
 
@@ -637,6 +709,11 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(T.nilable(Orb::Price::Matrix::ConversionRateConfig::Variants))
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -739,6 +816,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::Matrix::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -776,6 +860,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -810,6 +895,8 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::Matrix::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(Orb::Price::Matrix::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -859,6 +946,26 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::Matrix::ConversionRateConfig::Variants]
+            )
+          end
+          def self.variants
           end
         end
 
@@ -916,6 +1023,11 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(T.nilable(Orb::Price::Tiered::ConversionRateConfig::Variants))
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -1018,6 +1130,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::Tiered::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -1055,6 +1174,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -1089,6 +1209,8 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::Tiered::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(Orb::Price::Tiered::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -1138,6 +1260,26 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::Tiered::ConversionRateConfig::Variants]
+            )
+          end
+          def self.variants
           end
         end
 
@@ -1195,6 +1337,13 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(Orb::Price::TieredBPS::ConversionRateConfig::Variants)
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -1297,6 +1446,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::TieredBPS::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -1334,6 +1490,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -1368,6 +1525,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::TieredBPS::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::TieredBPS::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -1419,6 +1580,26 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::TieredBPS::ConversionRateConfig::Variants]
+            )
+          end
+          def self.variants
           end
         end
 
@@ -1481,6 +1662,11 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(T.nilable(Orb::Price::BPS::ConversionRateConfig::Variants))
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -1578,6 +1764,13 @@ module Orb
             bps_config: Orb::BPSConfig::OrHash,
             cadence: Orb::Price::BPS::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -1615,6 +1808,7 @@ module Orb
           bps_config:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -1649,6 +1843,8 @@ module Orb
               bps_config: Orb::BPSConfig,
               cadence: Orb::Price::BPS::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(Orb::Price::BPS::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -1694,6 +1890,26 @@ module Orb
             override.returns(T::Array[Orb::Price::BPS::Cadence::TaggedSymbol])
           end
           def self.values
+          end
+        end
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::BPS::ConversionRateConfig::Variants]
+            )
+          end
+          def self.variants
           end
         end
 
@@ -1755,6 +1971,13 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(Orb::Price::BulkBPS::ConversionRateConfig::Variants)
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -1852,6 +2075,13 @@ module Orb
             bulk_bps_config: Orb::BulkBPSConfig::OrHash,
             cadence: Orb::Price::BulkBPS::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -1889,6 +2119,7 @@ module Orb
           bulk_bps_config:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -1923,6 +2154,8 @@ module Orb
               bulk_bps_config: Orb::BulkBPSConfig,
               cadence: Orb::Price::BulkBPS::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(Orb::Price::BulkBPS::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -1972,6 +2205,26 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::BulkBPS::ConversionRateConfig::Variants]
+            )
+          end
+          def self.variants
           end
         end
 
@@ -2035,6 +2288,11 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(T.nilable(Orb::Price::Bulk::ConversionRateConfig::Variants))
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -2132,6 +2390,13 @@ module Orb
             bulk_config: Orb::BulkConfig::OrHash,
             cadence: Orb::Price::Bulk::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -2169,6 +2434,7 @@ module Orb
           bulk_config:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -2203,6 +2469,8 @@ module Orb
               bulk_config: Orb::BulkConfig,
               cadence: Orb::Price::Bulk::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(Orb::Price::Bulk::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -2248,6 +2516,26 @@ module Orb
             override.returns(T::Array[Orb::Price::Bulk::Cadence::TaggedSymbol])
           end
           def self.values
+          end
+        end
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::Bulk::ConversionRateConfig::Variants]
+            )
+          end
+          def self.variants
           end
         end
 
@@ -2307,6 +2595,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -2408,6 +2705,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::ThresholdTotalAmount::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -2445,6 +2749,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -2479,6 +2784,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::ThresholdTotalAmount::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -2556,6 +2865,28 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -2622,6 +2953,13 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(Orb::Price::TieredPackage::ConversionRateConfig::Variants)
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -2721,6 +3059,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::TieredPackage::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -2758,6 +3103,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -2792,6 +3138,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::TieredPackage::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::TieredPackage::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -2848,6 +3198,28 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::TieredPackage::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
           end
         end
 
@@ -2913,6 +3285,13 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(Orb::Price::GroupedTiered::ConversionRateConfig::Variants)
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -3012,6 +3391,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::GroupedTiered::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -3049,6 +3435,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -3083,6 +3470,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::GroupedTiered::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::GroupedTiered::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -3139,6 +3530,28 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::GroupedTiered::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
           end
         end
 
@@ -3204,6 +3617,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::TieredWithMinimum::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -3303,6 +3725,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::TieredWithMinimum::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -3340,6 +3769,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -3374,6 +3804,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::TieredWithMinimum::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::TieredWithMinimum::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -3445,6 +3879,28 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::TieredWithMinimum::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -3511,6 +3967,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -3612,6 +4077,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::TieredPackageWithMinimum::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -3650,6 +4122,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -3685,6 +4158,10 @@ module Orb
               cadence:
                 Orb::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -3764,6 +4241,28 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -3832,6 +4331,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::PackageWithAllocation::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -3933,6 +4441,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::PackageWithAllocation::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -3970,6 +4485,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -4004,6 +4520,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::PackageWithAllocation::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::PackageWithAllocation::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -4081,6 +4601,28 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::PackageWithAllocation::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -4147,6 +4689,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::UnitWithPercent::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -4246,6 +4797,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::UnitWithPercent::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -4283,6 +4841,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -4317,6 +4876,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::UnitWithPercent::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::UnitWithPercent::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -4376,6 +4939,28 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::UnitWithPercent::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
           end
         end
 
@@ -4443,6 +5028,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::MatrixWithAllocation::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -4552,6 +5146,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::MatrixWithAllocation::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -4590,6 +5191,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -4624,6 +5226,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::MatrixWithAllocation::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::MatrixWithAllocation::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -4701,6 +5307,28 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::MatrixWithAllocation::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -4767,6 +5395,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::TieredWithProration::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -4868,6 +5505,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::TieredWithProration::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -4905,6 +5549,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -4939,6 +5584,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::TieredWithProration::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::TieredWithProration::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -5016,6 +5665,28 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::TieredWithProration::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -5080,6 +5751,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::UnitWithProration::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -5179,6 +5859,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::UnitWithProration::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -5216,6 +5903,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -5250,6 +5938,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::UnitWithProration::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::UnitWithProration::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -5321,6 +6013,28 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::UnitWithProration::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -5385,6 +6099,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::GroupedAllocation::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -5484,6 +6207,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::GroupedAllocation::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -5521,6 +6251,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -5555,6 +6286,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::GroupedAllocation::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::GroupedAllocation::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -5623,6 +6358,28 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::GroupedAllocation::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
           end
         end
 
@@ -5695,6 +6452,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -5798,6 +6564,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::GroupedWithProratedMinimum::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -5836,6 +6609,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -5871,6 +6645,10 @@ module Orb
               cadence:
                 Orb::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -5950,6 +6728,28 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -6018,6 +6818,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -6121,6 +6930,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::GroupedWithMeteredMinimum::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -6159,6 +6975,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -6194,6 +7011,10 @@ module Orb
               cadence:
                 Orb::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -6273,6 +7094,28 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -6341,6 +7184,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -6442,6 +7294,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::MatrixWithDisplayName::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -6479,6 +7338,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -6513,6 +7373,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::MatrixWithDisplayName::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -6590,6 +7454,28 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -6659,6 +7545,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::BulkWithProration::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -6756,6 +7651,13 @@ module Orb
             bulk_with_proration_config: T::Hash[Symbol, T.anything],
             cadence: Orb::Price::BulkWithProration::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -6793,6 +7695,7 @@ module Orb
           bulk_with_proration_config:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -6827,6 +7730,10 @@ module Orb
               bulk_with_proration_config: T::Hash[Symbol, T.anything],
               cadence: Orb::Price::BulkWithProration::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::BulkWithProration::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -6897,6 +7804,28 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::BulkWithProration::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -6961,6 +7890,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::GroupedTieredPackage::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -7062,6 +8000,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::GroupedTieredPackage::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -7099,6 +8044,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -7133,6 +8079,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::GroupedTieredPackage::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::GroupedTieredPackage::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -7210,6 +8160,28 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::GroupedTieredPackage::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -7278,6 +8250,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -7379,6 +8360,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::MaxGroupTieredPackage::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -7416,6 +8404,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -7450,6 +8439,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -7527,6 +8520,28 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -7600,6 +8615,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -7704,6 +8728,13 @@ module Orb
             cadence:
               Orb::Price::ScalableMatrixWithUnitPricing::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -7743,6 +8774,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -7778,6 +8810,10 @@ module Orb
               cadence:
                 Orb::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -7858,6 +8894,28 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -7934,6 +8992,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -8038,6 +9105,13 @@ module Orb
             cadence:
               Orb::Price::ScalableMatrixWithTieredPricing::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             currency: String,
@@ -8077,6 +9151,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           currency:,
@@ -8112,6 +9187,10 @@ module Orb
               cadence:
                 Orb::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -8195,6 +9274,28 @@ module Orb
           end
         end
 
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -8266,6 +9367,15 @@ module Orb
 
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
         attr_accessor :created_at
@@ -8367,6 +9477,13 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::CumulativeGroupedBulk::Cadence::OrSymbol,
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
             created_at: Time,
             credit_allocation: T.nilable(Orb::Allocation::OrHash),
             cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
@@ -8404,6 +9521,7 @@ module Orb
           billing_cycle_configuration:,
           cadence:,
           conversion_rate:,
+          conversion_rate_config:,
           created_at:,
           credit_allocation:,
           cumulative_grouped_bulk_config:,
@@ -8438,6 +9556,10 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
@@ -8512,6 +9634,28 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
           end
         end
 

@@ -59,6 +59,19 @@ module Orb
       sig { returns(T.nilable(Float)) }
       attr_accessor :conversion_rate
 
+      # The configuration for the rate of the price currency to the invoicing currency.
+      sig do
+        returns(
+          T.nilable(
+            T.any(
+              Orb::UnitConversionRateConfig,
+              Orb::TieredConversionRateConfig
+            )
+          )
+        )
+      end
+      attr_accessor :conversion_rate_config
+
       # For dimensional price: specifies a price group and dimension values
       sig { returns(T.nilable(Orb::NewDimensionalPriceConfiguration)) }
       attr_reader :dimensional_price_configuration
@@ -117,6 +130,13 @@ module Orb
           billing_cycle_configuration:
             T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
           conversion_rate: T.nilable(Float),
+          conversion_rate_config:
+            T.nilable(
+              T.any(
+                Orb::UnitConversionRateConfig::OrHash,
+                Orb::TieredConversionRateConfig::OrHash
+              )
+            ),
           dimensional_price_configuration:
             T.nilable(Orb::NewDimensionalPriceConfiguration::OrHash),
           external_price_id: T.nilable(String),
@@ -149,6 +169,8 @@ module Orb
         billing_cycle_configuration: nil,
         # The per unit conversion rate of the price currency to the invoicing currency.
         conversion_rate: nil,
+        # The configuration for the rate of the price currency to the invoicing currency.
+        conversion_rate_config: nil,
         # For dimensional price: specifies a price group and dimension values
         dimensional_price_configuration: nil,
         # An alias for the price.
@@ -183,6 +205,13 @@ module Orb
             billing_cycle_configuration:
               T.nilable(Orb::NewBillingCycleConfiguration),
             conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig,
+                  Orb::TieredConversionRateConfig
+                )
+              ),
             dimensional_price_configuration:
               T.nilable(Orb::NewDimensionalPriceConfiguration),
             external_price_id: T.nilable(String),
@@ -272,6 +301,29 @@ module Orb
           )
         end
         def self.values
+        end
+      end
+
+      # The configuration for the rate of the price currency to the invoicing currency.
+      module ConversionRateConfig
+        extend Orb::Internal::Type::Union
+
+        Variants =
+          T.type_alias do
+            T.any(
+              Orb::UnitConversionRateConfig,
+              Orb::TieredConversionRateConfig
+            )
+          end
+
+        sig do
+          override.returns(
+            T::Array[
+              Orb::NewFloatingBulkWithProrationPrice::ConversionRateConfig::Variants
+            ]
+          )
+        end
+        def self.variants
         end
       end
     end

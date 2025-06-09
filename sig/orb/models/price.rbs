@@ -40,6 +40,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Unit::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Unit::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -71,6 +72,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::Unit::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::Unit::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -116,6 +119,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Unit::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Unit::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -143,6 +147,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Unit::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Unit::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -180,6 +185,15 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::Unit::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Price::Unit::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -199,6 +213,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Package::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Package::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -230,6 +245,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::Package::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::Package::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -275,6 +292,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Package::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Package::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -302,6 +320,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Package::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Package::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -339,6 +358,15 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::Package::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Price::Package::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -358,6 +386,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Matrix::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Matrix::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -389,6 +418,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::Matrix::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::Matrix::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -434,6 +465,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Matrix::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Matrix::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -461,6 +493,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Matrix::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Matrix::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -498,6 +531,15 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::Matrix::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Price::Matrix::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -517,6 +559,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Tiered::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Tiered::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -548,6 +591,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::Tiered::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::Tiered::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -593,6 +638,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Tiered::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Tiered::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -620,6 +666,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Tiered::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Tiered::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -657,6 +704,15 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::Tiered::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Price::Tiered::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -676,6 +732,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredBPS::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredBPS::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -707,6 +764,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::TieredBPS::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::TieredBPS::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -752,6 +811,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredBPS::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredBPS::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -779,6 +839,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredBPS::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredBPS::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -816,6 +877,15 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::TieredBPS::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Price::TieredBPS::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -836,6 +906,7 @@ module Orb
           bps_config: Orb::BPSConfig,
           cadence: Orb::Models::Price::BPS::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::BPS::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -868,6 +939,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::BPS::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::BPS::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -912,6 +985,7 @@ module Orb
           bps_config: Orb::BPSConfig,
           cadence: Orb::Models::Price::BPS::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::BPS::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -939,6 +1013,7 @@ module Orb
           bps_config: Orb::BPSConfig,
           cadence: Orb::Models::Price::BPS::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::BPS::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -975,6 +1050,15 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::BPS::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Price::BPS::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -995,6 +1079,7 @@ module Orb
           bulk_bps_config: Orb::BulkBPSConfig,
           cadence: Orb::Models::Price::BulkBPS::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::BulkBPS::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1027,6 +1112,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::BulkBPS::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::BulkBPS::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -1071,6 +1158,7 @@ module Orb
           bulk_bps_config: Orb::BulkBPSConfig,
           cadence: Orb::Models::Price::BulkBPS::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::BulkBPS::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1098,6 +1186,7 @@ module Orb
           bulk_bps_config: Orb::BulkBPSConfig,
           cadence: Orb::Models::Price::BulkBPS::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::BulkBPS::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1134,6 +1223,15 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::BulkBPS::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Price::BulkBPS::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -1154,6 +1252,7 @@ module Orb
           bulk_config: Orb::BulkConfig,
           cadence: Orb::Models::Price::Bulk::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Bulk::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1186,6 +1285,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::Bulk::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::Bulk::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -1230,6 +1331,7 @@ module Orb
           bulk_config: Orb::BulkConfig,
           cadence: Orb::Models::Price::Bulk::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Bulk::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1257,6 +1359,7 @@ module Orb
           bulk_config: Orb::BulkConfig,
           cadence: Orb::Models::Price::Bulk::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Bulk::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1293,6 +1396,15 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::Bulk::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Price::Bulk::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -1312,6 +1424,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::ThresholdTotalAmount::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::ThresholdTotalAmount::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1343,6 +1456,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::ThresholdTotalAmount::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::ThresholdTotalAmount::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -1388,6 +1503,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::ThresholdTotalAmount::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::ThresholdTotalAmount::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1415,6 +1531,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::ThresholdTotalAmount::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::ThresholdTotalAmount::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1452,6 +1569,15 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::ThresholdTotalAmount::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Price::ThresholdTotalAmount::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -1471,6 +1597,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredPackage::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredPackage::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1502,6 +1629,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::TieredPackage::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::TieredPackage::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -1547,6 +1676,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredPackage::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredPackage::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1574,6 +1704,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredPackage::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredPackage::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1611,6 +1742,15 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::TieredPackage::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Price::TieredPackage::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -1630,6 +1770,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedTiered::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedTiered::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1661,6 +1802,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::GroupedTiered::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedTiered::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -1706,6 +1849,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedTiered::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedTiered::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1733,6 +1877,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedTiered::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedTiered::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1770,6 +1915,15 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::GroupedTiered::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Price::GroupedTiered::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -1789,6 +1943,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredWithMinimum::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredWithMinimum::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1820,6 +1975,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::TieredWithMinimum::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::TieredWithMinimum::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -1865,6 +2022,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredWithMinimum::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredWithMinimum::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1892,6 +2050,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredWithMinimum::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredWithMinimum::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1929,6 +2088,15 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::TieredWithMinimum::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Price::TieredWithMinimum::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -1948,6 +2116,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredPackageWithMinimum::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredPackageWithMinimum::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1979,6 +2148,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::TieredPackageWithMinimum::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::TieredPackageWithMinimum::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -2024,6 +2195,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredPackageWithMinimum::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredPackageWithMinimum::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2051,6 +2223,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredPackageWithMinimum::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredPackageWithMinimum::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2088,6 +2261,15 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::TieredPackageWithMinimum::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Price::TieredPackageWithMinimum::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -2107,6 +2289,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::PackageWithAllocation::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::PackageWithAllocation::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2138,6 +2321,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::PackageWithAllocation::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::PackageWithAllocation::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -2183,6 +2368,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::PackageWithAllocation::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::PackageWithAllocation::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2210,6 +2396,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::PackageWithAllocation::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::PackageWithAllocation::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2247,6 +2434,15 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::PackageWithAllocation::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Price::PackageWithAllocation::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -2266,6 +2462,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::UnitWithPercent::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::UnitWithPercent::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2297,6 +2494,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::UnitWithPercent::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::UnitWithPercent::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -2342,6 +2541,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::UnitWithPercent::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::UnitWithPercent::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2369,6 +2569,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::UnitWithPercent::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::UnitWithPercent::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2406,6 +2607,15 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::UnitWithPercent::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Price::UnitWithPercent::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -2425,6 +2635,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::MatrixWithAllocation::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::MatrixWithAllocation::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2456,6 +2667,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::MatrixWithAllocation::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::MatrixWithAllocation::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -2501,6 +2714,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::MatrixWithAllocation::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::MatrixWithAllocation::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2528,6 +2742,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::MatrixWithAllocation::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::MatrixWithAllocation::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2565,6 +2780,15 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::MatrixWithAllocation::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Price::MatrixWithAllocation::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -2584,6 +2808,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredWithProration::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredWithProration::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2615,6 +2840,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::TieredWithProration::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::TieredWithProration::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -2660,6 +2887,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredWithProration::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredWithProration::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2687,6 +2915,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredWithProration::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::TieredWithProration::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2724,6 +2953,15 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::TieredWithProration::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Price::TieredWithProration::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -2743,6 +2981,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::UnitWithProration::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::UnitWithProration::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2774,6 +3013,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::UnitWithProration::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::UnitWithProration::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -2819,6 +3060,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::UnitWithProration::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::UnitWithProration::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2846,6 +3088,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::UnitWithProration::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::UnitWithProration::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2883,6 +3126,15 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::UnitWithProration::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Price::UnitWithProration::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -2902,6 +3154,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedAllocation::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedAllocation::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2933,6 +3186,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::GroupedAllocation::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedAllocation::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -2978,6 +3233,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedAllocation::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedAllocation::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3005,6 +3261,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedAllocation::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedAllocation::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3042,6 +3299,15 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::GroupedAllocation::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Price::GroupedAllocation::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -3061,6 +3327,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedWithProratedMinimum::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithProratedMinimum::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3092,6 +3359,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::GroupedWithProratedMinimum::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedWithProratedMinimum::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -3137,6 +3406,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedWithProratedMinimum::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithProratedMinimum::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3164,6 +3434,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedWithProratedMinimum::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithProratedMinimum::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3201,6 +3472,15 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::GroupedWithProratedMinimum::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Price::GroupedWithProratedMinimum::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -3220,6 +3500,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedWithMeteredMinimum::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithMeteredMinimum::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3251,6 +3532,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::GroupedWithMeteredMinimum::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedWithMeteredMinimum::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -3296,6 +3579,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedWithMeteredMinimum::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithMeteredMinimum::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3323,6 +3607,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedWithMeteredMinimum::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithMeteredMinimum::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3360,6 +3645,15 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::GroupedWithMeteredMinimum::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Price::GroupedWithMeteredMinimum::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -3379,6 +3673,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::MatrixWithDisplayName::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::MatrixWithDisplayName::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3410,6 +3705,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::MatrixWithDisplayName::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::MatrixWithDisplayName::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -3455,6 +3752,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::MatrixWithDisplayName::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::MatrixWithDisplayName::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3482,6 +3780,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::MatrixWithDisplayName::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::MatrixWithDisplayName::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3519,6 +3818,15 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::MatrixWithDisplayName::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Price::MatrixWithDisplayName::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -3539,6 +3847,7 @@ module Orb
           bulk_with_proration_config: ::Hash[Symbol, top],
           cadence: Orb::Models::Price::BulkWithProration::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::BulkWithProration::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3571,6 +3880,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::BulkWithProration::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::BulkWithProration::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -3615,6 +3926,7 @@ module Orb
           bulk_with_proration_config: ::Hash[Symbol, top],
           cadence: Orb::Models::Price::BulkWithProration::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::BulkWithProration::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3642,6 +3954,7 @@ module Orb
           bulk_with_proration_config: ::Hash[Symbol, top],
           cadence: Orb::Models::Price::BulkWithProration::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::BulkWithProration::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3678,6 +3991,15 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::BulkWithProration::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Price::BulkWithProration::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -3697,6 +4019,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedTieredPackage::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedTieredPackage::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3728,6 +4051,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::GroupedTieredPackage::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedTieredPackage::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -3773,6 +4098,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedTieredPackage::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedTieredPackage::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3800,6 +4126,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedTieredPackage::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::GroupedTieredPackage::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3837,6 +4164,15 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::GroupedTieredPackage::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Price::GroupedTieredPackage::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -3856,6 +4192,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::MaxGroupTieredPackage::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::MaxGroupTieredPackage::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3887,6 +4224,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::MaxGroupTieredPackage::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::MaxGroupTieredPackage::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -3932,6 +4271,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::MaxGroupTieredPackage::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::MaxGroupTieredPackage::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3959,6 +4299,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::MaxGroupTieredPackage::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::MaxGroupTieredPackage::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3996,6 +4337,15 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::MaxGroupTieredPackage::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Price::MaxGroupTieredPackage::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -4015,6 +4365,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::ScalableMatrixWithUnitPricing::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithUnitPricing::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4046,6 +4397,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::ScalableMatrixWithUnitPricing::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::ScalableMatrixWithUnitPricing::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -4091,6 +4444,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::ScalableMatrixWithUnitPricing::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithUnitPricing::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4118,6 +4472,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::ScalableMatrixWithUnitPricing::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithUnitPricing::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4155,6 +4510,15 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithUnitPricing::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Price::ScalableMatrixWithUnitPricing::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -4174,6 +4538,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::ScalableMatrixWithTieredPricing::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithTieredPricing::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4205,6 +4570,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::ScalableMatrixWithTieredPricing::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::ScalableMatrixWithTieredPricing::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -4250,6 +4617,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::ScalableMatrixWithTieredPricing::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithTieredPricing::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4277,6 +4645,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::ScalableMatrixWithTieredPricing::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithTieredPricing::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4314,6 +4683,15 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithTieredPricing::cadence]
         end
 
+        type conversion_rate_config =
+          Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Price::ScalableMatrixWithTieredPricing::conversion_rate_config]
+        end
+
         type price_type = :usage_price | :fixed_price
 
         module PriceType
@@ -4333,6 +4711,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::CumulativeGroupedBulk::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::CumulativeGroupedBulk::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           cumulative_grouped_bulk_config: ::Hash[Symbol, top],
@@ -4364,6 +4743,8 @@ module Orb
         attr_accessor cadence: Orb::Models::Price::CumulativeGroupedBulk::cadence
 
         attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::CumulativeGroupedBulk::conversion_rate_config?
 
         attr_accessor created_at: Time
 
@@ -4409,6 +4790,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::CumulativeGroupedBulk::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::CumulativeGroupedBulk::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           cumulative_grouped_bulk_config: ::Hash[Symbol, top],
@@ -4436,6 +4818,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::CumulativeGroupedBulk::cadence,
           conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::CumulativeGroupedBulk::conversion_rate_config?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           cumulative_grouped_bulk_config: ::Hash[Symbol, top],
@@ -4471,6 +4854,15 @@ module Orb
           CUSTOM: :custom
 
           def self?.values: -> ::Array[Orb::Models::Price::CumulativeGroupedBulk::cadence]
+        end
+
+        type conversion_rate_config =
+          Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Price::CumulativeGroupedBulk::conversion_rate_config]
         end
 
         type price_type = :usage_price | :fixed_price

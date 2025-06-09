@@ -12,6 +12,7 @@ module Orb
         billed_in_advance: bool?,
         billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
         conversion_rate: Float?,
+        conversion_rate_config: Orb::Models::PriceCreateParams::conversion_rate_config?,
         dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
         external_price_id: String?,
         fixed_price_quantity: Float?,
@@ -71,6 +72,8 @@ module Orb
       attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
 
       attr_accessor conversion_rate: Float?
+
+      attr_accessor conversion_rate_config: Orb::Models::PriceCreateParams::conversion_rate_config?
 
       attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
 
@@ -176,6 +179,7 @@ module Orb
         ?billed_in_advance: bool?,
         ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
         ?conversion_rate: Float?,
+        ?conversion_rate_config: Orb::Models::PriceCreateParams::conversion_rate_config?,
         ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
         ?external_price_id: String?,
         ?fixed_price_quantity: Float?,
@@ -196,6 +200,7 @@ module Orb
         billed_in_advance: bool?,
         billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
         conversion_rate: Float?,
+        conversion_rate_config: Orb::Models::PriceCreateParams::conversion_rate_config?,
         dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
         external_price_id: String?,
         fixed_price_quantity: Float?,
@@ -256,6 +261,15 @@ module Orb
         CUMULATIVE_GROUPED_BULK: :cumulative_grouped_bulk
 
         def self?.values: -> ::Array[Orb::Models::PriceCreateParams::model_type]
+      end
+
+      type conversion_rate_config =
+        Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
+
+      module ConversionRateConfig
+        extend Orb::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Orb::Models::PriceCreateParams::conversion_rate_config]
       end
     end
   end

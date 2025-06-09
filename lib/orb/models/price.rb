@@ -99,6 +99,11 @@ module Orb
         #   @return [Float, nil]
         required :conversion_rate, Float, nil?: true
 
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config, union: -> { Orb::Price::Unit::ConversionRateConfig }, nil?: true
+
         # @!attribute created_at
         #
         #   @return [Time]
@@ -203,7 +208,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, unit_config:, dimensional_price_configuration: nil, model_type: :unit)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, unit_config:, dimensional_price_configuration: nil, model_type: :unit)
         #   Some parameter documentations has been truncated, see {Orb::Models::Price::Unit}
         #   for more details.
         #
@@ -216,6 +221,8 @@ module Orb
         #   @param cadence [Symbol, Orb::Models::Price::Unit::Cadence]
         #
         #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         #
         #   @param created_at [Time]
         #
@@ -270,6 +277,20 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        # @see Orb::Models::Price::Unit#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
+        end
+
         # @see Orb::Models::Price::Unit#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -307,6 +328,11 @@ module Orb
         #
         #   @return [Float, nil]
         required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config, union: -> { Orb::Price::Package::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -412,7 +438,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, package_config:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :package)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, package_config:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :package)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::Package} for more details.
         #
@@ -425,6 +451,8 @@ module Orb
         #   @param cadence [Symbol, Orb::Models::Price::Package::Cadence]
         #
         #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         #
         #   @param created_at [Time]
         #
@@ -479,6 +507,20 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        # @see Orb::Models::Price::Package#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
+        end
+
         # @see Orb::Models::Price::Package#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -516,6 +558,11 @@ module Orb
         #
         #   @return [Float, nil]
         required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config, union: -> { Orb::Price::Matrix::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -621,7 +668,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :matrix)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :matrix)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::Matrix} for more details.
         #
@@ -634,6 +681,8 @@ module Orb
         #   @param cadence [Symbol, Orb::Models::Price::Matrix::Cadence]
         #
         #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         #
         #   @param created_at [Time]
         #
@@ -688,6 +737,20 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        # @see Orb::Models::Price::Matrix#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
+        end
+
         # @see Orb::Models::Price::Matrix#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -725,6 +788,11 @@ module Orb
         #
         #   @return [Float, nil]
         required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config, union: -> { Orb::Price::Tiered::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -830,7 +898,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_config:, dimensional_price_configuration: nil, model_type: :tiered)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_config:, dimensional_price_configuration: nil, model_type: :tiered)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::Tiered} for more details.
         #
@@ -843,6 +911,8 @@ module Orb
         #   @param cadence [Symbol, Orb::Models::Price::Tiered::Cadence]
         #
         #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         #
         #   @param created_at [Time]
         #
@@ -897,6 +967,20 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        # @see Orb::Models::Price::Tiered#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
+        end
+
         # @see Orb::Models::Price::Tiered#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -934,6 +1018,15 @@ module Orb
         #
         #   @return [Float, nil]
         required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config,
+                 union: -> {
+                   Orb::Price::TieredBPS::ConversionRateConfig
+                 },
+                 nil?: true
 
         # @!attribute created_at
         #
@@ -1039,7 +1132,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_bps_config:, dimensional_price_configuration: nil, model_type: :tiered_bps)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_bps_config:, dimensional_price_configuration: nil, model_type: :tiered_bps)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::TieredBPS} for more details.
         #
@@ -1052,6 +1145,8 @@ module Orb
         #   @param cadence [Symbol, Orb::Models::Price::TieredBPS::Cadence]
         #
         #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         #
         #   @param created_at [Time]
         #
@@ -1106,6 +1201,20 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        # @see Orb::Models::Price::TieredBPS#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
+        end
+
         # @see Orb::Models::Price::TieredBPS#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -1148,6 +1257,11 @@ module Orb
         #
         #   @return [Float, nil]
         required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config, union: -> { Orb::Price::BPS::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -1248,7 +1362,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bps_config:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :bps)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bps_config:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :bps)
         #   Some parameter documentations has been truncated, see {Orb::Models::Price::BPS}
         #   for more details.
         #
@@ -1263,6 +1377,8 @@ module Orb
         #   @param cadence [Symbol, Orb::Models::Price::BPS::Cadence]
         #
         #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         #
         #   @param created_at [Time]
         #
@@ -1315,6 +1431,20 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        # @see Orb::Models::Price::BPS#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
+        end
+
         # @see Orb::Models::Price::BPS#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -1357,6 +1487,11 @@ module Orb
         #
         #   @return [Float, nil]
         required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config, union: -> { Orb::Price::BulkBPS::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -1457,7 +1592,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bulk_bps_config:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :bulk_bps)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bulk_bps_config:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :bulk_bps)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::BulkBPS} for more details.
         #
@@ -1472,6 +1607,8 @@ module Orb
         #   @param cadence [Symbol, Orb::Models::Price::BulkBPS::Cadence]
         #
         #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         #
         #   @param created_at [Time]
         #
@@ -1524,6 +1661,20 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        # @see Orb::Models::Price::BulkBPS#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
+        end
+
         # @see Orb::Models::Price::BulkBPS#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -1566,6 +1717,11 @@ module Orb
         #
         #   @return [Float, nil]
         required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config, union: -> { Orb::Price::Bulk::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -1666,7 +1822,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bulk_config:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :bulk)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bulk_config:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :bulk)
         #   Some parameter documentations has been truncated, see {Orb::Models::Price::Bulk}
         #   for more details.
         #
@@ -1681,6 +1837,8 @@ module Orb
         #   @param cadence [Symbol, Orb::Models::Price::Bulk::Cadence]
         #
         #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         #
         #   @param created_at [Time]
         #
@@ -1733,6 +1891,20 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        # @see Orb::Models::Price::Bulk#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
+        end
+
         # @see Orb::Models::Price::Bulk#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -1770,6 +1942,13 @@ module Orb
         #
         #   @return [Float, nil]
         required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::ThresholdTotalAmount::ConversionRateConfig },
+                 nil?: true
 
         # @!attribute created_at
         #
@@ -1875,7 +2054,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, threshold_total_amount_config:, dimensional_price_configuration: nil, model_type: :threshold_total_amount)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, threshold_total_amount_config:, dimensional_price_configuration: nil, model_type: :threshold_total_amount)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::ThresholdTotalAmount} for more details.
         #
@@ -1888,6 +2067,8 @@ module Orb
         #   @param cadence [Symbol, Orb::Models::Price::ThresholdTotalAmount::Cadence]
         #
         #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         #
         #   @param created_at [Time]
         #
@@ -1942,6 +2123,20 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        # @see Orb::Models::Price::ThresholdTotalAmount#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
+        end
+
         # @see Orb::Models::Price::ThresholdTotalAmount#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -1979,6 +2174,13 @@ module Orb
         #
         #   @return [Float, nil]
         required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::TieredPackage::ConversionRateConfig },
+                 nil?: true
 
         # @!attribute created_at
         #
@@ -2084,7 +2286,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_package_config:, dimensional_price_configuration: nil, model_type: :tiered_package)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_package_config:, dimensional_price_configuration: nil, model_type: :tiered_package)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::TieredPackage} for more details.
         #
@@ -2097,6 +2299,8 @@ module Orb
         #   @param cadence [Symbol, Orb::Models::Price::TieredPackage::Cadence]
         #
         #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         #
         #   @param created_at [Time]
         #
@@ -2151,6 +2355,20 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        # @see Orb::Models::Price::TieredPackage#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
+        end
+
         # @see Orb::Models::Price::TieredPackage#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -2188,6 +2406,13 @@ module Orb
         #
         #   @return [Float, nil]
         required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::GroupedTiered::ConversionRateConfig },
+                 nil?: true
 
         # @!attribute created_at
         #
@@ -2293,7 +2518,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_tiered_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :grouped_tiered)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_tiered_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :grouped_tiered)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedTiered} for more details.
         #
@@ -2306,6 +2531,8 @@ module Orb
         #   @param cadence [Symbol, Orb::Models::Price::GroupedTiered::Cadence]
         #
         #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         #
         #   @param created_at [Time]
         #
@@ -2360,6 +2587,20 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        # @see Orb::Models::Price::GroupedTiered#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
+        end
+
         # @see Orb::Models::Price::GroupedTiered#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -2397,6 +2638,13 @@ module Orb
         #
         #   @return [Float, nil]
         required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::TieredWithMinimum::ConversionRateConfig },
+                 nil?: true
 
         # @!attribute created_at
         #
@@ -2502,7 +2750,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_with_minimum_config:, dimensional_price_configuration: nil, model_type: :tiered_with_minimum)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_with_minimum_config:, dimensional_price_configuration: nil, model_type: :tiered_with_minimum)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::TieredWithMinimum} for more details.
         #
@@ -2515,6 +2763,8 @@ module Orb
         #   @param cadence [Symbol, Orb::Models::Price::TieredWithMinimum::Cadence]
         #
         #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         #
         #   @param created_at [Time]
         #
@@ -2569,6 +2819,20 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        # @see Orb::Models::Price::TieredWithMinimum#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
+        end
+
         # @see Orb::Models::Price::TieredWithMinimum#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -2606,6 +2870,13 @@ module Orb
         #
         #   @return [Float, nil]
         required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::TieredPackageWithMinimum::ConversionRateConfig },
+                 nil?: true
 
         # @!attribute created_at
         #
@@ -2712,7 +2983,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_package_with_minimum_config:, dimensional_price_configuration: nil, model_type: :tiered_package_with_minimum)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_package_with_minimum_config:, dimensional_price_configuration: nil, model_type: :tiered_package_with_minimum)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::TieredPackageWithMinimum} for more details.
         #
@@ -2725,6 +2996,8 @@ module Orb
         #   @param cadence [Symbol, Orb::Models::Price::TieredPackageWithMinimum::Cadence]
         #
         #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         #
         #   @param created_at [Time]
         #
@@ -2779,6 +3052,20 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        # @see Orb::Models::Price::TieredPackageWithMinimum#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
+        end
+
         # @see Orb::Models::Price::TieredPackageWithMinimum#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -2816,6 +3103,13 @@ module Orb
         #
         #   @return [Float, nil]
         required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::PackageWithAllocation::ConversionRateConfig },
+                 nil?: true
 
         # @!attribute created_at
         #
@@ -2921,7 +3215,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, package_with_allocation_config:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :package_with_allocation)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, package_with_allocation_config:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :package_with_allocation)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::PackageWithAllocation} for more details.
         #
@@ -2934,6 +3228,8 @@ module Orb
         #   @param cadence [Symbol, Orb::Models::Price::PackageWithAllocation::Cadence]
         #
         #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         #
         #   @param created_at [Time]
         #
@@ -2988,6 +3284,20 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        # @see Orb::Models::Price::PackageWithAllocation#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
+        end
+
         # @see Orb::Models::Price::PackageWithAllocation#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -3025,6 +3335,13 @@ module Orb
         #
         #   @return [Float, nil]
         required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::UnitWithPercent::ConversionRateConfig },
+                 nil?: true
 
         # @!attribute created_at
         #
@@ -3130,7 +3447,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, unit_with_percent_config:, dimensional_price_configuration: nil, model_type: :unit_with_percent)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, unit_with_percent_config:, dimensional_price_configuration: nil, model_type: :unit_with_percent)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::UnitWithPercent} for more details.
         #
@@ -3143,6 +3460,8 @@ module Orb
         #   @param cadence [Symbol, Orb::Models::Price::UnitWithPercent::Cadence]
         #
         #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         #
         #   @param created_at [Time]
         #
@@ -3197,6 +3516,20 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        # @see Orb::Models::Price::UnitWithPercent#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
+        end
+
         # @see Orb::Models::Price::UnitWithPercent#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -3234,6 +3567,13 @@ module Orb
         #
         #   @return [Float, nil]
         required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::MatrixWithAllocation::ConversionRateConfig },
+                 nil?: true
 
         # @!attribute created_at
         #
@@ -3339,7 +3679,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_with_allocation_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :matrix_with_allocation)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_with_allocation_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :matrix_with_allocation)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::MatrixWithAllocation} for more details.
         #
@@ -3352,6 +3692,8 @@ module Orb
         #   @param cadence [Symbol, Orb::Models::Price::MatrixWithAllocation::Cadence]
         #
         #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         #
         #   @param created_at [Time]
         #
@@ -3406,6 +3748,20 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        # @see Orb::Models::Price::MatrixWithAllocation#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
+        end
+
         # @see Orb::Models::Price::MatrixWithAllocation#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -3443,6 +3799,13 @@ module Orb
         #
         #   @return [Float, nil]
         required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::TieredWithProration::ConversionRateConfig },
+                 nil?: true
 
         # @!attribute created_at
         #
@@ -3548,7 +3911,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_with_proration_config:, dimensional_price_configuration: nil, model_type: :tiered_with_proration)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_with_proration_config:, dimensional_price_configuration: nil, model_type: :tiered_with_proration)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::TieredWithProration} for more details.
         #
@@ -3561,6 +3924,8 @@ module Orb
         #   @param cadence [Symbol, Orb::Models::Price::TieredWithProration::Cadence]
         #
         #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         #
         #   @param created_at [Time]
         #
@@ -3615,6 +3980,20 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        # @see Orb::Models::Price::TieredWithProration#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
+        end
+
         # @see Orb::Models::Price::TieredWithProration#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -3652,6 +4031,13 @@ module Orb
         #
         #   @return [Float, nil]
         required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::UnitWithProration::ConversionRateConfig },
+                 nil?: true
 
         # @!attribute created_at
         #
@@ -3757,7 +4143,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, unit_with_proration_config:, dimensional_price_configuration: nil, model_type: :unit_with_proration)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, unit_with_proration_config:, dimensional_price_configuration: nil, model_type: :unit_with_proration)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::UnitWithProration} for more details.
         #
@@ -3770,6 +4156,8 @@ module Orb
         #   @param cadence [Symbol, Orb::Models::Price::UnitWithProration::Cadence]
         #
         #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         #
         #   @param created_at [Time]
         #
@@ -3824,6 +4212,20 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        # @see Orb::Models::Price::UnitWithProration#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
+        end
+
         # @see Orb::Models::Price::UnitWithProration#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -3861,6 +4263,13 @@ module Orb
         #
         #   @return [Float, nil]
         required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::GroupedAllocation::ConversionRateConfig },
+                 nil?: true
 
         # @!attribute created_at
         #
@@ -3966,7 +4375,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_allocation_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :grouped_allocation)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_allocation_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :grouped_allocation)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedAllocation} for more details.
         #
@@ -3979,6 +4388,8 @@ module Orb
         #   @param cadence [Symbol, Orb::Models::Price::GroupedAllocation::Cadence]
         #
         #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         #
         #   @param created_at [Time]
         #
@@ -4033,6 +4444,20 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        # @see Orb::Models::Price::GroupedAllocation#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
+        end
+
         # @see Orb::Models::Price::GroupedAllocation#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -4070,6 +4495,13 @@ module Orb
         #
         #   @return [Float, nil]
         required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig },
+                 nil?: true
 
         # @!attribute created_at
         #
@@ -4176,7 +4608,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_prorated_minimum_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :grouped_with_prorated_minimum)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_prorated_minimum_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :grouped_with_prorated_minimum)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedWithProratedMinimum} for more details.
         #
@@ -4189,6 +4621,8 @@ module Orb
         #   @param cadence [Symbol, Orb::Models::Price::GroupedWithProratedMinimum::Cadence]
         #
         #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         #
         #   @param created_at [Time]
         #
@@ -4243,6 +4677,20 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        # @see Orb::Models::Price::GroupedWithProratedMinimum#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
+        end
+
         # @see Orb::Models::Price::GroupedWithProratedMinimum#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -4280,6 +4728,13 @@ module Orb
         #
         #   @return [Float, nil]
         required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig },
+                 nil?: true
 
         # @!attribute created_at
         #
@@ -4386,7 +4841,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_metered_minimum_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :grouped_with_metered_minimum)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_metered_minimum_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :grouped_with_metered_minimum)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedWithMeteredMinimum} for more details.
         #
@@ -4399,6 +4854,8 @@ module Orb
         #   @param cadence [Symbol, Orb::Models::Price::GroupedWithMeteredMinimum::Cadence]
         #
         #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         #
         #   @param created_at [Time]
         #
@@ -4453,6 +4910,20 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        # @see Orb::Models::Price::GroupedWithMeteredMinimum#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
+        end
+
         # @see Orb::Models::Price::GroupedWithMeteredMinimum#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -4490,6 +4961,13 @@ module Orb
         #
         #   @return [Float, nil]
         required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::MatrixWithDisplayName::ConversionRateConfig },
+                 nil?: true
 
         # @!attribute created_at
         #
@@ -4595,7 +5073,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_with_display_name_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :matrix_with_display_name)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_with_display_name_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :matrix_with_display_name)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::MatrixWithDisplayName} for more details.
         #
@@ -4608,6 +5086,8 @@ module Orb
         #   @param cadence [Symbol, Orb::Models::Price::MatrixWithDisplayName::Cadence]
         #
         #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         #
         #   @param created_at [Time]
         #
@@ -4662,6 +5142,20 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        # @see Orb::Models::Price::MatrixWithDisplayName#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
+        end
+
         # @see Orb::Models::Price::MatrixWithDisplayName#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -4704,6 +5198,13 @@ module Orb
         #
         #   @return [Float, nil]
         required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::BulkWithProration::ConversionRateConfig },
+                 nil?: true
 
         # @!attribute created_at
         #
@@ -4804,7 +5305,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bulk_with_proration_config:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :bulk_with_proration)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bulk_with_proration_config:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :bulk_with_proration)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::BulkWithProration} for more details.
         #
@@ -4819,6 +5320,8 @@ module Orb
         #   @param cadence [Symbol, Orb::Models::Price::BulkWithProration::Cadence]
         #
         #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         #
         #   @param created_at [Time]
         #
@@ -4871,6 +5374,20 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        # @see Orb::Models::Price::BulkWithProration#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
+        end
+
         # @see Orb::Models::Price::BulkWithProration#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -4908,6 +5425,13 @@ module Orb
         #
         #   @return [Float, nil]
         required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::GroupedTieredPackage::ConversionRateConfig },
+                 nil?: true
 
         # @!attribute created_at
         #
@@ -5013,7 +5537,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_tiered_package_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :grouped_tiered_package)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_tiered_package_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :grouped_tiered_package)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedTieredPackage} for more details.
         #
@@ -5026,6 +5550,8 @@ module Orb
         #   @param cadence [Symbol, Orb::Models::Price::GroupedTieredPackage::Cadence]
         #
         #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         #
         #   @param created_at [Time]
         #
@@ -5080,6 +5606,20 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        # @see Orb::Models::Price::GroupedTieredPackage#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
+        end
+
         # @see Orb::Models::Price::GroupedTieredPackage#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -5117,6 +5657,13 @@ module Orb
         #
         #   @return [Float, nil]
         required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::MaxGroupTieredPackage::ConversionRateConfig },
+                 nil?: true
 
         # @!attribute created_at
         #
@@ -5222,7 +5769,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, max_group_tiered_package_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :max_group_tiered_package)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, max_group_tiered_package_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :max_group_tiered_package)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::MaxGroupTieredPackage} for more details.
         #
@@ -5235,6 +5782,8 @@ module Orb
         #   @param cadence [Symbol, Orb::Models::Price::MaxGroupTieredPackage::Cadence]
         #
         #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         #
         #   @param created_at [Time]
         #
@@ -5289,6 +5838,20 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        # @see Orb::Models::Price::MaxGroupTieredPackage#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
+        end
+
         # @see Orb::Models::Price::MaxGroupTieredPackage#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -5326,6 +5889,13 @@ module Orb
         #
         #   @return [Float, nil]
         required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig },
+                 nil?: true
 
         # @!attribute created_at
         #
@@ -5432,7 +6002,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, scalable_matrix_with_unit_pricing_config:, dimensional_price_configuration: nil, model_type: :scalable_matrix_with_unit_pricing)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, scalable_matrix_with_unit_pricing_config:, dimensional_price_configuration: nil, model_type: :scalable_matrix_with_unit_pricing)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::ScalableMatrixWithUnitPricing} for more details.
         #
@@ -5445,6 +6015,8 @@ module Orb
         #   @param cadence [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricing::Cadence]
         #
         #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         #
         #   @param created_at [Time]
         #
@@ -5499,6 +6071,20 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        # @see Orb::Models::Price::ScalableMatrixWithUnitPricing#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
+        end
+
         # @see Orb::Models::Price::ScalableMatrixWithUnitPricing#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -5536,6 +6122,13 @@ module Orb
         #
         #   @return [Float, nil]
         required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig },
+                 nil?: true
 
         # @!attribute created_at
         #
@@ -5642,7 +6235,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, scalable_matrix_with_tiered_pricing_config:, dimensional_price_configuration: nil, model_type: :scalable_matrix_with_tiered_pricing)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, scalable_matrix_with_tiered_pricing_config:, dimensional_price_configuration: nil, model_type: :scalable_matrix_with_tiered_pricing)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::ScalableMatrixWithTieredPricing} for more details.
         #
@@ -5655,6 +6248,8 @@ module Orb
         #   @param cadence [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricing::Cadence]
         #
         #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         #
         #   @param created_at [Time]
         #
@@ -5709,6 +6304,20 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        # @see Orb::Models::Price::ScalableMatrixWithTieredPricing#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
+        end
+
         # @see Orb::Models::Price::ScalableMatrixWithTieredPricing#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -5746,6 +6355,13 @@ module Orb
         #
         #   @return [Float, nil]
         required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::CumulativeGroupedBulk::ConversionRateConfig },
+                 nil?: true
 
         # @!attribute created_at
         #
@@ -5851,7 +6467,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, created_at:, credit_allocation:, cumulative_grouped_bulk_config:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :cumulative_grouped_bulk)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, cumulative_grouped_bulk_config:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :cumulative_grouped_bulk)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::CumulativeGroupedBulk} for more details.
         #
@@ -5864,6 +6480,8 @@ module Orb
         #   @param cadence [Symbol, Orb::Models::Price::CumulativeGroupedBulk::Cadence]
         #
         #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         #
         #   @param created_at [Time]
         #
@@ -5916,6 +6534,20 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        # @see Orb::Models::Price::CumulativeGroupedBulk#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
         end
 
         # @see Orb::Models::Price::CumulativeGroupedBulk#price_type
