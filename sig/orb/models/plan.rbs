@@ -13,10 +13,10 @@ module Orb
         discount: Orb::Models::discount?,
         external_plan_id: String?,
         invoicing_currency: String,
-        maximum: Orb::Plan::Maximum?,
+        maximum: Orb::Maximum?,
         maximum_amount: String?,
         metadata: ::Hash[Symbol, String],
-        minimum: Orb::Plan::Minimum?,
+        minimum: Orb::Minimum?,
         minimum_amount: String?,
         name: String,
         net_terms: Integer?,
@@ -51,13 +51,13 @@ module Orb
 
       attr_accessor invoicing_currency: String
 
-      attr_accessor maximum: Orb::Plan::Maximum?
+      attr_accessor maximum: Orb::Maximum?
 
       attr_accessor maximum_amount: String?
 
       attr_accessor metadata: ::Hash[Symbol, String]
 
-      attr_accessor minimum: Orb::Plan::Minimum?
+      attr_accessor minimum: Orb::Minimum?
 
       attr_accessor minimum_amount: String?
 
@@ -89,10 +89,10 @@ module Orb
         discount: Orb::Models::discount?,
         external_plan_id: String?,
         invoicing_currency: String,
-        maximum: Orb::Plan::Maximum?,
+        maximum: Orb::Maximum?,
         maximum_amount: String?,
         metadata: ::Hash[Symbol, String],
-        minimum: Orb::Plan::Minimum?,
+        minimum: Orb::Minimum?,
         minimum_amount: String?,
         name: String,
         net_terms: Integer?,
@@ -116,10 +116,10 @@ module Orb
         discount: Orb::Models::discount?,
         external_plan_id: String?,
         invoicing_currency: String,
-        maximum: Orb::Plan::Maximum?,
+        maximum: Orb::Maximum?,
         maximum_amount: String?,
         metadata: ::Hash[Symbol, String],
-        minimum: Orb::Plan::Minimum?,
+        minimum: Orb::Minimum?,
         minimum_amount: String?,
         name: String,
         net_terms: Integer?,
@@ -132,544 +132,14 @@ module Orb
       }
 
       type adjustment =
-        Orb::Plan::Adjustment::UsageDiscount
-        | Orb::Plan::Adjustment::AmountDiscount
-        | Orb::Plan::Adjustment::PercentageDiscount
-        | Orb::Plan::Adjustment::Minimum
-        | Orb::Plan::Adjustment::Maximum
+        Orb::PlanPhaseUsageDiscountAdjustment
+        | Orb::PlanPhaseAmountDiscountAdjustment
+        | Orb::PlanPhasePercentageDiscountAdjustment
+        | Orb::PlanPhaseMinimumAdjustment
+        | Orb::PlanPhaseMaximumAdjustment
 
       module Adjustment
         extend Orb::Internal::Type::Union
-
-        type usage_discount =
-          {
-            id: String,
-            adjustment_type: :usage_discount,
-            applies_to_price_ids: ::Array[String],
-            filters: ::Array[Orb::Plan::Adjustment::UsageDiscount::Filter],
-            is_invoice_level: bool,
-            plan_phase_order: Integer?,
-            reason: String?,
-            usage_discount: Float
-          }
-
-        class UsageDiscount < Orb::Internal::Type::BaseModel
-          attr_accessor id: String
-
-          attr_accessor adjustment_type: :usage_discount
-
-          attr_accessor applies_to_price_ids: ::Array[String]
-
-          attr_accessor filters: ::Array[Orb::Plan::Adjustment::UsageDiscount::Filter]
-
-          attr_accessor is_invoice_level: bool
-
-          attr_accessor plan_phase_order: Integer?
-
-          attr_accessor reason: String?
-
-          attr_accessor usage_discount: Float
-
-          def initialize: (
-            id: String,
-            applies_to_price_ids: ::Array[String],
-            filters: ::Array[Orb::Plan::Adjustment::UsageDiscount::Filter],
-            is_invoice_level: bool,
-            plan_phase_order: Integer?,
-            reason: String?,
-            usage_discount: Float,
-            ?adjustment_type: :usage_discount
-          ) -> void
-
-          def to_hash: -> {
-            id: String,
-            adjustment_type: :usage_discount,
-            applies_to_price_ids: ::Array[String],
-            filters: ::Array[Orb::Plan::Adjustment::UsageDiscount::Filter],
-            is_invoice_level: bool,
-            plan_phase_order: Integer?,
-            reason: String?,
-            usage_discount: Float
-          }
-
-          type filter =
-            {
-              field: Orb::Models::Plan::Adjustment::UsageDiscount::Filter::field,
-              operator: Orb::Models::Plan::Adjustment::UsageDiscount::Filter::operator,
-              values: ::Array[String]
-            }
-
-          class Filter < Orb::Internal::Type::BaseModel
-            attr_accessor field: Orb::Models::Plan::Adjustment::UsageDiscount::Filter::field
-
-            attr_accessor operator: Orb::Models::Plan::Adjustment::UsageDiscount::Filter::operator
-
-            attr_accessor values: ::Array[String]
-
-            def initialize: (
-              field: Orb::Models::Plan::Adjustment::UsageDiscount::Filter::field,
-              operator: Orb::Models::Plan::Adjustment::UsageDiscount::Filter::operator,
-              values: ::Array[String]
-            ) -> void
-
-            def to_hash: -> {
-              field: Orb::Models::Plan::Adjustment::UsageDiscount::Filter::field,
-              operator: Orb::Models::Plan::Adjustment::UsageDiscount::Filter::operator,
-              values: ::Array[String]
-            }
-
-            type field =
-              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
-
-            module Field
-              extend Orb::Internal::Type::Enum
-
-              PRICE_ID: :price_id
-              ITEM_ID: :item_id
-              PRICE_TYPE: :price_type
-              CURRENCY: :currency
-              PRICING_UNIT_ID: :pricing_unit_id
-
-              def self?.values: -> ::Array[Orb::Models::Plan::Adjustment::UsageDiscount::Filter::field]
-            end
-
-            type operator = :includes | :excludes
-
-            module Operator
-              extend Orb::Internal::Type::Enum
-
-              INCLUDES: :includes
-              EXCLUDES: :excludes
-
-              def self?.values: -> ::Array[Orb::Models::Plan::Adjustment::UsageDiscount::Filter::operator]
-            end
-          end
-        end
-
-        type amount_discount =
-          {
-            id: String,
-            adjustment_type: :amount_discount,
-            amount_discount: String,
-            applies_to_price_ids: ::Array[String],
-            filters: ::Array[Orb::Plan::Adjustment::AmountDiscount::Filter],
-            is_invoice_level: bool,
-            plan_phase_order: Integer?,
-            reason: String?
-          }
-
-        class AmountDiscount < Orb::Internal::Type::BaseModel
-          attr_accessor id: String
-
-          attr_accessor adjustment_type: :amount_discount
-
-          attr_accessor amount_discount: String
-
-          attr_accessor applies_to_price_ids: ::Array[String]
-
-          attr_accessor filters: ::Array[Orb::Plan::Adjustment::AmountDiscount::Filter]
-
-          attr_accessor is_invoice_level: bool
-
-          attr_accessor plan_phase_order: Integer?
-
-          attr_accessor reason: String?
-
-          def initialize: (
-            id: String,
-            amount_discount: String,
-            applies_to_price_ids: ::Array[String],
-            filters: ::Array[Orb::Plan::Adjustment::AmountDiscount::Filter],
-            is_invoice_level: bool,
-            plan_phase_order: Integer?,
-            reason: String?,
-            ?adjustment_type: :amount_discount
-          ) -> void
-
-          def to_hash: -> {
-            id: String,
-            adjustment_type: :amount_discount,
-            amount_discount: String,
-            applies_to_price_ids: ::Array[String],
-            filters: ::Array[Orb::Plan::Adjustment::AmountDiscount::Filter],
-            is_invoice_level: bool,
-            plan_phase_order: Integer?,
-            reason: String?
-          }
-
-          type filter =
-            {
-              field: Orb::Models::Plan::Adjustment::AmountDiscount::Filter::field,
-              operator: Orb::Models::Plan::Adjustment::AmountDiscount::Filter::operator,
-              values: ::Array[String]
-            }
-
-          class Filter < Orb::Internal::Type::BaseModel
-            attr_accessor field: Orb::Models::Plan::Adjustment::AmountDiscount::Filter::field
-
-            attr_accessor operator: Orb::Models::Plan::Adjustment::AmountDiscount::Filter::operator
-
-            attr_accessor values: ::Array[String]
-
-            def initialize: (
-              field: Orb::Models::Plan::Adjustment::AmountDiscount::Filter::field,
-              operator: Orb::Models::Plan::Adjustment::AmountDiscount::Filter::operator,
-              values: ::Array[String]
-            ) -> void
-
-            def to_hash: -> {
-              field: Orb::Models::Plan::Adjustment::AmountDiscount::Filter::field,
-              operator: Orb::Models::Plan::Adjustment::AmountDiscount::Filter::operator,
-              values: ::Array[String]
-            }
-
-            type field =
-              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
-
-            module Field
-              extend Orb::Internal::Type::Enum
-
-              PRICE_ID: :price_id
-              ITEM_ID: :item_id
-              PRICE_TYPE: :price_type
-              CURRENCY: :currency
-              PRICING_UNIT_ID: :pricing_unit_id
-
-              def self?.values: -> ::Array[Orb::Models::Plan::Adjustment::AmountDiscount::Filter::field]
-            end
-
-            type operator = :includes | :excludes
-
-            module Operator
-              extend Orb::Internal::Type::Enum
-
-              INCLUDES: :includes
-              EXCLUDES: :excludes
-
-              def self?.values: -> ::Array[Orb::Models::Plan::Adjustment::AmountDiscount::Filter::operator]
-            end
-          end
-        end
-
-        type percentage_discount =
-          {
-            id: String,
-            adjustment_type: :percentage_discount,
-            applies_to_price_ids: ::Array[String],
-            filters: ::Array[Orb::Plan::Adjustment::PercentageDiscount::Filter],
-            is_invoice_level: bool,
-            percentage_discount: Float,
-            plan_phase_order: Integer?,
-            reason: String?
-          }
-
-        class PercentageDiscount < Orb::Internal::Type::BaseModel
-          attr_accessor id: String
-
-          attr_accessor adjustment_type: :percentage_discount
-
-          attr_accessor applies_to_price_ids: ::Array[String]
-
-          attr_accessor filters: ::Array[Orb::Plan::Adjustment::PercentageDiscount::Filter]
-
-          attr_accessor is_invoice_level: bool
-
-          attr_accessor percentage_discount: Float
-
-          attr_accessor plan_phase_order: Integer?
-
-          attr_accessor reason: String?
-
-          def initialize: (
-            id: String,
-            applies_to_price_ids: ::Array[String],
-            filters: ::Array[Orb::Plan::Adjustment::PercentageDiscount::Filter],
-            is_invoice_level: bool,
-            percentage_discount: Float,
-            plan_phase_order: Integer?,
-            reason: String?,
-            ?adjustment_type: :percentage_discount
-          ) -> void
-
-          def to_hash: -> {
-            id: String,
-            adjustment_type: :percentage_discount,
-            applies_to_price_ids: ::Array[String],
-            filters: ::Array[Orb::Plan::Adjustment::PercentageDiscount::Filter],
-            is_invoice_level: bool,
-            percentage_discount: Float,
-            plan_phase_order: Integer?,
-            reason: String?
-          }
-
-          type filter =
-            {
-              field: Orb::Models::Plan::Adjustment::PercentageDiscount::Filter::field,
-              operator: Orb::Models::Plan::Adjustment::PercentageDiscount::Filter::operator,
-              values: ::Array[String]
-            }
-
-          class Filter < Orb::Internal::Type::BaseModel
-            attr_accessor field: Orb::Models::Plan::Adjustment::PercentageDiscount::Filter::field
-
-            attr_accessor operator: Orb::Models::Plan::Adjustment::PercentageDiscount::Filter::operator
-
-            attr_accessor values: ::Array[String]
-
-            def initialize: (
-              field: Orb::Models::Plan::Adjustment::PercentageDiscount::Filter::field,
-              operator: Orb::Models::Plan::Adjustment::PercentageDiscount::Filter::operator,
-              values: ::Array[String]
-            ) -> void
-
-            def to_hash: -> {
-              field: Orb::Models::Plan::Adjustment::PercentageDiscount::Filter::field,
-              operator: Orb::Models::Plan::Adjustment::PercentageDiscount::Filter::operator,
-              values: ::Array[String]
-            }
-
-            type field =
-              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
-
-            module Field
-              extend Orb::Internal::Type::Enum
-
-              PRICE_ID: :price_id
-              ITEM_ID: :item_id
-              PRICE_TYPE: :price_type
-              CURRENCY: :currency
-              PRICING_UNIT_ID: :pricing_unit_id
-
-              def self?.values: -> ::Array[Orb::Models::Plan::Adjustment::PercentageDiscount::Filter::field]
-            end
-
-            type operator = :includes | :excludes
-
-            module Operator
-              extend Orb::Internal::Type::Enum
-
-              INCLUDES: :includes
-              EXCLUDES: :excludes
-
-              def self?.values: -> ::Array[Orb::Models::Plan::Adjustment::PercentageDiscount::Filter::operator]
-            end
-          end
-        end
-
-        type minimum =
-          {
-            id: String,
-            adjustment_type: :minimum,
-            applies_to_price_ids: ::Array[String],
-            filters: ::Array[Orb::Plan::Adjustment::Minimum::Filter],
-            is_invoice_level: bool,
-            item_id: String,
-            minimum_amount: String,
-            plan_phase_order: Integer?,
-            reason: String?
-          }
-
-        class Minimum < Orb::Internal::Type::BaseModel
-          attr_accessor id: String
-
-          attr_accessor adjustment_type: :minimum
-
-          attr_accessor applies_to_price_ids: ::Array[String]
-
-          attr_accessor filters: ::Array[Orb::Plan::Adjustment::Minimum::Filter]
-
-          attr_accessor is_invoice_level: bool
-
-          attr_accessor item_id: String
-
-          attr_accessor minimum_amount: String
-
-          attr_accessor plan_phase_order: Integer?
-
-          attr_accessor reason: String?
-
-          def initialize: (
-            id: String,
-            applies_to_price_ids: ::Array[String],
-            filters: ::Array[Orb::Plan::Adjustment::Minimum::Filter],
-            is_invoice_level: bool,
-            item_id: String,
-            minimum_amount: String,
-            plan_phase_order: Integer?,
-            reason: String?,
-            ?adjustment_type: :minimum
-          ) -> void
-
-          def to_hash: -> {
-            id: String,
-            adjustment_type: :minimum,
-            applies_to_price_ids: ::Array[String],
-            filters: ::Array[Orb::Plan::Adjustment::Minimum::Filter],
-            is_invoice_level: bool,
-            item_id: String,
-            minimum_amount: String,
-            plan_phase_order: Integer?,
-            reason: String?
-          }
-
-          type filter =
-            {
-              field: Orb::Models::Plan::Adjustment::Minimum::Filter::field,
-              operator: Orb::Models::Plan::Adjustment::Minimum::Filter::operator,
-              values: ::Array[String]
-            }
-
-          class Filter < Orb::Internal::Type::BaseModel
-            attr_accessor field: Orb::Models::Plan::Adjustment::Minimum::Filter::field
-
-            attr_accessor operator: Orb::Models::Plan::Adjustment::Minimum::Filter::operator
-
-            attr_accessor values: ::Array[String]
-
-            def initialize: (
-              field: Orb::Models::Plan::Adjustment::Minimum::Filter::field,
-              operator: Orb::Models::Plan::Adjustment::Minimum::Filter::operator,
-              values: ::Array[String]
-            ) -> void
-
-            def to_hash: -> {
-              field: Orb::Models::Plan::Adjustment::Minimum::Filter::field,
-              operator: Orb::Models::Plan::Adjustment::Minimum::Filter::operator,
-              values: ::Array[String]
-            }
-
-            type field =
-              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
-
-            module Field
-              extend Orb::Internal::Type::Enum
-
-              PRICE_ID: :price_id
-              ITEM_ID: :item_id
-              PRICE_TYPE: :price_type
-              CURRENCY: :currency
-              PRICING_UNIT_ID: :pricing_unit_id
-
-              def self?.values: -> ::Array[Orb::Models::Plan::Adjustment::Minimum::Filter::field]
-            end
-
-            type operator = :includes | :excludes
-
-            module Operator
-              extend Orb::Internal::Type::Enum
-
-              INCLUDES: :includes
-              EXCLUDES: :excludes
-
-              def self?.values: -> ::Array[Orb::Models::Plan::Adjustment::Minimum::Filter::operator]
-            end
-          end
-        end
-
-        type maximum =
-          {
-            id: String,
-            adjustment_type: :maximum,
-            applies_to_price_ids: ::Array[String],
-            filters: ::Array[Orb::Plan::Adjustment::Maximum::Filter],
-            is_invoice_level: bool,
-            maximum_amount: String,
-            plan_phase_order: Integer?,
-            reason: String?
-          }
-
-        class Maximum < Orb::Internal::Type::BaseModel
-          attr_accessor id: String
-
-          attr_accessor adjustment_type: :maximum
-
-          attr_accessor applies_to_price_ids: ::Array[String]
-
-          attr_accessor filters: ::Array[Orb::Plan::Adjustment::Maximum::Filter]
-
-          attr_accessor is_invoice_level: bool
-
-          attr_accessor maximum_amount: String
-
-          attr_accessor plan_phase_order: Integer?
-
-          attr_accessor reason: String?
-
-          def initialize: (
-            id: String,
-            applies_to_price_ids: ::Array[String],
-            filters: ::Array[Orb::Plan::Adjustment::Maximum::Filter],
-            is_invoice_level: bool,
-            maximum_amount: String,
-            plan_phase_order: Integer?,
-            reason: String?,
-            ?adjustment_type: :maximum
-          ) -> void
-
-          def to_hash: -> {
-            id: String,
-            adjustment_type: :maximum,
-            applies_to_price_ids: ::Array[String],
-            filters: ::Array[Orb::Plan::Adjustment::Maximum::Filter],
-            is_invoice_level: bool,
-            maximum_amount: String,
-            plan_phase_order: Integer?,
-            reason: String?
-          }
-
-          type filter =
-            {
-              field: Orb::Models::Plan::Adjustment::Maximum::Filter::field,
-              operator: Orb::Models::Plan::Adjustment::Maximum::Filter::operator,
-              values: ::Array[String]
-            }
-
-          class Filter < Orb::Internal::Type::BaseModel
-            attr_accessor field: Orb::Models::Plan::Adjustment::Maximum::Filter::field
-
-            attr_accessor operator: Orb::Models::Plan::Adjustment::Maximum::Filter::operator
-
-            attr_accessor values: ::Array[String]
-
-            def initialize: (
-              field: Orb::Models::Plan::Adjustment::Maximum::Filter::field,
-              operator: Orb::Models::Plan::Adjustment::Maximum::Filter::operator,
-              values: ::Array[String]
-            ) -> void
-
-            def to_hash: -> {
-              field: Orb::Models::Plan::Adjustment::Maximum::Filter::field,
-              operator: Orb::Models::Plan::Adjustment::Maximum::Filter::operator,
-              values: ::Array[String]
-            }
-
-            type field =
-              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
-
-            module Field
-              extend Orb::Internal::Type::Enum
-
-              PRICE_ID: :price_id
-              ITEM_ID: :item_id
-              PRICE_TYPE: :price_type
-              CURRENCY: :currency
-              PRICING_UNIT_ID: :pricing_unit_id
-
-              def self?.values: -> ::Array[Orb::Models::Plan::Adjustment::Maximum::Filter::field]
-            end
-
-            type operator = :includes | :excludes
-
-            module Operator
-              extend Orb::Internal::Type::Enum
-
-              INCLUDES: :includes
-              EXCLUDES: :excludes
-
-              def self?.values: -> ::Array[Orb::Models::Plan::Adjustment::Maximum::Filter::operator]
-            end
-          end
-        end
 
         def self?.variants: -> ::Array[Orb::Models::Plan::adjustment]
       end
@@ -696,166 +166,6 @@ module Orb
         }
       end
 
-      type maximum =
-        {
-          applies_to_price_ids: ::Array[String],
-          filters: ::Array[Orb::Plan::Maximum::Filter],
-          maximum_amount: String
-        }
-
-      class Maximum < Orb::Internal::Type::BaseModel
-        attr_accessor applies_to_price_ids: ::Array[String]
-
-        attr_accessor filters: ::Array[Orb::Plan::Maximum::Filter]
-
-        attr_accessor maximum_amount: String
-
-        def initialize: (
-          applies_to_price_ids: ::Array[String],
-          filters: ::Array[Orb::Plan::Maximum::Filter],
-          maximum_amount: String
-        ) -> void
-
-        def to_hash: -> {
-          applies_to_price_ids: ::Array[String],
-          filters: ::Array[Orb::Plan::Maximum::Filter],
-          maximum_amount: String
-        }
-
-        type filter =
-          {
-            field: Orb::Models::Plan::Maximum::Filter::field,
-            operator: Orb::Models::Plan::Maximum::Filter::operator,
-            values: ::Array[String]
-          }
-
-        class Filter < Orb::Internal::Type::BaseModel
-          attr_accessor field: Orb::Models::Plan::Maximum::Filter::field
-
-          attr_accessor operator: Orb::Models::Plan::Maximum::Filter::operator
-
-          attr_accessor values: ::Array[String]
-
-          def initialize: (
-            field: Orb::Models::Plan::Maximum::Filter::field,
-            operator: Orb::Models::Plan::Maximum::Filter::operator,
-            values: ::Array[String]
-          ) -> void
-
-          def to_hash: -> {
-            field: Orb::Models::Plan::Maximum::Filter::field,
-            operator: Orb::Models::Plan::Maximum::Filter::operator,
-            values: ::Array[String]
-          }
-
-          type field =
-            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
-
-          module Field
-            extend Orb::Internal::Type::Enum
-
-            PRICE_ID: :price_id
-            ITEM_ID: :item_id
-            PRICE_TYPE: :price_type
-            CURRENCY: :currency
-            PRICING_UNIT_ID: :pricing_unit_id
-
-            def self?.values: -> ::Array[Orb::Models::Plan::Maximum::Filter::field]
-          end
-
-          type operator = :includes | :excludes
-
-          module Operator
-            extend Orb::Internal::Type::Enum
-
-            INCLUDES: :includes
-            EXCLUDES: :excludes
-
-            def self?.values: -> ::Array[Orb::Models::Plan::Maximum::Filter::operator]
-          end
-        end
-      end
-
-      type minimum =
-        {
-          applies_to_price_ids: ::Array[String],
-          filters: ::Array[Orb::Plan::Minimum::Filter],
-          minimum_amount: String
-        }
-
-      class Minimum < Orb::Internal::Type::BaseModel
-        attr_accessor applies_to_price_ids: ::Array[String]
-
-        attr_accessor filters: ::Array[Orb::Plan::Minimum::Filter]
-
-        attr_accessor minimum_amount: String
-
-        def initialize: (
-          applies_to_price_ids: ::Array[String],
-          filters: ::Array[Orb::Plan::Minimum::Filter],
-          minimum_amount: String
-        ) -> void
-
-        def to_hash: -> {
-          applies_to_price_ids: ::Array[String],
-          filters: ::Array[Orb::Plan::Minimum::Filter],
-          minimum_amount: String
-        }
-
-        type filter =
-          {
-            field: Orb::Models::Plan::Minimum::Filter::field,
-            operator: Orb::Models::Plan::Minimum::Filter::operator,
-            values: ::Array[String]
-          }
-
-        class Filter < Orb::Internal::Type::BaseModel
-          attr_accessor field: Orb::Models::Plan::Minimum::Filter::field
-
-          attr_accessor operator: Orb::Models::Plan::Minimum::Filter::operator
-
-          attr_accessor values: ::Array[String]
-
-          def initialize: (
-            field: Orb::Models::Plan::Minimum::Filter::field,
-            operator: Orb::Models::Plan::Minimum::Filter::operator,
-            values: ::Array[String]
-          ) -> void
-
-          def to_hash: -> {
-            field: Orb::Models::Plan::Minimum::Filter::field,
-            operator: Orb::Models::Plan::Minimum::Filter::operator,
-            values: ::Array[String]
-          }
-
-          type field =
-            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
-
-          module Field
-            extend Orb::Internal::Type::Enum
-
-            PRICE_ID: :price_id
-            ITEM_ID: :item_id
-            PRICE_TYPE: :price_type
-            CURRENCY: :currency
-            PRICING_UNIT_ID: :pricing_unit_id
-
-            def self?.values: -> ::Array[Orb::Models::Plan::Minimum::Filter::field]
-          end
-
-          type operator = :includes | :excludes
-
-          module Operator
-            extend Orb::Internal::Type::Enum
-
-            INCLUDES: :includes
-            EXCLUDES: :excludes
-
-            def self?.values: -> ::Array[Orb::Models::Plan::Minimum::Filter::operator]
-          end
-        end
-      end
-
       type plan_phase =
         {
           id: String,
@@ -863,9 +173,9 @@ module Orb
           discount: Orb::Models::discount?,
           duration: Integer?,
           duration_unit: Orb::Models::Plan::PlanPhase::duration_unit?,
-          maximum: Orb::Plan::PlanPhase::Maximum?,
+          maximum: Orb::Maximum?,
           maximum_amount: String?,
-          minimum: Orb::Plan::PlanPhase::Minimum?,
+          minimum: Orb::Minimum?,
           minimum_amount: String?,
           name: String,
           order: Integer
@@ -882,11 +192,11 @@ module Orb
 
         attr_accessor duration_unit: Orb::Models::Plan::PlanPhase::duration_unit?
 
-        attr_accessor maximum: Orb::Plan::PlanPhase::Maximum?
+        attr_accessor maximum: Orb::Maximum?
 
         attr_accessor maximum_amount: String?
 
-        attr_accessor minimum: Orb::Plan::PlanPhase::Minimum?
+        attr_accessor minimum: Orb::Minimum?
 
         attr_accessor minimum_amount: String?
 
@@ -900,9 +210,9 @@ module Orb
           discount: Orb::Models::discount?,
           duration: Integer?,
           duration_unit: Orb::Models::Plan::PlanPhase::duration_unit?,
-          maximum: Orb::Plan::PlanPhase::Maximum?,
+          maximum: Orb::Maximum?,
           maximum_amount: String?,
-          minimum: Orb::Plan::PlanPhase::Minimum?,
+          minimum: Orb::Minimum?,
           minimum_amount: String?,
           name: String,
           order: Integer
@@ -914,9 +224,9 @@ module Orb
           discount: Orb::Models::discount?,
           duration: Integer?,
           duration_unit: Orb::Models::Plan::PlanPhase::duration_unit?,
-          maximum: Orb::Plan::PlanPhase::Maximum?,
+          maximum: Orb::Maximum?,
           maximum_amount: String?,
-          minimum: Orb::Plan::PlanPhase::Minimum?,
+          minimum: Orb::Minimum?,
           minimum_amount: String?,
           name: String,
           order: Integer
@@ -935,166 +245,6 @@ module Orb
           ANNUAL: :annual
 
           def self?.values: -> ::Array[Orb::Models::Plan::PlanPhase::duration_unit]
-        end
-
-        type maximum =
-          {
-            applies_to_price_ids: ::Array[String],
-            filters: ::Array[Orb::Plan::PlanPhase::Maximum::Filter],
-            maximum_amount: String
-          }
-
-        class Maximum < Orb::Internal::Type::BaseModel
-          attr_accessor applies_to_price_ids: ::Array[String]
-
-          attr_accessor filters: ::Array[Orb::Plan::PlanPhase::Maximum::Filter]
-
-          attr_accessor maximum_amount: String
-
-          def initialize: (
-            applies_to_price_ids: ::Array[String],
-            filters: ::Array[Orb::Plan::PlanPhase::Maximum::Filter],
-            maximum_amount: String
-          ) -> void
-
-          def to_hash: -> {
-            applies_to_price_ids: ::Array[String],
-            filters: ::Array[Orb::Plan::PlanPhase::Maximum::Filter],
-            maximum_amount: String
-          }
-
-          type filter =
-            {
-              field: Orb::Models::Plan::PlanPhase::Maximum::Filter::field,
-              operator: Orb::Models::Plan::PlanPhase::Maximum::Filter::operator,
-              values: ::Array[String]
-            }
-
-          class Filter < Orb::Internal::Type::BaseModel
-            attr_accessor field: Orb::Models::Plan::PlanPhase::Maximum::Filter::field
-
-            attr_accessor operator: Orb::Models::Plan::PlanPhase::Maximum::Filter::operator
-
-            attr_accessor values: ::Array[String]
-
-            def initialize: (
-              field: Orb::Models::Plan::PlanPhase::Maximum::Filter::field,
-              operator: Orb::Models::Plan::PlanPhase::Maximum::Filter::operator,
-              values: ::Array[String]
-            ) -> void
-
-            def to_hash: -> {
-              field: Orb::Models::Plan::PlanPhase::Maximum::Filter::field,
-              operator: Orb::Models::Plan::PlanPhase::Maximum::Filter::operator,
-              values: ::Array[String]
-            }
-
-            type field =
-              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
-
-            module Field
-              extend Orb::Internal::Type::Enum
-
-              PRICE_ID: :price_id
-              ITEM_ID: :item_id
-              PRICE_TYPE: :price_type
-              CURRENCY: :currency
-              PRICING_UNIT_ID: :pricing_unit_id
-
-              def self?.values: -> ::Array[Orb::Models::Plan::PlanPhase::Maximum::Filter::field]
-            end
-
-            type operator = :includes | :excludes
-
-            module Operator
-              extend Orb::Internal::Type::Enum
-
-              INCLUDES: :includes
-              EXCLUDES: :excludes
-
-              def self?.values: -> ::Array[Orb::Models::Plan::PlanPhase::Maximum::Filter::operator]
-            end
-          end
-        end
-
-        type minimum =
-          {
-            applies_to_price_ids: ::Array[String],
-            filters: ::Array[Orb::Plan::PlanPhase::Minimum::Filter],
-            minimum_amount: String
-          }
-
-        class Minimum < Orb::Internal::Type::BaseModel
-          attr_accessor applies_to_price_ids: ::Array[String]
-
-          attr_accessor filters: ::Array[Orb::Plan::PlanPhase::Minimum::Filter]
-
-          attr_accessor minimum_amount: String
-
-          def initialize: (
-            applies_to_price_ids: ::Array[String],
-            filters: ::Array[Orb::Plan::PlanPhase::Minimum::Filter],
-            minimum_amount: String
-          ) -> void
-
-          def to_hash: -> {
-            applies_to_price_ids: ::Array[String],
-            filters: ::Array[Orb::Plan::PlanPhase::Minimum::Filter],
-            minimum_amount: String
-          }
-
-          type filter =
-            {
-              field: Orb::Models::Plan::PlanPhase::Minimum::Filter::field,
-              operator: Orb::Models::Plan::PlanPhase::Minimum::Filter::operator,
-              values: ::Array[String]
-            }
-
-          class Filter < Orb::Internal::Type::BaseModel
-            attr_accessor field: Orb::Models::Plan::PlanPhase::Minimum::Filter::field
-
-            attr_accessor operator: Orb::Models::Plan::PlanPhase::Minimum::Filter::operator
-
-            attr_accessor values: ::Array[String]
-
-            def initialize: (
-              field: Orb::Models::Plan::PlanPhase::Minimum::Filter::field,
-              operator: Orb::Models::Plan::PlanPhase::Minimum::Filter::operator,
-              values: ::Array[String]
-            ) -> void
-
-            def to_hash: -> {
-              field: Orb::Models::Plan::PlanPhase::Minimum::Filter::field,
-              operator: Orb::Models::Plan::PlanPhase::Minimum::Filter::operator,
-              values: ::Array[String]
-            }
-
-            type field =
-              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
-
-            module Field
-              extend Orb::Internal::Type::Enum
-
-              PRICE_ID: :price_id
-              ITEM_ID: :item_id
-              PRICE_TYPE: :price_type
-              CURRENCY: :currency
-              PRICING_UNIT_ID: :pricing_unit_id
-
-              def self?.values: -> ::Array[Orb::Models::Plan::PlanPhase::Minimum::Filter::field]
-            end
-
-            type operator = :includes | :excludes
-
-            module Operator
-              extend Orb::Internal::Type::Enum
-
-              INCLUDES: :includes
-              EXCLUDES: :excludes
-
-              def self?.values: -> ::Array[Orb::Models::Plan::PlanPhase::Minimum::Filter::operator]
-            end
-          end
         end
       end
 

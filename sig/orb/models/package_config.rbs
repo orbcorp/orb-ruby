@@ -1,0 +1,15 @@
+module Orb
+  module Models
+    type package_config = { package_amount: String, package_size: Integer }
+
+    class PackageConfig < Orb::Internal::Type::BaseModel
+      attr_accessor package_amount: String
+
+      attr_accessor package_size: Integer
+
+      def initialize: (package_amount: String, package_size: Integer) -> void
+
+      def to_hash: -> { package_amount: String, package_size: Integer }
+    end
+  end
+end

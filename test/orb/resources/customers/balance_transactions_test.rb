@@ -16,10 +16,10 @@ class Orb::Test::Resources::Customers::BalanceTransactionsTest < Orb::Test::Reso
         action: Orb::Models::Customers::BalanceTransactionCreateResponse::Action,
         amount: String,
         created_at: Time,
-        credit_note: Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote | nil,
+        credit_note: Orb::CreditNoteTiny | nil,
         description: String | nil,
         ending_balance: String,
-        invoice: Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice | nil,
+        invoice: Orb::InvoiceTiny | nil,
         starting_balance: String,
         type: Orb::Models::Customers::BalanceTransactionCreateResponse::Type
       }
@@ -46,10 +46,10 @@ class Orb::Test::Resources::Customers::BalanceTransactionsTest < Orb::Test::Reso
         action: Orb::Models::Customers::BalanceTransactionListResponse::Action,
         amount: String,
         created_at: Time,
-        credit_note: Orb::Models::Customers::BalanceTransactionListResponse::CreditNote | nil,
+        credit_note: Orb::CreditNoteTiny | nil,
         description: String | nil,
         ending_balance: String,
-        invoice: Orb::Models::Customers::BalanceTransactionListResponse::Invoice | nil,
+        invoice: Orb::InvoiceTiny | nil,
         starting_balance: String,
         type: Orb::Models::Customers::BalanceTransactionListResponse::Type
       }

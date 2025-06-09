@@ -1,0 +1,35 @@
+module Orb
+  module Models
+    type changed_subscription_resources =
+      {
+        created_credit_notes: ::Array[Orb::CreditNote],
+        created_invoices: ::Array[Orb::Invoice],
+        voided_credit_notes: ::Array[Orb::CreditNote],
+        voided_invoices: ::Array[Orb::Invoice]
+      }
+
+    class ChangedSubscriptionResources < Orb::Internal::Type::BaseModel
+      attr_accessor created_credit_notes: ::Array[Orb::CreditNote]
+
+      attr_accessor created_invoices: ::Array[Orb::Invoice]
+
+      attr_accessor voided_credit_notes: ::Array[Orb::CreditNote]
+
+      attr_accessor voided_invoices: ::Array[Orb::Invoice]
+
+      def initialize: (
+        created_credit_notes: ::Array[Orb::CreditNote],
+        created_invoices: ::Array[Orb::Invoice],
+        voided_credit_notes: ::Array[Orb::CreditNote],
+        voided_invoices: ::Array[Orb::Invoice]
+      ) -> void
+
+      def to_hash: -> {
+        created_credit_notes: ::Array[Orb::CreditNote],
+        created_invoices: ::Array[Orb::Invoice],
+        voided_credit_notes: ::Array[Orb::CreditNote],
+        voided_invoices: ::Array[Orb::Invoice]
+      }
+    end
+  end
+end

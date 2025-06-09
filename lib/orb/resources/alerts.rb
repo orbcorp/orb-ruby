@@ -28,7 +28,7 @@ module Orb
       #
       # @param alert_configuration_id [String]
       #
-      # @param thresholds [Array<Orb::Models::AlertUpdateParams::Threshold>] The thresholds that define the values at which the alert will be triggered.
+      # @param thresholds [Array<Orb::Models::Threshold>] The thresholds that define the values at which the alert will be triggered.
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -120,7 +120,7 @@ module Orb
       #
       # @param type [Symbol, Orb::Models::AlertCreateForCustomerParams::Type] The type of alert to create. This must be a valid alert type.
       #
-      # @param thresholds [Array<Orb::Models::AlertCreateForCustomerParams::Threshold>, nil] The thresholds that define the values at which the alert will be triggered.
+      # @param thresholds [Array<Orb::Models::Threshold>, nil] The thresholds that define the values at which the alert will be triggered.
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -155,7 +155,7 @@ module Orb
       #
       # @param type [Symbol, Orb::Models::AlertCreateForExternalCustomerParams::Type] The type of alert to create. This must be a valid alert type.
       #
-      # @param thresholds [Array<Orb::Models::AlertCreateForExternalCustomerParams::Threshold>, nil] The thresholds that define the values at which the alert will be triggered.
+      # @param thresholds [Array<Orb::Models::Threshold>, nil] The thresholds that define the values at which the alert will be triggered.
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -189,7 +189,7 @@ module Orb
       #
       # @param subscription_id [String]
       #
-      # @param thresholds [Array<Orb::Models::AlertCreateForSubscriptionParams::Threshold>] The thresholds that define the values at which the alert will be triggered.
+      # @param thresholds [Array<Orb::Models::Threshold>] The thresholds that define the values at which the alert will be triggered.
       #
       # @param type [Symbol, Orb::Models::AlertCreateForSubscriptionParams::Type] The type of alert to create. This must be a valid alert type.
       #

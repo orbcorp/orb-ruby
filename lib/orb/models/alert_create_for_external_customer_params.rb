@@ -22,17 +22,15 @@ module Orb
       # @!attribute thresholds
       #   The thresholds that define the values at which the alert will be triggered.
       #
-      #   @return [Array<Orb::Models::AlertCreateForExternalCustomerParams::Threshold>, nil]
-      optional :thresholds,
-               -> { Orb::Internal::Type::ArrayOf[Orb::AlertCreateForExternalCustomerParams::Threshold] },
-               nil?: true
+      #   @return [Array<Orb::Models::Threshold>, nil]
+      optional :thresholds, -> { Orb::Internal::Type::ArrayOf[Orb::Threshold] }, nil?: true
 
       # @!method initialize(currency:, type:, thresholds: nil, request_options: {})
       #   @param currency [String] The case sensitive currency or custom pricing unit to use for this alert.
       #
       #   @param type [Symbol, Orb::Models::AlertCreateForExternalCustomerParams::Type] The type of alert to create. This must be a valid alert type.
       #
-      #   @param thresholds [Array<Orb::Models::AlertCreateForExternalCustomerParams::Threshold>, nil] The thresholds that define the values at which the alert will be triggered.
+      #   @param thresholds [Array<Orb::Models::Threshold>, nil] The thresholds that define the values at which the alert will be triggered.
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
@@ -46,25 +44,6 @@ module Orb
 
         # @!method self.values
         #   @return [Array<Symbol>]
-      end
-
-      class Threshold < Orb::Internal::Type::BaseModel
-        # @!attribute value
-        #   The value at which an alert will fire. For credit balance alerts, the alert will
-        #   fire at or below this value. For usage and cost alerts, the alert will fire at
-        #   or above this value.
-        #
-        #   @return [Float]
-        required :value, Float
-
-        # @!method initialize(value:)
-        #   Some parameter documentations has been truncated, see
-        #   {Orb::Models::AlertCreateForExternalCustomerParams::Threshold} for more details.
-        #
-        #   Thresholds are used to define the conditions under which an alert will be
-        #   triggered.
-        #
-        #   @param value [Float] The value at which an alert will fire. For credit balance alerts, the alert will
       end
     end
   end

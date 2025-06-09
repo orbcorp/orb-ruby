@@ -1,0 +1,13 @@
+module Orb
+  module Models
+    type bulk_bps_config = { tiers: ::Array[Orb::BulkBPSTier] }
+
+    class BulkBPSConfig < Orb::Internal::Type::BaseModel
+      attr_accessor tiers: ::Array[Orb::BulkBPSTier]
+
+      def initialize: (tiers: ::Array[Orb::BulkBPSTier]) -> void
+
+      def to_hash: -> { tiers: ::Array[Orb::BulkBPSTier] }
+    end
+  end
+end

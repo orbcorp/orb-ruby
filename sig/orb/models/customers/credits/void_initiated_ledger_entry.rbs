@@ -1,0 +1,120 @@
+module Orb
+  module Models
+    module Customers
+      module Credits
+        type void_initiated_ledger_entry =
+          {
+            id: String,
+            amount: Float,
+            created_at: Time,
+            credit_block: Orb::Customers::Credits::AffectedBlock,
+            currency: String,
+            customer: Orb::CustomerMinified,
+            description: String?,
+            ending_balance: Float,
+            entry_status: Orb::Models::Customers::Credits::VoidInitiatedLedgerEntry::entry_status,
+            entry_type: Orb::Models::Customers::Credits::VoidInitiatedLedgerEntry::entry_type,
+            ledger_sequence_number: Integer,
+            metadata: ::Hash[Symbol, String],
+            new_block_expiry_date: Time,
+            starting_balance: Float,
+            void_amount: Float,
+            void_reason: String?
+          }
+
+        class VoidInitiatedLedgerEntry < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor amount: Float
+
+          attr_accessor created_at: Time
+
+          attr_accessor credit_block: Orb::Customers::Credits::AffectedBlock
+
+          attr_accessor currency: String
+
+          attr_accessor customer: Orb::CustomerMinified
+
+          attr_accessor description: String?
+
+          attr_accessor ending_balance: Float
+
+          attr_accessor entry_status: Orb::Models::Customers::Credits::VoidInitiatedLedgerEntry::entry_status
+
+          attr_accessor entry_type: Orb::Models::Customers::Credits::VoidInitiatedLedgerEntry::entry_type
+
+          attr_accessor ledger_sequence_number: Integer
+
+          attr_accessor metadata: ::Hash[Symbol, String]
+
+          attr_accessor new_block_expiry_date: Time
+
+          attr_accessor starting_balance: Float
+
+          attr_accessor void_amount: Float
+
+          attr_accessor void_reason: String?
+
+          def initialize: (
+            id: String,
+            amount: Float,
+            created_at: Time,
+            credit_block: Orb::Customers::Credits::AffectedBlock,
+            currency: String,
+            customer: Orb::CustomerMinified,
+            description: String?,
+            ending_balance: Float,
+            entry_status: Orb::Models::Customers::Credits::VoidInitiatedLedgerEntry::entry_status,
+            entry_type: Orb::Models::Customers::Credits::VoidInitiatedLedgerEntry::entry_type,
+            ledger_sequence_number: Integer,
+            metadata: ::Hash[Symbol, String],
+            new_block_expiry_date: Time,
+            starting_balance: Float,
+            void_amount: Float,
+            void_reason: String?
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            amount: Float,
+            created_at: Time,
+            credit_block: Orb::Customers::Credits::AffectedBlock,
+            currency: String,
+            customer: Orb::CustomerMinified,
+            description: String?,
+            ending_balance: Float,
+            entry_status: Orb::Models::Customers::Credits::VoidInitiatedLedgerEntry::entry_status,
+            entry_type: Orb::Models::Customers::Credits::VoidInitiatedLedgerEntry::entry_type,
+            ledger_sequence_number: Integer,
+            metadata: ::Hash[Symbol, String],
+            new_block_expiry_date: Time,
+            starting_balance: Float,
+            void_amount: Float,
+            void_reason: String?
+          }
+
+          type entry_status = :committed | :pending
+
+          module EntryStatus
+            extend Orb::Internal::Type::Enum
+
+            COMMITTED: :committed
+            PENDING: :pending
+
+            def self?.values: -> ::Array[Orb::Models::Customers::Credits::VoidInitiatedLedgerEntry::entry_status]
+          end
+
+          type entry_type = :void_initiated
+
+          module EntryType
+            extend Orb::Internal::Type::Enum
+
+            VOID_INITIATED: :void_initiated
+
+            def self?.values: -> ::Array[Orb::Models::Customers::Credits::VoidInitiatedLedgerEntry::entry_type]
+          end
+        end
+      end
+    end
+  end
+end

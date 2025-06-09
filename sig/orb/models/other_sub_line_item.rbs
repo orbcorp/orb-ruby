@@ -1,0 +1,50 @@
+module Orb
+  module Models
+    type other_sub_line_item =
+      {
+        amount: String,
+        grouping: Orb::SubLineItemGrouping?,
+        name: String,
+        quantity: Float,
+        type: Orb::Models::OtherSubLineItem::type_
+      }
+
+    class OtherSubLineItem < Orb::Internal::Type::BaseModel
+      attr_accessor amount: String
+
+      attr_accessor grouping: Orb::SubLineItemGrouping?
+
+      attr_accessor name: String
+
+      attr_accessor quantity: Float
+
+      attr_accessor type: Orb::Models::OtherSubLineItem::type_
+
+      def initialize: (
+        amount: String,
+        grouping: Orb::SubLineItemGrouping?,
+        name: String,
+        quantity: Float,
+        type: Orb::Models::OtherSubLineItem::type_
+      ) -> void
+
+      def to_hash: -> {
+        amount: String,
+        grouping: Orb::SubLineItemGrouping?,
+        name: String,
+        quantity: Float,
+        type: Orb::Models::OtherSubLineItem::type_
+      }
+
+      type type_ = :"'null'"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        NULL: :"'null'"
+
+        def self?.values: -> ::Array[Orb::Models::OtherSubLineItem::type_]
+      end
+    end
+  end
+end

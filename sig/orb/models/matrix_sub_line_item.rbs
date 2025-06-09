@@ -1,0 +1,55 @@
+module Orb
+  module Models
+    type matrix_sub_line_item =
+      {
+        amount: String,
+        grouping: Orb::SubLineItemGrouping?,
+        matrix_config: Orb::SubLineItemMatrixConfig,
+        name: String,
+        quantity: Float,
+        type: Orb::Models::MatrixSubLineItem::type_
+      }
+
+    class MatrixSubLineItem < Orb::Internal::Type::BaseModel
+      attr_accessor amount: String
+
+      attr_accessor grouping: Orb::SubLineItemGrouping?
+
+      attr_accessor matrix_config: Orb::SubLineItemMatrixConfig
+
+      attr_accessor name: String
+
+      attr_accessor quantity: Float
+
+      attr_accessor type: Orb::Models::MatrixSubLineItem::type_
+
+      def initialize: (
+        amount: String,
+        grouping: Orb::SubLineItemGrouping?,
+        matrix_config: Orb::SubLineItemMatrixConfig,
+        name: String,
+        quantity: Float,
+        type: Orb::Models::MatrixSubLineItem::type_
+      ) -> void
+
+      def to_hash: -> {
+        amount: String,
+        grouping: Orb::SubLineItemGrouping?,
+        matrix_config: Orb::SubLineItemMatrixConfig,
+        name: String,
+        quantity: Float,
+        type: Orb::Models::MatrixSubLineItem::type_
+      }
+
+      type type_ = :matrix
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        MATRIX: :matrix
+
+        def self?.values: -> ::Array[Orb::Models::MatrixSubLineItem::type_]
+      end
+    end
+  end
+end

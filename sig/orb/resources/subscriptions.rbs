@@ -7,7 +7,7 @@ module Orb
         ?align_billing_with_subscription_start_date: bool,
         ?auto_collection: bool?,
         ?aws_region: String?,
-        ?billing_cycle_anchor_configuration: Orb::SubscriptionCreateParams::BillingCycleAnchorConfiguration?,
+        ?billing_cycle_anchor_configuration: Orb::BillingCycleAnchorConfiguration?,
         ?coupon_redemption_code: String?,
         ?credits_overage_rate: Float?,
         ?currency: String?,
@@ -36,7 +36,7 @@ module Orb
         ?trial_duration_days: Integer?,
         ?usage_customer_ids: ::Array[String]?,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::SubscriptionCreateResponse
+      ) -> Orb::MutatedSubscription
 
       def update: (
         String subscription_id,
@@ -67,7 +67,7 @@ module Orb
         ?allow_invoice_credit_or_void: bool?,
         ?cancellation_date: Time?,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::SubscriptionCancelResponse
+      ) -> Orb::MutatedSubscription
 
       def fetch: (
         String subscription_id,
@@ -117,7 +117,7 @@ module Orb
         ?edit: ::Array[Orb::SubscriptionPriceIntervalsParams::Edit],
         ?edit_adjustments: ::Array[Orb::SubscriptionPriceIntervalsParams::EditAdjustment],
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::SubscriptionPriceIntervalsResponse
+      ) -> Orb::MutatedSubscription
 
       def redeem_coupon: (
         String subscription_id,
@@ -127,7 +127,7 @@ module Orb
         ?coupon_id: String?,
         ?coupon_redemption_code: String?,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::SubscriptionRedeemCouponResponse
+      ) -> Orb::MutatedSubscription
 
       def schedule_plan_change: (
         String subscription_id,
@@ -137,7 +137,7 @@ module Orb
         ?align_billing_with_plan_change_date: bool?,
         ?auto_collection: bool?,
         ?billing_cycle_alignment: Orb::Models::SubscriptionSchedulePlanChangeParams::billing_cycle_alignment?,
-        ?billing_cycle_anchor_configuration: Orb::SubscriptionSchedulePlanChangeParams::BillingCycleAnchorConfiguration?,
+        ?billing_cycle_anchor_configuration: Orb::BillingCycleAnchorConfiguration?,
         ?change_date: Time?,
         ?coupon_redemption_code: String?,
         ?credits_overage_rate: Float?,
@@ -158,30 +158,30 @@ module Orb
         ?trial_duration_days: Integer?,
         ?usage_customer_ids: ::Array[String]?,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::SubscriptionSchedulePlanChangeResponse
+      ) -> Orb::MutatedSubscription
 
       def trigger_phase: (
         String subscription_id,
         ?allow_invoice_credit_or_void: bool?,
         ?effective_date: Date?,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::SubscriptionTriggerPhaseResponse
+      ) -> Orb::MutatedSubscription
 
       def unschedule_cancellation: (
         String subscription_id,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::SubscriptionUnscheduleCancellationResponse
+      ) -> Orb::MutatedSubscription
 
       def unschedule_fixed_fee_quantity_updates: (
         String subscription_id,
         price_id: String,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse
+      ) -> Orb::MutatedSubscription
 
       def unschedule_pending_plan_changes: (
         String subscription_id,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse
+      ) -> Orb::MutatedSubscription
 
       def update_fixed_fee_quantity: (
         String subscription_id,
@@ -191,14 +191,14 @@ module Orb
         ?change_option: Orb::Models::SubscriptionUpdateFixedFeeQuantityParams::change_option,
         ?effective_date: Date?,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse
+      ) -> Orb::MutatedSubscription
 
       def update_trial: (
         String subscription_id,
         trial_end_date: Orb::Models::SubscriptionUpdateTrialParams::trial_end_date,
         ?shift: bool,
         ?request_options: Orb::request_opts
-      ) -> Orb::Models::SubscriptionUpdateTrialResponse
+      ) -> Orb::MutatedSubscription
 
       def initialize: (client: Orb::Client) -> void
     end

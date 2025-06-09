@@ -7,10 +7,10 @@ module Orb
           action: Orb::Models::Customers::BalanceTransactionCreateResponse::action,
           amount: String,
           created_at: Time,
-          credit_note: Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote?,
+          credit_note: Orb::CreditNoteTiny?,
           description: String?,
           ending_balance: String,
-          invoice: Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice?,
+          invoice: Orb::InvoiceTiny?,
           starting_balance: String,
           type: Orb::Models::Customers::BalanceTransactionCreateResponse::type_
         }
@@ -24,13 +24,13 @@ module Orb
 
         attr_accessor created_at: Time
 
-        attr_accessor credit_note: Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote?
+        attr_accessor credit_note: Orb::CreditNoteTiny?
 
         attr_accessor description: String?
 
         attr_accessor ending_balance: String
 
-        attr_accessor invoice: Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice?
+        attr_accessor invoice: Orb::InvoiceTiny?
 
         attr_accessor starting_balance: String
 
@@ -41,10 +41,10 @@ module Orb
           action: Orb::Models::Customers::BalanceTransactionCreateResponse::action,
           amount: String,
           created_at: Time,
-          credit_note: Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote?,
+          credit_note: Orb::CreditNoteTiny?,
           description: String?,
           ending_balance: String,
-          invoice: Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice?,
+          invoice: Orb::InvoiceTiny?,
           starting_balance: String,
           type: Orb::Models::Customers::BalanceTransactionCreateResponse::type_
         ) -> void
@@ -54,10 +54,10 @@ module Orb
           action: Orb::Models::Customers::BalanceTransactionCreateResponse::action,
           amount: String,
           created_at: Time,
-          credit_note: Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote?,
+          credit_note: Orb::CreditNoteTiny?,
           description: String?,
           ending_balance: String,
-          invoice: Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice?,
+          invoice: Orb::InvoiceTiny?,
           starting_balance: String,
           type: Orb::Models::Customers::BalanceTransactionCreateResponse::type_
         }
@@ -87,26 +87,6 @@ module Orb
           EXTERNAL_PAYMENT: :external_payment
 
           def self?.values: -> ::Array[Orb::Models::Customers::BalanceTransactionCreateResponse::action]
-        end
-
-        type credit_note = { id: String }
-
-        class CreditNote < Orb::Internal::Type::BaseModel
-          attr_accessor id: String
-
-          def initialize: (id: String) -> void
-
-          def to_hash: -> { id: String }
-        end
-
-        type invoice = { id: String }
-
-        class Invoice < Orb::Internal::Type::BaseModel
-          attr_accessor id: String
-
-          def initialize: (id: String) -> void
-
-          def to_hash: -> { id: String }
         end
 
         type type_ = :increment | :decrement

@@ -140,8 +140,8 @@ module Orb
 
         # @!attribute unit_config
         #
-        #   @return [Orb::Models::InvoiceCreateParams::LineItem::UnitConfig]
-        required :unit_config, -> { Orb::InvoiceCreateParams::LineItem::UnitConfig }
+        #   @return [Orb::Models::UnitConfig]
+        required :unit_config, -> { Orb::UnitConfig }
 
         # @!method initialize(end_date:, item_id:, model_type:, name:, quantity:, start_date:, unit_config:)
         #   @param end_date [Date] A date string to specify the line item's end date in the customer's timezone.
@@ -156,7 +156,7 @@ module Orb
         #
         #   @param start_date [Date] A date string to specify the line item's start date in the customer's timezone.
         #
-        #   @param unit_config [Orb::Models::InvoiceCreateParams::LineItem::UnitConfig]
+        #   @param unit_config [Orb::Models::UnitConfig]
 
         # @see Orb::Models::InvoiceCreateParams::LineItem#model_type
         module ModelType
@@ -166,18 +166,6 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
-        end
-
-        # @see Orb::Models::InvoiceCreateParams::LineItem#unit_config
-        class UnitConfig < Orb::Internal::Type::BaseModel
-          # @!attribute unit_amount
-          #   Rate per unit of usage
-          #
-          #   @return [String]
-          required :unit_amount, String
-
-          # @!method initialize(unit_amount:)
-          #   @param unit_amount [String] Rate per unit of usage
         end
       end
     end

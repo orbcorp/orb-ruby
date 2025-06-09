@@ -17,7 +17,7 @@ module Orb
       sig do
         params(
           alert_configuration_id: String,
-          thresholds: T::Array[Orb::AlertUpdateParams::Threshold::OrHash],
+          thresholds: T::Array[Orb::Threshold::OrHash],
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Alert)
       end
@@ -87,10 +87,7 @@ module Orb
           customer_id: String,
           currency: String,
           type: Orb::AlertCreateForCustomerParams::Type::OrSymbol,
-          thresholds:
-            T.nilable(
-              T::Array[Orb::AlertCreateForCustomerParams::Threshold::OrHash]
-            ),
+          thresholds: T.nilable(T::Array[Orb::Threshold::OrHash]),
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Alert)
       end
@@ -119,12 +116,7 @@ module Orb
           external_customer_id: String,
           currency: String,
           type: Orb::AlertCreateForExternalCustomerParams::Type::OrSymbol,
-          thresholds:
-            T.nilable(
-              T::Array[
-                Orb::AlertCreateForExternalCustomerParams::Threshold::OrHash
-              ]
-            ),
+          thresholds: T.nilable(T::Array[Orb::Threshold::OrHash]),
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Alert)
       end
@@ -154,8 +146,7 @@ module Orb
       sig do
         params(
           subscription_id: String,
-          thresholds:
-            T::Array[Orb::AlertCreateForSubscriptionParams::Threshold::OrHash],
+          thresholds: T::Array[Orb::Threshold::OrHash],
           type: Orb::AlertCreateForSubscriptionParams::Type::OrSymbol,
           metric_id: T.nilable(String),
           request_options: Orb::RequestOptions::OrHash

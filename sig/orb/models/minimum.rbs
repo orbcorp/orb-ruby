@@ -1,0 +1,30 @@
+module Orb
+  module Models
+    type minimum =
+      {
+        applies_to_price_ids: ::Array[String],
+        filters: ::Array[Orb::TransformPriceFilter],
+        minimum_amount: String
+      }
+
+    class Minimum < Orb::Internal::Type::BaseModel
+      attr_accessor applies_to_price_ids: ::Array[String]
+
+      attr_accessor filters: ::Array[Orb::TransformPriceFilter]
+
+      attr_accessor minimum_amount: String
+
+      def initialize: (
+        applies_to_price_ids: ::Array[String],
+        filters: ::Array[Orb::TransformPriceFilter],
+        minimum_amount: String
+      ) -> void
+
+      def to_hash: -> {
+        applies_to_price_ids: ::Array[String],
+        filters: ::Array[Orb::TransformPriceFilter],
+        minimum_amount: String
+      }
+    end
+  end
+end

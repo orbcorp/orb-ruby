@@ -1,0 +1,13 @@
+module Orb
+  module Models
+    type unit_config = { unit_amount: String }
+
+    class UnitConfig < Orb::Internal::Type::BaseModel
+      attr_accessor unit_amount: String
+
+      def initialize: (unit_amount: String) -> void
+
+      def to_hash: -> { unit_amount: String }
+    end
+  end
+end

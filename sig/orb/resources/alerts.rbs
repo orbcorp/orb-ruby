@@ -8,7 +8,7 @@ module Orb
 
       def update: (
         String alert_configuration_id,
-        thresholds: ::Array[Orb::AlertUpdateParams::Threshold],
+        thresholds: ::Array[Orb::Threshold],
         ?request_options: Orb::request_opts
       ) -> Orb::Alert
 
@@ -29,7 +29,7 @@ module Orb
         String customer_id,
         currency: String,
         type: Orb::Models::AlertCreateForCustomerParams::type_,
-        ?thresholds: ::Array[Orb::AlertCreateForCustomerParams::Threshold]?,
+        ?thresholds: ::Array[Orb::Threshold]?,
         ?request_options: Orb::request_opts
       ) -> Orb::Alert
 
@@ -37,13 +37,13 @@ module Orb
         String external_customer_id,
         currency: String,
         type: Orb::Models::AlertCreateForExternalCustomerParams::type_,
-        ?thresholds: ::Array[Orb::AlertCreateForExternalCustomerParams::Threshold]?,
+        ?thresholds: ::Array[Orb::Threshold]?,
         ?request_options: Orb::request_opts
       ) -> Orb::Alert
 
       def create_for_subscription: (
         String subscription_id,
-        thresholds: ::Array[Orb::AlertCreateForSubscriptionParams::Threshold],
+        thresholds: ::Array[Orb::Threshold],
         type: Orb::Models::AlertCreateForSubscriptionParams::type_,
         ?metric_id: String?,
         ?request_options: Orb::request_opts

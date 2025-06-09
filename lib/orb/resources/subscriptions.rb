@@ -275,7 +275,7 @@ module Orb
       #
       # @param aws_region [String, nil]
       #
-      # @param billing_cycle_anchor_configuration [Orb::Models::SubscriptionCreateParams::BillingCycleAnchorConfiguration, nil]
+      # @param billing_cycle_anchor_configuration [Orb::Models::BillingCycleAnchorConfiguration, nil]
       #
       # @param coupon_redemption_code [String, nil] Redemption code to be used for this subscription. If the coupon cannot be found
       #
@@ -333,7 +333,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::SubscriptionCreateResponse]
+      # @return [Orb::Models::MutatedSubscription]
       #
       # @see Orb::Models::SubscriptionCreateParams
       def create(params = {})
@@ -342,7 +342,7 @@ module Orb
           method: :post,
           path: "subscriptions",
           body: parsed,
-          model: Orb::Models::SubscriptionCreateResponse,
+          model: Orb::MutatedSubscription,
           options: options
         )
       end
@@ -516,7 +516,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::SubscriptionCancelResponse]
+      # @return [Orb::Models::MutatedSubscription]
       #
       # @see Orb::Models::SubscriptionCancelParams
       def cancel(subscription_id, params)
@@ -525,7 +525,7 @@ module Orb
           method: :post,
           path: ["subscriptions/%1$s/cancel", subscription_id],
           body: parsed,
-          model: Orb::Models::SubscriptionCancelResponse,
+          model: Orb::MutatedSubscription,
           options: options
         )
       end
@@ -968,7 +968,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::SubscriptionPriceIntervalsResponse]
+      # @return [Orb::Models::MutatedSubscription]
       #
       # @see Orb::Models::SubscriptionPriceIntervalsParams
       def price_intervals(subscription_id, params = {})
@@ -977,7 +977,7 @@ module Orb
           method: :post,
           path: ["subscriptions/%1$s/price_intervals", subscription_id],
           body: parsed,
-          model: Orb::Models::SubscriptionPriceIntervalsResponse,
+          model: Orb::MutatedSubscription,
           options: options
         )
       end
@@ -1003,7 +1003,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::SubscriptionRedeemCouponResponse]
+      # @return [Orb::Models::MutatedSubscription]
       #
       # @see Orb::Models::SubscriptionRedeemCouponParams
       def redeem_coupon(subscription_id, params)
@@ -1012,7 +1012,7 @@ module Orb
           method: :post,
           path: ["subscriptions/%1$s/redeem_coupon", subscription_id],
           body: parsed,
-          model: Orb::Models::SubscriptionRedeemCouponResponse,
+          model: Orb::MutatedSubscription,
           options: options
         )
       end
@@ -1220,7 +1220,7 @@ module Orb
       #
       # @param billing_cycle_alignment [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAlignment, nil] Reset billing periods to be aligned with the plan change's effective date or sta
       #
-      # @param billing_cycle_anchor_configuration [Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAnchorConfiguration, nil]
+      # @param billing_cycle_anchor_configuration [Orb::Models::BillingCycleAnchorConfiguration, nil]
       #
       # @param change_date [Time, nil] The date that the plan change should take effect. This parameter can only be pas
       #
@@ -1262,7 +1262,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::SubscriptionSchedulePlanChangeResponse]
+      # @return [Orb::Models::MutatedSubscription]
       #
       # @see Orb::Models::SubscriptionSchedulePlanChangeParams
       def schedule_plan_change(subscription_id, params)
@@ -1271,7 +1271,7 @@ module Orb
           method: :post,
           path: ["subscriptions/%1$s/schedule_plan_change", subscription_id],
           body: parsed,
-          model: Orb::Models::SubscriptionSchedulePlanChangeResponse,
+          model: Orb::MutatedSubscription,
           options: options
         )
       end
@@ -1292,7 +1292,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::SubscriptionTriggerPhaseResponse]
+      # @return [Orb::Models::MutatedSubscription]
       #
       # @see Orb::Models::SubscriptionTriggerPhaseParams
       def trigger_phase(subscription_id, params = {})
@@ -1301,7 +1301,7 @@ module Orb
           method: :post,
           path: ["subscriptions/%1$s/trigger_phase", subscription_id],
           body: parsed,
-          model: Orb::Models::SubscriptionTriggerPhaseResponse,
+          model: Orb::MutatedSubscription,
           options: options
         )
       end
@@ -1318,14 +1318,14 @@ module Orb
       # @param subscription_id [String]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::SubscriptionUnscheduleCancellationResponse]
+      # @return [Orb::Models::MutatedSubscription]
       #
       # @see Orb::Models::SubscriptionUnscheduleCancellationParams
       def unschedule_cancellation(subscription_id, params = {})
         @client.request(
           method: :post,
           path: ["subscriptions/%1$s/unschedule_cancellation", subscription_id],
-          model: Orb::Models::SubscriptionUnscheduleCancellationResponse,
+          model: Orb::MutatedSubscription,
           options: params[:request_options]
         )
       end
@@ -1344,7 +1344,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse]
+      # @return [Orb::Models::MutatedSubscription]
       #
       # @see Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesParams
       def unschedule_fixed_fee_quantity_updates(subscription_id, params)
@@ -1353,7 +1353,7 @@ module Orb
           method: :post,
           path: ["subscriptions/%1$s/unschedule_fixed_fee_quantity_updates", subscription_id],
           body: parsed,
-          model: Orb::Models::SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse,
+          model: Orb::MutatedSubscription,
           options: options
         )
       end
@@ -1366,14 +1366,14 @@ module Orb
       # @param subscription_id [String]
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse]
+      # @return [Orb::Models::MutatedSubscription]
       #
       # @see Orb::Models::SubscriptionUnschedulePendingPlanChangesParams
       def unschedule_pending_plan_changes(subscription_id, params = {})
         @client.request(
           method: :post,
           path: ["subscriptions/%1$s/unschedule_pending_plan_changes", subscription_id],
-          model: Orb::Models::SubscriptionUnschedulePendingPlanChangesResponse,
+          model: Orb::MutatedSubscription,
           options: params[:request_options]
         )
       end
@@ -1412,7 +1412,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse]
+      # @return [Orb::Models::MutatedSubscription]
       #
       # @see Orb::Models::SubscriptionUpdateFixedFeeQuantityParams
       def update_fixed_fee_quantity(subscription_id, params)
@@ -1421,7 +1421,7 @@ module Orb
           method: :post,
           path: ["subscriptions/%1$s/update_fixed_fee_quantity", subscription_id],
           body: parsed,
-          model: Orb::Models::SubscriptionUpdateFixedFeeQuantityResponse,
+          model: Orb::MutatedSubscription,
           options: options
         )
       end
@@ -1458,7 +1458,7 @@ module Orb
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Orb::Models::SubscriptionUpdateTrialResponse]
+      # @return [Orb::Models::MutatedSubscription]
       #
       # @see Orb::Models::SubscriptionUpdateTrialParams
       def update_trial(subscription_id, params)
@@ -1467,7 +1467,7 @@ module Orb
           method: :post,
           path: ["subscriptions/%1$s/update_trial", subscription_id],
           body: parsed,
-          model: Orb::Models::SubscriptionUpdateTrialResponse,
+          model: Orb::MutatedSubscription,
           options: options
         )
       end

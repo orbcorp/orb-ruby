@@ -21,10 +21,10 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :credit_note_pdf
 
-      sig { returns(Orb::CreditNote::Customer) }
+      sig { returns(Orb::CustomerMinified) }
       attr_reader :customer
 
-      sig { params(customer: Orb::CreditNote::Customer::OrHash).void }
+      sig { params(customer: Orb::CustomerMinified::OrHash).void }
       attr_writer :customer
 
       # The id of the invoice resource that this credit note is applied to.
@@ -90,7 +90,7 @@ module Orb
           created_at: Time,
           credit_note_number: String,
           credit_note_pdf: T.nilable(String),
-          customer: Orb::CreditNote::Customer::OrHash,
+          customer: Orb::CustomerMinified::OrHash,
           invoice_id: String,
           line_items: T::Array[Orb::CreditNote::LineItem::OrHash],
           maximum_amount_adjustment:
@@ -145,7 +145,7 @@ module Orb
             created_at: Time,
             credit_note_number: String,
             credit_note_pdf: T.nilable(String),
-            customer: Orb::CreditNote::Customer,
+            customer: Orb::CustomerMinified,
             invoice_id: String,
             line_items: T::Array[Orb::CreditNote::LineItem],
             maximum_amount_adjustment:
@@ -162,35 +162,6 @@ module Orb
         )
       end
       def to_hash
-      end
-
-      class Customer < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(Orb::CreditNote::Customer, Orb::Internal::AnyHash)
-          end
-
-        sig { returns(String) }
-        attr_accessor :id
-
-        sig { returns(T.nilable(String)) }
-        attr_accessor :external_customer_id
-
-        sig do
-          params(id: String, external_customer_id: T.nilable(String)).returns(
-            T.attached_class
-          )
-        end
-        def self.new(id:, external_customer_id:)
-        end
-
-        sig do
-          override.returns(
-            { id: String, external_customer_id: T.nilable(String) }
-          )
-        end
-        def to_hash
-        end
       end
 
       class LineItem < Orb::Internal::Type::BaseModel
@@ -224,7 +195,7 @@ module Orb
         attr_accessor :subtotal
 
         # Any tax amounts applied onto the line item.
-        sig { returns(T::Array[Orb::CreditNote::LineItem::TaxAmount]) }
+        sig { returns(T::Array[Orb::TaxAmount]) }
         attr_accessor :tax_amounts
 
         # Any line item discounts from the invoice's line item.
@@ -248,7 +219,7 @@ module Orb
             name: String,
             quantity: T.nilable(Float),
             subtotal: String,
-            tax_amounts: T::Array[Orb::CreditNote::LineItem::TaxAmount::OrHash],
+            tax_amounts: T::Array[Orb::TaxAmount::OrHash],
             discounts: T::Array[Orb::CreditNote::LineItem::Discount::OrHash]
           ).returns(T.attached_class)
         end
@@ -281,63 +252,12 @@ module Orb
               name: String,
               quantity: T.nilable(Float),
               subtotal: String,
-              tax_amounts: T::Array[Orb::CreditNote::LineItem::TaxAmount],
+              tax_amounts: T::Array[Orb::TaxAmount],
               discounts: T::Array[Orb::CreditNote::LineItem::Discount]
             }
           )
         end
         def to_hash
-        end
-
-        class TaxAmount < Orb::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Orb::CreditNote::LineItem::TaxAmount,
-                Orb::Internal::AnyHash
-              )
-            end
-
-          # The amount of additional tax incurred by this tax rate.
-          sig { returns(String) }
-          attr_accessor :amount
-
-          # The human-readable description of the applied tax rate.
-          sig { returns(String) }
-          attr_accessor :tax_rate_description
-
-          # The tax rate percentage, out of 100.
-          sig { returns(T.nilable(String)) }
-          attr_accessor :tax_rate_percentage
-
-          sig do
-            params(
-              amount: String,
-              tax_rate_description: String,
-              tax_rate_percentage: T.nilable(String)
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            # The amount of additional tax incurred by this tax rate.
-            amount:,
-            # The human-readable description of the applied tax rate.
-            tax_rate_description:,
-            # The tax rate percentage, out of 100.
-            tax_rate_percentage:
-          )
-          end
-
-          sig do
-            override.returns(
-              {
-                amount: String,
-                tax_rate_description: String,
-                tax_rate_percentage: T.nilable(String)
-              }
-            )
-          end
-          def to_hash
-          end
         end
 
         class Discount < Orb::Internal::Type::BaseModel

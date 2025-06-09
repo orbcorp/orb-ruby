@@ -1,0 +1,35 @@
+module Orb
+  module Models
+    type new_tax_jar_configuration =
+      {
+        tax_exempt: bool,
+        tax_provider: Orb::Models::NewTaxJarConfiguration::tax_provider
+      }
+
+    class NewTaxJarConfiguration < Orb::Internal::Type::BaseModel
+      attr_accessor tax_exempt: bool
+
+      attr_accessor tax_provider: Orb::Models::NewTaxJarConfiguration::tax_provider
+
+      def initialize: (
+        tax_exempt: bool,
+        tax_provider: Orb::Models::NewTaxJarConfiguration::tax_provider
+      ) -> void
+
+      def to_hash: -> {
+        tax_exempt: bool,
+        tax_provider: Orb::Models::NewTaxJarConfiguration::tax_provider
+      }
+
+      type tax_provider = :taxjar
+
+      module TaxProvider
+        extend Orb::Internal::Type::Enum
+
+        TAXJAR: :taxjar
+
+        def self?.values: -> ::Array[Orb::Models::NewTaxJarConfiguration::tax_provider]
+      end
+    end
+  end
+end

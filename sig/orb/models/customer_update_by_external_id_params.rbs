@@ -2,23 +2,23 @@ module Orb
   module Models
     type customer_update_by_external_id_params =
       {
-        accounting_sync_configuration: Orb::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration?,
+        accounting_sync_configuration: Orb::NewAccountingSyncConfiguration?,
         additional_emails: ::Array[String]?,
         auto_collection: bool?,
-        billing_address: Orb::CustomerUpdateByExternalIDParams::BillingAddress?,
+        billing_address: Orb::AddressInput?,
         currency: String?,
         email: String?,
         email_delivery: bool?,
         external_customer_id: String?,
-        hierarchy: Orb::CustomerUpdateByExternalIDParams::Hierarchy?,
+        hierarchy: Orb::CustomerHierarchyConfig?,
         metadata: ::Hash[Symbol, String?]?,
         name: String?,
         payment_provider: Orb::Models::CustomerUpdateByExternalIDParams::payment_provider?,
         payment_provider_id: String?,
-        reporting_configuration: Orb::CustomerUpdateByExternalIDParams::ReportingConfiguration?,
-        shipping_address: Orb::CustomerUpdateByExternalIDParams::ShippingAddress?,
+        reporting_configuration: Orb::NewReportingConfiguration?,
+        shipping_address: Orb::AddressInput?,
         tax_configuration: Orb::Models::CustomerUpdateByExternalIDParams::tax_configuration?,
-        tax_id: Orb::CustomerUpdateByExternalIDParams::TaxID?
+        tax_id: Orb::CustomerTaxID?
       }
       & Orb::Internal::Type::request_parameters
 
@@ -26,13 +26,13 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      attr_accessor accounting_sync_configuration: Orb::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration?
+      attr_accessor accounting_sync_configuration: Orb::NewAccountingSyncConfiguration?
 
       attr_accessor additional_emails: ::Array[String]?
 
       attr_accessor auto_collection: bool?
 
-      attr_accessor billing_address: Orb::CustomerUpdateByExternalIDParams::BillingAddress?
+      attr_accessor billing_address: Orb::AddressInput?
 
       attr_accessor currency: String?
 
@@ -42,7 +42,7 @@ module Orb
 
       attr_accessor external_customer_id: String?
 
-      attr_accessor hierarchy: Orb::CustomerUpdateByExternalIDParams::Hierarchy?
+      attr_accessor hierarchy: Orb::CustomerHierarchyConfig?
 
       attr_accessor metadata: ::Hash[Symbol, String?]?
 
@@ -52,159 +52,55 @@ module Orb
 
       attr_accessor payment_provider_id: String?
 
-      attr_accessor reporting_configuration: Orb::CustomerUpdateByExternalIDParams::ReportingConfiguration?
+      attr_accessor reporting_configuration: Orb::NewReportingConfiguration?
 
-      attr_accessor shipping_address: Orb::CustomerUpdateByExternalIDParams::ShippingAddress?
+      attr_accessor shipping_address: Orb::AddressInput?
 
       attr_accessor tax_configuration: Orb::Models::CustomerUpdateByExternalIDParams::tax_configuration?
 
-      attr_accessor tax_id: Orb::CustomerUpdateByExternalIDParams::TaxID?
+      attr_accessor tax_id: Orb::CustomerTaxID?
 
       def initialize: (
-        ?accounting_sync_configuration: Orb::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration?,
+        ?accounting_sync_configuration: Orb::NewAccountingSyncConfiguration?,
         ?additional_emails: ::Array[String]?,
         ?auto_collection: bool?,
-        ?billing_address: Orb::CustomerUpdateByExternalIDParams::BillingAddress?,
+        ?billing_address: Orb::AddressInput?,
         ?currency: String?,
         ?email: String?,
         ?email_delivery: bool?,
         ?external_customer_id: String?,
-        ?hierarchy: Orb::CustomerUpdateByExternalIDParams::Hierarchy?,
+        ?hierarchy: Orb::CustomerHierarchyConfig?,
         ?metadata: ::Hash[Symbol, String?]?,
         ?name: String?,
         ?payment_provider: Orb::Models::CustomerUpdateByExternalIDParams::payment_provider?,
         ?payment_provider_id: String?,
-        ?reporting_configuration: Orb::CustomerUpdateByExternalIDParams::ReportingConfiguration?,
-        ?shipping_address: Orb::CustomerUpdateByExternalIDParams::ShippingAddress?,
+        ?reporting_configuration: Orb::NewReportingConfiguration?,
+        ?shipping_address: Orb::AddressInput?,
         ?tax_configuration: Orb::Models::CustomerUpdateByExternalIDParams::tax_configuration?,
-        ?tax_id: Orb::CustomerUpdateByExternalIDParams::TaxID?,
+        ?tax_id: Orb::CustomerTaxID?,
         ?request_options: Orb::request_opts
       ) -> void
 
       def to_hash: -> {
-        accounting_sync_configuration: Orb::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration?,
+        accounting_sync_configuration: Orb::NewAccountingSyncConfiguration?,
         additional_emails: ::Array[String]?,
         auto_collection: bool?,
-        billing_address: Orb::CustomerUpdateByExternalIDParams::BillingAddress?,
+        billing_address: Orb::AddressInput?,
         currency: String?,
         email: String?,
         email_delivery: bool?,
         external_customer_id: String?,
-        hierarchy: Orb::CustomerUpdateByExternalIDParams::Hierarchy?,
+        hierarchy: Orb::CustomerHierarchyConfig?,
         metadata: ::Hash[Symbol, String?]?,
         name: String?,
         payment_provider: Orb::Models::CustomerUpdateByExternalIDParams::payment_provider?,
         payment_provider_id: String?,
-        reporting_configuration: Orb::CustomerUpdateByExternalIDParams::ReportingConfiguration?,
-        shipping_address: Orb::CustomerUpdateByExternalIDParams::ShippingAddress?,
+        reporting_configuration: Orb::NewReportingConfiguration?,
+        shipping_address: Orb::AddressInput?,
         tax_configuration: Orb::Models::CustomerUpdateByExternalIDParams::tax_configuration?,
-        tax_id: Orb::CustomerUpdateByExternalIDParams::TaxID?,
+        tax_id: Orb::CustomerTaxID?,
         request_options: Orb::RequestOptions
       }
-
-      type accounting_sync_configuration =
-        {
-          accounting_providers: ::Array[Orb::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider]?,
-          excluded: bool?
-        }
-
-      class AccountingSyncConfiguration < Orb::Internal::Type::BaseModel
-        attr_accessor accounting_providers: ::Array[Orb::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider]?
-
-        attr_accessor excluded: bool?
-
-        def initialize: (
-          ?accounting_providers: ::Array[Orb::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider]?,
-          ?excluded: bool?
-        ) -> void
-
-        def to_hash: -> {
-          accounting_providers: ::Array[Orb::CustomerUpdateByExternalIDParams::AccountingSyncConfiguration::AccountingProvider]?,
-          excluded: bool?
-        }
-
-        type accounting_provider =
-          { external_provider_id: String, provider_type: String }
-
-        class AccountingProvider < Orb::Internal::Type::BaseModel
-          attr_accessor external_provider_id: String
-
-          attr_accessor provider_type: String
-
-          def initialize: (
-            external_provider_id: String,
-            provider_type: String
-          ) -> void
-
-          def to_hash: -> {
-            external_provider_id: String,
-            provider_type: String
-          }
-        end
-      end
-
-      type billing_address =
-        {
-          city: String?,
-          country: String?,
-          :line1 => String?,
-          :line2 => String?,
-          postal_code: String?,
-          state: String?
-        }
-
-      class BillingAddress < Orb::Internal::Type::BaseModel
-        attr_accessor city: String?
-
-        attr_accessor country: String?
-
-        attr_accessor line1: String?
-
-        attr_accessor line2: String?
-
-        attr_accessor postal_code: String?
-
-        attr_accessor state: String?
-
-        def initialize: (
-          ?city: String?,
-          ?country: String?,
-          ?line1: String?,
-          ?line2: String?,
-          ?postal_code: String?,
-          ?state: String?
-        ) -> void
-
-        def to_hash: -> {
-          city: String?,
-          country: String?,
-          :line1 => String?,
-          :line2 => String?,
-          postal_code: String?,
-          state: String?
-        }
-      end
-
-      type hierarchy =
-        { child_customer_ids: ::Array[String], parent_customer_id: String? }
-
-      class Hierarchy < Orb::Internal::Type::BaseModel
-        attr_reader child_customer_ids: ::Array[String]?
-
-        def child_customer_ids=: (::Array[String]) -> ::Array[String]
-
-        attr_accessor parent_customer_id: String?
-
-        def initialize: (
-          ?child_customer_ids: ::Array[String],
-          ?parent_customer_id: String?
-        ) -> void
-
-        def to_hash: -> {
-          child_customer_ids: ::Array[String],
-          parent_customer_id: String?
-        }
-      end
 
       type payment_provider =
         :quickbooks | :"bill.com" | :stripe_charge | :stripe_invoice | :netsuite
@@ -221,461 +117,15 @@ module Orb
         def self?.values: -> ::Array[Orb::Models::CustomerUpdateByExternalIDParams::payment_provider]
       end
 
-      type reporting_configuration = { exempt: bool }
-
-      class ReportingConfiguration < Orb::Internal::Type::BaseModel
-        attr_accessor exempt: bool
-
-        def initialize: (exempt: bool) -> void
-
-        def to_hash: -> { exempt: bool }
-      end
-
-      type shipping_address =
-        {
-          city: String?,
-          country: String?,
-          :line1 => String?,
-          :line2 => String?,
-          postal_code: String?,
-          state: String?
-        }
-
-      class ShippingAddress < Orb::Internal::Type::BaseModel
-        attr_accessor city: String?
-
-        attr_accessor country: String?
-
-        attr_accessor line1: String?
-
-        attr_accessor line2: String?
-
-        attr_accessor postal_code: String?
-
-        attr_accessor state: String?
-
-        def initialize: (
-          ?city: String?,
-          ?country: String?,
-          ?line1: String?,
-          ?line2: String?,
-          ?postal_code: String?,
-          ?state: String?
-        ) -> void
-
-        def to_hash: -> {
-          city: String?,
-          country: String?,
-          :line1 => String?,
-          :line2 => String?,
-          postal_code: String?,
-          state: String?
-        }
-      end
-
       type tax_configuration =
-        Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Avalara
-        | Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Taxjar
-        | Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Sphere
+        Orb::NewAvalaraTaxConfiguration
+        | Orb::NewTaxJarConfiguration
+        | Orb::NewSphereConfiguration
 
       module TaxConfiguration
         extend Orb::Internal::Type::Union
 
-        type avalara =
-          {
-            tax_exempt: bool,
-            tax_provider: :avalara,
-            tax_exemption_code: String?
-          }
-
-        class Avalara < Orb::Internal::Type::BaseModel
-          attr_accessor tax_exempt: bool
-
-          attr_accessor tax_provider: :avalara
-
-          attr_accessor tax_exemption_code: String?
-
-          def initialize: (
-            tax_exempt: bool,
-            ?tax_exemption_code: String?,
-            ?tax_provider: :avalara
-          ) -> void
-
-          def to_hash: -> {
-            tax_exempt: bool,
-            tax_provider: :avalara,
-            tax_exemption_code: String?
-          }
-        end
-
-        type taxjar = { tax_exempt: bool, tax_provider: :taxjar }
-
-        class Taxjar < Orb::Internal::Type::BaseModel
-          attr_accessor tax_exempt: bool
-
-          attr_accessor tax_provider: :taxjar
-
-          def initialize: (tax_exempt: bool, ?tax_provider: :taxjar) -> void
-
-          def to_hash: -> { tax_exempt: bool, tax_provider: :taxjar }
-        end
-
-        type sphere = { tax_exempt: bool, tax_provider: :sphere }
-
-        class Sphere < Orb::Internal::Type::BaseModel
-          attr_accessor tax_exempt: bool
-
-          attr_accessor tax_provider: :sphere
-
-          def initialize: (tax_exempt: bool, ?tax_provider: :sphere) -> void
-
-          def to_hash: -> { tax_exempt: bool, tax_provider: :sphere }
-        end
-
         def self?.variants: -> ::Array[Orb::Models::CustomerUpdateByExternalIDParams::tax_configuration]
-      end
-
-      type tax_id =
-        {
-          country: Orb::Models::CustomerUpdateByExternalIDParams::TaxID::country,
-          type: Orb::Models::CustomerUpdateByExternalIDParams::TaxID::type_,
-          value: String
-        }
-
-      class TaxID < Orb::Internal::Type::BaseModel
-        attr_accessor country: Orb::Models::CustomerUpdateByExternalIDParams::TaxID::country
-
-        attr_accessor type: Orb::Models::CustomerUpdateByExternalIDParams::TaxID::type_
-
-        attr_accessor value: String
-
-        def initialize: (
-          country: Orb::Models::CustomerUpdateByExternalIDParams::TaxID::country,
-          type: Orb::Models::CustomerUpdateByExternalIDParams::TaxID::type_,
-          value: String
-        ) -> void
-
-        def to_hash: -> {
-          country: Orb::Models::CustomerUpdateByExternalIDParams::TaxID::country,
-          type: Orb::Models::CustomerUpdateByExternalIDParams::TaxID::type_,
-          value: String
-        }
-
-        type country =
-          :AD
-          | :AE
-          | :AR
-          | :AT
-          | :AU
-          | :BE
-          | :BG
-          | :BH
-          | :BO
-          | :BR
-          | :CA
-          | :CH
-          | :CL
-          | :CN
-          | :CO
-          | :CR
-          | :CY
-          | :CZ
-          | :DE
-          | :DK
-          | :EE
-          | :DO
-          | :EC
-          | :EG
-          | :ES
-          | :EU
-          | :FI
-          | :FR
-          | :GB
-          | :GE
-          | :GR
-          | :HK
-          | :HR
-          | :HU
-          | :ID
-          | :IE
-          | :IL
-          | :IN
-          | :IS
-          | :IT
-          | :JP
-          | :KE
-          | :KR
-          | :KZ
-          | :LI
-          | :LT
-          | :LU
-          | :LV
-          | :MT
-          | :MX
-          | :MY
-          | :NG
-          | :NL
-          | :NO
-          | :NZ
-          | :OM
-          | :PE
-          | :PH
-          | :PL
-          | :PT
-          | :RO
-          | :RS
-          | :RU
-          | :SA
-          | :SE
-          | :SG
-          | :SI
-          | :SK
-          | :SV
-          | :TH
-          | :TR
-          | :TW
-          | :UA
-          | :US
-          | :UY
-          | :VE
-          | :VN
-          | :ZA
-
-        module Country
-          extend Orb::Internal::Type::Enum
-
-          AD: :AD
-          AE: :AE
-          AR: :AR
-          AT: :AT
-          AU: :AU
-          BE: :BE
-          BG: :BG
-          BH: :BH
-          BO: :BO
-          BR: :BR
-          CA: :CA
-          CH: :CH
-          CL: :CL
-          CN: :CN
-          CO: :CO
-          CR: :CR
-          CY: :CY
-          CZ: :CZ
-          DE: :DE
-          DK: :DK
-          EE: :EE
-          DO: :DO
-          EC: :EC
-          EG: :EG
-          ES: :ES
-          EU: :EU
-          FI: :FI
-          FR: :FR
-          GB: :GB
-          GE: :GE
-          GR: :GR
-          HK: :HK
-          HR: :HR
-          HU: :HU
-          ID: :ID
-          IE: :IE
-          IL: :IL
-          IN: :IN
-          IS: :IS
-          IT: :IT
-          JP: :JP
-          KE: :KE
-          KR: :KR
-          KZ: :KZ
-          LI: :LI
-          LT: :LT
-          LU: :LU
-          LV: :LV
-          MT: :MT
-          MX: :MX
-          MY: :MY
-          NG: :NG
-          NL: :NL
-          NO: :NO
-          NZ: :NZ
-          OM: :OM
-          PE: :PE
-          PH: :PH
-          PL: :PL
-          PT: :PT
-          RO: :RO
-          RS: :RS
-          RU: :RU
-          SA: :SA
-          SE: :SE
-          SG: :SG
-          SI: :SI
-          SK: :SK
-          SV: :SV
-          TH: :TH
-          TR: :TR
-          TW: :TW
-          UA: :UA
-          US: :US
-          UY: :UY
-          VE: :VE
-          VN: :VN
-          ZA: :ZA
-
-          def self?.values: -> ::Array[Orb::Models::CustomerUpdateByExternalIDParams::TaxID::country]
-        end
-
-        type type_ =
-          :ad_nrt
-          | :ae_trn
-          | :ar_cuit
-          | :eu_vat
-          | :au_abn
-          | :au_arn
-          | :bg_uic
-          | :bh_vat
-          | :bo_tin
-          | :br_cnpj
-          | :br_cpf
-          | :ca_bn
-          | :ca_gst_hst
-          | :ca_pst_bc
-          | :ca_pst_mb
-          | :ca_pst_sk
-          | :ca_qst
-          | :ch_vat
-          | :cl_tin
-          | :cn_tin
-          | :co_nit
-          | :cr_tin
-          | :do_rcn
-          | :ec_ruc
-          | :eg_tin
-          | :es_cif
-          | :eu_oss_vat
-          | :gb_vat
-          | :ge_vat
-          | :hk_br
-          | :hu_tin
-          | :id_npwp
-          | :il_vat
-          | :in_gst
-          | :is_vat
-          | :jp_cn
-          | :jp_rn
-          | :jp_trn
-          | :ke_pin
-          | :kr_brn
-          | :kz_bin
-          | :li_uid
-          | :mx_rfc
-          | :my_frp
-          | :my_itn
-          | :my_sst
-          | :ng_tin
-          | :no_vat
-          | :no_voec
-          | :nz_gst
-          | :om_vat
-          | :pe_ruc
-          | :ph_tin
-          | :ro_tin
-          | :rs_pib
-          | :ru_inn
-          | :ru_kpp
-          | :sa_vat
-          | :sg_gst
-          | :sg_uen
-          | :si_tin
-          | :sv_nit
-          | :th_vat
-          | :tr_tin
-          | :tw_vat
-          | :ua_vat
-          | :us_ein
-          | :uy_ruc
-          | :ve_rif
-          | :vn_tin
-          | :za_vat
-
-        module Type
-          extend Orb::Internal::Type::Enum
-
-          AD_NRT: :ad_nrt
-          AE_TRN: :ae_trn
-          AR_CUIT: :ar_cuit
-          EU_VAT: :eu_vat
-          AU_ABN: :au_abn
-          AU_ARN: :au_arn
-          BG_UIC: :bg_uic
-          BH_VAT: :bh_vat
-          BO_TIN: :bo_tin
-          BR_CNPJ: :br_cnpj
-          BR_CPF: :br_cpf
-          CA_BN: :ca_bn
-          CA_GST_HST: :ca_gst_hst
-          CA_PST_BC: :ca_pst_bc
-          CA_PST_MB: :ca_pst_mb
-          CA_PST_SK: :ca_pst_sk
-          CA_QST: :ca_qst
-          CH_VAT: :ch_vat
-          CL_TIN: :cl_tin
-          CN_TIN: :cn_tin
-          CO_NIT: :co_nit
-          CR_TIN: :cr_tin
-          DO_RCN: :do_rcn
-          EC_RUC: :ec_ruc
-          EG_TIN: :eg_tin
-          ES_CIF: :es_cif
-          EU_OSS_VAT: :eu_oss_vat
-          GB_VAT: :gb_vat
-          GE_VAT: :ge_vat
-          HK_BR: :hk_br
-          HU_TIN: :hu_tin
-          ID_NPWP: :id_npwp
-          IL_VAT: :il_vat
-          IN_GST: :in_gst
-          IS_VAT: :is_vat
-          JP_CN: :jp_cn
-          JP_RN: :jp_rn
-          JP_TRN: :jp_trn
-          KE_PIN: :ke_pin
-          KR_BRN: :kr_brn
-          KZ_BIN: :kz_bin
-          LI_UID: :li_uid
-          MX_RFC: :mx_rfc
-          MY_FRP: :my_frp
-          MY_ITN: :my_itn
-          MY_SST: :my_sst
-          NG_TIN: :ng_tin
-          NO_VAT: :no_vat
-          NO_VOEC: :no_voec
-          NZ_GST: :nz_gst
-          OM_VAT: :om_vat
-          PE_RUC: :pe_ruc
-          PH_TIN: :ph_tin
-          RO_TIN: :ro_tin
-          RS_PIB: :rs_pib
-          RU_INN: :ru_inn
-          RU_KPP: :ru_kpp
-          SA_VAT: :sa_vat
-          SG_GST: :sg_gst
-          SG_UEN: :sg_uen
-          SI_TIN: :si_tin
-          SV_NIT: :sv_nit
-          TH_VAT: :th_vat
-          TR_TIN: :tr_tin
-          TW_VAT: :tw_vat
-          UA_VAT: :ua_vat
-          US_EIN: :us_ein
-          UY_RUC: :uy_ruc
-          VE_RIF: :ve_rif
-          VN_TIN: :vn_tin
-          ZA_VAT: :za_vat
-
-          def self?.values: -> ::Array[Orb::Models::CustomerUpdateByExternalIDParams::TaxID::type_]
-        end
       end
     end
   end

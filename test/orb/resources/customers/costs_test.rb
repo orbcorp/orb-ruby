@@ -12,7 +12,7 @@ class Orb::Test::Resources::Customers::CostsTest < Orb::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Customers::CostListResponse::Data])
+        data: ^(Orb::Internal::Type::ArrayOf[Orb::AggregatedCost])
       }
     end
   end
@@ -26,7 +26,7 @@ class Orb::Test::Resources::Customers::CostsTest < Orb::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Customers::CostListByExternalIDResponse::Data])
+        data: ^(Orb::Internal::Type::ArrayOf[Orb::AggregatedCost])
       }
     end
   end

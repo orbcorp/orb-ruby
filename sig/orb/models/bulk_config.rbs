@@ -1,0 +1,13 @@
+module Orb
+  module Models
+    type bulk_config = { tiers: ::Array[Orb::BulkTier] }
+
+    class BulkConfig < Orb::Internal::Type::BaseModel
+      attr_accessor tiers: ::Array[Orb::BulkTier]
+
+      def initialize: (tiers: ::Array[Orb::BulkTier]) -> void
+
+      def to_hash: -> { tiers: ::Array[Orb::BulkTier] }
+    end
+  end
+end

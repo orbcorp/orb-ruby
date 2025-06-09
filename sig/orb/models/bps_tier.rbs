@@ -1,0 +1,35 @@
+module Orb
+  module Models
+    type bps_tier =
+      {
+        bps: Float,
+        minimum_amount: String,
+        maximum_amount: String?,
+        per_unit_maximum: String?
+      }
+
+    class BPSTier < Orb::Internal::Type::BaseModel
+      attr_accessor bps: Float
+
+      attr_accessor minimum_amount: String
+
+      attr_accessor maximum_amount: String?
+
+      attr_accessor per_unit_maximum: String?
+
+      def initialize: (
+        bps: Float,
+        minimum_amount: String,
+        ?maximum_amount: String?,
+        ?per_unit_maximum: String?
+      ) -> void
+
+      def to_hash: -> {
+        bps: Float,
+        minimum_amount: String,
+        maximum_amount: String?,
+        per_unit_maximum: String?
+      }
+    end
+  end
+end

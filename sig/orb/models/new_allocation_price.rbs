@@ -1,0 +1,56 @@
+module Orb
+  module Models
+    type new_allocation_price =
+      {
+        amount: String,
+        cadence: Orb::Models::NewAllocationPrice::cadence,
+        currency: String,
+        custom_expiration: Orb::CustomExpiration?,
+        expires_at_end_of_cadence: bool?
+      }
+
+    class NewAllocationPrice < Orb::Internal::Type::BaseModel
+      attr_accessor amount: String
+
+      attr_accessor cadence: Orb::Models::NewAllocationPrice::cadence
+
+      attr_accessor currency: String
+
+      attr_accessor custom_expiration: Orb::CustomExpiration?
+
+      attr_accessor expires_at_end_of_cadence: bool?
+
+      def initialize: (
+        amount: String,
+        cadence: Orb::Models::NewAllocationPrice::cadence,
+        currency: String,
+        ?custom_expiration: Orb::CustomExpiration?,
+        ?expires_at_end_of_cadence: bool?
+      ) -> void
+
+      def to_hash: -> {
+        amount: String,
+        cadence: Orb::Models::NewAllocationPrice::cadence,
+        currency: String,
+        custom_expiration: Orb::CustomExpiration?,
+        expires_at_end_of_cadence: bool?
+      }
+
+      type cadence =
+        :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
+
+      module Cadence
+        extend Orb::Internal::Type::Enum
+
+        ONE_TIME: :one_time
+        MONTHLY: :monthly
+        QUARTERLY: :quarterly
+        SEMI_ANNUAL: :semi_annual
+        ANNUAL: :annual
+        CUSTOM: :custom
+
+        def self?.values: -> ::Array[Orb::Models::NewAllocationPrice::cadence]
+      end
+    end
+  end
+end
