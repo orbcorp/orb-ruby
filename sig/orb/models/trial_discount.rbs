@@ -4,7 +4,7 @@ module Orb
       {
         discount_type: Orb::Models::TrialDiscount::discount_type,
         applies_to_price_ids: ::Array[String]?,
-        filters: ::Array[Orb::TrialDiscount::Filter]?,
+        filters: ::Array[Orb::TransformPriceFilter]?,
         reason: String?,
         trial_amount_discount: String?,
         trial_percentage_discount: Float?
@@ -15,7 +15,7 @@ module Orb
 
       attr_accessor applies_to_price_ids: ::Array[String]?
 
-      attr_accessor filters: ::Array[Orb::TrialDiscount::Filter]?
+      attr_accessor filters: ::Array[Orb::TransformPriceFilter]?
 
       attr_accessor reason: String?
 
@@ -26,7 +26,7 @@ module Orb
       def initialize: (
         discount_type: Orb::Models::TrialDiscount::discount_type,
         ?applies_to_price_ids: ::Array[String]?,
-        ?filters: ::Array[Orb::TrialDiscount::Filter]?,
+        ?filters: ::Array[Orb::TransformPriceFilter]?,
         ?reason: String?,
         ?trial_amount_discount: String?,
         ?trial_percentage_discount: Float?
@@ -35,7 +35,7 @@ module Orb
       def to_hash: -> {
         discount_type: Orb::Models::TrialDiscount::discount_type,
         applies_to_price_ids: ::Array[String]?,
-        filters: ::Array[Orb::TrialDiscount::Filter]?,
+        filters: ::Array[Orb::TransformPriceFilter]?,
         reason: String?,
         trial_amount_discount: String?,
         trial_percentage_discount: Float?
@@ -49,59 +49,6 @@ module Orb
         TRIAL: :trial
 
         def self?.values: -> ::Array[Orb::Models::TrialDiscount::discount_type]
-      end
-
-      type filter =
-        {
-          field: Orb::Models::TrialDiscount::Filter::field,
-          operator: Orb::Models::TrialDiscount::Filter::operator,
-          values: ::Array[String]
-        }
-
-      class Filter < Orb::Internal::Type::BaseModel
-        attr_accessor field: Orb::Models::TrialDiscount::Filter::field
-
-        attr_accessor operator: Orb::Models::TrialDiscount::Filter::operator
-
-        attr_accessor values: ::Array[String]
-
-        def initialize: (
-          field: Orb::Models::TrialDiscount::Filter::field,
-          operator: Orb::Models::TrialDiscount::Filter::operator,
-          values: ::Array[String]
-        ) -> void
-
-        def to_hash: -> {
-          field: Orb::Models::TrialDiscount::Filter::field,
-          operator: Orb::Models::TrialDiscount::Filter::operator,
-          values: ::Array[String]
-        }
-
-        type field =
-          :price_id | :item_id | :price_type | :currency | :pricing_unit_id
-
-        module Field
-          extend Orb::Internal::Type::Enum
-
-          PRICE_ID: :price_id
-          ITEM_ID: :item_id
-          PRICE_TYPE: :price_type
-          CURRENCY: :currency
-          PRICING_UNIT_ID: :pricing_unit_id
-
-          def self?.values: -> ::Array[Orb::Models::TrialDiscount::Filter::field]
-        end
-
-        type operator = :includes | :excludes
-
-        module Operator
-          extend Orb::Internal::Type::Enum
-
-          INCLUDES: :includes
-          EXCLUDES: :excludes
-
-          def self?.values: -> ::Array[Orb::Models::TrialDiscount::Filter::operator]
-        end
       end
     end
   end

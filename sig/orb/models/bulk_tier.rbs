@@ -1,0 +1,15 @@
+module Orb
+  module Models
+    type bulk_tier = { unit_amount: String, maximum_units: Float? }
+
+    class BulkTier < Orb::Internal::Type::BaseModel
+      attr_accessor unit_amount: String
+
+      attr_accessor maximum_units: Float?
+
+      def initialize: (unit_amount: String, ?maximum_units: Float?) -> void
+
+      def to_hash: -> { unit_amount: String, maximum_units: Float? }
+    end
+  end
+end

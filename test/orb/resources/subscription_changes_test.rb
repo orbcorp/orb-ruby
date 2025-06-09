@@ -15,7 +15,7 @@ class Orb::Test::Resources::SubscriptionChangesTest < Orb::Test::ResourceTest
         id: String,
         expiration_time: Time,
         status: Orb::Models::SubscriptionChangeRetrieveResponse::Status,
-        subscription: Orb::Models::SubscriptionChangeRetrieveResponse::Subscription | nil,
+        subscription: Orb::MutatedSubscription | nil,
         applied_at: Time | nil,
         cancelled_at: Time | nil
       }
@@ -34,7 +34,7 @@ class Orb::Test::Resources::SubscriptionChangesTest < Orb::Test::ResourceTest
         id: String,
         expiration_time: Time,
         status: Orb::Models::SubscriptionChangeApplyResponse::Status,
-        subscription: Orb::Models::SubscriptionChangeApplyResponse::Subscription | nil,
+        subscription: Orb::MutatedSubscription | nil,
         applied_at: Time | nil,
         cancelled_at: Time | nil
       }
@@ -53,7 +53,7 @@ class Orb::Test::Resources::SubscriptionChangesTest < Orb::Test::ResourceTest
         id: String,
         expiration_time: Time,
         status: Orb::Models::SubscriptionChangeCancelResponse::Status,
-        subscription: Orb::Models::SubscriptionChangeCancelResponse::Subscription | nil,
+        subscription: Orb::MutatedSubscription | nil,
         applied_at: Time | nil,
         cancelled_at: Time | nil
       }

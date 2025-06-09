@@ -30,10 +30,8 @@ module Orb
 
         # @!attribute credit_note
         #
-        #   @return [Orb::Models::Customers::BalanceTransactionListResponse::CreditNote, nil]
-        required :credit_note,
-                 -> { Orb::Models::Customers::BalanceTransactionListResponse::CreditNote },
-                 nil?: true
+        #   @return [Orb::Models::CreditNoteTiny, nil]
+        required :credit_note, -> { Orb::CreditNoteTiny }, nil?: true
 
         # @!attribute description
         #   An optional description provided for manual customer balance adjustments.
@@ -50,8 +48,8 @@ module Orb
 
         # @!attribute invoice
         #
-        #   @return [Orb::Models::Customers::BalanceTransactionListResponse::Invoice, nil]
-        required :invoice, -> { Orb::Models::Customers::BalanceTransactionListResponse::Invoice }, nil?: true
+        #   @return [Orb::Models::InvoiceTiny, nil]
+        required :invoice, -> { Orb::InvoiceTiny }, nil?: true
 
         # @!attribute starting_balance
         #   The original value of the customer's balance prior to the transaction, in the
@@ -77,13 +75,13 @@ module Orb
         #
         #   @param created_at [Time] The creation time of this transaction.
         #
-        #   @param credit_note [Orb::Models::Customers::BalanceTransactionListResponse::CreditNote, nil]
+        #   @param credit_note [Orb::Models::CreditNoteTiny, nil]
         #
         #   @param description [String, nil] An optional description provided for manual customer balance adjustments.
         #
         #   @param ending_balance [String] The new value of the customer's balance prior to the transaction, in the custome
         #
-        #   @param invoice [Orb::Models::Customers::BalanceTransactionListResponse::Invoice, nil]
+        #   @param invoice [Orb::Models::InvoiceTiny, nil]
         #
         #   @param starting_balance [String] The original value of the customer's balance prior to the transaction, in the cu
         #
@@ -105,30 +103,6 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
-        end
-
-        # @see Orb::Models::Customers::BalanceTransactionListResponse#credit_note
-        class CreditNote < Orb::Internal::Type::BaseModel
-          # @!attribute id
-          #   The id of the Credit note
-          #
-          #   @return [String]
-          required :id, String
-
-          # @!method initialize(id:)
-          #   @param id [String] The id of the Credit note
-        end
-
-        # @see Orb::Models::Customers::BalanceTransactionListResponse#invoice
-        class Invoice < Orb::Internal::Type::BaseModel
-          # @!attribute id
-          #   The Invoice id
-          #
-          #   @return [String]
-          required :id, String
-
-          # @!method initialize(id:)
-          #   @param id [String] The Invoice id
         end
 
         # @see Orb::Models::Customers::BalanceTransactionListResponse#type

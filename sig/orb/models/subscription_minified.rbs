@@ -1,0 +1,13 @@
+module Orb
+  module Models
+    type subscription_minified = { id: String }
+
+    class SubscriptionMinified < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      def initialize: (id: String) -> void
+
+      def to_hash: -> { id: String }
+    end
+  end
+end

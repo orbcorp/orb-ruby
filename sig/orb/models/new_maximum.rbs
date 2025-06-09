@@ -1,0 +1,97 @@
+module Orb
+  module Models
+    type new_maximum =
+      {
+        adjustment_type: Orb::Models::NewMaximum::adjustment_type,
+        maximum_amount: String,
+        applies_to_all: Orb::Models::NewMaximum::applies_to_all?,
+        applies_to_item_ids: ::Array[String]?,
+        applies_to_price_ids: ::Array[String]?,
+        currency: String?,
+        filters: ::Array[Orb::TransformPriceFilter]?,
+        is_invoice_level: bool,
+        price_type: Orb::Models::NewMaximum::price_type?
+      }
+
+    class NewMaximum < Orb::Internal::Type::BaseModel
+      attr_accessor adjustment_type: Orb::Models::NewMaximum::adjustment_type
+
+      attr_accessor maximum_amount: String
+
+      attr_accessor applies_to_all: Orb::Models::NewMaximum::applies_to_all?
+
+      attr_accessor applies_to_item_ids: ::Array[String]?
+
+      attr_accessor applies_to_price_ids: ::Array[String]?
+
+      attr_accessor currency: String?
+
+      attr_accessor filters: ::Array[Orb::TransformPriceFilter]?
+
+      attr_reader is_invoice_level: bool?
+
+      def is_invoice_level=: (bool) -> bool
+
+      attr_accessor price_type: Orb::Models::NewMaximum::price_type?
+
+      def initialize: (
+        adjustment_type: Orb::Models::NewMaximum::adjustment_type,
+        maximum_amount: String,
+        ?applies_to_all: Orb::Models::NewMaximum::applies_to_all?,
+        ?applies_to_item_ids: ::Array[String]?,
+        ?applies_to_price_ids: ::Array[String]?,
+        ?currency: String?,
+        ?filters: ::Array[Orb::TransformPriceFilter]?,
+        ?is_invoice_level: bool,
+        ?price_type: Orb::Models::NewMaximum::price_type?
+      ) -> void
+
+      def to_hash: -> {
+        adjustment_type: Orb::Models::NewMaximum::adjustment_type,
+        maximum_amount: String,
+        applies_to_all: Orb::Models::NewMaximum::applies_to_all?,
+        applies_to_item_ids: ::Array[String]?,
+        applies_to_price_ids: ::Array[String]?,
+        currency: String?,
+        filters: ::Array[Orb::TransformPriceFilter]?,
+        is_invoice_level: bool,
+        price_type: Orb::Models::NewMaximum::price_type?
+      }
+
+      type adjustment_type = :maximum
+
+      module AdjustmentType
+        extend Orb::Internal::Type::Enum
+
+        MAXIMUM: :maximum
+
+        def self?.values: -> ::Array[Orb::Models::NewMaximum::adjustment_type]
+      end
+
+      type applies_to_all = true
+
+      module AppliesToAll
+        extend Orb::Internal::Type::Enum
+
+        TRUE: true
+
+        def self?.values: -> ::Array[Orb::Models::NewMaximum::applies_to_all]
+      end
+
+      type price_type =
+        :usage | :fixed_in_advance | :fixed_in_arrears | :fixed | :in_arrears
+
+      module PriceType
+        extend Orb::Internal::Type::Enum
+
+        USAGE: :usage
+        FIXED_IN_ADVANCE: :fixed_in_advance
+        FIXED_IN_ARREARS: :fixed_in_arrears
+        FIXED: :fixed
+        IN_ARREARS: :in_arrears
+
+        def self?.values: -> ::Array[Orb::Models::NewMaximum::price_type]
+      end
+    end
+  end
+end

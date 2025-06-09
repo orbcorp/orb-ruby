@@ -31,23 +31,10 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig do
-          returns(
-            T.nilable(
-              Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::CreditNoteTiny)) }
         attr_reader :credit_note
 
-        sig do
-          params(
-            credit_note:
-              T.nilable(
-                Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote::OrHash
-              )
-          ).void
-        end
+        sig { params(credit_note: T.nilable(Orb::CreditNoteTiny::OrHash)).void }
         attr_writer :credit_note
 
         # An optional description provided for manual customer balance adjustments.
@@ -59,23 +46,10 @@ module Orb
         sig { returns(String) }
         attr_accessor :ending_balance
 
-        sig do
-          returns(
-            T.nilable(
-              Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::InvoiceTiny)) }
         attr_reader :invoice
 
-        sig do
-          params(
-            invoice:
-              T.nilable(
-                Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice::OrHash
-              )
-          ).void
-        end
+        sig { params(invoice: T.nilable(Orb::InvoiceTiny::OrHash)).void }
         attr_writer :invoice
 
         # The original value of the customer's balance prior to the transaction, in the
@@ -97,16 +71,10 @@ module Orb
               Orb::Models::Customers::BalanceTransactionCreateResponse::Action::OrSymbol,
             amount: String,
             created_at: Time,
-            credit_note:
-              T.nilable(
-                Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote::OrHash
-              ),
+            credit_note: T.nilable(Orb::CreditNoteTiny::OrHash),
             description: T.nilable(String),
             ending_balance: String,
-            invoice:
-              T.nilable(
-                Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice::OrHash
-              ),
+            invoice: T.nilable(Orb::InvoiceTiny::OrHash),
             starting_balance: String,
             type:
               Orb::Models::Customers::BalanceTransactionCreateResponse::Type::OrSymbol
@@ -142,16 +110,10 @@ module Orb
                 Orb::Models::Customers::BalanceTransactionCreateResponse::Action::TaggedSymbol,
               amount: String,
               created_at: Time,
-              credit_note:
-                T.nilable(
-                  Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote
-                ),
+              credit_note: T.nilable(Orb::CreditNoteTiny),
               description: T.nilable(String),
               ending_balance: String,
-              invoice:
-                T.nilable(
-                  Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice
-                ),
+              invoice: T.nilable(Orb::InvoiceTiny),
               starting_balance: String,
               type:
                 Orb::Models::Customers::BalanceTransactionCreateResponse::Type::TaggedSymbol
@@ -227,56 +189,6 @@ module Orb
             )
           end
           def self.values
-          end
-        end
-
-        class CreditNote < Orb::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Orb::Models::Customers::BalanceTransactionCreateResponse::CreditNote,
-                Orb::Internal::AnyHash
-              )
-            end
-
-          # The id of the Credit note
-          sig { returns(String) }
-          attr_accessor :id
-
-          sig { params(id: String).returns(T.attached_class) }
-          def self.new(
-            # The id of the Credit note
-            id:
-          )
-          end
-
-          sig { override.returns({ id: String }) }
-          def to_hash
-          end
-        end
-
-        class Invoice < Orb::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Orb::Models::Customers::BalanceTransactionCreateResponse::Invoice,
-                Orb::Internal::AnyHash
-              )
-            end
-
-          # The Invoice id
-          sig { returns(String) }
-          attr_accessor :id
-
-          sig { params(id: String).returns(T.attached_class) }
-          def self.new(
-            # The Invoice id
-            id:
-          )
-          end
-
-          sig { override.returns({ id: String }) }
-          def to_hash
           end
         end
 

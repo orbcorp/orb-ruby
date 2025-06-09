@@ -1,0 +1,26 @@
+module Orb
+  module Models
+    type tier_config =
+      { first_unit: Float, last_unit: Float?, unit_amount: String }
+
+    class TierConfig < Orb::Internal::Type::BaseModel
+      attr_accessor first_unit: Float
+
+      attr_accessor last_unit: Float?
+
+      attr_accessor unit_amount: String
+
+      def initialize: (
+        first_unit: Float,
+        last_unit: Float?,
+        unit_amount: String
+      ) -> void
+
+      def to_hash: -> {
+        first_unit: Float,
+        last_unit: Float?,
+        unit_amount: String
+      }
+    end
+  end
+end

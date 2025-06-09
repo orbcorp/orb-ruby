@@ -1,93 +1,14 @@
 module Orb
   module Models
     module Customers
-      type cost_list_response =
-        { data: ::Array[Orb::Models::Customers::CostListResponse::Data] }
+      type cost_list_response = { data: ::Array[Orb::AggregatedCost] }
 
       class CostListResponse < Orb::Internal::Type::BaseModel
-        attr_accessor data: ::Array[Orb::Models::Customers::CostListResponse::Data]
+        attr_accessor data: ::Array[Orb::AggregatedCost]
 
-        def initialize: (
-          data: ::Array[Orb::Models::Customers::CostListResponse::Data]
-        ) -> void
+        def initialize: (data: ::Array[Orb::AggregatedCost]) -> void
 
-        def to_hash: -> {
-          data: ::Array[Orb::Models::Customers::CostListResponse::Data]
-        }
-
-        type data =
-          {
-            per_price_costs: ::Array[Orb::Models::Customers::CostListResponse::Data::PerPriceCost],
-            subtotal: String,
-            timeframe_end: Time,
-            timeframe_start: Time,
-            total: String
-          }
-
-        class Data < Orb::Internal::Type::BaseModel
-          attr_accessor per_price_costs: ::Array[Orb::Models::Customers::CostListResponse::Data::PerPriceCost]
-
-          attr_accessor subtotal: String
-
-          attr_accessor timeframe_end: Time
-
-          attr_accessor timeframe_start: Time
-
-          attr_accessor total: String
-
-          def initialize: (
-            per_price_costs: ::Array[Orb::Models::Customers::CostListResponse::Data::PerPriceCost],
-            subtotal: String,
-            timeframe_end: Time,
-            timeframe_start: Time,
-            total: String
-          ) -> void
-
-          def to_hash: -> {
-            per_price_costs: ::Array[Orb::Models::Customers::CostListResponse::Data::PerPriceCost],
-            subtotal: String,
-            timeframe_end: Time,
-            timeframe_start: Time,
-            total: String
-          }
-
-          type per_price_cost =
-            {
-              price: Orb::Models::price,
-              price_id: String,
-              subtotal: String,
-              total: String,
-              quantity: Float?
-            }
-
-          class PerPriceCost < Orb::Internal::Type::BaseModel
-            attr_accessor price: Orb::Models::price
-
-            attr_accessor price_id: String
-
-            attr_accessor subtotal: String
-
-            attr_accessor total: String
-
-            attr_accessor quantity: Float?
-
-            def initialize: (
-              price: Orb::Models::price,
-              price_id: String,
-              subtotal: String,
-              total: String,
-              ?quantity: Float?
-            ) -> void
-
-            def to_hash: -> {
-              price: Orb::Models::price,
-              price_id: String,
-              subtotal: String,
-              total: String,
-              quantity: Float?
-            }
-          end
-        end
+        def to_hash: -> { data: ::Array[Orb::AggregatedCost] }
       end
     end
   end

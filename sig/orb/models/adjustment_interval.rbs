@@ -1,0 +1,53 @@
+module Orb
+  module Models
+    type adjustment_interval =
+      {
+        id: String,
+        adjustment: Orb::Models::AdjustmentInterval::adjustment,
+        applies_to_price_interval_ids: ::Array[String],
+        end_date: Time?,
+        start_date: Time
+      }
+
+    class AdjustmentInterval < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor adjustment: Orb::Models::AdjustmentInterval::adjustment
+
+      attr_accessor applies_to_price_interval_ids: ::Array[String]
+
+      attr_accessor end_date: Time?
+
+      attr_accessor start_date: Time
+
+      def initialize: (
+        id: String,
+        adjustment: Orb::Models::AdjustmentInterval::adjustment,
+        applies_to_price_interval_ids: ::Array[String],
+        end_date: Time?,
+        start_date: Time
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        adjustment: Orb::Models::AdjustmentInterval::adjustment,
+        applies_to_price_interval_ids: ::Array[String],
+        end_date: Time?,
+        start_date: Time
+      }
+
+      type adjustment =
+        Orb::PlanPhaseUsageDiscountAdjustment
+        | Orb::PlanPhaseAmountDiscountAdjustment
+        | Orb::PlanPhasePercentageDiscountAdjustment
+        | Orb::PlanPhaseMinimumAdjustment
+        | Orb::PlanPhaseMaximumAdjustment
+
+      module Adjustment
+        extend Orb::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Orb::Models::AdjustmentInterval::adjustment]
+      end
+    end
+  end
+end

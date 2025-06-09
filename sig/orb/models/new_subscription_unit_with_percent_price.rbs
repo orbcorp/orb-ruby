@@ -1,0 +1,126 @@
+module Orb
+  module Models
+    type new_subscription_unit_with_percent_price =
+      {
+        cadence: Orb::Models::NewSubscriptionUnitWithPercentPrice::cadence,
+        item_id: String,
+        model_type: Orb::Models::NewSubscriptionUnitWithPercentPrice::model_type,
+        name: String,
+        unit_with_percent_config: ::Hash[Symbol, top],
+        billable_metric_id: String?,
+        billed_in_advance: bool?,
+        billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+        conversion_rate: Float?,
+        currency: String?,
+        dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+        external_price_id: String?,
+        fixed_price_quantity: Float?,
+        invoice_grouping_key: String?,
+        invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+        metadata: ::Hash[Symbol, String?]?,
+        reference_id: String?
+      }
+
+    class NewSubscriptionUnitWithPercentPrice < Orb::Internal::Type::BaseModel
+      attr_accessor cadence: Orb::Models::NewSubscriptionUnitWithPercentPrice::cadence
+
+      attr_accessor item_id: String
+
+      attr_accessor model_type: Orb::Models::NewSubscriptionUnitWithPercentPrice::model_type
+
+      attr_accessor name: String
+
+      attr_accessor unit_with_percent_config: ::Hash[Symbol, top]
+
+      attr_accessor billable_metric_id: String?
+
+      attr_accessor billed_in_advance: bool?
+
+      attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+      attr_accessor conversion_rate: Float?
+
+      attr_accessor currency: String?
+
+      attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
+
+      attr_accessor external_price_id: String?
+
+      attr_accessor fixed_price_quantity: Float?
+
+      attr_accessor invoice_grouping_key: String?
+
+      attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+      attr_accessor metadata: ::Hash[Symbol, String?]?
+
+      attr_accessor reference_id: String?
+
+      def initialize: (
+        cadence: Orb::Models::NewSubscriptionUnitWithPercentPrice::cadence,
+        item_id: String,
+        model_type: Orb::Models::NewSubscriptionUnitWithPercentPrice::model_type,
+        name: String,
+        unit_with_percent_config: ::Hash[Symbol, top],
+        ?billable_metric_id: String?,
+        ?billed_in_advance: bool?,
+        ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+        ?conversion_rate: Float?,
+        ?currency: String?,
+        ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+        ?external_price_id: String?,
+        ?fixed_price_quantity: Float?,
+        ?invoice_grouping_key: String?,
+        ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+        ?metadata: ::Hash[Symbol, String?]?,
+        ?reference_id: String?
+      ) -> void
+
+      def to_hash: -> {
+        cadence: Orb::Models::NewSubscriptionUnitWithPercentPrice::cadence,
+        item_id: String,
+        model_type: Orb::Models::NewSubscriptionUnitWithPercentPrice::model_type,
+        name: String,
+        unit_with_percent_config: ::Hash[Symbol, top],
+        billable_metric_id: String?,
+        billed_in_advance: bool?,
+        billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+        conversion_rate: Float?,
+        currency: String?,
+        dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+        external_price_id: String?,
+        fixed_price_quantity: Float?,
+        invoice_grouping_key: String?,
+        invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+        metadata: ::Hash[Symbol, String?]?,
+        reference_id: String?
+      }
+
+      type cadence =
+        :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+      module Cadence
+        extend Orb::Internal::Type::Enum
+
+        ANNUAL: :annual
+        SEMI_ANNUAL: :semi_annual
+        MONTHLY: :monthly
+        QUARTERLY: :quarterly
+        ONE_TIME: :one_time
+        CUSTOM: :custom
+
+        def self?.values: -> ::Array[Orb::Models::NewSubscriptionUnitWithPercentPrice::cadence]
+      end
+
+      type model_type = :unit_with_percent
+
+      module ModelType
+        extend Orb::Internal::Type::Enum
+
+        UNIT_WITH_PERCENT: :unit_with_percent
+
+        def self?.values: -> ::Array[Orb::Models::NewSubscriptionUnitWithPercentPrice::model_type]
+      end
+    end
+  end
+end

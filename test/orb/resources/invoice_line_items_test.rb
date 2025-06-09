@@ -29,9 +29,9 @@ class Orb::Test::Resources::InvoiceLineItemsTest < Orb::Test::ResourceTest
         end_date: Time,
         filter: String | nil,
         grouping: String | nil,
-        maximum: Orb::Models::InvoiceLineItemCreateResponse::Maximum | nil,
+        maximum: Orb::Maximum | nil,
         maximum_amount: String | nil,
-        minimum: Orb::Models::InvoiceLineItemCreateResponse::Minimum | nil,
+        minimum: Orb::Minimum | nil,
         minimum_amount: String | nil,
         name: String,
         partially_invoiced_amount: String,
@@ -40,7 +40,7 @@ class Orb::Test::Resources::InvoiceLineItemsTest < Orb::Test::ResourceTest
         start_date: Time,
         sub_line_items: ^(Orb::Internal::Type::ArrayOf[union: Orb::Models::InvoiceLineItemCreateResponse::SubLineItem]),
         subtotal: String,
-        tax_amounts: ^(Orb::Internal::Type::ArrayOf[Orb::Models::InvoiceLineItemCreateResponse::TaxAmount]),
+        tax_amounts: ^(Orb::Internal::Type::ArrayOf[Orb::TaxAmount]),
         usage_customer_ids: ^(Orb::Internal::Type::ArrayOf[String]) | nil
       }
     end

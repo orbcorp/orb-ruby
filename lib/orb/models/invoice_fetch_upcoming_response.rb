@@ -23,8 +23,8 @@ module Orb
 
       # @!attribute billing_address
       #
-      #   @return [Orb::Models::InvoiceFetchUpcomingResponse::BillingAddress, nil]
-      required :billing_address, -> { Orb::Models::InvoiceFetchUpcomingResponse::BillingAddress }, nil?: true
+      #   @return [Orb::Models::Address, nil]
+      required :billing_address, -> { Orb::Address }, nil?: true
 
       # @!attribute created_at
       #   The creation time of the resource in Orb.
@@ -47,8 +47,8 @@ module Orb
 
       # @!attribute customer
       #
-      #   @return [Orb::Models::InvoiceFetchUpcomingResponse::Customer]
-      required :customer, -> { Orb::Models::InvoiceFetchUpcomingResponse::Customer }
+      #   @return [Orb::Models::CustomerMinified]
+      required :customer, -> { Orb::CustomerMinified }
 
       # @!attribute customer_balance_transactions
       #
@@ -163,8 +163,8 @@ module Orb
       #   | Venezuela            | `ve_rif`     | Venezuelan RIF Number                                                                                   |
       #   | Vietnam              | `vn_tin`     | Vietnamese Tax ID Number                                                                                |
       #
-      #   @return [Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID, nil]
-      required :customer_tax_id, -> { Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID }, nil?: true
+      #   @return [Orb::Models::CustomerTaxID, nil]
+      required :customer_tax_id, -> { Orb::CustomerTaxID }, nil?: true
 
       # @!attribute discount
       #   @deprecated
@@ -245,8 +245,8 @@ module Orb
 
       # @!attribute maximum
       #
-      #   @return [Orb::Models::InvoiceFetchUpcomingResponse::Maximum, nil]
-      required :maximum, -> { Orb::Models::InvoiceFetchUpcomingResponse::Maximum }, nil?: true
+      #   @return [Orb::Models::Maximum, nil]
+      required :maximum, -> { Orb::Maximum }, nil?: true
 
       # @!attribute maximum_amount
       #
@@ -270,8 +270,8 @@ module Orb
 
       # @!attribute minimum
       #
-      #   @return [Orb::Models::InvoiceFetchUpcomingResponse::Minimum, nil]
-      required :minimum, -> { Orb::Models::InvoiceFetchUpcomingResponse::Minimum }, nil?: true
+      #   @return [Orb::Models::Minimum, nil]
+      required :minimum, -> { Orb::Minimum }, nil?: true
 
       # @!attribute minimum_amount
       #
@@ -316,8 +316,8 @@ module Orb
 
       # @!attribute shipping_address
       #
-      #   @return [Orb::Models::InvoiceFetchUpcomingResponse::ShippingAddress, nil]
-      required :shipping_address, -> { Orb::Models::InvoiceFetchUpcomingResponse::ShippingAddress }, nil?: true
+      #   @return [Orb::Models::Address, nil]
+      required :shipping_address, -> { Orb::Address }, nil?: true
 
       # @!attribute status
       #
@@ -326,8 +326,8 @@ module Orb
 
       # @!attribute subscription
       #
-      #   @return [Orb::Models::InvoiceFetchUpcomingResponse::Subscription, nil]
-      required :subscription, -> { Orb::Models::InvoiceFetchUpcomingResponse::Subscription }, nil?: true
+      #   @return [Orb::Models::SubscriptionMinified, nil]
+      required :subscription, -> { Orb::SubscriptionMinified }, nil?: true
 
       # @!attribute subtotal
       #   The total before any discounts and minimums are applied.
@@ -379,7 +379,7 @@ module Orb
       #
       #   @param auto_collection [Orb::Models::InvoiceFetchUpcomingResponse::AutoCollection]
       #
-      #   @param billing_address [Orb::Models::InvoiceFetchUpcomingResponse::BillingAddress, nil]
+      #   @param billing_address [Orb::Models::Address, nil]
       #
       #   @param created_at [Time] The creation time of the resource in Orb.
       #
@@ -387,11 +387,11 @@ module Orb
       #
       #   @param currency [String] An ISO 4217 currency string or `credits`
       #
-      #   @param customer [Orb::Models::InvoiceFetchUpcomingResponse::Customer]
+      #   @param customer [Orb::Models::CustomerMinified]
       #
       #   @param customer_balance_transactions [Array<Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction>]
       #
-      #   @param customer_tax_id [Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
+      #   @param customer_tax_id [Orb::Models::CustomerTaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
       #
       #   @param discount [Object] This field is deprecated in favor of `discounts`. If a `discounts` list is provi
       #
@@ -415,7 +415,7 @@ module Orb
       #
       #   @param line_items [Array<Orb::Models::InvoiceFetchUpcomingResponse::LineItem>] The breakdown of prices in this invoice.
       #
-      #   @param maximum [Orb::Models::InvoiceFetchUpcomingResponse::Maximum, nil]
+      #   @param maximum [Orb::Models::Maximum, nil]
       #
       #   @param maximum_amount [String, nil]
       #
@@ -423,7 +423,7 @@ module Orb
       #
       #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
       #
-      #   @param minimum [Orb::Models::InvoiceFetchUpcomingResponse::Minimum, nil]
+      #   @param minimum [Orb::Models::Minimum, nil]
       #
       #   @param minimum_amount [String, nil]
       #
@@ -437,11 +437,11 @@ module Orb
       #
       #   @param scheduled_issue_at [Time, nil] If the invoice is in draft, this timestamp will reflect when the invoice is sche
       #
-      #   @param shipping_address [Orb::Models::InvoiceFetchUpcomingResponse::ShippingAddress, nil]
+      #   @param shipping_address [Orb::Models::Address, nil]
       #
       #   @param status [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::Status]
       #
-      #   @param subscription [Orb::Models::InvoiceFetchUpcomingResponse::Subscription, nil]
+      #   @param subscription [Orb::Models::SubscriptionMinified, nil]
       #
       #   @param subtotal [String] The total before any discounts and minimums are applied.
       #
@@ -499,47 +499,6 @@ module Orb
         #   @param num_attempts [Integer, nil] Number of auto-collection payment attempts.
         #
         #   @param previously_attempted_at [Time, nil] If Orb has ever attempted payment auto-collection for this invoice, this field w
-      end
-
-      # @see Orb::Models::InvoiceFetchUpcomingResponse#billing_address
-      class BillingAddress < Orb::Internal::Type::BaseModel
-        # @!attribute city
-        #
-        #   @return [String, nil]
-        required :city, String, nil?: true
-
-        # @!attribute country
-        #
-        #   @return [String, nil]
-        required :country, String, nil?: true
-
-        # @!attribute line1
-        #
-        #   @return [String, nil]
-        required :line1, String, nil?: true
-
-        # @!attribute line2
-        #
-        #   @return [String, nil]
-        required :line2, String, nil?: true
-
-        # @!attribute postal_code
-        #
-        #   @return [String, nil]
-        required :postal_code, String, nil?: true
-
-        # @!attribute state
-        #
-        #   @return [String, nil]
-        required :state, String, nil?: true
-
-        # @!method initialize(city:, country:, line1:, line2:, postal_code:, state:)
-        #   @param city [String, nil]
-        #   @param country [String, nil]
-        #   @param line1 [String, nil]
-        #   @param line2 [String, nil]
-        #   @param postal_code [String, nil]
-        #   @param state [String, nil]
       end
 
       class CreditNote < Orb::Internal::Type::BaseModel
@@ -600,23 +559,6 @@ module Orb
         #   @param voided_at [Time, nil] If the credit note has a status of `void`, this gives a timestamp when the credi
       end
 
-      # @see Orb::Models::InvoiceFetchUpcomingResponse#customer
-      class Customer < Orb::Internal::Type::BaseModel
-        # @!attribute id
-        #
-        #   @return [String]
-        required :id, String
-
-        # @!attribute external_customer_id
-        #
-        #   @return [String, nil]
-        required :external_customer_id, String, nil?: true
-
-        # @!method initialize(id:, external_customer_id:)
-        #   @param id [String]
-        #   @param external_customer_id [String, nil]
-      end
-
       class CustomerBalanceTransaction < Orb::Internal::Type::BaseModel
         # @!attribute id
         #   A unique id for this transaction.
@@ -644,10 +586,8 @@ module Orb
 
         # @!attribute credit_note
         #
-        #   @return [Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::CreditNote, nil]
-        required :credit_note,
-                 -> { Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::CreditNote },
-                 nil?: true
+        #   @return [Orb::Models::CreditNoteTiny, nil]
+        required :credit_note, -> { Orb::CreditNoteTiny }, nil?: true
 
         # @!attribute description
         #   An optional description provided for manual customer balance adjustments.
@@ -664,10 +604,8 @@ module Orb
 
         # @!attribute invoice
         #
-        #   @return [Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Invoice, nil]
-        required :invoice,
-                 -> { Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Invoice },
-                 nil?: true
+        #   @return [Orb::Models::InvoiceTiny, nil]
+        required :invoice, -> { Orb::InvoiceTiny }, nil?: true
 
         # @!attribute starting_balance
         #   The original value of the customer's balance prior to the transaction, in the
@@ -694,13 +632,13 @@ module Orb
         #
         #   @param created_at [Time] The creation time of this transaction.
         #
-        #   @param credit_note [Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::CreditNote, nil]
+        #   @param credit_note [Orb::Models::CreditNoteTiny, nil]
         #
         #   @param description [String, nil] An optional description provided for manual customer balance adjustments.
         #
         #   @param ending_balance [String] The new value of the customer's balance prior to the transaction, in the custome
         #
-        #   @param invoice [Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Invoice, nil]
+        #   @param invoice [Orb::Models::InvoiceTiny, nil]
         #
         #   @param starting_balance [String] The original value of the customer's balance prior to the transaction, in the cu
         #
@@ -724,332 +662,12 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction#credit_note
-        class CreditNote < Orb::Internal::Type::BaseModel
-          # @!attribute id
-          #   The id of the Credit note
-          #
-          #   @return [String]
-          required :id, String
-
-          # @!method initialize(id:)
-          #   @param id [String] The id of the Credit note
-        end
-
-        # @see Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction#invoice
-        class Invoice < Orb::Internal::Type::BaseModel
-          # @!attribute id
-          #   The Invoice id
-          #
-          #   @return [String]
-          required :id, String
-
-          # @!method initialize(id:)
-          #   @param id [String] The Invoice id
-        end
-
         # @see Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction#type
         module Type
           extend Orb::Internal::Type::Enum
 
           INCREMENT = :increment
           DECREMENT = :decrement
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-      end
-
-      # @see Orb::Models::InvoiceFetchUpcomingResponse#customer_tax_id
-      class CustomerTaxID < Orb::Internal::Type::BaseModel
-        # @!attribute country
-        #
-        #   @return [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::Country]
-        required :country, enum: -> { Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::Country }
-
-        # @!attribute type
-        #
-        #   @return [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::Type]
-        required :type, enum: -> { Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::Type }
-
-        # @!attribute value
-        #
-        #   @return [String]
-        required :value, String
-
-        # @!method initialize(country:, type:, value:)
-        #   Tax IDs are commonly required to be displayed on customer invoices, which are
-        #   added to the headers of invoices.
-        #
-        #   ### Supported Tax ID Countries and Types
-        #
-        #   | Country              | Type         | Description                                                                                             |
-        #   | -------------------- | ------------ | ------------------------------------------------------------------------------------------------------- |
-        #   | Andorra              | `ad_nrt`     | Andorran NRT Number                                                                                     |
-        #   | Argentina            | `ar_cuit`    | Argentinian Tax ID Number                                                                               |
-        #   | Australia            | `au_abn`     | Australian Business Number (AU ABN)                                                                     |
-        #   | Australia            | `au_arn`     | Australian Taxation Office Reference Number                                                             |
-        #   | Austria              | `eu_vat`     | European VAT Number                                                                                     |
-        #   | Bahrain              | `bh_vat`     | Bahraini VAT Number                                                                                     |
-        #   | Belgium              | `eu_vat`     | European VAT Number                                                                                     |
-        #   | Bolivia              | `bo_tin`     | Bolivian Tax ID                                                                                         |
-        #   | Brazil               | `br_cnpj`    | Brazilian CNPJ Number                                                                                   |
-        #   | Brazil               | `br_cpf`     | Brazilian CPF Number                                                                                    |
-        #   | Bulgaria             | `bg_uic`     | Bulgaria Unified Identification Code                                                                    |
-        #   | Bulgaria             | `eu_vat`     | European VAT Number                                                                                     |
-        #   | Canada               | `ca_bn`      | Canadian BN                                                                                             |
-        #   | Canada               | `ca_gst_hst` | Canadian GST/HST Number                                                                                 |
-        #   | Canada               | `ca_pst_bc`  | Canadian PST Number (British Columbia)                                                                  |
-        #   | Canada               | `ca_pst_mb`  | Canadian PST Number (Manitoba)                                                                          |
-        #   | Canada               | `ca_pst_sk`  | Canadian PST Number (Saskatchewan)                                                                      |
-        #   | Canada               | `ca_qst`     | Canadian QST Number (Québec)                                                                            |
-        #   | Chile                | `cl_tin`     | Chilean TIN                                                                                             |
-        #   | China                | `cn_tin`     | Chinese Tax ID                                                                                          |
-        #   | Colombia             | `co_nit`     | Colombian NIT Number                                                                                    |
-        #   | Costa Rica           | `cr_tin`     | Costa Rican Tax ID                                                                                      |
-        #   | Croatia              | `eu_vat`     | European VAT Number                                                                                     |
-        #   | Cyprus               | `eu_vat`     | European VAT Number                                                                                     |
-        #   | Czech Republic       | `eu_vat`     | European VAT Number                                                                                     |
-        #   | Denmark              | `eu_vat`     | European VAT Number                                                                                     |
-        #   | Dominican Republic   | `do_rcn`     | Dominican RCN Number                                                                                    |
-        #   | Ecuador              | `ec_ruc`     | Ecuadorian RUC Number                                                                                   |
-        #   | Egypt                | `eg_tin`     | Egyptian Tax Identification Number                                                                      |
-        #   | El Salvador          | `sv_nit`     | El Salvadorian NIT Number                                                                               |
-        #   | Estonia              | `eu_vat`     | European VAT Number                                                                                     |
-        #   | EU                   | `eu_oss_vat` | European One Stop Shop VAT Number for non-Union scheme                                                  |
-        #   | Finland              | `eu_vat`     | European VAT Number                                                                                     |
-        #   | France               | `eu_vat`     | European VAT Number                                                                                     |
-        #   | Georgia              | `ge_vat`     | Georgian VAT                                                                                            |
-        #   | Germany              | `eu_vat`     | European VAT Number                                                                                     |
-        #   | Greece               | `eu_vat`     | European VAT Number                                                                                     |
-        #   | Hong Kong            | `hk_br`      | Hong Kong BR Number                                                                                     |
-        #   | Hungary              | `eu_vat`     | European VAT Number                                                                                     |
-        #   | Hungary              | `hu_tin`     | Hungary Tax Number (adószám)                                                                            |
-        #   | Iceland              | `is_vat`     | Icelandic VAT                                                                                           |
-        #   | India                | `in_gst`     | Indian GST Number                                                                                       |
-        #   | Indonesia            | `id_npwp`    | Indonesian NPWP Number                                                                                  |
-        #   | Ireland              | `eu_vat`     | European VAT Number                                                                                     |
-        #   | Israel               | `il_vat`     | Israel VAT                                                                                              |
-        #   | Italy                | `eu_vat`     | European VAT Number                                                                                     |
-        #   | Japan                | `jp_cn`      | Japanese Corporate Number (_Hōjin Bangō_)                                                               |
-        #   | Japan                | `jp_rn`      | Japanese Registered Foreign Businesses' Registration Number (_Tōroku Kokugai Jigyōsha no Tōroku Bangō_) |
-        #   | Japan                | `jp_trn`     | Japanese Tax Registration Number (_Tōroku Bangō_)                                                       |
-        #   | Kazakhstan           | `kz_bin`     | Kazakhstani Business Identification Number                                                              |
-        #   | Kenya                | `ke_pin`     | Kenya Revenue Authority Personal Identification Number                                                  |
-        #   | Latvia               | `eu_vat`     | European VAT Number                                                                                     |
-        #   | Liechtenstein        | `li_uid`     | Liechtensteinian UID Number                                                                             |
-        #   | Lithuania            | `eu_vat`     | European VAT Number                                                                                     |
-        #   | Luxembourg           | `eu_vat`     | European VAT Number                                                                                     |
-        #   | Malaysia             | `my_frp`     | Malaysian FRP Number                                                                                    |
-        #   | Malaysia             | `my_itn`     | Malaysian ITN                                                                                           |
-        #   | Malaysia             | `my_sst`     | Malaysian SST Number                                                                                    |
-        #   | Malta                | `eu_vat `    | European VAT Number                                                                                     |
-        #   | Mexico               | `mx_rfc`     | Mexican RFC Number                                                                                      |
-        #   | Netherlands          | `eu_vat`     | European VAT Number                                                                                     |
-        #   | New Zealand          | `nz_gst`     | New Zealand GST Number                                                                                  |
-        #   | Nigeria              | `ng_tin`     | Nigerian Tax Identification Number                                                                      |
-        #   | Norway               | `no_vat`     | Norwegian VAT Number                                                                                    |
-        #   | Norway               | `no_voec`    | Norwegian VAT on e-commerce Number                                                                      |
-        #   | Oman                 | `om_vat`     | Omani VAT Number                                                                                        |
-        #   | Peru                 | `pe_ruc`     | Peruvian RUC Number                                                                                     |
-        #   | Philippines          | `ph_tin `    | Philippines Tax Identification Number                                                                   |
-        #   | Poland               | `eu_vat`     | European VAT Number                                                                                     |
-        #   | Portugal             | `eu_vat`     | European VAT Number                                                                                     |
-        #   | Romania              | `eu_vat`     | European VAT Number                                                                                     |
-        #   | Romania              | `ro_tin`     | Romanian Tax ID Number                                                                                  |
-        #   | Russia               | `ru_inn`     | Russian INN                                                                                             |
-        #   | Russia               | `ru_kpp`     | Russian KPP                                                                                             |
-        #   | Saudi Arabia         | `sa_vat`     | Saudi Arabia VAT                                                                                        |
-        #   | Serbia               | `rs_pib`     | Serbian PIB Number                                                                                      |
-        #   | Singapore            | `sg_gst`     | Singaporean GST                                                                                         |
-        #   | Singapore            | `sg_uen`     | Singaporean UEN                                                                                         |
-        #   | Slovakia             | `eu_vat`     | European VAT Number                                                                                     |
-        #   | Slovenia             | `eu_vat`     | European VAT Number                                                                                     |
-        #   | Slovenia             | `si_tin`     | Slovenia Tax Number (davčna številka)                                                                   |
-        #   | South Africa         | `za_vat`     | South African VAT Number                                                                                |
-        #   | South Korea          | `kr_brn`     | Korean BRN                                                                                              |
-        #   | Spain                | `es_cif`     | Spanish NIF Number (previously Spanish CIF Number)                                                      |
-        #   | Spain                | `eu_vat`     | European VAT Number                                                                                     |
-        #   | Sweden               | `eu_vat`     | European VAT Number                                                                                     |
-        #   | Switzerland          | `ch_vat`     | Switzerland VAT Number                                                                                  |
-        #   | Taiwan               | `tw_vat`     | Taiwanese VAT                                                                                           |
-        #   | Thailand             | `th_vat`     | Thai VAT                                                                                                |
-        #   | Turkey               | `tr_tin`     | Turkish Tax Identification Number                                                                       |
-        #   | Ukraine              | `ua_vat`     | Ukrainian VAT                                                                                           |
-        #   | United Arab Emirates | `ae_trn`     | United Arab Emirates TRN                                                                                |
-        #   | United Kingdom       | `eu_vat`     | Northern Ireland VAT Number                                                                             |
-        #   | United Kingdom       | `gb_vat`     | United Kingdom VAT Number                                                                               |
-        #   | United States        | `us_ein`     | United States EIN                                                                                       |
-        #   | Uruguay              | `uy_ruc`     | Uruguayan RUC Number                                                                                    |
-        #   | Venezuela            | `ve_rif`     | Venezuelan RIF Number                                                                                   |
-        #   | Vietnam              | `vn_tin`     | Vietnamese Tax ID Number                                                                                |
-        #
-        #   @param country [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::Country]
-        #   @param type [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID::Type]
-        #   @param value [String]
-
-        # @see Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID#country
-        module Country
-          extend Orb::Internal::Type::Enum
-
-          AD = :AD
-          AE = :AE
-          AR = :AR
-          AT = :AT
-          AU = :AU
-          BE = :BE
-          BG = :BG
-          BH = :BH
-          BO = :BO
-          BR = :BR
-          CA = :CA
-          CH = :CH
-          CL = :CL
-          CN = :CN
-          CO = :CO
-          CR = :CR
-          CY = :CY
-          CZ = :CZ
-          DE = :DE
-          DK = :DK
-          EE = :EE
-          DO = :DO
-          EC = :EC
-          EG = :EG
-          ES = :ES
-          EU = :EU
-          FI = :FI
-          FR = :FR
-          GB = :GB
-          GE = :GE
-          GR = :GR
-          HK = :HK
-          HR = :HR
-          HU = :HU
-          ID = :ID
-          IE = :IE
-          IL = :IL
-          IN = :IN
-          IS = :IS
-          IT = :IT
-          JP = :JP
-          KE = :KE
-          KR = :KR
-          KZ = :KZ
-          LI = :LI
-          LT = :LT
-          LU = :LU
-          LV = :LV
-          MT = :MT
-          MX = :MX
-          MY = :MY
-          NG = :NG
-          NL = :NL
-          NO = :NO
-          NZ = :NZ
-          OM = :OM
-          PE = :PE
-          PH = :PH
-          PL = :PL
-          PT = :PT
-          RO = :RO
-          RS = :RS
-          RU = :RU
-          SA = :SA
-          SE = :SE
-          SG = :SG
-          SI = :SI
-          SK = :SK
-          SV = :SV
-          TH = :TH
-          TR = :TR
-          TW = :TW
-          UA = :UA
-          US = :US
-          UY = :UY
-          VE = :VE
-          VN = :VN
-          ZA = :ZA
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-
-        # @see Orb::Models::InvoiceFetchUpcomingResponse::CustomerTaxID#type
-        module Type
-          extend Orb::Internal::Type::Enum
-
-          AD_NRT = :ad_nrt
-          AE_TRN = :ae_trn
-          AR_CUIT = :ar_cuit
-          EU_VAT = :eu_vat
-          AU_ABN = :au_abn
-          AU_ARN = :au_arn
-          BG_UIC = :bg_uic
-          BH_VAT = :bh_vat
-          BO_TIN = :bo_tin
-          BR_CNPJ = :br_cnpj
-          BR_CPF = :br_cpf
-          CA_BN = :ca_bn
-          CA_GST_HST = :ca_gst_hst
-          CA_PST_BC = :ca_pst_bc
-          CA_PST_MB = :ca_pst_mb
-          CA_PST_SK = :ca_pst_sk
-          CA_QST = :ca_qst
-          CH_VAT = :ch_vat
-          CL_TIN = :cl_tin
-          CN_TIN = :cn_tin
-          CO_NIT = :co_nit
-          CR_TIN = :cr_tin
-          DO_RCN = :do_rcn
-          EC_RUC = :ec_ruc
-          EG_TIN = :eg_tin
-          ES_CIF = :es_cif
-          EU_OSS_VAT = :eu_oss_vat
-          GB_VAT = :gb_vat
-          GE_VAT = :ge_vat
-          HK_BR = :hk_br
-          HU_TIN = :hu_tin
-          ID_NPWP = :id_npwp
-          IL_VAT = :il_vat
-          IN_GST = :in_gst
-          IS_VAT = :is_vat
-          JP_CN = :jp_cn
-          JP_RN = :jp_rn
-          JP_TRN = :jp_trn
-          KE_PIN = :ke_pin
-          KR_BRN = :kr_brn
-          KZ_BIN = :kz_bin
-          LI_UID = :li_uid
-          MX_RFC = :mx_rfc
-          MY_FRP = :my_frp
-          MY_ITN = :my_itn
-          MY_SST = :my_sst
-          NG_TIN = :ng_tin
-          NO_VAT = :no_vat
-          NO_VOEC = :no_voec
-          NZ_GST = :nz_gst
-          OM_VAT = :om_vat
-          PE_RUC = :pe_ruc
-          PH_TIN = :ph_tin
-          RO_TIN = :ro_tin
-          RS_PIB = :rs_pib
-          RU_INN = :ru_inn
-          RU_KPP = :ru_kpp
-          SA_VAT = :sa_vat
-          SG_GST = :sg_gst
-          SG_UEN = :sg_uen
-          SI_TIN = :si_tin
-          SV_NIT = :sv_nit
-          TH_VAT = :th_vat
-          TR_TIN = :tr_tin
-          TW_VAT = :tw_vat
-          UA_VAT = :ua_vat
-          US_EIN = :us_ein
-          UY_RUC = :uy_ruc
-          VE_RIF = :ve_rif
-          VN_TIN = :vn_tin
-          ZA_VAT = :za_vat
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -1087,7 +705,7 @@ module Orb
         #   invoice calculations (ie. usage discounts -> amount discounts -> percentage
         #   discounts -> minimums -> maximums).
         #
-        #   @return [Array<Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum>]
+        #   @return [Array<Orb::Models::MonetaryUsageDiscountAdjustment, Orb::Models::MonetaryAmountDiscountAdjustment, Orb::Models::MonetaryPercentageDiscountAdjustment, Orb::Models::MonetaryMinimumAdjustment, Orb::Models::MonetaryMaximumAdjustment>]
         required :adjustments,
                  -> { Orb::Internal::Type::ArrayOf[union: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment] }
 
@@ -1134,8 +752,8 @@ module Orb
         #
         #   This field is deprecated in favor of `adjustments`.
         #
-        #   @return [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum, nil]
-        required :maximum, -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum }, nil?: true
+        #   @return [Orb::Models::Maximum, nil]
+        required :maximum, -> { Orb::Maximum }, nil?: true
 
         # @!attribute maximum_amount
         #   @deprecated
@@ -1150,8 +768,8 @@ module Orb
         #
         #   This field is deprecated in favor of `adjustments`.
         #
-        #   @return [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum, nil]
-        required :minimum, -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum }, nil?: true
+        #   @return [Orb::Models::Minimum, nil]
+        required :minimum, -> { Orb::Minimum }, nil?: true
 
         # @!attribute minimum_amount
         #   @deprecated
@@ -1185,7 +803,7 @@ module Orb
         #   For more on the types of prices, see
         #   [the core concepts documentation](/core-concepts#plan-and-price)
         #
-        #   @return [Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBps, Orb::Models::Price::Bps, Orb::Models::Price::BulkBps, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk]
+        #   @return [Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBPS, Orb::Models::Price::BPS, Orb::Models::Price::BulkBPS, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk]
         required :price, union: -> { Orb::Price }
 
         # @!attribute quantity
@@ -1204,7 +822,7 @@ module Orb
         #   For complex pricing structures, the line item can be broken down further in
         #   `sub_line_items`.
         #
-        #   @return [Array<Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Matrix, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Tier, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Null>]
+        #   @return [Array<Orb::Models::MatrixSubLineItem, Orb::Models::TierSubLineItem, Orb::Models::OtherSubLineItem>]
         required :sub_line_items,
                  -> { Orb::Internal::Type::ArrayOf[union: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem] }
 
@@ -1218,9 +836,8 @@ module Orb
         #   An array of tax rates and their incurred tax amounts. Empty if no tax
         #   integration is configured.
         #
-        #   @return [Array<Orb::Models::InvoiceFetchUpcomingResponse::LineItem::TaxAmount>]
-        required :tax_amounts,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::TaxAmount] }
+        #   @return [Array<Orb::Models::TaxAmount>]
+        required :tax_amounts, -> { Orb::Internal::Type::ArrayOf[Orb::TaxAmount] }
 
         # @!attribute usage_customer_ids
         #   A list of customer ids that were used to calculate the usage for this line item.
@@ -1236,7 +853,7 @@ module Orb
         #
         #   @param adjusted_subtotal [String] The line amount after any adjustments and before overage conversion, credits and
         #
-        #   @param adjustments [Array<Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum>] All adjustments applied to the line item in the order they were applied based on
+        #   @param adjustments [Array<Orb::Models::MonetaryUsageDiscountAdjustment, Orb::Models::MonetaryAmountDiscountAdjustment, Orb::Models::MonetaryPercentageDiscountAdjustment, Orb::Models::MonetaryMinimumAdjustment, Orb::Models::MonetaryMaximumAdjustment>] All adjustments applied to the line item in the order they were applied based on
         #
         #   @param amount [String] The final amount for a line item after all adjustments and pre paid credits have
         #
@@ -1250,11 +867,11 @@ module Orb
         #
         #   @param grouping [String, nil] [DEPRECATED] For configured prices that are split by a grouping key, this will b
         #
-        #   @param maximum [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum, nil] This field is deprecated in favor of `adjustments`.
+        #   @param maximum [Orb::Models::Maximum, nil] This field is deprecated in favor of `adjustments`.
         #
         #   @param maximum_amount [String, nil] This field is deprecated in favor of `adjustments`.
         #
-        #   @param minimum [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum, nil] This field is deprecated in favor of `adjustments`.
+        #   @param minimum [Orb::Models::Minimum, nil] This field is deprecated in favor of `adjustments`.
         #
         #   @param minimum_amount [String, nil] This field is deprecated in favor of `adjustments`.
         #
@@ -1262,17 +879,17 @@ module Orb
         #
         #   @param partially_invoiced_amount [String] Any amount applied from a partial invoice
         #
-        #   @param price [Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBps, Orb::Models::Price::Bps, Orb::Models::Price::BulkBps, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk] The Price resource represents a price that can be billed on a subscription, resu
+        #   @param price [Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBPS, Orb::Models::Price::BPS, Orb::Models::Price::BulkBPS, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk] The Price resource represents a price that can be billed on a subscription, resu
         #
         #   @param quantity [Float] Either the fixed fee quantity or the usage during the service period.
         #
         #   @param start_date [Time] The start date of the range of time applied for this line item's price.
         #
-        #   @param sub_line_items [Array<Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Matrix, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Tier, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Null>] For complex pricing structures, the line item can be broken down further in `sub
+        #   @param sub_line_items [Array<Orb::Models::MatrixSubLineItem, Orb::Models::TierSubLineItem, Orb::Models::OtherSubLineItem>] For complex pricing structures, the line item can be broken down further in `sub
         #
         #   @param subtotal [String] The line amount before before any adjustments.
         #
-        #   @param tax_amounts [Array<Orb::Models::InvoiceFetchUpcomingResponse::LineItem::TaxAmount>] An array of tax rates and their incurred tax amounts. Empty if no tax integratio
+        #   @param tax_amounts [Array<Orb::Models::TaxAmount>] An array of tax rates and their incurred tax amounts. Empty if no tax integratio
         #
         #   @param usage_customer_ids [Array<String>, nil] A list of customer ids that were used to calculate the usage for this line item.
 
@@ -1281,881 +898,18 @@ module Orb
 
           discriminator :adjustment_type
 
-          variant :usage_discount,
-                  -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount }
+          variant :usage_discount, -> { Orb::MonetaryUsageDiscountAdjustment }
 
-          variant :amount_discount,
-                  -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount }
+          variant :amount_discount, -> { Orb::MonetaryAmountDiscountAdjustment }
 
-          variant :percentage_discount,
-                  -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount }
+          variant :percentage_discount, -> { Orb::MonetaryPercentageDiscountAdjustment }
 
-          variant :minimum, -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum }
+          variant :minimum, -> { Orb::MonetaryMinimumAdjustment }
 
-          variant :maximum, -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum }
-
-          class UsageDiscount < Orb::Internal::Type::BaseModel
-            # @!attribute id
-            #
-            #   @return [String]
-            required :id, String
-
-            # @!attribute adjustment_type
-            #
-            #   @return [Symbol, :usage_discount]
-            required :adjustment_type, const: :usage_discount
-
-            # @!attribute amount
-            #   The value applied by an adjustment.
-            #
-            #   @return [String]
-            required :amount, String
-
-            # @!attribute applies_to_price_ids
-            #   @deprecated
-            #
-            #   The price IDs that this adjustment applies to.
-            #
-            #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
-
-            # @!attribute filters
-            #   The filters that determine which prices to apply this adjustment to.
-            #
-            #   @return [Array<Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter>]
-            required :filters,
-                     -> { Orb::Internal::Type::ArrayOf[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter] }
-
-            # @!attribute is_invoice_level
-            #   True for adjustments that apply to an entire invocice, false for adjustments
-            #   that apply to only one price.
-            #
-            #   @return [Boolean]
-            required :is_invoice_level, Orb::Internal::Type::Boolean
-
-            # @!attribute reason
-            #   The reason for the adjustment.
-            #
-            #   @return [String, nil]
-            required :reason, String, nil?: true
-
-            # @!attribute usage_discount
-            #   The number of usage units by which to discount the price this adjustment applies
-            #   to in a given billing period.
-            #
-            #   @return [Float]
-            required :usage_discount, Float
-
-            # @!method initialize(id:, amount:, applies_to_price_ids:, filters:, is_invoice_level:, reason:, usage_discount:, adjustment_type: :usage_discount)
-            #   Some parameter documentations has been truncated, see
-            #   {Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount}
-            #   for more details.
-            #
-            #   @param id [String]
-            #
-            #   @param amount [String] The value applied by an adjustment.
-            #
-            #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
-            #
-            #   @param filters [Array<Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter>] The filters that determine which prices to apply this adjustment to.
-            #
-            #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
-            #
-            #   @param reason [String, nil] The reason for the adjustment.
-            #
-            #   @param usage_discount [Float] The number of usage units by which to discount the price this adjustment applies
-            #
-            #   @param adjustment_type [Symbol, :usage_discount]
-
-            class Filter < Orb::Internal::Type::BaseModel
-              # @!attribute field
-              #   The property of the price to filter on.
-              #
-              #   @return [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::Field]
-              required :field,
-                       enum: -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::Field }
-
-              # @!attribute operator
-              #   Should prices that match the filter be included or excluded.
-              #
-              #   @return [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::Operator]
-              required :operator,
-                       enum: -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::Operator }
-
-              # @!attribute values
-              #   The IDs or values that match this filter.
-              #
-              #   @return [Array<String>]
-              required :values, Orb::Internal::Type::ArrayOf[String]
-
-              # @!method initialize(field:, operator:, values:)
-              #   @param field [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::Field] The property of the price to filter on.
-              #
-              #   @param operator [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter::Operator] Should prices that match the filter be included or excluded.
-              #
-              #   @param values [Array<String>] The IDs or values that match this filter.
-
-              # The property of the price to filter on.
-              #
-              # @see Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter#field
-              module Field
-                extend Orb::Internal::Type::Enum
-
-                PRICE_ID = :price_id
-                ITEM_ID = :item_id
-                PRICE_TYPE = :price_type
-                CURRENCY = :currency
-                PRICING_UNIT_ID = :pricing_unit_id
-
-                # @!method self.values
-                #   @return [Array<Symbol>]
-              end
-
-              # Should prices that match the filter be included or excluded.
-              #
-              # @see Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount::Filter#operator
-              module Operator
-                extend Orb::Internal::Type::Enum
-
-                INCLUDES = :includes
-                EXCLUDES = :excludes
-
-                # @!method self.values
-                #   @return [Array<Symbol>]
-              end
-            end
-          end
-
-          class AmountDiscount < Orb::Internal::Type::BaseModel
-            # @!attribute id
-            #
-            #   @return [String]
-            required :id, String
-
-            # @!attribute adjustment_type
-            #
-            #   @return [Symbol, :amount_discount]
-            required :adjustment_type, const: :amount_discount
-
-            # @!attribute amount
-            #   The value applied by an adjustment.
-            #
-            #   @return [String]
-            required :amount, String
-
-            # @!attribute amount_discount
-            #   The amount by which to discount the prices this adjustment applies to in a given
-            #   billing period.
-            #
-            #   @return [String]
-            required :amount_discount, String
-
-            # @!attribute applies_to_price_ids
-            #   @deprecated
-            #
-            #   The price IDs that this adjustment applies to.
-            #
-            #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
-
-            # @!attribute filters
-            #   The filters that determine which prices to apply this adjustment to.
-            #
-            #   @return [Array<Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter>]
-            required :filters,
-                     -> { Orb::Internal::Type::ArrayOf[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter] }
-
-            # @!attribute is_invoice_level
-            #   True for adjustments that apply to an entire invocice, false for adjustments
-            #   that apply to only one price.
-            #
-            #   @return [Boolean]
-            required :is_invoice_level, Orb::Internal::Type::Boolean
-
-            # @!attribute reason
-            #   The reason for the adjustment.
-            #
-            #   @return [String, nil]
-            required :reason, String, nil?: true
-
-            # @!method initialize(id:, amount:, amount_discount:, applies_to_price_ids:, filters:, is_invoice_level:, reason:, adjustment_type: :amount_discount)
-            #   Some parameter documentations has been truncated, see
-            #   {Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount}
-            #   for more details.
-            #
-            #   @param id [String]
-            #
-            #   @param amount [String] The value applied by an adjustment.
-            #
-            #   @param amount_discount [String] The amount by which to discount the prices this adjustment applies to in a given
-            #
-            #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
-            #
-            #   @param filters [Array<Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter>] The filters that determine which prices to apply this adjustment to.
-            #
-            #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
-            #
-            #   @param reason [String, nil] The reason for the adjustment.
-            #
-            #   @param adjustment_type [Symbol, :amount_discount]
-
-            class Filter < Orb::Internal::Type::BaseModel
-              # @!attribute field
-              #   The property of the price to filter on.
-              #
-              #   @return [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::Field]
-              required :field,
-                       enum: -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::Field }
-
-              # @!attribute operator
-              #   Should prices that match the filter be included or excluded.
-              #
-              #   @return [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::Operator]
-              required :operator,
-                       enum: -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::Operator }
-
-              # @!attribute values
-              #   The IDs or values that match this filter.
-              #
-              #   @return [Array<String>]
-              required :values, Orb::Internal::Type::ArrayOf[String]
-
-              # @!method initialize(field:, operator:, values:)
-              #   @param field [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::Field] The property of the price to filter on.
-              #
-              #   @param operator [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter::Operator] Should prices that match the filter be included or excluded.
-              #
-              #   @param values [Array<String>] The IDs or values that match this filter.
-
-              # The property of the price to filter on.
-              #
-              # @see Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter#field
-              module Field
-                extend Orb::Internal::Type::Enum
-
-                PRICE_ID = :price_id
-                ITEM_ID = :item_id
-                PRICE_TYPE = :price_type
-                CURRENCY = :currency
-                PRICING_UNIT_ID = :pricing_unit_id
-
-                # @!method self.values
-                #   @return [Array<Symbol>]
-              end
-
-              # Should prices that match the filter be included or excluded.
-              #
-              # @see Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount::Filter#operator
-              module Operator
-                extend Orb::Internal::Type::Enum
-
-                INCLUDES = :includes
-                EXCLUDES = :excludes
-
-                # @!method self.values
-                #   @return [Array<Symbol>]
-              end
-            end
-          end
-
-          class PercentageDiscount < Orb::Internal::Type::BaseModel
-            # @!attribute id
-            #
-            #   @return [String]
-            required :id, String
-
-            # @!attribute adjustment_type
-            #
-            #   @return [Symbol, :percentage_discount]
-            required :adjustment_type, const: :percentage_discount
-
-            # @!attribute amount
-            #   The value applied by an adjustment.
-            #
-            #   @return [String]
-            required :amount, String
-
-            # @!attribute applies_to_price_ids
-            #   @deprecated
-            #
-            #   The price IDs that this adjustment applies to.
-            #
-            #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
-
-            # @!attribute filters
-            #   The filters that determine which prices to apply this adjustment to.
-            #
-            #   @return [Array<Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter>]
-            required :filters,
-                     -> { Orb::Internal::Type::ArrayOf[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter] }
-
-            # @!attribute is_invoice_level
-            #   True for adjustments that apply to an entire invocice, false for adjustments
-            #   that apply to only one price.
-            #
-            #   @return [Boolean]
-            required :is_invoice_level, Orb::Internal::Type::Boolean
-
-            # @!attribute percentage_discount
-            #   The percentage (as a value between 0 and 1) by which to discount the price
-            #   intervals this adjustment applies to in a given billing period.
-            #
-            #   @return [Float]
-            required :percentage_discount, Float
-
-            # @!attribute reason
-            #   The reason for the adjustment.
-            #
-            #   @return [String, nil]
-            required :reason, String, nil?: true
-
-            # @!method initialize(id:, amount:, applies_to_price_ids:, filters:, is_invoice_level:, percentage_discount:, reason:, adjustment_type: :percentage_discount)
-            #   Some parameter documentations has been truncated, see
-            #   {Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount}
-            #   for more details.
-            #
-            #   @param id [String]
-            #
-            #   @param amount [String] The value applied by an adjustment.
-            #
-            #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
-            #
-            #   @param filters [Array<Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter>] The filters that determine which prices to apply this adjustment to.
-            #
-            #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
-            #
-            #   @param percentage_discount [Float] The percentage (as a value between 0 and 1) by which to discount the price inter
-            #
-            #   @param reason [String, nil] The reason for the adjustment.
-            #
-            #   @param adjustment_type [Symbol, :percentage_discount]
-
-            class Filter < Orb::Internal::Type::BaseModel
-              # @!attribute field
-              #   The property of the price to filter on.
-              #
-              #   @return [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::Field]
-              required :field,
-                       enum: -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::Field }
-
-              # @!attribute operator
-              #   Should prices that match the filter be included or excluded.
-              #
-              #   @return [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::Operator]
-              required :operator,
-                       enum: -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::Operator }
-
-              # @!attribute values
-              #   The IDs or values that match this filter.
-              #
-              #   @return [Array<String>]
-              required :values, Orb::Internal::Type::ArrayOf[String]
-
-              # @!method initialize(field:, operator:, values:)
-              #   @param field [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::Field] The property of the price to filter on.
-              #
-              #   @param operator [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter::Operator] Should prices that match the filter be included or excluded.
-              #
-              #   @param values [Array<String>] The IDs or values that match this filter.
-
-              # The property of the price to filter on.
-              #
-              # @see Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter#field
-              module Field
-                extend Orb::Internal::Type::Enum
-
-                PRICE_ID = :price_id
-                ITEM_ID = :item_id
-                PRICE_TYPE = :price_type
-                CURRENCY = :currency
-                PRICING_UNIT_ID = :pricing_unit_id
-
-                # @!method self.values
-                #   @return [Array<Symbol>]
-              end
-
-              # Should prices that match the filter be included or excluded.
-              #
-              # @see Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount::Filter#operator
-              module Operator
-                extend Orb::Internal::Type::Enum
-
-                INCLUDES = :includes
-                EXCLUDES = :excludes
-
-                # @!method self.values
-                #   @return [Array<Symbol>]
-              end
-            end
-          end
-
-          class Minimum < Orb::Internal::Type::BaseModel
-            # @!attribute id
-            #
-            #   @return [String]
-            required :id, String
-
-            # @!attribute adjustment_type
-            #
-            #   @return [Symbol, :minimum]
-            required :adjustment_type, const: :minimum
-
-            # @!attribute amount
-            #   The value applied by an adjustment.
-            #
-            #   @return [String]
-            required :amount, String
-
-            # @!attribute applies_to_price_ids
-            #   @deprecated
-            #
-            #   The price IDs that this adjustment applies to.
-            #
-            #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
-
-            # @!attribute filters
-            #   The filters that determine which prices to apply this adjustment to.
-            #
-            #   @return [Array<Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter>]
-            required :filters,
-                     -> { Orb::Internal::Type::ArrayOf[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter] }
-
-            # @!attribute is_invoice_level
-            #   True for adjustments that apply to an entire invocice, false for adjustments
-            #   that apply to only one price.
-            #
-            #   @return [Boolean]
-            required :is_invoice_level, Orb::Internal::Type::Boolean
-
-            # @!attribute item_id
-            #   The item ID that revenue from this minimum will be attributed to.
-            #
-            #   @return [String]
-            required :item_id, String
-
-            # @!attribute minimum_amount
-            #   The minimum amount to charge in a given billing period for the prices this
-            #   adjustment applies to.
-            #
-            #   @return [String]
-            required :minimum_amount, String
-
-            # @!attribute reason
-            #   The reason for the adjustment.
-            #
-            #   @return [String, nil]
-            required :reason, String, nil?: true
-
-            # @!method initialize(id:, amount:, applies_to_price_ids:, filters:, is_invoice_level:, item_id:, minimum_amount:, reason:, adjustment_type: :minimum)
-            #   Some parameter documentations has been truncated, see
-            #   {Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum} for
-            #   more details.
-            #
-            #   @param id [String]
-            #
-            #   @param amount [String] The value applied by an adjustment.
-            #
-            #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
-            #
-            #   @param filters [Array<Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter>] The filters that determine which prices to apply this adjustment to.
-            #
-            #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
-            #
-            #   @param item_id [String] The item ID that revenue from this minimum will be attributed to.
-            #
-            #   @param minimum_amount [String] The minimum amount to charge in a given billing period for the prices this adjus
-            #
-            #   @param reason [String, nil] The reason for the adjustment.
-            #
-            #   @param adjustment_type [Symbol, :minimum]
-
-            class Filter < Orb::Internal::Type::BaseModel
-              # @!attribute field
-              #   The property of the price to filter on.
-              #
-              #   @return [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::Field]
-              required :field,
-                       enum: -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::Field }
-
-              # @!attribute operator
-              #   Should prices that match the filter be included or excluded.
-              #
-              #   @return [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::Operator]
-              required :operator,
-                       enum: -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::Operator }
-
-              # @!attribute values
-              #   The IDs or values that match this filter.
-              #
-              #   @return [Array<String>]
-              required :values, Orb::Internal::Type::ArrayOf[String]
-
-              # @!method initialize(field:, operator:, values:)
-              #   @param field [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::Field] The property of the price to filter on.
-              #
-              #   @param operator [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
-              #
-              #   @param values [Array<String>] The IDs or values that match this filter.
-
-              # The property of the price to filter on.
-              #
-              # @see Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter#field
-              module Field
-                extend Orb::Internal::Type::Enum
-
-                PRICE_ID = :price_id
-                ITEM_ID = :item_id
-                PRICE_TYPE = :price_type
-                CURRENCY = :currency
-                PRICING_UNIT_ID = :pricing_unit_id
-
-                # @!method self.values
-                #   @return [Array<Symbol>]
-              end
-
-              # Should prices that match the filter be included or excluded.
-              #
-              # @see Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum::Filter#operator
-              module Operator
-                extend Orb::Internal::Type::Enum
-
-                INCLUDES = :includes
-                EXCLUDES = :excludes
-
-                # @!method self.values
-                #   @return [Array<Symbol>]
-              end
-            end
-          end
-
-          class Maximum < Orb::Internal::Type::BaseModel
-            # @!attribute id
-            #
-            #   @return [String]
-            required :id, String
-
-            # @!attribute adjustment_type
-            #
-            #   @return [Symbol, :maximum]
-            required :adjustment_type, const: :maximum
-
-            # @!attribute amount
-            #   The value applied by an adjustment.
-            #
-            #   @return [String]
-            required :amount, String
-
-            # @!attribute applies_to_price_ids
-            #   @deprecated
-            #
-            #   The price IDs that this adjustment applies to.
-            #
-            #   @return [Array<String>]
-            required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
-
-            # @!attribute filters
-            #   The filters that determine which prices to apply this adjustment to.
-            #
-            #   @return [Array<Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter>]
-            required :filters,
-                     -> { Orb::Internal::Type::ArrayOf[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter] }
-
-            # @!attribute is_invoice_level
-            #   True for adjustments that apply to an entire invocice, false for adjustments
-            #   that apply to only one price.
-            #
-            #   @return [Boolean]
-            required :is_invoice_level, Orb::Internal::Type::Boolean
-
-            # @!attribute maximum_amount
-            #   The maximum amount to charge in a given billing period for the prices this
-            #   adjustment applies to.
-            #
-            #   @return [String]
-            required :maximum_amount, String
-
-            # @!attribute reason
-            #   The reason for the adjustment.
-            #
-            #   @return [String, nil]
-            required :reason, String, nil?: true
-
-            # @!method initialize(id:, amount:, applies_to_price_ids:, filters:, is_invoice_level:, maximum_amount:, reason:, adjustment_type: :maximum)
-            #   Some parameter documentations has been truncated, see
-            #   {Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum} for
-            #   more details.
-            #
-            #   @param id [String]
-            #
-            #   @param amount [String] The value applied by an adjustment.
-            #
-            #   @param applies_to_price_ids [Array<String>] The price IDs that this adjustment applies to.
-            #
-            #   @param filters [Array<Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter>] The filters that determine which prices to apply this adjustment to.
-            #
-            #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
-            #
-            #   @param maximum_amount [String] The maximum amount to charge in a given billing period for the prices this adjus
-            #
-            #   @param reason [String, nil] The reason for the adjustment.
-            #
-            #   @param adjustment_type [Symbol, :maximum]
-
-            class Filter < Orb::Internal::Type::BaseModel
-              # @!attribute field
-              #   The property of the price to filter on.
-              #
-              #   @return [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::Field]
-              required :field,
-                       enum: -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::Field }
-
-              # @!attribute operator
-              #   Should prices that match the filter be included or excluded.
-              #
-              #   @return [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::Operator]
-              required :operator,
-                       enum: -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::Operator }
-
-              # @!attribute values
-              #   The IDs or values that match this filter.
-              #
-              #   @return [Array<String>]
-              required :values, Orb::Internal::Type::ArrayOf[String]
-
-              # @!method initialize(field:, operator:, values:)
-              #   @param field [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::Field] The property of the price to filter on.
-              #
-              #   @param operator [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
-              #
-              #   @param values [Array<String>] The IDs or values that match this filter.
-
-              # The property of the price to filter on.
-              #
-              # @see Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter#field
-              module Field
-                extend Orb::Internal::Type::Enum
-
-                PRICE_ID = :price_id
-                ITEM_ID = :item_id
-                PRICE_TYPE = :price_type
-                CURRENCY = :currency
-                PRICING_UNIT_ID = :pricing_unit_id
-
-                # @!method self.values
-                #   @return [Array<Symbol>]
-              end
-
-              # Should prices that match the filter be included or excluded.
-              #
-              # @see Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum::Filter#operator
-              module Operator
-                extend Orb::Internal::Type::Enum
-
-                INCLUDES = :includes
-                EXCLUDES = :excludes
-
-                # @!method self.values
-                #   @return [Array<Symbol>]
-              end
-            end
-          end
+          variant :maximum, -> { Orb::MonetaryMaximumAdjustment }
 
           # @!method self.variants
-          #   @return [Array(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::UsageDiscount, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::AmountDiscount, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::PercentageDiscount, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Minimum, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Adjustment::Maximum)]
-        end
-
-        # @deprecated
-        #
-        # @see Orb::Models::InvoiceFetchUpcomingResponse::LineItem#maximum
-        class Maximum < Orb::Internal::Type::BaseModel
-          # @!attribute applies_to_price_ids
-          #   @deprecated
-          #
-          #   List of price_ids that this maximum amount applies to. For plan/plan phase
-          #   maximums, this can be a subset of prices.
-          #
-          #   @return [Array<String>]
-          required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
-
-          # @!attribute filters
-          #   The filters that determine which prices to apply this maximum to.
-          #
-          #   @return [Array<Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter>]
-          required :filters,
-                   -> { Orb::Internal::Type::ArrayOf[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter] }
-
-          # @!attribute maximum_amount
-          #   Maximum amount applied
-          #
-          #   @return [String]
-          required :maximum_amount, String
-
-          # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
-          #   Some parameter documentations has been truncated, see
-          #   {Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum} for more details.
-          #
-          #   This field is deprecated in favor of `adjustments`.
-          #
-          #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
-          #
-          #   @param filters [Array<Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
-          #
-          #   @param maximum_amount [String] Maximum amount applied
-
-          class Filter < Orb::Internal::Type::BaseModel
-            # @!attribute field
-            #   The property of the price to filter on.
-            #
-            #   @return [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::Field]
-            required :field, enum: -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::Field }
-
-            # @!attribute operator
-            #   Should prices that match the filter be included or excluded.
-            #
-            #   @return [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::Operator]
-            required :operator,
-                     enum: -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::Operator }
-
-            # @!attribute values
-            #   The IDs or values that match this filter.
-            #
-            #   @return [Array<String>]
-            required :values, Orb::Internal::Type::ArrayOf[String]
-
-            # @!method initialize(field:, operator:, values:)
-            #   @param field [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::Field] The property of the price to filter on.
-            #
-            #   @param operator [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
-            #
-            #   @param values [Array<String>] The IDs or values that match this filter.
-
-            # The property of the price to filter on.
-            #
-            # @see Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter#field
-            module Field
-              extend Orb::Internal::Type::Enum
-
-              PRICE_ID = :price_id
-              ITEM_ID = :item_id
-              PRICE_TYPE = :price_type
-              CURRENCY = :currency
-              PRICING_UNIT_ID = :pricing_unit_id
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
-
-            # Should prices that match the filter be included or excluded.
-            #
-            # @see Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Maximum::Filter#operator
-            module Operator
-              extend Orb::Internal::Type::Enum
-
-              INCLUDES = :includes
-              EXCLUDES = :excludes
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
-          end
-        end
-
-        # @deprecated
-        #
-        # @see Orb::Models::InvoiceFetchUpcomingResponse::LineItem#minimum
-        class Minimum < Orb::Internal::Type::BaseModel
-          # @!attribute applies_to_price_ids
-          #   @deprecated
-          #
-          #   List of price_ids that this minimum amount applies to. For plan/plan phase
-          #   minimums, this can be a subset of prices.
-          #
-          #   @return [Array<String>]
-          required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
-
-          # @!attribute filters
-          #   The filters that determine which prices to apply this minimum to.
-          #
-          #   @return [Array<Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter>]
-          required :filters,
-                   -> { Orb::Internal::Type::ArrayOf[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter] }
-
-          # @!attribute minimum_amount
-          #   Minimum amount applied
-          #
-          #   @return [String]
-          required :minimum_amount, String
-
-          # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
-          #   Some parameter documentations has been truncated, see
-          #   {Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum} for more details.
-          #
-          #   This field is deprecated in favor of `adjustments`.
-          #
-          #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
-          #
-          #   @param filters [Array<Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
-          #
-          #   @param minimum_amount [String] Minimum amount applied
-
-          class Filter < Orb::Internal::Type::BaseModel
-            # @!attribute field
-            #   The property of the price to filter on.
-            #
-            #   @return [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::Field]
-            required :field, enum: -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::Field }
-
-            # @!attribute operator
-            #   Should prices that match the filter be included or excluded.
-            #
-            #   @return [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::Operator]
-            required :operator,
-                     enum: -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::Operator }
-
-            # @!attribute values
-            #   The IDs or values that match this filter.
-            #
-            #   @return [Array<String>]
-            required :values, Orb::Internal::Type::ArrayOf[String]
-
-            # @!method initialize(field:, operator:, values:)
-            #   @param field [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::Field] The property of the price to filter on.
-            #
-            #   @param operator [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
-            #
-            #   @param values [Array<String>] The IDs or values that match this filter.
-
-            # The property of the price to filter on.
-            #
-            # @see Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter#field
-            module Field
-              extend Orb::Internal::Type::Enum
-
-              PRICE_ID = :price_id
-              ITEM_ID = :item_id
-              PRICE_TYPE = :price_type
-              CURRENCY = :currency
-              PRICING_UNIT_ID = :pricing_unit_id
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
-
-            # Should prices that match the filter be included or excluded.
-            #
-            # @see Orb::Models::InvoiceFetchUpcomingResponse::LineItem::Minimum::Filter#operator
-            module Operator
-              extend Orb::Internal::Type::Enum
-
-              INCLUDES = :includes
-              EXCLUDES = :excludes
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
-          end
+          #   @return [Array(Orb::Models::MonetaryUsageDiscountAdjustment, Orb::Models::MonetaryAmountDiscountAdjustment, Orb::Models::MonetaryPercentageDiscountAdjustment, Orb::Models::MonetaryMinimumAdjustment, Orb::Models::MonetaryMaximumAdjustment)]
         end
 
         module SubLineItem
@@ -2163,454 +917,14 @@ module Orb
 
           discriminator :type
 
-          variant :matrix, -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Matrix }
+          variant :matrix, -> { Orb::MatrixSubLineItem }
 
-          variant :tier, -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Tier }
+          variant :tier, -> { Orb::TierSubLineItem }
 
-          variant :"'null'", -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Null }
-
-          class Matrix < Orb::Internal::Type::BaseModel
-            # @!attribute amount
-            #   The total amount for this sub line item.
-            #
-            #   @return [String]
-            required :amount, String
-
-            # @!attribute grouping
-            #
-            #   @return [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Matrix::Grouping, nil]
-            required :grouping,
-                     -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Matrix::Grouping },
-                     nil?: true
-
-            # @!attribute matrix_config
-            #
-            #   @return [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Matrix::MatrixConfig]
-            required :matrix_config,
-                     -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Matrix::MatrixConfig }
-
-            # @!attribute name
-            #
-            #   @return [String]
-            required :name, String
-
-            # @!attribute quantity
-            #
-            #   @return [Float]
-            required :quantity, Float
-
-            # @!attribute type
-            #
-            #   @return [Symbol, :matrix]
-            required :type, const: :matrix
-
-            # @!method initialize(amount:, grouping:, matrix_config:, name:, quantity:, type: :matrix)
-            #   @param amount [String] The total amount for this sub line item.
-            #
-            #   @param grouping [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Matrix::Grouping, nil]
-            #
-            #   @param matrix_config [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Matrix::MatrixConfig]
-            #
-            #   @param name [String]
-            #
-            #   @param quantity [Float]
-            #
-            #   @param type [Symbol, :matrix]
-
-            # @see Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Matrix#grouping
-            class Grouping < Orb::Internal::Type::BaseModel
-              # @!attribute key
-              #
-              #   @return [String]
-              required :key, String
-
-              # @!attribute value
-              #   No value indicates the default group
-              #
-              #   @return [String, nil]
-              required :value, String, nil?: true
-
-              # @!method initialize(key:, value:)
-              #   @param key [String]
-              #
-              #   @param value [String, nil] No value indicates the default group
-            end
-
-            # @see Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Matrix#matrix_config
-            class MatrixConfig < Orb::Internal::Type::BaseModel
-              # @!attribute dimension_values
-              #   The ordered dimension values for this line item.
-              #
-              #   @return [Array<String, nil>]
-              required :dimension_values, Orb::Internal::Type::ArrayOf[String, nil?: true]
-
-              # @!method initialize(dimension_values:)
-              #   @param dimension_values [Array<String, nil>] The ordered dimension values for this line item.
-            end
-          end
-
-          class Tier < Orb::Internal::Type::BaseModel
-            # @!attribute amount
-            #   The total amount for this sub line item.
-            #
-            #   @return [String]
-            required :amount, String
-
-            # @!attribute grouping
-            #
-            #   @return [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Tier::Grouping, nil]
-            required :grouping,
-                     -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Tier::Grouping },
-                     nil?: true
-
-            # @!attribute name
-            #
-            #   @return [String]
-            required :name, String
-
-            # @!attribute quantity
-            #
-            #   @return [Float]
-            required :quantity, Float
-
-            # @!attribute tier_config
-            #
-            #   @return [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Tier::TierConfig]
-            required :tier_config,
-                     -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Tier::TierConfig }
-
-            # @!attribute type
-            #
-            #   @return [Symbol, :tier]
-            required :type, const: :tier
-
-            # @!method initialize(amount:, grouping:, name:, quantity:, tier_config:, type: :tier)
-            #   @param amount [String] The total amount for this sub line item.
-            #
-            #   @param grouping [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Tier::Grouping, nil]
-            #
-            #   @param name [String]
-            #
-            #   @param quantity [Float]
-            #
-            #   @param tier_config [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Tier::TierConfig]
-            #
-            #   @param type [Symbol, :tier]
-
-            # @see Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Tier#grouping
-            class Grouping < Orb::Internal::Type::BaseModel
-              # @!attribute key
-              #
-              #   @return [String]
-              required :key, String
-
-              # @!attribute value
-              #   No value indicates the default group
-              #
-              #   @return [String, nil]
-              required :value, String, nil?: true
-
-              # @!method initialize(key:, value:)
-              #   @param key [String]
-              #
-              #   @param value [String, nil] No value indicates the default group
-            end
-
-            # @see Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Tier#tier_config
-            class TierConfig < Orb::Internal::Type::BaseModel
-              # @!attribute first_unit
-              #
-              #   @return [Float]
-              required :first_unit, Float
-
-              # @!attribute last_unit
-              #
-              #   @return [Float, nil]
-              required :last_unit, Float, nil?: true
-
-              # @!attribute unit_amount
-              #
-              #   @return [String]
-              required :unit_amount, String
-
-              # @!method initialize(first_unit:, last_unit:, unit_amount:)
-              #   @param first_unit [Float]
-              #   @param last_unit [Float, nil]
-              #   @param unit_amount [String]
-            end
-          end
-
-          class Null < Orb::Internal::Type::BaseModel
-            # @!attribute amount
-            #   The total amount for this sub line item.
-            #
-            #   @return [String]
-            required :amount, String
-
-            # @!attribute grouping
-            #
-            #   @return [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Null::Grouping, nil]
-            required :grouping,
-                     -> { Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Null::Grouping },
-                     nil?: true
-
-            # @!attribute name
-            #
-            #   @return [String]
-            required :name, String
-
-            # @!attribute quantity
-            #
-            #   @return [Float]
-            required :quantity, Float
-
-            # @!attribute type
-            #
-            #   @return [Symbol, :"'null'"]
-            required :type, const: :"'null'"
-
-            # @!method initialize(amount:, grouping:, name:, quantity:, type: :"'null'")
-            #   @param amount [String] The total amount for this sub line item.
-            #
-            #   @param grouping [Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Null::Grouping, nil]
-            #
-            #   @param name [String]
-            #
-            #   @param quantity [Float]
-            #
-            #   @param type [Symbol, :"'null'"]
-
-            # @see Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Null#grouping
-            class Grouping < Orb::Internal::Type::BaseModel
-              # @!attribute key
-              #
-              #   @return [String]
-              required :key, String
-
-              # @!attribute value
-              #   No value indicates the default group
-              #
-              #   @return [String, nil]
-              required :value, String, nil?: true
-
-              # @!method initialize(key:, value:)
-              #   @param key [String]
-              #
-              #   @param value [String, nil] No value indicates the default group
-            end
-          end
+          variant :"'null'", -> { Orb::OtherSubLineItem }
 
           # @!method self.variants
-          #   @return [Array(Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Matrix, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Tier, Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem::Null)]
-        end
-
-        class TaxAmount < Orb::Internal::Type::BaseModel
-          # @!attribute amount
-          #   The amount of additional tax incurred by this tax rate.
-          #
-          #   @return [String]
-          required :amount, String
-
-          # @!attribute tax_rate_description
-          #   The human-readable description of the applied tax rate.
-          #
-          #   @return [String]
-          required :tax_rate_description, String
-
-          # @!attribute tax_rate_percentage
-          #   The tax rate percentage, out of 100.
-          #
-          #   @return [String, nil]
-          required :tax_rate_percentage, String, nil?: true
-
-          # @!method initialize(amount:, tax_rate_description:, tax_rate_percentage:)
-          #   @param amount [String] The amount of additional tax incurred by this tax rate.
-          #
-          #   @param tax_rate_description [String] The human-readable description of the applied tax rate.
-          #
-          #   @param tax_rate_percentage [String, nil] The tax rate percentage, out of 100.
-        end
-      end
-
-      # @see Orb::Models::InvoiceFetchUpcomingResponse#maximum
-      class Maximum < Orb::Internal::Type::BaseModel
-        # @!attribute applies_to_price_ids
-        #   @deprecated
-        #
-        #   List of price_ids that this maximum amount applies to. For plan/plan phase
-        #   maximums, this can be a subset of prices.
-        #
-        #   @return [Array<String>]
-        required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
-
-        # @!attribute filters
-        #   The filters that determine which prices to apply this maximum to.
-        #
-        #   @return [Array<Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter>]
-        required :filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter] }
-
-        # @!attribute maximum_amount
-        #   Maximum amount applied
-        #
-        #   @return [String]
-        required :maximum_amount, String
-
-        # @!method initialize(applies_to_price_ids:, filters:, maximum_amount:)
-        #   Some parameter documentations has been truncated, see
-        #   {Orb::Models::InvoiceFetchUpcomingResponse::Maximum} for more details.
-        #
-        #   @param applies_to_price_ids [Array<String>] List of price_ids that this maximum amount applies to. For plan/plan phase maxim
-        #
-        #   @param filters [Array<Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter>] The filters that determine which prices to apply this maximum to.
-        #
-        #   @param maximum_amount [String] Maximum amount applied
-
-        class Filter < Orb::Internal::Type::BaseModel
-          # @!attribute field
-          #   The property of the price to filter on.
-          #
-          #   @return [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::Field]
-          required :field, enum: -> { Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::Field }
-
-          # @!attribute operator
-          #   Should prices that match the filter be included or excluded.
-          #
-          #   @return [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::Operator]
-          required :operator, enum: -> { Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::Operator }
-
-          # @!attribute values
-          #   The IDs or values that match this filter.
-          #
-          #   @return [Array<String>]
-          required :values, Orb::Internal::Type::ArrayOf[String]
-
-          # @!method initialize(field:, operator:, values:)
-          #   @param field [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::Field] The property of the price to filter on.
-          #
-          #   @param operator [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter::Operator] Should prices that match the filter be included or excluded.
-          #
-          #   @param values [Array<String>] The IDs or values that match this filter.
-
-          # The property of the price to filter on.
-          #
-          # @see Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter#field
-          module Field
-            extend Orb::Internal::Type::Enum
-
-            PRICE_ID = :price_id
-            ITEM_ID = :item_id
-            PRICE_TYPE = :price_type
-            CURRENCY = :currency
-            PRICING_UNIT_ID = :pricing_unit_id
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
-
-          # Should prices that match the filter be included or excluded.
-          #
-          # @see Orb::Models::InvoiceFetchUpcomingResponse::Maximum::Filter#operator
-          module Operator
-            extend Orb::Internal::Type::Enum
-
-            INCLUDES = :includes
-            EXCLUDES = :excludes
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
-        end
-      end
-
-      # @see Orb::Models::InvoiceFetchUpcomingResponse#minimum
-      class Minimum < Orb::Internal::Type::BaseModel
-        # @!attribute applies_to_price_ids
-        #   @deprecated
-        #
-        #   List of price_ids that this minimum amount applies to. For plan/plan phase
-        #   minimums, this can be a subset of prices.
-        #
-        #   @return [Array<String>]
-        required :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String]
-
-        # @!attribute filters
-        #   The filters that determine which prices to apply this minimum to.
-        #
-        #   @return [Array<Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter>]
-        required :filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter] }
-
-        # @!attribute minimum_amount
-        #   Minimum amount applied
-        #
-        #   @return [String]
-        required :minimum_amount, String
-
-        # @!method initialize(applies_to_price_ids:, filters:, minimum_amount:)
-        #   Some parameter documentations has been truncated, see
-        #   {Orb::Models::InvoiceFetchUpcomingResponse::Minimum} for more details.
-        #
-        #   @param applies_to_price_ids [Array<String>] List of price_ids that this minimum amount applies to. For plan/plan phase minim
-        #
-        #   @param filters [Array<Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter>] The filters that determine which prices to apply this minimum to.
-        #
-        #   @param minimum_amount [String] Minimum amount applied
-
-        class Filter < Orb::Internal::Type::BaseModel
-          # @!attribute field
-          #   The property of the price to filter on.
-          #
-          #   @return [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::Field]
-          required :field, enum: -> { Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::Field }
-
-          # @!attribute operator
-          #   Should prices that match the filter be included or excluded.
-          #
-          #   @return [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::Operator]
-          required :operator, enum: -> { Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::Operator }
-
-          # @!attribute values
-          #   The IDs or values that match this filter.
-          #
-          #   @return [Array<String>]
-          required :values, Orb::Internal::Type::ArrayOf[String]
-
-          # @!method initialize(field:, operator:, values:)
-          #   @param field [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::Field] The property of the price to filter on.
-          #
-          #   @param operator [Symbol, Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter::Operator] Should prices that match the filter be included or excluded.
-          #
-          #   @param values [Array<String>] The IDs or values that match this filter.
-
-          # The property of the price to filter on.
-          #
-          # @see Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter#field
-          module Field
-            extend Orb::Internal::Type::Enum
-
-            PRICE_ID = :price_id
-            ITEM_ID = :item_id
-            PRICE_TYPE = :price_type
-            CURRENCY = :currency
-            PRICING_UNIT_ID = :pricing_unit_id
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
-
-          # Should prices that match the filter be included or excluded.
-          #
-          # @see Orb::Models::InvoiceFetchUpcomingResponse::Minimum::Filter#operator
-          module Operator
-            extend Orb::Internal::Type::Enum
-
-            INCLUDES = :includes
-            EXCLUDES = :excludes
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
+          #   @return [Array(Orb::Models::MatrixSubLineItem, Orb::Models::TierSubLineItem, Orb::Models::OtherSubLineItem)]
         end
       end
 
@@ -2679,47 +993,6 @@ module Orb
         end
       end
 
-      # @see Orb::Models::InvoiceFetchUpcomingResponse#shipping_address
-      class ShippingAddress < Orb::Internal::Type::BaseModel
-        # @!attribute city
-        #
-        #   @return [String, nil]
-        required :city, String, nil?: true
-
-        # @!attribute country
-        #
-        #   @return [String, nil]
-        required :country, String, nil?: true
-
-        # @!attribute line1
-        #
-        #   @return [String, nil]
-        required :line1, String, nil?: true
-
-        # @!attribute line2
-        #
-        #   @return [String, nil]
-        required :line2, String, nil?: true
-
-        # @!attribute postal_code
-        #
-        #   @return [String, nil]
-        required :postal_code, String, nil?: true
-
-        # @!attribute state
-        #
-        #   @return [String, nil]
-        required :state, String, nil?: true
-
-        # @!method initialize(city:, country:, line1:, line2:, postal_code:, state:)
-        #   @param city [String, nil]
-        #   @param country [String, nil]
-        #   @param line1 [String, nil]
-        #   @param line2 [String, nil]
-        #   @param postal_code [String, nil]
-        #   @param state [String, nil]
-      end
-
       # @see Orb::Models::InvoiceFetchUpcomingResponse#status
       module Status
         extend Orb::Internal::Type::Enum
@@ -2732,17 +1005,6 @@ module Orb
 
         # @!method self.values
         #   @return [Array<Symbol>]
-      end
-
-      # @see Orb::Models::InvoiceFetchUpcomingResponse#subscription
-      class Subscription < Orb::Internal::Type::BaseModel
-        # @!attribute id
-        #
-        #   @return [String]
-        required :id, String
-
-        # @!method initialize(id:)
-        #   @param id [String]
       end
     end
   end

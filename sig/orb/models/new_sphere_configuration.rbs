@@ -1,0 +1,35 @@
+module Orb
+  module Models
+    type new_sphere_configuration =
+      {
+        tax_exempt: bool,
+        tax_provider: Orb::Models::NewSphereConfiguration::tax_provider
+      }
+
+    class NewSphereConfiguration < Orb::Internal::Type::BaseModel
+      attr_accessor tax_exempt: bool
+
+      attr_accessor tax_provider: Orb::Models::NewSphereConfiguration::tax_provider
+
+      def initialize: (
+        tax_exempt: bool,
+        tax_provider: Orb::Models::NewSphereConfiguration::tax_provider
+      ) -> void
+
+      def to_hash: -> {
+        tax_exempt: bool,
+        tax_provider: Orb::Models::NewSphereConfiguration::tax_provider
+      }
+
+      type tax_provider = :sphere
+
+      module TaxProvider
+        extend Orb::Internal::Type::Enum
+
+        SPHERE: :sphere
+
+        def self?.values: -> ::Array[Orb::Models::NewSphereConfiguration::tax_provider]
+      end
+    end
+  end
+end

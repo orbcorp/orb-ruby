@@ -1,0 +1,121 @@
+module Orb
+  module Models
+    type new_floating_threshold_total_amount_price =
+      {
+        cadence: Orb::Models::NewFloatingThresholdTotalAmountPrice::cadence,
+        currency: String,
+        item_id: String,
+        model_type: Orb::Models::NewFloatingThresholdTotalAmountPrice::model_type,
+        name: String,
+        threshold_total_amount_config: ::Hash[Symbol, top],
+        billable_metric_id: String?,
+        billed_in_advance: bool?,
+        billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+        conversion_rate: Float?,
+        dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+        external_price_id: String?,
+        fixed_price_quantity: Float?,
+        invoice_grouping_key: String?,
+        invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+        metadata: ::Hash[Symbol, String?]?
+      }
+
+    class NewFloatingThresholdTotalAmountPrice < Orb::Internal::Type::BaseModel
+      attr_accessor cadence: Orb::Models::NewFloatingThresholdTotalAmountPrice::cadence
+
+      attr_accessor currency: String
+
+      attr_accessor item_id: String
+
+      attr_accessor model_type: Orb::Models::NewFloatingThresholdTotalAmountPrice::model_type
+
+      attr_accessor name: String
+
+      attr_accessor threshold_total_amount_config: ::Hash[Symbol, top]
+
+      attr_accessor billable_metric_id: String?
+
+      attr_accessor billed_in_advance: bool?
+
+      attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+      attr_accessor conversion_rate: Float?
+
+      attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
+
+      attr_accessor external_price_id: String?
+
+      attr_accessor fixed_price_quantity: Float?
+
+      attr_accessor invoice_grouping_key: String?
+
+      attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+      attr_accessor metadata: ::Hash[Symbol, String?]?
+
+      def initialize: (
+        cadence: Orb::Models::NewFloatingThresholdTotalAmountPrice::cadence,
+        currency: String,
+        item_id: String,
+        model_type: Orb::Models::NewFloatingThresholdTotalAmountPrice::model_type,
+        name: String,
+        threshold_total_amount_config: ::Hash[Symbol, top],
+        ?billable_metric_id: String?,
+        ?billed_in_advance: bool?,
+        ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+        ?conversion_rate: Float?,
+        ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+        ?external_price_id: String?,
+        ?fixed_price_quantity: Float?,
+        ?invoice_grouping_key: String?,
+        ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+        ?metadata: ::Hash[Symbol, String?]?
+      ) -> void
+
+      def to_hash: -> {
+        cadence: Orb::Models::NewFloatingThresholdTotalAmountPrice::cadence,
+        currency: String,
+        item_id: String,
+        model_type: Orb::Models::NewFloatingThresholdTotalAmountPrice::model_type,
+        name: String,
+        threshold_total_amount_config: ::Hash[Symbol, top],
+        billable_metric_id: String?,
+        billed_in_advance: bool?,
+        billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+        conversion_rate: Float?,
+        dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+        external_price_id: String?,
+        fixed_price_quantity: Float?,
+        invoice_grouping_key: String?,
+        invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+        metadata: ::Hash[Symbol, String?]?
+      }
+
+      type cadence =
+        :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+      module Cadence
+        extend Orb::Internal::Type::Enum
+
+        ANNUAL: :annual
+        SEMI_ANNUAL: :semi_annual
+        MONTHLY: :monthly
+        QUARTERLY: :quarterly
+        ONE_TIME: :one_time
+        CUSTOM: :custom
+
+        def self?.values: -> ::Array[Orb::Models::NewFloatingThresholdTotalAmountPrice::cadence]
+      end
+
+      type model_type = :threshold_total_amount
+
+      module ModelType
+        extend Orb::Internal::Type::Enum
+
+        THRESHOLD_TOTAL_AMOUNT: :threshold_total_amount
+
+        def self?.values: -> ::Array[Orb::Models::NewFloatingThresholdTotalAmountPrice::model_type]
+      end
+    end
+  end
+end

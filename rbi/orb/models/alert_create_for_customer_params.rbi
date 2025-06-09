@@ -20,21 +20,14 @@ module Orb
       attr_accessor :type
 
       # The thresholds that define the values at which the alert will be triggered.
-      sig do
-        returns(
-          T.nilable(T::Array[Orb::AlertCreateForCustomerParams::Threshold])
-        )
-      end
+      sig { returns(T.nilable(T::Array[Orb::Threshold])) }
       attr_accessor :thresholds
 
       sig do
         params(
           currency: String,
           type: Orb::AlertCreateForCustomerParams::Type::OrSymbol,
-          thresholds:
-            T.nilable(
-              T::Array[Orb::AlertCreateForCustomerParams::Threshold::OrHash]
-            ),
+          thresholds: T.nilable(T::Array[Orb::Threshold::OrHash]),
           request_options: Orb::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -54,8 +47,7 @@ module Orb
           {
             currency: String,
             type: Orb::AlertCreateForCustomerParams::Type::OrSymbol,
-            thresholds:
-              T.nilable(T::Array[Orb::AlertCreateForCustomerParams::Threshold]),
+            thresholds: T.nilable(T::Array[Orb::Threshold]),
             request_options: Orb::RequestOptions
           }
         )
@@ -95,37 +87,6 @@ module Orb
           )
         end
         def self.values
-        end
-      end
-
-      class Threshold < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Orb::AlertCreateForCustomerParams::Threshold,
-              Orb::Internal::AnyHash
-            )
-          end
-
-        # The value at which an alert will fire. For credit balance alerts, the alert will
-        # fire at or below this value. For usage and cost alerts, the alert will fire at
-        # or above this value.
-        sig { returns(Float) }
-        attr_accessor :value
-
-        # Thresholds are used to define the conditions under which an alert will be
-        # triggered.
-        sig { params(value: Float).returns(T.attached_class) }
-        def self.new(
-          # The value at which an alert will fire. For credit balance alerts, the alert will
-          # fire at or below this value. For usage and cost alerts, the alert will fire at
-          # or above this value.
-          value:
-        )
-        end
-
-        sig { override.returns({ value: Float }) }
-        def to_hash
         end
       end
     end

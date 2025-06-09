@@ -1,0 +1,65 @@
+module Orb
+  module Models
+    type plan_phase_maximum_adjustment =
+      {
+        id: String,
+        adjustment_type: Orb::Models::PlanPhaseMaximumAdjustment::adjustment_type,
+        applies_to_price_ids: ::Array[String],
+        filters: ::Array[Orb::TransformPriceFilter],
+        is_invoice_level: bool,
+        maximum_amount: String,
+        plan_phase_order: Integer?,
+        reason: String?
+      }
+
+    class PlanPhaseMaximumAdjustment < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor adjustment_type: Orb::Models::PlanPhaseMaximumAdjustment::adjustment_type
+
+      attr_accessor applies_to_price_ids: ::Array[String]
+
+      attr_accessor filters: ::Array[Orb::TransformPriceFilter]
+
+      attr_accessor is_invoice_level: bool
+
+      attr_accessor maximum_amount: String
+
+      attr_accessor plan_phase_order: Integer?
+
+      attr_accessor reason: String?
+
+      def initialize: (
+        id: String,
+        adjustment_type: Orb::Models::PlanPhaseMaximumAdjustment::adjustment_type,
+        applies_to_price_ids: ::Array[String],
+        filters: ::Array[Orb::TransformPriceFilter],
+        is_invoice_level: bool,
+        maximum_amount: String,
+        plan_phase_order: Integer?,
+        reason: String?
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        adjustment_type: Orb::Models::PlanPhaseMaximumAdjustment::adjustment_type,
+        applies_to_price_ids: ::Array[String],
+        filters: ::Array[Orb::TransformPriceFilter],
+        is_invoice_level: bool,
+        maximum_amount: String,
+        plan_phase_order: Integer?,
+        reason: String?
+      }
+
+      type adjustment_type = :maximum
+
+      module AdjustmentType
+        extend Orb::Internal::Type::Enum
+
+        MAXIMUM: :maximum
+
+        def self?.values: -> ::Array[Orb::Models::PlanPhaseMaximumAdjustment::adjustment_type]
+      end
+    end
+  end
+end

@@ -1,0 +1,45 @@
+module Orb
+  module Models
+    type address =
+      {
+        city: String?,
+        country: String?,
+        :line1 => String?,
+        :line2 => String?,
+        postal_code: String?,
+        state: String?
+      }
+
+    class Address < Orb::Internal::Type::BaseModel
+      attr_accessor city: String?
+
+      attr_accessor country: String?
+
+      attr_accessor line1: String?
+
+      attr_accessor line2: String?
+
+      attr_accessor postal_code: String?
+
+      attr_accessor state: String?
+
+      def initialize: (
+        city: String?,
+        country: String?,
+        line1: String?,
+        line2: String?,
+        postal_code: String?,
+        state: String?
+      ) -> void
+
+      def to_hash: -> {
+        city: String?,
+        country: String?,
+        :line1 => String?,
+        :line2 => String?,
+        postal_code: String?,
+        state: String?
+      }
+    end
+  end
+end

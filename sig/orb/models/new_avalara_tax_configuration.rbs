@@ -1,0 +1,40 @@
+module Orb
+  module Models
+    type new_avalara_tax_configuration =
+      {
+        tax_exempt: bool,
+        tax_provider: Orb::Models::NewAvalaraTaxConfiguration::tax_provider,
+        tax_exemption_code: String?
+      }
+
+    class NewAvalaraTaxConfiguration < Orb::Internal::Type::BaseModel
+      attr_accessor tax_exempt: bool
+
+      attr_accessor tax_provider: Orb::Models::NewAvalaraTaxConfiguration::tax_provider
+
+      attr_accessor tax_exemption_code: String?
+
+      def initialize: (
+        tax_exempt: bool,
+        tax_provider: Orb::Models::NewAvalaraTaxConfiguration::tax_provider,
+        ?tax_exemption_code: String?
+      ) -> void
+
+      def to_hash: -> {
+        tax_exempt: bool,
+        tax_provider: Orb::Models::NewAvalaraTaxConfiguration::tax_provider,
+        tax_exemption_code: String?
+      }
+
+      type tax_provider = :avalara
+
+      module TaxProvider
+        extend Orb::Internal::Type::Enum
+
+        AVALARA: :avalara
+
+        def self?.values: -> ::Array[Orb::Models::NewAvalaraTaxConfiguration::tax_provider]
+      end
+    end
+  end
+end

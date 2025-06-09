@@ -395,11 +395,11 @@ module Orb
         # @return [Hash{Symbol=>Object}]
         #
         # @example
-        #   # `amount_discount` is a `Orb::AmountDiscount`
-        #   amount_discount => {
-        #     amount_discount: amount_discount,
-        #     discount_type: discount_type,
-        #     applies_to_price_ids: applies_to_price_ids
+        #   # `address` is a `Orb::Address`
+        #   address => {
+        #     city: city,
+        #     country: country,
+        #     line1: line1
         #   }
         def deconstruct_keys(keys)
           (keys || self.class.known_fields.keys)

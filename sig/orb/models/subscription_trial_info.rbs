@@ -1,0 +1,13 @@
+module Orb
+  module Models
+    type subscription_trial_info = { end_date: Time? }
+
+    class SubscriptionTrialInfo < Orb::Internal::Type::BaseModel
+      attr_accessor end_date: Time?
+
+      def initialize: (end_date: Time?) -> void
+
+      def to_hash: -> { end_date: Time? }
+    end
+  end
+end

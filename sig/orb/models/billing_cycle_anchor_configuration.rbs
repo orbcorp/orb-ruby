@@ -1,0 +1,18 @@
+module Orb
+  module Models
+    type billing_cycle_anchor_configuration =
+      { day: Integer, month: Integer?, year: Integer? }
+
+    class BillingCycleAnchorConfiguration < Orb::Internal::Type::BaseModel
+      attr_accessor day: Integer
+
+      attr_accessor month: Integer?
+
+      attr_accessor year: Integer?
+
+      def initialize: (day: Integer, ?month: Integer?, ?year: Integer?) -> void
+
+      def to_hash: -> { day: Integer, month: Integer?, year: Integer? }
+    end
+  end
+end

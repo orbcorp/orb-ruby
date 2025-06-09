@@ -1,0 +1,65 @@
+module Orb
+  module Models
+    type price_interval =
+      {
+        id: String,
+        billing_cycle_day: Integer,
+        current_billing_period_end_date: Time?,
+        current_billing_period_start_date: Time?,
+        end_date: Time?,
+        filter: String?,
+        fixed_fee_quantity_transitions: ::Array[Orb::FixedFeeQuantityTransition]?,
+        price: Orb::Models::price,
+        start_date: Time,
+        usage_customer_ids: ::Array[String]?
+      }
+
+    class PriceInterval < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor billing_cycle_day: Integer
+
+      attr_accessor current_billing_period_end_date: Time?
+
+      attr_accessor current_billing_period_start_date: Time?
+
+      attr_accessor end_date: Time?
+
+      attr_accessor filter: String?
+
+      attr_accessor fixed_fee_quantity_transitions: ::Array[Orb::FixedFeeQuantityTransition]?
+
+      attr_accessor price: Orb::Models::price
+
+      attr_accessor start_date: Time
+
+      attr_accessor usage_customer_ids: ::Array[String]?
+
+      def initialize: (
+        id: String,
+        billing_cycle_day: Integer,
+        current_billing_period_end_date: Time?,
+        current_billing_period_start_date: Time?,
+        end_date: Time?,
+        filter: String?,
+        fixed_fee_quantity_transitions: ::Array[Orb::FixedFeeQuantityTransition]?,
+        price: Orb::Models::price,
+        start_date: Time,
+        usage_customer_ids: ::Array[String]?
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        billing_cycle_day: Integer,
+        current_billing_period_end_date: Time?,
+        current_billing_period_start_date: Time?,
+        end_date: Time?,
+        filter: String?,
+        fixed_fee_quantity_transitions: ::Array[Orb::FixedFeeQuantityTransition]?,
+        price: Orb::Models::price,
+        start_date: Time,
+        usage_customer_ids: ::Array[String]?
+      }
+    end
+  end
+end

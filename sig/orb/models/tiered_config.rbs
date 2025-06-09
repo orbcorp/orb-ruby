@@ -1,0 +1,13 @@
+module Orb
+  module Models
+    type tiered_config = { tiers: ::Array[Orb::Tier] }
+
+    class TieredConfig < Orb::Internal::Type::BaseModel
+      attr_accessor tiers: ::Array[Orb::Tier]
+
+      def initialize: (tiers: ::Array[Orb::Tier]) -> void
+
+      def to_hash: -> { tiers: ::Array[Orb::Tier] }
+    end
+  end
+end

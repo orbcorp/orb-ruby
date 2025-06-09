@@ -19,13 +19,13 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
 
     assert_pattern do
       case row
-      in Orb::Models::Customers::Credits::LedgerListResponse::Increment
-      in Orb::Models::Customers::Credits::LedgerListResponse::Decrement
-      in Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChange
-      in Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiry
-      in Orb::Models::Customers::Credits::LedgerListResponse::Void
-      in Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiated
-      in Orb::Models::Customers::Credits::LedgerListResponse::Amendment
+      in Orb::Customers::Credits::IncrementLedgerEntry
+      in Orb::Customers::Credits::DecrementLedgerEntry
+      in Orb::Customers::Credits::ExpirationChangeLedgerEntry
+      in Orb::Customers::Credits::CreditBlockExpiryLedgerEntry
+      in Orb::Customers::Credits::VoidLedgerEntry
+      in Orb::Customers::Credits::VoidInitiatedLedgerEntry
+      in Orb::Customers::Credits::AmendmentLedgerEntry
       end
     end
 
@@ -36,12 +36,12 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         id: String,
         amount: Float,
         created_at: Time,
-        credit_block: Orb::Models::Customers::Credits::LedgerListResponse::Increment::CreditBlock,
+        credit_block: Orb::Customers::Credits::AffectedBlock,
         currency: String,
-        customer: Orb::Models::Customers::Credits::LedgerListResponse::Increment::Customer,
+        customer: Orb::CustomerMinified,
         description: String | nil,
         ending_balance: Float,
-        entry_status: Orb::Models::Customers::Credits::LedgerListResponse::Increment::EntryStatus,
+        entry_status: Orb::Customers::Credits::IncrementLedgerEntry::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         starting_balance: Float,
@@ -52,12 +52,12 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         id: String,
         amount: Float,
         created_at: Time,
-        credit_block: Orb::Models::Customers::Credits::LedgerListResponse::Decrement::CreditBlock,
+        credit_block: Orb::Customers::Credits::AffectedBlock,
         currency: String,
-        customer: Orb::Models::Customers::Credits::LedgerListResponse::Decrement::Customer,
+        customer: Orb::CustomerMinified,
         description: String | nil,
         ending_balance: Float,
-        entry_status: Orb::Models::Customers::Credits::LedgerListResponse::Decrement::EntryStatus,
+        entry_status: Orb::Customers::Credits::DecrementLedgerEntry::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         starting_balance: Float,
@@ -70,12 +70,12 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         id: String,
         amount: Float,
         created_at: Time,
-        credit_block: Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChange::CreditBlock,
+        credit_block: Orb::Customers::Credits::AffectedBlock,
         currency: String,
-        customer: Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChange::Customer,
+        customer: Orb::CustomerMinified,
         description: String | nil,
         ending_balance: Float,
-        entry_status: Orb::Models::Customers::Credits::LedgerListResponse::ExpirationChange::EntryStatus,
+        entry_status: Orb::Customers::Credits::ExpirationChangeLedgerEntry::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         new_block_expiry_date: Time | nil,
@@ -86,12 +86,12 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         id: String,
         amount: Float,
         created_at: Time,
-        credit_block: Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiry::CreditBlock,
+        credit_block: Orb::Customers::Credits::AffectedBlock,
         currency: String,
-        customer: Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiry::Customer,
+        customer: Orb::CustomerMinified,
         description: String | nil,
         ending_balance: Float,
-        entry_status: Orb::Models::Customers::Credits::LedgerListResponse::CreditBlockExpiry::EntryStatus,
+        entry_status: Orb::Customers::Credits::CreditBlockExpiryLedgerEntry::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         starting_balance: Float
@@ -101,12 +101,12 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         id: String,
         amount: Float,
         created_at: Time,
-        credit_block: Orb::Models::Customers::Credits::LedgerListResponse::Void::CreditBlock,
+        credit_block: Orb::Customers::Credits::AffectedBlock,
         currency: String,
-        customer: Orb::Models::Customers::Credits::LedgerListResponse::Void::Customer,
+        customer: Orb::CustomerMinified,
         description: String | nil,
         ending_balance: Float,
-        entry_status: Orb::Models::Customers::Credits::LedgerListResponse::Void::EntryStatus,
+        entry_status: Orb::Customers::Credits::VoidLedgerEntry::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         starting_balance: Float,
@@ -118,12 +118,12 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         id: String,
         amount: Float,
         created_at: Time,
-        credit_block: Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiated::CreditBlock,
+        credit_block: Orb::Customers::Credits::AffectedBlock,
         currency: String,
-        customer: Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiated::Customer,
+        customer: Orb::CustomerMinified,
         description: String | nil,
         ending_balance: Float,
-        entry_status: Orb::Models::Customers::Credits::LedgerListResponse::VoidInitiated::EntryStatus,
+        entry_status: Orb::Customers::Credits::VoidInitiatedLedgerEntry::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         new_block_expiry_date: Time,
@@ -136,12 +136,12 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         id: String,
         amount: Float,
         created_at: Time,
-        credit_block: Orb::Models::Customers::Credits::LedgerListResponse::Amendment::CreditBlock,
+        credit_block: Orb::Customers::Credits::AffectedBlock,
         currency: String,
-        customer: Orb::Models::Customers::Credits::LedgerListResponse::Amendment::Customer,
+        customer: Orb::CustomerMinified,
         description: String | nil,
         ending_balance: Float,
-        entry_status: Orb::Models::Customers::Credits::LedgerListResponse::Amendment::EntryStatus,
+        entry_status: Orb::Customers::Credits::AmendmentLedgerEntry::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         starting_balance: Float
@@ -165,13 +165,13 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
 
     assert_pattern do
       case response
-      in Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment
-      in Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement
-      in Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange
-      in Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry
-      in Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void
-      in Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated
-      in Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment
+      in Orb::Customers::Credits::IncrementLedgerEntry
+      in Orb::Customers::Credits::DecrementLedgerEntry
+      in Orb::Customers::Credits::ExpirationChangeLedgerEntry
+      in Orb::Customers::Credits::CreditBlockExpiryLedgerEntry
+      in Orb::Customers::Credits::VoidLedgerEntry
+      in Orb::Customers::Credits::VoidInitiatedLedgerEntry
+      in Orb::Customers::Credits::AmendmentLedgerEntry
       end
     end
 
@@ -182,12 +182,12 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         id: String,
         amount: Float,
         created_at: Time,
-        credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::CreditBlock,
+        credit_block: Orb::Customers::Credits::AffectedBlock,
         currency: String,
-        customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::Customer,
+        customer: Orb::CustomerMinified,
         description: String | nil,
         ending_balance: Float,
-        entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Increment::EntryStatus,
+        entry_status: Orb::Customers::Credits::IncrementLedgerEntry::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         starting_balance: Float,
@@ -198,12 +198,12 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         id: String,
         amount: Float,
         created_at: Time,
-        credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::CreditBlock,
+        credit_block: Orb::Customers::Credits::AffectedBlock,
         currency: String,
-        customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::Customer,
+        customer: Orb::CustomerMinified,
         description: String | nil,
         ending_balance: Float,
-        entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Decrement::EntryStatus,
+        entry_status: Orb::Customers::Credits::DecrementLedgerEntry::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         starting_balance: Float,
@@ -216,12 +216,12 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         id: String,
         amount: Float,
         created_at: Time,
-        credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::CreditBlock,
+        credit_block: Orb::Customers::Credits::AffectedBlock,
         currency: String,
-        customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::Customer,
+        customer: Orb::CustomerMinified,
         description: String | nil,
         ending_balance: Float,
-        entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::ExpirationChange::EntryStatus,
+        entry_status: Orb::Customers::Credits::ExpirationChangeLedgerEntry::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         new_block_expiry_date: Time | nil,
@@ -232,12 +232,12 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         id: String,
         amount: Float,
         created_at: Time,
-        credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::CreditBlock,
+        credit_block: Orb::Customers::Credits::AffectedBlock,
         currency: String,
-        customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::Customer,
+        customer: Orb::CustomerMinified,
         description: String | nil,
         ending_balance: Float,
-        entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::CreditBlockExpiry::EntryStatus,
+        entry_status: Orb::Customers::Credits::CreditBlockExpiryLedgerEntry::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         starting_balance: Float
@@ -247,12 +247,12 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         id: String,
         amount: Float,
         created_at: Time,
-        credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::CreditBlock,
+        credit_block: Orb::Customers::Credits::AffectedBlock,
         currency: String,
-        customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::Customer,
+        customer: Orb::CustomerMinified,
         description: String | nil,
         ending_balance: Float,
-        entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Void::EntryStatus,
+        entry_status: Orb::Customers::Credits::VoidLedgerEntry::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         starting_balance: Float,
@@ -264,12 +264,12 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         id: String,
         amount: Float,
         created_at: Time,
-        credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::CreditBlock,
+        credit_block: Orb::Customers::Credits::AffectedBlock,
         currency: String,
-        customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::Customer,
+        customer: Orb::CustomerMinified,
         description: String | nil,
         ending_balance: Float,
-        entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::VoidInitiated::EntryStatus,
+        entry_status: Orb::Customers::Credits::VoidInitiatedLedgerEntry::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         new_block_expiry_date: Time,
@@ -282,12 +282,12 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         id: String,
         amount: Float,
         created_at: Time,
-        credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::CreditBlock,
+        credit_block: Orb::Customers::Credits::AffectedBlock,
         currency: String,
-        customer: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::Customer,
+        customer: Orb::CustomerMinified,
         description: String | nil,
         ending_balance: Float,
-        entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Amendment::EntryStatus,
+        entry_status: Orb::Customers::Credits::AmendmentLedgerEntry::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         starting_balance: Float
@@ -311,13 +311,13 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
 
     assert_pattern do
       case response
-      in Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment
-      in Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Decrement
-      in Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChange
-      in Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiry
-      in Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Void
-      in Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiated
-      in Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Amendment
+      in Orb::Customers::Credits::IncrementLedgerEntry
+      in Orb::Customers::Credits::DecrementLedgerEntry
+      in Orb::Customers::Credits::ExpirationChangeLedgerEntry
+      in Orb::Customers::Credits::CreditBlockExpiryLedgerEntry
+      in Orb::Customers::Credits::VoidLedgerEntry
+      in Orb::Customers::Credits::VoidInitiatedLedgerEntry
+      in Orb::Customers::Credits::AmendmentLedgerEntry
       end
     end
 
@@ -328,12 +328,12 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         id: String,
         amount: Float,
         created_at: Time,
-        credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment::CreditBlock,
+        credit_block: Orb::Customers::Credits::AffectedBlock,
         currency: String,
-        customer: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment::Customer,
+        customer: Orb::CustomerMinified,
         description: String | nil,
         ending_balance: Float,
-        entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Increment::EntryStatus,
+        entry_status: Orb::Customers::Credits::IncrementLedgerEntry::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         starting_balance: Float,
@@ -344,12 +344,12 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         id: String,
         amount: Float,
         created_at: Time,
-        credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Decrement::CreditBlock,
+        credit_block: Orb::Customers::Credits::AffectedBlock,
         currency: String,
-        customer: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Decrement::Customer,
+        customer: Orb::CustomerMinified,
         description: String | nil,
         ending_balance: Float,
-        entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Decrement::EntryStatus,
+        entry_status: Orb::Customers::Credits::DecrementLedgerEntry::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         starting_balance: Float,
@@ -362,12 +362,12 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         id: String,
         amount: Float,
         created_at: Time,
-        credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChange::CreditBlock,
+        credit_block: Orb::Customers::Credits::AffectedBlock,
         currency: String,
-        customer: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChange::Customer,
+        customer: Orb::CustomerMinified,
         description: String | nil,
         ending_balance: Float,
-        entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::ExpirationChange::EntryStatus,
+        entry_status: Orb::Customers::Credits::ExpirationChangeLedgerEntry::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         new_block_expiry_date: Time | nil,
@@ -378,12 +378,12 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         id: String,
         amount: Float,
         created_at: Time,
-        credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiry::CreditBlock,
+        credit_block: Orb::Customers::Credits::AffectedBlock,
         currency: String,
-        customer: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiry::Customer,
+        customer: Orb::CustomerMinified,
         description: String | nil,
         ending_balance: Float,
-        entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::CreditBlockExpiry::EntryStatus,
+        entry_status: Orb::Customers::Credits::CreditBlockExpiryLedgerEntry::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         starting_balance: Float
@@ -393,12 +393,12 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         id: String,
         amount: Float,
         created_at: Time,
-        credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Void::CreditBlock,
+        credit_block: Orb::Customers::Credits::AffectedBlock,
         currency: String,
-        customer: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Void::Customer,
+        customer: Orb::CustomerMinified,
         description: String | nil,
         ending_balance: Float,
-        entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Void::EntryStatus,
+        entry_status: Orb::Customers::Credits::VoidLedgerEntry::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         starting_balance: Float,
@@ -410,12 +410,12 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         id: String,
         amount: Float,
         created_at: Time,
-        credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiated::CreditBlock,
+        credit_block: Orb::Customers::Credits::AffectedBlock,
         currency: String,
-        customer: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiated::Customer,
+        customer: Orb::CustomerMinified,
         description: String | nil,
         ending_balance: Float,
-        entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::VoidInitiated::EntryStatus,
+        entry_status: Orb::Customers::Credits::VoidInitiatedLedgerEntry::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         new_block_expiry_date: Time,
@@ -428,12 +428,12 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         id: String,
         amount: Float,
         created_at: Time,
-        credit_block: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Amendment::CreditBlock,
+        credit_block: Orb::Customers::Credits::AffectedBlock,
         currency: String,
-        customer: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Amendment::Customer,
+        customer: Orb::CustomerMinified,
         description: String | nil,
         ending_balance: Float,
-        entry_status: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse::Amendment::EntryStatus,
+        entry_status: Orb::Customers::Credits::AmendmentLedgerEntry::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         starting_balance: Float
@@ -458,13 +458,13 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
 
     assert_pattern do
       case row
-      in Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Increment
-      in Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Decrement
-      in Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChange
-      in Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiry
-      in Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Void
-      in Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiated
-      in Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Amendment
+      in Orb::Customers::Credits::IncrementLedgerEntry
+      in Orb::Customers::Credits::DecrementLedgerEntry
+      in Orb::Customers::Credits::ExpirationChangeLedgerEntry
+      in Orb::Customers::Credits::CreditBlockExpiryLedgerEntry
+      in Orb::Customers::Credits::VoidLedgerEntry
+      in Orb::Customers::Credits::VoidInitiatedLedgerEntry
+      in Orb::Customers::Credits::AmendmentLedgerEntry
       end
     end
 
@@ -475,12 +475,12 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         id: String,
         amount: Float,
         created_at: Time,
-        credit_block: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Increment::CreditBlock,
+        credit_block: Orb::Customers::Credits::AffectedBlock,
         currency: String,
-        customer: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Increment::Customer,
+        customer: Orb::CustomerMinified,
         description: String | nil,
         ending_balance: Float,
-        entry_status: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Increment::EntryStatus,
+        entry_status: Orb::Customers::Credits::IncrementLedgerEntry::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         starting_balance: Float,
@@ -491,12 +491,12 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         id: String,
         amount: Float,
         created_at: Time,
-        credit_block: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Decrement::CreditBlock,
+        credit_block: Orb::Customers::Credits::AffectedBlock,
         currency: String,
-        customer: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Decrement::Customer,
+        customer: Orb::CustomerMinified,
         description: String | nil,
         ending_balance: Float,
-        entry_status: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Decrement::EntryStatus,
+        entry_status: Orb::Customers::Credits::DecrementLedgerEntry::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         starting_balance: Float,
@@ -509,12 +509,12 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         id: String,
         amount: Float,
         created_at: Time,
-        credit_block: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChange::CreditBlock,
+        credit_block: Orb::Customers::Credits::AffectedBlock,
         currency: String,
-        customer: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChange::Customer,
+        customer: Orb::CustomerMinified,
         description: String | nil,
         ending_balance: Float,
-        entry_status: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::ExpirationChange::EntryStatus,
+        entry_status: Orb::Customers::Credits::ExpirationChangeLedgerEntry::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         new_block_expiry_date: Time | nil,
@@ -525,12 +525,12 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         id: String,
         amount: Float,
         created_at: Time,
-        credit_block: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiry::CreditBlock,
+        credit_block: Orb::Customers::Credits::AffectedBlock,
         currency: String,
-        customer: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiry::Customer,
+        customer: Orb::CustomerMinified,
         description: String | nil,
         ending_balance: Float,
-        entry_status: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::CreditBlockExpiry::EntryStatus,
+        entry_status: Orb::Customers::Credits::CreditBlockExpiryLedgerEntry::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         starting_balance: Float
@@ -540,12 +540,12 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         id: String,
         amount: Float,
         created_at: Time,
-        credit_block: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Void::CreditBlock,
+        credit_block: Orb::Customers::Credits::AffectedBlock,
         currency: String,
-        customer: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Void::Customer,
+        customer: Orb::CustomerMinified,
         description: String | nil,
         ending_balance: Float,
-        entry_status: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Void::EntryStatus,
+        entry_status: Orb::Customers::Credits::VoidLedgerEntry::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         starting_balance: Float,
@@ -557,12 +557,12 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         id: String,
         amount: Float,
         created_at: Time,
-        credit_block: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiated::CreditBlock,
+        credit_block: Orb::Customers::Credits::AffectedBlock,
         currency: String,
-        customer: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiated::Customer,
+        customer: Orb::CustomerMinified,
         description: String | nil,
         ending_balance: Float,
-        entry_status: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::VoidInitiated::EntryStatus,
+        entry_status: Orb::Customers::Credits::VoidInitiatedLedgerEntry::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         new_block_expiry_date: Time,
@@ -575,12 +575,12 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
         id: String,
         amount: Float,
         created_at: Time,
-        credit_block: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Amendment::CreditBlock,
+        credit_block: Orb::Customers::Credits::AffectedBlock,
         currency: String,
-        customer: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Amendment::Customer,
+        customer: Orb::CustomerMinified,
         description: String | nil,
         ending_balance: Float,
-        entry_status: Orb::Models::Customers::Credits::LedgerListByExternalIDResponse::Amendment::EntryStatus,
+        entry_status: Orb::Customers::Credits::AmendmentLedgerEntry::EntryStatus,
         ledger_sequence_number: Integer,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         starting_balance: Float

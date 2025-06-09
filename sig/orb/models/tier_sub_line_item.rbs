@@ -1,0 +1,55 @@
+module Orb
+  module Models
+    type tier_sub_line_item =
+      {
+        amount: String,
+        grouping: Orb::SubLineItemGrouping?,
+        name: String,
+        quantity: Float,
+        tier_config: Orb::TierConfig,
+        type: Orb::Models::TierSubLineItem::type_
+      }
+
+    class TierSubLineItem < Orb::Internal::Type::BaseModel
+      attr_accessor amount: String
+
+      attr_accessor grouping: Orb::SubLineItemGrouping?
+
+      attr_accessor name: String
+
+      attr_accessor quantity: Float
+
+      attr_accessor tier_config: Orb::TierConfig
+
+      attr_accessor type: Orb::Models::TierSubLineItem::type_
+
+      def initialize: (
+        amount: String,
+        grouping: Orb::SubLineItemGrouping?,
+        name: String,
+        quantity: Float,
+        tier_config: Orb::TierConfig,
+        type: Orb::Models::TierSubLineItem::type_
+      ) -> void
+
+      def to_hash: -> {
+        amount: String,
+        grouping: Orb::SubLineItemGrouping?,
+        name: String,
+        quantity: Float,
+        tier_config: Orb::TierConfig,
+        type: Orb::Models::TierSubLineItem::type_
+      }
+
+      type type_ = :tier
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        TIER: :tier
+
+        def self?.values: -> ::Array[Orb::Models::TierSubLineItem::type_]
+      end
+    end
+  end
+end

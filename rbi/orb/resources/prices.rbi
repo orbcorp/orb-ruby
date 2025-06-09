@@ -23,16 +23,16 @@ module Orb
           item_id: String,
           model_type: Orb::PriceCreateParams::ModelType::OrSymbol,
           name: String,
-          unit_config: Orb::PriceCreateParams::UnitConfig::OrHash,
-          package_config: Orb::PriceCreateParams::PackageConfig::OrHash,
-          matrix_config: Orb::PriceCreateParams::MatrixConfig::OrHash,
+          unit_config: Orb::UnitConfig::OrHash,
+          package_config: Orb::PackageConfig::OrHash,
+          matrix_config: Orb::MatrixConfig::OrHash,
           matrix_with_allocation_config:
-            Orb::PriceCreateParams::MatrixWithAllocationConfig::OrHash,
-          tiered_config: Orb::PriceCreateParams::TieredConfig::OrHash,
-          tiered_bps_config: Orb::PriceCreateParams::TieredBpsConfig::OrHash,
-          bps_config: Orb::PriceCreateParams::BpsConfig::OrHash,
-          bulk_bps_config: Orb::PriceCreateParams::BulkBpsConfig::OrHash,
-          bulk_config: Orb::PriceCreateParams::BulkConfig::OrHash,
+            Orb::MatrixWithAllocationConfig::OrHash,
+          tiered_config: Orb::TieredConfig::OrHash,
+          tiered_bps_config: Orb::TieredBPSConfig::OrHash,
+          bps_config: Orb::BPSConfig::OrHash,
+          bulk_bps_config: Orb::BulkBPSConfig::OrHash,
+          bulk_config: Orb::BulkConfig::OrHash,
           threshold_total_amount_config: T::Hash[Symbol, T.anything],
           tiered_package_config: T::Hash[Symbol, T.anything],
           grouped_tiered_config: T::Hash[Symbol, T.anything],
@@ -56,21 +56,15 @@ module Orb
           billable_metric_id: T.nilable(String),
           billed_in_advance: T.nilable(T::Boolean),
           billing_cycle_configuration:
-            T.nilable(
-              Orb::PriceCreateParams::BillingCycleConfiguration::OrHash
-            ),
+            T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
           conversion_rate: T.nilable(Float),
           dimensional_price_configuration:
-            T.nilable(
-              Orb::PriceCreateParams::DimensionalPriceConfiguration::OrHash
-            ),
+            T.nilable(Orb::NewDimensionalPriceConfiguration::OrHash),
           external_price_id: T.nilable(String),
           fixed_price_quantity: T.nilable(Float),
           invoice_grouping_key: T.nilable(String),
           invoicing_cycle_configuration:
-            T.nilable(
-              Orb::PriceCreateParams::InvoicingCycleConfiguration::OrHash
-            ),
+            T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Price::Variants)

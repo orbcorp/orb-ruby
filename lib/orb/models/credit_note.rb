@@ -2,7 +2,6 @@
 
 module Orb
   module Models
-    # @see Orb::Resources::CreditNotes#create
     class CreditNote < Orb::Internal::Type::BaseModel
       # @!attribute id
       #   The Orb id of this credit note.
@@ -30,8 +29,8 @@ module Orb
 
       # @!attribute customer
       #
-      #   @return [Orb::Models::CreditNote::Customer]
-      required :customer, -> { Orb::CreditNote::Customer }
+      #   @return [Orb::Models::CustomerMinified]
+      required :customer, -> { Orb::CustomerMinified }
 
       # @!attribute invoice_id
       #   The id of the invoice resource that this credit note is applied to.
@@ -109,7 +108,7 @@ module Orb
       #
       #   @param credit_note_pdf [String, nil] A URL to a PDF of the credit note.
       #
-      #   @param customer [Orb::Models::CreditNote::Customer]
+      #   @param customer [Orb::Models::CustomerMinified]
       #
       #   @param invoice_id [String] The id of the invoice resource that this credit note is applied to.
       #
@@ -132,23 +131,6 @@ module Orb
       #   @param voided_at [Time, nil] The time at which the credit note was voided in Orb, if applicable.
       #
       #   @param discounts [Array<Orb::Models::CreditNote::Discount>] Any discounts applied on the original invoice.
-
-      # @see Orb::Models::CreditNote#customer
-      class Customer < Orb::Internal::Type::BaseModel
-        # @!attribute id
-        #
-        #   @return [String]
-        required :id, String
-
-        # @!attribute external_customer_id
-        #
-        #   @return [String, nil]
-        required :external_customer_id, String, nil?: true
-
-        # @!method initialize(id:, external_customer_id:)
-        #   @param id [String]
-        #   @param external_customer_id [String, nil]
-      end
 
       class LineItem < Orb::Internal::Type::BaseModel
         # @!attribute id
@@ -190,8 +172,8 @@ module Orb
         # @!attribute tax_amounts
         #   Any tax amounts applied onto the line item.
         #
-        #   @return [Array<Orb::Models::CreditNote::LineItem::TaxAmount>]
-        required :tax_amounts, -> { Orb::Internal::Type::ArrayOf[Orb::CreditNote::LineItem::TaxAmount] }
+        #   @return [Array<Orb::Models::TaxAmount>]
+        required :tax_amounts, -> { Orb::Internal::Type::ArrayOf[Orb::TaxAmount] }
 
         # @!attribute discounts
         #   Any line item discounts from the invoice's line item.
@@ -212,36 +194,9 @@ module Orb
         #
         #   @param subtotal [String] The amount of the line item, excluding any line item minimums and discounts.
         #
-        #   @param tax_amounts [Array<Orb::Models::CreditNote::LineItem::TaxAmount>] Any tax amounts applied onto the line item.
+        #   @param tax_amounts [Array<Orb::Models::TaxAmount>] Any tax amounts applied onto the line item.
         #
         #   @param discounts [Array<Orb::Models::CreditNote::LineItem::Discount>] Any line item discounts from the invoice's line item.
-
-        class TaxAmount < Orb::Internal::Type::BaseModel
-          # @!attribute amount
-          #   The amount of additional tax incurred by this tax rate.
-          #
-          #   @return [String]
-          required :amount, String
-
-          # @!attribute tax_rate_description
-          #   The human-readable description of the applied tax rate.
-          #
-          #   @return [String]
-          required :tax_rate_description, String
-
-          # @!attribute tax_rate_percentage
-          #   The tax rate percentage, out of 100.
-          #
-          #   @return [String, nil]
-          required :tax_rate_percentage, String, nil?: true
-
-          # @!method initialize(amount:, tax_rate_description:, tax_rate_percentage:)
-          #   @param amount [String] The amount of additional tax incurred by this tax rate.
-          #
-          #   @param tax_rate_description [String] The human-readable description of the applied tax rate.
-          #
-          #   @param tax_rate_percentage [String, nil] The tax rate percentage, out of 100.
-        end
 
         class Discount < Orb::Internal::Type::BaseModel
           # @!attribute id
