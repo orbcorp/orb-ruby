@@ -1117,6 +1117,7 @@ module Orb
         sig { returns(String) }
         attr_accessor :credits_applied
 
+        # This field is deprecated in favor of `adjustments`
         sig { returns(T.nilable(Orb::Discount::Variants)) }
         attr_accessor :discount
 
@@ -1304,6 +1305,7 @@ module Orb
           amount:,
           # The number of prepaid credits applied.
           credits_applied:,
+          # This field is deprecated in favor of `adjustments`
           discount:,
           # The end date of the range of time applied for this line item's price.
           end_date:,
