@@ -4,11 +4,13 @@ module Orb
       {
         currency: String,
         name: String,
-        prices: ::Array[Orb::Models::PlanCreateParams::price],
+        prices: ::Array[Orb::PlanCreateParams::Price],
+        adjustments: ::Array[Orb::PlanCreateParams::Adjustment]?,
         default_invoice_memo: String?,
         external_plan_id: String?,
         metadata: ::Hash[Symbol, String?]?,
         net_terms: Integer?,
+        plan_phases: ::Array[Orb::PlanCreateParams::PlanPhase]?,
         status: Orb::Models::PlanCreateParams::status
       }
       & Orb::Internal::Type::request_parameters
@@ -21,7 +23,9 @@ module Orb
 
       attr_accessor name: String
 
-      attr_accessor prices: ::Array[Orb::Models::PlanCreateParams::price]
+      attr_accessor prices: ::Array[Orb::PlanCreateParams::Price]
+
+      attr_accessor adjustments: ::Array[Orb::PlanCreateParams::Adjustment]?
 
       attr_accessor default_invoice_memo: String?
 
@@ -30,6 +34,8 @@ module Orb
       attr_accessor metadata: ::Hash[Symbol, String?]?
 
       attr_accessor net_terms: Integer?
+
+      attr_accessor plan_phases: ::Array[Orb::PlanCreateParams::PlanPhase]?
 
       attr_reader status: Orb::Models::PlanCreateParams::status?
 
@@ -40,11 +46,13 @@ module Orb
       def initialize: (
         currency: String,
         name: String,
-        prices: ::Array[Orb::Models::PlanCreateParams::price],
+        prices: ::Array[Orb::PlanCreateParams::Price],
+        ?adjustments: ::Array[Orb::PlanCreateParams::Adjustment]?,
         ?default_invoice_memo: String?,
         ?external_plan_id: String?,
         ?metadata: ::Hash[Symbol, String?]?,
         ?net_terms: Integer?,
+        ?plan_phases: ::Array[Orb::PlanCreateParams::PlanPhase]?,
         ?status: Orb::Models::PlanCreateParams::status,
         ?request_options: Orb::request_opts
       ) -> void
@@ -52,49 +60,160 @@ module Orb
       def to_hash: -> {
         currency: String,
         name: String,
-        prices: ::Array[Orb::Models::PlanCreateParams::price],
+        prices: ::Array[Orb::PlanCreateParams::Price],
+        adjustments: ::Array[Orb::PlanCreateParams::Adjustment]?,
         default_invoice_memo: String?,
         external_plan_id: String?,
         metadata: ::Hash[Symbol, String?]?,
         net_terms: Integer?,
+        plan_phases: ::Array[Orb::PlanCreateParams::PlanPhase]?,
         status: Orb::Models::PlanCreateParams::status,
         request_options: Orb::RequestOptions
       }
 
       type price =
-        Orb::NewPlanUnitPrice
-        | Orb::NewPlanPackagePrice
-        | Orb::NewPlanMatrixPrice
-        | Orb::NewPlanTieredPrice
-        | Orb::NewPlanTieredBPSPrice
-        | Orb::NewPlanBPSPrice
-        | Orb::NewPlanBulkBPSPrice
-        | Orb::NewPlanBulkPrice
-        | Orb::NewPlanThresholdTotalAmountPrice
-        | Orb::NewPlanTieredPackagePrice
-        | Orb::NewPlanTieredWithMinimumPrice
-        | Orb::NewPlanUnitWithPercentPrice
-        | Orb::NewPlanPackageWithAllocationPrice
-        | Orb::NewPlanTierWithProrationPrice
-        | Orb::NewPlanUnitWithProrationPrice
-        | Orb::NewPlanGroupedAllocationPrice
-        | Orb::NewPlanGroupedWithProratedMinimumPrice
-        | Orb::NewPlanGroupedWithMeteredMinimumPrice
-        | Orb::NewPlanMatrixWithDisplayNamePrice
-        | Orb::NewPlanBulkWithProrationPrice
-        | Orb::NewPlanGroupedTieredPackagePrice
-        | Orb::NewPlanMaxGroupTieredPackagePrice
-        | Orb::NewPlanScalableMatrixWithUnitPricingPrice
-        | Orb::NewPlanScalableMatrixWithTieredPricingPrice
-        | Orb::NewPlanCumulativeGroupedBulkPrice
-        | Orb::NewPlanTieredPackageWithMinimumPrice
-        | Orb::NewPlanMatrixWithAllocationPrice
-        | Orb::NewPlanGroupedTieredPrice
+        {
+          allocation_price: Orb::NewAllocationPrice?,
+          plan_phase_order: Integer?,
+          price: Orb::Models::PlanCreateParams::Price::price?
+        }
 
-      module Price
-        extend Orb::Internal::Type::Union
+      class Price < Orb::Internal::Type::BaseModel
+        attr_accessor allocation_price: Orb::NewAllocationPrice?
 
-        def self?.variants: -> ::Array[Orb::Models::PlanCreateParams::price]
+        attr_accessor plan_phase_order: Integer?
+
+        attr_accessor price: Orb::Models::PlanCreateParams::Price::price?
+
+        def initialize: (
+          ?allocation_price: Orb::NewAllocationPrice?,
+          ?plan_phase_order: Integer?,
+          ?price: Orb::Models::PlanCreateParams::Price::price?
+        ) -> void
+
+        def to_hash: -> {
+          allocation_price: Orb::NewAllocationPrice?,
+          plan_phase_order: Integer?,
+          price: Orb::Models::PlanCreateParams::Price::price?
+        }
+
+        type price =
+          Orb::NewPlanUnitPrice
+          | Orb::NewPlanPackagePrice
+          | Orb::NewPlanMatrixPrice
+          | Orb::NewPlanTieredPrice
+          | Orb::NewPlanTieredBPSPrice
+          | Orb::NewPlanBPSPrice
+          | Orb::NewPlanBulkBPSPrice
+          | Orb::NewPlanBulkPrice
+          | Orb::NewPlanThresholdTotalAmountPrice
+          | Orb::NewPlanTieredPackagePrice
+          | Orb::NewPlanTieredWithMinimumPrice
+          | Orb::NewPlanUnitWithPercentPrice
+          | Orb::NewPlanPackageWithAllocationPrice
+          | Orb::NewPlanTierWithProrationPrice
+          | Orb::NewPlanUnitWithProrationPrice
+          | Orb::NewPlanGroupedAllocationPrice
+          | Orb::NewPlanGroupedWithProratedMinimumPrice
+          | Orb::NewPlanGroupedWithMeteredMinimumPrice
+          | Orb::NewPlanMatrixWithDisplayNamePrice
+          | Orb::NewPlanBulkWithProrationPrice
+          | Orb::NewPlanGroupedTieredPackagePrice
+          | Orb::NewPlanMaxGroupTieredPackagePrice
+          | Orb::NewPlanScalableMatrixWithUnitPricingPrice
+          | Orb::NewPlanScalableMatrixWithTieredPricingPrice
+          | Orb::NewPlanCumulativeGroupedBulkPrice
+          | Orb::NewPlanTieredPackageWithMinimumPrice
+          | Orb::NewPlanMatrixWithAllocationPrice
+          | Orb::NewPlanGroupedTieredPrice
+
+        module Price
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::PlanCreateParams::Price::price]
+        end
+      end
+
+      type adjustment =
+        {
+          adjustment: Orb::Models::PlanCreateParams::Adjustment::adjustment,
+          plan_phase_order: Integer?
+        }
+
+      class Adjustment < Orb::Internal::Type::BaseModel
+        attr_accessor adjustment: Orb::Models::PlanCreateParams::Adjustment::adjustment
+
+        attr_accessor plan_phase_order: Integer?
+
+        def initialize: (
+          adjustment: Orb::Models::PlanCreateParams::Adjustment::adjustment,
+          ?plan_phase_order: Integer?
+        ) -> void
+
+        def to_hash: -> {
+          adjustment: Orb::Models::PlanCreateParams::Adjustment::adjustment,
+          plan_phase_order: Integer?
+        }
+
+        type adjustment =
+          Orb::NewPercentageDiscount
+          | Orb::NewUsageDiscount
+          | Orb::NewAmountDiscount
+          | Orb::NewMinimum
+          | Orb::NewMaximum
+
+        module Adjustment
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::PlanCreateParams::Adjustment::adjustment]
+        end
+      end
+
+      type plan_phase =
+        {
+          order: Integer,
+          align_billing_with_phase_start_date: bool?,
+          duration: Integer?,
+          duration_unit: Orb::Models::PlanCreateParams::PlanPhase::duration_unit?
+        }
+
+      class PlanPhase < Orb::Internal::Type::BaseModel
+        attr_accessor order: Integer
+
+        attr_accessor align_billing_with_phase_start_date: bool?
+
+        attr_accessor duration: Integer?
+
+        attr_accessor duration_unit: Orb::Models::PlanCreateParams::PlanPhase::duration_unit?
+
+        def initialize: (
+          order: Integer,
+          ?align_billing_with_phase_start_date: bool?,
+          ?duration: Integer?,
+          ?duration_unit: Orb::Models::PlanCreateParams::PlanPhase::duration_unit?
+        ) -> void
+
+        def to_hash: -> {
+          order: Integer,
+          align_billing_with_phase_start_date: bool?,
+          duration: Integer?,
+          duration_unit: Orb::Models::PlanCreateParams::PlanPhase::duration_unit?
+        }
+
+        type duration_unit =
+          :daily | :monthly | :quarterly | :semi_annual | :annual
+
+        module DurationUnit
+          extend Orb::Internal::Type::Enum
+
+          DAILY: :daily
+          MONTHLY: :monthly
+          QUARTERLY: :quarterly
+          SEMI_ANNUAL: :semi_annual
+          ANNUAL: :annual
+
+          def self?.values: -> ::Array[Orb::Models::PlanCreateParams::PlanPhase::duration_unit]
+        end
       end
 
       type status = :active | :draft
