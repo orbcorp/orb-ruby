@@ -723,6 +723,9 @@ module Orb
         required :credits_applied, String
 
         # @!attribute discount
+        #   @deprecated
+        #
+        #   This field is deprecated in favor of `adjustments`
         #
         #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
@@ -859,7 +862,7 @@ module Orb
         #
         #   @param credits_applied [String] The number of prepaid credits applied.
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil] This field is deprecated in favor of `adjustments`
         #
         #   @param end_date [Time] The end date of the range of time applied for this line item's price.
         #
