@@ -122,6 +122,11 @@ module Orb
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
       attr_accessor :metadata
 
+      # A transient ID that can be used to reference this price when adding adjustments
+      # in the same API call.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :reference_id
+
       sig do
         params(
           cadence: Orb::NewPlanTieredPackageWithMinimumPrice::Cadence::OrSymbol,
@@ -150,7 +155,8 @@ module Orb
           invoice_grouping_key: T.nilable(String),
           invoicing_cycle_configuration:
             T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
-          metadata: T.nilable(T::Hash[Symbol, T.nilable(String)])
+          metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+          reference_id: T.nilable(String)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -193,7 +199,10 @@ module Orb
         # User-specified key/value pairs for the resource. Individual keys can be removed
         # by setting the value to `null`, and the entire metadata mapping can be cleared
         # by setting `metadata` to `null`.
-        metadata: nil
+        metadata: nil,
+        # A transient ID that can be used to reference this price when adding adjustments
+        # in the same API call.
+        reference_id: nil
       )
       end
 
@@ -227,7 +236,8 @@ module Orb
             invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::NewBillingCycleConfiguration),
-            metadata: T.nilable(T::Hash[Symbol, T.nilable(String)])
+            metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+            reference_id: T.nilable(String)
           }
         )
       end

@@ -19,43 +19,13 @@ module Orb
 
       # Prices for this plan. If the plan has phases, this includes prices across all
       # phases of the plan.
-      sig do
-        returns(
-          T::Array[
-            T.any(
-              Orb::NewPlanUnitPrice,
-              Orb::NewPlanPackagePrice,
-              Orb::NewPlanMatrixPrice,
-              Orb::NewPlanTieredPrice,
-              Orb::NewPlanTieredBPSPrice,
-              Orb::NewPlanBPSPrice,
-              Orb::NewPlanBulkBPSPrice,
-              Orb::NewPlanBulkPrice,
-              Orb::NewPlanThresholdTotalAmountPrice,
-              Orb::NewPlanTieredPackagePrice,
-              Orb::NewPlanTieredWithMinimumPrice,
-              Orb::NewPlanUnitWithPercentPrice,
-              Orb::NewPlanPackageWithAllocationPrice,
-              Orb::NewPlanTierWithProrationPrice,
-              Orb::NewPlanUnitWithProrationPrice,
-              Orb::NewPlanGroupedAllocationPrice,
-              Orb::NewPlanGroupedWithProratedMinimumPrice,
-              Orb::NewPlanGroupedWithMeteredMinimumPrice,
-              Orb::NewPlanMatrixWithDisplayNamePrice,
-              Orb::NewPlanBulkWithProrationPrice,
-              Orb::NewPlanGroupedTieredPackagePrice,
-              Orb::NewPlanMaxGroupTieredPackagePrice,
-              Orb::NewPlanScalableMatrixWithUnitPricingPrice,
-              Orb::NewPlanScalableMatrixWithTieredPricingPrice,
-              Orb::NewPlanCumulativeGroupedBulkPrice,
-              Orb::NewPlanTieredPackageWithMinimumPrice,
-              Orb::NewPlanMatrixWithAllocationPrice,
-              Orb::NewPlanGroupedTieredPrice
-            )
-          ]
-        )
-      end
+      sig { returns(T::Array[Orb::PlanCreateParams::Price]) }
       attr_accessor :prices
+
+      # Adjustments for this plan. If the plan has phases, this includes adjustments
+      # across all phases of the plan.
+      sig { returns(T.nilable(T::Array[Orb::PlanCreateParams::Adjustment])) }
+      attr_accessor :adjustments
 
       # Free-form text which is available on the invoice PDF and the Orb invoice portal.
       sig { returns(T.nilable(String)) }
@@ -76,6 +46,11 @@ module Orb
       sig { returns(T.nilable(Integer)) }
       attr_accessor :net_terms
 
+      # Configuration of pre-defined phases, each with their own prices and adjustments.
+      # Leave unspecified for plans with a single phase.
+      sig { returns(T.nilable(T::Array[Orb::PlanCreateParams::PlanPhase])) }
+      attr_accessor :plan_phases
+
       # The status of the plan to create (either active or draft). If not specified,
       # this defaults to active.
       sig { returns(T.nilable(Orb::PlanCreateParams::Status::OrSymbol)) }
@@ -88,43 +63,15 @@ module Orb
         params(
           currency: String,
           name: String,
-          prices:
-            T::Array[
-              T.any(
-                Orb::NewPlanUnitPrice::OrHash,
-                Orb::NewPlanPackagePrice::OrHash,
-                Orb::NewPlanMatrixPrice::OrHash,
-                Orb::NewPlanTieredPrice::OrHash,
-                Orb::NewPlanTieredBPSPrice::OrHash,
-                Orb::NewPlanBPSPrice::OrHash,
-                Orb::NewPlanBulkBPSPrice::OrHash,
-                Orb::NewPlanBulkPrice::OrHash,
-                Orb::NewPlanThresholdTotalAmountPrice::OrHash,
-                Orb::NewPlanTieredPackagePrice::OrHash,
-                Orb::NewPlanTieredWithMinimumPrice::OrHash,
-                Orb::NewPlanUnitWithPercentPrice::OrHash,
-                Orb::NewPlanPackageWithAllocationPrice::OrHash,
-                Orb::NewPlanTierWithProrationPrice::OrHash,
-                Orb::NewPlanUnitWithProrationPrice::OrHash,
-                Orb::NewPlanGroupedAllocationPrice::OrHash,
-                Orb::NewPlanGroupedWithProratedMinimumPrice::OrHash,
-                Orb::NewPlanGroupedWithMeteredMinimumPrice::OrHash,
-                Orb::NewPlanMatrixWithDisplayNamePrice::OrHash,
-                Orb::NewPlanBulkWithProrationPrice::OrHash,
-                Orb::NewPlanGroupedTieredPackagePrice::OrHash,
-                Orb::NewPlanMaxGroupTieredPackagePrice::OrHash,
-                Orb::NewPlanScalableMatrixWithUnitPricingPrice::OrHash,
-                Orb::NewPlanScalableMatrixWithTieredPricingPrice::OrHash,
-                Orb::NewPlanCumulativeGroupedBulkPrice::OrHash,
-                Orb::NewPlanTieredPackageWithMinimumPrice::OrHash,
-                Orb::NewPlanMatrixWithAllocationPrice::OrHash,
-                Orb::NewPlanGroupedTieredPrice::OrHash
-              )
-            ],
+          prices: T::Array[Orb::PlanCreateParams::Price::OrHash],
+          adjustments:
+            T.nilable(T::Array[Orb::PlanCreateParams::Adjustment::OrHash]),
           default_invoice_memo: T.nilable(String),
           external_plan_id: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           net_terms: T.nilable(Integer),
+          plan_phases:
+            T.nilable(T::Array[Orb::PlanCreateParams::PlanPhase::OrHash]),
           status: Orb::PlanCreateParams::Status::OrSymbol,
           request_options: Orb::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -137,6 +84,9 @@ module Orb
         # Prices for this plan. If the plan has phases, this includes prices across all
         # phases of the plan.
         prices:,
+        # Adjustments for this plan. If the plan has phases, this includes adjustments
+        # across all phases of the plan.
+        adjustments: nil,
         # Free-form text which is available on the invoice PDF and the Orb invoice portal.
         default_invoice_memo: nil,
         external_plan_id: nil,
@@ -148,6 +98,9 @@ module Orb
         # date for the invoice. If you intend the invoice to be due on issue, set this
         # to 0.
         net_terms: nil,
+        # Configuration of pre-defined phases, each with their own prices and adjustments.
+        # Leave unspecified for plans with a single phase.
+        plan_phases: nil,
         # The status of the plan to create (either active or draft). If not specified,
         # this defaults to active.
         status: nil,
@@ -160,43 +113,13 @@ module Orb
           {
             currency: String,
             name: String,
-            prices:
-              T::Array[
-                T.any(
-                  Orb::NewPlanUnitPrice,
-                  Orb::NewPlanPackagePrice,
-                  Orb::NewPlanMatrixPrice,
-                  Orb::NewPlanTieredPrice,
-                  Orb::NewPlanTieredBPSPrice,
-                  Orb::NewPlanBPSPrice,
-                  Orb::NewPlanBulkBPSPrice,
-                  Orb::NewPlanBulkPrice,
-                  Orb::NewPlanThresholdTotalAmountPrice,
-                  Orb::NewPlanTieredPackagePrice,
-                  Orb::NewPlanTieredWithMinimumPrice,
-                  Orb::NewPlanUnitWithPercentPrice,
-                  Orb::NewPlanPackageWithAllocationPrice,
-                  Orb::NewPlanTierWithProrationPrice,
-                  Orb::NewPlanUnitWithProrationPrice,
-                  Orb::NewPlanGroupedAllocationPrice,
-                  Orb::NewPlanGroupedWithProratedMinimumPrice,
-                  Orb::NewPlanGroupedWithMeteredMinimumPrice,
-                  Orb::NewPlanMatrixWithDisplayNamePrice,
-                  Orb::NewPlanBulkWithProrationPrice,
-                  Orb::NewPlanGroupedTieredPackagePrice,
-                  Orb::NewPlanMaxGroupTieredPackagePrice,
-                  Orb::NewPlanScalableMatrixWithUnitPricingPrice,
-                  Orb::NewPlanScalableMatrixWithTieredPricingPrice,
-                  Orb::NewPlanCumulativeGroupedBulkPrice,
-                  Orb::NewPlanTieredPackageWithMinimumPrice,
-                  Orb::NewPlanMatrixWithAllocationPrice,
-                  Orb::NewPlanGroupedTieredPrice
-                )
-              ],
+            prices: T::Array[Orb::PlanCreateParams::Price],
+            adjustments: T.nilable(T::Array[Orb::PlanCreateParams::Adjustment]),
             default_invoice_memo: T.nilable(String),
             external_plan_id: T.nilable(String),
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
             net_terms: T.nilable(Integer),
+            plan_phases: T.nilable(T::Array[Orb::PlanCreateParams::PlanPhase]),
             status: Orb::PlanCreateParams::Status::OrSymbol,
             request_options: Orb::RequestOptions
           }
@@ -205,47 +128,404 @@ module Orb
       def to_hash
       end
 
-      module Price
-        extend Orb::Internal::Type::Union
-
-        Variants =
+      class Price < Orb::Internal::Type::BaseModel
+        OrHash =
           T.type_alias do
-            T.any(
-              Orb::NewPlanUnitPrice,
-              Orb::NewPlanPackagePrice,
-              Orb::NewPlanMatrixPrice,
-              Orb::NewPlanTieredPrice,
-              Orb::NewPlanTieredBPSPrice,
-              Orb::NewPlanBPSPrice,
-              Orb::NewPlanBulkBPSPrice,
-              Orb::NewPlanBulkPrice,
-              Orb::NewPlanThresholdTotalAmountPrice,
-              Orb::NewPlanTieredPackagePrice,
-              Orb::NewPlanTieredWithMinimumPrice,
-              Orb::NewPlanUnitWithPercentPrice,
-              Orb::NewPlanPackageWithAllocationPrice,
-              Orb::NewPlanTierWithProrationPrice,
-              Orb::NewPlanUnitWithProrationPrice,
-              Orb::NewPlanGroupedAllocationPrice,
-              Orb::NewPlanGroupedWithProratedMinimumPrice,
-              Orb::NewPlanGroupedWithMeteredMinimumPrice,
-              Orb::NewPlanMatrixWithDisplayNamePrice,
-              Orb::NewPlanBulkWithProrationPrice,
-              Orb::NewPlanGroupedTieredPackagePrice,
-              Orb::NewPlanMaxGroupTieredPackagePrice,
-              Orb::NewPlanScalableMatrixWithUnitPricingPrice,
-              Orb::NewPlanScalableMatrixWithTieredPricingPrice,
-              Orb::NewPlanCumulativeGroupedBulkPrice,
-              Orb::NewPlanTieredPackageWithMinimumPrice,
-              Orb::NewPlanMatrixWithAllocationPrice,
-              Orb::NewPlanGroupedTieredPrice
-            )
+            T.any(Orb::PlanCreateParams::Price, Orb::Internal::AnyHash)
           end
 
+        # The allocation price to add to the plan.
+        sig { returns(T.nilable(Orb::NewAllocationPrice)) }
+        attr_reader :allocation_price
+
         sig do
-          override.returns(T::Array[Orb::PlanCreateParams::Price::Variants])
+          params(
+            allocation_price: T.nilable(Orb::NewAllocationPrice::OrHash)
+          ).void
         end
-        def self.variants
+        attr_writer :allocation_price
+
+        # The phase to add this price to.
+        sig { returns(T.nilable(Integer)) }
+        attr_accessor :plan_phase_order
+
+        # The price to add to the plan
+        sig do
+          returns(
+            T.nilable(
+              T.any(
+                Orb::NewPlanUnitPrice,
+                Orb::NewPlanPackagePrice,
+                Orb::NewPlanMatrixPrice,
+                Orb::NewPlanTieredPrice,
+                Orb::NewPlanTieredBPSPrice,
+                Orb::NewPlanBPSPrice,
+                Orb::NewPlanBulkBPSPrice,
+                Orb::NewPlanBulkPrice,
+                Orb::NewPlanThresholdTotalAmountPrice,
+                Orb::NewPlanTieredPackagePrice,
+                Orb::NewPlanTieredWithMinimumPrice,
+                Orb::NewPlanUnitWithPercentPrice,
+                Orb::NewPlanPackageWithAllocationPrice,
+                Orb::NewPlanTierWithProrationPrice,
+                Orb::NewPlanUnitWithProrationPrice,
+                Orb::NewPlanGroupedAllocationPrice,
+                Orb::NewPlanGroupedWithProratedMinimumPrice,
+                Orb::NewPlanGroupedWithMeteredMinimumPrice,
+                Orb::NewPlanMatrixWithDisplayNamePrice,
+                Orb::NewPlanBulkWithProrationPrice,
+                Orb::NewPlanGroupedTieredPackagePrice,
+                Orb::NewPlanMaxGroupTieredPackagePrice,
+                Orb::NewPlanScalableMatrixWithUnitPricingPrice,
+                Orb::NewPlanScalableMatrixWithTieredPricingPrice,
+                Orb::NewPlanCumulativeGroupedBulkPrice,
+                Orb::NewPlanTieredPackageWithMinimumPrice,
+                Orb::NewPlanMatrixWithAllocationPrice,
+                Orb::NewPlanGroupedTieredPrice
+              )
+            )
+          )
+        end
+        attr_accessor :price
+
+        sig do
+          params(
+            allocation_price: T.nilable(Orb::NewAllocationPrice::OrHash),
+            plan_phase_order: T.nilable(Integer),
+            price:
+              T.nilable(
+                T.any(
+                  Orb::NewPlanUnitPrice::OrHash,
+                  Orb::NewPlanPackagePrice::OrHash,
+                  Orb::NewPlanMatrixPrice::OrHash,
+                  Orb::NewPlanTieredPrice::OrHash,
+                  Orb::NewPlanTieredBPSPrice::OrHash,
+                  Orb::NewPlanBPSPrice::OrHash,
+                  Orb::NewPlanBulkBPSPrice::OrHash,
+                  Orb::NewPlanBulkPrice::OrHash,
+                  Orb::NewPlanThresholdTotalAmountPrice::OrHash,
+                  Orb::NewPlanTieredPackagePrice::OrHash,
+                  Orb::NewPlanTieredWithMinimumPrice::OrHash,
+                  Orb::NewPlanUnitWithPercentPrice::OrHash,
+                  Orb::NewPlanPackageWithAllocationPrice::OrHash,
+                  Orb::NewPlanTierWithProrationPrice::OrHash,
+                  Orb::NewPlanUnitWithProrationPrice::OrHash,
+                  Orb::NewPlanGroupedAllocationPrice::OrHash,
+                  Orb::NewPlanGroupedWithProratedMinimumPrice::OrHash,
+                  Orb::NewPlanGroupedWithMeteredMinimumPrice::OrHash,
+                  Orb::NewPlanMatrixWithDisplayNamePrice::OrHash,
+                  Orb::NewPlanBulkWithProrationPrice::OrHash,
+                  Orb::NewPlanGroupedTieredPackagePrice::OrHash,
+                  Orb::NewPlanMaxGroupTieredPackagePrice::OrHash,
+                  Orb::NewPlanScalableMatrixWithUnitPricingPrice::OrHash,
+                  Orb::NewPlanScalableMatrixWithTieredPricingPrice::OrHash,
+                  Orb::NewPlanCumulativeGroupedBulkPrice::OrHash,
+                  Orb::NewPlanTieredPackageWithMinimumPrice::OrHash,
+                  Orb::NewPlanMatrixWithAllocationPrice::OrHash,
+                  Orb::NewPlanGroupedTieredPrice::OrHash
+                )
+              )
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # The allocation price to add to the plan.
+          allocation_price: nil,
+          # The phase to add this price to.
+          plan_phase_order: nil,
+          # The price to add to the plan
+          price: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              allocation_price: T.nilable(Orb::NewAllocationPrice),
+              plan_phase_order: T.nilable(Integer),
+              price:
+                T.nilable(
+                  T.any(
+                    Orb::NewPlanUnitPrice,
+                    Orb::NewPlanPackagePrice,
+                    Orb::NewPlanMatrixPrice,
+                    Orb::NewPlanTieredPrice,
+                    Orb::NewPlanTieredBPSPrice,
+                    Orb::NewPlanBPSPrice,
+                    Orb::NewPlanBulkBPSPrice,
+                    Orb::NewPlanBulkPrice,
+                    Orb::NewPlanThresholdTotalAmountPrice,
+                    Orb::NewPlanTieredPackagePrice,
+                    Orb::NewPlanTieredWithMinimumPrice,
+                    Orb::NewPlanUnitWithPercentPrice,
+                    Orb::NewPlanPackageWithAllocationPrice,
+                    Orb::NewPlanTierWithProrationPrice,
+                    Orb::NewPlanUnitWithProrationPrice,
+                    Orb::NewPlanGroupedAllocationPrice,
+                    Orb::NewPlanGroupedWithProratedMinimumPrice,
+                    Orb::NewPlanGroupedWithMeteredMinimumPrice,
+                    Orb::NewPlanMatrixWithDisplayNamePrice,
+                    Orb::NewPlanBulkWithProrationPrice,
+                    Orb::NewPlanGroupedTieredPackagePrice,
+                    Orb::NewPlanMaxGroupTieredPackagePrice,
+                    Orb::NewPlanScalableMatrixWithUnitPricingPrice,
+                    Orb::NewPlanScalableMatrixWithTieredPricingPrice,
+                    Orb::NewPlanCumulativeGroupedBulkPrice,
+                    Orb::NewPlanTieredPackageWithMinimumPrice,
+                    Orb::NewPlanMatrixWithAllocationPrice,
+                    Orb::NewPlanGroupedTieredPrice
+                  )
+                )
+            }
+          )
+        end
+        def to_hash
+        end
+
+        # The price to add to the plan
+        module Price
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::NewPlanUnitPrice,
+                Orb::NewPlanPackagePrice,
+                Orb::NewPlanMatrixPrice,
+                Orb::NewPlanTieredPrice,
+                Orb::NewPlanTieredBPSPrice,
+                Orb::NewPlanBPSPrice,
+                Orb::NewPlanBulkBPSPrice,
+                Orb::NewPlanBulkPrice,
+                Orb::NewPlanThresholdTotalAmountPrice,
+                Orb::NewPlanTieredPackagePrice,
+                Orb::NewPlanTieredWithMinimumPrice,
+                Orb::NewPlanUnitWithPercentPrice,
+                Orb::NewPlanPackageWithAllocationPrice,
+                Orb::NewPlanTierWithProrationPrice,
+                Orb::NewPlanUnitWithProrationPrice,
+                Orb::NewPlanGroupedAllocationPrice,
+                Orb::NewPlanGroupedWithProratedMinimumPrice,
+                Orb::NewPlanGroupedWithMeteredMinimumPrice,
+                Orb::NewPlanMatrixWithDisplayNamePrice,
+                Orb::NewPlanBulkWithProrationPrice,
+                Orb::NewPlanGroupedTieredPackagePrice,
+                Orb::NewPlanMaxGroupTieredPackagePrice,
+                Orb::NewPlanScalableMatrixWithUnitPricingPrice,
+                Orb::NewPlanScalableMatrixWithTieredPricingPrice,
+                Orb::NewPlanCumulativeGroupedBulkPrice,
+                Orb::NewPlanTieredPackageWithMinimumPrice,
+                Orb::NewPlanMatrixWithAllocationPrice,
+                Orb::NewPlanGroupedTieredPrice
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[Orb::PlanCreateParams::Price::Price::Variants]
+            )
+          end
+          def self.variants
+          end
+        end
+      end
+
+      class Adjustment < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(Orb::PlanCreateParams::Adjustment, Orb::Internal::AnyHash)
+          end
+
+        # The definition of a new adjustment to create and add to the plan.
+        sig do
+          returns(
+            T.any(
+              Orb::NewPercentageDiscount,
+              Orb::NewUsageDiscount,
+              Orb::NewAmountDiscount,
+              Orb::NewMinimum,
+              Orb::NewMaximum
+            )
+          )
+        end
+        attr_accessor :adjustment
+
+        # The phase to add this adjustment to.
+        sig { returns(T.nilable(Integer)) }
+        attr_accessor :plan_phase_order
+
+        sig do
+          params(
+            adjustment:
+              T.any(
+                Orb::NewPercentageDiscount::OrHash,
+                Orb::NewUsageDiscount::OrHash,
+                Orb::NewAmountDiscount::OrHash,
+                Orb::NewMinimum::OrHash,
+                Orb::NewMaximum::OrHash
+              ),
+            plan_phase_order: T.nilable(Integer)
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # The definition of a new adjustment to create and add to the plan.
+          adjustment:,
+          # The phase to add this adjustment to.
+          plan_phase_order: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              adjustment:
+                T.any(
+                  Orb::NewPercentageDiscount,
+                  Orb::NewUsageDiscount,
+                  Orb::NewAmountDiscount,
+                  Orb::NewMinimum,
+                  Orb::NewMaximum
+                ),
+              plan_phase_order: T.nilable(Integer)
+            }
+          )
+        end
+        def to_hash
+        end
+
+        # The definition of a new adjustment to create and add to the plan.
+        module Adjustment
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::NewPercentageDiscount,
+                Orb::NewUsageDiscount,
+                Orb::NewAmountDiscount,
+                Orb::NewMinimum,
+                Orb::NewMaximum
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[Orb::PlanCreateParams::Adjustment::Adjustment::Variants]
+            )
+          end
+          def self.variants
+          end
+        end
+      end
+
+      class PlanPhase < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(Orb::PlanCreateParams::PlanPhase, Orb::Internal::AnyHash)
+          end
+
+        # Determines the ordering of the phase in a plan's lifecycle. 1 = first phase.
+        sig { returns(Integer) }
+        attr_accessor :order
+
+        # Align billing cycle day with phase start date.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_accessor :align_billing_with_phase_start_date
+
+        # How many terms of length `duration_unit` this phase is active for. If null, this
+        # phase is evergreen and active indefinitely
+        sig { returns(T.nilable(Integer)) }
+        attr_accessor :duration
+
+        sig do
+          returns(
+            T.nilable(Orb::PlanCreateParams::PlanPhase::DurationUnit::OrSymbol)
+          )
+        end
+        attr_accessor :duration_unit
+
+        sig do
+          params(
+            order: Integer,
+            align_billing_with_phase_start_date: T.nilable(T::Boolean),
+            duration: T.nilable(Integer),
+            duration_unit:
+              T.nilable(
+                Orb::PlanCreateParams::PlanPhase::DurationUnit::OrSymbol
+              )
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Determines the ordering of the phase in a plan's lifecycle. 1 = first phase.
+          order:,
+          # Align billing cycle day with phase start date.
+          align_billing_with_phase_start_date: nil,
+          # How many terms of length `duration_unit` this phase is active for. If null, this
+          # phase is evergreen and active indefinitely
+          duration: nil,
+          duration_unit: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              order: Integer,
+              align_billing_with_phase_start_date: T.nilable(T::Boolean),
+              duration: T.nilable(Integer),
+              duration_unit:
+                T.nilable(
+                  Orb::PlanCreateParams::PlanPhase::DurationUnit::OrSymbol
+                )
+            }
+          )
+        end
+        def to_hash
+        end
+
+        module DurationUnit
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::PlanCreateParams::PlanPhase::DurationUnit)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          DAILY =
+            T.let(
+              :daily,
+              Orb::PlanCreateParams::PlanPhase::DurationUnit::TaggedSymbol
+            )
+          MONTHLY =
+            T.let(
+              :monthly,
+              Orb::PlanCreateParams::PlanPhase::DurationUnit::TaggedSymbol
+            )
+          QUARTERLY =
+            T.let(
+              :quarterly,
+              Orb::PlanCreateParams::PlanPhase::DurationUnit::TaggedSymbol
+            )
+          SEMI_ANNUAL =
+            T.let(
+              :semi_annual,
+              Orb::PlanCreateParams::PlanPhase::DurationUnit::TaggedSymbol
+            )
+          ANNUAL =
+            T.let(
+              :annual,
+              Orb::PlanCreateParams::PlanPhase::DurationUnit::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::PlanCreateParams::PlanPhase::DurationUnit::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
 

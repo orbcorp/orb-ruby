@@ -4,20 +4,7 @@ require_relative "../test_helper"
 
 class Orb::Test::Resources::PlansTest < Orb::Test::ResourceTest
   def test_create_required_params
-    response =
-      @orb.plans.create(
-        currency: "currency",
-        name: "name",
-        prices: [
-          {
-            cadence: :annual,
-            item_id: "item_id",
-            model_type: :unit,
-            name: "Annual fee",
-            unit_config: {unit_amount: "unit_amount"}
-          }
-        ]
-      )
+    response = @orb.plans.create(currency: "currency", name: "name", prices: [{}])
 
     assert_pattern do
       response => Orb::Plan
