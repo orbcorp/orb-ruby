@@ -44,9 +44,13 @@ module Orb
           #
           # @param state [Hash{Symbol=>Object}] .
           #
-          #   @option state [Boolean, :strong] :strictness
+          #   @option state [Boolean] :translate_names
+          #
+          #   @option state [Boolean] :strictness
           #
           #   @option state [Hash{Symbol=>Object}] :exactness
+          #
+          #   @option state [Class<StandardError>] :error
           #
           #   @option state [Integer] :branched
           #
@@ -61,6 +65,7 @@ module Orb
               exactness[:yes] += 1
               value
             else
+              state[:error] = TypeError.new("#{value.class} can't be coerced into #{StringIO}")
               exactness[:no] += 1
               value
             end
