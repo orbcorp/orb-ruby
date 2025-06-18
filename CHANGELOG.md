@@ -1,5 +1,27 @@
 # Changelog
 
+## 1.1.0 (2025-06-18)
+
+Full Changelog: [v1.0.1...v1.1.0](https://github.com/orbcorp/orb-ruby/compare/v1.0.1...v1.1.0)
+
+### Features
+
+* **api:** api update ([c557aa7](https://github.com/orbcorp/orb-ruby/commit/c557aa72779ba1d99e5983b8b3bedb9d4ea6f53a))
+* **api:** api update ([9d2ed65](https://github.com/orbcorp/orb-ruby/commit/9d2ed65a2ee93d7138f9ee4e7e0cf375f2b78b67))
+* **api:** api update ([1d97f15](https://github.com/orbcorp/orb-ruby/commit/1d97f159f6fc72e33037b8ac8775ae48fa5a75d9))
+
+
+### Bug Fixes
+
+* issue where we cannot mutate arrays on base model derivatives ([b53b6cc](https://github.com/orbcorp/orb-ruby/commit/b53b6cce364fc3bc4fead546b889e58e12f8862a))
+
+
+### Chores
+
+* **ci:** enable for pull requests ([0d16f9f](https://github.com/orbcorp/orb-ruby/commit/0d16f9f5a238d651c9e5f68a5368a1835d22604f))
+* **ci:** link to correct github repo ([0d079fe](https://github.com/orbcorp/orb-ruby/commit/0d079fe8e8a6b862ea6a33ba091478011658252d))
+* **internal:** version bump ([4956d97](https://github.com/orbcorp/orb-ruby/commit/4956d97d24d4a2e388e4c417e18e09eef1361dad))
+
 ## 1.0.1 (2025-06-09)
 
 Full Changelog: [v1.0.0...v1.0.1](https://github.com/orbcorp/orb-ruby/compare/v1.0.0...v1.0.1)
