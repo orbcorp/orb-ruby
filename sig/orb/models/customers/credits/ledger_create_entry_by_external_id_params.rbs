@@ -50,12 +50,12 @@ module Orb
           def initialize: (
             amount: Float,
             entry_type: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::entry_type,
-            expiry_date: Time?,
             target_expiry_date: Date,
             block_id: String,
             ?currency: String?,
             ?description: String?,
             ?effective_date: Time?,
+            ?expiry_date: Time?,
             ?invoice_settings: Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings?,
             ?metadata: ::Hash[Symbol, String?]?,
             ?per_unit_cost_basis: String?,

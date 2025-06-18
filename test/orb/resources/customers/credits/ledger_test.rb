@@ -154,9 +154,9 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
     response =
       @orb.customers.credits.ledger.create_entry(
         "customer_id",
-        entry_type: :expiration_change,
-        expiry_date: "2019-12-27T18:11:19.117Z",
-        target_expiry_date: "2019-12-27"
+        amount: 0,
+        block_id: "block_id",
+        entry_type: :void
       )
 
     assert_pattern do
@@ -300,9 +300,9 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
     response =
       @orb.customers.credits.ledger.create_entry_by_external_id(
         "external_customer_id",
-        entry_type: :expiration_change,
-        expiry_date: "2019-12-27T18:11:19.117Z",
-        target_expiry_date: "2019-12-27"
+        amount: 0,
+        block_id: "block_id",
+        entry_type: :void
       )
 
     assert_pattern do

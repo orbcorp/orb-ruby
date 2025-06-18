@@ -107,12 +107,12 @@ module Orb
               amount: Float,
               entry_type:
                 Orb::Customers::Credits::LedgerCreateEntryParams::EntryType::OrSymbol,
-              expiry_date: T.nilable(Time),
               target_expiry_date: Date,
               block_id: String,
               currency: T.nilable(String),
               description: T.nilable(String),
               effective_date: T.nilable(Time),
+              expiry_date: T.nilable(Time),
               invoice_settings:
                 T.nilable(
                   Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::OrHash
@@ -131,8 +131,6 @@ module Orb
             # decrement or void operations.
             amount:,
             entry_type:,
-            # An ISO 8601 format date that identifies the origination credit block to expire
-            expiry_date:,
             # A future date (specified in YYYY-MM-DD format) used for expiration change,
             # denoting when credits transferred (as part of a partial block expiration) should
             # expire.
@@ -149,6 +147,8 @@ module Orb
             # An ISO 8601 format date that denotes when this credit balance should become
             # available for use.
             effective_date: nil,
+            # An ISO 8601 format date that identifies the origination credit block to expire
+            expiry_date: nil,
             # Passing `invoice_settings` automatically generates an invoice for the newly
             # added credits. If `invoice_settings` is passed, you must specify
             # per_unit_cost_basis, as the calculation of the invoice total is done on that
