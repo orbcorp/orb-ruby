@@ -47,7 +47,7 @@ module Orb
           #   An ISO 8601 format date that identifies the origination credit block to expire
           #
           #   @return [Time, nil]
-          required :expiry_date, Time, nil?: true
+          optional :expiry_date, Time, nil?: true
 
           # @!attribute invoice_settings
           #   Passing `invoice_settings` automatically generates an invoice for the newly
@@ -97,15 +97,13 @@ module Orb
                    enum: -> { Orb::Customers::Credits::LedgerCreateEntryParams::VoidReason },
                    nil?: true
 
-          # @!method initialize(amount:, entry_type:, expiry_date:, target_expiry_date:, block_id:, currency: nil, description: nil, effective_date: nil, invoice_settings: nil, metadata: nil, per_unit_cost_basis: nil, void_reason: nil, request_options: {})
+          # @!method initialize(amount:, entry_type:, target_expiry_date:, block_id:, currency: nil, description: nil, effective_date: nil, expiry_date: nil, invoice_settings: nil, metadata: nil, per_unit_cost_basis: nil, void_reason: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Customers::Credits::LedgerCreateEntryParams} for more details.
           #
           #   @param amount [Float] The number of credits to effect. Note that this is required for increment, decre
           #
           #   @param entry_type [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::EntryType]
-          #
-          #   @param expiry_date [Time, nil] An ISO 8601 format date that identifies the origination credit block to expire
           #
           #   @param target_expiry_date [Date] A future date (specified in YYYY-MM-DD format) used for expiration change, denot
           #
@@ -116,6 +114,8 @@ module Orb
           #   @param description [String, nil] Optional metadata that can be specified when adding ledger results via the API.
           #
           #   @param effective_date [Time, nil] An ISO 8601 format date that denotes when this credit balance should become avai
+          #
+          #   @param expiry_date [Time, nil] An ISO 8601 format date that identifies the origination credit block to expire
           #
           #   @param invoice_settings [Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings, nil] Passing `invoice_settings` automatically generates an invoice for the newly adde
           #

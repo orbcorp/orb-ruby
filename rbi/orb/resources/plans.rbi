@@ -11,43 +11,15 @@ module Orb
         params(
           currency: String,
           name: String,
-          prices:
-            T::Array[
-              T.any(
-                Orb::NewPlanUnitPrice::OrHash,
-                Orb::NewPlanPackagePrice::OrHash,
-                Orb::NewPlanMatrixPrice::OrHash,
-                Orb::NewPlanTieredPrice::OrHash,
-                Orb::NewPlanTieredBPSPrice::OrHash,
-                Orb::NewPlanBPSPrice::OrHash,
-                Orb::NewPlanBulkBPSPrice::OrHash,
-                Orb::NewPlanBulkPrice::OrHash,
-                Orb::NewPlanThresholdTotalAmountPrice::OrHash,
-                Orb::NewPlanTieredPackagePrice::OrHash,
-                Orb::NewPlanTieredWithMinimumPrice::OrHash,
-                Orb::NewPlanUnitWithPercentPrice::OrHash,
-                Orb::NewPlanPackageWithAllocationPrice::OrHash,
-                Orb::NewPlanTierWithProrationPrice::OrHash,
-                Orb::NewPlanUnitWithProrationPrice::OrHash,
-                Orb::NewPlanGroupedAllocationPrice::OrHash,
-                Orb::NewPlanGroupedWithProratedMinimumPrice::OrHash,
-                Orb::NewPlanGroupedWithMeteredMinimumPrice::OrHash,
-                Orb::NewPlanMatrixWithDisplayNamePrice::OrHash,
-                Orb::NewPlanBulkWithProrationPrice::OrHash,
-                Orb::NewPlanGroupedTieredPackagePrice::OrHash,
-                Orb::NewPlanMaxGroupTieredPackagePrice::OrHash,
-                Orb::NewPlanScalableMatrixWithUnitPricingPrice::OrHash,
-                Orb::NewPlanScalableMatrixWithTieredPricingPrice::OrHash,
-                Orb::NewPlanCumulativeGroupedBulkPrice::OrHash,
-                Orb::NewPlanTieredPackageWithMinimumPrice::OrHash,
-                Orb::NewPlanMatrixWithAllocationPrice::OrHash,
-                Orb::NewPlanGroupedTieredPrice::OrHash
-              )
-            ],
+          prices: T::Array[Orb::PlanCreateParams::Price::OrHash],
+          adjustments:
+            T.nilable(T::Array[Orb::PlanCreateParams::Adjustment::OrHash]),
           default_invoice_memo: T.nilable(String),
           external_plan_id: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           net_terms: T.nilable(Integer),
+          plan_phases:
+            T.nilable(T::Array[Orb::PlanCreateParams::PlanPhase::OrHash]),
           status: Orb::PlanCreateParams::Status::OrSymbol,
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Plan)
@@ -60,6 +32,9 @@ module Orb
         # Prices for this plan. If the plan has phases, this includes prices across all
         # phases of the plan.
         prices:,
+        # Adjustments for this plan. If the plan has phases, this includes adjustments
+        # across all phases of the plan.
+        adjustments: nil,
         # Free-form text which is available on the invoice PDF and the Orb invoice portal.
         default_invoice_memo: nil,
         external_plan_id: nil,
@@ -71,6 +46,9 @@ module Orb
         # date for the invoice. If you intend the invoice to be due on issue, set this
         # to 0.
         net_terms: nil,
+        # Configuration of pre-defined phases, each with their own prices and adjustments.
+        # Leave unspecified for plans with a single phase.
+        plan_phases: nil,
         # The status of the plan to create (either active or draft). If not specified,
         # this defaults to active.
         status: nil,

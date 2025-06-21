@@ -5,6 +5,15 @@ module Orb
     end
 
     class ConversionError < Orb::Errors::Error
+      def cause: -> StandardError?
+
+      def initialize: (
+        on: Class,
+        method: Symbol,
+        target: top,
+        value: top,
+        ?cause: StandardError?
+      ) -> void
     end
 
     class APIError < Orb::Errors::Error

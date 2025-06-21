@@ -6,11 +6,13 @@ module Orb
       def create: (
         currency: String,
         name: String,
-        prices: ::Array[Orb::Models::PlanCreateParams::price],
+        prices: ::Array[Orb::PlanCreateParams::Price],
+        ?adjustments: ::Array[Orb::PlanCreateParams::Adjustment]?,
         ?default_invoice_memo: String?,
         ?external_plan_id: String?,
         ?metadata: ::Hash[Symbol, String?]?,
         ?net_terms: Integer?,
+        ?plan_phases: ::Array[Orb::PlanCreateParams::PlanPhase]?,
         ?status: Orb::Models::PlanCreateParams::status,
         ?request_options: Orb::request_opts
       ) -> Orb::Plan

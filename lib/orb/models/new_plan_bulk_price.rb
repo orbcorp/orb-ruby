@@ -111,7 +111,14 @@ module Orb
       #   @return [Hash{Symbol=>String, nil}, nil]
       optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-      # @!method initialize(bulk_config:, cadence:, item_id:, model_type:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil)
+      # @!attribute reference_id
+      #   A transient ID that can be used to reference this price when adding adjustments
+      #   in the same API call.
+      #
+      #   @return [String, nil]
+      optional :reference_id, String, nil?: true
+
+      # @!method initialize(bulk_config:, cadence:, item_id:, model_type:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::NewPlanBulkPrice} for more details.
       #
@@ -148,6 +155,8 @@ module Orb
       #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
       #
       #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+      #
+      #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
 
       # The cadence to bill for this price on.
       #

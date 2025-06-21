@@ -18,7 +18,8 @@ module Orb
         fixed_price_quantity: Float?,
         invoice_grouping_key: String?,
         invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
-        metadata: ::Hash[Symbol, String?]?
+        metadata: ::Hash[Symbol, String?]?,
+        reference_id: String?
       }
 
     class NewPlanBulkWithProrationPrice < Orb::Internal::Type::BaseModel
@@ -56,6 +57,8 @@ module Orb
 
       attr_accessor metadata: ::Hash[Symbol, String?]?
 
+      attr_accessor reference_id: String?
+
       def initialize: (
         bulk_with_proration_config: ::Hash[Symbol, top],
         cadence: Orb::Models::NewPlanBulkWithProrationPrice::cadence,
@@ -73,7 +76,8 @@ module Orb
         ?fixed_price_quantity: Float?,
         ?invoice_grouping_key: String?,
         ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
-        ?metadata: ::Hash[Symbol, String?]?
+        ?metadata: ::Hash[Symbol, String?]?,
+        ?reference_id: String?
       ) -> void
 
       def to_hash: -> {
@@ -93,7 +97,8 @@ module Orb
         fixed_price_quantity: Float?,
         invoice_grouping_key: String?,
         invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
-        metadata: ::Hash[Symbol, String?]?
+        metadata: ::Hash[Symbol, String?]?,
+        reference_id: String?
       }
 
       type cadence =

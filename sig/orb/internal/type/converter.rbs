@@ -8,8 +8,10 @@ module Orb
 
         type coerce_state =
           {
-            strictness: bool | :strong,
+            translate_names: bool,
+            strictness: bool,
             exactness: { yes: Integer, no: Integer, maybe: Integer },
+            error: Class,
             branched: Integer
           }
 
@@ -36,6 +38,10 @@ module Orb
           | ^-> Orb::Internal::Type::Converter::input
           | Orb::Internal::Type::Converter::input spec
         ) -> (^-> top)
+
+        def self.new_coerce_state: (
+          ?translate_names: bool
+        ) -> Orb::Internal::Type::Converter::coerce_state
 
         def self.coerce: (
           Orb::Internal::Type::Converter::input target,
