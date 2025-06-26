@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.2.1 (2025-06-26)
+
+Full Changelog: [v1.2.0...v1.2.1](https://github.com/orbcorp/orb-ruby/compare/v1.2.0...v1.2.1)
+
+### Bug Fixes
+
+* **ci:** release-doctor — report correct token name ([771d0e7](https://github.com/orbcorp/orb-ruby/commit/771d0e78feeac2df1917c2d8b474a5ec22d1c546))
+
+
+### Chores
+
+* **internal:** version bump ([fe83c70](https://github.com/orbcorp/orb-ruby/commit/fe83c7044cb534bb96990b0987c810c0803de17d))
+
 ## 1.2.0 (2025-06-26)
 
 Full Changelog: [v1.1.0...v1.2.0](https://github.com/orbcorp/orb-ruby/compare/v1.1.0...v1.2.0)
