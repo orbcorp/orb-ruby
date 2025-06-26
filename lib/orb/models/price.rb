@@ -198,6 +198,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::Unit::PriceType]
         required :price_type, enum: -> { Orb::Price::Unit::PriceType }
 
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
         # @!attribute unit_config
         #
         #   @return [Orb::Models::UnitConfig]
@@ -208,7 +215,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, unit_config:, dimensional_price_configuration: nil, model_type: :unit)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, unit_config:, dimensional_price_configuration: nil, model_type: :unit)
         #   Some parameter documentations has been truncated, see {Orb::Models::Price::Unit}
         #   for more details.
         #
@@ -255,6 +262,8 @@ module Orb
         #   @param plan_phase_order [Integer, nil]
         #
         #   @param price_type [Symbol, Orb::Models::Price::Unit::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param unit_config [Orb::Models::UnitConfig]
         #
@@ -433,12 +442,19 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::Package::PriceType]
         required :price_type, enum: -> { Orb::Price::Package::PriceType }
 
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
         # @!attribute dimensional_price_configuration
         #
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, package_config:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :package)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, package_config:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :package)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::Package} for more details.
         #
@@ -487,6 +503,8 @@ module Orb
         #   @param plan_phase_order [Integer, nil]
         #
         #   @param price_type [Symbol, Orb::Models::Price::Package::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
@@ -663,12 +681,19 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::Matrix::PriceType]
         required :price_type, enum: -> { Orb::Price::Matrix::PriceType }
 
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
         # @!attribute dimensional_price_configuration
         #
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :matrix)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :matrix)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::Matrix} for more details.
         #
@@ -717,6 +742,8 @@ module Orb
         #   @param plan_phase_order [Integer, nil]
         #
         #   @param price_type [Symbol, Orb::Models::Price::Matrix::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
@@ -888,6 +915,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::Tiered::PriceType]
         required :price_type, enum: -> { Orb::Price::Tiered::PriceType }
 
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
         # @!attribute tiered_config
         #
         #   @return [Orb::Models::TieredConfig]
@@ -898,7 +932,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_config:, dimensional_price_configuration: nil, model_type: :tiered)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_config:, dimensional_price_configuration: nil, model_type: :tiered)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::Tiered} for more details.
         #
@@ -945,6 +979,8 @@ module Orb
         #   @param plan_phase_order [Integer, nil]
         #
         #   @param price_type [Symbol, Orb::Models::Price::Tiered::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param tiered_config [Orb::Models::TieredConfig]
         #
@@ -1122,6 +1158,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::TieredBPS::PriceType]
         required :price_type, enum: -> { Orb::Price::TieredBPS::PriceType }
 
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
         # @!attribute tiered_bps_config
         #
         #   @return [Orb::Models::TieredBPSConfig]
@@ -1132,7 +1175,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_bps_config:, dimensional_price_configuration: nil, model_type: :tiered_bps)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_bps_config:, dimensional_price_configuration: nil, model_type: :tiered_bps)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::TieredBPS} for more details.
         #
@@ -1179,6 +1222,8 @@ module Orb
         #   @param plan_phase_order [Integer, nil]
         #
         #   @param price_type [Symbol, Orb::Models::Price::TieredBPS::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param tiered_bps_config [Orb::Models::TieredBPSConfig]
         #
@@ -1357,12 +1402,19 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::BPS::PriceType]
         required :price_type, enum: -> { Orb::Price::BPS::PriceType }
 
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
         # @!attribute dimensional_price_configuration
         #
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bps_config:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :bps)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bps_config:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :bps)
         #   Some parameter documentations has been truncated, see {Orb::Models::Price::BPS}
         #   for more details.
         #
@@ -1411,6 +1463,8 @@ module Orb
         #   @param plan_phase_order [Integer, nil]
         #
         #   @param price_type [Symbol, Orb::Models::Price::BPS::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
@@ -1587,12 +1641,19 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::BulkBPS::PriceType]
         required :price_type, enum: -> { Orb::Price::BulkBPS::PriceType }
 
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
         # @!attribute dimensional_price_configuration
         #
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bulk_bps_config:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :bulk_bps)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bulk_bps_config:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :bulk_bps)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::BulkBPS} for more details.
         #
@@ -1641,6 +1702,8 @@ module Orb
         #   @param plan_phase_order [Integer, nil]
         #
         #   @param price_type [Symbol, Orb::Models::Price::BulkBPS::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
@@ -1817,12 +1880,19 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::Bulk::PriceType]
         required :price_type, enum: -> { Orb::Price::Bulk::PriceType }
 
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
         # @!attribute dimensional_price_configuration
         #
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bulk_config:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :bulk)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bulk_config:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :bulk)
         #   Some parameter documentations has been truncated, see {Orb::Models::Price::Bulk}
         #   for more details.
         #
@@ -1871,6 +1941,8 @@ module Orb
         #   @param plan_phase_order [Integer, nil]
         #
         #   @param price_type [Symbol, Orb::Models::Price::Bulk::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
@@ -2044,6 +2116,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::ThresholdTotalAmount::PriceType]
         required :price_type, enum: -> { Orb::Price::ThresholdTotalAmount::PriceType }
 
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
         # @!attribute threshold_total_amount_config
         #
         #   @return [Hash{Symbol=>Object}]
@@ -2054,7 +2133,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, threshold_total_amount_config:, dimensional_price_configuration: nil, model_type: :threshold_total_amount)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, threshold_total_amount_config:, dimensional_price_configuration: nil, model_type: :threshold_total_amount)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::ThresholdTotalAmount} for more details.
         #
@@ -2101,6 +2180,8 @@ module Orb
         #   @param plan_phase_order [Integer, nil]
         #
         #   @param price_type [Symbol, Orb::Models::Price::ThresholdTotalAmount::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param threshold_total_amount_config [Hash{Symbol=>Object}]
         #
@@ -2276,6 +2357,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::TieredPackage::PriceType]
         required :price_type, enum: -> { Orb::Price::TieredPackage::PriceType }
 
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
         # @!attribute tiered_package_config
         #
         #   @return [Hash{Symbol=>Object}]
@@ -2286,7 +2374,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_package_config:, dimensional_price_configuration: nil, model_type: :tiered_package)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_package_config:, dimensional_price_configuration: nil, model_type: :tiered_package)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::TieredPackage} for more details.
         #
@@ -2333,6 +2421,8 @@ module Orb
         #   @param plan_phase_order [Integer, nil]
         #
         #   @param price_type [Symbol, Orb::Models::Price::TieredPackage::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param tiered_package_config [Hash{Symbol=>Object}]
         #
@@ -2513,12 +2603,19 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::GroupedTiered::PriceType]
         required :price_type, enum: -> { Orb::Price::GroupedTiered::PriceType }
 
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
         # @!attribute dimensional_price_configuration
         #
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_tiered_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :grouped_tiered)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_tiered_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_tiered)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedTiered} for more details.
         #
@@ -2567,6 +2664,8 @@ module Orb
         #   @param plan_phase_order [Integer, nil]
         #
         #   @param price_type [Symbol, Orb::Models::Price::GroupedTiered::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
@@ -2740,6 +2839,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::TieredWithMinimum::PriceType]
         required :price_type, enum: -> { Orb::Price::TieredWithMinimum::PriceType }
 
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
         # @!attribute tiered_with_minimum_config
         #
         #   @return [Hash{Symbol=>Object}]
@@ -2750,7 +2856,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_with_minimum_config:, dimensional_price_configuration: nil, model_type: :tiered_with_minimum)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_with_minimum_config:, dimensional_price_configuration: nil, model_type: :tiered_with_minimum)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::TieredWithMinimum} for more details.
         #
@@ -2797,6 +2903,8 @@ module Orb
         #   @param plan_phase_order [Integer, nil]
         #
         #   @param price_type [Symbol, Orb::Models::Price::TieredWithMinimum::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param tiered_with_minimum_config [Hash{Symbol=>Object}]
         #
@@ -2972,6 +3080,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::TieredPackageWithMinimum::PriceType]
         required :price_type, enum: -> { Orb::Price::TieredPackageWithMinimum::PriceType }
 
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
         # @!attribute tiered_package_with_minimum_config
         #
         #   @return [Hash{Symbol=>Object}]
@@ -2983,7 +3098,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_package_with_minimum_config:, dimensional_price_configuration: nil, model_type: :tiered_package_with_minimum)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_package_with_minimum_config:, dimensional_price_configuration: nil, model_type: :tiered_package_with_minimum)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::TieredPackageWithMinimum} for more details.
         #
@@ -3030,6 +3145,8 @@ module Orb
         #   @param plan_phase_order [Integer, nil]
         #
         #   @param price_type [Symbol, Orb::Models::Price::TieredPackageWithMinimum::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param tiered_package_with_minimum_config [Hash{Symbol=>Object}]
         #
@@ -3210,12 +3327,19 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::PackageWithAllocation::PriceType]
         required :price_type, enum: -> { Orb::Price::PackageWithAllocation::PriceType }
 
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
         # @!attribute dimensional_price_configuration
         #
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, package_with_allocation_config:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :package_with_allocation)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, package_with_allocation_config:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :package_with_allocation)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::PackageWithAllocation} for more details.
         #
@@ -3264,6 +3388,8 @@ module Orb
         #   @param plan_phase_order [Integer, nil]
         #
         #   @param price_type [Symbol, Orb::Models::Price::PackageWithAllocation::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
@@ -3437,6 +3563,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::UnitWithPercent::PriceType]
         required :price_type, enum: -> { Orb::Price::UnitWithPercent::PriceType }
 
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
         # @!attribute unit_with_percent_config
         #
         #   @return [Hash{Symbol=>Object}]
@@ -3447,7 +3580,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, unit_with_percent_config:, dimensional_price_configuration: nil, model_type: :unit_with_percent)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, unit_with_percent_config:, dimensional_price_configuration: nil, model_type: :unit_with_percent)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::UnitWithPercent} for more details.
         #
@@ -3494,6 +3627,8 @@ module Orb
         #   @param plan_phase_order [Integer, nil]
         #
         #   @param price_type [Symbol, Orb::Models::Price::UnitWithPercent::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param unit_with_percent_config [Hash{Symbol=>Object}]
         #
@@ -3674,12 +3809,19 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::MatrixWithAllocation::PriceType]
         required :price_type, enum: -> { Orb::Price::MatrixWithAllocation::PriceType }
 
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
         # @!attribute dimensional_price_configuration
         #
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_with_allocation_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :matrix_with_allocation)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_with_allocation_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :matrix_with_allocation)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::MatrixWithAllocation} for more details.
         #
@@ -3728,6 +3870,8 @@ module Orb
         #   @param plan_phase_order [Integer, nil]
         #
         #   @param price_type [Symbol, Orb::Models::Price::MatrixWithAllocation::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
@@ -3901,6 +4045,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::TieredWithProration::PriceType]
         required :price_type, enum: -> { Orb::Price::TieredWithProration::PriceType }
 
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
         # @!attribute tiered_with_proration_config
         #
         #   @return [Hash{Symbol=>Object}]
@@ -3911,7 +4062,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, tiered_with_proration_config:, dimensional_price_configuration: nil, model_type: :tiered_with_proration)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_with_proration_config:, dimensional_price_configuration: nil, model_type: :tiered_with_proration)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::TieredWithProration} for more details.
         #
@@ -3958,6 +4109,8 @@ module Orb
         #   @param plan_phase_order [Integer, nil]
         #
         #   @param price_type [Symbol, Orb::Models::Price::TieredWithProration::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param tiered_with_proration_config [Hash{Symbol=>Object}]
         #
@@ -4133,6 +4286,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::UnitWithProration::PriceType]
         required :price_type, enum: -> { Orb::Price::UnitWithProration::PriceType }
 
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
         # @!attribute unit_with_proration_config
         #
         #   @return [Hash{Symbol=>Object}]
@@ -4143,7 +4303,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, unit_with_proration_config:, dimensional_price_configuration: nil, model_type: :unit_with_proration)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, unit_with_proration_config:, dimensional_price_configuration: nil, model_type: :unit_with_proration)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::UnitWithProration} for more details.
         #
@@ -4190,6 +4350,8 @@ module Orb
         #   @param plan_phase_order [Integer, nil]
         #
         #   @param price_type [Symbol, Orb::Models::Price::UnitWithProration::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param unit_with_proration_config [Hash{Symbol=>Object}]
         #
@@ -4370,12 +4532,19 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::GroupedAllocation::PriceType]
         required :price_type, enum: -> { Orb::Price::GroupedAllocation::PriceType }
 
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
         # @!attribute dimensional_price_configuration
         #
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_allocation_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :grouped_allocation)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_allocation_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_allocation)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedAllocation} for more details.
         #
@@ -4424,6 +4593,8 @@ module Orb
         #   @param plan_phase_order [Integer, nil]
         #
         #   @param price_type [Symbol, Orb::Models::Price::GroupedAllocation::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
@@ -4603,12 +4774,19 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::GroupedWithProratedMinimum::PriceType]
         required :price_type, enum: -> { Orb::Price::GroupedWithProratedMinimum::PriceType }
 
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
         # @!attribute dimensional_price_configuration
         #
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_prorated_minimum_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :grouped_with_prorated_minimum)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_prorated_minimum_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_with_prorated_minimum)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedWithProratedMinimum} for more details.
         #
@@ -4657,6 +4835,8 @@ module Orb
         #   @param plan_phase_order [Integer, nil]
         #
         #   @param price_type [Symbol, Orb::Models::Price::GroupedWithProratedMinimum::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
@@ -4836,12 +5016,19 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::GroupedWithMeteredMinimum::PriceType]
         required :price_type, enum: -> { Orb::Price::GroupedWithMeteredMinimum::PriceType }
 
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
         # @!attribute dimensional_price_configuration
         #
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_metered_minimum_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :grouped_with_metered_minimum)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_metered_minimum_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_with_metered_minimum)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedWithMeteredMinimum} for more details.
         #
@@ -4890,6 +5077,8 @@ module Orb
         #   @param plan_phase_order [Integer, nil]
         #
         #   @param price_type [Symbol, Orb::Models::Price::GroupedWithMeteredMinimum::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
@@ -5068,12 +5257,19 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::MatrixWithDisplayName::PriceType]
         required :price_type, enum: -> { Orb::Price::MatrixWithDisplayName::PriceType }
 
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
         # @!attribute dimensional_price_configuration
         #
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_with_display_name_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :matrix_with_display_name)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_with_display_name_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :matrix_with_display_name)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::MatrixWithDisplayName} for more details.
         #
@@ -5122,6 +5318,8 @@ module Orb
         #   @param plan_phase_order [Integer, nil]
         #
         #   @param price_type [Symbol, Orb::Models::Price::MatrixWithDisplayName::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
@@ -5300,12 +5498,19 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::BulkWithProration::PriceType]
         required :price_type, enum: -> { Orb::Price::BulkWithProration::PriceType }
 
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
         # @!attribute dimensional_price_configuration
         #
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bulk_with_proration_config:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :bulk_with_proration)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bulk_with_proration_config:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :bulk_with_proration)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::BulkWithProration} for more details.
         #
@@ -5354,6 +5559,8 @@ module Orb
         #   @param plan_phase_order [Integer, nil]
         #
         #   @param price_type [Symbol, Orb::Models::Price::BulkWithProration::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
@@ -5532,12 +5739,19 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::GroupedTieredPackage::PriceType]
         required :price_type, enum: -> { Orb::Price::GroupedTieredPackage::PriceType }
 
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
         # @!attribute dimensional_price_configuration
         #
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_tiered_package_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :grouped_tiered_package)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_tiered_package_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_tiered_package)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedTieredPackage} for more details.
         #
@@ -5586,6 +5800,8 @@ module Orb
         #   @param plan_phase_order [Integer, nil]
         #
         #   @param price_type [Symbol, Orb::Models::Price::GroupedTieredPackage::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
@@ -5764,12 +5980,19 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::MaxGroupTieredPackage::PriceType]
         required :price_type, enum: -> { Orb::Price::MaxGroupTieredPackage::PriceType }
 
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
         # @!attribute dimensional_price_configuration
         #
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, max_group_tiered_package_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :max_group_tiered_package)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, max_group_tiered_package_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :max_group_tiered_package)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::MaxGroupTieredPackage} for more details.
         #
@@ -5818,6 +6041,8 @@ module Orb
         #   @param plan_phase_order [Integer, nil]
         #
         #   @param price_type [Symbol, Orb::Models::Price::MaxGroupTieredPackage::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
@@ -5991,6 +6216,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricing::PriceType]
         required :price_type, enum: -> { Orb::Price::ScalableMatrixWithUnitPricing::PriceType }
 
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
         # @!attribute scalable_matrix_with_unit_pricing_config
         #
         #   @return [Hash{Symbol=>Object}]
@@ -6002,7 +6234,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, scalable_matrix_with_unit_pricing_config:, dimensional_price_configuration: nil, model_type: :scalable_matrix_with_unit_pricing)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, scalable_matrix_with_unit_pricing_config:, dimensional_price_configuration: nil, model_type: :scalable_matrix_with_unit_pricing)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::ScalableMatrixWithUnitPricing} for more details.
         #
@@ -6049,6 +6281,8 @@ module Orb
         #   @param plan_phase_order [Integer, nil]
         #
         #   @param price_type [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricing::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param scalable_matrix_with_unit_pricing_config [Hash{Symbol=>Object}]
         #
@@ -6224,6 +6458,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricing::PriceType]
         required :price_type, enum: -> { Orb::Price::ScalableMatrixWithTieredPricing::PriceType }
 
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
         # @!attribute scalable_matrix_with_tiered_pricing_config
         #
         #   @return [Hash{Symbol=>Object}]
@@ -6235,7 +6476,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, scalable_matrix_with_tiered_pricing_config:, dimensional_price_configuration: nil, model_type: :scalable_matrix_with_tiered_pricing)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, scalable_matrix_with_tiered_pricing_config:, dimensional_price_configuration: nil, model_type: :scalable_matrix_with_tiered_pricing)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::ScalableMatrixWithTieredPricing} for more details.
         #
@@ -6282,6 +6523,8 @@ module Orb
         #   @param plan_phase_order [Integer, nil]
         #
         #   @param price_type [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricing::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param scalable_matrix_with_tiered_pricing_config [Hash{Symbol=>Object}]
         #
@@ -6462,12 +6705,19 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::CumulativeGroupedBulk::PriceType]
         required :price_type, enum: -> { Orb::Price::CumulativeGroupedBulk::PriceType }
 
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
         # @!attribute dimensional_price_configuration
         #
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, cumulative_grouped_bulk_config:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, dimensional_price_configuration: nil, model_type: :cumulative_grouped_bulk)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, cumulative_grouped_bulk_config:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :cumulative_grouped_bulk)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::CumulativeGroupedBulk} for more details.
         #
@@ -6516,6 +6766,8 @@ module Orb
         #   @param plan_phase_order [Integer, nil]
         #
         #   @param price_type [Symbol, Orb::Models::Price::CumulativeGroupedBulk::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #

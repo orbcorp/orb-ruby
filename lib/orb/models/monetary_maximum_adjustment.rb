@@ -53,7 +53,14 @@ module Orb
       #   @return [String, nil]
       required :reason, String, nil?: true
 
-      # @!method initialize(id:, adjustment_type:, amount:, applies_to_price_ids:, filters:, is_invoice_level:, maximum_amount:, reason:)
+      # @!attribute replaces_adjustment_id
+      #   The adjustment id this adjustment replaces. This adjustment will take the place
+      #   of the replaced adjustment in plan version migrations.
+      #
+      #   @return [String, nil]
+      required :replaces_adjustment_id, String, nil?: true
+
+      # @!method initialize(id:, adjustment_type:, amount:, applies_to_price_ids:, filters:, is_invoice_level:, maximum_amount:, reason:, replaces_adjustment_id:)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::MonetaryMaximumAdjustment} for more details.
       #
@@ -72,6 +79,8 @@ module Orb
       #   @param maximum_amount [String] The maximum amount to charge in a given billing period for the prices this adjus
       #
       #   @param reason [String, nil] The reason for the adjustment.
+      #
+      #   @param replaces_adjustment_id [String, nil] The adjustment id this adjustment replaces. This adjustment will take the place
 
       # @see Orb::Models::MonetaryMaximumAdjustment#adjustment_type
       module AdjustmentType

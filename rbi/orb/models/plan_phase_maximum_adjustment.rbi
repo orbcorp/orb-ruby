@@ -42,6 +42,11 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :reason
 
+      # The adjustment id this adjustment replaces. This adjustment will take the place
+      # of the replaced adjustment in plan version migrations.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :replaces_adjustment_id
+
       sig do
         params(
           id: String,
@@ -52,7 +57,8 @@ module Orb
           is_invoice_level: T::Boolean,
           maximum_amount: String,
           plan_phase_order: T.nilable(Integer),
-          reason: T.nilable(String)
+          reason: T.nilable(String),
+          replaces_adjustment_id: T.nilable(String)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -71,7 +77,10 @@ module Orb
         # The plan phase in which this adjustment is active.
         plan_phase_order:,
         # The reason for the adjustment.
-        reason:
+        reason:,
+        # The adjustment id this adjustment replaces. This adjustment will take the place
+        # of the replaced adjustment in plan version migrations.
+        replaces_adjustment_id:
       )
       end
 
@@ -86,7 +95,8 @@ module Orb
             is_invoice_level: T::Boolean,
             maximum_amount: String,
             plan_phase_order: T.nilable(Integer),
-            reason: T.nilable(String)
+            reason: T.nilable(String),
+            replaces_adjustment_id: T.nilable(String)
           }
         )
       end

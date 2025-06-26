@@ -58,6 +58,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::Unit::price_type,
+          replaces_price_id: String?,
           unit_config: Orb::UnitConfig,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
@@ -109,6 +110,8 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::Unit::price_type
 
+        attr_accessor replaces_price_id: String?
+
         attr_accessor unit_config: Orb::UnitConfig
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
@@ -136,6 +139,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::Unit::price_type,
+          replaces_price_id: String?,
           unit_config: Orb::UnitConfig,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
           ?model_type: :unit
@@ -165,6 +169,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::Unit::price_type,
+          replaces_price_id: String?,
           unit_config: Orb::UnitConfig,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
@@ -232,6 +237,7 @@ module Orb
           package_config: Orb::PackageConfig,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::Package::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -284,6 +290,8 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::Package::price_type
 
+        attr_accessor replaces_price_id: String?
+
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
         def initialize: (
@@ -310,6 +318,7 @@ module Orb
           package_config: Orb::PackageConfig,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::Package::price_type,
+          replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
           ?model_type: :package
         ) -> void
@@ -339,6 +348,7 @@ module Orb
           package_config: Orb::PackageConfig,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::Package::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -405,6 +415,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::Matrix::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -457,6 +468,8 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::Matrix::price_type
 
+        attr_accessor replaces_price_id: String?
+
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
         def initialize: (
@@ -483,6 +496,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::Matrix::price_type,
+          replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
           ?model_type: :matrix
         ) -> void
@@ -512,6 +526,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::Matrix::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -577,6 +592,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::Tiered::price_type,
+          replaces_price_id: String?,
           tiered_config: Orb::TieredConfig,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
@@ -628,6 +644,8 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::Tiered::price_type
 
+        attr_accessor replaces_price_id: String?
+
         attr_accessor tiered_config: Orb::TieredConfig
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
@@ -655,6 +673,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::Tiered::price_type,
+          replaces_price_id: String?,
           tiered_config: Orb::TieredConfig,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
           ?model_type: :tiered
@@ -684,6 +703,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::Tiered::price_type,
+          replaces_price_id: String?,
           tiered_config: Orb::TieredConfig,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
@@ -750,6 +770,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::TieredBPS::price_type,
+          replaces_price_id: String?,
           tiered_bps_config: Orb::TieredBPSConfig,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
@@ -801,6 +822,8 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::TieredBPS::price_type
 
+        attr_accessor replaces_price_id: String?
+
         attr_accessor tiered_bps_config: Orb::TieredBPSConfig
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
@@ -828,6 +851,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::TieredBPS::price_type,
+          replaces_price_id: String?,
           tiered_bps_config: Orb::TieredBPSConfig,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
           ?model_type: :tiered_bps
@@ -857,6 +881,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::TieredBPS::price_type,
+          replaces_price_id: String?,
           tiered_bps_config: Orb::TieredBPSConfig,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
@@ -924,6 +949,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::BPS::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -976,6 +1002,8 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::BPS::price_type
 
+        attr_accessor replaces_price_id: String?
+
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
         def initialize: (
@@ -1002,6 +1030,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::BPS::price_type,
+          replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
           ?model_type: :bps
         ) -> void
@@ -1031,6 +1060,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::BPS::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -1097,6 +1127,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::BulkBPS::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -1149,6 +1180,8 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::BulkBPS::price_type
 
+        attr_accessor replaces_price_id: String?
+
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
         def initialize: (
@@ -1175,6 +1208,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::BulkBPS::price_type,
+          replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
           ?model_type: :bulk_bps
         ) -> void
@@ -1204,6 +1238,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::BulkBPS::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -1270,6 +1305,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::Bulk::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -1322,6 +1358,8 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::Bulk::price_type
 
+        attr_accessor replaces_price_id: String?
+
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
         def initialize: (
@@ -1348,6 +1386,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::Bulk::price_type,
+          replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
           ?model_type: :bulk
         ) -> void
@@ -1377,6 +1416,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::Bulk::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -1442,6 +1482,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::ThresholdTotalAmount::price_type,
+          replaces_price_id: String?,
           threshold_total_amount_config: ::Hash[Symbol, top],
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
@@ -1493,6 +1534,8 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::ThresholdTotalAmount::price_type
 
+        attr_accessor replaces_price_id: String?
+
         attr_accessor threshold_total_amount_config: ::Hash[Symbol, top]
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
@@ -1520,6 +1563,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::ThresholdTotalAmount::price_type,
+          replaces_price_id: String?,
           threshold_total_amount_config: ::Hash[Symbol, top],
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
           ?model_type: :threshold_total_amount
@@ -1549,6 +1593,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::ThresholdTotalAmount::price_type,
+          replaces_price_id: String?,
           threshold_total_amount_config: ::Hash[Symbol, top],
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
@@ -1615,6 +1660,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::TieredPackage::price_type,
+          replaces_price_id: String?,
           tiered_package_config: ::Hash[Symbol, top],
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
@@ -1666,6 +1712,8 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::TieredPackage::price_type
 
+        attr_accessor replaces_price_id: String?
+
         attr_accessor tiered_package_config: ::Hash[Symbol, top]
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
@@ -1693,6 +1741,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::TieredPackage::price_type,
+          replaces_price_id: String?,
           tiered_package_config: ::Hash[Symbol, top],
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
           ?model_type: :tiered_package
@@ -1722,6 +1771,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::TieredPackage::price_type,
+          replaces_price_id: String?,
           tiered_package_config: ::Hash[Symbol, top],
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
@@ -1789,6 +1839,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::GroupedTiered::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -1841,6 +1892,8 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::GroupedTiered::price_type
 
+        attr_accessor replaces_price_id: String?
+
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
         def initialize: (
@@ -1867,6 +1920,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::GroupedTiered::price_type,
+          replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
           ?model_type: :grouped_tiered
         ) -> void
@@ -1896,6 +1950,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::GroupedTiered::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -1961,6 +2016,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::TieredWithMinimum::price_type,
+          replaces_price_id: String?,
           tiered_with_minimum_config: ::Hash[Symbol, top],
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
@@ -2012,6 +2068,8 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::TieredWithMinimum::price_type
 
+        attr_accessor replaces_price_id: String?
+
         attr_accessor tiered_with_minimum_config: ::Hash[Symbol, top]
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
@@ -2039,6 +2097,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::TieredWithMinimum::price_type,
+          replaces_price_id: String?,
           tiered_with_minimum_config: ::Hash[Symbol, top],
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
           ?model_type: :tiered_with_minimum
@@ -2068,6 +2127,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::TieredWithMinimum::price_type,
+          replaces_price_id: String?,
           tiered_with_minimum_config: ::Hash[Symbol, top],
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
@@ -2134,6 +2194,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::TieredPackageWithMinimum::price_type,
+          replaces_price_id: String?,
           tiered_package_with_minimum_config: ::Hash[Symbol, top],
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
@@ -2185,6 +2246,8 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::TieredPackageWithMinimum::price_type
 
+        attr_accessor replaces_price_id: String?
+
         attr_accessor tiered_package_with_minimum_config: ::Hash[Symbol, top]
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
@@ -2212,6 +2275,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::TieredPackageWithMinimum::price_type,
+          replaces_price_id: String?,
           tiered_package_with_minimum_config: ::Hash[Symbol, top],
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
           ?model_type: :tiered_package_with_minimum
@@ -2241,6 +2305,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::TieredPackageWithMinimum::price_type,
+          replaces_price_id: String?,
           tiered_package_with_minimum_config: ::Hash[Symbol, top],
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
@@ -2308,6 +2373,7 @@ module Orb
           package_with_allocation_config: ::Hash[Symbol, top],
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::PackageWithAllocation::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -2360,6 +2426,8 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::PackageWithAllocation::price_type
 
+        attr_accessor replaces_price_id: String?
+
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
         def initialize: (
@@ -2386,6 +2454,7 @@ module Orb
           package_with_allocation_config: ::Hash[Symbol, top],
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::PackageWithAllocation::price_type,
+          replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
           ?model_type: :package_with_allocation
         ) -> void
@@ -2415,6 +2484,7 @@ module Orb
           package_with_allocation_config: ::Hash[Symbol, top],
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::PackageWithAllocation::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -2480,6 +2550,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::UnitWithPercent::price_type,
+          replaces_price_id: String?,
           unit_with_percent_config: ::Hash[Symbol, top],
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
@@ -2531,6 +2602,8 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::UnitWithPercent::price_type
 
+        attr_accessor replaces_price_id: String?
+
         attr_accessor unit_with_percent_config: ::Hash[Symbol, top]
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
@@ -2558,6 +2631,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::UnitWithPercent::price_type,
+          replaces_price_id: String?,
           unit_with_percent_config: ::Hash[Symbol, top],
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
           ?model_type: :unit_with_percent
@@ -2587,6 +2661,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::UnitWithPercent::price_type,
+          replaces_price_id: String?,
           unit_with_percent_config: ::Hash[Symbol, top],
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
@@ -2654,6 +2729,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::MatrixWithAllocation::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -2706,6 +2782,8 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::MatrixWithAllocation::price_type
 
+        attr_accessor replaces_price_id: String?
+
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
         def initialize: (
@@ -2732,6 +2810,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::MatrixWithAllocation::price_type,
+          replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
           ?model_type: :matrix_with_allocation
         ) -> void
@@ -2761,6 +2840,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::MatrixWithAllocation::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -2826,6 +2906,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::TieredWithProration::price_type,
+          replaces_price_id: String?,
           tiered_with_proration_config: ::Hash[Symbol, top],
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
@@ -2877,6 +2958,8 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::TieredWithProration::price_type
 
+        attr_accessor replaces_price_id: String?
+
         attr_accessor tiered_with_proration_config: ::Hash[Symbol, top]
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
@@ -2904,6 +2987,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::TieredWithProration::price_type,
+          replaces_price_id: String?,
           tiered_with_proration_config: ::Hash[Symbol, top],
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
           ?model_type: :tiered_with_proration
@@ -2933,6 +3017,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::TieredWithProration::price_type,
+          replaces_price_id: String?,
           tiered_with_proration_config: ::Hash[Symbol, top],
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
@@ -2999,6 +3084,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::UnitWithProration::price_type,
+          replaces_price_id: String?,
           unit_with_proration_config: ::Hash[Symbol, top],
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
@@ -3050,6 +3136,8 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::UnitWithProration::price_type
 
+        attr_accessor replaces_price_id: String?
+
         attr_accessor unit_with_proration_config: ::Hash[Symbol, top]
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
@@ -3077,6 +3165,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::UnitWithProration::price_type,
+          replaces_price_id: String?,
           unit_with_proration_config: ::Hash[Symbol, top],
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
           ?model_type: :unit_with_proration
@@ -3106,6 +3195,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::UnitWithProration::price_type,
+          replaces_price_id: String?,
           unit_with_proration_config: ::Hash[Symbol, top],
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
@@ -3173,6 +3263,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::GroupedAllocation::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -3225,6 +3316,8 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::GroupedAllocation::price_type
 
+        attr_accessor replaces_price_id: String?
+
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
         def initialize: (
@@ -3251,6 +3344,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::GroupedAllocation::price_type,
+          replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
           ?model_type: :grouped_allocation
         ) -> void
@@ -3280,6 +3374,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::GroupedAllocation::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -3346,6 +3441,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::GroupedWithProratedMinimum::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -3398,6 +3494,8 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::GroupedWithProratedMinimum::price_type
 
+        attr_accessor replaces_price_id: String?
+
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
         def initialize: (
@@ -3424,6 +3522,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::GroupedWithProratedMinimum::price_type,
+          replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
           ?model_type: :grouped_with_prorated_minimum
         ) -> void
@@ -3453,6 +3552,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::GroupedWithProratedMinimum::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -3519,6 +3619,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::GroupedWithMeteredMinimum::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -3571,6 +3672,8 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::GroupedWithMeteredMinimum::price_type
 
+        attr_accessor replaces_price_id: String?
+
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
         def initialize: (
@@ -3597,6 +3700,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::GroupedWithMeteredMinimum::price_type,
+          replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
           ?model_type: :grouped_with_metered_minimum
         ) -> void
@@ -3626,6 +3730,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::GroupedWithMeteredMinimum::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -3692,6 +3797,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::MatrixWithDisplayName::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -3744,6 +3850,8 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::MatrixWithDisplayName::price_type
 
+        attr_accessor replaces_price_id: String?
+
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
         def initialize: (
@@ -3770,6 +3878,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::MatrixWithDisplayName::price_type,
+          replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
           ?model_type: :matrix_with_display_name
         ) -> void
@@ -3799,6 +3908,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::MatrixWithDisplayName::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -3865,6 +3975,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::BulkWithProration::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -3917,6 +4028,8 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::BulkWithProration::price_type
 
+        attr_accessor replaces_price_id: String?
+
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
         def initialize: (
@@ -3943,6 +4056,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::BulkWithProration::price_type,
+          replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
           ?model_type: :bulk_with_proration
         ) -> void
@@ -3972,6 +4086,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::BulkWithProration::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -4038,6 +4153,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::GroupedTieredPackage::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -4090,6 +4206,8 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::GroupedTieredPackage::price_type
 
+        attr_accessor replaces_price_id: String?
+
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
         def initialize: (
@@ -4116,6 +4234,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::GroupedTieredPackage::price_type,
+          replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
           ?model_type: :grouped_tiered_package
         ) -> void
@@ -4145,6 +4264,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::GroupedTieredPackage::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -4211,6 +4331,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::MaxGroupTieredPackage::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -4263,6 +4384,8 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::MaxGroupTieredPackage::price_type
 
+        attr_accessor replaces_price_id: String?
+
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
         def initialize: (
@@ -4289,6 +4412,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::MaxGroupTieredPackage::price_type,
+          replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
           ?model_type: :max_group_tiered_package
         ) -> void
@@ -4318,6 +4442,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::MaxGroupTieredPackage::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -4383,6 +4508,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::ScalableMatrixWithUnitPricing::price_type,
+          replaces_price_id: String?,
           scalable_matrix_with_unit_pricing_config: ::Hash[Symbol, top],
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
@@ -4434,6 +4560,8 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::ScalableMatrixWithUnitPricing::price_type
 
+        attr_accessor replaces_price_id: String?
+
         attr_accessor scalable_matrix_with_unit_pricing_config: ::Hash[Symbol, top]
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
@@ -4461,6 +4589,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::ScalableMatrixWithUnitPricing::price_type,
+          replaces_price_id: String?,
           scalable_matrix_with_unit_pricing_config: ::Hash[Symbol, top],
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
           ?model_type: :scalable_matrix_with_unit_pricing
@@ -4490,6 +4619,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::ScalableMatrixWithUnitPricing::price_type,
+          replaces_price_id: String?,
           scalable_matrix_with_unit_pricing_config: ::Hash[Symbol, top],
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
@@ -4556,6 +4686,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::ScalableMatrixWithTieredPricing::price_type,
+          replaces_price_id: String?,
           scalable_matrix_with_tiered_pricing_config: ::Hash[Symbol, top],
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
@@ -4607,6 +4738,8 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::ScalableMatrixWithTieredPricing::price_type
 
+        attr_accessor replaces_price_id: String?
+
         attr_accessor scalable_matrix_with_tiered_pricing_config: ::Hash[Symbol, top]
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
@@ -4634,6 +4767,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::ScalableMatrixWithTieredPricing::price_type,
+          replaces_price_id: String?,
           scalable_matrix_with_tiered_pricing_config: ::Hash[Symbol, top],
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
           ?model_type: :scalable_matrix_with_tiered_pricing
@@ -4663,6 +4797,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::ScalableMatrixWithTieredPricing::price_type,
+          replaces_price_id: String?,
           scalable_matrix_with_tiered_pricing_config: ::Hash[Symbol, top],
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
@@ -4730,6 +4865,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::CumulativeGroupedBulk::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 
@@ -4782,6 +4918,8 @@ module Orb
 
         attr_accessor price_type: Orb::Models::Price::CumulativeGroupedBulk::price_type
 
+        attr_accessor replaces_price_id: String?
+
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
         def initialize: (
@@ -4808,6 +4946,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::CumulativeGroupedBulk::price_type,
+          replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
           ?model_type: :cumulative_grouped_bulk
         ) -> void
@@ -4837,6 +4976,7 @@ module Orb
           name: String,
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::CumulativeGroupedBulk::price_type,
+          replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
 

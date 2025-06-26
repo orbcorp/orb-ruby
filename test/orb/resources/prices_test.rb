@@ -77,6 +77,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Unit::PriceType,
+        replaces_price_id: String | nil,
         unit_config: Orb::UnitConfig,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -105,6 +106,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         package_config: Orb::PackageConfig,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Package::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -132,6 +134,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Matrix::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -158,6 +161,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Tiered::PriceType,
+        replaces_price_id: String | nil,
         tiered_config: Orb::TieredConfig,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -185,6 +189,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::TieredBPS::PriceType,
+        replaces_price_id: String | nil,
         tiered_bps_config: Orb::TieredBPSConfig,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -213,6 +218,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::BPS::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -240,6 +246,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::BulkBPS::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -267,6 +274,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Bulk::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -293,6 +301,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::ThresholdTotalAmount::PriceType,
+        replaces_price_id: String | nil,
         threshold_total_amount_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -320,6 +329,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::TieredPackage::PriceType,
+        replaces_price_id: String | nil,
         tiered_package_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -348,6 +358,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedTiered::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -374,6 +385,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::TieredWithMinimum::PriceType,
+        replaces_price_id: String | nil,
         tiered_with_minimum_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -401,6 +413,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::TieredPackageWithMinimum::PriceType,
+        replaces_price_id: String | nil,
         tiered_package_with_minimum_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -429,6 +442,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         package_with_allocation_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::PackageWithAllocation::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -455,6 +469,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::UnitWithPercent::PriceType,
+        replaces_price_id: String | nil,
         unit_with_percent_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -483,6 +498,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MatrixWithAllocation::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -509,6 +525,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::TieredWithProration::PriceType,
+        replaces_price_id: String | nil,
         tiered_with_proration_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -536,6 +553,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::UnitWithProration::PriceType,
+        replaces_price_id: String | nil,
         unit_with_proration_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -564,6 +582,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedAllocation::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -591,6 +610,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedWithProratedMinimum::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -618,6 +638,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedWithMeteredMinimum::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -645,6 +666,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MatrixWithDisplayName::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -672,6 +694,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::BulkWithProration::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -699,6 +722,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedTieredPackage::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -726,6 +750,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MaxGroupTieredPackage::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -752,6 +777,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::ScalableMatrixWithUnitPricing::PriceType,
+        replaces_price_id: String | nil,
         scalable_matrix_with_unit_pricing_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -779,6 +805,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::ScalableMatrixWithTieredPricing::PriceType,
+        replaces_price_id: String | nil,
         scalable_matrix_with_tiered_pricing_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -807,6 +834,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::CumulativeGroupedBulk::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       end
@@ -879,6 +907,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Unit::PriceType,
+        replaces_price_id: String | nil,
         unit_config: Orb::UnitConfig,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -907,6 +936,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         package_config: Orb::PackageConfig,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Package::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -934,6 +964,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Matrix::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -960,6 +991,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Tiered::PriceType,
+        replaces_price_id: String | nil,
         tiered_config: Orb::TieredConfig,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -987,6 +1019,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::TieredBPS::PriceType,
+        replaces_price_id: String | nil,
         tiered_bps_config: Orb::TieredBPSConfig,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -1015,6 +1048,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::BPS::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1042,6 +1076,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::BulkBPS::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1069,6 +1104,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Bulk::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1095,6 +1131,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::ThresholdTotalAmount::PriceType,
+        replaces_price_id: String | nil,
         threshold_total_amount_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -1122,6 +1159,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::TieredPackage::PriceType,
+        replaces_price_id: String | nil,
         tiered_package_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -1150,6 +1188,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedTiered::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1176,6 +1215,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::TieredWithMinimum::PriceType,
+        replaces_price_id: String | nil,
         tiered_with_minimum_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -1203,6 +1243,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::TieredPackageWithMinimum::PriceType,
+        replaces_price_id: String | nil,
         tiered_package_with_minimum_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -1231,6 +1272,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         package_with_allocation_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::PackageWithAllocation::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1257,6 +1299,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::UnitWithPercent::PriceType,
+        replaces_price_id: String | nil,
         unit_with_percent_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -1285,6 +1328,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MatrixWithAllocation::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1311,6 +1355,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::TieredWithProration::PriceType,
+        replaces_price_id: String | nil,
         tiered_with_proration_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -1338,6 +1383,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::UnitWithProration::PriceType,
+        replaces_price_id: String | nil,
         unit_with_proration_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -1366,6 +1412,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedAllocation::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1393,6 +1440,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedWithProratedMinimum::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1420,6 +1468,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedWithMeteredMinimum::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1447,6 +1496,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MatrixWithDisplayName::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1474,6 +1524,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::BulkWithProration::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1501,6 +1552,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedTieredPackage::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1528,6 +1580,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MaxGroupTieredPackage::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1554,6 +1607,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::ScalableMatrixWithUnitPricing::PriceType,
+        replaces_price_id: String | nil,
         scalable_matrix_with_unit_pricing_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -1581,6 +1635,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::ScalableMatrixWithTieredPricing::PriceType,
+        replaces_price_id: String | nil,
         scalable_matrix_with_tiered_pricing_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -1609,6 +1664,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::CumulativeGroupedBulk::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       end
@@ -1688,6 +1744,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Unit::PriceType,
+        replaces_price_id: String | nil,
         unit_config: Orb::UnitConfig,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -1716,6 +1773,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         package_config: Orb::PackageConfig,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Package::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1743,6 +1801,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Matrix::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1769,6 +1828,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Tiered::PriceType,
+        replaces_price_id: String | nil,
         tiered_config: Orb::TieredConfig,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -1796,6 +1856,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::TieredBPS::PriceType,
+        replaces_price_id: String | nil,
         tiered_bps_config: Orb::TieredBPSConfig,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -1824,6 +1885,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::BPS::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1851,6 +1913,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::BulkBPS::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1878,6 +1941,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Bulk::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1904,6 +1968,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::ThresholdTotalAmount::PriceType,
+        replaces_price_id: String | nil,
         threshold_total_amount_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -1931,6 +1996,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::TieredPackage::PriceType,
+        replaces_price_id: String | nil,
         tiered_package_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -1959,6 +2025,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedTiered::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1985,6 +2052,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::TieredWithMinimum::PriceType,
+        replaces_price_id: String | nil,
         tiered_with_minimum_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -2012,6 +2080,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::TieredPackageWithMinimum::PriceType,
+        replaces_price_id: String | nil,
         tiered_package_with_minimum_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -2040,6 +2109,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         package_with_allocation_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::PackageWithAllocation::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -2066,6 +2136,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::UnitWithPercent::PriceType,
+        replaces_price_id: String | nil,
         unit_with_percent_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -2094,6 +2165,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MatrixWithAllocation::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -2120,6 +2192,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::TieredWithProration::PriceType,
+        replaces_price_id: String | nil,
         tiered_with_proration_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -2147,6 +2220,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::UnitWithProration::PriceType,
+        replaces_price_id: String | nil,
         unit_with_proration_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -2175,6 +2249,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedAllocation::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -2202,6 +2277,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedWithProratedMinimum::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -2229,6 +2305,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedWithMeteredMinimum::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -2256,6 +2333,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MatrixWithDisplayName::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -2283,6 +2361,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::BulkWithProration::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -2310,6 +2389,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedTieredPackage::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -2337,6 +2417,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MaxGroupTieredPackage::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -2363,6 +2444,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::ScalableMatrixWithUnitPricing::PriceType,
+        replaces_price_id: String | nil,
         scalable_matrix_with_unit_pricing_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -2390,6 +2472,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::ScalableMatrixWithTieredPricing::PriceType,
+        replaces_price_id: String | nil,
         scalable_matrix_with_tiered_pricing_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -2418,6 +2501,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::CumulativeGroupedBulk::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       end
@@ -2545,6 +2629,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Unit::PriceType,
+        replaces_price_id: String | nil,
         unit_config: Orb::UnitConfig,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -2573,6 +2658,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         package_config: Orb::PackageConfig,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Package::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -2600,6 +2686,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Matrix::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -2626,6 +2713,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Tiered::PriceType,
+        replaces_price_id: String | nil,
         tiered_config: Orb::TieredConfig,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -2653,6 +2741,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::TieredBPS::PriceType,
+        replaces_price_id: String | nil,
         tiered_bps_config: Orb::TieredBPSConfig,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -2681,6 +2770,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::BPS::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -2708,6 +2798,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::BulkBPS::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -2735,6 +2826,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Bulk::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -2761,6 +2853,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::ThresholdTotalAmount::PriceType,
+        replaces_price_id: String | nil,
         threshold_total_amount_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -2788,6 +2881,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::TieredPackage::PriceType,
+        replaces_price_id: String | nil,
         tiered_package_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -2816,6 +2910,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedTiered::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -2842,6 +2937,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::TieredWithMinimum::PriceType,
+        replaces_price_id: String | nil,
         tiered_with_minimum_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -2869,6 +2965,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::TieredPackageWithMinimum::PriceType,
+        replaces_price_id: String | nil,
         tiered_package_with_minimum_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -2897,6 +2994,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         package_with_allocation_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::PackageWithAllocation::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -2923,6 +3021,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::UnitWithPercent::PriceType,
+        replaces_price_id: String | nil,
         unit_with_percent_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -2951,6 +3050,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MatrixWithAllocation::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -2977,6 +3077,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::TieredWithProration::PriceType,
+        replaces_price_id: String | nil,
         tiered_with_proration_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -3004,6 +3105,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::UnitWithProration::PriceType,
+        replaces_price_id: String | nil,
         unit_with_proration_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -3032,6 +3134,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedAllocation::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -3059,6 +3162,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedWithProratedMinimum::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -3086,6 +3190,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedWithMeteredMinimum::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -3113,6 +3218,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MatrixWithDisplayName::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -3140,6 +3246,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::BulkWithProration::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -3167,6 +3274,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedTieredPackage::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -3194,6 +3302,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MaxGroupTieredPackage::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -3220,6 +3329,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::ScalableMatrixWithUnitPricing::PriceType,
+        replaces_price_id: String | nil,
         scalable_matrix_with_unit_pricing_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -3247,6 +3357,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::ScalableMatrixWithTieredPricing::PriceType,
+        replaces_price_id: String | nil,
         scalable_matrix_with_tiered_pricing_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -3275,6 +3386,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::CumulativeGroupedBulk::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       end

@@ -9,6 +9,7 @@ module Orb
         is_invoice_level: bool,
         plan_phase_order: Integer?,
         reason: String?,
+        replaces_adjustment_id: String?,
         usage_discount: Float
       }
 
@@ -27,6 +28,8 @@ module Orb
 
       attr_accessor reason: String?
 
+      attr_accessor replaces_adjustment_id: String?
+
       attr_accessor usage_discount: Float
 
       def initialize: (
@@ -37,6 +40,7 @@ module Orb
         is_invoice_level: bool,
         plan_phase_order: Integer?,
         reason: String?,
+        replaces_adjustment_id: String?,
         usage_discount: Float
       ) -> void
 
@@ -48,6 +52,7 @@ module Orb
         is_invoice_level: bool,
         plan_phase_order: Integer?,
         reason: String?,
+        replaces_adjustment_id: String?,
         usage_discount: Float
       }
 

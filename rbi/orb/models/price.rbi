@@ -164,6 +164,11 @@ module Orb
         sig { returns(Orb::Price::Unit::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
         sig { returns(Orb::UnitConfig) }
         attr_reader :unit_config
 
@@ -220,6 +225,7 @@ module Orb
             name: String,
             plan_phase_order: T.nilable(Integer),
             price_type: Orb::Price::Unit::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
             unit_config: Orb::UnitConfig::OrHash,
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
@@ -253,6 +259,9 @@ module Orb
           name:,
           plan_phase_order:,
           price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
           unit_config:,
           dimensional_price_configuration: nil,
           model_type: :unit
@@ -287,6 +296,7 @@ module Orb
               name: String,
               plan_phase_order: T.nilable(Integer),
               price_type: Orb::Price::Unit::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
               unit_config: Orb::UnitConfig,
               dimensional_price_configuration:
                 T.nilable(Orb::DimensionalPriceConfiguration)
@@ -483,6 +493,11 @@ module Orb
         sig { returns(Orb::Price::Package::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
         sig { returns(T.nilable(Orb::DimensionalPriceConfiguration)) }
         attr_reader :dimensional_price_configuration
 
@@ -534,6 +549,7 @@ module Orb
             package_config: Orb::PackageConfig::OrHash,
             plan_phase_order: T.nilable(Integer),
             price_type: Orb::Price::Package::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
             model_type: Symbol
@@ -567,6 +583,9 @@ module Orb
           package_config:,
           plan_phase_order:,
           price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
           dimensional_price_configuration: nil,
           model_type: :package
         )
@@ -601,6 +620,7 @@ module Orb
               package_config: Orb::PackageConfig,
               plan_phase_order: T.nilable(Integer),
               price_type: Orb::Price::Package::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
                 T.nilable(Orb::DimensionalPriceConfiguration)
             }
@@ -798,6 +818,11 @@ module Orb
         sig { returns(Orb::Price::Matrix::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
         sig { returns(T.nilable(Orb::DimensionalPriceConfiguration)) }
         attr_reader :dimensional_price_configuration
 
@@ -849,6 +874,7 @@ module Orb
             name: String,
             plan_phase_order: T.nilable(Integer),
             price_type: Orb::Price::Matrix::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
             model_type: Symbol
@@ -882,6 +908,9 @@ module Orb
           name:,
           plan_phase_order:,
           price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
           dimensional_price_configuration: nil,
           model_type: :matrix
         )
@@ -916,6 +945,7 @@ module Orb
               name: String,
               plan_phase_order: T.nilable(Integer),
               price_type: Orb::Price::Matrix::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
                 T.nilable(Orb::DimensionalPriceConfiguration)
             }
@@ -1106,6 +1136,11 @@ module Orb
         sig { returns(Orb::Price::Tiered::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
         sig { returns(Orb::TieredConfig) }
         attr_reader :tiered_config
 
@@ -1162,6 +1197,7 @@ module Orb
             name: String,
             plan_phase_order: T.nilable(Integer),
             price_type: Orb::Price::Tiered::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
             tiered_config: Orb::TieredConfig::OrHash,
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
@@ -1195,6 +1231,9 @@ module Orb
           name:,
           plan_phase_order:,
           price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
           tiered_config:,
           dimensional_price_configuration: nil,
           model_type: :tiered
@@ -1229,6 +1268,7 @@ module Orb
               name: String,
               plan_phase_order: T.nilable(Integer),
               price_type: Orb::Price::Tiered::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
               tiered_config: Orb::TieredConfig,
               dimensional_price_configuration:
                 T.nilable(Orb::DimensionalPriceConfiguration)
@@ -1422,6 +1462,11 @@ module Orb
         sig { returns(Orb::Price::TieredBPS::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
         sig { returns(Orb::TieredBPSConfig) }
         attr_reader :tiered_bps_config
 
@@ -1478,6 +1523,7 @@ module Orb
             name: String,
             plan_phase_order: T.nilable(Integer),
             price_type: Orb::Price::TieredBPS::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
             tiered_bps_config: Orb::TieredBPSConfig::OrHash,
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
@@ -1511,6 +1557,9 @@ module Orb
           name:,
           plan_phase_order:,
           price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
           tiered_bps_config:,
           dimensional_price_configuration: nil,
           model_type: :tiered_bps
@@ -1547,6 +1596,7 @@ module Orb
               name: String,
               plan_phase_order: T.nilable(Integer),
               price_type: Orb::Price::TieredBPS::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
               tiered_bps_config: Orb::TieredBPSConfig,
               dimensional_price_configuration:
                 T.nilable(Orb::DimensionalPriceConfiguration)
@@ -1745,6 +1795,11 @@ module Orb
         sig { returns(Orb::Price::BPS::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
         sig { returns(T.nilable(Orb::DimensionalPriceConfiguration)) }
         attr_reader :dimensional_price_configuration
 
@@ -1796,6 +1851,7 @@ module Orb
             name: String,
             plan_phase_order: T.nilable(Integer),
             price_type: Orb::Price::BPS::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
             model_type: Symbol
@@ -1829,6 +1885,9 @@ module Orb
           name:,
           plan_phase_order:,
           price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
           dimensional_price_configuration: nil,
           model_type: :bps
         )
@@ -1863,6 +1922,7 @@ module Orb
               name: String,
               plan_phase_order: T.nilable(Integer),
               price_type: Orb::Price::BPS::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
                 T.nilable(Orb::DimensionalPriceConfiguration)
             }
@@ -2056,6 +2116,11 @@ module Orb
         sig { returns(Orb::Price::BulkBPS::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
         sig { returns(T.nilable(Orb::DimensionalPriceConfiguration)) }
         attr_reader :dimensional_price_configuration
 
@@ -2107,6 +2172,7 @@ module Orb
             name: String,
             plan_phase_order: T.nilable(Integer),
             price_type: Orb::Price::BulkBPS::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
             model_type: Symbol
@@ -2140,6 +2206,9 @@ module Orb
           name:,
           plan_phase_order:,
           price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
           dimensional_price_configuration: nil,
           model_type: :bulk_bps
         )
@@ -2174,6 +2243,7 @@ module Orb
               name: String,
               plan_phase_order: T.nilable(Integer),
               price_type: Orb::Price::BulkBPS::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
                 T.nilable(Orb::DimensionalPriceConfiguration)
             }
@@ -2371,6 +2441,11 @@ module Orb
         sig { returns(Orb::Price::Bulk::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
         sig { returns(T.nilable(Orb::DimensionalPriceConfiguration)) }
         attr_reader :dimensional_price_configuration
 
@@ -2422,6 +2497,7 @@ module Orb
             name: String,
             plan_phase_order: T.nilable(Integer),
             price_type: Orb::Price::Bulk::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
             model_type: Symbol
@@ -2455,6 +2531,9 @@ module Orb
           name:,
           plan_phase_order:,
           price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
           dimensional_price_configuration: nil,
           model_type: :bulk
         )
@@ -2489,6 +2568,7 @@ module Orb
               name: String,
               plan_phase_order: T.nilable(Integer),
               price_type: Orb::Price::Bulk::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
                 T.nilable(Orb::DimensionalPriceConfiguration)
             }
@@ -2684,6 +2764,11 @@ module Orb
         end
         attr_accessor :price_type
 
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
         sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :threshold_total_amount_config
 
@@ -2737,6 +2822,7 @@ module Orb
             name: String,
             plan_phase_order: T.nilable(Integer),
             price_type: Orb::Price::ThresholdTotalAmount::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
             threshold_total_amount_config: T::Hash[Symbol, T.anything],
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
@@ -2770,6 +2856,9 @@ module Orb
           name:,
           plan_phase_order:,
           price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
           threshold_total_amount_config:,
           dimensional_price_configuration: nil,
           model_type: :threshold_total_amount
@@ -2807,6 +2896,7 @@ module Orb
               plan_phase_order: T.nilable(Integer),
               price_type:
                 Orb::Price::ThresholdTotalAmount::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
               threshold_total_amount_config: T::Hash[Symbol, T.anything],
               dimensional_price_configuration:
                 T.nilable(Orb::DimensionalPriceConfiguration)
@@ -3038,6 +3128,11 @@ module Orb
         sig { returns(Orb::Price::TieredPackage::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
         sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :tiered_package_config
 
@@ -3091,6 +3186,7 @@ module Orb
             name: String,
             plan_phase_order: T.nilable(Integer),
             price_type: Orb::Price::TieredPackage::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
             tiered_package_config: T::Hash[Symbol, T.anything],
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
@@ -3124,6 +3220,9 @@ module Orb
           name:,
           plan_phase_order:,
           price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
           tiered_package_config:,
           dimensional_price_configuration: nil,
           model_type: :tiered_package
@@ -3160,6 +3259,7 @@ module Orb
               name: String,
               plan_phase_order: T.nilable(Integer),
               price_type: Orb::Price::TieredPackage::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
               tiered_package_config: T::Hash[Symbol, T.anything],
               dimensional_price_configuration:
                 T.nilable(Orb::DimensionalPriceConfiguration)
@@ -3373,6 +3473,11 @@ module Orb
         sig { returns(Orb::Price::GroupedTiered::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
         sig { returns(T.nilable(Orb::DimensionalPriceConfiguration)) }
         attr_reader :dimensional_price_configuration
 
@@ -3424,6 +3529,7 @@ module Orb
             name: String,
             plan_phase_order: T.nilable(Integer),
             price_type: Orb::Price::GroupedTiered::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
             model_type: Symbol
@@ -3457,6 +3563,9 @@ module Orb
           name:,
           plan_phase_order:,
           price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
           dimensional_price_configuration: nil,
           model_type: :grouped_tiered
         )
@@ -3493,6 +3602,7 @@ module Orb
               name: String,
               plan_phase_order: T.nilable(Integer),
               price_type: Orb::Price::GroupedTiered::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
                 T.nilable(Orb::DimensionalPriceConfiguration)
             }
@@ -3704,6 +3814,11 @@ module Orb
         sig { returns(Orb::Price::TieredWithMinimum::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
         sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :tiered_with_minimum_config
 
@@ -3757,6 +3872,7 @@ module Orb
             name: String,
             plan_phase_order: T.nilable(Integer),
             price_type: Orb::Price::TieredWithMinimum::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
             tiered_with_minimum_config: T::Hash[Symbol, T.anything],
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
@@ -3790,6 +3906,9 @@ module Orb
           name:,
           plan_phase_order:,
           price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
           tiered_with_minimum_config:,
           dimensional_price_configuration: nil,
           model_type: :tiered_with_minimum
@@ -3827,6 +3946,7 @@ module Orb
               plan_phase_order: T.nilable(Integer),
               price_type:
                 Orb::Price::TieredWithMinimum::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
               tiered_with_minimum_config: T::Hash[Symbol, T.anything],
               dimensional_price_configuration:
                 T.nilable(Orb::DimensionalPriceConfiguration)
@@ -4056,6 +4176,11 @@ module Orb
         end
         attr_accessor :price_type
 
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
         sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :tiered_package_with_minimum_config
 
@@ -4110,6 +4235,7 @@ module Orb
             plan_phase_order: T.nilable(Integer),
             price_type:
               Orb::Price::TieredPackageWithMinimum::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
             tiered_package_with_minimum_config: T::Hash[Symbol, T.anything],
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
@@ -4143,6 +4269,9 @@ module Orb
           name:,
           plan_phase_order:,
           price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
           tiered_package_with_minimum_config:,
           dimensional_price_configuration: nil,
           model_type: :tiered_package_with_minimum
@@ -4181,6 +4310,7 @@ module Orb
               plan_phase_order: T.nilable(Integer),
               price_type:
                 Orb::Price::TieredPackageWithMinimum::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
               tiered_package_with_minimum_config: T::Hash[Symbol, T.anything],
               dimensional_price_configuration:
                 T.nilable(Orb::DimensionalPriceConfiguration)
@@ -4423,6 +4553,11 @@ module Orb
         end
         attr_accessor :price_type
 
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
         sig { returns(T.nilable(Orb::DimensionalPriceConfiguration)) }
         attr_reader :dimensional_price_configuration
 
@@ -4474,6 +4609,7 @@ module Orb
             package_with_allocation_config: T::Hash[Symbol, T.anything],
             plan_phase_order: T.nilable(Integer),
             price_type: Orb::Price::PackageWithAllocation::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
             model_type: Symbol
@@ -4507,6 +4643,9 @@ module Orb
           package_with_allocation_config:,
           plan_phase_order:,
           price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
           dimensional_price_configuration: nil,
           model_type: :package_with_allocation
         )
@@ -4544,6 +4683,7 @@ module Orb
               plan_phase_order: T.nilable(Integer),
               price_type:
                 Orb::Price::PackageWithAllocation::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
                 T.nilable(Orb::DimensionalPriceConfiguration)
             }
@@ -4776,6 +4916,11 @@ module Orb
         sig { returns(Orb::Price::UnitWithPercent::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
         sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :unit_with_percent_config
 
@@ -4829,6 +4974,7 @@ module Orb
             name: String,
             plan_phase_order: T.nilable(Integer),
             price_type: Orb::Price::UnitWithPercent::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
             unit_with_percent_config: T::Hash[Symbol, T.anything],
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
@@ -4862,6 +5008,9 @@ module Orb
           name:,
           plan_phase_order:,
           price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
           unit_with_percent_config:,
           dimensional_price_configuration: nil,
           model_type: :unit_with_percent
@@ -4898,6 +5047,7 @@ module Orb
               name: String,
               plan_phase_order: T.nilable(Integer),
               price_type: Orb::Price::UnitWithPercent::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
               unit_with_percent_config: T::Hash[Symbol, T.anything],
               dimensional_price_configuration:
                 T.nilable(Orb::DimensionalPriceConfiguration)
@@ -5128,6 +5278,11 @@ module Orb
         end
         attr_accessor :price_type
 
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
         sig { returns(T.nilable(Orb::DimensionalPriceConfiguration)) }
         attr_reader :dimensional_price_configuration
 
@@ -5180,6 +5335,7 @@ module Orb
             name: String,
             plan_phase_order: T.nilable(Integer),
             price_type: Orb::Price::MatrixWithAllocation::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
             model_type: Symbol
@@ -5213,6 +5369,9 @@ module Orb
           name:,
           plan_phase_order:,
           price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
           dimensional_price_configuration: nil,
           model_type: :matrix_with_allocation
         )
@@ -5250,6 +5409,7 @@ module Orb
               plan_phase_order: T.nilable(Integer),
               price_type:
                 Orb::Price::MatrixWithAllocation::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
                 T.nilable(Orb::DimensionalPriceConfiguration)
             }
@@ -5484,6 +5644,11 @@ module Orb
         end
         attr_accessor :price_type
 
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
         sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :tiered_with_proration_config
 
@@ -5537,6 +5702,7 @@ module Orb
             name: String,
             plan_phase_order: T.nilable(Integer),
             price_type: Orb::Price::TieredWithProration::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
             tiered_with_proration_config: T::Hash[Symbol, T.anything],
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
@@ -5570,6 +5736,9 @@ module Orb
           name:,
           plan_phase_order:,
           price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
           tiered_with_proration_config:,
           dimensional_price_configuration: nil,
           model_type: :tiered_with_proration
@@ -5607,6 +5776,7 @@ module Orb
               plan_phase_order: T.nilable(Integer),
               price_type:
                 Orb::Price::TieredWithProration::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
               tiered_with_proration_config: T::Hash[Symbol, T.anything],
               dimensional_price_configuration:
                 T.nilable(Orb::DimensionalPriceConfiguration)
@@ -5838,6 +6008,11 @@ module Orb
         sig { returns(Orb::Price::UnitWithProration::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
         sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :unit_with_proration_config
 
@@ -5891,6 +6066,7 @@ module Orb
             name: String,
             plan_phase_order: T.nilable(Integer),
             price_type: Orb::Price::UnitWithProration::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
             unit_with_proration_config: T::Hash[Symbol, T.anything],
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
@@ -5924,6 +6100,9 @@ module Orb
           name:,
           plan_phase_order:,
           price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
           unit_with_proration_config:,
           dimensional_price_configuration: nil,
           model_type: :unit_with_proration
@@ -5961,6 +6140,7 @@ module Orb
               plan_phase_order: T.nilable(Integer),
               price_type:
                 Orb::Price::UnitWithProration::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
               unit_with_proration_config: T::Hash[Symbol, T.anything],
               dimensional_price_configuration:
                 T.nilable(Orb::DimensionalPriceConfiguration)
@@ -6189,6 +6369,11 @@ module Orb
         sig { returns(Orb::Price::GroupedAllocation::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
         sig { returns(T.nilable(Orb::DimensionalPriceConfiguration)) }
         attr_reader :dimensional_price_configuration
 
@@ -6240,6 +6425,7 @@ module Orb
             name: String,
             plan_phase_order: T.nilable(Integer),
             price_type: Orb::Price::GroupedAllocation::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
             model_type: Symbol
@@ -6273,6 +6459,9 @@ module Orb
           name:,
           plan_phase_order:,
           price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
           dimensional_price_configuration: nil,
           model_type: :grouped_allocation
         )
@@ -6310,6 +6499,7 @@ module Orb
               plan_phase_order: T.nilable(Integer),
               price_type:
                 Orb::Price::GroupedAllocation::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
                 T.nilable(Orb::DimensionalPriceConfiguration)
             }
@@ -6546,6 +6736,11 @@ module Orb
         end
         attr_accessor :price_type
 
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
         sig { returns(T.nilable(Orb::DimensionalPriceConfiguration)) }
         attr_reader :dimensional_price_configuration
 
@@ -6598,6 +6793,7 @@ module Orb
             plan_phase_order: T.nilable(Integer),
             price_type:
               Orb::Price::GroupedWithProratedMinimum::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
             model_type: Symbol
@@ -6631,6 +6827,9 @@ module Orb
           name:,
           plan_phase_order:,
           price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
           dimensional_price_configuration: nil,
           model_type: :grouped_with_prorated_minimum
         )
@@ -6669,6 +6868,7 @@ module Orb
               plan_phase_order: T.nilable(Integer),
               price_type:
                 Orb::Price::GroupedWithProratedMinimum::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
                 T.nilable(Orb::DimensionalPriceConfiguration)
             }
@@ -6912,6 +7112,11 @@ module Orb
         end
         attr_accessor :price_type
 
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
         sig { returns(T.nilable(Orb::DimensionalPriceConfiguration)) }
         attr_reader :dimensional_price_configuration
 
@@ -6964,6 +7169,7 @@ module Orb
             plan_phase_order: T.nilable(Integer),
             price_type:
               Orb::Price::GroupedWithMeteredMinimum::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
             model_type: Symbol
@@ -6997,6 +7203,9 @@ module Orb
           name:,
           plan_phase_order:,
           price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
           dimensional_price_configuration: nil,
           model_type: :grouped_with_metered_minimum
         )
@@ -7035,6 +7244,7 @@ module Orb
               plan_phase_order: T.nilable(Integer),
               price_type:
                 Orb::Price::GroupedWithMeteredMinimum::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
                 T.nilable(Orb::DimensionalPriceConfiguration)
             }
@@ -7276,6 +7486,11 @@ module Orb
         end
         attr_accessor :price_type
 
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
         sig { returns(T.nilable(Orb::DimensionalPriceConfiguration)) }
         attr_reader :dimensional_price_configuration
 
@@ -7327,6 +7542,7 @@ module Orb
             name: String,
             plan_phase_order: T.nilable(Integer),
             price_type: Orb::Price::MatrixWithDisplayName::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
             model_type: Symbol
@@ -7360,6 +7576,9 @@ module Orb
           name:,
           plan_phase_order:,
           price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
           dimensional_price_configuration: nil,
           model_type: :matrix_with_display_name
         )
@@ -7397,6 +7616,7 @@ module Orb
               plan_phase_order: T.nilable(Integer),
               price_type:
                 Orb::Price::MatrixWithDisplayName::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
                 T.nilable(Orb::DimensionalPriceConfiguration)
             }
@@ -7632,6 +7852,11 @@ module Orb
         sig { returns(Orb::Price::BulkWithProration::PriceType::TaggedSymbol) }
         attr_accessor :price_type
 
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
         sig { returns(T.nilable(Orb::DimensionalPriceConfiguration)) }
         attr_reader :dimensional_price_configuration
 
@@ -7683,6 +7908,7 @@ module Orb
             name: String,
             plan_phase_order: T.nilable(Integer),
             price_type: Orb::Price::BulkWithProration::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
             model_type: Symbol
@@ -7716,6 +7942,9 @@ module Orb
           name:,
           plan_phase_order:,
           price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
           dimensional_price_configuration: nil,
           model_type: :bulk_with_proration
         )
@@ -7753,6 +7982,7 @@ module Orb
               plan_phase_order: T.nilable(Integer),
               price_type:
                 Orb::Price::BulkWithProration::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
                 T.nilable(Orb::DimensionalPriceConfiguration)
             }
@@ -7982,6 +8212,11 @@ module Orb
         end
         attr_accessor :price_type
 
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
         sig { returns(T.nilable(Orb::DimensionalPriceConfiguration)) }
         attr_reader :dimensional_price_configuration
 
@@ -8033,6 +8268,7 @@ module Orb
             name: String,
             plan_phase_order: T.nilable(Integer),
             price_type: Orb::Price::GroupedTieredPackage::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
             model_type: Symbol
@@ -8066,6 +8302,9 @@ module Orb
           name:,
           plan_phase_order:,
           price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
           dimensional_price_configuration: nil,
           model_type: :grouped_tiered_package
         )
@@ -8103,6 +8342,7 @@ module Orb
               plan_phase_order: T.nilable(Integer),
               price_type:
                 Orb::Price::GroupedTieredPackage::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
                 T.nilable(Orb::DimensionalPriceConfiguration)
             }
@@ -8342,6 +8582,11 @@ module Orb
         end
         attr_accessor :price_type
 
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
         sig { returns(T.nilable(Orb::DimensionalPriceConfiguration)) }
         attr_reader :dimensional_price_configuration
 
@@ -8393,6 +8638,7 @@ module Orb
             name: String,
             plan_phase_order: T.nilable(Integer),
             price_type: Orb::Price::MaxGroupTieredPackage::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
             model_type: Symbol
@@ -8426,6 +8672,9 @@ module Orb
           name:,
           plan_phase_order:,
           price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
           dimensional_price_configuration: nil,
           model_type: :max_group_tiered_package
         )
@@ -8463,6 +8712,7 @@ module Orb
               plan_phase_order: T.nilable(Integer),
               price_type:
                 Orb::Price::MaxGroupTieredPackage::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
                 T.nilable(Orb::DimensionalPriceConfiguration)
             }
@@ -8706,6 +8956,11 @@ module Orb
         end
         attr_accessor :price_type
 
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
         sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :scalable_matrix_with_unit_pricing_config
 
@@ -8761,6 +9016,7 @@ module Orb
             plan_phase_order: T.nilable(Integer),
             price_type:
               Orb::Price::ScalableMatrixWithUnitPricing::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
             scalable_matrix_with_unit_pricing_config:
               T::Hash[Symbol, T.anything],
             dimensional_price_configuration:
@@ -8795,6 +9051,9 @@ module Orb
           name:,
           plan_phase_order:,
           price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
           scalable_matrix_with_unit_pricing_config:,
           dimensional_price_configuration: nil,
           model_type: :scalable_matrix_with_unit_pricing
@@ -8833,6 +9092,7 @@ module Orb
               plan_phase_order: T.nilable(Integer),
               price_type:
                 Orb::Price::ScalableMatrixWithUnitPricing::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
               scalable_matrix_with_unit_pricing_config:
                 T::Hash[Symbol, T.anything],
               dimensional_price_configuration:
@@ -9083,6 +9343,11 @@ module Orb
         end
         attr_accessor :price_type
 
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
         sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :scalable_matrix_with_tiered_pricing_config
 
@@ -9138,6 +9403,7 @@ module Orb
             plan_phase_order: T.nilable(Integer),
             price_type:
               Orb::Price::ScalableMatrixWithTieredPricing::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
             scalable_matrix_with_tiered_pricing_config:
               T::Hash[Symbol, T.anything],
             dimensional_price_configuration:
@@ -9172,6 +9438,9 @@ module Orb
           name:,
           plan_phase_order:,
           price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
           scalable_matrix_with_tiered_pricing_config:,
           dimensional_price_configuration: nil,
           model_type: :scalable_matrix_with_tiered_pricing
@@ -9210,6 +9479,7 @@ module Orb
               plan_phase_order: T.nilable(Integer),
               price_type:
                 Orb::Price::ScalableMatrixWithTieredPricing::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
               scalable_matrix_with_tiered_pricing_config:
                 T::Hash[Symbol, T.anything],
               dimensional_price_configuration:
@@ -9459,6 +9729,11 @@ module Orb
         end
         attr_accessor :price_type
 
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
         sig { returns(T.nilable(Orb::DimensionalPriceConfiguration)) }
         attr_reader :dimensional_price_configuration
 
@@ -9510,6 +9785,7 @@ module Orb
             name: String,
             plan_phase_order: T.nilable(Integer),
             price_type: Orb::Price::CumulativeGroupedBulk::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
             model_type: Symbol
@@ -9543,6 +9819,9 @@ module Orb
           name:,
           plan_phase_order:,
           price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
           dimensional_price_configuration: nil,
           model_type: :cumulative_grouped_bulk
         )
@@ -9580,6 +9859,7 @@ module Orb
               plan_phase_order: T.nilable(Integer),
               price_type:
                 Orb::Price::CumulativeGroupedBulk::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
                 T.nilable(Orb::DimensionalPriceConfiguration)
             }
