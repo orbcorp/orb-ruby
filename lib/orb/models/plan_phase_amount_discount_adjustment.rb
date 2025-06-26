@@ -53,7 +53,14 @@ module Orb
       #   @return [String, nil]
       required :reason, String, nil?: true
 
-      # @!method initialize(id:, adjustment_type:, amount_discount:, applies_to_price_ids:, filters:, is_invoice_level:, plan_phase_order:, reason:)
+      # @!attribute replaces_adjustment_id
+      #   The adjustment id this adjustment replaces. This adjustment will take the place
+      #   of the replaced adjustment in plan version migrations.
+      #
+      #   @return [String, nil]
+      required :replaces_adjustment_id, String, nil?: true
+
+      # @!method initialize(id:, adjustment_type:, amount_discount:, applies_to_price_ids:, filters:, is_invoice_level:, plan_phase_order:, reason:, replaces_adjustment_id:)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::PlanPhaseAmountDiscountAdjustment} for more details.
       #
@@ -72,6 +79,8 @@ module Orb
       #   @param plan_phase_order [Integer, nil] The plan phase in which this adjustment is active.
       #
       #   @param reason [String, nil] The reason for the adjustment.
+      #
+      #   @param replaces_adjustment_id [String, nil] The adjustment id this adjustment replaces. This adjustment will take the place
 
       # @see Orb::Models::PlanPhaseAmountDiscountAdjustment#adjustment_type
       module AdjustmentType

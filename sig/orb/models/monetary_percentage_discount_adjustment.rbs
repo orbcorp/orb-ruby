@@ -9,7 +9,8 @@ module Orb
         filters: ::Array[Orb::TransformPriceFilter],
         is_invoice_level: bool,
         percentage_discount: Float,
-        reason: String?
+        reason: String?,
+        replaces_adjustment_id: String?
       }
 
     class MonetaryPercentageDiscountAdjustment < Orb::Internal::Type::BaseModel
@@ -29,6 +30,8 @@ module Orb
 
       attr_accessor reason: String?
 
+      attr_accessor replaces_adjustment_id: String?
+
       def initialize: (
         id: String,
         adjustment_type: Orb::Models::MonetaryPercentageDiscountAdjustment::adjustment_type,
@@ -37,7 +40,8 @@ module Orb
         filters: ::Array[Orb::TransformPriceFilter],
         is_invoice_level: bool,
         percentage_discount: Float,
-        reason: String?
+        reason: String?,
+        replaces_adjustment_id: String?
       ) -> void
 
       def to_hash: -> {
@@ -48,7 +52,8 @@ module Orb
         filters: ::Array[Orb::TransformPriceFilter],
         is_invoice_level: bool,
         percentage_discount: Float,
-        reason: String?
+        reason: String?,
+        replaces_adjustment_id: String?
       }
 
       type adjustment_type = :percentage_discount

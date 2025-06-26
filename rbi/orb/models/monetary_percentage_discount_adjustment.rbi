@@ -47,6 +47,11 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :reason
 
+      # The adjustment id this adjustment replaces. This adjustment will take the place
+      # of the replaced adjustment in plan version migrations.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :replaces_adjustment_id
+
       sig do
         params(
           id: String,
@@ -57,7 +62,8 @@ module Orb
           filters: T::Array[Orb::TransformPriceFilter::OrHash],
           is_invoice_level: T::Boolean,
           percentage_discount: Float,
-          reason: T.nilable(String)
+          reason: T.nilable(String),
+          replaces_adjustment_id: T.nilable(String)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -76,7 +82,10 @@ module Orb
         # intervals this adjustment applies to in a given billing period.
         percentage_discount:,
         # The reason for the adjustment.
-        reason:
+        reason:,
+        # The adjustment id this adjustment replaces. This adjustment will take the place
+        # of the replaced adjustment in plan version migrations.
+        replaces_adjustment_id:
       )
       end
 
@@ -91,7 +100,8 @@ module Orb
             filters: T::Array[Orb::TransformPriceFilter],
             is_invoice_level: T::Boolean,
             percentage_discount: Float,
-            reason: T.nilable(String)
+            reason: T.nilable(String),
+            replaces_adjustment_id: T.nilable(String)
           }
         )
       end
