@@ -46,6 +46,13 @@ module Orb
       #   @return [String, nil]
       required :reason, String, nil?: true
 
+      # @!attribute replaces_adjustment_id
+      #   The adjustment id this adjustment replaces. This adjustment will take the place
+      #   of the replaced adjustment in plan version migrations.
+      #
+      #   @return [String, nil]
+      required :replaces_adjustment_id, String, nil?: true
+
       # @!attribute usage_discount
       #   The number of usage units by which to discount the price this adjustment applies
       #   to in a given billing period.
@@ -53,7 +60,7 @@ module Orb
       #   @return [Float]
       required :usage_discount, Float
 
-      # @!method initialize(id:, adjustment_type:, amount:, applies_to_price_ids:, filters:, is_invoice_level:, reason:, usage_discount:)
+      # @!method initialize(id:, adjustment_type:, amount:, applies_to_price_ids:, filters:, is_invoice_level:, reason:, replaces_adjustment_id:, usage_discount:)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::MonetaryUsageDiscountAdjustment} for more details.
       #
@@ -70,6 +77,8 @@ module Orb
       #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
       #
       #   @param reason [String, nil] The reason for the adjustment.
+      #
+      #   @param replaces_adjustment_id [String, nil] The adjustment id this adjustment replaces. This adjustment will take the place
       #
       #   @param usage_discount [Float] The number of usage units by which to discount the price this adjustment applies
 

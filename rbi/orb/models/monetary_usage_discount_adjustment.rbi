@@ -39,6 +39,11 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :reason
 
+      # The adjustment id this adjustment replaces. This adjustment will take the place
+      # of the replaced adjustment in plan version migrations.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :replaces_adjustment_id
+
       # The number of usage units by which to discount the price this adjustment applies
       # to in a given billing period.
       sig { returns(Float) }
@@ -54,6 +59,7 @@ module Orb
           filters: T::Array[Orb::TransformPriceFilter::OrHash],
           is_invoice_level: T::Boolean,
           reason: T.nilable(String),
+          replaces_adjustment_id: T.nilable(String),
           usage_discount: Float
         ).returns(T.attached_class)
       end
@@ -71,6 +77,9 @@ module Orb
         is_invoice_level:,
         # The reason for the adjustment.
         reason:,
+        # The adjustment id this adjustment replaces. This adjustment will take the place
+        # of the replaced adjustment in plan version migrations.
+        replaces_adjustment_id:,
         # The number of usage units by which to discount the price this adjustment applies
         # to in a given billing period.
         usage_discount:
@@ -88,6 +97,7 @@ module Orb
             filters: T::Array[Orb::TransformPriceFilter],
             is_invoice_level: T::Boolean,
             reason: T.nilable(String),
+            replaces_adjustment_id: T.nilable(String),
             usage_discount: Float
           }
         )
