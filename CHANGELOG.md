@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.2.2 (2025-06-30)
+
+Full Changelog: [v1.2.1...v1.2.2](https://github.com/orbcorp/orb-ruby/compare/v1.2.1...v1.2.2)
+
+### Chores
+
+* **ci:** only run for pushes and fork pull requests ([c6f7b50](https://github.com/orbcorp/orb-ruby/commit/c6f7b5036f4a214647af2fa2854d2a6eaf52c128))
+* **internal:** allow streams to also be unwrapped on a per-row basis ([d713b5f](https://github.com/orbcorp/orb-ruby/commit/d713b5f3442bb9842f109ae0cb76e70fdc52506c))
+* **internal:** version bump ([0b13270](https://github.com/orbcorp/orb-ruby/commit/0b132708d6e1294f44e026b249846721e08de2af))
+
 ## 1.2.1 (2025-06-26)
 
 Full Changelog: [v1.2.0...v1.2.1](https://github.com/orbcorp/orb-ruby/compare/v1.2.0...v1.2.1)
