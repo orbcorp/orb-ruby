@@ -36,8 +36,7 @@ module Orb
         expires_at_end_of_cadence: bool?
       }
 
-      type cadence =
-        :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
+      type cadence = :one_time | :monthly | :quarterly | :semi_annual | :annual
 
       module Cadence
         extend Orb::Internal::Type::Enum
@@ -47,7 +46,6 @@ module Orb
         QUARTERLY: :quarterly
         SEMI_ANNUAL: :semi_annual
         ANNUAL: :annual
-        CUSTOM: :custom
 
         def self?.values: -> ::Array[Orb::Models::NewAllocationPrice::cadence]
       end
