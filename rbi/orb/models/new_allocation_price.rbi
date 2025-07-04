@@ -89,7 +89,6 @@ module Orb
         SEMI_ANNUAL =
           T.let(:semi_annual, Orb::NewAllocationPrice::Cadence::TaggedSymbol)
         ANNUAL = T.let(:annual, Orb::NewAllocationPrice::Cadence::TaggedSymbol)
-        CUSTOM = T.let(:custom, Orb::NewAllocationPrice::Cadence::TaggedSymbol)
 
         sig do
           override.returns(
