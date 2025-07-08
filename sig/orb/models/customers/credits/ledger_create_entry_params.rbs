@@ -93,6 +93,7 @@ module Orb
             {
               auto_collection: bool,
               net_terms: Integer,
+              invoice_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::invoice_date?,
               memo: String?,
               require_successful_payment: bool
             }
@@ -101,6 +102,8 @@ module Orb
             attr_accessor auto_collection: bool
 
             attr_accessor net_terms: Integer
+
+            attr_accessor invoice_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::invoice_date?
 
             attr_accessor memo: String?
 
@@ -111,6 +114,7 @@ module Orb
             def initialize: (
               auto_collection: bool,
               net_terms: Integer,
+              ?invoice_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::invoice_date?,
               ?memo: String?,
               ?require_successful_payment: bool
             ) -> void
@@ -118,9 +122,18 @@ module Orb
             def to_hash: -> {
               auto_collection: bool,
               net_terms: Integer,
+              invoice_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::invoice_date?,
               memo: String?,
               require_successful_payment: bool
             }
+
+            type invoice_date = Date | Time
+
+            module InvoiceDate
+              extend Orb::Internal::Type::Union
+
+              def self?.variants: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::invoice_date]
+            end
           end
 
           type void_reason = :refund
