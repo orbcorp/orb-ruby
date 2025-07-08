@@ -245,6 +245,18 @@ module Orb
             sig { returns(Integer) }
             attr_accessor :net_terms
 
+            # An ISO 8601 format date that denotes when this invoice should be dated in the
+            # customer's timezone. If not provided, the invoice date will default to the
+            # credit block's effective date.
+            sig do
+              returns(
+                T.nilable(
+                  Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings::InvoiceDate::Variants
+                )
+              )
+            end
+            attr_accessor :invoice_date
+
             # An optional memo to display on the invoice.
             sig { returns(T.nilable(String)) }
             attr_accessor :memo
@@ -265,6 +277,10 @@ module Orb
               params(
                 auto_collection: T::Boolean,
                 net_terms: Integer,
+                invoice_date:
+                  T.nilable(
+                    Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings::InvoiceDate::Variants
+                  ),
                 memo: T.nilable(String),
                 require_successful_payment: T::Boolean
               ).returns(T.attached_class)
@@ -277,6 +293,10 @@ module Orb
               # date for the invoice. If you intend the invoice to be due on issue, set this
               # to 0.
               net_terms:,
+              # An ISO 8601 format date that denotes when this invoice should be dated in the
+              # customer's timezone. If not provided, the invoice date will default to the
+              # credit block's effective date.
+              invoice_date: nil,
               # An optional memo to display on the invoice.
               memo: nil,
               # If true, the new credit block will require that the corresponding invoice is
@@ -290,12 +310,35 @@ module Orb
                 {
                   auto_collection: T::Boolean,
                   net_terms: Integer,
+                  invoice_date:
+                    T.nilable(
+                      Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings::InvoiceDate::Variants
+                    ),
                   memo: T.nilable(String),
                   require_successful_payment: T::Boolean
                 }
               )
             end
             def to_hash
+            end
+
+            # An ISO 8601 format date that denotes when this invoice should be dated in the
+            # customer's timezone. If not provided, the invoice date will default to the
+            # credit block's effective date.
+            module InvoiceDate
+              extend Orb::Internal::Type::Union
+
+              Variants = T.type_alias { T.any(Date, Time) }
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings::InvoiceDate::Variants
+                  ]
+                )
+              end
+              def self.variants
+              end
             end
           end
 

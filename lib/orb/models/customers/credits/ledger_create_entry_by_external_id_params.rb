@@ -156,6 +156,18 @@ module Orb
             #   @return [Integer]
             required :net_terms, Integer
 
+            # @!attribute invoice_date
+            #   An ISO 8601 format date that denotes when this invoice should be dated in the
+            #   customer's timezone. If not provided, the invoice date will default to the
+            #   credit block's effective date.
+            #
+            #   @return [Date, Time, nil]
+            optional :invoice_date,
+                     union: -> {
+                       Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings::InvoiceDate
+                     },
+                     nil?: true
+
             # @!attribute memo
             #   An optional memo to display on the invoice.
             #
@@ -169,7 +181,7 @@ module Orb
             #   @return [Boolean, nil]
             optional :require_successful_payment, Orb::Internal::Type::Boolean
 
-            # @!method initialize(auto_collection:, net_terms:, memo: nil, require_successful_payment: nil)
+            # @!method initialize(auto_collection:, net_terms:, invoice_date: nil, memo: nil, require_successful_payment: nil)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings}
             #   for more details.
@@ -183,9 +195,27 @@ module Orb
             #
             #   @param net_terms [Integer] The net terms determines the difference between the invoice date and the issue d
             #
+            #   @param invoice_date [Date, Time, nil] An ISO 8601 format date that denotes when this invoice should be dated in the cu
+            #
             #   @param memo [String, nil] An optional memo to display on the invoice.
             #
             #   @param require_successful_payment [Boolean] If true, the new credit block will require that the corresponding invoice is pai
+
+            # An ISO 8601 format date that denotes when this invoice should be dated in the
+            # customer's timezone. If not provided, the invoice date will default to the
+            # credit block's effective date.
+            #
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings#invoice_date
+            module InvoiceDate
+              extend Orb::Internal::Type::Union
+
+              variant Date
+
+              variant Time
+
+              # @!method self.variants
+              #   @return [Array(Date, Time)]
+            end
           end
 
           # Can only be specified when `entry_type=void`. The reason for the void.
