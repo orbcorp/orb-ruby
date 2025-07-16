@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    orb-billing (1.4.0)
+    orb-billing (1.5.0)
       connection_pool
 
 GEM
