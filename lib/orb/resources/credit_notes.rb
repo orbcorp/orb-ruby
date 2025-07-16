@@ -40,11 +40,11 @@ module Orb
       #
       # @param reason [Symbol, Orb::Models::CreditNoteCreateParams::Reason] An optional reason for the credit note.
       #
-      # @param end_date [Date, nil] A date string to specify the global credit note service period end date in the c
+      # @param end_date [Date, nil] An optional date string to specify the global credit note service period end dat
       #
       # @param memo [String, nil] An optional memo to attach to the credit note.
       #
-      # @param start_date [Date, nil] A date string to specify the global credit note service period start date in the
+      # @param start_date [Date, nil] An optional date string to specify the global credit note service period end dat
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
