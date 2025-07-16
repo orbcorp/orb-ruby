@@ -258,7 +258,7 @@ module Orb
       # is hit. To enable threshold billing, pass in an `invoicing_threshold`, which is
       # specified in the subscription's invoicing currency, when creating a
       # subscription. E.g. pass in `10.00` to issue an invoice when usage amounts hit
-      # $10.00 for a subscription that invoices in USD.
+      # \$10.00 for a subscription that invoices in USD.
       sig do
         params(
           add_adjustments:

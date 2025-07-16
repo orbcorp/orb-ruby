@@ -104,7 +104,9 @@ module Orb
           quantity: Float?,
           subtotal: String,
           tax_amounts: ::Array[Orb::TaxAmount],
-          discounts: ::Array[Orb::CreditNote::LineItem::Discount]
+          discounts: ::Array[Orb::CreditNote::LineItem::Discount],
+          end_time_exclusive: Time?,
+          start_time_inclusive: Time?
         }
 
       class LineItem < Orb::Internal::Type::BaseModel
@@ -128,6 +130,10 @@ module Orb
           ::Array[Orb::CreditNote::LineItem::Discount]
         ) -> ::Array[Orb::CreditNote::LineItem::Discount]
 
+        attr_accessor end_time_exclusive: Time?
+
+        attr_accessor start_time_inclusive: Time?
+
         def initialize: (
           id: String,
           amount: String,
@@ -136,7 +142,9 @@ module Orb
           quantity: Float?,
           subtotal: String,
           tax_amounts: ::Array[Orb::TaxAmount],
-          ?discounts: ::Array[Orb::CreditNote::LineItem::Discount]
+          ?discounts: ::Array[Orb::CreditNote::LineItem::Discount],
+          ?end_time_exclusive: Time?,
+          ?start_time_inclusive: Time?
         ) -> void
 
         def to_hash: -> {
@@ -147,7 +155,9 @@ module Orb
           quantity: Float?,
           subtotal: String,
           tax_amounts: ::Array[Orb::TaxAmount],
-          discounts: ::Array[Orb::CreditNote::LineItem::Discount]
+          discounts: ::Array[Orb::CreditNote::LineItem::Discount],
+          end_time_exclusive: Time?,
+          start_time_inclusive: Time?
         }
 
         type discount =

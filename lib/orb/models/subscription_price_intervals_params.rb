@@ -491,8 +491,8 @@ module Orb
         optional :billing_cycle_day, Integer, nil?: true
 
         # @!attribute end_date
-        #   The updated end date of this price interval. If not specified, the start date
-        #   will not be updated.
+        #   The updated end date of this price interval. If not specified, the end date will
+        #   not be updated.
         #
         #   @return [Time, Symbol, Orb::Models::BillingCycleRelativeDate, nil]
         optional :end_date, union: -> { Orb::SubscriptionPriceIntervalsParams::Edit::EndDate }, nil?: true
@@ -544,7 +544,7 @@ module Orb
         #
         #   @param billing_cycle_day [Integer, nil] The updated billing cycle day for this price interval. If not specified, the bil
         #
-        #   @param end_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate, nil] The updated end date of this price interval. If not specified, the start date wi
+        #   @param end_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate, nil] The updated end date of this price interval. If not specified, the end date will
         #
         #   @param filter [String, nil] An additional filter to apply to usage queries. This filter must be expressed as
         #
@@ -554,8 +554,8 @@ module Orb
         #
         #   @param usage_customer_ids [Array<String>, nil] A list of customer IDs whose usage events will be aggregated and billed under th
 
-        # The updated end date of this price interval. If not specified, the start date
-        # will not be updated.
+        # The updated end date of this price interval. If not specified, the end date will
+        # not be updated.
         #
         # @see Orb::Models::SubscriptionPriceIntervalsParams::Edit#end_date
         module EndDate
@@ -612,8 +612,8 @@ module Orb
         required :adjustment_interval_id, String
 
         # @!attribute end_date
-        #   The updated end date of this adjustment interval. If not specified, the start
-        #   date will not be updated.
+        #   The updated end date of this adjustment interval. If not specified, the end date
+        #   will not be updated.
         #
         #   @return [Time, Symbol, Orb::Models::BillingCycleRelativeDate, nil]
         optional :end_date,
@@ -634,12 +634,12 @@ module Orb
         #
         #   @param adjustment_interval_id [String] The id of the adjustment interval to edit.
         #
-        #   @param end_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate, nil] The updated end date of this adjustment interval. If not specified, the start da
+        #   @param end_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate, nil] The updated end date of this adjustment interval. If not specified, the end date
         #
         #   @param start_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate] The updated start date of this adjustment interval. If not specified, the start
 
-        # The updated end date of this adjustment interval. If not specified, the start
-        # date will not be updated.
+        # The updated end date of this adjustment interval. If not specified, the end date
+        # will not be updated.
         #
         # @see Orb::Models::SubscriptionPriceIntervalsParams::EditAdjustment#end_date
         module EndDate

@@ -261,7 +261,7 @@ module Orb
       # is hit. To enable threshold billing, pass in an `invoicing_threshold`, which is
       # specified in the subscription's invoicing currency, when creating a
       # subscription. E.g. pass in `10.00` to issue an invoice when usage amounts hit
-      # $10.00 for a subscription that invoices in USD.
+      # \$10.00 for a subscription that invoices in USD.
       #
       # @overload create(add_adjustments: nil, add_prices: nil, align_billing_with_subscription_start_date: nil, auto_collection: nil, aws_region: nil, billing_cycle_anchor_configuration: nil, coupon_redemption_code: nil, credits_overage_rate: nil, currency: nil, customer_id: nil, default_invoice_memo: nil, end_date: nil, external_customer_id: nil, external_marketplace: nil, external_marketplace_reporting_id: nil, external_plan_id: nil, filter: nil, initial_phase_order: nil, invoicing_threshold: nil, metadata: nil, name: nil, net_terms: nil, per_credit_overage_amount: nil, plan_id: nil, plan_version_number: nil, price_overrides: nil, remove_adjustments: nil, remove_prices: nil, replace_adjustments: nil, replace_prices: nil, start_date: nil, trial_duration_days: nil, usage_customer_ids: nil, request_options: {})
       #

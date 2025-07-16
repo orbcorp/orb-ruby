@@ -195,6 +195,10 @@ module Orb
             )
           end
 
+        # The external ID of a price to evaluate that exists in your Orb account.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :external_price_id
+
         # A boolean
         # [computed property](/extensibility/advanced-metrics#computed-properties) used to
         # filter the underlying billable metric
@@ -256,6 +260,7 @@ module Orb
 
         sig do
           params(
+            external_price_id: T.nilable(String),
             filter: T.nilable(String),
             grouping_keys: T::Array[String],
             price:
@@ -295,6 +300,8 @@ module Orb
           ).returns(T.attached_class)
         end
         def self.new(
+          # The external ID of a price to evaluate that exists in your Orb account.
+          external_price_id: nil,
           # A boolean
           # [computed property](/extensibility/advanced-metrics#computed-properties) used to
           # filter the underlying billable metric
@@ -314,6 +321,7 @@ module Orb
         sig do
           override.returns(
             {
+              external_price_id: T.nilable(String),
               filter: T.nilable(String),
               grouping_keys: T::Array[String],
               price:

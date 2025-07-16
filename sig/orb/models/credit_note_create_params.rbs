@@ -4,7 +4,9 @@ module Orb
       {
         line_items: ::Array[Orb::CreditNoteCreateParams::LineItem],
         reason: Orb::Models::CreditNoteCreateParams::reason,
-        memo: String?
+        end_date: Date?,
+        memo: String?,
+        start_date: Date?
       }
       & Orb::Internal::Type::request_parameters
 
@@ -16,32 +18,60 @@ module Orb
 
       attr_accessor reason: Orb::Models::CreditNoteCreateParams::reason
 
+      attr_accessor end_date: Date?
+
       attr_accessor memo: String?
+
+      attr_accessor start_date: Date?
 
       def initialize: (
         line_items: ::Array[Orb::CreditNoteCreateParams::LineItem],
         reason: Orb::Models::CreditNoteCreateParams::reason,
+        ?end_date: Date?,
         ?memo: String?,
+        ?start_date: Date?,
         ?request_options: Orb::request_opts
       ) -> void
 
       def to_hash: -> {
         line_items: ::Array[Orb::CreditNoteCreateParams::LineItem],
         reason: Orb::Models::CreditNoteCreateParams::reason,
+        end_date: Date?,
         memo: String?,
+        start_date: Date?,
         request_options: Orb::RequestOptions
       }
 
-      type line_item = { amount: String, invoice_line_item_id: String }
+      type line_item =
+        {
+          amount: String,
+          invoice_line_item_id: String,
+          end_date: Date?,
+          start_date: Date?
+        }
 
       class LineItem < Orb::Internal::Type::BaseModel
         attr_accessor amount: String
 
         attr_accessor invoice_line_item_id: String
 
-        def initialize: (amount: String, invoice_line_item_id: String) -> void
+        attr_accessor end_date: Date?
 
-        def to_hash: -> { amount: String, invoice_line_item_id: String }
+        attr_accessor start_date: Date?
+
+        def initialize: (
+          amount: String,
+          invoice_line_item_id: String,
+          ?end_date: Date?,
+          ?start_date: Date?
+        ) -> void
+
+        def to_hash: -> {
+          amount: String,
+          invoice_line_item_id: String,
+          end_date: Date?,
+          start_date: Date?
+        }
       end
 
       type reason =

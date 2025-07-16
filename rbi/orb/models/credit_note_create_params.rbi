@@ -18,15 +18,31 @@ module Orb
       sig { returns(Orb::CreditNoteCreateParams::Reason::OrSymbol) }
       attr_accessor :reason
 
+      # A date string to specify the global credit note service period end date in the
+      # customer's timezone. This will be applied to all line items that don't have
+      # their own individual service periods specified. If not provided, line items will
+      # use their original invoice line item service periods. This date is inclusive.
+      sig { returns(T.nilable(Date)) }
+      attr_accessor :end_date
+
       # An optional memo to attach to the credit note.
       sig { returns(T.nilable(String)) }
       attr_accessor :memo
+
+      # A date string to specify the global credit note service period start date in the
+      # customer's timezone. This will be applied to all line items that don't have
+      # their own individual service periods specified. If not provided, line items will
+      # use their original invoice line item service periods. This date is inclusive.
+      sig { returns(T.nilable(Date)) }
+      attr_accessor :start_date
 
       sig do
         params(
           line_items: T::Array[Orb::CreditNoteCreateParams::LineItem::OrHash],
           reason: Orb::CreditNoteCreateParams::Reason::OrSymbol,
+          end_date: T.nilable(Date),
           memo: T.nilable(String),
+          start_date: T.nilable(Date),
           request_options: Orb::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -34,8 +50,18 @@ module Orb
         line_items:,
         # An optional reason for the credit note.
         reason:,
+        # A date string to specify the global credit note service period end date in the
+        # customer's timezone. This will be applied to all line items that don't have
+        # their own individual service periods specified. If not provided, line items will
+        # use their original invoice line item service periods. This date is inclusive.
+        end_date: nil,
         # An optional memo to attach to the credit note.
         memo: nil,
+        # A date string to specify the global credit note service period start date in the
+        # customer's timezone. This will be applied to all line items that don't have
+        # their own individual service periods specified. If not provided, line items will
+        # use their original invoice line item service periods. This date is inclusive.
+        start_date: nil,
         request_options: {}
       )
       end
@@ -45,7 +71,9 @@ module Orb
           {
             line_items: T::Array[Orb::CreditNoteCreateParams::LineItem],
             reason: Orb::CreditNoteCreateParams::Reason::OrSymbol,
+            end_date: T.nilable(Date),
             memo: T.nilable(String),
+            start_date: T.nilable(Date),
             request_options: Orb::RequestOptions
           }
         )
@@ -67,21 +95,57 @@ module Orb
         sig { returns(String) }
         attr_accessor :invoice_line_item_id
 
+        # A date string to specify this line item's credit note service period end date in
+        # the customer's timezone. If provided, this will be used for this specific line
+        # item. If not provided, will use the global end_date if available, otherwise
+        # defaults to the original invoice line item's end date. This date is inclusive.
+        sig { returns(T.nilable(Date)) }
+        attr_accessor :end_date
+
+        # A date string to specify this line item's credit note service period start date
+        # in the customer's timezone. If provided, this will be used for this specific
+        # line item. If not provided, will use the global start_date if available,
+        # otherwise defaults to the original invoice line item's start date. This date is
+        # inclusive.
+        sig { returns(T.nilable(Date)) }
+        attr_accessor :start_date
+
         sig do
-          params(amount: String, invoice_line_item_id: String).returns(
-            T.attached_class
-          )
+          params(
+            amount: String,
+            invoice_line_item_id: String,
+            end_date: T.nilable(Date),
+            start_date: T.nilable(Date)
+          ).returns(T.attached_class)
         end
         def self.new(
           # The total amount in the invoice's currency to credit this line item.
           amount:,
           # The ID of the line item to credit.
-          invoice_line_item_id:
+          invoice_line_item_id:,
+          # A date string to specify this line item's credit note service period end date in
+          # the customer's timezone. If provided, this will be used for this specific line
+          # item. If not provided, will use the global end_date if available, otherwise
+          # defaults to the original invoice line item's end date. This date is inclusive.
+          end_date: nil,
+          # A date string to specify this line item's credit note service period start date
+          # in the customer's timezone. If provided, this will be used for this specific
+          # line item. If not provided, will use the global start_date if available,
+          # otherwise defaults to the original invoice line item's start date. This date is
+          # inclusive.
+          start_date: nil
         )
         end
 
         sig do
-          override.returns({ amount: String, invoice_line_item_id: String })
+          override.returns(
+            {
+              amount: String,
+              invoice_line_item_id: String,
+              end_date: T.nilable(Date),
+              start_date: T.nilable(Date)
+            }
+          )
         end
         def to_hash
         end
