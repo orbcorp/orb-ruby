@@ -18,10 +18,10 @@ module Orb
       sig { returns(Orb::CreditNoteCreateParams::Reason::OrSymbol) }
       attr_accessor :reason
 
-      # An optional date string to specify the global credit note service period end
-      # date in the customer's timezone. This will be applied to all line items. If not
-      # provided, line items will use their original invoice line item service periods.
-      # This date is inclusive.
+      # A date string to specify the global credit note service period end date in the
+      # customer's timezone. This will be applied to all line items that don't have
+      # their own individual service periods specified. If not provided, line items will
+      # use their original invoice line item service periods. This date is inclusive.
       sig { returns(T.nilable(Date)) }
       attr_accessor :end_date
 
@@ -29,10 +29,10 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :memo
 
-      # An optional date string to specify the global credit note service period end
-      # date in the customer's timezone. This will be applied to all line items. If not
-      # provided, line items will use their original invoice line item service periods.
-      # This date is inclusive.
+      # A date string to specify the global credit note service period start date in the
+      # customer's timezone. This will be applied to all line items that don't have
+      # their own individual service periods specified. If not provided, line items will
+      # use their original invoice line item service periods. This date is inclusive.
       sig { returns(T.nilable(Date)) }
       attr_accessor :start_date
 
@@ -50,17 +50,17 @@ module Orb
         line_items:,
         # An optional reason for the credit note.
         reason:,
-        # An optional date string to specify the global credit note service period end
-        # date in the customer's timezone. This will be applied to all line items. If not
-        # provided, line items will use their original invoice line item service periods.
-        # This date is inclusive.
+        # A date string to specify the global credit note service period end date in the
+        # customer's timezone. This will be applied to all line items that don't have
+        # their own individual service periods specified. If not provided, line items will
+        # use their original invoice line item service periods. This date is inclusive.
         end_date: nil,
         # An optional memo to attach to the credit note.
         memo: nil,
-        # An optional date string to specify the global credit note service period end
-        # date in the customer's timezone. This will be applied to all line items. If not
-        # provided, line items will use their original invoice line item service periods.
-        # This date is inclusive.
+        # A date string to specify the global credit note service period start date in the
+        # customer's timezone. This will be applied to all line items that don't have
+        # their own individual service periods specified. If not provided, line items will
+        # use their original invoice line item service periods. This date is inclusive.
         start_date: nil,
         request_options: {}
       )
@@ -95,19 +95,18 @@ module Orb
         sig { returns(String) }
         attr_accessor :invoice_line_item_id
 
-        # An optional date string to specify this line item's credit note service period
-        # end date in the customer's timezone. If provided, this will be used for this
-        # specific line item. If not provided, will use the global end_date if available,
-        # otherwise defaults to the original invoice line item's end date. This date is
-        # inclusive.
+        # A date string to specify this line item's credit note service period end date in
+        # the customer's timezone. If provided, this will be used for this specific line
+        # item. If not provided, will use the global end_date if available, otherwise
+        # defaults to the original invoice line item's end date. This date is inclusive.
         sig { returns(T.nilable(Date)) }
         attr_accessor :end_date
 
-        # An optional date string to specify this line item's credit note service period
-        # start date in the customer's timezone. If provided, this will be used for this
-        # specific line item. If not provided, will use the global start_date if
-        # available, otherwise defaults to the original invoice line item's start date.
-        # This date is inclusive.
+        # A date string to specify this line item's credit note service period start date
+        # in the customer's timezone. If provided, this will be used for this specific
+        # line item. If not provided, will use the global start_date if available,
+        # otherwise defaults to the original invoice line item's start date. This date is
+        # inclusive.
         sig { returns(T.nilable(Date)) }
         attr_accessor :start_date
 
@@ -124,17 +123,16 @@ module Orb
           amount:,
           # The ID of the line item to credit.
           invoice_line_item_id:,
-          # An optional date string to specify this line item's credit note service period
-          # end date in the customer's timezone. If provided, this will be used for this
-          # specific line item. If not provided, will use the global end_date if available,
-          # otherwise defaults to the original invoice line item's end date. This date is
-          # inclusive.
+          # A date string to specify this line item's credit note service period end date in
+          # the customer's timezone. If provided, this will be used for this specific line
+          # item. If not provided, will use the global end_date if available, otherwise
+          # defaults to the original invoice line item's end date. This date is inclusive.
           end_date: nil,
-          # An optional date string to specify this line item's credit note service period
-          # start date in the customer's timezone. If provided, this will be used for this
-          # specific line item. If not provided, will use the global start_date if
-          # available, otherwise defaults to the original invoice line item's start date.
-          # This date is inclusive.
+          # A date string to specify this line item's credit note service period start date
+          # in the customer's timezone. If provided, this will be used for this specific
+          # line item. If not provided, will use the global start_date if available,
+          # otherwise defaults to the original invoice line item's start date. This date is
+          # inclusive.
           start_date: nil
         )
         end
