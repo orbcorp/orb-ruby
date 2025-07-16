@@ -48,6 +48,7 @@ module Orb
 
       type price_evaluation =
         {
+          external_price_id: String?,
           filter: String?,
           grouping_keys: ::Array[String],
           price: Orb::Models::PriceEvaluateMultipleParams::PriceEvaluation::price?,
@@ -55,6 +56,8 @@ module Orb
         }
 
       class PriceEvaluation < Orb::Internal::Type::BaseModel
+        attr_accessor external_price_id: String?
+
         attr_accessor filter: String?
 
         attr_reader grouping_keys: ::Array[String]?
@@ -66,6 +69,7 @@ module Orb
         attr_accessor price_id: String?
 
         def initialize: (
+          ?external_price_id: String?,
           ?filter: String?,
           ?grouping_keys: ::Array[String],
           ?price: Orb::Models::PriceEvaluateMultipleParams::PriceEvaluation::price?,
@@ -73,6 +77,7 @@ module Orb
         ) -> void
 
         def to_hash: -> {
+          external_price_id: String?,
           filter: String?,
           grouping_keys: ::Array[String],
           price: Orb::Models::PriceEvaluateMultipleParams::PriceEvaluation::price?,

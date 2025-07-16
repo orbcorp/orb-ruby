@@ -211,6 +211,14 @@ module Orb
         end
         attr_writer :discounts
 
+        # The end time of the service period for this credit note line item.
+        sig { returns(T.nilable(Time)) }
+        attr_accessor :end_time_exclusive
+
+        # The start time of the service period for this credit note line item.
+        sig { returns(T.nilable(Time)) }
+        attr_accessor :start_time_inclusive
+
         sig do
           params(
             id: String,
@@ -220,7 +228,9 @@ module Orb
             quantity: T.nilable(Float),
             subtotal: String,
             tax_amounts: T::Array[Orb::TaxAmount::OrHash],
-            discounts: T::Array[Orb::CreditNote::LineItem::Discount::OrHash]
+            discounts: T::Array[Orb::CreditNote::LineItem::Discount::OrHash],
+            end_time_exclusive: T.nilable(Time),
+            start_time_inclusive: T.nilable(Time)
           ).returns(T.attached_class)
         end
         def self.new(
@@ -239,7 +249,11 @@ module Orb
           # Any tax amounts applied onto the line item.
           tax_amounts:,
           # Any line item discounts from the invoice's line item.
-          discounts: nil
+          discounts: nil,
+          # The end time of the service period for this credit note line item.
+          end_time_exclusive: nil,
+          # The start time of the service period for this credit note line item.
+          start_time_inclusive: nil
         )
         end
 
@@ -253,7 +267,9 @@ module Orb
               quantity: T.nilable(Float),
               subtotal: String,
               tax_amounts: T::Array[Orb::TaxAmount],
-              discounts: T::Array[Orb::CreditNote::LineItem::Discount]
+              discounts: T::Array[Orb::CreditNote::LineItem::Discount],
+              end_time_exclusive: T.nilable(Time),
+              start_time_inclusive: T.nilable(Time)
             }
           )
         end

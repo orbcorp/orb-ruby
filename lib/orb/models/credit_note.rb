@@ -181,7 +181,19 @@ module Orb
         #   @return [Array<Orb::Models::CreditNote::LineItem::Discount>, nil]
         optional :discounts, -> { Orb::Internal::Type::ArrayOf[Orb::CreditNote::LineItem::Discount] }
 
-        # @!method initialize(id:, amount:, item_id:, name:, quantity:, subtotal:, tax_amounts:, discounts: nil)
+        # @!attribute end_time_exclusive
+        #   The end time of the service period for this credit note line item.
+        #
+        #   @return [Time, nil]
+        optional :end_time_exclusive, Time, nil?: true
+
+        # @!attribute start_time_inclusive
+        #   The start time of the service period for this credit note line item.
+        #
+        #   @return [Time, nil]
+        optional :start_time_inclusive, Time, nil?: true
+
+        # @!method initialize(id:, amount:, item_id:, name:, quantity:, subtotal:, tax_amounts:, discounts: nil, end_time_exclusive: nil, start_time_inclusive: nil)
         #   @param id [String] The Orb id of this resource.
         #
         #   @param amount [String] The amount of the line item, including any line item minimums and discounts.
@@ -197,6 +209,10 @@ module Orb
         #   @param tax_amounts [Array<Orb::Models::TaxAmount>] Any tax amounts applied onto the line item.
         #
         #   @param discounts [Array<Orb::Models::CreditNote::LineItem::Discount>] Any line item discounts from the invoice's line item.
+        #
+        #   @param end_time_exclusive [Time, nil] The end time of the service period for this credit note line item.
+        #
+        #   @param start_time_inclusive [Time, nil] The start time of the service period for this credit note line item.
 
         class Discount < Orb::Internal::Type::BaseModel
           # @!attribute id

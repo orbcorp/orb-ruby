@@ -4,7 +4,9 @@ module Orb
       def create: (
         line_items: ::Array[Orb::CreditNoteCreateParams::LineItem],
         reason: Orb::Models::CreditNoteCreateParams::reason,
+        ?end_date: Date?,
         ?memo: String?,
+        ?start_date: Date?,
         ?request_options: Orb::request_opts
       ) -> Orb::CreditNote
 

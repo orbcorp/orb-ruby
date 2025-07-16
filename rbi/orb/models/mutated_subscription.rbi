@@ -87,7 +87,8 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :default_invoice_memo
 
-      # The discount intervals for this subscription sorted by the start_date.
+      # The discount intervals for this subscription sorted by the start_date. This
+      # field is deprecated in favor of `adjustment_intervals`.
       sig do
         returns(T::Array[Orb::MutatedSubscription::DiscountInterval::Variants])
       end
@@ -103,7 +104,8 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :invoicing_threshold
 
-      # The maximum intervals for this subscription sorted by the start_date.
+      # The maximum intervals for this subscription sorted by the start_date. This field
+      # is deprecated in favor of `adjustment_intervals`.
       sig { returns(T::Array[Orb::MaximumInterval]) }
       attr_accessor :maximum_intervals
 
@@ -114,7 +116,8 @@ module Orb
       sig { returns(T::Hash[Symbol, String]) }
       attr_accessor :metadata
 
-      # The minimum intervals for this subscription sorted by the start_date.
+      # The minimum intervals for this subscription sorted by the start_date. This field
+      # is deprecated in favor of `adjustment_intervals`.
       sig { returns(T::Array[Orb::MinimumInterval]) }
       attr_accessor :minimum_intervals
 
@@ -282,20 +285,23 @@ module Orb
         # Determines the default memo on this subscriptions' invoices. Note that if this
         # is not provided, it is determined by the plan configuration.
         default_invoice_memo:,
-        # The discount intervals for this subscription sorted by the start_date.
+        # The discount intervals for this subscription sorted by the start_date. This
+        # field is deprecated in favor of `adjustment_intervals`.
         discount_intervals:,
         # The date Orb stops billing for this subscription.
         end_date:,
         fixed_fee_quantity_schedule:,
         invoicing_threshold:,
-        # The maximum intervals for this subscription sorted by the start_date.
+        # The maximum intervals for this subscription sorted by the start_date. This field
+        # is deprecated in favor of `adjustment_intervals`.
         maximum_intervals:,
         # User specified key-value pairs for the resource. If not present, this defaults
         # to an empty dictionary. Individual keys can be removed by setting the value to
         # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
         # `null`.
         metadata:,
-        # The minimum intervals for this subscription sorted by the start_date.
+        # The minimum intervals for this subscription sorted by the start_date. This field
+        # is deprecated in favor of `adjustment_intervals`.
         minimum_intervals:,
         # The name of the subscription.
         name:,

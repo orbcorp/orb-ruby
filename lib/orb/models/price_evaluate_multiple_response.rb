@@ -25,6 +25,12 @@ module Orb
         #   @return [Array<Orb::Models::EvaluatePriceGroup>]
         required :price_groups, -> { Orb::Internal::Type::ArrayOf[Orb::EvaluatePriceGroup] }
 
+        # @!attribute external_price_id
+        #   The external ID of the price
+        #
+        #   @return [String, nil]
+        optional :external_price_id, String, nil?: true
+
         # @!attribute inline_price_index
         #   The index of the inline price
         #
@@ -37,10 +43,12 @@ module Orb
         #   @return [String, nil]
         optional :price_id, String, nil?: true
 
-        # @!method initialize(currency:, price_groups:, inline_price_index: nil, price_id: nil)
+        # @!method initialize(currency:, price_groups:, external_price_id: nil, inline_price_index: nil, price_id: nil)
         #   @param currency [String] The currency of the price
         #
         #   @param price_groups [Array<Orb::Models::EvaluatePriceGroup>] The computed price groups associated with input price.
+        #
+        #   @param external_price_id [String, nil] The external ID of the price
         #
         #   @param inline_price_index [Integer, nil] The index of the inline price
         #

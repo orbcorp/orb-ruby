@@ -3,16 +3,48 @@
 module Orb
   module Resources
     class CreditNotes
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::CreditNoteCreateParams} for more details.
+      #
       # This endpoint is used to create a single
       # [`Credit Note`](/invoicing/credit-notes).
       #
-      # @overload create(line_items:, reason:, memo: nil, request_options: {})
+      # The credit note service period configuration supports two explicit modes:
+      #
+      # 1. Global service periods: Specify start_date and end_date at the credit note
+      #    level. These dates will be applied to all line items uniformly.
+      #
+      # 2. Individual service periods: Specify start_date and end_date for each line
+      #    item. When using this mode, ALL line items must have individual periods
+      #    specified.
+      #
+      # 3. Default behavior: If no service periods are specified (neither global nor
+      #    individual), the original invoice line item service periods will be used.
+      #
+      # Note: Mixing global and individual service periods in the same request is not
+      # allowed to prevent confusion.
+      #
+      # Service period dates are normalized to the start of the day in the customer's
+      # timezone to ensure consistent handling across different timezones.
+      #
+      # Date Format: Use start_date and end_date with format "YYYY-MM-DD" (e.g.,
+      # "2023-09-22") to match other Orb APIs like /v1/invoice_line_items.
+      #
+      # Note: Both start_date and end_date are inclusive - the service period will cover
+      # both the start date and end date completely (from start of start_date to end of
+      # end_date).
+      #
+      # @overload create(line_items:, reason:, end_date: nil, memo: nil, start_date: nil, request_options: {})
       #
       # @param line_items [Array<Orb::Models::CreditNoteCreateParams::LineItem>]
       #
       # @param reason [Symbol, Orb::Models::CreditNoteCreateParams::Reason] An optional reason for the credit note.
       #
+      # @param end_date [Date, nil] A date string to specify the global credit note service period end date in the c
+      #
       # @param memo [String, nil] An optional memo to attach to the credit note.
+      #
+      # @param start_date [Date, nil] A date string to specify the global credit note service period start date in the
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #

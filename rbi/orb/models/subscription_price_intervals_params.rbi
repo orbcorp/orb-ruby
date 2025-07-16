@@ -888,8 +888,8 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :billing_cycle_day
 
-        # The updated end date of this price interval. If not specified, the start date
-        # will not be updated.
+        # The updated end date of this price interval. If not specified, the end date will
+        # not be updated.
         sig do
           returns(
             T.nilable(T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol))
@@ -967,8 +967,8 @@ module Orb
           # billing cycle day will not be updated. Note that overlapping price intervals
           # must have the same billing cycle day.
           billing_cycle_day: nil,
-          # The updated end date of this price interval. If not specified, the start date
-          # will not be updated.
+          # The updated end date of this price interval. If not specified, the end date will
+          # not be updated.
           end_date: nil,
           # An additional filter to apply to usage queries. This filter must be expressed as
           # a boolean
@@ -1014,8 +1014,8 @@ module Orb
         def to_hash
         end
 
-        # The updated end date of this price interval. If not specified, the start date
-        # will not be updated.
+        # The updated end date of this price interval. If not specified, the end date will
+        # not be updated.
         module EndDate
           extend Orb::Internal::Type::Union
 
@@ -1105,8 +1105,8 @@ module Orb
         sig { returns(String) }
         attr_accessor :adjustment_interval_id
 
-        # The updated end date of this adjustment interval. If not specified, the start
-        # date will not be updated.
+        # The updated end date of this adjustment interval. If not specified, the end date
+        # will not be updated.
         sig do
           returns(
             T.nilable(T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol))
@@ -1141,8 +1141,8 @@ module Orb
         def self.new(
           # The id of the adjustment interval to edit.
           adjustment_interval_id:,
-          # The updated end date of this adjustment interval. If not specified, the start
-          # date will not be updated.
+          # The updated end date of this adjustment interval. If not specified, the end date
+          # will not be updated.
           end_date: nil,
           # The updated start date of this adjustment interval. If not specified, the start
           # date will not be updated.
@@ -1163,8 +1163,8 @@ module Orb
         def to_hash
         end
 
-        # The updated end date of this adjustment interval. If not specified, the start
-        # date will not be updated.
+        # The updated end date of this adjustment interval. If not specified, the end date
+        # will not be updated.
         module EndDate
           extend Orb::Internal::Type::Union
 
