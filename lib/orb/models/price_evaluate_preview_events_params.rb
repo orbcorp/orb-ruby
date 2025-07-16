@@ -110,6 +110,12 @@ module Orb
       end
 
       class PriceEvaluation < Orb::Internal::Type::BaseModel
+        # @!attribute external_price_id
+        #   The external ID of a price to evaluate that exists in your Orb account.
+        #
+        #   @return [String, nil]
+        optional :external_price_id, String, nil?: true
+
         # @!attribute filter
         #   A boolean
         #   [computed property](/extensibility/advanced-metrics#computed-properties) used to
@@ -143,10 +149,12 @@ module Orb
         #   @return [String, nil]
         optional :price_id, String, nil?: true
 
-        # @!method initialize(filter: nil, grouping_keys: nil, price: nil, price_id: nil)
+        # @!method initialize(external_price_id: nil, filter: nil, grouping_keys: nil, price: nil, price_id: nil)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation} for more
         #   details.
+        #
+        #   @param external_price_id [String, nil] The external ID of a price to evaluate that exists in your Orb account.
         #
         #   @param filter [String, nil] A boolean [computed property](/extensibility/advanced-metrics#computed-propertie
         #

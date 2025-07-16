@@ -99,7 +99,8 @@ module Orb
       # @!attribute discount_intervals
       #   @deprecated
       #
-      #   The discount intervals for this subscription sorted by the start_date.
+      #   The discount intervals for this subscription sorted by the start_date. This
+      #   field is deprecated in favor of `adjustment_intervals`.
       #
       #   @return [Array<Orb::Models::AmountDiscountInterval, Orb::Models::PercentageDiscountInterval, Orb::Models::UsageDiscountInterval>]
       required :discount_intervals,
@@ -125,7 +126,8 @@ module Orb
       # @!attribute maximum_intervals
       #   @deprecated
       #
-      #   The maximum intervals for this subscription sorted by the start_date.
+      #   The maximum intervals for this subscription sorted by the start_date. This field
+      #   is deprecated in favor of `adjustment_intervals`.
       #
       #   @return [Array<Orb::Models::MaximumInterval>]
       required :maximum_intervals, -> { Orb::Internal::Type::ArrayOf[Orb::MaximumInterval] }
@@ -142,7 +144,8 @@ module Orb
       # @!attribute minimum_intervals
       #   @deprecated
       #
-      #   The minimum intervals for this subscription sorted by the start_date.
+      #   The minimum intervals for this subscription sorted by the start_date. This field
+      #   is deprecated in favor of `adjustment_intervals`.
       #
       #   @return [Array<Orb::Models::MinimumInterval>]
       required :minimum_intervals, -> { Orb::Internal::Type::ArrayOf[Orb::MinimumInterval] }
@@ -250,7 +253,7 @@ module Orb
       #
       #   @param default_invoice_memo [String, nil] Determines the default memo on this subscriptions' invoices. Note that if this i
       #
-      #   @param discount_intervals [Array<Orb::Models::AmountDiscountInterval, Orb::Models::PercentageDiscountInterval, Orb::Models::UsageDiscountInterval>] The discount intervals for this subscription sorted by the start_date.
+      #   @param discount_intervals [Array<Orb::Models::AmountDiscountInterval, Orb::Models::PercentageDiscountInterval, Orb::Models::UsageDiscountInterval>] The discount intervals for this subscription sorted by the start_date. This fiel
       #
       #   @param end_date [Time, nil] The date Orb stops billing for this subscription.
       #
@@ -258,11 +261,11 @@ module Orb
       #
       #   @param invoicing_threshold [String, nil]
       #
-      #   @param maximum_intervals [Array<Orb::Models::MaximumInterval>] The maximum intervals for this subscription sorted by the start_date.
+      #   @param maximum_intervals [Array<Orb::Models::MaximumInterval>] The maximum intervals for this subscription sorted by the start_date. This field
       #
       #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
       #
-      #   @param minimum_intervals [Array<Orb::Models::MinimumInterval>] The minimum intervals for this subscription sorted by the start_date.
+      #   @param minimum_intervals [Array<Orb::Models::MinimumInterval>] The minimum intervals for this subscription sorted by the start_date. This field
       #
       #   @param name [String] The name of the subscription.
       #
