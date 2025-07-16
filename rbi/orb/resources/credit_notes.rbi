@@ -44,17 +44,17 @@ module Orb
         line_items:,
         # An optional reason for the credit note.
         reason:,
-        # A date string to specify the global credit note service period end date in the
-        # customer's timezone. This will be applied to all line items that don't have
-        # their own individual service periods specified. If not provided, line items will
-        # use their original invoice line item service periods. This date is inclusive.
+        # An optional date string to specify the global credit note service period end
+        # date in the customer's timezone. This will be applied to all line items. If not
+        # provided, line items will use their original invoice line item service periods.
+        # This date is inclusive.
         end_date: nil,
         # An optional memo to attach to the credit note.
         memo: nil,
-        # A date string to specify the global credit note service period start date in the
-        # customer's timezone. This will be applied to all line items that don't have
-        # their own individual service periods specified. If not provided, line items will
-        # use their original invoice line item service periods. This date is inclusive.
+        # An optional date string to specify the global credit note service period end
+        # date in the customer's timezone. This will be applied to all line items. If not
+        # provided, line items will use their original invoice line item service periods.
+        # This date is inclusive.
         start_date: nil,
         request_options: {}
       )
