@@ -129,7 +129,7 @@ module Orb
         #
         # @param customer_id [String]
         #
-        # @param currency [String, nil] The currency or custom pricing unit to use.
+        # @param currency [String, nil] The currency to use.
         #
         # @param timeframe_end [Time, nil] Costs returned are exclusive of `timeframe_end`.
         #
@@ -278,7 +278,7 @@ module Orb
         #
         # @param external_customer_id [String]
         #
-        # @param currency [String, nil] The currency or custom pricing unit to use.
+        # @param currency [String, nil] The currency to use.
         #
         # @param timeframe_end [Time, nil] Costs returned are exclusive of `timeframe_end`.
         #
