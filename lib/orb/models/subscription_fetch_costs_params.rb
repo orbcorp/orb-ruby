@@ -8,7 +8,7 @@ module Orb
       include Orb::Internal::Type::RequestParameters
 
       # @!attribute currency
-      #   The currency or custom pricing unit to use.
+      #   The currency to use.
       #
       #   @return [String, nil]
       optional :currency, String, nil?: true
@@ -38,7 +38,7 @@ module Orb
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::SubscriptionFetchCostsParams} for more details.
       #
-      #   @param currency [String, nil] The currency or custom pricing unit to use.
+      #   @param currency [String, nil] The currency to use.
       #
       #   @param timeframe_end [Time, nil] Costs returned are exclusive of `timeframe_end`.
       #
