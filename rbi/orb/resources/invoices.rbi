@@ -9,7 +9,6 @@ module Orb
           currency: String,
           invoice_date: Time,
           line_items: T::Array[Orb::InvoiceCreateParams::LineItem::OrHash],
-          net_terms: Integer,
           customer_id: T.nilable(String),
           discount:
             T.nilable(
@@ -23,6 +22,7 @@ module Orb
           external_customer_id: T.nilable(String),
           memo: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+          net_terms: T.nilable(Integer),
           will_auto_issue: T::Boolean,
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Invoice)
@@ -35,11 +35,6 @@ module Orb
         # set to the current time in the customer's timezone.
         invoice_date:,
         line_items:,
-        # Determines the difference between the invoice issue date for subscription
-        # invoices as the date that they are due. A value of '0' here represents that the
-        # invoice is due on issue, whereas a value of 30 represents that the customer has
-        # 30 days to pay the invoice.
-        net_terms:,
         # The id of the `Customer` to create this invoice for. One of `customer_id` and
         # `external_customer_id` are required.
         customer_id: nil,
@@ -54,6 +49,11 @@ module Orb
         # by setting the value to `null`, and the entire metadata mapping can be cleared
         # by setting `metadata` to `null`.
         metadata: nil,
+        # Determines the difference between the invoice issue date for subscription
+        # invoices as the date that they are due. A value of '0' here represents that the
+        # invoice is due on issue, whereas a value of 30 represents that the customer has
+        # 30 days to pay the invoice.
+        net_terms: nil,
         # When true, this invoice will be submitted for issuance upon creation. When
         # false, the resulting invoice will require manual review to issue. Defaulted to
         # false.
