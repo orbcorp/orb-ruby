@@ -26,15 +26,6 @@ module Orb
       #   @return [Array<Orb::Models::InvoiceCreateParams::LineItem>]
       required :line_items, -> { Orb::Internal::Type::ArrayOf[Orb::InvoiceCreateParams::LineItem] }
 
-      # @!attribute net_terms
-      #   Determines the difference between the invoice issue date for subscription
-      #   invoices as the date that they are due. A value of '0' here represents that the
-      #   invoice is due on issue, whereas a value of 30 represents that the customer has
-      #   30 days to pay the invoice.
-      #
-      #   @return [Integer]
-      required :net_terms, Integer
-
       # @!attribute customer_id
       #   The id of the `Customer` to create this invoice for. One of `customer_id` and
       #   `external_customer_id` are required.
@@ -69,6 +60,15 @@ module Orb
       #   @return [Hash{Symbol=>String, nil}, nil]
       optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
+      # @!attribute net_terms
+      #   Determines the difference between the invoice issue date for subscription
+      #   invoices as the date that they are due. A value of '0' here represents that the
+      #   invoice is due on issue, whereas a value of 30 represents that the customer has
+      #   30 days to pay the invoice.
+      #
+      #   @return [Integer, nil]
+      optional :net_terms, Integer, nil?: true
+
       # @!attribute will_auto_issue
       #   When true, this invoice will be submitted for issuance upon creation. When
       #   false, the resulting invoice will require manual review to issue. Defaulted to
@@ -77,7 +77,7 @@ module Orb
       #   @return [Boolean, nil]
       optional :will_auto_issue, Orb::Internal::Type::Boolean
 
-      # @!method initialize(currency:, invoice_date:, line_items:, net_terms:, customer_id: nil, discount: nil, external_customer_id: nil, memo: nil, metadata: nil, will_auto_issue: nil, request_options: {})
+      # @!method initialize(currency:, invoice_date:, line_items:, customer_id: nil, discount: nil, external_customer_id: nil, memo: nil, metadata: nil, net_terms: nil, will_auto_issue: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::InvoiceCreateParams} for more details.
       #
@@ -86,8 +86,6 @@ module Orb
       #   @param invoice_date [Time] Optional invoice date to set. Must be in the past, if not set, `invoice_date` is
       #
       #   @param line_items [Array<Orb::Models::InvoiceCreateParams::LineItem>]
-      #
-      #   @param net_terms [Integer] Determines the difference between the invoice issue date for subscription invoic
       #
       #   @param customer_id [String, nil] The id of the `Customer` to create this invoice for. One of `customer_id` and `e
       #
@@ -98,6 +96,8 @@ module Orb
       #   @param memo [String, nil] An optional memo to attach to the invoice.
       #
       #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+      #
+      #   @param net_terms [Integer, nil] Determines the difference between the invoice issue date for subscription invoic
       #
       #   @param will_auto_issue [Boolean] When true, this invoice will be submitted for issuance upon creation. When false
       #

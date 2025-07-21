@@ -8,15 +8,13 @@ module Orb
       #
       # This endpoint is used to create a one-off invoice for a customer.
       #
-      # @overload create(currency:, invoice_date:, line_items:, net_terms:, customer_id: nil, discount: nil, external_customer_id: nil, memo: nil, metadata: nil, will_auto_issue: nil, request_options: {})
+      # @overload create(currency:, invoice_date:, line_items:, customer_id: nil, discount: nil, external_customer_id: nil, memo: nil, metadata: nil, net_terms: nil, will_auto_issue: nil, request_options: {})
       #
       # @param currency [String] An ISO 4217 currency string. Must be the same as the customer's currency if it i
       #
       # @param invoice_date [Time] Optional invoice date to set. Must be in the past, if not set, `invoice_date` is
       #
       # @param line_items [Array<Orb::Models::InvoiceCreateParams::LineItem>]
-      #
-      # @param net_terms [Integer] Determines the difference between the invoice issue date for subscription invoic
       #
       # @param customer_id [String, nil] The id of the `Customer` to create this invoice for. One of `customer_id` and `e
       #
@@ -27,6 +25,8 @@ module Orb
       # @param memo [String, nil] An optional memo to attach to the invoice.
       #
       # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+      #
+      # @param net_terms [Integer, nil] Determines the difference between the invoice issue date for subscription invoic
       #
       # @param will_auto_issue [Boolean] When true, this invoice will be submitted for issuance upon creation. When false
       #
