@@ -18,8 +18,7 @@ class Orb::Test::Resources::InvoicesTest < Orb::Test::ResourceTest
             start_date: "2023-09-22",
             unit_config: {unit_amount: "unit_amount"}
           }
-        ],
-        net_terms: 0
+        ]
       )
 
     assert_pattern do

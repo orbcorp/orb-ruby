@@ -5,12 +5,12 @@ module Orb
         currency: String,
         invoice_date: Time,
         line_items: ::Array[Orb::InvoiceCreateParams::LineItem],
-        net_terms: Integer,
         ?customer_id: String?,
         ?discount: Orb::Models::discount?,
         ?external_customer_id: String?,
         ?memo: String?,
         ?metadata: ::Hash[Symbol, String?]?,
+        ?net_terms: Integer?,
         ?will_auto_issue: bool,
         ?request_options: Orb::request_opts
       ) -> Orb::Invoice
