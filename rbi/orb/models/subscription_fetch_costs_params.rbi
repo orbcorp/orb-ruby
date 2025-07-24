@@ -11,7 +11,7 @@ module Orb
           T.any(Orb::SubscriptionFetchCostsParams, Orb::Internal::AnyHash)
         end
 
-      # The currency to use.
+      # The currency or custom pricing unit to use.
       sig { returns(T.nilable(String)) }
       attr_accessor :currency
 
@@ -45,7 +45,7 @@ module Orb
         ).returns(T.attached_class)
       end
       def self.new(
-        # The currency to use.
+        # The currency or custom pricing unit to use.
         currency: nil,
         # Costs returned are exclusive of `timeframe_end`.
         timeframe_end: nil,

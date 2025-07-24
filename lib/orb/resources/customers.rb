@@ -109,7 +109,7 @@ module Orb
       #
       # @param email_delivery [Boolean, nil]
       #
-      # @param external_customer_id [String, nil] The external customer ID. This can only be set if empty and the customer has no
+      # @param external_customer_id [String, nil] The external customer ID. This can only be set if the customer has no existing e
       #
       # @param hierarchy [Orb::Models::CustomerHierarchyConfig, nil] The hierarchical relationships for this customer.
       #
@@ -345,7 +345,7 @@ module Orb
       #
       # @param email_delivery [Boolean, nil]
       #
-      # @param external_customer_id [String, nil] The external customer ID. This can only be set if empty and the customer has no
+      # @param external_customer_id [String, nil] The external customer ID. This can only be set if the customer has no existing e
       #
       # @param hierarchy [Orb::Models::CustomerHierarchyConfig, nil] The hierarchical relationships for this customer.
       #
