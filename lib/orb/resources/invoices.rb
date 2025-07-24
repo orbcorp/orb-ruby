@@ -43,11 +43,12 @@ module Orb
       # Some parameter documentations has been truncated, see
       # {Orb::Models::InvoiceUpdateParams} for more details.
       #
-      # This endpoint allows you to update the `metadata` property on an invoice. If you
-      # pass null for the metadata value, it will clear any existing metadata for that
-      # invoice.
+      # This endpoint allows you to update the `metadata`, `net_terms`, and `due_date`
+      # properties on an invoice. If you pass null for the metadata value, it will clear
+      # any existing metadata for that invoice.
       #
-      # `metadata` can be modified regardless of invoice state.
+      # `metadata` can be modified regardless of invoice state. `net_terms` and
+      # `due_date` can only be modified if the invoice is in a `draft` state.
       #
       # @overload update(invoice_id, metadata: nil, request_options: {})
       #

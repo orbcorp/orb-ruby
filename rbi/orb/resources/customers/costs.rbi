@@ -134,7 +134,7 @@ module Orb
         end
         def list(
           customer_id,
-          # The currency to use.
+          # The currency or custom pricing unit to use.
           currency: nil,
           # Costs returned are exclusive of `timeframe_end`.
           timeframe_end: nil,
@@ -281,7 +281,7 @@ module Orb
         end
         def list_by_external_id(
           external_customer_id,
-          # The currency to use.
+          # The currency or custom pricing unit to use.
           currency: nil,
           # Costs returned are exclusive of `timeframe_end`.
           timeframe_end: nil,

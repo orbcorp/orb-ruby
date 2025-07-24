@@ -242,7 +242,7 @@ module Orb
             # The net terms determines the difference between the invoice date and the issue
             # date for the invoice. If you intend the invoice to be due on issue, set this
             # to 0.
-            sig { returns(Integer) }
+            sig { returns(T.nilable(Integer)) }
             attr_accessor :net_terms
 
             # An ISO 8601 format date that denotes when this invoice should be dated in the
@@ -276,7 +276,7 @@ module Orb
             sig do
               params(
                 auto_collection: T::Boolean,
-                net_terms: Integer,
+                net_terms: T.nilable(Integer),
                 invoice_date:
                   T.nilable(
                     Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings::InvoiceDate::Variants
@@ -309,7 +309,7 @@ module Orb
               override.returns(
                 {
                   auto_collection: T::Boolean,
-                  net_terms: Integer,
+                  net_terms: T.nilable(Integer),
                   invoice_date:
                     T.nilable(
                       Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings::InvoiceDate::Variants

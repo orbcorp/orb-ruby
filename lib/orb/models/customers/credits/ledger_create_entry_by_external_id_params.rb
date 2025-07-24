@@ -153,8 +153,8 @@ module Orb
             #   date for the invoice. If you intend the invoice to be due on issue, set this
             #   to 0.
             #
-            #   @return [Integer]
-            required :net_terms, Integer
+            #   @return [Integer, nil]
+            required :net_terms, Integer, nil?: true
 
             # @!attribute invoice_date
             #   An ISO 8601 format date that denotes when this invoice should be dated in the
@@ -193,7 +193,7 @@ module Orb
             #
             #   @param auto_collection [Boolean] Whether the credits purchase invoice should auto collect with the customer's sav
             #
-            #   @param net_terms [Integer] The net terms determines the difference between the invoice date and the issue d
+            #   @param net_terms [Integer, nil] The net terms determines the difference between the invoice date and the issue d
             #
             #   @param invoice_date [Date, Time, nil] An ISO 8601 format date that denotes when this invoice should be dated in the cu
             #

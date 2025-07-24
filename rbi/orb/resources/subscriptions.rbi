@@ -611,7 +611,7 @@ module Orb
       end
       def fetch_costs(
         subscription_id,
-        # The currency to use.
+        # The currency or custom pricing unit to use.
         currency: nil,
         # Costs returned are exclusive of `timeframe_end`.
         timeframe_end: nil,

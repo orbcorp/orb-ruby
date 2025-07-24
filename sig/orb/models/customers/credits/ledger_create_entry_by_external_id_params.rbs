@@ -92,7 +92,7 @@ module Orb
           type invoice_settings =
             {
               auto_collection: bool,
-              net_terms: Integer,
+              net_terms: Integer?,
               invoice_date: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings::invoice_date?,
               memo: String?,
               require_successful_payment: bool
@@ -101,7 +101,7 @@ module Orb
           class InvoiceSettings < Orb::Internal::Type::BaseModel
             attr_accessor auto_collection: bool
 
-            attr_accessor net_terms: Integer
+            attr_accessor net_terms: Integer?
 
             attr_accessor invoice_date: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings::invoice_date?
 
@@ -113,7 +113,7 @@ module Orb
 
             def initialize: (
               auto_collection: bool,
-              net_terms: Integer,
+              net_terms: Integer?,
               ?invoice_date: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings::invoice_date?,
               ?memo: String?,
               ?require_successful_payment: bool
@@ -121,7 +121,7 @@ module Orb
 
             def to_hash: -> {
               auto_collection: bool,
-              net_terms: Integer,
+              net_terms: Integer?,
               invoice_date: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings::invoice_date?,
               memo: String?,
               require_successful_payment: bool
