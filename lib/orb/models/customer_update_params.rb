@@ -51,8 +51,11 @@ module Orb
       optional :email_delivery, Orb::Internal::Type::Boolean, nil?: true
 
       # @!attribute external_customer_id
-      #   The external customer ID. This can only be set if empty and the customer has no
-      #   past or current subscriptions.
+      #   The external customer ID. This can only be set if the customer has no existing
+      #   external customer ID. Since this action may change usage quantities for all
+      #   existing subscriptions, it is disallowed if the customer has issued invoices
+      #   with usage line items and subject to the same restrictions as backdated
+      #   subscription creation.
       #
       #   @return [String, nil]
       optional :external_customer_id, String, nil?: true
@@ -239,7 +242,7 @@ module Orb
       #
       #   @param email_delivery [Boolean, nil]
       #
-      #   @param external_customer_id [String, nil] The external customer ID. This can only be set if empty and the customer has no
+      #   @param external_customer_id [String, nil] The external customer ID. This can only be set if the customer has no existing e
       #
       #   @param hierarchy [Orb::Models::CustomerHierarchyConfig, nil] The hierarchical relationships for this customer.
       #

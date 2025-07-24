@@ -51,8 +51,11 @@ module Orb
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :email_delivery
 
-      # The external customer ID. This can only be set if empty and the customer has no
-      # past or current subscriptions.
+      # The external customer ID. This can only be set if the customer has no existing
+      # external customer ID. Since this action may change usage quantities for all
+      # existing subscriptions, it is disallowed if the customer has issued invoices
+      # with usage line items and subject to the same restrictions as backdated
+      # subscription creation.
       sig { returns(T.nilable(String)) }
       attr_accessor :external_customer_id
 
@@ -283,8 +286,11 @@ module Orb
         # A valid customer email, to be used for invoicing and notifications.
         email: nil,
         email_delivery: nil,
-        # The external customer ID. This can only be set if empty and the customer has no
-        # past or current subscriptions.
+        # The external customer ID. This can only be set if the customer has no existing
+        # external customer ID. Since this action may change usage quantities for all
+        # existing subscriptions, it is disallowed if the customer has issued invoices
+        # with usage line items and subject to the same restrictions as backdated
+        # subscription creation.
         external_customer_id: nil,
         # The hierarchical relationships for this customer.
         hierarchy: nil,
