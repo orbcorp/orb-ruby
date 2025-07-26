@@ -73,6 +73,8 @@ module Orb
 
       variant :cumulative_grouped_bulk, -> { Orb::Price::CumulativeGroupedBulk }
 
+      variant :grouped_with_min_max_thresholds, -> { Orb::Price::GroupedWithMinMaxThresholds }
+
       class Unit < Orb::Internal::Type::BaseModel
         # @!attribute id
         #
@@ -6814,8 +6816,250 @@ module Orb
         end
       end
 
+      class GroupedWithMinMaxThresholds < Orb::Internal::Type::BaseModel
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
+        # @!attribute billable_metric
+        #
+        #   @return [Orb::Models::BillableMetricTiny, nil]
+        required :billable_metric, -> { Orb::BillableMetricTiny }, nil?: true
+
+        # @!attribute billing_cycle_configuration
+        #
+        #   @return [Orb::Models::BillingCycleConfiguration]
+        required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute cadence
+        #
+        #   @return [Symbol, Orb::Models::Price::GroupedWithMinMaxThresholds::Cadence]
+        required :cadence, enum: -> { Orb::Price::GroupedWithMinMaxThresholds::Cadence }
+
+        # @!attribute conversion_rate
+        #
+        #   @return [Float, nil]
+        required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::GroupedWithMinMaxThresholds::ConversionRateConfig },
+                 nil?: true
+
+        # @!attribute created_at
+        #
+        #   @return [Time]
+        required :created_at, Time
+
+        # @!attribute credit_allocation
+        #
+        #   @return [Orb::Models::Allocation, nil]
+        required :credit_allocation, -> { Orb::Allocation }, nil?: true
+
+        # @!attribute currency
+        #
+        #   @return [String]
+        required :currency, String
+
+        # @!attribute discount
+        #   @deprecated
+        #
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        required :discount, union: -> { Orb::Discount }, nil?: true
+
+        # @!attribute external_price_id
+        #
+        #   @return [String, nil]
+        required :external_price_id, String, nil?: true
+
+        # @!attribute fixed_price_quantity
+        #
+        #   @return [Float, nil]
+        required :fixed_price_quantity, Float, nil?: true
+
+        # @!attribute grouped_with_min_max_thresholds_config
+        #
+        #   @return [Hash{Symbol=>Object}]
+        required :grouped_with_min_max_thresholds_config,
+                 Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
+
+        # @!attribute invoicing_cycle_configuration
+        #
+        #   @return [Orb::Models::BillingCycleConfiguration, nil]
+        required :invoicing_cycle_configuration, -> { Orb::BillingCycleConfiguration }, nil?: true
+
+        # @!attribute item
+        #
+        #   @return [Orb::Models::ItemSlim]
+        required :item, -> { Orb::ItemSlim }
+
+        # @!attribute maximum
+        #   @deprecated
+        #
+        #   @return [Orb::Models::Maximum, nil]
+        required :maximum, -> { Orb::Maximum }, nil?: true
+
+        # @!attribute maximum_amount
+        #   @deprecated
+        #
+        #   @return [String, nil]
+        required :maximum_amount, String, nil?: true
+
+        # @!attribute metadata
+        #   User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
+        #
+        #   @return [Hash{Symbol=>String}]
+        required :metadata, Orb::Internal::Type::HashOf[String]
+
+        # @!attribute minimum
+        #   @deprecated
+        #
+        #   @return [Orb::Models::Minimum, nil]
+        required :minimum, -> { Orb::Minimum }, nil?: true
+
+        # @!attribute minimum_amount
+        #   @deprecated
+        #
+        #   @return [String, nil]
+        required :minimum_amount, String, nil?: true
+
+        # @!attribute model_type
+        #
+        #   @return [Symbol, :grouped_with_min_max_thresholds]
+        required :model_type, const: :grouped_with_min_max_thresholds
+
+        # @!attribute name
+        #
+        #   @return [String]
+        required :name, String
+
+        # @!attribute plan_phase_order
+        #
+        #   @return [Integer, nil]
+        required :plan_phase_order, Integer, nil?: true
+
+        # @!attribute price_type
+        #
+        #   @return [Symbol, Orb::Models::Price::GroupedWithMinMaxThresholds::PriceType]
+        required :price_type, enum: -> { Orb::Price::GroupedWithMinMaxThresholds::PriceType }
+
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
+        # @!attribute dimensional_price_configuration
+        #
+        #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
+        optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_min_max_thresholds_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_with_min_max_thresholds)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::GroupedWithMinMaxThresholds} for more details.
+        #
+        #   @param id [String]
+        #
+        #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
+        #
+        #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param cadence [Symbol, Orb::Models::Price::GroupedWithMinMaxThresholds::Cadence]
+        #
+        #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        #
+        #   @param created_at [Time]
+        #
+        #   @param credit_allocation [Orb::Models::Allocation, nil]
+        #
+        #   @param currency [String]
+        #
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
+        #   @param external_price_id [String, nil]
+        #
+        #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param grouped_with_min_max_thresholds_config [Hash{Symbol=>Object}]
+        #
+        #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
+        #
+        #   @param item [Orb::Models::ItemSlim]
+        #
+        #   @param maximum [Orb::Models::Maximum, nil]
+        #
+        #   @param maximum_amount [String, nil]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #
+        #   @param minimum [Orb::Models::Minimum, nil]
+        #
+        #   @param minimum_amount [String, nil]
+        #
+        #   @param name [String]
+        #
+        #   @param plan_phase_order [Integer, nil]
+        #
+        #   @param price_type [Symbol, Orb::Models::Price::GroupedWithMinMaxThresholds::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
+        #
+        #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param model_type [Symbol, :grouped_with_min_max_thresholds]
+
+        # @see Orb::Models::Price::GroupedWithMinMaxThresholds#cadence
+        module Cadence
+          extend Orb::Internal::Type::Enum
+
+          ONE_TIME = :one_time
+          MONTHLY = :monthly
+          QUARTERLY = :quarterly
+          SEMI_ANNUAL = :semi_annual
+          ANNUAL = :annual
+          CUSTOM = :custom
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # @see Orb::Models::Price::GroupedWithMinMaxThresholds#conversion_rate_config
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          discriminator :conversion_rate_type
+
+          variant :unit, -> { Orb::UnitConversionRateConfig }
+
+          variant :tiered, -> { Orb::TieredConversionRateConfig }
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
+        end
+
+        # @see Orb::Models::Price::GroupedWithMinMaxThresholds#price_type
+        module PriceType
+          extend Orb::Internal::Type::Enum
+
+          USAGE_PRICE = :usage_price
+          FIXED_PRICE = :fixed_price
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+      end
+
       # @!method self.variants
-      #   @return [Array(Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBPS, Orb::Models::Price::BPS, Orb::Models::Price::BulkBPS, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk)]
+      #   @return [Array(Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBPS, Orb::Models::Price::BPS, Orb::Models::Price::BulkBPS, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk, Orb::Models::Price::GroupedWithMinMaxThresholds)]
     end
   end
 end

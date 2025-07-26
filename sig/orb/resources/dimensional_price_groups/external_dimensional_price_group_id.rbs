@@ -7,6 +7,13 @@ module Orb
           ?request_options: Orb::request_opts
         ) -> Orb::DimensionalPriceGroup
 
+        def update: (
+          String path_external_dimensional_price_group_id,
+          ?body_external_dimensional_price_group_id: String?,
+          ?metadata: ::Hash[Symbol, String?]?,
+          ?request_options: Orb::request_opts
+        ) -> Orb::DimensionalPriceGroup
+
         def initialize: (client: Orb::Client) -> void
       end
     end
