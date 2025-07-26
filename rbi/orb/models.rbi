@@ -148,6 +148,9 @@ module Orb
 
   DimensionalPriceGroupsAPI = Orb::Models::DimensionalPriceGroupsAPI
 
+  DimensionalPriceGroupUpdateParams =
+    Orb::Models::DimensionalPriceGroupUpdateParams
+
   Discount = Orb::Models::Discount
 
   DiscountOverride = Orb::Models::DiscountOverride

@@ -45,7 +45,8 @@ module Orb
             Orb::Price::MaxGroupTieredPackage,
             Orb::Price::ScalableMatrixWithUnitPricing,
             Orb::Price::ScalableMatrixWithTieredPricing,
-            Orb::Price::CumulativeGroupedBulk
+            Orb::Price::CumulativeGroupedBulk,
+            Orb::Price::GroupedWithMinMaxThresholds
           )
         end
 
@@ -9963,6 +9964,388 @@ module Orb
             override.returns(
               T::Array[
                 Orb::Price::CumulativeGroupedBulk::PriceType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+      end
+
+      class GroupedWithMinMaxThresholds < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Price::GroupedWithMinMaxThresholds,
+              Orb::Internal::AnyHash
+            )
+          end
+
+        sig { returns(String) }
+        attr_accessor :id
+
+        sig { returns(T.nilable(Orb::BillableMetricTiny)) }
+        attr_reader :billable_metric
+
+        sig do
+          params(
+            billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash)
+          ).void
+        end
+        attr_writer :billable_metric
+
+        sig { returns(Orb::BillingCycleConfiguration) }
+        attr_reader :billing_cycle_configuration
+
+        sig do
+          params(
+            billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash
+          ).void
+        end
+        attr_writer :billing_cycle_configuration
+
+        sig do
+          returns(
+            Orb::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+          )
+        end
+        attr_accessor :cadence
+
+        sig { returns(T.nilable(Float)) }
+        attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::GroupedWithMinMaxThresholds::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
+
+        sig { returns(Time) }
+        attr_accessor :created_at
+
+        sig { returns(T.nilable(Orb::Allocation)) }
+        attr_reader :credit_allocation
+
+        sig do
+          params(credit_allocation: T.nilable(Orb::Allocation::OrHash)).void
+        end
+        attr_writer :credit_allocation
+
+        sig { returns(String) }
+        attr_accessor :currency
+
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
+        attr_accessor :discount
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :external_price_id
+
+        sig { returns(T.nilable(Float)) }
+        attr_accessor :fixed_price_quantity
+
+        sig { returns(T::Hash[Symbol, T.anything]) }
+        attr_accessor :grouped_with_min_max_thresholds_config
+
+        sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
+        attr_reader :invoicing_cycle_configuration
+
+        sig do
+          params(
+            invoicing_cycle_configuration:
+              T.nilable(Orb::BillingCycleConfiguration::OrHash)
+          ).void
+        end
+        attr_writer :invoicing_cycle_configuration
+
+        sig { returns(Orb::ItemSlim) }
+        attr_reader :item
+
+        sig { params(item: Orb::ItemSlim::OrHash).void }
+        attr_writer :item
+
+        sig { returns(T.nilable(Orb::Maximum)) }
+        attr_reader :maximum
+
+        sig { params(maximum: T.nilable(Orb::Maximum::OrHash)).void }
+        attr_writer :maximum
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :maximum_amount
+
+        # User specified key-value pairs for the resource. If not present, this defaults
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
+        sig { returns(T::Hash[Symbol, String]) }
+        attr_accessor :metadata
+
+        sig { returns(T.nilable(Orb::Minimum)) }
+        attr_reader :minimum
+
+        sig { params(minimum: T.nilable(Orb::Minimum::OrHash)).void }
+        attr_writer :minimum
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :minimum_amount
+
+        sig { returns(Symbol) }
+        attr_accessor :model_type
+
+        sig { returns(String) }
+        attr_accessor :name
+
+        sig { returns(T.nilable(Integer)) }
+        attr_accessor :plan_phase_order
+
+        sig do
+          returns(
+            Orb::Price::GroupedWithMinMaxThresholds::PriceType::TaggedSymbol
+          )
+        end
+        attr_accessor :price_type
+
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
+        sig { returns(T.nilable(Orb::DimensionalPriceConfiguration)) }
+        attr_reader :dimensional_price_configuration
+
+        sig do
+          params(
+            dimensional_price_configuration:
+              T.nilable(Orb::DimensionalPriceConfiguration::OrHash)
+          ).void
+        end
+        attr_writer :dimensional_price_configuration
+
+        sig do
+          params(
+            id: String,
+            billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
+            billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            cadence: Orb::Price::GroupedWithMinMaxThresholds::Cadence::OrSymbol,
+            conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
+            created_at: Time,
+            credit_allocation: T.nilable(Orb::Allocation::OrHash),
+            currency: String,
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
+            external_price_id: T.nilable(String),
+            fixed_price_quantity: T.nilable(Float),
+            grouped_with_min_max_thresholds_config: T::Hash[Symbol, T.anything],
+            invoicing_cycle_configuration:
+              T.nilable(Orb::BillingCycleConfiguration::OrHash),
+            item: Orb::ItemSlim::OrHash,
+            maximum: T.nilable(Orb::Maximum::OrHash),
+            maximum_amount: T.nilable(String),
+            metadata: T::Hash[Symbol, String],
+            minimum: T.nilable(Orb::Minimum::OrHash),
+            minimum_amount: T.nilable(String),
+            name: String,
+            plan_phase_order: T.nilable(Integer),
+            price_type:
+              Orb::Price::GroupedWithMinMaxThresholds::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
+            dimensional_price_configuration:
+              T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            model_type: Symbol
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          id:,
+          billable_metric:,
+          billing_cycle_configuration:,
+          cadence:,
+          conversion_rate:,
+          conversion_rate_config:,
+          created_at:,
+          credit_allocation:,
+          currency:,
+          discount:,
+          external_price_id:,
+          fixed_price_quantity:,
+          grouped_with_min_max_thresholds_config:,
+          invoicing_cycle_configuration:,
+          item:,
+          maximum:,
+          maximum_amount:,
+          # User specified key-value pairs for the resource. If not present, this defaults
+          # to an empty dictionary. Individual keys can be removed by setting the value to
+          # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+          # `null`.
+          metadata:,
+          minimum:,
+          minimum_amount:,
+          name:,
+          plan_phase_order:,
+          price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
+          dimensional_price_configuration: nil,
+          model_type: :grouped_with_min_max_thresholds
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              id: String,
+              billable_metric: T.nilable(Orb::BillableMetricTiny),
+              billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              cadence:
+                Orb::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol,
+              conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::GroupedWithMinMaxThresholds::ConversionRateConfig::Variants
+                ),
+              created_at: Time,
+              credit_allocation: T.nilable(Orb::Allocation),
+              currency: String,
+              discount: T.nilable(Orb::Discount::Variants),
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              grouped_with_min_max_thresholds_config:
+                T::Hash[Symbol, T.anything],
+              invoicing_cycle_configuration:
+                T.nilable(Orb::BillingCycleConfiguration),
+              item: Orb::ItemSlim,
+              maximum: T.nilable(Orb::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type:
+                Orb::Price::GroupedWithMinMaxThresholds::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
+              dimensional_price_configuration:
+                T.nilable(Orb::DimensionalPriceConfiguration)
+            }
+          )
+        end
+        def to_hash
+        end
+
+        module Cadence
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::GroupedWithMinMaxThresholds::Cadence)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          ONE_TIME =
+            T.let(
+              :one_time,
+              Orb::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+            )
+          MONTHLY =
+            T.let(
+              :monthly,
+              Orb::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+            )
+          QUARTERLY =
+            T.let(
+              :quarterly,
+              Orb::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+            )
+          SEMI_ANNUAL =
+            T.let(
+              :semi_annual,
+              Orb::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+            )
+          ANNUAL =
+            T.let(
+              :annual,
+              Orb::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+            )
+          CUSTOM =
+            T.let(
+              :custom,
+              Orb::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        module ConversionRateConfig
+          extend Orb::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Orb::UnitConversionRateConfig,
+                Orb::TieredConversionRateConfig
+              )
+            end
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::GroupedWithMinMaxThresholds::ConversionRateConfig::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
+        module PriceType
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::GroupedWithMinMaxThresholds::PriceType)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          USAGE_PRICE =
+            T.let(
+              :usage_price,
+              Orb::Price::GroupedWithMinMaxThresholds::PriceType::TaggedSymbol
+            )
+          FIXED_PRICE =
+            T.let(
+              :fixed_price,
+              Orb::Price::GroupedWithMinMaxThresholds::PriceType::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::GroupedWithMinMaxThresholds::PriceType::TaggedSymbol
               ]
             )
           end

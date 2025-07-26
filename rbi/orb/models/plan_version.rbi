@@ -70,7 +70,8 @@ module Orb
                 Orb::Price::MaxGroupTieredPackage::OrHash,
                 Orb::Price::ScalableMatrixWithUnitPricing::OrHash,
                 Orb::Price::ScalableMatrixWithTieredPricing::OrHash,
-                Orb::Price::CumulativeGroupedBulk::OrHash
+                Orb::Price::CumulativeGroupedBulk::OrHash,
+                Orb::Price::GroupedWithMinMaxThresholds::OrHash
               )
             ],
           version: Integer

@@ -40,6 +40,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
       in Orb::Price::ScalableMatrixWithUnitPricing
       in Orb::Price::ScalableMatrixWithTieredPricing
       in Orb::Price::CumulativeGroupedBulk
+      in Orb::Price::GroupedWithMinMaxThresholds
       end
     end
 
@@ -826,6 +827,34 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::CumulativeGroupedBulk::PriceType,
+        replaces_price_id: String | nil,
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+      }
+      in {
+        model_type: :grouped_with_min_max_thresholds,
+        id: String,
+        billable_metric: Orb::BillableMetricTiny | nil,
+        billing_cycle_configuration: Orb::BillingCycleConfiguration,
+        cadence: Orb::Price::GroupedWithMinMaxThresholds::Cadence,
+        conversion_rate: Float | nil,
+        conversion_rate_config: Orb::Price::GroupedWithMinMaxThresholds::ConversionRateConfig | nil,
+        created_at: Time,
+        credit_allocation: Orb::Allocation | nil,
+        currency: String,
+        discount: Orb::Discount | nil,
+        external_price_id: String | nil,
+        fixed_price_quantity: Float | nil,
+        grouped_with_min_max_thresholds_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
+        item: Orb::ItemSlim,
+        maximum: Orb::Maximum | nil,
+        maximum_amount: String | nil,
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
+        minimum: Orb::Minimum | nil,
+        minimum_amount: String | nil,
+        name: String,
+        plan_phase_order: Integer | nil,
+        price_type: Orb::Price::GroupedWithMinMaxThresholds::PriceType,
         replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -870,6 +899,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
       in Orb::Price::ScalableMatrixWithUnitPricing
       in Orb::Price::ScalableMatrixWithTieredPricing
       in Orb::Price::CumulativeGroupedBulk
+      in Orb::Price::GroupedWithMinMaxThresholds
       end
     end
 
@@ -1656,6 +1686,34 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::CumulativeGroupedBulk::PriceType,
+        replaces_price_id: String | nil,
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+      }
+      in {
+        model_type: :grouped_with_min_max_thresholds,
+        id: String,
+        billable_metric: Orb::BillableMetricTiny | nil,
+        billing_cycle_configuration: Orb::BillingCycleConfiguration,
+        cadence: Orb::Price::GroupedWithMinMaxThresholds::Cadence,
+        conversion_rate: Float | nil,
+        conversion_rate_config: Orb::Price::GroupedWithMinMaxThresholds::ConversionRateConfig | nil,
+        created_at: Time,
+        credit_allocation: Orb::Allocation | nil,
+        currency: String,
+        discount: Orb::Discount | nil,
+        external_price_id: String | nil,
+        fixed_price_quantity: Float | nil,
+        grouped_with_min_max_thresholds_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
+        item: Orb::ItemSlim,
+        maximum: Orb::Maximum | nil,
+        maximum_amount: String | nil,
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
+        minimum: Orb::Minimum | nil,
+        minimum_amount: String | nil,
+        name: String,
+        plan_phase_order: Integer | nil,
+        price_type: Orb::Price::GroupedWithMinMaxThresholds::PriceType,
         replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
