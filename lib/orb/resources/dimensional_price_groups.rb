@@ -66,6 +66,37 @@ module Orb
       end
 
       # Some parameter documentations has been truncated, see
+      # {Orb::Models::DimensionalPriceGroupUpdateParams} for more details.
+      #
+      # This endpoint can be used to update the `external_dimensional_price_group_id`
+      # and `metadata` of an existing dimensional price group. Other fields on a
+      # dimensional price group are currently immutable.
+      #
+      # @overload update(dimensional_price_group_id, external_dimensional_price_group_id: nil, metadata: nil, request_options: {})
+      #
+      # @param dimensional_price_group_id [String]
+      #
+      # @param external_dimensional_price_group_id [String, nil] An optional user-defined ID for this dimensional price group resource, used thro
+      #
+      # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+      #
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Orb::Models::DimensionalPriceGroup]
+      #
+      # @see Orb::Models::DimensionalPriceGroupUpdateParams
+      def update(dimensional_price_group_id, params = {})
+        parsed, options = Orb::DimensionalPriceGroupUpdateParams.dump_request(params)
+        @client.request(
+          method: :put,
+          path: ["dimensional_price_groups/%1$s", dimensional_price_group_id],
+          body: parsed,
+          model: Orb::DimensionalPriceGroup,
+          options: options
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
       # {Orb::Models::DimensionalPriceGroupListParams} for more details.
       #
       # List dimensional price groups

@@ -17,6 +17,13 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> Orb::DimensionalPriceGroup
 
+      def update: (
+        String dimensional_price_group_id,
+        ?external_dimensional_price_group_id: String?,
+        ?metadata: ::Hash[Symbol, String?]?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::DimensionalPriceGroup
+
       def list: (
         ?cursor: String?,
         ?limit: Integer,

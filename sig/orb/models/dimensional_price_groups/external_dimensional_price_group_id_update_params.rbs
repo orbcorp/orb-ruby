@@ -1,0 +1,33 @@
+module Orb
+  module Models
+    module DimensionalPriceGroups
+      type external_dimensional_price_group_id_update_params =
+        {
+          body_external_dimensional_price_group_id: String?,
+          metadata: ::Hash[Symbol, String?]?
+        }
+        & Orb::Internal::Type::request_parameters
+
+      class ExternalDimensionalPriceGroupIDUpdateParams < Orb::Internal::Type::BaseModel
+        extend Orb::Internal::Type::RequestParameters::Converter
+        include Orb::Internal::Type::RequestParameters
+
+        attr_accessor body_external_dimensional_price_group_id: String?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        def initialize: (
+          ?body_external_dimensional_price_group_id: String?,
+          ?metadata: ::Hash[Symbol, String?]?,
+          ?request_options: Orb::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          body_external_dimensional_price_group_id: String?,
+          metadata: ::Hash[Symbol, String?]?,
+          request_options: Orb::RequestOptions
+        }
+      end
+    end
+  end
+end
