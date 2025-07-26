@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.11.0 (2025-07-26)
+
+Full Changelog: [v1.10.0...v1.11.0](https://github.com/orbcorp/orb-ruby/compare/v1.10.0...v1.11.0)
+
+### Features
+
+* **api:** api update ([795fe5c](https://github.com/orbcorp/orb-ruby/commit/795fe5c93f6b38d32c1138082ac06c6ff9180af2))
+
+
+### Chores
+
+* update contribute.md ([ccaa22e](https://github.com/orbcorp/orb-ruby/commit/ccaa22ecc37863354f3cbd1822ff52981127d613))
+
 ## 1.10.0 (2025-07-24)
 
 Full Changelog: [v1.9.0...v1.10.0](https://github.com/orbcorp/orb-ruby/compare/v1.9.0...v1.10.0)
