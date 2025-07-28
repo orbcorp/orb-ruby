@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.11.1 (2025-07-28)
+
+Full Changelog: [v1.11.0...v1.11.1](https://github.com/orbcorp/orb-ruby/compare/v1.11.0...v1.11.1)
+
+### Bug Fixes
+
+* **internal:** ensure sorbet test always runs serially ([8360360](https://github.com/orbcorp/orb-ruby/commit/836036007325871a37efeb1be2c725e3d1546200))
+
 ## 1.11.0 (2025-07-26)
 
 Full Changelog: [v1.10.0...v1.11.0](https://github.com/orbcorp/orb-ruby/compare/v1.10.0...v1.11.0)
