@@ -389,9 +389,7 @@ module Orb
         #
         #   @return [Array<Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider>]
         required :accounting_providers,
-                 -> {
-                   Orb::Internal::Type::ArrayOf[Orb::Customer::AccountingSyncConfiguration::AccountingProvider]
-                 }
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Customer::AccountingSyncConfiguration::AccountingProvider] }
 
         # @!attribute excluded
         #

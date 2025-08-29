@@ -864,10 +864,7 @@ module Orb
         #   `sub_line_items`.
         #
         #   @return [Array<Orb::Models::MatrixSubLineItem, Orb::Models::TierSubLineItem, Orb::Models::OtherSubLineItem>]
-        required :sub_line_items,
-                 -> {
-                   Orb::Internal::Type::ArrayOf[union: Orb::Invoice::LineItem::SubLineItem]
-                 }
+        required :sub_line_items, -> { Orb::Internal::Type::ArrayOf[union: Orb::Invoice::LineItem::SubLineItem] }
 
         # @!attribute subtotal
         #   The line amount before before any adjustments.

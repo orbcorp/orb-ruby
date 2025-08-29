@@ -320,9 +320,9 @@ class Orb::Test::UtilFusedEnumTest < Minitest::Test
   end
 
   def test_external_iteration
-    it = [1, 2, 3].to_enum
-    first = it.next
-    fused = Orb::Internal::Util.fused_enum(it, external: true)
+    iter = [1, 2, 3].to_enum
+    first = iter.next
+    fused = Orb::Internal::Util.fused_enum(iter, external: true)
 
     assert_equal(1, first)
     assert_equal([2, 3], fused.to_a)
