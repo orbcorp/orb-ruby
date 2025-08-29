@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.11.2 (2025-08-29)
+
+Full Changelog: [v1.11.1...v1.11.2](https://github.com/orbcorp/orb-ruby/compare/v1.11.1...v1.11.2)
+
+### Chores
+
+* **internal:** codegen related update ([5d327ef](https://github.com/orbcorp/orb-ruby/commit/5d327ef881b03c338f8ae48b2703c3325734a93f))
+* **internal:** increase visibility of internal helper method ([141449b](https://github.com/orbcorp/orb-ruby/commit/141449b56bb7c064becf69ec548ce2d99cb1942f))
+
 ## 1.11.1 (2025-07-28)
 
 Full Changelog: [v1.11.0...v1.11.1](https://github.com/orbcorp/orb-ruby/compare/v1.11.0...v1.11.1)
