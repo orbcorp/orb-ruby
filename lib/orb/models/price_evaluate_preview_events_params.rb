@@ -223,15 +223,9 @@ module Orb
 
           variant :grouped_tiered_package, -> { Orb::NewFloatingGroupedTieredPackagePrice }
 
-          variant :scalable_matrix_with_unit_pricing,
-                  -> {
-                    Orb::NewFloatingScalableMatrixWithUnitPricingPrice
-                  }
+          variant :scalable_matrix_with_unit_pricing, -> { Orb::NewFloatingScalableMatrixWithUnitPricingPrice }
 
-          variant :scalable_matrix_with_tiered_pricing,
-                  -> {
-                    Orb::NewFloatingScalableMatrixWithTieredPricingPrice
-                  }
+          variant :scalable_matrix_with_tiered_pricing, -> { Orb::NewFloatingScalableMatrixWithTieredPricingPrice }
 
           variant :cumulative_grouped_bulk, -> { Orb::NewFloatingCumulativeGroupedBulkPrice }
 

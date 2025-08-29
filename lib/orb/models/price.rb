@@ -3092,8 +3092,7 @@ module Orb
         # @!attribute tiered_package_with_minimum_config
         #
         #   @return [Hash{Symbol=>Object}]
-        required :tiered_package_with_minimum_config,
-                 Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
+        required :tiered_package_with_minimum_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
         # @!attribute dimensional_price_configuration
         #
@@ -4710,8 +4709,7 @@ module Orb
         # @!attribute grouped_with_prorated_minimum_config
         #
         #   @return [Hash{Symbol=>Object}]
-        required :grouped_with_prorated_minimum_config,
-                 Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
+        required :grouped_with_prorated_minimum_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
         # @!attribute invoicing_cycle_configuration
         #
@@ -4952,8 +4950,7 @@ module Orb
         # @!attribute grouped_with_metered_minimum_config
         #
         #   @return [Hash{Symbol=>Object}]
-        required :grouped_with_metered_minimum_config,
-                 Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
+        required :grouped_with_metered_minimum_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
         # @!attribute invoicing_cycle_configuration
         #

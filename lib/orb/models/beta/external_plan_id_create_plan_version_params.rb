@@ -223,10 +223,7 @@ module Orb
 
             variant :scalable_matrix_with_unit_pricing, -> { Orb::NewPlanScalableMatrixWithUnitPricingPrice }
 
-            variant :scalable_matrix_with_tiered_pricing,
-                    -> {
-                      Orb::NewPlanScalableMatrixWithTieredPricingPrice
-                    }
+            variant :scalable_matrix_with_tiered_pricing, -> { Orb::NewPlanScalableMatrixWithTieredPricingPrice }
 
             variant :cumulative_grouped_bulk, -> { Orb::NewPlanCumulativeGroupedBulkPrice }
 
@@ -285,9 +282,7 @@ module Orb
           #
           #   @return [Orb::Models::NewPercentageDiscount, Orb::Models::NewUsageDiscount, Orb::Models::NewAmountDiscount, Orb::Models::NewMinimum, Orb::Models::NewMaximum]
           required :adjustment,
-                   union: -> {
-                     Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment
-                   }
+                   union: -> { Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment }
 
           # @!attribute replaces_adjustment_id
           #   The id of the adjustment on the plan to replace in the plan.
@@ -421,10 +416,7 @@ module Orb
 
             variant :scalable_matrix_with_unit_pricing, -> { Orb::NewPlanScalableMatrixWithUnitPricingPrice }
 
-            variant :scalable_matrix_with_tiered_pricing,
-                    -> {
-                      Orb::NewPlanScalableMatrixWithTieredPricingPrice
-                    }
+            variant :scalable_matrix_with_tiered_pricing, -> { Orb::NewPlanScalableMatrixWithTieredPricingPrice }
 
             variant :cumulative_grouped_bulk, -> { Orb::NewPlanCumulativeGroupedBulkPrice }
 

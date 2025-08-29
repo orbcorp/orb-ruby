@@ -19,10 +19,7 @@ module Orb
           # @!attribute entry_type
           #
           #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType]
-          required :entry_type,
-                   enum: -> {
-                     Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType
-                   }
+          required :entry_type, enum: -> { Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType }
 
           # @!attribute currency
           #   The currency or custom pricing unit to use for this ledger entry. If this is a

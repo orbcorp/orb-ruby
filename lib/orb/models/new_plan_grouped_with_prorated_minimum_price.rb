@@ -12,8 +12,7 @@ module Orb
       # @!attribute grouped_with_prorated_minimum_config
       #
       #   @return [Hash{Symbol=>Object}]
-      required :grouped_with_prorated_minimum_config,
-               Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
+      required :grouped_with_prorated_minimum_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
       # @!attribute item_id
       #   The id of the item the price will be associated with.
