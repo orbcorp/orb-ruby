@@ -289,10 +289,7 @@ module Orb
         #   The definition of a new adjustment to create and add to the subscription.
         #
         #   @return [Orb::Models::NewPercentageDiscount, Orb::Models::NewUsageDiscount, Orb::Models::NewAmountDiscount, Orb::Models::NewMinimum, Orb::Models::NewMaximum]
-        required :adjustment,
-                 union: -> {
-                   Orb::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment
-                 }
+        required :adjustment, union: -> { Orb::SubscriptionSchedulePlanChangeParams::AddAdjustment::Adjustment }
 
         # @!attribute end_date
         #   The end date of the adjustment interval. This is the date that the adjustment
@@ -493,10 +490,7 @@ module Orb
 
           variant :bulk_with_proration, -> { Orb::NewSubscriptionBulkWithProrationPrice }
 
-          variant :scalable_matrix_with_unit_pricing,
-                  -> {
-                    Orb::NewSubscriptionScalableMatrixWithUnitPricingPrice
-                  }
+          variant :scalable_matrix_with_unit_pricing, -> { Orb::NewSubscriptionScalableMatrixWithUnitPricingPrice }
 
           variant :scalable_matrix_with_tiered_pricing,
                   -> { Orb::NewSubscriptionScalableMatrixWithTieredPricingPrice }
@@ -743,10 +737,7 @@ module Orb
 
           variant :bulk_with_proration, -> { Orb::NewSubscriptionBulkWithProrationPrice }
 
-          variant :scalable_matrix_with_unit_pricing,
-                  -> {
-                    Orb::NewSubscriptionScalableMatrixWithUnitPricingPrice
-                  }
+          variant :scalable_matrix_with_unit_pricing, -> { Orb::NewSubscriptionScalableMatrixWithUnitPricingPrice }
 
           variant :scalable_matrix_with_tiered_pricing,
                   -> { Orb::NewSubscriptionScalableMatrixWithTieredPricingPrice }

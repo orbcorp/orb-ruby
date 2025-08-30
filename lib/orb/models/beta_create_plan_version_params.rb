@@ -207,10 +207,7 @@ module Orb
 
           variant :scalable_matrix_with_unit_pricing, -> { Orb::NewPlanScalableMatrixWithUnitPricingPrice }
 
-          variant :scalable_matrix_with_tiered_pricing,
-                  -> {
-                    Orb::NewPlanScalableMatrixWithTieredPricingPrice
-                  }
+          variant :scalable_matrix_with_tiered_pricing, -> { Orb::NewPlanScalableMatrixWithTieredPricingPrice }
 
           variant :cumulative_grouped_bulk, -> { Orb::NewPlanCumulativeGroupedBulkPrice }
 
@@ -400,10 +397,7 @@ module Orb
 
           variant :scalable_matrix_with_unit_pricing, -> { Orb::NewPlanScalableMatrixWithUnitPricingPrice }
 
-          variant :scalable_matrix_with_tiered_pricing,
-                  -> {
-                    Orb::NewPlanScalableMatrixWithTieredPricingPrice
-                  }
+          variant :scalable_matrix_with_tiered_pricing, -> { Orb::NewPlanScalableMatrixWithTieredPricingPrice }
 
           variant :cumulative_grouped_bulk, -> { Orb::NewPlanCumulativeGroupedBulkPrice }
 

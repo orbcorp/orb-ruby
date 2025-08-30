@@ -24,18 +24,13 @@ module Orb
           # @!attribute billable_metric
           #
           #   @return [Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric]
-          required :billable_metric,
-                   -> {
-                     Orb::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric
-                   }
+          required :billable_metric, -> { Orb::SubscriptionUsage::UngroupedSubscriptionUsage::Data::BillableMetric }
 
           # @!attribute usage
           #
           #   @return [Array<Orb::Models::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage>]
           required :usage,
-                   -> {
-                     Orb::Internal::Type::ArrayOf[Orb::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage]
-                   }
+                   -> { Orb::Internal::Type::ArrayOf[Orb::SubscriptionUsage::UngroupedSubscriptionUsage::Data::Usage] }
 
           # @!attribute view_mode
           #
@@ -119,10 +114,7 @@ module Orb
           # @!attribute billable_metric
           #
           #   @return [Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric]
-          required :billable_metric,
-                   -> {
-                     Orb::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric
-                   }
+          required :billable_metric, -> { Orb::SubscriptionUsage::GroupedSubscriptionUsage::Data::BillableMetric }
 
           # @!attribute metric_group
           #
@@ -133,9 +125,7 @@ module Orb
           #
           #   @return [Array<Orb::Models::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage>]
           required :usage,
-                   -> {
-                     Orb::Internal::Type::ArrayOf[Orb::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage]
-                   }
+                   -> { Orb::Internal::Type::ArrayOf[Orb::SubscriptionUsage::GroupedSubscriptionUsage::Data::Usage] }
 
           # @!attribute view_mode
           #

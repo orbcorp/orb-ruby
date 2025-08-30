@@ -525,10 +525,7 @@ module Orb
 
           variant :bulk_with_proration, -> { Orb::NewSubscriptionBulkWithProrationPrice }
 
-          variant :scalable_matrix_with_unit_pricing,
-                  -> {
-                    Orb::NewSubscriptionScalableMatrixWithUnitPricingPrice
-                  }
+          variant :scalable_matrix_with_unit_pricing, -> { Orb::NewSubscriptionScalableMatrixWithUnitPricingPrice }
 
           variant :scalable_matrix_with_tiered_pricing,
                   -> { Orb::NewSubscriptionScalableMatrixWithTieredPricingPrice }
@@ -767,10 +764,7 @@ module Orb
 
           variant :bulk_with_proration, -> { Orb::NewSubscriptionBulkWithProrationPrice }
 
-          variant :scalable_matrix_with_unit_pricing,
-                  -> {
-                    Orb::NewSubscriptionScalableMatrixWithUnitPricingPrice
-                  }
+          variant :scalable_matrix_with_unit_pricing, -> { Orb::NewSubscriptionScalableMatrixWithUnitPricingPrice }
 
           variant :scalable_matrix_with_tiered_pricing,
                   -> { Orb::NewSubscriptionScalableMatrixWithTieredPricingPrice }

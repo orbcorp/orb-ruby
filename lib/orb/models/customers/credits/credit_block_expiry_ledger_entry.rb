@@ -48,10 +48,7 @@ module Orb
           # @!attribute entry_status
           #
           #   @return [Symbol, Orb::Models::Customers::Credits::CreditBlockExpiryLedgerEntry::EntryStatus]
-          required :entry_status,
-                   enum: -> {
-                     Orb::Customers::Credits::CreditBlockExpiryLedgerEntry::EntryStatus
-                   }
+          required :entry_status, enum: -> { Orb::Customers::Credits::CreditBlockExpiryLedgerEntry::EntryStatus }
 
           # @!attribute entry_type
           #
