@@ -93,6 +93,7 @@ module Orb
             {
               auto_collection: bool,
               net_terms: Integer?,
+              custom_due_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::custom_due_date?,
               invoice_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::invoice_date?,
               memo: String?,
               require_successful_payment: bool
@@ -102,6 +103,8 @@ module Orb
             attr_accessor auto_collection: bool
 
             attr_accessor net_terms: Integer?
+
+            attr_accessor custom_due_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::custom_due_date?
 
             attr_accessor invoice_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::invoice_date?
 
@@ -114,6 +117,7 @@ module Orb
             def initialize: (
               auto_collection: bool,
               net_terms: Integer?,
+              ?custom_due_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::custom_due_date?,
               ?invoice_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::invoice_date?,
               ?memo: String?,
               ?require_successful_payment: bool
@@ -122,10 +126,19 @@ module Orb
             def to_hash: -> {
               auto_collection: bool,
               net_terms: Integer?,
+              custom_due_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::custom_due_date?,
               invoice_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::invoice_date?,
               memo: String?,
               require_successful_payment: bool
             }
+
+            type custom_due_date = Date | Time
+
+            module CustomDueDate
+              extend Orb::Internal::Type::Union
+
+              def self?.variants: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::custom_due_date]
+            end
 
             type invoice_date = Date | Time
 

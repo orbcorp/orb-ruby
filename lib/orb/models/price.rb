@@ -25,12 +25,6 @@ module Orb
 
       variant :tiered, -> { Orb::Price::Tiered }
 
-      variant :tiered_bps, -> { Orb::Price::TieredBPS }
-
-      variant :bps, -> { Orb::Price::BPS }
-
-      variant :bulk_bps, -> { Orb::Price::BulkBPS }
-
       variant :bulk, -> { Orb::Price::Bulk }
 
       variant :threshold_total_amount, -> { Orb::Price::ThresholdTotalAmount }
@@ -75,6 +69,8 @@ module Orb
 
       variant :grouped_with_min_max_thresholds, -> { Orb::Price::GroupedWithMinMaxThresholds }
 
+      variant :minimum, -> { Orb::Price::Minimum }
+
       class Unit < Orb::Internal::Type::BaseModel
         # @!attribute id
         #
@@ -96,6 +92,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::Unit::Cadence]
         required :cadence, enum: -> { Orb::Price::Unit::Cadence }
 
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        required :composite_price_filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 nil?: true
+
         # @!attribute conversion_rate
         #
         #   @return [Float, nil]
@@ -105,7 +108,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::Unit::UnnamedTypeWithobjectParent84 },
+                 union: -> { Orb::Price::Unit::UnnamedTypeWithobjectParent85 },
                  nil?: true
 
         # @!attribute created_at
@@ -219,7 +222,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, unit_config:, dimensional_price_configuration: nil, model_type: :unit)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, unit_config:, dimensional_price_configuration: nil, model_type: :unit)
         #   Some parameter documentations has been truncated, see {Orb::Models::Price::Unit}
         #   for more details.
         #
@@ -230,6 +233,8 @@ module Orb
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
         #
         #   @param cadence [Symbol, Orb::Models::Price::Unit::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -323,6 +328,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::Package::Cadence]
         required :cadence, enum: -> { Orb::Price::Package::Cadence }
 
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        required :composite_price_filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 nil?: true
+
         # @!attribute conversion_rate
         #
         #   @return [Float, nil]
@@ -332,7 +344,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::Package::UnnamedTypeWithobjectParent85 },
+                 union: -> { Orb::Price::Package::UnnamedTypeWithobjectParent86 },
                  nil?: true
 
         # @!attribute created_at
@@ -446,7 +458,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, package_config:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :package)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, package_config:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :package)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::Package} for more details.
         #
@@ -457,6 +469,8 @@ module Orb
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
         #
         #   @param cadence [Symbol, Orb::Models::Price::Package::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -550,6 +564,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::Matrix::Cadence]
         required :cadence, enum: -> { Orb::Price::Matrix::Cadence }
 
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        required :composite_price_filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 nil?: true
+
         # @!attribute conversion_rate
         #
         #   @return [Float, nil]
@@ -559,7 +580,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::Matrix::UnnamedTypeWithobjectParent86 },
+                 union: -> { Orb::Price::Matrix::UnnamedTypeWithobjectParent87 },
                  nil?: true
 
         # @!attribute created_at
@@ -673,7 +694,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :matrix)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :matrix)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::Matrix} for more details.
         #
@@ -684,6 +705,8 @@ module Orb
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
         #
         #   @param cadence [Symbol, Orb::Models::Price::Matrix::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -777,6 +800,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::Tiered::Cadence]
         required :cadence, enum: -> { Orb::Price::Tiered::Cadence }
 
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        required :composite_price_filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 nil?: true
+
         # @!attribute conversion_rate
         #
         #   @return [Float, nil]
@@ -786,7 +816,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::Tiered::UnnamedTypeWithobjectParent87 },
+                 union: -> { Orb::Price::Tiered::UnnamedTypeWithobjectParent88 },
                  nil?: true
 
         # @!attribute created_at
@@ -900,7 +930,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_config:, dimensional_price_configuration: nil, model_type: :tiered)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_config:, dimensional_price_configuration: nil, model_type: :tiered)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::Tiered} for more details.
         #
@@ -911,6 +941,8 @@ module Orb
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
         #
         #   @param cadence [Symbol, Orb::Models::Price::Tiered::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -983,689 +1015,6 @@ module Orb
         end
       end
 
-      class TieredBPS < Orb::Internal::Type::BaseModel
-        # @!attribute id
-        #
-        #   @return [String]
-        required :id, String
-
-        # @!attribute billable_metric
-        #
-        #   @return [Orb::Models::BillableMetricTiny, nil]
-        required :billable_metric, -> { Orb::BillableMetricTiny }, nil?: true
-
-        # @!attribute billing_cycle_configuration
-        #
-        #   @return [Orb::Models::BillingCycleConfiguration]
-        required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
-
-        # @!attribute cadence
-        #
-        #   @return [Symbol, Orb::Models::Price::TieredBPS::Cadence]
-        required :cadence, enum: -> { Orb::Price::TieredBPS::Cadence }
-
-        # @!attribute conversion_rate
-        #
-        #   @return [Float, nil]
-        required :conversion_rate, Float, nil?: true
-
-        # @!attribute conversion_rate_config
-        #
-        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::TieredBPS::UnnamedTypeWithobjectParent88 },
-                 nil?: true
-
-        # @!attribute created_at
-        #
-        #   @return [Time]
-        required :created_at, Time
-
-        # @!attribute credit_allocation
-        #
-        #   @return [Orb::Models::Allocation, nil]
-        required :credit_allocation, -> { Orb::Allocation }, nil?: true
-
-        # @!attribute currency
-        #
-        #   @return [String]
-        required :currency, String
-
-        # @!attribute discount
-        #   @deprecated
-        #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        required :discount, union: -> { Orb::Discount }, nil?: true
-
-        # @!attribute external_price_id
-        #
-        #   @return [String, nil]
-        required :external_price_id, String, nil?: true
-
-        # @!attribute fixed_price_quantity
-        #
-        #   @return [Float, nil]
-        required :fixed_price_quantity, Float, nil?: true
-
-        # @!attribute invoicing_cycle_configuration
-        #
-        #   @return [Orb::Models::BillingCycleConfiguration, nil]
-        required :invoicing_cycle_configuration, -> { Orb::BillingCycleConfiguration }, nil?: true
-
-        # @!attribute item
-        #
-        #   @return [Orb::Models::ItemSlim]
-        required :item, -> { Orb::ItemSlim }
-
-        # @!attribute maximum
-        #   @deprecated
-        #
-        #   @return [Orb::Models::Maximum, nil]
-        required :maximum, -> { Orb::Maximum }, nil?: true
-
-        # @!attribute maximum_amount
-        #   @deprecated
-        #
-        #   @return [String, nil]
-        required :maximum_amount, String, nil?: true
-
-        # @!attribute metadata
-        #   User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
-        #
-        #   @return [Hash{Symbol=>String}]
-        required :metadata, Orb::Internal::Type::HashOf[String]
-
-        # @!attribute minimum
-        #   @deprecated
-        #
-        #   @return [Orb::Models::Minimum, nil]
-        required :minimum, -> { Orb::Minimum }, nil?: true
-
-        # @!attribute minimum_amount
-        #   @deprecated
-        #
-        #   @return [String, nil]
-        required :minimum_amount, String, nil?: true
-
-        # @!attribute model_type
-        #
-        #   @return [Symbol, :tiered_bps]
-        required :model_type, const: :tiered_bps
-
-        # @!attribute name
-        #
-        #   @return [String]
-        required :name, String
-
-        # @!attribute plan_phase_order
-        #
-        #   @return [Integer, nil]
-        required :plan_phase_order, Integer, nil?: true
-
-        # @!attribute price_type
-        #
-        #   @return [Symbol, Orb::Models::Price::TieredBPS::PriceType]
-        required :price_type, enum: -> { Orb::Price::TieredBPS::PriceType }
-
-        # @!attribute replaces_price_id
-        #   The price id this price replaces. This price will take the place of the replaced
-        #   price in plan version migrations.
-        #
-        #   @return [String, nil]
-        required :replaces_price_id, String, nil?: true
-
-        # @!attribute tiered_bps_config
-        #
-        #   @return [Orb::Models::TieredBPSConfig]
-        required :tiered_bps_config, -> { Orb::TieredBPSConfig }
-
-        # @!attribute dimensional_price_configuration
-        #
-        #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
-        optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
-
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_bps_config:, dimensional_price_configuration: nil, model_type: :tiered_bps)
-        #   Some parameter documentations has been truncated, see
-        #   {Orb::Models::Price::TieredBPS} for more details.
-        #
-        #   @param id [String]
-        #
-        #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
-        #
-        #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
-        #
-        #   @param cadence [Symbol, Orb::Models::Price::TieredBPS::Cadence]
-        #
-        #   @param conversion_rate [Float, nil]
-        #
-        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        #
-        #   @param created_at [Time]
-        #
-        #   @param credit_allocation [Orb::Models::Allocation, nil]
-        #
-        #   @param currency [String]
-        #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #
-        #   @param external_price_id [String, nil]
-        #
-        #   @param fixed_price_quantity [Float, nil]
-        #
-        #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
-        #
-        #   @param item [Orb::Models::ItemSlim]
-        #
-        #   @param maximum [Orb::Models::Maximum, nil]
-        #
-        #   @param maximum_amount [String, nil]
-        #
-        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
-        #
-        #   @param minimum [Orb::Models::Minimum, nil]
-        #
-        #   @param minimum_amount [String, nil]
-        #
-        #   @param name [String]
-        #
-        #   @param plan_phase_order [Integer, nil]
-        #
-        #   @param price_type [Symbol, Orb::Models::Price::TieredBPS::PriceType]
-        #
-        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
-        #
-        #   @param tiered_bps_config [Orb::Models::TieredBPSConfig]
-        #
-        #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
-        #
-        #   @param model_type [Symbol, :tiered_bps]
-
-        # @see Orb::Models::Price::TieredBPS#cadence
-        module Cadence
-          extend Orb::Internal::Type::Enum
-
-          ONE_TIME = :one_time
-          MONTHLY = :monthly
-          QUARTERLY = :quarterly
-          SEMI_ANNUAL = :semi_annual
-          ANNUAL = :annual
-          CUSTOM = :custom
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-
-        # @see Orb::Models::Price::TieredBPS#price_type
-        module PriceType
-          extend Orb::Internal::Type::Enum
-
-          USAGE_PRICE = :usage_price
-          FIXED_PRICE = :fixed_price
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-      end
-
-      class BPS < Orb::Internal::Type::BaseModel
-        # @!attribute id
-        #
-        #   @return [String]
-        required :id, String
-
-        # @!attribute billable_metric
-        #
-        #   @return [Orb::Models::BillableMetricTiny, nil]
-        required :billable_metric, -> { Orb::BillableMetricTiny }, nil?: true
-
-        # @!attribute billing_cycle_configuration
-        #
-        #   @return [Orb::Models::BillingCycleConfiguration]
-        required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
-
-        # @!attribute bps_config
-        #
-        #   @return [Orb::Models::BPSConfig]
-        required :bps_config, -> { Orb::BPSConfig }
-
-        # @!attribute cadence
-        #
-        #   @return [Symbol, Orb::Models::Price::BPS::Cadence]
-        required :cadence, enum: -> { Orb::Price::BPS::Cadence }
-
-        # @!attribute conversion_rate
-        #
-        #   @return [Float, nil]
-        required :conversion_rate, Float, nil?: true
-
-        # @!attribute conversion_rate_config
-        #
-        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> {
-                   Orb::Price::BPS::UnnamedTypeWithobjectParent89
-                 },
-                 nil?: true
-
-        # @!attribute created_at
-        #
-        #   @return [Time]
-        required :created_at, Time
-
-        # @!attribute credit_allocation
-        #
-        #   @return [Orb::Models::Allocation, nil]
-        required :credit_allocation, -> { Orb::Allocation }, nil?: true
-
-        # @!attribute currency
-        #
-        #   @return [String]
-        required :currency, String
-
-        # @!attribute discount
-        #   @deprecated
-        #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        required :discount, union: -> { Orb::Discount }, nil?: true
-
-        # @!attribute external_price_id
-        #
-        #   @return [String, nil]
-        required :external_price_id, String, nil?: true
-
-        # @!attribute fixed_price_quantity
-        #
-        #   @return [Float, nil]
-        required :fixed_price_quantity, Float, nil?: true
-
-        # @!attribute invoicing_cycle_configuration
-        #
-        #   @return [Orb::Models::BillingCycleConfiguration, nil]
-        required :invoicing_cycle_configuration, -> { Orb::BillingCycleConfiguration }, nil?: true
-
-        # @!attribute item
-        #
-        #   @return [Orb::Models::ItemSlim]
-        required :item, -> { Orb::ItemSlim }
-
-        # @!attribute maximum
-        #   @deprecated
-        #
-        #   @return [Orb::Models::Maximum, nil]
-        required :maximum, -> { Orb::Maximum }, nil?: true
-
-        # @!attribute maximum_amount
-        #   @deprecated
-        #
-        #   @return [String, nil]
-        required :maximum_amount, String, nil?: true
-
-        # @!attribute metadata
-        #   User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
-        #
-        #   @return [Hash{Symbol=>String}]
-        required :metadata, Orb::Internal::Type::HashOf[String]
-
-        # @!attribute minimum
-        #   @deprecated
-        #
-        #   @return [Orb::Models::Minimum, nil]
-        required :minimum, -> { Orb::Minimum }, nil?: true
-
-        # @!attribute minimum_amount
-        #   @deprecated
-        #
-        #   @return [String, nil]
-        required :minimum_amount, String, nil?: true
-
-        # @!attribute model_type
-        #
-        #   @return [Symbol, :bps]
-        required :model_type, const: :bps
-
-        # @!attribute name
-        #
-        #   @return [String]
-        required :name, String
-
-        # @!attribute plan_phase_order
-        #
-        #   @return [Integer, nil]
-        required :plan_phase_order, Integer, nil?: true
-
-        # @!attribute price_type
-        #
-        #   @return [Symbol, Orb::Models::Price::BPS::PriceType]
-        required :price_type, enum: -> { Orb::Price::BPS::PriceType }
-
-        # @!attribute replaces_price_id
-        #   The price id this price replaces. This price will take the place of the replaced
-        #   price in plan version migrations.
-        #
-        #   @return [String, nil]
-        required :replaces_price_id, String, nil?: true
-
-        # @!attribute dimensional_price_configuration
-        #
-        #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
-        optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
-
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bps_config:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :bps)
-        #   Some parameter documentations has been truncated, see {Orb::Models::Price::BPS}
-        #   for more details.
-        #
-        #   @param id [String]
-        #
-        #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
-        #
-        #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
-        #
-        #   @param bps_config [Orb::Models::BPSConfig]
-        #
-        #   @param cadence [Symbol, Orb::Models::Price::BPS::Cadence]
-        #
-        #   @param conversion_rate [Float, nil]
-        #
-        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        #
-        #   @param created_at [Time]
-        #
-        #   @param credit_allocation [Orb::Models::Allocation, nil]
-        #
-        #   @param currency [String]
-        #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #
-        #   @param external_price_id [String, nil]
-        #
-        #   @param fixed_price_quantity [Float, nil]
-        #
-        #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
-        #
-        #   @param item [Orb::Models::ItemSlim]
-        #
-        #   @param maximum [Orb::Models::Maximum, nil]
-        #
-        #   @param maximum_amount [String, nil]
-        #
-        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
-        #
-        #   @param minimum [Orb::Models::Minimum, nil]
-        #
-        #   @param minimum_amount [String, nil]
-        #
-        #   @param name [String]
-        #
-        #   @param plan_phase_order [Integer, nil]
-        #
-        #   @param price_type [Symbol, Orb::Models::Price::BPS::PriceType]
-        #
-        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
-        #
-        #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
-        #
-        #   @param model_type [Symbol, :bps]
-
-        # @see Orb::Models::Price::BPS#cadence
-        module Cadence
-          extend Orb::Internal::Type::Enum
-
-          ONE_TIME = :one_time
-          MONTHLY = :monthly
-          QUARTERLY = :quarterly
-          SEMI_ANNUAL = :semi_annual
-          ANNUAL = :annual
-          CUSTOM = :custom
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-
-        # @see Orb::Models::Price::BPS#price_type
-        module PriceType
-          extend Orb::Internal::Type::Enum
-
-          USAGE_PRICE = :usage_price
-          FIXED_PRICE = :fixed_price
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-      end
-
-      class BulkBPS < Orb::Internal::Type::BaseModel
-        # @!attribute id
-        #
-        #   @return [String]
-        required :id, String
-
-        # @!attribute billable_metric
-        #
-        #   @return [Orb::Models::BillableMetricTiny, nil]
-        required :billable_metric, -> { Orb::BillableMetricTiny }, nil?: true
-
-        # @!attribute billing_cycle_configuration
-        #
-        #   @return [Orb::Models::BillingCycleConfiguration]
-        required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
-
-        # @!attribute bulk_bps_config
-        #
-        #   @return [Orb::Models::BulkBPSConfig]
-        required :bulk_bps_config, -> { Orb::BulkBPSConfig }
-
-        # @!attribute cadence
-        #
-        #   @return [Symbol, Orb::Models::Price::BulkBPS::Cadence]
-        required :cadence, enum: -> { Orb::Price::BulkBPS::Cadence }
-
-        # @!attribute conversion_rate
-        #
-        #   @return [Float, nil]
-        required :conversion_rate, Float, nil?: true
-
-        # @!attribute conversion_rate_config
-        #
-        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::BulkBPS::UnnamedTypeWithobjectParent90 },
-                 nil?: true
-
-        # @!attribute created_at
-        #
-        #   @return [Time]
-        required :created_at, Time
-
-        # @!attribute credit_allocation
-        #
-        #   @return [Orb::Models::Allocation, nil]
-        required :credit_allocation, -> { Orb::Allocation }, nil?: true
-
-        # @!attribute currency
-        #
-        #   @return [String]
-        required :currency, String
-
-        # @!attribute discount
-        #   @deprecated
-        #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        required :discount, union: -> { Orb::Discount }, nil?: true
-
-        # @!attribute external_price_id
-        #
-        #   @return [String, nil]
-        required :external_price_id, String, nil?: true
-
-        # @!attribute fixed_price_quantity
-        #
-        #   @return [Float, nil]
-        required :fixed_price_quantity, Float, nil?: true
-
-        # @!attribute invoicing_cycle_configuration
-        #
-        #   @return [Orb::Models::BillingCycleConfiguration, nil]
-        required :invoicing_cycle_configuration, -> { Orb::BillingCycleConfiguration }, nil?: true
-
-        # @!attribute item
-        #
-        #   @return [Orb::Models::ItemSlim]
-        required :item, -> { Orb::ItemSlim }
-
-        # @!attribute maximum
-        #   @deprecated
-        #
-        #   @return [Orb::Models::Maximum, nil]
-        required :maximum, -> { Orb::Maximum }, nil?: true
-
-        # @!attribute maximum_amount
-        #   @deprecated
-        #
-        #   @return [String, nil]
-        required :maximum_amount, String, nil?: true
-
-        # @!attribute metadata
-        #   User specified key-value pairs for the resource. If not present, this defaults
-        #   to an empty dictionary. Individual keys can be removed by setting the value to
-        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        #   `null`.
-        #
-        #   @return [Hash{Symbol=>String}]
-        required :metadata, Orb::Internal::Type::HashOf[String]
-
-        # @!attribute minimum
-        #   @deprecated
-        #
-        #   @return [Orb::Models::Minimum, nil]
-        required :minimum, -> { Orb::Minimum }, nil?: true
-
-        # @!attribute minimum_amount
-        #   @deprecated
-        #
-        #   @return [String, nil]
-        required :minimum_amount, String, nil?: true
-
-        # @!attribute model_type
-        #
-        #   @return [Symbol, :bulk_bps]
-        required :model_type, const: :bulk_bps
-
-        # @!attribute name
-        #
-        #   @return [String]
-        required :name, String
-
-        # @!attribute plan_phase_order
-        #
-        #   @return [Integer, nil]
-        required :plan_phase_order, Integer, nil?: true
-
-        # @!attribute price_type
-        #
-        #   @return [Symbol, Orb::Models::Price::BulkBPS::PriceType]
-        required :price_type, enum: -> { Orb::Price::BulkBPS::PriceType }
-
-        # @!attribute replaces_price_id
-        #   The price id this price replaces. This price will take the place of the replaced
-        #   price in plan version migrations.
-        #
-        #   @return [String, nil]
-        required :replaces_price_id, String, nil?: true
-
-        # @!attribute dimensional_price_configuration
-        #
-        #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
-        optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
-
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bulk_bps_config:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :bulk_bps)
-        #   Some parameter documentations has been truncated, see
-        #   {Orb::Models::Price::BulkBPS} for more details.
-        #
-        #   @param id [String]
-        #
-        #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
-        #
-        #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
-        #
-        #   @param bulk_bps_config [Orb::Models::BulkBPSConfig]
-        #
-        #   @param cadence [Symbol, Orb::Models::Price::BulkBPS::Cadence]
-        #
-        #   @param conversion_rate [Float, nil]
-        #
-        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        #
-        #   @param created_at [Time]
-        #
-        #   @param credit_allocation [Orb::Models::Allocation, nil]
-        #
-        #   @param currency [String]
-        #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-        #
-        #   @param external_price_id [String, nil]
-        #
-        #   @param fixed_price_quantity [Float, nil]
-        #
-        #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
-        #
-        #   @param item [Orb::Models::ItemSlim]
-        #
-        #   @param maximum [Orb::Models::Maximum, nil]
-        #
-        #   @param maximum_amount [String, nil]
-        #
-        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
-        #
-        #   @param minimum [Orb::Models::Minimum, nil]
-        #
-        #   @param minimum_amount [String, nil]
-        #
-        #   @param name [String]
-        #
-        #   @param plan_phase_order [Integer, nil]
-        #
-        #   @param price_type [Symbol, Orb::Models::Price::BulkBPS::PriceType]
-        #
-        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
-        #
-        #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
-        #
-        #   @param model_type [Symbol, :bulk_bps]
-
-        # @see Orb::Models::Price::BulkBPS#cadence
-        module Cadence
-          extend Orb::Internal::Type::Enum
-
-          ONE_TIME = :one_time
-          MONTHLY = :monthly
-          QUARTERLY = :quarterly
-          SEMI_ANNUAL = :semi_annual
-          ANNUAL = :annual
-          CUSTOM = :custom
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-
-        # @see Orb::Models::Price::BulkBPS#price_type
-        module PriceType
-          extend Orb::Internal::Type::Enum
-
-          USAGE_PRICE = :usage_price
-          FIXED_PRICE = :fixed_price
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-      end
-
       class Bulk < Orb::Internal::Type::BaseModel
         # @!attribute id
         #
@@ -1692,6 +1041,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::Bulk::Cadence]
         required :cadence, enum: -> { Orb::Price::Bulk::Cadence }
 
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        required :composite_price_filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 nil?: true
+
         # @!attribute conversion_rate
         #
         #   @return [Float, nil]
@@ -1701,7 +1057,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::Bulk::UnnamedTypeWithobjectParent91 },
+                 union: -> { Orb::Price::Bulk::UnnamedTypeWithobjectParent89 },
                  nil?: true
 
         # @!attribute created_at
@@ -1810,7 +1166,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bulk_config:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :bulk)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bulk_config:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :bulk)
         #   Some parameter documentations has been truncated, see {Orb::Models::Price::Bulk}
         #   for more details.
         #
@@ -1823,6 +1179,8 @@ module Orb
         #   @param bulk_config [Orb::Models::BulkConfig]
         #
         #   @param cadence [Symbol, Orb::Models::Price::Bulk::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -1914,6 +1272,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::ThresholdTotalAmount::Cadence]
         required :cadence, enum: -> { Orb::Price::ThresholdTotalAmount::Cadence }
 
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        required :composite_price_filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 nil?: true
+
         # @!attribute conversion_rate
         #
         #   @return [Float, nil]
@@ -1923,7 +1288,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::ThresholdTotalAmount::UnnamedTypeWithobjectParent92 },
+                 union: -> { Orb::Price::ThresholdTotalAmount::UnnamedTypeWithobjectParent90 },
                  nil?: true
 
         # @!attribute created_at
@@ -2037,7 +1402,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, threshold_total_amount_config:, dimensional_price_configuration: nil, model_type: :threshold_total_amount)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, threshold_total_amount_config:, dimensional_price_configuration: nil, model_type: :threshold_total_amount)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::ThresholdTotalAmount} for more details.
         #
@@ -2048,6 +1413,8 @@ module Orb
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
         #
         #   @param cadence [Symbol, Orb::Models::Price::ThresholdTotalAmount::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -2141,6 +1508,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::TieredPackage::Cadence]
         required :cadence, enum: -> { Orb::Price::TieredPackage::Cadence }
 
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        required :composite_price_filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 nil?: true
+
         # @!attribute conversion_rate
         #
         #   @return [Float, nil]
@@ -2150,7 +1524,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::TieredPackage::UnnamedTypeWithobjectParent93 },
+                 union: -> { Orb::Price::TieredPackage::UnnamedTypeWithobjectParent91 },
                  nil?: true
 
         # @!attribute created_at
@@ -2264,7 +1638,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_package_config:, dimensional_price_configuration: nil, model_type: :tiered_package)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_package_config:, dimensional_price_configuration: nil, model_type: :tiered_package)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::TieredPackage} for more details.
         #
@@ -2275,6 +1649,8 @@ module Orb
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
         #
         #   @param cadence [Symbol, Orb::Models::Price::TieredPackage::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -2368,6 +1744,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::GroupedTiered::Cadence]
         required :cadence, enum: -> { Orb::Price::GroupedTiered::Cadence }
 
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        required :composite_price_filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 nil?: true
+
         # @!attribute conversion_rate
         #
         #   @return [Float, nil]
@@ -2377,7 +1760,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::GroupedTiered::UnnamedTypeWithobjectParent94 },
+                 union: -> { Orb::Price::GroupedTiered::UnnamedTypeWithobjectParent92 },
                  nil?: true
 
         # @!attribute created_at
@@ -2491,7 +1874,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_tiered_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_tiered)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_tiered_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_tiered)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedTiered} for more details.
         #
@@ -2502,6 +1885,8 @@ module Orb
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
         #
         #   @param cadence [Symbol, Orb::Models::Price::GroupedTiered::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -2595,6 +1980,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::TieredWithMinimum::Cadence]
         required :cadence, enum: -> { Orb::Price::TieredWithMinimum::Cadence }
 
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        required :composite_price_filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 nil?: true
+
         # @!attribute conversion_rate
         #
         #   @return [Float, nil]
@@ -2604,7 +1996,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::TieredWithMinimum::UnnamedTypeWithobjectParent95 },
+                 union: -> { Orb::Price::TieredWithMinimum::UnnamedTypeWithobjectParent93 },
                  nil?: true
 
         # @!attribute created_at
@@ -2718,7 +2110,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_with_minimum_config:, dimensional_price_configuration: nil, model_type: :tiered_with_minimum)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_with_minimum_config:, dimensional_price_configuration: nil, model_type: :tiered_with_minimum)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::TieredWithMinimum} for more details.
         #
@@ -2729,6 +2121,8 @@ module Orb
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
         #
         #   @param cadence [Symbol, Orb::Models::Price::TieredWithMinimum::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -2822,6 +2216,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::TieredPackageWithMinimum::Cadence]
         required :cadence, enum: -> { Orb::Price::TieredPackageWithMinimum::Cadence }
 
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        required :composite_price_filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 nil?: true
+
         # @!attribute conversion_rate
         #
         #   @return [Float, nil]
@@ -2831,7 +2232,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::TieredPackageWithMinimum::UnnamedTypeWithobjectParent96 },
+                 union: -> { Orb::Price::TieredPackageWithMinimum::UnnamedTypeWithobjectParent94 },
                  nil?: true
 
         # @!attribute created_at
@@ -2945,7 +2346,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_package_with_minimum_config:, dimensional_price_configuration: nil, model_type: :tiered_package_with_minimum)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_package_with_minimum_config:, dimensional_price_configuration: nil, model_type: :tiered_package_with_minimum)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::TieredPackageWithMinimum} for more details.
         #
@@ -2956,6 +2357,8 @@ module Orb
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
         #
         #   @param cadence [Symbol, Orb::Models::Price::TieredPackageWithMinimum::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -3049,6 +2452,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::PackageWithAllocation::Cadence]
         required :cadence, enum: -> { Orb::Price::PackageWithAllocation::Cadence }
 
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        required :composite_price_filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 nil?: true
+
         # @!attribute conversion_rate
         #
         #   @return [Float, nil]
@@ -3058,7 +2468,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::PackageWithAllocation::UnnamedTypeWithobjectParent97 },
+                 union: -> { Orb::Price::PackageWithAllocation::UnnamedTypeWithobjectParent95 },
                  nil?: true
 
         # @!attribute created_at
@@ -3172,7 +2582,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, package_with_allocation_config:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :package_with_allocation)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, package_with_allocation_config:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :package_with_allocation)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::PackageWithAllocation} for more details.
         #
@@ -3183,6 +2593,8 @@ module Orb
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
         #
         #   @param cadence [Symbol, Orb::Models::Price::PackageWithAllocation::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -3276,6 +2688,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::UnitWithPercent::Cadence]
         required :cadence, enum: -> { Orb::Price::UnitWithPercent::Cadence }
 
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        required :composite_price_filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 nil?: true
+
         # @!attribute conversion_rate
         #
         #   @return [Float, nil]
@@ -3285,7 +2704,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::UnitWithPercent::UnnamedTypeWithobjectParent98 },
+                 union: -> { Orb::Price::UnitWithPercent::UnnamedTypeWithobjectParent96 },
                  nil?: true
 
         # @!attribute created_at
@@ -3399,7 +2818,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, unit_with_percent_config:, dimensional_price_configuration: nil, model_type: :unit_with_percent)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, unit_with_percent_config:, dimensional_price_configuration: nil, model_type: :unit_with_percent)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::UnitWithPercent} for more details.
         #
@@ -3410,6 +2829,8 @@ module Orb
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
         #
         #   @param cadence [Symbol, Orb::Models::Price::UnitWithPercent::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -3503,6 +2924,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::MatrixWithAllocation::Cadence]
         required :cadence, enum: -> { Orb::Price::MatrixWithAllocation::Cadence }
 
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        required :composite_price_filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 nil?: true
+
         # @!attribute conversion_rate
         #
         #   @return [Float, nil]
@@ -3512,7 +2940,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::MatrixWithAllocation::UnnamedTypeWithobjectParent99 },
+                 union: -> { Orb::Price::MatrixWithAllocation::UnnamedTypeWithobjectParent97 },
                  nil?: true
 
         # @!attribute created_at
@@ -3626,7 +3054,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_with_allocation_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :matrix_with_allocation)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_with_allocation_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :matrix_with_allocation)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::MatrixWithAllocation} for more details.
         #
@@ -3637,6 +3065,8 @@ module Orb
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
         #
         #   @param cadence [Symbol, Orb::Models::Price::MatrixWithAllocation::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -3730,6 +3160,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::TieredWithProration::Cadence]
         required :cadence, enum: -> { Orb::Price::TieredWithProration::Cadence }
 
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        required :composite_price_filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 nil?: true
+
         # @!attribute conversion_rate
         #
         #   @return [Float, nil]
@@ -3739,7 +3176,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::TieredWithProration::UnnamedTypeWithobjectParent100 },
+                 union: -> { Orb::Price::TieredWithProration::UnnamedTypeWithobjectParent98 },
                  nil?: true
 
         # @!attribute created_at
@@ -3853,7 +3290,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_with_proration_config:, dimensional_price_configuration: nil, model_type: :tiered_with_proration)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_with_proration_config:, dimensional_price_configuration: nil, model_type: :tiered_with_proration)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::TieredWithProration} for more details.
         #
@@ -3864,6 +3301,8 @@ module Orb
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
         #
         #   @param cadence [Symbol, Orb::Models::Price::TieredWithProration::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -3957,6 +3396,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::UnitWithProration::Cadence]
         required :cadence, enum: -> { Orb::Price::UnitWithProration::Cadence }
 
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        required :composite_price_filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 nil?: true
+
         # @!attribute conversion_rate
         #
         #   @return [Float, nil]
@@ -3966,7 +3412,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::UnitWithProration::UnnamedTypeWithobjectParent101 },
+                 union: -> { Orb::Price::UnitWithProration::UnnamedTypeWithobjectParent99 },
                  nil?: true
 
         # @!attribute created_at
@@ -4080,7 +3526,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, unit_with_proration_config:, dimensional_price_configuration: nil, model_type: :unit_with_proration)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, unit_with_proration_config:, dimensional_price_configuration: nil, model_type: :unit_with_proration)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::UnitWithProration} for more details.
         #
@@ -4091,6 +3537,8 @@ module Orb
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
         #
         #   @param cadence [Symbol, Orb::Models::Price::UnitWithProration::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -4184,6 +3632,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::GroupedAllocation::Cadence]
         required :cadence, enum: -> { Orb::Price::GroupedAllocation::Cadence }
 
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        required :composite_price_filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 nil?: true
+
         # @!attribute conversion_rate
         #
         #   @return [Float, nil]
@@ -4193,7 +3648,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::GroupedAllocation::UnnamedTypeWithobjectParent102 },
+                 union: -> { Orb::Price::GroupedAllocation::UnnamedTypeWithobjectParent100 },
                  nil?: true
 
         # @!attribute created_at
@@ -4307,7 +3762,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_allocation_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_allocation)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_allocation_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_allocation)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedAllocation} for more details.
         #
@@ -4318,6 +3773,8 @@ module Orb
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
         #
         #   @param cadence [Symbol, Orb::Models::Price::GroupedAllocation::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -4411,6 +3868,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::GroupedWithProratedMinimum::Cadence]
         required :cadence, enum: -> { Orb::Price::GroupedWithProratedMinimum::Cadence }
 
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        required :composite_price_filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 nil?: true
+
         # @!attribute conversion_rate
         #
         #   @return [Float, nil]
@@ -4420,7 +3884,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::GroupedWithProratedMinimum::UnnamedTypeWithobjectParent103 },
+                 union: -> { Orb::Price::GroupedWithProratedMinimum::UnnamedTypeWithobjectParent101 },
                  nil?: true
 
         # @!attribute created_at
@@ -4534,7 +3998,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_prorated_minimum_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_with_prorated_minimum)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_prorated_minimum_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_with_prorated_minimum)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedWithProratedMinimum} for more details.
         #
@@ -4545,6 +4009,8 @@ module Orb
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
         #
         #   @param cadence [Symbol, Orb::Models::Price::GroupedWithProratedMinimum::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -4638,6 +4104,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::GroupedWithMeteredMinimum::Cadence]
         required :cadence, enum: -> { Orb::Price::GroupedWithMeteredMinimum::Cadence }
 
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        required :composite_price_filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 nil?: true
+
         # @!attribute conversion_rate
         #
         #   @return [Float, nil]
@@ -4647,7 +4120,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::GroupedWithMeteredMinimum::UnnamedTypeWithobjectParent104 },
+                 union: -> { Orb::Price::GroupedWithMeteredMinimum::UnnamedTypeWithobjectParent102 },
                  nil?: true
 
         # @!attribute created_at
@@ -4761,7 +4234,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_metered_minimum_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_with_metered_minimum)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_metered_minimum_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_with_metered_minimum)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedWithMeteredMinimum} for more details.
         #
@@ -4772,6 +4245,8 @@ module Orb
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
         #
         #   @param cadence [Symbol, Orb::Models::Price::GroupedWithMeteredMinimum::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -4865,6 +4340,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::MatrixWithDisplayName::Cadence]
         required :cadence, enum: -> { Orb::Price::MatrixWithDisplayName::Cadence }
 
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        required :composite_price_filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 nil?: true
+
         # @!attribute conversion_rate
         #
         #   @return [Float, nil]
@@ -4874,7 +4356,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::MatrixWithDisplayName::UnnamedTypeWithobjectParent105 },
+                 union: -> { Orb::Price::MatrixWithDisplayName::UnnamedTypeWithobjectParent103 },
                  nil?: true
 
         # @!attribute created_at
@@ -4988,7 +4470,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_with_display_name_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :matrix_with_display_name)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_with_display_name_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :matrix_with_display_name)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::MatrixWithDisplayName} for more details.
         #
@@ -4999,6 +4481,8 @@ module Orb
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
         #
         #   @param cadence [Symbol, Orb::Models::Price::MatrixWithDisplayName::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -5097,6 +4581,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::BulkWithProration::Cadence]
         required :cadence, enum: -> { Orb::Price::BulkWithProration::Cadence }
 
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        required :composite_price_filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 nil?: true
+
         # @!attribute conversion_rate
         #
         #   @return [Float, nil]
@@ -5106,7 +4597,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::BulkWithProration::UnnamedTypeWithobjectParent106 },
+                 union: -> { Orb::Price::BulkWithProration::UnnamedTypeWithobjectParent104 },
                  nil?: true
 
         # @!attribute created_at
@@ -5215,7 +4706,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bulk_with_proration_config:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :bulk_with_proration)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bulk_with_proration_config:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :bulk_with_proration)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::BulkWithProration} for more details.
         #
@@ -5228,6 +4719,8 @@ module Orb
         #   @param bulk_with_proration_config [Hash{Symbol=>Object}]
         #
         #   @param cadence [Symbol, Orb::Models::Price::BulkWithProration::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -5319,6 +4812,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::GroupedTieredPackage::Cadence]
         required :cadence, enum: -> { Orb::Price::GroupedTieredPackage::Cadence }
 
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        required :composite_price_filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 nil?: true
+
         # @!attribute conversion_rate
         #
         #   @return [Float, nil]
@@ -5328,7 +4828,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::GroupedTieredPackage::UnnamedTypeWithobjectParent107 },
+                 union: -> { Orb::Price::GroupedTieredPackage::UnnamedTypeWithobjectParent105 },
                  nil?: true
 
         # @!attribute created_at
@@ -5442,7 +4942,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_tiered_package_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_tiered_package)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_tiered_package_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_tiered_package)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedTieredPackage} for more details.
         #
@@ -5453,6 +4953,8 @@ module Orb
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
         #
         #   @param cadence [Symbol, Orb::Models::Price::GroupedTieredPackage::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -5546,6 +5048,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::MaxGroupTieredPackage::Cadence]
         required :cadence, enum: -> { Orb::Price::MaxGroupTieredPackage::Cadence }
 
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        required :composite_price_filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 nil?: true
+
         # @!attribute conversion_rate
         #
         #   @return [Float, nil]
@@ -5555,7 +5064,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::MaxGroupTieredPackage::UnnamedTypeWithobjectParent108 },
+                 union: -> { Orb::Price::MaxGroupTieredPackage::UnnamedTypeWithobjectParent106 },
                  nil?: true
 
         # @!attribute created_at
@@ -5669,7 +5178,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, max_group_tiered_package_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :max_group_tiered_package)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, max_group_tiered_package_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :max_group_tiered_package)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::MaxGroupTieredPackage} for more details.
         #
@@ -5680,6 +5189,8 @@ module Orb
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
         #
         #   @param cadence [Symbol, Orb::Models::Price::MaxGroupTieredPackage::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -5773,6 +5284,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricing::Cadence]
         required :cadence, enum: -> { Orb::Price::ScalableMatrixWithUnitPricing::Cadence }
 
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        required :composite_price_filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 nil?: true
+
         # @!attribute conversion_rate
         #
         #   @return [Float, nil]
@@ -5782,7 +5300,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::ScalableMatrixWithUnitPricing::UnnamedTypeWithobjectParent109 },
+                 union: -> { Orb::Price::ScalableMatrixWithUnitPricing::UnnamedTypeWithobjectParent107 },
                  nil?: true
 
         # @!attribute created_at
@@ -5897,7 +5415,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, scalable_matrix_with_unit_pricing_config:, dimensional_price_configuration: nil, model_type: :scalable_matrix_with_unit_pricing)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, scalable_matrix_with_unit_pricing_config:, dimensional_price_configuration: nil, model_type: :scalable_matrix_with_unit_pricing)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::ScalableMatrixWithUnitPricing} for more details.
         #
@@ -5908,6 +5426,8 @@ module Orb
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
         #
         #   @param cadence [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricing::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -6001,6 +5521,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricing::Cadence]
         required :cadence, enum: -> { Orb::Price::ScalableMatrixWithTieredPricing::Cadence }
 
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        required :composite_price_filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 nil?: true
+
         # @!attribute conversion_rate
         #
         #   @return [Float, nil]
@@ -6010,7 +5537,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::ScalableMatrixWithTieredPricing::UnnamedTypeWithobjectParent110 },
+                 union: -> { Orb::Price::ScalableMatrixWithTieredPricing::UnnamedTypeWithobjectParent108 },
                  nil?: true
 
         # @!attribute created_at
@@ -6125,7 +5652,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, scalable_matrix_with_tiered_pricing_config:, dimensional_price_configuration: nil, model_type: :scalable_matrix_with_tiered_pricing)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, scalable_matrix_with_tiered_pricing_config:, dimensional_price_configuration: nil, model_type: :scalable_matrix_with_tiered_pricing)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::ScalableMatrixWithTieredPricing} for more details.
         #
@@ -6136,6 +5663,8 @@ module Orb
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
         #
         #   @param cadence [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricing::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -6229,6 +5758,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::CumulativeGroupedBulk::Cadence]
         required :cadence, enum: -> { Orb::Price::CumulativeGroupedBulk::Cadence }
 
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        required :composite_price_filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 nil?: true
+
         # @!attribute conversion_rate
         #
         #   @return [Float, nil]
@@ -6238,7 +5774,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::CumulativeGroupedBulk::UnnamedTypeWithobjectParent111 },
+                 union: -> { Orb::Price::CumulativeGroupedBulk::UnnamedTypeWithobjectParent109 },
                  nil?: true
 
         # @!attribute created_at
@@ -6352,7 +5888,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, cumulative_grouped_bulk_config:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :cumulative_grouped_bulk)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, cumulative_grouped_bulk_config:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :cumulative_grouped_bulk)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::CumulativeGroupedBulk} for more details.
         #
@@ -6363,6 +5899,8 @@ module Orb
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
         #
         #   @param cadence [Symbol, Orb::Models::Price::CumulativeGroupedBulk::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -6456,6 +5994,13 @@ module Orb
         #   @return [Symbol, Orb::Models::Price::GroupedWithMinMaxThresholds::Cadence]
         required :cadence, enum: -> { Orb::Price::GroupedWithMinMaxThresholds::Cadence }
 
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        required :composite_price_filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 nil?: true
+
         # @!attribute conversion_rate
         #
         #   @return [Float, nil]
@@ -6465,7 +6010,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::GroupedWithMinMaxThresholds::UnnamedTypeWithobjectParent112 },
+                 union: -> { Orb::Price::GroupedWithMinMaxThresholds::UnnamedTypeWithobjectParent110 },
                  nil?: true
 
         # @!attribute created_at
@@ -6580,7 +6125,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_min_max_thresholds_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_with_min_max_thresholds)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_min_max_thresholds_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_with_min_max_thresholds)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedWithMinMaxThresholds} for more details.
         #
@@ -6591,6 +6136,8 @@ module Orb
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
         #
         #   @param cadence [Symbol, Orb::Models::Price::GroupedWithMinMaxThresholds::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -6663,8 +6210,268 @@ module Orb
         end
       end
 
+      class Minimum < Orb::Internal::Type::BaseModel
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
+        # @!attribute billable_metric
+        #
+        #   @return [Orb::Models::BillableMetricTiny, nil]
+        required :billable_metric, -> { Orb::BillableMetricTiny }, nil?: true
+
+        # @!attribute billing_cycle_configuration
+        #
+        #   @return [Orb::Models::BillingCycleConfiguration]
+        required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute cadence
+        #
+        #   @return [Symbol, Orb::Models::Price::Minimum::Cadence]
+        required :cadence, enum: -> { Orb::Price::Minimum::Cadence }
+
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        required :composite_price_filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 nil?: true
+
+        # @!attribute conversion_rate
+        #
+        #   @return [Float, nil]
+        required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::Minimum::UnnamedTypeWithobjectParent111 },
+                 nil?: true
+
+        # @!attribute created_at
+        #
+        #   @return [Time]
+        required :created_at, Time
+
+        # @!attribute credit_allocation
+        #
+        #   @return [Orb::Models::Allocation, nil]
+        required :credit_allocation, -> { Orb::Allocation }, nil?: true
+
+        # @!attribute currency
+        #
+        #   @return [String]
+        required :currency, String
+
+        # @!attribute discount
+        #   @deprecated
+        #
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        required :discount, union: -> { Orb::Discount }, nil?: true
+
+        # @!attribute external_price_id
+        #
+        #   @return [String, nil]
+        required :external_price_id, String, nil?: true
+
+        # @!attribute fixed_price_quantity
+        #
+        #   @return [Float, nil]
+        required :fixed_price_quantity, Float, nil?: true
+
+        # @!attribute invoicing_cycle_configuration
+        #
+        #   @return [Orb::Models::BillingCycleConfiguration, nil]
+        required :invoicing_cycle_configuration, -> { Orb::BillingCycleConfiguration }, nil?: true
+
+        # @!attribute item
+        #
+        #   @return [Orb::Models::ItemSlim]
+        required :item, -> { Orb::ItemSlim }
+
+        # @!attribute maximum
+        #   @deprecated
+        #
+        #   @return [Orb::Models::Maximum, nil]
+        required :maximum, -> { Orb::Maximum }, nil?: true
+
+        # @!attribute maximum_amount
+        #   @deprecated
+        #
+        #   @return [String, nil]
+        required :maximum_amount, String, nil?: true
+
+        # @!attribute metadata
+        #   User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
+        #
+        #   @return [Hash{Symbol=>String}]
+        required :metadata, Orb::Internal::Type::HashOf[String]
+
+        # @!attribute minimum
+        #   @deprecated
+        #
+        #   @return [Orb::Models::Minimum, nil]
+        required :minimum, -> { Orb::Minimum }, nil?: true
+
+        # @!attribute minimum_amount
+        #   @deprecated
+        #
+        #   @return [String, nil]
+        required :minimum_amount, String, nil?: true
+
+        # @!attribute minimum_config
+        #
+        #   @return [Orb::Models::Price::Minimum::MinimumConfig]
+        required :minimum_config, -> { Orb::Price::Minimum::MinimumConfig }
+
+        # @!attribute model_type
+        #
+        #   @return [Symbol, :minimum]
+        required :model_type, const: :minimum
+
+        # @!attribute name
+        #
+        #   @return [String]
+        required :name, String
+
+        # @!attribute plan_phase_order
+        #
+        #   @return [Integer, nil]
+        required :plan_phase_order, Integer, nil?: true
+
+        # @!attribute price_type
+        #
+        #   @return [Symbol, Orb::Models::Price::Minimum::PriceType]
+        required :price_type, enum: -> { Orb::Price::Minimum::PriceType }
+
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
+        # @!attribute dimensional_price_configuration
+        #
+        #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
+        optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, minimum_config:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :minimum)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::Minimum} for more details.
+        #
+        #   @param id [String]
+        #
+        #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
+        #
+        #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param cadence [Symbol, Orb::Models::Price::Minimum::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #
+        #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        #
+        #   @param created_at [Time]
+        #
+        #   @param credit_allocation [Orb::Models::Allocation, nil]
+        #
+        #   @param currency [String]
+        #
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
+        #   @param external_price_id [String, nil]
+        #
+        #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
+        #
+        #   @param item [Orb::Models::ItemSlim]
+        #
+        #   @param maximum [Orb::Models::Maximum, nil]
+        #
+        #   @param maximum_amount [String, nil]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #
+        #   @param minimum [Orb::Models::Minimum, nil]
+        #
+        #   @param minimum_amount [String, nil]
+        #
+        #   @param minimum_config [Orb::Models::Price::Minimum::MinimumConfig]
+        #
+        #   @param name [String]
+        #
+        #   @param plan_phase_order [Integer, nil]
+        #
+        #   @param price_type [Symbol, Orb::Models::Price::Minimum::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
+        #
+        #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param model_type [Symbol, :minimum]
+
+        # @see Orb::Models::Price::Minimum#cadence
+        module Cadence
+          extend Orb::Internal::Type::Enum
+
+          ONE_TIME = :one_time
+          MONTHLY = :monthly
+          QUARTERLY = :quarterly
+          SEMI_ANNUAL = :semi_annual
+          ANNUAL = :annual
+          CUSTOM = :custom
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # @see Orb::Models::Price::Minimum#minimum_config
+        class MinimumConfig < Orb::Internal::Type::BaseModel
+          # @!attribute minimum_amount
+          #   The minimum amount to apply
+          #
+          #   @return [String]
+          required :minimum_amount, String
+
+          # @!attribute prorated
+          #   By default, subtotals from minimum composite prices are prorated based on the
+          #   service period. Set to false to disable proration.
+          #
+          #   @return [Boolean, nil]
+          optional :prorated, Orb::Internal::Type::Boolean, nil?: true
+
+          # @!method initialize(minimum_amount:, prorated: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::Minimum::MinimumConfig} for more details.
+          #
+          #   @param minimum_amount [String] The minimum amount to apply
+          #
+          #   @param prorated [Boolean, nil] By default, subtotals from minimum composite prices are prorated based on the se
+        end
+
+        # @see Orb::Models::Price::Minimum#price_type
+        module PriceType
+          extend Orb::Internal::Type::Enum
+
+          USAGE_PRICE = :usage_price
+          FIXED_PRICE = :fixed_price
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+      end
+
       # @!method self.variants
-      #   @return [Array(Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBPS, Orb::Models::Price::BPS, Orb::Models::Price::BulkBPS, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk, Orb::Models::Price::GroupedWithMinMaxThresholds)]
+      #   @return [Array(Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk, Orb::Models::Price::GroupedWithMinMaxThresholds, Orb::Models::Price::Minimum)]
     end
   end
 end

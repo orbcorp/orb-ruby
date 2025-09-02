@@ -239,11 +239,24 @@ module Orb
             sig { returns(T::Boolean) }
             attr_accessor :auto_collection
 
-            # The net terms determines the difference between the invoice date and the issue
-            # date for the invoice. If you intend the invoice to be due on issue, set this
-            # to 0.
+            # The net terms determines the due date of the invoice. Due date is calculated
+            # based on the invoice or issuance date, depending on the account's configured due
+            # date calculation method. A value of '0' here represents that the invoice is due
+            # on issue, whereas a value of '30' represents that the customer has 30 days to
+            # pay the invoice. Do not set this field if you want to set a custom due date.
             sig { returns(T.nilable(Integer)) }
             attr_accessor :net_terms
+
+            # An optional custom due date for the invoice. If not set, the due date will be
+            # calculated based on the `net_terms` value.
+            sig do
+              returns(
+                T.nilable(
+                  Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::CustomDueDate::Variants
+                )
+              )
+            end
+            attr_accessor :custom_due_date
 
             # An ISO 8601 format date that denotes when this invoice should be dated in the
             # customer's timezone. If not provided, the invoice date will default to the
@@ -277,6 +290,10 @@ module Orb
               params(
                 auto_collection: T::Boolean,
                 net_terms: T.nilable(Integer),
+                custom_due_date:
+                  T.nilable(
+                    Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::CustomDueDate::Variants
+                  ),
                 invoice_date:
                   T.nilable(
                     Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::InvoiceDate::Variants
@@ -289,10 +306,15 @@ module Orb
               # Whether the credits purchase invoice should auto collect with the customer's
               # saved payment method.
               auto_collection:,
-              # The net terms determines the difference between the invoice date and the issue
-              # date for the invoice. If you intend the invoice to be due on issue, set this
-              # to 0.
+              # The net terms determines the due date of the invoice. Due date is calculated
+              # based on the invoice or issuance date, depending on the account's configured due
+              # date calculation method. A value of '0' here represents that the invoice is due
+              # on issue, whereas a value of '30' represents that the customer has 30 days to
+              # pay the invoice. Do not set this field if you want to set a custom due date.
               net_terms:,
+              # An optional custom due date for the invoice. If not set, the due date will be
+              # calculated based on the `net_terms` value.
+              custom_due_date: nil,
               # An ISO 8601 format date that denotes when this invoice should be dated in the
               # customer's timezone. If not provided, the invoice date will default to the
               # credit block's effective date.
@@ -310,6 +332,10 @@ module Orb
                 {
                   auto_collection: T::Boolean,
                   net_terms: T.nilable(Integer),
+                  custom_due_date:
+                    T.nilable(
+                      Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::CustomDueDate::Variants
+                    ),
                   invoice_date:
                     T.nilable(
                       Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::InvoiceDate::Variants
@@ -320,6 +346,24 @@ module Orb
               )
             end
             def to_hash
+            end
+
+            # An optional custom due date for the invoice. If not set, the due date will be
+            # calculated based on the `net_terms` value.
+            module CustomDueDate
+              extend Orb::Internal::Type::Union
+
+              Variants = T.type_alias { T.any(Date, Time) }
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::CustomDueDate::Variants
+                  ]
+                )
+              end
+              def self.variants
+              end
             end
 
             # An ISO 8601 format date that denotes when this invoice should be dated in the

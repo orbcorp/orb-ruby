@@ -5,9 +5,6 @@ module Orb
       | Orb::Price::Package
       | Orb::Price::Matrix
       | Orb::Price::Tiered
-      | Orb::Price::TieredBPS
-      | Orb::Price::BPS
-      | Orb::Price::BulkBPS
       | Orb::Price::Bulk
       | Orb::Price::ThresholdTotalAmount
       | Orb::Price::TieredPackage
@@ -30,6 +27,7 @@ module Orb
       | Orb::Price::ScalableMatrixWithTieredPricing
       | Orb::Price::CumulativeGroupedBulk
       | Orb::Price::GroupedWithMinMaxThresholds
+      | Orb::Price::Minimum
 
     module Price
       extend Orb::Internal::Type::Union
@@ -40,8 +38,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Unit::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Unit::unnamed_type_withobject_parent84?,
+          conversion_rate_config: Orb::Models::Price::Unit::unnamed_type_withobject_parent85?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -73,9 +72,11 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::Unit::cadence
 
+        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::Unit::unnamed_type_withobject_parent84?
+        attr_accessor conversion_rate_config: Orb::Models::Price::Unit::unnamed_type_withobject_parent85?
 
         attr_accessor created_at: Time
 
@@ -122,8 +123,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Unit::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Unit::unnamed_type_withobject_parent84?,
+          conversion_rate_config: Orb::Models::Price::Unit::unnamed_type_withobject_parent85?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -151,8 +153,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Unit::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Unit::unnamed_type_withobject_parent84?,
+          conversion_rate_config: Orb::Models::Price::Unit::unnamed_type_withobject_parent85?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -209,8 +212,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Package::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Package::unnamed_type_withobject_parent85?,
+          conversion_rate_config: Orb::Models::Price::Package::unnamed_type_withobject_parent86?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -242,9 +246,11 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::Package::cadence
 
+        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::Package::unnamed_type_withobject_parent85?
+        attr_accessor conversion_rate_config: Orb::Models::Price::Package::unnamed_type_withobject_parent86?
 
         attr_accessor created_at: Time
 
@@ -291,8 +297,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Package::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Package::unnamed_type_withobject_parent85?,
+          conversion_rate_config: Orb::Models::Price::Package::unnamed_type_withobject_parent86?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -320,8 +327,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Package::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Package::unnamed_type_withobject_parent85?,
+          conversion_rate_config: Orb::Models::Price::Package::unnamed_type_withobject_parent86?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -378,8 +386,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Matrix::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Matrix::unnamed_type_withobject_parent86?,
+          conversion_rate_config: Orb::Models::Price::Matrix::unnamed_type_withobject_parent87?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -411,9 +420,11 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::Matrix::cadence
 
+        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::Matrix::unnamed_type_withobject_parent86?
+        attr_accessor conversion_rate_config: Orb::Models::Price::Matrix::unnamed_type_withobject_parent87?
 
         attr_accessor created_at: Time
 
@@ -460,8 +471,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Matrix::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Matrix::unnamed_type_withobject_parent86?,
+          conversion_rate_config: Orb::Models::Price::Matrix::unnamed_type_withobject_parent87?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -489,8 +501,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Matrix::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Matrix::unnamed_type_withobject_parent86?,
+          conversion_rate_config: Orb::Models::Price::Matrix::unnamed_type_withobject_parent87?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -547,8 +560,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Tiered::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Tiered::unnamed_type_withobject_parent87?,
+          conversion_rate_config: Orb::Models::Price::Tiered::unnamed_type_withobject_parent88?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -580,9 +594,11 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::Tiered::cadence
 
+        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::Tiered::unnamed_type_withobject_parent87?
+        attr_accessor conversion_rate_config: Orb::Models::Price::Tiered::unnamed_type_withobject_parent88?
 
         attr_accessor created_at: Time
 
@@ -629,8 +645,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Tiered::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Tiered::unnamed_type_withobject_parent87?,
+          conversion_rate_config: Orb::Models::Price::Tiered::unnamed_type_withobject_parent88?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -658,8 +675,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::Tiered::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Tiered::unnamed_type_withobject_parent87?,
+          conversion_rate_config: Orb::Models::Price::Tiered::unnamed_type_withobject_parent88?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -710,513 +728,6 @@ module Orb
         end
       end
 
-      type tiered_bps =
-        {
-          id: String,
-          billable_metric: Orb::BillableMetricTiny?,
-          billing_cycle_configuration: Orb::BillingCycleConfiguration,
-          cadence: Orb::Models::Price::TieredBPS::cadence,
-          conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::TieredBPS::unnamed_type_withobject_parent88?,
-          created_at: Time,
-          credit_allocation: Orb::Allocation?,
-          currency: String,
-          discount: Orb::Models::discount?,
-          external_price_id: String?,
-          fixed_price_quantity: Float?,
-          invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
-          item: Orb::ItemSlim,
-          maximum: Orb::Maximum?,
-          maximum_amount: String?,
-          metadata: ::Hash[Symbol, String],
-          minimum: Orb::Minimum?,
-          minimum_amount: String?,
-          model_type: :tiered_bps,
-          name: String,
-          plan_phase_order: Integer?,
-          price_type: Orb::Models::Price::TieredBPS::price_type,
-          replaces_price_id: String?,
-          tiered_bps_config: Orb::TieredBPSConfig,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
-        }
-
-      class TieredBPS < Orb::Internal::Type::BaseModel
-        attr_accessor id: String
-
-        attr_accessor billable_metric: Orb::BillableMetricTiny?
-
-        attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
-
-        attr_accessor cadence: Orb::Models::Price::TieredBPS::cadence
-
-        attr_accessor conversion_rate: Float?
-
-        attr_accessor conversion_rate_config: Orb::Models::Price::TieredBPS::unnamed_type_withobject_parent88?
-
-        attr_accessor created_at: Time
-
-        attr_accessor credit_allocation: Orb::Allocation?
-
-        attr_accessor currency: String
-
-        attr_accessor discount: Orb::Models::discount?
-
-        attr_accessor external_price_id: String?
-
-        attr_accessor fixed_price_quantity: Float?
-
-        attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
-
-        attr_accessor item: Orb::ItemSlim
-
-        attr_accessor maximum: Orb::Maximum?
-
-        attr_accessor maximum_amount: String?
-
-        attr_accessor metadata: ::Hash[Symbol, String]
-
-        attr_accessor minimum: Orb::Minimum?
-
-        attr_accessor minimum_amount: String?
-
-        attr_accessor model_type: :tiered_bps
-
-        attr_accessor name: String
-
-        attr_accessor plan_phase_order: Integer?
-
-        attr_accessor price_type: Orb::Models::Price::TieredBPS::price_type
-
-        attr_accessor replaces_price_id: String?
-
-        attr_accessor tiered_bps_config: Orb::TieredBPSConfig
-
-        attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
-
-        def initialize: (
-          id: String,
-          billable_metric: Orb::BillableMetricTiny?,
-          billing_cycle_configuration: Orb::BillingCycleConfiguration,
-          cadence: Orb::Models::Price::TieredBPS::cadence,
-          conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::TieredBPS::unnamed_type_withobject_parent88?,
-          created_at: Time,
-          credit_allocation: Orb::Allocation?,
-          currency: String,
-          discount: Orb::Models::discount?,
-          external_price_id: String?,
-          fixed_price_quantity: Float?,
-          invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
-          item: Orb::ItemSlim,
-          maximum: Orb::Maximum?,
-          maximum_amount: String?,
-          metadata: ::Hash[Symbol, String],
-          minimum: Orb::Minimum?,
-          minimum_amount: String?,
-          name: String,
-          plan_phase_order: Integer?,
-          price_type: Orb::Models::Price::TieredBPS::price_type,
-          replaces_price_id: String?,
-          tiered_bps_config: Orb::TieredBPSConfig,
-          ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
-          ?model_type: :tiered_bps
-        ) -> void
-
-        def to_hash: -> {
-          id: String,
-          billable_metric: Orb::BillableMetricTiny?,
-          billing_cycle_configuration: Orb::BillingCycleConfiguration,
-          cadence: Orb::Models::Price::TieredBPS::cadence,
-          conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::TieredBPS::unnamed_type_withobject_parent88?,
-          created_at: Time,
-          credit_allocation: Orb::Allocation?,
-          currency: String,
-          discount: Orb::Models::discount?,
-          external_price_id: String?,
-          fixed_price_quantity: Float?,
-          invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
-          item: Orb::ItemSlim,
-          maximum: Orb::Maximum?,
-          maximum_amount: String?,
-          metadata: ::Hash[Symbol, String],
-          minimum: Orb::Minimum?,
-          minimum_amount: String?,
-          model_type: :tiered_bps,
-          name: String,
-          plan_phase_order: Integer?,
-          price_type: Orb::Models::Price::TieredBPS::price_type,
-          replaces_price_id: String?,
-          tiered_bps_config: Orb::TieredBPSConfig,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
-        }
-
-        type cadence =
-          :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
-
-        module Cadence
-          extend Orb::Internal::Type::Enum
-
-          ONE_TIME: :one_time
-          MONTHLY: :monthly
-          QUARTERLY: :quarterly
-          SEMI_ANNUAL: :semi_annual
-          ANNUAL: :annual
-          CUSTOM: :custom
-
-          def self?.values: -> ::Array[Orb::Models::Price::TieredBPS::cadence]
-        end
-
-        type price_type = :usage_price | :fixed_price
-
-        module PriceType
-          extend Orb::Internal::Type::Enum
-
-          USAGE_PRICE: :usage_price
-          FIXED_PRICE: :fixed_price
-
-          def self?.values: -> ::Array[Orb::Models::Price::TieredBPS::price_type]
-        end
-      end
-
-      type bps =
-        {
-          id: String,
-          billable_metric: Orb::BillableMetricTiny?,
-          billing_cycle_configuration: Orb::BillingCycleConfiguration,
-          bps_config: Orb::BPSConfig,
-          cadence: Orb::Models::Price::BPS::cadence,
-          conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::BPS::unnamed_type_withobject_parent89?,
-          created_at: Time,
-          credit_allocation: Orb::Allocation?,
-          currency: String,
-          discount: Orb::Models::discount?,
-          external_price_id: String?,
-          fixed_price_quantity: Float?,
-          invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
-          item: Orb::ItemSlim,
-          maximum: Orb::Maximum?,
-          maximum_amount: String?,
-          metadata: ::Hash[Symbol, String],
-          minimum: Orb::Minimum?,
-          minimum_amount: String?,
-          model_type: :bps,
-          name: String,
-          plan_phase_order: Integer?,
-          price_type: Orb::Models::Price::BPS::price_type,
-          replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
-        }
-
-      class BPS < Orb::Internal::Type::BaseModel
-        attr_accessor id: String
-
-        attr_accessor billable_metric: Orb::BillableMetricTiny?
-
-        attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
-
-        attr_accessor bps_config: Orb::BPSConfig
-
-        attr_accessor cadence: Orb::Models::Price::BPS::cadence
-
-        attr_accessor conversion_rate: Float?
-
-        attr_accessor conversion_rate_config: Orb::Models::Price::BPS::unnamed_type_withobject_parent89?
-
-        attr_accessor created_at: Time
-
-        attr_accessor credit_allocation: Orb::Allocation?
-
-        attr_accessor currency: String
-
-        attr_accessor discount: Orb::Models::discount?
-
-        attr_accessor external_price_id: String?
-
-        attr_accessor fixed_price_quantity: Float?
-
-        attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
-
-        attr_accessor item: Orb::ItemSlim
-
-        attr_accessor maximum: Orb::Maximum?
-
-        attr_accessor maximum_amount: String?
-
-        attr_accessor metadata: ::Hash[Symbol, String]
-
-        attr_accessor minimum: Orb::Minimum?
-
-        attr_accessor minimum_amount: String?
-
-        attr_accessor model_type: :bps
-
-        attr_accessor name: String
-
-        attr_accessor plan_phase_order: Integer?
-
-        attr_accessor price_type: Orb::Models::Price::BPS::price_type
-
-        attr_accessor replaces_price_id: String?
-
-        attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
-
-        def initialize: (
-          id: String,
-          billable_metric: Orb::BillableMetricTiny?,
-          billing_cycle_configuration: Orb::BillingCycleConfiguration,
-          bps_config: Orb::BPSConfig,
-          cadence: Orb::Models::Price::BPS::cadence,
-          conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::BPS::unnamed_type_withobject_parent89?,
-          created_at: Time,
-          credit_allocation: Orb::Allocation?,
-          currency: String,
-          discount: Orb::Models::discount?,
-          external_price_id: String?,
-          fixed_price_quantity: Float?,
-          invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
-          item: Orb::ItemSlim,
-          maximum: Orb::Maximum?,
-          maximum_amount: String?,
-          metadata: ::Hash[Symbol, String],
-          minimum: Orb::Minimum?,
-          minimum_amount: String?,
-          name: String,
-          plan_phase_order: Integer?,
-          price_type: Orb::Models::Price::BPS::price_type,
-          replaces_price_id: String?,
-          ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
-          ?model_type: :bps
-        ) -> void
-
-        def to_hash: -> {
-          id: String,
-          billable_metric: Orb::BillableMetricTiny?,
-          billing_cycle_configuration: Orb::BillingCycleConfiguration,
-          bps_config: Orb::BPSConfig,
-          cadence: Orb::Models::Price::BPS::cadence,
-          conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::BPS::unnamed_type_withobject_parent89?,
-          created_at: Time,
-          credit_allocation: Orb::Allocation?,
-          currency: String,
-          discount: Orb::Models::discount?,
-          external_price_id: String?,
-          fixed_price_quantity: Float?,
-          invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
-          item: Orb::ItemSlim,
-          maximum: Orb::Maximum?,
-          maximum_amount: String?,
-          metadata: ::Hash[Symbol, String],
-          minimum: Orb::Minimum?,
-          minimum_amount: String?,
-          model_type: :bps,
-          name: String,
-          plan_phase_order: Integer?,
-          price_type: Orb::Models::Price::BPS::price_type,
-          replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
-        }
-
-        type cadence =
-          :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
-
-        module Cadence
-          extend Orb::Internal::Type::Enum
-
-          ONE_TIME: :one_time
-          MONTHLY: :monthly
-          QUARTERLY: :quarterly
-          SEMI_ANNUAL: :semi_annual
-          ANNUAL: :annual
-          CUSTOM: :custom
-
-          def self?.values: -> ::Array[Orb::Models::Price::BPS::cadence]
-        end
-
-        type price_type = :usage_price | :fixed_price
-
-        module PriceType
-          extend Orb::Internal::Type::Enum
-
-          USAGE_PRICE: :usage_price
-          FIXED_PRICE: :fixed_price
-
-          def self?.values: -> ::Array[Orb::Models::Price::BPS::price_type]
-        end
-      end
-
-      type bulk_bps =
-        {
-          id: String,
-          billable_metric: Orb::BillableMetricTiny?,
-          billing_cycle_configuration: Orb::BillingCycleConfiguration,
-          bulk_bps_config: Orb::BulkBPSConfig,
-          cadence: Orb::Models::Price::BulkBPS::cadence,
-          conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::BulkBPS::unnamed_type_withobject_parent90?,
-          created_at: Time,
-          credit_allocation: Orb::Allocation?,
-          currency: String,
-          discount: Orb::Models::discount?,
-          external_price_id: String?,
-          fixed_price_quantity: Float?,
-          invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
-          item: Orb::ItemSlim,
-          maximum: Orb::Maximum?,
-          maximum_amount: String?,
-          metadata: ::Hash[Symbol, String],
-          minimum: Orb::Minimum?,
-          minimum_amount: String?,
-          model_type: :bulk_bps,
-          name: String,
-          plan_phase_order: Integer?,
-          price_type: Orb::Models::Price::BulkBPS::price_type,
-          replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
-        }
-
-      class BulkBPS < Orb::Internal::Type::BaseModel
-        attr_accessor id: String
-
-        attr_accessor billable_metric: Orb::BillableMetricTiny?
-
-        attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
-
-        attr_accessor bulk_bps_config: Orb::BulkBPSConfig
-
-        attr_accessor cadence: Orb::Models::Price::BulkBPS::cadence
-
-        attr_accessor conversion_rate: Float?
-
-        attr_accessor conversion_rate_config: Orb::Models::Price::BulkBPS::unnamed_type_withobject_parent90?
-
-        attr_accessor created_at: Time
-
-        attr_accessor credit_allocation: Orb::Allocation?
-
-        attr_accessor currency: String
-
-        attr_accessor discount: Orb::Models::discount?
-
-        attr_accessor external_price_id: String?
-
-        attr_accessor fixed_price_quantity: Float?
-
-        attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
-
-        attr_accessor item: Orb::ItemSlim
-
-        attr_accessor maximum: Orb::Maximum?
-
-        attr_accessor maximum_amount: String?
-
-        attr_accessor metadata: ::Hash[Symbol, String]
-
-        attr_accessor minimum: Orb::Minimum?
-
-        attr_accessor minimum_amount: String?
-
-        attr_accessor model_type: :bulk_bps
-
-        attr_accessor name: String
-
-        attr_accessor plan_phase_order: Integer?
-
-        attr_accessor price_type: Orb::Models::Price::BulkBPS::price_type
-
-        attr_accessor replaces_price_id: String?
-
-        attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
-
-        def initialize: (
-          id: String,
-          billable_metric: Orb::BillableMetricTiny?,
-          billing_cycle_configuration: Orb::BillingCycleConfiguration,
-          bulk_bps_config: Orb::BulkBPSConfig,
-          cadence: Orb::Models::Price::BulkBPS::cadence,
-          conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::BulkBPS::unnamed_type_withobject_parent90?,
-          created_at: Time,
-          credit_allocation: Orb::Allocation?,
-          currency: String,
-          discount: Orb::Models::discount?,
-          external_price_id: String?,
-          fixed_price_quantity: Float?,
-          invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
-          item: Orb::ItemSlim,
-          maximum: Orb::Maximum?,
-          maximum_amount: String?,
-          metadata: ::Hash[Symbol, String],
-          minimum: Orb::Minimum?,
-          minimum_amount: String?,
-          name: String,
-          plan_phase_order: Integer?,
-          price_type: Orb::Models::Price::BulkBPS::price_type,
-          replaces_price_id: String?,
-          ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
-          ?model_type: :bulk_bps
-        ) -> void
-
-        def to_hash: -> {
-          id: String,
-          billable_metric: Orb::BillableMetricTiny?,
-          billing_cycle_configuration: Orb::BillingCycleConfiguration,
-          bulk_bps_config: Orb::BulkBPSConfig,
-          cadence: Orb::Models::Price::BulkBPS::cadence,
-          conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::BulkBPS::unnamed_type_withobject_parent90?,
-          created_at: Time,
-          credit_allocation: Orb::Allocation?,
-          currency: String,
-          discount: Orb::Models::discount?,
-          external_price_id: String?,
-          fixed_price_quantity: Float?,
-          invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
-          item: Orb::ItemSlim,
-          maximum: Orb::Maximum?,
-          maximum_amount: String?,
-          metadata: ::Hash[Symbol, String],
-          minimum: Orb::Minimum?,
-          minimum_amount: String?,
-          model_type: :bulk_bps,
-          name: String,
-          plan_phase_order: Integer?,
-          price_type: Orb::Models::Price::BulkBPS::price_type,
-          replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
-        }
-
-        type cadence =
-          :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
-
-        module Cadence
-          extend Orb::Internal::Type::Enum
-
-          ONE_TIME: :one_time
-          MONTHLY: :monthly
-          QUARTERLY: :quarterly
-          SEMI_ANNUAL: :semi_annual
-          ANNUAL: :annual
-          CUSTOM: :custom
-
-          def self?.values: -> ::Array[Orb::Models::Price::BulkBPS::cadence]
-        end
-
-        type price_type = :usage_price | :fixed_price
-
-        module PriceType
-          extend Orb::Internal::Type::Enum
-
-          USAGE_PRICE: :usage_price
-          FIXED_PRICE: :fixed_price
-
-          def self?.values: -> ::Array[Orb::Models::Price::BulkBPS::price_type]
-        end
-      end
-
       type bulk =
         {
           id: String,
@@ -1224,8 +735,9 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           bulk_config: Orb::BulkConfig,
           cadence: Orb::Models::Price::Bulk::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Bulk::unnamed_type_withobject_parent91?,
+          conversion_rate_config: Orb::Models::Price::Bulk::unnamed_type_withobject_parent89?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1258,9 +770,11 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::Bulk::cadence
 
+        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::Bulk::unnamed_type_withobject_parent91?
+        attr_accessor conversion_rate_config: Orb::Models::Price::Bulk::unnamed_type_withobject_parent89?
 
         attr_accessor created_at: Time
 
@@ -1306,8 +820,9 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           bulk_config: Orb::BulkConfig,
           cadence: Orb::Models::Price::Bulk::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Bulk::unnamed_type_withobject_parent91?,
+          conversion_rate_config: Orb::Models::Price::Bulk::unnamed_type_withobject_parent89?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1335,8 +850,9 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           bulk_config: Orb::BulkConfig,
           cadence: Orb::Models::Price::Bulk::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Bulk::unnamed_type_withobject_parent91?,
+          conversion_rate_config: Orb::Models::Price::Bulk::unnamed_type_withobject_parent89?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1392,8 +908,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::ThresholdTotalAmount::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::ThresholdTotalAmount::unnamed_type_withobject_parent92?,
+          conversion_rate_config: Orb::Models::Price::ThresholdTotalAmount::unnamed_type_withobject_parent90?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1425,9 +942,11 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::ThresholdTotalAmount::cadence
 
+        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::ThresholdTotalAmount::unnamed_type_withobject_parent92?
+        attr_accessor conversion_rate_config: Orb::Models::Price::ThresholdTotalAmount::unnamed_type_withobject_parent90?
 
         attr_accessor created_at: Time
 
@@ -1474,8 +993,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::ThresholdTotalAmount::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::ThresholdTotalAmount::unnamed_type_withobject_parent92?,
+          conversion_rate_config: Orb::Models::Price::ThresholdTotalAmount::unnamed_type_withobject_parent90?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1503,8 +1023,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::ThresholdTotalAmount::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::ThresholdTotalAmount::unnamed_type_withobject_parent92?,
+          conversion_rate_config: Orb::Models::Price::ThresholdTotalAmount::unnamed_type_withobject_parent90?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1561,8 +1082,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredPackage::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::TieredPackage::unnamed_type_withobject_parent93?,
+          conversion_rate_config: Orb::Models::Price::TieredPackage::unnamed_type_withobject_parent91?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1594,9 +1116,11 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::TieredPackage::cadence
 
+        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::TieredPackage::unnamed_type_withobject_parent93?
+        attr_accessor conversion_rate_config: Orb::Models::Price::TieredPackage::unnamed_type_withobject_parent91?
 
         attr_accessor created_at: Time
 
@@ -1643,8 +1167,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredPackage::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::TieredPackage::unnamed_type_withobject_parent93?,
+          conversion_rate_config: Orb::Models::Price::TieredPackage::unnamed_type_withobject_parent91?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1672,8 +1197,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredPackage::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::TieredPackage::unnamed_type_withobject_parent93?,
+          conversion_rate_config: Orb::Models::Price::TieredPackage::unnamed_type_withobject_parent91?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1730,8 +1256,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedTiered::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedTiered::unnamed_type_withobject_parent94?,
+          conversion_rate_config: Orb::Models::Price::GroupedTiered::unnamed_type_withobject_parent92?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1763,9 +1290,11 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::GroupedTiered::cadence
 
+        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedTiered::unnamed_type_withobject_parent94?
+        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedTiered::unnamed_type_withobject_parent92?
 
         attr_accessor created_at: Time
 
@@ -1812,8 +1341,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedTiered::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedTiered::unnamed_type_withobject_parent94?,
+          conversion_rate_config: Orb::Models::Price::GroupedTiered::unnamed_type_withobject_parent92?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1841,8 +1371,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedTiered::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedTiered::unnamed_type_withobject_parent94?,
+          conversion_rate_config: Orb::Models::Price::GroupedTiered::unnamed_type_withobject_parent92?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1899,8 +1430,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredWithMinimum::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::TieredWithMinimum::unnamed_type_withobject_parent95?,
+          conversion_rate_config: Orb::Models::Price::TieredWithMinimum::unnamed_type_withobject_parent93?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1932,9 +1464,11 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::TieredWithMinimum::cadence
 
+        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::TieredWithMinimum::unnamed_type_withobject_parent95?
+        attr_accessor conversion_rate_config: Orb::Models::Price::TieredWithMinimum::unnamed_type_withobject_parent93?
 
         attr_accessor created_at: Time
 
@@ -1981,8 +1515,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredWithMinimum::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::TieredWithMinimum::unnamed_type_withobject_parent95?,
+          conversion_rate_config: Orb::Models::Price::TieredWithMinimum::unnamed_type_withobject_parent93?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2010,8 +1545,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredWithMinimum::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::TieredWithMinimum::unnamed_type_withobject_parent95?,
+          conversion_rate_config: Orb::Models::Price::TieredWithMinimum::unnamed_type_withobject_parent93?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2068,8 +1604,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredPackageWithMinimum::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::TieredPackageWithMinimum::unnamed_type_withobject_parent96?,
+          conversion_rate_config: Orb::Models::Price::TieredPackageWithMinimum::unnamed_type_withobject_parent94?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2101,9 +1638,11 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::TieredPackageWithMinimum::cadence
 
+        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::TieredPackageWithMinimum::unnamed_type_withobject_parent96?
+        attr_accessor conversion_rate_config: Orb::Models::Price::TieredPackageWithMinimum::unnamed_type_withobject_parent94?
 
         attr_accessor created_at: Time
 
@@ -2150,8 +1689,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredPackageWithMinimum::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::TieredPackageWithMinimum::unnamed_type_withobject_parent96?,
+          conversion_rate_config: Orb::Models::Price::TieredPackageWithMinimum::unnamed_type_withobject_parent94?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2179,8 +1719,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredPackageWithMinimum::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::TieredPackageWithMinimum::unnamed_type_withobject_parent96?,
+          conversion_rate_config: Orb::Models::Price::TieredPackageWithMinimum::unnamed_type_withobject_parent94?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2237,8 +1778,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::PackageWithAllocation::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::PackageWithAllocation::unnamed_type_withobject_parent97?,
+          conversion_rate_config: Orb::Models::Price::PackageWithAllocation::unnamed_type_withobject_parent95?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2270,9 +1812,11 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::PackageWithAllocation::cadence
 
+        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::PackageWithAllocation::unnamed_type_withobject_parent97?
+        attr_accessor conversion_rate_config: Orb::Models::Price::PackageWithAllocation::unnamed_type_withobject_parent95?
 
         attr_accessor created_at: Time
 
@@ -2319,8 +1863,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::PackageWithAllocation::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::PackageWithAllocation::unnamed_type_withobject_parent97?,
+          conversion_rate_config: Orb::Models::Price::PackageWithAllocation::unnamed_type_withobject_parent95?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2348,8 +1893,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::PackageWithAllocation::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::PackageWithAllocation::unnamed_type_withobject_parent97?,
+          conversion_rate_config: Orb::Models::Price::PackageWithAllocation::unnamed_type_withobject_parent95?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2406,8 +1952,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::UnitWithPercent::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::UnitWithPercent::unnamed_type_withobject_parent98?,
+          conversion_rate_config: Orb::Models::Price::UnitWithPercent::unnamed_type_withobject_parent96?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2439,9 +1986,11 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::UnitWithPercent::cadence
 
+        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::UnitWithPercent::unnamed_type_withobject_parent98?
+        attr_accessor conversion_rate_config: Orb::Models::Price::UnitWithPercent::unnamed_type_withobject_parent96?
 
         attr_accessor created_at: Time
 
@@ -2488,8 +2037,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::UnitWithPercent::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::UnitWithPercent::unnamed_type_withobject_parent98?,
+          conversion_rate_config: Orb::Models::Price::UnitWithPercent::unnamed_type_withobject_parent96?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2517,8 +2067,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::UnitWithPercent::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::UnitWithPercent::unnamed_type_withobject_parent98?,
+          conversion_rate_config: Orb::Models::Price::UnitWithPercent::unnamed_type_withobject_parent96?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2575,8 +2126,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::MatrixWithAllocation::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::MatrixWithAllocation::unnamed_type_withobject_parent99?,
+          conversion_rate_config: Orb::Models::Price::MatrixWithAllocation::unnamed_type_withobject_parent97?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2608,9 +2160,11 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::MatrixWithAllocation::cadence
 
+        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::MatrixWithAllocation::unnamed_type_withobject_parent99?
+        attr_accessor conversion_rate_config: Orb::Models::Price::MatrixWithAllocation::unnamed_type_withobject_parent97?
 
         attr_accessor created_at: Time
 
@@ -2657,8 +2211,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::MatrixWithAllocation::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::MatrixWithAllocation::unnamed_type_withobject_parent99?,
+          conversion_rate_config: Orb::Models::Price::MatrixWithAllocation::unnamed_type_withobject_parent97?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2686,8 +2241,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::MatrixWithAllocation::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::MatrixWithAllocation::unnamed_type_withobject_parent99?,
+          conversion_rate_config: Orb::Models::Price::MatrixWithAllocation::unnamed_type_withobject_parent97?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2744,8 +2300,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredWithProration::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::TieredWithProration::unnamed_type_withobject_parent100?,
+          conversion_rate_config: Orb::Models::Price::TieredWithProration::unnamed_type_withobject_parent98?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2777,9 +2334,11 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::TieredWithProration::cadence
 
+        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::TieredWithProration::unnamed_type_withobject_parent100?
+        attr_accessor conversion_rate_config: Orb::Models::Price::TieredWithProration::unnamed_type_withobject_parent98?
 
         attr_accessor created_at: Time
 
@@ -2826,8 +2385,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredWithProration::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::TieredWithProration::unnamed_type_withobject_parent100?,
+          conversion_rate_config: Orb::Models::Price::TieredWithProration::unnamed_type_withobject_parent98?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2855,8 +2415,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::TieredWithProration::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::TieredWithProration::unnamed_type_withobject_parent100?,
+          conversion_rate_config: Orb::Models::Price::TieredWithProration::unnamed_type_withobject_parent98?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2913,8 +2474,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::UnitWithProration::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::UnitWithProration::unnamed_type_withobject_parent101?,
+          conversion_rate_config: Orb::Models::Price::UnitWithProration::unnamed_type_withobject_parent99?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2946,9 +2508,11 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::UnitWithProration::cadence
 
+        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::UnitWithProration::unnamed_type_withobject_parent101?
+        attr_accessor conversion_rate_config: Orb::Models::Price::UnitWithProration::unnamed_type_withobject_parent99?
 
         attr_accessor created_at: Time
 
@@ -2995,8 +2559,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::UnitWithProration::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::UnitWithProration::unnamed_type_withobject_parent101?,
+          conversion_rate_config: Orb::Models::Price::UnitWithProration::unnamed_type_withobject_parent99?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3024,8 +2589,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::UnitWithProration::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::UnitWithProration::unnamed_type_withobject_parent101?,
+          conversion_rate_config: Orb::Models::Price::UnitWithProration::unnamed_type_withobject_parent99?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3082,8 +2648,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedAllocation::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedAllocation::unnamed_type_withobject_parent102?,
+          conversion_rate_config: Orb::Models::Price::GroupedAllocation::unnamed_type_withobject_parent100?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3115,9 +2682,11 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::GroupedAllocation::cadence
 
+        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedAllocation::unnamed_type_withobject_parent102?
+        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedAllocation::unnamed_type_withobject_parent100?
 
         attr_accessor created_at: Time
 
@@ -3164,8 +2733,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedAllocation::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedAllocation::unnamed_type_withobject_parent102?,
+          conversion_rate_config: Orb::Models::Price::GroupedAllocation::unnamed_type_withobject_parent100?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3193,8 +2763,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedAllocation::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedAllocation::unnamed_type_withobject_parent102?,
+          conversion_rate_config: Orb::Models::Price::GroupedAllocation::unnamed_type_withobject_parent100?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3251,8 +2822,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedWithProratedMinimum::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedWithProratedMinimum::unnamed_type_withobject_parent103?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithProratedMinimum::unnamed_type_withobject_parent101?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3284,9 +2856,11 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::GroupedWithProratedMinimum::cadence
 
+        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedWithProratedMinimum::unnamed_type_withobject_parent103?
+        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedWithProratedMinimum::unnamed_type_withobject_parent101?
 
         attr_accessor created_at: Time
 
@@ -3333,8 +2907,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedWithProratedMinimum::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedWithProratedMinimum::unnamed_type_withobject_parent103?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithProratedMinimum::unnamed_type_withobject_parent101?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3362,8 +2937,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedWithProratedMinimum::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedWithProratedMinimum::unnamed_type_withobject_parent103?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithProratedMinimum::unnamed_type_withobject_parent101?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3420,8 +2996,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedWithMeteredMinimum::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedWithMeteredMinimum::unnamed_type_withobject_parent104?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithMeteredMinimum::unnamed_type_withobject_parent102?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3453,9 +3030,11 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::GroupedWithMeteredMinimum::cadence
 
+        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedWithMeteredMinimum::unnamed_type_withobject_parent104?
+        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedWithMeteredMinimum::unnamed_type_withobject_parent102?
 
         attr_accessor created_at: Time
 
@@ -3502,8 +3081,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedWithMeteredMinimum::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedWithMeteredMinimum::unnamed_type_withobject_parent104?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithMeteredMinimum::unnamed_type_withobject_parent102?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3531,8 +3111,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedWithMeteredMinimum::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedWithMeteredMinimum::unnamed_type_withobject_parent104?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithMeteredMinimum::unnamed_type_withobject_parent102?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3589,8 +3170,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::MatrixWithDisplayName::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::MatrixWithDisplayName::unnamed_type_withobject_parent105?,
+          conversion_rate_config: Orb::Models::Price::MatrixWithDisplayName::unnamed_type_withobject_parent103?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3622,9 +3204,11 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::MatrixWithDisplayName::cadence
 
+        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::MatrixWithDisplayName::unnamed_type_withobject_parent105?
+        attr_accessor conversion_rate_config: Orb::Models::Price::MatrixWithDisplayName::unnamed_type_withobject_parent103?
 
         attr_accessor created_at: Time
 
@@ -3671,8 +3255,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::MatrixWithDisplayName::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::MatrixWithDisplayName::unnamed_type_withobject_parent105?,
+          conversion_rate_config: Orb::Models::Price::MatrixWithDisplayName::unnamed_type_withobject_parent103?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3700,8 +3285,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::MatrixWithDisplayName::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::MatrixWithDisplayName::unnamed_type_withobject_parent105?,
+          conversion_rate_config: Orb::Models::Price::MatrixWithDisplayName::unnamed_type_withobject_parent103?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3759,8 +3345,9 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           bulk_with_proration_config: ::Hash[Symbol, top],
           cadence: Orb::Models::Price::BulkWithProration::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::BulkWithProration::unnamed_type_withobject_parent106?,
+          conversion_rate_config: Orb::Models::Price::BulkWithProration::unnamed_type_withobject_parent104?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3793,9 +3380,11 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::BulkWithProration::cadence
 
+        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::BulkWithProration::unnamed_type_withobject_parent106?
+        attr_accessor conversion_rate_config: Orb::Models::Price::BulkWithProration::unnamed_type_withobject_parent104?
 
         attr_accessor created_at: Time
 
@@ -3841,8 +3430,9 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           bulk_with_proration_config: ::Hash[Symbol, top],
           cadence: Orb::Models::Price::BulkWithProration::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::BulkWithProration::unnamed_type_withobject_parent106?,
+          conversion_rate_config: Orb::Models::Price::BulkWithProration::unnamed_type_withobject_parent104?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3870,8 +3460,9 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           bulk_with_proration_config: ::Hash[Symbol, top],
           cadence: Orb::Models::Price::BulkWithProration::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::BulkWithProration::unnamed_type_withobject_parent106?,
+          conversion_rate_config: Orb::Models::Price::BulkWithProration::unnamed_type_withobject_parent104?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3927,8 +3518,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedTieredPackage::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedTieredPackage::unnamed_type_withobject_parent107?,
+          conversion_rate_config: Orb::Models::Price::GroupedTieredPackage::unnamed_type_withobject_parent105?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3960,9 +3552,11 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::GroupedTieredPackage::cadence
 
+        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedTieredPackage::unnamed_type_withobject_parent107?
+        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedTieredPackage::unnamed_type_withobject_parent105?
 
         attr_accessor created_at: Time
 
@@ -4009,8 +3603,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedTieredPackage::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedTieredPackage::unnamed_type_withobject_parent107?,
+          conversion_rate_config: Orb::Models::Price::GroupedTieredPackage::unnamed_type_withobject_parent105?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4038,8 +3633,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedTieredPackage::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedTieredPackage::unnamed_type_withobject_parent107?,
+          conversion_rate_config: Orb::Models::Price::GroupedTieredPackage::unnamed_type_withobject_parent105?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4096,8 +3692,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::MaxGroupTieredPackage::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::MaxGroupTieredPackage::unnamed_type_withobject_parent108?,
+          conversion_rate_config: Orb::Models::Price::MaxGroupTieredPackage::unnamed_type_withobject_parent106?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4129,9 +3726,11 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::MaxGroupTieredPackage::cadence
 
+        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::MaxGroupTieredPackage::unnamed_type_withobject_parent108?
+        attr_accessor conversion_rate_config: Orb::Models::Price::MaxGroupTieredPackage::unnamed_type_withobject_parent106?
 
         attr_accessor created_at: Time
 
@@ -4178,8 +3777,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::MaxGroupTieredPackage::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::MaxGroupTieredPackage::unnamed_type_withobject_parent108?,
+          conversion_rate_config: Orb::Models::Price::MaxGroupTieredPackage::unnamed_type_withobject_parent106?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4207,8 +3807,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::MaxGroupTieredPackage::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::MaxGroupTieredPackage::unnamed_type_withobject_parent108?,
+          conversion_rate_config: Orb::Models::Price::MaxGroupTieredPackage::unnamed_type_withobject_parent106?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4265,8 +3866,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::ScalableMatrixWithUnitPricing::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithUnitPricing::unnamed_type_withobject_parent109?,
+          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithUnitPricing::unnamed_type_withobject_parent107?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4298,9 +3900,11 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::ScalableMatrixWithUnitPricing::cadence
 
+        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::ScalableMatrixWithUnitPricing::unnamed_type_withobject_parent109?
+        attr_accessor conversion_rate_config: Orb::Models::Price::ScalableMatrixWithUnitPricing::unnamed_type_withobject_parent107?
 
         attr_accessor created_at: Time
 
@@ -4347,8 +3951,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::ScalableMatrixWithUnitPricing::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithUnitPricing::unnamed_type_withobject_parent109?,
+          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithUnitPricing::unnamed_type_withobject_parent107?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4376,8 +3981,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::ScalableMatrixWithUnitPricing::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithUnitPricing::unnamed_type_withobject_parent109?,
+          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithUnitPricing::unnamed_type_withobject_parent107?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4434,8 +4040,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::ScalableMatrixWithTieredPricing::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithTieredPricing::unnamed_type_withobject_parent110?,
+          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithTieredPricing::unnamed_type_withobject_parent108?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4467,9 +4074,11 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::ScalableMatrixWithTieredPricing::cadence
 
+        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::ScalableMatrixWithTieredPricing::unnamed_type_withobject_parent110?
+        attr_accessor conversion_rate_config: Orb::Models::Price::ScalableMatrixWithTieredPricing::unnamed_type_withobject_parent108?
 
         attr_accessor created_at: Time
 
@@ -4516,8 +4125,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::ScalableMatrixWithTieredPricing::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithTieredPricing::unnamed_type_withobject_parent110?,
+          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithTieredPricing::unnamed_type_withobject_parent108?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4545,8 +4155,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::ScalableMatrixWithTieredPricing::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithTieredPricing::unnamed_type_withobject_parent110?,
+          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithTieredPricing::unnamed_type_withobject_parent108?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4603,8 +4214,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::CumulativeGroupedBulk::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::CumulativeGroupedBulk::unnamed_type_withobject_parent111?,
+          conversion_rate_config: Orb::Models::Price::CumulativeGroupedBulk::unnamed_type_withobject_parent109?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           cumulative_grouped_bulk_config: ::Hash[Symbol, top],
@@ -4636,9 +4248,11 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::CumulativeGroupedBulk::cadence
 
+        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::CumulativeGroupedBulk::unnamed_type_withobject_parent111?
+        attr_accessor conversion_rate_config: Orb::Models::Price::CumulativeGroupedBulk::unnamed_type_withobject_parent109?
 
         attr_accessor created_at: Time
 
@@ -4685,8 +4299,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::CumulativeGroupedBulk::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::CumulativeGroupedBulk::unnamed_type_withobject_parent111?,
+          conversion_rate_config: Orb::Models::Price::CumulativeGroupedBulk::unnamed_type_withobject_parent109?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           cumulative_grouped_bulk_config: ::Hash[Symbol, top],
@@ -4714,8 +4329,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::CumulativeGroupedBulk::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::CumulativeGroupedBulk::unnamed_type_withobject_parent111?,
+          conversion_rate_config: Orb::Models::Price::CumulativeGroupedBulk::unnamed_type_withobject_parent109?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           cumulative_grouped_bulk_config: ::Hash[Symbol, top],
@@ -4772,8 +4388,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedWithMinMaxThresholds::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedWithMinMaxThresholds::unnamed_type_withobject_parent112?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithMinMaxThresholds::unnamed_type_withobject_parent110?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4805,9 +4422,11 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::GroupedWithMinMaxThresholds::cadence
 
+        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedWithMinMaxThresholds::unnamed_type_withobject_parent112?
+        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedWithMinMaxThresholds::unnamed_type_withobject_parent110?
 
         attr_accessor created_at: Time
 
@@ -4854,8 +4473,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedWithMinMaxThresholds::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedWithMinMaxThresholds::unnamed_type_withobject_parent112?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithMinMaxThresholds::unnamed_type_withobject_parent110?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4883,8 +4503,9 @@ module Orb
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           cadence: Orb::Models::Price::GroupedWithMinMaxThresholds::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedWithMinMaxThresholds::unnamed_type_withobject_parent112?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithMinMaxThresholds::unnamed_type_withobject_parent110?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4932,6 +4553,192 @@ module Orb
           FIXED_PRICE: :fixed_price
 
           def self?.values: -> ::Array[Orb::Models::Price::GroupedWithMinMaxThresholds::price_type]
+        end
+      end
+
+      type minimum =
+        {
+          id: String,
+          billable_metric: Orb::BillableMetricTiny?,
+          billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          cadence: Orb::Models::Price::Minimum::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Minimum::unnamed_type_withobject_parent111?,
+          created_at: Time,
+          credit_allocation: Orb::Allocation?,
+          currency: String,
+          discount: Orb::Models::discount?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
+          item: Orb::ItemSlim,
+          maximum: Orb::Maximum?,
+          maximum_amount: String?,
+          metadata: ::Hash[Symbol, String],
+          minimum: Orb::Minimum?,
+          minimum_amount: String?,
+          minimum_config: Orb::Price::Minimum::MinimumConfig,
+          model_type: :minimum,
+          name: String,
+          plan_phase_order: Integer?,
+          price_type: Orb::Models::Price::Minimum::price_type,
+          replaces_price_id: String?,
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+        }
+
+      class Minimum < Orb::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor billable_metric: Orb::BillableMetricTiny?
+
+        attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
+
+        attr_accessor cadence: Orb::Models::Price::Minimum::cadence
+
+        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+
+        attr_accessor conversion_rate: Float?
+
+        attr_accessor conversion_rate_config: Orb::Models::Price::Minimum::unnamed_type_withobject_parent111?
+
+        attr_accessor created_at: Time
+
+        attr_accessor credit_allocation: Orb::Allocation?
+
+        attr_accessor currency: String
+
+        attr_accessor discount: Orb::Models::discount?
+
+        attr_accessor external_price_id: String?
+
+        attr_accessor fixed_price_quantity: Float?
+
+        attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
+
+        attr_accessor item: Orb::ItemSlim
+
+        attr_accessor maximum: Orb::Maximum?
+
+        attr_accessor maximum_amount: String?
+
+        attr_accessor metadata: ::Hash[Symbol, String]
+
+        attr_accessor minimum: Orb::Minimum?
+
+        attr_accessor minimum_amount: String?
+
+        attr_accessor minimum_config: Orb::Price::Minimum::MinimumConfig
+
+        attr_accessor model_type: :minimum
+
+        attr_accessor name: String
+
+        attr_accessor plan_phase_order: Integer?
+
+        attr_accessor price_type: Orb::Models::Price::Minimum::price_type
+
+        attr_accessor replaces_price_id: String?
+
+        attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+
+        def initialize: (
+          id: String,
+          billable_metric: Orb::BillableMetricTiny?,
+          billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          cadence: Orb::Models::Price::Minimum::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Minimum::unnamed_type_withobject_parent111?,
+          created_at: Time,
+          credit_allocation: Orb::Allocation?,
+          currency: String,
+          discount: Orb::Models::discount?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
+          item: Orb::ItemSlim,
+          maximum: Orb::Maximum?,
+          maximum_amount: String?,
+          metadata: ::Hash[Symbol, String],
+          minimum: Orb::Minimum?,
+          minimum_amount: String?,
+          minimum_config: Orb::Price::Minimum::MinimumConfig,
+          name: String,
+          plan_phase_order: Integer?,
+          price_type: Orb::Models::Price::Minimum::price_type,
+          replaces_price_id: String?,
+          ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?model_type: :minimum
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          billable_metric: Orb::BillableMetricTiny?,
+          billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          cadence: Orb::Models::Price::Minimum::cadence,
+          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          conversion_rate: Float?,
+          conversion_rate_config: Orb::Models::Price::Minimum::unnamed_type_withobject_parent111?,
+          created_at: Time,
+          credit_allocation: Orb::Allocation?,
+          currency: String,
+          discount: Orb::Models::discount?,
+          external_price_id: String?,
+          fixed_price_quantity: Float?,
+          invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
+          item: Orb::ItemSlim,
+          maximum: Orb::Maximum?,
+          maximum_amount: String?,
+          metadata: ::Hash[Symbol, String],
+          minimum: Orb::Minimum?,
+          minimum_amount: String?,
+          minimum_config: Orb::Price::Minimum::MinimumConfig,
+          model_type: :minimum,
+          name: String,
+          plan_phase_order: Integer?,
+          price_type: Orb::Models::Price::Minimum::price_type,
+          replaces_price_id: String?,
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+        }
+
+        type cadence =
+          :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
+
+        module Cadence
+          extend Orb::Internal::Type::Enum
+
+          ONE_TIME: :one_time
+          MONTHLY: :monthly
+          QUARTERLY: :quarterly
+          SEMI_ANNUAL: :semi_annual
+          ANNUAL: :annual
+          CUSTOM: :custom
+
+          def self?.values: -> ::Array[Orb::Models::Price::Minimum::cadence]
+        end
+
+        type minimum_config = { minimum_amount: String, prorated: bool? }
+
+        class MinimumConfig < Orb::Internal::Type::BaseModel
+          attr_accessor minimum_amount: String
+
+          attr_accessor prorated: bool?
+
+          def initialize: (minimum_amount: String, ?prorated: bool?) -> void
+
+          def to_hash: -> { minimum_amount: String, prorated: bool? }
+        end
+
+        type price_type = :usage_price | :fixed_price
+
+        module PriceType
+          extend Orb::Internal::Type::Enum
+
+          USAGE_PRICE: :usage_price
+          FIXED_PRICE: :fixed_price
+
+          def self?.values: -> ::Array[Orb::Models::Price::Minimum::price_type]
         end
       end
 

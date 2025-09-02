@@ -24,8 +24,8 @@ module Orb
       sig { returns(T::Array[Orb::TransformPriceFilter]) }
       attr_accessor :filters
 
-      # True for adjustments that apply to an entire invocice, false for adjustments
-      # that apply to only one price.
+      # True for adjustments that apply to an entire invoice, false for adjustments that
+      # apply to only one price.
       sig { returns(T::Boolean) }
       attr_accessor :is_invoice_level
 
@@ -73,8 +73,8 @@ module Orb
         applies_to_price_ids:,
         # The filters that determine which prices to apply this adjustment to.
         filters:,
-        # True for adjustments that apply to an entire invocice, false for adjustments
-        # that apply to only one price.
+        # True for adjustments that apply to an entire invoice, false for adjustments that
+        # apply to only one price.
         is_invoice_level:,
         # The item ID that revenue from this minimum will be attributed to.
         item_id:,

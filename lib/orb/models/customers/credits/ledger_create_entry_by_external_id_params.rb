@@ -146,12 +146,25 @@ module Orb
             required :auto_collection, Orb::Internal::Type::Boolean
 
             # @!attribute net_terms
-            #   The net terms determines the difference between the invoice date and the issue
-            #   date for the invoice. If you intend the invoice to be due on issue, set this
-            #   to 0.
+            #   The net terms determines the due date of the invoice. Due date is calculated
+            #   based on the invoice or issuance date, depending on the account's configured due
+            #   date calculation method. A value of '0' here represents that the invoice is due
+            #   on issue, whereas a value of '30' represents that the customer has 30 days to
+            #   pay the invoice. Do not set this field if you want to set a custom due date.
             #
             #   @return [Integer, nil]
             required :net_terms, Integer, nil?: true
+
+            # @!attribute custom_due_date
+            #   An optional custom due date for the invoice. If not set, the due date will be
+            #   calculated based on the `net_terms` value.
+            #
+            #   @return [Date, Time, nil]
+            optional :custom_due_date,
+                     union: -> {
+                       Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings::CustomDueDate
+                     },
+                     nil?: true
 
             # @!attribute invoice_date
             #   An ISO 8601 format date that denotes when this invoice should be dated in the
@@ -178,7 +191,7 @@ module Orb
             #   @return [Boolean, nil]
             optional :require_successful_payment, Orb::Internal::Type::Boolean
 
-            # @!method initialize(auto_collection:, net_terms:, invoice_date: nil, memo: nil, require_successful_payment: nil)
+            # @!method initialize(auto_collection:, net_terms:, custom_due_date: nil, invoice_date: nil, memo: nil, require_successful_payment: nil)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings}
             #   for more details.
@@ -190,13 +203,30 @@ module Orb
             #
             #   @param auto_collection [Boolean] Whether the credits purchase invoice should auto collect with the customer's sav
             #
-            #   @param net_terms [Integer, nil] The net terms determines the difference between the invoice date and the issue d
+            #   @param net_terms [Integer, nil] The net terms determines the due date of the invoice. Due date is calculated bas
+            #
+            #   @param custom_due_date [Date, Time, nil] An optional custom due date for the invoice. If not set, the due date will be ca
             #
             #   @param invoice_date [Date, Time, nil] An ISO 8601 format date that denotes when this invoice should be dated in the cu
             #
             #   @param memo [String, nil] An optional memo to display on the invoice.
             #
             #   @param require_successful_payment [Boolean] If true, the new credit block will require that the corresponding invoice is pai
+
+            # An optional custom due date for the invoice. If not set, the due date will be
+            # calculated based on the `net_terms` value.
+            #
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings#custom_due_date
+            module CustomDueDate
+              extend Orb::Internal::Type::Union
+
+              variant Date
+
+              variant Time
+
+              # @!method self.variants
+              #   @return [Array(Date, Time)]
+            end
 
             # An ISO 8601 format date that denotes when this invoice should be dated in the
             # customer's timezone. If not provided, the invoice date will default to the

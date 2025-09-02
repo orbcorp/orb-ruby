@@ -23,9 +23,6 @@ module Orb
         matrix_config: Orb::MatrixConfig,
         matrix_with_allocation_config: Orb::MatrixWithAllocationConfig,
         tiered_config: Orb::TieredConfig,
-        tiered_bps_config: Orb::TieredBPSConfig,
-        bps_config: Orb::BPSConfig,
-        bulk_bps_config: Orb::BulkBPSConfig,
         bulk_config: Orb::BulkConfig,
         threshold_total_amount_config: ::Hash[Symbol, top],
         tiered_package_config: ::Hash[Symbol, top],
@@ -45,7 +42,9 @@ module Orb
         grouped_tiered_package_config: ::Hash[Symbol, top],
         scalable_matrix_with_unit_pricing_config: ::Hash[Symbol, top],
         scalable_matrix_with_tiered_pricing_config: ::Hash[Symbol, top],
-        cumulative_grouped_bulk_config: ::Hash[Symbol, top]
+        cumulative_grouped_bulk_config: ::Hash[Symbol, top],
+        grouped_with_min_max_thresholds_config: ::Hash[Symbol, top],
+        minimum_config: Orb::PriceCreateParams::MinimumConfig
       }
       & Orb::Internal::Type::request_parameters
 
@@ -95,12 +94,6 @@ module Orb
 
       attr_accessor tiered_config: Orb::TieredConfig
 
-      attr_accessor tiered_bps_config: Orb::TieredBPSConfig
-
-      attr_accessor bps_config: Orb::BPSConfig
-
-      attr_accessor bulk_bps_config: Orb::BulkBPSConfig
-
       attr_accessor bulk_config: Orb::BulkConfig
 
       attr_accessor threshold_total_amount_config: ::Hash[Symbol, top]
@@ -141,6 +134,10 @@ module Orb
 
       attr_accessor cumulative_grouped_bulk_config: ::Hash[Symbol, top]
 
+      attr_accessor grouped_with_min_max_thresholds_config: ::Hash[Symbol, top]
+
+      attr_accessor minimum_config: Orb::PriceCreateParams::MinimumConfig
+
       def initialize: (
         cadence: Orb::Models::PriceCreateParams::cadence,
         currency: String,
@@ -152,9 +149,6 @@ module Orb
         matrix_config: Orb::MatrixConfig,
         matrix_with_allocation_config: Orb::MatrixWithAllocationConfig,
         tiered_config: Orb::TieredConfig,
-        tiered_bps_config: Orb::TieredBPSConfig,
-        bps_config: Orb::BPSConfig,
-        bulk_bps_config: Orb::BulkBPSConfig,
         bulk_config: Orb::BulkConfig,
         threshold_total_amount_config: ::Hash[Symbol, top],
         tiered_package_config: ::Hash[Symbol, top],
@@ -175,6 +169,8 @@ module Orb
         scalable_matrix_with_unit_pricing_config: ::Hash[Symbol, top],
         scalable_matrix_with_tiered_pricing_config: ::Hash[Symbol, top],
         cumulative_grouped_bulk_config: ::Hash[Symbol, top],
+        grouped_with_min_max_thresholds_config: ::Hash[Symbol, top],
+        minimum_config: Orb::PriceCreateParams::MinimumConfig,
         ?billable_metric_id: String?,
         ?billed_in_advance: bool?,
         ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -211,9 +207,6 @@ module Orb
         matrix_config: Orb::MatrixConfig,
         matrix_with_allocation_config: Orb::MatrixWithAllocationConfig,
         tiered_config: Orb::TieredConfig,
-        tiered_bps_config: Orb::TieredBPSConfig,
-        bps_config: Orb::BPSConfig,
-        bulk_bps_config: Orb::BulkBPSConfig,
         bulk_config: Orb::BulkConfig,
         threshold_total_amount_config: ::Hash[Symbol, top],
         tiered_package_config: ::Hash[Symbol, top],
@@ -234,6 +227,8 @@ module Orb
         scalable_matrix_with_unit_pricing_config: ::Hash[Symbol, top],
         scalable_matrix_with_tiered_pricing_config: ::Hash[Symbol, top],
         cumulative_grouped_bulk_config: ::Hash[Symbol, top],
+        grouped_with_min_max_thresholds_config: ::Hash[Symbol, top],
+        minimum_config: Orb::PriceCreateParams::MinimumConfig,
         request_options: Orb::RequestOptions
       }
 
@@ -253,14 +248,26 @@ module Orb
         def self?.values: -> ::Array[Orb::Models::PriceCreateParams::cadence]
       end
 
-      type model_type = :cumulative_grouped_bulk
+      type model_type = :minimum
 
       module ModelType
         extend Orb::Internal::Type::Enum
 
-        CUMULATIVE_GROUPED_BULK: :cumulative_grouped_bulk
+        MINIMUM: :minimum
 
         def self?.values: -> ::Array[Orb::Models::PriceCreateParams::model_type]
+      end
+
+      type minimum_config = { minimum_amount: String, prorated: bool? }
+
+      class MinimumConfig < Orb::Internal::Type::BaseModel
+        attr_accessor minimum_amount: String
+
+        attr_accessor prorated: bool?
+
+        def initialize: (minimum_amount: String, ?prorated: bool?) -> void
+
+        def to_hash: -> { minimum_amount: String, prorated: bool? }
       end
     end
   end

@@ -22,9 +22,6 @@ module Orb
             Orb::Price::Package,
             Orb::Price::Matrix,
             Orb::Price::Tiered,
-            Orb::Price::TieredBPS,
-            Orb::Price::BPS,
-            Orb::Price::BulkBPS,
             Orb::Price::Bulk,
             Orb::Price::ThresholdTotalAmount,
             Orb::Price::TieredPackage,
@@ -46,7 +43,8 @@ module Orb
             Orb::Price::ScalableMatrixWithUnitPricing,
             Orb::Price::ScalableMatrixWithTieredPricing,
             Orb::Price::CumulativeGroupedBulk,
-            Orb::Price::GroupedWithMinMaxThresholds
+            Orb::Price::GroupedWithMinMaxThresholds,
+            Orb::Price::Minimum
           )
         end
 
@@ -80,12 +78,15 @@ module Orb
         sig { returns(Orb::Price::Unit::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
+        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        attr_accessor :composite_price_filters
+
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
         sig do
           returns(
-            T.nilable(Orb::Price::Unit::UnnamedTypeWithobjectParent84::Variants)
+            T.nilable(Orb::Price::Unit::UnnamedTypeWithobjectParent85::Variants)
           )
         end
         attr_accessor :conversion_rate_config
@@ -195,6 +196,8 @@ module Orb
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::Unit::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -240,6 +243,7 @@ module Orb
           billable_metric:,
           billing_cycle_configuration:,
           cadence:,
+          composite_price_filters:,
           conversion_rate:,
           conversion_rate_config:,
           created_at:,
@@ -278,10 +282,12 @@ module Orb
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::Unit::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::Unit::UnnamedTypeWithobjectParent84::Variants
+                  Orb::Price::Unit::UnnamedTypeWithobjectParent85::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -385,13 +391,16 @@ module Orb
         sig { returns(Orb::Price::Package::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
+        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        attr_accessor :composite_price_filters
+
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
         sig do
           returns(
             T.nilable(
-              Orb::Price::Package::UnnamedTypeWithobjectParent85::Variants
+              Orb::Price::Package::UnnamedTypeWithobjectParent86::Variants
             )
           )
         end
@@ -502,6 +511,8 @@ module Orb
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::Package::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -547,6 +558,7 @@ module Orb
           billable_metric:,
           billing_cycle_configuration:,
           cadence:,
+          composite_price_filters:,
           conversion_rate:,
           conversion_rate_config:,
           created_at:,
@@ -585,10 +597,12 @@ module Orb
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::Package::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::Package::UnnamedTypeWithobjectParent85::Variants
+                  Orb::Price::Package::UnnamedTypeWithobjectParent86::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -696,13 +710,16 @@ module Orb
         sig { returns(Orb::Price::Matrix::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
+        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        attr_accessor :composite_price_filters
+
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
         sig do
           returns(
             T.nilable(
-              Orb::Price::Matrix::UnnamedTypeWithobjectParent86::Variants
+              Orb::Price::Matrix::UnnamedTypeWithobjectParent87::Variants
             )
           )
         end
@@ -813,6 +830,8 @@ module Orb
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::Matrix::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -858,6 +877,7 @@ module Orb
           billable_metric:,
           billing_cycle_configuration:,
           cadence:,
+          composite_price_filters:,
           conversion_rate:,
           conversion_rate_config:,
           created_at:,
@@ -896,10 +916,12 @@ module Orb
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::Matrix::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::Matrix::UnnamedTypeWithobjectParent86::Variants
+                  Orb::Price::Matrix::UnnamedTypeWithobjectParent87::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -1006,13 +1028,16 @@ module Orb
         sig { returns(Orb::Price::Tiered::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
+        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        attr_accessor :composite_price_filters
+
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
         sig do
           returns(
             T.nilable(
-              Orb::Price::Tiered::UnnamedTypeWithobjectParent87::Variants
+              Orb::Price::Tiered::UnnamedTypeWithobjectParent88::Variants
             )
           )
         end
@@ -1123,6 +1148,8 @@ module Orb
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::Tiered::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -1168,6 +1195,7 @@ module Orb
           billable_metric:,
           billing_cycle_configuration:,
           cadence:,
+          composite_price_filters:,
           conversion_rate:,
           conversion_rate_config:,
           created_at:,
@@ -1206,10 +1234,12 @@ module Orb
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::Tiered::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::Tiered::UnnamedTypeWithobjectParent87::Variants
+                  Orb::Price::Tiered::UnnamedTypeWithobjectParent88::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -1286,931 +1316,6 @@ module Orb
         end
       end
 
-      class TieredBPS < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(Orb::Price::TieredBPS, Orb::Internal::AnyHash) }
-
-        sig { returns(String) }
-        attr_accessor :id
-
-        sig { returns(T.nilable(Orb::BillableMetricTiny)) }
-        attr_reader :billable_metric
-
-        sig do
-          params(
-            billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash)
-          ).void
-        end
-        attr_writer :billable_metric
-
-        sig { returns(Orb::BillingCycleConfiguration) }
-        attr_reader :billing_cycle_configuration
-
-        sig do
-          params(
-            billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash
-          ).void
-        end
-        attr_writer :billing_cycle_configuration
-
-        sig { returns(Orb::Price::TieredBPS::Cadence::TaggedSymbol) }
-        attr_accessor :cadence
-
-        sig { returns(T.nilable(Float)) }
-        attr_accessor :conversion_rate
-
-        sig do
-          returns(
-            T.nilable(
-              Orb::Price::TieredBPS::UnnamedTypeWithobjectParent88::Variants
-            )
-          )
-        end
-        attr_accessor :conversion_rate_config
-
-        sig { returns(Time) }
-        attr_accessor :created_at
-
-        sig { returns(T.nilable(Orb::Allocation)) }
-        attr_reader :credit_allocation
-
-        sig do
-          params(credit_allocation: T.nilable(Orb::Allocation::OrHash)).void
-        end
-        attr_writer :credit_allocation
-
-        sig { returns(String) }
-        attr_accessor :currency
-
-        sig { returns(T.nilable(Orb::Discount::Variants)) }
-        attr_accessor :discount
-
-        sig { returns(T.nilable(String)) }
-        attr_accessor :external_price_id
-
-        sig { returns(T.nilable(Float)) }
-        attr_accessor :fixed_price_quantity
-
-        sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
-        attr_reader :invoicing_cycle_configuration
-
-        sig do
-          params(
-            invoicing_cycle_configuration:
-              T.nilable(Orb::BillingCycleConfiguration::OrHash)
-          ).void
-        end
-        attr_writer :invoicing_cycle_configuration
-
-        sig { returns(Orb::ItemSlim) }
-        attr_reader :item
-
-        sig { params(item: Orb::ItemSlim::OrHash).void }
-        attr_writer :item
-
-        sig { returns(T.nilable(Orb::Maximum)) }
-        attr_reader :maximum
-
-        sig { params(maximum: T.nilable(Orb::Maximum::OrHash)).void }
-        attr_writer :maximum
-
-        sig { returns(T.nilable(String)) }
-        attr_accessor :maximum_amount
-
-        # User specified key-value pairs for the resource. If not present, this defaults
-        # to an empty dictionary. Individual keys can be removed by setting the value to
-        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        # `null`.
-        sig { returns(T::Hash[Symbol, String]) }
-        attr_accessor :metadata
-
-        sig { returns(T.nilable(Orb::Minimum)) }
-        attr_reader :minimum
-
-        sig { params(minimum: T.nilable(Orb::Minimum::OrHash)).void }
-        attr_writer :minimum
-
-        sig { returns(T.nilable(String)) }
-        attr_accessor :minimum_amount
-
-        sig { returns(Symbol) }
-        attr_accessor :model_type
-
-        sig { returns(String) }
-        attr_accessor :name
-
-        sig { returns(T.nilable(Integer)) }
-        attr_accessor :plan_phase_order
-
-        sig { returns(Orb::Price::TieredBPS::PriceType::TaggedSymbol) }
-        attr_accessor :price_type
-
-        # The price id this price replaces. This price will take the place of the replaced
-        # price in plan version migrations.
-        sig { returns(T.nilable(String)) }
-        attr_accessor :replaces_price_id
-
-        sig { returns(Orb::TieredBPSConfig) }
-        attr_reader :tiered_bps_config
-
-        sig { params(tiered_bps_config: Orb::TieredBPSConfig::OrHash).void }
-        attr_writer :tiered_bps_config
-
-        sig { returns(T.nilable(Orb::DimensionalPriceConfiguration)) }
-        attr_reader :dimensional_price_configuration
-
-        sig do
-          params(
-            dimensional_price_configuration:
-              T.nilable(Orb::DimensionalPriceConfiguration::OrHash)
-          ).void
-        end
-        attr_writer :dimensional_price_configuration
-
-        sig do
-          params(
-            id: String,
-            billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
-            billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
-            cadence: Orb::Price::TieredBPS::Cadence::OrSymbol,
-            conversion_rate: T.nilable(Float),
-            conversion_rate_config:
-              T.nilable(
-                T.any(
-                  Orb::UnitConversionRateConfig::OrHash,
-                  Orb::TieredConversionRateConfig::OrHash
-                )
-              ),
-            created_at: Time,
-            credit_allocation: T.nilable(Orb::Allocation::OrHash),
-            currency: String,
-            discount:
-              T.nilable(
-                T.any(
-                  Orb::PercentageDiscount::OrHash,
-                  Orb::TrialDiscount::OrHash,
-                  Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
-                )
-              ),
-            external_price_id: T.nilable(String),
-            fixed_price_quantity: T.nilable(Float),
-            invoicing_cycle_configuration:
-              T.nilable(Orb::BillingCycleConfiguration::OrHash),
-            item: Orb::ItemSlim::OrHash,
-            maximum: T.nilable(Orb::Maximum::OrHash),
-            maximum_amount: T.nilable(String),
-            metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(Orb::Minimum::OrHash),
-            minimum_amount: T.nilable(String),
-            name: String,
-            plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Price::TieredBPS::PriceType::OrSymbol,
-            replaces_price_id: T.nilable(String),
-            tiered_bps_config: Orb::TieredBPSConfig::OrHash,
-            dimensional_price_configuration:
-              T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
-            model_type: Symbol
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          id:,
-          billable_metric:,
-          billing_cycle_configuration:,
-          cadence:,
-          conversion_rate:,
-          conversion_rate_config:,
-          created_at:,
-          credit_allocation:,
-          currency:,
-          discount:,
-          external_price_id:,
-          fixed_price_quantity:,
-          invoicing_cycle_configuration:,
-          item:,
-          maximum:,
-          maximum_amount:,
-          # User specified key-value pairs for the resource. If not present, this defaults
-          # to an empty dictionary. Individual keys can be removed by setting the value to
-          # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-          # `null`.
-          metadata:,
-          minimum:,
-          minimum_amount:,
-          name:,
-          plan_phase_order:,
-          price_type:,
-          # The price id this price replaces. This price will take the place of the replaced
-          # price in plan version migrations.
-          replaces_price_id:,
-          tiered_bps_config:,
-          dimensional_price_configuration: nil,
-          model_type: :tiered_bps
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              id: String,
-              billable_metric: T.nilable(Orb::BillableMetricTiny),
-              billing_cycle_configuration: Orb::BillingCycleConfiguration,
-              cadence: Orb::Price::TieredBPS::Cadence::TaggedSymbol,
-              conversion_rate: T.nilable(Float),
-              conversion_rate_config:
-                T.nilable(
-                  Orb::Price::TieredBPS::UnnamedTypeWithobjectParent88::Variants
-                ),
-              created_at: Time,
-              credit_allocation: T.nilable(Orb::Allocation),
-              currency: String,
-              discount: T.nilable(Orb::Discount::Variants),
-              external_price_id: T.nilable(String),
-              fixed_price_quantity: T.nilable(Float),
-              invoicing_cycle_configuration:
-                T.nilable(Orb::BillingCycleConfiguration),
-              item: Orb::ItemSlim,
-              maximum: T.nilable(Orb::Maximum),
-              maximum_amount: T.nilable(String),
-              metadata: T::Hash[Symbol, String],
-              minimum: T.nilable(Orb::Minimum),
-              minimum_amount: T.nilable(String),
-              model_type: Symbol,
-              name: String,
-              plan_phase_order: T.nilable(Integer),
-              price_type: Orb::Price::TieredBPS::PriceType::TaggedSymbol,
-              replaces_price_id: T.nilable(String),
-              tiered_bps_config: Orb::TieredBPSConfig,
-              dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
-            }
-          )
-        end
-        def to_hash
-        end
-
-        module Cadence
-          extend Orb::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Orb::Price::TieredBPS::Cadence) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          ONE_TIME =
-            T.let(:one_time, Orb::Price::TieredBPS::Cadence::TaggedSymbol)
-          MONTHLY =
-            T.let(:monthly, Orb::Price::TieredBPS::Cadence::TaggedSymbol)
-          QUARTERLY =
-            T.let(:quarterly, Orb::Price::TieredBPS::Cadence::TaggedSymbol)
-          SEMI_ANNUAL =
-            T.let(:semi_annual, Orb::Price::TieredBPS::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Price::TieredBPS::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Price::TieredBPS::Cadence::TaggedSymbol)
-
-          sig do
-            override.returns(
-              T::Array[Orb::Price::TieredBPS::Cadence::TaggedSymbol]
-            )
-          end
-          def self.values
-          end
-        end
-
-        module PriceType
-          extend Orb::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Orb::Price::TieredBPS::PriceType) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          USAGE_PRICE =
-            T.let(:usage_price, Orb::Price::TieredBPS::PriceType::TaggedSymbol)
-          FIXED_PRICE =
-            T.let(:fixed_price, Orb::Price::TieredBPS::PriceType::TaggedSymbol)
-
-          sig do
-            override.returns(
-              T::Array[Orb::Price::TieredBPS::PriceType::TaggedSymbol]
-            )
-          end
-          def self.values
-          end
-        end
-      end
-
-      class BPS < Orb::Internal::Type::BaseModel
-        OrHash = T.type_alias { T.any(Orb::Price::BPS, Orb::Internal::AnyHash) }
-
-        sig { returns(String) }
-        attr_accessor :id
-
-        sig { returns(T.nilable(Orb::BillableMetricTiny)) }
-        attr_reader :billable_metric
-
-        sig do
-          params(
-            billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash)
-          ).void
-        end
-        attr_writer :billable_metric
-
-        sig { returns(Orb::BillingCycleConfiguration) }
-        attr_reader :billing_cycle_configuration
-
-        sig do
-          params(
-            billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash
-          ).void
-        end
-        attr_writer :billing_cycle_configuration
-
-        sig { returns(Orb::BPSConfig) }
-        attr_reader :bps_config
-
-        sig { params(bps_config: Orb::BPSConfig::OrHash).void }
-        attr_writer :bps_config
-
-        sig { returns(Orb::Price::BPS::Cadence::TaggedSymbol) }
-        attr_accessor :cadence
-
-        sig { returns(T.nilable(Float)) }
-        attr_accessor :conversion_rate
-
-        sig do
-          returns(
-            T.nilable(Orb::Price::BPS::UnnamedTypeWithobjectParent89::Variants)
-          )
-        end
-        attr_accessor :conversion_rate_config
-
-        sig { returns(Time) }
-        attr_accessor :created_at
-
-        sig { returns(T.nilable(Orb::Allocation)) }
-        attr_reader :credit_allocation
-
-        sig do
-          params(credit_allocation: T.nilable(Orb::Allocation::OrHash)).void
-        end
-        attr_writer :credit_allocation
-
-        sig { returns(String) }
-        attr_accessor :currency
-
-        sig { returns(T.nilable(Orb::Discount::Variants)) }
-        attr_accessor :discount
-
-        sig { returns(T.nilable(String)) }
-        attr_accessor :external_price_id
-
-        sig { returns(T.nilable(Float)) }
-        attr_accessor :fixed_price_quantity
-
-        sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
-        attr_reader :invoicing_cycle_configuration
-
-        sig do
-          params(
-            invoicing_cycle_configuration:
-              T.nilable(Orb::BillingCycleConfiguration::OrHash)
-          ).void
-        end
-        attr_writer :invoicing_cycle_configuration
-
-        sig { returns(Orb::ItemSlim) }
-        attr_reader :item
-
-        sig { params(item: Orb::ItemSlim::OrHash).void }
-        attr_writer :item
-
-        sig { returns(T.nilable(Orb::Maximum)) }
-        attr_reader :maximum
-
-        sig { params(maximum: T.nilable(Orb::Maximum::OrHash)).void }
-        attr_writer :maximum
-
-        sig { returns(T.nilable(String)) }
-        attr_accessor :maximum_amount
-
-        # User specified key-value pairs for the resource. If not present, this defaults
-        # to an empty dictionary. Individual keys can be removed by setting the value to
-        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        # `null`.
-        sig { returns(T::Hash[Symbol, String]) }
-        attr_accessor :metadata
-
-        sig { returns(T.nilable(Orb::Minimum)) }
-        attr_reader :minimum
-
-        sig { params(minimum: T.nilable(Orb::Minimum::OrHash)).void }
-        attr_writer :minimum
-
-        sig { returns(T.nilable(String)) }
-        attr_accessor :minimum_amount
-
-        sig { returns(Symbol) }
-        attr_accessor :model_type
-
-        sig { returns(String) }
-        attr_accessor :name
-
-        sig { returns(T.nilable(Integer)) }
-        attr_accessor :plan_phase_order
-
-        sig { returns(Orb::Price::BPS::PriceType::TaggedSymbol) }
-        attr_accessor :price_type
-
-        # The price id this price replaces. This price will take the place of the replaced
-        # price in plan version migrations.
-        sig { returns(T.nilable(String)) }
-        attr_accessor :replaces_price_id
-
-        sig { returns(T.nilable(Orb::DimensionalPriceConfiguration)) }
-        attr_reader :dimensional_price_configuration
-
-        sig do
-          params(
-            dimensional_price_configuration:
-              T.nilable(Orb::DimensionalPriceConfiguration::OrHash)
-          ).void
-        end
-        attr_writer :dimensional_price_configuration
-
-        sig do
-          params(
-            id: String,
-            billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
-            billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
-            bps_config: Orb::BPSConfig::OrHash,
-            cadence: Orb::Price::BPS::Cadence::OrSymbol,
-            conversion_rate: T.nilable(Float),
-            conversion_rate_config:
-              T.nilable(
-                T.any(
-                  Orb::UnitConversionRateConfig::OrHash,
-                  Orb::TieredConversionRateConfig::OrHash
-                )
-              ),
-            created_at: Time,
-            credit_allocation: T.nilable(Orb::Allocation::OrHash),
-            currency: String,
-            discount:
-              T.nilable(
-                T.any(
-                  Orb::PercentageDiscount::OrHash,
-                  Orb::TrialDiscount::OrHash,
-                  Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
-                )
-              ),
-            external_price_id: T.nilable(String),
-            fixed_price_quantity: T.nilable(Float),
-            invoicing_cycle_configuration:
-              T.nilable(Orb::BillingCycleConfiguration::OrHash),
-            item: Orb::ItemSlim::OrHash,
-            maximum: T.nilable(Orb::Maximum::OrHash),
-            maximum_amount: T.nilable(String),
-            metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(Orb::Minimum::OrHash),
-            minimum_amount: T.nilable(String),
-            name: String,
-            plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Price::BPS::PriceType::OrSymbol,
-            replaces_price_id: T.nilable(String),
-            dimensional_price_configuration:
-              T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
-            model_type: Symbol
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          id:,
-          billable_metric:,
-          billing_cycle_configuration:,
-          bps_config:,
-          cadence:,
-          conversion_rate:,
-          conversion_rate_config:,
-          created_at:,
-          credit_allocation:,
-          currency:,
-          discount:,
-          external_price_id:,
-          fixed_price_quantity:,
-          invoicing_cycle_configuration:,
-          item:,
-          maximum:,
-          maximum_amount:,
-          # User specified key-value pairs for the resource. If not present, this defaults
-          # to an empty dictionary. Individual keys can be removed by setting the value to
-          # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-          # `null`.
-          metadata:,
-          minimum:,
-          minimum_amount:,
-          name:,
-          plan_phase_order:,
-          price_type:,
-          # The price id this price replaces. This price will take the place of the replaced
-          # price in plan version migrations.
-          replaces_price_id:,
-          dimensional_price_configuration: nil,
-          model_type: :bps
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              id: String,
-              billable_metric: T.nilable(Orb::BillableMetricTiny),
-              billing_cycle_configuration: Orb::BillingCycleConfiguration,
-              bps_config: Orb::BPSConfig,
-              cadence: Orb::Price::BPS::Cadence::TaggedSymbol,
-              conversion_rate: T.nilable(Float),
-              conversion_rate_config:
-                T.nilable(
-                  Orb::Price::BPS::UnnamedTypeWithobjectParent89::Variants
-                ),
-              created_at: Time,
-              credit_allocation: T.nilable(Orb::Allocation),
-              currency: String,
-              discount: T.nilable(Orb::Discount::Variants),
-              external_price_id: T.nilable(String),
-              fixed_price_quantity: T.nilable(Float),
-              invoicing_cycle_configuration:
-                T.nilable(Orb::BillingCycleConfiguration),
-              item: Orb::ItemSlim,
-              maximum: T.nilable(Orb::Maximum),
-              maximum_amount: T.nilable(String),
-              metadata: T::Hash[Symbol, String],
-              minimum: T.nilable(Orb::Minimum),
-              minimum_amount: T.nilable(String),
-              model_type: Symbol,
-              name: String,
-              plan_phase_order: T.nilable(Integer),
-              price_type: Orb::Price::BPS::PriceType::TaggedSymbol,
-              replaces_price_id: T.nilable(String),
-              dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
-            }
-          )
-        end
-        def to_hash
-        end
-
-        module Cadence
-          extend Orb::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Orb::Price::BPS::Cadence) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          ONE_TIME = T.let(:one_time, Orb::Price::BPS::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Price::BPS::Cadence::TaggedSymbol)
-          QUARTERLY = T.let(:quarterly, Orb::Price::BPS::Cadence::TaggedSymbol)
-          SEMI_ANNUAL =
-            T.let(:semi_annual, Orb::Price::BPS::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Price::BPS::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Price::BPS::Cadence::TaggedSymbol)
-
-          sig do
-            override.returns(T::Array[Orb::Price::BPS::Cadence::TaggedSymbol])
-          end
-          def self.values
-          end
-        end
-
-        module PriceType
-          extend Orb::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Orb::Price::BPS::PriceType) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          USAGE_PRICE =
-            T.let(:usage_price, Orb::Price::BPS::PriceType::TaggedSymbol)
-          FIXED_PRICE =
-            T.let(:fixed_price, Orb::Price::BPS::PriceType::TaggedSymbol)
-
-          sig do
-            override.returns(T::Array[Orb::Price::BPS::PriceType::TaggedSymbol])
-          end
-          def self.values
-          end
-        end
-      end
-
-      class BulkBPS < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(Orb::Price::BulkBPS, Orb::Internal::AnyHash) }
-
-        sig { returns(String) }
-        attr_accessor :id
-
-        sig { returns(T.nilable(Orb::BillableMetricTiny)) }
-        attr_reader :billable_metric
-
-        sig do
-          params(
-            billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash)
-          ).void
-        end
-        attr_writer :billable_metric
-
-        sig { returns(Orb::BillingCycleConfiguration) }
-        attr_reader :billing_cycle_configuration
-
-        sig do
-          params(
-            billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash
-          ).void
-        end
-        attr_writer :billing_cycle_configuration
-
-        sig { returns(Orb::BulkBPSConfig) }
-        attr_reader :bulk_bps_config
-
-        sig { params(bulk_bps_config: Orb::BulkBPSConfig::OrHash).void }
-        attr_writer :bulk_bps_config
-
-        sig { returns(Orb::Price::BulkBPS::Cadence::TaggedSymbol) }
-        attr_accessor :cadence
-
-        sig { returns(T.nilable(Float)) }
-        attr_accessor :conversion_rate
-
-        sig do
-          returns(
-            T.nilable(
-              Orb::Price::BulkBPS::UnnamedTypeWithobjectParent90::Variants
-            )
-          )
-        end
-        attr_accessor :conversion_rate_config
-
-        sig { returns(Time) }
-        attr_accessor :created_at
-
-        sig { returns(T.nilable(Orb::Allocation)) }
-        attr_reader :credit_allocation
-
-        sig do
-          params(credit_allocation: T.nilable(Orb::Allocation::OrHash)).void
-        end
-        attr_writer :credit_allocation
-
-        sig { returns(String) }
-        attr_accessor :currency
-
-        sig { returns(T.nilable(Orb::Discount::Variants)) }
-        attr_accessor :discount
-
-        sig { returns(T.nilable(String)) }
-        attr_accessor :external_price_id
-
-        sig { returns(T.nilable(Float)) }
-        attr_accessor :fixed_price_quantity
-
-        sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
-        attr_reader :invoicing_cycle_configuration
-
-        sig do
-          params(
-            invoicing_cycle_configuration:
-              T.nilable(Orb::BillingCycleConfiguration::OrHash)
-          ).void
-        end
-        attr_writer :invoicing_cycle_configuration
-
-        sig { returns(Orb::ItemSlim) }
-        attr_reader :item
-
-        sig { params(item: Orb::ItemSlim::OrHash).void }
-        attr_writer :item
-
-        sig { returns(T.nilable(Orb::Maximum)) }
-        attr_reader :maximum
-
-        sig { params(maximum: T.nilable(Orb::Maximum::OrHash)).void }
-        attr_writer :maximum
-
-        sig { returns(T.nilable(String)) }
-        attr_accessor :maximum_amount
-
-        # User specified key-value pairs for the resource. If not present, this defaults
-        # to an empty dictionary. Individual keys can be removed by setting the value to
-        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-        # `null`.
-        sig { returns(T::Hash[Symbol, String]) }
-        attr_accessor :metadata
-
-        sig { returns(T.nilable(Orb::Minimum)) }
-        attr_reader :minimum
-
-        sig { params(minimum: T.nilable(Orb::Minimum::OrHash)).void }
-        attr_writer :minimum
-
-        sig { returns(T.nilable(String)) }
-        attr_accessor :minimum_amount
-
-        sig { returns(Symbol) }
-        attr_accessor :model_type
-
-        sig { returns(String) }
-        attr_accessor :name
-
-        sig { returns(T.nilable(Integer)) }
-        attr_accessor :plan_phase_order
-
-        sig { returns(Orb::Price::BulkBPS::PriceType::TaggedSymbol) }
-        attr_accessor :price_type
-
-        # The price id this price replaces. This price will take the place of the replaced
-        # price in plan version migrations.
-        sig { returns(T.nilable(String)) }
-        attr_accessor :replaces_price_id
-
-        sig { returns(T.nilable(Orb::DimensionalPriceConfiguration)) }
-        attr_reader :dimensional_price_configuration
-
-        sig do
-          params(
-            dimensional_price_configuration:
-              T.nilable(Orb::DimensionalPriceConfiguration::OrHash)
-          ).void
-        end
-        attr_writer :dimensional_price_configuration
-
-        sig do
-          params(
-            id: String,
-            billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
-            billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
-            bulk_bps_config: Orb::BulkBPSConfig::OrHash,
-            cadence: Orb::Price::BulkBPS::Cadence::OrSymbol,
-            conversion_rate: T.nilable(Float),
-            conversion_rate_config:
-              T.nilable(
-                T.any(
-                  Orb::UnitConversionRateConfig::OrHash,
-                  Orb::TieredConversionRateConfig::OrHash
-                )
-              ),
-            created_at: Time,
-            credit_allocation: T.nilable(Orb::Allocation::OrHash),
-            currency: String,
-            discount:
-              T.nilable(
-                T.any(
-                  Orb::PercentageDiscount::OrHash,
-                  Orb::TrialDiscount::OrHash,
-                  Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
-                )
-              ),
-            external_price_id: T.nilable(String),
-            fixed_price_quantity: T.nilable(Float),
-            invoicing_cycle_configuration:
-              T.nilable(Orb::BillingCycleConfiguration::OrHash),
-            item: Orb::ItemSlim::OrHash,
-            maximum: T.nilable(Orb::Maximum::OrHash),
-            maximum_amount: T.nilable(String),
-            metadata: T::Hash[Symbol, String],
-            minimum: T.nilable(Orb::Minimum::OrHash),
-            minimum_amount: T.nilable(String),
-            name: String,
-            plan_phase_order: T.nilable(Integer),
-            price_type: Orb::Price::BulkBPS::PriceType::OrSymbol,
-            replaces_price_id: T.nilable(String),
-            dimensional_price_configuration:
-              T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
-            model_type: Symbol
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          id:,
-          billable_metric:,
-          billing_cycle_configuration:,
-          bulk_bps_config:,
-          cadence:,
-          conversion_rate:,
-          conversion_rate_config:,
-          created_at:,
-          credit_allocation:,
-          currency:,
-          discount:,
-          external_price_id:,
-          fixed_price_quantity:,
-          invoicing_cycle_configuration:,
-          item:,
-          maximum:,
-          maximum_amount:,
-          # User specified key-value pairs for the resource. If not present, this defaults
-          # to an empty dictionary. Individual keys can be removed by setting the value to
-          # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
-          # `null`.
-          metadata:,
-          minimum:,
-          minimum_amount:,
-          name:,
-          plan_phase_order:,
-          price_type:,
-          # The price id this price replaces. This price will take the place of the replaced
-          # price in plan version migrations.
-          replaces_price_id:,
-          dimensional_price_configuration: nil,
-          model_type: :bulk_bps
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              id: String,
-              billable_metric: T.nilable(Orb::BillableMetricTiny),
-              billing_cycle_configuration: Orb::BillingCycleConfiguration,
-              bulk_bps_config: Orb::BulkBPSConfig,
-              cadence: Orb::Price::BulkBPS::Cadence::TaggedSymbol,
-              conversion_rate: T.nilable(Float),
-              conversion_rate_config:
-                T.nilable(
-                  Orb::Price::BulkBPS::UnnamedTypeWithobjectParent90::Variants
-                ),
-              created_at: Time,
-              credit_allocation: T.nilable(Orb::Allocation),
-              currency: String,
-              discount: T.nilable(Orb::Discount::Variants),
-              external_price_id: T.nilable(String),
-              fixed_price_quantity: T.nilable(Float),
-              invoicing_cycle_configuration:
-                T.nilable(Orb::BillingCycleConfiguration),
-              item: Orb::ItemSlim,
-              maximum: T.nilable(Orb::Maximum),
-              maximum_amount: T.nilable(String),
-              metadata: T::Hash[Symbol, String],
-              minimum: T.nilable(Orb::Minimum),
-              minimum_amount: T.nilable(String),
-              model_type: Symbol,
-              name: String,
-              plan_phase_order: T.nilable(Integer),
-              price_type: Orb::Price::BulkBPS::PriceType::TaggedSymbol,
-              replaces_price_id: T.nilable(String),
-              dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
-            }
-          )
-        end
-        def to_hash
-        end
-
-        module Cadence
-          extend Orb::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Orb::Price::BulkBPS::Cadence) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          ONE_TIME =
-            T.let(:one_time, Orb::Price::BulkBPS::Cadence::TaggedSymbol)
-          MONTHLY = T.let(:monthly, Orb::Price::BulkBPS::Cadence::TaggedSymbol)
-          QUARTERLY =
-            T.let(:quarterly, Orb::Price::BulkBPS::Cadence::TaggedSymbol)
-          SEMI_ANNUAL =
-            T.let(:semi_annual, Orb::Price::BulkBPS::Cadence::TaggedSymbol)
-          ANNUAL = T.let(:annual, Orb::Price::BulkBPS::Cadence::TaggedSymbol)
-          CUSTOM = T.let(:custom, Orb::Price::BulkBPS::Cadence::TaggedSymbol)
-
-          sig do
-            override.returns(
-              T::Array[Orb::Price::BulkBPS::Cadence::TaggedSymbol]
-            )
-          end
-          def self.values
-          end
-        end
-
-        module PriceType
-          extend Orb::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Orb::Price::BulkBPS::PriceType) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          USAGE_PRICE =
-            T.let(:usage_price, Orb::Price::BulkBPS::PriceType::TaggedSymbol)
-          FIXED_PRICE =
-            T.let(:fixed_price, Orb::Price::BulkBPS::PriceType::TaggedSymbol)
-
-          sig do
-            override.returns(
-              T::Array[Orb::Price::BulkBPS::PriceType::TaggedSymbol]
-            )
-          end
-          def self.values
-          end
-        end
-      end
-
       class Bulk < Orb::Internal::Type::BaseModel
         OrHash =
           T.type_alias { T.any(Orb::Price::Bulk, Orb::Internal::AnyHash) }
@@ -2247,12 +1352,15 @@ module Orb
         sig { returns(Orb::Price::Bulk::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
+        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        attr_accessor :composite_price_filters
+
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
         sig do
           returns(
-            T.nilable(Orb::Price::Bulk::UnnamedTypeWithobjectParent91::Variants)
+            T.nilable(Orb::Price::Bulk::UnnamedTypeWithobjectParent89::Variants)
           )
         end
         attr_accessor :conversion_rate_config
@@ -2357,6 +1465,8 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             bulk_config: Orb::BulkConfig::OrHash,
             cadence: Orb::Price::Bulk::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -2402,6 +1512,7 @@ module Orb
           billing_cycle_configuration:,
           bulk_config:,
           cadence:,
+          composite_price_filters:,
           conversion_rate:,
           conversion_rate_config:,
           created_at:,
@@ -2440,10 +1551,12 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               bulk_config: Orb::BulkConfig,
               cadence: Orb::Price::Bulk::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::Bulk::UnnamedTypeWithobjectParent91::Variants
+                  Orb::Price::Bulk::UnnamedTypeWithobjectParent89::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -2548,13 +1661,16 @@ module Orb
         sig { returns(Orb::Price::ThresholdTotalAmount::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
+        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        attr_accessor :composite_price_filters
+
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
         sig do
           returns(
             T.nilable(
-              Orb::Price::ThresholdTotalAmount::UnnamedTypeWithobjectParent92::Variants
+              Orb::Price::ThresholdTotalAmount::UnnamedTypeWithobjectParent90::Variants
             )
           )
         end
@@ -2664,6 +1780,8 @@ module Orb
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::ThresholdTotalAmount::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -2709,6 +1827,7 @@ module Orb
           billable_metric:,
           billing_cycle_configuration:,
           cadence:,
+          composite_price_filters:,
           conversion_rate:,
           conversion_rate_config:,
           created_at:,
@@ -2747,10 +1866,12 @@ module Orb
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::ThresholdTotalAmount::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::ThresholdTotalAmount::UnnamedTypeWithobjectParent92::Variants
+                  Orb::Price::ThresholdTotalAmount::UnnamedTypeWithobjectParent90::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -2894,13 +2015,16 @@ module Orb
         sig { returns(Orb::Price::TieredPackage::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
+        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        attr_accessor :composite_price_filters
+
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
         sig do
           returns(
             T.nilable(
-              Orb::Price::TieredPackage::UnnamedTypeWithobjectParent93::Variants
+              Orb::Price::TieredPackage::UnnamedTypeWithobjectParent91::Variants
             )
           )
         end
@@ -3008,6 +2132,8 @@ module Orb
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::TieredPackage::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -3053,6 +2179,7 @@ module Orb
           billable_metric:,
           billing_cycle_configuration:,
           cadence:,
+          composite_price_filters:,
           conversion_rate:,
           conversion_rate_config:,
           created_at:,
@@ -3091,10 +2218,12 @@ module Orb
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::TieredPackage::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::TieredPackage::UnnamedTypeWithobjectParent93::Variants
+                  Orb::Price::TieredPackage::UnnamedTypeWithobjectParent91::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -3216,13 +2345,16 @@ module Orb
         sig { returns(Orb::Price::GroupedTiered::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
+        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        attr_accessor :composite_price_filters
+
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
         sig do
           returns(
             T.nilable(
-              Orb::Price::GroupedTiered::UnnamedTypeWithobjectParent94::Variants
+              Orb::Price::GroupedTiered::UnnamedTypeWithobjectParent92::Variants
             )
           )
         end
@@ -3330,6 +2462,8 @@ module Orb
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::GroupedTiered::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -3375,6 +2509,7 @@ module Orb
           billable_metric:,
           billing_cycle_configuration:,
           cadence:,
+          composite_price_filters:,
           conversion_rate:,
           conversion_rate_config:,
           created_at:,
@@ -3413,10 +2548,12 @@ module Orb
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::GroupedTiered::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::GroupedTiered::UnnamedTypeWithobjectParent94::Variants
+                  Orb::Price::GroupedTiered::UnnamedTypeWithobjectParent92::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -3538,13 +2675,16 @@ module Orb
         sig { returns(Orb::Price::TieredWithMinimum::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
+        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        attr_accessor :composite_price_filters
+
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
         sig do
           returns(
             T.nilable(
-              Orb::Price::TieredWithMinimum::UnnamedTypeWithobjectParent95::Variants
+              Orb::Price::TieredWithMinimum::UnnamedTypeWithobjectParent93::Variants
             )
           )
         end
@@ -3652,6 +2792,8 @@ module Orb
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::TieredWithMinimum::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -3697,6 +2839,7 @@ module Orb
           billable_metric:,
           billing_cycle_configuration:,
           cadence:,
+          composite_price_filters:,
           conversion_rate:,
           conversion_rate_config:,
           created_at:,
@@ -3735,10 +2878,12 @@ module Orb
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::TieredWithMinimum::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::TieredWithMinimum::UnnamedTypeWithobjectParent95::Variants
+                  Orb::Price::TieredWithMinimum::UnnamedTypeWithobjectParent93::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -3876,13 +3021,16 @@ module Orb
         end
         attr_accessor :cadence
 
+        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        attr_accessor :composite_price_filters
+
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
         sig do
           returns(
             T.nilable(
-              Orb::Price::TieredPackageWithMinimum::UnnamedTypeWithobjectParent96::Variants
+              Orb::Price::TieredPackageWithMinimum::UnnamedTypeWithobjectParent94::Variants
             )
           )
         end
@@ -3992,6 +3140,8 @@ module Orb
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::TieredPackageWithMinimum::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -4038,6 +3188,7 @@ module Orb
           billable_metric:,
           billing_cycle_configuration:,
           cadence:,
+          composite_price_filters:,
           conversion_rate:,
           conversion_rate_config:,
           created_at:,
@@ -4077,10 +3228,12 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence:
                 Orb::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::TieredPackageWithMinimum::UnnamedTypeWithobjectParent96::Variants
+                  Orb::Price::TieredPackageWithMinimum::UnnamedTypeWithobjectParent94::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -4228,13 +3381,16 @@ module Orb
         end
         attr_accessor :cadence
 
+        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        attr_accessor :composite_price_filters
+
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
         sig do
           returns(
             T.nilable(
-              Orb::Price::PackageWithAllocation::UnnamedTypeWithobjectParent97::Variants
+              Orb::Price::PackageWithAllocation::UnnamedTypeWithobjectParent95::Variants
             )
           )
         end
@@ -4344,6 +3500,8 @@ module Orb
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::PackageWithAllocation::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -4389,6 +3547,7 @@ module Orb
           billable_metric:,
           billing_cycle_configuration:,
           cadence:,
+          composite_price_filters:,
           conversion_rate:,
           conversion_rate_config:,
           created_at:,
@@ -4427,10 +3586,12 @@ module Orb
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::PackageWithAllocation::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::PackageWithAllocation::UnnamedTypeWithobjectParent97::Variants
+                  Orb::Price::PackageWithAllocation::UnnamedTypeWithobjectParent95::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -4574,13 +3735,16 @@ module Orb
         sig { returns(Orb::Price::UnitWithPercent::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
+        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        attr_accessor :composite_price_filters
+
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
         sig do
           returns(
             T.nilable(
-              Orb::Price::UnitWithPercent::UnnamedTypeWithobjectParent98::Variants
+              Orb::Price::UnitWithPercent::UnnamedTypeWithobjectParent96::Variants
             )
           )
         end
@@ -4688,6 +3852,8 @@ module Orb
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::UnitWithPercent::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -4733,6 +3899,7 @@ module Orb
           billable_metric:,
           billing_cycle_configuration:,
           cadence:,
+          composite_price_filters:,
           conversion_rate:,
           conversion_rate_config:,
           created_at:,
@@ -4771,10 +3938,12 @@ module Orb
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::UnitWithPercent::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::UnitWithPercent::UnnamedTypeWithobjectParent98::Variants
+                  Orb::Price::UnitWithPercent::UnnamedTypeWithobjectParent96::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -4901,13 +4070,16 @@ module Orb
         sig { returns(Orb::Price::MatrixWithAllocation::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
+        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        attr_accessor :composite_price_filters
+
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
         sig do
           returns(
             T.nilable(
-              Orb::Price::MatrixWithAllocation::UnnamedTypeWithobjectParent99::Variants
+              Orb::Price::MatrixWithAllocation::UnnamedTypeWithobjectParent97::Variants
             )
           )
         end
@@ -5025,6 +4197,8 @@ module Orb
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::MatrixWithAllocation::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -5071,6 +4245,7 @@ module Orb
           billable_metric:,
           billing_cycle_configuration:,
           cadence:,
+          composite_price_filters:,
           conversion_rate:,
           conversion_rate_config:,
           created_at:,
@@ -5109,10 +4284,12 @@ module Orb
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::MatrixWithAllocation::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::MatrixWithAllocation::UnnamedTypeWithobjectParent99::Variants
+                  Orb::Price::MatrixWithAllocation::UnnamedTypeWithobjectParent97::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -5256,13 +4433,16 @@ module Orb
         sig { returns(Orb::Price::TieredWithProration::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
+        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        attr_accessor :composite_price_filters
+
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
         sig do
           returns(
             T.nilable(
-              Orb::Price::TieredWithProration::UnnamedTypeWithobjectParent100::Variants
+              Orb::Price::TieredWithProration::UnnamedTypeWithobjectParent98::Variants
             )
           )
         end
@@ -5372,6 +4552,8 @@ module Orb
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::TieredWithProration::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -5417,6 +4599,7 @@ module Orb
           billable_metric:,
           billing_cycle_configuration:,
           cadence:,
+          composite_price_filters:,
           conversion_rate:,
           conversion_rate_config:,
           created_at:,
@@ -5455,10 +4638,12 @@ module Orb
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::TieredWithProration::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::TieredWithProration::UnnamedTypeWithobjectParent100::Variants
+                  Orb::Price::TieredWithProration::UnnamedTypeWithobjectParent98::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -5600,13 +4785,16 @@ module Orb
         sig { returns(Orb::Price::UnitWithProration::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
+        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        attr_accessor :composite_price_filters
+
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
         sig do
           returns(
             T.nilable(
-              Orb::Price::UnitWithProration::UnnamedTypeWithobjectParent101::Variants
+              Orb::Price::UnitWithProration::UnnamedTypeWithobjectParent99::Variants
             )
           )
         end
@@ -5714,6 +4902,8 @@ module Orb
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::UnitWithProration::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -5759,6 +4949,7 @@ module Orb
           billable_metric:,
           billing_cycle_configuration:,
           cadence:,
+          composite_price_filters:,
           conversion_rate:,
           conversion_rate_config:,
           created_at:,
@@ -5797,10 +4988,12 @@ module Orb
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::UnitWithProration::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::UnitWithProration::UnnamedTypeWithobjectParent101::Variants
+                  Orb::Price::UnitWithProration::UnnamedTypeWithobjectParent99::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -5936,13 +5129,16 @@ module Orb
         sig { returns(Orb::Price::GroupedAllocation::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
+        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        attr_accessor :composite_price_filters
+
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
         sig do
           returns(
             T.nilable(
-              Orb::Price::GroupedAllocation::UnnamedTypeWithobjectParent102::Variants
+              Orb::Price::GroupedAllocation::UnnamedTypeWithobjectParent100::Variants
             )
           )
         end
@@ -6050,6 +5246,8 @@ module Orb
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::GroupedAllocation::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -6095,6 +5293,7 @@ module Orb
           billable_metric:,
           billing_cycle_configuration:,
           cadence:,
+          composite_price_filters:,
           conversion_rate:,
           conversion_rate_config:,
           created_at:,
@@ -6133,10 +5332,12 @@ module Orb
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::GroupedAllocation::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::GroupedAllocation::UnnamedTypeWithobjectParent102::Variants
+                  Orb::Price::GroupedAllocation::UnnamedTypeWithobjectParent100::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -6277,13 +5478,16 @@ module Orb
         end
         attr_accessor :cadence
 
+        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        attr_accessor :composite_price_filters
+
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
         sig do
           returns(
             T.nilable(
-              Orb::Price::GroupedWithProratedMinimum::UnnamedTypeWithobjectParent103::Variants
+              Orb::Price::GroupedWithProratedMinimum::UnnamedTypeWithobjectParent101::Variants
             )
           )
         end
@@ -6395,6 +5599,8 @@ module Orb
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::GroupedWithProratedMinimum::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -6441,6 +5647,7 @@ module Orb
           billable_metric:,
           billing_cycle_configuration:,
           cadence:,
+          composite_price_filters:,
           conversion_rate:,
           conversion_rate_config:,
           created_at:,
@@ -6480,10 +5687,12 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence:
                 Orb::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::GroupedWithProratedMinimum::UnnamedTypeWithobjectParent103::Variants
+                  Orb::Price::GroupedWithProratedMinimum::UnnamedTypeWithobjectParent101::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -6631,13 +5840,16 @@ module Orb
         end
         attr_accessor :cadence
 
+        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        attr_accessor :composite_price_filters
+
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
         sig do
           returns(
             T.nilable(
-              Orb::Price::GroupedWithMeteredMinimum::UnnamedTypeWithobjectParent104::Variants
+              Orb::Price::GroupedWithMeteredMinimum::UnnamedTypeWithobjectParent102::Variants
             )
           )
         end
@@ -6749,6 +5961,8 @@ module Orb
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::GroupedWithMeteredMinimum::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -6795,6 +6009,7 @@ module Orb
           billable_metric:,
           billing_cycle_configuration:,
           cadence:,
+          composite_price_filters:,
           conversion_rate:,
           conversion_rate_config:,
           created_at:,
@@ -6834,10 +6049,12 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence:
                 Orb::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::GroupedWithMeteredMinimum::UnnamedTypeWithobjectParent104::Variants
+                  Orb::Price::GroupedWithMeteredMinimum::UnnamedTypeWithobjectParent102::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -6985,13 +6202,16 @@ module Orb
         end
         attr_accessor :cadence
 
+        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        attr_accessor :composite_price_filters
+
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
         sig do
           returns(
             T.nilable(
-              Orb::Price::MatrixWithDisplayName::UnnamedTypeWithobjectParent105::Variants
+              Orb::Price::MatrixWithDisplayName::UnnamedTypeWithobjectParent103::Variants
             )
           )
         end
@@ -7101,6 +6321,8 @@ module Orb
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::MatrixWithDisplayName::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -7146,6 +6368,7 @@ module Orb
           billable_metric:,
           billing_cycle_configuration:,
           cadence:,
+          composite_price_filters:,
           conversion_rate:,
           conversion_rate_config:,
           created_at:,
@@ -7184,10 +6407,12 @@ module Orb
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::MatrixWithDisplayName::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::MatrixWithDisplayName::UnnamedTypeWithobjectParent105::Variants
+                  Orb::Price::MatrixWithDisplayName::UnnamedTypeWithobjectParent103::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -7334,13 +6559,16 @@ module Orb
         sig { returns(Orb::Price::BulkWithProration::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
+        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        attr_accessor :composite_price_filters
+
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
         sig do
           returns(
             T.nilable(
-              Orb::Price::BulkWithProration::UnnamedTypeWithobjectParent106::Variants
+              Orb::Price::BulkWithProration::UnnamedTypeWithobjectParent104::Variants
             )
           )
         end
@@ -7446,6 +6674,8 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             bulk_with_proration_config: T::Hash[Symbol, T.anything],
             cadence: Orb::Price::BulkWithProration::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -7491,6 +6721,7 @@ module Orb
           billing_cycle_configuration:,
           bulk_with_proration_config:,
           cadence:,
+          composite_price_filters:,
           conversion_rate:,
           conversion_rate_config:,
           created_at:,
@@ -7529,10 +6760,12 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               bulk_with_proration_config: T::Hash[Symbol, T.anything],
               cadence: Orb::Price::BulkWithProration::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::BulkWithProration::UnnamedTypeWithobjectParent106::Variants
+                  Orb::Price::BulkWithProration::UnnamedTypeWithobjectParent104::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -7667,13 +6900,16 @@ module Orb
         sig { returns(Orb::Price::GroupedTieredPackage::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
+        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        attr_accessor :composite_price_filters
+
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
         sig do
           returns(
             T.nilable(
-              Orb::Price::GroupedTieredPackage::UnnamedTypeWithobjectParent107::Variants
+              Orb::Price::GroupedTieredPackage::UnnamedTypeWithobjectParent105::Variants
             )
           )
         end
@@ -7783,6 +7019,8 @@ module Orb
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::GroupedTieredPackage::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -7828,6 +7066,7 @@ module Orb
           billable_metric:,
           billing_cycle_configuration:,
           cadence:,
+          composite_price_filters:,
           conversion_rate:,
           conversion_rate_config:,
           created_at:,
@@ -7866,10 +7105,12 @@ module Orb
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::GroupedTieredPackage::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::GroupedTieredPackage::UnnamedTypeWithobjectParent107::Variants
+                  Orb::Price::GroupedTieredPackage::UnnamedTypeWithobjectParent105::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -8015,13 +7256,16 @@ module Orb
         end
         attr_accessor :cadence
 
+        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        attr_accessor :composite_price_filters
+
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
         sig do
           returns(
             T.nilable(
-              Orb::Price::MaxGroupTieredPackage::UnnamedTypeWithobjectParent108::Variants
+              Orb::Price::MaxGroupTieredPackage::UnnamedTypeWithobjectParent106::Variants
             )
           )
         end
@@ -8131,6 +7375,8 @@ module Orb
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::MaxGroupTieredPackage::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -8176,6 +7422,7 @@ module Orb
           billable_metric:,
           billing_cycle_configuration:,
           cadence:,
+          composite_price_filters:,
           conversion_rate:,
           conversion_rate_config:,
           created_at:,
@@ -8214,10 +7461,12 @@ module Orb
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::MaxGroupTieredPackage::UnnamedTypeWithobjectParent108::Variants
+                  Orb::Price::MaxGroupTieredPackage::UnnamedTypeWithobjectParent106::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -8368,13 +7617,16 @@ module Orb
         end
         attr_accessor :cadence
 
+        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        attr_accessor :composite_price_filters
+
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
         sig do
           returns(
             T.nilable(
-              Orb::Price::ScalableMatrixWithUnitPricing::UnnamedTypeWithobjectParent109::Variants
+              Orb::Price::ScalableMatrixWithUnitPricing::UnnamedTypeWithobjectParent107::Variants
             )
           )
         end
@@ -8487,6 +7739,8 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence:
               Orb::Price::ScalableMatrixWithUnitPricing::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -8534,6 +7788,7 @@ module Orb
           billable_metric:,
           billing_cycle_configuration:,
           cadence:,
+          composite_price_filters:,
           conversion_rate:,
           conversion_rate_config:,
           created_at:,
@@ -8573,10 +7828,12 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence:
                 Orb::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::ScalableMatrixWithUnitPricing::UnnamedTypeWithobjectParent109::Variants
+                  Orb::Price::ScalableMatrixWithUnitPricing::UnnamedTypeWithobjectParent107::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -8733,13 +7990,16 @@ module Orb
         end
         attr_accessor :cadence
 
+        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        attr_accessor :composite_price_filters
+
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
         sig do
           returns(
             T.nilable(
-              Orb::Price::ScalableMatrixWithTieredPricing::UnnamedTypeWithobjectParent110::Variants
+              Orb::Price::ScalableMatrixWithTieredPricing::UnnamedTypeWithobjectParent108::Variants
             )
           )
         end
@@ -8852,6 +8112,8 @@ module Orb
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence:
               Orb::Price::ScalableMatrixWithTieredPricing::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -8899,6 +8161,7 @@ module Orb
           billable_metric:,
           billing_cycle_configuration:,
           cadence:,
+          composite_price_filters:,
           conversion_rate:,
           conversion_rate_config:,
           created_at:,
@@ -8938,10 +8201,12 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence:
                 Orb::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::ScalableMatrixWithTieredPricing::UnnamedTypeWithobjectParent110::Variants
+                  Orb::Price::ScalableMatrixWithTieredPricing::UnnamedTypeWithobjectParent108::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -9096,13 +8361,16 @@ module Orb
         end
         attr_accessor :cadence
 
+        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        attr_accessor :composite_price_filters
+
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
         sig do
           returns(
             T.nilable(
-              Orb::Price::CumulativeGroupedBulk::UnnamedTypeWithobjectParent111::Variants
+              Orb::Price::CumulativeGroupedBulk::UnnamedTypeWithobjectParent109::Variants
             )
           )
         end
@@ -9212,6 +8480,8 @@ module Orb
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::CumulativeGroupedBulk::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -9257,6 +8527,7 @@ module Orb
           billable_metric:,
           billing_cycle_configuration:,
           cadence:,
+          composite_price_filters:,
           conversion_rate:,
           conversion_rate_config:,
           created_at:,
@@ -9295,10 +8566,12 @@ module Orb
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence: Orb::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::CumulativeGroupedBulk::UnnamedTypeWithobjectParent111::Variants
+                  Orb::Price::CumulativeGroupedBulk::UnnamedTypeWithobjectParent109::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -9449,13 +8722,16 @@ module Orb
         end
         attr_accessor :cadence
 
+        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        attr_accessor :composite_price_filters
+
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
         sig do
           returns(
             T.nilable(
-              Orb::Price::GroupedWithMinMaxThresholds::UnnamedTypeWithobjectParent112::Variants
+              Orb::Price::GroupedWithMinMaxThresholds::UnnamedTypeWithobjectParent110::Variants
             )
           )
         end
@@ -9567,6 +8843,8 @@ module Orb
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
             cadence: Orb::Price::GroupedWithMinMaxThresholds::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -9613,6 +8891,7 @@ module Orb
           billable_metric:,
           billing_cycle_configuration:,
           cadence:,
+          composite_price_filters:,
           conversion_rate:,
           conversion_rate_config:,
           created_at:,
@@ -9652,10 +8931,12 @@ module Orb
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
               cadence:
                 Orb::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::GroupedWithMinMaxThresholds::UnnamedTypeWithobjectParent112::Variants
+                  Orb::Price::GroupedWithMinMaxThresholds::UnnamedTypeWithobjectParent110::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -9763,6 +9044,368 @@ module Orb
               T::Array[
                 Orb::Price::GroupedWithMinMaxThresholds::PriceType::TaggedSymbol
               ]
+            )
+          end
+          def self.values
+          end
+        end
+      end
+
+      class Minimum < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(Orb::Price::Minimum, Orb::Internal::AnyHash) }
+
+        sig { returns(String) }
+        attr_accessor :id
+
+        sig { returns(T.nilable(Orb::BillableMetricTiny)) }
+        attr_reader :billable_metric
+
+        sig do
+          params(
+            billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash)
+          ).void
+        end
+        attr_writer :billable_metric
+
+        sig { returns(Orb::BillingCycleConfiguration) }
+        attr_reader :billing_cycle_configuration
+
+        sig do
+          params(
+            billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash
+          ).void
+        end
+        attr_writer :billing_cycle_configuration
+
+        sig { returns(Orb::Price::Minimum::Cadence::TaggedSymbol) }
+        attr_accessor :cadence
+
+        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        attr_accessor :composite_price_filters
+
+        sig { returns(T.nilable(Float)) }
+        attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::Minimum::UnnamedTypeWithobjectParent111::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
+
+        sig { returns(Time) }
+        attr_accessor :created_at
+
+        sig { returns(T.nilable(Orb::Allocation)) }
+        attr_reader :credit_allocation
+
+        sig do
+          params(credit_allocation: T.nilable(Orb::Allocation::OrHash)).void
+        end
+        attr_writer :credit_allocation
+
+        sig { returns(String) }
+        attr_accessor :currency
+
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
+        attr_accessor :discount
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :external_price_id
+
+        sig { returns(T.nilable(Float)) }
+        attr_accessor :fixed_price_quantity
+
+        sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
+        attr_reader :invoicing_cycle_configuration
+
+        sig do
+          params(
+            invoicing_cycle_configuration:
+              T.nilable(Orb::BillingCycleConfiguration::OrHash)
+          ).void
+        end
+        attr_writer :invoicing_cycle_configuration
+
+        sig { returns(Orb::ItemSlim) }
+        attr_reader :item
+
+        sig { params(item: Orb::ItemSlim::OrHash).void }
+        attr_writer :item
+
+        sig { returns(T.nilable(Orb::Maximum)) }
+        attr_reader :maximum
+
+        sig { params(maximum: T.nilable(Orb::Maximum::OrHash)).void }
+        attr_writer :maximum
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :maximum_amount
+
+        # User specified key-value pairs for the resource. If not present, this defaults
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
+        sig { returns(T::Hash[Symbol, String]) }
+        attr_accessor :metadata
+
+        sig { returns(T.nilable(Orb::Minimum)) }
+        attr_reader :minimum
+
+        sig { params(minimum: T.nilable(Orb::Minimum::OrHash)).void }
+        attr_writer :minimum
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :minimum_amount
+
+        sig { returns(Orb::Price::Minimum::MinimumConfig) }
+        attr_reader :minimum_config
+
+        sig do
+          params(
+            minimum_config: Orb::Price::Minimum::MinimumConfig::OrHash
+          ).void
+        end
+        attr_writer :minimum_config
+
+        sig { returns(Symbol) }
+        attr_accessor :model_type
+
+        sig { returns(String) }
+        attr_accessor :name
+
+        sig { returns(T.nilable(Integer)) }
+        attr_accessor :plan_phase_order
+
+        sig { returns(Orb::Price::Minimum::PriceType::TaggedSymbol) }
+        attr_accessor :price_type
+
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
+        sig { returns(T.nilable(Orb::DimensionalPriceConfiguration)) }
+        attr_reader :dimensional_price_configuration
+
+        sig do
+          params(
+            dimensional_price_configuration:
+              T.nilable(Orb::DimensionalPriceConfiguration::OrHash)
+          ).void
+        end
+        attr_writer :dimensional_price_configuration
+
+        sig do
+          params(
+            id: String,
+            billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
+            billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            cadence: Orb::Price::Minimum::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+            conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
+            created_at: Time,
+            credit_allocation: T.nilable(Orb::Allocation::OrHash),
+            currency: String,
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
+            external_price_id: T.nilable(String),
+            fixed_price_quantity: T.nilable(Float),
+            invoicing_cycle_configuration:
+              T.nilable(Orb::BillingCycleConfiguration::OrHash),
+            item: Orb::ItemSlim::OrHash,
+            maximum: T.nilable(Orb::Maximum::OrHash),
+            maximum_amount: T.nilable(String),
+            metadata: T::Hash[Symbol, String],
+            minimum: T.nilable(Orb::Minimum::OrHash),
+            minimum_amount: T.nilable(String),
+            minimum_config: Orb::Price::Minimum::MinimumConfig::OrHash,
+            name: String,
+            plan_phase_order: T.nilable(Integer),
+            price_type: Orb::Price::Minimum::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
+            dimensional_price_configuration:
+              T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            model_type: Symbol
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          id:,
+          billable_metric:,
+          billing_cycle_configuration:,
+          cadence:,
+          composite_price_filters:,
+          conversion_rate:,
+          conversion_rate_config:,
+          created_at:,
+          credit_allocation:,
+          currency:,
+          discount:,
+          external_price_id:,
+          fixed_price_quantity:,
+          invoicing_cycle_configuration:,
+          item:,
+          maximum:,
+          maximum_amount:,
+          # User specified key-value pairs for the resource. If not present, this defaults
+          # to an empty dictionary. Individual keys can be removed by setting the value to
+          # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+          # `null`.
+          metadata:,
+          minimum:,
+          minimum_amount:,
+          minimum_config:,
+          name:,
+          plan_phase_order:,
+          price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
+          dimensional_price_configuration: nil,
+          model_type: :minimum
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              id: String,
+              billable_metric: T.nilable(Orb::BillableMetricTiny),
+              billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              cadence: Orb::Price::Minimum::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(T::Array[Orb::TransformPriceFilter]),
+              conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::Minimum::UnnamedTypeWithobjectParent111::Variants
+                ),
+              created_at: Time,
+              credit_allocation: T.nilable(Orb::Allocation),
+              currency: String,
+              discount: T.nilable(Orb::Discount::Variants),
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoicing_cycle_configuration:
+                T.nilable(Orb::BillingCycleConfiguration),
+              item: Orb::ItemSlim,
+              maximum: T.nilable(Orb::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Minimum),
+              minimum_amount: T.nilable(String),
+              minimum_config: Orb::Price::Minimum::MinimumConfig,
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type: Orb::Price::Minimum::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
+              dimensional_price_configuration:
+                T.nilable(Orb::DimensionalPriceConfiguration)
+            }
+          )
+        end
+        def to_hash
+        end
+
+        module Cadence
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::Minimum::Cadence) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          ONE_TIME =
+            T.let(:one_time, Orb::Price::Minimum::Cadence::TaggedSymbol)
+          MONTHLY = T.let(:monthly, Orb::Price::Minimum::Cadence::TaggedSymbol)
+          QUARTERLY =
+            T.let(:quarterly, Orb::Price::Minimum::Cadence::TaggedSymbol)
+          SEMI_ANNUAL =
+            T.let(:semi_annual, Orb::Price::Minimum::Cadence::TaggedSymbol)
+          ANNUAL = T.let(:annual, Orb::Price::Minimum::Cadence::TaggedSymbol)
+          CUSTOM = T.let(:custom, Orb::Price::Minimum::Cadence::TaggedSymbol)
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::Minimum::Cadence::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
+        end
+
+        class MinimumConfig < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Minimum::MinimumConfig, Orb::Internal::AnyHash)
+            end
+
+          # The minimum amount to apply
+          sig { returns(String) }
+          attr_accessor :minimum_amount
+
+          # By default, subtotals from minimum composite prices are prorated based on the
+          # service period. Set to false to disable proration.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_accessor :prorated
+
+          sig do
+            params(
+              minimum_amount: String,
+              prorated: T.nilable(T::Boolean)
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The minimum amount to apply
+            minimum_amount:,
+            # By default, subtotals from minimum composite prices are prorated based on the
+            # service period. Set to false to disable proration.
+            prorated: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              { minimum_amount: String, prorated: T.nilable(T::Boolean) }
+            )
+          end
+          def to_hash
+          end
+        end
+
+        module PriceType
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::Minimum::PriceType) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          USAGE_PRICE =
+            T.let(:usage_price, Orb::Price::Minimum::PriceType::TaggedSymbol)
+          FIXED_PRICE =
+            T.let(:fixed_price, Orb::Price::Minimum::PriceType::TaggedSymbol)
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::Minimum::PriceType::TaggedSymbol]
             )
           end
           def self.values

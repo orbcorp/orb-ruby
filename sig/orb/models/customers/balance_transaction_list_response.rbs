@@ -72,6 +72,7 @@ module Orb
           | :credit_note_voided
           | :overpayment_refund
           | :external_payment
+          | :small_invoice_carryover
 
         module Action
           extend Orb::Internal::Type::Enum
@@ -85,6 +86,7 @@ module Orb
           CREDIT_NOTE_VOIDED: :credit_note_voided
           OVERPAYMENT_REFUND: :overpayment_refund
           EXTERNAL_PAYMENT: :external_payment
+          SMALL_INVOICE_CARRYOVER: :small_invoice_carryover
 
           def self?.values: -> ::Array[Orb::Models::Customers::BalanceTransactionListResponse::action]
         end
