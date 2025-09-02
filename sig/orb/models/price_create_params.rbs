@@ -262,15 +262,6 @@ module Orb
 
         def self?.values: -> ::Array[Orb::Models::PriceCreateParams::model_type]
       end
-
-      type conversion_rate_config =
-        Orb::UnitConversionRateConfig | Orb::TieredConversionRateConfig
-
-      module ConversionRateConfig
-        extend Orb::Internal::Type::Union
-
-        def self?.variants: -> ::Array[Orb::Models::PriceCreateParams::conversion_rate_config]
-      end
     end
   end
 end

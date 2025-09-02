@@ -84,7 +84,9 @@ module Orb
         attr_accessor :conversion_rate
 
         sig do
-          returns(T.nilable(Orb::Price::Unit::ConversionRateConfig::Variants))
+          returns(
+            T.nilable(Orb::Price::Unit::UnnamedTypeWithobjectParent84::Variants)
+          )
         end
         attr_accessor :conversion_rate_config
 
@@ -278,7 +280,9 @@ module Orb
               cadence: Orb::Price::Unit::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(Orb::Price::Unit::ConversionRateConfig::Variants),
+                T.nilable(
+                  Orb::Price::Unit::UnnamedTypeWithobjectParent84::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -326,26 +330,6 @@ module Orb
             override.returns(T::Array[Orb::Price::Unit::Cadence::TaggedSymbol])
           end
           def self.values
-          end
-        end
-
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[Orb::Price::Unit::ConversionRateConfig::Variants]
-            )
-          end
-          def self.variants
           end
         end
 
@@ -406,7 +390,9 @@ module Orb
 
         sig do
           returns(
-            T.nilable(Orb::Price::Package::ConversionRateConfig::Variants)
+            T.nilable(
+              Orb::Price::Package::UnnamedTypeWithobjectParent85::Variants
+            )
           )
         end
         attr_accessor :conversion_rate_config
@@ -601,7 +587,9 @@ module Orb
               cadence: Orb::Price::Package::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(Orb::Price::Package::ConversionRateConfig::Variants),
+                T.nilable(
+                  Orb::Price::Package::UnnamedTypeWithobjectParent85::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -653,26 +641,6 @@ module Orb
             )
           end
           def self.values
-          end
-        end
-
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[Orb::Price::Package::ConversionRateConfig::Variants]
-            )
-          end
-          def self.variants
           end
         end
 
@@ -732,7 +700,11 @@ module Orb
         attr_accessor :conversion_rate
 
         sig do
-          returns(T.nilable(Orb::Price::Matrix::ConversionRateConfig::Variants))
+          returns(
+            T.nilable(
+              Orb::Price::Matrix::UnnamedTypeWithobjectParent86::Variants
+            )
+          )
         end
         attr_accessor :conversion_rate_config
 
@@ -926,7 +898,9 @@ module Orb
               cadence: Orb::Price::Matrix::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(Orb::Price::Matrix::ConversionRateConfig::Variants),
+                T.nilable(
+                  Orb::Price::Matrix::UnnamedTypeWithobjectParent86::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -977,26 +951,6 @@ module Orb
             )
           end
           def self.values
-          end
-        end
-
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[Orb::Price::Matrix::ConversionRateConfig::Variants]
-            )
-          end
-          def self.variants
           end
         end
 
@@ -1056,7 +1010,11 @@ module Orb
         attr_accessor :conversion_rate
 
         sig do
-          returns(T.nilable(Orb::Price::Tiered::ConversionRateConfig::Variants))
+          returns(
+            T.nilable(
+              Orb::Price::Tiered::UnnamedTypeWithobjectParent87::Variants
+            )
+          )
         end
         attr_accessor :conversion_rate_config
 
@@ -1250,7 +1208,9 @@ module Orb
               cadence: Orb::Price::Tiered::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(Orb::Price::Tiered::ConversionRateConfig::Variants),
+                T.nilable(
+                  Orb::Price::Tiered::UnnamedTypeWithobjectParent87::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -1301,26 +1261,6 @@ module Orb
             )
           end
           def self.values
-          end
-        end
-
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[Orb::Price::Tiered::ConversionRateConfig::Variants]
-            )
-          end
-          def self.variants
           end
         end
 
@@ -1381,7 +1321,9 @@ module Orb
 
         sig do
           returns(
-            T.nilable(Orb::Price::TieredBPS::ConversionRateConfig::Variants)
+            T.nilable(
+              Orb::Price::TieredBPS::UnnamedTypeWithobjectParent88::Variants
+            )
           )
         end
         attr_accessor :conversion_rate_config
@@ -1577,7 +1519,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::TieredBPS::ConversionRateConfig::Variants
+                  Orb::Price::TieredBPS::UnnamedTypeWithobjectParent88::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -1631,26 +1573,6 @@ module Orb
             )
           end
           def self.values
-          end
-        end
-
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[Orb::Price::TieredBPS::ConversionRateConfig::Variants]
-            )
-          end
-          def self.variants
           end
         end
 
@@ -1715,7 +1637,9 @@ module Orb
         attr_accessor :conversion_rate
 
         sig do
-          returns(T.nilable(Orb::Price::BPS::ConversionRateConfig::Variants))
+          returns(
+            T.nilable(Orb::Price::BPS::UnnamedTypeWithobjectParent89::Variants)
+          )
         end
         attr_accessor :conversion_rate_config
 
@@ -1904,7 +1828,9 @@ module Orb
               cadence: Orb::Price::BPS::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(Orb::Price::BPS::ConversionRateConfig::Variants),
+                T.nilable(
+                  Orb::Price::BPS::UnnamedTypeWithobjectParent89::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -1951,26 +1877,6 @@ module Orb
             override.returns(T::Array[Orb::Price::BPS::Cadence::TaggedSymbol])
           end
           def self.values
-          end
-        end
-
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[Orb::Price::BPS::ConversionRateConfig::Variants]
-            )
-          end
-          def self.variants
           end
         end
 
@@ -2035,7 +1941,9 @@ module Orb
 
         sig do
           returns(
-            T.nilable(Orb::Price::BulkBPS::ConversionRateConfig::Variants)
+            T.nilable(
+              Orb::Price::BulkBPS::UnnamedTypeWithobjectParent90::Variants
+            )
           )
         end
         attr_accessor :conversion_rate_config
@@ -2225,7 +2133,9 @@ module Orb
               cadence: Orb::Price::BulkBPS::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(Orb::Price::BulkBPS::ConversionRateConfig::Variants),
+                T.nilable(
+                  Orb::Price::BulkBPS::UnnamedTypeWithobjectParent90::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -2276,26 +2186,6 @@ module Orb
             )
           end
           def self.values
-          end
-        end
-
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[Orb::Price::BulkBPS::ConversionRateConfig::Variants]
-            )
-          end
-          def self.variants
           end
         end
 
@@ -2361,7 +2251,9 @@ module Orb
         attr_accessor :conversion_rate
 
         sig do
-          returns(T.nilable(Orb::Price::Bulk::ConversionRateConfig::Variants))
+          returns(
+            T.nilable(Orb::Price::Bulk::UnnamedTypeWithobjectParent91::Variants)
+          )
         end
         attr_accessor :conversion_rate_config
 
@@ -2550,7 +2442,9 @@ module Orb
               cadence: Orb::Price::Bulk::Cadence::TaggedSymbol,
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(Orb::Price::Bulk::ConversionRateConfig::Variants),
+                T.nilable(
+                  Orb::Price::Bulk::UnnamedTypeWithobjectParent91::Variants
+                ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -2597,26 +2491,6 @@ module Orb
             override.returns(T::Array[Orb::Price::Bulk::Cadence::TaggedSymbol])
           end
           def self.values
-          end
-        end
-
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[Orb::Price::Bulk::ConversionRateConfig::Variants]
-            )
-          end
-          def self.variants
           end
         end
 
@@ -2680,7 +2554,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Variants
+              Orb::Price::ThresholdTotalAmount::UnnamedTypeWithobjectParent92::Variants
             )
           )
         end
@@ -2876,7 +2750,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Variants
+                  Orb::Price::ThresholdTotalAmount::UnnamedTypeWithobjectParent92::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -2956,28 +2830,6 @@ module Orb
           end
         end
 
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[
-                Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Variants
-              ]
-            )
-          end
-          def self.variants
-          end
-        end
-
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -3047,7 +2899,9 @@ module Orb
 
         sig do
           returns(
-            T.nilable(Orb::Price::TieredPackage::ConversionRateConfig::Variants)
+            T.nilable(
+              Orb::Price::TieredPackage::UnnamedTypeWithobjectParent93::Variants
+            )
           )
         end
         attr_accessor :conversion_rate_config
@@ -3240,7 +3094,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::TieredPackage::ConversionRateConfig::Variants
+                  Orb::Price::TieredPackage::UnnamedTypeWithobjectParent93::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -3299,28 +3153,6 @@ module Orb
             )
           end
           def self.values
-          end
-        end
-
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[
-                Orb::Price::TieredPackage::ConversionRateConfig::Variants
-              ]
-            )
-          end
-          def self.variants
           end
         end
 
@@ -3389,7 +3221,9 @@ module Orb
 
         sig do
           returns(
-            T.nilable(Orb::Price::GroupedTiered::ConversionRateConfig::Variants)
+            T.nilable(
+              Orb::Price::GroupedTiered::UnnamedTypeWithobjectParent94::Variants
+            )
           )
         end
         attr_accessor :conversion_rate_config
@@ -3582,7 +3416,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::GroupedTiered::ConversionRateConfig::Variants
+                  Orb::Price::GroupedTiered::UnnamedTypeWithobjectParent94::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -3641,28 +3475,6 @@ module Orb
             )
           end
           def self.values
-          end
-        end
-
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[
-                Orb::Price::GroupedTiered::ConversionRateConfig::Variants
-              ]
-            )
-          end
-          def self.variants
           end
         end
 
@@ -3732,7 +3544,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::TieredWithMinimum::ConversionRateConfig::Variants
+              Orb::Price::TieredWithMinimum::UnnamedTypeWithobjectParent95::Variants
             )
           )
         end
@@ -3926,7 +3738,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::TieredWithMinimum::ConversionRateConfig::Variants
+                  Orb::Price::TieredWithMinimum::UnnamedTypeWithobjectParent95::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -4000,28 +3812,6 @@ module Orb
           end
         end
 
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[
-                Orb::Price::TieredWithMinimum::ConversionRateConfig::Variants
-              ]
-            )
-          end
-          def self.variants
-          end
-        end
-
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -4092,7 +3882,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Variants
+              Orb::Price::TieredPackageWithMinimum::UnnamedTypeWithobjectParent96::Variants
             )
           )
         end
@@ -4290,7 +4080,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Variants
+                  Orb::Price::TieredPackageWithMinimum::UnnamedTypeWithobjectParent96::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -4372,28 +4162,6 @@ module Orb
           end
         end
 
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[
-                Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Variants
-              ]
-            )
-          end
-          def self.variants
-          end
-        end
-
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -4466,7 +4234,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::PackageWithAllocation::ConversionRateConfig::Variants
+              Orb::Price::PackageWithAllocation::UnnamedTypeWithobjectParent97::Variants
             )
           )
         end
@@ -4662,7 +4430,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::PackageWithAllocation::ConversionRateConfig::Variants
+                  Orb::Price::PackageWithAllocation::UnnamedTypeWithobjectParent97::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -4742,28 +4510,6 @@ module Orb
           end
         end
 
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[
-                Orb::Price::PackageWithAllocation::ConversionRateConfig::Variants
-              ]
-            )
-          end
-          def self.variants
-          end
-        end
-
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -4834,7 +4580,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::UnitWithPercent::ConversionRateConfig::Variants
+              Orb::Price::UnitWithPercent::UnnamedTypeWithobjectParent98::Variants
             )
           )
         end
@@ -5028,7 +4774,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::UnitWithPercent::ConversionRateConfig::Variants
+                  Orb::Price::UnitWithPercent::UnnamedTypeWithobjectParent98::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -5090,28 +4836,6 @@ module Orb
             )
           end
           def self.values
-          end
-        end
-
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[
-                Orb::Price::UnitWithPercent::ConversionRateConfig::Variants
-              ]
-            )
-          end
-          def self.variants
           end
         end
 
@@ -5183,7 +4907,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::MatrixWithAllocation::ConversionRateConfig::Variants
+              Orb::Price::MatrixWithAllocation::UnnamedTypeWithobjectParent99::Variants
             )
           )
         end
@@ -5388,7 +5112,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::MatrixWithAllocation::ConversionRateConfig::Variants
+                  Orb::Price::MatrixWithAllocation::UnnamedTypeWithobjectParent99::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -5468,28 +5192,6 @@ module Orb
           end
         end
 
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[
-                Orb::Price::MatrixWithAllocation::ConversionRateConfig::Variants
-              ]
-            )
-          end
-          def self.variants
-          end
-        end
-
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -5560,7 +5262,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::TieredWithProration::ConversionRateConfig::Variants
+              Orb::Price::TieredWithProration::UnnamedTypeWithobjectParent100::Variants
             )
           )
         end
@@ -5756,7 +5458,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::TieredWithProration::ConversionRateConfig::Variants
+                  Orb::Price::TieredWithProration::UnnamedTypeWithobjectParent100::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -5836,28 +5538,6 @@ module Orb
           end
         end
 
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[
-                Orb::Price::TieredWithProration::ConversionRateConfig::Variants
-              ]
-            )
-          end
-          def self.variants
-          end
-        end
-
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -5926,7 +5606,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::UnitWithProration::ConversionRateConfig::Variants
+              Orb::Price::UnitWithProration::UnnamedTypeWithobjectParent101::Variants
             )
           )
         end
@@ -6120,7 +5800,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::UnitWithProration::ConversionRateConfig::Variants
+                  Orb::Price::UnitWithProration::UnnamedTypeWithobjectParent101::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -6194,28 +5874,6 @@ module Orb
           end
         end
 
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[
-                Orb::Price::UnitWithProration::ConversionRateConfig::Variants
-              ]
-            )
-          end
-          def self.variants
-          end
-        end
-
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -6284,7 +5942,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::GroupedAllocation::ConversionRateConfig::Variants
+              Orb::Price::GroupedAllocation::UnnamedTypeWithobjectParent102::Variants
             )
           )
         end
@@ -6478,7 +6136,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::GroupedAllocation::ConversionRateConfig::Variants
+                  Orb::Price::GroupedAllocation::UnnamedTypeWithobjectParent102::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -6549,28 +6207,6 @@ module Orb
             )
           end
           def self.values
-          end
-        end
-
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[
-                Orb::Price::GroupedAllocation::ConversionRateConfig::Variants
-              ]
-            )
-          end
-          def self.variants
           end
         end
 
@@ -6647,7 +6283,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Variants
+              Orb::Price::GroupedWithProratedMinimum::UnnamedTypeWithobjectParent103::Variants
             )
           )
         end
@@ -6847,7 +6483,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Variants
+                  Orb::Price::GroupedWithProratedMinimum::UnnamedTypeWithobjectParent103::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -6929,28 +6565,6 @@ module Orb
           end
         end
 
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[
-                Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Variants
-              ]
-            )
-          end
-          def self.variants
-          end
-        end
-
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -7023,7 +6637,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Variants
+              Orb::Price::GroupedWithMeteredMinimum::UnnamedTypeWithobjectParent104::Variants
             )
           )
         end
@@ -7223,7 +6837,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Variants
+                  Orb::Price::GroupedWithMeteredMinimum::UnnamedTypeWithobjectParent104::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -7305,28 +6919,6 @@ module Orb
           end
         end
 
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[
-                Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Variants
-              ]
-            )
-          end
-          def self.variants
-          end
-        end
-
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -7399,7 +6991,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Variants
+              Orb::Price::MatrixWithDisplayName::UnnamedTypeWithobjectParent105::Variants
             )
           )
         end
@@ -7595,7 +7187,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Variants
+                  Orb::Price::MatrixWithDisplayName::UnnamedTypeWithobjectParent105::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -7675,28 +7267,6 @@ module Orb
           end
         end
 
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[
-                Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Variants
-              ]
-            )
-          end
-          def self.variants
-          end
-        end
-
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -7770,7 +7340,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::BulkWithProration::ConversionRateConfig::Variants
+              Orb::Price::BulkWithProration::UnnamedTypeWithobjectParent106::Variants
             )
           )
         end
@@ -7962,7 +7532,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::BulkWithProration::ConversionRateConfig::Variants
+                  Orb::Price::BulkWithProration::UnnamedTypeWithobjectParent106::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -8035,28 +7605,6 @@ module Orb
           end
         end
 
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[
-                Orb::Price::BulkWithProration::ConversionRateConfig::Variants
-              ]
-            )
-          end
-          def self.variants
-          end
-        end
-
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -8125,7 +7673,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::GroupedTieredPackage::ConversionRateConfig::Variants
+              Orb::Price::GroupedTieredPackage::UnnamedTypeWithobjectParent107::Variants
             )
           )
         end
@@ -8321,7 +7869,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::GroupedTieredPackage::ConversionRateConfig::Variants
+                  Orb::Price::GroupedTieredPackage::UnnamedTypeWithobjectParent107::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -8401,28 +7949,6 @@ module Orb
           end
         end
 
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[
-                Orb::Price::GroupedTieredPackage::ConversionRateConfig::Variants
-              ]
-            )
-          end
-          def self.variants
-          end
-        end
-
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -8495,7 +8021,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Variants
+              Orb::Price::MaxGroupTieredPackage::UnnamedTypeWithobjectParent108::Variants
             )
           )
         end
@@ -8691,7 +8217,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Variants
+                  Orb::Price::MaxGroupTieredPackage::UnnamedTypeWithobjectParent108::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -8768,28 +8294,6 @@ module Orb
             )
           end
           def self.values
-          end
-        end
-
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[
-                Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Variants
-              ]
-            )
-          end
-          def self.variants
           end
         end
 
@@ -8870,7 +8374,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Variants
+              Orb::Price::ScalableMatrixWithUnitPricing::UnnamedTypeWithobjectParent109::Variants
             )
           )
         end
@@ -9072,7 +8576,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Variants
+                  Orb::Price::ScalableMatrixWithUnitPricing::UnnamedTypeWithobjectParent109::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -9152,28 +8656,6 @@ module Orb
             )
           end
           def self.values
-          end
-        end
-
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[
-                Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Variants
-              ]
-            )
-          end
-          def self.variants
           end
         end
 
@@ -9257,7 +8739,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Variants
+              Orb::Price::ScalableMatrixWithTieredPricing::UnnamedTypeWithobjectParent110::Variants
             )
           )
         end
@@ -9459,7 +8941,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Variants
+                  Orb::Price::ScalableMatrixWithTieredPricing::UnnamedTypeWithobjectParent110::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -9545,28 +9027,6 @@ module Orb
           end
         end
 
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[
-                Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Variants
-              ]
-            )
-          end
-          def self.variants
-          end
-        end
-
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -9642,7 +9102,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Variants
+              Orb::Price::CumulativeGroupedBulk::UnnamedTypeWithobjectParent111::Variants
             )
           )
         end
@@ -9838,7 +9298,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Variants
+                  Orb::Price::CumulativeGroupedBulk::UnnamedTypeWithobjectParent111::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -9915,28 +9375,6 @@ module Orb
             )
           end
           def self.values
-          end
-        end
-
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[
-                Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Variants
-              ]
-            )
-          end
-          def self.variants
           end
         end
 
@@ -10017,7 +9455,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::GroupedWithMinMaxThresholds::ConversionRateConfig::Variants
+              Orb::Price::GroupedWithMinMaxThresholds::UnnamedTypeWithobjectParent112::Variants
             )
           )
         end
@@ -10217,7 +9655,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::GroupedWithMinMaxThresholds::ConversionRateConfig::Variants
+                  Orb::Price::GroupedWithMinMaxThresholds::UnnamedTypeWithobjectParent112::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -10297,28 +9735,6 @@ module Orb
             )
           end
           def self.values
-          end
-        end
-
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Orb::UnitConversionRateConfig,
-                Orb::TieredConversionRateConfig
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[
-                Orb::Price::GroupedWithMinMaxThresholds::ConversionRateConfig::Variants
-              ]
-            )
-          end
-          def self.variants
           end
         end
 

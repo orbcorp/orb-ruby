@@ -63,7 +63,7 @@ module Orb
       #
       #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
       optional :conversion_rate_config,
-               union: -> { Orb::NewSubscriptionBulkWithProrationPrice::ConversionRateConfig },
+               union: -> { Orb::NewSubscriptionBulkWithProrationPrice::UnnamedTypeWithobjectParent59 },
                nil?: true
 
       # @!attribute currency
@@ -185,22 +185,6 @@ module Orb
 
         # @!method self.values
         #   @return [Array<Symbol>]
-      end
-
-      # The configuration for the rate of the price currency to the invoicing currency.
-      #
-      # @see Orb::Models::NewSubscriptionBulkWithProrationPrice#conversion_rate_config
-      module ConversionRateConfig
-        extend Orb::Internal::Type::Union
-
-        discriminator :conversion_rate_type
-
-        variant :unit, -> { Orb::UnitConversionRateConfig }
-
-        variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-        # @!method self.variants
-        #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
       end
     end
   end
