@@ -14,6 +14,12 @@ module Orb
       sig { returns(T::Boolean) }
       attr_accessor :auto_collection
 
+      # Whether invoices for this customer should be automatically issued. If true,
+      # invoices will be automatically issued. If false, invoices will require manual
+      # approval. If null, inherits the account-level setting.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_accessor :auto_issuance
+
       # The customer's current balance in their currency.
       sig { returns(String) }
       attr_accessor :balance
@@ -287,6 +293,7 @@ module Orb
           id: String,
           additional_emails: T::Array[String],
           auto_collection: T::Boolean,
+          auto_issuance: T.nilable(T::Boolean),
           balance: String,
           billing_address: T.nilable(Orb::Address::OrHash),
           created_at: Time,
@@ -314,6 +321,10 @@ module Orb
         id:,
         additional_emails:,
         auto_collection:,
+        # Whether invoices for this customer should be automatically issued. If true,
+        # invoices will be automatically issued. If false, invoices will require manual
+        # approval. If null, inherits the account-level setting.
+        auto_issuance:,
         # The customer's current balance in their currency.
         balance:,
         billing_address:,
@@ -507,6 +518,7 @@ module Orb
             id: String,
             additional_emails: T::Array[String],
             auto_collection: T::Boolean,
+            auto_issuance: T.nilable(T::Boolean),
             balance: String,
             billing_address: T.nilable(Orb::Address),
             created_at: Time,

@@ -29,9 +29,6 @@ module Orb
           matrix_with_allocation_config:
             Orb::MatrixWithAllocationConfig::OrHash,
           tiered_config: Orb::TieredConfig::OrHash,
-          tiered_bps_config: Orb::TieredBPSConfig::OrHash,
-          bps_config: Orb::BPSConfig::OrHash,
-          bulk_bps_config: Orb::BulkBPSConfig::OrHash,
           bulk_config: Orb::BulkConfig::OrHash,
           threshold_total_amount_config: T::Hash[Symbol, T.anything],
           tiered_package_config: T::Hash[Symbol, T.anything],
@@ -53,6 +50,8 @@ module Orb
           scalable_matrix_with_tiered_pricing_config:
             T::Hash[Symbol, T.anything],
           cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
+          grouped_with_min_max_thresholds_config: T::Hash[Symbol, T.anything],
+          minimum_config: Orb::PriceCreateParams::MinimumConfig::OrHash,
           billable_metric_id: T.nilable(String),
           billed_in_advance: T.nilable(T::Boolean),
           billing_cycle_configuration:
@@ -91,9 +90,6 @@ module Orb
         matrix_config:,
         matrix_with_allocation_config:,
         tiered_config:,
-        tiered_bps_config:,
-        bps_config:,
-        bulk_bps_config:,
         bulk_config:,
         threshold_total_amount_config:,
         tiered_package_config:,
@@ -114,6 +110,8 @@ module Orb
         scalable_matrix_with_unit_pricing_config:,
         scalable_matrix_with_tiered_pricing_config:,
         cumulative_grouped_bulk_config:,
+        grouped_with_min_max_thresholds_config:,
+        minimum_config:,
         # The id of the billable metric for the price. Only needed if the price is
         # usage-based.
         billable_metric_id: nil,

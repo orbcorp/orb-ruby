@@ -71,7 +71,7 @@ module Orb
       #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
       optional :conversion_rate_config,
                union: -> {
-                 Orb::NewFloatingScalableMatrixWithTieredPricingPrice::UnnamedTypeWithobjectParent16
+                 Orb::NewFloatingScalableMatrixWithTieredPricingPrice::UnnamedTypeWithobjectParent22
                },
                nil?: true
 

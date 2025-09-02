@@ -32,6 +32,7 @@ module Orb
             T.nilable(Orb::NewAccountingSyncConfiguration::OrHash),
           additional_emails: T.nilable(T::Array[String]),
           auto_collection: T.nilable(T::Boolean),
+          auto_issuance: T.nilable(T::Boolean),
           billing_address: T.nilable(Orb::AddressInput::OrHash),
           currency: T.nilable(String),
           email_delivery: T.nilable(T::Boolean),
@@ -72,6 +73,11 @@ module Orb
         # charge a saved payment method, if available. This parameter defaults to `True`
         # when a payment provider is provided on customer creation.
         auto_collection: nil,
+        # Used to determine if invoices for this customer will be automatically issued. If
+        # true, invoices will be automatically issued. If false, invoices will require
+        # manual approval. If `null` is specified, the customer's auto issuance setting
+        # will be inherited from the account-level setting.
+        auto_issuance: nil,
         billing_address: nil,
         # An ISO 4217 currency string used for the customer's invoices and balance. If not
         # set at creation time, will be set at subscription creation time.
@@ -262,6 +268,7 @@ module Orb
             T.nilable(Orb::NewAccountingSyncConfiguration::OrHash),
           additional_emails: T.nilable(T::Array[String]),
           auto_collection: T.nilable(T::Boolean),
+          auto_issuance: T.nilable(T::Boolean),
           billing_address: T.nilable(Orb::AddressInput::OrHash),
           currency: T.nilable(String),
           email: T.nilable(String),
@@ -298,6 +305,11 @@ module Orb
         # charge a saved payment method, if available. This parameter defaults to `True`
         # when a payment provider is provided on customer creation.
         auto_collection: nil,
+        # Used to determine if invoices for this customer will be automatically issued. If
+        # true, invoices will be automatically issued. If false, invoices will require
+        # manual approval.If `null` is specified, the customer's auto issuance setting
+        # will be inherited from the account-level setting.
+        auto_issuance: nil,
         billing_address: nil,
         # An ISO 4217 currency string used for the customer's invoices and balance. If not
         # set at creation time, will be set at subscription creation time.
@@ -607,6 +619,7 @@ module Orb
             T.nilable(Orb::NewAccountingSyncConfiguration::OrHash),
           additional_emails: T.nilable(T::Array[String]),
           auto_collection: T.nilable(T::Boolean),
+          auto_issuance: T.nilable(T::Boolean),
           billing_address: T.nilable(Orb::AddressInput::OrHash),
           currency: T.nilable(String),
           email: T.nilable(String),
@@ -645,6 +658,11 @@ module Orb
         # charge a saved payment method, if available. This parameter defaults to `True`
         # when a payment provider is provided on customer creation.
         auto_collection: nil,
+        # Used to determine if invoices for this customer will be automatically issued. If
+        # true, invoices will be automatically issued. If false, invoices will require
+        # manual approval.If `null` is specified, the customer's auto issuance setting
+        # will be inherited from the account-level setting.
+        auto_issuance: nil,
         billing_address: nil,
         # An ISO 4217 currency string used for the customer's invoices and balance. If not
         # set at creation time, will be set at subscription creation time.

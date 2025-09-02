@@ -39,6 +39,13 @@ module Orb
       #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
       optional :discount, union: -> { Orb::Discount }, nil?: true
 
+      # @!attribute due_date
+      #   An optional custom due date for the invoice. If not set, the due date will be
+      #   calculated based on the `net_terms` value.
+      #
+      #   @return [Date, Time, nil]
+      optional :due_date, union: -> { Orb::InvoiceCreateParams::DueDate }, nil?: true
+
       # @!attribute external_customer_id
       #   The `external_customer_id` of the `Customer` to create this invoice for. One of
       #   `customer_id` and `external_customer_id` are required.
@@ -47,7 +54,8 @@ module Orb
       optional :external_customer_id, String, nil?: true
 
       # @!attribute memo
-      #   An optional memo to attach to the invoice.
+      #   An optional memo to attach to the invoice. If no memo is provided, we will
+      #   attach the default memo
       #
       #   @return [String, nil]
       optional :memo, String, nil?: true
@@ -61,10 +69,11 @@ module Orb
       optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
       # @!attribute net_terms
-      #   Determines the difference between the invoice issue date for subscription
-      #   invoices as the date that they are due. A value of '0' here represents that the
-      #   invoice is due on issue, whereas a value of 30 represents that the customer has
-      #   30 days to pay the invoice.
+      #   The net terms determines the due date of the invoice. Due date is calculated
+      #   based on the invoice or issuance date, depending on the account's configured due
+      #   date calculation method. A value of '0' here represents that the invoice is due
+      #   on issue, whereas a value of '30' represents that the customer has 30 days to
+      #   pay the invoice. Do not set this field if you want to set a custom due date.
       #
       #   @return [Integer, nil]
       optional :net_terms, Integer, nil?: true
@@ -77,7 +86,7 @@ module Orb
       #   @return [Boolean, nil]
       optional :will_auto_issue, Orb::Internal::Type::Boolean
 
-      # @!method initialize(currency:, invoice_date:, line_items:, customer_id: nil, discount: nil, external_customer_id: nil, memo: nil, metadata: nil, net_terms: nil, will_auto_issue: nil, request_options: {})
+      # @!method initialize(currency:, invoice_date:, line_items:, customer_id: nil, discount: nil, due_date: nil, external_customer_id: nil, memo: nil, metadata: nil, net_terms: nil, will_auto_issue: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::InvoiceCreateParams} for more details.
       #
@@ -91,13 +100,15 @@ module Orb
       #
       #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil] An optional discount to attach to the invoice.
       #
+      #   @param due_date [Date, Time, nil] An optional custom due date for the invoice. If not set, the due date will be ca
+      #
       #   @param external_customer_id [String, nil] The `external_customer_id` of the `Customer` to create this invoice for. One of
       #
-      #   @param memo [String, nil] An optional memo to attach to the invoice.
+      #   @param memo [String, nil] An optional memo to attach to the invoice. If no memo is provided, we will attac
       #
       #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
       #
-      #   @param net_terms [Integer, nil] Determines the difference between the invoice issue date for subscription invoic
+      #   @param net_terms [Integer, nil] The net terms determines the due date of the invoice. Due date is calculated bas
       #
       #   @param will_auto_issue [Boolean] When true, this invoice will be submitted for issuance upon creation. When false
       #
@@ -167,6 +178,19 @@ module Orb
           # @!method self.values
           #   @return [Array<Symbol>]
         end
+      end
+
+      # An optional custom due date for the invoice. If not set, the due date will be
+      # calculated based on the `net_terms` value.
+      module DueDate
+        extend Orb::Internal::Type::Union
+
+        variant Date
+
+        variant Time
+
+        # @!method self.variants
+        #   @return [Array(Date, Time)]
       end
     end
   end

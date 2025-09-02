@@ -1,24 +1,44 @@
 module Orb
   module Models
     type invoice_update_params =
-      { metadata: ::Hash[Symbol, String?]? }
+      {
+        due_date: Orb::Models::InvoiceUpdateParams::due_date?,
+        metadata: ::Hash[Symbol, String?]?,
+        net_terms: Integer?
+      }
       & Orb::Internal::Type::request_parameters
 
     class InvoiceUpdateParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      attr_accessor due_date: Orb::Models::InvoiceUpdateParams::due_date?
+
       attr_accessor metadata: ::Hash[Symbol, String?]?
 
+      attr_accessor net_terms: Integer?
+
       def initialize: (
+        ?due_date: Orb::Models::InvoiceUpdateParams::due_date?,
         ?metadata: ::Hash[Symbol, String?]?,
+        ?net_terms: Integer?,
         ?request_options: Orb::request_opts
       ) -> void
 
       def to_hash: -> {
+        due_date: Orb::Models::InvoiceUpdateParams::due_date?,
         metadata: ::Hash[Symbol, String?]?,
+        net_terms: Integer?,
         request_options: Orb::RequestOptions
       }
+
+      type due_date = Date | Time
+
+      module DueDate
+        extend Orb::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Orb::Models::InvoiceUpdateParams::due_date]
+      end
     end
   end
 end

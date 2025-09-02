@@ -134,21 +134,6 @@ module Orb
       #   @return [Orb::Models::TieredConfig]
       required :tiered_config, -> { Orb::TieredConfig }
 
-      # @!attribute tiered_bps_config
-      #
-      #   @return [Orb::Models::TieredBPSConfig]
-      required :tiered_bps_config, -> { Orb::TieredBPSConfig }
-
-      # @!attribute bps_config
-      #
-      #   @return [Orb::Models::BPSConfig]
-      required :bps_config, -> { Orb::BPSConfig }
-
-      # @!attribute bulk_bps_config
-      #
-      #   @return [Orb::Models::BulkBPSConfig]
-      required :bulk_bps_config, -> { Orb::BulkBPSConfig }
-
       # @!attribute bulk_config
       #
       #   @return [Orb::Models::BulkConfig]
@@ -251,7 +236,18 @@ module Orb
       #   @return [Hash{Symbol=>Object}]
       required :cumulative_grouped_bulk_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
 
-      # @!method initialize(cadence:, currency:, item_id:, model_type:, name:, unit_config:, package_config:, matrix_config:, matrix_with_allocation_config:, tiered_config:, tiered_bps_config:, bps_config:, bulk_bps_config:, bulk_config:, threshold_total_amount_config:, tiered_package_config:, grouped_tiered_config:, max_group_tiered_package_config:, tiered_with_minimum_config:, package_with_allocation_config:, tiered_package_with_minimum_config:, unit_with_percent_config:, tiered_with_proration_config:, unit_with_proration_config:, grouped_allocation_config:, grouped_with_prorated_minimum_config:, grouped_with_metered_minimum_config:, matrix_with_display_name_config:, bulk_with_proration_config:, grouped_tiered_package_config:, scalable_matrix_with_unit_pricing_config:, scalable_matrix_with_tiered_pricing_config:, cumulative_grouped_bulk_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, request_options: {})
+      # @!attribute grouped_with_min_max_thresholds_config
+      #
+      #   @return [Hash{Symbol=>Object}]
+      required :grouped_with_min_max_thresholds_config,
+               Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
+
+      # @!attribute minimum_config
+      #
+      #   @return [Orb::Models::PriceCreateParams::MinimumConfig]
+      required :minimum_config, -> { Orb::PriceCreateParams::MinimumConfig }
+
+      # @!method initialize(cadence:, currency:, item_id:, model_type:, name:, unit_config:, package_config:, matrix_config:, matrix_with_allocation_config:, tiered_config:, bulk_config:, threshold_total_amount_config:, tiered_package_config:, grouped_tiered_config:, max_group_tiered_package_config:, tiered_with_minimum_config:, package_with_allocation_config:, tiered_package_with_minimum_config:, unit_with_percent_config:, tiered_with_proration_config:, unit_with_proration_config:, grouped_allocation_config:, grouped_with_prorated_minimum_config:, grouped_with_metered_minimum_config:, matrix_with_display_name_config:, bulk_with_proration_config:, grouped_tiered_package_config:, scalable_matrix_with_unit_pricing_config:, scalable_matrix_with_tiered_pricing_config:, cumulative_grouped_bulk_config:, grouped_with_min_max_thresholds_config:, minimum_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::PriceCreateParams} for more details.
       #
@@ -274,12 +270,6 @@ module Orb
       #   @param matrix_with_allocation_config [Orb::Models::MatrixWithAllocationConfig]
       #
       #   @param tiered_config [Orb::Models::TieredConfig]
-      #
-      #   @param tiered_bps_config [Orb::Models::TieredBPSConfig]
-      #
-      #   @param bps_config [Orb::Models::BPSConfig]
-      #
-      #   @param bulk_bps_config [Orb::Models::BulkBPSConfig]
       #
       #   @param bulk_config [Orb::Models::BulkConfig]
       #
@@ -320,6 +310,10 @@ module Orb
       #   @param scalable_matrix_with_tiered_pricing_config [Hash{Symbol=>Object}]
       #
       #   @param cumulative_grouped_bulk_config [Hash{Symbol=>Object}]
+      #
+      #   @param grouped_with_min_max_thresholds_config [Hash{Symbol=>Object}]
+      #
+      #   @param minimum_config [Orb::Models::PriceCreateParams::MinimumConfig]
       #
       #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
       #
@@ -363,10 +357,33 @@ module Orb
       module ModelType
         extend Orb::Internal::Type::Enum
 
-        CUMULATIVE_GROUPED_BULK = :cumulative_grouped_bulk
+        MINIMUM = :minimum
 
         # @!method self.values
         #   @return [Array<Symbol>]
+      end
+
+      class MinimumConfig < Orb::Internal::Type::BaseModel
+        # @!attribute minimum_amount
+        #   The minimum amount to apply
+        #
+        #   @return [String]
+        required :minimum_amount, String
+
+        # @!attribute prorated
+        #   By default, subtotals from minimum composite prices are prorated based on the
+        #   service period. Set to false to disable proration.
+        #
+        #   @return [Boolean, nil]
+        optional :prorated, Orb::Internal::Type::Boolean, nil?: true
+
+        # @!method initialize(minimum_amount:, prorated: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::PriceCreateParams::MinimumConfig} for more details.
+        #
+        #   @param minimum_amount [String] The minimum amount to apply
+        #
+        #   @param prorated [Boolean, nil] By default, subtotals from minimum composite prices are prorated based on the se
       end
     end
   end

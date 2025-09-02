@@ -62,7 +62,7 @@ module Orb
           # Note that for this entry type, `starting_balance` will equal `ending_balance`,
           # and the `amount` represents the balance transferred. The credit block linked to
           # the ledger entry is the source credit block from which there was an expiration
-          # change
+          # change.
           #
           # ## Credits expiry
           #
@@ -547,7 +547,7 @@ module Orb
           # Note that for this entry type, `starting_balance` will equal `ending_balance`,
           # and the `amount` represents the balance transferred. The credit block linked to
           # the ledger entry is the source credit block from which there was an expiration
-          # change
+          # change.
           #
           # ## Credits expiry
           #

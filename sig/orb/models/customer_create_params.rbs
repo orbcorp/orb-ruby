@@ -7,6 +7,7 @@ module Orb
         accounting_sync_configuration: Orb::NewAccountingSyncConfiguration?,
         additional_emails: ::Array[String]?,
         auto_collection: bool?,
+        auto_issuance: bool?,
         billing_address: Orb::AddressInput?,
         currency: String?,
         email_delivery: bool?,
@@ -36,6 +37,8 @@ module Orb
       attr_accessor additional_emails: ::Array[String]?
 
       attr_accessor auto_collection: bool?
+
+      attr_accessor auto_issuance: bool?
 
       attr_accessor billing_address: Orb::AddressInput?
 
@@ -69,6 +72,7 @@ module Orb
         ?accounting_sync_configuration: Orb::NewAccountingSyncConfiguration?,
         ?additional_emails: ::Array[String]?,
         ?auto_collection: bool?,
+        ?auto_issuance: bool?,
         ?billing_address: Orb::AddressInput?,
         ?currency: String?,
         ?email_delivery: bool?,
@@ -91,6 +95,7 @@ module Orb
         accounting_sync_configuration: Orb::NewAccountingSyncConfiguration?,
         additional_emails: ::Array[String]?,
         auto_collection: bool?,
+        auto_issuance: bool?,
         billing_address: Orb::AddressInput?,
         currency: String?,
         email_delivery: bool?,

@@ -34,8 +34,8 @@ module Orb
       required :filters, -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] }
 
       # @!attribute is_invoice_level
-      #   True for adjustments that apply to an entire invocice, false for adjustments
-      #   that apply to only one price.
+      #   True for adjustments that apply to an entire invoice, false for adjustments that
+      #   apply to only one price.
       #
       #   @return [Boolean]
       required :is_invoice_level, Orb::Internal::Type::Boolean
@@ -74,7 +74,7 @@ module Orb
       #
       #   @param filters [Array<Orb::Models::TransformPriceFilter>] The filters that determine which prices to apply this adjustment to.
       #
-      #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invocice, false for adjustments tha
+      #   @param is_invoice_level [Boolean] True for adjustments that apply to an entire invoice, false for adjustments that
       #
       #   @param percentage_discount [Float] The percentage (as a value between 0 and 1) by which to discount the price inter
       #

@@ -1070,6 +1070,11 @@ module Orb
               :external_payment,
               Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Action::TaggedSymbol
             )
+          SMALL_INVOICE_CARRYOVER =
+            T.let(
+              :small_invoice_carryover,
+              Orb::Models::InvoiceFetchUpcomingResponse::CustomerBalanceTransaction::Action::TaggedSymbol
+            )
 
           sig do
             override.returns(
@@ -1275,7 +1280,7 @@ module Orb
         end
         attr_accessor :sub_line_items
 
-        # The line amount before before any adjustments.
+        # The line amount before any adjustments.
         sig { returns(String) }
         attr_accessor :subtotal
 
@@ -1328,9 +1333,6 @@ module Orb
                 Orb::Price::Package::OrHash,
                 Orb::Price::Matrix::OrHash,
                 Orb::Price::Tiered::OrHash,
-                Orb::Price::TieredBPS::OrHash,
-                Orb::Price::BPS::OrHash,
-                Orb::Price::BulkBPS::OrHash,
                 Orb::Price::Bulk::OrHash,
                 Orb::Price::ThresholdTotalAmount::OrHash,
                 Orb::Price::TieredPackage::OrHash,
@@ -1352,7 +1354,8 @@ module Orb
                 Orb::Price::ScalableMatrixWithUnitPricing::OrHash,
                 Orb::Price::ScalableMatrixWithTieredPricing::OrHash,
                 Orb::Price::CumulativeGroupedBulk::OrHash,
-                Orb::Price::GroupedWithMinMaxThresholds::OrHash
+                Orb::Price::GroupedWithMinMaxThresholds::OrHash,
+                Orb::Price::Minimum::OrHash
               ),
             quantity: Float,
             start_date: Time,
@@ -1424,7 +1427,7 @@ module Orb
           # For complex pricing structures, the line item can be broken down further in
           # `sub_line_items`.
           sub_line_items:,
-          # The line amount before before any adjustments.
+          # The line amount before any adjustments.
           subtotal:,
           # An array of tax rates and their incurred tax amounts. Empty if no tax
           # integration is configured.
@@ -1555,6 +1558,11 @@ module Orb
         sig { returns(T.nilable(String)) }
         attr_accessor :payment_provider_id
 
+        # URL to the downloadable PDF version of the receipt. This field will be `null`
+        # for payment attempts that did not succeed.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :receipt_pdf
+
         # Whether the payment attempt succeeded.
         sig { returns(T::Boolean) }
         attr_accessor :succeeded
@@ -1569,6 +1577,7 @@ module Orb
                 Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt::PaymentProvider::OrSymbol
               ),
             payment_provider_id: T.nilable(String),
+            receipt_pdf: T.nilable(String),
             succeeded: T::Boolean
           ).returns(T.attached_class)
         end
@@ -1583,6 +1592,9 @@ module Orb
           payment_provider:,
           # The ID of the payment attempt in the payment provider.
           payment_provider_id:,
+          # URL to the downloadable PDF version of the receipt. This field will be `null`
+          # for payment attempts that did not succeed.
+          receipt_pdf:,
           # Whether the payment attempt succeeded.
           succeeded:
         )
@@ -1599,6 +1611,7 @@ module Orb
                   Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt::PaymentProvider::TaggedSymbol
                 ),
               payment_provider_id: T.nilable(String),
+              receipt_pdf: T.nilable(String),
               succeeded: T::Boolean
             }
           )

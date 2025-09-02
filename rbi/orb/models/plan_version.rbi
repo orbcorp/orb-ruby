@@ -47,9 +47,6 @@ module Orb
                 Orb::Price::Package::OrHash,
                 Orb::Price::Matrix::OrHash,
                 Orb::Price::Tiered::OrHash,
-                Orb::Price::TieredBPS::OrHash,
-                Orb::Price::BPS::OrHash,
-                Orb::Price::BulkBPS::OrHash,
                 Orb::Price::Bulk::OrHash,
                 Orb::Price::ThresholdTotalAmount::OrHash,
                 Orb::Price::TieredPackage::OrHash,
@@ -71,7 +68,8 @@ module Orb
                 Orb::Price::ScalableMatrixWithUnitPricing::OrHash,
                 Orb::Price::ScalableMatrixWithTieredPricing::OrHash,
                 Orb::Price::CumulativeGroupedBulk::OrHash,
-                Orb::Price::GroupedWithMinMaxThresholds::OrHash
+                Orb::Price::GroupedWithMinMaxThresholds::OrHash,
+                Orb::Price::Minimum::OrHash
               )
             ],
           version: Integer

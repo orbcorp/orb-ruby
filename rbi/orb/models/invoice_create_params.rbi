@@ -42,12 +42,18 @@ module Orb
       end
       attr_accessor :discount
 
+      # An optional custom due date for the invoice. If not set, the due date will be
+      # calculated based on the `net_terms` value.
+      sig { returns(T.nilable(Orb::InvoiceCreateParams::DueDate::Variants)) }
+      attr_accessor :due_date
+
       # The `external_customer_id` of the `Customer` to create this invoice for. One of
       # `customer_id` and `external_customer_id` are required.
       sig { returns(T.nilable(String)) }
       attr_accessor :external_customer_id
 
-      # An optional memo to attach to the invoice.
+      # An optional memo to attach to the invoice. If no memo is provided, we will
+      # attach the default memo
       sig { returns(T.nilable(String)) }
       attr_accessor :memo
 
@@ -57,10 +63,11 @@ module Orb
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
       attr_accessor :metadata
 
-      # Determines the difference between the invoice issue date for subscription
-      # invoices as the date that they are due. A value of '0' here represents that the
-      # invoice is due on issue, whereas a value of 30 represents that the customer has
-      # 30 days to pay the invoice.
+      # The net terms determines the due date of the invoice. Due date is calculated
+      # based on the invoice or issuance date, depending on the account's configured due
+      # date calculation method. A value of '0' here represents that the invoice is due
+      # on issue, whereas a value of '30' represents that the customer has 30 days to
+      # pay the invoice. Do not set this field if you want to set a custom due date.
       sig { returns(T.nilable(Integer)) }
       attr_accessor :net_terms
 
@@ -88,6 +95,7 @@ module Orb
                 Orb::AmountDiscount::OrHash
               )
             ),
+          due_date: T.nilable(Orb::InvoiceCreateParams::DueDate::Variants),
           external_customer_id: T.nilable(String),
           memo: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -109,19 +117,24 @@ module Orb
         customer_id: nil,
         # An optional discount to attach to the invoice.
         discount: nil,
+        # An optional custom due date for the invoice. If not set, the due date will be
+        # calculated based on the `net_terms` value.
+        due_date: nil,
         # The `external_customer_id` of the `Customer` to create this invoice for. One of
         # `customer_id` and `external_customer_id` are required.
         external_customer_id: nil,
-        # An optional memo to attach to the invoice.
+        # An optional memo to attach to the invoice. If no memo is provided, we will
+        # attach the default memo
         memo: nil,
         # User-specified key/value pairs for the resource. Individual keys can be removed
         # by setting the value to `null`, and the entire metadata mapping can be cleared
         # by setting `metadata` to `null`.
         metadata: nil,
-        # Determines the difference between the invoice issue date for subscription
-        # invoices as the date that they are due. A value of '0' here represents that the
-        # invoice is due on issue, whereas a value of 30 represents that the customer has
-        # 30 days to pay the invoice.
+        # The net terms determines the due date of the invoice. Due date is calculated
+        # based on the invoice or issuance date, depending on the account's configured due
+        # date calculation method. A value of '0' here represents that the invoice is due
+        # on issue, whereas a value of '30' represents that the customer has 30 days to
+        # pay the invoice. Do not set this field if you want to set a custom due date.
         net_terms: nil,
         # When true, this invoice will be submitted for issuance upon creation. When
         # false, the resulting invoice will require manual review to issue. Defaulted to
@@ -147,6 +160,7 @@ module Orb
                   Orb::AmountDiscount
                 )
               ),
+            due_date: T.nilable(Orb::InvoiceCreateParams::DueDate::Variants),
             external_customer_id: T.nilable(String),
             memo: T.nilable(String),
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -260,6 +274,22 @@ module Orb
           end
           def self.values
           end
+        end
+      end
+
+      # An optional custom due date for the invoice. If not set, the due date will be
+      # calculated based on the `net_terms` value.
+      module DueDate
+        extend Orb::Internal::Type::Union
+
+        Variants = T.type_alias { T.any(Date, Time) }
+
+        sig do
+          override.returns(
+            T::Array[Orb::InvoiceCreateParams::DueDate::Variants]
+          )
+        end
+        def self.variants
         end
       end
     end
