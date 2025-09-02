@@ -104,7 +104,9 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config, union: -> { Orb::Price::Unit::ConversionRateConfig }, nil?: true
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::Unit::UnnamedTypeWithobjectParent84 },
+                 nil?: true
 
         # @!attribute created_at
         #
@@ -288,20 +290,6 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Price::Unit#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
-        end
-
         # @see Orb::Models::Price::Unit#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -343,7 +331,9 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config, union: -> { Orb::Price::Package::ConversionRateConfig }, nil?: true
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::Package::UnnamedTypeWithobjectParent85 },
+                 nil?: true
 
         # @!attribute created_at
         #
@@ -527,20 +517,6 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Price::Package#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
-        end
-
         # @see Orb::Models::Price::Package#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -582,7 +558,9 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config, union: -> { Orb::Price::Matrix::ConversionRateConfig }, nil?: true
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::Matrix::UnnamedTypeWithobjectParent86 },
+                 nil?: true
 
         # @!attribute created_at
         #
@@ -766,20 +744,6 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Price::Matrix#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
-        end
-
         # @see Orb::Models::Price::Matrix#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -821,7 +785,9 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config, union: -> { Orb::Price::Tiered::ConversionRateConfig }, nil?: true
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::Tiered::UnnamedTypeWithobjectParent87 },
+                 nil?: true
 
         # @!attribute created_at
         #
@@ -1005,20 +971,6 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Price::Tiered#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
-        end
-
         # @see Orb::Models::Price::Tiered#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -1061,9 +1013,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> {
-                   Orb::Price::TieredBPS::ConversionRateConfig
-                 },
+                 union: -> { Orb::Price::TieredBPS::UnnamedTypeWithobjectParent88 },
                  nil?: true
 
         # @!attribute created_at
@@ -1248,20 +1198,6 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Price::TieredBPS#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
-        end
-
         # @see Orb::Models::Price::TieredBPS#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -1308,7 +1244,11 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config, union: -> { Orb::Price::BPS::ConversionRateConfig }, nil?: true
+        required :conversion_rate_config,
+                 union: -> {
+                   Orb::Price::BPS::UnnamedTypeWithobjectParent89
+                 },
+                 nil?: true
 
         # @!attribute created_at
         #
@@ -1487,20 +1427,6 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Price::BPS#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
-        end
-
         # @see Orb::Models::Price::BPS#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -1547,7 +1473,9 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config, union: -> { Orb::Price::BulkBPS::ConversionRateConfig }, nil?: true
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::BulkBPS::UnnamedTypeWithobjectParent90 },
+                 nil?: true
 
         # @!attribute created_at
         #
@@ -1726,20 +1654,6 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Price::BulkBPS#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
-        end
-
         # @see Orb::Models::Price::BulkBPS#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -1786,7 +1700,9 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config, union: -> { Orb::Price::Bulk::ConversionRateConfig }, nil?: true
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::Bulk::UnnamedTypeWithobjectParent91 },
+                 nil?: true
 
         # @!attribute created_at
         #
@@ -1965,20 +1881,6 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Price::Bulk#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
-        end
-
         # @see Orb::Models::Price::Bulk#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -2021,7 +1923,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::ThresholdTotalAmount::ConversionRateConfig },
+                 union: -> { Orb::Price::ThresholdTotalAmount::UnnamedTypeWithobjectParent92 },
                  nil?: true
 
         # @!attribute created_at
@@ -2206,20 +2108,6 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Price::ThresholdTotalAmount#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
-        end
-
         # @see Orb::Models::Price::ThresholdTotalAmount#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -2262,7 +2150,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::TieredPackage::ConversionRateConfig },
+                 union: -> { Orb::Price::TieredPackage::UnnamedTypeWithobjectParent93 },
                  nil?: true
 
         # @!attribute created_at
@@ -2447,20 +2335,6 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Price::TieredPackage#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
-        end
-
         # @see Orb::Models::Price::TieredPackage#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -2503,7 +2377,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::GroupedTiered::ConversionRateConfig },
+                 union: -> { Orb::Price::GroupedTiered::UnnamedTypeWithobjectParent94 },
                  nil?: true
 
         # @!attribute created_at
@@ -2688,20 +2562,6 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Price::GroupedTiered#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
-        end
-
         # @see Orb::Models::Price::GroupedTiered#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -2744,7 +2604,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::TieredWithMinimum::ConversionRateConfig },
+                 union: -> { Orb::Price::TieredWithMinimum::UnnamedTypeWithobjectParent95 },
                  nil?: true
 
         # @!attribute created_at
@@ -2929,20 +2789,6 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Price::TieredWithMinimum#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
-        end
-
         # @see Orb::Models::Price::TieredWithMinimum#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -2985,7 +2831,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::TieredPackageWithMinimum::ConversionRateConfig },
+                 union: -> { Orb::Price::TieredPackageWithMinimum::UnnamedTypeWithobjectParent96 },
                  nil?: true
 
         # @!attribute created_at
@@ -3170,20 +3016,6 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Price::TieredPackageWithMinimum#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
-        end
-
         # @see Orb::Models::Price::TieredPackageWithMinimum#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -3226,7 +3058,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::PackageWithAllocation::ConversionRateConfig },
+                 union: -> { Orb::Price::PackageWithAllocation::UnnamedTypeWithobjectParent97 },
                  nil?: true
 
         # @!attribute created_at
@@ -3411,20 +3243,6 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Price::PackageWithAllocation#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
-        end
-
         # @see Orb::Models::Price::PackageWithAllocation#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -3467,7 +3285,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::UnitWithPercent::ConversionRateConfig },
+                 union: -> { Orb::Price::UnitWithPercent::UnnamedTypeWithobjectParent98 },
                  nil?: true
 
         # @!attribute created_at
@@ -3652,20 +3470,6 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Price::UnitWithPercent#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
-        end
-
         # @see Orb::Models::Price::UnitWithPercent#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -3708,7 +3512,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::MatrixWithAllocation::ConversionRateConfig },
+                 union: -> { Orb::Price::MatrixWithAllocation::UnnamedTypeWithobjectParent99 },
                  nil?: true
 
         # @!attribute created_at
@@ -3893,20 +3697,6 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Price::MatrixWithAllocation#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
-        end
-
         # @see Orb::Models::Price::MatrixWithAllocation#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -3949,7 +3739,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::TieredWithProration::ConversionRateConfig },
+                 union: -> { Orb::Price::TieredWithProration::UnnamedTypeWithobjectParent100 },
                  nil?: true
 
         # @!attribute created_at
@@ -4134,20 +3924,6 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Price::TieredWithProration#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
-        end
-
         # @see Orb::Models::Price::TieredWithProration#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -4190,7 +3966,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::UnitWithProration::ConversionRateConfig },
+                 union: -> { Orb::Price::UnitWithProration::UnnamedTypeWithobjectParent101 },
                  nil?: true
 
         # @!attribute created_at
@@ -4375,20 +4151,6 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Price::UnitWithProration#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
-        end
-
         # @see Orb::Models::Price::UnitWithProration#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -4431,7 +4193,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::GroupedAllocation::ConversionRateConfig },
+                 union: -> { Orb::Price::GroupedAllocation::UnnamedTypeWithobjectParent102 },
                  nil?: true
 
         # @!attribute created_at
@@ -4616,20 +4378,6 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Price::GroupedAllocation#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
-        end
-
         # @see Orb::Models::Price::GroupedAllocation#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -4672,7 +4420,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig },
+                 union: -> { Orb::Price::GroupedWithProratedMinimum::UnnamedTypeWithobjectParent103 },
                  nil?: true
 
         # @!attribute created_at
@@ -4857,20 +4605,6 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Price::GroupedWithProratedMinimum#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
-        end
-
         # @see Orb::Models::Price::GroupedWithProratedMinimum#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -4913,7 +4647,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig },
+                 union: -> { Orb::Price::GroupedWithMeteredMinimum::UnnamedTypeWithobjectParent104 },
                  nil?: true
 
         # @!attribute created_at
@@ -5098,20 +4832,6 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Price::GroupedWithMeteredMinimum#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
-        end
-
         # @see Orb::Models::Price::GroupedWithMeteredMinimum#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -5154,7 +4874,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::MatrixWithDisplayName::ConversionRateConfig },
+                 union: -> { Orb::Price::MatrixWithDisplayName::UnnamedTypeWithobjectParent105 },
                  nil?: true
 
         # @!attribute created_at
@@ -5339,20 +5059,6 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Price::MatrixWithDisplayName#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
-        end
-
         # @see Orb::Models::Price::MatrixWithDisplayName#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -5400,7 +5106,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::BulkWithProration::ConversionRateConfig },
+                 union: -> { Orb::Price::BulkWithProration::UnnamedTypeWithobjectParent106 },
                  nil?: true
 
         # @!attribute created_at
@@ -5580,20 +5286,6 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Price::BulkWithProration#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
-        end
-
         # @see Orb::Models::Price::BulkWithProration#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -5636,7 +5328,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::GroupedTieredPackage::ConversionRateConfig },
+                 union: -> { Orb::Price::GroupedTieredPackage::UnnamedTypeWithobjectParent107 },
                  nil?: true
 
         # @!attribute created_at
@@ -5821,20 +5513,6 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Price::GroupedTieredPackage#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
-        end
-
         # @see Orb::Models::Price::GroupedTieredPackage#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -5877,7 +5555,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::MaxGroupTieredPackage::ConversionRateConfig },
+                 union: -> { Orb::Price::MaxGroupTieredPackage::UnnamedTypeWithobjectParent108 },
                  nil?: true
 
         # @!attribute created_at
@@ -6062,20 +5740,6 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Price::MaxGroupTieredPackage#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
-        end
-
         # @see Orb::Models::Price::MaxGroupTieredPackage#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -6118,7 +5782,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig },
+                 union: -> { Orb::Price::ScalableMatrixWithUnitPricing::UnnamedTypeWithobjectParent109 },
                  nil?: true
 
         # @!attribute created_at
@@ -6304,20 +5968,6 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Price::ScalableMatrixWithUnitPricing#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
-        end
-
         # @see Orb::Models::Price::ScalableMatrixWithUnitPricing#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -6360,7 +6010,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig },
+                 union: -> { Orb::Price::ScalableMatrixWithTieredPricing::UnnamedTypeWithobjectParent110 },
                  nil?: true
 
         # @!attribute created_at
@@ -6546,20 +6196,6 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Price::ScalableMatrixWithTieredPricing#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
-        end
-
         # @see Orb::Models::Price::ScalableMatrixWithTieredPricing#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -6602,7 +6238,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::CumulativeGroupedBulk::ConversionRateConfig },
+                 union: -> { Orb::Price::CumulativeGroupedBulk::UnnamedTypeWithobjectParent111 },
                  nil?: true
 
         # @!attribute created_at
@@ -6787,20 +6423,6 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
-        # @see Orb::Models::Price::CumulativeGroupedBulk#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
-        end
-
         # @see Orb::Models::Price::CumulativeGroupedBulk#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -6843,7 +6465,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::GroupedWithMinMaxThresholds::ConversionRateConfig },
+                 union: -> { Orb::Price::GroupedWithMinMaxThresholds::UnnamedTypeWithobjectParent112 },
                  nil?: true
 
         # @!attribute created_at
@@ -7027,20 +6649,6 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
-        end
-
-        # @see Orb::Models::Price::GroupedWithMinMaxThresholds#conversion_rate_config
-        module ConversionRateConfig
-          extend Orb::Internal::Type::Union
-
-          discriminator :conversion_rate_type
-
-          variant :unit, -> { Orb::UnitConversionRateConfig }
-
-          variant :tiered, -> { Orb::TieredConversionRateConfig }
-
-          # @!method self.variants
-          #   @return [Array(Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig)]
         end
 
         # @see Orb::Models::Price::GroupedWithMinMaxThresholds#price_type

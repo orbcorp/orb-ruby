@@ -293,29 +293,6 @@ module Orb
         def self.values
         end
       end
-
-      # The configuration for the rate of the price currency to the invoicing currency.
-      module ConversionRateConfig
-        extend Orb::Internal::Type::Union
-
-        Variants =
-          T.type_alias do
-            T.any(
-              Orb::UnitConversionRateConfig,
-              Orb::TieredConversionRateConfig
-            )
-          end
-
-        sig do
-          override.returns(
-            T::Array[
-              Orb::NewSubscriptionUnitPrice::ConversionRateConfig::Variants
-            ]
-          )
-        end
-        def self.variants
-        end
-      end
     end
   end
 end
