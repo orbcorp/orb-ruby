@@ -180,6 +180,11 @@ module Orb
               :external_payment,
               Orb::Models::Customers::BalanceTransactionListResponse::Action::TaggedSymbol
             )
+          SMALL_INVOICE_CARRYOVER =
+            T.let(
+              :small_invoice_carryover,
+              Orb::Models::Customers::BalanceTransactionListResponse::Action::TaggedSymbol
+            )
 
           sig do
             override.returns(

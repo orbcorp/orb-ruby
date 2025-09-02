@@ -19,6 +19,14 @@ module Orb
       #   @return [Boolean]
       required :auto_collection, Orb::Internal::Type::Boolean
 
+      # @!attribute auto_issuance
+      #   Whether invoices for this customer should be automatically issued. If true,
+      #   invoices will be automatically issued. If false, invoices will require manual
+      #   approval. If null, inherits the account-level setting.
+      #
+      #   @return [Boolean, nil]
+      required :auto_issuance, Orb::Internal::Type::Boolean, nil?: true
+
       # @!attribute balance
       #   The customer's current balance in their currency.
       #
@@ -279,7 +287,7 @@ module Orb
       #   @return [Orb::Models::Customer::ReportingConfiguration, nil]
       optional :reporting_configuration, -> { Orb::Customer::ReportingConfiguration }, nil?: true
 
-      # @!method initialize(id:, additional_emails:, auto_collection:, balance:, billing_address:, created_at:, currency:, email:, email_delivery:, exempt_from_automated_tax:, external_customer_id:, hierarchy:, metadata:, name:, payment_provider:, payment_provider_id:, portal_url:, shipping_address:, tax_id:, timezone:, accounting_sync_configuration: nil, reporting_configuration: nil)
+      # @!method initialize(id:, additional_emails:, auto_collection:, auto_issuance:, balance:, billing_address:, created_at:, currency:, email:, email_delivery:, exempt_from_automated_tax:, external_customer_id:, hierarchy:, metadata:, name:, payment_provider:, payment_provider_id:, portal_url:, shipping_address:, tax_id:, timezone:, accounting_sync_configuration: nil, reporting_configuration: nil)
       #   Some parameter documentations has been truncated, see {Orb::Models::Customer}
       #   for more details.
       #
@@ -307,6 +315,8 @@ module Orb
       #   @param additional_emails [Array<String>]
       #
       #   @param auto_collection [Boolean]
+      #
+      #   @param auto_issuance [Boolean, nil] Whether invoices for this customer should be automatically issued. If true, invo
       #
       #   @param balance [String] The customer's current balance in their currency.
       #

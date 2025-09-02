@@ -69,7 +69,7 @@ module Orb
       #
       #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
       optional :conversion_rate_config,
-               union: -> { Orb::NewFloatingBulkWithProrationPrice::UnnamedTypeWithobjectParent3 },
+               union: -> { Orb::NewFloatingBulkWithProrationPrice::UnnamedTypeWithobjectParent9 },
                nil?: true
 
       # @!attribute dimensional_price_configuration

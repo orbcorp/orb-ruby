@@ -146,24 +146,6 @@ module Orb
       sig { params(tiered_config: Orb::TieredConfig::OrHash).void }
       attr_writer :tiered_config
 
-      sig { returns(Orb::TieredBPSConfig) }
-      attr_reader :tiered_bps_config
-
-      sig { params(tiered_bps_config: Orb::TieredBPSConfig::OrHash).void }
-      attr_writer :tiered_bps_config
-
-      sig { returns(Orb::BPSConfig) }
-      attr_reader :bps_config
-
-      sig { params(bps_config: Orb::BPSConfig::OrHash).void }
-      attr_writer :bps_config
-
-      sig { returns(Orb::BulkBPSConfig) }
-      attr_reader :bulk_bps_config
-
-      sig { params(bulk_bps_config: Orb::BulkBPSConfig::OrHash).void }
-      attr_writer :bulk_bps_config
-
       sig { returns(Orb::BulkConfig) }
       attr_reader :bulk_config
 
@@ -227,6 +209,19 @@ module Orb
       sig { returns(T::Hash[Symbol, T.anything]) }
       attr_accessor :cumulative_grouped_bulk_config
 
+      sig { returns(T::Hash[Symbol, T.anything]) }
+      attr_accessor :grouped_with_min_max_thresholds_config
+
+      sig { returns(Orb::PriceCreateParams::MinimumConfig) }
+      attr_reader :minimum_config
+
+      sig do
+        params(
+          minimum_config: Orb::PriceCreateParams::MinimumConfig::OrHash
+        ).void
+      end
+      attr_writer :minimum_config
+
       sig do
         params(
           cadence: Orb::PriceCreateParams::Cadence::OrSymbol,
@@ -240,9 +235,6 @@ module Orb
           matrix_with_allocation_config:
             Orb::MatrixWithAllocationConfig::OrHash,
           tiered_config: Orb::TieredConfig::OrHash,
-          tiered_bps_config: Orb::TieredBPSConfig::OrHash,
-          bps_config: Orb::BPSConfig::OrHash,
-          bulk_bps_config: Orb::BulkBPSConfig::OrHash,
           bulk_config: Orb::BulkConfig::OrHash,
           threshold_total_amount_config: T::Hash[Symbol, T.anything],
           tiered_package_config: T::Hash[Symbol, T.anything],
@@ -264,6 +256,8 @@ module Orb
           scalable_matrix_with_tiered_pricing_config:
             T::Hash[Symbol, T.anything],
           cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
+          grouped_with_min_max_thresholds_config: T::Hash[Symbol, T.anything],
+          minimum_config: Orb::PriceCreateParams::MinimumConfig::OrHash,
           billable_metric_id: T.nilable(String),
           billed_in_advance: T.nilable(T::Boolean),
           billing_cycle_configuration:
@@ -302,9 +296,6 @@ module Orb
         matrix_config:,
         matrix_with_allocation_config:,
         tiered_config:,
-        tiered_bps_config:,
-        bps_config:,
-        bulk_bps_config:,
         bulk_config:,
         threshold_total_amount_config:,
         tiered_package_config:,
@@ -325,6 +316,8 @@ module Orb
         scalable_matrix_with_unit_pricing_config:,
         scalable_matrix_with_tiered_pricing_config:,
         cumulative_grouped_bulk_config:,
+        grouped_with_min_max_thresholds_config:,
+        minimum_config:,
         # The id of the billable metric for the price. Only needed if the price is
         # usage-based.
         billable_metric_id: nil,
@@ -391,9 +384,6 @@ module Orb
             matrix_config: Orb::MatrixConfig,
             matrix_with_allocation_config: Orb::MatrixWithAllocationConfig,
             tiered_config: Orb::TieredConfig,
-            tiered_bps_config: Orb::TieredBPSConfig,
-            bps_config: Orb::BPSConfig,
-            bulk_bps_config: Orb::BulkBPSConfig,
             bulk_config: Orb::BulkConfig,
             threshold_total_amount_config: T::Hash[Symbol, T.anything],
             tiered_package_config: T::Hash[Symbol, T.anything],
@@ -416,6 +406,8 @@ module Orb
             scalable_matrix_with_tiered_pricing_config:
               T::Hash[Symbol, T.anything],
             cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
+            grouped_with_min_max_thresholds_config: T::Hash[Symbol, T.anything],
+            minimum_config: Orb::PriceCreateParams::MinimumConfig,
             request_options: Orb::RequestOptions
           }
         )
@@ -457,11 +449,8 @@ module Orb
           T.type_alias { T.all(Symbol, Orb::PriceCreateParams::ModelType) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        CUMULATIVE_GROUPED_BULK =
-          T.let(
-            :cumulative_grouped_bulk,
-            Orb::PriceCreateParams::ModelType::TaggedSymbol
-          )
+        MINIMUM =
+          T.let(:minimum, Orb::PriceCreateParams::ModelType::TaggedSymbol)
 
         sig do
           override.returns(
@@ -469,6 +458,45 @@ module Orb
           )
         end
         def self.values
+        end
+      end
+
+      class MinimumConfig < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(Orb::PriceCreateParams::MinimumConfig, Orb::Internal::AnyHash)
+          end
+
+        # The minimum amount to apply
+        sig { returns(String) }
+        attr_accessor :minimum_amount
+
+        # By default, subtotals from minimum composite prices are prorated based on the
+        # service period. Set to false to disable proration.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_accessor :prorated
+
+        sig do
+          params(
+            minimum_amount: String,
+            prorated: T.nilable(T::Boolean)
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # The minimum amount to apply
+          minimum_amount:,
+          # By default, subtotals from minimum composite prices are prorated based on the
+          # service period. Set to false to disable proration.
+          prorated: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            { minimum_amount: String, prorated: T.nilable(T::Boolean) }
+          )
+        end
+        def to_hash
         end
       end
     end

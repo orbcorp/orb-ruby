@@ -696,6 +696,7 @@ module Orb
           CREDIT_NOTE_VOIDED = :credit_note_voided
           OVERPAYMENT_REFUND = :overpayment_refund
           EXTERNAL_PAYMENT = :external_payment
+          SMALL_INVOICE_CARRYOVER = :small_invoice_carryover
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -844,7 +845,7 @@ module Orb
         #   For more on the types of prices, see
         #   [the core concepts documentation](/core-concepts#plan-and-price)
         #
-        #   @return [Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBPS, Orb::Models::Price::BPS, Orb::Models::Price::BulkBPS, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk, Orb::Models::Price::GroupedWithMinMaxThresholds]
+        #   @return [Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk, Orb::Models::Price::GroupedWithMinMaxThresholds, Orb::Models::Price::Minimum]
         required :price, union: -> { Orb::Price }
 
         # @!attribute quantity
@@ -867,7 +868,7 @@ module Orb
         required :sub_line_items, -> { Orb::Internal::Type::ArrayOf[union: Orb::Invoice::LineItem::SubLineItem] }
 
         # @!attribute subtotal
-        #   The line amount before before any adjustments.
+        #   The line amount before any adjustments.
         #
         #   @return [String]
         required :subtotal, String
@@ -919,7 +920,7 @@ module Orb
         #
         #   @param partially_invoiced_amount [String] Any amount applied from a partial invoice
         #
-        #   @param price [Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::TieredBPS, Orb::Models::Price::BPS, Orb::Models::Price::BulkBPS, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk, Orb::Models::Price::GroupedWithMinMaxThresholds] The Price resource represents a price that can be billed on a subscription, resu
+        #   @param price [Orb::Models::Price::Unit, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::Tiered, Orb::Models::Price::Bulk, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk, Orb::Models::Price::GroupedWithMinMaxThresholds, Orb::Models::Price::Minimum] The Price resource represents a price that can be billed on a subscription, resu
         #
         #   @param quantity [Float] Either the fixed fee quantity or the usage during the service period.
         #
@@ -927,7 +928,7 @@ module Orb
         #
         #   @param sub_line_items [Array<Orb::Models::MatrixSubLineItem, Orb::Models::TierSubLineItem, Orb::Models::OtherSubLineItem>] For complex pricing structures, the line item can be broken down further in `sub
         #
-        #   @param subtotal [String] The line amount before before any adjustments.
+        #   @param subtotal [String] The line amount before any adjustments.
         #
         #   @param tax_amounts [Array<Orb::Models::TaxAmount>] An array of tax rates and their incurred tax amounts. Empty if no tax integratio
         #
@@ -999,13 +1000,23 @@ module Orb
         #   @return [String, nil]
         required :payment_provider_id, String, nil?: true
 
+        # @!attribute receipt_pdf
+        #   URL to the downloadable PDF version of the receipt. This field will be `null`
+        #   for payment attempts that did not succeed.
+        #
+        #   @return [String, nil]
+        required :receipt_pdf, String, nil?: true
+
         # @!attribute succeeded
         #   Whether the payment attempt succeeded.
         #
         #   @return [Boolean]
         required :succeeded, Orb::Internal::Type::Boolean
 
-        # @!method initialize(id:, amount:, created_at:, payment_provider:, payment_provider_id:, succeeded:)
+        # @!method initialize(id:, amount:, created_at:, payment_provider:, payment_provider_id:, receipt_pdf:, succeeded:)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Invoice::PaymentAttempt} for more details.
+        #
         #   @param id [String] The ID of the payment attempt.
         #
         #   @param amount [String] The amount of the payment attempt.
@@ -1015,6 +1026,8 @@ module Orb
         #   @param payment_provider [Symbol, Orb::Models::Invoice::PaymentAttempt::PaymentProvider, nil] The payment provider that attempted to collect the payment.
         #
         #   @param payment_provider_id [String, nil] The ID of the payment attempt in the payment provider.
+        #
+        #   @param receipt_pdf [String, nil] URL to the downloadable PDF version of the receipt. This field will be `null` fo
         #
         #   @param succeeded [Boolean] Whether the payment attempt succeeded.
 

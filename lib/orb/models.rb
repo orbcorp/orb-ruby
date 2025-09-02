@@ -91,14 +91,6 @@ module Orb
 
   BillingCycleRelativeDate = Orb::Models::BillingCycleRelativeDate
 
-  BPSConfig = Orb::Models::BPSConfig
-
-  BPSTier = Orb::Models::BPSTier
-
-  BulkBPSConfig = Orb::Models::BulkBPSConfig
-
-  BulkBPSTier = Orb::Models::BulkBPSTier
-
   BulkConfig = Orb::Models::BulkConfig
 
   BulkTier = Orb::Models::BulkTier
@@ -290,10 +282,6 @@ module Orb
 
   NewDimensionalPriceConfiguration = Orb::Models::NewDimensionalPriceConfiguration
 
-  NewFloatingBPSPrice = Orb::Models::NewFloatingBPSPrice
-
-  NewFloatingBulkBPSPrice = Orb::Models::NewFloatingBulkBPSPrice
-
   NewFloatingBulkPrice = Orb::Models::NewFloatingBulkPrice
 
   NewFloatingBulkWithProrationPrice = Orb::Models::NewFloatingBulkWithProrationPrice
@@ -330,8 +318,6 @@ module Orb
 
   NewFloatingThresholdTotalAmountPrice = Orb::Models::NewFloatingThresholdTotalAmountPrice
 
-  NewFloatingTieredBPSPrice = Orb::Models::NewFloatingTieredBPSPrice
-
   NewFloatingTieredPackagePrice = Orb::Models::NewFloatingTieredPackagePrice
 
   NewFloatingTieredPackageWithMinimumPrice = Orb::Models::NewFloatingTieredPackageWithMinimumPrice
@@ -353,10 +339,6 @@ module Orb
   NewMinimum = Orb::Models::NewMinimum
 
   NewPercentageDiscount = Orb::Models::NewPercentageDiscount
-
-  NewPlanBPSPrice = Orb::Models::NewPlanBPSPrice
-
-  NewPlanBulkBPSPrice = Orb::Models::NewPlanBulkBPSPrice
 
   NewPlanBulkPrice = Orb::Models::NewPlanBulkPrice
 
@@ -392,8 +374,6 @@ module Orb
 
   NewPlanThresholdTotalAmountPrice = Orb::Models::NewPlanThresholdTotalAmountPrice
 
-  NewPlanTieredBPSPrice = Orb::Models::NewPlanTieredBPSPrice
-
   NewPlanTieredPackagePrice = Orb::Models::NewPlanTieredPackagePrice
 
   NewPlanTieredPackageWithMinimumPrice = Orb::Models::NewPlanTieredPackageWithMinimumPrice
@@ -413,10 +393,6 @@ module Orb
   NewReportingConfiguration = Orb::Models::NewReportingConfiguration
 
   NewSphereConfiguration = Orb::Models::NewSphereConfiguration
-
-  NewSubscriptionBPSPrice = Orb::Models::NewSubscriptionBPSPrice
-
-  NewSubscriptionBulkBPSPrice = Orb::Models::NewSubscriptionBulkBPSPrice
 
   NewSubscriptionBulkPrice = Orb::Models::NewSubscriptionBulkPrice
 
@@ -455,8 +431,6 @@ module Orb
     Orb::Models::NewSubscriptionScalableMatrixWithUnitPricingPrice
 
   NewSubscriptionThresholdTotalAmountPrice = Orb::Models::NewSubscriptionThresholdTotalAmountPrice
-
-  NewSubscriptionTieredBPSPrice = Orb::Models::NewSubscriptionTieredBPSPrice
 
   NewSubscriptionTieredPackagePrice = Orb::Models::NewSubscriptionTieredPackagePrice
 
@@ -601,8 +575,6 @@ module Orb
   Tier = Orb::Models::Tier
 
   TierConfig = Orb::Models::TierConfig
-
-  TieredBPSConfig = Orb::Models::TieredBPSConfig
 
   TieredConfig = Orb::Models::TieredConfig
 

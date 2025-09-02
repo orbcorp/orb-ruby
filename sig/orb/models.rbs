@@ -51,14 +51,6 @@ module Orb
 
   module BillingCycleRelativeDate = Orb::Models::BillingCycleRelativeDate
 
-  class BPSConfig = Orb::Models::BPSConfig
-
-  class BPSTier = Orb::Models::BPSTier
-
-  class BulkBPSConfig = Orb::Models::BulkBPSConfig
-
-  class BulkBPSTier = Orb::Models::BulkBPSTier
-
   class BulkConfig = Orb::Models::BulkConfig
 
   class BulkTier = Orb::Models::BulkTier
@@ -249,10 +241,6 @@ module Orb
 
   class NewDimensionalPriceConfiguration = Orb::Models::NewDimensionalPriceConfiguration
 
-  class NewFloatingBPSPrice = Orb::Models::NewFloatingBPSPrice
-
-  class NewFloatingBulkBPSPrice = Orb::Models::NewFloatingBulkBPSPrice
-
   class NewFloatingBulkPrice = Orb::Models::NewFloatingBulkPrice
 
   class NewFloatingBulkWithProrationPrice = Orb::Models::NewFloatingBulkWithProrationPrice
@@ -287,8 +275,6 @@ module Orb
 
   class NewFloatingThresholdTotalAmountPrice = Orb::Models::NewFloatingThresholdTotalAmountPrice
 
-  class NewFloatingTieredBPSPrice = Orb::Models::NewFloatingTieredBPSPrice
-
   class NewFloatingTieredPackagePrice = Orb::Models::NewFloatingTieredPackagePrice
 
   class NewFloatingTieredPackageWithMinimumPrice = Orb::Models::NewFloatingTieredPackageWithMinimumPrice
@@ -310,10 +296,6 @@ module Orb
   class NewMinimum = Orb::Models::NewMinimum
 
   class NewPercentageDiscount = Orb::Models::NewPercentageDiscount
-
-  class NewPlanBPSPrice = Orb::Models::NewPlanBPSPrice
-
-  class NewPlanBulkBPSPrice = Orb::Models::NewPlanBulkBPSPrice
 
   class NewPlanBulkPrice = Orb::Models::NewPlanBulkPrice
 
@@ -349,8 +331,6 @@ module Orb
 
   class NewPlanThresholdTotalAmountPrice = Orb::Models::NewPlanThresholdTotalAmountPrice
 
-  class NewPlanTieredBPSPrice = Orb::Models::NewPlanTieredBPSPrice
-
   class NewPlanTieredPackagePrice = Orb::Models::NewPlanTieredPackagePrice
 
   class NewPlanTieredPackageWithMinimumPrice = Orb::Models::NewPlanTieredPackageWithMinimumPrice
@@ -370,10 +350,6 @@ module Orb
   class NewReportingConfiguration = Orb::Models::NewReportingConfiguration
 
   class NewSphereConfiguration = Orb::Models::NewSphereConfiguration
-
-  class NewSubscriptionBPSPrice = Orb::Models::NewSubscriptionBPSPrice
-
-  class NewSubscriptionBulkBPSPrice = Orb::Models::NewSubscriptionBulkBPSPrice
 
   class NewSubscriptionBulkPrice = Orb::Models::NewSubscriptionBulkPrice
 
@@ -408,8 +384,6 @@ module Orb
   class NewSubscriptionScalableMatrixWithUnitPricingPrice = Orb::Models::NewSubscriptionScalableMatrixWithUnitPricingPrice
 
   class NewSubscriptionThresholdTotalAmountPrice = Orb::Models::NewSubscriptionThresholdTotalAmountPrice
-
-  class NewSubscriptionTieredBPSPrice = Orb::Models::NewSubscriptionTieredBPSPrice
 
   class NewSubscriptionTieredPackagePrice = Orb::Models::NewSubscriptionTieredPackagePrice
 
@@ -552,8 +526,6 @@ module Orb
   class Tier = Orb::Models::Tier
 
   class TierConfig = Orb::Models::TierConfig
-
-  class TieredBPSConfig = Orb::Models::TieredBPSConfig
 
   class TieredConfig = Orb::Models::TieredConfig
 

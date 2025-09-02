@@ -8,7 +8,7 @@ module Orb
       #
       # This endpoint is used to create a one-off invoice for a customer.
       #
-      # @overload create(currency:, invoice_date:, line_items:, customer_id: nil, discount: nil, external_customer_id: nil, memo: nil, metadata: nil, net_terms: nil, will_auto_issue: nil, request_options: {})
+      # @overload create(currency:, invoice_date:, line_items:, customer_id: nil, discount: nil, due_date: nil, external_customer_id: nil, memo: nil, metadata: nil, net_terms: nil, will_auto_issue: nil, request_options: {})
       #
       # @param currency [String] An ISO 4217 currency string. Must be the same as the customer's currency if it i
       #
@@ -20,13 +20,15 @@ module Orb
       #
       # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil] An optional discount to attach to the invoice.
       #
+      # @param due_date [Date, Time, nil] An optional custom due date for the invoice. If not set, the due date will be ca
+      #
       # @param external_customer_id [String, nil] The `external_customer_id` of the `Customer` to create this invoice for. One of
       #
-      # @param memo [String, nil] An optional memo to attach to the invoice.
+      # @param memo [String, nil] An optional memo to attach to the invoice. If no memo is provided, we will attac
       #
       # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
       #
-      # @param net_terms [Integer, nil] Determines the difference between the invoice issue date for subscription invoic
+      # @param net_terms [Integer, nil] The net terms determines the due date of the invoice. Due date is calculated bas
       #
       # @param will_auto_issue [Boolean] When true, this invoice will be submitted for issuance upon creation. When false
       #
@@ -50,11 +52,15 @@ module Orb
       # `metadata` can be modified regardless of invoice state. `net_terms` and
       # `due_date` can only be modified if the invoice is in a `draft` state.
       #
-      # @overload update(invoice_id, metadata: nil, request_options: {})
+      # @overload update(invoice_id, due_date: nil, metadata: nil, net_terms: nil, request_options: {})
       #
       # @param invoice_id [String]
       #
+      # @param due_date [Date, Time, nil] An optional custom due date for the invoice. If not set, the due date will be ca
+      #
       # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+      #
+      # @param net_terms [Integer, nil] The net terms determines the due date of the invoice. Due date is calculated bas
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -230,8 +236,8 @@ module Orb
         )
       end
 
-      # This endpoint allows an invoice's status to be set the `paid` status. This can
-      # only be done to invoices that are in the `issued` status.
+      # This endpoint allows an invoice's status to be set to the `paid` status. This
+      # can only be done to invoices that are in the `issued` or `synced` status.
       #
       # @overload mark_paid(invoice_id, payment_received_date:, external_id: nil, notes: nil, request_options: {})
       #
@@ -279,8 +285,8 @@ module Orb
         )
       end
 
-      # This endpoint allows an invoice's status to be set the `void` status. This can
-      # only be done to invoices that are in the `issued` status.
+      # This endpoint allows an invoice's status to be set to the `void` status. This
+      # can only be done to invoices that are in the `issued` status.
       #
       # If the associated invoice has used the customer balance to change the amount
       # due, the customer balance operation will be reverted. For example, if the

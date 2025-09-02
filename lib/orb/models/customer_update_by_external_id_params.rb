@@ -27,6 +27,15 @@ module Orb
       #   @return [Boolean, nil]
       optional :auto_collection, Orb::Internal::Type::Boolean, nil?: true
 
+      # @!attribute auto_issuance
+      #   Used to determine if invoices for this customer will be automatically issued. If
+      #   true, invoices will be automatically issued. If false, invoices will require
+      #   manual approval.If `null` is specified, the customer's auto issuance setting
+      #   will be inherited from the account-level setting.
+      #
+      #   @return [Boolean, nil]
+      optional :auto_issuance, Orb::Internal::Type::Boolean, nil?: true
+
       # @!attribute billing_address
       #
       #   @return [Orb::Models::AddressInput, nil]
@@ -267,7 +276,7 @@ module Orb
       #   @return [Orb::Models::CustomerTaxID, nil]
       optional :tax_id, -> { Orb::CustomerTaxID }, nil?: true
 
-      # @!method initialize(accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, billing_address: nil, currency: nil, email: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, name: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, request_options: {})
+      # @!method initialize(accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, billing_address: nil, currency: nil, email: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, name: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::CustomerUpdateByExternalIDParams} for more details.
       #
@@ -276,6 +285,8 @@ module Orb
       #   @param additional_emails [Array<String>, nil] Additional email addresses for this customer. If populated, these email addresse
       #
       #   @param auto_collection [Boolean, nil] Used to determine if invoices for this customer will automatically attempt to ch
+      #
+      #   @param auto_issuance [Boolean, nil] Used to determine if invoices for this customer will be automatically issued. If
       #
       #   @param billing_address [Orb::Models::AddressInput, nil]
       #

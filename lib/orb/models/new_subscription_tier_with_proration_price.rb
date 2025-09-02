@@ -63,7 +63,7 @@ module Orb
       #
       #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
       optional :conversion_rate_config,
-               union: -> { Orb::NewSubscriptionTierWithProrationPrice::UnnamedTypeWithobjectParent80 },
+               union: -> { Orb::NewSubscriptionTierWithProrationPrice::UnnamedTypeWithobjectParent79 },
                nil?: true
 
       # @!attribute currency

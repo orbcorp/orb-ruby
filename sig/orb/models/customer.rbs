@@ -5,6 +5,7 @@ module Orb
         id: String,
         additional_emails: ::Array[String],
         auto_collection: bool,
+        auto_issuance: bool?,
         balance: String,
         billing_address: Orb::Address?,
         created_at: Time,
@@ -32,6 +33,8 @@ module Orb
       attr_accessor additional_emails: ::Array[String]
 
       attr_accessor auto_collection: bool
+
+      attr_accessor auto_issuance: bool?
 
       attr_accessor balance: String
 
@@ -75,6 +78,7 @@ module Orb
         id: String,
         additional_emails: ::Array[String],
         auto_collection: bool,
+        auto_issuance: bool?,
         balance: String,
         billing_address: Orb::Address?,
         created_at: Time,
@@ -100,6 +104,7 @@ module Orb
         id: String,
         additional_emails: ::Array[String],
         auto_collection: bool,
+        auto_issuance: bool?,
         balance: String,
         billing_address: Orb::Address?,
         created_at: Time,

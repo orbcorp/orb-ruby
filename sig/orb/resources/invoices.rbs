@@ -7,6 +7,7 @@ module Orb
         line_items: ::Array[Orb::InvoiceCreateParams::LineItem],
         ?customer_id: String?,
         ?discount: Orb::Models::discount?,
+        ?due_date: Orb::Models::InvoiceCreateParams::due_date?,
         ?external_customer_id: String?,
         ?memo: String?,
         ?metadata: ::Hash[Symbol, String?]?,
@@ -17,7 +18,9 @@ module Orb
 
       def update: (
         String invoice_id,
+        ?due_date: Orb::Models::InvoiceUpdateParams::due_date?,
         ?metadata: ::Hash[Symbol, String?]?,
+        ?net_terms: Integer?,
         ?request_options: Orb::request_opts
       ) -> Orb::Invoice
 

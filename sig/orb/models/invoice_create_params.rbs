@@ -7,6 +7,7 @@ module Orb
         line_items: ::Array[Orb::InvoiceCreateParams::LineItem],
         customer_id: String?,
         discount: Orb::Models::discount?,
+        due_date: Orb::Models::InvoiceCreateParams::due_date?,
         external_customer_id: String?,
         memo: String?,
         metadata: ::Hash[Symbol, String?]?,
@@ -29,6 +30,8 @@ module Orb
 
       attr_accessor discount: Orb::Models::discount?
 
+      attr_accessor due_date: Orb::Models::InvoiceCreateParams::due_date?
+
       attr_accessor external_customer_id: String?
 
       attr_accessor memo: String?
@@ -47,6 +50,7 @@ module Orb
         line_items: ::Array[Orb::InvoiceCreateParams::LineItem],
         ?customer_id: String?,
         ?discount: Orb::Models::discount?,
+        ?due_date: Orb::Models::InvoiceCreateParams::due_date?,
         ?external_customer_id: String?,
         ?memo: String?,
         ?metadata: ::Hash[Symbol, String?]?,
@@ -61,6 +65,7 @@ module Orb
         line_items: ::Array[Orb::InvoiceCreateParams::LineItem],
         customer_id: String?,
         discount: Orb::Models::discount?,
+        due_date: Orb::Models::InvoiceCreateParams::due_date?,
         external_customer_id: String?,
         memo: String?,
         metadata: ::Hash[Symbol, String?]?,
@@ -124,6 +129,14 @@ module Orb
 
           def self?.values: -> ::Array[Orb::Models::InvoiceCreateParams::LineItem::model_type]
         end
+      end
+
+      type due_date = Date | Time
+
+      module DueDate
+        extend Orb::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Orb::Models::InvoiceCreateParams::due_date]
       end
     end
   end
