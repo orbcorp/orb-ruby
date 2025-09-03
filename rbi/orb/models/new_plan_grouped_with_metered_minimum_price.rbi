@@ -17,13 +17,27 @@ module Orb
       end
       attr_accessor :cadence
 
-      sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :grouped_with_metered_minimum_config
+      # Configuration for grouped_with_metered_minimum pricing
+      sig do
+        returns(
+          Orb::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig
+        )
+      end
+      attr_reader :grouped_with_metered_minimum_config
+
+      sig do
+        params(
+          grouped_with_metered_minimum_config:
+            Orb::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig::OrHash
+        ).void
+      end
+      attr_writer :grouped_with_metered_minimum_config
 
       # The id of the item the price will be associated with.
       sig { returns(String) }
       attr_accessor :item_id
 
+      # The pricing model type
       sig do
         returns(Orb::NewPlanGroupedWithMeteredMinimumPrice::ModelType::OrSymbol)
       end
@@ -131,7 +145,8 @@ module Orb
         params(
           cadence:
             Orb::NewPlanGroupedWithMeteredMinimumPrice::Cadence::OrSymbol,
-          grouped_with_metered_minimum_config: T::Hash[Symbol, T.anything],
+          grouped_with_metered_minimum_config:
+            Orb::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig::OrHash,
           item_id: String,
           model_type:
             Orb::NewPlanGroupedWithMeteredMinimumPrice::ModelType::OrSymbol,
@@ -163,9 +178,11 @@ module Orb
       def self.new(
         # The cadence to bill for this price on.
         cadence:,
+        # Configuration for grouped_with_metered_minimum pricing
         grouped_with_metered_minimum_config:,
         # The id of the item the price will be associated with.
         item_id:,
+        # The pricing model type
         model_type:,
         # The name of the price.
         name:,
@@ -212,7 +229,8 @@ module Orb
           {
             cadence:
               Orb::NewPlanGroupedWithMeteredMinimumPrice::Cadence::OrSymbol,
-            grouped_with_metered_minimum_config: T::Hash[Symbol, T.anything],
+            grouped_with_metered_minimum_config:
+              Orb::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig,
             item_id: String,
             model_type:
               Orb::NewPlanGroupedWithMeteredMinimumPrice::ModelType::OrSymbol,
@@ -297,6 +315,187 @@ module Orb
         end
       end
 
+      class GroupedWithMeteredMinimumConfig < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig,
+              Orb::Internal::AnyHash
+            )
+          end
+
+        # Used to partition the usage into groups. The minimum amount is applied to each
+        # group.
+        sig { returns(String) }
+        attr_accessor :grouping_key
+
+        # The minimum amount to charge per group per unit
+        sig { returns(String) }
+        attr_accessor :minimum_unit_amount
+
+        # Used to determine the unit rate
+        sig { returns(String) }
+        attr_accessor :pricing_key
+
+        # Scale the unit rates by the scaling factor.
+        sig do
+          returns(
+            T::Array[
+              Orb::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig::ScalingFactor
+            ]
+          )
+        end
+        attr_accessor :scaling_factors
+
+        # Used to determine the unit rate scaling factor
+        sig { returns(String) }
+        attr_accessor :scaling_key
+
+        # Apply per unit pricing to each pricing value. The minimum amount is applied any
+        # unmatched usage.
+        sig do
+          returns(
+            T::Array[
+              Orb::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig::UnitAmount
+            ]
+          )
+        end
+        attr_accessor :unit_amounts
+
+        # Configuration for grouped_with_metered_minimum pricing
+        sig do
+          params(
+            grouping_key: String,
+            minimum_unit_amount: String,
+            pricing_key: String,
+            scaling_factors:
+              T::Array[
+                Orb::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig::ScalingFactor::OrHash
+              ],
+            scaling_key: String,
+            unit_amounts:
+              T::Array[
+                Orb::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig::UnitAmount::OrHash
+              ]
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Used to partition the usage into groups. The minimum amount is applied to each
+          # group.
+          grouping_key:,
+          # The minimum amount to charge per group per unit
+          minimum_unit_amount:,
+          # Used to determine the unit rate
+          pricing_key:,
+          # Scale the unit rates by the scaling factor.
+          scaling_factors:,
+          # Used to determine the unit rate scaling factor
+          scaling_key:,
+          # Apply per unit pricing to each pricing value. The minimum amount is applied any
+          # unmatched usage.
+          unit_amounts:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              grouping_key: String,
+              minimum_unit_amount: String,
+              pricing_key: String,
+              scaling_factors:
+                T::Array[
+                  Orb::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig::ScalingFactor
+                ],
+              scaling_key: String,
+              unit_amounts:
+                T::Array[
+                  Orb::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig::UnitAmount
+                ]
+            }
+          )
+        end
+        def to_hash
+        end
+
+        class ScalingFactor < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig::ScalingFactor,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # Scaling factor
+          sig { returns(String) }
+          attr_accessor :scaling_factor
+
+          # Scaling value
+          sig { returns(String) }
+          attr_accessor :scaling_value
+
+          # Configuration for a scaling factor
+          sig do
+            params(scaling_factor: String, scaling_value: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # Scaling factor
+            scaling_factor:,
+            # Scaling value
+            scaling_value:
+          )
+          end
+
+          sig do
+            override.returns({ scaling_factor: String, scaling_value: String })
+          end
+          def to_hash
+          end
+        end
+
+        class UnitAmount < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig::UnitAmount,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # Pricing value
+          sig { returns(String) }
+          attr_accessor :pricing_value
+
+          # Per unit amount
+          sig { returns(String) }
+          attr_accessor :unit_amount
+
+          # Configuration for a unit amount
+          sig do
+            params(pricing_value: String, unit_amount: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # Pricing value
+            pricing_value:,
+            # Per unit amount
+            unit_amount:
+          )
+          end
+
+          sig do
+            override.returns({ pricing_value: String, unit_amount: String })
+          end
+          def to_hash
+          end
+        end
+      end
+
+      # The pricing model type
       module ModelType
         extend Orb::Internal::Type::Enum
 

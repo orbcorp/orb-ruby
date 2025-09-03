@@ -7,7 +7,7 @@ module Orb
         item_id: String,
         model_type: Orb::Models::NewFloatingTieredPackageWithMinimumPrice::model_type,
         name: String,
-        tiered_package_with_minimum_config: ::Hash[Symbol, top],
+        tiered_package_with_minimum_config: Orb::NewFloatingTieredPackageWithMinimumPrice::TieredPackageWithMinimumConfig,
         billable_metric_id: String?,
         billed_in_advance: bool?,
         billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -32,7 +32,7 @@ module Orb
 
       attr_accessor name: String
 
-      attr_accessor tiered_package_with_minimum_config: ::Hash[Symbol, top]
+      attr_accessor tiered_package_with_minimum_config: Orb::NewFloatingTieredPackageWithMinimumPrice::TieredPackageWithMinimumConfig
 
       attr_accessor billable_metric_id: String?
 
@@ -62,7 +62,7 @@ module Orb
         item_id: String,
         model_type: Orb::Models::NewFloatingTieredPackageWithMinimumPrice::model_type,
         name: String,
-        tiered_package_with_minimum_config: ::Hash[Symbol, top],
+        tiered_package_with_minimum_config: Orb::NewFloatingTieredPackageWithMinimumPrice::TieredPackageWithMinimumConfig,
         ?billable_metric_id: String?,
         ?billed_in_advance: bool?,
         ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -82,7 +82,7 @@ module Orb
         item_id: String,
         model_type: Orb::Models::NewFloatingTieredPackageWithMinimumPrice::model_type,
         name: String,
-        tiered_package_with_minimum_config: ::Hash[Symbol, top],
+        tiered_package_with_minimum_config: Orb::NewFloatingTieredPackageWithMinimumPrice::TieredPackageWithMinimumConfig,
         billable_metric_id: String?,
         billed_in_advance: bool?,
         billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -120,6 +120,51 @@ module Orb
         TIERED_PACKAGE_WITH_MINIMUM: :tiered_package_with_minimum
 
         def self?.values: -> ::Array[Orb::Models::NewFloatingTieredPackageWithMinimumPrice::model_type]
+      end
+
+      type tiered_package_with_minimum_config =
+        {
+          package_size: Float,
+          tiers: ::Array[Orb::NewFloatingTieredPackageWithMinimumPrice::TieredPackageWithMinimumConfig::Tier]
+        }
+
+      class TieredPackageWithMinimumConfig < Orb::Internal::Type::BaseModel
+        attr_accessor package_size: Float
+
+        attr_accessor tiers: ::Array[Orb::NewFloatingTieredPackageWithMinimumPrice::TieredPackageWithMinimumConfig::Tier]
+
+        def initialize: (
+          package_size: Float,
+          tiers: ::Array[Orb::NewFloatingTieredPackageWithMinimumPrice::TieredPackageWithMinimumConfig::Tier]
+        ) -> void
+
+        def to_hash: -> {
+          package_size: Float,
+          tiers: ::Array[Orb::NewFloatingTieredPackageWithMinimumPrice::TieredPackageWithMinimumConfig::Tier]
+        }
+
+        type tier =
+          { minimum_amount: String, per_unit: String, tier_lower_bound: String }
+
+        class Tier < Orb::Internal::Type::BaseModel
+          attr_accessor minimum_amount: String
+
+          attr_accessor per_unit: String
+
+          attr_accessor tier_lower_bound: String
+
+          def initialize: (
+            minimum_amount: String,
+            per_unit: String,
+            tier_lower_bound: String
+          ) -> void
+
+          def to_hash: -> {
+            minimum_amount: String,
+            per_unit: String,
+            tier_lower_bound: String
+          }
+        end
       end
     end
   end

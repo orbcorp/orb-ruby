@@ -3,7 +3,7 @@ module Orb
     type new_floating_cumulative_grouped_bulk_price =
       {
         cadence: Orb::Models::NewFloatingCumulativeGroupedBulkPrice::cadence,
-        cumulative_grouped_bulk_config: ::Hash[Symbol, top],
+        cumulative_grouped_bulk_config: Orb::NewFloatingCumulativeGroupedBulkPrice::CumulativeGroupedBulkConfig,
         currency: String,
         item_id: String,
         model_type: Orb::Models::NewFloatingCumulativeGroupedBulkPrice::model_type,
@@ -24,7 +24,7 @@ module Orb
     class NewFloatingCumulativeGroupedBulkPrice < Orb::Internal::Type::BaseModel
       attr_accessor cadence: Orb::Models::NewFloatingCumulativeGroupedBulkPrice::cadence
 
-      attr_accessor cumulative_grouped_bulk_config: ::Hash[Symbol, top]
+      attr_accessor cumulative_grouped_bulk_config: Orb::NewFloatingCumulativeGroupedBulkPrice::CumulativeGroupedBulkConfig
 
       attr_accessor currency: String
 
@@ -58,7 +58,7 @@ module Orb
 
       def initialize: (
         cadence: Orb::Models::NewFloatingCumulativeGroupedBulkPrice::cadence,
-        cumulative_grouped_bulk_config: ::Hash[Symbol, top],
+        cumulative_grouped_bulk_config: Orb::NewFloatingCumulativeGroupedBulkPrice::CumulativeGroupedBulkConfig,
         currency: String,
         item_id: String,
         model_type: Orb::Models::NewFloatingCumulativeGroupedBulkPrice::model_type,
@@ -78,7 +78,7 @@ module Orb
 
       def to_hash: -> {
         cadence: Orb::Models::NewFloatingCumulativeGroupedBulkPrice::cadence,
-        cumulative_grouped_bulk_config: ::Hash[Symbol, top],
+        cumulative_grouped_bulk_config: Orb::NewFloatingCumulativeGroupedBulkPrice::CumulativeGroupedBulkConfig,
         currency: String,
         item_id: String,
         model_type: Orb::Models::NewFloatingCumulativeGroupedBulkPrice::model_type,
@@ -110,6 +110,55 @@ module Orb
         CUSTOM: :custom
 
         def self?.values: -> ::Array[Orb::Models::NewFloatingCumulativeGroupedBulkPrice::cadence]
+      end
+
+      type cumulative_grouped_bulk_config =
+        {
+          dimension_values: ::Array[Orb::NewFloatingCumulativeGroupedBulkPrice::CumulativeGroupedBulkConfig::DimensionValue],
+          group: String
+        }
+
+      class CumulativeGroupedBulkConfig < Orb::Internal::Type::BaseModel
+        attr_accessor dimension_values: ::Array[Orb::NewFloatingCumulativeGroupedBulkPrice::CumulativeGroupedBulkConfig::DimensionValue]
+
+        attr_accessor group: String
+
+        def initialize: (
+          dimension_values: ::Array[Orb::NewFloatingCumulativeGroupedBulkPrice::CumulativeGroupedBulkConfig::DimensionValue],
+          group: String
+        ) -> void
+
+        def to_hash: -> {
+          dimension_values: ::Array[Orb::NewFloatingCumulativeGroupedBulkPrice::CumulativeGroupedBulkConfig::DimensionValue],
+          group: String
+        }
+
+        type dimension_value =
+          {
+            grouping_key: String,
+            tier_lower_bound: String,
+            unit_amount: String
+          }
+
+        class DimensionValue < Orb::Internal::Type::BaseModel
+          attr_accessor grouping_key: String
+
+          attr_accessor tier_lower_bound: String
+
+          attr_accessor unit_amount: String
+
+          def initialize: (
+            grouping_key: String,
+            tier_lower_bound: String,
+            unit_amount: String
+          ) -> void
+
+          def to_hash: -> {
+            grouping_key: String,
+            tier_lower_bound: String,
+            unit_amount: String
+          }
+        end
       end
 
       type model_type = :cumulative_grouped_bulk

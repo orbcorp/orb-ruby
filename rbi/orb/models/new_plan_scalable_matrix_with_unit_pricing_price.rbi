@@ -23,6 +23,7 @@ module Orb
       sig { returns(String) }
       attr_accessor :item_id
 
+      # The pricing model type
       sig do
         returns(
           Orb::NewPlanScalableMatrixWithUnitPricingPrice::ModelType::OrSymbol
@@ -34,8 +35,21 @@ module Orb
       sig { returns(String) }
       attr_accessor :name
 
-      sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :scalable_matrix_with_unit_pricing_config
+      # Configuration for scalable_matrix_with_unit_pricing pricing
+      sig do
+        returns(
+          Orb::NewPlanScalableMatrixWithUnitPricingPrice::ScalableMatrixWithUnitPricingConfig
+        )
+      end
+      attr_reader :scalable_matrix_with_unit_pricing_config
+
+      sig do
+        params(
+          scalable_matrix_with_unit_pricing_config:
+            Orb::NewPlanScalableMatrixWithUnitPricingPrice::ScalableMatrixWithUnitPricingConfig::OrHash
+        ).void
+      end
+      attr_writer :scalable_matrix_with_unit_pricing_config
 
       # The id of the billable metric for the price. Only needed if the price is
       # usage-based.
@@ -139,7 +153,8 @@ module Orb
           model_type:
             Orb::NewPlanScalableMatrixWithUnitPricingPrice::ModelType::OrSymbol,
           name: String,
-          scalable_matrix_with_unit_pricing_config: T::Hash[Symbol, T.anything],
+          scalable_matrix_with_unit_pricing_config:
+            Orb::NewPlanScalableMatrixWithUnitPricingPrice::ScalableMatrixWithUnitPricingConfig::OrHash,
           billable_metric_id: T.nilable(String),
           billed_in_advance: T.nilable(T::Boolean),
           billing_cycle_configuration:
@@ -169,9 +184,11 @@ module Orb
         cadence:,
         # The id of the item the price will be associated with.
         item_id:,
+        # The pricing model type
         model_type:,
         # The name of the price.
         name:,
+        # Configuration for scalable_matrix_with_unit_pricing pricing
         scalable_matrix_with_unit_pricing_config:,
         # The id of the billable metric for the price. Only needed if the price is
         # usage-based.
@@ -221,7 +238,7 @@ module Orb
               Orb::NewPlanScalableMatrixWithUnitPricingPrice::ModelType::OrSymbol,
             name: String,
             scalable_matrix_with_unit_pricing_config:
-              T::Hash[Symbol, T.anything],
+              Orb::NewPlanScalableMatrixWithUnitPricingPrice::ScalableMatrixWithUnitPricingConfig,
             billable_metric_id: T.nilable(String),
             billed_in_advance: T.nilable(T::Boolean),
             billing_cycle_configuration:
@@ -305,6 +322,7 @@ module Orb
         end
       end
 
+      # The pricing model type
       module ModelType
         extend Orb::Internal::Type::Enum
 
@@ -331,6 +349,138 @@ module Orb
           )
         end
         def self.values
+        end
+      end
+
+      class ScalableMatrixWithUnitPricingConfig < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::NewPlanScalableMatrixWithUnitPricingPrice::ScalableMatrixWithUnitPricingConfig,
+              Orb::Internal::AnyHash
+            )
+          end
+
+        # Used to determine the unit rate
+        sig { returns(String) }
+        attr_accessor :first_dimension
+
+        # Apply a scaling factor to each dimension
+        sig do
+          returns(
+            T::Array[
+              Orb::NewPlanScalableMatrixWithUnitPricingPrice::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor
+            ]
+          )
+        end
+        attr_accessor :matrix_scaling_factors
+
+        # The final unit price to rate against the output of the matrix
+        sig { returns(String) }
+        attr_accessor :unit_price
+
+        # If true, the unit price will be prorated to the billing period
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_accessor :prorate
+
+        # Used to determine the unit rate (optional)
+        sig { returns(T.nilable(String)) }
+        attr_accessor :second_dimension
+
+        # Configuration for scalable_matrix_with_unit_pricing pricing
+        sig do
+          params(
+            first_dimension: String,
+            matrix_scaling_factors:
+              T::Array[
+                Orb::NewPlanScalableMatrixWithUnitPricingPrice::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor::OrHash
+              ],
+            unit_price: String,
+            prorate: T.nilable(T::Boolean),
+            second_dimension: T.nilable(String)
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Used to determine the unit rate
+          first_dimension:,
+          # Apply a scaling factor to each dimension
+          matrix_scaling_factors:,
+          # The final unit price to rate against the output of the matrix
+          unit_price:,
+          # If true, the unit price will be prorated to the billing period
+          prorate: nil,
+          # Used to determine the unit rate (optional)
+          second_dimension: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              first_dimension: String,
+              matrix_scaling_factors:
+                T::Array[
+                  Orb::NewPlanScalableMatrixWithUnitPricingPrice::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor
+                ],
+              unit_price: String,
+              prorate: T.nilable(T::Boolean),
+              second_dimension: T.nilable(String)
+            }
+          )
+        end
+        def to_hash
+        end
+
+        class MatrixScalingFactor < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::NewPlanScalableMatrixWithUnitPricingPrice::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # First dimension value
+          sig { returns(String) }
+          attr_accessor :first_dimension_value
+
+          # Scaling factor
+          sig { returns(String) }
+          attr_accessor :scaling_factor
+
+          # Second dimension value (optional)
+          sig { returns(T.nilable(String)) }
+          attr_accessor :second_dimension_value
+
+          # Configuration for a single matrix scaling factor
+          sig do
+            params(
+              first_dimension_value: String,
+              scaling_factor: String,
+              second_dimension_value: T.nilable(String)
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # First dimension value
+            first_dimension_value:,
+            # Scaling factor
+            scaling_factor:,
+            # Second dimension value (optional)
+            second_dimension_value: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                first_dimension_value: String,
+                scaling_factor: String,
+                second_dimension_value: T.nilable(String)
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
     end

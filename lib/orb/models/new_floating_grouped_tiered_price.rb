@@ -16,9 +16,10 @@ module Orb
       required :currency, String
 
       # @!attribute grouped_tiered_config
+      #   Configuration for grouped_tiered pricing
       #
-      #   @return [Hash{Symbol=>Object}]
-      required :grouped_tiered_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
+      #   @return [Orb::Models::NewFloatingGroupedTieredPrice::GroupedTieredConfig]
+      required :grouped_tiered_config, -> { Orb::NewFloatingGroupedTieredPrice::GroupedTieredConfig }
 
       # @!attribute item_id
       #   The id of the item the price will be associated with.
@@ -27,6 +28,7 @@ module Orb
       required :item_id, String
 
       # @!attribute model_type
+      #   The pricing model type
       #
       #   @return [Symbol, Orb::Models::NewFloatingGroupedTieredPrice::ModelType]
       required :model_type, enum: -> { Orb::NewFloatingGroupedTieredPrice::ModelType }
@@ -120,11 +122,11 @@ module Orb
       #
       #   @param currency [String] An ISO 4217 currency string for which this price is billed in.
       #
-      #   @param grouped_tiered_config [Hash{Symbol=>Object}]
+      #   @param grouped_tiered_config [Orb::Models::NewFloatingGroupedTieredPrice::GroupedTieredConfig] Configuration for grouped_tiered pricing
       #
       #   @param item_id [String] The id of the item the price will be associated with.
       #
-      #   @param model_type [Symbol, Orb::Models::NewFloatingGroupedTieredPrice::ModelType]
+      #   @param model_type [Symbol, Orb::Models::NewFloatingGroupedTieredPrice::ModelType] The pricing model type
       #
       #   @param name [String] The name of the price.
       #
@@ -167,6 +169,57 @@ module Orb
         #   @return [Array<Symbol>]
       end
 
+      # @see Orb::Models::NewFloatingGroupedTieredPrice#grouped_tiered_config
+      class GroupedTieredConfig < Orb::Internal::Type::BaseModel
+        # @!attribute grouping_key
+        #   The billable metric property used to group before tiering
+        #
+        #   @return [String]
+        required :grouping_key, String
+
+        # @!attribute tiers
+        #   Apply tiered pricing to each segment generated after grouping with the provided
+        #   key
+        #
+        #   @return [Array<Orb::Models::NewFloatingGroupedTieredPrice::GroupedTieredConfig::Tier>]
+        required :tiers,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::NewFloatingGroupedTieredPrice::GroupedTieredConfig::Tier] }
+
+        # @!method initialize(grouping_key:, tiers:)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::NewFloatingGroupedTieredPrice::GroupedTieredConfig} for more
+        #   details.
+        #
+        #   Configuration for grouped_tiered pricing
+        #
+        #   @param grouping_key [String] The billable metric property used to group before tiering
+        #
+        #   @param tiers [Array<Orb::Models::NewFloatingGroupedTieredPrice::GroupedTieredConfig::Tier>] Apply tiered pricing to each segment generated after grouping with the provided
+
+        class Tier < Orb::Internal::Type::BaseModel
+          # @!attribute tier_lower_bound
+          #   Tier lower bound
+          #
+          #   @return [String]
+          required :tier_lower_bound, String
+
+          # @!attribute unit_amount
+          #   Per unit amount
+          #
+          #   @return [String]
+          required :unit_amount, String
+
+          # @!method initialize(tier_lower_bound:, unit_amount:)
+          #   Configuration for a single tier
+          #
+          #   @param tier_lower_bound [String] Tier lower bound
+          #
+          #   @param unit_amount [String] Per unit amount
+        end
+      end
+
+      # The pricing model type
+      #
       # @see Orb::Models::NewFloatingGroupedTieredPrice#model_type
       module ModelType
         extend Orb::Internal::Type::Enum

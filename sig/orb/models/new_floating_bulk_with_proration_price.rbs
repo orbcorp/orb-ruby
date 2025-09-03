@@ -2,7 +2,7 @@ module Orb
   module Models
     type new_floating_bulk_with_proration_price =
       {
-        bulk_with_proration_config: ::Hash[Symbol, top],
+        bulk_with_proration_config: Orb::NewFloatingBulkWithProrationPrice::BulkWithProrationConfig,
         cadence: Orb::Models::NewFloatingBulkWithProrationPrice::cadence,
         currency: String,
         item_id: String,
@@ -22,7 +22,7 @@ module Orb
       }
 
     class NewFloatingBulkWithProrationPrice < Orb::Internal::Type::BaseModel
-      attr_accessor bulk_with_proration_config: ::Hash[Symbol, top]
+      attr_accessor bulk_with_proration_config: Orb::NewFloatingBulkWithProrationPrice::BulkWithProrationConfig
 
       attr_accessor cadence: Orb::Models::NewFloatingBulkWithProrationPrice::cadence
 
@@ -57,7 +57,7 @@ module Orb
       attr_accessor metadata: ::Hash[Symbol, String?]?
 
       def initialize: (
-        bulk_with_proration_config: ::Hash[Symbol, top],
+        bulk_with_proration_config: Orb::NewFloatingBulkWithProrationPrice::BulkWithProrationConfig,
         cadence: Orb::Models::NewFloatingBulkWithProrationPrice::cadence,
         currency: String,
         item_id: String,
@@ -77,7 +77,7 @@ module Orb
       ) -> void
 
       def to_hash: -> {
-        bulk_with_proration_config: ::Hash[Symbol, top],
+        bulk_with_proration_config: Orb::NewFloatingBulkWithProrationPrice::BulkWithProrationConfig,
         cadence: Orb::Models::NewFloatingBulkWithProrationPrice::cadence,
         currency: String,
         item_id: String,
@@ -95,6 +95,38 @@ module Orb
         invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
         metadata: ::Hash[Symbol, String?]?
       }
+
+      type bulk_with_proration_config =
+        {
+          tiers: ::Array[Orb::NewFloatingBulkWithProrationPrice::BulkWithProrationConfig::Tier]
+        }
+
+      class BulkWithProrationConfig < Orb::Internal::Type::BaseModel
+        attr_accessor tiers: ::Array[Orb::NewFloatingBulkWithProrationPrice::BulkWithProrationConfig::Tier]
+
+        def initialize: (
+          tiers: ::Array[Orb::NewFloatingBulkWithProrationPrice::BulkWithProrationConfig::Tier]
+        ) -> void
+
+        def to_hash: -> {
+          tiers: ::Array[Orb::NewFloatingBulkWithProrationPrice::BulkWithProrationConfig::Tier]
+        }
+
+        type tier = { unit_amount: String, tier_lower_bound: String? }
+
+        class Tier < Orb::Internal::Type::BaseModel
+          attr_accessor unit_amount: String
+
+          attr_accessor tier_lower_bound: String?
+
+          def initialize: (
+            unit_amount: String,
+            ?tier_lower_bound: String?
+          ) -> void
+
+          def to_hash: -> { unit_amount: String, tier_lower_bound: String? }
+        end
+      end
 
       type cadence =
         :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom

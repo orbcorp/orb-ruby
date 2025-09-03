@@ -16,11 +16,14 @@ module Orb
       required :item_id, String
 
       # @!attribute max_group_tiered_package_config
+      #   Configuration for max_group_tiered_package pricing
       #
-      #   @return [Hash{Symbol=>Object}]
-      required :max_group_tiered_package_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
+      #   @return [Orb::Models::NewSubscriptionMaxGroupTieredPackagePrice::MaxGroupTieredPackageConfig]
+      required :max_group_tiered_package_config,
+               -> { Orb::NewSubscriptionMaxGroupTieredPackagePrice::MaxGroupTieredPackageConfig }
 
       # @!attribute model_type
+      #   The pricing model type
       #
       #   @return [Symbol, Orb::Models::NewSubscriptionMaxGroupTieredPackagePrice::ModelType]
       required :model_type, enum: -> { Orb::NewSubscriptionMaxGroupTieredPackagePrice::ModelType }
@@ -128,9 +131,9 @@ module Orb
       #
       #   @param item_id [String] The id of the item the price will be associated with.
       #
-      #   @param max_group_tiered_package_config [Hash{Symbol=>Object}]
+      #   @param max_group_tiered_package_config [Orb::Models::NewSubscriptionMaxGroupTieredPackagePrice::MaxGroupTieredPackageConfig] Configuration for max_group_tiered_package pricing
       #
-      #   @param model_type [Symbol, Orb::Models::NewSubscriptionMaxGroupTieredPackagePrice::ModelType]
+      #   @param model_type [Symbol, Orb::Models::NewSubscriptionMaxGroupTieredPackagePrice::ModelType] The pricing model type
       #
       #   @param name [String] The name of the price.
       #
@@ -177,6 +180,64 @@ module Orb
         #   @return [Array<Symbol>]
       end
 
+      # @see Orb::Models::NewSubscriptionMaxGroupTieredPackagePrice#max_group_tiered_package_config
+      class MaxGroupTieredPackageConfig < Orb::Internal::Type::BaseModel
+        # @!attribute grouping_key
+        #   The event property used to group before tiering the group with the highest value
+        #
+        #   @return [String]
+        required :grouping_key, String
+
+        # @!attribute package_size
+        #   Package size
+        #
+        #   @return [String]
+        required :package_size, String
+
+        # @!attribute tiers
+        #   Apply tiered pricing to the largest group after grouping with the provided key.
+        #
+        #   @return [Array<Orb::Models::NewSubscriptionMaxGroupTieredPackagePrice::MaxGroupTieredPackageConfig::Tier>]
+        required :tiers,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::NewSubscriptionMaxGroupTieredPackagePrice::MaxGroupTieredPackageConfig::Tier] }
+
+        # @!method initialize(grouping_key:, package_size:, tiers:)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::NewSubscriptionMaxGroupTieredPackagePrice::MaxGroupTieredPackageConfig}
+        #   for more details.
+        #
+        #   Configuration for max_group_tiered_package pricing
+        #
+        #   @param grouping_key [String] The event property used to group before tiering the group with the highest value
+        #
+        #   @param package_size [String] Package size
+        #
+        #   @param tiers [Array<Orb::Models::NewSubscriptionMaxGroupTieredPackagePrice::MaxGroupTieredPackageConfig::Tier>] Apply tiered pricing to the largest group after grouping with the provided key.
+
+        class Tier < Orb::Internal::Type::BaseModel
+          # @!attribute tier_lower_bound
+          #   Tier lower bound
+          #
+          #   @return [String]
+          required :tier_lower_bound, String
+
+          # @!attribute unit_amount
+          #   Per unit amount
+          #
+          #   @return [String]
+          required :unit_amount, String
+
+          # @!method initialize(tier_lower_bound:, unit_amount:)
+          #   Configuration for a single tier
+          #
+          #   @param tier_lower_bound [String] Tier lower bound
+          #
+          #   @param unit_amount [String] Per unit amount
+        end
+      end
+
+      # The pricing model type
+      #
       # @see Orb::Models::NewSubscriptionMaxGroupTieredPackagePrice#model_type
       module ModelType
         extend Orb::Internal::Type::Enum

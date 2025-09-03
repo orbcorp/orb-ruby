@@ -6,7 +6,7 @@ module Orb
         grouping: Orb::SubLineItemGrouping?,
         name: String,
         quantity: Float,
-        tier_config: Orb::TierConfig,
+        tier_config: Orb::TierSubLineItem::TierConfig,
         type: Orb::Models::TierSubLineItem::type_
       }
 
@@ -19,7 +19,7 @@ module Orb
 
       attr_accessor quantity: Float
 
-      attr_accessor tier_config: Orb::TierConfig
+      attr_accessor tier_config: Orb::TierSubLineItem::TierConfig
 
       attr_accessor type: Orb::Models::TierSubLineItem::type_
 
@@ -28,7 +28,7 @@ module Orb
         grouping: Orb::SubLineItemGrouping?,
         name: String,
         quantity: Float,
-        tier_config: Orb::TierConfig,
+        tier_config: Orb::TierSubLineItem::TierConfig,
         type: Orb::Models::TierSubLineItem::type_
       ) -> void
 
@@ -37,9 +37,32 @@ module Orb
         grouping: Orb::SubLineItemGrouping?,
         name: String,
         quantity: Float,
-        tier_config: Orb::TierConfig,
+        tier_config: Orb::TierSubLineItem::TierConfig,
         type: Orb::Models::TierSubLineItem::type_
       }
+
+      type tier_config =
+        { first_unit: Float, last_unit: Float?, unit_amount: String }
+
+      class TierConfig < Orb::Internal::Type::BaseModel
+        attr_accessor first_unit: Float
+
+        attr_accessor last_unit: Float?
+
+        attr_accessor unit_amount: String
+
+        def initialize: (
+          first_unit: Float,
+          last_unit: Float?,
+          unit_amount: String
+        ) -> void
+
+        def to_hash: -> {
+          first_unit: Float,
+          last_unit: Float?,
+          unit_amount: String
+        }
+      end
 
       type type_ = :tier
 

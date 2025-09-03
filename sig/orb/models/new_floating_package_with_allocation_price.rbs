@@ -7,7 +7,7 @@ module Orb
         item_id: String,
         model_type: Orb::Models::NewFloatingPackageWithAllocationPrice::model_type,
         name: String,
-        package_with_allocation_config: ::Hash[Symbol, top],
+        package_with_allocation_config: Orb::NewFloatingPackageWithAllocationPrice::PackageWithAllocationConfig,
         billable_metric_id: String?,
         billed_in_advance: bool?,
         billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -32,7 +32,7 @@ module Orb
 
       attr_accessor name: String
 
-      attr_accessor package_with_allocation_config: ::Hash[Symbol, top]
+      attr_accessor package_with_allocation_config: Orb::NewFloatingPackageWithAllocationPrice::PackageWithAllocationConfig
 
       attr_accessor billable_metric_id: String?
 
@@ -62,7 +62,7 @@ module Orb
         item_id: String,
         model_type: Orb::Models::NewFloatingPackageWithAllocationPrice::model_type,
         name: String,
-        package_with_allocation_config: ::Hash[Symbol, top],
+        package_with_allocation_config: Orb::NewFloatingPackageWithAllocationPrice::PackageWithAllocationConfig,
         ?billable_metric_id: String?,
         ?billed_in_advance: bool?,
         ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -82,7 +82,7 @@ module Orb
         item_id: String,
         model_type: Orb::Models::NewFloatingPackageWithAllocationPrice::model_type,
         name: String,
-        package_with_allocation_config: ::Hash[Symbol, top],
+        package_with_allocation_config: Orb::NewFloatingPackageWithAllocationPrice::PackageWithAllocationConfig,
         billable_metric_id: String?,
         billed_in_advance: bool?,
         billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -120,6 +120,29 @@ module Orb
         PACKAGE_WITH_ALLOCATION: :package_with_allocation
 
         def self?.values: -> ::Array[Orb::Models::NewFloatingPackageWithAllocationPrice::model_type]
+      end
+
+      type package_with_allocation_config =
+        { allocation: String, package_amount: String, package_size: String }
+
+      class PackageWithAllocationConfig < Orb::Internal::Type::BaseModel
+        attr_accessor allocation: String
+
+        attr_accessor package_amount: String
+
+        attr_accessor package_size: String
+
+        def initialize: (
+          allocation: String,
+          package_amount: String,
+          package_size: String
+        ) -> void
+
+        def to_hash: -> {
+          allocation: String,
+          package_amount: String,
+          package_size: String
+        }
       end
     end
   end

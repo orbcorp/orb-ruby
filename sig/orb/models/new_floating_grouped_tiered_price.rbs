@@ -4,7 +4,7 @@ module Orb
       {
         cadence: Orb::Models::NewFloatingGroupedTieredPrice::cadence,
         currency: String,
-        grouped_tiered_config: ::Hash[Symbol, top],
+        grouped_tiered_config: Orb::NewFloatingGroupedTieredPrice::GroupedTieredConfig,
         item_id: String,
         model_type: Orb::Models::NewFloatingGroupedTieredPrice::model_type,
         name: String,
@@ -26,7 +26,7 @@ module Orb
 
       attr_accessor currency: String
 
-      attr_accessor grouped_tiered_config: ::Hash[Symbol, top]
+      attr_accessor grouped_tiered_config: Orb::NewFloatingGroupedTieredPrice::GroupedTieredConfig
 
       attr_accessor item_id: String
 
@@ -59,7 +59,7 @@ module Orb
       def initialize: (
         cadence: Orb::Models::NewFloatingGroupedTieredPrice::cadence,
         currency: String,
-        grouped_tiered_config: ::Hash[Symbol, top],
+        grouped_tiered_config: Orb::NewFloatingGroupedTieredPrice::GroupedTieredConfig,
         item_id: String,
         model_type: Orb::Models::NewFloatingGroupedTieredPrice::model_type,
         name: String,
@@ -79,7 +79,7 @@ module Orb
       def to_hash: -> {
         cadence: Orb::Models::NewFloatingGroupedTieredPrice::cadence,
         currency: String,
-        grouped_tiered_config: ::Hash[Symbol, top],
+        grouped_tiered_config: Orb::NewFloatingGroupedTieredPrice::GroupedTieredConfig,
         item_id: String,
         model_type: Orb::Models::NewFloatingGroupedTieredPrice::model_type,
         name: String,
@@ -110,6 +110,43 @@ module Orb
         CUSTOM: :custom
 
         def self?.values: -> ::Array[Orb::Models::NewFloatingGroupedTieredPrice::cadence]
+      end
+
+      type grouped_tiered_config =
+        {
+          grouping_key: String,
+          tiers: ::Array[Orb::NewFloatingGroupedTieredPrice::GroupedTieredConfig::Tier]
+        }
+
+      class GroupedTieredConfig < Orb::Internal::Type::BaseModel
+        attr_accessor grouping_key: String
+
+        attr_accessor tiers: ::Array[Orb::NewFloatingGroupedTieredPrice::GroupedTieredConfig::Tier]
+
+        def initialize: (
+          grouping_key: String,
+          tiers: ::Array[Orb::NewFloatingGroupedTieredPrice::GroupedTieredConfig::Tier]
+        ) -> void
+
+        def to_hash: -> {
+          grouping_key: String,
+          tiers: ::Array[Orb::NewFloatingGroupedTieredPrice::GroupedTieredConfig::Tier]
+        }
+
+        type tier = { tier_lower_bound: String, unit_amount: String }
+
+        class Tier < Orb::Internal::Type::BaseModel
+          attr_accessor tier_lower_bound: String
+
+          attr_accessor unit_amount: String
+
+          def initialize: (
+            tier_lower_bound: String,
+            unit_amount: String
+          ) -> void
+
+          def to_hash: -> { tier_lower_bound: String, unit_amount: String }
+        end
       end
 
       type model_type = :grouped_tiered

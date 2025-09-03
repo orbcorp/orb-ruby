@@ -22,6 +22,7 @@ module Orb
       required :item_id, String
 
       # @!attribute model_type
+      #   The pricing model type
       #
       #   @return [Symbol, Orb::Models::NewFloatingUnitPrice::ModelType]
       required :model_type, enum: -> { Orb::NewFloatingUnitPrice::ModelType }
@@ -33,6 +34,7 @@ module Orb
       required :name, String
 
       # @!attribute unit_config
+      #   Configuration for unit pricing
       #
       #   @return [Orb::Models::UnitConfig]
       required :unit_config, -> { Orb::UnitConfig }
@@ -122,11 +124,11 @@ module Orb
       #
       #   @param item_id [String] The id of the item the price will be associated with.
       #
-      #   @param model_type [Symbol, Orb::Models::NewFloatingUnitPrice::ModelType]
+      #   @param model_type [Symbol, Orb::Models::NewFloatingUnitPrice::ModelType] The pricing model type
       #
       #   @param name [String] The name of the price.
       #
-      #   @param unit_config [Orb::Models::UnitConfig]
+      #   @param unit_config [Orb::Models::UnitConfig] Configuration for unit pricing
       #
       #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
       #
@@ -167,6 +169,8 @@ module Orb
         #   @return [Array<Symbol>]
       end
 
+      # The pricing model type
+      #
       # @see Orb::Models::NewFloatingUnitPrice#model_type
       module ModelType
         extend Orb::Internal::Type::Enum

@@ -23,6 +23,7 @@ module Orb
       sig { returns(String) }
       attr_accessor :item_id
 
+      # The pricing model type
       sig do
         returns(
           Orb::NewSubscriptionThresholdTotalAmountPrice::ModelType::OrSymbol
@@ -34,8 +35,21 @@ module Orb
       sig { returns(String) }
       attr_accessor :name
 
-      sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :threshold_total_amount_config
+      # Configuration for threshold_total_amount pricing
+      sig do
+        returns(
+          Orb::NewSubscriptionThresholdTotalAmountPrice::ThresholdTotalAmountConfig
+        )
+      end
+      attr_reader :threshold_total_amount_config
+
+      sig do
+        params(
+          threshold_total_amount_config:
+            Orb::NewSubscriptionThresholdTotalAmountPrice::ThresholdTotalAmountConfig::OrHash
+        ).void
+      end
+      attr_writer :threshold_total_amount_config
 
       # The id of the billable metric for the price. Only needed if the price is
       # usage-based.
@@ -139,7 +153,8 @@ module Orb
           model_type:
             Orb::NewSubscriptionThresholdTotalAmountPrice::ModelType::OrSymbol,
           name: String,
-          threshold_total_amount_config: T::Hash[Symbol, T.anything],
+          threshold_total_amount_config:
+            Orb::NewSubscriptionThresholdTotalAmountPrice::ThresholdTotalAmountConfig::OrHash,
           billable_metric_id: T.nilable(String),
           billed_in_advance: T.nilable(T::Boolean),
           billing_cycle_configuration:
@@ -169,9 +184,11 @@ module Orb
         cadence:,
         # The id of the item the price will be associated with.
         item_id:,
+        # The pricing model type
         model_type:,
         # The name of the price.
         name:,
+        # Configuration for threshold_total_amount pricing
         threshold_total_amount_config:,
         # The id of the billable metric for the price. Only needed if the price is
         # usage-based.
@@ -220,7 +237,8 @@ module Orb
             model_type:
               Orb::NewSubscriptionThresholdTotalAmountPrice::ModelType::OrSymbol,
             name: String,
-            threshold_total_amount_config: T::Hash[Symbol, T.anything],
+            threshold_total_amount_config:
+              Orb::NewSubscriptionThresholdTotalAmountPrice::ThresholdTotalAmountConfig,
             billable_metric_id: T.nilable(String),
             billed_in_advance: T.nilable(T::Boolean),
             billing_cycle_configuration:
@@ -304,6 +322,7 @@ module Orb
         end
       end
 
+      # The pricing model type
       module ModelType
         extend Orb::Internal::Type::Enum
 
@@ -330,6 +349,100 @@ module Orb
           )
         end
         def self.values
+        end
+      end
+
+      class ThresholdTotalAmountConfig < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::NewSubscriptionThresholdTotalAmountPrice::ThresholdTotalAmountConfig,
+              Orb::Internal::AnyHash
+            )
+          end
+
+        # When the quantity consumed passes a provided threshold, the configured total
+        # will be charged
+        sig do
+          returns(
+            T::Array[
+              Orb::NewSubscriptionThresholdTotalAmountPrice::ThresholdTotalAmountConfig::ConsumptionTable
+            ]
+          )
+        end
+        attr_accessor :consumption_table
+
+        # If true, the unit price will be prorated to the billing period
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_accessor :prorate
+
+        # Configuration for threshold_total_amount pricing
+        sig do
+          params(
+            consumption_table:
+              T::Array[
+                Orb::NewSubscriptionThresholdTotalAmountPrice::ThresholdTotalAmountConfig::ConsumptionTable::OrHash
+              ],
+            prorate: T.nilable(T::Boolean)
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # When the quantity consumed passes a provided threshold, the configured total
+          # will be charged
+          consumption_table:,
+          # If true, the unit price will be prorated to the billing period
+          prorate: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              consumption_table:
+                T::Array[
+                  Orb::NewSubscriptionThresholdTotalAmountPrice::ThresholdTotalAmountConfig::ConsumptionTable
+                ],
+              prorate: T.nilable(T::Boolean)
+            }
+          )
+        end
+        def to_hash
+        end
+
+        class ConsumptionTable < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::NewSubscriptionThresholdTotalAmountPrice::ThresholdTotalAmountConfig::ConsumptionTable,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # Quantity threshold
+          sig { returns(String) }
+          attr_accessor :threshold
+
+          # Total amount for this threshold
+          sig { returns(String) }
+          attr_accessor :total_amount
+
+          # Configuration for a single threshold
+          sig do
+            params(threshold: String, total_amount: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # Quantity threshold
+            threshold:,
+            # Total amount for this threshold
+            total_amount:
+          )
+          end
+
+          sig { override.returns({ threshold: String, total_amount: String }) }
+          def to_hash
+          end
         end
       end
     end

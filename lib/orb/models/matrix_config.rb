@@ -16,17 +16,19 @@ module Orb
       required :dimensions, Orb::Internal::Type::ArrayOf[String, nil?: true]
 
       # @!attribute matrix_values
-      #   Matrix values for specified matrix grouping keys
+      #   Matrix values configuration
       #
       #   @return [Array<Orb::Models::MatrixValue>]
       required :matrix_values, -> { Orb::Internal::Type::ArrayOf[Orb::MatrixValue] }
 
       # @!method initialize(default_unit_amount:, dimensions:, matrix_values:)
+      #   Configuration for matrix pricing
+      #
       #   @param default_unit_amount [String] Default per unit rate for any usage not bucketed into a specified matrix_value
       #
       #   @param dimensions [Array<String, nil>] One or two event property values to evaluate matrix groups by
       #
-      #   @param matrix_values [Array<Orb::Models::MatrixValue>] Matrix values for specified matrix grouping keys
+      #   @param matrix_values [Array<Orb::Models::MatrixValue>] Matrix values configuration
     end
   end
 end

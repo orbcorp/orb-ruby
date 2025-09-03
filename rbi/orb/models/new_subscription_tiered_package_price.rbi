@@ -16,6 +16,7 @@ module Orb
       sig { returns(String) }
       attr_accessor :item_id
 
+      # The pricing model type
       sig do
         returns(Orb::NewSubscriptionTieredPackagePrice::ModelType::OrSymbol)
       end
@@ -25,8 +26,19 @@ module Orb
       sig { returns(String) }
       attr_accessor :name
 
-      sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :tiered_package_config
+      # Configuration for tiered_package pricing
+      sig do
+        returns(Orb::NewSubscriptionTieredPackagePrice::TieredPackageConfig)
+      end
+      attr_reader :tiered_package_config
+
+      sig do
+        params(
+          tiered_package_config:
+            Orb::NewSubscriptionTieredPackagePrice::TieredPackageConfig::OrHash
+        ).void
+      end
+      attr_writer :tiered_package_config
 
       # The id of the billable metric for the price. Only needed if the price is
       # usage-based.
@@ -129,7 +141,8 @@ module Orb
           model_type:
             Orb::NewSubscriptionTieredPackagePrice::ModelType::OrSymbol,
           name: String,
-          tiered_package_config: T::Hash[Symbol, T.anything],
+          tiered_package_config:
+            Orb::NewSubscriptionTieredPackagePrice::TieredPackageConfig::OrHash,
           billable_metric_id: T.nilable(String),
           billed_in_advance: T.nilable(T::Boolean),
           billing_cycle_configuration:
@@ -159,9 +172,11 @@ module Orb
         cadence:,
         # The id of the item the price will be associated with.
         item_id:,
+        # The pricing model type
         model_type:,
         # The name of the price.
         name:,
+        # Configuration for tiered_package pricing
         tiered_package_config:,
         # The id of the billable metric for the price. Only needed if the price is
         # usage-based.
@@ -209,7 +224,8 @@ module Orb
             model_type:
               Orb::NewSubscriptionTieredPackagePrice::ModelType::OrSymbol,
             name: String,
-            tiered_package_config: T::Hash[Symbol, T.anything],
+            tiered_package_config:
+              Orb::NewSubscriptionTieredPackagePrice::TieredPackageConfig,
             billable_metric_id: T.nilable(String),
             billed_in_advance: T.nilable(T::Boolean),
             billing_cycle_configuration:
@@ -290,6 +306,7 @@ module Orb
         end
       end
 
+      # The pricing model type
       module ModelType
         extend Orb::Internal::Type::Enum
 
@@ -313,6 +330,102 @@ module Orb
           )
         end
         def self.values
+        end
+      end
+
+      class TieredPackageConfig < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::NewSubscriptionTieredPackagePrice::TieredPackageConfig,
+              Orb::Internal::AnyHash
+            )
+          end
+
+        # Package size
+        sig { returns(String) }
+        attr_accessor :package_size
+
+        # Apply tiered pricing after rounding up the quantity to the package size. Tiers
+        # are defined using exclusive lower bounds.
+        sig do
+          returns(
+            T::Array[
+              Orb::NewSubscriptionTieredPackagePrice::TieredPackageConfig::Tier
+            ]
+          )
+        end
+        attr_accessor :tiers
+
+        # Configuration for tiered_package pricing
+        sig do
+          params(
+            package_size: String,
+            tiers:
+              T::Array[
+                Orb::NewSubscriptionTieredPackagePrice::TieredPackageConfig::Tier::OrHash
+              ]
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Package size
+          package_size:,
+          # Apply tiered pricing after rounding up the quantity to the package size. Tiers
+          # are defined using exclusive lower bounds.
+          tiers:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              package_size: String,
+              tiers:
+                T::Array[
+                  Orb::NewSubscriptionTieredPackagePrice::TieredPackageConfig::Tier
+                ]
+            }
+          )
+        end
+        def to_hash
+        end
+
+        class Tier < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::NewSubscriptionTieredPackagePrice::TieredPackageConfig::Tier,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # Price per package
+          sig { returns(String) }
+          attr_accessor :per_unit
+
+          # Tier lower bound
+          sig { returns(String) }
+          attr_accessor :tier_lower_bound
+
+          # Configuration for a single tier with business logic
+          sig do
+            params(per_unit: String, tier_lower_bound: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # Price per package
+            per_unit:,
+            # Tier lower bound
+            tier_lower_bound:
+          )
+          end
+
+          sig do
+            override.returns({ per_unit: String, tier_lower_bound: String })
+          end
+          def to_hash
+          end
         end
       end
     end

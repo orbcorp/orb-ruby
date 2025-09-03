@@ -13,6 +13,7 @@ module Orb
       sig { returns(T.nilable(Float)) }
       attr_accessor :maximum_units
 
+      # Configuration for a single bulk pricing tier
       sig do
         params(unit_amount: String, maximum_units: T.nilable(Float)).returns(
           T.attached_class

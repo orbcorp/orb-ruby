@@ -24,33 +24,52 @@ module Orb
           model_type: Orb::PriceCreateParams::ModelType::OrSymbol,
           name: String,
           unit_config: Orb::UnitConfig::OrHash,
-          package_config: Orb::PackageConfig::OrHash,
-          matrix_config: Orb::MatrixConfig::OrHash,
-          matrix_with_allocation_config:
-            Orb::MatrixWithAllocationConfig::OrHash,
           tiered_config: Orb::TieredConfig::OrHash,
           bulk_config: Orb::BulkConfig::OrHash,
-          threshold_total_amount_config: T::Hash[Symbol, T.anything],
-          tiered_package_config: T::Hash[Symbol, T.anything],
-          grouped_tiered_config: T::Hash[Symbol, T.anything],
-          max_group_tiered_package_config: T::Hash[Symbol, T.anything],
-          tiered_with_minimum_config: T::Hash[Symbol, T.anything],
-          package_with_allocation_config: T::Hash[Symbol, T.anything],
-          tiered_package_with_minimum_config: T::Hash[Symbol, T.anything],
-          unit_with_percent_config: T::Hash[Symbol, T.anything],
-          tiered_with_proration_config: T::Hash[Symbol, T.anything],
-          unit_with_proration_config: T::Hash[Symbol, T.anything],
-          grouped_allocation_config: T::Hash[Symbol, T.anything],
-          grouped_with_prorated_minimum_config: T::Hash[Symbol, T.anything],
-          grouped_with_metered_minimum_config: T::Hash[Symbol, T.anything],
-          matrix_with_display_name_config: T::Hash[Symbol, T.anything],
-          bulk_with_proration_config: T::Hash[Symbol, T.anything],
-          grouped_tiered_package_config: T::Hash[Symbol, T.anything],
-          scalable_matrix_with_unit_pricing_config: T::Hash[Symbol, T.anything],
+          package_config: Orb::PackageConfig::OrHash,
+          matrix_config: Orb::MatrixConfig::OrHash,
+          threshold_total_amount_config:
+            Orb::PriceCreateParams::ThresholdTotalAmountConfig::OrHash,
+          tiered_package_config:
+            Orb::PriceCreateParams::TieredPackageConfig::OrHash,
+          tiered_with_minimum_config:
+            Orb::PriceCreateParams::TieredWithMinimumConfig::OrHash,
+          grouped_tiered_config:
+            Orb::PriceCreateParams::GroupedTieredConfig::OrHash,
+          tiered_package_with_minimum_config:
+            Orb::PriceCreateParams::TieredPackageWithMinimumConfig::OrHash,
+          package_with_allocation_config:
+            Orb::PriceCreateParams::PackageWithAllocationConfig::OrHash,
+          unit_with_percent_config:
+            Orb::PriceCreateParams::UnitWithPercentConfig::OrHash,
+          matrix_with_allocation_config:
+            Orb::MatrixWithAllocationConfig::OrHash,
+          tiered_with_proration_config:
+            Orb::PriceCreateParams::TieredWithProrationConfig::OrHash,
+          unit_with_proration_config:
+            Orb::PriceCreateParams::UnitWithProrationConfig::OrHash,
+          grouped_allocation_config:
+            Orb::PriceCreateParams::GroupedAllocationConfig::OrHash,
+          bulk_with_proration_config:
+            Orb::PriceCreateParams::BulkWithProrationConfig::OrHash,
+          grouped_with_prorated_minimum_config:
+            Orb::PriceCreateParams::GroupedWithProratedMinimumConfig::OrHash,
+          grouped_with_metered_minimum_config:
+            Orb::PriceCreateParams::GroupedWithMeteredMinimumConfig::OrHash,
+          grouped_with_min_max_thresholds_config:
+            Orb::PriceCreateParams::GroupedWithMinMaxThresholdsConfig::OrHash,
+          matrix_with_display_name_config:
+            Orb::PriceCreateParams::MatrixWithDisplayNameConfig::OrHash,
+          grouped_tiered_package_config:
+            Orb::PriceCreateParams::GroupedTieredPackageConfig::OrHash,
+          max_group_tiered_package_config:
+            Orb::PriceCreateParams::MaxGroupTieredPackageConfig::OrHash,
+          scalable_matrix_with_unit_pricing_config:
+            Orb::PriceCreateParams::ScalableMatrixWithUnitPricingConfig::OrHash,
           scalable_matrix_with_tiered_pricing_config:
-            T::Hash[Symbol, T.anything],
-          cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
-          grouped_with_min_max_thresholds_config: T::Hash[Symbol, T.anything],
+            Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig::OrHash,
+          cumulative_grouped_bulk_config:
+            Orb::PriceCreateParams::CumulativeGroupedBulkConfig::OrHash,
           minimum_config: Orb::PriceCreateParams::MinimumConfig::OrHash,
           billable_metric_id: T.nilable(String),
           billed_in_advance: T.nilable(T::Boolean),
@@ -82,35 +101,63 @@ module Orb
         currency:,
         # The id of the item the price will be associated with.
         item_id:,
+        # The pricing model type
         model_type:,
         # The name of the price.
         name:,
+        # Configuration for unit pricing
         unit_config:,
-        package_config:,
-        matrix_config:,
-        matrix_with_allocation_config:,
+        # Configuration for tiered pricing
         tiered_config:,
+        # Configuration for bulk pricing
         bulk_config:,
+        # Configuration for package pricing
+        package_config:,
+        # Configuration for matrix pricing
+        matrix_config:,
+        # Configuration for threshold_total_amount pricing
         threshold_total_amount_config:,
+        # Configuration for tiered_package pricing
         tiered_package_config:,
-        grouped_tiered_config:,
-        max_group_tiered_package_config:,
+        # Configuration for tiered_with_minimum pricing
         tiered_with_minimum_config:,
-        package_with_allocation_config:,
+        # Configuration for grouped_tiered pricing
+        grouped_tiered_config:,
+        # Configuration for tiered_package_with_minimum pricing
         tiered_package_with_minimum_config:,
+        # Configuration for package_with_allocation pricing
+        package_with_allocation_config:,
+        # Configuration for unit_with_percent pricing
         unit_with_percent_config:,
+        # Configuration for matrix_with_allocation pricing
+        matrix_with_allocation_config:,
+        # Configuration for tiered_with_proration pricing
         tiered_with_proration_config:,
+        # Configuration for unit_with_proration pricing
         unit_with_proration_config:,
+        # Configuration for grouped_allocation pricing
         grouped_allocation_config:,
-        grouped_with_prorated_minimum_config:,
-        grouped_with_metered_minimum_config:,
-        matrix_with_display_name_config:,
+        # Configuration for bulk_with_proration pricing
         bulk_with_proration_config:,
-        grouped_tiered_package_config:,
-        scalable_matrix_with_unit_pricing_config:,
-        scalable_matrix_with_tiered_pricing_config:,
-        cumulative_grouped_bulk_config:,
+        # Configuration for grouped_with_prorated_minimum pricing
+        grouped_with_prorated_minimum_config:,
+        # Configuration for grouped_with_metered_minimum pricing
+        grouped_with_metered_minimum_config:,
+        # Configuration for grouped_with_min_max_thresholds pricing
         grouped_with_min_max_thresholds_config:,
+        # Configuration for matrix_with_display_name pricing
+        matrix_with_display_name_config:,
+        # Configuration for grouped_tiered_package pricing
+        grouped_tiered_package_config:,
+        # Configuration for max_group_tiered_package pricing
+        max_group_tiered_package_config:,
+        # Configuration for scalable_matrix_with_unit_pricing pricing
+        scalable_matrix_with_unit_pricing_config:,
+        # Configuration for scalable_matrix_with_tiered_pricing pricing
+        scalable_matrix_with_tiered_pricing_config:,
+        # Configuration for cumulative_grouped_bulk pricing
+        cumulative_grouped_bulk_config:,
+        # Configuration for minimum pricing
         minimum_config:,
         # The id of the billable metric for the price. Only needed if the price is
         # usage-based.

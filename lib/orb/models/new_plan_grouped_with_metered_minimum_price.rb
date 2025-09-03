@@ -10,9 +10,11 @@ module Orb
       required :cadence, enum: -> { Orb::NewPlanGroupedWithMeteredMinimumPrice::Cadence }
 
       # @!attribute grouped_with_metered_minimum_config
+      #   Configuration for grouped_with_metered_minimum pricing
       #
-      #   @return [Hash{Symbol=>Object}]
-      required :grouped_with_metered_minimum_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
+      #   @return [Orb::Models::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig]
+      required :grouped_with_metered_minimum_config,
+               -> { Orb::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig }
 
       # @!attribute item_id
       #   The id of the item the price will be associated with.
@@ -21,6 +23,7 @@ module Orb
       required :item_id, String
 
       # @!attribute model_type
+      #   The pricing model type
       #
       #   @return [Symbol, Orb::Models::NewPlanGroupedWithMeteredMinimumPrice::ModelType]
       required :model_type, enum: -> { Orb::NewPlanGroupedWithMeteredMinimumPrice::ModelType }
@@ -126,11 +129,11 @@ module Orb
       #
       #   @param cadence [Symbol, Orb::Models::NewPlanGroupedWithMeteredMinimumPrice::Cadence] The cadence to bill for this price on.
       #
-      #   @param grouped_with_metered_minimum_config [Hash{Symbol=>Object}]
+      #   @param grouped_with_metered_minimum_config [Orb::Models::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig] Configuration for grouped_with_metered_minimum pricing
       #
       #   @param item_id [String] The id of the item the price will be associated with.
       #
-      #   @param model_type [Symbol, Orb::Models::NewPlanGroupedWithMeteredMinimumPrice::ModelType]
+      #   @param model_type [Symbol, Orb::Models::NewPlanGroupedWithMeteredMinimumPrice::ModelType] The pricing model type
       #
       #   @param name [String] The name of the price.
       #
@@ -177,6 +180,112 @@ module Orb
         #   @return [Array<Symbol>]
       end
 
+      # @see Orb::Models::NewPlanGroupedWithMeteredMinimumPrice#grouped_with_metered_minimum_config
+      class GroupedWithMeteredMinimumConfig < Orb::Internal::Type::BaseModel
+        # @!attribute grouping_key
+        #   Used to partition the usage into groups. The minimum amount is applied to each
+        #   group.
+        #
+        #   @return [String]
+        required :grouping_key, String
+
+        # @!attribute minimum_unit_amount
+        #   The minimum amount to charge per group per unit
+        #
+        #   @return [String]
+        required :minimum_unit_amount, String
+
+        # @!attribute pricing_key
+        #   Used to determine the unit rate
+        #
+        #   @return [String]
+        required :pricing_key, String
+
+        # @!attribute scaling_factors
+        #   Scale the unit rates by the scaling factor.
+        #
+        #   @return [Array<Orb::Models::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig::ScalingFactor>]
+        required :scaling_factors,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig::ScalingFactor] }
+
+        # @!attribute scaling_key
+        #   Used to determine the unit rate scaling factor
+        #
+        #   @return [String]
+        required :scaling_key, String
+
+        # @!attribute unit_amounts
+        #   Apply per unit pricing to each pricing value. The minimum amount is applied any
+        #   unmatched usage.
+        #
+        #   @return [Array<Orb::Models::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig::UnitAmount>]
+        required :unit_amounts,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig::UnitAmount] }
+
+        # @!method initialize(grouping_key:, minimum_unit_amount:, pricing_key:, scaling_factors:, scaling_key:, unit_amounts:)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig}
+        #   for more details.
+        #
+        #   Configuration for grouped_with_metered_minimum pricing
+        #
+        #   @param grouping_key [String] Used to partition the usage into groups. The minimum amount is applied to each g
+        #
+        #   @param minimum_unit_amount [String] The minimum amount to charge per group per unit
+        #
+        #   @param pricing_key [String] Used to determine the unit rate
+        #
+        #   @param scaling_factors [Array<Orb::Models::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig::ScalingFactor>] Scale the unit rates by the scaling factor.
+        #
+        #   @param scaling_key [String] Used to determine the unit rate scaling factor
+        #
+        #   @param unit_amounts [Array<Orb::Models::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig::UnitAmount>] Apply per unit pricing to each pricing value. The minimum amount is applied any
+
+        class ScalingFactor < Orb::Internal::Type::BaseModel
+          # @!attribute scaling_factor
+          #   Scaling factor
+          #
+          #   @return [String]
+          required :scaling_factor, String
+
+          # @!attribute scaling_value
+          #   Scaling value
+          #
+          #   @return [String]
+          required :scaling_value, String
+
+          # @!method initialize(scaling_factor:, scaling_value:)
+          #   Configuration for a scaling factor
+          #
+          #   @param scaling_factor [String] Scaling factor
+          #
+          #   @param scaling_value [String] Scaling value
+        end
+
+        class UnitAmount < Orb::Internal::Type::BaseModel
+          # @!attribute pricing_value
+          #   Pricing value
+          #
+          #   @return [String]
+          required :pricing_value, String
+
+          # @!attribute unit_amount
+          #   Per unit amount
+          #
+          #   @return [String]
+          required :unit_amount, String
+
+          # @!method initialize(pricing_value:, unit_amount:)
+          #   Configuration for a unit amount
+          #
+          #   @param pricing_value [String] Pricing value
+          #
+          #   @param unit_amount [String] Per unit amount
+        end
+      end
+
+      # The pricing model type
+      #
       # @see Orb::Models::NewPlanGroupedWithMeteredMinimumPrice#model_type
       module ModelType
         extend Orb::Internal::Type::Enum

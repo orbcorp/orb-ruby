@@ -6,6 +6,7 @@ module Orb
       OrHash =
         T.type_alias { T.any(Orb::NewPlanBulkPrice, Orb::Internal::AnyHash) }
 
+      # Configuration for bulk pricing
       sig { returns(Orb::BulkConfig) }
       attr_reader :bulk_config
 
@@ -20,6 +21,7 @@ module Orb
       sig { returns(String) }
       attr_accessor :item_id
 
+      # The pricing model type
       sig { returns(Orb::NewPlanBulkPrice::ModelType::OrSymbol) }
       attr_accessor :model_type
 
@@ -153,11 +155,13 @@ module Orb
         ).returns(T.attached_class)
       end
       def self.new(
+        # Configuration for bulk pricing
         bulk_config:,
         # The cadence to bill for this price on.
         cadence:,
         # The id of the item the price will be associated with.
         item_id:,
+        # The pricing model type
         model_type:,
         # The name of the price.
         name:,
@@ -262,6 +266,7 @@ module Orb
         end
       end
 
+      # The pricing model type
       module ModelType
         extend Orb::Internal::Type::Enum
 

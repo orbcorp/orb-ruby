@@ -14,7 +14,8 @@ module Orb
 
       # @!attribute additional_emails
       #   Additional email addresses for this customer. If populated, these email
-      #   addresses will be CC'd for customer communications.
+      #   addresses will be CC'd for customer communications. The total number of email
+      #   addresses (including the primary email) cannot exceed 50.
       #
       #   @return [Array<String>, nil]
       optional :additional_emails, Orb::Internal::Type::ArrayOf[String], nil?: true
@@ -120,7 +121,7 @@ module Orb
 
       # @!attribute tax_configuration
       #
-      #   @return [Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, nil]
+      #   @return [Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerUpdateParams::TaxConfiguration::Numeral, nil]
       optional :tax_configuration, union: -> { Orb::CustomerUpdateParams::TaxConfiguration }, nil?: true
 
       # @!attribute tax_id
@@ -308,7 +309,7 @@ module Orb
       #
       #   @param shipping_address [Orb::Models::AddressInput, nil]
       #
-      #   @param tax_configuration [Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, nil]
+      #   @param tax_configuration [Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerUpdateParams::TaxConfiguration::Numeral, nil]
       #
       #   @param tax_id [Orb::Models::CustomerTaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
       #
@@ -345,8 +346,26 @@ module Orb
 
         variant :sphere, -> { Orb::NewSphereConfiguration }
 
+        variant :numeral, -> { Orb::CustomerUpdateParams::TaxConfiguration::Numeral }
+
+        class Numeral < Orb::Internal::Type::BaseModel
+          # @!attribute tax_exempt
+          #
+          #   @return [Boolean]
+          required :tax_exempt, Orb::Internal::Type::Boolean
+
+          # @!attribute tax_provider
+          #
+          #   @return [Symbol, :numeral]
+          required :tax_provider, const: :numeral
+
+          # @!method initialize(tax_exempt:, tax_provider: :numeral)
+          #   @param tax_exempt [Boolean]
+          #   @param tax_provider [Symbol, :numeral]
+        end
+
         # @!method self.variants
-        #   @return [Array(Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration)]
+        #   @return [Array(Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerUpdateParams::TaxConfiguration::Numeral)]
       end
     end
   end

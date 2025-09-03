@@ -22,11 +22,13 @@ module Orb
       required :item_id, String
 
       # @!attribute minimum_config
+      #   Configuration for minimum pricing
       #
       #   @return [Orb::Models::NewFloatingMinimumCompositePrice::MinimumConfig]
       required :minimum_config, -> { Orb::NewFloatingMinimumCompositePrice::MinimumConfig }
 
       # @!attribute model_type
+      #   The pricing model type
       #
       #   @return [Symbol, Orb::Models::NewFloatingMinimumCompositePrice::ModelType]
       required :model_type, enum: -> { Orb::NewFloatingMinimumCompositePrice::ModelType }
@@ -122,9 +124,9 @@ module Orb
       #
       #   @param item_id [String] The id of the item the price will be associated with.
       #
-      #   @param minimum_config [Orb::Models::NewFloatingMinimumCompositePrice::MinimumConfig]
+      #   @param minimum_config [Orb::Models::NewFloatingMinimumCompositePrice::MinimumConfig] Configuration for minimum pricing
       #
-      #   @param model_type [Symbol, Orb::Models::NewFloatingMinimumCompositePrice::ModelType]
+      #   @param model_type [Symbol, Orb::Models::NewFloatingMinimumCompositePrice::ModelType] The pricing model type
       #
       #   @param name [String] The name of the price.
       #
@@ -176,21 +178,21 @@ module Orb
         required :minimum_amount, String
 
         # @!attribute prorated
-        #   By default, subtotals from minimum composite prices are prorated based on the
-        #   service period. Set to false to disable proration.
+        #   If true, subtotals from this price are prorated based on the service period
         #
         #   @return [Boolean, nil]
-        optional :prorated, Orb::Internal::Type::Boolean, nil?: true
+        optional :prorated, Orb::Internal::Type::Boolean
 
         # @!method initialize(minimum_amount:, prorated: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Orb::Models::NewFloatingMinimumCompositePrice::MinimumConfig} for more details.
+        #   Configuration for minimum pricing
         #
         #   @param minimum_amount [String] The minimum amount to apply
         #
-        #   @param prorated [Boolean, nil] By default, subtotals from minimum composite prices are prorated based on the se
+        #   @param prorated [Boolean] If true, subtotals from this price are prorated based on the service period
       end
 
+      # The pricing model type
+      #
       # @see Orb::Models::NewFloatingMinimumCompositePrice#model_type
       module ModelType
         extend Orb::Internal::Type::Enum

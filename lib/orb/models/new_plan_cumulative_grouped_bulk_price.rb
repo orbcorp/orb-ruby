@@ -10,9 +10,11 @@ module Orb
       required :cadence, enum: -> { Orb::NewPlanCumulativeGroupedBulkPrice::Cadence }
 
       # @!attribute cumulative_grouped_bulk_config
+      #   Configuration for cumulative_grouped_bulk pricing
       #
-      #   @return [Hash{Symbol=>Object}]
-      required :cumulative_grouped_bulk_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
+      #   @return [Orb::Models::NewPlanCumulativeGroupedBulkPrice::CumulativeGroupedBulkConfig]
+      required :cumulative_grouped_bulk_config,
+               -> { Orb::NewPlanCumulativeGroupedBulkPrice::CumulativeGroupedBulkConfig }
 
       # @!attribute item_id
       #   The id of the item the price will be associated with.
@@ -21,6 +23,7 @@ module Orb
       required :item_id, String
 
       # @!attribute model_type
+      #   The pricing model type
       #
       #   @return [Symbol, Orb::Models::NewPlanCumulativeGroupedBulkPrice::ModelType]
       required :model_type, enum: -> { Orb::NewPlanCumulativeGroupedBulkPrice::ModelType }
@@ -126,11 +129,11 @@ module Orb
       #
       #   @param cadence [Symbol, Orb::Models::NewPlanCumulativeGroupedBulkPrice::Cadence] The cadence to bill for this price on.
       #
-      #   @param cumulative_grouped_bulk_config [Hash{Symbol=>Object}]
+      #   @param cumulative_grouped_bulk_config [Orb::Models::NewPlanCumulativeGroupedBulkPrice::CumulativeGroupedBulkConfig] Configuration for cumulative_grouped_bulk pricing
       #
       #   @param item_id [String] The id of the item the price will be associated with.
       #
-      #   @param model_type [Symbol, Orb::Models::NewPlanCumulativeGroupedBulkPrice::ModelType]
+      #   @param model_type [Symbol, Orb::Models::NewPlanCumulativeGroupedBulkPrice::ModelType] The pricing model type
       #
       #   @param name [String] The name of the price.
       #
@@ -177,6 +180,60 @@ module Orb
         #   @return [Array<Symbol>]
       end
 
+      # @see Orb::Models::NewPlanCumulativeGroupedBulkPrice#cumulative_grouped_bulk_config
+      class CumulativeGroupedBulkConfig < Orb::Internal::Type::BaseModel
+        # @!attribute dimension_values
+        #   Each tier lower bound must have the same group of values.
+        #
+        #   @return [Array<Orb::Models::NewPlanCumulativeGroupedBulkPrice::CumulativeGroupedBulkConfig::DimensionValue>]
+        required :dimension_values,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::NewPlanCumulativeGroupedBulkPrice::CumulativeGroupedBulkConfig::DimensionValue] }
+
+        # @!attribute group
+        #   Grouping key name
+        #
+        #   @return [String]
+        required :group, String
+
+        # @!method initialize(dimension_values:, group:)
+        #   Configuration for cumulative_grouped_bulk pricing
+        #
+        #   @param dimension_values [Array<Orb::Models::NewPlanCumulativeGroupedBulkPrice::CumulativeGroupedBulkConfig::DimensionValue>] Each tier lower bound must have the same group of values.
+        #
+        #   @param group [String] Grouping key name
+
+        class DimensionValue < Orb::Internal::Type::BaseModel
+          # @!attribute grouping_key
+          #   Grouping key value
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute tier_lower_bound
+          #   Tier lower bound
+          #
+          #   @return [String]
+          required :tier_lower_bound, String
+
+          # @!attribute unit_amount
+          #   Unit amount for this combination
+          #
+          #   @return [String]
+          required :unit_amount, String
+
+          # @!method initialize(grouping_key:, tier_lower_bound:, unit_amount:)
+          #   Configuration for a dimension value entry
+          #
+          #   @param grouping_key [String] Grouping key value
+          #
+          #   @param tier_lower_bound [String] Tier lower bound
+          #
+          #   @param unit_amount [String] Unit amount for this combination
+        end
+      end
+
+      # The pricing model type
+      #
       # @see Orb::Models::NewPlanCumulativeGroupedBulkPrice#model_type
       module ModelType
         extend Orb::Internal::Type::Enum

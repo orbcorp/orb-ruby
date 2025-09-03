@@ -12,13 +12,23 @@ module Orb
       sig { returns(Orb::NewPlanGroupedTieredPrice::Cadence::OrSymbol) }
       attr_accessor :cadence
 
-      sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :grouped_tiered_config
+      # Configuration for grouped_tiered pricing
+      sig { returns(Orb::NewPlanGroupedTieredPrice::GroupedTieredConfig) }
+      attr_reader :grouped_tiered_config
+
+      sig do
+        params(
+          grouped_tiered_config:
+            Orb::NewPlanGroupedTieredPrice::GroupedTieredConfig::OrHash
+        ).void
+      end
+      attr_writer :grouped_tiered_config
 
       # The id of the item the price will be associated with.
       sig { returns(String) }
       attr_accessor :item_id
 
+      # The pricing model type
       sig { returns(Orb::NewPlanGroupedTieredPrice::ModelType::OrSymbol) }
       attr_accessor :model_type
 
@@ -123,7 +133,8 @@ module Orb
       sig do
         params(
           cadence: Orb::NewPlanGroupedTieredPrice::Cadence::OrSymbol,
-          grouped_tiered_config: T::Hash[Symbol, T.anything],
+          grouped_tiered_config:
+            Orb::NewPlanGroupedTieredPrice::GroupedTieredConfig::OrHash,
           item_id: String,
           model_type: Orb::NewPlanGroupedTieredPrice::ModelType::OrSymbol,
           name: String,
@@ -154,9 +165,11 @@ module Orb
       def self.new(
         # The cadence to bill for this price on.
         cadence:,
+        # Configuration for grouped_tiered pricing
         grouped_tiered_config:,
         # The id of the item the price will be associated with.
         item_id:,
+        # The pricing model type
         model_type:,
         # The name of the price.
         name:,
@@ -202,7 +215,8 @@ module Orb
         override.returns(
           {
             cadence: Orb::NewPlanGroupedTieredPrice::Cadence::OrSymbol,
-            grouped_tiered_config: T::Hash[Symbol, T.anything],
+            grouped_tiered_config:
+              Orb::NewPlanGroupedTieredPrice::GroupedTieredConfig,
             item_id: String,
             model_type: Orb::NewPlanGroupedTieredPrice::ModelType::OrSymbol,
             name: String,
@@ -275,6 +289,101 @@ module Orb
         end
       end
 
+      class GroupedTieredConfig < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::NewPlanGroupedTieredPrice::GroupedTieredConfig,
+              Orb::Internal::AnyHash
+            )
+          end
+
+        # The billable metric property used to group before tiering
+        sig { returns(String) }
+        attr_accessor :grouping_key
+
+        # Apply tiered pricing to each segment generated after grouping with the provided
+        # key
+        sig do
+          returns(
+            T::Array[Orb::NewPlanGroupedTieredPrice::GroupedTieredConfig::Tier]
+          )
+        end
+        attr_accessor :tiers
+
+        # Configuration for grouped_tiered pricing
+        sig do
+          params(
+            grouping_key: String,
+            tiers:
+              T::Array[
+                Orb::NewPlanGroupedTieredPrice::GroupedTieredConfig::Tier::OrHash
+              ]
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # The billable metric property used to group before tiering
+          grouping_key:,
+          # Apply tiered pricing to each segment generated after grouping with the provided
+          # key
+          tiers:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              grouping_key: String,
+              tiers:
+                T::Array[
+                  Orb::NewPlanGroupedTieredPrice::GroupedTieredConfig::Tier
+                ]
+            }
+          )
+        end
+        def to_hash
+        end
+
+        class Tier < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::NewPlanGroupedTieredPrice::GroupedTieredConfig::Tier,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # Tier lower bound
+          sig { returns(String) }
+          attr_accessor :tier_lower_bound
+
+          # Per unit amount
+          sig { returns(String) }
+          attr_accessor :unit_amount
+
+          # Configuration for a single tier
+          sig do
+            params(tier_lower_bound: String, unit_amount: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # Tier lower bound
+            tier_lower_bound:,
+            # Per unit amount
+            unit_amount:
+          )
+          end
+
+          sig do
+            override.returns({ tier_lower_bound: String, unit_amount: String })
+          end
+          def to_hash
+          end
+        end
+      end
+
+      # The pricing model type
       module ModelType
         extend Orb::Internal::Type::Enum
 

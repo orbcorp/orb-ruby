@@ -20,6 +20,7 @@ module Orb
       sig { returns(String) }
       attr_accessor :item_id
 
+      # The pricing model type
       sig { returns(Orb::NewFloatingUnitPrice::ModelType::OrSymbol) }
       attr_accessor :model_type
 
@@ -27,6 +28,7 @@ module Orb
       sig { returns(String) }
       attr_accessor :name
 
+      # Configuration for unit pricing
       sig { returns(Orb::UnitConfig) }
       attr_reader :unit_config
 
@@ -154,9 +156,11 @@ module Orb
         currency:,
         # The id of the item the price will be associated with.
         item_id:,
+        # The pricing model type
         model_type:,
         # The name of the price.
         name:,
+        # Configuration for unit pricing
         unit_config:,
         # The id of the billable metric for the price. Only needed if the price is
         # usage-based.
@@ -255,6 +259,7 @@ module Orb
         end
       end
 
+      # The pricing model type
       module ModelType
         extend Orb::Internal::Type::Enum
 

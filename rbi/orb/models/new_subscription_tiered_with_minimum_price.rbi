@@ -21,6 +21,7 @@ module Orb
       sig { returns(String) }
       attr_accessor :item_id
 
+      # The pricing model type
       sig do
         returns(Orb::NewSubscriptionTieredWithMinimumPrice::ModelType::OrSymbol)
       end
@@ -30,8 +31,21 @@ module Orb
       sig { returns(String) }
       attr_accessor :name
 
-      sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :tiered_with_minimum_config
+      # Configuration for tiered_with_minimum pricing
+      sig do
+        returns(
+          Orb::NewSubscriptionTieredWithMinimumPrice::TieredWithMinimumConfig
+        )
+      end
+      attr_reader :tiered_with_minimum_config
+
+      sig do
+        params(
+          tiered_with_minimum_config:
+            Orb::NewSubscriptionTieredWithMinimumPrice::TieredWithMinimumConfig::OrHash
+        ).void
+      end
+      attr_writer :tiered_with_minimum_config
 
       # The id of the billable metric for the price. Only needed if the price is
       # usage-based.
@@ -135,7 +149,8 @@ module Orb
           model_type:
             Orb::NewSubscriptionTieredWithMinimumPrice::ModelType::OrSymbol,
           name: String,
-          tiered_with_minimum_config: T::Hash[Symbol, T.anything],
+          tiered_with_minimum_config:
+            Orb::NewSubscriptionTieredWithMinimumPrice::TieredWithMinimumConfig::OrHash,
           billable_metric_id: T.nilable(String),
           billed_in_advance: T.nilable(T::Boolean),
           billing_cycle_configuration:
@@ -165,9 +180,11 @@ module Orb
         cadence:,
         # The id of the item the price will be associated with.
         item_id:,
+        # The pricing model type
         model_type:,
         # The name of the price.
         name:,
+        # Configuration for tiered_with_minimum pricing
         tiered_with_minimum_config:,
         # The id of the billable metric for the price. Only needed if the price is
         # usage-based.
@@ -216,7 +233,8 @@ module Orb
             model_type:
               Orb::NewSubscriptionTieredWithMinimumPrice::ModelType::OrSymbol,
             name: String,
-            tiered_with_minimum_config: T::Hash[Symbol, T.anything],
+            tiered_with_minimum_config:
+              Orb::NewSubscriptionTieredWithMinimumPrice::TieredWithMinimumConfig,
             billable_metric_id: T.nilable(String),
             billed_in_advance: T.nilable(T::Boolean),
             billing_cycle_configuration:
@@ -297,6 +315,7 @@ module Orb
         end
       end
 
+      # The pricing model type
       module ModelType
         extend Orb::Internal::Type::Enum
 
@@ -320,6 +339,130 @@ module Orb
           )
         end
         def self.values
+        end
+      end
+
+      class TieredWithMinimumConfig < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::NewSubscriptionTieredWithMinimumPrice::TieredWithMinimumConfig,
+              Orb::Internal::AnyHash
+            )
+          end
+
+        # Tiered pricing with a minimum amount dependent on the volume tier. Tiers are
+        # defined using exclusive lower bounds.
+        sig do
+          returns(
+            T::Array[
+              Orb::NewSubscriptionTieredWithMinimumPrice::TieredWithMinimumConfig::Tier
+            ]
+          )
+        end
+        attr_accessor :tiers
+
+        # If true, tiers with an accrued amount of 0 will not be included in the rating.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :hide_zero_amount_tiers
+
+        sig { params(hide_zero_amount_tiers: T::Boolean).void }
+        attr_writer :hide_zero_amount_tiers
+
+        # If true, the unit price will be prorated to the billing period
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :prorate
+
+        sig { params(prorate: T::Boolean).void }
+        attr_writer :prorate
+
+        # Configuration for tiered_with_minimum pricing
+        sig do
+          params(
+            tiers:
+              T::Array[
+                Orb::NewSubscriptionTieredWithMinimumPrice::TieredWithMinimumConfig::Tier::OrHash
+              ],
+            hide_zero_amount_tiers: T::Boolean,
+            prorate: T::Boolean
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Tiered pricing with a minimum amount dependent on the volume tier. Tiers are
+          # defined using exclusive lower bounds.
+          tiers:,
+          # If true, tiers with an accrued amount of 0 will not be included in the rating.
+          hide_zero_amount_tiers: nil,
+          # If true, the unit price will be prorated to the billing period
+          prorate: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              tiers:
+                T::Array[
+                  Orb::NewSubscriptionTieredWithMinimumPrice::TieredWithMinimumConfig::Tier
+                ],
+              hide_zero_amount_tiers: T::Boolean,
+              prorate: T::Boolean
+            }
+          )
+        end
+        def to_hash
+        end
+
+        class Tier < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::NewSubscriptionTieredWithMinimumPrice::TieredWithMinimumConfig::Tier,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # Minimum amount
+          sig { returns(String) }
+          attr_accessor :minimum_amount
+
+          # Tier lower bound
+          sig { returns(String) }
+          attr_accessor :tier_lower_bound
+
+          # Per unit amount
+          sig { returns(String) }
+          attr_accessor :unit_amount
+
+          # Configuration for a single tier
+          sig do
+            params(
+              minimum_amount: String,
+              tier_lower_bound: String,
+              unit_amount: String
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Minimum amount
+            minimum_amount:,
+            # Tier lower bound
+            tier_lower_bound:,
+            # Per unit amount
+            unit_amount:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                minimum_amount: String,
+                tier_lower_bound: String,
+                unit_amount: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
     end

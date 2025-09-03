@@ -118,9 +118,9 @@ module Orb
         optional :plan_phase_order, Integer, nil?: true
 
         # @!attribute price
-        #   The price to add to the plan
+        #   New plan price request body params.
         #
-        #   @return [Orb::Models::NewPlanUnitPrice, Orb::Models::NewPlanPackagePrice, Orb::Models::NewPlanMatrixPrice, Orb::Models::NewPlanTieredPrice, Orb::Models::NewPlanBulkPrice, Orb::Models::NewPlanThresholdTotalAmountPrice, Orb::Models::NewPlanTieredPackagePrice, Orb::Models::NewPlanTieredWithMinimumPrice, Orb::Models::NewPlanUnitWithPercentPrice, Orb::Models::NewPlanPackageWithAllocationPrice, Orb::Models::NewPlanTierWithProrationPrice, Orb::Models::NewPlanUnitWithProrationPrice, Orb::Models::NewPlanGroupedAllocationPrice, Orb::Models::NewPlanGroupedWithProratedMinimumPrice, Orb::Models::NewPlanGroupedWithMeteredMinimumPrice, Orb::Models::PlanCreateParams::Price::Price::GroupedWithMinMaxThresholds, Orb::Models::NewPlanMatrixWithDisplayNamePrice, Orb::Models::NewPlanBulkWithProrationPrice, Orb::Models::NewPlanGroupedTieredPackagePrice, Orb::Models::NewPlanMaxGroupTieredPackagePrice, Orb::Models::NewPlanScalableMatrixWithUnitPricingPrice, Orb::Models::NewPlanScalableMatrixWithTieredPricingPrice, Orb::Models::NewPlanCumulativeGroupedBulkPrice, Orb::Models::NewPlanTieredPackageWithMinimumPrice, Orb::Models::NewPlanMatrixWithAllocationPrice, Orb::Models::NewPlanGroupedTieredPrice, Orb::Models::NewPlanMinimumCompositePrice, nil]
+        #   @return [Orb::Models::NewPlanUnitPrice, Orb::Models::NewPlanTieredPrice, Orb::Models::NewPlanBulkPrice, Orb::Models::NewPlanPackagePrice, Orb::Models::NewPlanMatrixPrice, Orb::Models::NewPlanThresholdTotalAmountPrice, Orb::Models::NewPlanTieredPackagePrice, Orb::Models::NewPlanTieredWithMinimumPrice, Orb::Models::NewPlanGroupedTieredPrice, Orb::Models::NewPlanTieredPackageWithMinimumPrice, Orb::Models::NewPlanPackageWithAllocationPrice, Orb::Models::NewPlanUnitWithPercentPrice, Orb::Models::NewPlanMatrixWithAllocationPrice, Orb::Models::PlanCreateParams::Price::Price::TieredWithProration, Orb::Models::NewPlanUnitWithProrationPrice, Orb::Models::NewPlanGroupedAllocationPrice, Orb::Models::NewPlanBulkWithProrationPrice, Orb::Models::NewPlanGroupedWithProratedMinimumPrice, Orb::Models::NewPlanGroupedWithMeteredMinimumPrice, Orb::Models::PlanCreateParams::Price::Price::GroupedWithMinMaxThresholds, Orb::Models::NewPlanMatrixWithDisplayNamePrice, Orb::Models::NewPlanGroupedTieredPackagePrice, Orb::Models::NewPlanMaxGroupTieredPackagePrice, Orb::Models::NewPlanScalableMatrixWithUnitPricingPrice, Orb::Models::NewPlanScalableMatrixWithTieredPricingPrice, Orb::Models::NewPlanCumulativeGroupedBulkPrice, Orb::Models::NewPlanMinimumCompositePrice, nil]
         optional :price, union: -> { Orb::PlanCreateParams::Price::Price }, nil?: true
 
         # @!method initialize(allocation_price: nil, plan_phase_order: nil, price: nil)
@@ -128,9 +128,9 @@ module Orb
         #
         #   @param plan_phase_order [Integer, nil] The phase to add this price to.
         #
-        #   @param price [Orb::Models::NewPlanUnitPrice, Orb::Models::NewPlanPackagePrice, Orb::Models::NewPlanMatrixPrice, Orb::Models::NewPlanTieredPrice, Orb::Models::NewPlanBulkPrice, Orb::Models::NewPlanThresholdTotalAmountPrice, Orb::Models::NewPlanTieredPackagePrice, Orb::Models::NewPlanTieredWithMinimumPrice, Orb::Models::NewPlanUnitWithPercentPrice, Orb::Models::NewPlanPackageWithAllocationPrice, Orb::Models::NewPlanTierWithProrationPrice, Orb::Models::NewPlanUnitWithProrationPrice, Orb::Models::NewPlanGroupedAllocationPrice, Orb::Models::NewPlanGroupedWithProratedMinimumPrice, Orb::Models::NewPlanGroupedWithMeteredMinimumPrice, Orb::Models::PlanCreateParams::Price::Price::GroupedWithMinMaxThresholds, Orb::Models::NewPlanMatrixWithDisplayNamePrice, Orb::Models::NewPlanBulkWithProrationPrice, Orb::Models::NewPlanGroupedTieredPackagePrice, Orb::Models::NewPlanMaxGroupTieredPackagePrice, Orb::Models::NewPlanScalableMatrixWithUnitPricingPrice, Orb::Models::NewPlanScalableMatrixWithTieredPricingPrice, Orb::Models::NewPlanCumulativeGroupedBulkPrice, Orb::Models::NewPlanTieredPackageWithMinimumPrice, Orb::Models::NewPlanMatrixWithAllocationPrice, Orb::Models::NewPlanGroupedTieredPrice, Orb::Models::NewPlanMinimumCompositePrice, nil] The price to add to the plan
+        #   @param price [Orb::Models::NewPlanUnitPrice, Orb::Models::NewPlanTieredPrice, Orb::Models::NewPlanBulkPrice, Orb::Models::NewPlanPackagePrice, Orb::Models::NewPlanMatrixPrice, Orb::Models::NewPlanThresholdTotalAmountPrice, Orb::Models::NewPlanTieredPackagePrice, Orb::Models::NewPlanTieredWithMinimumPrice, Orb::Models::NewPlanGroupedTieredPrice, Orb::Models::NewPlanTieredPackageWithMinimumPrice, Orb::Models::NewPlanPackageWithAllocationPrice, Orb::Models::NewPlanUnitWithPercentPrice, Orb::Models::NewPlanMatrixWithAllocationPrice, Orb::Models::PlanCreateParams::Price::Price::TieredWithProration, Orb::Models::NewPlanUnitWithProrationPrice, Orb::Models::NewPlanGroupedAllocationPrice, Orb::Models::NewPlanBulkWithProrationPrice, Orb::Models::NewPlanGroupedWithProratedMinimumPrice, Orb::Models::NewPlanGroupedWithMeteredMinimumPrice, Orb::Models::PlanCreateParams::Price::Price::GroupedWithMinMaxThresholds, Orb::Models::NewPlanMatrixWithDisplayNamePrice, Orb::Models::NewPlanGroupedTieredPackagePrice, Orb::Models::NewPlanMaxGroupTieredPackagePrice, Orb::Models::NewPlanScalableMatrixWithUnitPricingPrice, Orb::Models::NewPlanScalableMatrixWithTieredPricingPrice, Orb::Models::NewPlanCumulativeGroupedBulkPrice, Orb::Models::NewPlanMinimumCompositePrice, nil] New plan price request body params.
 
-        # The price to add to the plan
+        # New plan price request body params.
         #
         # @see Orb::Models::PlanCreateParams::Price#price
         module Price
@@ -140,13 +140,13 @@ module Orb
 
           variant :unit, -> { Orb::NewPlanUnitPrice }
 
-          variant :package, -> { Orb::NewPlanPackagePrice }
-
-          variant :matrix, -> { Orb::NewPlanMatrixPrice }
-
           variant :tiered, -> { Orb::NewPlanTieredPrice }
 
           variant :bulk, -> { Orb::NewPlanBulkPrice }
+
+          variant :package, -> { Orb::NewPlanPackagePrice }
+
+          variant :matrix, -> { Orb::NewPlanMatrixPrice }
 
           variant :threshold_total_amount, -> { Orb::NewPlanThresholdTotalAmountPrice }
 
@@ -154,15 +154,23 @@ module Orb
 
           variant :tiered_with_minimum, -> { Orb::NewPlanTieredWithMinimumPrice }
 
-          variant :unit_with_percent, -> { Orb::NewPlanUnitWithPercentPrice }
+          variant :grouped_tiered, -> { Orb::NewPlanGroupedTieredPrice }
+
+          variant :tiered_package_with_minimum, -> { Orb::NewPlanTieredPackageWithMinimumPrice }
 
           variant :package_with_allocation, -> { Orb::NewPlanPackageWithAllocationPrice }
 
-          variant :tiered_with_proration, -> { Orb::NewPlanTierWithProrationPrice }
+          variant :unit_with_percent, -> { Orb::NewPlanUnitWithPercentPrice }
+
+          variant :matrix_with_allocation, -> { Orb::NewPlanMatrixWithAllocationPrice }
+
+          variant :tiered_with_proration, -> { Orb::PlanCreateParams::Price::Price::TieredWithProration }
 
           variant :unit_with_proration, -> { Orb::NewPlanUnitWithProrationPrice }
 
           variant :grouped_allocation, -> { Orb::NewPlanGroupedAllocationPrice }
+
+          variant :bulk_with_proration, -> { Orb::NewPlanBulkWithProrationPrice }
 
           variant :grouped_with_prorated_minimum, -> { Orb::NewPlanGroupedWithProratedMinimumPrice }
 
@@ -172,8 +180,6 @@ module Orb
                   -> { Orb::PlanCreateParams::Price::Price::GroupedWithMinMaxThresholds }
 
           variant :matrix_with_display_name, -> { Orb::NewPlanMatrixWithDisplayNamePrice }
-
-          variant :bulk_with_proration, -> { Orb::NewPlanBulkWithProrationPrice }
 
           variant :grouped_tiered_package, -> { Orb::NewPlanGroupedTieredPackagePrice }
 
@@ -185,13 +191,234 @@ module Orb
 
           variant :cumulative_grouped_bulk, -> { Orb::NewPlanCumulativeGroupedBulkPrice }
 
-          variant :tiered_package_with_minimum, -> { Orb::NewPlanTieredPackageWithMinimumPrice }
-
-          variant :matrix_with_allocation, -> { Orb::NewPlanMatrixWithAllocationPrice }
-
-          variant :grouped_tiered, -> { Orb::NewPlanGroupedTieredPrice }
-
           variant :minimum, -> { Orb::NewPlanMinimumCompositePrice }
+
+          class TieredWithProration < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::PlanCreateParams::Price::Price::TieredWithProration::Cadence]
+            required :cadence, enum: -> { Orb::PlanCreateParams::Price::Price::TieredWithProration::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :tiered_with_proration]
+            required :model_type, const: :tiered_with_proration
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute tiered_with_proration_config
+            #   Configuration for tiered_with_proration pricing
+            #
+            #   @return [Orb::Models::PlanCreateParams::Price::Price::TieredWithProration::TieredWithProrationConfig]
+            required :tiered_with_proration_config,
+                     -> { Orb::PlanCreateParams::Price::Price::TieredWithProration::TieredWithProrationConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::PlanCreateParams::Price::Price::TieredWithProration::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, name:, tiered_with_proration_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :tiered_with_proration)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::PlanCreateParams::Price::Price::TieredWithProration} for more
+            #   details.
+            #
+            #   @param cadence [Symbol, Orb::Models::PlanCreateParams::Price::Price::TieredWithProration::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param tiered_with_proration_config [Orb::Models::PlanCreateParams::Price::Price::TieredWithProration::TieredWithProrationConfig] Configuration for tiered_with_proration pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :tiered_with_proration] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::PlanCreateParams::Price::Price::TieredWithProration#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # @see Orb::Models::PlanCreateParams::Price::Price::TieredWithProration#tiered_with_proration_config
+            class TieredWithProrationConfig < Orb::Internal::Type::BaseModel
+              # @!attribute tiers
+              #   Tiers for rating based on total usage quantities into the specified tier with
+              #   proration
+              #
+              #   @return [Array<Orb::Models::PlanCreateParams::Price::Price::TieredWithProration::TieredWithProrationConfig::Tier>]
+              required :tiers,
+                       -> { Orb::Internal::Type::ArrayOf[Orb::PlanCreateParams::Price::Price::TieredWithProration::TieredWithProrationConfig::Tier] }
+
+              # @!method initialize(tiers:)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::PlanCreateParams::Price::Price::TieredWithProration::TieredWithProrationConfig}
+              #   for more details.
+              #
+              #   Configuration for tiered_with_proration pricing
+              #
+              #   @param tiers [Array<Orb::Models::PlanCreateParams::Price::Price::TieredWithProration::TieredWithProrationConfig::Tier>] Tiers for rating based on total usage quantities into the specified tier with pr
+
+              class Tier < Orb::Internal::Type::BaseModel
+                # @!attribute tier_lower_bound
+                #   Inclusive tier starting value
+                #
+                #   @return [String]
+                required :tier_lower_bound, String
+
+                # @!attribute unit_amount
+                #   Amount per unit
+                #
+                #   @return [String]
+                required :unit_amount, String
+
+                # @!method initialize(tier_lower_bound:, unit_amount:)
+                #   Configuration for a single tiered with proration tier
+                #
+                #   @param tier_lower_bound [String] Inclusive tier starting value
+                #
+                #   @param unit_amount [String] Amount per unit
+              end
+            end
+          end
 
           class GroupedWithMinMaxThresholds < Orb::Internal::Type::BaseModel
             # @!attribute cadence
@@ -201,10 +428,11 @@ module Orb
             required :cadence, enum: -> { Orb::PlanCreateParams::Price::Price::GroupedWithMinMaxThresholds::Cadence }
 
             # @!attribute grouped_with_min_max_thresholds_config
+            #   Configuration for grouped_with_min_max_thresholds pricing
             #
-            #   @return [Hash{Symbol=>Object}]
+            #   @return [Orb::Models::PlanCreateParams::Price::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig]
             required :grouped_with_min_max_thresholds_config,
-                     Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
+                     -> { Orb::PlanCreateParams::Price::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig }
 
             # @!attribute item_id
             #   The id of the item the price will be associated with.
@@ -213,6 +441,7 @@ module Orb
             required :item_id, String
 
             # @!attribute model_type
+            #   The pricing model type
             #
             #   @return [Symbol, :grouped_with_min_max_thresholds]
             required :model_type, const: :grouped_with_min_max_thresholds
@@ -325,7 +554,7 @@ module Orb
             #
             #   @param cadence [Symbol, Orb::Models::PlanCreateParams::Price::Price::GroupedWithMinMaxThresholds::Cadence] The cadence to bill for this price on.
             #
-            #   @param grouped_with_min_max_thresholds_config [Hash{Symbol=>Object}]
+            #   @param grouped_with_min_max_thresholds_config [Orb::Models::PlanCreateParams::Price::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig] Configuration for grouped_with_min_max_thresholds pricing
             #
             #   @param item_id [String] The id of the item the price will be associated with.
             #
@@ -357,7 +586,7 @@ module Orb
             #
             #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
             #
-            #   @param model_type [Symbol, :grouped_with_min_max_thresholds]
+            #   @param model_type [Symbol, :grouped_with_min_max_thresholds] The pricing model type
 
             # The cadence to bill for this price on.
             #
@@ -375,10 +604,48 @@ module Orb
               # @!method self.values
               #   @return [Array<Symbol>]
             end
+
+            # @see Orb::Models::PlanCreateParams::Price::Price::GroupedWithMinMaxThresholds#grouped_with_min_max_thresholds_config
+            class GroupedWithMinMaxThresholdsConfig < Orb::Internal::Type::BaseModel
+              # @!attribute grouping_key
+              #   The event property used to group before applying thresholds
+              #
+              #   @return [String]
+              required :grouping_key, String
+
+              # @!attribute maximum_charge
+              #   The maximum amount to charge each group
+              #
+              #   @return [String]
+              required :maximum_charge, String
+
+              # @!attribute minimum_charge
+              #   The minimum amount to charge each group, regardless of usage
+              #
+              #   @return [String]
+              required :minimum_charge, String
+
+              # @!attribute per_unit_rate
+              #   The base price charged per group
+              #
+              #   @return [String]
+              required :per_unit_rate, String
+
+              # @!method initialize(grouping_key:, maximum_charge:, minimum_charge:, per_unit_rate:)
+              #   Configuration for grouped_with_min_max_thresholds pricing
+              #
+              #   @param grouping_key [String] The event property used to group before applying thresholds
+              #
+              #   @param maximum_charge [String] The maximum amount to charge each group
+              #
+              #   @param minimum_charge [String] The minimum amount to charge each group, regardless of usage
+              #
+              #   @param per_unit_rate [String] The base price charged per group
+            end
           end
 
           # @!method self.variants
-          #   @return [Array(Orb::Models::NewPlanUnitPrice, Orb::Models::NewPlanPackagePrice, Orb::Models::NewPlanMatrixPrice, Orb::Models::NewPlanTieredPrice, Orb::Models::NewPlanBulkPrice, Orb::Models::NewPlanThresholdTotalAmountPrice, Orb::Models::NewPlanTieredPackagePrice, Orb::Models::NewPlanTieredWithMinimumPrice, Orb::Models::NewPlanUnitWithPercentPrice, Orb::Models::NewPlanPackageWithAllocationPrice, Orb::Models::NewPlanTierWithProrationPrice, Orb::Models::NewPlanUnitWithProrationPrice, Orb::Models::NewPlanGroupedAllocationPrice, Orb::Models::NewPlanGroupedWithProratedMinimumPrice, Orb::Models::NewPlanGroupedWithMeteredMinimumPrice, Orb::Models::PlanCreateParams::Price::Price::GroupedWithMinMaxThresholds, Orb::Models::NewPlanMatrixWithDisplayNamePrice, Orb::Models::NewPlanBulkWithProrationPrice, Orb::Models::NewPlanGroupedTieredPackagePrice, Orb::Models::NewPlanMaxGroupTieredPackagePrice, Orb::Models::NewPlanScalableMatrixWithUnitPricingPrice, Orb::Models::NewPlanScalableMatrixWithTieredPricingPrice, Orb::Models::NewPlanCumulativeGroupedBulkPrice, Orb::Models::NewPlanTieredPackageWithMinimumPrice, Orb::Models::NewPlanMatrixWithAllocationPrice, Orb::Models::NewPlanGroupedTieredPrice, Orb::Models::NewPlanMinimumCompositePrice)]
+          #   @return [Array(Orb::Models::NewPlanUnitPrice, Orb::Models::NewPlanTieredPrice, Orb::Models::NewPlanBulkPrice, Orb::Models::NewPlanPackagePrice, Orb::Models::NewPlanMatrixPrice, Orb::Models::NewPlanThresholdTotalAmountPrice, Orb::Models::NewPlanTieredPackagePrice, Orb::Models::NewPlanTieredWithMinimumPrice, Orb::Models::NewPlanGroupedTieredPrice, Orb::Models::NewPlanTieredPackageWithMinimumPrice, Orb::Models::NewPlanPackageWithAllocationPrice, Orb::Models::NewPlanUnitWithPercentPrice, Orb::Models::NewPlanMatrixWithAllocationPrice, Orb::Models::PlanCreateParams::Price::Price::TieredWithProration, Orb::Models::NewPlanUnitWithProrationPrice, Orb::Models::NewPlanGroupedAllocationPrice, Orb::Models::NewPlanBulkWithProrationPrice, Orb::Models::NewPlanGroupedWithProratedMinimumPrice, Orb::Models::NewPlanGroupedWithMeteredMinimumPrice, Orb::Models::PlanCreateParams::Price::Price::GroupedWithMinMaxThresholds, Orb::Models::NewPlanMatrixWithDisplayNamePrice, Orb::Models::NewPlanGroupedTieredPackagePrice, Orb::Models::NewPlanMaxGroupTieredPackagePrice, Orb::Models::NewPlanScalableMatrixWithUnitPricingPrice, Orb::Models::NewPlanScalableMatrixWithTieredPricingPrice, Orb::Models::NewPlanCumulativeGroupedBulkPrice, Orb::Models::NewPlanMinimumCompositePrice)]
         end
       end
 

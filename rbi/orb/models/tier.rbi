@@ -13,10 +13,12 @@ module Orb
       sig { returns(String) }
       attr_accessor :unit_amount
 
-      # Inclusive tier ending value. If null, this is treated as the last tier
+      # Inclusive tier ending value. This value is null if and only if this is the last
+      # tier.
       sig { returns(T.nilable(Float)) }
       attr_accessor :last_unit
 
+      # Configuration for a single tier
       sig do
         params(
           first_unit: Float,
@@ -29,7 +31,8 @@ module Orb
         first_unit:,
         # Amount per unit
         unit_amount:,
-        # Inclusive tier ending value. If null, this is treated as the last tier
+        # Inclusive tier ending value. This value is null if and only if this is the last
+        # tier.
         last_unit: nil
       )
       end

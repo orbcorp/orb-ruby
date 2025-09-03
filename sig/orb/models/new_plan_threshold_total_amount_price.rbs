@@ -6,7 +6,7 @@ module Orb
         item_id: String,
         model_type: Orb::Models::NewPlanThresholdTotalAmountPrice::model_type,
         name: String,
-        threshold_total_amount_config: ::Hash[Symbol, top],
+        threshold_total_amount_config: Orb::NewPlanThresholdTotalAmountPrice::ThresholdTotalAmountConfig,
         billable_metric_id: String?,
         billed_in_advance: bool?,
         billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -31,7 +31,7 @@ module Orb
 
       attr_accessor name: String
 
-      attr_accessor threshold_total_amount_config: ::Hash[Symbol, top]
+      attr_accessor threshold_total_amount_config: Orb::NewPlanThresholdTotalAmountPrice::ThresholdTotalAmountConfig
 
       attr_accessor billable_metric_id: String?
 
@@ -64,7 +64,7 @@ module Orb
         item_id: String,
         model_type: Orb::Models::NewPlanThresholdTotalAmountPrice::model_type,
         name: String,
-        threshold_total_amount_config: ::Hash[Symbol, top],
+        threshold_total_amount_config: Orb::NewPlanThresholdTotalAmountPrice::ThresholdTotalAmountConfig,
         ?billable_metric_id: String?,
         ?billed_in_advance: bool?,
         ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -85,7 +85,7 @@ module Orb
         item_id: String,
         model_type: Orb::Models::NewPlanThresholdTotalAmountPrice::model_type,
         name: String,
-        threshold_total_amount_config: ::Hash[Symbol, top],
+        threshold_total_amount_config: Orb::NewPlanThresholdTotalAmountPrice::ThresholdTotalAmountConfig,
         billable_metric_id: String?,
         billed_in_advance: bool?,
         billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -125,6 +125,40 @@ module Orb
         THRESHOLD_TOTAL_AMOUNT: :threshold_total_amount
 
         def self?.values: -> ::Array[Orb::Models::NewPlanThresholdTotalAmountPrice::model_type]
+      end
+
+      type threshold_total_amount_config =
+        {
+          consumption_table: ::Array[Orb::NewPlanThresholdTotalAmountPrice::ThresholdTotalAmountConfig::ConsumptionTable],
+          prorate: bool?
+        }
+
+      class ThresholdTotalAmountConfig < Orb::Internal::Type::BaseModel
+        attr_accessor consumption_table: ::Array[Orb::NewPlanThresholdTotalAmountPrice::ThresholdTotalAmountConfig::ConsumptionTable]
+
+        attr_accessor prorate: bool?
+
+        def initialize: (
+          consumption_table: ::Array[Orb::NewPlanThresholdTotalAmountPrice::ThresholdTotalAmountConfig::ConsumptionTable],
+          ?prorate: bool?
+        ) -> void
+
+        def to_hash: -> {
+          consumption_table: ::Array[Orb::NewPlanThresholdTotalAmountPrice::ThresholdTotalAmountConfig::ConsumptionTable],
+          prorate: bool?
+        }
+
+        type consumption_table = { threshold: String, total_amount: String }
+
+        class ConsumptionTable < Orb::Internal::Type::BaseModel
+          attr_accessor threshold: String
+
+          attr_accessor total_amount: String
+
+          def initialize: (threshold: String, total_amount: String) -> void
+
+          def to_hash: -> { threshold: String, total_amount: String }
+        end
       end
     end
   end

@@ -17,13 +17,27 @@ module Orb
       end
       attr_accessor :cadence
 
-      sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :grouped_with_prorated_minimum_config
+      # Configuration for grouped_with_prorated_minimum pricing
+      sig do
+        returns(
+          Orb::NewPlanGroupedWithProratedMinimumPrice::GroupedWithProratedMinimumConfig
+        )
+      end
+      attr_reader :grouped_with_prorated_minimum_config
+
+      sig do
+        params(
+          grouped_with_prorated_minimum_config:
+            Orb::NewPlanGroupedWithProratedMinimumPrice::GroupedWithProratedMinimumConfig::OrHash
+        ).void
+      end
+      attr_writer :grouped_with_prorated_minimum_config
 
       # The id of the item the price will be associated with.
       sig { returns(String) }
       attr_accessor :item_id
 
+      # The pricing model type
       sig do
         returns(
           Orb::NewPlanGroupedWithProratedMinimumPrice::ModelType::OrSymbol
@@ -133,7 +147,8 @@ module Orb
         params(
           cadence:
             Orb::NewPlanGroupedWithProratedMinimumPrice::Cadence::OrSymbol,
-          grouped_with_prorated_minimum_config: T::Hash[Symbol, T.anything],
+          grouped_with_prorated_minimum_config:
+            Orb::NewPlanGroupedWithProratedMinimumPrice::GroupedWithProratedMinimumConfig::OrHash,
           item_id: String,
           model_type:
             Orb::NewPlanGroupedWithProratedMinimumPrice::ModelType::OrSymbol,
@@ -165,9 +180,11 @@ module Orb
       def self.new(
         # The cadence to bill for this price on.
         cadence:,
+        # Configuration for grouped_with_prorated_minimum pricing
         grouped_with_prorated_minimum_config:,
         # The id of the item the price will be associated with.
         item_id:,
+        # The pricing model type
         model_type:,
         # The name of the price.
         name:,
@@ -214,7 +231,8 @@ module Orb
           {
             cadence:
               Orb::NewPlanGroupedWithProratedMinimumPrice::Cadence::OrSymbol,
-            grouped_with_prorated_minimum_config: T::Hash[Symbol, T.anything],
+            grouped_with_prorated_minimum_config:
+              Orb::NewPlanGroupedWithProratedMinimumPrice::GroupedWithProratedMinimumConfig,
             item_id: String,
             model_type:
               Orb::NewPlanGroupedWithProratedMinimumPrice::ModelType::OrSymbol,
@@ -299,6 +317,55 @@ module Orb
         end
       end
 
+      class GroupedWithProratedMinimumConfig < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::NewPlanGroupedWithProratedMinimumPrice::GroupedWithProratedMinimumConfig,
+              Orb::Internal::AnyHash
+            )
+          end
+
+        # How to determine the groups that should each have a minimum
+        sig { returns(String) }
+        attr_accessor :grouping_key
+
+        # The minimum amount to charge per group
+        sig { returns(String) }
+        attr_accessor :minimum
+
+        # The amount to charge per unit
+        sig { returns(String) }
+        attr_accessor :unit_rate
+
+        # Configuration for grouped_with_prorated_minimum pricing
+        sig do
+          params(
+            grouping_key: String,
+            minimum: String,
+            unit_rate: String
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # How to determine the groups that should each have a minimum
+          grouping_key:,
+          # The minimum amount to charge per group
+          minimum:,
+          # The amount to charge per unit
+          unit_rate:
+        )
+        end
+
+        sig do
+          override.returns(
+            { grouping_key: String, minimum: String, unit_rate: String }
+          )
+        end
+        def to_hash
+        end
+      end
+
+      # The pricing model type
       module ModelType
         extend Orb::Internal::Type::Enum
 

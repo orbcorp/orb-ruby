@@ -9,6 +9,7 @@ module Orb
       sig { returns(T::Array[Orb::BulkTier]) }
       attr_accessor :tiers
 
+      # Configuration for bulk pricing
       sig do
         params(tiers: T::Array[Orb::BulkTier::OrHash]).returns(T.attached_class)
       end

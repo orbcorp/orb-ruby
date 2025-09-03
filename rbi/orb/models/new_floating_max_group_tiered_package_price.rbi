@@ -25,9 +25,23 @@ module Orb
       sig { returns(String) }
       attr_accessor :item_id
 
-      sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :max_group_tiered_package_config
+      # Configuration for max_group_tiered_package pricing
+      sig do
+        returns(
+          Orb::NewFloatingMaxGroupTieredPackagePrice::MaxGroupTieredPackageConfig
+        )
+      end
+      attr_reader :max_group_tiered_package_config
 
+      sig do
+        params(
+          max_group_tiered_package_config:
+            Orb::NewFloatingMaxGroupTieredPackagePrice::MaxGroupTieredPackageConfig::OrHash
+        ).void
+      end
+      attr_writer :max_group_tiered_package_config
+
+      # The pricing model type
       sig do
         returns(Orb::NewFloatingMaxGroupTieredPackagePrice::ModelType::OrSymbol)
       end
@@ -127,7 +141,8 @@ module Orb
             Orb::NewFloatingMaxGroupTieredPackagePrice::Cadence::OrSymbol,
           currency: String,
           item_id: String,
-          max_group_tiered_package_config: T::Hash[Symbol, T.anything],
+          max_group_tiered_package_config:
+            Orb::NewFloatingMaxGroupTieredPackagePrice::MaxGroupTieredPackageConfig::OrHash,
           model_type:
             Orb::NewFloatingMaxGroupTieredPackagePrice::ModelType::OrSymbol,
           name: String,
@@ -160,7 +175,9 @@ module Orb
         currency:,
         # The id of the item the price will be associated with.
         item_id:,
+        # Configuration for max_group_tiered_package pricing
         max_group_tiered_package_config:,
+        # The pricing model type
         model_type:,
         # The name of the price.
         name:,
@@ -203,7 +220,8 @@ module Orb
               Orb::NewFloatingMaxGroupTieredPackagePrice::Cadence::OrSymbol,
             currency: String,
             item_id: String,
-            max_group_tiered_package_config: T::Hash[Symbol, T.anything],
+            max_group_tiered_package_config:
+              Orb::NewFloatingMaxGroupTieredPackagePrice::MaxGroupTieredPackageConfig,
             model_type:
               Orb::NewFloatingMaxGroupTieredPackagePrice::ModelType::OrSymbol,
             name: String,
@@ -285,6 +303,109 @@ module Orb
         end
       end
 
+      class MaxGroupTieredPackageConfig < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::NewFloatingMaxGroupTieredPackagePrice::MaxGroupTieredPackageConfig,
+              Orb::Internal::AnyHash
+            )
+          end
+
+        # The event property used to group before tiering the group with the highest value
+        sig { returns(String) }
+        attr_accessor :grouping_key
+
+        # Package size
+        sig { returns(String) }
+        attr_accessor :package_size
+
+        # Apply tiered pricing to the largest group after grouping with the provided key.
+        sig do
+          returns(
+            T::Array[
+              Orb::NewFloatingMaxGroupTieredPackagePrice::MaxGroupTieredPackageConfig::Tier
+            ]
+          )
+        end
+        attr_accessor :tiers
+
+        # Configuration for max_group_tiered_package pricing
+        sig do
+          params(
+            grouping_key: String,
+            package_size: String,
+            tiers:
+              T::Array[
+                Orb::NewFloatingMaxGroupTieredPackagePrice::MaxGroupTieredPackageConfig::Tier::OrHash
+              ]
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # The event property used to group before tiering the group with the highest value
+          grouping_key:,
+          # Package size
+          package_size:,
+          # Apply tiered pricing to the largest group after grouping with the provided key.
+          tiers:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              grouping_key: String,
+              package_size: String,
+              tiers:
+                T::Array[
+                  Orb::NewFloatingMaxGroupTieredPackagePrice::MaxGroupTieredPackageConfig::Tier
+                ]
+            }
+          )
+        end
+        def to_hash
+        end
+
+        class Tier < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::NewFloatingMaxGroupTieredPackagePrice::MaxGroupTieredPackageConfig::Tier,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # Tier lower bound
+          sig { returns(String) }
+          attr_accessor :tier_lower_bound
+
+          # Per unit amount
+          sig { returns(String) }
+          attr_accessor :unit_amount
+
+          # Configuration for a single tier
+          sig do
+            params(tier_lower_bound: String, unit_amount: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # Tier lower bound
+            tier_lower_bound:,
+            # Per unit amount
+            unit_amount:
+          )
+          end
+
+          sig do
+            override.returns({ tier_lower_bound: String, unit_amount: String })
+          end
+          def to_hash
+          end
+        end
+      end
+
+      # The pricing model type
       module ModelType
         extend Orb::Internal::Type::Enum
 

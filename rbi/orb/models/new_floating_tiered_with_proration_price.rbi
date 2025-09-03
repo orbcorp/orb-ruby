@@ -25,6 +25,7 @@ module Orb
       sig { returns(String) }
       attr_accessor :item_id
 
+      # The pricing model type
       sig do
         returns(Orb::NewFloatingTieredWithProrationPrice::ModelType::OrSymbol)
       end
@@ -34,8 +35,21 @@ module Orb
       sig { returns(String) }
       attr_accessor :name
 
-      sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :tiered_with_proration_config
+      # Configuration for tiered_with_proration pricing
+      sig do
+        returns(
+          Orb::NewFloatingTieredWithProrationPrice::TieredWithProrationConfig
+        )
+      end
+      attr_reader :tiered_with_proration_config
+
+      sig do
+        params(
+          tiered_with_proration_config:
+            Orb::NewFloatingTieredWithProrationPrice::TieredWithProrationConfig::OrHash
+        ).void
+      end
+      attr_writer :tiered_with_proration_config
 
       # The id of the billable metric for the price. Only needed if the price is
       # usage-based.
@@ -129,7 +143,8 @@ module Orb
           model_type:
             Orb::NewFloatingTieredWithProrationPrice::ModelType::OrSymbol,
           name: String,
-          tiered_with_proration_config: T::Hash[Symbol, T.anything],
+          tiered_with_proration_config:
+            Orb::NewFloatingTieredWithProrationPrice::TieredWithProrationConfig::OrHash,
           billable_metric_id: T.nilable(String),
           billed_in_advance: T.nilable(T::Boolean),
           billing_cycle_configuration:
@@ -159,9 +174,11 @@ module Orb
         currency:,
         # The id of the item the price will be associated with.
         item_id:,
+        # The pricing model type
         model_type:,
         # The name of the price.
         name:,
+        # Configuration for tiered_with_proration pricing
         tiered_with_proration_config:,
         # The id of the billable metric for the price. Only needed if the price is
         # usage-based.
@@ -205,7 +222,8 @@ module Orb
             model_type:
               Orb::NewFloatingTieredWithProrationPrice::ModelType::OrSymbol,
             name: String,
-            tiered_with_proration_config: T::Hash[Symbol, T.anything],
+            tiered_with_proration_config:
+              Orb::NewFloatingTieredWithProrationPrice::TieredWithProrationConfig,
             billable_metric_id: T.nilable(String),
             billed_in_advance: T.nilable(T::Boolean),
             billing_cycle_configuration:
@@ -284,6 +302,7 @@ module Orb
         end
       end
 
+      # The pricing model type
       module ModelType
         extend Orb::Internal::Type::Enum
 
@@ -307,6 +326,94 @@ module Orb
           )
         end
         def self.values
+        end
+      end
+
+      class TieredWithProrationConfig < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::NewFloatingTieredWithProrationPrice::TieredWithProrationConfig,
+              Orb::Internal::AnyHash
+            )
+          end
+
+        # Tiers for rating based on total usage quantities into the specified tier with
+        # proration
+        sig do
+          returns(
+            T::Array[
+              Orb::NewFloatingTieredWithProrationPrice::TieredWithProrationConfig::Tier
+            ]
+          )
+        end
+        attr_accessor :tiers
+
+        # Configuration for tiered_with_proration pricing
+        sig do
+          params(
+            tiers:
+              T::Array[
+                Orb::NewFloatingTieredWithProrationPrice::TieredWithProrationConfig::Tier::OrHash
+              ]
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Tiers for rating based on total usage quantities into the specified tier with
+          # proration
+          tiers:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              tiers:
+                T::Array[
+                  Orb::NewFloatingTieredWithProrationPrice::TieredWithProrationConfig::Tier
+                ]
+            }
+          )
+        end
+        def to_hash
+        end
+
+        class Tier < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::NewFloatingTieredWithProrationPrice::TieredWithProrationConfig::Tier,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # Inclusive tier starting value
+          sig { returns(String) }
+          attr_accessor :tier_lower_bound
+
+          # Amount per unit
+          sig { returns(String) }
+          attr_accessor :unit_amount
+
+          # Configuration for a single tiered with proration tier
+          sig do
+            params(tier_lower_bound: String, unit_amount: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # Inclusive tier starting value
+            tier_lower_bound:,
+            # Amount per unit
+            unit_amount:
+          )
+          end
+
+          sig do
+            override.returns({ tier_lower_bound: String, unit_amount: String })
+          end
+          def to_hash
+          end
         end
       end
     end

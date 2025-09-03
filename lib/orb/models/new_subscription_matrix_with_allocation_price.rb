@@ -16,11 +16,13 @@ module Orb
       required :item_id, String
 
       # @!attribute matrix_with_allocation_config
+      #   Configuration for matrix_with_allocation pricing
       #
       #   @return [Orb::Models::MatrixWithAllocationConfig]
       required :matrix_with_allocation_config, -> { Orb::MatrixWithAllocationConfig }
 
       # @!attribute model_type
+      #   The pricing model type
       #
       #   @return [Symbol, Orb::Models::NewSubscriptionMatrixWithAllocationPrice::ModelType]
       required :model_type, enum: -> { Orb::NewSubscriptionMatrixWithAllocationPrice::ModelType }
@@ -128,9 +130,9 @@ module Orb
       #
       #   @param item_id [String] The id of the item the price will be associated with.
       #
-      #   @param matrix_with_allocation_config [Orb::Models::MatrixWithAllocationConfig]
+      #   @param matrix_with_allocation_config [Orb::Models::MatrixWithAllocationConfig] Configuration for matrix_with_allocation pricing
       #
-      #   @param model_type [Symbol, Orb::Models::NewSubscriptionMatrixWithAllocationPrice::ModelType]
+      #   @param model_type [Symbol, Orb::Models::NewSubscriptionMatrixWithAllocationPrice::ModelType] The pricing model type
       #
       #   @param name [String] The name of the price.
       #
@@ -177,6 +179,8 @@ module Orb
         #   @return [Array<Symbol>]
       end
 
+      # The pricing model type
+      #
       # @see Orb::Models::NewSubscriptionMatrixWithAllocationPrice#model_type
       module ModelType
         extend Orb::Internal::Type::Enum

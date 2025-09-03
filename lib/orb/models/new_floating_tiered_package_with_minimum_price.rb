@@ -22,6 +22,7 @@ module Orb
       required :item_id, String
 
       # @!attribute model_type
+      #   The pricing model type
       #
       #   @return [Symbol, Orb::Models::NewFloatingTieredPackageWithMinimumPrice::ModelType]
       required :model_type, enum: -> { Orb::NewFloatingTieredPackageWithMinimumPrice::ModelType }
@@ -33,9 +34,11 @@ module Orb
       required :name, String
 
       # @!attribute tiered_package_with_minimum_config
+      #   Configuration for tiered_package_with_minimum pricing
       #
-      #   @return [Hash{Symbol=>Object}]
-      required :tiered_package_with_minimum_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
+      #   @return [Orb::Models::NewFloatingTieredPackageWithMinimumPrice::TieredPackageWithMinimumConfig]
+      required :tiered_package_with_minimum_config,
+               -> { Orb::NewFloatingTieredPackageWithMinimumPrice::TieredPackageWithMinimumConfig }
 
       # @!attribute billable_metric_id
       #   The id of the billable metric for the price. Only needed if the price is
@@ -122,11 +125,11 @@ module Orb
       #
       #   @param item_id [String] The id of the item the price will be associated with.
       #
-      #   @param model_type [Symbol, Orb::Models::NewFloatingTieredPackageWithMinimumPrice::ModelType]
+      #   @param model_type [Symbol, Orb::Models::NewFloatingTieredPackageWithMinimumPrice::ModelType] The pricing model type
       #
       #   @param name [String] The name of the price.
       #
-      #   @param tiered_package_with_minimum_config [Hash{Symbol=>Object}]
+      #   @param tiered_package_with_minimum_config [Orb::Models::NewFloatingTieredPackageWithMinimumPrice::TieredPackageWithMinimumConfig] Configuration for tiered_package_with_minimum pricing
       #
       #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
       #
@@ -167,6 +170,8 @@ module Orb
         #   @return [Array<Symbol>]
       end
 
+      # The pricing model type
+      #
       # @see Orb::Models::NewFloatingTieredPackageWithMinimumPrice#model_type
       module ModelType
         extend Orb::Internal::Type::Enum
@@ -175,6 +180,63 @@ module Orb
 
         # @!method self.values
         #   @return [Array<Symbol>]
+      end
+
+      # @see Orb::Models::NewFloatingTieredPackageWithMinimumPrice#tiered_package_with_minimum_config
+      class TieredPackageWithMinimumConfig < Orb::Internal::Type::BaseModel
+        # @!attribute package_size
+        #   Package size
+        #
+        #   @return [Float]
+        required :package_size, Float
+
+        # @!attribute tiers
+        #   Apply tiered pricing after rounding up the quantity to the package size. Tiers
+        #   are defined using exclusive lower bounds.
+        #
+        #   @return [Array<Orb::Models::NewFloatingTieredPackageWithMinimumPrice::TieredPackageWithMinimumConfig::Tier>]
+        required :tiers,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::NewFloatingTieredPackageWithMinimumPrice::TieredPackageWithMinimumConfig::Tier] }
+
+        # @!method initialize(package_size:, tiers:)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::NewFloatingTieredPackageWithMinimumPrice::TieredPackageWithMinimumConfig}
+        #   for more details.
+        #
+        #   Configuration for tiered_package_with_minimum pricing
+        #
+        #   @param package_size [Float] Package size
+        #
+        #   @param tiers [Array<Orb::Models::NewFloatingTieredPackageWithMinimumPrice::TieredPackageWithMinimumConfig::Tier>] Apply tiered pricing after rounding up the quantity to the package size. Tiers a
+
+        class Tier < Orb::Internal::Type::BaseModel
+          # @!attribute minimum_amount
+          #   Minimum amount
+          #
+          #   @return [String]
+          required :minimum_amount, String
+
+          # @!attribute per_unit
+          #   Price per package
+          #
+          #   @return [String]
+          required :per_unit, String
+
+          # @!attribute tier_lower_bound
+          #   Tier lower bound
+          #
+          #   @return [String]
+          required :tier_lower_bound, String
+
+          # @!method initialize(minimum_amount:, per_unit:, tier_lower_bound:)
+          #   Configuration for a single tier
+          #
+          #   @param minimum_amount [String] Minimum amount
+          #
+          #   @param per_unit [String] Price per package
+          #
+          #   @param tier_lower_bound [String] Tier lower bound
+        end
       end
     end
   end

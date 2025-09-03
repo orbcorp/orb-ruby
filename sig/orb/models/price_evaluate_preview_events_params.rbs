@@ -132,31 +132,31 @@ module Orb
 
         type price =
           Orb::NewFloatingUnitPrice
-          | Orb::NewFloatingPackagePrice
-          | Orb::NewFloatingMatrixPrice
-          | Orb::NewFloatingMatrixWithAllocationPrice
           | Orb::NewFloatingTieredPrice
           | Orb::NewFloatingBulkPrice
+          | Orb::NewFloatingPackagePrice
+          | Orb::NewFloatingMatrixPrice
           | Orb::NewFloatingThresholdTotalAmountPrice
           | Orb::NewFloatingTieredPackagePrice
-          | Orb::NewFloatingGroupedTieredPrice
-          | Orb::NewFloatingMaxGroupTieredPackagePrice
           | Orb::NewFloatingTieredWithMinimumPrice
-          | Orb::NewFloatingPackageWithAllocationPrice
+          | Orb::NewFloatingGroupedTieredPrice
           | Orb::NewFloatingTieredPackageWithMinimumPrice
+          | Orb::NewFloatingPackageWithAllocationPrice
           | Orb::NewFloatingUnitWithPercentPrice
+          | Orb::NewFloatingMatrixWithAllocationPrice
           | Orb::NewFloatingTieredWithProrationPrice
           | Orb::NewFloatingUnitWithProrationPrice
           | Orb::NewFloatingGroupedAllocationPrice
+          | Orb::NewFloatingBulkWithProrationPrice
           | Orb::NewFloatingGroupedWithProratedMinimumPrice
           | Orb::NewFloatingGroupedWithMeteredMinimumPrice
+          | Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::GroupedWithMinMaxThresholds
           | Orb::NewFloatingMatrixWithDisplayNamePrice
-          | Orb::NewFloatingBulkWithProrationPrice
           | Orb::NewFloatingGroupedTieredPackagePrice
+          | Orb::NewFloatingMaxGroupTieredPackagePrice
           | Orb::NewFloatingScalableMatrixWithUnitPricingPrice
           | Orb::NewFloatingScalableMatrixWithTieredPricingPrice
           | Orb::NewFloatingCumulativeGroupedBulkPrice
-          | Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::GroupedWithMinMaxThresholds
           | Orb::NewFloatingMinimumCompositePrice
 
         module Price
@@ -166,7 +166,7 @@ module Orb
             {
               cadence: Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::GroupedWithMinMaxThresholds::cadence,
               currency: String,
-              grouped_with_min_max_thresholds_config: ::Hash[Symbol, top],
+              grouped_with_min_max_thresholds_config: Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
               item_id: String,
               model_type: :grouped_with_min_max_thresholds,
               name: String,
@@ -188,7 +188,7 @@ module Orb
 
             attr_accessor currency: String
 
-            attr_accessor grouped_with_min_max_thresholds_config: ::Hash[Symbol, top]
+            attr_accessor grouped_with_min_max_thresholds_config: Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig
 
             attr_accessor item_id: String
 
@@ -221,7 +221,7 @@ module Orb
             def initialize: (
               cadence: Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::GroupedWithMinMaxThresholds::cadence,
               currency: String,
-              grouped_with_min_max_thresholds_config: ::Hash[Symbol, top],
+              grouped_with_min_max_thresholds_config: Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
               item_id: String,
               name: String,
               ?billable_metric_id: String?,
@@ -241,7 +241,7 @@ module Orb
             def to_hash: -> {
               cadence: Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::GroupedWithMinMaxThresholds::cadence,
               currency: String,
-              grouped_with_min_max_thresholds_config: ::Hash[Symbol, top],
+              grouped_with_min_max_thresholds_config: Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
               item_id: String,
               model_type: :grouped_with_min_max_thresholds,
               name: String,
@@ -277,6 +277,38 @@ module Orb
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::GroupedWithMinMaxThresholds::cadence]
+            end
+
+            type grouped_with_min_max_thresholds_config =
+              {
+                grouping_key: String,
+                maximum_charge: String,
+                minimum_charge: String,
+                per_unit_rate: String
+              }
+
+            class GroupedWithMinMaxThresholdsConfig < Orb::Internal::Type::BaseModel
+              attr_accessor grouping_key: String
+
+              attr_accessor maximum_charge: String
+
+              attr_accessor minimum_charge: String
+
+              attr_accessor per_unit_rate: String
+
+              def initialize: (
+                grouping_key: String,
+                maximum_charge: String,
+                minimum_charge: String,
+                per_unit_rate: String
+              ) -> void
+
+              def to_hash: -> {
+                grouping_key: String,
+                maximum_charge: String,
+                minimum_charge: String,
+                per_unit_rate: String
+              }
             end
           end
 
