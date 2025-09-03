@@ -306,6 +306,8 @@ module Orb
 
   NewFloatingMaxGroupTieredPackagePrice = Orb::Models::NewFloatingMaxGroupTieredPackagePrice
 
+  NewFloatingMinimumCompositePrice = Orb::Models::NewFloatingMinimumCompositePrice
+
   NewFloatingPackagePrice = Orb::Models::NewFloatingPackagePrice
 
   NewFloatingPackageWithAllocationPrice = Orb::Models::NewFloatingPackageWithAllocationPrice
@@ -364,6 +366,8 @@ module Orb
 
   NewPlanMaxGroupTieredPackagePrice = Orb::Models::NewPlanMaxGroupTieredPackagePrice
 
+  NewPlanMinimumCompositePrice = Orb::Models::NewPlanMinimumCompositePrice
+
   NewPlanPackagePrice = Orb::Models::NewPlanPackagePrice
 
   NewPlanPackageWithAllocationPrice = Orb::Models::NewPlanPackageWithAllocationPrice
@@ -419,6 +423,8 @@ module Orb
   NewSubscriptionMatrixWithDisplayNamePrice = Orb::Models::NewSubscriptionMatrixWithDisplayNamePrice
 
   NewSubscriptionMaxGroupTieredPackagePrice = Orb::Models::NewSubscriptionMaxGroupTieredPackagePrice
+
+  NewSubscriptionMinimumCompositePrice = Orb::Models::NewSubscriptionMinimumCompositePrice
 
   NewSubscriptionPackagePrice = Orb::Models::NewSubscriptionPackagePrice
 
