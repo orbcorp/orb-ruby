@@ -333,7 +333,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               conversion_rate: Float?,
-              conversion_rate_config: Orb::Models::SubscriptionCreateParams::AddPrice::Price::GroupedWithMinMaxThresholds::unnamed_type_withobject_parent112?,
+              conversion_rate_config: Orb::Models::SubscriptionCreateParams::AddPrice::Price::GroupedWithMinMaxThresholds::conversion_rate_config?,
               currency: String?,
               dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               external_price_id: String?,
@@ -363,7 +363,7 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
-            attr_accessor conversion_rate_config: Orb::Models::SubscriptionCreateParams::AddPrice::Price::GroupedWithMinMaxThresholds::unnamed_type_withobject_parent112?
+            attr_accessor conversion_rate_config: Orb::Models::SubscriptionCreateParams::AddPrice::Price::GroupedWithMinMaxThresholds::conversion_rate_config?
 
             attr_accessor currency: String?
 
@@ -390,7 +390,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               ?conversion_rate: Float?,
-              ?conversion_rate_config: Orb::Models::SubscriptionCreateParams::AddPrice::Price::GroupedWithMinMaxThresholds::unnamed_type_withobject_parent112?,
+              ?conversion_rate_config: Orb::Models::SubscriptionCreateParams::AddPrice::Price::GroupedWithMinMaxThresholds::conversion_rate_config?,
               ?currency: String?,
               ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               ?external_price_id: String?,
@@ -412,7 +412,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               conversion_rate: Float?,
-              conversion_rate_config: Orb::Models::SubscriptionCreateParams::AddPrice::Price::GroupedWithMinMaxThresholds::unnamed_type_withobject_parent112?,
+              conversion_rate_config: Orb::Models::SubscriptionCreateParams::AddPrice::Price::GroupedWithMinMaxThresholds::conversion_rate_config?,
               currency: String?,
               dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               external_price_id: String?,
@@ -620,7 +620,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               conversion_rate: Float?,
-              conversion_rate_config: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::unnamed_type_withobject_parent113?,
+              conversion_rate_config: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::conversion_rate_config?,
               currency: String?,
               dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               external_price_id: String?,
@@ -650,7 +650,7 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
-            attr_accessor conversion_rate_config: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::unnamed_type_withobject_parent113?
+            attr_accessor conversion_rate_config: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::conversion_rate_config?
 
             attr_accessor currency: String?
 
@@ -677,7 +677,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               ?conversion_rate: Float?,
-              ?conversion_rate_config: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::unnamed_type_withobject_parent113?,
+              ?conversion_rate_config: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::conversion_rate_config?,
               ?currency: String?,
               ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               ?external_price_id: String?,
@@ -699,7 +699,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               conversion_rate: Float?,
-              conversion_rate_config: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::unnamed_type_withobject_parent113?,
+              conversion_rate_config: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::conversion_rate_config?,
               currency: String?,
               dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               external_price_id: String?,
