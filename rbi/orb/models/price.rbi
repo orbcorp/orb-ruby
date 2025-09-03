@@ -85,9 +85,7 @@ module Orb
         attr_accessor :conversion_rate
 
         sig do
-          returns(
-            T.nilable(Orb::Price::Unit::UnnamedTypeWithobjectParent83::Variants)
-          )
+          returns(T.nilable(Orb::Price::Unit::ConversionRateConfig::Variants))
         end
         attr_accessor :conversion_rate_config
 
@@ -286,9 +284,7 @@ module Orb
                 T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::Unit::UnnamedTypeWithobjectParent83::Variants
-                ),
+                T.nilable(Orb::Price::Unit::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -399,9 +395,7 @@ module Orb
 
         sig do
           returns(
-            T.nilable(
-              Orb::Price::Package::UnnamedTypeWithobjectParent84::Variants
-            )
+            T.nilable(Orb::Price::Package::ConversionRateConfig::Variants)
           )
         end
         attr_accessor :conversion_rate_config
@@ -601,9 +595,7 @@ module Orb
                 T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::Package::UnnamedTypeWithobjectParent84::Variants
-                ),
+                T.nilable(Orb::Price::Package::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -717,11 +709,7 @@ module Orb
         attr_accessor :conversion_rate
 
         sig do
-          returns(
-            T.nilable(
-              Orb::Price::Matrix::UnnamedTypeWithobjectParent85::Variants
-            )
-          )
+          returns(T.nilable(Orb::Price::Matrix::ConversionRateConfig::Variants))
         end
         attr_accessor :conversion_rate_config
 
@@ -920,9 +908,7 @@ module Orb
                 T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::Matrix::UnnamedTypeWithobjectParent85::Variants
-                ),
+                T.nilable(Orb::Price::Matrix::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -1035,11 +1021,7 @@ module Orb
         attr_accessor :conversion_rate
 
         sig do
-          returns(
-            T.nilable(
-              Orb::Price::Tiered::UnnamedTypeWithobjectParent86::Variants
-            )
-          )
+          returns(T.nilable(Orb::Price::Tiered::ConversionRateConfig::Variants))
         end
         attr_accessor :conversion_rate_config
 
@@ -1238,9 +1220,7 @@ module Orb
                 T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::Tiered::UnnamedTypeWithobjectParent86::Variants
-                ),
+                T.nilable(Orb::Price::Tiered::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -1359,9 +1339,7 @@ module Orb
         attr_accessor :conversion_rate
 
         sig do
-          returns(
-            T.nilable(Orb::Price::Bulk::UnnamedTypeWithobjectParent87::Variants)
-          )
+          returns(T.nilable(Orb::Price::Bulk::ConversionRateConfig::Variants))
         end
         attr_accessor :conversion_rate_config
 
@@ -1555,9 +1533,7 @@ module Orb
                 T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::Bulk::UnnamedTypeWithobjectParent87::Variants
-                ),
+                T.nilable(Orb::Price::Bulk::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -1670,7 +1646,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::ThresholdTotalAmount::UnnamedTypeWithobjectParent88::Variants
+              Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Variants
             )
           )
         end
@@ -1871,7 +1847,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::ThresholdTotalAmount::UnnamedTypeWithobjectParent88::Variants
+                  Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -2023,9 +1999,7 @@ module Orb
 
         sig do
           returns(
-            T.nilable(
-              Orb::Price::TieredPackage::UnnamedTypeWithobjectParent89::Variants
-            )
+            T.nilable(Orb::Price::TieredPackage::ConversionRateConfig::Variants)
           )
         end
         attr_accessor :conversion_rate_config
@@ -2223,7 +2197,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::TieredPackage::UnnamedTypeWithobjectParent89::Variants
+                  Orb::Price::TieredPackage::ConversionRateConfig::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -2353,9 +2327,7 @@ module Orb
 
         sig do
           returns(
-            T.nilable(
-              Orb::Price::GroupedTiered::UnnamedTypeWithobjectParent90::Variants
-            )
+            T.nilable(Orb::Price::GroupedTiered::ConversionRateConfig::Variants)
           )
         end
         attr_accessor :conversion_rate_config
@@ -2553,7 +2525,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::GroupedTiered::UnnamedTypeWithobjectParent90::Variants
+                  Orb::Price::GroupedTiered::ConversionRateConfig::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -2684,7 +2656,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::TieredWithMinimum::UnnamedTypeWithobjectParent91::Variants
+              Orb::Price::TieredWithMinimum::ConversionRateConfig::Variants
             )
           )
         end
@@ -2883,7 +2855,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::TieredWithMinimum::UnnamedTypeWithobjectParent91::Variants
+                  Orb::Price::TieredWithMinimum::ConversionRateConfig::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -3030,7 +3002,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::TieredPackageWithMinimum::UnnamedTypeWithobjectParent92::Variants
+              Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Variants
             )
           )
         end
@@ -3233,7 +3205,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::TieredPackageWithMinimum::UnnamedTypeWithobjectParent92::Variants
+                  Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -3390,7 +3362,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::PackageWithAllocation::UnnamedTypeWithobjectParent93::Variants
+              Orb::Price::PackageWithAllocation::ConversionRateConfig::Variants
             )
           )
         end
@@ -3591,7 +3563,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::PackageWithAllocation::UnnamedTypeWithobjectParent93::Variants
+                  Orb::Price::PackageWithAllocation::ConversionRateConfig::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -3744,7 +3716,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::UnitWithPercent::UnnamedTypeWithobjectParent94::Variants
+              Orb::Price::UnitWithPercent::ConversionRateConfig::Variants
             )
           )
         end
@@ -3943,7 +3915,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::UnitWithPercent::UnnamedTypeWithobjectParent94::Variants
+                  Orb::Price::UnitWithPercent::ConversionRateConfig::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -4079,7 +4051,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::MatrixWithAllocation::UnnamedTypeWithobjectParent95::Variants
+              Orb::Price::MatrixWithAllocation::ConversionRateConfig::Variants
             )
           )
         end
@@ -4289,7 +4261,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::MatrixWithAllocation::UnnamedTypeWithobjectParent95::Variants
+                  Orb::Price::MatrixWithAllocation::ConversionRateConfig::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -4442,7 +4414,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::TieredWithProration::UnnamedTypeWithobjectParent96::Variants
+              Orb::Price::TieredWithProration::ConversionRateConfig::Variants
             )
           )
         end
@@ -4643,7 +4615,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::TieredWithProration::UnnamedTypeWithobjectParent96::Variants
+                  Orb::Price::TieredWithProration::ConversionRateConfig::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -4794,7 +4766,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::UnitWithProration::UnnamedTypeWithobjectParent97::Variants
+              Orb::Price::UnitWithProration::ConversionRateConfig::Variants
             )
           )
         end
@@ -4993,7 +4965,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::UnitWithProration::UnnamedTypeWithobjectParent97::Variants
+                  Orb::Price::UnitWithProration::ConversionRateConfig::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -5138,7 +5110,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::GroupedAllocation::UnnamedTypeWithobjectParent98::Variants
+              Orb::Price::GroupedAllocation::ConversionRateConfig::Variants
             )
           )
         end
@@ -5337,7 +5309,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::GroupedAllocation::UnnamedTypeWithobjectParent98::Variants
+                  Orb::Price::GroupedAllocation::ConversionRateConfig::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -5487,7 +5459,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::GroupedWithProratedMinimum::UnnamedTypeWithobjectParent99::Variants
+              Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Variants
             )
           )
         end
@@ -5692,7 +5664,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::GroupedWithProratedMinimum::UnnamedTypeWithobjectParent99::Variants
+                  Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -5849,7 +5821,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::GroupedWithMeteredMinimum::UnnamedTypeWithobjectParent100::Variants
+              Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Variants
             )
           )
         end
@@ -6054,7 +6026,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::GroupedWithMeteredMinimum::UnnamedTypeWithobjectParent100::Variants
+                  Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -6211,7 +6183,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::MatrixWithDisplayName::UnnamedTypeWithobjectParent101::Variants
+              Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Variants
             )
           )
         end
@@ -6412,7 +6384,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::MatrixWithDisplayName::UnnamedTypeWithobjectParent101::Variants
+                  Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -6568,7 +6540,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::BulkWithProration::UnnamedTypeWithobjectParent102::Variants
+              Orb::Price::BulkWithProration::ConversionRateConfig::Variants
             )
           )
         end
@@ -6765,7 +6737,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::BulkWithProration::UnnamedTypeWithobjectParent102::Variants
+                  Orb::Price::BulkWithProration::ConversionRateConfig::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -6909,7 +6881,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::GroupedTieredPackage::UnnamedTypeWithobjectParent103::Variants
+              Orb::Price::GroupedTieredPackage::ConversionRateConfig::Variants
             )
           )
         end
@@ -7110,7 +7082,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::GroupedTieredPackage::UnnamedTypeWithobjectParent103::Variants
+                  Orb::Price::GroupedTieredPackage::ConversionRateConfig::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -7265,7 +7237,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::MaxGroupTieredPackage::UnnamedTypeWithobjectParent104::Variants
+              Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Variants
             )
           )
         end
@@ -7466,7 +7438,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::MaxGroupTieredPackage::UnnamedTypeWithobjectParent104::Variants
+                  Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -7626,7 +7598,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::ScalableMatrixWithUnitPricing::UnnamedTypeWithobjectParent105::Variants
+              Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Variants
             )
           )
         end
@@ -7833,7 +7805,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::ScalableMatrixWithUnitPricing::UnnamedTypeWithobjectParent105::Variants
+                  Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -7999,7 +7971,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::ScalableMatrixWithTieredPricing::UnnamedTypeWithobjectParent106::Variants
+              Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Variants
             )
           )
         end
@@ -8206,7 +8178,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::ScalableMatrixWithTieredPricing::UnnamedTypeWithobjectParent106::Variants
+                  Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -8370,7 +8342,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::CumulativeGroupedBulk::UnnamedTypeWithobjectParent107::Variants
+              Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Variants
             )
           )
         end
@@ -8571,7 +8543,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::CumulativeGroupedBulk::UnnamedTypeWithobjectParent107::Variants
+                  Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -8731,7 +8703,7 @@ module Orb
         sig do
           returns(
             T.nilable(
-              Orb::Price::GroupedWithMinMaxThresholds::UnnamedTypeWithobjectParent108::Variants
+              Orb::Price::GroupedWithMinMaxThresholds::ConversionRateConfig::Variants
             )
           )
         end
@@ -8936,7 +8908,7 @@ module Orb
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
-                  Orb::Price::GroupedWithMinMaxThresholds::UnnamedTypeWithobjectParent108::Variants
+                  Orb::Price::GroupedWithMinMaxThresholds::ConversionRateConfig::Variants
                 ),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
@@ -9089,9 +9061,7 @@ module Orb
 
         sig do
           returns(
-            T.nilable(
-              Orb::Price::Minimum::UnnamedTypeWithobjectParent109::Variants
-            )
+            T.nilable(Orb::Price::Minimum::ConversionRateConfig::Variants)
           )
         end
         attr_accessor :conversion_rate_config
@@ -9295,9 +9265,7 @@ module Orb
                 T.nilable(T::Array[Orb::TransformPriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::Minimum::UnnamedTypeWithobjectParent109::Variants
-                ),
+                T.nilable(Orb::Price::Minimum::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,

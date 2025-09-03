@@ -296,7 +296,7 @@ module Orb
               #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
               optional :conversion_rate_config,
                        union: -> {
-                         Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::UnnamedTypeWithobjectParent0
+                         Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::ConversionRateConfig
                        },
                        nil?: true
 
@@ -673,7 +673,7 @@ module Orb
               #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
               optional :conversion_rate_config,
                        union: -> {
-                         Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::UnnamedTypeWithobjectParent1
+                         Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::ConversionRateConfig
                        },
                        nil?: true
 

@@ -609,7 +609,7 @@ module Orb
             #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
             optional :conversion_rate_config,
                      union: -> {
-                       Orb::SubscriptionCreateParams::AddPrice::Price::GroupedWithMinMaxThresholds::UnnamedTypeWithobjectParent112
+                       Orb::SubscriptionCreateParams::AddPrice::Price::GroupedWithMinMaxThresholds::ConversionRateConfig
                      },
                      nil?: true
 
@@ -1032,7 +1032,7 @@ module Orb
             #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
             optional :conversion_rate_config,
                      union: -> {
-                       Orb::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::UnnamedTypeWithobjectParent113
+                       Orb::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::ConversionRateConfig
                      },
                      nil?: true
 

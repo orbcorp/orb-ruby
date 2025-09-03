@@ -69,7 +69,7 @@ module Orb
       #
       #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
       optional :conversion_rate_config,
-               union: -> { Orb::NewFloatingGroupedWithProratedMinimumPrice::UnnamedTypeWithobjectParent11 },
+               union: -> { Orb::NewFloatingGroupedWithProratedMinimumPrice::ConversionRateConfig },
                nil?: true
 
       # @!attribute dimensional_price_configuration
