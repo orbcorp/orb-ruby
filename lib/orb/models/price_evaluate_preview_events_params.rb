@@ -136,7 +136,7 @@ module Orb
         #   An inline price definition to evaluate, allowing you to test price
         #   configurations before adding them to Orb.
         #
-        #   @return [Orb::Models::NewFloatingUnitPrice, Orb::Models::NewFloatingPackagePrice, Orb::Models::NewFloatingMatrixPrice, Orb::Models::NewFloatingMatrixWithAllocationPrice, Orb::Models::NewFloatingTieredPrice, Orb::Models::NewFloatingBulkPrice, Orb::Models::NewFloatingThresholdTotalAmountPrice, Orb::Models::NewFloatingTieredPackagePrice, Orb::Models::NewFloatingGroupedTieredPrice, Orb::Models::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::NewFloatingTieredWithMinimumPrice, Orb::Models::NewFloatingPackageWithAllocationPrice, Orb::Models::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::NewFloatingUnitWithPercentPrice, Orb::Models::NewFloatingTieredWithProrationPrice, Orb::Models::NewFloatingUnitWithProrationPrice, Orb::Models::NewFloatingGroupedAllocationPrice, Orb::Models::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::NewFloatingBulkWithProrationPrice, Orb::Models::NewFloatingGroupedTieredPackagePrice, Orb::Models::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::NewFloatingCumulativeGroupedBulkPrice, Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::GroupedWithMinMaxThresholds, Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum, nil]
+        #   @return [Orb::Models::NewFloatingUnitPrice, Orb::Models::NewFloatingPackagePrice, Orb::Models::NewFloatingMatrixPrice, Orb::Models::NewFloatingMatrixWithAllocationPrice, Orb::Models::NewFloatingTieredPrice, Orb::Models::NewFloatingBulkPrice, Orb::Models::NewFloatingThresholdTotalAmountPrice, Orb::Models::NewFloatingTieredPackagePrice, Orb::Models::NewFloatingGroupedTieredPrice, Orb::Models::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::NewFloatingTieredWithMinimumPrice, Orb::Models::NewFloatingPackageWithAllocationPrice, Orb::Models::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::NewFloatingUnitWithPercentPrice, Orb::Models::NewFloatingTieredWithProrationPrice, Orb::Models::NewFloatingUnitWithProrationPrice, Orb::Models::NewFloatingGroupedAllocationPrice, Orb::Models::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::NewFloatingBulkWithProrationPrice, Orb::Models::NewFloatingGroupedTieredPackagePrice, Orb::Models::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::NewFloatingCumulativeGroupedBulkPrice, Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::GroupedWithMinMaxThresholds, Orb::Models::NewFloatingMinimumCompositePrice, nil]
         optional :price,
                  union: -> {
                    Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price
@@ -160,7 +160,7 @@ module Orb
         #
         #   @param grouping_keys [Array<String>] Properties (or [computed properties](/extensibility/advanced-metrics#computed-pr
         #
-        #   @param price [Orb::Models::NewFloatingUnitPrice, Orb::Models::NewFloatingPackagePrice, Orb::Models::NewFloatingMatrixPrice, Orb::Models::NewFloatingMatrixWithAllocationPrice, Orb::Models::NewFloatingTieredPrice, Orb::Models::NewFloatingBulkPrice, Orb::Models::NewFloatingThresholdTotalAmountPrice, Orb::Models::NewFloatingTieredPackagePrice, Orb::Models::NewFloatingGroupedTieredPrice, Orb::Models::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::NewFloatingTieredWithMinimumPrice, Orb::Models::NewFloatingPackageWithAllocationPrice, Orb::Models::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::NewFloatingUnitWithPercentPrice, Orb::Models::NewFloatingTieredWithProrationPrice, Orb::Models::NewFloatingUnitWithProrationPrice, Orb::Models::NewFloatingGroupedAllocationPrice, Orb::Models::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::NewFloatingBulkWithProrationPrice, Orb::Models::NewFloatingGroupedTieredPackagePrice, Orb::Models::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::NewFloatingCumulativeGroupedBulkPrice, Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::GroupedWithMinMaxThresholds, Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum, nil] An inline price definition to evaluate, allowing you to test price configuration
+        #   @param price [Orb::Models::NewFloatingUnitPrice, Orb::Models::NewFloatingPackagePrice, Orb::Models::NewFloatingMatrixPrice, Orb::Models::NewFloatingMatrixWithAllocationPrice, Orb::Models::NewFloatingTieredPrice, Orb::Models::NewFloatingBulkPrice, Orb::Models::NewFloatingThresholdTotalAmountPrice, Orb::Models::NewFloatingTieredPackagePrice, Orb::Models::NewFloatingGroupedTieredPrice, Orb::Models::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::NewFloatingTieredWithMinimumPrice, Orb::Models::NewFloatingPackageWithAllocationPrice, Orb::Models::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::NewFloatingUnitWithPercentPrice, Orb::Models::NewFloatingTieredWithProrationPrice, Orb::Models::NewFloatingUnitWithProrationPrice, Orb::Models::NewFloatingGroupedAllocationPrice, Orb::Models::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::NewFloatingBulkWithProrationPrice, Orb::Models::NewFloatingGroupedTieredPackagePrice, Orb::Models::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::NewFloatingCumulativeGroupedBulkPrice, Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::GroupedWithMinMaxThresholds, Orb::Models::NewFloatingMinimumCompositePrice, nil] An inline price definition to evaluate, allowing you to test price configuration
         #
         #   @param price_id [String, nil] The ID of a price to evaluate that exists in your Orb account.
 
@@ -226,7 +226,7 @@ module Orb
           variant :grouped_with_min_max_thresholds,
                   -> { Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::GroupedWithMinMaxThresholds }
 
-          variant :minimum, -> { Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum }
+          variant :minimum, -> { Orb::NewFloatingMinimumCompositePrice }
 
           class GroupedWithMinMaxThresholds < Orb::Internal::Type::BaseModel
             # @!attribute cadence
@@ -298,7 +298,7 @@ module Orb
             #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
             optional :conversion_rate_config,
                      union: -> {
-                       Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::GroupedWithMinMaxThresholds::UnnamedTypeWithobjectParent114
+                       Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::GroupedWithMinMaxThresholds::UnnamedTypeWithobjectParent111
                      },
                      nil?: true
 
@@ -403,208 +403,8 @@ module Orb
             end
           end
 
-          class Minimum < Orb::Internal::Type::BaseModel
-            # @!attribute cadence
-            #   The cadence to bill for this price on.
-            #
-            #   @return [Symbol, Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum::Cadence]
-            required :cadence,
-                     enum: -> { Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum::Cadence }
-
-            # @!attribute currency
-            #   An ISO 4217 currency string for which this price is billed in.
-            #
-            #   @return [String]
-            required :currency, String
-
-            # @!attribute item_id
-            #   The id of the item the price will be associated with.
-            #
-            #   @return [String]
-            required :item_id, String
-
-            # @!attribute minimum_config
-            #
-            #   @return [Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum::MinimumConfig]
-            required :minimum_config,
-                     -> { Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum::MinimumConfig }
-
-            # @!attribute model_type
-            #
-            #   @return [Symbol, :minimum]
-            required :model_type, const: :minimum
-
-            # @!attribute name
-            #   The name of the price.
-            #
-            #   @return [String]
-            required :name, String
-
-            # @!attribute billable_metric_id
-            #   The id of the billable metric for the price. Only needed if the price is
-            #   usage-based.
-            #
-            #   @return [String, nil]
-            optional :billable_metric_id, String, nil?: true
-
-            # @!attribute billed_in_advance
-            #   If the Price represents a fixed cost, the price will be billed in-advance if
-            #   this is true, and in-arrears if this is false.
-            #
-            #   @return [Boolean, nil]
-            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
-
-            # @!attribute billing_cycle_configuration
-            #   For custom cadence: specifies the duration of the billing period in days or
-            #   months.
-            #
-            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
-            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
-
-            # @!attribute conversion_rate
-            #   The per unit conversion rate of the price currency to the invoicing currency.
-            #
-            #   @return [Float, nil]
-            optional :conversion_rate, Float, nil?: true
-
-            # @!attribute conversion_rate_config
-            #   The configuration for the rate of the price currency to the invoicing currency.
-            #
-            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-            optional :conversion_rate_config,
-                     union: -> {
-                       Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum::UnnamedTypeWithobjectParent115
-                     },
-                     nil?: true
-
-            # @!attribute dimensional_price_configuration
-            #   For dimensional price: specifies a price group and dimension values
-            #
-            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
-            optional :dimensional_price_configuration,
-                     -> {
-                       Orb::NewDimensionalPriceConfiguration
-                     },
-                     nil?: true
-
-            # @!attribute external_price_id
-            #   An alias for the price.
-            #
-            #   @return [String, nil]
-            optional :external_price_id, String, nil?: true
-
-            # @!attribute fixed_price_quantity
-            #   If the Price represents a fixed cost, this represents the quantity of units
-            #   applied.
-            #
-            #   @return [Float, nil]
-            optional :fixed_price_quantity, Float, nil?: true
-
-            # @!attribute invoice_grouping_key
-            #   The property used to group this price on an invoice
-            #
-            #   @return [String, nil]
-            optional :invoice_grouping_key, String, nil?: true
-
-            # @!attribute invoicing_cycle_configuration
-            #   Within each billing cycle, specifies the cadence at which invoices are produced.
-            #   If unspecified, a single invoice is produced per billing cycle.
-            #
-            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
-            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
-
-            # @!attribute metadata
-            #   User-specified key/value pairs for the resource. Individual keys can be removed
-            #   by setting the value to `null`, and the entire metadata mapping can be cleared
-            #   by setting `metadata` to `null`.
-            #
-            #   @return [Hash{Symbol=>String, nil}, nil]
-            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
-
-            # @!method initialize(cadence:, currency:, item_id:, minimum_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, model_type: :minimum)
-            #   Some parameter documentations has been truncated, see
-            #   {Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum}
-            #   for more details.
-            #
-            #   @param cadence [Symbol, Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum::Cadence] The cadence to bill for this price on.
-            #
-            #   @param currency [String] An ISO 4217 currency string for which this price is billed in.
-            #
-            #   @param item_id [String] The id of the item the price will be associated with.
-            #
-            #   @param minimum_config [Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum::MinimumConfig]
-            #
-            #   @param name [String] The name of the price.
-            #
-            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
-            #
-            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
-            #
-            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
-            #
-            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
-            #
-            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
-            #
-            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
-            #
-            #   @param external_price_id [String, nil] An alias for the price.
-            #
-            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
-            #
-            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
-            #
-            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
-            #
-            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
-            #
-            #   @param model_type [Symbol, :minimum]
-
-            # The cadence to bill for this price on.
-            #
-            # @see Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum#cadence
-            module Cadence
-              extend Orb::Internal::Type::Enum
-
-              ANNUAL = :annual
-              SEMI_ANNUAL = :semi_annual
-              MONTHLY = :monthly
-              QUARTERLY = :quarterly
-              ONE_TIME = :one_time
-              CUSTOM = :custom
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
-
-            # @see Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum#minimum_config
-            class MinimumConfig < Orb::Internal::Type::BaseModel
-              # @!attribute minimum_amount
-              #   The minimum amount to apply
-              #
-              #   @return [String]
-              required :minimum_amount, String
-
-              # @!attribute prorated
-              #   By default, subtotals from minimum composite prices are prorated based on the
-              #   service period. Set to false to disable proration.
-              #
-              #   @return [Boolean, nil]
-              optional :prorated, Orb::Internal::Type::Boolean, nil?: true
-
-              # @!method initialize(minimum_amount:, prorated: nil)
-              #   Some parameter documentations has been truncated, see
-              #   {Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum::MinimumConfig}
-              #   for more details.
-              #
-              #   @param minimum_amount [String] The minimum amount to apply
-              #
-              #   @param prorated [Boolean, nil] By default, subtotals from minimum composite prices are prorated based on the se
-            end
-          end
-
           # @!method self.variants
-          #   @return [Array(Orb::Models::NewFloatingUnitPrice, Orb::Models::NewFloatingPackagePrice, Orb::Models::NewFloatingMatrixPrice, Orb::Models::NewFloatingMatrixWithAllocationPrice, Orb::Models::NewFloatingTieredPrice, Orb::Models::NewFloatingBulkPrice, Orb::Models::NewFloatingThresholdTotalAmountPrice, Orb::Models::NewFloatingTieredPackagePrice, Orb::Models::NewFloatingGroupedTieredPrice, Orb::Models::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::NewFloatingTieredWithMinimumPrice, Orb::Models::NewFloatingPackageWithAllocationPrice, Orb::Models::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::NewFloatingUnitWithPercentPrice, Orb::Models::NewFloatingTieredWithProrationPrice, Orb::Models::NewFloatingUnitWithProrationPrice, Orb::Models::NewFloatingGroupedAllocationPrice, Orb::Models::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::NewFloatingBulkWithProrationPrice, Orb::Models::NewFloatingGroupedTieredPackagePrice, Orb::Models::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::NewFloatingCumulativeGroupedBulkPrice, Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::GroupedWithMinMaxThresholds, Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum)]
+          #   @return [Array(Orb::Models::NewFloatingUnitPrice, Orb::Models::NewFloatingPackagePrice, Orb::Models::NewFloatingMatrixPrice, Orb::Models::NewFloatingMatrixWithAllocationPrice, Orb::Models::NewFloatingTieredPrice, Orb::Models::NewFloatingBulkPrice, Orb::Models::NewFloatingThresholdTotalAmountPrice, Orb::Models::NewFloatingTieredPackagePrice, Orb::Models::NewFloatingGroupedTieredPrice, Orb::Models::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::NewFloatingTieredWithMinimumPrice, Orb::Models::NewFloatingPackageWithAllocationPrice, Orb::Models::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::NewFloatingUnitWithPercentPrice, Orb::Models::NewFloatingTieredWithProrationPrice, Orb::Models::NewFloatingUnitWithProrationPrice, Orb::Models::NewFloatingGroupedAllocationPrice, Orb::Models::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::NewFloatingBulkWithProrationPrice, Orb::Models::NewFloatingGroupedTieredPackagePrice, Orb::Models::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::NewFloatingCumulativeGroupedBulkPrice, Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::GroupedWithMinMaxThresholds, Orb::Models::NewFloatingMinimumCompositePrice)]
         end
       end
     end

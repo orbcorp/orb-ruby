@@ -108,7 +108,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::Unit::UnnamedTypeWithobjectParent85 },
+                 union: -> { Orb::Price::Unit::UnnamedTypeWithobjectParent83 },
                  nil?: true
 
         # @!attribute created_at
@@ -344,7 +344,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::Package::UnnamedTypeWithobjectParent86 },
+                 union: -> { Orb::Price::Package::UnnamedTypeWithobjectParent84 },
                  nil?: true
 
         # @!attribute created_at
@@ -580,7 +580,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::Matrix::UnnamedTypeWithobjectParent87 },
+                 union: -> { Orb::Price::Matrix::UnnamedTypeWithobjectParent85 },
                  nil?: true
 
         # @!attribute created_at
@@ -816,7 +816,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::Tiered::UnnamedTypeWithobjectParent88 },
+                 union: -> { Orb::Price::Tiered::UnnamedTypeWithobjectParent86 },
                  nil?: true
 
         # @!attribute created_at
@@ -1057,7 +1057,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::Bulk::UnnamedTypeWithobjectParent89 },
+                 union: -> { Orb::Price::Bulk::UnnamedTypeWithobjectParent87 },
                  nil?: true
 
         # @!attribute created_at
@@ -1288,7 +1288,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::ThresholdTotalAmount::UnnamedTypeWithobjectParent90 },
+                 union: -> { Orb::Price::ThresholdTotalAmount::UnnamedTypeWithobjectParent88 },
                  nil?: true
 
         # @!attribute created_at
@@ -1524,7 +1524,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::TieredPackage::UnnamedTypeWithobjectParent91 },
+                 union: -> { Orb::Price::TieredPackage::UnnamedTypeWithobjectParent89 },
                  nil?: true
 
         # @!attribute created_at
@@ -1760,7 +1760,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::GroupedTiered::UnnamedTypeWithobjectParent92 },
+                 union: -> { Orb::Price::GroupedTiered::UnnamedTypeWithobjectParent90 },
                  nil?: true
 
         # @!attribute created_at
@@ -1996,7 +1996,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::TieredWithMinimum::UnnamedTypeWithobjectParent93 },
+                 union: -> { Orb::Price::TieredWithMinimum::UnnamedTypeWithobjectParent91 },
                  nil?: true
 
         # @!attribute created_at
@@ -2232,7 +2232,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::TieredPackageWithMinimum::UnnamedTypeWithobjectParent94 },
+                 union: -> { Orb::Price::TieredPackageWithMinimum::UnnamedTypeWithobjectParent92 },
                  nil?: true
 
         # @!attribute created_at
@@ -2468,7 +2468,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::PackageWithAllocation::UnnamedTypeWithobjectParent95 },
+                 union: -> { Orb::Price::PackageWithAllocation::UnnamedTypeWithobjectParent93 },
                  nil?: true
 
         # @!attribute created_at
@@ -2704,7 +2704,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::UnitWithPercent::UnnamedTypeWithobjectParent96 },
+                 union: -> { Orb::Price::UnitWithPercent::UnnamedTypeWithobjectParent94 },
                  nil?: true
 
         # @!attribute created_at
@@ -2940,7 +2940,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::MatrixWithAllocation::UnnamedTypeWithobjectParent97 },
+                 union: -> { Orb::Price::MatrixWithAllocation::UnnamedTypeWithobjectParent95 },
                  nil?: true
 
         # @!attribute created_at
@@ -3176,7 +3176,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::TieredWithProration::UnnamedTypeWithobjectParent98 },
+                 union: -> { Orb::Price::TieredWithProration::UnnamedTypeWithobjectParent96 },
                  nil?: true
 
         # @!attribute created_at
@@ -3412,7 +3412,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::UnitWithProration::UnnamedTypeWithobjectParent99 },
+                 union: -> { Orb::Price::UnitWithProration::UnnamedTypeWithobjectParent97 },
                  nil?: true
 
         # @!attribute created_at
@@ -3648,7 +3648,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::GroupedAllocation::UnnamedTypeWithobjectParent100 },
+                 union: -> { Orb::Price::GroupedAllocation::UnnamedTypeWithobjectParent98 },
                  nil?: true
 
         # @!attribute created_at
@@ -3884,7 +3884,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::GroupedWithProratedMinimum::UnnamedTypeWithobjectParent101 },
+                 union: -> { Orb::Price::GroupedWithProratedMinimum::UnnamedTypeWithobjectParent99 },
                  nil?: true
 
         # @!attribute created_at
@@ -4120,7 +4120,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::GroupedWithMeteredMinimum::UnnamedTypeWithobjectParent102 },
+                 union: -> { Orb::Price::GroupedWithMeteredMinimum::UnnamedTypeWithobjectParent100 },
                  nil?: true
 
         # @!attribute created_at
@@ -4356,7 +4356,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::MatrixWithDisplayName::UnnamedTypeWithobjectParent103 },
+                 union: -> { Orb::Price::MatrixWithDisplayName::UnnamedTypeWithobjectParent101 },
                  nil?: true
 
         # @!attribute created_at
@@ -4597,7 +4597,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::BulkWithProration::UnnamedTypeWithobjectParent104 },
+                 union: -> { Orb::Price::BulkWithProration::UnnamedTypeWithobjectParent102 },
                  nil?: true
 
         # @!attribute created_at
@@ -4828,7 +4828,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::GroupedTieredPackage::UnnamedTypeWithobjectParent105 },
+                 union: -> { Orb::Price::GroupedTieredPackage::UnnamedTypeWithobjectParent103 },
                  nil?: true
 
         # @!attribute created_at
@@ -5064,7 +5064,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::MaxGroupTieredPackage::UnnamedTypeWithobjectParent106 },
+                 union: -> { Orb::Price::MaxGroupTieredPackage::UnnamedTypeWithobjectParent104 },
                  nil?: true
 
         # @!attribute created_at
@@ -5300,7 +5300,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::ScalableMatrixWithUnitPricing::UnnamedTypeWithobjectParent107 },
+                 union: -> { Orb::Price::ScalableMatrixWithUnitPricing::UnnamedTypeWithobjectParent105 },
                  nil?: true
 
         # @!attribute created_at
@@ -5537,7 +5537,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::ScalableMatrixWithTieredPricing::UnnamedTypeWithobjectParent108 },
+                 union: -> { Orb::Price::ScalableMatrixWithTieredPricing::UnnamedTypeWithobjectParent106 },
                  nil?: true
 
         # @!attribute created_at
@@ -5774,7 +5774,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::CumulativeGroupedBulk::UnnamedTypeWithobjectParent109 },
+                 union: -> { Orb::Price::CumulativeGroupedBulk::UnnamedTypeWithobjectParent107 },
                  nil?: true
 
         # @!attribute created_at
@@ -6010,7 +6010,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::GroupedWithMinMaxThresholds::UnnamedTypeWithobjectParent110 },
+                 union: -> { Orb::Price::GroupedWithMinMaxThresholds::UnnamedTypeWithobjectParent108 },
                  nil?: true
 
         # @!attribute created_at
@@ -6247,7 +6247,7 @@ module Orb
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
         required :conversion_rate_config,
-                 union: -> { Orb::Price::Minimum::UnnamedTypeWithobjectParent111 },
+                 union: -> { Orb::Price::Minimum::UnnamedTypeWithobjectParent109 },
                  nil?: true
 
         # @!attribute created_at
