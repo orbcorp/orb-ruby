@@ -64,7 +64,7 @@ module Orb
       #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
       optional :conversion_rate_config,
                union: -> {
-                 Orb::NewSubscriptionGroupedWithMeteredMinimumPrice::UnnamedTypeWithobjectParent64
+                 Orb::NewSubscriptionGroupedWithMeteredMinimumPrice::UnnamedTypeWithobjectParent62
                },
                nil?: true
 

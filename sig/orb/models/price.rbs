@@ -40,7 +40,7 @@ module Orb
           cadence: Orb::Models::Price::Unit::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Unit::unnamed_type_withobject_parent85?,
+          conversion_rate_config: Orb::Models::Price::Unit::unnamed_type_withobject_parent83?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -76,7 +76,7 @@ module Orb
 
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::Unit::unnamed_type_withobject_parent85?
+        attr_accessor conversion_rate_config: Orb::Models::Price::Unit::unnamed_type_withobject_parent83?
 
         attr_accessor created_at: Time
 
@@ -125,7 +125,7 @@ module Orb
           cadence: Orb::Models::Price::Unit::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Unit::unnamed_type_withobject_parent85?,
+          conversion_rate_config: Orb::Models::Price::Unit::unnamed_type_withobject_parent83?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -155,7 +155,7 @@ module Orb
           cadence: Orb::Models::Price::Unit::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Unit::unnamed_type_withobject_parent85?,
+          conversion_rate_config: Orb::Models::Price::Unit::unnamed_type_withobject_parent83?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -214,7 +214,7 @@ module Orb
           cadence: Orb::Models::Price::Package::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Package::unnamed_type_withobject_parent86?,
+          conversion_rate_config: Orb::Models::Price::Package::unnamed_type_withobject_parent84?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -250,7 +250,7 @@ module Orb
 
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::Package::unnamed_type_withobject_parent86?
+        attr_accessor conversion_rate_config: Orb::Models::Price::Package::unnamed_type_withobject_parent84?
 
         attr_accessor created_at: Time
 
@@ -299,7 +299,7 @@ module Orb
           cadence: Orb::Models::Price::Package::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Package::unnamed_type_withobject_parent86?,
+          conversion_rate_config: Orb::Models::Price::Package::unnamed_type_withobject_parent84?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -329,7 +329,7 @@ module Orb
           cadence: Orb::Models::Price::Package::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Package::unnamed_type_withobject_parent86?,
+          conversion_rate_config: Orb::Models::Price::Package::unnamed_type_withobject_parent84?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -388,7 +388,7 @@ module Orb
           cadence: Orb::Models::Price::Matrix::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Matrix::unnamed_type_withobject_parent87?,
+          conversion_rate_config: Orb::Models::Price::Matrix::unnamed_type_withobject_parent85?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -424,7 +424,7 @@ module Orb
 
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::Matrix::unnamed_type_withobject_parent87?
+        attr_accessor conversion_rate_config: Orb::Models::Price::Matrix::unnamed_type_withobject_parent85?
 
         attr_accessor created_at: Time
 
@@ -473,7 +473,7 @@ module Orb
           cadence: Orb::Models::Price::Matrix::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Matrix::unnamed_type_withobject_parent87?,
+          conversion_rate_config: Orb::Models::Price::Matrix::unnamed_type_withobject_parent85?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -503,7 +503,7 @@ module Orb
           cadence: Orb::Models::Price::Matrix::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Matrix::unnamed_type_withobject_parent87?,
+          conversion_rate_config: Orb::Models::Price::Matrix::unnamed_type_withobject_parent85?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -562,7 +562,7 @@ module Orb
           cadence: Orb::Models::Price::Tiered::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Tiered::unnamed_type_withobject_parent88?,
+          conversion_rate_config: Orb::Models::Price::Tiered::unnamed_type_withobject_parent86?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -598,7 +598,7 @@ module Orb
 
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::Tiered::unnamed_type_withobject_parent88?
+        attr_accessor conversion_rate_config: Orb::Models::Price::Tiered::unnamed_type_withobject_parent86?
 
         attr_accessor created_at: Time
 
@@ -647,7 +647,7 @@ module Orb
           cadence: Orb::Models::Price::Tiered::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Tiered::unnamed_type_withobject_parent88?,
+          conversion_rate_config: Orb::Models::Price::Tiered::unnamed_type_withobject_parent86?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -677,7 +677,7 @@ module Orb
           cadence: Orb::Models::Price::Tiered::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Tiered::unnamed_type_withobject_parent88?,
+          conversion_rate_config: Orb::Models::Price::Tiered::unnamed_type_withobject_parent86?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -737,7 +737,7 @@ module Orb
           cadence: Orb::Models::Price::Bulk::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Bulk::unnamed_type_withobject_parent89?,
+          conversion_rate_config: Orb::Models::Price::Bulk::unnamed_type_withobject_parent87?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -774,7 +774,7 @@ module Orb
 
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::Bulk::unnamed_type_withobject_parent89?
+        attr_accessor conversion_rate_config: Orb::Models::Price::Bulk::unnamed_type_withobject_parent87?
 
         attr_accessor created_at: Time
 
@@ -822,7 +822,7 @@ module Orb
           cadence: Orb::Models::Price::Bulk::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Bulk::unnamed_type_withobject_parent89?,
+          conversion_rate_config: Orb::Models::Price::Bulk::unnamed_type_withobject_parent87?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -852,7 +852,7 @@ module Orb
           cadence: Orb::Models::Price::Bulk::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Bulk::unnamed_type_withobject_parent89?,
+          conversion_rate_config: Orb::Models::Price::Bulk::unnamed_type_withobject_parent87?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -910,7 +910,7 @@ module Orb
           cadence: Orb::Models::Price::ThresholdTotalAmount::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::ThresholdTotalAmount::unnamed_type_withobject_parent90?,
+          conversion_rate_config: Orb::Models::Price::ThresholdTotalAmount::unnamed_type_withobject_parent88?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -946,7 +946,7 @@ module Orb
 
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::ThresholdTotalAmount::unnamed_type_withobject_parent90?
+        attr_accessor conversion_rate_config: Orb::Models::Price::ThresholdTotalAmount::unnamed_type_withobject_parent88?
 
         attr_accessor created_at: Time
 
@@ -995,7 +995,7 @@ module Orb
           cadence: Orb::Models::Price::ThresholdTotalAmount::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::ThresholdTotalAmount::unnamed_type_withobject_parent90?,
+          conversion_rate_config: Orb::Models::Price::ThresholdTotalAmount::unnamed_type_withobject_parent88?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1025,7 +1025,7 @@ module Orb
           cadence: Orb::Models::Price::ThresholdTotalAmount::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::ThresholdTotalAmount::unnamed_type_withobject_parent90?,
+          conversion_rate_config: Orb::Models::Price::ThresholdTotalAmount::unnamed_type_withobject_parent88?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1084,7 +1084,7 @@ module Orb
           cadence: Orb::Models::Price::TieredPackage::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::TieredPackage::unnamed_type_withobject_parent91?,
+          conversion_rate_config: Orb::Models::Price::TieredPackage::unnamed_type_withobject_parent89?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1120,7 +1120,7 @@ module Orb
 
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::TieredPackage::unnamed_type_withobject_parent91?
+        attr_accessor conversion_rate_config: Orb::Models::Price::TieredPackage::unnamed_type_withobject_parent89?
 
         attr_accessor created_at: Time
 
@@ -1169,7 +1169,7 @@ module Orb
           cadence: Orb::Models::Price::TieredPackage::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::TieredPackage::unnamed_type_withobject_parent91?,
+          conversion_rate_config: Orb::Models::Price::TieredPackage::unnamed_type_withobject_parent89?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1199,7 +1199,7 @@ module Orb
           cadence: Orb::Models::Price::TieredPackage::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::TieredPackage::unnamed_type_withobject_parent91?,
+          conversion_rate_config: Orb::Models::Price::TieredPackage::unnamed_type_withobject_parent89?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1258,7 +1258,7 @@ module Orb
           cadence: Orb::Models::Price::GroupedTiered::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedTiered::unnamed_type_withobject_parent92?,
+          conversion_rate_config: Orb::Models::Price::GroupedTiered::unnamed_type_withobject_parent90?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1294,7 +1294,7 @@ module Orb
 
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedTiered::unnamed_type_withobject_parent92?
+        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedTiered::unnamed_type_withobject_parent90?
 
         attr_accessor created_at: Time
 
@@ -1343,7 +1343,7 @@ module Orb
           cadence: Orb::Models::Price::GroupedTiered::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedTiered::unnamed_type_withobject_parent92?,
+          conversion_rate_config: Orb::Models::Price::GroupedTiered::unnamed_type_withobject_parent90?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1373,7 +1373,7 @@ module Orb
           cadence: Orb::Models::Price::GroupedTiered::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedTiered::unnamed_type_withobject_parent92?,
+          conversion_rate_config: Orb::Models::Price::GroupedTiered::unnamed_type_withobject_parent90?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1432,7 +1432,7 @@ module Orb
           cadence: Orb::Models::Price::TieredWithMinimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::TieredWithMinimum::unnamed_type_withobject_parent93?,
+          conversion_rate_config: Orb::Models::Price::TieredWithMinimum::unnamed_type_withobject_parent91?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1468,7 +1468,7 @@ module Orb
 
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::TieredWithMinimum::unnamed_type_withobject_parent93?
+        attr_accessor conversion_rate_config: Orb::Models::Price::TieredWithMinimum::unnamed_type_withobject_parent91?
 
         attr_accessor created_at: Time
 
@@ -1517,7 +1517,7 @@ module Orb
           cadence: Orb::Models::Price::TieredWithMinimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::TieredWithMinimum::unnamed_type_withobject_parent93?,
+          conversion_rate_config: Orb::Models::Price::TieredWithMinimum::unnamed_type_withobject_parent91?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1547,7 +1547,7 @@ module Orb
           cadence: Orb::Models::Price::TieredWithMinimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::TieredWithMinimum::unnamed_type_withobject_parent93?,
+          conversion_rate_config: Orb::Models::Price::TieredWithMinimum::unnamed_type_withobject_parent91?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1606,7 +1606,7 @@ module Orb
           cadence: Orb::Models::Price::TieredPackageWithMinimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::TieredPackageWithMinimum::unnamed_type_withobject_parent94?,
+          conversion_rate_config: Orb::Models::Price::TieredPackageWithMinimum::unnamed_type_withobject_parent92?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1642,7 +1642,7 @@ module Orb
 
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::TieredPackageWithMinimum::unnamed_type_withobject_parent94?
+        attr_accessor conversion_rate_config: Orb::Models::Price::TieredPackageWithMinimum::unnamed_type_withobject_parent92?
 
         attr_accessor created_at: Time
 
@@ -1691,7 +1691,7 @@ module Orb
           cadence: Orb::Models::Price::TieredPackageWithMinimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::TieredPackageWithMinimum::unnamed_type_withobject_parent94?,
+          conversion_rate_config: Orb::Models::Price::TieredPackageWithMinimum::unnamed_type_withobject_parent92?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1721,7 +1721,7 @@ module Orb
           cadence: Orb::Models::Price::TieredPackageWithMinimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::TieredPackageWithMinimum::unnamed_type_withobject_parent94?,
+          conversion_rate_config: Orb::Models::Price::TieredPackageWithMinimum::unnamed_type_withobject_parent92?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1780,7 +1780,7 @@ module Orb
           cadence: Orb::Models::Price::PackageWithAllocation::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::PackageWithAllocation::unnamed_type_withobject_parent95?,
+          conversion_rate_config: Orb::Models::Price::PackageWithAllocation::unnamed_type_withobject_parent93?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1816,7 +1816,7 @@ module Orb
 
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::PackageWithAllocation::unnamed_type_withobject_parent95?
+        attr_accessor conversion_rate_config: Orb::Models::Price::PackageWithAllocation::unnamed_type_withobject_parent93?
 
         attr_accessor created_at: Time
 
@@ -1865,7 +1865,7 @@ module Orb
           cadence: Orb::Models::Price::PackageWithAllocation::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::PackageWithAllocation::unnamed_type_withobject_parent95?,
+          conversion_rate_config: Orb::Models::Price::PackageWithAllocation::unnamed_type_withobject_parent93?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1895,7 +1895,7 @@ module Orb
           cadence: Orb::Models::Price::PackageWithAllocation::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::PackageWithAllocation::unnamed_type_withobject_parent95?,
+          conversion_rate_config: Orb::Models::Price::PackageWithAllocation::unnamed_type_withobject_parent93?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1954,7 +1954,7 @@ module Orb
           cadence: Orb::Models::Price::UnitWithPercent::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::UnitWithPercent::unnamed_type_withobject_parent96?,
+          conversion_rate_config: Orb::Models::Price::UnitWithPercent::unnamed_type_withobject_parent94?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -1990,7 +1990,7 @@ module Orb
 
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::UnitWithPercent::unnamed_type_withobject_parent96?
+        attr_accessor conversion_rate_config: Orb::Models::Price::UnitWithPercent::unnamed_type_withobject_parent94?
 
         attr_accessor created_at: Time
 
@@ -2039,7 +2039,7 @@ module Orb
           cadence: Orb::Models::Price::UnitWithPercent::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::UnitWithPercent::unnamed_type_withobject_parent96?,
+          conversion_rate_config: Orb::Models::Price::UnitWithPercent::unnamed_type_withobject_parent94?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2069,7 +2069,7 @@ module Orb
           cadence: Orb::Models::Price::UnitWithPercent::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::UnitWithPercent::unnamed_type_withobject_parent96?,
+          conversion_rate_config: Orb::Models::Price::UnitWithPercent::unnamed_type_withobject_parent94?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2128,7 +2128,7 @@ module Orb
           cadence: Orb::Models::Price::MatrixWithAllocation::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::MatrixWithAllocation::unnamed_type_withobject_parent97?,
+          conversion_rate_config: Orb::Models::Price::MatrixWithAllocation::unnamed_type_withobject_parent95?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2164,7 +2164,7 @@ module Orb
 
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::MatrixWithAllocation::unnamed_type_withobject_parent97?
+        attr_accessor conversion_rate_config: Orb::Models::Price::MatrixWithAllocation::unnamed_type_withobject_parent95?
 
         attr_accessor created_at: Time
 
@@ -2213,7 +2213,7 @@ module Orb
           cadence: Orb::Models::Price::MatrixWithAllocation::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::MatrixWithAllocation::unnamed_type_withobject_parent97?,
+          conversion_rate_config: Orb::Models::Price::MatrixWithAllocation::unnamed_type_withobject_parent95?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2243,7 +2243,7 @@ module Orb
           cadence: Orb::Models::Price::MatrixWithAllocation::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::MatrixWithAllocation::unnamed_type_withobject_parent97?,
+          conversion_rate_config: Orb::Models::Price::MatrixWithAllocation::unnamed_type_withobject_parent95?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2302,7 +2302,7 @@ module Orb
           cadence: Orb::Models::Price::TieredWithProration::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::TieredWithProration::unnamed_type_withobject_parent98?,
+          conversion_rate_config: Orb::Models::Price::TieredWithProration::unnamed_type_withobject_parent96?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2338,7 +2338,7 @@ module Orb
 
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::TieredWithProration::unnamed_type_withobject_parent98?
+        attr_accessor conversion_rate_config: Orb::Models::Price::TieredWithProration::unnamed_type_withobject_parent96?
 
         attr_accessor created_at: Time
 
@@ -2387,7 +2387,7 @@ module Orb
           cadence: Orb::Models::Price::TieredWithProration::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::TieredWithProration::unnamed_type_withobject_parent98?,
+          conversion_rate_config: Orb::Models::Price::TieredWithProration::unnamed_type_withobject_parent96?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2417,7 +2417,7 @@ module Orb
           cadence: Orb::Models::Price::TieredWithProration::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::TieredWithProration::unnamed_type_withobject_parent98?,
+          conversion_rate_config: Orb::Models::Price::TieredWithProration::unnamed_type_withobject_parent96?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2476,7 +2476,7 @@ module Orb
           cadence: Orb::Models::Price::UnitWithProration::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::UnitWithProration::unnamed_type_withobject_parent99?,
+          conversion_rate_config: Orb::Models::Price::UnitWithProration::unnamed_type_withobject_parent97?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2512,7 +2512,7 @@ module Orb
 
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::UnitWithProration::unnamed_type_withobject_parent99?
+        attr_accessor conversion_rate_config: Orb::Models::Price::UnitWithProration::unnamed_type_withobject_parent97?
 
         attr_accessor created_at: Time
 
@@ -2561,7 +2561,7 @@ module Orb
           cadence: Orb::Models::Price::UnitWithProration::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::UnitWithProration::unnamed_type_withobject_parent99?,
+          conversion_rate_config: Orb::Models::Price::UnitWithProration::unnamed_type_withobject_parent97?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2591,7 +2591,7 @@ module Orb
           cadence: Orb::Models::Price::UnitWithProration::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::UnitWithProration::unnamed_type_withobject_parent99?,
+          conversion_rate_config: Orb::Models::Price::UnitWithProration::unnamed_type_withobject_parent97?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2650,7 +2650,7 @@ module Orb
           cadence: Orb::Models::Price::GroupedAllocation::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedAllocation::unnamed_type_withobject_parent100?,
+          conversion_rate_config: Orb::Models::Price::GroupedAllocation::unnamed_type_withobject_parent98?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2686,7 +2686,7 @@ module Orb
 
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedAllocation::unnamed_type_withobject_parent100?
+        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedAllocation::unnamed_type_withobject_parent98?
 
         attr_accessor created_at: Time
 
@@ -2735,7 +2735,7 @@ module Orb
           cadence: Orb::Models::Price::GroupedAllocation::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedAllocation::unnamed_type_withobject_parent100?,
+          conversion_rate_config: Orb::Models::Price::GroupedAllocation::unnamed_type_withobject_parent98?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2765,7 +2765,7 @@ module Orb
           cadence: Orb::Models::Price::GroupedAllocation::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedAllocation::unnamed_type_withobject_parent100?,
+          conversion_rate_config: Orb::Models::Price::GroupedAllocation::unnamed_type_withobject_parent98?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2824,7 +2824,7 @@ module Orb
           cadence: Orb::Models::Price::GroupedWithProratedMinimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedWithProratedMinimum::unnamed_type_withobject_parent101?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithProratedMinimum::unnamed_type_withobject_parent99?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2860,7 +2860,7 @@ module Orb
 
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedWithProratedMinimum::unnamed_type_withobject_parent101?
+        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedWithProratedMinimum::unnamed_type_withobject_parent99?
 
         attr_accessor created_at: Time
 
@@ -2909,7 +2909,7 @@ module Orb
           cadence: Orb::Models::Price::GroupedWithProratedMinimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedWithProratedMinimum::unnamed_type_withobject_parent101?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithProratedMinimum::unnamed_type_withobject_parent99?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2939,7 +2939,7 @@ module Orb
           cadence: Orb::Models::Price::GroupedWithProratedMinimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedWithProratedMinimum::unnamed_type_withobject_parent101?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithProratedMinimum::unnamed_type_withobject_parent99?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -2998,7 +2998,7 @@ module Orb
           cadence: Orb::Models::Price::GroupedWithMeteredMinimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedWithMeteredMinimum::unnamed_type_withobject_parent102?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithMeteredMinimum::unnamed_type_withobject_parent100?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3034,7 +3034,7 @@ module Orb
 
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedWithMeteredMinimum::unnamed_type_withobject_parent102?
+        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedWithMeteredMinimum::unnamed_type_withobject_parent100?
 
         attr_accessor created_at: Time
 
@@ -3083,7 +3083,7 @@ module Orb
           cadence: Orb::Models::Price::GroupedWithMeteredMinimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedWithMeteredMinimum::unnamed_type_withobject_parent102?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithMeteredMinimum::unnamed_type_withobject_parent100?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3113,7 +3113,7 @@ module Orb
           cadence: Orb::Models::Price::GroupedWithMeteredMinimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedWithMeteredMinimum::unnamed_type_withobject_parent102?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithMeteredMinimum::unnamed_type_withobject_parent100?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3172,7 +3172,7 @@ module Orb
           cadence: Orb::Models::Price::MatrixWithDisplayName::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::MatrixWithDisplayName::unnamed_type_withobject_parent103?,
+          conversion_rate_config: Orb::Models::Price::MatrixWithDisplayName::unnamed_type_withobject_parent101?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3208,7 +3208,7 @@ module Orb
 
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::MatrixWithDisplayName::unnamed_type_withobject_parent103?
+        attr_accessor conversion_rate_config: Orb::Models::Price::MatrixWithDisplayName::unnamed_type_withobject_parent101?
 
         attr_accessor created_at: Time
 
@@ -3257,7 +3257,7 @@ module Orb
           cadence: Orb::Models::Price::MatrixWithDisplayName::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::MatrixWithDisplayName::unnamed_type_withobject_parent103?,
+          conversion_rate_config: Orb::Models::Price::MatrixWithDisplayName::unnamed_type_withobject_parent101?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3287,7 +3287,7 @@ module Orb
           cadence: Orb::Models::Price::MatrixWithDisplayName::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::MatrixWithDisplayName::unnamed_type_withobject_parent103?,
+          conversion_rate_config: Orb::Models::Price::MatrixWithDisplayName::unnamed_type_withobject_parent101?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3347,7 +3347,7 @@ module Orb
           cadence: Orb::Models::Price::BulkWithProration::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::BulkWithProration::unnamed_type_withobject_parent104?,
+          conversion_rate_config: Orb::Models::Price::BulkWithProration::unnamed_type_withobject_parent102?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3384,7 +3384,7 @@ module Orb
 
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::BulkWithProration::unnamed_type_withobject_parent104?
+        attr_accessor conversion_rate_config: Orb::Models::Price::BulkWithProration::unnamed_type_withobject_parent102?
 
         attr_accessor created_at: Time
 
@@ -3432,7 +3432,7 @@ module Orb
           cadence: Orb::Models::Price::BulkWithProration::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::BulkWithProration::unnamed_type_withobject_parent104?,
+          conversion_rate_config: Orb::Models::Price::BulkWithProration::unnamed_type_withobject_parent102?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3462,7 +3462,7 @@ module Orb
           cadence: Orb::Models::Price::BulkWithProration::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::BulkWithProration::unnamed_type_withobject_parent104?,
+          conversion_rate_config: Orb::Models::Price::BulkWithProration::unnamed_type_withobject_parent102?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3520,7 +3520,7 @@ module Orb
           cadence: Orb::Models::Price::GroupedTieredPackage::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedTieredPackage::unnamed_type_withobject_parent105?,
+          conversion_rate_config: Orb::Models::Price::GroupedTieredPackage::unnamed_type_withobject_parent103?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3556,7 +3556,7 @@ module Orb
 
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedTieredPackage::unnamed_type_withobject_parent105?
+        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedTieredPackage::unnamed_type_withobject_parent103?
 
         attr_accessor created_at: Time
 
@@ -3605,7 +3605,7 @@ module Orb
           cadence: Orb::Models::Price::GroupedTieredPackage::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedTieredPackage::unnamed_type_withobject_parent105?,
+          conversion_rate_config: Orb::Models::Price::GroupedTieredPackage::unnamed_type_withobject_parent103?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3635,7 +3635,7 @@ module Orb
           cadence: Orb::Models::Price::GroupedTieredPackage::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedTieredPackage::unnamed_type_withobject_parent105?,
+          conversion_rate_config: Orb::Models::Price::GroupedTieredPackage::unnamed_type_withobject_parent103?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3694,7 +3694,7 @@ module Orb
           cadence: Orb::Models::Price::MaxGroupTieredPackage::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::MaxGroupTieredPackage::unnamed_type_withobject_parent106?,
+          conversion_rate_config: Orb::Models::Price::MaxGroupTieredPackage::unnamed_type_withobject_parent104?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3730,7 +3730,7 @@ module Orb
 
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::MaxGroupTieredPackage::unnamed_type_withobject_parent106?
+        attr_accessor conversion_rate_config: Orb::Models::Price::MaxGroupTieredPackage::unnamed_type_withobject_parent104?
 
         attr_accessor created_at: Time
 
@@ -3779,7 +3779,7 @@ module Orb
           cadence: Orb::Models::Price::MaxGroupTieredPackage::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::MaxGroupTieredPackage::unnamed_type_withobject_parent106?,
+          conversion_rate_config: Orb::Models::Price::MaxGroupTieredPackage::unnamed_type_withobject_parent104?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3809,7 +3809,7 @@ module Orb
           cadence: Orb::Models::Price::MaxGroupTieredPackage::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::MaxGroupTieredPackage::unnamed_type_withobject_parent106?,
+          conversion_rate_config: Orb::Models::Price::MaxGroupTieredPackage::unnamed_type_withobject_parent104?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3868,7 +3868,7 @@ module Orb
           cadence: Orb::Models::Price::ScalableMatrixWithUnitPricing::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithUnitPricing::unnamed_type_withobject_parent107?,
+          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithUnitPricing::unnamed_type_withobject_parent105?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3904,7 +3904,7 @@ module Orb
 
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::ScalableMatrixWithUnitPricing::unnamed_type_withobject_parent107?
+        attr_accessor conversion_rate_config: Orb::Models::Price::ScalableMatrixWithUnitPricing::unnamed_type_withobject_parent105?
 
         attr_accessor created_at: Time
 
@@ -3953,7 +3953,7 @@ module Orb
           cadence: Orb::Models::Price::ScalableMatrixWithUnitPricing::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithUnitPricing::unnamed_type_withobject_parent107?,
+          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithUnitPricing::unnamed_type_withobject_parent105?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -3983,7 +3983,7 @@ module Orb
           cadence: Orb::Models::Price::ScalableMatrixWithUnitPricing::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithUnitPricing::unnamed_type_withobject_parent107?,
+          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithUnitPricing::unnamed_type_withobject_parent105?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4042,7 +4042,7 @@ module Orb
           cadence: Orb::Models::Price::ScalableMatrixWithTieredPricing::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithTieredPricing::unnamed_type_withobject_parent108?,
+          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithTieredPricing::unnamed_type_withobject_parent106?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4078,7 +4078,7 @@ module Orb
 
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::ScalableMatrixWithTieredPricing::unnamed_type_withobject_parent108?
+        attr_accessor conversion_rate_config: Orb::Models::Price::ScalableMatrixWithTieredPricing::unnamed_type_withobject_parent106?
 
         attr_accessor created_at: Time
 
@@ -4127,7 +4127,7 @@ module Orb
           cadence: Orb::Models::Price::ScalableMatrixWithTieredPricing::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithTieredPricing::unnamed_type_withobject_parent108?,
+          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithTieredPricing::unnamed_type_withobject_parent106?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4157,7 +4157,7 @@ module Orb
           cadence: Orb::Models::Price::ScalableMatrixWithTieredPricing::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithTieredPricing::unnamed_type_withobject_parent108?,
+          conversion_rate_config: Orb::Models::Price::ScalableMatrixWithTieredPricing::unnamed_type_withobject_parent106?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4216,7 +4216,7 @@ module Orb
           cadence: Orb::Models::Price::CumulativeGroupedBulk::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::CumulativeGroupedBulk::unnamed_type_withobject_parent109?,
+          conversion_rate_config: Orb::Models::Price::CumulativeGroupedBulk::unnamed_type_withobject_parent107?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           cumulative_grouped_bulk_config: ::Hash[Symbol, top],
@@ -4252,7 +4252,7 @@ module Orb
 
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::CumulativeGroupedBulk::unnamed_type_withobject_parent109?
+        attr_accessor conversion_rate_config: Orb::Models::Price::CumulativeGroupedBulk::unnamed_type_withobject_parent107?
 
         attr_accessor created_at: Time
 
@@ -4301,7 +4301,7 @@ module Orb
           cadence: Orb::Models::Price::CumulativeGroupedBulk::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::CumulativeGroupedBulk::unnamed_type_withobject_parent109?,
+          conversion_rate_config: Orb::Models::Price::CumulativeGroupedBulk::unnamed_type_withobject_parent107?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           cumulative_grouped_bulk_config: ::Hash[Symbol, top],
@@ -4331,7 +4331,7 @@ module Orb
           cadence: Orb::Models::Price::CumulativeGroupedBulk::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::CumulativeGroupedBulk::unnamed_type_withobject_parent109?,
+          conversion_rate_config: Orb::Models::Price::CumulativeGroupedBulk::unnamed_type_withobject_parent107?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           cumulative_grouped_bulk_config: ::Hash[Symbol, top],
@@ -4390,7 +4390,7 @@ module Orb
           cadence: Orb::Models::Price::GroupedWithMinMaxThresholds::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedWithMinMaxThresholds::unnamed_type_withobject_parent110?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithMinMaxThresholds::unnamed_type_withobject_parent108?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4426,7 +4426,7 @@ module Orb
 
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedWithMinMaxThresholds::unnamed_type_withobject_parent110?
+        attr_accessor conversion_rate_config: Orb::Models::Price::GroupedWithMinMaxThresholds::unnamed_type_withobject_parent108?
 
         attr_accessor created_at: Time
 
@@ -4475,7 +4475,7 @@ module Orb
           cadence: Orb::Models::Price::GroupedWithMinMaxThresholds::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedWithMinMaxThresholds::unnamed_type_withobject_parent110?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithMinMaxThresholds::unnamed_type_withobject_parent108?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4505,7 +4505,7 @@ module Orb
           cadence: Orb::Models::Price::GroupedWithMinMaxThresholds::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::GroupedWithMinMaxThresholds::unnamed_type_withobject_parent110?,
+          conversion_rate_config: Orb::Models::Price::GroupedWithMinMaxThresholds::unnamed_type_withobject_parent108?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4564,7 +4564,7 @@ module Orb
           cadence: Orb::Models::Price::Minimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Minimum::unnamed_type_withobject_parent111?,
+          conversion_rate_config: Orb::Models::Price::Minimum::unnamed_type_withobject_parent109?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4600,7 +4600,7 @@ module Orb
 
         attr_accessor conversion_rate: Float?
 
-        attr_accessor conversion_rate_config: Orb::Models::Price::Minimum::unnamed_type_withobject_parent111?
+        attr_accessor conversion_rate_config: Orb::Models::Price::Minimum::unnamed_type_withobject_parent109?
 
         attr_accessor created_at: Time
 
@@ -4649,7 +4649,7 @@ module Orb
           cadence: Orb::Models::Price::Minimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Minimum::unnamed_type_withobject_parent111?,
+          conversion_rate_config: Orb::Models::Price::Minimum::unnamed_type_withobject_parent109?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,
@@ -4679,7 +4679,7 @@ module Orb
           cadence: Orb::Models::Price::Minimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
-          conversion_rate_config: Orb::Models::Price::Minimum::unnamed_type_withobject_parent111?,
+          conversion_rate_config: Orb::Models::Price::Minimum::unnamed_type_withobject_parent109?,
           created_at: Time,
           credit_allocation: Orb::Allocation?,
           currency: String,

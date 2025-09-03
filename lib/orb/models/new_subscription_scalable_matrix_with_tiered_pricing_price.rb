@@ -65,7 +65,7 @@ module Orb
       #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
       optional :conversion_rate_config,
                union: -> {
-                 Orb::NewSubscriptionScalableMatrixWithTieredPricingPrice::UnnamedTypeWithobjectParent72
+                 Orb::NewSubscriptionScalableMatrixWithTieredPricingPrice::UnnamedTypeWithobjectParent71
                },
                nil?: true
 
